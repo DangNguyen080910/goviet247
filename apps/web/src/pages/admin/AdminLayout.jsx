@@ -46,10 +46,11 @@ import { io } from "socket.io-client";
 const drawerWidth = 260;
 
 function getSocketBaseUrl() {
-  const raw =
-    import.meta?.env?.VITE_API_URL ||
-    import.meta?.env?.VITE_API_BASE ||
-    "http://localhost:5050";
+  const raw = import.meta?.env?.VITE_API_URL || import.meta?.env?.VITE_API_BASE;
+
+  if (!raw) {
+    return window.location.origin;
+  }
 
   return String(raw).replace(/\/api\/?$/i, "");
 }

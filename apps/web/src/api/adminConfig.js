@@ -1,11 +1,13 @@
 // Path: goviet247/apps/web/src/api/adminConfig.js
 import { getAdminToken } from "../utils/adminAuth";
 
-const PRICING_BASE_URL = "http://localhost:5050/api/admin/pricing-configs";
-const TRIP_CONFIG_BASE_URL = "http://localhost:5050/api/admin/trip-config";
-const DRIVER_CONFIG_BASE_URL = "http://localhost:5050/api/admin/driver-config";
-const ALERT_CONFIG_BASE_URL = "http://localhost:5050/api/admin/alert-config";
-const SYSTEM_CONFIG_BASE_URL = "http://localhost:5050/api/admin/system-config";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
+
+const PRICING_BASE_URL = `${API_BASE}/api/admin/pricing-configs`;
+const TRIP_CONFIG_BASE_URL = `${API_BASE}/api/admin/trip-config`;
+const DRIVER_CONFIG_BASE_URL = `${API_BASE}/api/admin/driver-config`;
+const ALERT_CONFIG_BASE_URL = `${API_BASE}/api/admin/alert-config`;
+const SYSTEM_CONFIG_BASE_URL = `${API_BASE}/api/admin/system-config`;
 
 /**
  * Lấy toàn bộ pricing config cho admin

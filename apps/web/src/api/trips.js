@@ -1,6 +1,5 @@
 // Path: goviet247/apps/web/src/api/trips.js
-
-const API_BASE = "http://localhost:5050";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 const CUSTOMER_TOKEN_KEY = "gv247_customer_token";
 
 /**
@@ -31,7 +30,7 @@ export async function createTrip(payload) {
     throw new Error(data?.message || "Tạo chuyến thất bại.");
   }
 
-  return data; // { success: true, trip, message }
+  return data;
 }
 
 /**

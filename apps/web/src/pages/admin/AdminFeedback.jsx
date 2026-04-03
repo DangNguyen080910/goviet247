@@ -41,11 +41,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import { getAdminToken, getAdminUser } from "../../utils/adminAuth";
 
 function getApiBaseUrl() {
-  return (
-    import.meta?.env?.VITE_API_URL ||
-    import.meta?.env?.VITE_API_BASE ||
-    "http://localhost:5050/api"
-  );
+  const apiBase =
+    import.meta?.env?.VITE_API_URL || import.meta?.env?.VITE_API_BASE;
+
+  if (!apiBase) {
+    return "/api";
+  }
+
+  return apiBase.endsWith("/api") ? apiBase : `${apiBase}/api`;
 }
 
 function formatDateTime(value) {
@@ -113,7 +116,9 @@ function getGroupLabel(value) {
 }
 
 function normalizeStatusForGroup(group, status) {
-  const normalized = String(status || "").trim().toUpperCase();
+  const normalized = String(status || "")
+    .trim()
+    .toUpperCase();
 
   if (!normalized) return "";
 
@@ -214,14 +219,26 @@ export default function AdminFeedback() {
     params.set("pageSize", String(pageSize));
 
     return params.toString();
-  }, [q, actorRole, status, page, pageSize, groupTab, getAllowedStatusesForTab]);
+  }, [
+    q,
+    actorRole,
+    status,
+    page,
+    pageSize,
+    groupTab,
+    getAllowedStatusesForTab,
+  ]);
 
   const applyClientGroupFilter = React.useCallback(
     (list) => {
       const allowedStatuses = getAllowedStatusesForTab(groupTab);
       return Array.isArray(list)
         ? list.filter((item) =>
-            allowedStatuses.includes(String(item?.status || "").trim().toUpperCase()),
+            allowedStatuses.includes(
+              String(item?.status || "")
+                .trim()
+                .toUpperCase(),
+            ),
           )
         : [];
     },
@@ -235,7 +252,9 @@ export default function AdminFeedback() {
     };
 
     (Array.isArray(list) ? list : []).forEach((item) => {
-      const current = String(item?.status || "").trim().toUpperCase();
+      const current = String(item?.status || "")
+        .trim()
+        .toUpperCase();
       if (["NEW", "IN_REVIEW"].includes(current)) counts.pending += 1;
       if (["RESOLVED", "CLOSED"].includes(current)) counts.resolved += 1;
     });
@@ -415,7 +434,9 @@ export default function AdminFeedback() {
       }
 
       const updated = data.feedback;
-      const updatedStatus = String(updated?.status || "").trim().toUpperCase();
+      const updatedStatus = String(updated?.status || "")
+        .trim()
+        .toUpperCase();
 
       setSelectedFeedback((prev) => ({
         ...prev,
@@ -434,7 +455,11 @@ export default function AdminFeedback() {
 
         const allowedStatuses = getAllowedStatusesForTab(groupTab);
         return next.filter((item) =>
-          allowedStatuses.includes(String(item?.status || "").trim().toUpperCase()),
+          allowedStatuses.includes(
+            String(item?.status || "")
+              .trim()
+              .toUpperCase(),
+          ),
         );
       });
 
@@ -445,7 +470,9 @@ export default function AdminFeedback() {
 
         if (
           ["NEW", "IN_REVIEW"].includes(
-            String(selectedFeedback?.status || "").trim().toUpperCase(),
+            String(selectedFeedback?.status || "")
+              .trim()
+              .toUpperCase(),
           ) &&
           belongsResolved
         ) {
@@ -455,7 +482,9 @@ export default function AdminFeedback() {
 
         if (
           ["RESOLVED", "CLOSED"].includes(
-            String(selectedFeedback?.status || "").trim().toUpperCase(),
+            String(selectedFeedback?.status || "")
+              .trim()
+              .toUpperCase(),
           ) &&
           belongsPending
         ) {
@@ -509,25 +538,25 @@ export default function AdminFeedback() {
   }, [fetchTabCounts, isSuperAdmin]);
 
   React.useEffect(() => {
-  if (!isSuperAdmin) return;
+    if (!isSuperAdmin) return;
 
-  const handleRealtimeFeedbackChanged = () => {
-    fetchFeedbacks();
-    fetchTabCounts();
-  };
+    const handleRealtimeFeedbackChanged = () => {
+      fetchFeedbacks();
+      fetchTabCounts();
+    };
 
-  window.addEventListener(
-    "admin:dashboard_changed",
-    handleRealtimeFeedbackChanged,
-  );
-
-  return () => {
-    window.removeEventListener(
+    window.addEventListener(
       "admin:dashboard_changed",
       handleRealtimeFeedbackChanged,
     );
-  };
-}, [fetchFeedbacks, fetchTabCounts, isSuperAdmin]);
+
+    return () => {
+      window.removeEventListener(
+        "admin:dashboard_changed",
+        handleRealtimeFeedbackChanged,
+      );
+    };
+  }, [fetchFeedbacks, fetchTabCounts, isSuperAdmin]);
 
   if (!isSuperAdmin) {
     return <Navigate to="/admin" replace />;
@@ -764,8 +793,8 @@ export default function AdminFeedback() {
         ) : items.length === 0 ? (
           <Box sx={{ p: 4 }}>
             <Alert severity="warning" sx={{ borderRadius: 2 }}>
-              Chưa có góp ý nào trong nhóm <strong>{getGroupLabel(groupTab)}</strong>{" "}
-              khớp bộ lọc hiện tại.
+              Chưa có góp ý nào trong nhóm{" "}
+              <strong>{getGroupLabel(groupTab)}</strong> khớp bộ lọc hiện tại.
             </Alert>
           </Box>
         ) : (
@@ -791,12 +820,13 @@ export default function AdminFeedback() {
                       key={item.id}
                       hover
                       sx={{
-                        bgcolor:
-                          ["NEW", "IN_REVIEW"].includes(
-                            String(item?.status || "").trim().toUpperCase(),
-                          )
-                            ? "rgba(255, 244, 229, 0.25)"
-                            : "inherit",
+                        bgcolor: ["NEW", "IN_REVIEW"].includes(
+                          String(item?.status || "")
+                            .trim()
+                            .toUpperCase(),
+                        )
+                          ? "rgba(255, 244, 229, 0.25)"
+                          : "inherit",
                       }}
                     >
                       <TableCell sx={{ whiteSpace: "nowrap" }}>
@@ -1031,7 +1061,10 @@ export default function AdminFeedback() {
                     bgcolor: "grey.50",
                   }}
                 >
-                  <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1 }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontWeight: 800, mb: 1 }}
+                  >
                     Thông tin chuyến liên quan
                   </Typography>
 

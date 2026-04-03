@@ -198,11 +198,14 @@ function canCancelTripByRider(trip) {
 }
 
 function getApiBaseUrl() {
-  return (
-    import.meta?.env?.VITE_API_URL ||
-    import.meta?.env?.VITE_API_BASE ||
-    "http://localhost:5050/api"
-  );
+  const apiBase =
+    import.meta?.env?.VITE_API_URL || import.meta?.env?.VITE_API_BASE;
+
+  if (!apiBase) {
+    return "/api";
+  }
+
+  return apiBase.endsWith("/api") ? apiBase : `${apiBase}/api`;
 }
 
 function getSocketBaseUrl() {
@@ -394,8 +397,8 @@ export default function CustomerProfile() {
   });
 
   useEffect(() => {
-  setDisplayName(getCustomerDisplayName(user));
-}, [user]);
+    setDisplayName(getCustomerDisplayName(user));
+  }, [user]);
 
   const notifyTripRealtimeChanges = async (prevTrips = [], nextTrips = []) => {
     if (!hasLoadedTripsRef.current) {
@@ -612,44 +615,44 @@ export default function CustomerProfile() {
   }
 
   const handleSaveProfile = async () => {
-  const nextName = String(displayName || "").trim();
+    const nextName = String(displayName || "").trim();
 
-  if (nextName.length < 2) {
-    setSnackbar({
-      open: true,
-      severity: "warning",
-      message: "Tên khách hàng phải có ít nhất 2 ký tự.",
-    });
-    return;
-  }
+    if (nextName.length < 2) {
+      setSnackbar({
+        open: true,
+        severity: "warning",
+        message: "Tên khách hàng phải có ít nhất 2 ký tự.",
+      });
+      return;
+    }
 
-  try {
-    setSaving(true);
+    try {
+      setSaving(true);
 
-    const updatedUser = await updateMe(token, {
-      displayName: nextName,
-    });
+      const updatedUser = await updateMe(token, {
+        displayName: nextName,
+      });
 
-    login(token, updatedUser);
+      login(token, updatedUser);
 
-    setDisplayName(getCustomerDisplayName(updatedUser));
+      setDisplayName(getCustomerDisplayName(updatedUser));
 
-    setSnackbar({
-      open: true,
-      severity: "success",
-      message: "Đã cập nhật hồ sơ thành công.",
-    });
-  } catch (err) {
-    console.error("Update profile failed:", err);
-    setSnackbar({
-      open: true,
-      severity: "error",
-      message: err.message || "Không cập nhật được hồ sơ.",
-    });
-  } finally {
-    setSaving(false);
-  }
-};
+      setSnackbar({
+        open: true,
+        severity: "success",
+        message: "Đã cập nhật hồ sơ thành công.",
+      });
+    } catch (err) {
+      console.error("Update profile failed:", err);
+      setSnackbar({
+        open: true,
+        severity: "error",
+        message: err.message || "Không cập nhật được hồ sơ.",
+      });
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const handleCloseSnackbar = () => {
     setSnackbar((prev) => ({ ...prev, open: false }));

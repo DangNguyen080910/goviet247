@@ -1,5 +1,6 @@
 // Path: goviet247/apps/web/src/api/auth.js
-const API = "http://localhost:5050/api/auth";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
+const API = `${API_BASE}/api/auth`;
 
 // Gửi OTP
 export async function requestOtp(phone) {

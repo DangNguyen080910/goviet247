@@ -1,7 +1,8 @@
 // Path: goviet247/apps/web/src/api/adminAccountingDocuments.js
 import { getAdminToken } from "../utils/adminAuth";
 
-const BASE_URL = "http://localhost:5050/api/admin";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
+const BASE_URL = `${API_BASE}/api/admin`;
 
 async function parseJson(res) {
   const data = await res.json();
