@@ -15,9 +15,18 @@ const DEFAULT_TRIP_CONFIG = {
 };
 
 const DEFAULT_SYSTEM_CONFIG = {
-  supportPhone: "0900000000",
-  supportEmail: "support@goviet247.com",
+  supportPhoneDriver: "0900000000",
+  supportEmailDriver: "driver@goviet247.com",
+
+  supportPhoneRider: "0900000000",
+  supportEmailRider: "support@goviet247.com",
+
   timezone: "Asia/Ho_Chi_Minh",
+
+  driverTopupBankName: "Vietcombank",
+  driverTopupAccountNumber: "123456789",
+  driverTopupAccountHolderName: "CONG TY VINA LIGHTHOUSE",
+  driverTopupTransferPrefix: "GV247",
 };
 
 // Việt: Map enum loại xe -> label hiển thị ngoài customer page
