@@ -1,0 +1,6 @@
+-- AlterEnum
+ALTER TYPE "CompanyCashTxnCategory" ADD VALUE 'OWNER_WITHDRAW';
+
+-- AlterTable
+ALTER TABLE "admin_users" ALTER COLUMN "created_at" SET DATA TYPE TIMESTAMPTZ(6),
+ALTER COLUMN "updated_at" SET DATA TYPE TIMESTAMPTZ(6);

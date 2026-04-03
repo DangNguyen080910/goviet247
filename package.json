@@ -1,0 +1,14 @@
+{
+  "name": "goviet247",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.20.0",
+  "scripts": {
+    "dev:api": "pnpm --filter @goviet247/api dev",
+    "dev:web": "pnpm --filter @goviet247/web dev",
+    "db:migrate": "pnpm --filter @goviet247/api prisma migrate dev --name init",
+    "docker:up": "docker compose -f infra/docker-compose.yml up -d",
+    "docker:down": "docker compose -f infra/docker-compose.yml down -v"
+  },
+  "workspaces": ["apps/*", "packages/*"]
+}

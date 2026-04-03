@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "DriverWalletTxnType" ADD VALUE 'TRIP_CANCEL_PENALTY';

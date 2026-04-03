@@ -1,0 +1,880 @@
+// Path: goviet247/apps/api/prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserPrimaryRole {
+  RIDER
+  DRIVER
+}
+
+enum FeedbackActorRole {
+  RIDER
+  DRIVER
+}
+
+enum FeedbackSource {
+  RIDER_PROFILE
+  RIDER_TRIP_HISTORY
+  DRIVER_MENU
+  DRIVER_TRIP_HISTORY
+}
+
+enum FeedbackStatus {
+  NEW
+  IN_REVIEW
+  RESOLVED
+  CLOSED
+}
+
+enum SystemNotificationAudience {
+  DRIVER
+  RIDER
+}
+
+enum SystemNotificationTargetType {
+  ALL
+  USER
+}
+
+enum TripStatus {
+  PENDING
+  ACCEPTED
+  CONTACTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum TaxBaseMode {
+  GROSS_TRIP_AMOUNT
+  NET_AFTER_PLATFORM_COMMISSION
+}
+
+enum TripDirection {
+  ONE_WAY
+  ROUND_TRIP
+}
+
+enum CarType {
+  CAR_5
+  CAR_7
+  CAR_16
+}
+
+enum DriverKycStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+  SUSPENDED
+}
+
+enum DriverDocumentType {
+  CCCD_FRONT
+  CCCD_BACK
+  PORTRAIT
+  DRIVER_LICENSE
+  VEHICLE_REGISTRATION
+}
+
+enum DriverDocumentStatus {
+  UPLOADED
+  APPROVED
+  REJECTED
+}
+
+enum DriverWalletTxnType {
+  TOPUP
+  COMMISSION_HOLD
+  COMMISSION_REFUND
+  TRIP_CANCEL_PENALTY
+  DRIVER_VAT_HOLD
+  DRIVER_VAT_REFUND
+  DRIVER_PIT_HOLD
+  DRIVER_PIT_REFUND
+  WITHDRAW_REQUEST
+  WITHDRAW_REJECT_REFUND
+  WITHDRAW_PAID
+  ADJUST_ADD
+  ADJUST_SUBTRACT
+}
+
+enum DriverWithdrawStatus {
+  PENDING
+  APPROVED
+  PAID
+  REJECTED
+}
+
+enum WeeklyCommissionSettlementStatus {
+  PENDING
+  TRANSFERRED
+}
+
+enum CommissionPayoutStatus {
+  PAID
+}
+
+enum AdminDriverActionType {
+  APPROVE_KYC
+  REJECT_KYC
+  SUSPEND
+  UNSUSPEND
+}
+
+enum RiderStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum AdminCustomerActionType {
+  SUSPEND
+  UNSUSPEND
+}
+
+// Việt: Loại thu/chi thực tế của tài khoản công ty
+enum CompanyCashTxnType {
+  IN
+  OUT
+}
+
+// Việt: Nhóm thu/chi thực tế để admin và kế toán dễ lọc / export
+enum CompanyCashTxnCategory {
+  OWNER_CAPITAL
+  DRIVER_TOPUP
+  COMMISSION_IN
+  OTHER_IN
+  MARKETING
+  AWS
+  SERVER
+  SALARY
+  OPERATIONS
+  DRIVER_WITHDRAW
+  OWNER_WITHDRAW
+  DRIVER_CANCEL_PENALTY
+  REFUND
+  OTHER_OUT
+}
+
+enum DriverTripPenaltyStatus {
+  PENDING
+  APPROVED
+}
+
+enum AccountingDocumentType {
+  BANK_STATEMENT
+  INPUT_INVOICE
+  OUTPUT_INVOICE
+  COMPANY_CASH_EXPORT
+  DRIVER_WALLET_EXPORT
+  TRIP_EXPORT
+  DRIVER_WITHDRAW_EXPORT
+  PAYROLL_HR
+  LEGAL_CONTRACT
+  ACCOUNTING_NOTE
+}
+
+model User {
+  id                    String                   @id @default(cuid())
+  displayName           String?
+  primaryRole           UserPrimaryRole          @default(RIDER)
+  createdAt             DateTime                 @default(now()) @db.Timestamptz(6)
+  updatedAt             DateTime                 @updatedAt @db.Timestamptz(6)
+  devices               Device[]
+  phones                Phone[]
+  sessions              Session[]
+  driverTrips           Trip[]                   @relation("DriverTrips")
+  riderTrips            Trip[]                   @relation("RiderTrips")
+  roles                 UserRole[]
+  driverProfile         DriverProfile?
+  riderProfile          RiderProfile?
+  feedbacks             Feedback[]
+  notificationReads     SystemNotificationRead[]
+  targetedNotifications SystemNotification[]     @relation("SystemNotificationTargetUser")
+}
+
+model UserRole {
+  id     String @id @default(cuid())
+  role   String
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Phone {
+  id         String       @id @default(cuid())
+  e164       String       @unique
+  isVerified Boolean      @default(false)
+  userId     String?
+  createdAt  DateTime     @default(now()) @db.Timestamptz(6)
+  attempts   OtpAttempt[]
+  sessions   OtpSession[]
+  user       User?        @relation(fields: [userId], references: [id])
+}
+
+model OtpSession {
+  id           String       @id @default(cuid())
+  phoneId      String
+  status       String       @default("pending")
+  codeHash     String
+  expiresAt    DateTime     @db.Timestamptz(6)
+  resendAfter  DateTime     @db.Timestamptz(6)
+  attemptCount Int          @default(0)
+  createdAt    DateTime     @default(now()) @db.Timestamptz(6)
+  payloadJson  String?
+  purpose      String       @default("AUTH")
+  usedAt       DateTime?    @db.Timestamptz(6)
+  attempts     OtpAttempt[]
+  phone        Phone        @relation(fields: [phoneId], references: [id])
+}
+
+model OtpAttempt {
+  id        String     @id @default(cuid())
+  sessionId String
+  phoneId   String
+  success   Boolean
+  ip        String?
+  createdAt DateTime   @default(now()) @db.Timestamptz(6)
+  phone     Phone      @relation(fields: [phoneId], references: [id])
+  session   OtpSession @relation(fields: [sessionId], references: [id])
+
+  @@index([sessionId])
+  @@index([phoneId])
+}
+
+model Session {
+  id               String   @id @default(cuid())
+  userId           String
+  refreshTokenHash String
+  expiresAt        DateTime @db.Timestamptz(6)
+  createdAt        DateTime @default(now()) @db.Timestamptz(6)
+  user             User     @relation(fields: [userId], references: [id])
+}
+
+model Trip {
+  id       String  @id @default(cuid())
+  riderId  String?
+  driverId String?
+
+  pickupAddress  String
+  pickupLat      Float?
+  pickupLng      Float?
+  dropoffAddress String
+  dropoffLat     Float?
+  dropoffLng     Float?
+
+  distanceKm   Float
+  fareEstimate Decimal? @db.Decimal(10, 2)
+
+  status TripStatus
+
+  isVerified   Boolean   @default(false)
+  verifiedAt   DateTime? @db.Timestamptz(6)
+  verifiedById Int?
+  verifiedNote String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+
+  basePricePerKm  Int
+  carType         CarType
+  direction       TripDirection
+  directionFactor Float         @default(1)
+  holidayFactor   Float         @default(1)
+  note            String?
+
+  pendingTripAlertAt    DateTime? @db.Timestamptz(6)
+  pendingTripAlertCount Int       @default(0)
+
+  unassignedTripAlertAt    DateTime? @db.Timestamptz(6)
+  unassignedTripAlertCount Int       @default(0)
+
+  pickupTime DateTime  @db.Timestamptz(6)
+  returnTime DateTime? @db.Timestamptz(6)
+
+  riderName  String @default("")
+  riderPhone String @default("")
+
+  totalPrice Int
+  version    Int @default(0)
+
+  commissionPercentSnapshot    Decimal?     @db.Decimal(5, 2)
+  commissionAmountSnapshot     Int?
+  driverVatPercentSnapshot     Decimal?     @db.Decimal(5, 2)
+  driverPitPercentSnapshot     Decimal?     @db.Decimal(5, 2)
+  driverVatBaseModeSnapshot    TaxBaseMode?
+  driverPitBaseModeSnapshot    TaxBaseMode?
+  driverVatAmountSnapshot      Int?
+  driverPitAmountSnapshot      Int?
+  driverTaxTotalSnapshot       Int?
+  requiredWalletAmountSnapshot Int?
+  driverReceiveSnapshot        Int?
+  acceptedAt                   DateTime?    @db.Timestamptz(6)
+  driverAcceptOpenAt           DateTime?    @db.Timestamptz(6)
+
+  alertLogs          AdminAlertLog[]
+  driver             User?                     @relation("DriverTrips", fields: [driverId], references: [id])
+  rider              User?                     @relation("RiderTrips", fields: [riderId], references: [id])
+  walletTransactions DriverWalletTransaction[]
+
+  cancelReason    String?
+  cancelledAt     DateTime?            @db.Timestamptz(6)
+  adminActionLogs AdminTripActionLog[]
+
+  verifiedBy admin_users? @relation("TripVerifiedBy", fields: [verifiedById], references: [id])
+
+  stops             TripStop[]
+  feedbacks         Feedback[]
+  driverPenaltyLogs DriverTripPenaltyLog[]
+
+  @@index([status, createdAt], map: "idx_trip_status_createdAt")
+  @@index([driverId, status])
+  @@index([isVerified, status, createdAt], map: "idx_trip_verified_status_createdAt")
+}
+
+model DriverTripPenaltyLog {
+  id                   String                  @id @default(cuid())
+  tripId               String
+  driverId             String?
+  driverProfileId      String?
+  driverNameSnapshot   String?
+  driverPhoneSnapshot  String?
+  tripStatusSnapshot   TripStatus?
+  verifiedByIdSnapshot Int?
+  verifiedAtSnapshot   DateTime?               @db.Timestamptz(6)
+  penaltyAmount        Int
+  status               DriverTripPenaltyStatus @default(PENDING)
+  createdAt            DateTime                @default(now()) @db.Timestamptz(6)
+  approvedAt           DateTime?               @db.Timestamptz(6)
+  approvedByAdminId    Int?
+
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  @@index([tripId])
+  @@index([driverId])
+  @@index([driverProfileId])
+  @@index([status, createdAt])
+  @@index([approvedByAdminId])
+}
+
+model TripStop {
+  id        String   @id @default(cuid())
+  tripId    String
+  seq       Int
+  address   String
+  lat       Float?
+  lng       Float?
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  @@unique([tripId, seq])
+  @@index([tripId])
+}
+
+model PricingConfig {
+  id      Int     @id @default(autoincrement())
+  carType CarType @unique
+
+  baseFare     Int
+  pricePerKm   Int
+  pricePerHour Int
+  minFare      Int
+  overnightFee Int
+
+  overnightTriggerKm    Int @default(600)
+  overnightTriggerHours Int @default(12)
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+}
+
+model TripConfig {
+  id                 Int      @id @default(autoincrement())
+  maxStops           Int      @default(10)
+  minDistanceKm      Int      @default(5)
+  maxDistanceKm      Int      @default(2000)
+  quoteExpireSeconds Int      @default(120)
+  createdAt          DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt          DateTime @updatedAt @db.Timestamptz(6)
+}
+
+model DriverConfig {
+  id                        Int         @id @default(autoincrement())
+  commissionPercent         Decimal     @default(10.00) @db.Decimal(5, 2)
+  driverVatPercent          Decimal     @default(3.00) @db.Decimal(5, 2)
+  driverPitPercent          Decimal     @default(1.50) @db.Decimal(5, 2)
+  driverVatBaseMode         TaxBaseMode @default(GROSS_TRIP_AMOUNT)
+  driverPitBaseMode         TaxBaseMode @default(GROSS_TRIP_AMOUNT)
+  driverDepositAmount       Int         @default(500000)
+  maxActiveTrips            Int         @default(1)
+  newTripAcceptDelaySeconds Int         @default(10)
+  createdAt                 DateTime    @default(now()) @db.Timestamptz(6)
+  updatedAt                 DateTime    @updatedAt @db.Timestamptz(6)
+}
+
+model AlertConfig {
+  id Int @id @default(autoincrement())
+
+  pendingWatcherEnabled Boolean @default(true)
+
+  pendingTripEnabled       Boolean @default(true)
+  pendingTripStartMinutes  Int     @default(1)
+  pendingTripRepeatMinutes Int     @default(5)
+  pendingTripPhones        String  @default("")
+
+  unassignedTripEnabled       Boolean @default(true)
+  unassignedTripStartMinutes  Int     @default(15)
+  unassignedTripRepeatMinutes Int     @default(15)
+  unassignedTripPhones        String  @default("")
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+}
+
+model SystemConfig {
+  id                 Int    @id @default(autoincrement())
+  supportPhoneDriver String @default("0977100917")
+  supportEmailDriver String @default("driver@goviet247.com")
+  supportPhoneRider  String @default("0977100917")
+  supportEmailRider  String @default("help@goviet247.com")
+  timezone           String @default("Asia/Ho_Chi_Minh")
+
+  driverTopupBankName          String @default("")
+  driverTopupAccountNumber     String @default("")
+  driverTopupAccountHolderName String @default("")
+  driverTopupTransferPrefix    String @default("NAPVI")
+  driverTopupQrImageUrl        String @default("")
+  driverTopupNote              String @default("")
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+}
+
+model SystemNotification {
+  id               String                       @id @default(cuid())
+  audience         SystemNotificationAudience
+  targetType       SystemNotificationTargetType @default(ALL)
+  targetUserId     String?
+  title            String
+  message          String
+  isActive         Boolean                      @default(true)
+  createdByAdminId Int?
+  createdAt        DateTime                     @default(now()) @db.Timestamptz(6)
+  updatedAt        DateTime                     @updatedAt @db.Timestamptz(6)
+
+  createdBy  admin_users?             @relation("SystemNotificationCreatedBy", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  targetUser User?                    @relation("SystemNotificationTargetUser", fields: [targetUserId], references: [id], onDelete: Cascade)
+  reads      SystemNotificationRead[]
+
+  @@index([audience, createdAt])
+  @@index([audience, isActive, createdAt])
+  @@index([audience, targetType, isActive, createdAt])
+  @@index([targetUserId, isActive, createdAt])
+  @@index([createdByAdminId])
+}
+
+model SystemNotificationRead {
+  id             String   @id @default(cuid())
+  notificationId String
+  userId         String
+  readAt         DateTime @default(now()) @db.Timestamptz(6)
+
+  notification SystemNotification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  user         User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([notificationId, userId])
+  @@index([userId, readAt])
+  @@index([notificationId])
+}
+
+model Device {
+  id        String   @id @default(cuid())
+  userId    String
+  platform  String
+  pushToken String   @unique
+  role      String
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model AdminAlertLog {
+  id        String   @id @default(cuid())
+  tripId    String
+  alertType String
+  level     Int
+  message   String
+  sentTo    String
+  sentAt    DateTime @default(now()) @db.Timestamptz(6)
+  success   Boolean  @default(true)
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  @@index([tripId])
+}
+
+model admin_users {
+  id                      Int                      @id @default(autoincrement())
+  username                String                   @unique @db.VarChar(50)
+  password_hash           String                   @db.VarChar(255)
+  role                    String                   @db.VarChar(10)
+  is_active               Boolean                  @default(true)
+  created_at              DateTime                 @default(now()) @db.Timestamptz(6)
+  updated_at              DateTime                 @default(now()) @db.Timestamptz(6)
+  DriverProfile           DriverProfile[]
+  DriverDocument          DriverDocument[]
+  verifiedTrips           Trip[]                   @relation("TripVerifiedBy")
+  resolvedFeedbacks       Feedback[]               @relation("FeedbackResolvedBy")
+  systemNotifications     SystemNotification[]     @relation("SystemNotificationCreatedBy")
+  companyCashTransactions CompanyCashTransaction[]
+}
+
+model AdminTripActionLog {
+  id            String @id @default(cuid())
+  tripId        String
+  actorRole     String
+  actorId       Int?
+  actorUsername String
+
+  fromStatus TripStatus
+  toStatus   TripStatus
+
+  note      String?
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  @@index([tripId])
+  @@index([createdAt])
+}
+
+model DriverProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status   DriverKycStatus @default(PENDING)
+  balance  Int             @default(0)
+  fullName String?
+
+  vehicleType  String?
+  vehicleBrand String?
+  vehicleModel String?
+  vehicleYear  Int?
+  plateNumber  String?
+
+  verifiedAt    DateTime?    @db.Timestamptz(6)
+  verifiedById  Int?
+  verifiedBy    admin_users? @relation(fields: [verifiedById], references: [id])
+  rejectReason  String?
+  suspendReason String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+
+  documents           DriverDocument[]
+  actionLogs          AdminDriverActionLog[]
+  walletTransactions  DriverWalletTransaction[]
+  bankAccounts        DriverBankAccount[]
+  withdrawRequests    DriverWithdrawRequest[]
+  contractAcceptances DriverContractAcceptance[]
+}
+
+model DriverDocument {
+  id       String        @id @default(cuid())
+  driverId String
+  driver   DriverProfile @relation(fields: [driverId], references: [id], onDelete: Cascade)
+
+  type   DriverDocumentType
+  status DriverDocumentStatus @default(UPLOADED)
+
+  fileUrl String
+  note    String?
+
+  reviewedAt   DateTime?    @db.Timestamptz(6)
+  reviewedById Int?
+  reviewedBy   admin_users? @relation(fields: [reviewedById], references: [id])
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model DriverWalletTransaction {
+  id                String              @id @default(cuid())
+  driverProfileId   String
+  type              DriverWalletTxnType
+  amount            Int
+  balanceBefore     Int
+  balanceAfter      Int
+  note              String?
+  tripId            String?
+  withdrawRequestId String?
+  createdAt         DateTime            @default(now()) @db.Timestamptz(6)
+
+  driverProfile   DriverProfile          @relation(fields: [driverProfileId], references: [id], onDelete: Cascade)
+  trip            Trip?                  @relation(fields: [tripId], references: [id], onDelete: SetNull)
+  withdrawRequest DriverWithdrawRequest? @relation(fields: [withdrawRequestId], references: [id], onDelete: SetNull)
+
+  @@index([driverProfileId])
+  @@index([tripId])
+  @@index([withdrawRequestId])
+  @@index([createdAt])
+}
+
+model DriverBankAccount {
+  id                String   @id @default(cuid())
+  driverProfileId   String
+  bankName          String
+  accountNumber     String
+  accountHolderName String
+  isDefault         Boolean  @default(false)
+  createdAt         DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt         DateTime @updatedAt @db.Timestamptz(6)
+
+  driverProfile    DriverProfile           @relation(fields: [driverProfileId], references: [id], onDelete: Cascade)
+  withdrawRequests DriverWithdrawRequest[]
+
+  @@index([driverProfileId])
+  @@index([isDefault])
+}
+
+model DriverWithdrawRequest {
+  id                String               @id @default(cuid())
+  driverProfileId   String
+  bankAccountId     String
+  amount            Int
+  status            DriverWithdrawStatus @default(PENDING)
+  note              String?
+  rejectReason      String?
+  createdAt         DateTime             @default(now()) @db.Timestamptz(6)
+  approvedAt        DateTime?            @db.Timestamptz(6)
+  paidAt            DateTime?            @db.Timestamptz(6)
+  approvedByAdminId Int?
+  paidByAdminId     Int?
+  settlementWeek    String?
+
+  driverProfile      DriverProfile             @relation(fields: [driverProfileId], references: [id], onDelete: Cascade)
+  bankAccount        DriverBankAccount         @relation(fields: [bankAccountId], references: [id], onDelete: Restrict)
+  walletTransactions DriverWalletTransaction[]
+
+  @@index([driverProfileId])
+  @@index([bankAccountId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([settlementWeek])
+}
+
+model WeeklyCommissionSettlement {
+  id                         String                           @id @default(cuid())
+  weekKey                    String                           @unique
+  fromDate                   DateTime                         @db.Timestamptz(6)
+  toDate                     DateTime                         @db.Timestamptz(6)
+  commissionHoldTotal        Int                              @default(0)
+  commissionRefundTotal      Int                              @default(0)
+  commissionNetTotal         Int                              @default(0)
+  status                     WeeklyCommissionSettlementStatus @default(PENDING)
+  note                       String?
+  transferredAt              DateTime?                        @db.Timestamptz(6)
+  transferredByAdminId       Int?
+  transferredByAdminUsername String?
+  createdAt                  DateTime                         @default(now()) @db.Timestamptz(6)
+  updatedAt                  DateTime                         @updatedAt @db.Timestamptz(6)
+
+  @@index([status])
+  @@index([fromDate, toDate])
+}
+
+model CommissionPayout {
+  id             String                 @id @default(cuid())
+  amount         Int
+  note           String?
+  status         CommissionPayoutStatus @default(PAID)
+  paidAt         DateTime               @default(now()) @db.Timestamptz(6)
+  paidByAdminId  Int?
+  paidByUsername String?
+  createdAt      DateTime               @default(now()) @db.Timestamptz(6)
+
+  @@index([paidAt])
+  @@index([createdAt])
+}
+
+model CompanyCashTransaction {
+  id                String                 @id @default(cuid())
+  txnDate           DateTime               @db.Timestamptz(6)
+  type              CompanyCashTxnType
+  category          CompanyCashTxnCategory
+  amount            Int
+  note              String?
+  source            String?
+  referenceCode     String?
+  createdByAdminId  Int?
+  createdByUsername String?
+  createdAt         DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt         DateTime               @updatedAt @db.Timestamptz(6)
+
+  createdBy admin_users? @relation(fields: [createdByAdminId], references: [id], onDelete: SetNull)
+
+  @@index([txnDate])
+  @@index([type, txnDate])
+  @@index([category, txnDate])
+  @@index([createdAt])
+}
+
+model AccountingDocument {
+  id                 String                 @id @default(cuid())
+  documentType       AccountingDocumentType
+  title              String
+  description        String?
+  quarter            Int
+  year               Int
+  month              Int?
+  fileName           String?
+  filePath           String?
+  mimeType           String?
+  fileSize           Int?
+  uploadedByAdminId  String?
+  uploadedByUsername String?
+  createdAt          DateTime               @default(now()) @db.Timestamptz(6)
+  updatedAt          DateTime               @updatedAt @db.Timestamptz(6)
+
+  @@index([documentType, quarter, year])
+  @@index([year, quarter])
+}
+
+model AccountingNote {
+  id                String   @id @default(cuid())
+  quarter           Int
+  year              Int
+  title             String
+  content           String
+  createdByAdminId  Int?
+  createdByUsername String?
+  createdAt         DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt         DateTime @updatedAt @db.Timestamptz(6)
+
+  @@index([year, quarter])
+  @@index([quarter, year, createdAt])
+  @@index([createdAt])
+}
+
+model DriverContractAcceptance {
+  id               String    @id @default(cuid())
+  driverProfileId  String
+  contractCode     String
+  contractTitle    String
+  contractVersion  String
+  contractFileUrl  String?
+  contractFileHash String?
+  agreedAt         DateTime  @default(now()) @db.Timestamptz(6)
+  otpVerifiedAt    DateTime? @db.Timestamptz(6)
+  ipAddress        String?
+  deviceInfo       String?
+  appVersion       String?
+  phoneE164        String?
+  isActive         Boolean   @default(true)
+  createdAt        DateTime  @default(now()) @db.Timestamptz(6)
+
+  driverProfile DriverProfile @relation(fields: [driverProfileId], references: [id], onDelete: Cascade)
+
+  @@index([driverProfileId])
+  @@index([contractCode, contractVersion])
+  @@index([isActive, agreedAt])
+}
+
+model AdminDriverActionLog {
+  id              String @id @default(cuid())
+  driverProfileId String
+
+  actorId       Int?
+  actorUsername String
+
+  action     AdminDriverActionType
+  fromStatus DriverKycStatus
+  toStatus   DriverKycStatus
+
+  note      String?
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  driverProfile DriverProfile @relation(fields: [driverProfileId], references: [id], onDelete: Cascade)
+
+  @@index([driverProfileId])
+  @@index([createdAt])
+}
+
+model RiderProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status   RiderStatus @default(ACTIVE)
+  fullName String?
+
+  suspendedAt   DateTime? @db.Timestamptz(6)
+  suspendReason String?
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+
+  actionLogs AdminCustomerActionLog[]
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model AdminCustomerActionLog {
+  id String @id @default(cuid())
+
+  riderProfileId String
+  riderProfile   RiderProfile @relation(fields: [riderProfileId], references: [id], onDelete: Cascade)
+
+  actorId       Int?
+  actorUsername String
+
+  action     AdminCustomerActionType
+  fromStatus RiderStatus
+  toStatus   RiderStatus
+
+  note      String?
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([riderProfileId])
+  @@index([createdAt])
+}
+
+model Feedback {
+  id                String            @id @default(cuid())
+  userId            String?
+  tripId            String?
+  actorRole         FeedbackActorRole
+  source            FeedbackSource
+  subject           String?
+  message           String
+  status            FeedbackStatus    @default(NEW)
+  adminNote         String?
+  resolvedAt        DateTime?         @db.Timestamptz(6)
+  resolvedByAdminId Int?
+  senderName        String?
+  senderPhone       String?
+  createdAt         DateTime          @default(now()) @db.Timestamptz(6)
+  updatedAt         DateTime          @updatedAt @db.Timestamptz(6)
+
+  user       User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  trip       Trip?        @relation(fields: [tripId], references: [id], onDelete: SetNull)
+  resolvedBy admin_users? @relation("FeedbackResolvedBy", fields: [resolvedByAdminId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@index([actorRole, status, createdAt])
+  @@index([userId])
+  @@index([tripId])
+  @@index([resolvedByAdminId])
+  @@index([source, createdAt])
+}
