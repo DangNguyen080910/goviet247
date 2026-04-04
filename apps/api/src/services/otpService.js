@@ -1,4 +1,5 @@
 // Path: goviet247/apps/api/src/services/otpService.js
+
 import bcrypt from "bcryptjs";
 import { prisma } from "../utils/db.js";
 import { sendSms } from "./smsService.js";
