@@ -1,7 +1,7 @@
 // Path: goviet247/apps/api/src/services/otpService.js
-
 import bcrypt from "bcryptjs";
 import { prisma } from "../utils/db.js";
+import { sendSms } from "./smsService.js";
 
 // =====================================================
 // CẤU HÌNH OTP
@@ -117,11 +117,10 @@ export async function requestOtp(e164, appRole = "RIDER") {
     },
   });
 
-  console.log(
-    "[MOCK SMS AUTH]",
-    e164,
-    `Mã OTP: ${code} | role=${normalizedRole} | hết hạn sau ${TTL_SEC / 60} phút`
-  );
+  await sendSms({
+    to: e164,
+    text: `[GoViet247] Ma OTP cua ban la ${code}. Hieu luc ${TTL_SEC} giay.`,
+  });
 
   return {
     sessionId: session.id,
@@ -196,7 +195,7 @@ export async function verifyOtp(sessionId, code, fallbackAppRole = "RIDER") {
 
   const sessionPayload = safeParseJson(session.payloadJson);
   const appRole = normalizeAppRole(
-    sessionPayload?.appRole || fallbackAppRole || "RIDER"
+    sessionPayload?.appRole || fallbackAppRole || "RIDER",
   );
 
   const result = await prisma.$transaction(async (tx) => {
@@ -315,9 +314,10 @@ export async function requestTripOtp(e164, tripDraft) {
     },
   });
 
-  console.log(
-    `[MOCK SMS TRIP] ${e164} - Mã OTP: ${code} (hết hạn ${TTL_SEC / 60} phút)`
-  );
+  await sendSms({
+    to: e164,
+    text: `[GoViet247] Ma OTP dat xe: ${code}. Hieu luc ${TTL_SEC} giay.`,
+  });
 
   return {
     sessionId: session.id,
