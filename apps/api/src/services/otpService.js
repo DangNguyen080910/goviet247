@@ -37,6 +37,24 @@ function safeParseJson(input) {
   }
 }
 
+async function sendOtpSmsOrThrow({ to, text, rollback }) {
+  const smsResult = await sendSms({ to, text });
+
+  if (smsResult?.ok) {
+    return smsResult;
+  }
+
+  if (typeof rollback === "function") {
+    try {
+      await rollback();
+    } catch (rollbackError) {
+      console.error("OTP SMS rollback error:", rollbackError);
+    }
+  }
+
+  throw new Error("GUI_OTP_THAT_BAI");
+}
+
 /**
  * Đảm bảo user có role tương ứng trong bảng UserRole
  */
@@ -118,9 +136,14 @@ export async function requestOtp(e164, appRole = "RIDER") {
     },
   });
 
-  await sendSms({
+  await sendOtpSmsOrThrow({
     to: e164,
     text: `[GoViet247] Ma OTP cua ban la ${code}. Hieu luc ${TTL_SEC} giay.`,
+    rollback: async () => {
+      await prisma.otpSession.delete({
+        where: { id: session.id },
+      });
+    },
   });
 
   return {
@@ -315,9 +338,14 @@ export async function requestTripOtp(e164, tripDraft) {
     },
   });
 
-  await sendSms({
+  await sendOtpSmsOrThrow({
     to: e164,
     text: `[GoViet247] Ma OTP dat xe: ${code}. Hieu luc ${TTL_SEC} giay.`,
+    rollback: async () => {
+      await prisma.otpSession.delete({
+        where: { id: session.id },
+      });
+    },
   });
 
   return {

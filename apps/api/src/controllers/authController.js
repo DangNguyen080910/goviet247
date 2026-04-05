@@ -88,10 +88,18 @@ export async function requestOtpHandler(req, res) {
     const phone = normalizeVietnamesePhoneToE164(rawPhone);
     const appRole = normalizeAppRole(req.body?.appRole || req.body?.role);
 
-    if (!phone) {
+    if (!rawPhone) {
       return res.status(400).json({
         success: false,
         message: "Thiếu số điện thoại.",
+      });
+    }
+
+    if (!/^\+84\d{9}$/.test(phone)) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Số điện thoại không hợp lệ. Vui lòng nhập số Việt Nam hợp lệ.",
       });
     }
 
@@ -103,6 +111,15 @@ export async function requestOtpHandler(req, res) {
       resend_after: result.resendAfter,
     });
   } catch (error) {
+    const message = String(error?.message || "").trim();
+
+    if (message === "GUI_OTP_THAT_BAI") {
+      return res.status(500).json({
+        success: false,
+        message: "Không gửi được mã OTP. Vui lòng thử lại sau ít phút.",
+      });
+    }
+
     console.error("POST /api/auth/request-otp error:", error);
     return res.status(500).json({
       success: false,

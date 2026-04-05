@@ -103,7 +103,7 @@ export default function CustomerAuth({ mode = "login" }) {
       setOtpExpiresAt(nextExpiresAt);
       setNowTs(Date.now());
 
-      alert("OTP đã gửi. Kiểm tra console server nếu đang mock SMS.");
+      alert("Thành công", "Mã OTP đã được gửi đến số điện thoại của bạn. Vui lòng kiểm tra tin nhắn SMS.");
     } catch (e) {
       setErrorMsg(e.message || "Không gửi được OTP.");
     } finally {

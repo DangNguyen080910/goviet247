@@ -14,6 +14,72 @@ const SENDER_ID = process.env.AWS_SMS_DEFAULT_SENDER_ID || "GoViet247";
 const MESSAGE_TYPE =
   process.env.AWS_SMS_DEFAULT_MESSAGE_TYPE || "TRANSACTIONAL";
 
+const SMS_RETRY_DELAY_MS = 2000;
+const SMS_MAX_ATTEMPTS = 2;
+
+const APP_ENV = String(process.env.APP_ENV || process.env.NODE_ENV || "")
+  .trim()
+  .toLowerCase();
+
+const IS_PRODUCTION = APP_ENV === "production";
+
+function logSmsInfo(message) {
+  if (!IS_PRODUCTION) {
+    console.log(message);
+  }
+}
+
+function logSmsWarn(message) {
+  if (!IS_PRODUCTION) {
+    console.warn(message);
+  }
+}
+
+function logSmsError(message) {
+  console.error(message);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function maskPhone(phone) {
+  const value = String(phone || "").trim();
+  if (!value) return "unknown";
+  if (value.length <= 6) return value;
+  return `${value.slice(0, 4)}***${value.slice(-3)}`;
+}
+
+function sanitizeSmsTextForLog(text) {
+  const value = String(text || "").trim();
+  if (!value) return "";
+
+  const otpMasked = value.replace(/\b\d{4,8}\b/g, "[REDACTED_OTP]");
+
+  if (SMS_PROVIDER === "mock") {
+    return otpMasked;
+  }
+
+  return otpMasked;
+}
+
+async function sendAwsSmsOnce({ to, text }) {
+  const command = new SendTextMessageCommand({
+    DestinationPhoneNumber: to,
+    MessageBody: text,
+    MessageType: MESSAGE_TYPE,
+    OriginationIdentity: SENDER_ID,
+  });
+
+  const response = await awsClient.send(command);
+
+  return {
+    ok: true,
+    provider: "aws",
+    messageId: response?.MessageId || null,
+  };
+}
+
 // AWS client (reuse)
 const awsClient =
   SMS_PROVIDER === "aws"
@@ -26,40 +92,47 @@ const awsClient =
 export async function sendSms({ to, text }) {
   // ===== MOCK =====
   if (SMS_PROVIDER === "mock") {
-    console.log(`[SMS][MOCK] to=${to} | ${text}`);
+    const safeText = sanitizeSmsTextForLog(text);
+    logSmsInfo(`[SMS][MOCK] to=${maskPhone(to)} | ${safeText}`);
     await new Promise((r) => setTimeout(r, 50));
     return { ok: true, provider: "mock" };
   }
 
   // ===== AWS =====
   if (SMS_PROVIDER === "aws") {
-    try {
-      const command = new SendTextMessageCommand({
-        DestinationPhoneNumber: to,
-        MessageBody: text,
-        MessageType: MESSAGE_TYPE,
-        OriginationIdentity: SENDER_ID,
-      });
+    const safeText = sanitizeSmsTextForLog(text);
 
-      const response = await awsClient.send(command);
+    for (let attempt = 1; attempt <= SMS_MAX_ATTEMPTS; attempt += 1) {
+      try {
+        const result = await sendAwsSmsOnce({ to, text });
 
-      return {
-        ok: true,
-        provider: "aws",
-        messageId: response?.MessageId || null,
-      };
-    } catch (error) {
-      console.error("[SMS][AWS] error:", error);
+        logSmsInfo(
+          `[SMS][AWS] success attempt=${attempt} to=${maskPhone(to)} messageId=${result.messageId || "n/a"} body=${safeText}`,
+        );
 
-      return {
-        ok: false,
-        provider: "aws",
-        error: error?.message || "Unknown error",
-      };
+        return result;
+      } catch (error) {
+        const errorMessage = error?.message || "Unknown error";
+
+        logSmsError(
+          `[SMS][AWS] fail attempt=${attempt} to=${maskPhone(to)} error=${errorMessage}`,
+        );
+
+        if (attempt < SMS_MAX_ATTEMPTS) {
+          await sleep(SMS_RETRY_DELAY_MS);
+          continue;
+        }
+
+        return {
+          ok: false,
+          provider: "aws",
+          error: errorMessage,
+        };
+      }
     }
   }
 
   // ===== UNKNOWN PROVIDER =====
-  console.warn(`[SMS] Unknown provider: ${SMS_PROVIDER}`);
+  logSmsWarn(`[SMS] Unknown provider: ${SMS_PROVIDER}`);
   return { ok: false, provider: SMS_PROVIDER };
 }

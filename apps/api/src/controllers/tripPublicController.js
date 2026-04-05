@@ -261,7 +261,7 @@ export async function requestTripOtp(req, res) {
 
     const { sessionId, resendAfter } = await requestTripOtpService(
       riderPhone,
-      tripDraft
+      tripDraft,
     );
 
     return res.json({
@@ -276,10 +276,20 @@ export async function requestTripOtp(req, res) {
       },
     });
   } catch (err) {
+    const message = String(err?.message || "").trim();
+
+    if (message === "GUI_OTP_THAT_BAI") {
+      return res.status(500).json({
+        success: false,
+        message: "Không gửi được mã OTP. Vui lòng thử lại sau ít phút.",
+      });
+    }
+
     console.error("requestTripOtp error:", err);
-    return res
-      .status(500)
-      .json({ success: false, message: "Gửi OTP thất bại." });
+    return res.status(500).json({
+      success: false,
+      message: "Gửi OTP thất bại.",
+    });
   }
 }
 
