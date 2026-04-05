@@ -1,3 +1,4 @@
+// Path: goviet247/apps/api/src/controllers/driverDocumentController.js
 import multer from "multer";
 import { z } from "zod";
 import { prisma } from "../utils/db.js";
@@ -153,7 +154,8 @@ export async function uploadDriverDocument(req, res) {
     if (error?.code === "LIMIT_FILE_SIZE") {
       return res.status(400).json({
         success: false,
-        message: "Ảnh vượt quá dung lượng tối đa 10MB.",
+        message:
+          "Ảnh vượt quá dung lượng tối đa 5MB. Vui lòng chọn ảnh nhỏ hơn.",
       });
     }
 
