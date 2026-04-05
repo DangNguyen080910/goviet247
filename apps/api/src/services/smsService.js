@@ -112,10 +112,13 @@ export async function sendSms({ to, text }) {
 
         return result;
       } catch (error) {
-        const errorMessage = error?.message || "Unknown error";
+        const errorMessage = String(error?.message || "Unknown error").trim();
+        const errorCode = String(
+          error?.name || error?.Code || error?.code || "",
+        ).trim();
 
         logSmsError(
-          `[SMS][AWS] fail attempt=${attempt} to=${maskPhone(to)} error=${errorMessage}`,
+          `[SMS][AWS] fail attempt=${attempt} to=${maskPhone(to)} errorCode=${errorCode || "UNKNOWN"} error=${errorMessage}`,
         );
 
         if (attempt < SMS_MAX_ATTEMPTS) {
@@ -127,6 +130,7 @@ export async function sendSms({ to, text }) {
           ok: false,
           provider: "aws",
           error: errorMessage,
+          errorCode,
         };
       }
     }
@@ -134,5 +138,10 @@ export async function sendSms({ to, text }) {
 
   // ===== UNKNOWN PROVIDER =====
   logSmsWarn(`[SMS] Unknown provider: ${SMS_PROVIDER}`);
-  return { ok: false, provider: SMS_PROVIDER };
+  return {
+    ok: false,
+    provider: SMS_PROVIDER,
+    error: "UNKNOWN_SMS_PROVIDER",
+    errorCode: "UNKNOWN_SMS_PROVIDER",
+  };
 }

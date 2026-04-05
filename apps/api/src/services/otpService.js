@@ -11,6 +11,10 @@ import { sendSms } from "./smsService.js";
 const TTL_SEC = Number(process.env.OTP_CODE_TTL_SEC || 180); // OTP hết hạn sau 3 phút
 const RESEND_COOLDOWN_SEC = Number(process.env.OTP_RESEND_COOLDOWN_SEC || 30); // Chờ mới cho gửi lại
 const MAX_ATTEMPTS = Number(process.env.OTP_MAX_ATTEMPTS || 5); // Giới hạn số lần nhập
+const OTP_FALLBACK_ON_SMS_FAIL =
+  String(process.env.OTP_FALLBACK_ON_SMS_FAIL || "false")
+    .trim()
+    .toLowerCase() === "true";
 
 // =====================================================
 // HELPER CHUNG
@@ -37,11 +41,60 @@ function safeParseJson(input) {
   }
 }
 
-async function sendOtpSmsOrThrow({ to, text, rollback }) {
+function shouldFallbackOtpSms(smsResult) {
+  if (!OTP_FALLBACK_ON_SMS_FAIL) return false;
+  if (!smsResult || smsResult.ok) return false;
+
+  const provider = String(smsResult?.provider || "")
+    .trim()
+    .toLowerCase();
+  const errorText = `${smsResult?.errorCode || ""} ${smsResult?.error || ""}`
+    .trim()
+    .toUpperCase();
+
+  if (provider !== "aws") {
+    return false;
+  }
+
+  return (
+    errorText.includes("QUOTA") ||
+    errorText.includes("MONTHLY_SPEND_LIMIT") ||
+    errorText.includes("SERVICE QUOTA EXCEEDED") ||
+    errorText.includes("THROTTL") ||
+    errorText.includes("LIMIT")
+  );
+}
+
+function logOtpFallback({ to, code, purpose }) {
+  const maskedPhone = String(to || "").trim();
+  const safePurpose = String(purpose || "AUTH")
+    .trim()
+    .toUpperCase();
+
+  console.warn(
+    `[OTP][FALLBACK] purpose=${safePurpose} to=${maskedPhone} code=${code} reason=SMS_PROVIDER_FAILED`,
+  );
+}
+
+async function sendOtpSmsOrThrow({ to, text, otpCode, purpose, rollback }) {
   const smsResult = await sendSms({ to, text });
 
   if (smsResult?.ok) {
     return smsResult;
+  }
+
+  if (shouldFallbackOtpSms(smsResult)) {
+    logOtpFallback({
+      to,
+      code: otpCode,
+      purpose,
+    });
+
+    return {
+      ok: true,
+      provider: "fallback_console",
+      fallbackUsed: true,
+    };
   }
 
   if (typeof rollback === "function") {
@@ -139,6 +192,8 @@ export async function requestOtp(e164, appRole = "RIDER") {
   await sendOtpSmsOrThrow({
     to: e164,
     text: `[GoViet247] Ma OTP cua ban la ${code}. Hieu luc ${TTL_SEC} giay.`,
+    otpCode: code,
+    purpose: "AUTH",
     rollback: async () => {
       await prisma.otpSession.delete({
         where: { id: session.id },
@@ -341,6 +396,8 @@ export async function requestTripOtp(e164, tripDraft) {
   await sendOtpSmsOrThrow({
     to: e164,
     text: `[GoViet247] Ma OTP dat xe: ${code}. Hieu luc ${TTL_SEC} giay.`,
+    otpCode: code,
+    purpose: "TRIP",
     rollback: async () => {
       await prisma.otpSession.delete({
         where: { id: session.id },
