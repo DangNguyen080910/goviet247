@@ -8,6 +8,7 @@ import { estimateFareFromCoordinates } from "../services/fareService.js";
 import { updateTripStatus } from "../services/tripStateService.js";
 import {
   sendSms,
+  sendNewTripToDrivers,
   sendTripStatusChangedToRider,
 } from "../services/notificationService.js";
 import { calculateDriverFinanceSnapshot } from "../services/driverFinanceService.js";
@@ -2051,6 +2052,12 @@ export async function adminVerifyTrip(req, res) {
       });
 
       console.log(`[Socket] Emit trip:new -> drivers (${updated.id})`);
+    }
+
+    try {
+      await sendNewTripToDrivers(updated);
+    } catch (pushError) {
+      console.error("[adminVerifyTrip] push driver error:", pushError);
     }
 
     try {
