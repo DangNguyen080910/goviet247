@@ -10,6 +10,7 @@ import {
   sendSms,
   sendNewTripToDrivers,
   sendTripStatusChangedToRider,
+  sendSystemNotificationToDriver,
 } from "../services/notificationService.js";
 import { calculateDriverFinanceSnapshot } from "../services/driverFinanceService.js";
 
@@ -1843,6 +1844,7 @@ export async function adminChangeTripStatus(req, res) {
 
     const result = await prisma.$transaction(async (tx) => {
       const trip = await tx.trip.findUnique({ where: { id } });
+
       if (!trip) {
         const err = new Error("Trip not found");
         err.statusCode = 404;
@@ -1881,10 +1883,47 @@ export async function adminChangeTripStatus(req, res) {
         },
       });
 
-      return { updated, log, fromStatus };
+      let driverNotification = null;
+
+      if (updated.driverId) {
+        let title = "Cập nhật chuyến";
+        let message = "Chuyến của bạn vừa được cập nhật trạng thái mới.";
+
+        if (toStatus === "CONTACTED") {
+          title = "📞 Chuyến đã chuyển sang Đã liên hệ khách";
+          message =
+            "Admin đã cập nhật chuyến của bạn sang trạng thái Đã liên hệ khách.";
+        }
+
+        if (toStatus === "IN_PROGRESS") {
+          title = "🚘 Chuyến đã chuyển sang Đang trên hành trình";
+          message =
+            "Admin đã cập nhật chuyến của bạn sang trạng thái Đang trên hành trình.";
+        }
+
+        if (toStatus === "COMPLETED") {
+          title = "✅ Chuyến đã hoàn thành";
+          message = "Admin đã cập nhật chuyến của bạn sang trạng thái Hoàn thành.";
+        }
+
+        driverNotification = await tx.systemNotification.create({
+          data: {
+            audience: "DRIVER",
+            targetType: "USER",
+            targetUserId: updated.driverId,
+            title,
+            message,
+            isActive: true,
+            createdByAdminId: actor.id ?? null,
+          },
+        });
+      }
+
+      return { updated, log, fromStatus, driverNotification };
     });
 
     const io = req.app?.get?.("io");
+
     if (io) {
       io.to("admins").emit("admin:trip_status_changed", {
         tripId: result.updated.id,
@@ -1912,7 +1951,7 @@ export async function adminChangeTripStatus(req, res) {
         previousDriverId: result.updated.driverId || null,
         updatedAt: result.updated.updatedAt || null,
         reason: "admin_change_status",
-        refreshAvailable: false,
+        refreshAvailable: true,
       });
 
       emitTripChangedToRider(io, {
@@ -1923,6 +1962,25 @@ export async function adminChangeTripStatus(req, res) {
         updatedAt: result.updated.updatedAt || null,
         reason: "admin_change_status",
       });
+
+      if (result.driverNotification && result.updated.driverId) {
+        io.to(`driver:${result.updated.driverId}`).emit(
+          "driver:notification_changed",
+          {
+            source: "admin_change_trip_status",
+            audience: "DRIVER",
+            targetUserId: result.updated.driverId,
+            notificationId: result.driverNotification.id,
+            updatedAt:
+              result.driverNotification.updatedAt ||
+              result.driverNotification.createdAt,
+          },
+        );
+
+        console.log(
+          `[Socket] Emit driver:notification_changed -> driver:${result.updated.driverId} (${result.updated.id})`,
+        );
+      }
 
       console.log(
         `[Socket] Emit admin:trip_status_changed -> admins (${result.updated.id})`,
@@ -1935,6 +1993,17 @@ export async function adminChangeTripStatus(req, res) {
       });
     } catch (pushError) {
       console.error("[adminChangeTripStatus] push rider error:", pushError);
+    }
+
+    try {
+      if (result.driverNotification && result.updated.driverId) {
+        await sendSystemNotificationToDriver(
+          result.updated.driverId,
+          result.driverNotification,
+        );
+      }
+    } catch (pushError) {
+      console.error("[adminChangeTripStatus] push driver error:", pushError);
     }
 
     return res.json({
