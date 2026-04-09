@@ -1903,7 +1903,8 @@ export async function adminChangeTripStatus(req, res) {
 
         if (toStatus === "COMPLETED") {
           title = "✅ Chuyến đã hoàn thành";
-          message = "Admin đã cập nhật chuyến của bạn sang trạng thái Hoàn thành.";
+          message =
+            "Admin đã cập nhật chuyến của bạn sang trạng thái Hoàn thành.";
         }
 
         driverNotification = await tx.systemNotification.create({
@@ -1922,9 +1923,42 @@ export async function adminChangeTripStatus(req, res) {
       return { updated, log, fromStatus, driverNotification };
     });
 
+    console.log(
+      "[AdminChangeTripStatus] result:",
+      JSON.stringify(
+        {
+          tripId: result.updated?.id || null,
+          fromStatus: result.fromStatus || null,
+          toStatus: result.updated?.status || null,
+          driverId: result.updated?.driverId || null,
+          riderId: result.updated?.riderId || null,
+          updatedAt: result.updated?.updatedAt || null,
+          driverNotificationId: result.driverNotification?.id || null,
+        },
+        null,
+        2,
+      ),
+    );
+
     const io = req.app?.get?.("io");
 
     if (io) {
+      console.log(
+        "[AdminChangeTripStatus] emitting realtime:",
+        JSON.stringify(
+          {
+            event: "trip_status_changed_bundle",
+            tripId: result.updated?.id || null,
+            fromStatus: result.fromStatus || null,
+            toStatus: result.updated?.status || null,
+            driverId: result.updated?.driverId || null,
+            riderId: result.updated?.riderId || null,
+            updatedAt: result.updated?.updatedAt || null,
+          },
+          null,
+          2,
+        ),
+      );
       io.to("admins").emit("admin:trip_status_changed", {
         tripId: result.updated.id,
         fromStatus: result.fromStatus,
