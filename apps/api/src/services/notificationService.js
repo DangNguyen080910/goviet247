@@ -65,6 +65,47 @@ function chunkArray(items, size = 100) {
  * Gửi request tới Expo Push API
  */
 async function sendExpoPushMessages(messages) {
+  const EXPO_PUSH_RECEIPTS_URL = "https://exp.host/--/api/v2/push/getReceipts";
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function fetchExpoPushReceipts(ids = []) {
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return null;
+    }
+
+    const response = await fetch(EXPO_PUSH_RECEIPTS_URL, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Accept-Encoding": "gzip, deflate",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ids }),
+    });
+
+    let data = null;
+
+    try {
+      data = await response.json();
+    } catch {
+      data = null;
+    }
+
+    if (!response.ok) {
+      const message =
+        data?.errors?.[0]?.message ||
+        data?.message ||
+        `Expo receipts request failed with status ${response.status}`;
+
+      throw new Error(message);
+    }
+
+    return data;
+  }
+
   const response = await fetch(EXPO_PUSH_URL, {
     method: "POST",
     headers: {
@@ -90,6 +131,49 @@ async function sendExpoPushMessages(messages) {
       `Expo push request failed with status ${response.status}`;
 
     throw new Error(message);
+  }
+
+  try {
+    const tickets = Array.isArray(data?.data)
+      ? data.data
+      : data?.data
+        ? [data.data]
+        : [];
+
+    const receiptIds = tickets
+      .map((ticket) => String(ticket?.id || "").trim())
+      .filter(Boolean);
+
+    console.log(
+      "[Push] Expo tickets:",
+      JSON.stringify(
+        {
+          totalMessages: Array.isArray(messages) ? messages.length : 1,
+          totalTickets: tickets.length,
+          receiptIds,
+          tickets,
+        },
+        null,
+        2,
+      ),
+    );
+
+    if (receiptIds.length > 0) {
+      // Debug nhanh cho staging/dev:
+      // receipts có thể chưa sẵn ngay, nên mình đợi ngắn rồi hỏi thử.
+      await sleep(4000);
+
+      const receipts = await fetchExpoPushReceipts(receiptIds);
+
+      console.log(
+        "[Push] Expo receipts:",
+        JSON.stringify(receipts, null, 2),
+      );
+    } else {
+      console.log("[Push] Expo tickets không có receipt id để kiểm tra.");
+    }
+  } catch (receiptError) {
+    console.error("[Push] fetch receipts error:", receiptError);
   }
 
   return data;
