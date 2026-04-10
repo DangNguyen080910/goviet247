@@ -26,6 +26,7 @@ import {
   DialogContent,
   DialogActions,
   CircularProgress,
+  Autocomplete,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -38,6 +39,11 @@ import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
 import { requestOtp, verifyOtp, getMe } from "../../api/auth";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
+import {
+  autocompletePlaces,
+  createPlacesSessionToken,
+  getPlaceDetails,
+} from "../../api/googlePlaces";
 
 const DEFAULT_PUBLIC_CONFIG = {
   tripConfig: {
@@ -106,6 +112,13 @@ export default function BookingCard() {
   const { user, login } = useCustomerAuth();
 
   const [pickupAddress, setPickupAddress] = useState("");
+  const [pickupPlace, setPickupPlace] = useState(null);
+  const [pickupOptions, setPickupOptions] = useState([]);
+  const [pickupLoading, setPickupLoading] = useState(false);
+  const [pickupSessionToken, setPickupSessionToken] = useState(() =>
+    createPlacesSessionToken(),
+  );
+
   const [stops, setStops] = useState([""]);
   const [pickupTime, setPickupTime] = useState("");
   const [returnTime, setReturnTime] = useState("");
@@ -287,6 +300,40 @@ export default function BookingCard() {
     if (direction === "ONE_WAY") setReturnTime("");
   }, [direction]);
 
+  useEffect(() => {
+    const keyword = pickupAddress.trim();
+
+    if (!keyword || keyword.length < 3) {
+      setPickupOptions([]);
+      setPickupLoading(false);
+      return;
+    }
+
+    let active = true;
+
+    const t = setTimeout(async () => {
+      try {
+        setPickupLoading(true);
+        const items = await autocompletePlaces(keyword, pickupSessionToken);
+
+        if (!active) return;
+        setPickupOptions(items);
+      } catch {
+        if (!active) return;
+        setPickupOptions([]);
+      } finally {
+        if (active) {
+          setPickupLoading(false);
+        }
+      }
+    }, 350);
+
+    return () => {
+      active = false;
+      clearTimeout(t);
+    };
+  }, [pickupAddress, pickupSessionToken]);
+
   const pickupMs = useMemo(
     () => toMsFromDatetimeLocal(pickupTime),
     [pickupTime],
@@ -419,6 +466,9 @@ export default function BookingCard() {
 
   const resetFormAfterSuccess = () => {
     setPickupAddress("");
+    setPickupPlace(null);
+    setPickupOptions([]);
+    setPickupSessionToken(createPlacesSessionToken());
     setStops([""]);
     setPickupTime("");
     setReturnTime("");
@@ -438,6 +488,32 @@ export default function BookingCard() {
 
     const scroller = getScrollEl();
     if (scroller) scroller.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSelectPickupPlace = async (_, option) => {
+    if (!option?.placeId) {
+      setPickupPlace(null);
+      return;
+    }
+
+    try {
+      setPickupLoading(true);
+
+      const detail = await getPlaceDetails(option.placeId);
+
+      setPickupPlace(detail);
+      setPickupAddress(detail.label || option.fullText || "");
+      setPickupOptions([]);
+      setPickupSessionToken(createPlacesSessionToken());
+    } catch (e) {
+      setToast({
+        open: true,
+        severity: "error",
+        message: e?.message || "Không lấy được chi tiết điểm đón.",
+      });
+    } finally {
+      setPickupLoading(false);
+    }
   };
 
   const handleEstimate = async () => {
@@ -810,13 +886,62 @@ export default function BookingCard() {
                   Lộ trình
                 </Typography>
 
-                <TextField
-                  label="Điểm đón"
-                  value={pickupAddress}
-                  onChange={(e) => setPickupAddress(e.target.value)}
-                  fullWidth
-                  size="small"
-                  placeholder="Ví dụ: 12 Nguyễn Huệ, Bến Nghé, Quận 1, TP.HCM"
+                <Autocomplete
+                  freeSolo
+                  options={pickupOptions}
+                  loading={pickupLoading}
+                  value={pickupPlace}
+                  inputValue={pickupAddress}
+                  onInputChange={(_, value, reason) => {
+                    if (reason === "input") {
+                      setPickupAddress(value);
+                      setPickupPlace(null);
+                    }
+                    if (reason === "clear") {
+                      setPickupAddress("");
+                      setPickupPlace(null);
+                      setPickupOptions([]);
+                      setPickupSessionToken(createPlacesSessionToken());
+                    }
+                  }}
+                  onChange={handleSelectPickupPlace}
+                  getOptionLabel={(option) => {
+                    if (typeof option === "string") return option;
+                    return option?.fullText || "";
+                  }}
+                  filterOptions={(x) => x}
+                  noOptionsText={
+                    pickupAddress.trim().length < 3
+                      ? "Nhập ít nhất 3 ký tự để tìm địa chỉ"
+                      : "Không có gợi ý phù hợp"
+                  }
+                  loadingText="Đang tìm địa chỉ..."
+                  isOptionEqualToValue={(option, value) =>
+                    option.placeId === value.placeId
+                  }
+                  renderOption={(props, option) => (
+                    <Box component="li" {...props}>
+                      <Stack spacing={0.25}>
+                        <Typography sx={{ fontWeight: 800, fontSize: 14 }}>
+                          {option.mainText || option.fullText}
+                        </Typography>
+                        {!!option.secondaryText && (
+                          <Typography variant="body2" sx={{ opacity: 0.75 }}>
+                            {option.secondaryText}
+                          </Typography>
+                        )}
+                      </Stack>
+                    </Box>
+                  )}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Điểm đón"
+                      fullWidth
+                      size="small"
+                      placeholder="Ví dụ: 12 Nguyễn Huệ, Bến Nghé, Quận 1, TP.HCM"
+                    />
+                  )}
                 />
 
                 <Stack
