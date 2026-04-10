@@ -43,8 +43,7 @@ function isExpoPushToken(token) {
   const value = String(token || "").trim();
 
   return (
-    value.startsWith("ExponentPushToken[") ||
-    value.startsWith("ExpoPushToken[")
+    value.startsWith("ExponentPushToken[") || value.startsWith("ExpoPushToken[")
   );
 }
 
@@ -165,10 +164,7 @@ async function sendExpoPushMessages(messages) {
 
       const receipts = await fetchExpoPushReceipts(receiptIds);
 
-      console.log(
-        "[Push] Expo receipts:",
-        JSON.stringify(receipts, null, 2),
-      );
+      console.log("[Push] Expo receipts:", JSON.stringify(receipts, null, 2));
     } else {
       console.log("[Push] Expo tickets không có receipt id để kiểm tra.");
     }
@@ -201,12 +197,12 @@ export async function sendNewTripToDrivers(trip) {
     }
 
     const validDevices = devices.filter((device) =>
-      isExpoPushToken(device.pushToken)
+      isExpoPushToken(device.pushToken),
     );
 
     if (!validDevices.length) {
       console.log(
-        "📲 [Push] Không có Expo push token hợp lệ để gửi thông báo."
+        "📲 [Push] Không có Expo push token hợp lệ để gửi thông báo.",
       );
       return;
     }
@@ -223,6 +219,7 @@ export async function sendNewTripToDrivers(trip) {
       title,
       body,
       priority: "high",
+      badge: 1,
       data: {
         type: "NEW_TRIP",
         tripId: trip.id,
@@ -235,30 +232,24 @@ export async function sendNewTripToDrivers(trip) {
       },
     }));
 
-    console.log(
-      "📲 [Push] Chuẩn bị gửi thông báo cuốc mới:",
-      {
-        tripId: trip.id,
-        totalDevices: devices.length,
-        validExpoTokens: validDevices.length,
-        title,
-        body,
-      }
-    );
+    console.log("📲 [Push] Chuẩn bị gửi thông báo cuốc mới:", {
+      tripId: trip.id,
+      totalDevices: devices.length,
+      validExpoTokens: validDevices.length,
+      title,
+      body,
+    });
 
     const batches = chunkArray(messages, 100);
 
     for (const batch of batches) {
       const result = await sendExpoPushMessages(batch);
 
-      console.log(
-        "📲 [Push] Expo response:",
-        JSON.stringify(result, null, 2)
-      );
+      console.log("📲 [Push] Expo response:", JSON.stringify(result, null, 2));
     }
 
     console.log(
-      `📲 [Push] Đã gửi push cuốc mới cho ${validDevices.length} thiết bị.`
+      `📲 [Push] Đã gửi push cuốc mới cho ${validDevices.length} thiết bị.`,
     );
   } catch (err) {
     console.error("[Push] sendNewTripToDrivers error:", err);
@@ -288,7 +279,7 @@ export async function sendSystemNotificationToDrivers(notification) {
 
     if (audience !== "DRIVER") {
       console.log(
-        "[Push] Bỏ qua sendSystemNotificationToDrivers vì audience không phải DRIVER."
+        "[Push] Bỏ qua sendSystemNotificationToDrivers vì audience không phải DRIVER.",
       );
       return;
     }
@@ -305,17 +296,19 @@ export async function sendSystemNotificationToDrivers(notification) {
     });
 
     if (!devices.length) {
-      console.log("📲 [Push] Không có device tài xế nào để gửi thông báo hệ thống.");
+      console.log(
+        "📲 [Push] Không có device tài xế nào để gửi thông báo hệ thống.",
+      );
       return;
     }
 
     const validDevices = devices.filter((device) =>
-      isExpoPushToken(device.pushToken)
+      isExpoPushToken(device.pushToken),
     );
 
     if (!validDevices.length) {
       console.log(
-        "📲 [Push] Không có Expo push token hợp lệ để gửi thông báo hệ thống."
+        "📲 [Push] Không có Expo push token hợp lệ để gửi thông báo hệ thống.",
       );
       return;
     }
@@ -329,6 +322,7 @@ export async function sendSystemNotificationToDrivers(notification) {
       title,
       body,
       priority: "high",
+      badge: 1,
       data: {
         type: "SYSTEM_NOTIFICATION",
         notificationId: notification.id,
@@ -352,12 +346,12 @@ export async function sendSystemNotificationToDrivers(notification) {
 
       console.log(
         "📲 [Push] Expo response (system notification):",
-        JSON.stringify(result, null, 2)
+        JSON.stringify(result, null, 2),
       );
     }
 
     console.log(
-      `📲 [Push] Đã gửi push thông báo hệ thống cho ${validDevices.length} thiết bị.`
+      `📲 [Push] Đã gửi push thông báo hệ thống cho ${validDevices.length} thiết bị.`,
     );
   } catch (err) {
     console.error("[Push] sendSystemNotificationToDrivers error:", err);
@@ -386,19 +380,15 @@ export async function sendSystemNotificationToDriver(userId, notification) {
     });
 
     if (!devices.length) {
-      console.log(
-        `[Push] Không có device cho driver userId=${userId}`
-      );
+      console.log(`[Push] Không có device cho driver userId=${userId}`);
       return;
     }
 
-    const validDevices = devices.filter((d) =>
-      isExpoPushToken(d.pushToken)
-    );
+    const validDevices = devices.filter((d) => isExpoPushToken(d.pushToken));
 
     if (!validDevices.length) {
       console.log(
-        `[Push] Không có Expo token hợp lệ cho driver userId=${userId}`
+        `[Push] Không có Expo token hợp lệ cho driver userId=${userId}`,
       );
       return;
     }
@@ -409,6 +399,7 @@ export async function sendSystemNotificationToDriver(userId, notification) {
       title: notification.title,
       body: notification.message,
       priority: "high",
+      badge: 1,
       data: {
         type: "SYSTEM_NOTIFICATION",
         notificationId: notification.id,
@@ -421,14 +412,9 @@ export async function sendSystemNotificationToDriver(userId, notification) {
       await sendExpoPushMessages(batch);
     }
 
-    console.log(
-      `[Push] Đã gửi notification cho driver userId=${userId}`
-    );
+    console.log(`[Push] Đã gửi notification cho driver userId=${userId}`);
   } catch (err) {
-    console.error(
-      "[Push] sendSystemNotificationToDriver error:",
-      err
-    );
+    console.error("[Push] sendSystemNotificationToDriver error:", err);
   }
 }
 
@@ -438,7 +424,7 @@ export async function sendSystemNotificationToRiders(notification) {
 
     if (audience !== "RIDER") {
       console.log(
-        "[Push] Bỏ qua sendSystemNotificationToRiders vì audience không phải RIDER."
+        "[Push] Bỏ qua sendSystemNotificationToRiders vì audience không phải RIDER.",
       );
       return;
     }
@@ -455,17 +441,19 @@ export async function sendSystemNotificationToRiders(notification) {
     });
 
     if (!devices.length) {
-      console.log("📲 [Push] Không có device rider nào để gửi thông báo hệ thống.");
+      console.log(
+        "📲 [Push] Không có device rider nào để gửi thông báo hệ thống.",
+      );
       return;
     }
 
     const validDevices = devices.filter((device) =>
-      isExpoPushToken(device.pushToken)
+      isExpoPushToken(device.pushToken),
     );
 
     if (!validDevices.length) {
       console.log(
-        "📲 [Push] Không có Expo push token hợp lệ để gửi thông báo hệ thống cho rider."
+        "📲 [Push] Không có Expo push token hợp lệ để gửi thông báo hệ thống cho rider.",
       );
       return;
     }
@@ -502,12 +490,12 @@ export async function sendSystemNotificationToRiders(notification) {
 
       console.log(
         "📲 [Push] Expo response (system notification rider):",
-        JSON.stringify(result, null, 2)
+        JSON.stringify(result, null, 2),
       );
     }
 
     console.log(
-      `📲 [Push] Đã gửi push thông báo hệ thống cho ${validDevices.length} thiết bị rider.`
+      `📲 [Push] Đã gửi push thông báo hệ thống cho ${validDevices.length} thiết bị rider.`,
     );
   } catch (err) {
     console.error("[Push] sendSystemNotificationToRiders error:", err);
