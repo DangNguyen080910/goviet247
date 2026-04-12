@@ -648,7 +648,7 @@ export default function BookingCard() {
       const detail = await getPlaceDetail(option.placeId);
 
       setPickupPlace(detail);
-      setPickupAddress(detail?.fullAddress || option?.fullAddress || "");
+      setPickupAddress(option?.fullAddress || detail?.fullAddress || "");
       setPickupOptions([]);
 
       await refreshRouteFromPlaces(detail, stopPlaces, { silent: true });
@@ -683,7 +683,7 @@ export default function BookingCard() {
       setStopPlaces(nextStopPlaces);
       setStops((prev) =>
         prev.map((value, i) =>
-          i === idx ? detail?.fullAddress || option?.fullAddress || "" : value,
+          i === idx ? option?.fullAddress || detail?.fullAddress || "" : value,
         ),
       );
       setStopOptions((prev) =>
@@ -1383,8 +1383,7 @@ export default function BookingCard() {
 
               <Divider />
 
-              {/* 3.5) Test inputs (tạm thời) */}
-              {/* 3.5) Quãng đường / thời gian từ route */}
+              {/* 3.5) Thông tin quãng đường (read-only) */}
               <Stack spacing={1.2}>
                 <Typography
                   sx={{ fontWeight: 800, fontSize: 13, opacity: 0.85 }}
@@ -1392,62 +1391,32 @@ export default function BookingCard() {
                   Thông tin quãng đường
                 </Typography>
 
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={1.2}>
-                  <TextField
-                    label="Quãng đường (km)"
-                    value={distanceKm}
-                    onChange={(e) =>
-                      setDistanceKm(e.target.value.replace(/[^\d.]/g, ""))
-                    }
-                    fullWidth
-                    size="small"
-                    inputProps={{ inputMode: "decimal" }}
-                    error={!!distanceKm && !isDistanceValid}
-                  />
-                  <TextField
-                    label="Thời gian chạy (phút)"
-                    value={driveMinutes}
-                    onChange={(e) =>
-                      setDriveMinutes(e.target.value.replace(/[^\d]/g, ""))
-                    }
-                    fullWidth
-                    size="small"
-                    inputProps={{ inputMode: "numeric" }}
-                  />
-                </Stack>
+                {distanceKm && driveMinutes ? (
+                  <Stack spacing={0.5}>
+                    <Typography sx={{ fontWeight: 700 }}>
+                      Quãng đường dự kiến: {distanceKm} km
+                    </Typography>
+                    <Typography sx={{ fontWeight: 700 }}>
+                      Thời gian di chuyển dự kiến: {driveMinutes} phút
+                    </Typography>
 
-                <Typography
-                  variant="body2"
-                  sx={{
-                    opacity: isDistanceValid ? 0.7 : 1,
-                    color: isDistanceValid ? "text.secondary" : "error.main",
-                    fontWeight: isDistanceValid ? 400 : 800,
-                  }}
-                >
-                  Quãng đường hợp lệ từ {minDistanceKm} km đến {maxDistanceKm}{" "}
-                  km.
-                </Typography>
-
-                {isRouteLoading ? (
-                  <Typography
-                    variant="body2"
-                    sx={{ opacity: 0.75, fontWeight: 700 }}
-                  >
-                    Đang tính quãng đường thực tế từ bản đồ...
-                  </Typography>
-                ) : pickupPlace &&
-                  stopPlaces.some((item) => item?.lat && item?.lng) ? (
-                  <Typography
-                    variant="body2"
-                    sx={{ opacity: 0.75, fontWeight: 700 }}
-                  >
-                    Hệ thống đang dùng route thực tế từ bản đồ để tự điền quãng
-                    đường và thời gian chạy.
-                  </Typography>
+                    <Typography variant="body2" sx={{ opacity: 0.65 }}>
+                      Thông tin được hệ thống tính tự động từ lộ trình bản đồ.
+                    </Typography>
+                  </Stack>
                 ) : (
                   <Typography variant="body2" sx={{ opacity: 0.7 }}>
                     Chọn điểm đón và ít nhất 1 điểm đến từ gợi ý để hệ thống tự
                     tính quãng đường.
+                  </Typography>
+                )}
+
+                {isRouteLoading && (
+                  <Typography
+                    variant="body2"
+                    sx={{ opacity: 0.75, fontWeight: 700 }}
+                  >
+                    Đang tính lộ trình...
                   </Typography>
                 )}
               </Stack>
