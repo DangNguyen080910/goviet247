@@ -39,7 +39,7 @@ import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
 import { requestOtp, verifyOtp, getMe } from "../../api/auth";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
-import { searchPlaces, getPlaceDetail } from "../../api/maps";
+import { searchPlaces, getPlaceDetail, getRoute } from "../../api/maps";
 
 const DEFAULT_PUBLIC_CONFIG = {
   tripConfig: {
@@ -125,9 +125,9 @@ export default function BookingCard() {
   const [riderPhone, setRiderPhone] = useState("");
   const [note, setNote] = useState("");
 
-  // ✅ Tạm thời để test (chưa có map)
   const [distanceKm, setDistanceKm] = useState("10");
   const [driveMinutes, setDriveMinutes] = useState("30");
+  const [isRouteLoading, setIsRouteLoading] = useState(false);
 
   const [quote, setQuote] = useState(null);
   const [isEstimating, setIsEstimating] = useState(false);
@@ -408,6 +408,73 @@ export default function BookingCard() {
     };
   }, [stops]);
 
+  useEffect(() => {
+    const resolvedStopPlaces = stopPlaces.filter(
+      (item) =>
+        item &&
+        Number.isFinite(Number(item.lat)) &&
+        Number.isFinite(Number(item.lng)),
+    );
+
+    const hasPickupCoords =
+      pickupPlace &&
+      Number.isFinite(Number(pickupPlace.lat)) &&
+      Number.isFinite(Number(pickupPlace.lng));
+
+    if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
+      return;
+    }
+
+    let active = true;
+
+    const t = setTimeout(async () => {
+      try {
+        setIsRouteLoading(true);
+
+        const points = [
+          {
+            lat: Number(pickupPlace.lat),
+            lng: Number(pickupPlace.lng),
+          },
+          ...resolvedStopPlaces.map((item) => ({
+            lat: Number(item.lat),
+            lng: Number(item.lng),
+          })),
+        ];
+
+        const route = await getRoute(points);
+
+        if (!active || !route) return;
+
+        if (Number.isFinite(Number(route.distanceKm))) {
+          setDistanceKm(String(route.distanceKm));
+        }
+
+        if (Number.isFinite(Number(route.durationMinutes))) {
+          setDriveMinutes(String(route.durationMinutes));
+        }
+      } catch (e) {
+        if (!active) return;
+
+        setToast({
+          open: true,
+          severity: "warning",
+          message:
+            e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
+        });
+      } finally {
+        if (active) {
+          setIsRouteLoading(false);
+        }
+      }
+    }, 350);
+
+    return () => {
+      active = false;
+      clearTimeout(t);
+    };
+  }, [pickupPlace, stopPlaces]);
+
   const pickupMs = useMemo(
     () => toMsFromDatetimeLocal(pickupTime),
     [pickupTime],
@@ -555,8 +622,8 @@ export default function BookingCard() {
     setRiderPhone("");
     setNote("");
 
-    setDistanceKm("10");
-    setDriveMinutes("30");
+    setDistanceKm("");
+    setDriveMinutes("");
 
     setQuote(null);
     setSubmitTouched(false);
@@ -1158,7 +1225,7 @@ export default function BookingCard() {
                                   setStopOptions((prev) =>
                                     prev.map((items, i) =>
                                       i === idx ? [] : items,
-                                    ),``
+                                    ),
                                   );
                                 }
                               }}
@@ -1298,11 +1365,12 @@ export default function BookingCard() {
               <Divider />
 
               {/* 3.5) Test inputs (tạm thời) */}
+              {/* 3.5) Quãng đường / thời gian từ route */}
               <Stack spacing={1.2}>
                 <Typography
                   sx={{ fontWeight: 800, fontSize: 13, opacity: 0.85 }}
                 >
-                  Thông tin quãng đường (tạm thời để test)
+                  Thông tin quãng đường
                 </Typography>
 
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={1.2}>
@@ -1341,9 +1409,28 @@ export default function BookingCard() {
                   km.
                 </Typography>
 
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                  Khi gắn bản đồ xong, 2 ô này sẽ bị ẩn và lấy tự động.
-                </Typography>
+                {isRouteLoading ? (
+                  <Typography
+                    variant="body2"
+                    sx={{ opacity: 0.75, fontWeight: 700 }}
+                  >
+                    Đang tính quãng đường thực tế từ bản đồ...
+                  </Typography>
+                ) : pickupPlace &&
+                  stopPlaces.some((item) => item?.lat && item?.lng) ? (
+                  <Typography
+                    variant="body2"
+                    sx={{ opacity: 0.75, fontWeight: 700 }}
+                  >
+                    Hệ thống đang dùng route thực tế từ bản đồ để tự điền quãng
+                    đường và thời gian chạy.
+                  </Typography>
+                ) : (
+                  <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                    Chọn điểm đón và ít nhất 1 điểm đến từ gợi ý để hệ thống tự
+                    tính quãng đường.
+                  </Typography>
+                )}
               </Stack>
 
               <Divider />

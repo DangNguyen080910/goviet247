@@ -85,3 +85,66 @@ export async function getPlaceDetail(placeId) {
     lng: result.geometry?.location?.lng,
   };
 }
+
+// 🔥 ROUTE / DISTANCE / DURATION
+export async function getRoute(points = []) {
+  if (!Array.isArray(points) || points.length < 2) {
+    throw new Error("ROUTE_POINTS_INVALID");
+  }
+
+  const normalizedPoints = points.map((point) => {
+    const lat = Number(point?.lat);
+    const lng = Number(point?.lng);
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+      throw new Error("ROUTE_POINT_COORDINATES_INVALID");
+    }
+
+    return { lat, lng };
+  });
+
+  const origin = `${normalizedPoints[0].lat},${normalizedPoints[0].lng}`;
+  const destination = `${normalizedPoints[normalizedPoints.length - 1].lat},${normalizedPoints[normalizedPoints.length - 1].lng}`;
+
+  const middlePoints = normalizedPoints.slice(1, -1);
+  const waypoints = middlePoints.length
+    ? middlePoints.map((point) => `${point.lat},${point.lng}`).join("|")
+    : undefined;
+
+  const url = `${GOONG_BASE_URL}/Direction`;
+
+  const { data } = await axios.get(url, {
+    params: {
+      api_key: GOONG_API_KEY,
+      origin,
+      destination,
+      waypoints,
+      vehicle: "car",
+    },
+  });
+
+  const route = data?.routes?.[0];
+
+  if (!route) {
+    return null;
+  }
+
+  const distanceMeters =
+    Number(route.legs?.reduce((sum, leg) => sum + (Number(leg?.distance?.value) || 0), 0)) ||
+    Number(route.overview_polyline ? route.legs?.[0]?.distance?.value : 0) ||
+    0;
+
+  const durationSeconds =
+    Number(route.legs?.reduce((sum, leg) => sum + (Number(leg?.duration?.value) || 0), 0)) ||
+    Number(route.legs?.[0]?.duration?.value || 0) ||
+    0;
+
+  return {
+    distanceMeters,
+    durationSeconds,
+    distanceKm: Number((distanceMeters / 1000).toFixed(1)),
+    durationMinutes: Math.max(1, Math.round(durationSeconds / 60)),
+    polyline: route.overview_polyline?.points || "",
+    points: normalizedPoints,
+  };
+}
