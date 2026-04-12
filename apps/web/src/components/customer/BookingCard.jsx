@@ -28,6 +28,11 @@ import {
   CircularProgress,
   Autocomplete,
 } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import dayjs from "dayjs";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -65,16 +70,15 @@ function formatVND(n) {
   return val.toLocaleString("vi-VN") + " đ";
 }
 
-function toMsFromDatetimeLocal(v) {
-  if (!v) return NaN;
-  return new Date(v).getTime();
-}
+function combineDateTime(dateObj, timeObj) {
+  if (!dateObj || !timeObj) return "";
 
-function toIsoFromDatetimeLocal(v) {
-  if (!v) return "";
-  const d = new Date(v);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toISOString();
+  const d = dayjs(dateObj);
+  const t = dayjs(timeObj);
+
+  const combined = d.hour(t.hour()).minute(t.minute()).second(0).millisecond(0);
+
+  return combined.toISOString();
 }
 
 // Cắt bớt mã chuyến cho dễ nhìn
@@ -116,8 +120,11 @@ export default function BookingCard() {
   const [stopPlaces, setStopPlaces] = useState([null]);
   const [stopOptions, setStopOptions] = useState([[]]);
   const [stopLoadingMap, setStopLoadingMap] = useState({});
-  const [pickupTime, setPickupTime] = useState("");
-  const [returnTime, setReturnTime] = useState("");
+  const [pickupDate, setPickupDate] = useState(null);
+  const [pickupTimeOnly, setPickupTimeOnly] = useState(null);
+
+  const [returnDate, setReturnDate] = useState(null);
+  const [returnTimeOnly, setReturnTimeOnly] = useState(null);
   const [direction, setDirection] = useState("ONE_WAY");
   const [carType, setCarType] = useState("CAR_5");
 
@@ -125,8 +132,8 @@ export default function BookingCard() {
   const [riderPhone, setRiderPhone] = useState("");
   const [note, setNote] = useState("");
 
-  const [distanceKm, setDistanceKm] = useState("10");
-  const [driveMinutes, setDriveMinutes] = useState("30");
+  const [distanceKm, setDistanceKm] = useState("");
+  const [driveMinutes, setDriveMinutes] = useState("");
   const [isRouteLoading, setIsRouteLoading] = useState(false);
 
   const [quote, setQuote] = useState(null);
@@ -326,7 +333,10 @@ export default function BookingCard() {
   );
 
   useEffect(() => {
-    if (direction === "ONE_WAY") setReturnTime("");
+    if (direction === "ONE_WAY") {
+      setReturnDate(null);
+      setReturnTimeOnly(null);
+    }
   }, [direction]);
 
   useEffect(() => {
@@ -410,20 +420,30 @@ export default function BookingCard() {
     };
   }, [stops]);
 
-  const pickupMs = useMemo(
-    () => toMsFromDatetimeLocal(pickupTime),
-    [pickupTime],
-  );
-  const returnMs = useMemo(
-    () => toMsFromDatetimeLocal(returnTime),
-    [returnTime],
-  );
+  const pickupMs = useMemo(() => {
+    const iso = combineDateTime(pickupDate, pickupTimeOnly);
+    return iso ? new Date(iso).getTime() : NaN;
+  }, [pickupDate, pickupTimeOnly]);
+  const returnMs = useMemo(() => {
+    const iso = combineDateTime(returnDate, returnTimeOnly);
+    return iso ? new Date(iso).getTime() : NaN;
+  }, [returnDate, returnTimeOnly]);
 
   const isReturnTimeValid = useMemo(() => {
     if (direction !== "ROUND_TRIP") return true;
-    if (!pickupTime || !returnTime) return false;
+    if (!pickupDate || !pickupTimeOnly || !returnDate || !returnTimeOnly) {
+      return false;
+    }
     return returnMs > pickupMs;
-  }, [direction, pickupTime, returnTime, pickupMs, returnMs]);
+  }, [
+    direction,
+    pickupDate,
+    pickupTimeOnly,
+    returnDate,
+    returnTimeOnly,
+    pickupMs,
+    returnMs,
+  ]);
 
   // Khi thay input => reset quote
   useEffect(() => {
@@ -431,8 +451,10 @@ export default function BookingCard() {
   }, [
     pickupAddress,
     stops,
-    pickupTime,
-    returnTime,
+    pickupDate,
+    pickupTimeOnly,
+    returnDate,
+    returnTimeOnly,
     direction,
     carType,
     distanceKm,
@@ -497,10 +519,13 @@ export default function BookingCard() {
     !isLoadingConfig &&
     pickupAddress.trim() &&
     hasAtLeastOneStop &&
-    pickupTime &&
+    pickupDate &&
+    pickupTimeOnly &&
     direction &&
     carType &&
-    (direction === "ONE_WAY" ? true : isReturnTimeValid) &&
+    (direction === "ONE_WAY"
+      ? true
+      : returnDate && returnTimeOnly && isReturnTimeValid) &&
     isDistanceValid &&
     Number(driveMinutes) >= 0;
 
@@ -614,8 +639,10 @@ export default function BookingCard() {
     setStopPlaces([null]);
     setStopOptions([[]]);
     setStopLoadingMap({});
-    setPickupTime("");
-    setReturnTime("");
+    setPickupDate(null);
+    setPickupTimeOnly(null);
+    setReturnDate(null);
+    setReturnTimeOnly(null);
     setDirection("ONE_WAY");
     setCarType(carTypeOptions[0]?.value || "CAR_5");
 
@@ -718,10 +745,10 @@ export default function BookingCard() {
       const payload = {
         carType,
         direction,
-        pickupTime: toIsoFromDatetimeLocal(pickupTime),
+        pickupTime: combineDateTime(pickupDate, pickupTimeOnly),
         returnTime:
           direction === "ROUND_TRIP"
-            ? toIsoFromDatetimeLocal(returnTime)
+            ? combineDateTime(returnDate, returnTimeOnly)
             : null,
         distanceKm: Number(distanceKm),
         driveMinutes: Number(driveMinutes),
@@ -800,9 +827,11 @@ export default function BookingCard() {
       pickupAddress,
       dropoffAddress,
       stops: cleanedStops,
-      pickupTime: toIsoFromDatetimeLocal(pickupTime),
+      pickupTime: combineDateTime(pickupDate, pickupTimeOnly),
       returnTime:
-        direction === "ROUND_TRIP" ? toIsoFromDatetimeLocal(returnTime) : null,
+        direction === "ROUND_TRIP"
+          ? combineDateTime(returnDate, returnTimeOnly)
+          : null,
       direction,
       carType,
       distanceKm: Number(distanceKm),
@@ -1310,42 +1339,72 @@ export default function BookingCard() {
                   <ToggleButton value="ROUND_TRIP">Khứ hồi</ToggleButton>
                 </ToggleButtonGroup>
 
-                <TextField
-                  label="Thời gian đón khách"
-                  type="datetime-local"
-                  value={pickupTime}
-                  onChange={(e) => setPickupTime(e.target.value)}
-                  fullWidth
-                  size="small"
-                  InputLabelProps={{ shrink: true }}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <Stack direction={{ xs: "column", sm: "row" }} spacing={1.2}>
+                    <DatePicker
+                      label="Ngày đón khách"
+                      value={pickupDate}
+                      onChange={(newValue) => setPickupDate(newValue)}
+                      slotProps={{
+                        textField: { fullWidth: true, size: "small" },
+                      }}
+                    />
+                    <TimePicker
+                      label="Giờ đón khách"
+                      value={pickupTimeOnly}
+                      onChange={(newValue) => setPickupTimeOnly(newValue)}
+                      minutesStep={5}
+                      slotProps={{
+                        textField: { fullWidth: true, size: "small" },
+                      }}
+                    />
+                  </Stack>
+                </LocalizationProvider>
 
                 {direction === "ROUND_TRIP" && (
-                  <TextField
-                    label="Thời gian quay về"
-                    type="datetime-local"
-                    value={returnTime}
-                    onChange={(e) => setReturnTime(e.target.value)}
-                    fullWidth
-                    size="small"
-                    InputLabelProps={{ shrink: true }}
-                    helperText="Giờ tài xế đón bạn để quay về điểm đón ban đầu"
-                    error={!!returnTime && !isReturnTimeValid}
-                  />
-                )}
-
-                {direction === "ROUND_TRIP" && pickupTime && !returnTime && (
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "error.main", fontWeight: 800 }}
-                  >
-                    Vui lòng chọn thời gian quay về để tính giá khứ hồi
-                  </Typography>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <Stack
+                      direction={{ xs: "column", sm: "row" }}
+                      spacing={1.2}
+                    >
+                      <DatePicker
+                        label="Ngày quay về"
+                        value={returnDate}
+                        onChange={(newValue) => setReturnDate(newValue)}
+                        slotProps={{
+                          textField: { fullWidth: true, size: "small" },
+                        }}
+                      />
+                      <TimePicker
+                        label="Giờ quay về"
+                        value={returnTimeOnly}
+                        onChange={(newValue) => setReturnTimeOnly(newValue)}
+                        minutesStep={5}
+                        slotProps={{
+                          textField: { fullWidth: true, size: "small" },
+                        }}
+                      />
+                    </Stack>
+                  </LocalizationProvider>
                 )}
 
                 {direction === "ROUND_TRIP" &&
-                  pickupTime &&
-                  returnTime &&
+                  pickupDate &&
+                  pickupTimeOnly &&
+                  (!returnDate || !returnTimeOnly) && (
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "error.main", fontWeight: 800 }}
+                    >
+                      Vui lòng chọn thời gian quay về để tính giá khứ hồi
+                    </Typography>
+                  )}
+
+                {direction === "ROUND_TRIP" &&
+                  pickupDate &&
+                  pickupTimeOnly &&
+                  returnDate &&
+                  returnTimeOnly &&
                   !isReturnTimeValid && (
                     <Typography
                       variant="body2"

@@ -194,16 +194,26 @@ export default function CustomerLayout() {
 
               <Button
                 variant={isBookingPage ? "contained" : "outlined"}
-                startIcon={<DirectionsCarFilledOutlinedIcon />}
+                startIcon={
+                  <DirectionsCarFilledOutlinedIcon
+                    sx={{ fontSize: { xs: 18, sm: 20 } }}
+                  />
+                }
                 onClick={handleGoBooking}
                 sx={{
                   textTransform: "none",
                   borderRadius: 2,
                   fontWeight: 800,
-                  display: { xs: "none", sm: "inline-flex" },
+                  display: "inline-flex",
+                  minWidth: { xs: "auto", sm: 0 },
+                  px: { xs: 1.25, sm: 1.75 },
                   color: isBookingPage ? "white" : "#F97316",
                   borderColor: "#F97316",
                   bgcolor: isBookingPage ? "#F97316" : "transparent",
+                  "& .MuiButton-startIcon": {
+                    mr: { xs: 0.5, sm: 1 },
+                    ml: 0,
+                  },
                   "&:hover": {
                     bgcolor: "#EA580C",
                     color: "white",
@@ -450,7 +460,9 @@ export default function CustomerLayout() {
               flexWrap: "wrap",
             }}
           >
-            <span>© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse</span>
+            <span>
+              © 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse
+            </span>
             <span>
               Hỗ trợ: {supportPhone}
               {supportEmail ? ` | ${supportEmail}` : ""}
