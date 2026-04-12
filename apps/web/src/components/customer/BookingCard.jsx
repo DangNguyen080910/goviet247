@@ -116,6 +116,7 @@ export default function BookingCard() {
   const [stopPlaces, setStopPlaces] = useState([null]);
   const [stopOptions, setStopOptions] = useState([[]]);
   const [stopLoadingMap, setStopLoadingMap] = useState({});
+  const [stopOpenMap, setStopOpenMap] = useState({});
   const [pickupTime, setPickupTime] = useState("");
   const [returnTime, setReturnTime] = useState("");
   const [direction, setDirection] = useState("ONE_WAY");
@@ -261,6 +262,7 @@ export default function BookingCard() {
 
       setStopPlaces((prevPlaces) => [...prevPlaces, null]);
       setStopOptions((prevOptions) => [...prevOptions, []]);
+      setStopOpenMap((prevMap) => ({ ...prevMap, [newIndex]: true }));
 
       setTimeout(() => {
         const el = stopInputRefs.current[newIndex];
@@ -289,6 +291,20 @@ export default function BookingCard() {
       });
 
       setStopLoadingMap((prevMap) => {
+        const nextMap = { ...prevMap };
+        delete nextMap[idx];
+
+        const reindexed = {};
+        Object.keys(nextMap).forEach((key) => {
+          const oldIndex = Number(key);
+          if (oldIndex < idx) reindexed[oldIndex] = nextMap[oldIndex];
+          if (oldIndex > idx) reindexed[oldIndex - 1] = nextMap[oldIndex];
+        });
+
+        return reindexed;
+      });
+
+      setStopOpenMap((prevMap) => {
         const nextMap = { ...prevMap };
         delete nextMap[idx];
 
@@ -426,7 +442,6 @@ export default function BookingCard() {
   // Khi thay input => reset quote
   useEffect(() => {
     setQuote(null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     pickupAddress,
     stops,
@@ -546,6 +561,7 @@ export default function BookingCard() {
     setStopPlaces([null]);
     setStopOptions([[]]);
     setStopLoadingMap({});
+    setStopOpenMap({});
     setPickupTime("");
     setReturnTime("");
     setDirection("ONE_WAY");
@@ -611,6 +627,7 @@ export default function BookingCard() {
       setStopOptions((prev) =>
         prev.map((items, i) => (i === idx ? [] : items)),
       );
+      setStopOpenMap((prev) => ({ ...prev, [idx]: false }));
     } catch (e) {
       setToast({
         open: true,
@@ -1092,13 +1109,35 @@ export default function BookingCard() {
                       >
                         <Autocomplete
                           freeSolo
+                          open={
+                            !!stopOpenMap[idx] &&
+                            (stopOptions[idx] || []).length > 0
+                          }
                           options={stopOptions[idx] || []}
                           loading={!!stopLoadingMap[idx]}
                           value={stopPlaces[idx] || null}
                           inputValue={s}
+                          onFocus={() => {
+                            if ((stopOptions[idx] || []).length > 0) {
+                              setStopOpenMap((prev) => ({
+                                ...prev,
+                                [idx]: true,
+                              }));
+                            }
+                          }}
+                          onClose={() => {
+                            setStopOpenMap((prev) => ({
+                              ...prev,
+                              [idx]: false,
+                            }));
+                          }}
                           onInputChange={(_, value, reason) => {
                             if (reason === "input") {
                               handleChangeStop(idx, value);
+                              setStopOpenMap((prev) => ({
+                                ...prev,
+                                [idx]: true,
+                              }));
                             }
                             if (reason === "clear") {
                               handleChangeStop(idx, "");
@@ -1107,6 +1146,10 @@ export default function BookingCard() {
                                   i === idx ? [] : items,
                                 ),
                               );
+                              setStopOpenMap((prev) => ({
+                                ...prev,
+                                [idx]: false,
+                              }));
                             }
                           }}
                           onChange={(_, option) =>
