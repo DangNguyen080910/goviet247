@@ -314,6 +314,8 @@ export default function BookingCard() {
   const handleChangeStop = (idx, val) => {
     setStops((prev) => prev.map((s, i) => (i === idx ? val : s)));
     setStopPlaces((prev) => prev.map((p, i) => (i === idx ? null : p)));
+    setDistanceKm("");
+    setDriveMinutes("");
   };
 
   const hasAtLeastOneStop = useMemo(() => stops.some((x) => x.trim()), [stops]);
@@ -407,73 +409,6 @@ export default function BookingCard() {
       timers.forEach(clearTimeout);
     };
   }, [stops]);
-
-  useEffect(() => {
-    const resolvedStopPlaces = stopPlaces.filter(
-      (item) =>
-        item &&
-        Number.isFinite(Number(item.lat)) &&
-        Number.isFinite(Number(item.lng)),
-    );
-
-    const hasPickupCoords =
-      pickupPlace &&
-      Number.isFinite(Number(pickupPlace.lat)) &&
-      Number.isFinite(Number(pickupPlace.lng));
-
-    if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
-      return;
-    }
-
-    let active = true;
-
-    const t = setTimeout(async () => {
-      try {
-        setIsRouteLoading(true);
-
-        const points = [
-          {
-            lat: Number(pickupPlace.lat),
-            lng: Number(pickupPlace.lng),
-          },
-          ...resolvedStopPlaces.map((item) => ({
-            lat: Number(item.lat),
-            lng: Number(item.lng),
-          })),
-        ];
-
-        const route = await getRoute(points);
-
-        if (!active || !route) return;
-
-        if (Number.isFinite(Number(route.distanceKm))) {
-          setDistanceKm(String(route.distanceKm));
-        }
-
-        if (Number.isFinite(Number(route.durationMinutes))) {
-          setDriveMinutes(String(route.durationMinutes));
-        }
-      } catch (e) {
-        if (!active) return;
-
-        setToast({
-          open: true,
-          severity: "warning",
-          message:
-            e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
-        });
-      } finally {
-        if (active) {
-          setIsRouteLoading(false);
-        }
-      }
-    }, 350);
-
-    return () => {
-      active = false;
-      clearTimeout(t);
-    };
-  }, [pickupPlace, stopPlaces]);
 
   const pickupMs = useMemo(
     () => toMsFromDatetimeLocal(pickupTime),
@@ -604,6 +539,67 @@ export default function BookingCard() {
     }, 0);
   };
 
+  const refreshRouteFromPlaces = async (
+    nextPickupPlace,
+    nextStopPlaces,
+    options = {},
+  ) => {
+    const { silent = false } = options;
+
+    const hasPickupCoords =
+      nextPickupPlace &&
+      Number.isFinite(Number(nextPickupPlace.lat)) &&
+      Number.isFinite(Number(nextPickupPlace.lng));
+
+    const resolvedStopPlaces = (nextStopPlaces || []).filter(
+      (item) =>
+        item &&
+        Number.isFinite(Number(item.lat)) &&
+        Number.isFinite(Number(item.lng)),
+    );
+
+    if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
+      setIsRouteLoading(false);
+      return;
+    }
+
+    try {
+      setIsRouteLoading(true);
+
+      const points = [
+        {
+          lat: Number(nextPickupPlace.lat),
+          lng: Number(nextPickupPlace.lng),
+        },
+        ...resolvedStopPlaces.map((item) => ({
+          lat: Number(item.lat),
+          lng: Number(item.lng),
+        })),
+      ];
+
+      const route = await getRoute(points);
+
+      if (Number.isFinite(Number(route?.distanceKm))) {
+        setDistanceKm(String(route.distanceKm));
+      }
+
+      if (Number.isFinite(Number(route?.durationMinutes))) {
+        setDriveMinutes(String(route.durationMinutes));
+      }
+    } catch (e) {
+      if (!silent) {
+        setToast({
+          open: true,
+          severity: "warning",
+          message:
+            e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
+        });
+      }
+    } finally {
+      setIsRouteLoading(false);
+    }
+  };
+
   const resetFormAfterSuccess = () => {
     setPickupAddress("");
     setPickupPlace(null);
@@ -635,6 +631,8 @@ export default function BookingCard() {
   const handleSelectPickupPlace = async (_, option) => {
     if (!option?.placeId) {
       setPickupPlace(null);
+      setDistanceKm("");
+      setDriveMinutes("");
       return;
     }
 
@@ -646,6 +644,8 @@ export default function BookingCard() {
       setPickupPlace(detail);
       setPickupAddress(detail?.fullAddress || option?.fullAddress || "");
       setPickupOptions([]);
+
+      await refreshRouteFromPlaces(detail, stopPlaces, { silent: true });
     } catch (e) {
       setToast({
         open: true,
@@ -659,7 +659,14 @@ export default function BookingCard() {
 
   const handleSelectStopPlace = async (idx, option) => {
     if (!option?.placeId) {
-      setStopPlaces((prev) => prev.map((p, i) => (i === idx ? null : p)));
+      const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? null : p));
+      setStopPlaces(nextStopPlaces);
+
+      if (!nextStopPlaces.some((item) => item?.lat && item?.lng)) {
+        setDistanceKm("");
+        setDriveMinutes("");
+      }
+
       return;
     }
 
@@ -668,7 +675,9 @@ export default function BookingCard() {
 
       const detail = await getPlaceDetail(option.placeId);
 
-      setStopPlaces((prev) => prev.map((p, i) => (i === idx ? detail : p)));
+      const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? detail : p));
+
+      setStopPlaces(nextStopPlaces);
       setStops((prev) =>
         prev.map((value, i) =>
           i === idx ? detail?.fullAddress || option?.fullAddress || "" : value,
@@ -677,6 +686,10 @@ export default function BookingCard() {
       setStopOptions((prev) =>
         prev.map((items, i) => (i === idx ? [] : items)),
       );
+
+      await refreshRouteFromPlaces(pickupPlace, nextStopPlaces, {
+        silent: true,
+      });
     } catch (e) {
       setToast({
         open: true,
@@ -1068,11 +1081,15 @@ export default function BookingCard() {
                     if (reason === "input") {
                       setPickupAddress(value);
                       setPickupPlace(null);
+                      setDistanceKm("");
+                      setDriveMinutes("");
                     }
                     if (reason === "clear") {
                       setPickupAddress("");
                       setPickupPlace(null);
                       setPickupOptions([]);
+                      setDistanceKm("");
+                      setDriveMinutes("");
                     }
                   }}
                   onChange={handleSelectPickupPlace}
