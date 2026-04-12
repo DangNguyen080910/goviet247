@@ -1091,23 +1091,11 @@ export default function BookingCard() {
                       >
                         <Autocomplete
                           freeSolo
+                          disablePortal
                           options={stopOptions[idx] || []}
                           loading={!!stopLoadingMap[idx]}
                           value={stopPlaces[idx] || null}
                           inputValue={s}
-                          onInputChange={(_, value, reason) => {
-                            if (reason === "input") {
-                              handleChangeStop(idx, value);
-                            }
-                            if (reason === "clear") {
-                              handleChangeStop(idx, "");
-                              setStopOptions((prev) =>
-                                prev.map((items, i) =>
-                                  i === idx ? [] : items,
-                                ),
-                              );
-                            }
-                          }}
                           onChange={(_, option) =>
                             handleSelectStopPlace(idx, option)
                           }
@@ -1161,6 +1149,18 @@ export default function BookingCard() {
                               inputProps={{
                                 ...params.inputProps,
                                 autoComplete: "new-password",
+                              }}
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                handleChangeStop(idx, value);
+
+                                if (!value.trim()) {
+                                  setStopOptions((prev) =>
+                                    prev.map((items, i) =>
+                                      i === idx ? [] : items,
+                                    ),
+                                  );
+                                }
                               }}
                             />
                           )}
