@@ -39,11 +39,7 @@ import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
 import { requestOtp, verifyOtp, getMe } from "../../api/auth";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
-import {
-  autocompletePlaces,
-  createPlacesSessionToken,
-  getPlaceDetails,
-} from "../../api/googlePlaces";
+import { searchPlaces, getPlaceDetail } from "../../api/maps";
 
 const DEFAULT_PUBLIC_CONFIG = {
   tripConfig: {
@@ -115,9 +111,6 @@ export default function BookingCard() {
   const [pickupPlace, setPickupPlace] = useState(null);
   const [pickupOptions, setPickupOptions] = useState([]);
   const [pickupLoading, setPickupLoading] = useState(false);
-  const [pickupSessionToken, setPickupSessionToken] = useState(() =>
-    createPlacesSessionToken(),
-  );
 
   const [stops, setStops] = useState([""]);
   const [pickupTime, setPickupTime] = useState("");
@@ -314,7 +307,7 @@ export default function BookingCard() {
     const t = setTimeout(async () => {
       try {
         setPickupLoading(true);
-        const items = await autocompletePlaces(keyword, pickupSessionToken);
+        const items = await searchPlaces(keyword);
 
         if (!active) return;
         setPickupOptions(items);
@@ -332,7 +325,7 @@ export default function BookingCard() {
       active = false;
       clearTimeout(t);
     };
-  }, [pickupAddress, pickupSessionToken]);
+  }, [pickupAddress]);
 
   const pickupMs = useMemo(
     () => toMsFromDatetimeLocal(pickupTime),
@@ -468,7 +461,6 @@ export default function BookingCard() {
     setPickupAddress("");
     setPickupPlace(null);
     setPickupOptions([]);
-    setPickupSessionToken(createPlacesSessionToken());
     setStops([""]);
     setPickupTime("");
     setReturnTime("");
@@ -499,12 +491,11 @@ export default function BookingCard() {
     try {
       setPickupLoading(true);
 
-      const detail = await getPlaceDetails(option.placeId);
+      const detail = await getPlaceDetail(option.placeId);
 
       setPickupPlace(detail);
-      setPickupAddress(detail.label || option.fullText || "");
+      setPickupAddress(detail?.fullAddress || option?.fullAddress || "");
       setPickupOptions([]);
-      setPickupSessionToken(createPlacesSessionToken());
     } catch (e) {
       setToast({
         open: true,
@@ -901,13 +892,12 @@ export default function BookingCard() {
                       setPickupAddress("");
                       setPickupPlace(null);
                       setPickupOptions([]);
-                      setPickupSessionToken(createPlacesSessionToken());
                     }
                   }}
                   onChange={handleSelectPickupPlace}
                   getOptionLabel={(option) => {
                     if (typeof option === "string") return option;
-                    return option?.fullText || "";
+                    return option?.fullAddress || "";
                   }}
                   filterOptions={(x) => x}
                   noOptionsText={
@@ -923,11 +913,13 @@ export default function BookingCard() {
                     <Box component="li" {...props}>
                       <Stack spacing={0.25}>
                         <Typography sx={{ fontWeight: 800, fontSize: 14 }}>
-                          {option.mainText || option.fullText}
+                          {option.name ||
+                            option.shortAddress ||
+                            option.fullAddress}
                         </Typography>
-                        {!!option.secondaryText && (
+                        {!!option.maskedAddress && (
                           <Typography variant="body2" sx={{ opacity: 0.75 }}>
-                            {option.secondaryText}
+                            {option.maskedAddress}
                           </Typography>
                         )}
                       </Stack>
