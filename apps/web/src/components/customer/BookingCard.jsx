@@ -1109,35 +1109,19 @@ export default function BookingCard() {
                       >
                         <Autocomplete
                           freeSolo
+                          disablePortal
                           open={
-                            !!stopOpenMap[idx] &&
-                            (stopOptions[idx] || []).length > 0
+                            String(s || "").trim().length >= 3 &&
+                            (!!stopLoadingMap[idx] ||
+                              (stopOptions[idx] || []).length > 0)
                           }
                           options={stopOptions[idx] || []}
                           loading={!!stopLoadingMap[idx]}
                           value={stopPlaces[idx] || null}
                           inputValue={s}
-                          onFocus={() => {
-                            if ((stopOptions[idx] || []).length > 0) {
-                              setStopOpenMap((prev) => ({
-                                ...prev,
-                                [idx]: true,
-                              }));
-                            }
-                          }}
-                          onClose={() => {
-                            setStopOpenMap((prev) => ({
-                              ...prev,
-                              [idx]: false,
-                            }));
-                          }}
                           onInputChange={(_, value, reason) => {
                             if (reason === "input") {
                               handleChangeStop(idx, value);
-                              setStopOpenMap((prev) => ({
-                                ...prev,
-                                [idx]: true,
-                              }));
                             }
                             if (reason === "clear") {
                               handleChangeStop(idx, "");
@@ -1146,10 +1130,6 @@ export default function BookingCard() {
                                   i === idx ? [] : items,
                                 ),
                               );
-                              setStopOpenMap((prev) => ({
-                                ...prev,
-                                [idx]: false,
-                              }));
                             }
                           }}
                           onChange={(_, option) =>
@@ -1170,6 +1150,13 @@ export default function BookingCard() {
                             option.placeId === value.placeId
                           }
                           fullWidth
+                          slotProps={{
+                            paper: {
+                              sx: {
+                                zIndex: 20001,
+                              },
+                            },
+                          }}
                           renderOption={(props, option) => (
                             <Box component="li" {...props}>
                               <Stack spacing={0.25}>
