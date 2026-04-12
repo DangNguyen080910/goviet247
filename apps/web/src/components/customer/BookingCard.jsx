@@ -1158,7 +1158,7 @@ export default function BookingCard() {
                                   setStopOptions((prev) =>
                                     prev.map((items, i) =>
                                       i === idx ? [] : items,
-                                    ),
+                                    ),``
                                   );
                                 }
                               }}
