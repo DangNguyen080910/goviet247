@@ -559,6 +559,8 @@ export default function BookingCard() {
     );
 
     if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
+      setDistanceKm("");
+      setDriveMinutes("");
       setIsRouteLoading(false);
       return;
     }
@@ -581,10 +583,14 @@ export default function BookingCard() {
 
       if (Number.isFinite(Number(route?.distanceKm))) {
         setDistanceKm(String(route.distanceKm));
+      } else {
+        setDistanceKm("");
       }
 
       if (Number.isFinite(Number(route?.durationMinutes))) {
         setDriveMinutes(String(route.durationMinutes));
+      } else {
+        setDriveMinutes("");
       }
     } catch (e) {
       if (!silent) {
@@ -661,12 +667,9 @@ export default function BookingCard() {
     if (!option?.placeId) {
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? null : p));
       setStopPlaces(nextStopPlaces);
-
-      if (!nextStopPlaces.some((item) => item?.lat && item?.lng)) {
-        setDistanceKm("");
-        setDriveMinutes("");
-      }
-
+      await refreshRouteFromPlaces(pickupPlace, nextStopPlaces, {
+        silent: true,
+      });
       return;
     }
 
@@ -700,7 +703,6 @@ export default function BookingCard() {
       setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
     }
   };
-
   const handleEstimate = async () => {
     if (!isDistanceValid) {
       setToast({
