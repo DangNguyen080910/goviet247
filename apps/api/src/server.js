@@ -24,6 +24,7 @@ import publicConfigRoutes from "./routes/publicConfig.js";
 import driverDocumentsRoutes from "./routes/driverDocuments.js";
 import driverProfileRoutes from "./routes/driverProfile.js";
 import uploadRoutes from "./routes/upload.js";
+import mapsRoutes from "./routes/maps.js";
 
 
 const app = express();
@@ -105,6 +106,7 @@ app.use("/api/admin/auth", adminAuthRoutes);
 app.use("/api/admin/customers", adminCustomersRoutes);
 app.use("/api/pricing", pricingRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/maps", mapsRoutes);
 
 // --- Tạo HTTP server & gắn Socket.IO ---
 const server = http.createServer(app);
