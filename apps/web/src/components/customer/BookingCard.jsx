@@ -113,6 +113,9 @@ export default function BookingCard() {
   const [pickupLoading, setPickupLoading] = useState(false);
 
   const [stops, setStops] = useState([""]);
+  const [stopPlaces, setStopPlaces] = useState([null]);
+  const [stopOptions, setStopOptions] = useState([[]]);
+  const [stopLoadingMap, setStopLoadingMap] = useState({});
   const [pickupTime, setPickupTime] = useState("");
   const [returnTime, setReturnTime] = useState("");
   const [direction, setDirection] = useState("ONE_WAY");
@@ -256,6 +259,9 @@ export default function BookingCard() {
       const next = [...prev, ""];
       const newIndex = next.length - 1;
 
+      setStopPlaces((prevPlaces) => [...prevPlaces, null]);
+      setStopOptions((prevOptions) => [...prevOptions, []]);
+
       setTimeout(() => {
         const el = stopInputRefs.current[newIndex];
         if (el) {
@@ -271,16 +277,44 @@ export default function BookingCard() {
   const handleRemoveStop = (idx) =>
     setStops((prev) => {
       const next = prev.filter((_, i) => i !== idx);
+
+      setStopPlaces((prevPlaces) => {
+        const nextPlaces = prevPlaces.filter((_, i) => i !== idx);
+        return nextPlaces.length ? nextPlaces : [null];
+      });
+
+      setStopOptions((prevOptions) => {
+        const nextOptions = prevOptions.filter((_, i) => i !== idx);
+        return nextOptions.length ? nextOptions : [[]];
+      });
+
+      setStopLoadingMap((prevMap) => {
+        const nextMap = { ...prevMap };
+        delete nextMap[idx];
+
+        const reindexed = {};
+        Object.keys(nextMap).forEach((key) => {
+          const oldIndex = Number(key);
+          if (oldIndex < idx) reindexed[oldIndex] = nextMap[oldIndex];
+          if (oldIndex > idx) reindexed[oldIndex - 1] = nextMap[oldIndex];
+        });
+
+        return reindexed;
+      });
+
       setTimeout(() => {
         const targetIdx = Math.min(idx, next.length - 1);
         const el = stopInputRefs.current[targetIdx];
         if (el) el.focus();
       }, 0);
+
       return next.length ? next : [""];
     });
 
-  const handleChangeStop = (idx, val) =>
+  const handleChangeStop = (idx, val) => {
     setStops((prev) => prev.map((s, i) => (i === idx ? val : s)));
+    setStopPlaces((prev) => prev.map((p, i) => (i === idx ? null : p)));
+  };
 
   const hasAtLeastOneStop = useMemo(() => stops.some((x) => x.trim()), [stops]);
 
@@ -326,6 +360,53 @@ export default function BookingCard() {
       clearTimeout(t);
     };
   }, [pickupAddress]);
+
+  useEffect(() => {
+    const timers = [];
+    let active = true;
+
+    stops.forEach((value, idx) => {
+      const keyword = String(value || "").trim();
+
+      if (!keyword || keyword.length < 3) {
+        setStopOptions((prev) =>
+          prev.map((items, i) => (i === idx ? [] : items)),
+        );
+        setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
+        return;
+      }
+
+      const t = setTimeout(async () => {
+        try {
+          setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
+          const items = await searchPlaces(keyword);
+
+          if (!active) return;
+
+          setStopOptions((prev) =>
+            prev.map((oldItems, i) => (i === idx ? items : oldItems)),
+          );
+        } catch {
+          if (!active) return;
+
+          setStopOptions((prev) =>
+            prev.map((oldItems, i) => (i === idx ? [] : oldItems)),
+          );
+        } finally {
+          if (active) {
+            setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
+          }
+        }
+      }, 350);
+
+      timers.push(t);
+    });
+
+    return () => {
+      active = false;
+      timers.forEach(clearTimeout);
+    };
+  }, [stops]);
 
   const pickupMs = useMemo(
     () => toMsFromDatetimeLocal(pickupTime),
@@ -462,6 +543,9 @@ export default function BookingCard() {
     setPickupPlace(null);
     setPickupOptions([]);
     setStops([""]);
+    setStopPlaces([null]);
+    setStopOptions([[]]);
+    setStopLoadingMap({});
     setPickupTime("");
     setReturnTime("");
     setDirection("ONE_WAY");
@@ -504,6 +588,37 @@ export default function BookingCard() {
       });
     } finally {
       setPickupLoading(false);
+    }
+  };
+
+  const handleSelectStopPlace = async (idx, option) => {
+    if (!option?.placeId) {
+      setStopPlaces((prev) => prev.map((p, i) => (i === idx ? null : p)));
+      return;
+    }
+
+    try {
+      setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
+
+      const detail = await getPlaceDetail(option.placeId);
+
+      setStopPlaces((prev) => prev.map((p, i) => (i === idx ? detail : p)));
+      setStops((prev) =>
+        prev.map((value, i) =>
+          i === idx ? detail?.fullAddress || option?.fullAddress || "" : value,
+        ),
+      );
+      setStopOptions((prev) =>
+        prev.map((items, i) => (i === idx ? [] : items)),
+      );
+    } catch (e) {
+      setToast({
+        open: true,
+        severity: "error",
+        message: e?.message || "Không lấy được chi tiết điểm đến.",
+      });
+    } finally {
+      setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
     }
   };
 
@@ -973,22 +1088,82 @@ export default function BookingCard() {
                         key={idx}
                         direction="row"
                         spacing={1}
-                        alignItems="center"
+                        alignItems="flex-start"
                       >
-                        <TextField
-                          label={`Điểm đến ${idx + 1}`}
-                          value={s}
-                          onChange={(e) =>
-                            handleChangeStop(idx, e.target.value)
+                        <Autocomplete
+                          freeSolo
+                          options={stopOptions[idx] || []}
+                          loading={!!stopLoadingMap[idx]}
+                          value={stopPlaces[idx] || null}
+                          inputValue={s}
+                          onInputChange={(_, value, reason) => {
+                            if (reason === "input") {
+                              handleChangeStop(idx, value);
+                            }
+                            if (reason === "clear") {
+                              handleChangeStop(idx, "");
+                              setStopOptions((prev) =>
+                                prev.map((items, i) =>
+                                  i === idx ? [] : items,
+                                ),
+                              );
+                            }
+                          }}
+                          onChange={(_, option) =>
+                            handleSelectStopPlace(idx, option)
+                          }
+                          getOptionLabel={(option) => {
+                            if (typeof option === "string") return option;
+                            return option?.fullAddress || "";
+                          }}
+                          filterOptions={(x) => x}
+                          noOptionsText={
+                            String(s || "").trim().length < 3
+                              ? "Nhập ít nhất 3 ký tự để tìm địa chỉ"
+                              : "Không có gợi ý phù hợp"
+                          }
+                          loadingText="Đang tìm địa chỉ..."
+                          isOptionEqualToValue={(option, value) =>
+                            option.placeId === value.placeId
                           }
                           fullWidth
-                          size="small"
-                          inputRef={(el) => (stopInputRefs.current[idx] = el)}
-                          placeholder={
-                            idx === 0
-                              ? "Ví dụ: Khách sạn Dalat Palace, 02 Trần Phú, Phường 3, Đà Lạt"
-                              : "Ví dụ: Thung Lũng Tình Yêu, 05-07 Mai Anh Đào, Phường 8, Đà Lạt"
-                          }
+                          renderOption={(props, option) => (
+                            <Box component="li" {...props}>
+                              <Stack spacing={0.25}>
+                                <Typography
+                                  sx={{ fontWeight: 800, fontSize: 14 }}
+                                >
+                                  {option.name ||
+                                    option.shortAddress ||
+                                    option.fullAddress}
+                                </Typography>
+                                {!!option.maskedAddress && (
+                                  <Typography
+                                    variant="body2"
+                                    sx={{ opacity: 0.75 }}
+                                  >
+                                    {option.maskedAddress}
+                                  </Typography>
+                                )}
+                              </Stack>
+                            </Box>
+                          )}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              label={`Điểm đến ${idx + 1}`}
+                              fullWidth
+                              size="small"
+                              inputRef={(el) =>
+                                (stopInputRefs.current[idx] = el)
+                              }
+                              placeholder={
+                                idx === 0
+                                  ? "Ví dụ: Khách sạn Dalat Palace, 02 Trần Phú, Phường 3, Đà Lạt"
+                                  : "Ví dụ: Thung Lũng Tình Yêu, 05-07 Mai Anh Đào, Phường 8, Đà Lạt"
+                              }
+                            />
+                          )}
                         />
 
                         <IconButton
@@ -996,6 +1171,7 @@ export default function BookingCard() {
                           disabled={stops.length === 1}
                           size="small"
                           aria-label="Xóa điểm"
+                          sx={{ mt: 0.5 }}
                         >
                           <DeleteOutlineIcon fontSize="small" />
                         </IconButton>

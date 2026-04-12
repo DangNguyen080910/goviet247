@@ -22,7 +22,8 @@ export async function autocomplete(input) {
     params: {
       api_key: GOONG_API_KEY,
       input,
-      location: "10.7769,106.7009", // TP.HCM center
+      location: "10.7769,106.7009",
+      radius: 50000,
     },
   });
 
