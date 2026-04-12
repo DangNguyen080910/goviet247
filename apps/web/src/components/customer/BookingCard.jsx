@@ -1153,14 +1153,15 @@ export default function BookingCard() {
                               label={`Điểm đến ${idx + 1}`}
                               fullWidth
                               size="small"
-                              inputRef={(el) =>
-                                (stopInputRefs.current[idx] = el)
-                              }
                               placeholder={
                                 idx === 0
                                   ? "Ví dụ: Khách sạn Dalat Palace, 02 Trần Phú, Phường 3, Đà Lạt"
                                   : "Ví dụ: Thung Lũng Tình Yêu, 05-07 Mai Anh Đào, Phường 8, Đà Lạt"
                               }
+                              inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "new-password",
+                              }}
                             />
                           )}
                         />
