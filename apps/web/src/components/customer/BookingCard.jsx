@@ -611,25 +611,48 @@ export default function BookingCard() {
     try {
       setIsRouteLoading(true);
 
+      // ✅ BUILD points theo đúng thứ tự UI (FIX multi-stop)
+      const validStops = [];
+
+      for (let i = 0; i < stops.length; i++) {
+        const text = stops[i];
+        const place = nextStopPlaces[i];
+
+        if (
+          text &&
+          place &&
+          Number.isFinite(Number(place.lat)) &&
+          Number.isFinite(Number(place.lng))
+        ) {
+          validStops.push({
+            lat: Number(place.lat),
+            lng: Number(place.lng),
+          });
+        }
+      }
+
+      // ❗ nếu thiếu stop nào → không route
+      if (validStops.length !== stops.filter((s) => s.trim()).length) {
+        setDistanceKm("");
+        setDriveMinutes("");
+        setIsRouteLoading(false);
+        return;
+      }
+
       let points = [
         {
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
         },
-        ...resolvedStopPlaces.map((item) => ({
-          lat: Number(item.lat),
-          lng: Number(item.lng),
-        })),
+        ...validStops,
       ];
 
+      // ✅ ROUND TRIP → quay về điểm đón
       if (direction === "ROUND_TRIP") {
-        points = [
-          ...points,
-          {
-            lat: Number(nextPickupPlace.lat),
-            lng: Number(nextPickupPlace.lng),
-          },
-        ];
+        points.push({
+          lat: Number(nextPickupPlace.lat),
+          lng: Number(nextPickupPlace.lng),
+        });
       }
 
       const route = await getRoute(points);
@@ -1399,16 +1422,24 @@ export default function BookingCard() {
                         textField: { fullWidth: true, size: "small" },
                       }}
                     />
-                    <TimePicker
+                    <TextField
                       label="Giờ đón khách"
-                      value={pickupTimeOnly}
-                      onChange={(newValue) => setPickupTimeOnly(newValue)}
-                      minutesStep={5}
-                      ampm={false}
-                      format="HH:mm"
-                      slotProps={{
-                        textField: { fullWidth: true, size: "small" },
+                      type="time"
+                      value={
+                        pickupTimeOnly
+                          ? dayjs(pickupTimeOnly).format("HH:mm")
+                          : ""
+                      }
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (!val) return;
+                        const [h, m] = val.split(":");
+                        const t = dayjs().hour(Number(h)).minute(Number(m));
+                        setPickupTimeOnly(t);
                       }}
+                      fullWidth
+                      size="small"
+                      inputProps={{ step: 300 }}
                     />
                   </Stack>
                 </LocalizationProvider>
