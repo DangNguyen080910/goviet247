@@ -565,6 +565,12 @@ export default function BookingCard() {
     }, 0);
   };
 
+  useEffect(() => {
+    if (pickupPlace && stopPlaces.some((p) => p)) {
+      refreshRouteFromPlaces(pickupPlace, stopPlaces, { silent: true });
+    }
+  }, [direction]);
+
   const refreshRouteFromPlaces = async (
     nextPickupPlace,
     nextStopPlaces,
@@ -577,12 +583,23 @@ export default function BookingCard() {
       Number.isFinite(Number(nextPickupPlace.lat)) &&
       Number.isFinite(Number(nextPickupPlace.lng));
 
-    const resolvedStopPlaces = (nextStopPlaces || []).filter(
-      (item) =>
-        item &&
-        Number.isFinite(Number(item.lat)) &&
-        Number.isFinite(Number(item.lng)),
-    );
+    const hasAllStopsValid =
+      (nextStopPlaces || []).length > 0 &&
+      (nextStopPlaces || []).every(
+        (item) =>
+          item &&
+          Number.isFinite(Number(item.lat)) &&
+          Number.isFinite(Number(item.lng)),
+      );
+
+    if (!hasPickupCoords || !hasAllStopsValid) {
+      setDistanceKm("");
+      setDriveMinutes("");
+      setIsRouteLoading(false);
+      return;
+    }
+
+    const resolvedStopPlaces = nextStopPlaces;
 
     if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
       setDistanceKm("");
@@ -594,7 +611,7 @@ export default function BookingCard() {
     try {
       setIsRouteLoading(true);
 
-      const points = [
+      let points = [
         {
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
@@ -604,6 +621,16 @@ export default function BookingCard() {
           lng: Number(item.lng),
         })),
       ];
+
+      if (direction === "ROUND_TRIP") {
+        points = [
+          ...points,
+          {
+            lat: Number(nextPickupPlace.lat),
+            lng: Number(nextPickupPlace.lng),
+          },
+        ];
+      }
 
       const route = await getRoute(points);
 
@@ -668,6 +695,7 @@ export default function BookingCard() {
       setDistanceKm("");
       setDriveMinutes("");
       setStopPlaces([null]);
+      setStops([""]);
       return;
     }
 
@@ -1110,13 +1138,33 @@ export default function BookingCard() {
                   loading={pickupLoading}
                   value={pickupPlace}
                   inputValue={pickupAddress}
-                  onInputChange={(_, value, reason) => {
+                  onInputChange={async (_, value, reason) => {
                     if (reason === "input") {
                       setPickupAddress(value);
                       setPickupPlace(null);
                       setDistanceKm("");
                       setDriveMinutes("");
+
+                      // ✅ FIX autofill / paste
+                      if (value && value.length > 6) {
+                        try {
+                          const results = await searchPlaces(value);
+                          if (results.length > 0) {
+                            const detail = await getPlaceDetail(
+                              results[0].placeId,
+                            );
+                            setPickupPlace(detail);
+
+                            await refreshRouteFromPlaces(detail, stopPlaces, {
+                              silent: true,
+                            });
+                          }
+                        } catch {
+                          // ignore
+                        }
+                      }
                     }
+
                     if (reason === "clear") {
                       setPickupAddress("");
                       setPickupPlace(null);
@@ -1356,6 +1404,8 @@ export default function BookingCard() {
                       value={pickupTimeOnly}
                       onChange={(newValue) => setPickupTimeOnly(newValue)}
                       minutesStep={5}
+                      ampm={false}
+                      format="HH:mm"
                       slotProps={{
                         textField: { fullWidth: true, size: "small" },
                       }}
