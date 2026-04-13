@@ -1458,14 +1458,24 @@ export default function BookingCard() {
                           textField: { fullWidth: true, size: "small" },
                         }}
                       />
-                      <TimePicker
+                      <TextField
                         label="Giờ quay về"
-                        value={returnTimeOnly}
-                        onChange={(newValue) => setReturnTimeOnly(newValue)}
-                        minutesStep={5}
-                        slotProps={{
-                          textField: { fullWidth: true, size: "small" },
+                        type="time"
+                        value={
+                          returnTimeOnly
+                            ? dayjs(returnTimeOnly).format("HH:mm")
+                            : ""
+                        }
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          if (!val) return;
+                          const [h, m] = val.split(":");
+                          const t = dayjs().hour(Number(h)).minute(Number(m));
+                          setReturnTimeOnly(t);
                         }}
+                        fullWidth
+                        size="small"
+                        inputProps={{ step: 300 }}
                       />
                     </Stack>
                   </LocalizationProvider>

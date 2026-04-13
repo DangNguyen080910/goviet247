@@ -107,8 +107,10 @@ export async function getRoute(points = []) {
   const destination = `${normalizedPoints[normalizedPoints.length - 1].lat},${normalizedPoints[normalizedPoints.length - 1].lng}`;
 
   const middlePoints = normalizedPoints.slice(1, -1);
+
+  // ✅ Goong waypoints nên dùng dấu ; giữa các điểm
   const waypoints = middlePoints.length
-    ? middlePoints.map((point) => `${point.lat},${point.lng}`).join("|")
+    ? middlePoints.map((point) => `${point.lat},${point.lng}`).join(";")
     : undefined;
 
   const url = `${GOONG_BASE_URL}/Direction`;
@@ -129,15 +131,17 @@ export async function getRoute(points = []) {
     return null;
   }
 
-  const distanceMeters =
-    Number(route.legs?.reduce((sum, leg) => sum + (Number(leg?.distance?.value) || 0), 0)) ||
-    Number(route.overview_polyline ? route.legs?.[0]?.distance?.value : 0) ||
-    0;
+  const legs = Array.isArray(route.legs) ? route.legs : [];
 
-  const durationSeconds =
-    Number(route.legs?.reduce((sum, leg) => sum + (Number(leg?.duration?.value) || 0), 0)) ||
-    Number(route.legs?.[0]?.duration?.value || 0) ||
-    0;
+  const distanceMeters = legs.reduce(
+    (sum, leg) => sum + (Number(leg?.distance?.value) || 0),
+    0,
+  );
+
+  const durationSeconds = legs.reduce(
+    (sum, leg) => sum + (Number(leg?.duration?.value) || 0),
+    0,
+  );
 
   return {
     distanceMeters,
@@ -146,5 +150,11 @@ export async function getRoute(points = []) {
     durationMinutes: Math.max(1, Math.round(durationSeconds / 60)),
     polyline: route.overview_polyline?.points || "",
     points: normalizedPoints,
+    debug: {
+      origin,
+      destination,
+      waypoints,
+      legCount: legs.length,
+    },
   };
 }
