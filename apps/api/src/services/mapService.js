@@ -125,6 +125,15 @@ export async function getRoute(points = []) {
     },
   });
 
+  console.log("GOONG_ROUTE_DEBUG", {
+    origin,
+    destination,
+    waypoints,
+    legCount: Array.isArray(data?.routes?.[0]?.legs)
+      ? data.routes[0].legs.length
+      : 0,
+  });
+
   const route = data?.routes?.[0];
 
   if (!route) {
