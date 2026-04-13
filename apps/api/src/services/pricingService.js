@@ -97,13 +97,18 @@ export async function quotePrice(input) {
 
   let totalMinutes = 0;
   let waitMinutes = 0;
+  let freeWaitingMinutes = 0;
+  let billableWaitMinutes = 0;
   let waitCost = 0;
 
   if (direction === "ROUND_TRIP") {
     // cần returnTime
     const rt = returnTime ? new Date(returnTime) : null;
     if (!rt || Number.isNaN(rt.getTime())) {
-      return { ok: false, message: "returnTime không hợp lệ cho chuyến khứ hồi." };
+      return {
+        ok: false,
+        message: "returnTime không hợp lệ cho chuyến khứ hồi.",
+      };
     }
     if (rt.getTime() <= pickup.getTime()) {
       return { ok: false, message: "returnTime phải lớn hơn pickupTime." };
@@ -118,7 +123,10 @@ export async function quotePrice(input) {
 
     const dm = Number(driveMinutes);
     if (!Number.isFinite(dm) || dm < 0) {
-      return { ok: false, message: "driveMinutes không hợp lệ cho chuyến khứ hồi." };
+      return {
+        ok: false,
+        message: "driveMinutes không hợp lệ cho chuyến khứ hồi.",
+      };
     }
 
     // waitMinutes luôn tính để debug/hiển thị nội bộ
@@ -128,10 +136,15 @@ export async function quotePrice(input) {
     // - Nếu có qua đêm (overnightCount > 0) => KHÔNG tính waitCost
     // - Nếu không qua đêm => tính waitCost theo pricePerHour như cũ
     if (overnightCount > 0) {
+      freeWaitingMinutes = 0;
+      billableWaitMinutes = 0;
       waitCost = 0;
     } else {
-      const waitHours = waitMinutes / 60;
-      waitCost = Math.round(waitHours * pricePerHour);
+      freeWaitingMinutes = 60;
+      billableWaitMinutes = Math.max(0, waitMinutes - freeWaitingMinutes);
+
+      const waitHours = Math.ceil(billableWaitMinutes / 60);
+      waitCost = waitHours * pricePerHour;
     }
   } else if (direction === "ONE_WAY") {
     // ONE_WAY: overnight kích hoạt theo trigger km hoặc trigger giờ (driveMinutes)
@@ -169,6 +182,8 @@ export async function quotePrice(input) {
       // time meta
       totalMinutes,
       waitMinutes,
+      freeWaitingMinutes,
+      billableWaitMinutes,
 
       overnightCount,
 

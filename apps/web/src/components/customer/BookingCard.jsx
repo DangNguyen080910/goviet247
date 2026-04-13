@@ -163,7 +163,9 @@ function formatWeekdayHeader(day) {
   if (value.includes("sat")) return "T7";
   if (value.includes("sun")) return "CN";
 
-  return String(day || "").slice(0, 2).toUpperCase();
+  return String(day || "")
+    .slice(0, 2)
+    .toUpperCase();
 }
 
 export default function BookingCard() {
@@ -634,6 +636,20 @@ export default function BookingCard() {
   const quoteCountdownLabel = useMemo(() => {
     return formatCountdownLabel(quoteRemainingMs);
   }, [quoteRemainingMs]);
+
+  const quoteRaw = quote?.raw || null;
+  const quoteDirection = quoteRaw?.direction || "";
+  const quoteWaitMinutes = Number(quoteRaw?.waitMinutes || 0);
+  const quoteFreeWaitingMinutes = Number(quoteRaw?.freeWaitingMinutes || 0);
+  const quoteBillableWaitMinutes = Number(quoteRaw?.billableWaitMinutes || 0);
+  const quoteWaitCost = Number(quoteRaw?.waitCost || 0);
+
+  const shouldShowWaitingBreakdown =
+    quoteDirection === "ROUND_TRIP" &&
+    (quoteWaitMinutes > 0 ||
+      quoteFreeWaitingMinutes > 0 ||
+      quoteBillableWaitMinutes > 0 ||
+      quoteWaitCost > 0);
 
   const otpRemainingMs = useMemo(() => {
     if (!otpDialogOpen || !otpSessionId || !otpExpiresAt) return 0;
@@ -1972,6 +1988,42 @@ export default function BookingCard() {
                 phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh
                 thêm.
               </Typography>
+              {shouldShowWaitingBreakdown && (
+                <Box
+                  sx={{
+                    mt: 0.5,
+                    p: 1.25,
+                    borderRadius: 2,
+                    bgcolor: "rgba(0,0,0,0.03)",
+                    border: "1px solid rgba(0,0,0,0.06)",
+                  }}
+                >
+                  <Stack spacing={0.5}>
+                    <Typography sx={{ fontWeight: 800, fontSize: 14 }}>
+                      Chi tiết thời gian chờ
+                    </Typography>
+
+                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                      Thời gian chờ:{" "}
+                      <b>{formatDurationMinutes(quoteWaitMinutes)}</b>
+                    </Typography>
+
+                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                      Miễn phí:{" "}
+                      <b>{formatDurationMinutes(quoteFreeWaitingMinutes)}</b>
+                    </Typography>
+
+                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                      Tính phí:{" "}
+                      <b>{formatDurationMinutes(quoteBillableWaitMinutes)}</b>
+                    </Typography>
+
+                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                      Phí chờ: <b>{formatVND(quoteWaitCost)}</b>
+                    </Typography>
+                  </Stack>
+                </Box>
+              )}
 
               <Button
                 variant="contained"
