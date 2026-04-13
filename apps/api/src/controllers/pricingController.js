@@ -22,19 +22,28 @@ export async function quote(req, res) {
       returnTime,
       distanceKm,
       driveMinutes,
+      outboundDriveMinutes,
     } = req.body || {};
 
     if (!carType) {
-      return res.status(400).json({ success: false, message: "Thiếu carType." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Thiếu carType." });
     }
     if (!direction) {
-      return res.status(400).json({ success: false, message: "Thiếu direction." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Thiếu direction." });
     }
     if (!pickupTime) {
-      return res.status(400).json({ success: false, message: "Thiếu pickupTime." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Thiếu pickupTime." });
     }
     if (distanceKm == null) {
-      return res.status(400).json({ success: false, message: "Thiếu distanceKm." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Thiếu distanceKm." });
     }
 
     const result = await quotePrice({
@@ -44,6 +53,7 @@ export async function quote(req, res) {
       returnTime,
       distanceKm,
       driveMinutes,
+      outboundDriveMinutes,
     });
 
     if (!result.ok) {
