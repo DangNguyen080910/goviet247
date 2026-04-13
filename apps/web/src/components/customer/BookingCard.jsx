@@ -138,6 +138,21 @@ function formatDurationMinutes(totalMinutes) {
 }
 
 function formatWeekdayHeader(day) {
+  const dayIndex =
+    typeof day?.day === "function"
+      ? day.day()
+      : typeof day?.getDay === "function"
+        ? day.getDay()
+        : null;
+
+  if (dayIndex === 1) return "T2";
+  if (dayIndex === 2) return "T3";
+  if (dayIndex === 3) return "T4";
+  if (dayIndex === 4) return "T5";
+  if (dayIndex === 5) return "T6";
+  if (dayIndex === 6) return "T7";
+  if (dayIndex === 0) return "CN";
+
   const value = String(day || "").toLowerCase();
 
   if (value.includes("mon")) return "T2";
@@ -148,17 +163,7 @@ function formatWeekdayHeader(day) {
   if (value.includes("sat")) return "T7";
   if (value.includes("sun")) return "CN";
 
-  if (value.includes("2")) return "T2";
-  if (value.includes("3")) return "T3";
-  if (value.includes("4")) return "T4";
-  if (value.includes("5")) return "T5";
-  if (value.includes("6")) return "T6";
-  if (value.includes("7")) return "T7";
-  if (value.includes("cn")) return "CN";
-
-  return String(day || "")
-    .slice(0, 2)
-    .toUpperCase();
+  return String(day || "").slice(0, 2).toUpperCase();
 }
 
 export default function BookingCard() {
