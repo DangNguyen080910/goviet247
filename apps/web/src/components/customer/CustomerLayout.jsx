@@ -276,24 +276,14 @@ export default function CustomerLayout() {
                     >
                       <Button
                         variant="outlined"
-                        startIcon={<AccountCircleOutlinedIcon />}
-                        endIcon={
-                          <KeyboardArrowDownRoundedIcon
-                            sx={{
-                              transition: "transform 0.2s ease",
-                              transform: menuOpen ? "rotate(180deg)" : "none",
-                            }}
-                          />
-                        }
                         onClick={handleOpenUserMenu}
                         sx={{
-                          textTransform: "none",
+                          minWidth: "auto",
+                          px: { xs: 1, sm: 1.5 },
                           borderRadius: 2,
-                          fontWeight: 800,
-                          color: "#374151",
                           borderColor: menuOpen ? "#F97316" : "#e5e7eb",
                           bgcolor: menuOpen ? "#FFF7ED" : "#ffffff",
-                          maxWidth: { xs: 180, sm: 290 },
+                          color: "#374151",
                           boxShadow: menuOpen
                             ? "0 0 0 3px rgba(249,115,22,0.12)"
                             : "none",
@@ -303,17 +293,40 @@ export default function CustomerLayout() {
                           },
                         }}
                       >
-                        <Box
-                          component="span"
-                          sx={{
-                            display: "inline-block",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                          }}
+                        <Stack
+                          direction="row"
+                          alignItems="center"
+                          spacing={0.5}
                         >
-                          Xin chào, {greetingLabel}
-                        </Box>
+                          <AccountCircleOutlinedIcon
+                            sx={{ fontSize: { xs: 20, sm: 22 } }}
+                          />
+
+                          <KeyboardArrowDownRoundedIcon
+                            sx={{
+                              fontSize: { xs: 18, sm: 20 },
+                              transition: "transform 0.2s ease",
+                              transform: menuOpen ? "rotate(180deg)" : "none",
+                              display: { xs: "none", sm: "inline-flex" },
+                            }}
+                          />
+
+                          {/* chỉ show text ở desktop */}
+                          <Box
+                            component="span"
+                            sx={{
+                              display: { xs: "none", sm: "inline-block" },
+                              ml: 0.5,
+                              fontWeight: 800,
+                              maxWidth: 180,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            Xin chào, {greetingLabel}
+                          </Box>
+                        </Stack>
                       </Button>
                     </Badge>
                   </Tooltip>

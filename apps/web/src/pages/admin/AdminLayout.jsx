@@ -590,7 +590,7 @@ export default function AdminLayout() {
         </Box>
 
         <Typography variant="body2" sx={{ color: "text.secondary", mt: 0.8 }}>
-          {user?.role ? `${user.role} • ${user.username}` : "Admin Panel"}
+          {user?.role ? `${user.username}` : "Admin Panel"}
         </Typography>
       </Box>
 
