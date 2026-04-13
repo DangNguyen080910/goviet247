@@ -108,6 +108,23 @@ function formatOtpCountdown(ms) {
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
+function formatDurationMinutes(totalMinutes) {
+  const safeMinutes = Math.max(0, Math.round(Number(totalMinutes || 0)));
+
+  if (safeMinutes < 60) {
+    return `${safeMinutes} phút`;
+  }
+
+  const hours = Math.floor(safeMinutes / 60);
+  const minutes = safeMinutes % 60;
+
+  if (minutes === 0) {
+    return `${hours} giờ`;
+  }
+
+  return `${hours} giờ ${String(minutes).padStart(2, "0")} phút`;
+}
+
 export default function BookingCard() {
   const navigate = useNavigate();
   const { user, login } = useCustomerAuth();
@@ -135,6 +152,7 @@ export default function BookingCard() {
 
   const [distanceKm, setDistanceKm] = useState("");
   const [driveMinutes, setDriveMinutes] = useState("");
+  const [outboundDriveMinutes, setOutboundDriveMinutes] = useState("");
   const [isRouteLoading, setIsRouteLoading] = useState(false);
 
   const [quote, setQuote] = useState(null);
@@ -325,6 +343,7 @@ export default function BookingCard() {
     setStopPlaces((prev) => prev.map((p, i) => (i === idx ? null : p)));
     setDistanceKm("");
     setDriveMinutes("");
+    setOutboundDriveMinutes("");
   };
 
   const filledStopCount = useMemo(
@@ -495,6 +514,56 @@ export default function BookingCard() {
     returnMs,
   ]);
 
+  const numericDriveMinutes = Number(driveMinutes);
+  const numericOutboundDriveMinutes = Number(outboundDriveMinutes);
+
+  const estimatedExtraMinutes = useMemo(() => {
+    if (direction !== "ROUND_TRIP") return 0;
+
+    if (
+      !pickupDate ||
+      !pickupTimeOnly ||
+      !returnDate ||
+      !returnTimeOnly ||
+      !Number.isFinite(numericOutboundDriveMinutes)
+    ) {
+      return 0;
+    }
+
+    const totalGapMinutes = Math.max(
+      0,
+      Math.round((returnMs - pickupMs) / 60000),
+    );
+
+    const extraMinutes = totalGapMinutes - numericOutboundDriveMinutes;
+
+    return Math.max(0, extraMinutes);
+  }, [
+    direction,
+    pickupDate,
+    pickupTimeOnly,
+    returnDate,
+    returnTimeOnly,
+    pickupMs,
+    returnMs,
+    numericOutboundDriveMinutes,
+  ]);
+
+  const estimatedTripMinutes = useMemo(() => {
+    if (!Number.isFinite(numericDriveMinutes)) return 0;
+
+    if (direction !== "ROUND_TRIP") {
+      return numericDriveMinutes;
+    }
+
+    return numericDriveMinutes + estimatedExtraMinutes;
+  }, [direction, numericDriveMinutes, estimatedExtraMinutes]);
+
+  const estimatedTripDurationLabel = useMemo(() => {
+    if (!estimatedTripMinutes) return "";
+    return formatDurationMinutes(estimatedTripMinutes);
+  }, [estimatedTripMinutes]);
+
   // Khi thay input => reset quote
   useEffect(() => {
     setQuote(null);
@@ -509,6 +578,7 @@ export default function BookingCard() {
     carType,
     distanceKm,
     driveMinutes,
+    outboundDriveMinutes,
   ]);
 
   const quoteRemainingMs = useMemo(() => {
@@ -649,6 +719,7 @@ export default function BookingCard() {
       if (latestRouteRequestRef.current === requestId) {
         setDistanceKm("");
         setDriveMinutes("");
+        setOutboundDriveMinutes("");
         setIsRouteLoading(false);
       }
       return;
@@ -660,6 +731,7 @@ export default function BookingCard() {
       if (latestRouteRequestRef.current === requestId) {
         setDistanceKm("");
         setDriveMinutes("");
+        setOutboundDriveMinutes("");
         setIsRouteLoading(false);
       }
       return;
@@ -691,6 +763,7 @@ export default function BookingCard() {
         if (latestRouteRequestRef.current === requestId) {
           setDistanceKm("");
           setDriveMinutes("");
+          setOutboundDriveMinutes("");
           setIsRouteLoading(false);
         }
         return;
@@ -728,6 +801,12 @@ export default function BookingCard() {
         setDriveMinutes(String(route.durationMinutes));
       } else {
         setDriveMinutes("");
+      }
+
+      if (Number.isFinite(Number(route?.outboundDurationMinutes))) {
+        setOutboundDriveMinutes(String(route.outboundDurationMinutes));
+      } else {
+        setOutboundDriveMinutes("");
       }
     } catch (e) {
       if (latestRouteRequestRef.current !== requestId) {
@@ -771,6 +850,7 @@ export default function BookingCard() {
 
     setDistanceKm("");
     setDriveMinutes("");
+    setOutboundDriveMinutes("");
 
     setQuote(null);
     setSubmitTouched(false);
@@ -784,6 +864,7 @@ export default function BookingCard() {
       setPickupPlace(null);
       setDistanceKm("");
       setDriveMinutes("");
+      setOutboundDriveMinutes("");
       setStopPlaces([null]);
       setStops([""]);
       return;
@@ -1277,6 +1358,7 @@ export default function BookingCard() {
                       setPickupPlace(null);
                       setDistanceKm("");
                       setDriveMinutes("");
+                      setOutboundDriveMinutes("");
                     }
 
                     if (reason === "clear") {
@@ -1285,6 +1367,7 @@ export default function BookingCard() {
                       setPickupOptions([]);
                       setDistanceKm("");
                       setDriveMinutes("");
+                      setOutboundDriveMinutes("");
                     }
                   }}
                   onChange={handleSelectPickupPlace}
@@ -1668,13 +1751,26 @@ export default function BookingCard() {
                     <Typography sx={{ fontWeight: 700 }}>
                       Quãng đường dự kiến: {distanceKm} km
                     </Typography>
+
                     <Typography sx={{ fontWeight: 700 }}>
-                      Thời gian di chuyển dự kiến: {driveMinutes} phút
+                      Thời gian chuyến đi dự kiến:{" "}
+                      {estimatedTripDurationLabel ||
+                        formatDurationMinutes(driveMinutes)}
                     </Typography>
 
                     <Typography variant="body2" sx={{ opacity: 0.65 }}>
-                      Thông tin được hệ thống tính tự động từ lộ trình bản đồ.
+                      Thông tin được hệ thống tính tự động từ lộ trình bản đồ và
+                      loại chuyến bạn đã chọn.
                     </Typography>
+
+                    {direction === "ROUND_TRIP" &&
+                      !!returnDate &&
+                      !!returnTimeOnly && (
+                        <Typography variant="body2" sx={{ opacity: 0.6 }}>
+                          Đối với chuyến khứ hồi, hệ thống ước tính tổng thời
+                          gian theo lộ trình và giờ quay về bạn đã chọn.
+                        </Typography>
+                      )}
                   </Stack>
                 ) : (
                   <Typography variant="body2" sx={{ opacity: 0.7 }}>

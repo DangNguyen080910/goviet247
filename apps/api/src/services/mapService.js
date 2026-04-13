@@ -105,7 +105,6 @@ export async function getRoute(points = []) {
 
   const origin = `${normalizedPoints[0].lat},${normalizedPoints[0].lng}`;
 
-  // ✅ Theo docs Goong Directions: destination có thể chứa nhiều điểm, tách bằng ;
   const destination = normalizedPoints
     .slice(1)
     .map((point) => `${point.lat},${point.lng}`)
@@ -149,11 +148,36 @@ export async function getRoute(points = []) {
     0,
   );
 
+  const firstPoint = normalizedPoints[0];
+  const lastPoint = normalizedPoints[normalizedPoints.length - 1];
+
+  const isRoundTripDetected =
+    normalizedPoints.length >= 3 &&
+    firstPoint &&
+    lastPoint &&
+    firstPoint.lat === lastPoint.lat &&
+    firstPoint.lng === lastPoint.lng;
+
+  let outboundDurationSeconds = durationSeconds;
+  let returnDurationSeconds = 0;
+
+  if (isRoundTripDetected && legs.length >= 2) {
+    const lastLegSeconds = Number(legs[legs.length - 1]?.duration?.value) || 0;
+    returnDurationSeconds = lastLegSeconds;
+    outboundDurationSeconds = Math.max(0, durationSeconds - lastLegSeconds);
+  }
+
   return {
     distanceMeters,
     durationSeconds,
     distanceKm: Number((distanceMeters / 1000).toFixed(1)),
     durationMinutes: Math.max(1, Math.round(durationSeconds / 60)),
+    outboundDurationMinutes: Math.max(
+      1,
+      Math.round(outboundDurationSeconds / 60),
+    ),
+    returnDurationMinutes: Math.max(0, Math.round(returnDurationSeconds / 60)),
+    isRoundTripDetected,
     polyline: route.overview_polyline?.points || "",
     points: normalizedPoints,
     debug: {
