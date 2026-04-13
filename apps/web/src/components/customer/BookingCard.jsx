@@ -78,7 +78,8 @@ function combineDateTime(dateObj, timeObj) {
 
   const combined = d.hour(t.hour()).minute(t.minute()).second(0).millisecond(0);
 
-  return combined.toISOString();
+  // ❗ KHÔNG dùng toISOString nữa
+  return combined.format("YYYY-MM-DDTHH:mm:ss");
 }
 
 // Cắt bớt mã chuyến cho dễ nhìn
@@ -666,6 +667,7 @@ export default function BookingCard() {
       setPickupPlace(null);
       setDistanceKm("");
       setDriveMinutes("");
+      setStopPlaces([null]);
       return;
     }
 
