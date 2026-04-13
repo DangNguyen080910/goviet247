@@ -126,6 +126,22 @@ function formatDurationMinutes(totalMinutes) {
   return `${hours} giờ ${String(minutes).padStart(2, "0")} phút`;
 }
 
+function formatWeekdayHeader(day) {
+  const value = String(day || "").toLowerCase();
+
+  if (value.includes("sun")) return "CN";
+  if (value.includes("mon")) return "T2";
+  if (value.includes("tue")) return "T3";
+  if (value.includes("wed")) return "T4";
+  if (value.includes("thu")) return "T5";
+  if (value.includes("fri")) return "T6";
+  if (value.includes("sat")) return "T7";
+
+  return String(day || "")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 export default function BookingCard() {
   const navigate = useNavigate();
   const { user, login } = useCustomerAuth();
@@ -1623,6 +1639,7 @@ export default function BookingCard() {
                       label="Ngày đón khách"
                       value={pickupDate}
                       format="DD/MM/YYYY"
+                      dayOfWeekFormatter={formatWeekdayHeader}
                       onChange={(newValue) => setPickupDate(newValue)}
                       slotProps={{
                         textField: { fullWidth: true, size: "small" },
@@ -1669,6 +1686,7 @@ export default function BookingCard() {
                         label="Ngày quay về"
                         value={returnDate}
                         format="DD/MM/YYYY"
+                        dayOfWeekFormatter={formatWeekdayHeader}
                         onChange={(newValue) => setReturnDate(newValue)}
                         slotProps={{
                           textField: { fullWidth: true, size: "small" },
