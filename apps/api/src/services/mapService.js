@@ -108,12 +108,12 @@ export async function getRoute(points = []) {
 
   const middlePoints = normalizedPoints.slice(1, -1);
 
-  // ✅ Goong waypoints nên dùng dấu ; giữa các điểm
   const waypoints = middlePoints.length
     ? middlePoints.map((point) => `${point.lat},${point.lng}`).join(";")
     : undefined;
 
-  const url = `${GOONG_BASE_URL}/Direction`;
+  // ✅ Chuyển sang Directions V2
+  const url = `${GOONG_BASE_URL}/v2/direction`;
 
   const { data } = await axios.get(url, {
     params: {
@@ -126,9 +126,13 @@ export async function getRoute(points = []) {
   });
 
   console.log("GOONG_ROUTE_DEBUG", {
+    url,
     origin,
     destination,
     waypoints,
+    geocodedWaypointCount: Array.isArray(data?.geocoded_waypoints)
+      ? data.geocoded_waypoints.length
+      : 0,
     legCount: Array.isArray(data?.routes?.[0]?.legs)
       ? data.routes[0].legs.length
       : 0,
@@ -160,10 +164,17 @@ export async function getRoute(points = []) {
     polyline: route.overview_polyline?.points || "",
     points: normalizedPoints,
     debug: {
+      url,
       origin,
       destination,
       waypoints,
+      geocodedWaypointCount: Array.isArray(data?.geocoded_waypoints)
+        ? data.geocoded_waypoints.length
+        : 0,
       legCount: legs.length,
+      waypointOrder: Array.isArray(route?.waypoint_order)
+        ? route.waypoint_order
+        : [],
     },
   };
 }
