@@ -33,6 +33,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
+import "dayjs/locale/vi";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -894,7 +895,16 @@ export default function BookingCard() {
   const handleSelectStopPlace = async (idx, option) => {
     if (!option?.placeId) {
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? null : p));
+
       setStopPlaces(nextStopPlaces);
+      setStops((prev) => prev.map((value, i) => (i === idx ? "" : value)));
+      setStopOptions((prev) =>
+        prev.map((items, i) => (i === idx ? [] : items)),
+      );
+      setDistanceKm("");
+      setDriveMinutes("");
+      setOutboundDriveMinutes("");
+
       await refreshRouteFromPlaces(pickupPlace, nextStopPlaces, {
         silent: true,
       });
@@ -931,6 +941,7 @@ export default function BookingCard() {
       setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
     }
   };
+
   const handleEstimate = async () => {
     if (!hasValidPickupSelection) {
       setToast({
@@ -1603,11 +1614,15 @@ export default function BookingCard() {
                   <ToggleButton value="ROUND_TRIP">Khứ hồi</ToggleButton>
                 </ToggleButtonGroup>
 
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  adapterLocale="vi"
+                >
                   <Stack direction={{ xs: "column", sm: "row" }} spacing={1.2}>
                     <DatePicker
                       label="Ngày đón khách"
                       value={pickupDate}
+                      format="DD/MM/YYYY"
                       onChange={(newValue) => setPickupDate(newValue)}
                       slotProps={{
                         textField: { fullWidth: true, size: "small" },
@@ -1642,7 +1657,10 @@ export default function BookingCard() {
                 </LocalizationProvider>
 
                 {direction === "ROUND_TRIP" && (
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <LocalizationProvider
+                    dateAdapter={AdapterDayjs}
+                    adapterLocale="vi"
+                  >
                     <Stack
                       direction={{ xs: "column", sm: "row" }}
                       spacing={1.2}
@@ -1650,6 +1668,7 @@ export default function BookingCard() {
                       <DatePicker
                         label="Ngày quay về"
                         value={returnDate}
+                        format="DD/MM/YYYY"
                         onChange={(newValue) => setReturnDate(newValue)}
                         slotProps={{
                           textField: { fullWidth: true, size: "small" },
