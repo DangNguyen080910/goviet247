@@ -34,15 +34,20 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
 import updateLocale from "dayjs/plugin/updateLocale";
+import localeData from "dayjs/plugin/localeData";
 import "dayjs/locale/vi";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 dayjs.extend(updateLocale);
+dayjs.extend(localeData);
+
 dayjs.updateLocale("vi", {
   weekStart: 1,
 });
+
+dayjs.locale("vi");
 
 import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
 import { useNavigate } from "react-router-dom";
@@ -135,13 +140,21 @@ function formatDurationMinutes(totalMinutes) {
 function formatWeekdayHeader(day) {
   const value = String(day || "").toLowerCase();
 
-  if (value.includes("sun")) return "CN";
   if (value.includes("mon")) return "T2";
   if (value.includes("tue")) return "T3";
   if (value.includes("wed")) return "T4";
   if (value.includes("thu")) return "T5";
   if (value.includes("fri")) return "T6";
   if (value.includes("sat")) return "T7";
+  if (value.includes("sun")) return "CN";
+
+  if (value.includes("2")) return "T2";
+  if (value.includes("3")) return "T3";
+  if (value.includes("4")) return "T4";
+  if (value.includes("5")) return "T5";
+  if (value.includes("6")) return "T6";
+  if (value.includes("7")) return "T7";
+  if (value.includes("cn")) return "CN";
 
   return String(day || "")
     .slice(0, 2)
