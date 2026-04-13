@@ -541,6 +541,9 @@ export default function BookingCard() {
     return iso ? new Date(iso).getTime() : NaN;
   }, [returnDate, returnTimeOnly]);
 
+  const numericDriveMinutes = Number(driveMinutes);
+  const numericOutboundDriveMinutes = Number(outboundDriveMinutes);
+
   const isReturnTimeValid = useMemo(() => {
     if (direction !== "ROUND_TRIP") return true;
 
@@ -565,9 +568,6 @@ export default function BookingCard() {
     returnMs,
     numericOutboundDriveMinutes,
   ]);
-
-  const numericDriveMinutes = Number(driveMinutes);
-  const numericOutboundDriveMinutes = Number(outboundDriveMinutes);
 
   const estimatedExtraMinutes = useMemo(() => {
     if (direction !== "ROUND_TRIP") return 0;
