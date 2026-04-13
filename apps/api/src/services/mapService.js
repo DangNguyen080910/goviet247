@@ -104,23 +104,20 @@ export async function getRoute(points = []) {
   });
 
   const origin = `${normalizedPoints[0].lat},${normalizedPoints[0].lng}`;
-  const destination = `${normalizedPoints[normalizedPoints.length - 1].lat},${normalizedPoints[normalizedPoints.length - 1].lng}`;
 
-  const middlePoints = normalizedPoints.slice(1, -1);
+  // ✅ Theo docs Goong Directions: destination có thể chứa nhiều điểm, tách bằng ;
+  const destination = normalizedPoints
+    .slice(1)
+    .map((point) => `${point.lat},${point.lng}`)
+    .join(";");
 
-  const waypoints = middlePoints.length
-    ? middlePoints.map((point) => `${point.lat},${point.lng}`).join(";")
-    : undefined;
-
-  // ✅ Chuyển sang Directions V2
-  const url = `${GOONG_BASE_URL}/v2/direction`;
+  const url = `${GOONG_BASE_URL}/Direction`;
 
   const { data } = await axios.get(url, {
     params: {
       api_key: GOONG_API_KEY,
       origin,
       destination,
-      waypoints,
       vehicle: "car",
     },
   });
@@ -129,10 +126,6 @@ export async function getRoute(points = []) {
     url,
     origin,
     destination,
-    waypoints,
-    geocodedWaypointCount: Array.isArray(data?.geocoded_waypoints)
-      ? data.geocoded_waypoints.length
-      : 0,
     legCount: Array.isArray(data?.routes?.[0]?.legs)
       ? data.routes[0].legs.length
       : 0,
@@ -167,14 +160,7 @@ export async function getRoute(points = []) {
       url,
       origin,
       destination,
-      waypoints,
-      geocodedWaypointCount: Array.isArray(data?.geocoded_waypoints)
-        ? data.geocoded_waypoints.length
-        : 0,
       legCount: legs.length,
-      waypointOrder: Array.isArray(route?.waypoint_order)
-        ? route.waypoint_order
-        : [],
     },
   };
 }
