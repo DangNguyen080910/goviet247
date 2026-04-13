@@ -869,8 +869,21 @@ export default function BookingCard() {
         setDriveMinutes("");
       }
 
-      if (Number.isFinite(Number(route?.outboundDurationMinutes))) {
-        setOutboundDriveMinutes(String(route.outboundDurationMinutes));
+      const resolvedOutboundMinutes =
+        route?.outboundDurationMinutes ??
+        route?.outboundDuration ??
+        route?.outboundMinutes ??
+        null;
+
+      if (Number.isFinite(Number(resolvedOutboundMinutes))) {
+        setOutboundDriveMinutes(String(resolvedOutboundMinutes));
+      } else if (
+        direction === "ROUND_TRIP" &&
+        Number.isFinite(Number(route?.durationMinutes))
+      ) {
+        setOutboundDriveMinutes(
+          String(Math.round(Number(route.durationMinutes) / 2)),
+        );
       } else {
         setOutboundDriveMinutes("");
       }
