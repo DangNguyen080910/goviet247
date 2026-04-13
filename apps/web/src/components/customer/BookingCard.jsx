@@ -177,6 +177,7 @@ export default function BookingCard() {
   // ✅ Ref cho block giá cuối + nút đặt chuyến
   const quoteSummaryRef = useRef(null);
   const createTripButtonRef = useRef(null);
+  const latestRouteRequestRef = useRef(0);
 
   const [submitTouched, setSubmitTouched] = useState(false);
 
@@ -572,115 +573,132 @@ export default function BookingCard() {
   }, [direction]);
 
   const refreshRouteFromPlaces = async (
-    nextPickupPlace,
-    nextStopPlaces,
-    options = {},
-  ) => {
-    const { silent = false } = options;
+  nextPickupPlace,
+  nextStopPlaces,
+  options = {},
+) => {
+  const { silent = false } = options;
 
-    const hasPickupCoords =
-      nextPickupPlace &&
-      Number.isFinite(Number(nextPickupPlace.lat)) &&
-      Number.isFinite(Number(nextPickupPlace.lng));
+  const requestId = Date.now() + Math.random();
+  latestRouteRequestRef.current = requestId;
 
-    const hasAllStopsValid =
-      (nextStopPlaces || []).length > 0 &&
-      (nextStopPlaces || []).every(
-        (item) =>
-          item &&
-          Number.isFinite(Number(item.lat)) &&
-          Number.isFinite(Number(item.lng)),
-      );
+  const hasPickupCoords =
+    nextPickupPlace &&
+    Number.isFinite(Number(nextPickupPlace.lat)) &&
+    Number.isFinite(Number(nextPickupPlace.lng));
 
-    if (!hasPickupCoords || !hasAllStopsValid) {
+  const hasAllStopsValid =
+    (nextStopPlaces || []).length > 0 &&
+    (nextStopPlaces || []).every(
+      (item) =>
+        item &&
+        Number.isFinite(Number(item.lat)) &&
+        Number.isFinite(Number(item.lng)),
+    );
+
+  if (!hasPickupCoords || !hasAllStopsValid) {
+    if (latestRouteRequestRef.current === requestId) {
       setDistanceKm("");
       setDriveMinutes("");
       setIsRouteLoading(false);
-      return;
     }
+    return;
+  }
 
-    const resolvedStopPlaces = nextStopPlaces;
+  const resolvedStopPlaces = nextStopPlaces;
 
-    if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
+  if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
+    if (latestRouteRequestRef.current === requestId) {
       setDistanceKm("");
       setDriveMinutes("");
       setIsRouteLoading(false);
-      return;
     }
+    return;
+  }
 
-    try {
-      setIsRouteLoading(true);
+  try {
+    setIsRouteLoading(true);
 
-      // ✅ BUILD points theo đúng thứ tự UI (FIX multi-stop)
-      const validStops = [];
+    const validStops = [];
 
-      for (let i = 0; i < stops.length; i++) {
-        const text = stops[i];
-        const place = nextStopPlaces[i];
+    for (let i = 0; i < stops.length; i++) {
+      const text = stops[i];
+      const place = nextStopPlaces[i];
 
-        if (
-          text &&
-          place &&
-          Number.isFinite(Number(place.lat)) &&
-          Number.isFinite(Number(place.lng))
-        ) {
-          validStops.push({
-            lat: Number(place.lat),
-            lng: Number(place.lng),
-          });
-        }
+      if (
+        text &&
+        place &&
+        Number.isFinite(Number(place.lat)) &&
+        Number.isFinite(Number(place.lng))
+      ) {
+        validStops.push({
+          lat: Number(place.lat),
+          lng: Number(place.lng),
+        });
       }
+    }
 
-      // ❗ nếu thiếu stop nào → không route
-      if (validStops.length !== stops.filter((s) => s.trim()).length) {
+    if (validStops.length !== stops.filter((s) => s.trim()).length) {
+      if (latestRouteRequestRef.current === requestId) {
         setDistanceKm("");
         setDriveMinutes("");
         setIsRouteLoading(false);
-        return;
       }
+      return;
+    }
 
-      let points = [
-        {
-          lat: Number(nextPickupPlace.lat),
-          lng: Number(nextPickupPlace.lng),
-        },
-        ...validStops,
-      ];
+    let points = [
+      {
+        lat: Number(nextPickupPlace.lat),
+        lng: Number(nextPickupPlace.lng),
+      },
+      ...validStops,
+    ];
 
-      // ✅ ROUND TRIP → quay về điểm đón
-      if (direction === "ROUND_TRIP") {
-        points.push({
-          lat: Number(nextPickupPlace.lat),
-          lng: Number(nextPickupPlace.lng),
-        });
-      }
+    if (direction === "ROUND_TRIP") {
+      points.push({
+        lat: Number(nextPickupPlace.lat),
+        lng: Number(nextPickupPlace.lng),
+      });
+    }
 
-      const route = await getRoute(points);
+    const route = await getRoute(points);
 
-      if (Number.isFinite(Number(route?.distanceKm))) {
-        setDistanceKm(String(route.distanceKm));
-      } else {
-        setDistanceKm("");
-      }
+    // ✅ Chỉ request mới nhất mới được quyền update UI
+    if (latestRouteRequestRef.current !== requestId) {
+      return;
+    }
 
-      if (Number.isFinite(Number(route?.durationMinutes))) {
-        setDriveMinutes(String(route.durationMinutes));
-      } else {
-        setDriveMinutes("");
-      }
-    } catch (e) {
-      if (!silent) {
-        setToast({
-          open: true,
-          severity: "warning",
-          message:
-            e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
-        });
-      }
-    } finally {
+    if (Number.isFinite(Number(route?.distanceKm))) {
+      setDistanceKm(String(route.distanceKm));
+    } else {
+      setDistanceKm("");
+    }
+
+    if (Number.isFinite(Number(route?.durationMinutes))) {
+      setDriveMinutes(String(route.durationMinutes));
+    } else {
+      setDriveMinutes("");
+    }
+  } catch (e) {
+    if (latestRouteRequestRef.current !== requestId) {
+      return;
+    }
+
+    if (!silent) {
+      setToast({
+        open: true,
+        severity: "warning",
+        message:
+          e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
+      });
+    }
+  } finally {
+    if (latestRouteRequestRef.current === requestId) {
       setIsRouteLoading(false);
     }
-  };
+  }
+};
 
   const resetFormAfterSuccess = () => {
     setPickupAddress("");
