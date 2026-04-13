@@ -33,10 +33,16 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
+import updateLocale from "dayjs/plugin/updateLocale";
 import "dayjs/locale/vi";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+
+dayjs.extend(updateLocale);
+dayjs.updateLocale("vi", {
+  weekStart: 1,
+});
 
 import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
 import { useNavigate } from "react-router-dom";
