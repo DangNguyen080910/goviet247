@@ -327,12 +327,60 @@ export default function BookingCard() {
     setDriveMinutes("");
   };
 
-  const hasAtLeastOneStop = useMemo(() => stops.some((x) => x.trim()), [stops]);
-
   const filledStopCount = useMemo(
     () => stops.filter((s) => s.trim()).length,
     [stops],
   );
+
+  const hasValidPickupSelection = useMemo(() => {
+    return (
+      !!pickupPlace?.placeId &&
+      Number.isFinite(Number(pickupPlace?.lat)) &&
+      Number.isFinite(Number(pickupPlace?.lng))
+    );
+  }, [pickupPlace]);
+
+  const hasValidStopSelections = useMemo(() => {
+    return stops.every((value, idx) => {
+      const text = String(value || "").trim();
+
+      if (!text) return true;
+
+      const place = stopPlaces[idx];
+
+      return (
+        !!place?.placeId &&
+        Number.isFinite(Number(place?.lat)) &&
+        Number.isFinite(Number(place?.lng))
+      );
+    });
+  }, [stops, stopPlaces]);
+
+  const hasAtLeastOneSelectedStop = useMemo(() => {
+    return stops.some((value, idx) => {
+      const text = String(value || "").trim();
+      const place = stopPlaces[idx];
+
+      return (
+        !!text &&
+        !!place?.placeId &&
+        Number.isFinite(Number(place?.lat)) &&
+        Number.isFinite(Number(place?.lng))
+      );
+    });
+  }, [stops, stopPlaces]);
+
+  const showAddressSelectionWarning = useMemo(() => {
+    const hasTypedPickup = !!pickupAddress.trim();
+    const hasTypedStops = stops.some((value) => String(value || "").trim());
+
+    if (!hasTypedPickup && !hasTypedStops) return false;
+
+    if (hasTypedPickup && !hasValidPickupSelection) return true;
+    if (!hasValidStopSelections) return true;
+
+    return false;
+  }, [pickupAddress, stops, hasValidPickupSelection, hasValidStopSelections]);
 
   useEffect(() => {
     if (direction === "ONE_WAY") {
@@ -519,8 +567,9 @@ export default function BookingCard() {
 
   const canEstimate =
     !isLoadingConfig &&
-    pickupAddress.trim() &&
-    hasAtLeastOneStop &&
+    hasValidPickupSelection &&
+    hasAtLeastOneSelectedStop &&
+    hasValidStopSelections &&
     pickupDate &&
     pickupTimeOnly &&
     direction &&
@@ -573,72 +622,30 @@ export default function BookingCard() {
   }, [direction]);
 
   const refreshRouteFromPlaces = async (
-  nextPickupPlace,
-  nextStopPlaces,
-  options = {},
-) => {
-  const { silent = false } = options;
+    nextPickupPlace,
+    nextStopPlaces,
+    options = {},
+  ) => {
+    const { silent = false } = options;
 
-  const requestId = Date.now() + Math.random();
-  latestRouteRequestRef.current = requestId;
+    const requestId = Date.now() + Math.random();
+    latestRouteRequestRef.current = requestId;
 
-  const hasPickupCoords =
-    nextPickupPlace &&
-    Number.isFinite(Number(nextPickupPlace.lat)) &&
-    Number.isFinite(Number(nextPickupPlace.lng));
+    const hasPickupCoords =
+      nextPickupPlace &&
+      Number.isFinite(Number(nextPickupPlace.lat)) &&
+      Number.isFinite(Number(nextPickupPlace.lng));
 
-  const hasAllStopsValid =
-    (nextStopPlaces || []).length > 0 &&
-    (nextStopPlaces || []).every(
-      (item) =>
-        item &&
-        Number.isFinite(Number(item.lat)) &&
-        Number.isFinite(Number(item.lng)),
-    );
+    const hasAllStopsValid =
+      (nextStopPlaces || []).length > 0 &&
+      (nextStopPlaces || []).every(
+        (item) =>
+          item &&
+          Number.isFinite(Number(item.lat)) &&
+          Number.isFinite(Number(item.lng)),
+      );
 
-  if (!hasPickupCoords || !hasAllStopsValid) {
-    if (latestRouteRequestRef.current === requestId) {
-      setDistanceKm("");
-      setDriveMinutes("");
-      setIsRouteLoading(false);
-    }
-    return;
-  }
-
-  const resolvedStopPlaces = nextStopPlaces;
-
-  if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
-    if (latestRouteRequestRef.current === requestId) {
-      setDistanceKm("");
-      setDriveMinutes("");
-      setIsRouteLoading(false);
-    }
-    return;
-  }
-
-  try {
-    setIsRouteLoading(true);
-
-    const validStops = [];
-
-    for (let i = 0; i < stops.length; i++) {
-      const text = stops[i];
-      const place = nextStopPlaces[i];
-
-      if (
-        text &&
-        place &&
-        Number.isFinite(Number(place.lat)) &&
-        Number.isFinite(Number(place.lng))
-      ) {
-        validStops.push({
-          lat: Number(place.lat),
-          lng: Number(place.lng),
-        });
-      }
-    }
-
-    if (validStops.length !== stops.filter((s) => s.trim()).length) {
+    if (!hasPickupCoords || !hasAllStopsValid) {
       if (latestRouteRequestRef.current === requestId) {
         setDistanceKm("");
         setDriveMinutes("");
@@ -647,58 +654,100 @@ export default function BookingCard() {
       return;
     }
 
-    let points = [
-      {
-        lat: Number(nextPickupPlace.lat),
-        lng: Number(nextPickupPlace.lng),
-      },
-      ...validStops,
-    ];
+    const resolvedStopPlaces = nextStopPlaces;
 
-    if (direction === "ROUND_TRIP") {
-      points.push({
-        lat: Number(nextPickupPlace.lat),
-        lng: Number(nextPickupPlace.lng),
-      });
-    }
-
-    const route = await getRoute(points);
-
-    // ✅ Chỉ request mới nhất mới được quyền update UI
-    if (latestRouteRequestRef.current !== requestId) {
+    if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
+      if (latestRouteRequestRef.current === requestId) {
+        setDistanceKm("");
+        setDriveMinutes("");
+        setIsRouteLoading(false);
+      }
       return;
     }
 
-    if (Number.isFinite(Number(route?.distanceKm))) {
-      setDistanceKm(String(route.distanceKm));
-    } else {
-      setDistanceKm("");
-    }
+    try {
+      setIsRouteLoading(true);
 
-    if (Number.isFinite(Number(route?.durationMinutes))) {
-      setDriveMinutes(String(route.durationMinutes));
-    } else {
-      setDriveMinutes("");
-    }
-  } catch (e) {
-    if (latestRouteRequestRef.current !== requestId) {
-      return;
-    }
+      const validStops = [];
 
-    if (!silent) {
-      setToast({
-        open: true,
-        severity: "warning",
-        message:
-          e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
-      });
+      for (let i = 0; i < stops.length; i++) {
+        const text = stops[i];
+        const place = nextStopPlaces[i];
+
+        if (
+          text &&
+          place &&
+          Number.isFinite(Number(place.lat)) &&
+          Number.isFinite(Number(place.lng))
+        ) {
+          validStops.push({
+            lat: Number(place.lat),
+            lng: Number(place.lng),
+          });
+        }
+      }
+
+      if (validStops.length !== stops.filter((s) => s.trim()).length) {
+        if (latestRouteRequestRef.current === requestId) {
+          setDistanceKm("");
+          setDriveMinutes("");
+          setIsRouteLoading(false);
+        }
+        return;
+      }
+
+      let points = [
+        {
+          lat: Number(nextPickupPlace.lat),
+          lng: Number(nextPickupPlace.lng),
+        },
+        ...validStops,
+      ];
+
+      if (direction === "ROUND_TRIP") {
+        points.push({
+          lat: Number(nextPickupPlace.lat),
+          lng: Number(nextPickupPlace.lng),
+        });
+      }
+
+      const route = await getRoute(points);
+
+      // ✅ Chỉ request mới nhất mới được quyền update UI
+      if (latestRouteRequestRef.current !== requestId) {
+        return;
+      }
+
+      if (Number.isFinite(Number(route?.distanceKm))) {
+        setDistanceKm(String(route.distanceKm));
+      } else {
+        setDistanceKm("");
+      }
+
+      if (Number.isFinite(Number(route?.durationMinutes))) {
+        setDriveMinutes(String(route.durationMinutes));
+      } else {
+        setDriveMinutes("");
+      }
+    } catch (e) {
+      if (latestRouteRequestRef.current !== requestId) {
+        return;
+      }
+
+      if (!silent) {
+        setToast({
+          open: true,
+          severity: "warning",
+          message:
+            e?.message || "Không lấy được quãng đường thực tế từ bản đồ.",
+        });
+      }
+    } finally {
+      if (latestRouteRequestRef.current === requestId) {
+        setIsRouteLoading(false);
+      }
     }
-  } finally {
-    if (latestRouteRequestRef.current === requestId) {
-      setIsRouteLoading(false);
-    }
-  }
-};
+  };
 
   const resetFormAfterSuccess = () => {
     setPickupAddress("");
@@ -802,6 +851,24 @@ export default function BookingCard() {
     }
   };
   const handleEstimate = async () => {
+    if (!hasValidPickupSelection) {
+      setToast({
+        open: true,
+        severity: "warning",
+        message: "Vui lòng chọn điểm đón từ danh sách gợi ý.",
+      });
+      return;
+    }
+
+    if (!hasAtLeastOneSelectedStop || !hasValidStopSelections) {
+      setToast({
+        open: true,
+        severity: "warning",
+        message: "Vui lòng chọn ít nhất 1 điểm đến hợp lệ từ danh sách gợi ý.",
+      });
+      return;
+    }
+
     if (!isDistanceValid) {
       setToast({
         open: true,
@@ -873,16 +940,34 @@ export default function BookingCard() {
   };
 
   const buildTripPayload = () => {
-    const cleanedStops = stops
-      .map((s) => String(s || "").trim())
-      .filter(Boolean);
+    if (!hasValidPickupSelection) {
+      throw new Error("Vui lòng chọn điểm đón từ danh sách gợi ý.");
+    }
 
-    if (cleanedStops.length === 0) {
+    const selectedStops = stops
+      .map((text, idx) => ({
+        text: String(text || "").trim(),
+        place: stopPlaces[idx] || null,
+      }))
+      .filter((item) => item.text);
+
+    if (selectedStops.length === 0) {
       throw new Error("Vui lòng nhập ít nhất 1 điểm đến.");
     }
 
-    if (cleanedStops.length > maxStops) {
+    if (selectedStops.length > maxStops) {
       throw new Error(`Số điểm đến vượt quá giới hạn ${maxStops} điểm.`);
+    }
+
+    const hasInvalidStop = selectedStops.some(
+      (item) =>
+        !item.place?.placeId ||
+        !Number.isFinite(Number(item.place?.lat)) ||
+        !Number.isFinite(Number(item.place?.lng)),
+    );
+
+    if (hasInvalidStop) {
+      throw new Error("Vui lòng chọn đầy đủ các điểm đến từ danh sách gợi ý.");
     }
 
     if (!isDistanceValid) {
@@ -891,11 +976,18 @@ export default function BookingCard() {
       );
     }
 
+    const cleanedStops = selectedStops
+      .map((item) => item.place?.fullAddress || item.text)
+      .filter(Boolean);
+
+    const pickupFullAddress =
+      pickupPlace?.fullAddress || String(pickupAddress || "").trim();
+
     const dropoffAddress = cleanedStops[cleanedStops.length - 1] || "";
     const finalNote = note?.trim() || null;
 
     return {
-      pickupAddress,
+      pickupAddress: pickupFullAddress,
       dropoffAddress,
       stops: cleanedStops,
       pickupTime: combineDateTime(pickupDate, pickupTimeOnly),
@@ -1179,31 +1271,12 @@ export default function BookingCard() {
                   loading={pickupLoading}
                   value={pickupPlace}
                   inputValue={pickupAddress}
-                  onInputChange={async (_, value, reason) => {
+                  onInputChange={(_, value, reason) => {
                     if (reason === "input") {
                       setPickupAddress(value);
                       setPickupPlace(null);
                       setDistanceKm("");
                       setDriveMinutes("");
-
-                      // ✅ FIX autofill / paste
-                      if (value && value.length > 6) {
-                        try {
-                          const results = await searchPlaces(value);
-                          if (results.length > 0) {
-                            const detail = await getPlaceDetail(
-                              results[0].placeId,
-                            );
-                            setPickupPlace(detail);
-
-                            await refreshRouteFromPlaces(detail, stopPlaces, {
-                              silent: true,
-                            });
-                          }
-                        } catch {
-                          // ignore
-                        }
-                      }
                     }
 
                     if (reason === "clear") {
@@ -1386,10 +1459,27 @@ export default function BookingCard() {
                   </Stack>
                 </Box>
 
-                <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                  Nhập địa chỉ càng chi tiết càng tốt để tài xế đón/trả đúng vị
-                  trí.
-                </Typography>
+                <Stack spacing={0.6}>
+                  <Typography variant="body2" sx={{ opacity: 0.78 }}>
+                    Vui lòng chọn địa chỉ từ danh sách gợi ý để hệ thống tính
+                    giá chính xác.
+                  </Typography>
+
+                  <Typography variant="body2" sx={{ opacity: 0.68 }}>
+                    Bạn có thể nhập thêm số nhà, tên khách sạn, nhà hàng hoặc
+                    địa điểm cụ thể để dễ tìm đúng vị trí hơn.
+                  </Typography>
+
+                  {showAddressSelectionWarning && (
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "warning.main", fontWeight: 800 }}
+                    >
+                      Bạn đang nhập địa chỉ dạng text. Hãy bấm chọn đúng địa chỉ
+                      trong danh sách gợi ý trước khi tính giá.
+                    </Typography>
+                  )}
+                </Stack>
 
                 {direction === "ROUND_TRIP" && (
                   <Chip
@@ -1450,13 +1540,19 @@ export default function BookingCard() {
                       }
                       onChange={(e) => {
                         const val = e.target.value;
-                        if (!val) return;
+
+                        if (!val) {
+                          setPickupTimeOnly(null);
+                          return;
+                        }
+
                         const [h, m] = val.split(":");
                         const t = dayjs().hour(Number(h)).minute(Number(m));
                         setPickupTimeOnly(t);
                       }}
                       fullWidth
                       size="small"
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{ step: 300 }}
                     />
                   </Stack>
@@ -1486,13 +1582,19 @@ export default function BookingCard() {
                         }
                         onChange={(e) => {
                           const val = e.target.value;
-                          if (!val) return;
+
+                          if (!val) {
+                            setReturnTimeOnly(null);
+                            return;
+                          }
+
                           const [h, m] = val.split(":");
                           const t = dayjs().hour(Number(h)).minute(Number(m));
                           setReturnTimeOnly(t);
                         }}
                         fullWidth
                         size="small"
+                        InputLabelProps={{ shrink: true }}
                         inputProps={{ step: 300 }}
                       />
                     </Stack>
