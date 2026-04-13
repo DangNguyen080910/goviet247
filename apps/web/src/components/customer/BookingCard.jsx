@@ -543,10 +543,18 @@ export default function BookingCard() {
 
   const isReturnTimeValid = useMemo(() => {
     if (direction !== "ROUND_TRIP") return true;
+
     if (!pickupDate || !pickupTimeOnly || !returnDate || !returnTimeOnly) {
       return false;
     }
-    return returnMs > pickupMs;
+
+    if (!Number.isFinite(numericOutboundDriveMinutes)) {
+      return false;
+    }
+
+    const earliestReturnMs = pickupMs + numericOutboundDriveMinutes * 60000;
+
+    return returnMs >= earliestReturnMs;
   }, [
     direction,
     pickupDate,
@@ -555,6 +563,7 @@ export default function BookingCard() {
     returnTimeOnly,
     pickupMs,
     returnMs,
+    numericOutboundDriveMinutes,
   ]);
 
   const numericDriveMinutes = Number(driveMinutes);
@@ -1038,6 +1047,10 @@ export default function BookingCard() {
             : null,
         distanceKm: Number(distanceKm),
         driveMinutes: Number(driveMinutes),
+        outboundDriveMinutes:
+          direction === "ROUND_TRIP"
+            ? Number(outboundDriveMinutes)
+            : Number(driveMinutes),
       };
 
       const data = await quotePrice(payload);
@@ -1783,7 +1796,7 @@ export default function BookingCard() {
                       variant="body2"
                       sx={{ color: "error.main", fontWeight: 800 }}
                     >
-                      Thời gian quay về phải lớn hơn thời gian đón khách
+                      Giờ quay về phải sau thời điểm xe dự kiến đã tới điểm đến.
                     </Typography>
                   )}
               </Stack>

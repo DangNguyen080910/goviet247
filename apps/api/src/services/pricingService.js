@@ -54,9 +54,9 @@ export async function quotePrice(input) {
     returnTime,
     distanceKm,
     driveMinutes,
+    outboundDriveMinutes,
   } = input;
 
-  // 1) Lấy config
   const config = await prisma.pricingConfig.findFirst({
     where: { carType, isActive: true },
   });
@@ -68,19 +68,16 @@ export async function quotePrice(input) {
     };
   }
 
-  // 2) Parse thời gian
   const pickup = pickupTime ? new Date(pickupTime) : null;
   if (!pickup || Number.isNaN(pickup.getTime())) {
     return { ok: false, message: "pickupTime không hợp lệ." };
   }
 
-  // 3) Validate distance
   const km = Number(distanceKm);
   if (!Number.isFinite(km) || km < 0) {
     return { ok: false, message: "distanceKm không hợp lệ." };
   }
 
-  // 4) Load config
   const baseFare = Number(config.baseFare);
   const pricePerKm = Number(config.pricePerKm);
   const pricePerHour = Number(config.pricePerHour);
@@ -91,7 +88,6 @@ export async function quotePrice(input) {
 
   const distanceCost = Math.round(km * pricePerKm);
 
-  // 5) time/overnight
   let overnightCount = 0;
   let overnightCost = 0;
 
@@ -102,7 +98,6 @@ export async function quotePrice(input) {
   let waitCost = 0;
 
   if (direction === "ROUND_TRIP") {
-    // cần returnTime
     const rt = returnTime ? new Date(returnTime) : null;
     if (!rt || Number.isNaN(rt.getTime())) {
       return {
@@ -114,27 +109,43 @@ export async function quotePrice(input) {
       return { ok: false, message: "returnTime phải lớn hơn pickupTime." };
     }
 
-    // overnight theo số đêm (khác ngày theo VN)
-    overnightCount = diffCalendarDaysVN(pickup, rt);
-    overnightCost = overnightCount * overnightFee;
+    const outboundMinutes = Number(outboundDriveMinutes);
+    if (!Number.isFinite(outboundMinutes) || outboundMinutes < 0) {
+      return {
+        ok: false,
+        message: "outboundDriveMinutes không hợp lệ cho chuyến khứ hồi.",
+      };
+    }
 
-    // tổng phút giữ xe
-    totalMinutes = Math.round((rt.getTime() - pickup.getTime()) / 60000);
-
-    const dm = Number(driveMinutes);
-    if (!Number.isFinite(dm) || dm < 0) {
+    const totalDriveMinutes = Number(driveMinutes);
+    if (!Number.isFinite(totalDriveMinutes) || totalDriveMinutes < 0) {
       return {
         ok: false,
         message: "driveMinutes không hợp lệ cho chuyến khứ hồi.",
       };
     }
 
-    // waitMinutes luôn tính để debug/hiển thị nội bộ
-    waitMinutes = Math.max(0, totalMinutes - dm);
+    const estimatedArrivalAtDestinationMs =
+      pickup.getTime() + outboundMinutes * 60000;
 
-    // ✅ RULE MỚI:
-    // - Nếu có qua đêm (overnightCount > 0) => KHÔNG tính waitCost
-    // - Nếu không qua đêm => tính waitCost theo pricePerHour như cũ
+    if (rt.getTime() < estimatedArrivalAtDestinationMs) {
+      return {
+        ok: false,
+        message:
+          "Giờ quay về không hợp lệ. Vui lòng chọn giờ quay về sau khi xe dự kiến đã tới điểm cuối.",
+      };
+    }
+
+    overnightCount = diffCalendarDaysVN(pickup, rt);
+    overnightCost = overnightCount * overnightFee;
+
+    totalMinutes = Math.round((rt.getTime() - pickup.getTime()) / 60000);
+
+    waitMinutes = Math.max(
+      0,
+      Math.round((rt.getTime() - estimatedArrivalAtDestinationMs) / 60000),
+    );
+
     if (overnightCount > 0) {
       freeWaitingMinutes = 0;
       billableWaitMinutes = 0;
@@ -147,7 +158,6 @@ export async function quotePrice(input) {
       waitCost = waitHours * pricePerHour;
     }
   } else if (direction === "ONE_WAY") {
-    // ONE_WAY: overnight kích hoạt theo trigger km hoặc trigger giờ (driveMinutes)
     const dm = driveMinutes == null ? null : Number(driveMinutes);
     const driveHours = dm != null && Number.isFinite(dm) ? dm / 60 : 0;
 
@@ -160,7 +170,6 @@ export async function quotePrice(input) {
     return { ok: false, message: "direction không hợp lệ." };
   }
 
-  // 6) Tổng, min, làm tròn
   let rawTotal = baseFare + distanceCost + waitCost + overnightCost;
 
   let minApplied = false;
@@ -179,7 +188,6 @@ export async function quotePrice(input) {
       direction,
       distanceKm: km,
 
-      // time meta
       totalMinutes,
       waitMinutes,
       freeWaitingMinutes,
@@ -187,7 +195,6 @@ export async function quotePrice(input) {
 
       overnightCount,
 
-      // breakdown (admin/debug)
       baseFare,
       pricePerKm,
       pricePerHour,
@@ -226,6 +233,7 @@ export async function calculateTripPrice({
   pickupTime,
   returnTime,
   driveMinutes,
+  outboundDriveMinutes,
 }) {
   const pickupIso =
     pickupTime instanceof Date ? pickupTime.toISOString() : pickupTime;
@@ -240,6 +248,7 @@ export async function calculateTripPrice({
     returnTime: returnIso,
     distanceKm,
     driveMinutes,
+    outboundDriveMinutes,
   });
 
   if (!result.ok) {
@@ -250,9 +259,9 @@ export async function calculateTripPrice({
 
   return {
     distanceKm: d.distanceKm,
-    basePricePerKm: d.pricePerKm, // map sang field Trip đang lưu
-    holidayFactor: 1, // MVP: không dùng holiday
-    directionFactor: 1, // MVP: không dùng factor
+    basePricePerKm: d.pricePerKm,
+    holidayFactor: 1,
+    directionFactor: 1,
     totalPrice: d.finalPrice,
   };
 }
