@@ -115,18 +115,19 @@ async function buildDriverAcceptOpenAt() {
  * - "Khách Sạn Đà Lạt 02 Trần Phú Đà Lạt"
  *   -> fallback lấy phần cuối phù hợp như "Đà Lạt"
  */
-function maskAddress(address) {
+function normalizeDisplayAddress(address) {
   if (!address || typeof address !== "string") {
     return "";
   }
 
-  const raw = address.trim();
+  let raw = address.trim();
   if (!raw) {
     return "";
   }
 
-  const normalized = raw
+  raw = raw
     .replace(/\s+/g, " ")
+    .replace(/\s*,\s*/g, ", ")
     .replace(/\bTP\.\s*HCM\b/gi, "Hồ Chí Minh")
     .replace(/\bTP HCM\b/gi, "Hồ Chí Minh")
     .replace(/\bTP\.?\s*Hồ Chí Minh\b/gi, "Hồ Chí Minh")
@@ -134,75 +135,86 @@ function maskAddress(address) {
     .replace(/\bTP\.\s*/gi, "Thành phố ")
     .trim();
 
-  const commaParts = normalized
+  // Ví dụ: "4 Hẻm 33 Đặng Văn Ngữ" -> "33/4 Đặng Văn Ngữ"
+  raw = raw.replace(
+    /\b(\d+)\s*hẻm\s+(\d+(?:\/\d+)?)\b/gi,
+    (_, hemSo, duongSo) => `${duongSo}/${hemSo}`,
+  );
+
+  return raw;
+}
+
+function maskAddress(address) {
+  const normalized = normalizeDisplayAddress(address);
+
+  if (!normalized) {
+    return "";
+  }
+
+  const parts = normalized
     .split(",")
     .map((part) => part.trim())
     .filter(Boolean);
 
+  if (!parts.length) {
+    return normalized;
+  }
+
+  const wardRegex =
+    /\b(phường\s+[a-zà-ỹ0-9\s]+|xã\s+[a-zà-ỹ0-9\s]+|thị trấn\s+[a-zà-ỹ0-9\s]+)\b/i;
+
   const districtRegex =
     /\b(quận\s*\d+|quận\s+[a-zà-ỹ0-9\s]+|huyện\s+[a-zà-ỹ0-9\s]+|thị xã\s+[a-zà-ỹ0-9\s]+|thành phố\s+[a-zà-ỹ0-9\s]+)\b/i;
 
-  const cityRegex =
-    /\b(hồ chí minh|hà nội|đà nẵng|cần thơ|hải phòng|khánh hòa|lâm đồng|bình thuận|bến tre|đồng nai|bình dương|vũng tàu|bà rịa - vũng tàu|long an|tiền giang|an giang|kiên giang|đồng tháp|vĩnh long|trà vinh|sóc trăng|bạc liêu|cà mau|phú yên|quảng nam|quảng ngãi|quảng ninh|nghệ an|thanh hóa|ninh thuận|bình định|đắk lắk|gia lai|kon tum|huế|thừa thiên huế|lào cai|đà lạt|phan thiết)\b/i;
-
+  let wardPart = "";
   let districtPart = "";
-  let cityPart = "";
+  let provincePart = parts[parts.length - 1] || "";
 
-  for (let i = commaParts.length - 1; i >= 0; i -= 1) {
-    const part = commaParts[i];
+  for (let i = parts.length - 1; i >= 0; i -= 1) {
+    const part = parts[i];
 
     if (!districtPart && districtRegex.test(part)) {
-      districtPart = part;
+      districtPart = part.replace(/\s+/g, " ").trim();
       continue;
     }
 
-    if (!cityPart && cityRegex.test(part)) {
-      cityPart = part;
+    if (!wardPart && wardRegex.test(part)) {
+      wardPart = part.replace(/\s+/g, " ").trim();
     }
   }
 
-  if (districtPart && cityPart) {
-    const districtNorm = districtPart.replace(/\s+/g, " ").trim();
-    const cityNorm = cityPart.replace(/\s+/g, " ").trim();
+  provincePart = String(provincePart || "")
+    .replace(/\s+/g, " ")
+    .trim();
 
-    if (districtNorm.toLowerCase() === cityNorm.toLowerCase()) {
-      return districtNorm;
+  if (districtPart && provincePart) {
+    if (districtPart.toLowerCase() === provincePart.toLowerCase()) {
+      return districtPart;
     }
+    return `${districtPart}, ${provincePart}`;
+  }
 
-    return `${districtNorm}, ${cityNorm}`;
+  if (wardPart && provincePart) {
+    if (wardPart.toLowerCase() === provincePart.toLowerCase()) {
+      return wardPart;
+    }
+    return `${wardPart}, ${provincePart}`;
   }
 
   if (districtPart) {
-    return districtPart.replace(/\s+/g, " ").trim();
+    return districtPart;
   }
 
-  if (cityPart) {
-    return cityPart.replace(/\s+/g, " ").trim();
+  if (wardPart) {
+    return wardPart;
   }
 
-  if (commaParts.length >= 2) {
-    return commaParts.slice(-2).join(", ");
+  if (provincePart) {
+    return provincePart;
   }
 
-  if (commaParts.length === 1) {
-    const onePart = commaParts[0];
-
-    const districtMatch = onePart.match(districtRegex);
-    if (districtMatch?.[0]) {
-      return districtMatch[0].replace(/\s+/g, " ").trim();
-    }
-
-    const cityMatch = onePart.match(cityRegex);
-    if (cityMatch?.[0]) {
-      return cityMatch[0].replace(/\s+/g, " ").trim();
-    }
-
-    const words = onePart.split(" ").filter(Boolean);
-    if (words.length >= 2) {
-      return words.slice(-2).join(" ");
-    }
-
-    return onePart;
+  if (parts.length >= 2) {
+    return parts.slice(-2).join(", ");
   }
 
   return normalized;
@@ -241,10 +253,13 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
   if (scope === "available") {
     return {
       ...base,
+      pickupAddress: maskAddress(trip.pickupAddress),
       pickupAddressMasked: maskAddress(trip.pickupAddress),
+      dropoffAddress: maskAddress(trip.dropoffAddress),
       dropoffAddressMasked: maskAddress(trip.dropoffAddress),
       stops: stops.map((stop) => ({
         ...stop,
+        address: maskAddress(stop.address),
         addressMasked: maskAddress(stop.address),
       })),
       riderName: "",
@@ -258,10 +273,13 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
   if (scope === "history") {
     return {
       ...base,
+      pickupAddress: maskAddress(trip.pickupAddress),
       pickupAddressMasked: maskAddress(trip.pickupAddress),
+      dropoffAddress: maskAddress(trip.dropoffAddress),
       dropoffAddressMasked: maskAddress(trip.dropoffAddress),
       stops: stops.map((stop) => ({
         ...stop,
+        address: maskAddress(stop.address),
         addressMasked: maskAddress(stop.address),
       })),
       riderName: "",
@@ -273,9 +291,15 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
 
   return {
     ...base,
+    pickupAddress: normalizeDisplayAddress(trip.pickupAddress),
     pickupAddressMasked: maskAddress(trip.pickupAddress),
+    dropoffAddress: normalizeDisplayAddress(trip.dropoffAddress),
     dropoffAddressMasked: maskAddress(trip.dropoffAddress),
-    stops,
+    stops: stops.map((stop) => ({
+      ...stop,
+      address: normalizeDisplayAddress(stop.address),
+      addressMasked: maskAddress(stop.address),
+    })),
     riderNameMasked: maskRiderName(),
     riderPhoneMasked: maskRiderPhone(),
   };
