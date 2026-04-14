@@ -243,6 +243,7 @@ export default function BookingCard() {
   const pickupAutocompleteTimerRef = useRef(null);
   const stopAutocompleteTimersRef = useRef({});
   const autocompleteCacheRef = useRef(new Map());
+  const lastAutocompleteKeyRef = useRef(null);
 
   const [submitTouched, setSubmitTouched] = useState(false);
 
@@ -522,6 +523,14 @@ export default function BookingCard() {
     const keyword = pickupAddress.trim();
     const lat = gpsLocation?.lat;
     const lng = gpsLocation?.lng;
+
+    const currentKey = buildAutocompleteCacheKey(keyword, lat, lng);
+
+    if (lastAutocompleteKeyRef.current === currentKey) {
+      return;
+    }
+
+    lastAutocompleteKeyRef.current = currentKey;
 
     clearTimeout(pickupAutocompleteTimerRef.current);
 
