@@ -1,6 +1,7 @@
 // Path: goviet247/apps/web/src/components/admin/TripDetailModal.jsx
 import { useEffect, useMemo, useState } from "react";
 import { getAdminToken } from "../../utils/adminAuth";
+import { normalizeDisplayAddress } from "../../api/adminTrips";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
@@ -44,11 +45,13 @@ function formatVehicleType(value) {
 function getStops(detail) {
   const stops = Array.isArray(detail?.stops) ? detail.stops : [];
   const list = stops
-    .map((s) => s?.address)
+    .map((s) => normalizeDisplayAddress(s?.address))
     .filter((x) => typeof x === "string" && x.trim().length > 0);
 
-  if (list.length === 0 && detail?.dropoffAddress)
-    return [detail.dropoffAddress];
+  if (list.length === 0 && detail?.dropoffAddress) {
+    return [normalizeDisplayAddress(detail.dropoffAddress)];
+  }
+
   return list;
 }
 
@@ -164,7 +167,10 @@ export default function TripDetailModal({ open, tripId, onClose }) {
                 }
               />
               <KV k="Loại xe" v={formatVehicleType(detail?.carType)} />
-              <KV k="Điểm đón" v={detail?.pickupAddress} />
+              <KV
+                k="Điểm đón"
+                v={normalizeDisplayAddress(detail?.pickupAddress)}
+              />
             </Section>
 
             <Section title="Các điểm đến">

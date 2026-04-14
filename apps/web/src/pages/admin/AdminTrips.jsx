@@ -21,7 +21,11 @@ import {
 import TripDetailModal from "../../components/admin/TripDetailModal";
 import CancelTripDialog from "../../components/admin/CancelTripDialog";
 
-import { fetchUnverifiedTrips, verifyTrip } from "../../api/adminTrips";
+import {
+  fetchUnverifiedTrips,
+  verifyTrip,
+  normalizeDisplayAddress,
+} from "../../api/adminTrips";
 import { getAdminToken } from "../../utils/adminAuth";
 
 function formatNgayGio(input) {
@@ -46,14 +50,18 @@ function getStopsFromTrip(t) {
 
   const sorted = stops
     .slice()
-    .sort((a, b) => Number(a?.order ?? 0) - Number(b?.order ?? 0));
+    .sort(
+      (a, b) =>
+        Number(a?.order ?? a?.seq ?? 0) - Number(b?.order ?? b?.seq ?? 0),
+    );
 
   const list = sorted
-    .map((s) => s?.address)
+    .map((s) => normalizeDisplayAddress(s?.address))
     .filter((x) => typeof x === "string" && x.trim().length > 0);
 
-  // fallback nếu chưa có TripStop
-  if (list.length === 0 && t?.dropoffAddress) return [t.dropoffAddress];
+  if (list.length === 0 && t?.dropoffAddress) {
+    return [normalizeDisplayAddress(t.dropoffAddress)];
+  }
 
   return list;
 }
@@ -79,7 +87,9 @@ async function fetchUnverifiedCancelledTrips() {
 }
 
 function normalizeText(value) {
-  return String(value || "").toLowerCase().trim();
+  return String(value || "")
+    .toLowerCase()
+    .trim();
 }
 
 export default function AdminTrips() {
@@ -173,9 +183,7 @@ export default function AdminTrips() {
       const tripId = normalizeText(t?.id);
 
       return (
-        tripId.includes(q) ||
-        riderName.includes(q) ||
-        riderPhone.includes(q)
+        tripId.includes(q) || riderName.includes(q) || riderPhone.includes(q)
       );
     });
   }, [items, searchText]);
@@ -281,7 +289,9 @@ export default function AdminTrips() {
                       </div>
                     </TableCell>
 
-                    <TableCell>{t.pickupAddress || "-"}</TableCell>
+                    <TableCell>
+                      {normalizeDisplayAddress(t.pickupAddress) || "-"}
+                    </TableCell>
 
                     <TableCell>
                       {stops.length <= 1 ? (

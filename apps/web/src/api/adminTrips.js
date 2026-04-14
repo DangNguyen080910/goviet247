@@ -69,6 +69,35 @@ export async function changeAssignedTripStatus(tripId, toStatus, note) {
   return data;
 }
 
+export function normalizeDisplayAddress(address) {
+  if (!address || typeof address !== "string") {
+    return "";
+  }
+
+  let raw = address.trim();
+  if (!raw) {
+    return "";
+  }
+
+  raw = raw
+    .replace(/\s+/g, " ")
+    .replace(/\s*,\s*/g, ", ")
+    .replace(/\bTP\.\s*HCM\b/gi, "Hồ Chí Minh")
+    .replace(/\bTP HCM\b/gi, "Hồ Chí Minh")
+    .replace(/\bTP\.?\s*Hồ Chí Minh\b/gi, "Hồ Chí Minh")
+    .replace(/\bHCM\b/gi, "Hồ Chí Minh")
+    .replace(/\bTP\.\s*/gi, "Thành phố ")
+    .trim();
+
+  // Ví dụ: "4 Hẻm 33 Đặng Văn Ngữ" -> "33/4 Đặng Văn Ngữ"
+  raw = raw.replace(
+    /\b(\d+)\s*hẻm\s+(\d+(?:\/\d+)?)\b/gi,
+    (_, hemSo, duongSo) => `${duongSo}/${hemSo}`,
+  );
+
+  return raw;
+}
+
 export async function fetchPendingCancelledTrips() {
   const data = await request("/api/admin/pending-trips/cancelled", {
     method: "GET",
