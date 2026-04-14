@@ -187,6 +187,25 @@ function maskAddress(address) {
     .replace(/\s+/g, " ")
     .trim();
 
+  // Fallback: nếu không bắt được quận/huyện bằng regex,
+  // ưu tiên lấy phần ngay trước tỉnh/thành ở cuối địa chỉ
+  // Ví dụ:
+  // "499/11/33 Quang Trung, Phường 10, Gò Vấp, Hồ Chí Minh"
+  // -> districtPart = "Gò Vấp"
+  if (!districtPart && parts.length >= 3) {
+    const fallbackDistrict = String(parts[parts.length - 2] || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (
+      fallbackDistrict &&
+      fallbackDistrict.toLowerCase() !== provincePart.toLowerCase() &&
+      fallbackDistrict.toLowerCase() !== wardPart.toLowerCase()
+    ) {
+      districtPart = fallbackDistrict;
+    }
+  }
+
   if (districtPart && provincePart) {
     if (districtPart.toLowerCase() === provincePart.toLowerCase()) {
       return districtPart;
