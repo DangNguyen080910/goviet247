@@ -2088,6 +2088,7 @@ export default function BookingCard() {
               scrollMarginTop: { xs: 90, sm: 110 },
             }}
           >
+            ``
             <Stack spacing={1}>
               <Typography sx={{ fontWeight: 900 }}>Giá cuối</Typography>
 
@@ -2095,27 +2096,29 @@ export default function BookingCard() {
                 {formatVND(quote.totalPrice)}
               </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{ opacity: 0.75, fontWeight: 600 }}
-              >
-                Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và chi
-                phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh
-                thêm.
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ opacity: 0.85, fontWeight: 700 }}
-              >
-                🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến đi
-              </Typography>
+              <Box sx={{ mt: 0.5, mb: 1.5 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ opacity: 0.8, fontWeight: 700 }}
+                >
+                  💰 Giá trọn gói – không phát sinh thêm
+                </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{ opacity: 0.7, fontWeight: 600 }}
-              >
-                💡 Đi càng xa, giá mỗi km càng rẻ
-              </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ opacity: 0.85, fontWeight: 700 }}
+                >
+                  🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến
+                  đi
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{ opacity: 0.75, fontWeight: 600 }}
+                >
+                  💡 Đi càng xa, giá mỗi km càng rẻ
+                </Typography>
+              </Box>
               {shouldShowWaitingBreakdown && (
                 <Box
                   sx={{
@@ -2170,7 +2173,7 @@ export default function BookingCard() {
                   ? "Đang tạo..."
                   : otpLoading
                     ? "Đang gửi OTP..."
-                    : "Đặt chuyến"}
+                    : "Đặt chuyến ngay"}
               </Button>
 
               {!!missingCreateTripHint && (
@@ -2186,7 +2189,7 @@ export default function BookingCard() {
                 variant="caption"
                 sx={{ opacity: 0.65, fontWeight: 700 }}
               >
-                Giữ giá {quoteCountdownLabel}
+                ⏳ Giữ giá {quoteCountdownLabel}
               </Typography>
             </Stack>
           </Box>
