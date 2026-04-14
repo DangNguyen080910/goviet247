@@ -1261,6 +1261,11 @@ export default function BookingCard() {
       direction,
       carType,
       distanceKm: Number(distanceKm),
+      driveMinutes: Number(driveMinutes),
+      outboundDriveMinutes:
+        direction === "ROUND_TRIP"
+          ? Number(outboundDriveMinutes)
+          : Number(driveMinutes),
       fareEstimate: quote.totalPrice,
       riderName,
       riderPhone,
@@ -2100,9 +2105,9 @@ export default function BookingCard() {
                   variant="body2"
                   sx={{ opacity: 0.8, fontWeight: 700 }}
                 >
-                  ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và chi
-                phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh
-                thêm.
+                  ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và
+                  chi phí ăn nghỉ của tài xế trong toàn hành trình. Không phát
+                  sinh thêm.
                 </Typography>
 
                 <Typography
