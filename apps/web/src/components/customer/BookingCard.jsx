@@ -2034,7 +2034,7 @@ export default function BookingCard() {
                   size="small"
                   multiline
                   minRows={3}
-                  placeholder="Ví dụ: Fortuner đời 2023+, có thú cưng, có em bé, say xe..."
+                  placeholder="Ví dụ: Yêu cầu Fortuner đời 2023+, xe xăng, xe điện, có thú cưng, có em bé, ..."
                 />
               </Stack>
 
@@ -2088,7 +2088,6 @@ export default function BookingCard() {
               scrollMarginTop: { xs: 90, sm: 110 },
             }}
           >
-            ``
             <Stack spacing={1}>
               <Typography sx={{ fontWeight: 900 }}>Giá cuối</Typography>
 
@@ -2101,7 +2100,9 @@ export default function BookingCard() {
                   variant="body2"
                   sx={{ opacity: 0.8, fontWeight: 700 }}
                 >
-                  💰 Giá trọn gói – không phát sinh thêm
+                  ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và chi
+                phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh
+                thêm.
                 </Typography>
 
                 <Typography
@@ -2189,7 +2190,7 @@ export default function BookingCard() {
                 variant="caption"
                 sx={{ opacity: 0.65, fontWeight: 700 }}
               >
-                ⏳ Giữ giá {quoteCountdownLabel}
+                ⏳ Giữ giá trong {quoteCountdownLabel}
               </Typography>
             </Stack>
           </Box>
