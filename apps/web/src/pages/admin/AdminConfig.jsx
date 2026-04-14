@@ -11,6 +11,7 @@ import {
   Alert,
   Button,
   Divider,
+  IconButton,
   Stack,
   Chip,
   Switch,
@@ -28,6 +29,8 @@ import TuneIcon from "@mui/icons-material/Tune";
 import SaveIcon from "@mui/icons-material/Save";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import TimerOutlinedIcon from "@mui/icons-material/TimerOutlined";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 import { getAdminUser } from "../../utils/adminAuth";
 import {
@@ -196,6 +199,76 @@ function parsePhoneCsv(value) {
     .filter((item, index, arr) => arr.indexOf(item) === index);
 }
 
+function normalizeKmTiersForForm(kmTiers) {
+  if (!Array.isArray(kmTiers) || kmTiers.length === 0) {
+    return [{ from: "0", to: "", pricePerKm: "" }];
+  }
+
+  return kmTiers.map((item) => ({
+    from: toFormValue(item?.from),
+    to: item?.to == null ? "" : toFormValue(item?.to),
+    pricePerKm: toFormValue(item?.pricePerKm),
+  }));
+}
+
+function buildKmTiersPayload(kmTiers) {
+  return (kmTiers || []).map((item) => ({
+    from: Number(item.from || 0),
+    to: item.to === "" ? null : Number(item.to),
+    pricePerKm: Number(item.pricePerKm || 0),
+  }));
+}
+
+function validateKmTiers(kmTiers) {
+  if (!Array.isArray(kmTiers) || kmTiers.length === 0) {
+    return "Vui lòng cấu hình ít nhất 1 bậc km.";
+  }
+
+  const normalized = kmTiers.map((item, index) => {
+    const from = Number(item?.from);
+    const to = item?.to === "" ? null : Number(item?.to);
+    const pricePerKm = Number(item?.pricePerKm);
+
+    if (!Number.isFinite(from) || from < 0) {
+      return { error: `Bậc km #${index + 1}: Từ km không hợp lệ.` };
+    }
+
+    if (to !== null && (!Number.isFinite(to) || to <= from)) {
+      return { error: `Bậc km #${index + 1}: Đến km phải lớn hơn Từ km.` };
+    }
+
+    if (!Number.isFinite(pricePerKm) || pricePerKm < 0) {
+      return { error: `Bậc km #${index + 1}: Giá/km không hợp lệ.` };
+    }
+
+    return { from, to, pricePerKm };
+  });
+
+  const firstError = normalized.find((item) => item.error);
+  if (firstError) return firstError.error;
+
+  const rows = normalized.sort((a, b) => a.from - b.from);
+
+  if (rows[0].from !== 0) {
+    return "Bậc km đầu tiên phải bắt đầu từ 0.";
+  }
+
+  for (let i = 0; i < rows.length; i++) {
+    const current = rows[i];
+    const next = rows[i + 1];
+
+    if (next && current.to == null) {
+      return "Chỉ bậc km cuối cùng mới được để trống mốc Đến km.";
+    }
+
+    if (next && current.to !== next.from) {
+      return "Các bậc km phải nối tiếp nhau. Ví dụ: 0-50, 50-100, 100-200.";
+    }
+  }
+
+  return "";
+}
+
 function normalizePricingRows(rows) {
   const mapped = {};
 
@@ -210,6 +283,7 @@ function normalizePricingRows(rows) {
       overnightFee: toFormValue(row.overnightFee),
       overnightTriggerKm: toFormValue(row.overnightTriggerKm),
       overnightTriggerHours: toFormValue(row.overnightTriggerHours),
+      kmTiers: normalizeKmTiersForForm(row.kmTiers),
       isActive: Boolean(row.isActive),
       updatedAt: row.updatedAt || null,
     };
@@ -227,6 +301,7 @@ function buildPayloadFromForm(item) {
     overnightFee: Number(item.overnightFee || 0),
     overnightTriggerKm: Number(item.overnightTriggerKm || 0),
     overnightTriggerHours: Number(item.overnightTriggerHours || 0),
+    kmTiers: buildKmTiersPayload(item.kmTiers),
     isActive: Boolean(item.isActive),
   };
 }
@@ -281,6 +356,9 @@ function PricingCard({
   saving,
   onFieldChange,
   onToggleActive,
+  onKmTierChange,
+  onAddKmTier,
+  onRemoveKmTier,
   onSave,
 }) {
   const meta = CAR_TYPE_META[carType] || {
@@ -301,12 +379,13 @@ function PricingCard({
         />
 
         <TextField
-          label="Giá mỗi km"
+          label="Giá mỗi km (fallback)"
           value={item?.pricePerKm || ""}
           onChange={onFieldChange(carType, "pricePerKm")}
           fullWidth
           type="number"
           inputProps={{ min: 0 }}
+          helperText="Chỉ dùng khi chưa cấu hình bậc km."
         />
 
         <TextField
@@ -353,6 +432,89 @@ function PricingCard({
           type="number"
           inputProps={{ min: 0 }}
         />
+
+        <Box
+          sx={{
+            p: 1.5,
+            borderRadius: 2,
+            border: "1px dashed",
+            borderColor: "divider",
+            bgcolor: "rgba(0,0,0,0.015)",
+          }}
+        >
+          <Stack spacing={1.25}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Box>
+                <Typography sx={{ fontWeight: 700, fontSize: 14 }}>
+                  Bậc km
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Ví dụ: 0-50, 50-100, 100-200, 200+
+                </Typography>
+              </Box>
+
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<AddIcon />}
+                onClick={() => onAddKmTier(carType)}
+              >
+                Thêm bậc
+              </Button>
+            </Stack>
+
+            <Stack spacing={1}>
+              {(item?.kmTiers || []).map((tier, index) => (
+                <Stack
+                  key={`${carType}-tier-${index}`}
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                >
+                  <TextField
+                    label="Từ km"
+                    value={tier.from}
+                    onChange={onKmTierChange(carType, index, "from")}
+                    type="number"
+                    fullWidth
+                    inputProps={{ min: 0 }}
+                  />
+
+                  <TextField
+                    label="Đến km"
+                    value={tier.to}
+                    onChange={onKmTierChange(carType, index, "to")}
+                    type="number"
+                    fullWidth
+                    placeholder="Để trống nếu là bậc cuối"
+                    inputProps={{ min: 0 }}
+                  />
+
+                  <TextField
+                    label="Giá/km"
+                    value={tier.pricePerKm}
+                    onChange={onKmTierChange(carType, index, "pricePerKm")}
+                    type="number"
+                    fullWidth
+                    inputProps={{ min: 0 }}
+                  />
+
+                  <IconButton
+                    color="error"
+                    onClick={() => onRemoveKmTier(carType, index)}
+                    disabled={(item?.kmTiers || []).length <= 1}
+                  >
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </Stack>
+              ))}
+            </Stack>
+          </Stack>
+        </Box>
 
         <FormControlLabel
           control={
@@ -673,10 +835,63 @@ export default function AdminConfig() {
     }));
   };
 
+  const handleKmTierChange = (carType, index, field) => (e) => {
+    const value = e.target.value;
+
+    setPricingMap((prev) => ({
+      ...prev,
+      [carType]: {
+        ...prev[carType],
+        kmTiers: (prev[carType]?.kmTiers || []).map((tier, i) =>
+          i === index ? { ...tier, [field]: value } : tier,
+        ),
+      },
+    }));
+  };
+
+  const handleAddKmTier = (carType) => {
+    setPricingMap((prev) => {
+      const currentTiers = prev[carType]?.kmTiers || [];
+      const lastTier = currentTiers[currentTiers.length - 1];
+
+      const nextFrom =
+        lastTier?.to !== "" && lastTier?.to != null ? String(lastTier.to) : "";
+
+      return {
+        ...prev,
+        [carType]: {
+          ...prev[carType],
+          kmTiers: [
+            ...currentTiers,
+            { from: nextFrom, to: "", pricePerKm: "" },
+          ],
+        },
+      };
+    });
+  };
+
+  const handleRemoveKmTier = (carType, index) => {
+    setPricingMap((prev) => {
+      const currentTiers = prev[carType]?.kmTiers || [];
+      const nextTiers = currentTiers.filter((_, i) => i !== index);
+
+      return {
+        ...prev,
+        [carType]: {
+          ...prev[carType],
+          kmTiers:
+            nextTiers.length > 0
+              ? nextTiers
+              : [{ from: "0", to: "", pricePerKm: "" }],
+        },
+      };
+    });
+  };
+
   const validatePricingItem = (item) => {
     const fields = [
       { key: "baseFare", label: "Giá mở cửa" },
-      { key: "pricePerKm", label: "Giá mỗi km" },
+      { key: "pricePerKm", label: "Giá mỗi km fallback" },
       { key: "pricePerHour", label: "Giá chờ mỗi giờ" },
       { key: "minFare", label: "Giá tối thiểu" },
       { key: "overnightFee", label: "Phụ phí qua đêm" },
@@ -694,6 +909,11 @@ export default function AdminConfig() {
       if (!Number.isFinite(num) || num < 0) {
         return `${field.label} không hợp lệ.`;
       }
+    }
+
+    const kmTiersError = validateKmTiers(item?.kmTiers || []);
+    if (kmTiersError) {
+      return kmTiersError;
     }
 
     return "";
@@ -946,6 +1166,7 @@ export default function AdminConfig() {
           overnightFee: toFormValue(updated.overnightFee),
           overnightTriggerKm: toFormValue(updated.overnightTriggerKm),
           overnightTriggerHours: toFormValue(updated.overnightTriggerHours),
+          kmTiers: normalizeKmTiersForForm(updated.kmTiers),
           isActive: Boolean(updated.isActive),
           updatedAt: updated.updatedAt || null,
         },
@@ -1320,6 +1541,9 @@ export default function AdminConfig() {
                           saving={Boolean(savingMap[carType])}
                           onFieldChange={handlePricingFieldChange}
                           onToggleActive={handleToggleActive}
+                          onKmTierChange={handleKmTierChange}
+                          onAddKmTier={handleAddKmTier}
+                          onRemoveKmTier={handleRemoveKmTier}
                           onSave={handleSavePricing}
                         />
                       </Grid>

@@ -148,6 +148,71 @@ export async function updatePricingConfig(req, res) {
       updateData.isActive = Boolean(body.isActive);
     }
 
+    if (body.kmTiers != null) {
+      if (!Array.isArray(body.kmTiers)) {
+        return res.status(400).json({
+          success: false,
+          message: "kmTiers phải là một mảng.",
+        });
+      }
+
+      const normalizedKmTiers = body.kmTiers.map((item, index) => {
+        const from = Number(item?.from);
+        const to =
+          item?.to == null || item?.to === "" ? null : Number(item?.to);
+        const pricePerKm = Number(item?.pricePerKm);
+
+        if (!Number.isFinite(from) || from < 0) {
+          throw new Error(`Bậc km #${index + 1}: from không hợp lệ.`);
+        }
+
+        if (to !== null && (!Number.isFinite(to) || to <= from)) {
+          throw new Error(`Bậc km #${index + 1}: to phải lớn hơn from.`);
+        }
+
+        if (!Number.isFinite(pricePerKm) || pricePerKm < 0) {
+          throw new Error(`Bậc km #${index + 1}: pricePerKm không hợp lệ.`);
+        }
+
+        return {
+          from: Math.round(from),
+          to: to == null ? null : Math.round(to),
+          pricePerKm: Math.round(pricePerKm),
+        };
+      });
+
+      normalizedKmTiers.sort((a, b) => a.from - b.from);
+
+      for (let i = 0; i < normalizedKmTiers.length; i++) {
+        const current = normalizedKmTiers[i];
+        const next = normalizedKmTiers[i + 1];
+
+        if (i === 0 && current.from !== 0) {
+          return res.status(400).json({
+            success: false,
+            message: "Bậc km đầu tiên phải bắt đầu từ 0.",
+          });
+        }
+
+        if (next && current.to == null) {
+          return res.status(400).json({
+            success: false,
+            message: "Chỉ bậc km cuối cùng mới được để trống mốc đến.",
+          });
+        }
+
+        if (next && current.to !== next.from) {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Các bậc km phải nối tiếp nhau. Ví dụ: 0-50, 50-100, 100-200.",
+          });
+        }
+      }
+
+      updateData.kmTiers = normalizedKmTiers;
+    }
+
     const existing = await prisma.pricingConfig.findUnique({
       where: { carType },
     });
@@ -173,7 +238,7 @@ export async function updatePricingConfig(req, res) {
     console.error("updatePricingConfig error:", err);
     return res.status(500).json({
       success: false,
-      message: "Lỗi server khi cập nhật pricing config.",
+      message: err?.message || "Lỗi server khi cập nhật pricing config.",
     });
   }
 }
