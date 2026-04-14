@@ -242,6 +242,7 @@ export default function BookingCard() {
   const latestRouteRequestRef = useRef(0);
   const pickupAutocompleteTimerRef = useRef(null);
   const stopAutocompleteTimersRef = useRef({});
+  const autocompleteCacheRef = useRef(new Map());
 
   const [submitTouched, setSubmitTouched] = useState(false);
 
@@ -261,6 +262,38 @@ export default function BookingCard() {
   // ✅ Lấy scroll container thật
   const getScrollEl = () => {
     return document.getElementById(CUSTOMER_SCROLL_ID);
+  };
+
+  const buildAutocompleteCacheKey = (keyword, lat, lng) => {
+    const safeKeyword = String(keyword || "")
+      .trim()
+      .toLowerCase();
+    const safeLat = Number.isFinite(Number(lat))
+      ? Number(lat).toFixed(3)
+      : "na";
+    const safeLng = Number.isFinite(Number(lng))
+      ? Number(lng).toFixed(3)
+      : "na";
+
+    return `${safeKeyword}__${safeLat}__${safeLng}`;
+  };
+
+  const getCachedAutocompleteItems = (keyword, lat, lng) => {
+    const key = buildAutocompleteCacheKey(keyword, lat, lng);
+    return autocompleteCacheRef.current.get(key) || null;
+  };
+
+  const setCachedAutocompleteItems = (keyword, lat, lng, items) => {
+    const key = buildAutocompleteCacheKey(keyword, lat, lng);
+
+    autocompleteCacheRef.current.set(key, Array.isArray(items) ? items : []);
+
+    if (autocompleteCacheRef.current.size > 100) {
+      const oldestKey = autocompleteCacheRef.current.keys().next().value;
+      if (oldestKey) {
+        autocompleteCacheRef.current.delete(oldestKey);
+      }
+    }
   };
 
   // ✅ Load config public cho customer page
@@ -487,6 +520,8 @@ export default function BookingCard() {
 
   useEffect(() => {
     const keyword = pickupAddress.trim();
+    const lat = gpsLocation?.lat;
+    const lng = gpsLocation?.lng;
 
     clearTimeout(pickupAutocompleteTimerRef.current);
 
@@ -496,16 +531,21 @@ export default function BookingCard() {
       return;
     }
 
+    const cachedItems = getCachedAutocompleteItems(keyword, lat, lng);
+    if (cachedItems) {
+      setPickupOptions(cachedItems);
+      setPickupLoading(false);
+      return;
+    }
+
     pickupAutocompleteTimerRef.current = setTimeout(async () => {
       try {
         setPickupLoading(true);
 
-        const items = await searchPlaces(keyword, {
-          lat: gpsLocation?.lat,
-          lng: gpsLocation?.lng,
-        });
+        const items = await searchPlaces(keyword, { lat, lng });
 
         setPickupOptions(items);
+        setCachedAutocompleteItems(keyword, lat, lng, items);
       } catch {
         setPickupOptions([]);
       } finally {
@@ -521,6 +561,8 @@ export default function BookingCard() {
   useEffect(() => {
     stops.forEach((value, idx) => {
       const keyword = String(value || "").trim();
+      const lat = gpsLocation?.lat;
+      const lng = gpsLocation?.lng;
 
       if (stopAutocompleteTimersRef.current[idx]) {
         clearTimeout(stopAutocompleteTimersRef.current[idx]);
@@ -534,18 +576,25 @@ export default function BookingCard() {
         return;
       }
 
+      const cachedItems = getCachedAutocompleteItems(keyword, lat, lng);
+      if (cachedItems) {
+        setStopOptions((prev) =>
+          prev.map((oldItems, i) => (i === idx ? cachedItems : oldItems)),
+        );
+        setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
+        return;
+      }
+
       stopAutocompleteTimersRef.current[idx] = setTimeout(async () => {
         try {
           setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
 
-          const items = await searchPlaces(keyword, {
-            lat: gpsLocation?.lat,
-            lng: gpsLocation?.lng,
-          });
+          const items = await searchPlaces(keyword, { lat, lng });
 
           setStopOptions((prev) =>
             prev.map((oldItems, i) => (i === idx ? items : oldItems)),
           );
+          setCachedAutocompleteItems(keyword, lat, lng, items);
         } catch {
           setStopOptions((prev) =>
             prev.map((oldItems, i) => (i === idx ? [] : oldItems)),
