@@ -231,6 +231,8 @@ function maskRiderPhone() {
  * - history: lịch sử chuyến -> masked lại địa chỉ, ẩn thông tin khách
  */
 function serializeDriverTrip(trip, scope = "active", extra = {}) {
+  const stops = Array.isArray(trip?.stops) ? trip.stops : [];
+
   const base = {
     ...trip,
     ...extra,
@@ -241,10 +243,15 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
       ...base,
       pickupAddressMasked: maskAddress(trip.pickupAddress),
       dropoffAddressMasked: maskAddress(trip.dropoffAddress),
+      stops: stops.map((stop) => ({
+        ...stop,
+        addressMasked: maskAddress(stop.address),
+      })),
       riderName: "",
       riderPhone: "",
       riderNameMasked: maskRiderName(),
       riderPhoneMasked: maskRiderPhone(),
+      note: null,
     };
   }
 
@@ -253,6 +260,10 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
       ...base,
       pickupAddressMasked: maskAddress(trip.pickupAddress),
       dropoffAddressMasked: maskAddress(trip.dropoffAddress),
+      stops: stops.map((stop) => ({
+        ...stop,
+        addressMasked: maskAddress(stop.address),
+      })),
       riderName: "",
       riderPhone: "",
       riderNameMasked: maskRiderName(),
@@ -264,6 +275,7 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
     ...base,
     pickupAddressMasked: maskAddress(trip.pickupAddress),
     dropoffAddressMasked: maskAddress(trip.dropoffAddress),
+    stops,
     riderNameMasked: maskRiderName(),
     riderPhoneMasked: maskRiderPhone(),
   };
@@ -614,6 +626,16 @@ export async function listAvailableTrips(req, res) {
       },
       orderBy: { verifiedAt: "desc" },
       take: 50,
+      include: {
+        stops: {
+          orderBy: { seq: "asc" },
+          select: {
+            id: true,
+            seq: true,
+            address: true,
+          },
+        },
+      },
     });
 
     const data = trips.map((t) => {
@@ -635,43 +657,38 @@ export async function listAvailableTrips(req, res) {
         driverPitBaseMode: config.driverPitBaseMode,
       });
 
-      return {
-        id: t.id,
+      return serializeDriverTrip(
+        {
+          id: t.id,
+          pickupAddress: t.pickupAddress,
+          dropoffAddress: t.dropoffAddress,
+          stops: t.stops || [],
+          distanceKm: Number(t.distanceKm || 0),
+          pickupTime: t.pickupTime,
+          returnTime: t.returnTime || null,
+          totalPrice: t.totalPrice,
+          carType: t.carType,
+          direction: t.direction,
+          note: t.note || null,
+          status: t.status,
+          createdAt: t.createdAt,
+          updatedAt: t.updatedAt,
+          driverAcceptOpenAt: openAt,
 
-        pickupAddress: t.pickupAddress,
-        pickupAddressMasked: maskAddress(t.pickupAddress),
+          commissionAmount:
+            t.commissionAmountSnapshot ?? finance.commissionAmount,
+          driverVatAmount: t.driverVatAmountSnapshot ?? finance.driverVatAmount,
+          driverPitAmount: t.driverPitAmountSnapshot ?? finance.driverPitAmount,
+          driverTaxTotal: t.driverTaxTotalSnapshot ?? finance.driverTaxTotal,
+          requiredWalletAmount:
+            t.requiredWalletAmountSnapshot ?? finance.requiredWalletAmount,
+          driverReceive: t.driverReceiveSnapshot ?? finance.driverReceiveAmount,
 
-        dropoffAddress: t.dropoffAddress,
-        dropoffAddressMasked: maskAddress(t.dropoffAddress),
-
-        distanceKm: Number(t.distanceKm || 0),
-        pickupTime: t.pickupTime,
-        returnTime: t.returnTime || null,
-
-        totalPrice: t.totalPrice,
-        carType: t.carType,
-        direction: t.direction,
-        note: t.note || null,
-        status: t.status,
-
-        createdAt: t.createdAt,
-        updatedAt: t.updatedAt,
-        driverAcceptOpenAt: openAt,
-
-        // preview tài chính cho tab "Chuyến đang chờ"
-        commissionAmount:
-          t.commissionAmountSnapshot ?? finance.commissionAmount,
-        driverVatAmount: t.driverVatAmountSnapshot ?? finance.driverVatAmount,
-        driverPitAmount: t.driverPitAmountSnapshot ?? finance.driverPitAmount,
-        driverTaxTotal: t.driverTaxTotalSnapshot ?? finance.driverTaxTotal,
-        requiredWalletAmount:
-          t.requiredWalletAmountSnapshot ?? finance.requiredWalletAmount,
-        driverReceive: t.driverReceiveSnapshot ?? finance.driverReceiveAmount,
-
-        // lock nhận chuyến
-        locked,
-        unlockAt: openAt,
-      };
+          locked,
+          unlockAt: openAt,
+        },
+        "available",
+      );
     });
 
     return res.json({
@@ -1275,6 +1292,16 @@ export async function listMyTrips(req, res) {
       where,
       orderBy: { updatedAt: "desc" },
       take: 100,
+      include: {
+        stops: {
+          orderBy: { seq: "asc" },
+          select: {
+            id: true,
+            seq: true,
+            address: true,
+          },
+        },
+      },
     });
 
     const items = trips.map((trip) => serializeDriverTrip(trip, scope));
@@ -2127,8 +2154,8 @@ export async function adminVerifyTrip(req, res) {
     if (io) {
       io.to("drivers").emit("trip:new", {
         id: updated.id,
-        pickupAddress: updated.pickupAddress,
-        dropoffAddress: updated.dropoffAddress,
+        pickupAddressMasked: maskAddress(updated.pickupAddress),
+        dropoffAddressMasked: maskAddress(updated.dropoffAddress),
         pickupTime: updated.pickupTime,
         carType: updated.carType,
         direction: updated.direction,
