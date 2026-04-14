@@ -388,6 +388,8 @@ model PricingConfig {
   minFare      Int
   overnightFee Int
 
+  kmTiers Json?
+
   overnightTriggerKm    Int @default(600)
   overnightTriggerHours Int @default(12)
 

@@ -39,6 +39,83 @@ function roundTo10k(vnd) {
   return Math.round(vnd / 10000) * 10000;
 }
 
+function normalizeKmTiers(rawKmTiers) {
+  if (!Array.isArray(rawKmTiers)) return [];
+
+  return rawKmTiers
+    .map((item) => {
+      const from = Number(item?.from);
+      const to = item?.to == null || item?.to === "" ? null : Number(item?.to);
+      const tierPricePerKm = Number(item?.pricePerKm);
+
+      if (!Number.isFinite(from) || from < 0) return null;
+      if (to !== null && (!Number.isFinite(to) || to <= from)) return null;
+      if (!Number.isFinite(tierPricePerKm) || tierPricePerKm < 0) return null;
+
+      return {
+        from,
+        to,
+        pricePerKm: tierPricePerKm,
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.from - b.from);
+}
+
+function calculateTieredDistanceCost(distanceKm, rawKmTiers) {
+  const km = Number(distanceKm);
+  if (!Number.isFinite(km) || km <= 0) {
+    return {
+      distanceCost: 0,
+      appliedKmTiers: [],
+      usedTierPricing: false,
+    };
+  }
+
+  const kmTiers = normalizeKmTiers(rawKmTiers);
+  if (!kmTiers.length) {
+    return {
+      distanceCost: 0,
+      appliedKmTiers: [],
+      usedTierPricing: false,
+    };
+  }
+
+  let totalCost = 0;
+  const appliedKmTiers = [];
+
+  for (const tier of kmTiers) {
+    const tierStart = tier.from;
+    const tierEnd = tier.to == null ? Infinity : tier.to;
+
+    if (km <= tierStart) {
+      continue;
+    }
+
+    const usedKm = Math.max(0, Math.min(km, tierEnd) - tierStart);
+    if (usedKm <= 0) {
+      continue;
+    }
+
+    const tierCost = Math.round(usedKm * tier.pricePerKm);
+    totalCost += tierCost;
+
+    appliedKmTiers.push({
+      from: tier.from,
+      to: tier.to,
+      pricePerKm: tier.pricePerKm,
+      usedKm,
+      tierCost,
+    });
+  }
+
+  return {
+    distanceCost: totalCost,
+    appliedKmTiers,
+    usedTierPricing: appliedKmTiers.length > 0,
+  };
+}
+
 /**
  * Quote giá theo PricingConfig (DB là nguồn sự thật)
  * - ONE_WAY: base + km*perKm + overnight (nếu vượt trigger)
@@ -86,7 +163,12 @@ export async function quotePrice(input) {
   const triggerKm = Number(config.overnightTriggerKm);
   const triggerHours = Number(config.overnightTriggerHours);
 
-  const distanceCost = Math.round(km * pricePerKm);
+  const { distanceCost, appliedKmTiers, usedTierPricing } =
+    calculateTieredDistanceCost(km, config.kmTiers);
+
+  const finalDistanceCost = usedTierPricing
+    ? distanceCost
+    : Math.round(km * pricePerKm);
 
   let overnightCount = 0;
   let overnightCost = 0;
@@ -170,7 +252,7 @@ export async function quotePrice(input) {
     return { ok: false, message: "direction không hợp lệ." };
   }
 
-  let rawTotal = baseFare + distanceCost + waitCost + overnightCost;
+  let rawTotal = baseFare + finalDistanceCost + waitCost + overnightCost;
 
   let minApplied = false;
   if (rawTotal < minFare) {
@@ -203,7 +285,9 @@ export async function quotePrice(input) {
       triggerKm,
       triggerHours,
 
-      distanceCost,
+      distanceCost: finalDistanceCost,
+      appliedKmTiers,
+      usedTierPricing,
       waitCost,
       overnightCost,
 
