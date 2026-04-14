@@ -85,6 +85,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       riderPhone,
       stops: stopsRaw,
       driveMinutes: driveMinutesRaw,
+      outboundDriveMinutes: outboundDriveMinutesRaw,
     } = req.body;
 
     const stops = Array.isArray(stopsRaw)
@@ -202,6 +203,10 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       pickupTime,
       returnTime: returnTimeRaw ? returnTime : undefined,
       driveMinutes,
+      outboundDriveMinutes:
+        direction === "ROUND_TRIP"
+          ? Number(outboundDriveMinutesRaw)
+          : Number(driveMinutes),
     });
 
     const totalPrice = Number(pricing.totalPrice);
