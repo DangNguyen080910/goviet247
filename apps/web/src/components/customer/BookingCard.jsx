@@ -2103,6 +2103,19 @@ export default function BookingCard() {
                 phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh
                 thêm.
               </Typography>
+              <Typography
+                variant="body2"
+                sx={{ opacity: 0.85, fontWeight: 700 }}
+              >
+                🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến đi
+              </Typography>
+
+              <Typography
+                variant="body2"
+                sx={{ opacity: 0.7, fontWeight: 600 }}
+              >
+                💡 Đi càng xa, giá mỗi km càng rẻ
+              </Typography>
               {shouldShowWaitingBreakdown && (
                 <Box
                   sx={{
