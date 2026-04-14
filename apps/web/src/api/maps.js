@@ -1,14 +1,24 @@
 // Path: goviet247/apps/web/src/api/maps.js
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
-export async function searchPlaces(q) {
+export async function searchPlaces(q, options = {}) {
   const keyword = String(q || "").trim();
 
-  if (!keyword) return [];
+  if (keyword.length < 3) return [];
 
-  const res = await fetch(
-    `${API_BASE}/api/maps/autocomplete?q=${encodeURIComponent(keyword)}`,
-  );
+  const lat = Number(options?.lat);
+  const lng = Number(options?.lng);
+
+  const params = new URLSearchParams({
+    q: keyword,
+  });
+
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    params.set("lat", String(lat));
+    params.set("lng", String(lng));
+  }
+
+  const res = await fetch(`${API_BASE}/api/maps/autocomplete?${params.toString()}`);
 
   const data = await res.json();
 

@@ -12,6 +12,8 @@ const router = Router();
 router.get("/autocomplete", async (req, res) => {
   try {
     const q = String(req.query.q || "").trim();
+    const lat = Number(req.query.lat);
+    const lng = Number(req.query.lng);
 
     if (!q) {
       return res.json({
@@ -20,7 +22,10 @@ router.get("/autocomplete", async (req, res) => {
       });
     }
 
-    const items = await autocomplete(q);
+    const items = await autocomplete(q, {
+      lat: Number.isFinite(lat) ? lat : undefined,
+      lng: Number.isFinite(lng) ? lng : undefined,
+    });
 
     return res.json({
       success: true,
@@ -28,6 +33,14 @@ router.get("/autocomplete", async (req, res) => {
     });
   } catch (err) {
     console.error("maps autocomplete error:", err);
+
+    if (err?.response?.status === 429) {
+      return res.status(429).json({
+        success: false,
+        message:
+          "Dịch vụ gợi ý địa chỉ đang tạm quá tải hoặc đã chạm giới hạn. Vui lòng thử lại sau.",
+      });
+    }
 
     return res.status(500).json({
       success: false,

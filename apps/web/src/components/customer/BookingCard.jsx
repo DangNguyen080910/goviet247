@@ -176,6 +176,7 @@ export default function BookingCard() {
   const [pickupPlace, setPickupPlace] = useState(null);
   const [pickupOptions, setPickupOptions] = useState([]);
   const [pickupLoading, setPickupLoading] = useState(false);
+  const [gpsLocation, setGpsLocation] = useState(null);
 
   const [stops, setStops] = useState([""]);
   const [stopPlaces, setStopPlaces] = useState([null]);
@@ -239,6 +240,8 @@ export default function BookingCard() {
   const quoteSummaryRef = useRef(null);
   const createTripButtonRef = useRef(null);
   const latestRouteRequestRef = useRef(0);
+  const pickupAutocompleteTimerRef = useRef(null);
+  const stopAutocompleteTimersRef = useRef({});
 
   const [submitTouched, setSubmitTouched] = useState(false);
 
@@ -302,6 +305,37 @@ export default function BookingCard() {
 
     return () => {
       active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!("geolocation" in navigator)) {
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (cancelled) return;
+
+        setGpsLocation({
+          lat: Number(position.coords.latitude),
+          lng: Number(position.coords.longitude),
+        });
+      },
+      () => {
+        // User từ chối GPS hoặc thiết bị không lấy được vị trí
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 8000,
+        maximumAge: 5 * 60 * 1000,
+      },
+    );
+
+    return () => {
+      cancelled = true;
     };
   }, []);
 
@@ -454,43 +488,43 @@ export default function BookingCard() {
   useEffect(() => {
     const keyword = pickupAddress.trim();
 
+    clearTimeout(pickupAutocompleteTimerRef.current);
+
     if (!keyword || keyword.length < 3) {
       setPickupOptions([]);
       setPickupLoading(false);
       return;
     }
 
-    let active = true;
-
-    const t = setTimeout(async () => {
+    pickupAutocompleteTimerRef.current = setTimeout(async () => {
       try {
         setPickupLoading(true);
-        const items = await searchPlaces(keyword);
 
-        if (!active) return;
+        const items = await searchPlaces(keyword, {
+          lat: gpsLocation?.lat,
+          lng: gpsLocation?.lng,
+        });
+
         setPickupOptions(items);
       } catch {
-        if (!active) return;
         setPickupOptions([]);
       } finally {
-        if (active) {
-          setPickupLoading(false);
-        }
+        setPickupLoading(false);
       }
-    }, 350);
+    }, 400);
 
     return () => {
-      active = false;
-      clearTimeout(t);
+      clearTimeout(pickupAutocompleteTimerRef.current);
     };
-  }, [pickupAddress]);
+  }, [pickupAddress, gpsLocation?.lat, gpsLocation?.lng]);
 
   useEffect(() => {
-    const timers = [];
-    let active = true;
-
     stops.forEach((value, idx) => {
       const keyword = String(value || "").trim();
+
+      if (stopAutocompleteTimersRef.current[idx]) {
+        clearTimeout(stopAutocompleteTimersRef.current[idx]);
+      }
 
       if (!keyword || keyword.length < 3) {
         setStopOptions((prev) =>
@@ -500,37 +534,34 @@ export default function BookingCard() {
         return;
       }
 
-      const t = setTimeout(async () => {
+      stopAutocompleteTimersRef.current[idx] = setTimeout(async () => {
         try {
           setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
-          const items = await searchPlaces(keyword);
 
-          if (!active) return;
+          const items = await searchPlaces(keyword, {
+            lat: gpsLocation?.lat,
+            lng: gpsLocation?.lng,
+          });
 
           setStopOptions((prev) =>
             prev.map((oldItems, i) => (i === idx ? items : oldItems)),
           );
         } catch {
-          if (!active) return;
-
           setStopOptions((prev) =>
             prev.map((oldItems, i) => (i === idx ? [] : oldItems)),
           );
         } finally {
-          if (active) {
-            setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
-          }
+          setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
         }
-      }, 350);
-
-      timers.push(t);
+      }, 400);
     });
 
     return () => {
-      active = false;
-      timers.forEach(clearTimeout);
+      Object.values(stopAutocompleteTimersRef.current).forEach((timerId) => {
+        clearTimeout(timerId);
+      });
     };
-  }, [stops]);
+  }, [stops, gpsLocation?.lat, gpsLocation?.lng]);
 
   const pickupMs = useMemo(() => {
     const iso = combineDateTime(pickupDate, pickupTimeOnly);

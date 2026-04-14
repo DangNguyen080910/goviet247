@@ -15,17 +15,25 @@ function buildMaskedAddress({ ward, district, province }) {
 }
 
 // 🔥 AUTOCOMPLETE
-export async function autocomplete(input) {
+export async function autocomplete(input, options = {}) {
   const url = `${GOONG_BASE_URL}/Place/AutoComplete`;
 
-  const { data } = await axios.get(url, {
-    params: {
-      api_key: GOONG_API_KEY,
-      input,
-      location: "10.7769,106.7009",
-      radius: 50000,
-    },
-  });
+  const lat = Number(options?.lat);
+  const lng = Number(options?.lng);
+
+  const params = {
+    api_key: GOONG_API_KEY,
+    input,
+    radius: 50000,
+  };
+
+  if (Number.isFinite(lat) && Number.isFinite(lng)) {
+    params.location = `${lat},${lng}`;
+  } else {
+    params.location = "10.7769,106.7009";
+  }
+
+  const { data } = await axios.get(url, { params });
 
   const predictions = data?.predictions || [];
 
