@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button } from "@mui/material";
 import CancelTripDialog from "./CancelTripDialog";
 import { getAdminToken } from "../../utils/adminAuth";
+import { normalizeDisplayAddress } from "../../api/adminTrips";
 
 // Bật debug nếu cần (mặc định tắt)
 const DEBUG_PENDING_TIME = false;
@@ -73,18 +74,20 @@ function renderStopsCell(trip) {
       <div style={{ display: "grid", gap: 4 }}>
         {stops
           .slice()
-          .sort((a, b) => Number(a?.order ?? 0) - Number(b?.order ?? 0))
+          .sort(
+            (a, b) =>
+              Number(a?.order ?? a?.seq ?? 0) - Number(b?.order ?? b?.seq ?? 0),
+          )
           .map((s, idx) => (
             <div key={s?.id || idx} style={{ lineHeight: 1.35 }}>
-              • {s?.address || "-"}
+              • {normalizeDisplayAddress(s?.address) || "-"}
             </div>
           ))}
       </div>
     );
   }
 
-  // fallback legacy
-  return trip?.dropoffAddress || "-";
+  return normalizeDisplayAddress(trip?.dropoffAddress) || "-";
 }
 
 function normalizeText(value) {
@@ -309,7 +312,9 @@ export default function PendingTripsTable({
                     </td>
                   )}
 
-                  <td style={td}>{t.pickupAddress || "-"}</td>
+                  <td style={td}>
+                    {normalizeDisplayAddress(t.pickupAddress) || "-"}
+                  </td>
                   <td style={td}>{renderStopsCell(t)}</td>
 
                   {isCancelledTab ? (

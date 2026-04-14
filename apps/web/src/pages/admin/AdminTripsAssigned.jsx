@@ -1,5 +1,4 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminTripsAssigned.jsx
-
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   Box,
@@ -25,6 +24,7 @@ import {
 import {
   fetchAssignedTrips,
   changeAssignedTripStatus,
+  normalizeDisplayAddress,
 } from "../../api/adminTrips";
 import ChangeTripStatusDialog from "../../components/admin/ChangeTripStatusDialog";
 import CancelTripDialog from "../../components/admin/CancelTripDialog";
@@ -68,11 +68,17 @@ function getStopsFromTrip(trip) {
 
   const list = stops
     .slice()
-    .sort((a, b) => Number(a?.seq ?? 0) - Number(b?.seq ?? 0))
-    .map((s) => s?.address)
+    .sort(
+      (a, b) =>
+        Number(a?.seq ?? a?.order ?? 0) - Number(b?.seq ?? b?.order ?? 0),
+    )
+    .map((s) => normalizeDisplayAddress(s?.address))
     .filter((x) => typeof x === "string" && x.trim().length > 0);
 
-  if (list.length === 0 && trip?.dropoffAddress) return [trip.dropoffAddress];
+  if (list.length === 0 && trip?.dropoffAddress) {
+    return [normalizeDisplayAddress(trip.dropoffAddress)];
+  }
+
   return list;
 }
 
@@ -400,7 +406,7 @@ export default function AdminTripsAssigned() {
 
                       <TableCell>
                         <Typography sx={{ fontWeight: 600 }}>
-                          {t.pickupAddress || "-"}
+                          {normalizeDisplayAddress(t.pickupAddress) || "-"}
                         </Typography>
 
                         {stops.length ? (
