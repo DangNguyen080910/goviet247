@@ -44,19 +44,12 @@ function formatDistanceKm(value) {
   })} km`;
 }
 
-function formatDurationMinutes(detail) {
-  const raw =
-    detail?.estimatedDurationMinutes ??
-    detail?.durationMinutes ??
-    detail?.outboundDriveMinutes ??
-    detail?.driveMinutes ??
-    detail?.estimatedMinutes;
+function formatDurationMinutes(value) {
+  if (value == null || value === "") return "-";
 
-  if (raw == null || raw === "") return "-";
-
-  const totalMinutes = Number(raw);
+  const totalMinutes = Number(value);
   if (!Number.isFinite(totalMinutes) || totalMinutes < 0) {
-    return String(raw);
+    return String(value);
   }
 
   if (totalMinutes < 60) {
@@ -120,6 +113,27 @@ function getRiderDisplayName(detail) {
   );
 }
 
+function getWaitMinutes(detail) {
+  const pickupMs = new Date(detail?.pickupTime || "").getTime();
+  const returnMs = new Date(detail?.returnTime || "").getTime();
+  const outbound = Number(detail?.outboundDriveMinutes || 0);
+
+  if (
+    !detail?.returnTime ||
+    !Number.isFinite(pickupMs) ||
+    !Number.isFinite(returnMs) ||
+    !Number.isFinite(outbound)
+  ) {
+    return 0;
+  }
+
+  const totalGapMinutes = Math.max(
+    0,
+    Math.round((returnMs - pickupMs) / 60000),
+  );
+  return Math.max(0, totalGapMinutes - outbound);
+}
+
 export default function TripDetailModal({ open, tripId, onClose }) {
   const [dangTai, setDangTai] = useState(true);
   const [loi, setLoi] = useState("");
@@ -172,6 +186,15 @@ export default function TripDetailModal({ open, tripId, onClose }) {
   const stops = getStops(detail);
   const driverPhone = getDriverPhone(detail);
   const driverProfile = detail?.driver?.driverProfile || null;
+  const driverDriveMinutes =
+    detail?.direction === "ROUND_TRIP"
+      ? Number(detail?.outboundDriveMinutes || 0)
+      : Number(detail?.estimatedDurationMinutes || 0);
+
+  const waitMinutes =
+    detail?.direction === "ROUND_TRIP" ? getWaitMinutes(detail) : 0;
+
+  const totalEstimatedMinutes = Number(detail?.estimatedDurationMinutes || 0);
 
   return (
     <div style={overlay} onClick={onClose}>
@@ -217,8 +240,20 @@ export default function TripDetailModal({ open, tripId, onClose }) {
                 v={formatDistanceKm(detail?.distanceKm)}
               />
               <KV
-                k="Thời gian chuyến đi dự kiến"
-                v={formatDurationMinutes(detail)}
+                k="Thời gian tài xế lái"
+                v={formatDurationMinutes(driverDriveMinutes)}
+              />
+              <KV
+                k="Giờ chờ"
+                v={
+                  detail?.direction === "ROUND_TRIP"
+                    ? formatDurationMinutes(waitMinutes)
+                    : "-"
+                }
+              />
+              <KV
+                k="Tổng thời gian chuyến dự kiến"
+                v={formatDurationMinutes(totalEstimatedMinutes)}
               />
             </Section>
 

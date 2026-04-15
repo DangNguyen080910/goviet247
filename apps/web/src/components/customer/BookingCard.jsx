@@ -1249,6 +1249,17 @@ export default function BookingCard() {
     const dropoffAddress = cleanedStops[cleanedStops.length - 1] || "";
     const finalNote = note?.trim() || null;
 
+    const safeDriveMinutes = Number(driveMinutes);
+    const safeOutboundDriveMinutes =
+      direction === "ROUND_TRIP"
+        ? Number(outboundDriveMinutes)
+        : Number(driveMinutes);
+
+    const safeEstimatedDurationMinutes =
+      direction === "ROUND_TRIP"
+        ? Number(estimatedTripMinutes)
+        : Number(driveMinutes);
+
     return {
       pickupAddress: pickupFullAddress,
       dropoffAddress,
@@ -1261,11 +1272,9 @@ export default function BookingCard() {
       direction,
       carType,
       distanceKm: Number(distanceKm),
-      driveMinutes: Number(driveMinutes),
-      outboundDriveMinutes:
-        direction === "ROUND_TRIP"
-          ? Number(outboundDriveMinutes)
-          : Number(driveMinutes),
+      driveMinutes: safeDriveMinutes,
+      outboundDriveMinutes: safeOutboundDriveMinutes,
+      estimatedDurationMinutes: safeEstimatedDurationMinutes,
       fareEstimate: quote.totalPrice,
       riderName,
       riderPhone,

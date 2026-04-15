@@ -269,8 +269,10 @@ model Trip {
   dropoffLat     Float?
   dropoffLng     Float?
 
-  distanceKm   Float
-  fareEstimate Decimal? @db.Decimal(10, 2)
+  distanceKm               Float
+  estimatedDurationMinutes Int?
+  outboundDriveMinutes     Int?
+  fareEstimate             Decimal? @db.Decimal(10, 2)
 
   status TripStatus
 

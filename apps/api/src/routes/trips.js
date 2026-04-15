@@ -87,6 +87,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       stops: stopsRaw,
       driveMinutes: driveMinutesRaw,
       outboundDriveMinutes: outboundDriveMinutesRaw,
+      estimatedDurationMinutes: estimatedDurationMinutesRaw,
     } = req.body;
 
     const stops = Array.isArray(stopsRaw)
@@ -182,6 +183,39 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         ? Number(driveMinutesRaw)
         : null;
 
+    let outboundDriveMinutes =
+      outboundDriveMinutesRaw != null && outboundDriveMinutesRaw !== ""
+        ? Number(outboundDriveMinutesRaw)
+        : null;
+
+    if (
+      outboundDriveMinutes != null &&
+      (!Number.isFinite(outboundDriveMinutes) || outboundDriveMinutes < 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "VALIDATION_ERROR",
+        message: "outboundDriveMinutes không hợp lệ.",
+      });
+    }
+
+    let estimatedDurationMinutes =
+      estimatedDurationMinutesRaw != null && estimatedDurationMinutesRaw !== ""
+        ? Number(estimatedDurationMinutesRaw)
+        : null;
+
+    if (
+      estimatedDurationMinutes != null &&
+      (!Number.isFinite(estimatedDurationMinutes) ||
+        estimatedDurationMinutes < 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "VALIDATION_ERROR",
+        message: "estimatedDurationMinutes không hợp lệ.",
+      });
+    }
+
     if (
       driveMinutes != null &&
       (!Number.isFinite(driveMinutes) || driveMinutes < 0)
@@ -197,6 +231,14 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       driveMinutes = 0;
     }
 
+    if (outboundDriveMinutes == null) {
+      outboundDriveMinutes = driveMinutes;
+    }
+
+    if (estimatedDurationMinutes == null) {
+      estimatedDurationMinutes = driveMinutes;
+    }
+
     const pricing = await calculateTripPrice({
       carType,
       direction,
@@ -204,10 +246,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       pickupTime,
       returnTime: returnTimeRaw ? returnTime : undefined,
       driveMinutes,
-      outboundDriveMinutes:
-        direction === "ROUND_TRIP"
-          ? Number(outboundDriveMinutesRaw)
-          : Number(driveMinutes),
+      outboundDriveMinutes,
     });
 
     const totalPrice = Number(pricing.totalPrice);
@@ -225,6 +264,8 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         dropoffLat: dropoffLat != null ? Number(dropoffLat) : null,
         dropoffLng: dropoffLng != null ? Number(dropoffLng) : null,
         distanceKm,
+        estimatedDurationMinutes,
+        outboundDriveMinutes,
         fareEstimate:
           fareEstimate != null && fareEstimate !== ""
             ? Number(fareEstimate)
