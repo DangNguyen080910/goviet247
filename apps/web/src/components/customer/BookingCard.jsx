@@ -2169,7 +2169,7 @@ export default function BookingCard() {
                     border: "1px solid rgba(0,0,0,0.06)",
                   }}
                 >
-                  <Stack spacing={0.5}>
+                  {/* <Stack spacing={0.5}>
                     <Typography sx={{ fontWeight: 800, fontSize: 14 }}>
                       Chi tiết thời gian chờ
                     </Typography>
@@ -2192,7 +2192,7 @@ export default function BookingCard() {
                     <Typography variant="body2" sx={{ opacity: 0.8 }}>
                       Phí chờ: <b>{formatVND(quoteWaitCost)}</b>
                     </Typography>
-                  </Stack>
+                  </Stack> */}
                 </Box>
               )}
 

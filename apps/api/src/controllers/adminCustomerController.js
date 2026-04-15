@@ -8,6 +8,112 @@ function toInt(v, fallback) {
   return Number.isFinite(n) ? n : fallback;
 }
 
+function buildCustomerUserWhere({ q, phoneVerified, status }) {
+  const and = [];
+
+  // ✅ Source of truth cho customer:
+  // - có RiderProfile
+  // - hoặc có role RIDER
+  // - hoặc đã từng tạo trip với vai rider
+  and.push({
+    OR: [
+      { riderProfile: { isNot: null } },
+      { roles: { some: { role: "RIDER" } } },
+      { riderTrips: { some: {} } },
+    ],
+  });
+
+  if (q) {
+    and.push({
+      OR: [
+        { displayName: { contains: q, mode: "insensitive" } },
+        {
+          phones: {
+            some: {
+              e164: { contains: q },
+            },
+          },
+        },
+      ],
+    });
+  }
+
+  if (phoneVerified === "true") {
+    and.push({
+      phones: { some: { isVerified: true } },
+    });
+  } else if (phoneVerified === "false") {
+    and.push({
+      OR: [
+        { phones: { none: {} } },
+        { phones: { some: { isVerified: false } } },
+      ],
+    });
+  }
+
+  if (status === "ACTIVE" || status === "SUSPENDED") {
+    and.push({
+      riderProfile: {
+        is: { status },
+      },
+    });
+  }
+
+  return and.length ? { AND: and } : {};
+}
+
+async function findCustomerUserById(userId) {
+  if (!userId) return null;
+
+  return prisma.user.findFirst({
+    where: {
+      id: userId,
+      AND: [
+        {
+          OR: [
+            { riderProfile: { isNot: null } },
+            { roles: { some: { role: "RIDER" } } },
+            { riderTrips: { some: {} } },
+          ],
+        },
+      ],
+    },
+    select: {
+      id: true,
+      displayName: true,
+      primaryRole: true,
+      createdAt: true,
+      updatedAt: true,
+      phones: {
+        select: { e164: true, isVerified: true, createdAt: true },
+        orderBy: { createdAt: "desc" },
+        take: 1,
+      },
+      riderProfile: {
+        select: {
+          id: true,
+          status: true,
+          suspendedAt: true,
+          suspendReason: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      },
+      roles: {
+        select: {
+          id: true,
+          role: true,
+        },
+      },
+      _count: {
+        select: {
+          riderTrips: true,
+        },
+      },
+    },
+  });
+}
+
 // GET /api/admin/customers?q=&status=&phoneVerified=&sort=&page=&pageSize=
 // status: all|ACTIVE|SUSPENDED
 // phoneVerified: all|true|false
@@ -24,57 +130,21 @@ export async function getCustomers(req, res) {
     const skip = (page - 1) * pageSize;
     const take = pageSize;
 
-    // Điều kiện lọc chính: chỉ lấy RIDER
-    const whereUser = {
-      primaryRole: "RIDER",
-    };
-
-    // Tìm theo tên hoặc sđt
-    if (q) {
-      whereUser.OR = [
-        { displayName: { contains: q, mode: "insensitive" } },
-        {
-          phones: {
-            some: {
-              e164: { contains: q },
-            },
-          },
-        },
-      ];
-    }
-
-    // Lọc theo phoneVerified
-    if (phoneVerified === "true") {
-      whereUser.phones = { some: { isVerified: true } };
-    } else if (phoneVerified === "false") {
-      // Rider có thể chưa có phone, hoặc có phone nhưng chưa verify
-      whereUser.OR = [
-        ...(whereUser.OR || []),
-        { phones: { none: {} } },
-        { phones: { some: { isVerified: false } } },
-      ];
-    }
-
-    // Lọc theo RiderProfile.status
-    const whereRiderProfile =
-      status === "ACTIVE" || status === "SUSPENDED" ? { status } : undefined;
+    const whereUser = buildCustomerUserWhere({
+      q,
+      phoneVerified,
+      status,
+    });
 
     const orderBy =
       sort === "oldest" ? { createdAt: "asc" } : { createdAt: "desc" };
 
-    // Đếm tổng
     const total = await prisma.user.count({
-      where: {
-        ...whereUser,
-        riderProfile: whereRiderProfile ? { is: whereRiderProfile } : undefined,
-      },
+      where: whereUser,
     });
 
     const items = await prisma.user.findMany({
-      where: {
-        ...whereUser,
-        riderProfile: whereRiderProfile ? { is: whereRiderProfile } : undefined,
-      },
+      where: whereUser,
       orderBy,
       skip,
       take,
@@ -87,15 +157,22 @@ export async function getCustomers(req, res) {
         phones: {
           select: { e164: true, isVerified: true },
           orderBy: { createdAt: "desc" },
-          take: 1, // lấy số mới nhất
+          take: 1,
         },
         riderProfile: {
           select: {
+            fullName: true,
             status: true,
             suspendedAt: true,
             suspendReason: true,
             createdAt: true,
             updatedAt: true,
+          },
+        },
+        roles: {
+          select: {
+            id: true,
+            role: true,
           },
         },
         _count: {
@@ -109,7 +186,7 @@ export async function getCustomers(req, res) {
     return res.json({
       success: true,
       items,
-      customers: items, // alias giống style drivers để FE dễ reuse
+      customers: items,
       meta: {
         page,
         pageSize,
@@ -140,13 +217,9 @@ export async function suspendCustomer(req, res) {
       });
     }
 
-    // Đảm bảo user là RIDER
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { id: true, primaryRole: true },
-    });
+    const user = await findCustomerUserById(userId);
 
-    if (!user || user.primaryRole !== "RIDER") {
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Không tìm thấy khách hàng",
@@ -158,11 +231,11 @@ export async function suspendCustomer(req, res) {
       select: { id: true, status: true },
     });
 
-    // RiderProfile có thể chưa có (trường hợp dữ liệu cũ), mình upsert cho chắc
     const riderProfile = await prisma.riderProfile.upsert({
       where: { userId },
       create: {
         userId,
+        fullName: user.displayName || null,
         status: "SUSPENDED",
         suspendedAt: new Date(),
         suspendReason: reason,
@@ -196,7 +269,6 @@ export async function suspendCustomer(req, res) {
       },
     });
 
-    // TODO: thêm audit log (AdminCustomerActionLog) ở checkpoint sau
     return res.json({
       success: true,
       message: "Đã khóa khách hàng",
@@ -214,14 +286,11 @@ export async function suspendCustomer(req, res) {
 export async function unsuspendCustomer(req, res) {
   try {
     const userId = req.params.id;
-    const reason = (req.body?.reason || "").trim(); // optional
+    const reason = (req.body?.reason || "").trim();
 
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { id: true, primaryRole: true },
-    });
+    const user = await findCustomerUserById(userId);
 
-    if (!user || user.primaryRole !== "RIDER") {
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Không tìm thấy khách hàng",
@@ -237,6 +306,7 @@ export async function unsuspendCustomer(req, res) {
       where: { userId },
       create: {
         userId,
+        fullName: user.displayName || null,
         status: "ACTIVE",
       },
       update: {
@@ -268,7 +338,6 @@ export async function unsuspendCustomer(req, res) {
       },
     });
 
-    // TODO: audit log ở checkpoint sau
     return res.json({
       success: true,
       message: "Đã mở khóa khách hàng",
@@ -288,20 +357,15 @@ export async function getCustomerLogs(req, res) {
   try {
     const userId = req.params.id;
 
-    // đảm bảo user là RIDER
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { id: true, primaryRole: true },
-    });
+    const user = await findCustomerUserById(userId);
 
-    if (!user || user.primaryRole !== "RIDER") {
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Không tìm thấy khách hàng",
       });
     }
 
-    // riderProfile có thể chưa có -> trả rỗng
     const rp = await prisma.riderProfile.findUnique({
       where: { userId },
       select: { id: true },
@@ -342,41 +406,15 @@ export async function getCustomerDetail(req, res) {
   try {
     const userId = req.params.id;
 
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        displayName: true,
-        primaryRole: true,
-        createdAt: true,
-        updatedAt: true,
-        phones: {
-          select: { e164: true, isVerified: true, createdAt: true },
-          orderBy: { createdAt: "desc" },
-          take: 1,
-        },
-        riderProfile: {
-          select: {
-            id: true,
-            status: true,
-            suspendedAt: true,
-            suspendReason: true,
-            createdAt: true,
-            updatedAt: true,
-          },
-        },
-        _count: { select: { riderTrips: true } },
-      },
-    });
+    const user = await findCustomerUserById(userId);
 
-    if (!user || user.primaryRole !== "RIDER") {
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Không tìm thấy khách hàng",
       });
     }
 
-    // Chuẩn hoá shape giống driver detail (có user + status)
     return res.json({
       success: true,
       customer: {
@@ -390,6 +428,7 @@ export async function getCustomerDetail(req, res) {
           id: user.id,
           displayName: user.displayName,
           phones: user.phones,
+          roles: user.roles,
         },
         counts: {
           riderTrips: user._count?.riderTrips || 0,
