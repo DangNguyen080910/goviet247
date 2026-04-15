@@ -186,6 +186,7 @@ export default function TripDetailModal({ open, tripId, onClose }) {
   const stops = getStops(detail);
   const driverPhone = getDriverPhone(detail);
   const driverProfile = detail?.driver?.driverProfile || null;
+
   const driverDriveMinutes =
     detail?.direction === "ROUND_TRIP"
       ? Number(detail?.outboundDriveMinutes || 0)
