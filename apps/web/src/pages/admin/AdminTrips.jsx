@@ -245,6 +245,7 @@ export default function AdminTrips() {
               <TableCell sx={{ fontWeight: 700 }}>Giờ đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ về (Khứ hồi)</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giá</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Loại</TableCell>
 
               {tab === 1 && (
                 <>
@@ -275,6 +276,9 @@ export default function AdminTrips() {
               </TableRow>
             ) : (
               rows.map((t) => {
+                const isDriverCancelled =
+                  t?.verifiedNote === "Driver huỷ chuyến" ||
+                  t?.cancelReason === "Driver huỷ chuyến";
                 const stops = getStopsFromTrip(t);
 
                 return (
@@ -328,6 +332,36 @@ export default function AdminTrips() {
                     </TableCell>
 
                     <TableCell>{formatGia(t.totalPrice)}</TableCell>
+
+                    <TableCell>
+                      {isDriverCancelled ? (
+                        <span
+                          style={{
+                            background: "#fff3cd",
+                            color: "#856404",
+                            padding: "2px 8px",
+                            borderRadius: 6,
+                            fontSize: 12,
+                            fontWeight: 600,
+                          }}
+                        >
+                          Tài xế huỷ
+                        </span>
+                      ) : (
+                        <span
+                          style={{
+                            background: "#e6f4ea",
+                            color: "#1e7e34",
+                            padding: "2px 8px",
+                            borderRadius: 6,
+                            fontSize: 12,
+                            fontWeight: 600,
+                          }}
+                        >
+                          Mới
+                        </span>
+                      )}
+                    </TableCell>
 
                     {tab === 1 && (
                       <>
