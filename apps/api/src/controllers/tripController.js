@@ -1184,7 +1184,7 @@ export async function cancelDriverTrip(req, res) {
           // Việt: không mở lại cho driver pool ngay
           driverAcceptOpenAt: null,
 
-          // Việt: giữ lại dấu vết huỷ để admin biết chuyến này vừa bị tài xế huỷ
+          // Việt: trip quay về hàng chờ duyệt lại, nên không đánh dấu terminal-cancel trên trip chính
           cancelledAt: null,
           cancelReason: "Driver huỷ chuyến",
 
@@ -1203,6 +1203,20 @@ export async function cancelDriverTrip(req, res) {
         },
       });
 
+      const driverNotification = await tx.systemNotification.create({
+        data: {
+          audience: "DRIVER",
+          targetType: "USER",
+          targetUserId: driverUserId,
+          title: "Bạn đã huỷ chuyến",
+          message: `Chuyến ${trip.id.slice(-8)} đã được trả về Chờ Duyệt. Hệ thống đã giữ lại ${penaltyAmount.toLocaleString(
+            "vi-VN",
+          )}đ phí huỷ chuyến.`,
+          isActive: true,
+          createdByAdminId: null,
+        },
+      });
+
       return {
         trip: updatedTrip,
         penalty: {
@@ -1211,6 +1225,7 @@ export async function cancelDriverTrip(req, res) {
           balanceAfter: balanceAfterPenalty,
           reopenAt,
         },
+        driverNotification,
         realtime: {
           tripId: updatedTrip.id,
           driverId: null,
@@ -1265,6 +1280,25 @@ export async function cancelDriverTrip(req, res) {
         reason: result.realtime.reason,
       });
 
+      if (result.driverNotification) {
+        io.to(`driver:${result.realtime.previousDriverId}`).emit(
+          "driver:notification_changed",
+          {
+            source: "driver_cancel_trip",
+            audience: "DRIVER",
+            targetUserId: result.realtime.previousDriverId,
+            notificationId: result.driverNotification.id,
+            updatedAt:
+              result.driverNotification.updatedAt ||
+              result.driverNotification.createdAt,
+          },
+        );
+
+        console.log(
+          `[Socket] Emit driver:notification_changed -> driver:${result.realtime.previousDriverId} (${result.realtime.tripId})`,
+        );
+      }
+
       console.log(
         `[Socket] Emit admin:trip_status_changed + admin:dashboard_changed + trip:changed (${result.realtime.tripId})`,
       );
@@ -1276,6 +1310,17 @@ export async function cancelDriverTrip(req, res) {
       });
     } catch (pushError) {
       console.error("[cancelDriverTrip] push rider error:", pushError);
+    }
+
+    try {
+      if (result.driverNotification && result.realtime.previousDriverId) {
+        await sendSystemNotificationToDriver(
+          result.realtime.previousDriverId,
+          result.driverNotification,
+        );
+      }
+    } catch (pushError) {
+      console.error("[cancelDriverTrip] push driver error:", pushError);
     }
 
     return res.json({
