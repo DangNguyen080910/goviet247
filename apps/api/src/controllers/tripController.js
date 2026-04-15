@@ -1185,7 +1185,7 @@ export async function cancelDriverTrip(req, res) {
           driverAcceptOpenAt: null,
 
           // Việt: giữ lại dấu vết huỷ để admin biết chuyến này vừa bị tài xế huỷ
-          cancelledAt: now,
+          cancelledAt: null,
           cancelReason: "Driver huỷ chuyến",
 
           commissionPercentSnapshot: null,
