@@ -141,14 +141,28 @@ export default function AdminTrips() {
     load();
   }, [tab]);
 
-  // realtime admin:new_trip
+  // realtime: new trip + driver cancel + status change
   useEffect(() => {
-    const onNewTrip = () => {
-      if (tab === 0) loadRef.current?.();
+    const reloadIfPendingTab = () => {
+      // chỉ reload khi đang ở tab "Chờ duyệt"
+      if (tab === 0) {
+        console.log("[AdminTrips] Realtime reload triggered");
+        loadRef.current?.();
+      }
     };
 
-    window.addEventListener("admin:new_trip", onNewTrip);
-    return () => window.removeEventListener("admin:new_trip", onNewTrip);
+    window.addEventListener("admin:new_trip", reloadIfPendingTab);
+    window.addEventListener("admin:trip_status_changed", reloadIfPendingTab);
+    window.addEventListener("admin:dashboard_changed", reloadIfPendingTab);
+
+    return () => {
+      window.removeEventListener("admin:new_trip", reloadIfPendingTab);
+      window.removeEventListener(
+        "admin:trip_status_changed",
+        reloadIfPendingTab,
+      );
+      window.removeEventListener("admin:dashboard_changed", reloadIfPendingTab);
+    };
   }, [tab]);
 
   const onVerify = async (tripId) => {
