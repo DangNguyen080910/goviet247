@@ -1417,6 +1417,99 @@ export async function getDriverWallet(req, res) {
 }
 
 /**
+ * GET /api/trips/driver/cancel-history
+ * -> Driver xem lịch sử các chuyến mình đã huỷ
+ * Source of truth: DriverTripPenaltyLog
+ */
+export async function getDriverCancelHistory(req, res) {
+  try {
+    const driverUserId = req.user?.uid || req.user?.id;
+
+    if (!driverUserId) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
+
+    const items = await prisma.driverTripPenaltyLog.findMany({
+      where: {
+        driverId: driverUserId,
+      },
+      orderBy: { createdAt: "desc" },
+      take: 100,
+      include: {
+        trip: {
+          select: {
+            id: true,
+            pickupAddress: true,
+            dropoffAddress: true,
+            pickupTime: true,
+            carType: true,
+            direction: true,
+            totalPrice: true,
+            cancelReason: true,
+            stops: {
+              orderBy: { seq: "asc" },
+              select: {
+                id: true,
+                seq: true,
+                address: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    const data = items.map((item) => {
+      const trip = item.trip;
+
+      return {
+        id: item.id,
+        tripId: item.tripId,
+        penaltyAmount: Number(item.penaltyAmount || 0),
+        status: item.status,
+        cancelledAt: item.approvedAt || item.createdAt,
+        createdAt: item.createdAt,
+        approvedAt: item.approvedAt,
+        tripStatusSnapshot: item.tripStatusSnapshot || null,
+
+        pickupAddress: trip?.pickupAddress
+          ? maskAddress(trip.pickupAddress)
+          : "",
+        dropoffAddress: trip?.dropoffAddress
+          ? maskAddress(trip.dropoffAddress)
+          : "",
+        pickupTime: trip?.pickupTime || null,
+        carType: trip?.carType || null,
+        direction: trip?.direction || null,
+        totalPrice: Number(trip?.totalPrice || 0),
+        cancelReason: trip?.cancelReason || "Driver huỷ chuyến",
+        stops: Array.isArray(trip?.stops)
+          ? trip.stops.map((stop) => ({
+              id: stop.id,
+              seq: stop.seq,
+              address: maskAddress(stop.address),
+            }))
+          : [],
+      };
+    });
+
+    return res.json({
+      success: true,
+      items: data,
+    });
+  } catch (e) {
+    console.error("[Trip] getDriverCancelHistory error:", e);
+    return res.status(500).json({
+      success: false,
+      message: "Lỗi server khi lấy lịch sử huỷ chuyến.",
+    });
+  }
+}
+
+/**
  * GET /api/trips/driver/wallet-transactions
  * -> Driver xem lịch sử biến động ví của mình
  */

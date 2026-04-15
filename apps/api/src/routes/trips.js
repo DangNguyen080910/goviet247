@@ -20,6 +20,7 @@ import {
   getMyDriverWalletTransactions,
   createWithdrawRequest,
   cancelDriverTrip,
+  getDriverCancelHistory,
 } from "../controllers/tripController.js";
 
 import { sendNewTripToDrivers } from "../services/notificationService.js";
@@ -497,6 +498,7 @@ router.get("/driver/available", verifyToken, listAvailableTrips);
 router.post("/driver/accept", verifyToken, acceptTrip);
 router.post("/driver/cancel", verifyToken, cancelDriverTrip);
 router.get("/driver/my", verifyToken, listMyTrips);
+router.get("/driver/cancel-history", verifyToken, getDriverCancelHistory);
 router.post("/driver/change-status", verifyToken, changeTripStatus);
 
 router.get("/admin/trips/assigned", requireAdminOrStaff, getAssignedTrips);
