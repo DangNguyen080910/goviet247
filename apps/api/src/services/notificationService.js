@@ -36,6 +36,124 @@ function shortText(text, maxLength = 60) {
   return `${value.slice(0, maxLength - 3)}...`;
 }
 
+function normalizeDisplayAddress(address) {
+  if (!address || typeof address !== "string") {
+    return "";
+  }
+
+  let raw = address.trim();
+  if (!raw) {
+    return "";
+  }
+
+  raw = raw
+    .replace(/\s+/g, " ")
+    .replace(/\s*,\s*/g, ", ")
+    .replace(/\bTP\.\s*HCM\b/gi, "Hồ Chí Minh")
+    .replace(/\bTP HCM\b/gi, "Hồ Chí Minh")
+    .replace(/\bTP\.?\s*Hồ Chí Minh\b/gi, "Hồ Chí Minh")
+    .replace(/\bHCM\b/gi, "Hồ Chí Minh")
+    .replace(/\bTP\.\s*/gi, "Thành phố ")
+    .trim();
+
+  raw = raw.replace(
+    /\b(\d+)\s*hẻm\s+(\d+(?:\/\d+)?)\b/gi,
+    (_, hemSo, duongSo) => `${duongSo}/${hemSo}`,
+  );
+
+  return raw;
+}
+
+function maskAddress(address) {
+  const normalized = normalizeDisplayAddress(address);
+
+  if (!normalized) {
+    return "";
+  }
+
+  const parts = normalized
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  if (!parts.length) {
+    return normalized;
+  }
+
+  const wardRegex =
+    /\b(phường\s+[a-zà-ỹ0-9\s]+|xã\s+[a-zà-ỹ0-9\s]+|thị trấn\s+[a-zà-ỹ0-9\s]+)\b/i;
+
+  const districtRegex =
+    /\b(quận\s*\d+|quận\s+[a-zà-ỹ0-9\s]+|huyện\s+[a-zà-ỹ0-9\s]+|thị xã\s+[a-zà-ỹ0-9\s]+|thành phố\s+[a-zà-ỹ0-9\s]+)\b/i;
+
+  let wardPart = "";
+  let districtPart = "";
+  let provincePart = parts[parts.length - 1] || "";
+
+  for (let i = parts.length - 1; i >= 0; i -= 1) {
+    const part = parts[i];
+
+    if (!districtPart && districtRegex.test(part)) {
+      districtPart = part.replace(/\s+/g, " ").trim();
+      continue;
+    }
+
+    if (!wardPart && wardRegex.test(part)) {
+      wardPart = part.replace(/\s+/g, " ").trim();
+    }
+  }
+
+  provincePart = String(provincePart || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!districtPart && parts.length >= 3) {
+    const fallbackDistrict = String(parts[parts.length - 2] || "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (
+      fallbackDistrict &&
+      fallbackDistrict.toLowerCase() !== provincePart.toLowerCase() &&
+      fallbackDistrict.toLowerCase() !== wardPart.toLowerCase()
+    ) {
+      districtPart = fallbackDistrict;
+    }
+  }
+
+  if (districtPart && provincePart) {
+    if (districtPart.toLowerCase() === provincePart.toLowerCase()) {
+      return districtPart;
+    }
+    return `${districtPart}, ${provincePart}`;
+  }
+
+  if (wardPart && provincePart) {
+    if (wardPart.toLowerCase() === provincePart.toLowerCase()) {
+      return wardPart;
+    }
+    return `${wardPart}, ${provincePart}`;
+  }
+
+  if (districtPart) {
+    return districtPart;
+  }
+
+  if (wardPart) {
+    return wardPart;
+  }
+
+  if (provincePart) {
+    return provincePart;
+  }
+
+  if (parts.length >= 2) {
+    return parts.slice(-2).join(", ");
+  }
+
+  return normalized;
+}
+
 /**
  * Kiểm tra token có giống Expo push token hay không
  */
@@ -208,8 +326,10 @@ export async function sendNewTripToDrivers(trip) {
     }
 
     const title = "🚗 Cuốc mới";
-    const pickup = shortText(trip.pickupAddress, 32);
-    const dropoff = shortText(trip.dropoffAddress, 32);
+    const pickupMasked = maskAddress(trip.pickupAddress);
+    const dropoffMasked = maskAddress(trip.dropoffAddress);
+    const pickup = shortText(pickupMasked, 32);
+    const dropoff = shortText(dropoffMasked, 32);
     const price = formatVnd(trip.totalPrice ?? trip.fareEstimate ?? 0);
     const body = `${pickup} → ${dropoff}\n${price}`;
 
@@ -223,8 +343,8 @@ export async function sendNewTripToDrivers(trip) {
       data: {
         type: "NEW_TRIP",
         tripId: trip.id,
-        pickupAddress: trip.pickupAddress,
-        dropoffAddress: trip.dropoffAddress,
+        pickupAddressMasked: pickupMasked,
+        dropoffAddressMasked: dropoffMasked,
         totalPrice: Number(trip.totalPrice ?? trip.fareEstimate ?? 0),
         carType: trip.carType ?? null,
         direction: trip.direction ?? null,
@@ -238,6 +358,8 @@ export async function sendNewTripToDrivers(trip) {
       validExpoTokens: validDevices.length,
       title,
       body,
+      pickupMasked,
+      dropoffMasked,
     });
 
     const batches = chunkArray(messages, 100);
