@@ -1211,7 +1211,7 @@ export async function cancelDriverTrip(req, res) {
           title: "Bạn đã huỷ chuyến",
           message: `Chuyến ${trip.id.slice(-8)} đã được trả về Chờ Duyệt. Hệ thống đã giữ lại ${penaltyAmount.toLocaleString(
             "vi-VN",
-          )}đ phí huỷ chuyến.`,
+          )}đ phí phạt huỷ chuyến.`,
           isActive: true,
           createdByAdminId: null,
         },
