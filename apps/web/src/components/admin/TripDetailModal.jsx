@@ -32,6 +32,47 @@ function formatTripStatus(status) {
   return map[status] || status || "-";
 }
 
+function formatDistanceKm(value) {
+  if (value == null || value === "") return "-";
+
+  const num = Number(value);
+  if (!Number.isFinite(num) || num < 0) return String(value);
+
+  return `${num.toLocaleString("vi-VN", {
+    minimumFractionDigits: num % 1 === 0 ? 0 : 1,
+    maximumFractionDigits: 1,
+  })} km`;
+}
+
+function formatDurationMinutes(detail) {
+  const raw =
+    detail?.estimatedDurationMinutes ??
+    detail?.durationMinutes ??
+    detail?.outboundDriveMinutes ??
+    detail?.driveMinutes ??
+    detail?.estimatedMinutes;
+
+  if (raw == null || raw === "") return "-";
+
+  const totalMinutes = Number(raw);
+  if (!Number.isFinite(totalMinutes) || totalMinutes < 0) {
+    return String(raw);
+  }
+
+  if (totalMinutes < 60) {
+    return `${Math.round(totalMinutes)} phút`;
+  }
+
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = Math.round(totalMinutes % 60);
+
+  if (minutes === 0) {
+    return `${hours} giờ`;
+  }
+
+  return `${hours} giờ ${minutes} phút`;
+}
+
 function formatVehicleType(value) {
   const map = {
     CAR_5: "Xe 5 chỗ",
@@ -170,6 +211,14 @@ export default function TripDetailModal({ open, tripId, onClose }) {
               <KV
                 k="Điểm đón"
                 v={normalizeDisplayAddress(detail?.pickupAddress)}
+              />
+              <KV
+                k="Quãng đường dự kiến"
+                v={formatDistanceKm(detail?.distanceKm)}
+              />
+              <KV
+                k="Thời gian chuyến đi dự kiến"
+                v={formatDurationMinutes(detail)}
               />
             </Section>
 
