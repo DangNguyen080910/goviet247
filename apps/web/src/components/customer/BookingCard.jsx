@@ -197,6 +197,7 @@ export default function BookingCard() {
   const [distanceKm, setDistanceKm] = useState("");
   const [driveMinutes, setDriveMinutes] = useState("");
   const [outboundDriveMinutes, setOutboundDriveMinutes] = useState("");
+  const [returnDriveMinutes, setReturnDriveMinutes] = useState("");
   const [isRouteLoading, setIsRouteLoading] = useState(false);
 
   const [quote, setQuote] = useState(null);
@@ -455,6 +456,7 @@ export default function BookingCard() {
     setDistanceKm("");
     setDriveMinutes("");
     setOutboundDriveMinutes("");
+    setReturnDriveMinutes("");
   };
 
   const filledStopCount = useMemo(
@@ -964,6 +966,12 @@ export default function BookingCard() {
         route?.outboundMinutes ??
         null;
 
+      const resolvedReturnMinutes =
+        route?.returnDurationMinutes ??
+        route?.returnDuration ??
+        route?.returnMinutes ??
+        null;
+
       if (Number.isFinite(Number(resolvedOutboundMinutes))) {
         setOutboundDriveMinutes(String(resolvedOutboundMinutes));
       } else if (
@@ -975,6 +983,14 @@ export default function BookingCard() {
         );
       } else {
         setOutboundDriveMinutes("");
+      }
+
+      if (Number.isFinite(Number(resolvedReturnMinutes))) {
+        setReturnDriveMinutes(String(resolvedReturnMinutes));
+      } else if (direction === "ROUND_TRIP") {
+        setReturnDriveMinutes("");
+      } else {
+        setReturnDriveMinutes("");
       }
     } catch (e) {
       if (latestRouteRequestRef.current !== requestId) {
@@ -1249,11 +1265,14 @@ export default function BookingCard() {
     const dropoffAddress = cleanedStops[cleanedStops.length - 1] || "";
     const finalNote = note?.trim() || null;
 
-    const safeDriveMinutes = Number(driveMinutes);
+    const safeTotalDriveMinutes = Number(driveMinutes);
     const safeOutboundDriveMinutes =
       direction === "ROUND_TRIP"
         ? Number(outboundDriveMinutes)
         : Number(driveMinutes);
+
+    const safeReturnDriveMinutes =
+      direction === "ROUND_TRIP" ? Number(returnDriveMinutes) : 0;
 
     const safeEstimatedDurationMinutes =
       direction === "ROUND_TRIP"
@@ -1272,9 +1291,15 @@ export default function BookingCard() {
       direction,
       carType,
       distanceKm: Number(distanceKm),
-      driveMinutes: safeDriveMinutes,
+
+      totalDriveMinutes: safeTotalDriveMinutes,
+      driveMinutes: safeTotalDriveMinutes,
+
       outboundDriveMinutes: safeOutboundDriveMinutes,
+      returnDriveMinutes: safeReturnDriveMinutes,
+
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
+
       fareEstimate: quote.totalPrice,
       riderName,
       riderPhone,

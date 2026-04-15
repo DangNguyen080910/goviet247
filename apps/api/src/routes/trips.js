@@ -87,6 +87,8 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       stops: stopsRaw,
       driveMinutes: driveMinutesRaw,
       outboundDriveMinutes: outboundDriveMinutesRaw,
+      returnDriveMinutes: returnDriveMinutesRaw,
+      totalDriveMinutes: totalDriveMinutesRaw,
       estimatedDurationMinutes: estimatedDurationMinutesRaw,
     } = req.body;
 
@@ -183,6 +185,33 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         ? Number(driveMinutesRaw)
         : null;
 
+    if (
+      driveMinutes != null &&
+      (!Number.isFinite(driveMinutes) || driveMinutes < 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "VALIDATION_ERROR",
+        message: "driveMinutes không hợp lệ.",
+      });
+    }
+
+    let totalDriveMinutes =
+      totalDriveMinutesRaw != null && totalDriveMinutesRaw !== ""
+        ? Number(totalDriveMinutesRaw)
+        : null;
+
+    if (
+      totalDriveMinutes != null &&
+      (!Number.isFinite(totalDriveMinutes) || totalDriveMinutes < 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "VALIDATION_ERROR",
+        message: "totalDriveMinutes không hợp lệ.",
+      });
+    }
+
     let outboundDriveMinutes =
       outboundDriveMinutesRaw != null && outboundDriveMinutesRaw !== ""
         ? Number(outboundDriveMinutesRaw)
@@ -196,6 +225,22 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         success: false,
         error: "VALIDATION_ERROR",
         message: "outboundDriveMinutes không hợp lệ.",
+      });
+    }
+
+    let returnDriveMinutes =
+      returnDriveMinutesRaw != null && returnDriveMinutesRaw !== ""
+        ? Number(returnDriveMinutesRaw)
+        : null;
+
+    if (
+      returnDriveMinutes != null &&
+      (!Number.isFinite(returnDriveMinutes) || returnDriveMinutes < 0)
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "VALIDATION_ERROR",
+        message: "returnDriveMinutes không hợp lệ.",
       });
     }
 
@@ -216,23 +261,20 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       });
     }
 
-    if (
-      driveMinutes != null &&
-      (!Number.isFinite(driveMinutes) || driveMinutes < 0)
-    ) {
-      return res.status(400).json({
-        success: false,
-        error: "VALIDATION_ERROR",
-        message: "driveMinutes không hợp lệ.",
-      });
-    }
-
     if (direction === "ROUND_TRIP" && driveMinutes == null) {
       driveMinutes = 0;
     }
 
+    if (totalDriveMinutes == null) {
+      totalDriveMinutes = driveMinutes;
+    }
+
     if (outboundDriveMinutes == null) {
-      outboundDriveMinutes = driveMinutes;
+      outboundDriveMinutes = direction === "ROUND_TRIP" ? null : driveMinutes;
+    }
+
+    if (returnDriveMinutes == null) {
+      returnDriveMinutes = direction === "ROUND_TRIP" ? 0 : 0;
     }
 
     if (estimatedDurationMinutes == null) {
@@ -264,8 +306,10 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         dropoffLat: dropoffLat != null ? Number(dropoffLat) : null,
         dropoffLng: dropoffLng != null ? Number(dropoffLng) : null,
         distanceKm,
-        estimatedDurationMinutes,
+        totalDriveMinutes,
         outboundDriveMinutes,
+        returnDriveMinutes,
+        estimatedDurationMinutes,
         fareEstimate:
           fareEstimate != null && fareEstimate !== ""
             ? Number(fareEstimate)

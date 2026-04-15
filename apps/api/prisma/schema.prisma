@@ -269,9 +269,15 @@ model Trip {
   dropoffLat     Float?
   dropoffLng     Float?
 
-  distanceKm               Float
+  distanceKm Float
+
+  // 👉 thời gian lái
+  totalDriveMinutes    Int? // tổng lái (đi + về)
+  outboundDriveMinutes Int? // lượt đi
+  returnDriveMinutes   Int? // lượt về
+
+  // 👉 tổng thời gian chuyến
   estimatedDurationMinutes Int?
-  outboundDriveMinutes     Int?
   fareEstimate             Decimal? @db.Decimal(10, 2)
 
   status TripStatus

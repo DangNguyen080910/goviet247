@@ -114,24 +114,19 @@ function getRiderDisplayName(detail) {
 }
 
 function getWaitMinutes(detail) {
-  const pickupMs = new Date(detail?.pickupTime || "").getTime();
-  const returnMs = new Date(detail?.returnTime || "").getTime();
-  const outbound = Number(detail?.outboundDriveMinutes || 0);
+  const totalEstimated = Number(detail?.estimatedDurationMinutes || 0);
+  const totalDrive = Number(detail?.totalDriveMinutes || 0);
 
   if (
-    !detail?.returnTime ||
-    !Number.isFinite(pickupMs) ||
-    !Number.isFinite(returnMs) ||
-    !Number.isFinite(outbound)
+    !Number.isFinite(totalEstimated) ||
+    !Number.isFinite(totalDrive) ||
+    totalEstimated < 0 ||
+    totalDrive < 0
   ) {
     return 0;
   }
 
-  const totalGapMinutes = Math.max(
-    0,
-    Math.round((returnMs - pickupMs) / 60000),
-  );
-  return Math.max(0, totalGapMinutes - outbound);
+  return Math.max(0, totalEstimated - totalDrive);
 }
 
 export default function TripDetailModal({ open, tripId, onClose }) {
@@ -187,14 +182,8 @@ export default function TripDetailModal({ open, tripId, onClose }) {
   const driverPhone = getDriverPhone(detail);
   const driverProfile = detail?.driver?.driverProfile || null;
 
-  const driverDriveMinutes =
-    detail?.direction === "ROUND_TRIP"
-      ? Number(detail?.outboundDriveMinutes || 0)
-      : Number(detail?.estimatedDurationMinutes || 0);
-
-  const waitMinutes =
-    detail?.direction === "ROUND_TRIP" ? getWaitMinutes(detail) : 0;
-
+  const driverDriveMinutes = Number(detail?.totalDriveMinutes || 0);
+  const waitMinutes = getWaitMinutes(detail);
   const totalEstimatedMinutes = Number(detail?.estimatedDurationMinutes || 0);
 
   return (
