@@ -1174,9 +1174,19 @@ export async function cancelDriverTrip(req, res) {
           status: "PENDING",
           driverId: null,
           acceptedAt: null,
-          driverAcceptOpenAt: reopenAt,
-          cancelledAt: null,
-          cancelReason: null,
+
+          // Việt: trả chuyến về lại hàng "Chờ duyệt"
+          isVerified: false,
+          verifiedAt: null,
+          verifiedById: null,
+          verifiedNote: "Driver huỷ chuyến",
+
+          // Việt: không mở lại cho driver pool ngay
+          driverAcceptOpenAt: null,
+
+          // Việt: giữ lại dấu vết huỷ để admin biết chuyến này vừa bị tài xế huỷ
+          cancelledAt: now,
+          cancelReason: "Driver huỷ chuyến",
 
           commissionPercentSnapshot: null,
           commissionAmountSnapshot: null,
