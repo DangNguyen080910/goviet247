@@ -10,15 +10,16 @@ import { getPublicSystemConfig } from "../../api/systemConfig";
 export default function HeroSection() {
   const navigate = useNavigate();
   const [zaloPhone, setZaloPhone] = useState("1900-0000");
+  const [heroImageUrl, setHeroImageUrl] = useState("");
 
   useEffect(() => {
     async function loadConfig() {
       try {
         const cfg = await getPublicSystemConfig();
-        const phone = cfg?.supportPhone || "1900-0000";
-        const zalo = cfg?.zaloPhone || phone;
+        const phone = cfg?.supportPhoneRider || "1900-0000";
 
-        setZaloPhone(zalo);
+        setZaloPhone(phone);
+        setHeroImageUrl(cfg?.riderWebHeroImageUrl || "");
       } catch (err) {
         console.error("Load hero system config failed:", err);
       }
@@ -37,7 +38,7 @@ export default function HeroSection() {
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        backgroundImage: `url(${heroImage})`,
+        backgroundImage: `url(${heroImageUrl || heroImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "white",

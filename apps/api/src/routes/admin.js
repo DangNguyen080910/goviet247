@@ -31,6 +31,7 @@ import {
 import {
   getSystemConfig,
   updateSystemConfig,
+  uploadSystemConfigMedia,
 } from "../controllers/systemConfigController.js";
 
 import {
@@ -259,6 +260,12 @@ router.patch("/alert-config", requireAdmin, updateAlertConfig);
 
 router.get("/system-config", requireAdminOrStaff, getSystemConfig);
 router.patch("/system-config", requireAdmin, updateSystemConfig);
+router.post(
+  "/system-config/upload",
+  requireAdmin,
+  uploadAccountingDocument.single("file"),
+  uploadSystemConfigMedia,
+);
 
 // =====================================================
 // LEDGER / ACCOUNTING
@@ -323,11 +330,7 @@ router.get(
   ctrl.exportAccountingNotesCsv,
 );
 
-router.get(
-  "/revenue-report",
-  requireAdminOrStaff,
-  ctrl.getRevenueReport,
-);
+router.get("/revenue-report", requireAdminOrStaff, ctrl.getRevenueReport);
 
 router.get("/accounting-notes", requireAdminOrStaff, ctrl.listAccountingNotes);
 

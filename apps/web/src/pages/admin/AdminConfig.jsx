@@ -44,6 +44,7 @@ import {
   patchAlertConfig,
   fetchSystemConfig,
   patchSystemConfig,
+  uploadSystemConfigMedia,
 } from "../../api/adminConfig";
 
 function TabPanel({ value, index, children }) {
@@ -350,6 +351,105 @@ function isValidTaxBaseMode(value) {
   return TAX_BASE_MODE_OPTIONS.some((item) => item.value === value);
 }
 
+function BrandingMediaField({
+  label,
+  mediaType,
+  value,
+  uploading,
+  accept,
+  previewType = "image",
+  helperText = "",
+  onChange,
+  onUpload,
+}) {
+  const isImage = previewType === "image";
+  const isAudio = previewType === "audio";
+
+  return (
+    <Stack spacing={1.25}>
+      <TextField
+        label={label}
+        value={value || ""}
+        onChange={onChange}
+        fullWidth
+        size="small"
+      />
+
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={1}
+        alignItems={{ xs: "stretch", sm: "center" }}
+      >
+        <Button
+          variant="outlined"
+          component="label"
+          disabled={uploading}
+          sx={{ minWidth: 150 }}
+        >
+          {uploading ? "Đang upload..." : "Chọn file upload"}
+          <input
+            hidden
+            type="file"
+            accept={accept}
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (!file) return;
+              onUpload(mediaType, file);
+              e.target.value = "";
+            }}
+          />
+        </Button>
+
+        {helperText ? (
+          <Typography variant="caption" color="text.secondary">
+            {helperText}
+          </Typography>
+        ) : null}
+      </Stack>
+
+      {isImage && value ? (
+        <Box
+          sx={{
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 2,
+            overflow: "hidden",
+            bgcolor: "#fafafa",
+            p: 1,
+          }}
+        >
+          <Box
+            component="img"
+            src={value}
+            alt={label}
+            sx={{
+              width: "100%",
+              maxHeight: 180,
+              objectFit: "contain",
+              display: "block",
+              borderRadius: 1.5,
+            }}
+          />
+        </Box>
+      ) : null}
+
+      {isAudio && value ? (
+        <Box
+          sx={{
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 2,
+            p: 1.25,
+            bgcolor: "#fafafa",
+          }}
+        >
+          <audio controls src={value} style={{ width: "100%" }} />
+        </Box>
+      ) : null}
+    </Stack>
+  );
+}
+
 function PricingCard({
   carType,
   item,
@@ -584,6 +684,7 @@ export default function AdminConfig() {
   const [loadingSystemConfig, setLoadingSystemConfig] = React.useState(true);
   const [systemConfigError, setSystemConfigError] = React.useState("");
   const [savingSystemConfig, setSavingSystemConfig] = React.useState(false);
+  const [uploadingMediaMap, setUploadingMediaMap] = React.useState({});
 
   const [snackbar, setSnackbar] = React.useState({
     open: false,
@@ -634,6 +735,15 @@ export default function AdminConfig() {
     driverTopupTransferPrefix: "NAPVI",
     driverTopupQrImageUrl: "",
     driverTopupNote: "",
+    // Branding & Media
+    brandName: "GoViet247",
+    brandLogoUrl: "",
+    riderWebHeroImageUrl: "",
+    riderMobileHeroImageUrl: "",
+    driverMobileHeroImageUrl: "",
+    defaultInAppSoundUrl: "",
+    footerCopyright:
+      "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
   });
 
   const [alertPhoneInputs, setAlertPhoneInputs] = React.useState({
@@ -789,6 +899,13 @@ export default function AdminConfig() {
         ),
         driverTopupQrImageUrl: toFormValue(item?.driverTopupQrImageUrl),
         driverTopupNote: toFormValue(item?.driverTopupNote),
+        brandName: toFormValue(item?.brandName || "GoViet247"),
+        brandLogoUrl: toFormValue(item?.brandLogoUrl),
+        riderWebHeroImageUrl: toFormValue(item?.riderWebHeroImageUrl),
+        riderMobileHeroImageUrl: toFormValue(item?.riderMobileHeroImageUrl),
+        driverMobileHeroImageUrl: toFormValue(item?.driverMobileHeroImageUrl),
+        defaultInAppSoundUrl: toFormValue(item?.defaultInAppSoundUrl),
+        footerCopyright: toFormValue(item?.footerCopyright),
       }));
     } catch (err) {
       setSystemConfigError(err.message || "Không thể tải cấu hình hệ thống.");
@@ -1063,6 +1180,7 @@ export default function AdminConfig() {
     const supportPhoneRider = String(form.supportPhoneRider || "").trim();
     const supportEmailRider = String(form.supportEmailRider || "").trim();
     const timezone = String(form.timezone || "").trim();
+    const brandName = String(form.brandName || "").trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!supportPhoneDriver) {
@@ -1091,6 +1209,10 @@ export default function AdminConfig() {
 
     if (!timezone) {
       return "Timezone không được để trống.";
+    }
+
+    if (!brandName) {
+      return "Tên thương hiệu không được để trống.";
     }
 
     return "";
@@ -1372,6 +1494,54 @@ export default function AdminConfig() {
     }
   };
 
+  const handleUploadSystemMedia = async (mediaType, file) => {
+    try {
+      setUploadingMediaMap((prev) => ({
+        ...prev,
+        [mediaType]: true,
+      }));
+
+      const result = await uploadSystemConfigMedia({
+        file,
+        mediaType,
+      });
+
+      const nextUrl = String(result?.url || "").trim();
+
+      if (!nextUrl) {
+        throw new Error("Upload thành công nhưng không nhận được URL file.");
+      }
+
+      const mediaFieldMap = {
+        brand_logo: "brandLogoUrl",
+        rider_web_hero: "riderWebHeroImageUrl",
+        rider_mobile_hero: "riderMobileHeroImageUrl",
+        driver_mobile_hero: "driverMobileHeroImageUrl",
+        default_in_app_sound: "defaultInAppSoundUrl",
+      };
+
+      const targetField = mediaFieldMap[mediaType];
+
+      if (!targetField) {
+        throw new Error("mediaType không được hỗ trợ ở giao diện.");
+      }
+
+      setForm((prev) => ({
+        ...prev,
+        [targetField]: nextUrl,
+      }));
+
+      showSnackbar("success", "Upload media thành công.");
+    } catch (err) {
+      showSnackbar("error", err.message || "Upload media thất bại.");
+    } finally {
+      setUploadingMediaMap((prev) => ({
+        ...prev,
+        [mediaType]: false,
+      }));
+    }
+  };
+
   const handleSaveSystemConfig = async () => {
     const validationError = validateSystemConfigForm();
     if (validationError) {
@@ -1388,6 +1558,18 @@ export default function AdminConfig() {
         supportPhoneRider: String(form.supportPhoneRider || "").trim(),
         supportEmailRider: String(form.supportEmailRider || "").trim(),
         timezone: String(form.timezone || "").trim(),
+
+        brandName: String(form.brandName || "").trim(),
+        brandLogoUrl: String(form.brandLogoUrl || "").trim(),
+        riderWebHeroImageUrl: String(form.riderWebHeroImageUrl || "").trim(),
+        riderMobileHeroImageUrl: String(
+          form.riderMobileHeroImageUrl || "",
+        ).trim(),
+        driverMobileHeroImageUrl: String(
+          form.driverMobileHeroImageUrl || "",
+        ).trim(),
+        defaultInAppSoundUrl: String(form.defaultInAppSoundUrl || "").trim(),
+        footerCopyright: String(form.footerCopyright || "").trim(),
       });
 
       setForm((prev) => ({
@@ -1397,6 +1579,16 @@ export default function AdminConfig() {
         supportPhoneRider: toFormValue(updated?.supportPhoneRider),
         supportEmailRider: toFormValue(updated?.supportEmailRider),
         timezone: toFormValue(updated?.timezone),
+
+        brandName: toFormValue(updated?.brandName || "GoViet247"),
+        brandLogoUrl: toFormValue(updated?.brandLogoUrl),
+        riderWebHeroImageUrl: toFormValue(updated?.riderWebHeroImageUrl),
+        riderMobileHeroImageUrl: toFormValue(updated?.riderMobileHeroImageUrl),
+        driverMobileHeroImageUrl: toFormValue(
+          updated?.driverMobileHeroImageUrl,
+        ),
+        defaultInAppSoundUrl: toFormValue(updated?.defaultInAppSoundUrl),
+        footerCopyright: toFormValue(updated?.footerCopyright),
       }));
 
       showSnackbar("success", "Đã lưu cấu hình hệ thống thành công.");
@@ -2383,6 +2575,99 @@ export default function AdminConfig() {
                             onChange={setField("timezone")}
                             fullWidth
                           />
+                        </SectionCard>
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <SectionCard
+                          title="Branding & Media"
+                          description="Quản lý tên thương hiệu, logo, ảnh nền Rider Web/Mobile, Driver Mobile và âm thanh in-app mặc định."
+                        >
+                          <Stack spacing={2.25}>
+                            <TextField
+                              label="Tên thương hiệu"
+                              value={form.brandName}
+                              onChange={setField("brandName")}
+                              fullWidth
+                            />
+
+                            <TextField
+                              label="Footer copyright"
+                              value={form.footerCopyright}
+                              onChange={setField("footerCopyright")}
+                              fullWidth
+                              multiline
+                              minRows={2}
+                            />
+
+                            <BrandingMediaField
+                              label="Logo thương hiệu"
+                              mediaType="brand_logo"
+                              value={form.brandLogoUrl}
+                              uploading={Boolean(uploadingMediaMap.brand_logo)}
+                              accept="image/*"
+                              previewType="image"
+                              helperText="Khuyên dùng PNG nền trong hoặc JPG ngang gọn."
+                              onChange={setField("brandLogoUrl")}
+                              onUpload={handleUploadSystemMedia}
+                            />
+
+                            <BrandingMediaField
+                              label="Ảnh nền Rider Web"
+                              mediaType="rider_web_hero"
+                              value={form.riderWebHeroImageUrl}
+                              uploading={Boolean(
+                                uploadingMediaMap.rider_web_hero,
+                              )}
+                              accept="image/*"
+                              previewType="image"
+                              helperText="Ảnh hero cho trang chủ web khách hàng."
+                              onChange={setField("riderWebHeroImageUrl")}
+                              onUpload={handleUploadSystemMedia}
+                            />
+
+                            <BrandingMediaField
+                              label="Banner Rider Mobile"
+                              mediaType="rider_mobile_hero"
+                              value={form.riderMobileHeroImageUrl}
+                              uploading={Boolean(
+                                uploadingMediaMap.rider_mobile_hero,
+                              )}
+                              accept="image/*"
+                              previewType="image"
+                              helperText="Chuẩn bị sẵn cho app Rider Mobile."
+                              onChange={setField("riderMobileHeroImageUrl")}
+                              onUpload={handleUploadSystemMedia}
+                            />
+
+                            <BrandingMediaField
+                              label="Banner Driver Mobile"
+                              mediaType="driver_mobile_hero"
+                              value={form.driverMobileHeroImageUrl}
+                              uploading={Boolean(
+                                uploadingMediaMap.driver_mobile_hero,
+                              )}
+                              accept="image/*"
+                              previewType="image"
+                              helperText="Chuẩn bị sẵn cho app Driver Mobile."
+                              onChange={setField("driverMobileHeroImageUrl")}
+                              onUpload={handleUploadSystemMedia}
+                            />
+
+                            <BrandingMediaField
+                              label="Âm thanh in-app mặc định"
+                              mediaType="default_in_app_sound"
+                              value={form.defaultInAppSoundUrl}
+                              uploading={Boolean(
+                                uploadingMediaMap.default_in_app_sound,
+                              )}
+                              accept="audio/*"
+                              previewType="audio"
+                              helperText="File mp3/wav dùng cho in-app sound về sau."
+                              onChange={setField("defaultInAppSoundUrl")}
+                              onUpload={handleUploadSystemMedia}
+                            />
+                          </Stack>
                         </SectionCard>
                       </Grid>
                     </Grid>

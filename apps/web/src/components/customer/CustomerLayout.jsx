@@ -53,6 +53,11 @@ function formatPhoneForDisplay(phone) {
 export default function CustomerLayout() {
   const [supportPhone, setSupportPhone] = useState("1900-0000");
   const [supportEmail, setSupportEmail] = useState("");
+  const [brandName, setBrandName] = useState("GoViet247");
+  const [brandLogoUrl, setBrandLogoUrl] = useState("");
+  const [footerCopyright, setFooterCopyright] = useState(
+    "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
+  );
   const [anchorEl, setAnchorEl] = useState(null);
 
   const navigate = useNavigate();
@@ -90,6 +95,12 @@ export default function CustomerLayout() {
 
         setSupportPhone(cfg?.supportPhoneRider || "1900-0000");
         setSupportEmail(cfg?.supportEmailRider || "");
+        setBrandName(cfg?.brandName || "GoViet247");
+        setBrandLogoUrl(cfg?.brandLogoUrl || "");
+        setFooterCopyright(
+          cfg?.footerCopyright ||
+            "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
+        );
       } catch (err) {
         console.error("Load system config failed:", err);
       }
@@ -154,14 +165,30 @@ export default function CustomerLayout() {
             {/* Logo */}
             <Box component={Link} to="/" sx={{ textDecoration: "none" }}>
               <Stack direction="row" alignItems="center" spacing={1.2}>
-                <Box
-                  sx={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: 2,
-                    bgcolor: "#F97316",
-                  }}
-                />
+                {brandLogoUrl ? (
+                  <Box
+                    component="img"
+                    src={brandLogoUrl}
+                    alt={brandName || "GoViet247"}
+                    sx={{
+                      width: 34,
+                      height: 34,
+                      objectFit: "contain",
+                      display: "block",
+                      borderRadius: 1.5,
+                    }}
+                  />
+                ) : (
+                  <Box
+                    sx={{
+                      width: 34,
+                      height: 34,
+                      borderRadius: 2,
+                      bgcolor: "#F97316",
+                    }}
+                  />
+                )}
+
                 <Typography
                   sx={{
                     color: "#1F2937",
@@ -170,7 +197,7 @@ export default function CustomerLayout() {
                     fontSize: 18,
                   }}
                 >
-                  GoViet247
+                  {brandName || "GoViet247"}
                 </Typography>
               </Stack>
             </Box>
@@ -474,7 +501,8 @@ export default function CustomerLayout() {
             }}
           >
             <span>
-              © 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse
+              {footerCopyright ||
+                "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse"}
             </span>
             <span>
               Hỗ trợ: {supportPhone}

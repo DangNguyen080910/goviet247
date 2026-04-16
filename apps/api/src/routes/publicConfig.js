@@ -33,6 +33,15 @@ router.get("/system-config", async (req, res) => {
           driverTopupTransferPrefix: "NAPVI",
           driverTopupQrImageUrl: "",
           driverTopupNote: "",
+
+          brandName: "GoViet247",
+          brandLogoUrl: "",
+          riderWebHeroImageUrl: "",
+          riderMobileHeroImageUrl: "",
+          driverMobileHeroImageUrl: "",
+          defaultInAppSoundUrl: "",
+          footerCopyright:
+            "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
         },
       });
     }
@@ -52,6 +61,14 @@ router.get("/system-config", async (req, res) => {
         driverTopupTransferPrefix: config.driverTopupTransferPrefix,
         driverTopupQrImageUrl: config.driverTopupQrImageUrl,
         driverTopupNote: config.driverTopupNote,
+
+        brandName: config.brandName,
+        brandLogoUrl: config.brandLogoUrl,
+        riderWebHeroImageUrl: config.riderWebHeroImageUrl,
+        riderMobileHeroImageUrl: config.riderMobileHeroImageUrl,
+        driverMobileHeroImageUrl: config.driverMobileHeroImageUrl,
+        defaultInAppSoundUrl: config.defaultInAppSoundUrl,
+        footerCopyright: config.footerCopyright,
       },
     });
   } catch (err) {

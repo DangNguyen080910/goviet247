@@ -8,6 +8,7 @@ const TRIP_CONFIG_BASE_URL = `${API_BASE}/api/admin/trip-config`;
 const DRIVER_CONFIG_BASE_URL = `${API_BASE}/api/admin/driver-config`;
 const ALERT_CONFIG_BASE_URL = `${API_BASE}/api/admin/alert-config`;
 const SYSTEM_CONFIG_BASE_URL = `${API_BASE}/api/admin/system-config`;
+const SYSTEM_CONFIG_UPLOAD_URL = `${SYSTEM_CONFIG_BASE_URL}/upload`;
 
 /**
  * Lấy toàn bộ pricing config cho admin
@@ -242,4 +243,28 @@ export async function patchSystemConfig(payload) {
   }
 
   return data.item;
+}
+
+export async function uploadSystemConfigMedia({ file, mediaType }) {
+  const token = getAdminToken();
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("mediaType", mediaType);
+
+  const res = await fetch(SYSTEM_CONFIG_UPLOAD_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  const data = await res.json();
+
+  if (!res.ok || !data?.success) {
+    throw new Error(data?.message || "Upload media hệ thống thất bại.");
+  }
+
+  return data;
 }
