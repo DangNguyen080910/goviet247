@@ -97,7 +97,15 @@ function getDriverPhone(item) {
 }
 
 function getDriverName(item) {
-  return item?.user?.displayName || "Chưa có tên";
+  return (
+    item?.fullName ||
+    item?.driverProfile?.fullName ||
+    item?.user?.displayName ||
+    item?.driverProfile?.user?.displayName ||
+    item?.user?.phones?.[0]?.e164 ||
+    item?.driverProfile?.user?.phones?.[0]?.e164 ||
+    "Chưa có tên"
+  );
 }
 
 function getKycColor(status) {
@@ -907,9 +915,9 @@ export default function AdminDriverWallets() {
 
   async function handleApproveWithdraw(item) {
     const ok = window.confirm(
-      `Xác nhận duyệt yêu cầu rút tiền của tài xế ${
-        item.driverProfile?.user?.displayName || ""
-      } số tiền ${formatMoney(item.amount)} đ?`,
+      `Xác nhận duyệt yêu cầu rút tiền của tài xế ${getDriverName(
+        item.driverProfile || item,
+      )} số tiền ${formatMoney(item.amount)} đ?`,
     );
 
     if (!ok) return;
@@ -956,9 +964,9 @@ export default function AdminDriverWallets() {
 
   async function handleRejectWithdraw(item) {
     const reason = window.prompt(
-      `Nhập lý do từ chối yêu cầu rút tiền của tài xế ${
-        item.driverProfile?.user?.displayName || ""
-      }:`,
+      `Nhập lý do từ chối yêu cầu rút tiền của tài xế ${getDriverName(
+        item.driverProfile || item,
+      )}:`,
     );
 
     if (reason === null) return;
@@ -995,9 +1003,9 @@ export default function AdminDriverWallets() {
 
   async function handleMarkWithdrawPaid(item) {
     const ok = window.confirm(
-      `Xác nhận đã chuyển khoản cho tài xế ${
-        item.driverProfile?.user?.displayName || ""
-      } số tiền ${formatMoney(item.amount)} đ?`,
+      `Xác nhận đã chuyển khoản cho tài xế ${getDriverName(
+        item.driverProfile || item,
+      )} số tiền ${formatMoney(item.amount)} đ?`,
     );
 
     if (!ok) return;
@@ -1182,7 +1190,7 @@ export default function AdminDriverWallets() {
                         <TableRow key={item.id} hover>
                           <TableCell>{item.id}</TableCell>
                           <TableCell>
-                            {item.driverProfile?.user?.displayName || "-"}
+                            {getDriverName(item.driverProfile || item)}
                           </TableCell>
                           <TableCell>
                             {item.driverProfile?.user?.phones?.[0]?.e164 || "-"}
@@ -1320,7 +1328,7 @@ export default function AdminDriverWallets() {
                         <TableRow key={item.id} hover>
                           <TableCell>{item.id}</TableCell>
                           <TableCell>
-                            {item.driverProfile?.user?.displayName || "-"}
+                            {getDriverName(item.driverProfile || item)}
                           </TableCell>
                           <TableCell>
                             {item.driverProfile?.user?.phones?.[0]?.e164 || "-"}
@@ -1443,7 +1451,7 @@ export default function AdminDriverWallets() {
                         <TableRow key={item.id} hover>
                           <TableCell>{item.id}</TableCell>
                           <TableCell>
-                            {item.driverProfile?.user?.displayName || "-"}
+                            {getDriverName(item.driverProfile || item)}
                           </TableCell>
                           <TableCell>
                             {item.driverProfile?.user?.phones?.[0]?.e164 || "-"}
