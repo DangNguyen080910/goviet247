@@ -3187,10 +3187,7 @@ export function makeAdminController(prisma) {
             },
           });
 
-          const driverName =
-            profile.user?.displayName ||
-            profile.user?.phones?.[0]?.e164 ||
-            "Tài xế";
+          const driverName = getDriverDisplayName(profile) || "Tài xế";
 
           const cashTxn = await tx.companyCashTransaction.create({
             data: {
@@ -3909,7 +3906,7 @@ export function makeAdminController(prisma) {
           });
 
           const driverName =
-            request.driverProfile?.user?.displayName ||
+            getDriverDisplayName(request.driverProfile) ||
             request.bankAccount?.accountHolderName ||
             "Tài xế";
 

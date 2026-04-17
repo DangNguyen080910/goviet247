@@ -411,17 +411,22 @@ function formatNumber(value) {
   return Number(value || 0).toLocaleString("vi-VN");
 }
 
+function getCurrentQuarter() {
+  return Math.floor(new Date().getMonth() / 3) + 1;
+}
+
 export default function AdminLedger() {
   const user = getAdminUser();
   const role = String(user?.role || "").toUpperCase();
   const isSuperAdmin = role === "ADMIN";
 
   const currentYear = new Date().getFullYear();
+  const currentQuarter = getCurrentQuarter();
 
   const [docItems, setDocItems] = useState([]);
   const [docLoading, setDocLoading] = useState(false);
   const [docFilters, setDocFilters] = useState({
-    quarter: 1,
+    quarter: currentQuarter,
     year: currentYear,
   });
   const [docForm, setDocForm] = useState({
@@ -432,7 +437,7 @@ export default function AdminLedger() {
   });
 
   const [accountingSummary, setAccountingSummary] = useState({
-    quarter: 1,
+    quarter: currentQuarter,
     year: currentYear,
     items: [],
   });
@@ -472,19 +477,19 @@ export default function AdminLedger() {
   const [tripItems, setTripItems] = useState([]);
   const [tripLoading, setTripLoading] = useState(false);
   const [tripFilters, setTripFilters] = useState({
-    quarter: 1,
+    quarter: currentQuarter,
     year: currentYear,
   });
 
   const [withdrawItems, setWithdrawItems] = useState([]);
   const [withdrawLoading, setWithdrawLoading] = useState(false);
   const [withdrawFilters, setWithdrawFilters] = useState({
-    quarter: 1,
+    quarter: currentQuarter,
     year: currentYear,
   });
 
   const [revenueFilters, setRevenueFilters] = useState({
-    quarter: 1,
+    quarter: currentQuarter,
     year: currentYear,
   });
 
@@ -514,7 +519,7 @@ export default function AdminLedger() {
   const [walletItems, setWalletItems] = useState([]);
   const [walletLoading, setWalletLoading] = useState(false);
   const [walletFilters, setWalletFilters] = useState({
-    quarter: 1,
+    quarter: currentQuarter,
     year: currentYear,
   });
   const [tab, setTab] = useState(0);
@@ -525,7 +530,7 @@ export default function AdminLedger() {
     message: "",
   });
 
-  const [exportQuarter, setExportQuarter] = useState(1);
+  const [exportQuarter, setExportQuarter] = useState(currentQuarter);
   const [exportYear, setExportYear] = useState(currentYear);
   const [exportPreview, setExportPreview] = useState(null);
   const [exportPreviewLoading, setExportPreviewLoading] = useState(false);
