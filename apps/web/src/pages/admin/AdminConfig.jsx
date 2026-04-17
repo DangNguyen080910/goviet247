@@ -1518,6 +1518,7 @@ export default function AdminConfig() {
         rider_mobile_hero: "riderMobileHeroImageUrl",
         driver_mobile_hero: "driverMobileHeroImageUrl",
         default_in_app_sound: "defaultInAppSoundUrl",
+        driver_topup_qr: "driverTopupQrImageUrl",
       };
 
       const targetField = mediaFieldMap[mediaType];
@@ -2235,19 +2236,27 @@ export default function AdminConfig() {
                       <Grid item xs={12} md={4}>
                         <SectionCard
                           title="QR chuyển khoản"
-                          description="Dán URL ảnh QR để app driver hiển thị mã quét nhanh."
+                          description="Upload ảnh QR lên S3 hoặc dán URL thủ công để app driver hiển thị mã quét nhanh."
                         >
                           <Stack spacing={2}>
-                            <TextField
+                            <BrandingMediaField
                               label="QR image URL"
+                              mediaType="driver_topup_qr"
                               value={form.driverTopupQrImageUrl}
+                              uploading={Boolean(
+                                uploadingMediaMap.driver_topup_qr,
+                              )}
+                              accept="image/*"
+                              previewType="image"
+                              helperText="Khuyên dùng PNG/JPG rõ nét. Upload xong sẽ tự điền URL vào ô này."
                               onChange={setField("driverTopupQrImageUrl")}
-                              fullWidth
+                              onUpload={handleUploadSystemMedia}
                             />
 
                             <Alert severity="info" sx={{ borderRadius: 2 }}>
-                              Có thể để trống nếu chưa dùng QR. Khi có ảnh QR
-                              thật thì chỉ cần dán URL vào đây.
+                              Có thể để trống nếu chưa dùng QR. Bạn có thể
+                              upload ảnh QR trực tiếp lên S3 hoặc dán URL thủ
+                              công.
                             </Alert>
                           </Stack>
                         </SectionCard>

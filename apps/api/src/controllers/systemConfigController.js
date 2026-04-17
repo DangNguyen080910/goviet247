@@ -336,20 +336,26 @@ export async function uploadSystemConfigMedia(req, res) {
       "rider_mobile_hero",
       "driver_mobile_hero",
       "default_in_app_sound",
+      "driver_topup_qr",
     ];
 
     if (!allowedMediaTypes.includes(mediaType)) {
       return res.status(400).json({
         success: false,
         message:
-          "mediaType không hợp lệ. Hỗ trợ: brand_logo, rider_web_hero, rider_mobile_hero, driver_mobile_hero, default_in_app_sound.",
+          "mediaType không hợp lệ. Hỗ trợ: brand_logo, rider_web_hero, rider_mobile_hero, driver_mobile_hero, default_in_app_sound, driver_topup_qr.",
       });
     }
 
-    const folder =
-      mediaType === "default_in_app_sound"
-        ? "system-config/sounds"
-        : "system-config/branding";
+    let folder = "system-config/branding";
+
+    if (mediaType === "default_in_app_sound") {
+      folder = "system-config/sounds";
+    }
+
+    if (mediaType === "driver_topup_qr") {
+      folder = "system-config/topup-qr";
+    }
 
     const result = await uploadToS3({
       file,
