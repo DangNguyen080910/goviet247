@@ -4355,6 +4355,31 @@ export function makeAdminController(prisma) {
         const result = await prisma.$transaction(async (tx) => {
           const penalty = await tx.driverTripPenaltyLog.findUnique({
             where: { id },
+            include: {
+              driverProfile: {
+                select: {
+                  id: true,
+                  userId: true,
+                  balance: true,
+                  fullName: true,
+                  user: {
+                    select: {
+                      id: true,
+                      displayName: true,
+                      phones: {
+                        select: {
+                          e164: true,
+                          isVerified: true,
+                          createdAt: true,
+                        },
+                        orderBy: { createdAt: "desc" },
+                        take: 1,
+                      },
+                    },
+                  },
+                },
+              },
+            },
           });
 
           if (!penalty) {
@@ -4369,19 +4394,66 @@ export function makeAdminController(prisma) {
             throw err;
           }
 
+          if (!penalty.driverProfile) {
+            const err = new Error(
+              "Không tìm thấy hồ sơ tài xế cho log phạt này.",
+            );
+            err.statusCode = 400;
+            throw err;
+          }
+
+          const penaltyAmount = Number(penalty.penaltyAmount || 0);
+          const balanceAfter = Number(penalty.driverProfile.balance || 0);
+          const balanceBefore = balanceAfter + penaltyAmount;
+          const approvedAt = new Date();
+
           const approvedPenalty = await tx.driverTripPenaltyLog.update({
             where: { id: penalty.id },
             data: {
               status: "APPROVED",
-              approvedAt: new Date(),
+              approvedAt,
               approvedByAdminId: actorId,
             },
           });
 
+          let walletTxn = null;
+
+          if (penaltyAmount > 0) {
+            walletTxn = await tx.driverWalletTransaction.create({
+              data: {
+                driverProfileId: penalty.driverProfile.id,
+                type: "TRIP_CANCEL_PENALTY",
+                amount: -penaltyAmount,
+                balanceBefore,
+                balanceAfter,
+                note: `Phạt huỷ chuyến ${penalty.tripId}`,
+                tripId: penalty.tripId,
+              },
+            });
+          }
+
           return {
             penalty: approvedPenalty,
+            walletTxn,
+            driverUserId: penalty.driverProfile.userId || null,
+            penaltyAmount,
+            balanceAfter,
+            tripId: penalty.tripId,
           };
         });
+
+        if (result.driverUserId) {
+          await createDriverWalletNotification({
+            req,
+            userId: result.driverUserId,
+            title: "Phạt huỷ chuyến đã được duyệt",
+            message: `Admin đã duyệt khoản phạt huỷ chuyến ${String(
+              result.tripId || "",
+            ).slice(-8)}. Hệ thống ghi nhận giữ lại ${Number(
+              result.penaltyAmount || 0,
+            ).toLocaleString("vi-VN")}đ.`,
+          });
+        }
 
         emitAdminDashboardChanged(req, {
           source: "driver_trip_penalty_approved",
@@ -4394,6 +4466,7 @@ export function makeAdminController(prisma) {
           success: true,
           message: "Đã duyệt phạt huỷ chuyến.",
           item: result.penalty,
+          walletTxn: result.walletTxn,
         });
       } catch (e) {
         console.error("approveDriverTripPenaltyLog error:", e);

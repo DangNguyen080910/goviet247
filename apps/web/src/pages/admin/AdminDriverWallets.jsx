@@ -723,6 +723,8 @@ export default function AdminDriverWallets() {
         "driver_wallet_topup",
         "driver_wallet_adjust_add",
         "driver_wallet_adjust_subtract",
+        "driver_cancel_trip",
+        "driver_trip_penalty_approved",
       ]);
 
       const shouldReload =
