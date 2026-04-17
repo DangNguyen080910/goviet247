@@ -1224,7 +1224,7 @@ export async function cancelDriverTrip(req, res) {
           targetType: "USER",
           targetUserId: driverUserId,
           title: "Bạn đã huỷ chuyến",
-          message: `Chuyến ${trip.id.slice(-8)} đã được trả về Chờ Duyệt. Hệ thống đã giữ lại ${penaltyAmount.toLocaleString(
+          message: `Bạn đã huỷ chuyến ${trip.id.slice(-8)} thành công. Hệ thống đã giữ lại ${penaltyAmount.toLocaleString(
             "vi-VN",
           )}đ phí huỷ chuyến.`,
           isActive: true,
