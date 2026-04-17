@@ -145,6 +145,14 @@ export function makeAdminController(prisma) {
   }
 
   function buildPenaltyTripAccountingRow(penalty) {
+    const fallbackDriverName =
+      penalty?.trip?.driver?.driverProfile?.fullName ||
+      penalty?.trip?.driver?.displayName ||
+      penalty?.trip?.driver?.phones?.[0]?.e164 ||
+      "";
+
+    const fallbackDriverPhone = penalty?.trip?.driver?.phones?.[0]?.e164 || "";
+
     return {
       rowType: "CANCEL_PENALTY",
       rowTypeLabel: "Phạt huỷ chuyến",
@@ -153,8 +161,8 @@ export function makeAdminController(prisma) {
       eventAt: penalty.approvedAt || penalty.createdAt,
       status: penalty.tripStatusSnapshot || "CANCELLED",
 
-      driverName: penalty.driverNameSnapshot || "",
-      driverPhone: penalty.driverPhoneSnapshot || "",
+      driverName: penalty.driverNameSnapshot || fallbackDriverName,
+      driverPhone: penalty.driverPhoneSnapshot || fallbackDriverPhone,
 
       carType: penalty?.trip?.carType || "",
       carTypeLabel: mapTripAccountingCarType(penalty?.trip?.carType),
@@ -4712,6 +4720,24 @@ export function makeAdminController(prisma) {
                   id: true,
                   carType: true,
                   direction: true,
+                  driver: {
+                    select: {
+                      displayName: true,
+                      phones: {
+                        select: {
+                          e164: true,
+                          createdAt: true,
+                        },
+                        orderBy: { createdAt: "asc" },
+                        take: 1,
+                      },
+                      driverProfile: {
+                        select: {
+                          fullName: true,
+                        },
+                      },
+                    },
+                  },
                 },
               },
             },
