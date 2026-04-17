@@ -58,8 +58,6 @@ import {
   approveWithdrawRequest,
   rejectWithdrawRequest,
   markWithdrawRequestPaid,
-  fetchDriverTripPenalties,
-  approveDriverTripPenalty,
 } from "../../api/adminLedger";
 import { emitAdminDashboardChanged } from "../../utils/adminEventBus";
 import { initializeAdminSocketBridge } from "../../services/adminSocket";
@@ -395,7 +393,6 @@ export default function AdminDriverWallets() {
 
   const [tab, setTab] = React.useState(0);
   const [withdrawTab, setWithdrawTab] = React.useState(0);
-  const [penaltyTab, setPenaltyTab] = React.useState(0);
 
   const [filters, setFilters] = React.useState({
     q: "",
@@ -437,15 +434,6 @@ export default function AdminDriverWallets() {
     total: 0,
     totalPages: 1,
   });
-
-  const [penaltyItems, setPenaltyItems] = React.useState([]);
-  const [penaltyCounts, setPenaltyCounts] = React.useState({
-    pending: 0,
-    approved: 0,
-  });
-  const [penaltyLoading, setPenaltyLoading] = React.useState(false);
-  const [penaltySubmittingId, setPenaltySubmittingId] = React.useState("");
-  const [penaltyQuery, setPenaltyQuery] = React.useState("");
 
   const [pendingWithdraws, setPendingWithdraws] = React.useState([]);
   const [pendingWithdrawsLoading, setPendingWithdrawsLoading] =
@@ -562,61 +550,6 @@ export default function AdminDriverWallets() {
     }
   }, [pendingWithdrawSearch]);
 
-  const loadPenaltyItems = React.useCallback(async () => {
-    try {
-      setPenaltyLoading(true);
-
-      const status = penaltyTab === 0 ? "PENDING" : "APPROVED";
-
-      const res = await fetchDriverTripPenalties({
-        q: penaltyQuery,
-        status,
-        page: 1,
-        pageSize: 50,
-      });
-
-      setPenaltyItems(Array.isArray(res?.items) ? res.items : []);
-    } catch (err) {
-      showSnackbar(
-        "error",
-        err.message || "Không tải được danh sách phạt huỷ chuyến.",
-      );
-      setPenaltyItems([]);
-    } finally {
-      setPenaltyLoading(false);
-    }
-  }, [penaltyQuery, penaltyTab, showSnackbar]);
-
-  const loadPenaltyCounts = React.useCallback(async () => {
-    try {
-      const [pendingRes, approvedRes] = await Promise.all([
-        fetchDriverTripPenalties({
-          q: "",
-          status: "PENDING",
-          page: 1,
-          pageSize: 1,
-        }),
-        fetchDriverTripPenalties({
-          q: "",
-          status: "APPROVED",
-          page: 1,
-          pageSize: 1,
-        }),
-      ]);
-
-      setPenaltyCounts({
-        pending: Number(pendingRes?.meta?.total || 0),
-        approved: Number(approvedRes?.meta?.total || 0),
-      });
-    } catch (err) {
-      console.log(err);
-      setPenaltyCounts({
-        pending: 0,
-        approved: 0,
-      });
-    }
-  }, []);
-
   const loadApprovedWithdraws = React.useCallback(async () => {
     try {
       setApprovedWithdrawsLoading(true);
@@ -672,20 +605,17 @@ export default function AdminDriverWallets() {
 
   React.useEffect(() => {
     if (!isSuperAdmin) return;
-    if (tab !== 3) return;
+    if (tab !== 2) return;
     loadLedgerTransactions();
   }, [isSuperAdmin, tab, loadLedgerTransactions]);
 
   React.useEffect(() => {
-    if (!isSuperAdmin) return;
-    if (tab !== 2) return;
-    loadPenaltyItems();
-  }, [isSuperAdmin, tab, loadPenaltyItems]);
+    // Đã bỏ tab Phạt huỷ chuyến khỏi Ví Tài Xế
+  }, []);
 
   React.useEffect(() => {
-    if (!isSuperAdmin) return;
-    loadPenaltyCounts();
-  }, [isSuperAdmin, loadPenaltyCounts]);
+    // Đã bỏ tab Phạt huỷ chuyến khỏi Ví Tài Xế
+  }, []);
 
   React.useEffect(() => {
     if (!isSuperAdmin) return;
@@ -751,11 +681,6 @@ export default function AdminDriverWallets() {
         }
 
         if (tab === 2) {
-          loadPenaltyItems();
-          loadPenaltyCounts();
-        }
-
-        if (tab === 3) {
           loadLedgerTransactions();
         }
       }, 150);
@@ -781,8 +706,6 @@ export default function AdminDriverWallets() {
     loadPendingWithdraws,
     loadApprovedWithdraws,
     loadPaidWithdraws,
-    loadPenaltyItems,
-    loadPenaltyCounts,
     loadLedgerTransactions,
     tab,
     withdrawTab,
@@ -945,22 +868,6 @@ export default function AdminDriverWallets() {
       );
     } finally {
       setApprovingWithdrawId("");
-    }
-  }
-
-  async function handleApprovePenalty(id) {
-    try {
-      setPenaltySubmittingId(id);
-
-      await approveDriverTripPenalty(id);
-
-      showSnackbar("success", "Đã duyệt phạt huỷ chuyến thành công.");
-
-      await Promise.all([loadPenaltyItems(), loadPenaltyCounts()]);
-    } catch (err) {
-      showSnackbar("error", err.message || "Không duyệt được phạt huỷ chuyến.");
-    } finally {
-      setPenaltySubmittingId("");
     }
   }
 
@@ -1575,21 +1482,6 @@ export default function AdminDriverWallets() {
             }
           />
 
-          <Tab
-            label={
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <span>Phạt huỷ chuyến</span>
-                {penaltyCounts.pending > 0 && (
-                  <Chip
-                    label={penaltyCounts.pending}
-                    size="small"
-                    color="warning"
-                  />
-                )}
-              </Box>
-            }
-          />
-
           <Tab label="Lịch sử ví" />
         </Tabs>
 
@@ -1873,192 +1765,6 @@ export default function AdminDriverWallets() {
             </Stack>
           ) : tab === 1 ? (
             renderWithdrawTab()
-          ) : tab === 2 ? (
-            <Paper
-              elevation={0}
-              sx={{
-                borderRadius: 3,
-                border: "1px solid",
-                borderColor: "divider",
-                overflow: "hidden",
-              }}
-            >
-              <Tabs
-                value={penaltyTab}
-                onChange={(_, value) => {
-                  setPenaltyTab(value);
-                }}
-                variant="scrollable"
-                scrollButtons="auto"
-                sx={{
-                  px: 2,
-                  pt: 1,
-                  borderBottom: "1px solid",
-                  borderColor: "divider",
-                }}
-              >
-                <Tab label={`Chờ duyệt (${penaltyCounts.pending})`} />
-                <Tab label={`Đã duyệt (${penaltyCounts.approved})`} />
-              </Tabs>
-
-              <Box sx={{ p: 2.5 }}>
-                <Stack spacing={2}>
-                  <Stack
-                    direction={{ xs: "column", md: "row" }}
-                    spacing={2}
-                    alignItems={{ xs: "flex-start", md: "center" }}
-                    justifyContent="space-between"
-                  >
-                    <Box>
-                      <Stack
-                        direction="row"
-                        spacing={1}
-                        alignItems="center"
-                        sx={{ mb: 0.5 }}
-                      >
-                        <PaidIcon
-                          color={penaltyTab === 0 ? "warning" : "success"}
-                        />
-                        <Typography variant="h6" sx={{ fontWeight: 800 }}>
-                          {penaltyTab === 0
-                            ? "Chờ duyệt phạt huỷ chuyến"
-                            : "Lịch sử phạt huỷ chuyến đã duyệt"}
-                        </Typography>
-                      </Stack>
-                      <Typography variant="body2" color="text.secondary">
-                        {penaltyTab === 0
-                          ? "Đây là các khoản phạt huỷ chuyến đang chờ admin duyệt."
-                          : "Đây là các khoản phạt huỷ chuyến đã được admin duyệt."}
-                      </Typography>
-                    </Box>
-
-                    <Chip
-                      label={`${
-                        penaltyTab === 0
-                          ? penaltyCounts.pending
-                          : penaltyCounts.approved
-                      } ${penaltyTab === 0 ? "mục chờ duyệt" : "mục đã duyệt"}`}
-                      color={penaltyTab === 0 ? "warning" : "success"}
-                      variant="outlined"
-                    />
-                  </Stack>
-
-                  <TextField
-                    label="Tìm theo tài xế / số điện thoại / mã chuyến"
-                    value={penaltyQuery}
-                    onChange={(e) => {
-                      setPenaltyQuery(e.target.value);
-                    }}
-                    fullWidth
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-
-                  <Box sx={{ overflowX: "auto" }}>
-                    <Table size="small">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Thời gian</TableCell>
-                          <TableCell>Tài xế</TableCell>
-                          <TableCell>SĐT</TableCell>
-                          <TableCell>Mã chuyến</TableCell>
-                          <TableCell>Trạng thái lúc huỷ</TableCell>
-                          <TableCell>Tiền phạt</TableCell>
-                          <TableCell>Trạng thái</TableCell>
-                          <TableCell>Hành động</TableCell>
-                        </TableRow>
-                      </TableHead>
-
-                      <TableBody>
-                        {penaltyLoading ? (
-                          <TableRow>
-                            <TableCell colSpan={8} align="center">
-                              Đang tải dữ liệu...
-                            </TableCell>
-                          </TableRow>
-                        ) : penaltyItems.length === 0 ? (
-                          <TableRow>
-                            <TableCell colSpan={8} align="center">
-                              Không tìm thấy log phạt huỷ chuyến phù hợp.
-                            </TableCell>
-                          </TableRow>
-                        ) : (
-                          penaltyItems.map((item) => (
-                            <TableRow key={item.id} hover>
-                              <TableCell>
-                                {formatDateTimeVN(item.createdAt)}
-                              </TableCell>
-
-                              <TableCell>
-                                {item.driverNameSnapshot || "-"}
-                              </TableCell>
-
-                              <TableCell>
-                                {item.driverPhoneSnapshot || "-"}
-                              </TableCell>
-
-                              <TableCell>{item.tripId || "-"}</TableCell>
-
-                              <TableCell>
-                                {item.tripStatusSnapshot || "-"}
-                              </TableCell>
-
-                              <TableCell>
-                                {formatMoney(item.penaltyAmount)} đ
-                              </TableCell>
-
-                              <TableCell>
-                                <Chip
-                                  size="small"
-                                  label={
-                                    String(item.status || "").toUpperCase() ===
-                                    "APPROVED"
-                                      ? "Đã duyệt"
-                                      : "Chờ duyệt"
-                                  }
-                                  color={
-                                    String(item.status || "").toUpperCase() ===
-                                    "APPROVED"
-                                      ? "success"
-                                      : "warning"
-                                  }
-                                />
-                              </TableCell>
-
-                              <TableCell>
-                                {String(item.status || "").toUpperCase() ===
-                                "PENDING" ? (
-                                  <Button
-                                    size="small"
-                                    variant="contained"
-                                    color="warning"
-                                    onClick={() =>
-                                      handleApprovePenalty(item.id)
-                                    }
-                                    disabled={penaltySubmittingId === item.id}
-                                  >
-                                    {penaltySubmittingId === item.id
-                                      ? "Đang duyệt..."
-                                      : "Duyệt"}
-                                  </Button>
-                                ) : (
-                                  "-"
-                                )}
-                              </TableCell>
-                            </TableRow>
-                          ))
-                        )}
-                      </TableBody>
-                    </Table>
-                  </Box>
-                </Stack>
-              </Box>
-            </Paper>
           ) : (
             <Stack spacing={3}>
               <Grid container spacing={2.5}>

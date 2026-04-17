@@ -1153,6 +1153,7 @@ export async function cancelDriverTrip(req, res) {
       const driverPhoneSnapshot = trip.driver?.phones?.[0]?.e164 || null;
 
       let penaltyLog = null;
+      let penaltyWalletTxn = null;
 
       if (penaltyAmount > 0) {
         penaltyLog = await tx.driverTripPenaltyLog.create({
@@ -1166,9 +1167,21 @@ export async function cancelDriverTrip(req, res) {
             verifiedByIdSnapshot: trip.verifiedById || null,
             verifiedAtSnapshot: trip.verifiedAt || null,
             penaltyAmount,
-            status: "PENDING",
-            approvedAt: null,
+            status: "APPROVED",
+            approvedAt: now,
             approvedByAdminId: null,
+          },
+        });
+
+        penaltyWalletTxn = await tx.driverWalletTransaction.create({
+          data: {
+            driverProfileId: driverProfile.id,
+            type: "TRIP_CANCEL_PENALTY",
+            amount: -penaltyAmount,
+            balanceBefore: balanceBeforePenalty,
+            balanceAfter: balanceAfterPenalty,
+            note: `Phạt huỷ chuyến ${trip.id}`,
+            tripId: trip.id,
           },
         });
       }
@@ -1211,9 +1224,9 @@ export async function cancelDriverTrip(req, res) {
           targetType: "USER",
           targetUserId: driverUserId,
           title: "Bạn đã huỷ chuyến",
-          message: `Chuyến ${trip.id.slice(-8)} đã được trả về Chờ Duyệt. Khoản phí huỷ chuyến ${penaltyAmount.toLocaleString(
+          message: `Chuyến ${trip.id.slice(-8)} đã được trả về Chờ Duyệt. Hệ thống đã giữ lại ${penaltyAmount.toLocaleString(
             "vi-VN",
-          )}đ đang chờ admin duyệt.`,
+          )}đ phí huỷ chuyến.`,
           isActive: true,
           createdByAdminId: null,
         },
@@ -1222,6 +1235,7 @@ export async function cancelDriverTrip(req, res) {
       return {
         trip: updatedTrip,
         penaltyLog,
+        penaltyWalletTxn,
         penalty: {
           amount: penaltyAmount,
           balanceBefore: balanceBeforePenalty,
@@ -1296,15 +1310,7 @@ export async function cancelDriverTrip(req, res) {
               result.driverNotification.createdAt,
           },
         );
-
-        console.log(
-          `[Socket] Emit driver:notification_changed -> driver:${result.realtime.previousDriverId} (${result.realtime.tripId})`,
-        );
       }
-
-      console.log(
-        `[Socket] Emit admin:trip_status_changed + admin:dashboard_changed + trip:changed (${result.realtime.tripId})`,
-      );
     }
 
     try {
@@ -1329,8 +1335,9 @@ export async function cancelDriverTrip(req, res) {
     return res.json({
       success: true,
       trip: result.trip,
-      penalty: result.penalty,
       penaltyLog: result.penaltyLog,
+      penaltyWalletTxn: result.penaltyWalletTxn,
+      penalty: result.penalty,
       message: "Huỷ chuyến thành công",
     });
   } catch (err) {
