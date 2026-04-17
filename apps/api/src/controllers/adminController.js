@@ -1305,7 +1305,7 @@ export function makeAdminController(prisma) {
       "CAC NHOM DU LIEU:",
       ...groups.map(
         (group) =>
-          `- ${group.label}: ${group.count} muc (${group.folderName || "-"})`,
+          `- (${group.folderName || "-"}) ${group.label}: ${group.count} muc`,
       ),
       "",
       "GIAI THICH NGHIEP VU QUAN TRONG:",
