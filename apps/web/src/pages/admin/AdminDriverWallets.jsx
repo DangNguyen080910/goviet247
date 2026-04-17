@@ -2289,14 +2289,18 @@ export default function AdminDriverWallets() {
                               <TableCell>
                                 {formatDateTimeVN(item.createdAt)}
                               </TableCell>
+
                               <TableCell>{item.id}</TableCell>
+
                               <TableCell>
-                                {item.driverProfile?.user?.displayName || "N/A"}
+                                {getDriverName(item.driverProfile || item)}
                               </TableCell>
+
                               <TableCell>
                                 {item.driverProfile?.user?.phones?.[0]?.e164 ||
                                   "N/A"}
                               </TableCell>
+
                               <TableCell>
                                 <Chip
                                   size="small"
@@ -2305,23 +2309,29 @@ export default function AdminDriverWallets() {
                                   variant="outlined"
                                 />
                               </TableCell>
+
                               <TableCell align="right">
                                 {formatMoney(item.amount)} đ
                               </TableCell>
+
                               <TableCell align="right">
                                 {formatMoney(item.balanceBefore)} đ
                               </TableCell>
+
                               <TableCell align="right">
                                 {formatMoney(item.balanceAfter)} đ
                               </TableCell>
+
                               <TableCell>
                                 {item.tripId || item.trip?.id || "N/A"}
                               </TableCell>
+
                               <TableCell>
                                 {item.withdrawRequestId ||
                                   item.withdrawRequest?.id ||
                                   "N/A"}
                               </TableCell>
+
                               <TableCell sx={{ minWidth: 260 }}>
                                 {item.note || "N/A"}
                               </TableCell>
@@ -2352,6 +2362,25 @@ export default function AdminDriverWallets() {
                       }}
                       rowsPerPageOptions={[5, 10, 20, 50]}
                       labelRowsPerPage="Số dòng mỗi trang"
+                      showFirstButton
+                      showLastButton
+                      sx={{
+                        borderTop: "1px solid",
+                        borderColor: "divider",
+                        ".MuiTablePagination-toolbar": {
+                          minHeight: 56,
+                          flexWrap: "wrap",
+                          gap: 1,
+                        },
+                        ".MuiTablePagination-actions": {
+                          display: "flex",
+                          alignItems: "center",
+                          marginLeft: 1,
+                        },
+                        ".MuiIconButton-root": {
+                          color: "text.primary",
+                        },
+                      }}
                     />
                   </>
                 )}
