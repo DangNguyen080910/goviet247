@@ -465,13 +465,11 @@ model SystemConfig {
   driverTopupQrImageUrl        String @default("")
   driverTopupNote              String @default("")
 
-  brandName                String @default("GoViet247")
-  brandLogoUrl             String @default("")
-  riderWebHeroImageUrl     String @default("")
-  riderMobileHeroImageUrl  String @default("")
-  driverMobileHeroImageUrl String @default("")
-  defaultInAppSoundUrl     String @default("")
-  footerCopyright          String @default("© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse")
+  brandName                     String @default("GoViet247")
+  brandLogoUrl                  String @default("")
+  riderWebBackgroundImageUrl    String @default("")
+  riderMobileBackgroundImageUrl String @default("")
+  footerCopyright               String @default("© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse")
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
