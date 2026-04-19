@@ -19,7 +19,7 @@ export default function HeroSection() {
         const phone = cfg?.supportPhoneRider || "1900-0000";
 
         setZaloPhone(phone);
-        setHeroImageUrl(cfg?.riderWebHeroImageUrl || "");
+        setHeroImageUrl(cfg?.riderWebBackgroundImageUrl || "");
       } catch (err) {
         console.error("Load hero system config failed:", err);
       }
