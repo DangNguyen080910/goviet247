@@ -22,10 +22,8 @@ const DEFAULT_SYSTEM_CONFIG = {
 
   brandName: "GoViet247",
   brandLogoUrl: "",
-  riderWebHeroImageUrl: "",
-  riderMobileHeroImageUrl: "",
-  driverMobileHeroImageUrl: "",
-  defaultInAppSoundUrl: "",
+  riderWebBackgroundImageUrl: "",
+  riderMobileBackgroundImageUrl: "",
   footerCopyright: "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
 };
 
@@ -204,27 +202,15 @@ export async function updateSystemConfig(req, res) {
       updateData.brandLogoUrl = String(body.brandLogoUrl).trim();
     }
 
-    if (body.riderWebHeroImageUrl != null) {
-      updateData.riderWebHeroImageUrl = String(
-        body.riderWebHeroImageUrl,
+    if (body.riderWebBackgroundImageUrl != null) {
+      updateData.riderWebBackgroundImageUrl = String(
+        body.riderWebBackgroundImageUrl,
       ).trim();
     }
 
-    if (body.riderMobileHeroImageUrl != null) {
-      updateData.riderMobileHeroImageUrl = String(
-        body.riderMobileHeroImageUrl,
-      ).trim();
-    }
-
-    if (body.driverMobileHeroImageUrl != null) {
-      updateData.driverMobileHeroImageUrl = String(
-        body.driverMobileHeroImageUrl,
-      ).trim();
-    }
-
-    if (body.defaultInAppSoundUrl != null) {
-      updateData.defaultInAppSoundUrl = String(
-        body.defaultInAppSoundUrl,
+    if (body.riderMobileBackgroundImageUrl != null) {
+      updateData.riderMobileBackgroundImageUrl = String(
+        body.riderMobileBackgroundImageUrl,
       ).trim();
     }
 
@@ -332,10 +318,8 @@ export async function uploadSystemConfigMedia(req, res) {
 
     const allowedMediaTypes = [
       "brand_logo",
-      "rider_web_hero",
-      "rider_mobile_hero",
-      "driver_mobile_hero",
-      "default_in_app_sound",
+      "rider_web_background",
+      "rider_mobile_background",
       "driver_topup_qr",
     ];
 
@@ -343,15 +327,11 @@ export async function uploadSystemConfigMedia(req, res) {
       return res.status(400).json({
         success: false,
         message:
-          "mediaType không hợp lệ. Hỗ trợ: brand_logo, rider_web_hero, rider_mobile_hero, driver_mobile_hero, default_in_app_sound, driver_topup_qr.",
+          "mediaType không hợp lệ. Hỗ trợ: brand_logo, rider_web_background, rider_mobile_background, driver_topup_qr.",
       });
     }
 
     let folder = "system-config/branding";
-
-    if (mediaType === "default_in_app_sound") {
-      folder = "system-config/sounds";
-    }
 
     if (mediaType === "driver_topup_qr") {
       folder = "system-config/topup-qr";

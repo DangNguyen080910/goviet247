@@ -9,7 +9,7 @@ const router = Router();
 
 /**
  * GET /api/public/system-config
- * API public cho customer site / driver app đọc config hệ thống
+ * API public cho customer site / rider mobile / driver mobile đọc config hệ thống
  */
 router.get("/system-config", async (req, res) => {
   try {
@@ -36,10 +36,8 @@ router.get("/system-config", async (req, res) => {
 
           brandName: "GoViet247",
           brandLogoUrl: "",
-          riderWebHeroImageUrl: "",
-          riderMobileHeroImageUrl: "",
-          driverMobileHeroImageUrl: "",
-          defaultInAppSoundUrl: "",
+          riderWebBackgroundImageUrl: "",
+          riderMobileBackgroundImageUrl: "",
           footerCopyright:
             "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
         },
@@ -64,10 +62,8 @@ router.get("/system-config", async (req, res) => {
 
         brandName: config.brandName,
         brandLogoUrl: config.brandLogoUrl,
-        riderWebHeroImageUrl: config.riderWebHeroImageUrl,
-        riderMobileHeroImageUrl: config.riderMobileHeroImageUrl,
-        driverMobileHeroImageUrl: config.driverMobileHeroImageUrl,
-        defaultInAppSoundUrl: config.defaultInAppSoundUrl,
+        riderWebBackgroundImageUrl: config.riderWebBackgroundImageUrl,
+        riderMobileBackgroundImageUrl: config.riderMobileBackgroundImageUrl,
         footerCopyright: config.footerCopyright,
       },
     });
