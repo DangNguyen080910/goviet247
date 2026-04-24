@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/controllers/adminTripController.js
 import { prisma } from "../utils/db.js";
+import { sendAdminPushNotification } from "../services/notificationService.js";
 
 // POST /api/admin/trips/:id/cancel
 // Body: { cancel_reason: "..." }
@@ -116,7 +117,18 @@ export async function adminHuyChuyen(req, res) {
         );
       }
     }
-
+    sendAdminPushNotification({
+      title: "Chuyến đã bị huỷ",
+      body: `Chuyến ${result.updated.id} vừa bị huỷ bởi ${actorUsername}.`,
+      data: {
+        type: "ADMIN_TRIP_CANCELLED",
+        tripId: result.updated.id,
+        fromStatus: result.fromStatus,
+        toStatus: "CANCELLED",
+      },
+    }).catch((pushError) => {
+      console.error("[AdminPush] trip cancelled push error:", pushError);
+    });
     return res.json({
       success: true,
       trip: result.updated,

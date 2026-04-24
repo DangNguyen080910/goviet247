@@ -539,7 +539,76 @@ export async function sendSystemNotificationToDriver(userId, notification) {
     console.error("[Push] sendSystemNotificationToDriver error:", err);
   }
 }
+export async function sendAdminPushNotification({ title, body, data = {} }) {
+  try {
+    const devices = await prisma.device.findMany({
+      where: {
+        role: {
+          in: ["admin", "staff", "ADMIN", "STAFF"],
+        },
+      },
+      select: {
+        userId: true,
+        platform: true,
+        pushToken: true,
+        role: true,
+      },
+    });
 
+    if (!devices.length) {
+      console.log("📲 [AdminPush] Không có device admin/staff nào.");
+      return;
+    }
+
+    const validDevices = devices.filter((device) =>
+      isExpoPushToken(device.pushToken),
+    );
+
+    if (!validDevices.length) {
+      console.log("📲 [AdminPush] Không có Expo push token admin hợp lệ.");
+      return;
+    }
+
+    const messages = validDevices.map((device) => ({
+      to: device.pushToken,
+      sound: "admin-alert.mp3",
+      title: shortText(title || "GoViet247 Admin", 60),
+      body: shortText(body || "Có cập nhật mới trong hệ thống.", 140),
+      priority: "high",
+      badge: 1,
+      data: {
+        type: "ADMIN_NOTIFICATION",
+        ...data,
+      },
+    }));
+
+    console.log("📲 [AdminPush] Chuẩn bị gửi push admin:", {
+      totalDevices: devices.length,
+      validExpoTokens: validDevices.length,
+      title,
+      body,
+      data,
+    });
+
+    const batches = chunkArray(messages, 100);
+
+    for (const batch of batches) {
+      const result = await sendExpoPushMessages(batch);
+
+      console.log(
+        "📲 [AdminPush] Expo response:",
+        JSON.stringify(result, null, 2),
+      );
+    }
+
+    console.log(
+      `📲 [AdminPush] Đã gửi push cho ${validDevices.length} thiết bị admin/staff.`,
+    );
+  } catch (err) {
+    console.error("[AdminPush] sendAdminPushNotification error:", err);
+    throw err;
+  }
+}
 export async function sendSystemNotificationToRiders(notification) {
   try {
     const audience = String(notification?.audience || "").toUpperCase();

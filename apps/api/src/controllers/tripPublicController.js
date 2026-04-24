@@ -5,6 +5,7 @@ import {
   requestTripOtp as requestTripOtpService,
   verifyTripOtp,
 } from "../services/otpService.js";
+import { sendAdminPushNotification } from "../services/notificationService.js";
 
 // Việt: Default config public cho customer page
 const DEFAULT_TRIP_CONFIG = {
@@ -358,6 +359,19 @@ export async function confirmTrip(req, res) {
     } else {
       console.log("[Socket] io not found on app (skip emit)");
     }
+
+    sendAdminPushNotification({
+      title: "Có chuyến mới cần duyệt",
+      body: `${riderName} vừa đặt chuyến ${trip.id}.`,
+      data: {
+        type: "ADMIN_NEW_TRIP",
+        tripId: trip.id,
+        status: trip.status,
+        createdAt: trip.createdAt,
+      },
+    }).catch((pushError) => {
+      console.error("[AdminPush] new trip push error:", pushError);
+    });
 
     return res.json({
       success: true,
