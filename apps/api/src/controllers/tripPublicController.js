@@ -53,6 +53,18 @@ function toDate(value) {
   return d;
 }
 
+function assertPickupTimeNotInPast(pickupDate) {
+  const pickupMs = pickupDate instanceof Date ? pickupDate.getTime() : NaN;
+
+  if (!Number.isFinite(pickupMs)) {
+    throw new Error("THOI_GIAN_DON_KHONG_HOP_LE");
+  }
+
+  if (pickupMs <= Date.now()) {
+    throw new Error("THOI_GIAN_DON_TRONG_QUA_KHU");
+  }
+}
+
 // Việt: Lấy hoặc tự tạo TripConfig mặc định
 async function getOrCreateTripConfig() {
   let config = await prisma.tripConfig.findFirst({
@@ -170,6 +182,8 @@ export async function quoteTrip(req, res) {
     }
 
     const pickupDate = toDate(pickupTime);
+    assertPickupTimeNotInPast(pickupDate);
+
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
@@ -233,6 +247,8 @@ export async function requestTripOtp(req, res) {
     }
 
     const pickupDate = toDate(pickupTime);
+    assertPickupTimeNotInPast(pickupDate);
+
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
@@ -311,6 +327,9 @@ export async function confirmTrip(req, res) {
         .status(400)
         .json({ success: false, message: "OTP không hợp lệ hoặc đã hết hạn." });
     }
+
+    const confirmedPickupDate = toDate(payload.pickupTime);
+    assertPickupTimeNotInPast(confirmedPickupDate);
 
     const {
       riderName,

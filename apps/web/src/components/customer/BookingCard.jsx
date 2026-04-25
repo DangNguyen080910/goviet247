@@ -94,6 +94,16 @@ function combineDateTime(dateObj, timeObj) {
   return combined.format("YYYY-MM-DDTHH:mm:ss");
 }
 
+function isDateTimeInPast(dateObj, timeObj) {
+  const iso = combineDateTime(dateObj, timeObj);
+  if (!iso) return false;
+
+  const valueMs = new Date(iso).getTime();
+  if (!Number.isFinite(valueMs)) return false;
+
+  return valueMs <= Date.now();
+}
+
 // Cắt bớt mã chuyến cho dễ nhìn
 function shortTripId(id = "", n = 10) {
   if (!id) return "";
@@ -627,6 +637,12 @@ export default function BookingCard() {
     const iso = combineDateTime(pickupDate, pickupTimeOnly);
     return iso ? new Date(iso).getTime() : NaN;
   }, [pickupDate, pickupTimeOnly]);
+
+  const isPickupTimeInPast = useMemo(() => {
+    if (!pickupDate || !pickupTimeOnly) return false;
+    return isDateTimeInPast(pickupDate, pickupTimeOnly);
+  }, [pickupDate, pickupTimeOnly]);
+
   const returnMs = useMemo(() => {
     const iso = combineDateTime(returnDate, returnTimeOnly);
     return iso ? new Date(iso).getTime() : NaN;
@@ -799,6 +815,7 @@ export default function BookingCard() {
     hasValidStopSelections &&
     pickupDate &&
     pickupTimeOnly &&
+    !isPickupTimeInPast &&
     direction &&
     carType &&
     (direction === "ONE_WAY"
@@ -1135,11 +1152,11 @@ export default function BookingCard() {
       return;
     }
 
-    if (!hasAtLeastOneSelectedStop || !hasValidStopSelections) {
+    if (isPickupTimeInPast) {
       setToast({
         open: true,
         severity: "warning",
-        message: "Vui lòng chọn ít nhất 1 điểm đến hợp lệ từ danh sách gợi ý.",
+        message: "Không được chọn thời gian đón trong quá khứ.",
       });
       return;
     }
@@ -1247,6 +1264,10 @@ export default function BookingCard() {
 
     if (hasInvalidStop) {
       throw new Error("Vui lòng chọn đầy đủ các điểm đến từ danh sách gợi ý.");
+    }
+
+    if (isPickupTimeInPast) {
+      throw new Error("Không được chọn thời gian đón trong quá khứ.");
     }
 
     if (!isDistanceValid) {
@@ -1865,6 +1886,14 @@ export default function BookingCard() {
                       inputProps={{ step: 300 }}
                     />
                   </Stack>
+                  {pickupDate && pickupTimeOnly && isPickupTimeInPast && (
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "error.main", fontWeight: 800 }}
+                    >
+                      Không được chọn thời gian đón trong quá khứ.
+                    </Typography>
+                  )}
                 </LocalizationProvider>
 
                 {direction === "ROUND_TRIP" && (
