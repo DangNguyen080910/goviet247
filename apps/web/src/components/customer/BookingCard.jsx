@@ -147,18 +147,29 @@ function formatDurationMinutes(totalMinutes) {
   return `${hours} giờ ${String(minutes).padStart(2, "0")} phút`;
 }
 
-function buildTimeOptions(stepMinutes = 5) {
-  const options = [];
+function buildHourOptions() {
+  return Array.from({ length: 24 }, (_, hour) => String(hour).padStart(2, "0"));
+}
 
-  for (let hour = 0; hour < 24; hour += 1) {
-    for (let minute = 0; minute < 60; minute += stepMinutes) {
-      options.push(
-        `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`,
-      );
-    }
+function buildMinuteOptions(stepMinutes = 5) {
+  return Array.from({ length: Math.floor(60 / stepMinutes) }, (_, idx) =>
+    String(idx * stepMinutes).padStart(2, "0"),
+  );
+}
+
+function updateTimePart(currentValue, part, value) {
+  const base = currentValue
+    ? dayjs(currentValue)
+    : dayjs().second(0).millisecond(0);
+  const numericValue = Number(value);
+
+  if (!Number.isFinite(numericValue)) return currentValue;
+
+  if (part === "hour") {
+    return base.hour(numericValue).second(0).millisecond(0);
   }
 
-  return options;
+  return base.minute(numericValue).second(0).millisecond(0);
 }
 
 function formatWeekdayHeader(day) {
@@ -287,7 +298,8 @@ export default function BookingCard() {
   const minDistanceKm = Number(tripConfig?.minDistanceKm || 0);
   const maxDistanceKm = Number(tripConfig?.maxDistanceKm || 2000);
   const maxStops = Number(tripConfig?.maxStops || 10);
-  const timeOptions = useMemo(() => buildTimeOptions(5), []);
+  const hourOptions = useMemo(() => buildHourOptions(), []);
+  const minuteOptions = useMemo(() => buildMinuteOptions(5), []);
 
   // ✅ Lấy scroll container thật
   const getScrollEl = () => {
@@ -1878,46 +1890,59 @@ export default function BookingCard() {
                         textField: { fullWidth: true, size: "small" },
                       }}
                     />
-                    <FormControl fullWidth size="small">
-                      <InputLabel>Giờ đón khách</InputLabel>
-                      <Select
-                        label="Giờ đón khách"
-                        value={
-                          pickupTimeOnly
-                            ? dayjs(pickupTimeOnly).format("HH:mm")
-                            : ""
-                        }
-                        onChange={(e) => {
-                          const val = e.target.value;
-
-                          if (!val) {
-                            setPickupTimeOnly(null);
-                            return;
+                    <Stack direction="row" spacing={1.2} sx={{ width: "100%" }}>
+                      <FormControl fullWidth size="small">
+                        <InputLabel>Giờ</InputLabel>
+                        <Select
+                          label="Giờ"
+                          value={
+                            pickupTimeOnly
+                              ? dayjs(pickupTimeOnly).format("HH")
+                              : ""
                           }
+                          onChange={(e) => {
+                            setPickupTimeOnly((prev) =>
+                              updateTimePart(prev, "hour", e.target.value),
+                            );
+                          }}
+                          MenuProps={{
+                            PaperProps: { sx: { maxHeight: 280 } },
+                          }}
+                        >
+                          {hourOptions.map((hour) => (
+                            <MenuItem key={hour} value={hour}>
+                              {hour}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
 
-                          const [h, m] = val.split(":");
-                          const t = dayjs()
-                            .hour(Number(h))
-                            .minute(Number(m))
-                            .second(0)
-                            .millisecond(0);
-                          setPickupTimeOnly(t);
-                        }}
-                        MenuProps={{
-                          PaperProps: {
-                            sx: {
-                              maxHeight: 320,
-                            },
-                          },
-                        }}
-                      >
-                        {timeOptions.map((time) => (
-                          <MenuItem key={time} value={time}>
-                            {time}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
+                      <FormControl fullWidth size="small">
+                        <InputLabel>Phút</InputLabel>
+                        <Select
+                          label="Phút"
+                          value={
+                            pickupTimeOnly
+                              ? dayjs(pickupTimeOnly).format("mm")
+                              : ""
+                          }
+                          onChange={(e) => {
+                            setPickupTimeOnly((prev) =>
+                              updateTimePart(prev, "minute", e.target.value),
+                            );
+                          }}
+                          MenuProps={{
+                            PaperProps: { sx: { maxHeight: 280 } },
+                          }}
+                        >
+                          {minuteOptions.map((minute) => (
+                            <MenuItem key={minute} value={minute}>
+                              {minute}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Stack>
                   </Stack>
                   {pickupDate && pickupTimeOnly && isPickupTimeInPast && (
                     <Typography
@@ -1948,46 +1973,63 @@ export default function BookingCard() {
                           textField: { fullWidth: true, size: "small" },
                         }}
                       />
-                      <FormControl fullWidth size="small">
-                        <InputLabel>Giờ quay về</InputLabel>
-                        <Select
-                          label="Giờ quay về"
-                          value={
-                            returnTimeOnly
-                              ? dayjs(returnTimeOnly).format("HH:mm")
-                              : ""
-                          }
-                          onChange={(e) => {
-                            const val = e.target.value;
-
-                            if (!val) {
-                              setReturnTimeOnly(null);
-                              return;
+                      <Stack
+                        direction="row"
+                        spacing={1.2}
+                        sx={{ width: "100%" }}
+                      >
+                        <FormControl fullWidth size="small">
+                          <InputLabel>Giờ về</InputLabel>
+                          <Select
+                            label="Giờ về"
+                            value={
+                              returnTimeOnly
+                                ? dayjs(returnTimeOnly).format("HH")
+                                : ""
                             }
+                            onChange={(e) => {
+                              setReturnTimeOnly((prev) =>
+                                updateTimePart(prev, "hour", e.target.value),
+                              );
+                            }}
+                            MenuProps={{
+                              PaperProps: { sx: { maxHeight: 280 } },
+                            }}
+                          >
+                            {hourOptions.map((hour) => (
+                              <MenuItem key={hour} value={hour}>
+                                {hour}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
 
-                            const [h, m] = val.split(":");
-                            const t = dayjs()
-                              .hour(Number(h))
-                              .minute(Number(m))
-                              .second(0)
-                              .millisecond(0);
-                            setReturnTimeOnly(t);
-                          }}
-                          MenuProps={{
-                            PaperProps: {
-                              sx: {
-                                maxHeight: 320,
-                              },
-                            },
-                          }}
-                        >
-                          {timeOptions.map((time) => (
-                            <MenuItem key={time} value={time}>
-                              {time}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
+                        <FormControl fullWidth size="small">
+                          <InputLabel>Phút về</InputLabel>
+                          <Select
+                            label="Phút về"
+                            value={
+                              returnTimeOnly
+                                ? dayjs(returnTimeOnly).format("mm")
+                                : ""
+                            }
+                            onChange={(e) => {
+                              setReturnTimeOnly((prev) =>
+                                updateTimePart(prev, "minute", e.target.value),
+                              );
+                            }}
+                            MenuProps={{
+                              PaperProps: { sx: { maxHeight: 280 } },
+                            }}
+                          >
+                            {minuteOptions.map((minute) => (
+                              <MenuItem key={minute} value={minute}>
+                                {minute}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Stack>
                     </Stack>
                   </LocalizationProvider>
                 )}
