@@ -159,7 +159,9 @@ async function ensureRiderProfile(tx, userId) {
 export async function requestOtp(e164, appRole = "RIDER") {
   const normalizedRole = normalizeAppRole(appRole);
 
-  const code = randomCode();
+  const isTestMode = process.env.OTP_TEST_MODE === "true";
+  const code = isTestMode ? "123456" : randomCode();
+  
   const codeHash = await bcrypt.hash(code, 10);
 
   const now = new Date();
