@@ -105,10 +105,16 @@ export async function requestOtpHandler(req, res) {
 
     const result = await requestOtp(phone, appRole);
 
+    // 🔥 TEST MODE
+    const isTestMode = process.env.OTP_TEST_MODE === "true";
+
     return res.json({
       success: true,
       session_id: result.sessionId,
       resend_after: result.resendAfter,
+
+      // 👇 chỉ hiện khi test mode
+      ...(isTestMode && { debug_otp: result.otp }),
     });
   } catch (error) {
     const message = String(error?.message || "").trim();
