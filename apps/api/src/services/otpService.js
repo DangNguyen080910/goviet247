@@ -204,7 +204,7 @@ export async function requestOtp(e164, appRole = "RIDER") {
   return {
     sessionId: session.id,
     resendAfter,
-    otp,
+    otp: code,
   };
 }
 
