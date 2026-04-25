@@ -182,6 +182,9 @@ export default function BookingCard() {
   const navigate = useNavigate();
   const { user, login } = useCustomerAuth();
 
+  const ZALO_BTN_HEIGHT = 64; // chiều cao button Zalo
+  const ZALO_BTN_MARGIN = 20; // khoảng cách giữa 2 button
+
   const [pickupAddress, setPickupAddress] = useState("");
   const [pickupPlace, setPickupPlace] = useState(null);
   const [pickupOptions, setPickupOptions] = useState([]);
@@ -2273,7 +2276,10 @@ export default function BookingCard() {
             sx={{
               position: "fixed",
               right: 18,
-              bottom: quote && !isQuoteExpired ? 120 : 70,
+              bottom:
+                (quote && !isQuoteExpired ? 120 : 70) +
+                ZALO_BTN_HEIGHT +
+                ZALO_BTN_MARGIN,
               zIndex: 1600,
               bgcolor: "rgba(255,255,255,0.92)",
               border: "1px solid rgba(0,0,0,0.10)",
