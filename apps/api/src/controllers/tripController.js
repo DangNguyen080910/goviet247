@@ -375,6 +375,83 @@ function emitTripChangedToDrivers(io, payload = {}) {
   );
 }
 
+function buildRiderTripNotificationContent(trip, reason = "") {
+  const shortTripId = String(trip?.id || "")
+    .slice(-8)
+    .toUpperCase();
+
+  if (reason === "admin_verify_trip") {
+    return {
+      title: "Chuyến đã được duyệt",
+      message: `Chuyến #${shortTripId} đã được duyệt và đang chờ tài xế nhận.`,
+    };
+  }
+
+  if (reason === "driver_accept_trip" || trip?.status === "ACCEPTED") {
+    return {
+      title: "Đã có tài xế nhận chuyến",
+      message: `Chuyến #${shortTripId} đã có tài xế nhận. Tài xế sẽ liên hệ bạn sớm.`,
+    };
+  }
+
+  if (trip?.status === "CONTACTED") {
+    return {
+      title: "Tài xế đã liên hệ",
+      message: `Chuyến #${shortTripId} đã chuyển sang trạng thái Đã liên hệ.`,
+    };
+  }
+
+  if (trip?.status === "IN_PROGRESS") {
+    return {
+      title: "Chuyến đang di chuyển",
+      message: `Chuyến #${shortTripId} đang trên hành trình.`,
+    };
+  }
+
+  if (trip?.status === "COMPLETED") {
+    return {
+      title: "Chuyến đã hoàn thành",
+      message: `Chuyến #${shortTripId} đã hoàn thành. Cảm ơn bạn đã sử dụng GoViet247.`,
+    };
+  }
+
+  if (trip?.status === "CANCELLED" || trip?.status === "CANCELED") {
+    return {
+      title: "Chuyến đã huỷ",
+      message: `Chuyến #${shortTripId} đã được cập nhật trạng thái huỷ.`,
+    };
+  }
+
+  return {
+    title: "Cập nhật chuyến",
+    message: `Chuyến #${shortTripId} vừa được cập nhật trạng thái.`,
+  };
+}
+
+async function createRiderTripNotification(tx, trip, options = {}) {
+  const riderId = String(trip?.riderId || "").trim();
+
+  if (!riderId) {
+    return null;
+  }
+
+  const reason = String(options?.reason || "").trim();
+  const actorAdminId = options?.createdByAdminId || null;
+  const content = buildRiderTripNotificationContent(trip, reason);
+
+  return tx.systemNotification.create({
+    data: {
+      audience: "RIDER",
+      targetType: "USER",
+      targetUserId: riderId,
+      title: content.title,
+      message: content.message,
+      isActive: true,
+      createdByAdminId: actorAdminId,
+    },
+  });
+}
+
 function emitTripChangedToRider(io, payload = {}) {
   if (!io) {
     return;
@@ -2352,6 +2429,20 @@ export async function adminVerifyTrip(req, res) {
       },
     });
 
+    let riderNotification = null;
+
+    try {
+      riderNotification = await createRiderTripNotification(prisma, updated, {
+        reason: "admin_verify_trip",
+        createdByAdminId: actor.id,
+      });
+    } catch (notificationError) {
+      console.error(
+        "[adminVerifyTrip] create rider notification error:",
+        notificationError,
+      );
+    }
+
     const io = req.app.get("io");
     if (io) {
       io.to("drivers").emit("trip:new", {
@@ -2382,6 +2473,17 @@ export async function adminVerifyTrip(req, res) {
         updatedAt: updated.updatedAt || updated.verifiedAt || new Date(),
         reason: "admin_verify_trip",
       });
+
+      if (riderNotification && updated.riderId) {
+        io.to(`rider:${updated.riderId}`).emit("rider:notification_changed", {
+          source: "admin_verify_trip",
+          audience: "RIDER",
+          targetUserId: updated.riderId,
+          notificationId: riderNotification.id,
+          tripId: updated.id,
+          updatedAt: riderNotification.updatedAt || riderNotification.createdAt,
+        });
+      }
 
       console.log(`[Socket] Emit trip:new -> drivers (${updated.id})`);
     }
