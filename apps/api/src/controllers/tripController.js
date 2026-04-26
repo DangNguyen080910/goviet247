@@ -2131,7 +2131,24 @@ export async function adminGetTripDetail(req, res) {
               orderBy: { createdAt: "desc" },
               take: 1,
             },
-            driverProfile: true,
+            driverProfile: {
+              select: {
+                id: true,
+                fullName: true,
+                status: true,
+                balance: true,
+                vehicleType: true,
+                vehicleBrand: true,
+                vehicleModel: true,
+                vehicleYear: true,
+                plateNumber: true,
+                verifiedAt: true,
+                rejectReason: true,
+                suspendReason: true,
+                createdAt: true,
+                updatedAt: true,
+              },
+            },
           },
         },
         stops: { orderBy: { seq: "asc" } },
@@ -2146,13 +2163,16 @@ export async function adminGetTripDetail(req, res) {
     const driverPhone = trip?.driver?.phones?.[0]?.e164 || "";
 
     return res.json({
-      ...trip,
-      driverName:
-        driverProfile?.fullName ||
-        trip?.driver?.displayName ||
-        driverPhone ||
-        "Tài xế",
-      driverPhone,
+      success: true,
+      trip: {
+        ...trip,
+        driverName:
+          driverProfile?.fullName ||
+          trip?.driver?.displayName ||
+          driverPhone ||
+          "Tài xế",
+        driverPhone,
+      },
     });
   } catch (err) {
     console.error("[adminGetTripDetail] Error:", err);
