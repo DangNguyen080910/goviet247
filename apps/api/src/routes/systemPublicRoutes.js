@@ -14,21 +14,46 @@ router.get("/system-notifications", async (req, res) => {
       .trim()
       .toUpperCase();
 
+    const userId = String(req.query.userId || "").trim();
+
     const where = {
       isActive: true,
       ...(audience ? { audience } : {}),
       OR: [
         { targetType: "ALL" },
-        { targetType: "USER" },
+        ...(userId
+          ? [
+              {
+                targetType: "USER",
+                targetUserId: userId,
+              },
+            ]
+          : []),
       ],
     };
 
-    const items = await prisma.systemNotification.findMany({
+    const rows = await prisma.systemNotification.findMany({
       where,
       orderBy: {
         createdAt: "desc",
       },
-      take: 20,
+      take: 50,
+    });
+
+    const items = rows.map((item) => {
+      const rawMessage = String(item.message || "");
+      const tripIdMatch = rawMessage.match(/\[tripId:([^\]]+)\]/);
+      const tripId = tripIdMatch?.[1] || null;
+      const cleanMessage = rawMessage
+        .replace(/\s*\[tripId:[^\]]+\]\s*/g, "")
+        .trim();
+
+      return {
+        ...item,
+        body: cleanMessage,
+        message: cleanMessage,
+        tripId,
+      };
     });
 
     return res.json({

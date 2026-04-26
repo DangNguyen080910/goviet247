@@ -448,7 +448,7 @@ async function createRiderTripNotification(tx, trip, options = {}) {
       targetType: "USER",
       targetUserId: riderId,
       title: content.title,
-      message: content.message,
+      message: `${content.message} [tripId:${trip.id}]`,
       isActive: true,
       createdByAdminId: actorAdminId,
     },
@@ -1319,17 +1319,13 @@ export async function cancelDriverTrip(req, res) {
         },
       });
 
-      const riderNotification = await tx.systemNotification.create({
-        data: {
-          audience: "RIDER",
-          targetType: "USER",
-          targetUserId: trip.riderId,
-          title: "Chuyến bị huỷ",
-          message: `Tài xế đã huỷ chuyến ${trip.id.slice(-8)}. Hệ thống đang tìm tài xế khác cho bạn.`,
-          isActive: true,
-          createdByAdminId: null,
+      const riderNotification = await createRiderTripNotification(
+        tx,
+        updatedTrip,
+        {
+          reason: "driver_cancel_trip",
         },
-      });
+      );
 
       const driverNotification = await tx.systemNotification.create({
         data: {
