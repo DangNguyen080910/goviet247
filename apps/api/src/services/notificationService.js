@@ -571,7 +571,7 @@ export async function sendAdminPushNotification({ title, body, data = {} }) {
 
     const messages = validDevices.map((device) => ({
       to: device.pushToken,
-      sound: "admin-alert.mp3",
+      sound: "admin_alert.mp3",
       title: shortText(title || "GoViet247 Admin", 60),
       body: shortText(body || "Có cập nhật mới trong hệ thống.", 140),
       priority: "high",
