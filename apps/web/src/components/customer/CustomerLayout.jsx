@@ -15,6 +15,7 @@ import {
   Badge,
   ListItemText,
 } from "@mui/material";
+import { keyframes } from "@mui/system";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import ChatIcon from "@mui/icons-material/Chat";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -32,6 +33,20 @@ export const HEADER_H = 72;
 export const FOOTER_H = 64;
 
 export const CUSTOMER_SCROLL_ID = "customer-scroll-container";
+
+const logoPulse = keyframes`
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.025);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+`;
 
 function formatPhoneForDisplay(phone) {
   const raw = String(phone || "").trim();
@@ -168,10 +183,22 @@ export default function CustomerLayout() {
             <Box
               component={Link}
               to="/"
+              aria-label="Về trang chủ"
               sx={{
                 textDecoration: "none",
                 flexShrink: 1,
                 minWidth: 0,
+                cursor: "pointer",
+                display: "inline-flex",
+                transformOrigin: "left center",
+                animation: `${logoPulse} 3.8s ease-in-out infinite`,
+                transition: "transform 0.15s ease, opacity 0.15s ease",
+                WebkitTapHighlightColor: "transparent",
+                "&:active": {
+                  transform: "scale(0.96)",
+                  opacity: 0.82,
+                  animation: "none",
+                },
               }}
             >
               <Stack direction="row" alignItems="center" spacing={1.2}>
