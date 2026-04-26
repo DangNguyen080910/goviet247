@@ -270,59 +270,95 @@ export default function CustomerLayout() {
 
               {!user ? (
                 <>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: 2,
-                      fontWeight: 700,
-                      color: "#374151",
-                      borderColor: "#e5e7eb",
-                      "&:hover": {
-                        borderColor: "#d1d5db",
-                        bgcolor: "#f9fafb",
-                      },
-                    }}
-                    onClick={() => navigate("/dang-nhap")}
-                  >
-                    <Box
-                      component="span"
-                      sx={{ display: { xs: "none", sm: "inline" } }}
+                  {/* Desktop: giữ nguyên Đăng nhập / Đăng ký */}
+                  <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        textTransform: "none",
+                        borderRadius: 2,
+                        fontWeight: 700,
+                        color: "#374151",
+                        borderColor: "#e5e7eb",
+                        "&:hover": {
+                          borderColor: "#d1d5db",
+                          bgcolor: "#f9fafb",
+                        },
+                      }}
+                      onClick={() => navigate("/dang-nhap")}
                     >
                       Đăng nhập
-                    </Box>
-                    <Box
-                      component="span"
-                      sx={{ display: { xs: "inline", sm: "none" } }}
-                    >
-                      Nhập
-                    </Box>
-                  </Button>
+                    </Button>
 
-                  <Button
-                    variant="contained"
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: 2,
-                      fontWeight: 800,
-                      bgcolor: "#F97316",
-                      "&:hover": { bgcolor: "#EA580C" },
-                    }}
-                    onClick={() => navigate("/dang-ky")}
-                  >
-                    <Box
-                      component="span"
-                      sx={{ display: { xs: "none", sm: "inline" } }}
+                    <Button
+                      variant="contained"
+                      sx={{
+                        textTransform: "none",
+                        borderRadius: 2,
+                        fontWeight: 800,
+                        bgcolor: "#F97316",
+                        "&:hover": { bgcolor: "#EA580C" },
+                      }}
+                      onClick={() => navigate("/dang-ky")}
                     >
                       Đăng ký
-                    </Box>
-                    <Box
-                      component="span"
-                      sx={{ display: { xs: "inline", sm: "none" } }}
-                    >
-                      Ký
-                    </Box>
+                    </Button>
+                  </Box>
+
+                  {/* Mobile: chỉ dùng icon account */}
+                  <Button
+                    variant="outlined"
+                    onClick={handleOpenUserMenu}
+                    sx={{
+                      minWidth: "auto",
+                      px: 1,
+                      borderRadius: 2,
+                      borderColor: menuOpen ? "#F97316" : "#e5e7eb",
+                      bgcolor: menuOpen ? "#FFF7ED" : "#ffffff",
+                      color: "#374151",
+                      display: { xs: "inline-flex", md: "none" },
+                      "&:hover": {
+                        borderColor: "#F97316",
+                        bgcolor: "#FFF7ED",
+                      },
+                    }}
+                  >
+                    <AccountCircleOutlinedIcon sx={{ fontSize: 22 }} />
                   </Button>
+
+                  {/* Menu cho guest */}
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={menuOpen}
+                    onClose={handleCloseUserMenu}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                    transformOrigin={{ vertical: "top", horizontal: "right" }}
+                    PaperProps={{
+                      sx: {
+                        mt: 1,
+                        minWidth: 180,
+                        borderRadius: 2,
+                      },
+                    }}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        navigate("/dang-nhap");
+                      }}
+                    >
+                      Đăng nhập
+                    </MenuItem>
+
+                    <MenuItem
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        navigate("/dang-ky");
+                      }}
+                    >
+                      Đăng ký
+                    </MenuItem>
+                  </Menu>
                 </>
               ) : (
                 <>
