@@ -29,7 +29,7 @@ import ZaloFloatingButton from "./ZaloFloatingButton";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
 
 export const HEADER_H = 72;
-export const FOOTER_H = 44;
+export const FOOTER_H = 64;
 
 export const CUSTOMER_SCROLL_ID = "customer-scroll-container";
 
@@ -159,11 +159,21 @@ export default function CustomerLayout() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              px: { xs: 0, sm: 2 },
+              gap: { xs: 0.75, sm: 2 },
+              px: { xs: 1, sm: 2 },
+              minWidth: 0,
             }}
           >
             {/* Logo */}
-            <Box component={Link} to="/" sx={{ textDecoration: "none" }}>
+            <Box
+              component={Link}
+              to="/"
+              sx={{
+                textDecoration: "none",
+                flexShrink: 1,
+                minWidth: 0,
+              }}
+            >
               <Stack direction="row" alignItems="center" spacing={1.2}>
                 {brandLogoUrl ? (
                   <Box
@@ -190,11 +200,13 @@ export default function CustomerLayout() {
                 )}
 
                 <Typography
+                  noWrap
                   sx={{
                     color: "#1F2937",
                     fontWeight: 800,
                     letterSpacing: 0.3,
-                    fontSize: 18,
+                    fontSize: { xs: 16, sm: 18 },
+                    maxWidth: { xs: 118, sm: 220 },
                   }}
                 >
                   {brandName || "GoViet247"}
@@ -203,7 +215,12 @@ export default function CustomerLayout() {
             </Box>
 
             {/* Actions */}
-            <Stack direction="row" spacing={1} alignItems="center">
+            <Stack
+              direction="row"
+              spacing={{ xs: 0.5, sm: 1 }}
+              alignItems="center"
+              sx={{ flexShrink: 0 }}
+            >
               <Button
                 variant="text"
                 startIcon={<ChatIcon />}
@@ -268,7 +285,18 @@ export default function CustomerLayout() {
                     }}
                     onClick={() => navigate("/dang-nhap")}
                   >
-                    Đăng nhập
+                    <Box
+                      component="span"
+                      sx={{ display: { xs: "none", sm: "inline" } }}
+                    >
+                      Đăng nhập
+                    </Box>
+                    <Box
+                      component="span"
+                      sx={{ display: { xs: "inline", sm: "none" } }}
+                    >
+                      Nhập
+                    </Box>
                   </Button>
 
                   <Button
@@ -282,7 +310,18 @@ export default function CustomerLayout() {
                     }}
                     onClick={() => navigate("/dang-ky")}
                   >
-                    Đăng ký
+                    <Box
+                      component="span"
+                      sx={{ display: { xs: "none", sm: "inline" } }}
+                    >
+                      Đăng ký
+                    </Box>
+                    <Box
+                      component="span"
+                      sx={{ display: { xs: "inline", sm: "none" } }}
+                    >
+                      Ký
+                    </Box>
                   </Button>
                 </>
               ) : (
@@ -482,9 +521,10 @@ export default function CustomerLayout() {
           right: 0,
           bottom: 0,
           zIndex: (t) => t.zIndex.drawer + 2,
-          height: FOOTER_H,
+          minHeight: FOOTER_H,
           display: "flex",
           alignItems: "center",
+          py: { xs: 0.75, sm: 0 },
           bgcolor: "#F97316",
           color: "white",
         }}
@@ -493,11 +533,12 @@ export default function CustomerLayout() {
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
+              alignItems: { xs: "flex-start", sm: "center" },
               justifyContent: "space-between",
-              fontSize: 13,
-              gap: 1.5,
-              flexWrap: "wrap",
+              fontSize: { xs: 11.5, sm: 13 },
+              lineHeight: 1.35,
+              gap: { xs: 0.25, sm: 1.5 },
+              flexDirection: { xs: "column", sm: "row" },
             }}
           >
             <span>
