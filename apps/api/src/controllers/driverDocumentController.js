@@ -28,7 +28,7 @@ export const uploadDriverDocumentMiddleware = multer({
   storage,
   fileFilter: imageFileFilter,
   limits: {
-    fileSize: 10 * 1024 * 1024, // 10MB
+    fileSize: 20 * 1024 * 1024, // 20MB
   },
 }).single("file");
 
@@ -155,7 +155,7 @@ export async function uploadDriverDocument(req, res) {
       return res.status(400).json({
         success: false,
         message:
-          "Ảnh vượt quá dung lượng tối đa 5MB. Vui lòng chọn ảnh nhỏ hơn.",
+          "Ảnh vượt quá dung lượng tối đa 20MB. Vui lòng chọn ảnh nhỏ hơn.",
       });
     }
 
