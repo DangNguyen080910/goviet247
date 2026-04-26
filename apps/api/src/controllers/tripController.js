@@ -2142,7 +2142,18 @@ export async function adminGetTripDetail(req, res) {
       return res.status(404).json({ error: "Trip not found" });
     }
 
-    return res.json(trip);
+    const driverProfile = trip?.driver?.driverProfile || null;
+    const driverPhone = trip?.driver?.phones?.[0]?.e164 || "";
+
+    return res.json({
+      ...trip,
+      driverName:
+        driverProfile?.fullName ||
+        trip?.driver?.displayName ||
+        driverPhone ||
+        "Tài xế",
+      driverPhone,
+    });
   } catch (err) {
     console.error("[adminGetTripDetail] Error:", err);
     return res.status(500).json({ error: "Failed to fetch trip detail" });
