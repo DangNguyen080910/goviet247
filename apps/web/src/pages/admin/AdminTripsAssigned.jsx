@@ -100,8 +100,10 @@ function getAssignedTripRiderName(trip) {
 
 function getAssignedTripDriverName(trip) {
   return (
+    trip?.driverName ||
     trip?.driver?.driverProfile?.fullName ||
     trip?.driver?.displayName ||
+    trip?.driverPhone ||
     pickPhone(trip?.driver) ||
     "Tài xế"
   );
@@ -365,7 +367,8 @@ export default function AdminTripsAssigned() {
                   const riderName = getAssignedTripRiderName(t);
                   const riderPhone = pickPhone(t?.rider) || t?.riderPhone || "";
                   const driverName = getAssignedTripDriverName(t);
-                  const driverPhone = pickPhone(t?.driver) || "";
+                  const driverPhone =
+                    t?.driverPhone || pickPhone(t?.driver) || "";
                   const stops = getStopsFromTrip(t);
 
                   return (

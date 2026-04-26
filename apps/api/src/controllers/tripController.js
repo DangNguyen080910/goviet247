@@ -1535,10 +1535,37 @@ export async function listMyTrips(req, res) {
             address: true,
           },
         },
+        driver: {
+          select: {
+            id: true,
+            displayName: true,
+            phones: {
+              orderBy: { createdAt: "asc" },
+              take: 1,
+              select: {
+                e164: true,
+              },
+            },
+            driverProfile: {
+              select: {
+                fullName: true,
+              },
+            },
+          },
+        },
       },
     });
 
-    const items = trips.map((trip) => serializeDriverTrip(trip, scope));
+    const items = trips.map((trip) =>
+      serializeDriverTrip(trip, scope, {
+        driverName:
+          trip.driver?.driverProfile?.fullName ||
+          trip.driver?.displayName ||
+          trip.driver?.phones?.[0]?.e164 ||
+          "Tài xế",
+        driverPhone: trip.driver?.phones?.[0]?.e164 || "",
+      }),
+    );
 
     return res.json({ success: true, items });
   } catch (e) {
@@ -2181,12 +2208,27 @@ export async function getAssignedTrips(req, res) {
             id: true,
             displayName: true,
             phones: { select: { e164: true }, take: 1 },
+            driverProfile: {
+              select: {
+                fullName: true,
+              },
+            },
           },
         },
       },
     });
 
-    return res.json({ success: true, trips });
+    const data = trips.map((trip) => ({
+      ...trip,
+      driverName:
+        trip.driver?.driverProfile?.fullName ||
+        trip.driver?.displayName ||
+        trip.driver?.phones?.[0]?.e164 ||
+        "Tài xế",
+      driverPhone: trip.driver?.phones?.[0]?.e164 || "",
+    }));
+
+    return res.json({ success: true, trips: data });
   } catch (error) {
     console.error("getAssignedTrips error:", error);
     return res.status(500).json({ success: false, message: "Lỗi server" });

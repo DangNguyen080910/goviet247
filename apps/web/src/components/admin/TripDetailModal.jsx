@@ -95,8 +95,10 @@ function getDriverPhone(detail) {
 
 function getDriverDisplayName(detail) {
   return (
+    detail?.driverName ||
     detail?.driver?.driverProfile?.fullName ||
     detail?.driver?.displayName ||
+    detail?.driverPhone ||
     detail?.driver?.phones?.[0]?.e164 ||
     "-"
   );
