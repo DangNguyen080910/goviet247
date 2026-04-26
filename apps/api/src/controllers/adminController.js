@@ -2589,6 +2589,7 @@ export function makeAdminController(prisma) {
                 driverProfile: {
                   select: {
                     id: true,
+                    fullName: true,
                     status: true,
                     balance: true,
                     vehicleType: true,
@@ -2618,11 +2619,20 @@ export function makeAdminController(prisma) {
           });
         }
 
+        const driverProfile = trip?.driver?.driverProfile || null;
+        const driverPhone = trip?.driver?.phones?.[0]?.e164 || "";
+
         res.json({
           success: true,
           trip: {
             ...trip,
             stops: normalizeStops(trip.stops),
+            driverName:
+              driverProfile?.fullName ||
+              trip?.driver?.displayName ||
+              driverPhone ||
+              "Tài xế",
+            driverPhone,
           },
         });
       } catch (e) {
