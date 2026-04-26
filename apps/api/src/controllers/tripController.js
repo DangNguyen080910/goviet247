@@ -376,6 +376,9 @@ function emitTripChangedToDrivers(io, payload = {}) {
 }
 
 function buildRiderTripNotificationContent(trip, reason = "") {
+  const status = String(trip?.status || "")
+    .trim()
+    .toUpperCase();
   const shortTripId = String(trip?.id || "")
     .slice(-8)
     .toUpperCase();
@@ -383,42 +386,42 @@ function buildRiderTripNotificationContent(trip, reason = "") {
   if (reason === "admin_verify_trip") {
     return {
       title: "Chuyến đã được duyệt",
-      message: `Chuyến #${shortTripId} đã được duyệt và đang chờ tài xế nhận.`,
+      message: `Chuyến #${shortTripId} đã được duyệt. Hệ thống đang tìm tài xế phù hợp cho bạn.`,
     };
   }
 
-  if (reason === "driver_accept_trip" || trip?.status === "ACCEPTED") {
+  if (reason === "driver_accept_trip" || status === "ACCEPTED") {
     return {
       title: "Đã có tài xế nhận chuyến",
       message: `Chuyến #${shortTripId} đã có tài xế nhận. Tài xế sẽ liên hệ bạn sớm.`,
     };
   }
 
-  if (trip?.status === "CONTACTED") {
+  if (status === "CONTACTED") {
     return {
       title: "Tài xế đã liên hệ",
       message: `Chuyến #${shortTripId} đã chuyển sang trạng thái Đã liên hệ.`,
     };
   }
 
-  if (trip?.status === "IN_PROGRESS") {
+  if (status === "IN_PROGRESS") {
     return {
-      title: "Chuyến đang di chuyển",
-      message: `Chuyến #${shortTripId} đang trên hành trình.`,
+      title: "Chuyến đang trên hành trình",
+      message: `Chuyến #${shortTripId} đang được thực hiện. Chúc bạn có chuyến đi an toàn.`,
     };
   }
 
-  if (trip?.status === "COMPLETED") {
+  if (status === "COMPLETED") {
     return {
       title: "Chuyến đã hoàn thành",
       message: `Chuyến #${shortTripId} đã hoàn thành. Cảm ơn bạn đã sử dụng GoViet247.`,
     };
   }
 
-  if (trip?.status === "CANCELLED" || trip?.status === "CANCELED") {
+  if (status === "CANCELLED" || status === "CANCELED") {
     return {
       title: "Chuyến đã huỷ",
-      message: `Chuyến #${shortTripId} đã được cập nhật trạng thái huỷ.`,
+      message: `Chuyến #${shortTripId} đã được huỷ. Vui lòng kiểm tra lại hoạt động chuyến đi.`,
     };
   }
 
@@ -1039,8 +1042,13 @@ export async function acceptTrip(req, res) {
         },
       });
 
+      const riderNotification = await createRiderTripNotification(tx, updated, {
+        reason: "driver_accept_trip",
+      });
+
       return {
         trip: updated,
+        riderNotification,
         wallet: {
           balanceBefore,
           balanceAfter: balanceAfterPit,
@@ -1099,6 +1107,22 @@ export async function acceptTrip(req, res) {
         updatedAt: result.realtime.updatedAt,
         reason: "driver_accept_trip",
       });
+
+      if (result.riderNotification && result.trip?.riderId) {
+        io.to(`rider:${result.trip.riderId}`).emit(
+          "rider:notification_changed",
+          {
+            source: "driver_accept_trip",
+            audience: "RIDER",
+            targetUserId: result.trip.riderId,
+            notificationId: result.riderNotification.id,
+            tripId: result.trip.id,
+            updatedAt:
+              result.riderNotification.updatedAt ||
+              result.riderNotification.createdAt,
+          },
+        );
+      }
 
       console.log(
         `[Socket] Emit admin:trip_accepted + admin:dashboard_changed + trip:changed (${result.realtime.tripId})`,
@@ -1295,6 +1319,18 @@ export async function cancelDriverTrip(req, res) {
         },
       });
 
+      const riderNotification = await tx.systemNotification.create({
+        data: {
+          audience: "RIDER",
+          targetType: "USER",
+          targetUserId: trip.riderId,
+          title: "Chuyến bị huỷ",
+          message: `Tài xế đã huỷ chuyến ${trip.id.slice(-8)}. Hệ thống đang tìm tài xế khác cho bạn.`,
+          isActive: true,
+          createdByAdminId: null,
+        },
+      });
+
       const driverNotification = await tx.systemNotification.create({
         data: {
           audience: "DRIVER",
@@ -1320,6 +1356,7 @@ export async function cancelDriverTrip(req, res) {
           reopenAt,
         },
         driverNotification,
+        riderNotification,
         realtime: {
           tripId: updatedTrip.id,
           driverId: null,
@@ -1373,6 +1410,21 @@ export async function cancelDriverTrip(req, res) {
         updatedAt: result.realtime.updatedAt,
         reason: result.realtime.reason,
       });
+
+      if (result.riderNotification && result.trip?.riderId) {
+        io.to(`rider:${result.trip.riderId}`).emit(
+          "rider:notification_changed",
+          {
+            source: "driver_cancel_trip",
+            audience: "RIDER",
+            targetUserId: result.trip.riderId,
+            notificationId: result.riderNotification.id,
+            updatedAt:
+              result.riderNotification.updatedAt ||
+              result.riderNotification.createdAt,
+          },
+        );
+      }
 
       if (result.driverNotification) {
         io.to(`driver:${result.realtime.previousDriverId}`).emit(
@@ -1846,6 +1898,19 @@ export async function changeTripStatus(req, res) {
 
     const trip = await updateTripStatus(tripId, newStatus);
 
+    let riderNotification = null;
+
+    try {
+      riderNotification = await createRiderTripNotification(prisma, trip, {
+        reason: "driver_change_status",
+      });
+    } catch (notificationError) {
+      console.error(
+        "[changeTripStatus] create rider notification error:",
+        notificationError,
+      );
+    }
+
     if (trip?.status === "PENDING" && !trip.driverId && !trip.cancelledAt) {
       const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
 
@@ -1889,6 +1954,26 @@ export async function changeTripStatus(req, res) {
         reason: "driver_change_status",
         refreshAvailable: true,
       });
+
+      emitTripChangedToRider(io, {
+        riderId: trip.riderId || null,
+        tripId: trip.id,
+        fromStatus: currentTrip.status,
+        toStatus: trip.status,
+        updatedAt: trip.updatedAt || null,
+        reason: "driver_change_status",
+      });
+
+      if (riderNotification && trip.riderId) {
+        io.to(`rider:${trip.riderId}`).emit("rider:notification_changed", {
+          source: "driver_change_status",
+          audience: "RIDER",
+          targetUserId: trip.riderId,
+          notificationId: riderNotification.id,
+          tripId: trip.id,
+          updatedAt: riderNotification.updatedAt || riderNotification.createdAt,
+        });
+      }
 
       console.log(
         `[Socket] Emit admin:trip_status_changed -> admins (${tripId}) ${currentTrip.status} -> ${trip.status}`,
@@ -2191,6 +2276,11 @@ export async function adminChangeTripStatus(req, res) {
 
       let driverNotification = null;
 
+      const riderNotification = await createRiderTripNotification(tx, updated, {
+        reason: "admin_change_status",
+        createdByAdminId: actor.id ?? null,
+      });
+
       if (updated.driverId) {
         let title = "Cập nhật chuyến";
         let message = "Chuyến của bạn vừa được cập nhật trạng thái mới.";
@@ -2226,7 +2316,13 @@ export async function adminChangeTripStatus(req, res) {
         });
       }
 
-      return { updated, log, fromStatus, driverNotification };
+      return {
+        updated,
+        log,
+        fromStatus,
+        driverNotification,
+        riderNotification,
+      };
     });
 
     console.log(
@@ -2302,6 +2398,22 @@ export async function adminChangeTripStatus(req, res) {
         updatedAt: result.updated.updatedAt || null,
         reason: "admin_change_status",
       });
+
+      if (result.riderNotification && result.updated?.riderId) {
+        io.to(`rider:${result.updated.riderId}`).emit(
+          "rider:notification_changed",
+          {
+            source: "admin_change_trip_status",
+            audience: "RIDER",
+            targetUserId: result.updated.riderId,
+            notificationId: result.riderNotification.id,
+            tripId: result.updated.id,
+            updatedAt:
+              result.riderNotification.updatedAt ||
+              result.riderNotification.createdAt,
+          },
+        );
+      }
 
       if (result.driverNotification && result.updated.driverId) {
         io.to(`driver:${result.updated.driverId}`).emit(
