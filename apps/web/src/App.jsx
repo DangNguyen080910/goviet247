@@ -20,6 +20,7 @@ import AdminFeedback from "./pages/admin/AdminFeedback";
 
 // CUSTOMER
 import CustomerLayout from "./components/customer/CustomerLayout";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CustomerHome from "./pages/customer/CustomerHome";
 import CustomerBooking from "./pages/customer/CustomerBooking";
 import CustomerAuth from "./pages/customer/CustomerAuth";
@@ -39,6 +40,8 @@ export default function App() {
 
         <Route path="dang-nhap" element={<CustomerAuth mode="login" />} />
         <Route path="dang-ky" element={<CustomerAuth mode="register" />} />
+        
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
       </Route>
 
       {/* Admin login */}
