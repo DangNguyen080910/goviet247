@@ -608,10 +608,33 @@ export default function CustomerLayout() {
               {footerCopyright ||
                 "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse"}
             </span>
-            <span>
-              Hỗ trợ: {supportPhone}
-              {supportEmail ? ` | ${supportEmail}` : ""}
-            </span>
+
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={{ xs: 0.25, sm: 1.5 }}
+              sx={{ alignItems: { xs: "flex-start", sm: "center" } }}
+            >
+              <Box component="span">
+                Hỗ trợ: {supportPhone}
+                {supportEmail ? ` | ${supportEmail}` : ""}
+              </Box>
+
+              <Box
+                component={Link}
+                to="/privacy-policy"
+                sx={{
+                  color: "white",
+                  textDecoration: "underline",
+                  textUnderlineOffset: "3px",
+                  fontWeight: 700,
+                  "&:hover": {
+                    opacity: 0.88,
+                  },
+                }}
+              >
+                Chính sách quyền riêng tư
+              </Box>
+            </Stack>
           </Box>
         </Container>
       </Box>
