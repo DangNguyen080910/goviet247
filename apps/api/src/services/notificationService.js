@@ -587,11 +587,11 @@ export async function sendAdminPushNotification({ title, body, data = {} }) {
 
     const messages = validDevices.map((device) => ({
       to: device.pushToken,
-      sound: "admin_alert.mp3",
+      sound: "default",
       title: shortText(title || "GoViet247 Admin", 60),
       body: shortText(body || "Có cập nhật mới trong hệ thống.", 140),
       priority: "high",
-      channelId: "admin_alerts",
+      channelId: "admin_default_alerts",
       badge: 1,
       data: {
         type: "ADMIN_NOTIFICATION",
