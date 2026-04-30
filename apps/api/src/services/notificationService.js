@@ -339,6 +339,7 @@ export async function sendNewTripToDrivers(trip) {
       title,
       body,
       priority: "high",
+      channelId: "new_trip",
       badge: 1,
       data: {
         type: "NEW_TRIP",
@@ -408,7 +409,9 @@ export async function sendSystemNotificationToDrivers(notification) {
 
     const devices = await prisma.device.findMany({
       where: {
-        role: "driver",
+        role: {
+          in: ["driver", "DRIVER"],
+        },
       },
       select: {
         userId: true,
