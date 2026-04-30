@@ -499,11 +499,14 @@ export async function sendSystemNotificationToDriver(userId, notification) {
 
     const devices = await prisma.device.findMany({
       where: {
-        role: "driver",
+        role: {
+          in: ["driver", "DRIVER"],
+        },
         userId,
       },
       select: {
         pushToken: true,
+        role: true,
       },
     });
 
@@ -527,6 +530,7 @@ export async function sendSystemNotificationToDriver(userId, notification) {
       title: notification.title,
       body: notification.message,
       priority: "high",
+      channelId: "trip_updates",
       badge: 1,
       data: {
         type: "SYSTEM_NOTIFICATION",
@@ -537,7 +541,12 @@ export async function sendSystemNotificationToDriver(userId, notification) {
     const batches = chunkArray(messages, 100);
 
     for (const batch of batches) {
-      await sendExpoPushMessages(batch);
+      const result = await sendExpoPushMessages(batch);
+
+      console.log(
+        "📲 [Push] Expo response (single driver notification):",
+        JSON.stringify(result, null, 2),
+      );
     }
 
     console.log(`[Push] Đã gửi notification cho driver userId=${userId}`);
@@ -545,6 +554,7 @@ export async function sendSystemNotificationToDriver(userId, notification) {
     console.error("[Push] sendSystemNotificationToDriver error:", err);
   }
 }
+
 export async function sendAdminPushNotification({ title, body, data = {} }) {
   try {
     const devices = await prisma.device.findMany({
@@ -615,6 +625,7 @@ export async function sendAdminPushNotification({ title, body, data = {} }) {
     throw err;
   }
 }
+
 export async function sendSystemNotificationToRiders(notification) {
   try {
     const audience = String(notification?.audience || "").toUpperCase();
