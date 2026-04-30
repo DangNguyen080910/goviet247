@@ -591,6 +591,7 @@ export async function sendAdminPushNotification({ title, body, data = {} }) {
       title: shortText(title || "GoViet247 Admin", 60),
       body: shortText(body || "Có cập nhật mới trong hệ thống.", 140),
       priority: "high",
+      channelId: "admin_alerts",
       badge: 1,
       data: {
         type: "ADMIN_NOTIFICATION",
