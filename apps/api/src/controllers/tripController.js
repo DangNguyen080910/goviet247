@@ -11,6 +11,7 @@ import {
   sendNewTripToDrivers,
   sendTripStatusChangedToRider,
   sendSystemNotificationToDriver,
+  sendAdminPushNotification,
 } from "../services/notificationService.js";
 import { calculateDriverFinanceSnapshot } from "../services/driverFinanceService.js";
 
@@ -1130,6 +1131,22 @@ export async function acceptTrip(req, res) {
     }
 
     try {
+      await sendAdminPushNotification({
+        title: "✅ Tài xế đã nhận chuyến",
+        body: `Chuyến #${String(result.trip?.id || "")
+          .slice(-8)
+          .toUpperCase()} vừa có tài xế nhận.`,
+        data: {
+          source: "driver_accept_trip",
+          tripId: result.trip?.id || null,
+          status: result.trip?.status || null,
+        },
+      });
+    } catch (pushError) {
+      console.error("[acceptTrip] push admin error:", pushError);
+    }
+
+    try {
       await sendTripStatusChangedToRider(result.trip, {
         reason: "driver_accept_trip",
       });
@@ -1436,6 +1453,22 @@ export async function cancelDriverTrip(req, res) {
           },
         );
       }
+    }
+
+    try {
+      await sendAdminPushNotification({
+        title: "⚠️ Tài xế vừa huỷ chuyến",
+        body: `Chuyến #${String(result.trip?.id || "")
+          .slice(-8)
+          .toUpperCase()} đã được đưa về chờ duyệt.`,
+        data: {
+          source: "driver_cancel_trip",
+          tripId: result.trip?.id || null,
+          status: result.trip?.status || null,
+        },
+      });
+    } catch (pushError) {
+      console.error("[cancelDriverTrip] push admin error:", pushError);
     }
 
     try {
