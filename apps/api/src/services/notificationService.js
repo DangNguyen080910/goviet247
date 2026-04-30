@@ -300,12 +300,15 @@ export async function sendNewTripToDrivers(trip) {
   try {
     const devices = await prisma.device.findMany({
       where: {
-        role: "driver",
+        role: {
+          in: ["driver", "DRIVER"],
+        },
       },
       select: {
         userId: true,
         platform: true,
         pushToken: true,
+        role: true,
       },
     });
 
