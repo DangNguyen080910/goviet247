@@ -639,12 +639,15 @@ export async function sendSystemNotificationToRiders(notification) {
 
     const devices = await prisma.device.findMany({
       where: {
-        role: "rider",
+        role: {
+          in: ["rider", "RIDER"],
+        },
       },
       select: {
         userId: true,
         platform: true,
         pushToken: true,
+        role: true,
       },
     });
 
@@ -675,6 +678,8 @@ export async function sendSystemNotificationToRiders(notification) {
       title,
       body,
       priority: "high",
+      channelId: "system_notifications",
+      badge: 1,
       data: {
         type: "SYSTEM_NOTIFICATION",
         notificationId: notification.id,
@@ -772,12 +777,15 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
 
     const devices = await prisma.device.findMany({
       where: {
-        role: "rider",
+        role: {
+          in: ["rider", "RIDER"],
+        },
         userId: riderId,
       },
       select: {
         pushToken: true,
         platform: true,
+        role: true,
       },
     });
 
@@ -805,6 +813,8 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
       title: shortText(content.title || "Cập nhật chuyến đi", 60),
       body: shortText(content.body || "", 120),
       priority: "high",
+      channelId: "trip_updates",
+      badge: 1,
       data: {
         type: "TRIP_STATUS_CHANGED",
         tripId: trip.id,
