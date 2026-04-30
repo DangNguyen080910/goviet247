@@ -23,7 +23,10 @@ import {
   getDriverCancelHistory,
 } from "../controllers/tripController.js";
 
-import { sendNewTripToDrivers } from "../services/notificationService.js";
+import {
+  sendNewTripToDrivers,
+  sendAdminPushNotification,
+} from "../services/notificationService.js";
 import { calculateTripPrice } from "../services/pricingService.js";
 import {
   requireAdminOrStaff,
@@ -341,15 +344,39 @@ router.post("/", optionalVerifyToken, async (req, res) => {
     const io = req.app?.get?.("io");
 
     if (io) {
-      io.to("admins").emit("admin:new_trip", {
+      const adminPayload = {
+        source: "create_trip",
         tripId: trip.id,
         status: trip.status,
+        fromStatus: null,
+        toStatus: trip.status,
         createdAt: trip.createdAt,
-      });
+        updatedAt: trip.updatedAt || trip.createdAt,
+      };
 
-      console.log("[Socket] emitted admin:new_trip (routes):", trip.id);
+      io.to("admins").emit("admin:new_trip", adminPayload);
+      io.to("admins").emit("admin:dashboard_changed", adminPayload);
+
+      console.log(
+        "[Socket] Emit admin:new_trip + admin:dashboard_changed -> admins",
+        JSON.stringify(adminPayload),
+      );
     } else {
       console.log("[Socket] io not found on app (skip admin emit)");
+    }
+
+    try {
+      await sendAdminPushNotification({
+        title: "🚨 Có chuyến mới chờ duyệt",
+        body: `${riderName || "Khách hàng"} vừa đặt chuyến mới.`,
+        data: {
+          source: "create_trip",
+          tripId: trip.id,
+          status: trip.status,
+        },
+      });
+    } catch (pushError) {
+      console.error("[AdminPush] create trip push error:", pushError);
     }
 
     return res.status(201).json({
