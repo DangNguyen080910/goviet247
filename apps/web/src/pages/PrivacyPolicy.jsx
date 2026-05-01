@@ -39,6 +39,28 @@ export default function PrivacyPolicy() {
 
       <h2>5. Liên hệ</h2>
       <p>Email: goviet247.com@gmail.com</p>
+
+      <h2 id="delete-account">6. Yêu cầu xoá tài khoản</h2>
+      <p>
+        Người dùng có quyền yêu cầu xoá tài khoản và toàn bộ dữ liệu liên quan
+        bất cứ lúc nào.
+      </p>
+
+      <p>Để gửi yêu cầu xoá tài khoản, vui lòng liên hệ:</p>
+
+      <ul>
+        <li>Email: goviet247.com@gmail.com</li>
+        <li>Số điện thoại: 0326184628</li>
+      </ul>
+
+      <p>Khi gửi yêu cầu, vui lòng cung cấp:</p>
+
+      <ul>
+        <li>Số điện thoại đăng ký</li>
+        <li>Họ tên</li>
+      </ul>
+
+      <p>Chúng tôi sẽ xử lý yêu cầu trong vòng 72 giờ làm việc.</p>
     </div>
   );
 }
