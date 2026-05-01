@@ -2855,10 +2855,9 @@ export function makeAdminController(prisma) {
               status: "COMPLETED",
             },
           }),
-          prisma.trip.count({
+          prisma.driverTripPenaltyLog.count({
             where: {
-              driverId: driver.userId,
-              status: "CANCELLED",
+              driverProfileId: driver.id,
             },
           }),
         ]);
