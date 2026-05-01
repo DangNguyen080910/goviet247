@@ -172,7 +172,7 @@ function WalletActionDialog({
   const alertText = isTopup
     ? "Admin sẽ cộng tiền vào ví tài xế sau khi xác nhận đã nhận tiền thật từ ngân hàng."
     : isAdjustAdd
-      ? "Admin sẽ cộng bù hoặc điều chỉnh cộng tiền nội bộ vào ví tài xế."
+      ? "Chỉ dùng cho hoàn tiền (ví dụ: hoàn phạt huỷ chuyến). Luôn ghi rõ TripID để đảm bảo sổ sách chính xác."
       : "Admin sẽ trừ tiền trực tiếp khỏi ví tài xế. Hệ thống không cho số dư âm.";
 
   const buttonColor = isSubtract ? "warning" : "success";
@@ -188,7 +188,7 @@ function WalletActionDialog({
   const placeholder = isTopup
     ? "Ví dụ: Đã nhận 500.000đ từ ngân hàng BIDV, admin cộng ví."
     : isAdjustAdd
-      ? "Ví dụ: Cộng bù do sai lệch đối soát hoặc hỗ trợ nội bộ."
+      ? "Hoàn tiền phạt huỷ chuyến - TripID: XXXXX (copy từ sổ sách)"
       : "Ví dụ: Điều chỉnh trừ do sai lệch đối soát.";
 
   return (
@@ -754,7 +754,11 @@ export default function AdminDriverWallets() {
   };
 
   const openAdjustAddDialog = (driver) => {
-    setForm({ amount: "", note: "" });
+    setForm({
+      amount: "",
+      note: "Hoàn tiền phạt huỷ chuyến - TripID: ",
+    });
+
     setActionState({
       open: true,
       mode: "ADJUST_ADD",

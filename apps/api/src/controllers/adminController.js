@@ -1366,6 +1366,15 @@ export function makeAdminController(prisma) {
       _count: { id: true },
     });
 
+    const penaltyRefundSummary = await getPenaltyRefundSummary({
+      start,
+      end,
+    });
+
+    const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
+    const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
+    const penaltyNet = Math.max(0, penaltyGross - penaltyRefund);
+
     const cashItems = await prisma.companyCashTransaction.findMany({
       where: {
         txnDate: {
@@ -1434,14 +1443,29 @@ export function makeAdminController(prisma) {
         value: Number(completedAgg._sum.driverReceiveSnapshot || 0),
       },
       {
+        code: "CANCEL_PENALTY_GROSS",
+        label: "Tổng phạt huỷ chuyến trước hoàn",
+        value: penaltyGross,
+      },
+      {
+        code: "CANCEL_PENALTY_REFUND",
+        label: "Tổng hoàn phạt huỷ chuyến cho tài xế",
+        value: penaltyRefund,
+      },
+      {
         code: "CANCEL_PENALTY_TOTAL",
-        label: "Tổng phạt huỷ chuyến đã thu",
-        value: Number(penaltyAgg._sum.penaltyAmount || 0),
+        label: "Tổng phạt huỷ chuyến đã thu sau hoàn",
+        value: penaltyNet,
       },
       {
         code: "CANCEL_PENALTY_COUNT",
         label: "Số lượt phạt huỷ chuyến",
         value: Number(penaltyAgg._count.id || 0),
+      },
+      {
+        code: "CANCEL_PENALTY_REFUND_COUNT",
+        label: "Số lượt hoàn phạt huỷ chuyến",
+        value: Number(penaltyRefundSummary.count || 0),
       },
       {
         code: "DRIVER_TOPUP_TOTAL",
@@ -1678,6 +1702,11 @@ export function makeAdminController(prisma) {
       _count: { id: true },
     });
 
+    const penaltyRefundSummary = await getPenaltyRefundSummary({
+      start,
+      end,
+    });
+
     const EXPENSE_CATEGORIES = [
       "MARKETING",
       "AWS",
@@ -1707,7 +1736,9 @@ export function makeAdminController(prisma) {
     });
 
     const commission = Number(completedAgg._sum.commissionAmountSnapshot || 0);
-    const penalty = Number(penaltyAgg._sum.penaltyAmount || 0);
+    const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
+    const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
+    const penalty = Math.max(0, penaltyGross - penaltyRefund);
     const revenueTotal = commission + penalty;
 
     let expenseTotal = 0;
@@ -1741,7 +1772,21 @@ export function makeAdminController(prisma) {
       ["Nhóm", "Hạng mục", "Giá trị"],
 
       ["DOANH_THU", "Doanh thu phí môi giới", formatMoneyExport(commission)],
-      ["DOANH_THU", "Doanh thu phạt huỷ chuyến", formatMoneyExport(penalty)],
+      [
+        "DOANH_THU",
+        "Doanh thu phạt huỷ chuyến trước hoàn",
+        formatMoneyExport(penaltyGross),
+      ],
+      [
+        "DOANH_THU",
+        "Hoàn phạt huỷ chuyến cho tài xế",
+        formatMoneyExport(penaltyRefund),
+      ],
+      [
+        "DOANH_THU",
+        "Doanh thu phạt huỷ chuyến sau hoàn",
+        formatMoneyExport(penalty),
+      ],
       ["DOANH_THU", "Tổng doanh thu", formatMoneyExport(revenueTotal)],
 
       ["", "", ""],
@@ -1770,9 +1815,45 @@ export function makeAdminController(prisma) {
         "Số lượt phạt huỷ chuyến",
         formatMoneyExport(Number(penaltyAgg._count.id || 0)),
       ],
+      [
+        "THAM_CHIEU",
+        "Số lượt hoàn phạt huỷ chuyến",
+        formatMoneyExport(Number(penaltyRefundSummary.count || 0)),
+      ],
     ];
 
     return buildCsvString(rows);
+  }
+
+  async function getPenaltyRefundSummary({ start, end }) {
+    const items = await prisma.driverWalletTransaction.findMany({
+      where: {
+        type: "ADJUST_ADD",
+        createdAt: {
+          gte: start,
+          lte: end,
+        },
+        AND: [
+          { note: { contains: "hoàn", mode: "insensitive" } },
+          { note: { contains: "phạt", mode: "insensitive" } },
+          { note: { contains: "huỷ", mode: "insensitive" } },
+        ],
+      },
+      select: {
+        id: true,
+        amount: true,
+      },
+    });
+
+    const amount = items.reduce(
+      (sum, item) => sum + Math.abs(Number(item.amount || 0)),
+      0,
+    );
+
+    return {
+      amount,
+      count: items.length,
+    };
   }
 
   function formatMoneyExport(value) {
@@ -4933,6 +5014,15 @@ export function makeAdminController(prisma) {
           _count: { id: true },
         });
 
+        const penaltyRefundSummary = await getPenaltyRefundSummary({
+          start,
+          end,
+        });
+
+        const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
+        const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
+        const penaltyNet = Math.max(0, penaltyGross - penaltyRefund);
+
         // ===============================
         // 3. COMPANY CASH
         // ===============================
@@ -5010,14 +5100,29 @@ export function makeAdminController(prisma) {
               value: Number(completedAgg._sum.driverReceiveSnapshot || 0),
             },
             {
+              key: "cancel_penalty_gross",
+              label: "Tổng phạt huỷ chuyến trước hoàn",
+              value: penaltyGross,
+            },
+            {
+              key: "cancel_penalty_refund",
+              label: "Tổng hoàn phạt huỷ chuyến cho tài xế",
+              value: penaltyRefund,
+            },
+            {
               key: "cancel_penalty_total",
-              label: "Tổng phạt huỷ chuyến đã thu",
-              value: Number(penaltyAgg._sum.penaltyAmount || 0),
+              label: "Tổng phạt huỷ chuyến đã thu sau hoàn",
+              value: penaltyNet,
             },
             {
               key: "cancel_penalty_count",
               label: "Số lượt phạt huỷ chuyến",
               value: Number(penaltyAgg._count.id || 0),
+            },
+            {
+              key: "cancel_penalty_refund_count",
+              label: "Số lượt hoàn phạt huỷ chuyến",
+              value: Number(penaltyRefundSummary.count || 0),
             },
             {
               key: "driver_topup_total",
@@ -5810,9 +5915,6 @@ export function makeAdminController(prisma) {
 
         const { start, end } = getQuarterDateRange(year, quarter);
 
-        // ===============================
-        // 1. REVENUE
-        // ===============================
         const completedAgg = await prisma.trip.aggregate({
           where: {
             status: "COMPLETED",
@@ -5834,40 +5936,21 @@ export function makeAdminController(prisma) {
           _count: { id: true },
         });
 
-        const penaltyRefundItems =
-          await prisma.driverWalletTransaction.findMany({
-            where: {
-              type: "ADJUST_ADD",
-              createdAt: { gte: start, lte: end },
-              AND: [
-                { note: { contains: "hoàn", mode: "insensitive" } },
-                { note: { contains: "phạt", mode: "insensitive" } },
-                { note: { contains: "huỷ", mode: "insensitive" } },
-              ],
-            },
-            select: {
-              amount: true,
-            },
-          });
+        const penaltyRefundSummary = await getPenaltyRefundSummary({
+          start,
+          end,
+        });
 
         const commission = Number(
           completedAgg._sum.commissionAmountSnapshot || 0,
         );
 
         const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
-
-        const penaltyRefund = penaltyRefundItems.reduce(
-          (sum, item) => sum + Math.abs(Number(item.amount || 0)),
-          0,
-        );
-
+        const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
         const penalty = Math.max(0, penaltyGross - penaltyRefund);
 
         const revenueTotal = commission + penalty;
 
-        // ===============================
-        // 2. EXPENSE
-        // ===============================
         const EXPENSE_CATEGORIES = [
           "MARKETING",
           "AWS",
@@ -5907,9 +5990,6 @@ export function makeAdminController(prisma) {
           byCategory[i.category] += amount;
         });
 
-        // ===============================
-        // 3. PROFIT
-        // ===============================
         const profit = revenueTotal - expenseTotal;
 
         return res.json({
@@ -5933,7 +6013,7 @@ export function makeAdminController(prisma) {
               totalCompletedTrips: Number(completedAgg._count.id || 0),
               totalTripValue: Number(completedAgg._sum.totalPrice || 0),
               totalPenalties: Number(penaltyAgg._count.id || 0),
-              totalPenaltyRefunds: penaltyRefundItems.length,
+              totalPenaltyRefunds: Number(penaltyRefundSummary.count || 0),
             },
           },
         });
