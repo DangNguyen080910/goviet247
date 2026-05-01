@@ -2761,9 +2761,26 @@ export function makeAdminController(prisma) {
 
         const documents = await mapDriverDocumentsForAdmin(driver.documents);
 
+        const [completedTripCount, cancelledTripCount] = await Promise.all([
+          prisma.trip.count({
+            where: {
+              driverId: driver.userId,
+              status: "COMPLETED",
+            },
+          }),
+          prisma.trip.count({
+            where: {
+              driverId: driver.userId,
+              status: "CANCELLED",
+            },
+          }),
+        ]);
+
         return res.json({
           ...driver,
           documents,
+          completedTripCount,
+          cancelledTripCount,
         });
       } catch (error) {
         console.error("Lỗi getDriverDetail:", error);
@@ -5817,10 +5834,34 @@ export function makeAdminController(prisma) {
           _count: { id: true },
         });
 
+        const penaltyRefundItems =
+          await prisma.driverWalletTransaction.findMany({
+            where: {
+              type: "ADJUST_ADD",
+              createdAt: { gte: start, lte: end },
+              AND: [
+                { note: { contains: "hoàn", mode: "insensitive" } },
+                { note: { contains: "phạt", mode: "insensitive" } },
+                { note: { contains: "huỷ", mode: "insensitive" } },
+              ],
+            },
+            select: {
+              amount: true,
+            },
+          });
+
         const commission = Number(
           completedAgg._sum.commissionAmountSnapshot || 0,
         );
-        const penalty = Number(penaltyAgg._sum.penaltyAmount || 0);
+
+        const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
+
+        const penaltyRefund = penaltyRefundItems.reduce(
+          (sum, item) => sum + Math.abs(Number(item.amount || 0)),
+          0,
+        );
+
+        const penalty = Math.max(0, penaltyGross - penaltyRefund);
 
         const revenueTotal = commission + penalty;
 
@@ -5835,7 +5876,7 @@ export function makeAdminController(prisma) {
           "OPERATIONS",
           "OWNER_WITHDRAW",
           "OTHER_OUT",
-          "REFUND", // tạm tính là chi phí
+          "REFUND",
         ];
 
         const cashItems = await prisma.companyCashTransaction.findMany({
@@ -5877,6 +5918,8 @@ export function makeAdminController(prisma) {
             revenue: {
               commission,
               penalty,
+              penaltyGross,
+              penaltyRefund,
               total: revenueTotal,
             },
             expense: {
@@ -5890,6 +5933,7 @@ export function makeAdminController(prisma) {
               totalCompletedTrips: Number(completedAgg._count.id || 0),
               totalTripValue: Number(completedAgg._sum.totalPrice || 0),
               totalPenalties: Number(penaltyAgg._count.id || 0),
+              totalPenaltyRefunds: penaltyRefundItems.length,
             },
           },
         });
