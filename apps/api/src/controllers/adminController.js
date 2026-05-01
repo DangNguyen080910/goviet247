@@ -1419,7 +1419,7 @@ export function makeAdminController(prisma) {
         value: Number(completedAgg._sum.totalPrice || 0),
       },
       {
-        key: "commission_total",
+        code: "COMMISSION_TOTAL",
         label: "Doanh thu chính - phí môi giới công ty thu được",
         value: Number(completedAgg._sum.commissionAmountSnapshot || 0),
       },
@@ -1454,7 +1454,7 @@ export function makeAdminController(prisma) {
         value: penaltyRefund,
       },
       {
-        key: "cancel_penalty_total",
+        code: "CANCEL_PENALTY_TOTAL",
         label: "Thu nhập khác từ phạt huỷ chuyến sau hoàn",
         value: penaltyNet,
       },
@@ -1479,7 +1479,7 @@ export function makeAdminController(prisma) {
         value: driverWithdrawPaidTotal,
       },
       {
-        key: "company_cash_in_total",
+        code: "COMPANY_CASH_IN_TOTAL",
         label: "Tổng dòng tiền vào công ty",
         value: totalIn,
       },
