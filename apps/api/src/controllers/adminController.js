@@ -2620,11 +2620,16 @@ export function makeAdminController(prisma) {
 
           return {
             tripId: t.id,
+            id: t.id,
             riderName: t.riderName,
             riderPhone: t.riderPhone,
             pickupAddress: t.pickupAddress,
             dropoffAddress: t.dropoffAddress,
             stops: normalizeStops(t.stops),
+            pickupTime: t.pickupTime,
+            returnTime: t.returnTime,
+            tripType: t.tripType,
+            totalPrice: Number(t.totalPrice || 0),
             createdAt: t.createdAt,
             pendingMinutes,
             alertCount,
@@ -2632,6 +2637,7 @@ export function makeAdminController(prisma) {
             status: t.status,
             isVerified: t.isVerified,
             cancelledAt: t.cancelledAt,
+            cancelReason: t.cancelReason,
           };
         });
 
