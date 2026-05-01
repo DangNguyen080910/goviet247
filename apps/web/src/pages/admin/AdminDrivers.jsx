@@ -571,6 +571,8 @@ export default function AdminDrivers() {
               <TableCell>Đời xe</TableCell>
               <TableCell>Biển số</TableCell>
               <TableCell>Ngày tạo</TableCell>
+              <TableCell align="right">Hoàn thành</TableCell>
+              <TableCell align="right">Đã huỷ</TableCell>
               <TableCell>Trạng thái</TableCell>
             </TableRow>
           </TableHead>
@@ -599,6 +601,13 @@ export default function AdminDrivers() {
                 <TableCell>{d.plateNumber || "-"}</TableCell>
                 <TableCell>{formatNgayGio(d.createdAt)}</TableCell>
 
+                <TableCell align="right">
+                  {Number(d.completedTripCount || 0)}
+                </TableCell>
+                <TableCell align="right">
+                  {Number(d.cancelledTripCount || 0)}
+                </TableCell>
+
                 <TableCell>
                   <Chip label={d.status} color={statusColor(d.status)} />
                 </TableCell>
@@ -607,7 +616,7 @@ export default function AdminDrivers() {
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={8}>
+                <TableCell colSpan={10}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>

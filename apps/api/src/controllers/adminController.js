@@ -2800,12 +2800,58 @@ export function makeAdminController(prisma) {
           prisma.driverProfile.count({ where }),
         ]);
 
+        const driverUserIds = items.map((item) => item.userId).filter(Boolean);
+        const driverProfileIds = items.map((item) => item.id).filter(Boolean);
+
+        const [completedTripGroups, cancelledTripGroups] = await Promise.all([
+          prisma.trip.groupBy({
+            by: ["driverId"],
+            where: {
+              driverId: {
+                in: driverUserIds,
+              },
+              status: "COMPLETED",
+            },
+            _count: {
+              id: true,
+            },
+          }),
+          prisma.driverTripPenaltyLog.groupBy({
+            by: ["driverProfileId"],
+            where: {
+              driverProfileId: {
+                in: driverProfileIds,
+              },
+            },
+            _count: {
+              id: true,
+            },
+          }),
+        ]);
+
+        const completedTripCountMap = new Map(
+          completedTripGroups.map((item) => [item.driverId, item._count.id]),
+        );
+
+        const cancelledTripCountMap = new Map(
+          cancelledTripGroups.map((item) => [
+            item.driverProfileId,
+            item._count.id,
+          ]),
+        );
+
+        const mappedItems = items.map((item) => ({
+          ...item,
+          completedTripCount: completedTripCountMap.get(item.userId) || 0,
+          cancelledTripCount: cancelledTripCountMap.get(item.id) || 0,
+        }));
+
         const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
         return res.json({
           success: true,
-          items,
-          drivers: items,
+          items: mappedItems,
+          drivers: mappedItems,
           meta: { page, pageSize, total, totalPages },
         });
       } catch (e) {
