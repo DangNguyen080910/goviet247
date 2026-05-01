@@ -228,17 +228,11 @@ export async function quotePrice(input) {
       Math.round((rt.getTime() - estimatedArrivalAtDestinationMs) / 60000),
     );
 
-    if (overnightCount > 0) {
-      freeWaitingMinutes = 0;
-      billableWaitMinutes = 0;
-      waitCost = 0;
-    } else {
-      freeWaitingMinutes = 60;
-      billableWaitMinutes = Math.max(0, waitMinutes - freeWaitingMinutes);
+    freeWaitingMinutes = 60;
+    billableWaitMinutes = Math.max(0, waitMinutes - freeWaitingMinutes);
 
-      const waitHours = Math.ceil(billableWaitMinutes / 60);
-      waitCost = waitHours * pricePerHour;
-    }
+    const waitHours = Math.ceil(billableWaitMinutes / 60);
+    waitCost = waitHours * pricePerHour;
   } else if (direction === "ONE_WAY") {
     const dm = driveMinutes == null ? null : Number(driveMinutes);
     const driveHours = dm != null && Number.isFinite(dm) ? dm / 60 : 0;
