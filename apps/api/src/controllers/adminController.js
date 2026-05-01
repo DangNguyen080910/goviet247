@@ -1310,7 +1310,8 @@ export function makeAdminController(prisma) {
       "",
       "GIAI THICH NGHIEP VU QUAN TRONG:",
       "- Khach hang thanh toan truc tiep cho tai xe, khong di qua he thong.",
-      "- Doanh thu cong ty CHI gom: phi moi gioi va phat huy chuyen.",
+      "- Doanh thu chinh cua cong ty la phi moi gioi.",
+      "- Thu nhap khac co the gom phat huy chuyen sau khi tru cac khoan hoan phat cho tai xe.",
       "- Bao cao doanh thu loi nhuan KHONG tinh tong gia tri chuyen la doanh thu cong ty.",
       "- Tai xe nap vi va tai xe rut vi la dong tien giu ho / hoan tra, khong phai doanh thu cong ty.",
       "- Chi phi cong ty chi tinh cac khoan chi thuc te nhu Marketing, AWS, Server, Luong, Van hanh, Chu so huu rut tien, Chi khac, va cac khoan Refund neu duoc ghi nhan la chi phi.",
@@ -1418,8 +1419,8 @@ export function makeAdminController(prisma) {
         value: Number(completedAgg._sum.totalPrice || 0),
       },
       {
-        code: "COMMISSION_TOTAL",
-        label: "Tổng phí môi giới công ty thu được",
+        key: "commission_total",
+        label: "Doanh thu chính - phí môi giới công ty thu được",
         value: Number(completedAgg._sum.commissionAmountSnapshot || 0),
       },
       {
@@ -1453,8 +1454,8 @@ export function makeAdminController(prisma) {
         value: penaltyRefund,
       },
       {
-        code: "CANCEL_PENALTY_TOTAL",
-        label: "Tổng phạt huỷ chuyến đã thu sau hoàn",
+        key: "cancel_penalty_total",
+        label: "Thu nhập khác từ phạt huỷ chuyến sau hoàn",
         value: penaltyNet,
       },
       {
@@ -1478,8 +1479,8 @@ export function makeAdminController(prisma) {
         value: driverWithdrawPaidTotal,
       },
       {
-        code: "COMPANY_CASH_IN_TOTAL",
-        label: "Tổng thu công ty",
+        key: "company_cash_in_total",
+        label: "Tổng dòng tiền vào công ty",
         value: totalIn,
       },
       {
@@ -1738,8 +1739,8 @@ export function makeAdminController(prisma) {
     const commission = Number(completedAgg._sum.commissionAmountSnapshot || 0);
     const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
     const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
-    const penalty = Math.max(0, penaltyGross - penaltyRefund);
-    const revenueTotal = commission + penalty;
+    const penaltyNet = Math.max(0, penaltyGross - penaltyRefund);
+    const totalIncome = commission + penaltyNet;
 
     let expenseTotal = 0;
     const expenseByCategory = {};
@@ -1757,7 +1758,7 @@ export function makeAdminController(prisma) {
       expenseByCategory[category] += amount;
     });
 
-    const profitAmount = revenueTotal - expenseTotal;
+    const profitAmount = totalIncome - expenseTotal;
 
     const expenseRows =
       Object.keys(expenseByCategory).length > 0
@@ -1766,28 +1767,38 @@ export function makeAdminController(prisma) {
             getCompanyCashCategoryLabel(category),
             formatMoneyExport(value || 0),
           ])
-        : [["CHI_PHI", "Chưa có chi phí nào trong kỳ này", "0"]];
+        : [["CHI_PHI", "Chưa ghi nhận chi phí vận hành trong kỳ này", "0"]];
 
     const rows = [
       ["Nhóm", "Hạng mục", "Giá trị"],
 
-      ["DOANH_THU", "Doanh thu phí môi giới", formatMoneyExport(commission)],
       [
-        "DOANH_THU",
-        "Doanh thu phạt huỷ chuyến trước hoàn",
+        "DOANH_THU_CHINH",
+        "Doanh thu chính - phí môi giới",
+        formatMoneyExport(commission),
+      ],
+
+      ["", "", ""],
+
+      [
+        "THU_NHAP_KHAC",
+        "Phạt huỷ chuyến trước hoàn",
         formatMoneyExport(penaltyGross),
       ],
       [
-        "DOANH_THU",
+        "THU_NHAP_KHAC",
         "Hoàn phạt huỷ chuyến cho tài xế",
         formatMoneyExport(penaltyRefund),
       ],
       [
-        "DOANH_THU",
-        "Doanh thu phạt huỷ chuyến sau hoàn",
-        formatMoneyExport(penalty),
+        "THU_NHAP_KHAC",
+        "Thu nhập khác từ phạt huỷ sau hoàn",
+        formatMoneyExport(penaltyNet),
       ],
-      ["DOANH_THU", "Tổng doanh thu", formatMoneyExport(revenueTotal)],
+
+      ["", "", ""],
+
+      ["TONG_THU", "Tổng thu", formatMoneyExport(totalIncome)],
 
       ["", "", ""],
 
@@ -5124,8 +5135,8 @@ export function makeAdminController(prisma) {
               value: Number(completedAgg._sum.totalPrice || 0),
             },
             {
-              key: "commission_total",
-              label: "Tổng phí môi giới công ty thu được",
+              code: "COMMISSION_TOTAL",
+              label: "Doanh thu chính - phí môi giới công ty thu được",
               value: Number(completedAgg._sum.commissionAmountSnapshot || 0),
             },
             {
@@ -5161,8 +5172,8 @@ export function makeAdminController(prisma) {
               value: penaltyRefund,
             },
             {
-              key: "cancel_penalty_total",
-              label: "Tổng phạt huỷ chuyến đã thu sau hoàn",
+              code: "CANCEL_PENALTY_TOTAL",
+              label: "Thu nhập khác từ phạt huỷ chuyến sau hoàn",
               value: penaltyNet,
             },
             {
