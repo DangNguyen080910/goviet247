@@ -142,13 +142,25 @@ export default function HeroSection() {
           <Box sx={{ pt: 1.2 }}>
             <Typography
               sx={{
-                mb: 1,
+                mb: 0.5,
                 fontSize: 14,
                 fontWeight: 800,
                 opacity: 0.95,
               }}
             >
-              Tuyến phổ biến:
+              Đặt xe đi tỉnh, về TP.HCM hoặc liên tỉnh theo nhu cầu
+            </Typography>
+
+            <Typography
+              sx={{
+                mb: 1,
+                fontSize: 13,
+                opacity: 0.86,
+                maxWidth: 680,
+              }}
+            >
+              Các tuyến bên dưới chỉ là gợi ý phổ biến. Bạn có thể nhập bất kỳ
+              điểm đón, điểm đến nào khi đặt xe.
             </Typography>
 
             <Stack
