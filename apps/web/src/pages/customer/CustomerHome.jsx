@@ -23,7 +23,9 @@ export default function CustomerHome() {
           <div style={styles.grid}>
             {SEO_ROUTES.map((route) => (
               <Link key={route.key} to={`/${route.path}`} style={styles.card}>
-                <strong>Xe đi {route.destination}</strong>
+                <strong>
+                  {route.from} → {route.to}
+                </strong>
                 <span>{route.duration}</span>
               </Link>
             ))}

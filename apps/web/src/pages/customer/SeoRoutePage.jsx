@@ -6,7 +6,7 @@ import { SEO_ROUTES } from "../../data/seoRoutes";
 export default function SeoRoutePage({ routeKey }) {
   const route = useMemo(
     () => SEO_ROUTES.find((item) => item.key === routeKey),
-    [routeKey]
+    [routeKey],
   );
 
   useEffect(() => {
@@ -24,6 +24,51 @@ export default function SeoRoutePage({ routeKey }) {
     }
 
     meta.setAttribute("content", description);
+
+    const oldSchema = document.getElementById("seo-route-faq-schema");
+    if (oldSchema) oldSchema.remove();
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Giá xe có hiển thị trước khi đặt không?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Có. Bạn nhập điểm đón, điểm đến, loại xe và thời gian khởi hành để xem giá trước khi xác nhận đặt chuyến.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Có thể đặt xe một chiều hoặc khứ hồi không?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Có. GoViet247 hỗ trợ đặt xe một chiều hoặc khứ hồi tùy nhu cầu.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "GoViet247 có hỗ trợ xe liên tỉnh không?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Có. GoViet247 hỗ trợ xe từ TP.HCM đi tỉnh, từ tỉnh về TP.HCM và các tuyến liên tỉnh theo nhu cầu.",
+          },
+        },
+      ],
+    };
+
+    const script = document.createElement("script");
+    script.id = "seo-route-faq-schema";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      const currentSchema = document.getElementById("seo-route-faq-schema");
+      if (currentSchema) currentSchema.remove();
+    };
   }, [route]);
 
   if (!route) {
@@ -40,8 +85,18 @@ export default function SeoRoutePage({ routeKey }) {
         <p style={styles.description}>{route.description}</p>
 
         <p style={styles.description}>
-          GoViet247 hỗ trợ đặt xe riêng, không ghép khách, đón tận nơi và hiển
-          thị giá trước khi bạn xác nhận đặt chuyến.
+          GoViet247 hỗ trợ đặt xe riêng không ghép khách, bao gồm:
+          {` `}
+          <strong>
+            {route.from} đi {route.to}
+          </strong>
+          ,{` `}
+          chiều ngược lại{" "}
+          <strong>
+            {route.to} về {route.from}
+          </strong>
+          , và cả các tuyến liên tỉnh như Đà Lạt đi Phan Thiết, Vũng Tàu đi Cần
+          Thơ…
         </p>
 
         <div style={styles.actions}>
@@ -79,9 +134,8 @@ export default function SeoRoutePage({ routeKey }) {
 
         <p style={styles.note}>
           Giá được tính theo điểm đón, điểm đến, loại xe và thời gian di chuyển.
-          Bạn có thể bấm “Tính giá & đặt xe” để xem giá trước khi xác nhận.
-          Giá rõ ràng, trọn gói theo chuyến và hạn chế phát sinh ngoài thỏa
-          thuận.
+          Bạn có thể bấm “Tính giá & đặt xe” để xem giá trước khi xác nhận. Giá
+          rõ ràng, trọn gói theo chuyến và không phát sinh thêm.
         </p>
       </section>
 
@@ -100,7 +154,7 @@ export default function SeoRoutePage({ routeKey }) {
 
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
-          Lộ trình phổ biến đi {route.destination}
+          Lộ trình {route.from} đi {route.to}
         </h2>
 
         <p style={styles.text}>
@@ -127,16 +181,12 @@ export default function SeoRoutePage({ routeKey }) {
 
         <div style={styles.faqItem}>
           <h3>Có thể đặt xe một chiều hoặc khứ hồi không?</h3>
-          <p>
-            Có. GoViet247 hỗ trợ đặt xe một chiều hoặc khứ hồi tùy nhu cầu.
-          </p>
+          <p>Có. GoViet247 hỗ trợ đặt xe một chiều hoặc khứ hồi tùy nhu cầu.</p>
         </div>
 
         <div style={styles.faqItem}>
           <h3>Có xe 5 chỗ, 7 chỗ và 16 chỗ không?</h3>
-          <p>
-            Có. Bạn có thể chọn loại xe phù hợp khi tính giá và đặt chuyến.
-          </p>
+          <p>Có. Bạn có thể chọn loại xe phù hợp khi tính giá và đặt chuyến.</p>
         </div>
 
         <div style={styles.faqItem}>
