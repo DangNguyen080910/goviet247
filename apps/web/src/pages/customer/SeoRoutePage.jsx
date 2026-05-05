@@ -110,10 +110,9 @@ export default function SeoRoutePage({ routeKey }) {
           <Link to="/dat-xe" style={styles.primaryButton}>
             Tính giá & đặt xe
           </Link>
-
-          <a href="tel:0326184628" style={styles.secondaryButton}>
+          {/* <a href="tel:0326184628" style={styles.secondaryButton}>
             Gọi tư vấn
-          </a>
+          </a> */}
         </div>
       </section>
 
