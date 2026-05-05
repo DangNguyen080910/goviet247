@@ -99,6 +99,13 @@ export default function SeoRoutePage({ routeKey }) {
           Thơ…
         </p>
 
+        <p style={styles.description}>
+          Ngoài các tuyến phổ biến, GoViet247 còn hỗ trợ đặt xe từ TP.HCM đi các
+          tỉnh, từ các tỉnh về TP.HCM và các tuyến tỉnh đi tỉnh theo nhu cầu.
+          Tùy khu vực và thời điểm, hệ thống sẽ kiểm tra tài xế phù hợp để xác
+          nhận chuyến.
+        </p>
+
         <div style={styles.actions}>
           <Link to="/dat-xe" style={styles.primaryButton}>
             Tính giá & đặt xe
