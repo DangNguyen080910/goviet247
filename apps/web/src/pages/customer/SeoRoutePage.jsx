@@ -1,13 +1,30 @@
 // Path: goviet247/apps/web/src/pages/customer/SeoRoutePage.jsx
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { SEO_ROUTES } from "../../data/seoRoutes";
+import { getPublicSystemConfig } from "../../api/systemConfig";
 
 export default function SeoRoutePage({ routeKey }) {
+  const [zaloPhone, setZaloPhone] = useState("0326184628");
+
   const route = useMemo(
     () => SEO_ROUTES.find((item) => item.key === routeKey),
     [routeKey],
   );
+
+  useEffect(() => {
+    async function loadConfig() {
+      try {
+        const cfg = await getPublicSystemConfig();
+        const phone = cfg?.supportPhoneRider || "0326184628";
+        setZaloPhone(String(phone).replace(/\D/g, ""));
+      } catch (err) {
+        console.error("Load SEO route system config failed:", err);
+      }
+    }
+
+    loadConfig();
+  }, []);
 
   useEffect(() => {
     if (!route) return;
@@ -110,15 +127,21 @@ export default function SeoRoutePage({ routeKey }) {
           <Link to="/dat-xe" style={styles.primaryButton}>
             Tính giá & đặt xe
           </Link>
-          {/* <a href="tel:0326184628" style={styles.secondaryButton}>
-            Gọi tư vấn
-          </a> */}
+
+          <a
+            href={`https://zalo.me/${zaloPhone}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.secondaryButton}
+          >
+            Nhắn Zalo hỗ trợ
+          </a>
         </div>
       </section>
 
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
-          Giá thuê xe đi {route.from} đi {route.to} được tính như thế nào?
+          Giá thuê xe {route.from} đi {route.to} được tính như thế nào?
         </h2>
 
         <div style={styles.priceGrid}>
