@@ -27,7 +27,8 @@ import CustomerBooking from "./pages/customer/CustomerBooking";
 import CustomerAuth from "./pages/customer/CustomerAuth";
 import CustomerProfile from "./pages/customer/CustomerProfile";
 import CustomerNotifications from "./pages/customer/CustomerNotifications";
-import SeoVungTau from "./pages/customer/SeoVungTau";
+import SeoRoutePage from "./pages/customer/SeoRoutePage";
+import { SEO_ROUTES } from "./data/seoRoutes";
 
 export default function App() {
   return (
@@ -38,7 +39,14 @@ export default function App() {
         <Route path="dat-xe" element={<CustomerBooking />} />
         <Route path="ho-so" element={<CustomerProfile />} />
         <Route path="thong-bao" element={<CustomerNotifications />} />
-        <Route path="xe-di-vung-tau" element={<SeoVungTau />} />
+
+        {SEO_ROUTES.map((route) => (
+          <Route
+            key={route.key}
+            path={route.path}
+            element={<SeoRoutePage routeKey={route.key} />}
+          />
+        ))}
 
         <Route path="dang-nhap" element={<CustomerAuth mode="login" />} />
         <Route path="dang-ky" element={<CustomerAuth mode="register" />} />
