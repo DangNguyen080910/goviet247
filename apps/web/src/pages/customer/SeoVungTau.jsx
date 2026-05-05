@@ -1,10 +1,8 @@
 // Path: goviet247/apps/web/src/pages/customer/SeoVungTau.jsx
 import { Link } from "react-router-dom";
-import CustomerLayout from "../../components/customer/CustomerLayout";
 
 export default function SeoVungTau() {
   return (
-    <CustomerLayout>
       <main style={styles.page}>
         <section style={styles.hero}>
           <p style={styles.badge}>GoViet247 • Xe riêng đi tỉnh</p>
@@ -120,7 +118,6 @@ export default function SeoVungTau() {
           </Link>
         </section>
       </main>
-    </CustomerLayout>
   );
 }
 
