@@ -112,7 +112,7 @@ export default function SeoRoutePage({ routeKey }) {
 
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
-          Giá thuê xe đi {route.destination} được tính như thế nào?
+          Giá thuê xe đi {route.from} đi {route.to} được tính như thế nào?
         </h2>
 
         <div style={styles.priceGrid}>
@@ -204,19 +204,18 @@ export default function SeoRoutePage({ routeKey }) {
         <div style={styles.routeLinks}>
           {SEO_ROUTES.filter((item) => item.key !== route.key).map((item) => (
             <Link key={item.key} to={`/${item.path}`} style={styles.routeLink}>
-              Xe đi {item.destination}
+              {item.from} → {item.to}
             </Link>
           ))}
         </div>
       </section>
 
       <section style={styles.cta}>
-        <h2>Đặt xe đi {route.destination} ngay hôm nay</h2>
+        Đặt xe {route.from} → {route.to} ngay hôm nay
         <p>
           Nhập thông tin chuyến đi để nhận giá nhanh và đặt xe riêng cùng
           GoViet247.
         </p>
-
         <Link to="/dat-xe" style={styles.ctaButton}>
           Tính giá & đặt chuyến
         </Link>
