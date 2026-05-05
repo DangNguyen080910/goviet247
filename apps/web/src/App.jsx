@@ -17,6 +17,7 @@ import AdminConfig from "./pages/admin/AdminConfig";
 import AdminDriverWallets from "./pages/admin/AdminDriverWallets";
 import AdminLedger from "./pages/admin/AdminLedger";
 import AdminFeedback from "./pages/admin/AdminFeedback";
+import AdminCashTransactions from "./pages/admin/AdminCashTransactions";
 
 // CUSTOMER
 import CustomerLayout from "./components/customer/CustomerLayout";
@@ -26,7 +27,7 @@ import CustomerBooking from "./pages/customer/CustomerBooking";
 import CustomerAuth from "./pages/customer/CustomerAuth";
 import CustomerProfile from "./pages/customer/CustomerProfile";
 import CustomerNotifications from "./pages/customer/CustomerNotifications";
-import AdminCashTransactions from "./pages/admin/AdminCashTransactions";
+import SeoVungTau from "./pages/customer/SeoVungTau";
 
 export default function App() {
   return (
@@ -37,10 +38,11 @@ export default function App() {
         <Route path="dat-xe" element={<CustomerBooking />} />
         <Route path="ho-so" element={<CustomerProfile />} />
         <Route path="thong-bao" element={<CustomerNotifications />} />
+        <Route path="xe-di-vung-tau" element={<SeoVungTau />} />
 
         <Route path="dang-nhap" element={<CustomerAuth mode="login" />} />
         <Route path="dang-ky" element={<CustomerAuth mode="register" />} />
-        
+
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
       </Route>
 
