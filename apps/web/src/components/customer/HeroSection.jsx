@@ -1,16 +1,19 @@
 // Path: goviet247/apps/web/src/components/customer/HeroSection.jsx
 import { Box, Container, Typography, Stack, Button } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import heroImage from "../../assets/xe.png";
 import { HEADER_H, FOOTER_H } from "./CustomerLayout";
 import { getPublicSystemConfig } from "../../api/systemConfig";
+import { SEO_ROUTES } from "../../data/seoRoutes";
 
 export default function HeroSection() {
   const navigate = useNavigate();
   const [zaloPhone, setZaloPhone] = useState("1900-0000");
   const [heroImageUrl, setHeroImageUrl] = useState("");
+
+  const featuredRoutes = SEO_ROUTES.slice(0, 7);
 
   useEffect(() => {
     async function loadConfig() {
@@ -34,7 +37,7 @@ export default function HeroSection() {
         position: "relative",
         width: "100%",
         height: `calc(100dvh - ${HEADER_H}px - ${FOOTER_H}px)`,
-        minHeight: 520,
+        minHeight: 620,
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
@@ -44,7 +47,6 @@ export default function HeroSection() {
         color: "white",
       }}
     >
-      {/* Gradient overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -54,7 +56,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Decorative blur */}
       <Box
         sx={{
           position: "absolute",
@@ -69,8 +70,7 @@ export default function HeroSection() {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={2.2} sx={{ maxWidth: 760, py: { xs: 6, md: 10 } }}>
-          {/* Title */}
+        <Stack spacing={2.2} sx={{ maxWidth: 820, py: { xs: 6, md: 10 } }}>
           <Typography
             variant="h2"
             sx={{
@@ -84,18 +84,16 @@ export default function HeroSection() {
             Thuê xe riêng, đi đường dài thoải mái
           </Typography>
 
-          {/* Subtitle */}
           <Typography
             sx={{
               fontSize: { xs: 14, sm: 16, md: 18 },
               opacity: 0.95,
-              maxWidth: 640,
+              maxWidth: 680,
             }}
           >
             Giá rõ ràng • Hỗ trợ 24/7 • Phù hợp du lịch, công việc, gia đình
           </Typography>
 
-          {/* CTA Buttons */}
           <Stack
             direction="row"
             spacing={1.2}
@@ -140,6 +138,49 @@ export default function HeroSection() {
               Chat Zalo
             </Button>
           </Stack>
+
+          <Box sx={{ pt: 1.2 }}>
+            <Typography
+              sx={{
+                mb: 1,
+                fontSize: 14,
+                fontWeight: 800,
+                opacity: 0.95,
+              }}
+            >
+              Tuyến phổ biến:
+            </Typography>
+
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{ flexWrap: "wrap", rowGap: 1 }}
+            >
+              {featuredRoutes.map((route) => (
+                <Button
+                  key={route.key}
+                  component={Link}
+                  to={`/${route.path}`}
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: 999,
+                    fontWeight: 800,
+                    color: "white",
+                    borderColor: "rgba(255,255,255,0.42)",
+                    bgcolor: "rgba(255,255,255,0.08)",
+                    "&:hover": {
+                      borderColor: "rgba(255,255,255,0.75)",
+                      bgcolor: "rgba(255,255,255,0.14)",
+                    },
+                  }}
+                >
+                  {route.from} → {route.to}
+                </Button>
+              ))}
+            </Stack>
+          </Box>
         </Stack>
       </Container>
     </Box>
