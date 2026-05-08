@@ -39,21 +39,35 @@ function resolvePhone(user) {
 }
 
 function resolveRiderName(user) {
-  return (
-    user?.riderProfile?.fullName ||
-    user?.displayName ||
-    resolvePhone(user) ||
-    null
-  );
+  const riderProfileName = String(user?.riderProfile?.fullName || "").trim();
+
+  if (riderProfileName) {
+    return riderProfileName;
+  }
+
+  const displayName = String(user?.displayName || "").trim();
+
+  if (displayName && displayName.toLowerCase() !== "test rider") {
+    return displayName;
+  }
+
+  return resolvePhone(user) || null;
 }
 
 function resolveDriverName(user) {
-  return (
-    user?.driverProfile?.fullName ||
-    user?.displayName ||
-    resolvePhone(user) ||
-    null
-  );
+  const driverProfileName = String(user?.driverProfile?.fullName || "").trim();
+
+  if (driverProfileName) {
+    return driverProfileName;
+  }
+
+  const displayName = String(user?.displayName || "").trim();
+
+  if (displayName && displayName.toLowerCase() !== "test driver") {
+    return displayName;
+  }
+
+  return resolvePhone(user) || null;
 }
 
 function buildAuthUserPayload(user, appRole) {
