@@ -16,7 +16,7 @@ function mustHaveAdminSecret() {
 export function signToken(payload) {
   mustHaveSecret();
   return jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES || "7d",
+    expiresIn: process.env.JWT_EXPIRES || "30d",
   });
 }
 
@@ -29,7 +29,7 @@ export function verifyJwtToken(token) {
 export function signAdminToken(payload) {
   mustHaveAdminSecret();
   return jwt.sign(payload, process.env.ADMIN_JWT_SECRET, {
-    expiresIn: process.env.ADMIN_JWT_EXPIRES || "7d",
+    expiresIn: process.env.ADMIN_JWT_EXPIRES || "30d",
   });
 }
 
