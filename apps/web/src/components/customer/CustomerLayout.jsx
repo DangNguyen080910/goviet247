@@ -95,10 +95,16 @@ export default function CustomerLayout() {
 
   const greetingLabel = useMemo(() => {
     const displayName = String(user?.displayName || "").trim();
-    if (displayName) return displayName;
+
+    if (displayName) {
+      return formatPhoneForDisplay(displayName);
+    }
 
     const phone = formatPhoneForDisplay(user?.phone);
-    if (phone) return phone;
+
+    if (phone) {
+      return phone;
+    }
 
     return "Tài khoản";
   }, [user]);
