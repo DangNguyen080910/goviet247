@@ -2247,6 +2247,7 @@ export async function getAssignedTrips(req, res) {
         status: true,
         pickupAddress: true,
         dropoffAddress: true,
+        returnTime: true,
         updatedAt: true,
         cancelReason: true,
         cancelledAt: true,
