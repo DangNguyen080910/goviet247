@@ -305,4 +305,73 @@ router.patch("/me", verifyToken, async (req, res) => {
   }
 });
 
+// =====================================================
+// 5) XÓA TÀI KHOẢN USER ĐANG ĐĂNG NHẬP
+// Apple requirement: account deletion support
+// =====================================================
+router.delete("/me", verifyToken, async (req, res) => {
+  try {
+    const uid = req.user?.uid || req.user?.id;
+
+    if (!uid) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
+
+    const existingUser = await prisma.user.findUnique({
+      where: { id: uid },
+      include: {
+        phones: true,
+      },
+    });
+
+    if (!existingUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User không tồn tại.",
+      });
+    }
+
+    const deletedPhone = `deleted_${Date.now()}`;
+
+    await prisma.$transaction(async (tx) => {
+      await tx.user.update({
+        where: { id: uid },
+        data: {
+          displayName: "Deleted User",
+        },
+      });
+
+      await tx.phone.updateMany({
+        where: {
+          userId: uid,
+        },
+        data: {
+          e164: deletedPhone,
+        },
+      });
+
+      await tx.device.deleteMany({
+        where: {
+          userId: uid,
+        },
+      });
+    });
+
+    return res.json({
+      success: true,
+      message: "Tài khoản đã được xóa.",
+    });
+  } catch (error) {
+    console.error("DELETE /api/auth/me error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal error",
+    });
+  }
+});
+
 export default router;
