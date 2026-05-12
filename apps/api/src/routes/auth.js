@@ -186,7 +186,12 @@ function getUserRoleForResponse(user) {
 // =====================================================
 // 1) YÊU CẦU OTP
 // =====================================================
-router.post("/request-otp", otpIpRateLimit, otpPhoneRateLimit, requestOtpHandler);
+router.post(
+  "/request-otp",
+  otpIpRateLimit,
+  otpPhoneRateLimit,
+  requestOtpHandler,
+);
 
 // =====================================================
 // 2) XÁC MINH OTP -> TRẢ ACCESS TOKEN
@@ -337,19 +342,14 @@ router.delete("/me", verifyToken, async (req, res) => {
     const deletedPhone = `deleted_${Date.now()}`;
 
     await prisma.$transaction(async (tx) => {
-      await tx.user.update({
-        where: { id: uid },
-        data: {
-          displayName: "Deleted User",
-        },
-      });
+      const currentPhone = existingUser?.phones?.[0]?.e164 || `unknown_${uid}`;
 
       await tx.phone.updateMany({
         where: {
           userId: uid,
         },
         data: {
-          e164: deletedPhone,
+          e164: `deleted_${currentPhone}`,
         },
       });
 
