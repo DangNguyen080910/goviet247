@@ -2227,32 +2227,37 @@ export default function BookingCard() {
                   {isEstimating ? "Đang tính giá..." : "Tính giá"}
                 </Button>
                 {!canEstimate && (
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "error.main",
-                      fontWeight: 800,
-                    }}
-                  >
-                    {!isNameValid && !isPhoneValid
-                      ? "Vui lòng nhập đúng Họ tên và Số điện thoại Việt Nam để tính giá."
-                      : !isNameValid
-                        ? "Vui lòng nhập Họ tên để tính giá."
-                        : !isPhoneValid
-                          ? "Vui lòng nhập đúng số điện thoại Việt Nam để tính giá."
-                          : showAddressSelectionWarning
-                            ? "Vui lòng chọn địa chỉ từ danh sách gợi ý."
-                            : !pickupDate || !pickupTimeOnly
-                              ? "Vui lòng chọn thời gian đón khách."
-                              : direction === "ROUND_TRIP" &&
-                                  (!returnDate || !returnTimeOnly)
-                                ? "Vui lòng chọn thời gian quay về."
-                                : isPickupTimeInPast
-                                  ? "Không được chọn thời gian trong quá khứ."
-                                  : !isDistanceValid
-                                    ? `Quãng đường phải từ ${minDistanceKm} km đến ${maxDistanceKm} km.`
-                                    : "Vui lòng kiểm tra lại thông tin chuyến đi."}
-                  </Typography>
+                  <Stack spacing={0.4}>
+                    {[
+                      !isNameValid && "Vui lòng nhập Họ tên.",
+                      !isPhoneValid &&
+                        "Vui lòng nhập đúng số điện thoại Việt Nam.",
+                      showAddressSelectionWarning &&
+                        "Vui lòng chọn địa chỉ từ danh sách gợi ý.",
+                      (!pickupDate || !pickupTimeOnly) &&
+                        "Vui lòng chọn thời gian đón khách.",
+                      direction === "ROUND_TRIP" &&
+                        (!returnDate || !returnTimeOnly) &&
+                        "Vui lòng chọn thời gian quay về.",
+                      isPickupTimeInPast &&
+                        "Không được chọn thời gian trong quá khứ.",
+                      !isDistanceValid &&
+                        `Quãng đường phải từ ${minDistanceKm} km đến ${maxDistanceKm} km.`,
+                    ]
+                      .filter((msg) => typeof msg === "string")
+                      .map((msg) => (
+                        <Typography
+                          key={msg}
+                          variant="body2"
+                          sx={{
+                            color: "error.main",
+                            fontWeight: 800,
+                          }}
+                        >
+                          • {msg}
+                        </Typography>
+                      ))}
+                  </Stack>
                 )}
                 {quote && isQuoteExpired && (
                   <Typography
