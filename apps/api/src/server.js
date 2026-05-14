@@ -26,7 +26,6 @@ import driverProfileRoutes from "./routes/driverProfile.js";
 import uploadRoutes from "./routes/upload.js";
 import mapsRoutes from "./routes/maps.js";
 
-
 const app = express();
 
 // ✅ Tắt ETag để tránh 304 (admin list cần luôn fresh)
@@ -89,6 +88,13 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 // --- Health check ---
 app.get("/health", (req, res) => {
   res.json({ ok: true, service: "GoViet247 API" });
+});
+
+app.get("/", (req, res) => {
+  return res.json({
+    service: "GoViet247 API",
+    status: "OK",
+  });
 });
 
 // --- REST routes ---
