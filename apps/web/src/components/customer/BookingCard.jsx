@@ -2187,7 +2187,7 @@ export default function BookingCard() {
                   error={showPhoneError}
                   helperText={
                     showPhoneError
-                      ? "Vui lòng nhập đúng số điện thoại Việt Nam (VD: 0901234567)."
+                      ? "Vui lòng nhập đúng số điện thoại."
                       : ""
                   }
                 />
@@ -2231,7 +2231,7 @@ export default function BookingCard() {
                     {[
                       !isNameValid && "Vui lòng nhập Họ tên.",
                       !isPhoneValid &&
-                        "Vui lòng nhập đúng số điện thoại Việt Nam.",
+                        "Vui lòng nhập đúng số điện thoại.",
                       showAddressSelectionWarning &&
                         "Vui lòng chọn địa chỉ từ danh sách gợi ý.",
                       (!pickupDate || !pickupTimeOnly) &&
@@ -2242,7 +2242,7 @@ export default function BookingCard() {
                       isPickupTimeInPast &&
                         "Không được chọn thời gian trong quá khứ.",
                       !isDistanceValid &&
-                        `Quãng đường phải từ ${minDistanceKm} km đến ${maxDistanceKm} km.`,
+                        `Quãng đường phải tối thiểu ${minDistanceKm} km đến ${maxDistanceKm} km.`,
                     ]
                       .filter((msg) => typeof msg === "string")
                       .map((msg) => (
