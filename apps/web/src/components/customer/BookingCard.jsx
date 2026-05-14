@@ -844,6 +844,10 @@ export default function BookingCard() {
     );
   }, [numericDistanceKm, minDistanceKm, maxDistanceKm]);
 
+  const isNameValid = riderName.trim().length >= 2;
+
+  const isPhoneValid = isValidVietnamPhone(riderPhone);
+
   const canEstimate =
     !isLoadingConfig &&
     hasValidPickupSelection &&
@@ -861,9 +865,6 @@ export default function BookingCard() {
     isPhoneValid &&
     isDistanceValid &&
     Number(driveMinutes) >= 0;
-
-  const isNameValid = riderName.trim().length >= 2;
-  const isPhoneValid = isValidVietnamPhone(riderPhone);
 
   const showNameError = submitTouched && !isNameValid;
   const showPhoneError = submitTouched && !isPhoneValid;
@@ -2186,9 +2187,7 @@ export default function BookingCard() {
                   inputRef={riderPhoneRef}
                   error={showPhoneError}
                   helperText={
-                    showPhoneError
-                      ? "Vui lòng nhập đúng số điện thoại."
-                      : ""
+                    showPhoneError ? "Vui lòng nhập đúng số điện thoại." : ""
                   }
                 />
 
@@ -2230,8 +2229,7 @@ export default function BookingCard() {
                   <Stack spacing={0.4}>
                     {[
                       !isNameValid && "Vui lòng nhập Họ tên.",
-                      !isPhoneValid &&
-                        "Vui lòng nhập đúng số điện thoại.",
+                      !isPhoneValid && "Vui lòng nhập đúng số điện thoại.",
                       showAddressSelectionWarning &&
                         "Vui lòng chọn địa chỉ từ danh sách gợi ý.",
                       (!pickupDate || !pickupTimeOnly) &&
