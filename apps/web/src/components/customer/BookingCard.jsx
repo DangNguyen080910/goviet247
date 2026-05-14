@@ -2242,7 +2242,7 @@ export default function BookingCard() {
                       isPickupTimeInPast &&
                         "Không được chọn thời gian trong quá khứ.",
                       !isDistanceValid &&
-                        `Quãng đường phải tối thiểu ${minDistanceKm} km đến ${maxDistanceKm} km.`,
+                        `Quãng đường phải tối thiểu ${minDistanceKm} km.`,
                     ]
                       .filter((msg) => typeof msg === "string")
                       .map((msg) => (
