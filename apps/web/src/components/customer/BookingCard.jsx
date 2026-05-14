@@ -147,6 +147,12 @@ function formatDurationMinutes(totalMinutes) {
   return `${hours} giờ ${String(minutes).padStart(2, "0")} phút`;
 }
 
+function isValidVietnamPhone(phone = "") {
+  const cleaned = String(phone || "").replace(/[^\d]/g, "");
+
+  return /^(0[3|5|7|8|9])[0-9]{8}$/.test(cleaned);
+}
+
 function buildHourOptions() {
   return Array.from({ length: 24 }, (_, hour) => String(hour).padStart(2, "0"));
 }
@@ -851,11 +857,13 @@ export default function BookingCard() {
     (direction === "ONE_WAY"
       ? true
       : returnDate && returnTimeOnly && isReturnTimeValid) &&
+    isNameValid &&
+    isPhoneValid &&
     isDistanceValid &&
     Number(driveMinutes) >= 0;
 
   const isNameValid = riderName.trim().length >= 2;
-  const isPhoneValid = riderPhone.trim().length >= 9;
+  const isPhoneValid = isValidVietnamPhone(riderPhone);
 
   const showNameError = submitTouched && !isNameValid;
   const showPhoneError = submitTouched && !isPhoneValid;
@@ -2179,7 +2187,7 @@ export default function BookingCard() {
                   error={showPhoneError}
                   helperText={
                     showPhoneError
-                      ? "Vui lòng nhập số điện thoại hợp lệ (tối thiểu 9 số)."
+                      ? "Vui lòng nhập đúng số điện thoại Việt Nam (VD: 0901234567)."
                       : ""
                   }
                 />
@@ -2218,7 +2226,34 @@ export default function BookingCard() {
                 >
                   {isEstimating ? "Đang tính giá..." : "Tính giá"}
                 </Button>
-
+                {!canEstimate && (
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "error.main",
+                      fontWeight: 800,
+                    }}
+                  >
+                    {!isNameValid && !isPhoneValid
+                      ? "Vui lòng nhập đúng Họ tên và Số điện thoại Việt Nam để tính giá."
+                      : !isNameValid
+                        ? "Vui lòng nhập Họ tên để tính giá."
+                        : !isPhoneValid
+                          ? "Vui lòng nhập đúng số điện thoại Việt Nam để tính giá."
+                          : showAddressSelectionWarning
+                            ? "Vui lòng chọn địa chỉ từ danh sách gợi ý."
+                            : !pickupDate || !pickupTimeOnly
+                              ? "Vui lòng chọn thời gian đón khách."
+                              : direction === "ROUND_TRIP" &&
+                                  (!returnDate || !returnTimeOnly)
+                                ? "Vui lòng chọn thời gian quay về."
+                                : isPickupTimeInPast
+                                  ? "Không được chọn thời gian trong quá khứ."
+                                  : !isDistanceValid
+                                    ? `Quãng đường phải từ ${minDistanceKm} km đến ${maxDistanceKm} km.`
+                                    : "Vui lòng kiểm tra lại thông tin chuyến đi."}
+                  </Typography>
+                )}
                 {quote && isQuoteExpired && (
                   <Typography
                     variant="body2"
