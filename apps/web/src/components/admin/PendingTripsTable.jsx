@@ -330,19 +330,18 @@ export default function PendingTripsTable({
                   {showCustomerCol && (
                     <>
                       <td style={td}>
-                        <div style={{ fontWeight: 700 }}>
-                          {getPendingTripBookerName(t)}
-                        </div>
-
+                        <div style={{ fontWeight: 700 }}>{creatorName}</div>
                         <div style={{ fontSize: 12, color: "#666" }}>
-                          {getPendingTripBookerPhone(t)}
+                          {creatorPhone}
                         </div>
                       </td>
 
                       <td style={td}>
-                        <div style={{ fontWeight: 700 }}>{creatorName}</div>
+                        <div style={{ fontWeight: 700 }}>
+                          {getPendingTripBookerName(t)}
+                        </div>
                         <div style={{ fontSize: 12, color: "#666" }}>
-                          {creatorPhone}
+                          {getPendingTripBookerPhone(t)}
                         </div>
                       </td>
                     </>
