@@ -295,8 +295,14 @@ export default function PendingTripsTable({
             {rows.map((t) => {
               const tripId = t?.tripId || t?.id;
 
-              const riderName = getPendingTripRiderName(t);
-              const riderPhone = t?.riderPhone || pickPhone(t?.rider) || "-";
+              const creatorName =
+                t?.creatorName ||
+                t?.rider?.displayName ||
+                t?.rider?.phones?.[0]?.e164 ||
+                "-";
+
+              const creatorPhone =
+                t?.creatorPhone || t?.rider?.phones?.[0]?.e164 || "-";
 
               // active tab fields
               const phutCho = layPhutCho(t);
@@ -334,10 +340,9 @@ export default function PendingTripsTable({
                       </td>
 
                       <td style={td}>
-                        <div style={{ fontWeight: 700 }}>{riderName}</div>
-
+                        <div style={{ fontWeight: 700 }}>{creatorName}</div>
                         <div style={{ fontSize: 12, color: "#666" }}>
-                          {riderPhone}
+                          {creatorPhone}
                         </div>
                       </td>
                     </>
