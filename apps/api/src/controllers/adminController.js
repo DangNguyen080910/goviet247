@@ -2582,110 +2582,113 @@ export function makeAdminController(prisma) {
       }
     },
 
-    async listPendingTrips(req, res) {
-      try {
-        const now = new Date();
+   async listPendingTrips(req, res) {
+  try {
+    const now = new Date();
 
-        const verified = String(req.query.verified || "1");
-        const cancelled = String(req.query.cancelled || "0");
+    const verified = String(req.query.verified || "1");
+    const cancelled = String(req.query.cancelled || "0");
 
-        const where = {};
+    const where = {};
 
-        if (cancelled === "1") {
-          where.status = "CANCELLED";
-          where.cancelledAt = { not: null };
-        } else {
-          where.status = "PENDING";
-          where.cancelledAt = null;
-        }
+    if (cancelled === "1") {
+      where.status = "CANCELLED";
+      where.cancelledAt = { not: null };
+    } else {
+      where.status = "PENDING";
+      where.cancelledAt = null;
+    }
 
-        if (verified === "1") where.isVerified = true;
-        if (verified === "0") where.isVerified = false;
+    if (verified === "1") where.isVerified = true;
+    if (verified === "0") where.isVerified = false;
 
-        const trips = await prisma.trip.findMany({
-          where,
-          orderBy: { createdAt: "asc" },
+    const trips = await prisma.trip.findMany({
+      where,
+      orderBy: { createdAt: "asc" },
+      include: {
+        rider: {
           include: {
-            rider: {
-              include: {
-                riderProfile: true,
-                phones: true,
-              },
-            },
-            customer: {
-              select: {
-                id: true,
-                displayName: true,
-                phones: {
-                  select: {
-                    e164: true,
-                  },
-                  orderBy: {
-                    createdAt: "desc",
-                  },
-                  take: 1,
-                },
-              },
-            },
-
-            alertLogs: true,
-
-            stops: {
-              orderBy: { seq: "asc" },
-            },
+            riderProfile: true,
+            phones: true,
           },
-          take: 200,
-        });
+        },
 
-        const mapped = trips.map((t) => {
-          const pendingMinutes = Math.floor(
-            (now.getTime() - t.createdAt.getTime()) / 60000,
-          );
+        alertLogs: true,
 
-          const isVerifiedTrip = Boolean(t.isVerified);
+        stops: {
+          orderBy: { seq: "asc" },
+        },
+      },
+      take: 200,
+    });
 
-          const alertCount = isVerifiedTrip
-            ? Number(t.unassignedTripAlertCount || 0)
-            : Number(t.pendingTripAlertCount || 0);
+    const mapped = trips.map((t) => {
+      const pendingMinutes = Math.floor(
+        (now.getTime() - t.createdAt.getTime()) / 60000,
+      );
 
-          const lastAlertAt = isVerifiedTrip
-            ? t.unassignedTripAlertAt
-            : t.pendingTripAlertAt;
+      const isVerifiedTrip = Boolean(t.isVerified);
 
-          return {
-            tripId: t.id,
-            id: t.id,
-            riderName: t.customer?.displayName || t.riderName || "Khách",
-            riderPhone: t.customer?.phones?.[0]?.e164 || t.riderPhone || "",
-            creatorName:
-              t?.customer?.displayName || t?.customer?.phones?.[0]?.e164 || "",
-            creatorPhone: t?.customer?.phones?.[0]?.e164 || "",
-            pickupAddress: t.pickupAddress,
-            dropoffAddress: t.dropoffAddress,
-            stops: normalizeStops(t.stops),
-            pickupTime: t.pickupTime,
-            returnTime: t.returnTime,
-            tripType: t.tripType,
-            totalPrice: Number(t.totalPrice || 0),
-            createdAt: t.createdAt,
-            pendingMinutes,
-            alertCount,
-            lastAlertAt,
-            status: t.status,
-            isVerified: t.isVerified,
-            cancelledAt: t.cancelledAt,
-            cancelReason: t.cancelReason,
-          };
-        });
+      const alertCount = isVerifiedTrip
+        ? Number(t.unassignedTripAlertCount || 0)
+        : Number(t.pendingTripAlertCount || 0);
 
-        return res.json({ success: true, trips: mapped });
-      } catch (e) {
-        console.error("[Admin] listPendingTrips error:", e);
-        return res
-          .status(500)
-          .json({ success: false, error: "INTERNAL_ERROR" });
-      }
-    },
+      const lastAlertAt = isVerifiedTrip
+        ? t.unassignedTripAlertAt
+        : t.pendingTripAlertAt;
+
+      return {
+        tripId: t.id,
+        id: t.id,
+
+        // 👤 Người đặt (account tạo chuyến)
+        creatorName:
+          t.rider?.displayName ||
+          t.rider?.phones?.[0]?.e164 ||
+          "",
+
+        creatorPhone:
+          t.rider?.phones?.[0]?.e164 || "",
+
+        // 🚕 Hành khách thực tế
+        riderName: t.riderName || "Khách",
+        riderPhone: t.riderPhone || "",
+
+        pickupAddress: t.pickupAddress,
+        dropoffAddress: t.dropoffAddress,
+
+        stops: normalizeStops(t.stops),
+
+        pickupTime: t.pickupTime,
+        returnTime: t.returnTime,
+        tripType: t.tripType,
+
+        totalPrice: Number(t.totalPrice || 0),
+
+        createdAt: t.createdAt,
+
+        pendingMinutes,
+
+        alertCount,
+        lastAlertAt,
+
+        status: t.status,
+        isVerified: t.isVerified,
+
+        cancelledAt: t.cancelledAt,
+        cancelReason: t.cancelReason,
+      };
+    });
+
+    return res.json({ success: true, trips: mapped });
+  } catch (e) {
+    console.error("[Admin] listPendingTrips error:", e);
+
+    return res
+      .status(500)
+      .json({ success: false, error: "INTERNAL_ERROR" });
+  }
+},
 
     async getTripDetail(req, res) {
       try {
