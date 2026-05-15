@@ -2109,6 +2109,20 @@ export async function adminGetPendingTrips(req, res) {
       orderBy: { createdAt: "asc" },
       include: {
         alertLogs: true,
+
+        rider: {
+          select: {
+            id: true,
+            displayName: true,
+            phones: {
+              select: {
+                e164: true,
+              },
+              take: 1,
+            },
+          },
+        },
+
         stops: { orderBy: { seq: "asc" } },
       },
     });
@@ -2123,8 +2137,14 @@ export async function adminGetPendingTrips(req, res) {
 
       return {
         tripId: t.id,
+
         riderName: t.riderName,
         riderPhone: t.riderPhone,
+
+        creatorName: t?.rider?.displayName || t?.riderName || "",
+
+        creatorPhone: t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
+
         pickupAddress: t.pickupAddress,
         dropoffAddress: t.dropoffAddress,
         stops: t.stops,
@@ -2588,14 +2608,43 @@ export async function adminListUnverifiedTrips(req, res) {
       orderBy: { createdAt: "asc" },
       take: 200,
       include: {
-        stops: { orderBy: { seq: "asc" } },
+        rider: {
+          select: {
+            id: true,
+            displayName: true,
+            phones: {
+              select: {
+                e164: true,
+              },
+              take: 1,
+            },
+          },
+        },
+
+        stops: {
+          orderBy: { seq: "asc" },
+        },
       },
     });
 
-    return res.json({ success: true, items });
+    const mapped = items.map((t) => ({
+      ...t,
+
+      creatorName: t?.rider?.displayName || t?.riderName || "",
+
+      creatorPhone: t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
+    }));
+
+    return res.json({
+      success: true,
+      items: mapped,
+    });
   } catch (e) {
     console.error("[adminListUnverifiedTrips] error:", e);
-    return res.status(500).json({ success: false, message: "Lỗi server" });
+    return res.status(500).json({
+      success: false,
+      message: "Lỗi server",
+    });
   }
 }
 
