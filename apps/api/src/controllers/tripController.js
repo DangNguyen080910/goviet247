@@ -2219,11 +2219,23 @@ export async function adminGetTripDetail(req, res) {
       success: true,
       trip: {
         ...trip,
+
+        // 👤 Người đặt
+        creatorName: trip?.rider?.displayName || trip?.riderPhone || "",
+
+        creatorPhone: trip?.riderPhone || "",
+
+        // 🚖 Hành khách
+        riderName: trip?.riderName || "Khách",
+
+        riderPhone: trip?.riderPhone || "",
+
         driverName:
           driverProfile?.fullName ||
           trip?.driver?.displayName ||
           driverPhone ||
           "Tài xế",
+
         driverPhone,
       },
     });
