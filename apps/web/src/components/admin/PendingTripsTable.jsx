@@ -106,6 +106,19 @@ function getPendingTripRiderName(trip) {
   );
 }
 
+function getPendingTripBookerName(trip) {
+  return (
+    trip?.customer?.displayName ||
+    trip?.riderName ||
+    pickPhone(trip?.customer) ||
+    "-"
+  );
+}
+
+function getPendingTripBookerPhone(trip) {
+  return trip?.customer?.phones?.[0]?.e164 || trip?.riderPhone || "-";
+}
+
 /**
  * mode (tương thích 2 kiểu):
  * - "PENDING" / "active"      => /api/admin/pending-trips
@@ -248,7 +261,12 @@ export default function PendingTripsTable({
               <th style={th}>Mã chuyến</th>
 
               {/* ✅ show cho tab đã huỷ hoặc khi page cần */}
-              {showCustomerCol && <th style={th}>Khách hàng</th>}
+              {showCustomerCol && (
+                <>
+                  <th style={th}>Người đặt</th>
+                  <th style={th}>Hành khách</th>
+                </>
+              )}
 
               <th style={th}>Điểm đón</th>
               <th style={th}>Điểm đến</th>
@@ -304,12 +322,25 @@ export default function PendingTripsTable({
                   <td style={tdMono}>{tripId || "-"}</td>
 
                   {showCustomerCol && (
-                    <td style={td}>
-                      <div style={{ fontWeight: 700 }}>{riderName}</div>
-                      <div style={{ fontSize: 12, color: "#666" }}>
-                        {riderPhone}
-                      </div>
-                    </td>
+                    <>
+                      <td style={td}>
+                        <div style={{ fontWeight: 700 }}>
+                          {getPendingTripBookerName(t)}
+                        </div>
+
+                        <div style={{ fontSize: 12, color: "#666" }}>
+                          {getPendingTripBookerPhone(t)}
+                        </div>
+                      </td>
+
+                      <td style={td}>
+                        <div style={{ fontWeight: 700 }}>{riderName}</div>
+
+                        <div style={{ fontSize: 12, color: "#666" }}>
+                          {riderPhone}
+                        </div>
+                      </td>
+                    </>
                   )}
 
                   <td style={td}>

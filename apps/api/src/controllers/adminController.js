@@ -2607,6 +2607,20 @@ export function makeAdminController(prisma) {
           orderBy: { createdAt: "asc" },
           include: {
             alertLogs: true,
+
+            customer: {
+              select: {
+                id: true,
+                displayName: true,
+                phones: {
+                  select: {
+                    e164: true,
+                  },
+                  take: 1,
+                },
+              },
+            },
+
             stops: {
               orderBy: { seq: "asc" },
             },
@@ -2632,8 +2646,8 @@ export function makeAdminController(prisma) {
           return {
             tripId: t.id,
             id: t.id,
-            riderName: t.riderName,
-            riderPhone: t.riderPhone,
+            riderName: t.customer?.displayName || t.riderName || "Khách",
+            riderPhone: t.customer?.phones?.[0]?.e164 || t.riderPhone || "",
             pickupAddress: t.pickupAddress,
             dropoffAddress: t.dropoffAddress,
             stops: normalizeStops(t.stops),
