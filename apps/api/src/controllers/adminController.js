@@ -2606,20 +2606,14 @@ export function makeAdminController(prisma) {
           where,
           orderBy: { createdAt: "asc" },
           include: {
-            alertLogs: true,
-
-            customer: {
-              select: {
-                id: true,
-                displayName: true,
-                phones: {
-                  select: {
-                    e164: true,
-                  },
-                  take: 1,
-                },
+            rider: {
+              include: {
+                riderProfile: true,
+                phones: true,
               },
             },
+
+            alertLogs: true,
 
             stops: {
               orderBy: { seq: "asc" },
