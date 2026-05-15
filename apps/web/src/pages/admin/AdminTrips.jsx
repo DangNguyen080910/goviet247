@@ -239,6 +239,7 @@ export default function AdminTrips() {
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: 700 }}>Mã chuyến</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Người đặt</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Khách hàng</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Điểm đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Điểm đến</TableCell>
@@ -296,6 +297,21 @@ export default function AdminTrips() {
                       }}
                     >
                       {t.id || "-"}
+                    </TableCell>
+
+                    <TableCell>
+                      <div style={{ fontWeight: 700 }}>
+                        {t.creatorName || "-"}
+                      </div>
+
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color: "#666",
+                        }}
+                      >
+                        {t.creatorPhone || "-"}
+                      </div>
                     </TableCell>
 
                     <TableCell>
