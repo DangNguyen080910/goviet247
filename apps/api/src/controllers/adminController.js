@@ -2640,6 +2640,13 @@ export function makeAdminController(prisma) {
           return {
             tripId: t.id,
             id: t.id,
+            carType: t.carType,
+
+            distanceKm: Number(t.distanceKm || 0),
+
+            totalDriveMinutes: Number(t.totalDriveMinutes || 0),
+
+            estimatedDurationMinutes: Number(t.estimatedDurationMinutes || 0),
 
             // 👤 Người đặt (account tạo chuyến)
             creatorName:
