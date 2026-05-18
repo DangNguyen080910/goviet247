@@ -2277,6 +2277,12 @@ export async function getAssignedTrips(req, res) {
       select: {
         id: true,
         status: true,
+        carType: true,
+        distanceKm: true,
+        totalDriveMinutes: true,
+        estimatedDurationMinutes: true,
+
+        pickupAddress: true,
         pickupAddress: true,
         dropoffAddress: true,
         returnTime: true,
