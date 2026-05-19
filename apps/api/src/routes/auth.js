@@ -364,7 +364,8 @@ router.delete("/me", verifyToken, async (req, res) => {
           userId: uid,
         },
         data: {
-          e164: uniqueDeletedPhone,
+          // e164: uniqueDeletedPhone,
+          e164: currentPhone
         },
       });
 
