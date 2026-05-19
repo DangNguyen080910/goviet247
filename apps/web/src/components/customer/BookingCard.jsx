@@ -88,9 +88,18 @@ function combineDateTime(dateObj, timeObj) {
   const d = dayjs(dateObj);
   const t = dayjs(timeObj);
 
+  // ✅ Guard invalid Dayjs objects
+  if (!d.isValid() || !t.isValid()) {
+    return "";
+  }
+
   const combined = d.hour(t.hour()).minute(t.minute()).second(0).millisecond(0);
 
-  // ❗ KHÔNG dùng toISOString nữa
+  // ✅ Double-check combined result
+  if (!combined.isValid()) {
+    return "";
+  }
+
   return combined.format("YYYY-MM-DDTHH:mm:ss");
 }
 
@@ -167,9 +176,17 @@ function updateTimePart(currentValue, part, value) {
   const base = currentValue
     ? dayjs(currentValue)
     : dayjs().second(0).millisecond(0);
+
+  // ✅ Prevent invalid base object
+  if (!base.isValid()) {
+    return dayjs().second(0).millisecond(0);
+  }
+
   const numericValue = Number(value);
 
-  if (!Number.isFinite(numericValue)) return currentValue;
+  if (!Number.isFinite(numericValue)) {
+    return base;
+  }
 
   if (part === "hour") {
     return base.hour(numericValue).second(0).millisecond(0);
