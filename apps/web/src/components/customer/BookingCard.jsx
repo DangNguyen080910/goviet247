@@ -2245,8 +2245,6 @@ export default function BookingCard() {
                 {!canEstimate && (
                   <Stack spacing={0.4}>
                     {[
-                      !isNameValid && "Vui lòng nhập Họ tên.",
-                      !isPhoneValid && "Vui lòng nhập đúng số điện thoại.",
                       showAddressSelectionWarning &&
                         "Vui lòng chọn địa chỉ từ danh sách gợi ý.",
                       (!pickupDate || !pickupTimeOnly) &&
@@ -2258,6 +2256,8 @@ export default function BookingCard() {
                         "Không được chọn thời gian trong quá khứ.",
                       !isDistanceValid &&
                         `Quãng đường phải tối thiểu ${minDistanceKm} km.`,
+                      !isNameValid && "Vui lòng nhập tên khách hàng.",
+                      !isPhoneValid && "Vui lòng nhập đúng số điện thoại.",
                     ]
                       .filter((msg) => typeof msg === "string")
                       .map((msg) => (
