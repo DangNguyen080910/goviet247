@@ -200,7 +200,7 @@ export default function CustomerLayout() {
                 cursor: "pointer",
                 display: "inline-flex",
                 transformOrigin: "left center",
-                animation: `${logoPulse} 2.2s ease-in-out infinite`,
+                animation: `${logoPulse} 3.3s ease-in-out infinite`,
                 transition: "transform 0.15s ease, opacity 0.15s ease",
                 WebkitTapHighlightColor: "transparent",
                 "&:active": {
