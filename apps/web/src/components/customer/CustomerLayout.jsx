@@ -34,17 +34,20 @@ export const FOOTER_H = 64;
 
 export const CUSTOMER_SCROLL_ID = "customer-scroll-container";
 
-const logoFloat = keyframes`
+const logoPulse = keyframes`
   0% {
-    transform: translateY(0px);
+    transform: scale(1);
+    opacity: 0.92;
   }
 
   50% {
-    transform: translateY(-2px);
+    transform: scale(1.08);
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(0px);
+    transform: scale(1);
+    opacity: 0.92;
   }
 `;
 
@@ -196,19 +199,12 @@ export default function CustomerLayout() {
                 minWidth: 0,
                 cursor: "pointer",
                 display: "inline-flex",
-                px: 1.2,
-                py: 0.7,
-                borderRadius: 3,
                 transformOrigin: "left center",
-                animation: `${logoFloat} 2.8s ease-in-out infinite`,
+                animation: `${logoPulse} 2.2s ease-in-out infinite`,
                 transition: "transform 0.15s ease, opacity 0.15s ease",
                 WebkitTapHighlightColor: "transparent",
                 "&:active": {
                   transform: "scale(0.96)",
-                  "&:hover": {
-                    bgcolor: "#FFF7ED",
-                    transform: "scale(1.03)",
-                  },
                   opacity: 0.82,
                   animation: "none",
                 },
@@ -250,19 +246,6 @@ export default function CustomerLayout() {
                   }}
                 >
                   {brandName || "GoViet247"}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: 10,
-                    fontWeight: 700,
-                    color: "#F97316",
-                    lineHeight: 1,
-                    mt: -0.2,
-                    letterSpacing: 0.2,
-                    display: { xs: "none", sm: "block" },
-                  }}
-                >
-                  Xe đi tỉnh • Giá trọn gói
                 </Typography>
               </Stack>
             </Box>
