@@ -1842,6 +1842,10 @@ export default function BookingCard() {
 
                 <Stack spacing={0.6}>
                   <Typography variant="body2" sx={{ opacity: 0.78 }}>
+                    Đang ưu tiên gợi ý gần vị trí hiện tại của bạn.
+                  </Typography>
+
+                  <Typography variant="body2" sx={{ opacity: 0.78 }}>
                     Vui lòng chọn địa chỉ từ danh sách gợi ý để hệ thống tính
                     giá chính xác.
                   </Typography>
