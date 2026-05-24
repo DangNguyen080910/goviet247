@@ -15,6 +15,28 @@ function formatNgayGio(iso) {
   return d.toLocaleString("vi-VN");
 }
 
+function toDateTimeLocalValue(value) {
+  if (!value) return "";
+
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+
+  const pad = (n) => String(n).padStart(2, "0");
+
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(
+    d.getDate(),
+  )}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function fromDateTimeLocalValue(value) {
+  if (!value) return "";
+
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+
+  return d.toISOString();
+}
+
 function formatGia(v) {
   if (v == null || v === "") return "-";
   const num = Number(v);
@@ -145,6 +167,10 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
   const [adjustForm, setAdjustForm] = useState({
     pickupAddress: "",
     dropoffAddress: "",
+    carType: "CAR_5",
+    direction: "ONE_WAY",
+    pickupTime: "",
+    returnTime: "",
     distanceKm: "",
     fareEstimate: "",
     totalPrice: "",
@@ -214,9 +240,16 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
 
   function openAdjustForm() {
     setAdjustError("");
+    const currentDirection =
+      detail?.direction || (detail?.returnTime ? "ROUND_TRIP" : "ONE_WAY");
     setAdjustForm({
       pickupAddress: detail?.pickupAddress || "",
       dropoffAddress: detail?.dropoffAddress || stops?.[stops.length - 1] || "",
+      carType: detail?.carType || "CAR_5",
+      direction: currentDirection,
+      pickupTime: detail?.pickupTime || "",
+      returnTime:
+        currentDirection === "ROUND_TRIP" ? detail?.returnTime || "" : "",
       stops:
         Array.isArray(detail?.stops) && detail.stops.length > 0
           ? detail.stops
@@ -250,10 +283,21 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
   }
 
   function updateAdjustField(field, value) {
-    setAdjustForm((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+    setAdjustForm((prev) => {
+      if (field === "direction" && value === "ONE_WAY") {
+        return {
+          ...prev,
+          direction: value,
+          returnTime: "",
+          returnDriveMinutes: "0",
+        };
+      }
+
+      return {
+        ...prev,
+        [field]: value,
+      };
+    });
   }
 
   function updateStopAddress(index, value) {
@@ -329,6 +373,11 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
           cleanStops[cleanStops.length - 1]?.address ||
           adjustForm.dropoffAddress,
         stops: cleanStops,
+        carType: adjustForm.carType,
+        direction: adjustForm.direction,
+        pickupTime: adjustForm.pickupTime,
+        returnTime:
+          adjustForm.direction === "ROUND_TRIP" ? adjustForm.returnTime : null,
         distanceKm: Number(adjustForm.distanceKm),
         fareEstimate: Number(adjustForm.fareEstimate),
         totalPrice: Number(adjustForm.totalPrice),
@@ -383,6 +432,50 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                 <div style={{ display: "grid", gap: 10 }}>
                   {adjustError && (
                     <div style={{ color: "#ff7676" }}>{adjustError}</div>
+                  )}
+
+                  <FormSelect
+                    label="Loại xe"
+                    value={adjustForm.carType}
+                    onChange={(v) => updateAdjustField("carType", v)}
+                    options={[
+                      { label: "Xe 5 chỗ", value: "CAR_5" },
+                      { label: "Xe 7 chỗ", value: "CAR_7" },
+                      { label: "Xe 16 chỗ", value: "CAR_16" },
+                    ]}
+                  />
+
+                  <FormSelect
+                    label="Loại chuyến"
+                    value={adjustForm.direction}
+                    onChange={(v) => updateAdjustField("direction", v)}
+                    options={[
+                      { label: "Một chiều", value: "ONE_WAY" },
+                      { label: "Khứ hồi", value: "ROUND_TRIP" },
+                    ]}
+                  />
+
+                  <FormInput
+                    label="Giờ đón"
+                    type="datetime-local"
+                    value={toDateTimeLocalValue(adjustForm.pickupTime)}
+                    onChange={(v) =>
+                      updateAdjustField("pickupTime", fromDateTimeLocalValue(v))
+                    }
+                  />
+
+                  {adjustForm.direction === "ROUND_TRIP" && (
+                    <FormInput
+                      label="Giờ về"
+                      type="datetime-local"
+                      value={toDateTimeLocalValue(adjustForm.returnTime)}
+                      onChange={(v) =>
+                        updateAdjustField(
+                          "returnTime",
+                          fromDateTimeLocalValue(v),
+                        )
+                      }
+                    />
                   )}
 
                   <FormInput
@@ -541,6 +634,10 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                 }
               />
               <KV k="Loại xe" v={formatVehicleType(detail?.carType)} />
+              <KV
+                k="Loại chuyến"
+                v={detail?.direction === "ROUND_TRIP" ? "Khứ hồi" : "Một chiều"}
+              />
               <KV
                 k="Điểm đón"
                 v={normalizeDisplayAddress(detail?.pickupAddress)}
@@ -718,6 +815,28 @@ function FormInput({
           style={inputStyle}
         />
       )}
+    </label>
+  );
+}
+
+function FormSelect({ label, value, onChange, options = [] }) {
+  return (
+    <label style={{ display: "grid", gap: 6 }}>
+      <span style={{ fontSize: 13, opacity: 0.82, fontWeight: 700 }}>
+        {label}
+      </span>
+
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        style={inputStyle}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </label>
   );
 }
