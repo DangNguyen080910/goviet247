@@ -2,7 +2,10 @@
 import { Router } from "express";
 import { prisma } from "../utils/db.js";
 import { makeAdminController } from "../controllers/adminController.js";
-import { adminHuyChuyen } from "../controllers/adminTripController.js";
+import {
+  adminHuyChuyen,
+  adminDieuChinhThongTinChuyen,
+} from "../controllers/adminTripController.js";
 import {
   requireAdmin,
   requireAdminOrStaff,
@@ -91,6 +94,12 @@ router.get(
 );
 
 router.get("/trips/:id", requireAdminOrStaff, ctrl.getTripDetail);
+
+router.patch(
+  "/trips/:id/manual-adjust",
+  requireAdmin,
+  adminDieuChinhThongTinChuyen,
+);
 
 router.post("/trips/:id/cancel", requireAdmin, adminHuyChuyen);
 

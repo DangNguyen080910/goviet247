@@ -104,3 +104,12 @@ export async function fetchPendingCancelledTrips() {
   });
   return data?.items || data?.trips || [];
 }
+
+export async function manualAdjustTrip(tripId, payload) {
+  const data = await request(`/api/admin/trips/${tripId}/manual-adjust`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+
+  return data;
+}

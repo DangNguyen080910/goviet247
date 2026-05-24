@@ -1,7 +1,10 @@
 // Path: goviet247/apps/web/src/components/admin/TripDetailModal.jsx
 import { useEffect, useMemo, useState } from "react";
 import { getAdminToken } from "../../utils/adminAuth";
-import { normalizeDisplayAddress } from "../../api/adminTrips";
+import {
+  manualAdjustTrip,
+  normalizeDisplayAddress,
+} from "../../api/adminTrips";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
@@ -131,51 +134,64 @@ function getWaitMinutes(detail) {
   return Math.max(0, totalEstimated - totalDrive);
 }
 
-export default function TripDetailModal({ open, tripId, onClose }) {
+export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
   const [dangTai, setDangTai] = useState(true);
   const [loi, setLoi] = useState("");
   const [detail, setDetail] = useState(null);
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [savingAdjust, setSavingAdjust] = useState(false);
+  const [adjustError, setAdjustError] = useState("");
+  const [adjustForm, setAdjustForm] = useState({
+    pickupAddress: "",
+    dropoffAddress: "",
+    distanceKm: "",
+    fareEstimate: "",
+    totalPrice: "",
+    estimatedDurationMinutes: "",
+    outboundDriveMinutes: "",
+    returnDriveMinutes: "",
+    totalDriveMinutes: "",
+    verifiedNote: "",
+  });
+
   const token = useMemo(() => getAdminToken(), []);
+
+  async function taiChiTietChuyen() {
+    try {
+      setDangTai(true);
+      setLoi("");
+      setDetail(null);
+
+      if (!token) throw new Error("Thiếu token admin");
+
+      const res = await fetch(`${API_BASE}/api/admin/trips/${tripId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.message || `HTTP ${res.status}`);
+
+      const trip = data?.trip || data?.data?.trip || data?.tripDetail || data;
+      setDetail(trip);
+    } catch (e) {
+      setLoi(e?.message || "Tải chi tiết chuyến thất bại");
+    } finally {
+      setDangTai(false);
+    }
+  }
 
   useEffect(() => {
     if (!open || !tripId) return;
 
-    let conSong = true;
-
-    async function taiDuLieu() {
-      try {
-        setDangTai(true);
-        setLoi("");
-        setDetail(null);
-
-        if (!token) throw new Error("Thiếu token admin");
-
-        const res = await fetch(`${API_BASE}/api/admin/trips/${tripId}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          cache: "no-store",
-        });
-
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data?.message || `HTTP ${res.status}`);
-
-        // Mềm dẻo với nhiều kiểu response từ BE
-        const trip = data?.trip || data?.data?.trip || data?.tripDetail || data;
-        if (conSong) setDetail(trip);
-      } catch (e) {
-        if (conSong) setLoi(e?.message || "Tải chi tiết chuyến thất bại");
-      } finally {
-        if (conSong) setDangTai(false);
-      }
-    }
-
-    taiDuLieu();
-    return () => {
-      conSong = false;
-    };
+    setIsEditing(false);
+    setAdjustError("");
+    taiChiTietChuyen();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, tripId, token]);
 
   if (!open || !tripId) return null;
@@ -188,6 +204,70 @@ export default function TripDetailModal({ open, tripId, onClose }) {
   const waitMinutes = getWaitMinutes(detail);
   const totalEstimatedMinutes = Number(detail?.estimatedDurationMinutes || 0);
 
+  const canManualAdjust =
+    detail?.status === "PENDING" &&
+    !detail?.driverId &&
+    !detail?.driver &&
+    !detail?.acceptedAt &&
+    !detail?.cancelledAt;
+
+  function openAdjustForm() {
+    setAdjustError("");
+    setAdjustForm({
+      pickupAddress: detail?.pickupAddress || "",
+      dropoffAddress: detail?.dropoffAddress || stops?.[0] || "",
+      distanceKm: detail?.distanceKm ?? "",
+      fareEstimate: detail?.fareEstimate ?? detail?.totalPrice ?? "",
+      totalPrice: detail?.totalPrice ?? "",
+      estimatedDurationMinutes: detail?.estimatedDurationMinutes ?? "",
+      outboundDriveMinutes:
+        detail?.outboundDriveMinutes ?? detail?.totalDriveMinutes ?? "",
+      returnDriveMinutes: detail?.returnDriveMinutes ?? 0,
+      totalDriveMinutes: detail?.totalDriveMinutes ?? "",
+      verifiedNote:
+        detail?.verifiedNote ||
+        "Admin đã xác nhận lại địa chỉ chi tiết và giá cuối với khách.",
+    });
+    setIsEditing(true);
+  }
+
+  function updateAdjustField(field, value) {
+    setAdjustForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  }
+
+  async function submitManualAdjust() {
+    try {
+      setSavingAdjust(true);
+      setAdjustError("");
+
+      const payload = {
+        pickupAddress: adjustForm.pickupAddress,
+        dropoffAddress: adjustForm.dropoffAddress,
+        distanceKm: Number(adjustForm.distanceKm),
+        fareEstimate: Number(adjustForm.fareEstimate),
+        totalPrice: Number(adjustForm.totalPrice),
+        estimatedDurationMinutes: Number(adjustForm.estimatedDurationMinutes),
+        outboundDriveMinutes: Number(adjustForm.outboundDriveMinutes),
+        returnDriveMinutes: Number(adjustForm.returnDriveMinutes || 0),
+        totalDriveMinutes: Number(adjustForm.totalDriveMinutes),
+        verifiedNote: adjustForm.verifiedNote,
+      };
+
+      await manualAdjustTrip(tripId, payload);
+
+      setIsEditing(false);
+      await taiChiTietChuyen();
+      onAdjusted?.();
+    } catch (e) {
+      setAdjustError(e?.message || "Cập nhật thông tin chuyến thất bại");
+    } finally {
+      setSavingAdjust(false);
+    }
+  }
+
   return (
     <div style={overlay} onClick={onClose}>
       <div style={modal} onClick={(e) => e.stopPropagation()}>
@@ -197,9 +277,17 @@ export default function TripDetailModal({ open, tripId, onClose }) {
             <div style={{ fontSize: 12, opacity: 0.8 }}>{tripId}</div>
           </div>
 
-          <button style={btn} onClick={onClose}>
-            Đóng
-          </button>
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            {canManualAdjust && (
+              <button style={btnPrimary} onClick={openAdjustForm}>
+                Cập nhật thông tin chuyến
+              </button>
+            )}
+
+            <button style={btn} onClick={onClose}>
+              Đóng
+            </button>
+          </div>
         </div>
 
         {dangTai && <div>Đang tải…</div>}
@@ -207,6 +295,114 @@ export default function TripDetailModal({ open, tripId, onClose }) {
 
         {!dangTai && !loi && (
           <>
+            {isEditing && (
+              <Section title="Cập nhật thông tin chuyến">
+                <div style={{ display: "grid", gap: 10 }}>
+                  {adjustError && (
+                    <div style={{ color: "#ff7676" }}>{adjustError}</div>
+                  )}
+
+                  <FormInput
+                    label="Điểm đón"
+                    value={adjustForm.pickupAddress}
+                    onChange={(v) => updateAdjustField("pickupAddress", v)}
+                  />
+
+                  <FormInput
+                    label="Điểm trả"
+                    value={adjustForm.dropoffAddress}
+                    onChange={(v) => updateAdjustField("dropoffAddress", v)}
+                  />
+
+                  <FormInput
+                    label="Số km"
+                    type="number"
+                    value={adjustForm.distanceKm}
+                    onChange={(v) => updateAdjustField("distanceKm", v)}
+                  />
+
+                  <FormInput
+                    label="Giá ước tính"
+                    type="number"
+                    value={adjustForm.fareEstimate}
+                    onChange={(v) => updateAdjustField("fareEstimate", v)}
+                  />
+
+                  <FormInput
+                    label="Giá cuối"
+                    type="number"
+                    value={adjustForm.totalPrice}
+                    onChange={(v) => updateAdjustField("totalPrice", v)}
+                  />
+
+                  <FormInput
+                    label="Tổng thời gian dự kiến (phút)"
+                    type="number"
+                    value={adjustForm.estimatedDurationMinutes}
+                    onChange={(v) =>
+                      updateAdjustField("estimatedDurationMinutes", v)
+                    }
+                  />
+
+                  <FormInput
+                    label="Thời gian lái chiều đi (phút)"
+                    type="number"
+                    value={adjustForm.outboundDriveMinutes}
+                    onChange={(v) =>
+                      updateAdjustField("outboundDriveMinutes", v)
+                    }
+                  />
+
+                  <FormInput
+                    label="Thời gian chiều về (phút)"
+                    type="number"
+                    value={adjustForm.returnDriveMinutes}
+                    onChange={(v) => updateAdjustField("returnDriveMinutes", v)}
+                  />
+
+                  <FormInput
+                    label="Tổng thời gian lái xe (phút)"
+                    type="number"
+                    value={adjustForm.totalDriveMinutes}
+                    onChange={(v) => updateAdjustField("totalDriveMinutes", v)}
+                  />
+
+                  <FormInput
+                    label="Ghi chú xác nhận nội bộ"
+                    value={adjustForm.verifiedNote}
+                    onChange={(v) => updateAdjustField("verifiedNote", v)}
+                    multiline
+                  />
+
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: 8,
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <button
+                      style={btn}
+                      disabled={savingAdjust}
+                      onClick={() => {
+                        setIsEditing(false);
+                        setAdjustError("");
+                      }}
+                    >
+                      Huỷ chỉnh
+                    </button>
+
+                    <button
+                      style={btnPrimary}
+                      disabled={savingAdjust}
+                      onClick={submitManualAdjust}
+                    >
+                      {savingAdjust ? "Đang lưu..." : "Lưu cập nhật"}
+                    </button>
+                  </div>
+                </div>
+              </Section>
+            )}
             <Section title="Thông tin chuyến">
               <KV k="Trạng thái" v={formatTripStatus(detail?.status)} />
               <KV k="Thời gian tạo" v={formatNgayGio(detail?.createdAt)} />
@@ -372,6 +568,38 @@ function Section({ title, children }) {
   );
 }
 
+function FormInput({
+  label,
+  value,
+  onChange,
+  type = "text",
+  multiline = false,
+}) {
+  return (
+    <label style={{ display: "grid", gap: 6 }}>
+      <span style={{ fontSize: 13, opacity: 0.82, fontWeight: 700 }}>
+        {label}
+      </span>
+
+      {multiline ? (
+        <textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          rows={3}
+          style={inputStyle}
+        />
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          style={inputStyle}
+        />
+      )}
+    </label>
+  );
+}
+
 function KV({ k, v }) {
   return (
     <div style={row}>
@@ -408,6 +636,16 @@ const header = {
   alignItems: "center",
   justifyContent: "space-between",
   marginBottom: 12,
+};
+
+const btnPrimary = {
+  padding: "8px 12px",
+  borderRadius: 10,
+  border: "1px solid rgba(255,122,24,0.75)",
+  background: "rgba(255,122,24,0.18)",
+  color: "#fff",
+  cursor: "pointer",
+  fontWeight: 800,
 };
 
 const btn = {
@@ -465,3 +703,14 @@ function pill(ok) {
     fontSize: 12,
   };
 }
+
+const inputStyle = {
+  width: "100%",
+  boxSizing: "border-box",
+  borderRadius: 10,
+  border: "1px solid rgba(255,255,255,0.18)",
+  background: "rgba(255,255,255,0.06)",
+  color: "#fff",
+  padding: "10px 12px",
+  outline: "none",
+};

@@ -83,6 +83,7 @@ export default function AdminPendingTrips() {
         open={!!selectedTripId}
         tripId={selectedTripId}
         onClose={() => setSelectedTripId("")}
+        onAdjusted={() => setRefreshKey((k) => k + 1)}
       />
     </Box>
   );
