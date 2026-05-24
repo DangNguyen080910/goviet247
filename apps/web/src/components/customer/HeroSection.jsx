@@ -166,9 +166,11 @@ export default function HeroSection() {
               <Typography
                 sx={{
                   mb: 1,
-                  fontSize: 13,
                   fontWeight: 700,
-                  opacity: 0.92,
+                  fontSize: 13,
+                  px: 1.8,
+                  py: 0.7,
+                  opacity: 0.82,
                 }}
               >
                 📱 Tải ứng dụng GoViet247
