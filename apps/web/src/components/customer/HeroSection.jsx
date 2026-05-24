@@ -1,8 +1,10 @@
 // Path: goviet247/apps/web/src/components/customer/HeroSection.jsx
 import { Box, Container, Typography, Stack, Button } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
+import AppleIcon from "@mui/icons-material/Apple";
+import AndroidIcon from "@mui/icons-material/Android";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import heroImage from "../../assets/xe.png";
 import { HEADER_H, FOOTER_H } from "./CustomerLayout";
 import { getPublicSystemConfig } from "../../api/systemConfig";
@@ -12,6 +14,26 @@ export default function HeroSection() {
   const navigate = useNavigate();
   const [zaloPhone, setZaloPhone] = useState("1900-0000");
   const [heroImageUrl, setHeroImageUrl] = useState("");
+  const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
+
+  const playStoreUrl =
+    "https://play.google.com/store/apps/details?id=com.goviet247.rider";
+
+  const deviceType = useMemo(() => {
+    if (typeof window === "undefined") return "desktop";
+
+    const ua = navigator.userAgent.toLowerCase();
+
+    if (/iphone|ipad|ipod/.test(ua)) {
+      return "ios";
+    }
+
+    if (/android/.test(ua)) {
+      return "android";
+    }
+
+    return "desktop";
+  }, []);
 
   const featuredRoutes = SEO_ROUTES.slice(0, 7);
 
@@ -94,49 +116,123 @@ export default function HeroSection() {
             Giá rõ ràng • Hỗ trợ 24/7 • Phù hợp du lịch, công việc, gia đình
           </Typography>
 
-          <Stack
-            direction="row"
-            spacing={1.2}
-            sx={{ pt: 1, flexWrap: "wrap", rowGap: 1.2 }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                textTransform: "none",
-                borderRadius: 2.5,
-                fontWeight: 900,
-                px: 3,
-                py: 1.2,
-              }}
-              onClick={() => navigate("/dat-xe")}
+          <Stack spacing={1.8} sx={{ pt: 1 }}>
+            <Stack
+              direction="row"
+              spacing={1.2}
+              sx={{ flexWrap: "wrap", rowGap: 1.2 }}
             >
-              Bắt Đầu Đặt Xe
-            </Button>
+              <Button
+                variant="contained"
+                size="large"
+                sx={{
+                  textTransform: "none",
+                  borderRadius: 2.5,
+                  fontWeight: 900,
+                  px: 3,
+                  py: 1.2,
+                }}
+                onClick={() => navigate("/dat-xe")}
+              >
+                Bắt Đầu Đặt Xe
+              </Button>
 
-            <Button
-              variant="outlined"
-              size="large"
-              startIcon={<ChatIcon />}
-              sx={{
-                textTransform: "none",
-                borderRadius: 2.5,
-                fontWeight: 900,
-                px: 3,
-                py: 1.2,
-                color: "white",
-                borderColor: "rgba(255,255,255,0.45)",
-                "&:hover": {
-                  borderColor: "rgba(255,255,255,0.75)",
-                  bgcolor: "rgba(255,255,255,0.06)",
-                },
-              }}
-              href={`https://zalo.me/${zaloPhone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Chat Zalo
-            </Button>
+              <Button
+                variant="outlined"
+                size="large"
+                startIcon={<ChatIcon />}
+                sx={{
+                  textTransform: "none",
+                  borderRadius: 2.5,
+                  fontWeight: 900,
+                  px: 3,
+                  py: 1.2,
+                  color: "white",
+                  borderColor: "rgba(255,255,255,0.45)",
+                  "&:hover": {
+                    borderColor: "rgba(255,255,255,0.75)",
+                    bgcolor: "rgba(255,255,255,0.06)",
+                  },
+                }}
+                href={`https://zalo.me/${zaloPhone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat Zalo
+              </Button>
+            </Stack>
+
+            <Box>
+              <Typography
+                sx={{
+                  mb: 1,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  opacity: 0.92,
+                }}
+              >
+                📱 Tải ứng dụng GoViet247
+              </Typography>
+
+              <Stack
+                direction="row"
+                spacing={1}
+                sx={{
+                  flexWrap: "wrap",
+                  rowGap: 1,
+                }}
+              >
+                {(deviceType === "ios" || deviceType === "desktop") && (
+                  <Button
+                    variant="outlined"
+                    startIcon={<AppleIcon />}
+                    href={appStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: 999,
+                      fontWeight: 800,
+                      color: "white",
+                      borderColor: "rgba(255,255,255,0.35)",
+                      bgcolor: "rgba(255,255,255,0.06)",
+                      backdropFilter: "blur(8px)",
+                      "&:hover": {
+                        borderColor: "rgba(255,255,255,0.7)",
+                        bgcolor: "rgba(255,255,255,0.12)",
+                      },
+                    }}
+                  >
+                    App Store
+                  </Button>
+                )}
+
+                {(deviceType === "android" || deviceType === "desktop") && (
+                  <Button
+                    variant="outlined"
+                    startIcon={<AndroidIcon />}
+                    href={playStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: 999,
+                      fontWeight: 800,
+                      color: "white",
+                      borderColor: "rgba(255,255,255,0.35)",
+                      bgcolor: "rgba(255,255,255,0.06)",
+                      backdropFilter: "blur(8px)",
+                      "&:hover": {
+                        borderColor: "rgba(255,255,255,0.7)",
+                        bgcolor: "rgba(255,255,255,0.12)",
+                      },
+                    }}
+                  >
+                    Google Play
+                  </Button>
+                )}
+              </Stack>
+            </Box>
           </Stack>
 
           <Box sx={{ pt: 1.2 }}>
