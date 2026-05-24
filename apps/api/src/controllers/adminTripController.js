@@ -168,6 +168,16 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
     const dropoffAddress = String(req.body?.dropoffAddress || "").trim();
     const verifiedNote = String(req.body?.verifiedNote || "").trim();
 
+    const carType = String(req.body?.carType || "").trim();
+    const direction = String(req.body?.direction || "").trim();
+
+    const pickupTime = req.body?.pickupTime
+      ? new Date(req.body.pickupTime)
+      : null;
+    const returnTime = req.body?.returnTime
+      ? new Date(req.body.returnTime)
+      : null;
+
     const rawStops = Array.isArray(req.body?.stops) ? req.body.stops : [];
 
     const distanceKm = Number(req.body?.distanceKm);
@@ -183,6 +193,46 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         success: false,
         message: "Vui lòng nhập điểm đón",
       });
+    }
+
+    const validCarTypes = ["CAR_5", "CAR_7", "CAR_16"];
+    const validDirections = ["ONE_WAY", "ROUND_TRIP"];
+
+    if (!validCarTypes.includes(carType)) {
+      return res.status(400).json({
+        success: false,
+        message: "Loại xe không hợp lệ",
+      });
+    }
+
+    if (!validDirections.includes(direction)) {
+      return res.status(400).json({
+        success: false,
+        message: "Loại chuyến không hợp lệ",
+      });
+    }
+
+    if (!pickupTime || Number.isNaN(pickupTime.getTime())) {
+      return res.status(400).json({
+        success: false,
+        message: "Giờ đón không hợp lệ",
+      });
+    }
+
+    if (direction === "ROUND_TRIP") {
+      if (!returnTime || Number.isNaN(returnTime.getTime())) {
+        return res.status(400).json({
+          success: false,
+          message: "Vui lòng nhập giờ về cho chuyến khứ hồi",
+        });
+      }
+
+      if (returnTime <= pickupTime) {
+        return res.status(400).json({
+          success: false,
+          message: "Giờ về phải sau giờ đón",
+        });
+      }
     }
 
     const normalizedStops = rawStops
@@ -268,6 +318,10 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           cancelledAt: true,
           pickupAddress: true,
           dropoffAddress: true,
+          carType: true,
+          direction: true,
+          pickupTime: true,
+          returnTime: true,
           distanceKm: true,
           fareEstimate: true,
           totalPrice: true,
@@ -329,6 +383,10 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         data: {
           pickupAddress,
           dropoffAddress: finalDropoffAddress,
+          carType,
+          direction,
+          pickupTime,
+          returnTime: direction === "ROUND_TRIP" ? returnTime : null,
           distanceKm,
           fareEstimate,
           totalPrice: Math.round(totalPrice),
@@ -344,6 +402,10 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           status: true,
           pickupAddress: true,
           dropoffAddress: true,
+          carType: true,
+          direction: true,
+          pickupTime: true,
+          returnTime: true,
           distanceKm: true,
           fareEstimate: true,
           totalPrice: true,
@@ -380,6 +442,14 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         "Admin điều chỉnh thông tin chuyến.",
         `Điểm đón: ${trip.pickupAddress} -> ${pickupAddress}`,
         `Điểm đến: ${oldStopsText || trip.dropoffAddress} -> ${newStopsText}`,
+        `Loại xe: ${trip.carType} -> ${carType}`,
+        `Loại chuyến: ${trip.direction} -> ${direction}`,
+        `Giờ đón: ${trip.pickupTime?.toISOString?.() || "-"} -> ${pickupTime.toISOString()}`,
+        `Giờ về: ${trip.returnTime?.toISOString?.() || "-"} -> ${
+          direction === "ROUND_TRIP" && returnTime
+            ? returnTime.toISOString()
+            : "-"
+        }`,
         `KM: ${trip.distanceKm} -> ${distanceKm}`,
         `Giá cuối: ${trip.totalPrice} -> ${Math.round(totalPrice)}`,
         `Ghi chú: ${verifiedNote}`,
