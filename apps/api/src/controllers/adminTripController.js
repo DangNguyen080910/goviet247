@@ -146,7 +146,9 @@ export async function adminHuyChuyen(req, res) {
 
 // PATCH /api/admin/trips/:id/manual-adjust
 // Body: {
-//   pickupAddress, dropoffAddress,
+//   pickupAddress,
+//   dropoffAddress,
+//   stops: [{ id?, seq?, address }],
 //   distanceKm, fareEstimate, totalPrice,
 //   estimatedDurationMinutes, outboundDriveMinutes, returnDriveMinutes, totalDriveMinutes,
 //   verifiedNote
@@ -166,6 +168,8 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
     const dropoffAddress = String(req.body?.dropoffAddress || "").trim();
     const verifiedNote = String(req.body?.verifiedNote || "").trim();
 
+    const rawStops = Array.isArray(req.body?.stops) ? req.body.stops : [];
+
     const distanceKm = Number(req.body?.distanceKm);
     const fareEstimate = Number(req.body?.fareEstimate);
     const totalPrice = Number(req.body?.totalPrice);
@@ -181,12 +185,28 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
       });
     }
 
-    if (!dropoffAddress) {
+    const normalizedStops = rawStops
+      .map((stop, index) => ({
+        id: stop?.id ? String(stop.id) : "",
+        seq: Number.isFinite(Number(stop?.seq)) ? Number(stop.seq) : index + 1,
+        address: String(stop?.address || "").trim(),
+      }))
+      .filter((stop) => stop.address);
+
+    if (!dropoffAddress && normalizedStops.length === 0) {
       return res.status(400).json({
         success: false,
-        message: "Vui lòng nhập điểm trả",
+        message: "Vui lòng nhập ít nhất một điểm đến",
       });
     }
+
+    const finalStops =
+      normalizedStops.length > 0
+        ? normalizedStops
+        : [{ id: "", seq: 1, address: dropoffAddress }];
+
+    const finalDropoffAddress =
+      finalStops[finalStops.length - 1]?.address || dropoffAddress;
 
     if (!Number.isFinite(distanceKm) || distanceKm <= 0) {
       return res.status(400).json({
@@ -255,6 +275,14 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           outboundDriveMinutes: true,
           returnDriveMinutes: true,
           totalDriveMinutes: true,
+          stops: {
+            orderBy: { seq: "asc" },
+            select: {
+              id: true,
+              seq: true,
+              address: true,
+            },
+          },
         },
       });
 
@@ -282,11 +310,25 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         throw err;
       }
 
+      await tx.tripStop.deleteMany({
+        where: { tripId },
+      });
+
+      await tx.tripStop.createMany({
+        data: finalStops.map((stop, index) => ({
+          tripId,
+          seq: index + 1,
+          address: stop.address,
+          lat: null,
+          lng: null,
+        })),
+      });
+
       const updated = await tx.trip.update({
         where: { id: tripId },
         data: {
           pickupAddress,
-          dropoffAddress,
+          dropoffAddress: finalDropoffAddress,
           distanceKm,
           fareEstimate,
           totalPrice: Math.round(totalPrice),
@@ -313,13 +355,31 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           riderId: true,
           driverId: true,
           updatedAt: true,
+          stops: {
+            orderBy: { seq: "asc" },
+            select: {
+              id: true,
+              seq: true,
+              address: true,
+              lat: true,
+              lng: true,
+            },
+          },
         },
       });
+
+      const oldStopsText = Array.isArray(trip.stops)
+        ? trip.stops.map((s) => `${s.seq}. ${s.address}`).join(" | ")
+        : "";
+
+      const newStopsText = finalStops
+        .map((s, index) => `${index + 1}. ${s.address}`)
+        .join(" | ");
 
       const logNote = [
         "Admin điều chỉnh thông tin chuyến.",
         `Điểm đón: ${trip.pickupAddress} -> ${pickupAddress}`,
-        `Điểm trả: ${trip.dropoffAddress} -> ${dropoffAddress}`,
+        `Điểm đến: ${oldStopsText || trip.dropoffAddress} -> ${newStopsText}`,
         `KM: ${trip.distanceKm} -> ${distanceKm}`,
         `Giá cuối: ${trip.totalPrice} -> ${Math.round(totalPrice)}`,
         `Ghi chú: ${verifiedNote}`,

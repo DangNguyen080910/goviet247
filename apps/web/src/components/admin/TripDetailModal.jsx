@@ -153,6 +153,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     returnDriveMinutes: "",
     totalDriveMinutes: "",
     verifiedNote: "",
+    stops: [],
   });
 
   const token = useMemo(() => getAdminToken(), []);
@@ -215,7 +216,24 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     setAdjustError("");
     setAdjustForm({
       pickupAddress: detail?.pickupAddress || "",
-      dropoffAddress: detail?.dropoffAddress || stops?.[0] || "",
+      dropoffAddress: detail?.dropoffAddress || stops?.[stops.length - 1] || "",
+      stops:
+        Array.isArray(detail?.stops) && detail.stops.length > 0
+          ? detail.stops
+              .slice()
+              .sort((a, b) => Number(a?.seq || 0) - Number(b?.seq || 0))
+              .map((s, index) => ({
+                id: s?.id || "",
+                seq: Number(s?.seq || index + 1),
+                address: s?.address || "",
+              }))
+          : [
+              {
+                id: "",
+                seq: 1,
+                address: detail?.dropoffAddress || "",
+              },
+            ],
       distanceKm: detail?.distanceKm ?? "",
       fareEstimate: detail?.fareEstimate ?? detail?.totalPrice ?? "",
       totalPrice: detail?.totalPrice ?? "",
@@ -238,14 +256,79 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     }));
   }
 
+  function updateStopAddress(index, value) {
+    setAdjustForm((prev) => {
+      const nextStops = Array.isArray(prev.stops) ? [...prev.stops] : [];
+      nextStops[index] = {
+        ...(nextStops[index] || {}),
+        seq: index + 1,
+        address: value,
+      };
+
+      return {
+        ...prev,
+        stops: nextStops,
+        dropoffAddress: nextStops[nextStops.length - 1]?.address || "",
+      };
+    });
+  }
+
+  function addStopInput() {
+    setAdjustForm((prev) => {
+      const nextStops = Array.isArray(prev.stops) ? [...prev.stops] : [];
+      nextStops.push({
+        id: "",
+        seq: nextStops.length + 1,
+        address: "",
+      });
+
+      return {
+        ...prev,
+        stops: nextStops,
+      };
+    });
+  }
+
+  function removeStopInput(index) {
+    setAdjustForm((prev) => {
+      const nextStops = Array.isArray(prev.stops) ? [...prev.stops] : [];
+      nextStops.splice(index, 1);
+
+      const normalizedStops = nextStops.map((stop, idx) => ({
+        ...stop,
+        seq: idx + 1,
+      }));
+
+      return {
+        ...prev,
+        stops: normalizedStops,
+        dropoffAddress:
+          normalizedStops[normalizedStops.length - 1]?.address || "",
+      };
+    });
+  }
+
   async function submitManualAdjust() {
     try {
       setSavingAdjust(true);
       setAdjustError("");
 
+      const cleanStops = Array.isArray(adjustForm.stops)
+        ? adjustForm.stops
+            .map((stop, index) => ({
+              id: stop?.id || "",
+              seq: index + 1,
+              address: String(stop?.address || "").trim(),
+            }))
+            .filter((stop) => stop.address)
+        : [];
+
       const payload = {
         pickupAddress: adjustForm.pickupAddress,
-        dropoffAddress: adjustForm.dropoffAddress,
+        dropoffAddress:
+          cleanStops[cleanStops.length - 1]?.address ||
+          adjustForm.dropoffAddress,
+        stops: cleanStops,
         distanceKm: Number(adjustForm.distanceKm),
         fareEstimate: Number(adjustForm.fareEstimate),
         totalPrice: Number(adjustForm.totalPrice),
@@ -308,11 +391,50 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                     onChange={(v) => updateAdjustField("pickupAddress", v)}
                   />
 
-                  <FormInput
-                    label="Điểm trả"
-                    value={adjustForm.dropoffAddress}
-                    onChange={(v) => updateAdjustField("dropoffAddress", v)}
-                  />
+                  <div style={{ display: "grid", gap: 8 }}>
+                    <div
+                      style={{ fontSize: 13, opacity: 0.82, fontWeight: 700 }}
+                    >
+                      Các điểm đến
+                    </div>
+
+                    {(Array.isArray(adjustForm.stops)
+                      ? adjustForm.stops
+                      : []
+                    ).map((stop, index) => (
+                      <div
+                        key={`${stop?.id || "new"}-${index}`}
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: "1fr auto",
+                          gap: 8,
+                          alignItems: "end",
+                        }}
+                      >
+                        <FormInput
+                          label={`Điểm đến ${index + 1}`}
+                          value={stop?.address || ""}
+                          onChange={(v) => updateStopAddress(index, v)}
+                        />
+
+                        {(adjustForm.stops || []).length > 1 && (
+                          <button
+                            type="button"
+                            style={btnDanger}
+                            onClick={() => removeStopInput(index)}
+                          >
+                            Xoá
+                          </button>
+                        )}
+                      </div>
+                    ))}
+
+                    <div>
+                      <button type="button" style={btn} onClick={addStopInput}>
+                        + Thêm điểm đến
+                      </button>
+                    </div>
+                  </div>
 
                   <FormInput
                     label="Số km"
@@ -643,6 +765,16 @@ const btnPrimary = {
   borderRadius: 10,
   border: "1px solid rgba(255,122,24,0.75)",
   background: "rgba(255,122,24,0.18)",
+  color: "#fff",
+  cursor: "pointer",
+  fontWeight: 800,
+};
+
+const btnDanger = {
+  padding: "8px 12px",
+  borderRadius: 10,
+  border: "1px solid rgba(255,90,90,0.75)",
+  background: "rgba(255,90,90,0.12)",
   color: "#fff",
   cursor: "pointer",
   fontWeight: 800,
