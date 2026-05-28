@@ -35,7 +35,7 @@ export default function HeroSection() {
     return "desktop";
   }, []);
 
-  const featuredRoutes = SEO_ROUTES.slice(0, 7);
+  const featuredRoutes = SEO_ROUTES.slice(0, 12);
 
   useEffect(() => {
     async function loadConfig() {
