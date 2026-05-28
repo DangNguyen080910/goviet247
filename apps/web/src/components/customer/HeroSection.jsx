@@ -246,7 +246,7 @@ export default function HeroSection() {
                 opacity: 0.95,
               }}
             >
-              Đặt xe đi tỉnh, về TP.HCM hoặc liên tỉnh theo nhu cầu
+              Đặt xe TP.HCM đi tỉnh, tỉnh về TP.HCM và liên tỉnh theo nhu cầu
             </Typography>
 
             <Typography
@@ -257,8 +257,7 @@ export default function HeroSection() {
                 maxWidth: 680,
               }}
             >
-              Các tuyến bên dưới chỉ là gợi ý phổ biến. Bạn có thể nhập bất kỳ
-              điểm đón, điểm đến nào khi đặt xe.
+              GoViet247 hỗ trợ tuyến TP.HCM đi tỉnh, tỉnh về TP.HCM và cả các tuyến liên tỉnh như Đà Lạt → Phan Thiết, Vũng Tàu → Cần Thơ... Bạn có thể nhập bất kỳ điểm đón, điểm đến nào khi đặt xe.
             </Typography>
 
             <Stack
