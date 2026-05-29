@@ -37,6 +37,13 @@ export default function HeroSection() {
 
   const featuredRoutes = SEO_ROUTES.slice(0, 12);
 
+  const mainSeoLinks = [
+    { label: "Xe liên tỉnh", path: "/xe-lien-tinh" },
+    { label: "TP.HCM đi các tỉnh", path: "/tp-hcm-di-cac-tinh" },
+    { label: "Các tỉnh đi TP.HCM", path: "/cac-tinh-di-tp-hcm" },
+    { label: "Thuê xe đi tỉnh", path: "/thue-xe-di-tinh" },
+  ];
+
   useEffect(() => {
     async function loadConfig() {
       try {
@@ -257,7 +264,9 @@ export default function HeroSection() {
                 maxWidth: 680,
               }}
             >
-              GoViet247 hỗ trợ tuyến TP.HCM đi tỉnh, tỉnh về TP.HCM và cả các tuyến liên tỉnh như Đà Lạt → Phan Thiết, Vũng Tàu → Cần Thơ... Bạn có thể nhập bất kỳ điểm đón, điểm đến nào khi đặt xe.
+              GoViet247 hỗ trợ tuyến TP.HCM đi tỉnh, tỉnh về TP.HCM và cả các
+              tuyến liên tỉnh như Đà Lạt → Phan Thiết, Vũng Tàu → Cần Thơ... Bạn
+              có thể nhập bất kỳ điểm đón, điểm đến nào khi đặt xe.
             </Typography>
 
             <Stack
@@ -265,6 +274,30 @@ export default function HeroSection() {
               spacing={1}
               sx={{ flexWrap: "wrap", rowGap: 1 }}
             >
+              {mainSeoLinks.map((item) => (
+                <Button
+                  key={item.path}
+                  component={Link}
+                  to={item.path}
+                  variant="contained"
+                  size="small"
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: 999,
+                    fontWeight: 900,
+                    bgcolor: "rgba(255,255,255,0.20)",
+                    color: "white",
+                    boxShadow: "none",
+                    "&:hover": {
+                      bgcolor: "rgba(255,255,255,0.28)",
+                      boxShadow: "none",
+                    },
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+
               {featuredRoutes.map((route) => (
                 <Button
                   key={route.key}
