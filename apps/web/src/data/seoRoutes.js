@@ -219,6 +219,41 @@ export const SEO_ROUTES = [
 
   // ==== GENERIC SEO ====
   {
+    key: "xe-lien-tinh",
+    path: "xe-lien-tinh",
+    from: "Liên tỉnh",
+    to: "theo nhu cầu",
+    title: "Xe liên tỉnh giá tốt, xe riêng đưa đón tận nơi",
+    description:
+      "GoViet247 hỗ trợ đặt xe liên tỉnh, thuê xe riêng đi tỉnh, đi tỉnh về TP.HCM và các tuyến liên tỉnh theo nhu cầu.",
+    routeText: "Các tỉnh ↔ các tỉnh",
+    duration: "tùy tuyến",
+  },
+
+  {
+    key: "tp-hcm-di-cac-tinh",
+    path: "tp-hcm-di-cac-tinh",
+    from: "TP.HCM",
+    to: "các tỉnh",
+    title: "Xe từ TP.HCM đi các tỉnh, thuê xe riêng giá rõ ràng",
+    description:
+      "Đặt xe riêng từ TP.HCM đi các tỉnh, xe 5 chỗ, 7 chỗ, 16 chỗ, hỗ trợ đi một chiều hoặc khứ hồi.",
+    routeText: "TP.HCM → các tỉnh",
+    duration: "tùy tuyến",
+  },
+
+  {
+    key: "cac-tinh-di-tp-hcm",
+    path: "cac-tinh-di-tp-hcm",
+    from: "Các tỉnh",
+    to: "TP.HCM",
+    title: "Xe các tỉnh đi TP.HCM, thuê xe riêng về Sài Gòn",
+    description:
+      "GoViet247 hỗ trợ đặt xe từ các tỉnh về TP.HCM, đón tận nơi, giá tính trước khi đặt, không ghép khách.",
+    routeText: "Các tỉnh → TP.HCM",
+    duration: "tùy tuyến",
+  },
+  {
     key: "di-tinh",
     path: "thue-xe-di-tinh",
     from: "TP.HCM",
