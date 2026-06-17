@@ -64,12 +64,17 @@ function sanitizeSmsTextForLog(text) {
 }
 
 async function sendAwsSmsOnce({ to, text }) {
-  const command = new SendTextMessageCommand({
+  const params = {
     DestinationPhoneNumber: to,
     MessageBody: text,
     MessageType: MESSAGE_TYPE,
-    OriginationIdentity: SENDER_ID,
-  });
+  };
+
+  if (SENDER_ID && SENDER_ID.trim()) {
+    params.OriginationIdentity = SENDER_ID.trim();
+  }
+
+  const command = new SendTextMessageCommand(params);
 
   const response = await awsClient.send(command);
 
