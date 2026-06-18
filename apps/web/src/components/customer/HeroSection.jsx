@@ -65,11 +65,28 @@ export default function HeroSection() {
       sx={{
         position: "relative",
         width: "100%",
-        height: `calc(100dvh - ${HEADER_H}px - ${FOOTER_H}px)`,
-        minHeight: 620,
+
+        height: {
+          xs: "auto",
+          md: `calc(100dvh - ${HEADER_H}px - ${FOOTER_H}px)`,
+        },
+
+        minHeight: {
+          xs: `calc(100dvh - ${HEADER_H}px - ${FOOTER_H}px)`,
+          md: 620,
+        },
+
         display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
+
+        alignItems: {
+          xs: "flex-start",
+          md: "center",
+        },
+
+        overflow: {
+          xs: "visible",
+          md: "hidden",
+        },
         backgroundImage: `url(${heroImageUrl || heroImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -99,14 +116,21 @@ export default function HeroSection() {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={2.2} sx={{ maxWidth: 820, py: { xs: 6, md: 10 } }}>
+        <Stack
+          spacing={{ xs: 1.6, md: 2.2 }}
+          sx={{
+            maxWidth: 820,
+            pt: { xs: 4, md: 10 },
+            pb: { xs: 4, md: 10 },
+          }}
+        >
           <Typography
             variant="h2"
             sx={{
               fontWeight: 900,
               letterSpacing: -0.6,
-              fontSize: { xs: 34, sm: 46, md: 60 },
-              lineHeight: 1.05,
+              fontSize: { xs: 30, sm: 46, md: 60 },
+              lineHeight: { xs: 1.12, md: 1.05 },
               textShadow: "0 10px 30px rgba(0,0,0,0.35)",
             }}
           >
