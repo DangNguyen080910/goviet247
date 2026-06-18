@@ -156,6 +156,15 @@ export default function HeroSection() {
           >
             Giá rõ ràng • Hỗ trợ 24/7 • Phù hợp du lịch, công việc, gia đình
           </Typography>
+          <Typography
+            sx={{
+              fontSize: { xs: 14, sm: 16, md: 18 },
+              opacity: 0.95,
+              maxWidth: 680,
+            }}
+          >
+            Báo giá trước · Không cần đặt cọc · Thanh toán sau chuyến đi
+          </Typography>
 
           <Stack spacing={1.8} sx={{ pt: 1 }}>
             <Stack
