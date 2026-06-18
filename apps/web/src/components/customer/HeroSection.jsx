@@ -83,7 +83,8 @@ export default function HeroSection() {
           md: "center",
         },
 
-        overflow: {
+        overflowX: "hidden",
+        overflowY: {
           xs: "visible",
           md: "hidden",
         },
@@ -115,7 +116,16 @@ export default function HeroSection() {
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          width: "100%",
+          maxWidth: "100%",
+          overflowX: "hidden",
+        }}
+      >
         <Stack
           spacing={{ xs: 1.6, md: 2.2 }}
           sx={{
@@ -150,8 +160,11 @@ export default function HeroSection() {
           <Stack spacing={1.8} sx={{ pt: 1 }}>
             <Stack
               direction="row"
-              spacing={1.2}
-              sx={{ flexWrap: "wrap", rowGap: 1.2 }}
+              sx={{
+                flexWrap: "wrap",
+                gap: 1.2,
+                maxWidth: "100%",
+              }}
             >
               <Button
                 variant="contained"
@@ -209,10 +222,10 @@ export default function HeroSection() {
 
               <Stack
                 direction="row"
-                spacing={1}
                 sx={{
                   flexWrap: "wrap",
-                  rowGap: 1,
+                  gap: 1,
+                  maxWidth: "100%",
                 }}
               >
                 {(deviceType === "ios" || deviceType === "desktop") && (
@@ -295,8 +308,12 @@ export default function HeroSection() {
 
             <Stack
               direction="row"
-              spacing={1}
-              sx={{ flexWrap: "wrap", rowGap: 1 }}
+              sx={{
+                flexWrap: "wrap",
+                gap: 1,
+                maxWidth: "100%",
+                overflowX: "hidden",
+              }}
             >
               {mainSeoLinks.map((item) => (
                 <Button
