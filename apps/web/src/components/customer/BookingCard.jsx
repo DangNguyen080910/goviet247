@@ -1201,6 +1201,8 @@ export default function BookingCard() {
         ? option
         : await getPlaceDetail(option.placeId);
 
+      console.log("SELECTED DETAIL", detail);
+
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? detail : p));
 
       setStopPlaces(nextStopPlaces);
@@ -1870,7 +1872,6 @@ export default function BookingCard() {
                 </Box>
 
                 <Stack spacing={0.6}>
-
                   <Typography variant="body2" sx={{ opacity: 0.78 }}>
                     Vui lòng chọn địa chỉ từ danh sách gợi ý để hệ thống tính
                     giá chính xác.
