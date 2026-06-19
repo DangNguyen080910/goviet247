@@ -16,6 +16,15 @@ const OTP_FALLBACK_ON_SMS_FAIL =
     .trim()
     .toLowerCase() === "true";
 
+const APP_REVIEW_PHONE_E164 =
+  process.env.APP_REVIEW_PHONE_E164 || "+84901234567";
+
+const APP_REVIEW_OTP = process.env.APP_REVIEW_OTP || "123456";
+
+function isAppReviewPhone(e164) {
+  return String(e164 || "").trim() === APP_REVIEW_PHONE_E164;
+}
+
 // =====================================================
 // HELPER CHUNG
 // =====================================================
@@ -159,9 +168,9 @@ async function ensureRiderProfile(tx, userId) {
 export async function requestOtp(e164, appRole = "RIDER") {
   const normalizedRole = normalizeAppRole(appRole);
 
-  const isTestMode = process.env.OTP_TEST_MODE === "true";
-  const code = isTestMode ? "123456" : randomCode();
-  
+  const isAppReviewLogin = isAppReviewPhone(e164);
+  const code = isAppReviewLogin ? APP_REVIEW_OTP : randomCode();
+
   const codeHash = await bcrypt.hash(code, 10);
 
   const now = new Date();
@@ -191,17 +200,19 @@ export async function requestOtp(e164, appRole = "RIDER") {
     },
   });
 
-  await sendOtpSmsOrThrow({
-    to: e164,
-    text: `[GoViet247] Ma OTP cua ban la ${code}. Hieu luc ${TTL_SEC} giay.`,
-    otpCode: code,
-    purpose: "AUTH",
-    rollback: async () => {
-      await prisma.otpSession.delete({
-        where: { id: session.id },
-      });
-    },
-  });
+  if (!isAppReviewLogin) {
+    await sendOtpSmsOrThrow({
+      to: e164,
+      text: `[GoViet247] Ma OTP cua ban la ${code}. Hieu luc ${TTL_SEC} giay.`,
+      otpCode: code,
+      purpose: "AUTH",
+      rollback: async () => {
+        await prisma.otpSession.delete({
+          where: { id: session.id },
+        });
+      },
+    });
+  }
 
   return {
     sessionId: session.id,
