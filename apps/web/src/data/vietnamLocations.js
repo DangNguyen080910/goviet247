@@ -1,3 +1,4 @@
+// apps/web/src/data/vietnamLocations.js
 const VIETNAM_LOCATIONS = [
   {
   name: "Đồng Xoài - Bình Phước",

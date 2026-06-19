@@ -1201,10 +1201,6 @@ export default function BookingCard() {
         ? option
         : await getPlaceDetail(option.placeId);
 
-      console.log("SELECTED DETAIL", detail);
-      console.log("OPTION =", option);
-      console.log("DETAIL =", detail);
-
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? detail : p));
 
       setStopPlaces(nextStopPlaces);
