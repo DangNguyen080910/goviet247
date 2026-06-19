@@ -57,6 +57,10 @@ import { getPublicTripConfig } from "../../api/publicConfig";
 import { requestOtp, verifyOtp, getMe } from "../../api/auth";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
 import { searchPlaces, getPlaceDetail, getRoute } from "../../api/maps";
+import {
+  searchVietnamLocations,
+  isVietnamLocationOption,
+} from "../../data/vietnamLocations";
 
 const DEFAULT_PUBLIC_CONFIG = {
   tripConfig: {
@@ -348,6 +352,25 @@ export default function BookingCard() {
     return autocompleteCacheRef.current.get(key) || null;
   };
 
+  const mergeVietnamLocationOptions = (keyword, googleItems = []) => {
+    const vietnamItems = searchVietnamLocations(keyword, 8);
+
+    const seenPlaceIds = new Set();
+
+    return [...vietnamItems, ...(Array.isArray(googleItems) ? googleItems : [])]
+      .filter((item) => {
+        if (!item?.placeId) return false;
+
+        if (seenPlaceIds.has(item.placeId)) {
+          return false;
+        }
+
+        seenPlaceIds.add(item.placeId);
+        return true;
+      })
+      .slice(0, 15);
+  };
+
   const setCachedAutocompleteItems = (keyword, lat, lng, items) => {
     const key = buildAutocompleteCacheKey(keyword, lat, lng);
 
@@ -616,10 +639,11 @@ export default function BookingCard() {
       try {
         setPickupLoading(true);
 
-        const items = await searchPlaces(keyword, { lat, lng });
+        const googleItems = await searchPlaces(keyword, { lat, lng });
+        const mergedItems = mergeVietnamLocationOptions(keyword, googleItems);
 
-        setPickupOptions(items);
-        setCachedAutocompleteItems(keyword, lat, lng, items);
+        setPickupOptions(mergedItems);
+        setCachedAutocompleteItems(keyword, lat, lng, mergedItems);
       } catch {
         setPickupOptions([]);
       } finally {
@@ -663,12 +687,13 @@ export default function BookingCard() {
         try {
           setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
 
-          const items = await searchPlaces(keyword, { lat, lng });
+          const googleItems = await searchPlaces(keyword, { lat, lng });
+          const mergedItems = mergeVietnamLocationOptions(keyword, googleItems);
 
           setStopOptions((prev) =>
-            prev.map((oldItems, i) => (i === idx ? items : oldItems)),
+            prev.map((oldItems, i) => (i === idx ? mergedItems : oldItems)),
           );
-          setCachedAutocompleteItems(keyword, lat, lng, items);
+          setCachedAutocompleteItems(keyword, lat, lng, mergedItems);
         } catch {
           setStopOptions((prev) =>
             prev.map((oldItems, i) => (i === idx ? [] : oldItems)),
@@ -1130,7 +1155,9 @@ export default function BookingCard() {
     try {
       setPickupLoading(true);
 
-      const detail = await getPlaceDetail(option.placeId);
+      const detail = isVietnamLocationOption(option)
+        ? option
+        : await getPlaceDetail(option.placeId);
 
       setPickupPlace(detail);
       setPickupAddress(option?.fullAddress || detail?.fullAddress || "");
@@ -1170,7 +1197,9 @@ export default function BookingCard() {
     try {
       setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
 
-      const detail = await getPlaceDetail(option.placeId);
+      const detail = isVietnamLocationOption(option)
+        ? option
+        : await getPlaceDetail(option.placeId);
 
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? detail : p));
 
@@ -1841,9 +1870,6 @@ export default function BookingCard() {
                 </Box>
 
                 <Stack spacing={0.6}>
-                  <Typography variant="body2" sx={{ opacity: 0.78 }}>
-                    Đang ưu tiên gợi ý gần vị trí hiện tại của bạn.
-                  </Typography>
 
                   <Typography variant="body2" sx={{ opacity: 0.78 }}>
                     Vui lòng chọn địa chỉ từ danh sách gợi ý để hệ thống tính
