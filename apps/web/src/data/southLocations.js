@@ -1,2 +1,1879 @@
 // apps/web/src/data/southLocations.js
-export const SOUTH_LOCATIONS = [];
+
+const loc = ({
+  provinceSlug,
+  locationSlug,
+  name,
+  fullAddress,
+  shortAddress,
+  maskedAddress,
+  lat,
+  lng,
+  keywords,
+}) => ({
+  placeId: `goviet247:south:${provinceSlug}:${locationSlug}`,
+  name,
+  fullAddress,
+  shortAddress,
+  maskedAddress,
+  lat,
+  lng,
+  keywords,
+});
+
+export const SOUTH_LOCATIONS = [
+    // =========================
+  // TP.HCM
+  // =========================
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-1",
+    name: "Quận 1 - TP.HCM",
+    fullAddress: "Quận 1, TP.HCM, Việt Nam",
+    shortAddress: "Quận 1",
+    maskedAddress: "TP.HCM",
+    lat: 10.7756,
+    lng: 106.7009,
+    keywords: ["quan 1", "quận 1", "q1", "sai gon", "sài gòn", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-3",
+    name: "Quận 3 - TP.HCM",
+    fullAddress: "Quận 3, TP.HCM, Việt Nam",
+    shortAddress: "Quận 3",
+    maskedAddress: "TP.HCM",
+    lat: 10.7844,
+    lng: 106.6844,
+    keywords: ["quan 3", "quận 3", "q3", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-4",
+    name: "Quận 4 - TP.HCM",
+    fullAddress: "Quận 4, TP.HCM, Việt Nam",
+    shortAddress: "Quận 4",
+    maskedAddress: "TP.HCM",
+    lat: 10.7578,
+    lng: 106.7063,
+    keywords: ["quan 4", "quận 4", "q4", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-5",
+    name: "Quận 5 - TP.HCM",
+    fullAddress: "Quận 5, TP.HCM, Việt Nam",
+    shortAddress: "Quận 5",
+    maskedAddress: "TP.HCM",
+    lat: 10.7540,
+    lng: 106.6634,
+    keywords: ["quan 5", "quận 5", "q5", "cho lon", "chợ lớn", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-6",
+    name: "Quận 6 - TP.HCM",
+    fullAddress: "Quận 6, TP.HCM, Việt Nam",
+    shortAddress: "Quận 6",
+    maskedAddress: "TP.HCM",
+    lat: 10.7460,
+    lng: 106.6357,
+    keywords: ["quan 6", "quận 6", "q6", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-7",
+    name: "Quận 7 - TP.HCM",
+    fullAddress: "Quận 7, TP.HCM, Việt Nam",
+    shortAddress: "Quận 7",
+    maskedAddress: "TP.HCM",
+    lat: 10.7326,
+    lng: 106.7219,
+    keywords: ["quan 7", "quận 7", "q7", "phu my hung", "phú mỹ hưng", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-8",
+    name: "Quận 8 - TP.HCM",
+    fullAddress: "Quận 8, TP.HCM, Việt Nam",
+    shortAddress: "Quận 8",
+    maskedAddress: "TP.HCM",
+    lat: 10.7241,
+    lng: 106.6286,
+    keywords: ["quan 8", "quận 8", "q8", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-10",
+    name: "Quận 10 - TP.HCM",
+    fullAddress: "Quận 10, TP.HCM, Việt Nam",
+    shortAddress: "Quận 10",
+    maskedAddress: "TP.HCM",
+    lat: 10.7732,
+    lng: 106.6678,
+    keywords: ["quan 10", "quận 10", "q10", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-11",
+    name: "Quận 11 - TP.HCM",
+    fullAddress: "Quận 11, TP.HCM, Việt Nam",
+    shortAddress: "Quận 11",
+    maskedAddress: "TP.HCM",
+    lat: 10.7639,
+    lng: 106.6431,
+    keywords: ["quan 11", "quận 11", "q11", "dam sen", "đầm sen", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "quan-12",
+    name: "Quận 12 - TP.HCM",
+    fullAddress: "Quận 12, TP.HCM, Việt Nam",
+    shortAddress: "Quận 12",
+    maskedAddress: "TP.HCM",
+    lat: 10.8672,
+    lng: 106.6413,
+    keywords: ["quan 12", "quận 12", "q12", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "binh-thanh",
+    name: "Bình Thạnh - TP.HCM",
+    fullAddress: "Bình Thạnh, TP.HCM, Việt Nam",
+    shortAddress: "Bình Thạnh",
+    maskedAddress: "TP.HCM",
+    lat: 10.8106,
+    lng: 106.7091,
+    keywords: ["binh thanh", "bình thạnh", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "phu-nhuan",
+    name: "Phú Nhuận - TP.HCM",
+    fullAddress: "Phú Nhuận, TP.HCM, Việt Nam",
+    shortAddress: "Phú Nhuận",
+    maskedAddress: "TP.HCM",
+    lat: 10.7992,
+    lng: 106.6803,
+    keywords: ["phu nhuan", "phú nhuận", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "tan-binh",
+    name: "Tân Bình - TP.HCM",
+    fullAddress: "Tân Bình, TP.HCM, Việt Nam",
+    shortAddress: "Tân Bình",
+    maskedAddress: "TP.HCM",
+    lat: 10.8015,
+    lng: 106.6526,
+    keywords: ["tan binh", "tân bình", "san bay", "sân bay", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "tan-phu",
+    name: "Tân Phú - TP.HCM",
+    fullAddress: "Tân Phú, TP.HCM, Việt Nam",
+    shortAddress: "Tân Phú",
+    maskedAddress: "TP.HCM",
+    lat: 10.7900,
+    lng: 106.6282,
+    keywords: ["tan phu", "tân phú", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "go-vap",
+    name: "Gò Vấp - TP.HCM",
+    fullAddress: "Gò Vấp, TP.HCM, Việt Nam",
+    shortAddress: "Gò Vấp",
+    maskedAddress: "TP.HCM",
+    lat: 10.8380,
+    lng: 106.6653,
+    keywords: ["go vap", "gò vấp", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "binh-tan",
+    name: "Bình Tân - TP.HCM",
+    fullAddress: "Bình Tân, TP.HCM, Việt Nam",
+    shortAddress: "Bình Tân",
+    maskedAddress: "TP.HCM",
+    lat: 10.7653,
+    lng: 106.6036,
+    keywords: ["binh tan", "bình tân", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "thu-duc",
+    name: "Thủ Đức - TP.HCM",
+    fullAddress: "Thủ Đức, TP.HCM, Việt Nam",
+    shortAddress: "Thủ Đức",
+    maskedAddress: "TP.HCM",
+    lat: 10.8494,
+    lng: 106.7537,
+    keywords: ["thu duc", "thủ đức", "tp thu duc", "tp thủ đức", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "cu-chi",
+    name: "Củ Chi - TP.HCM",
+    fullAddress: "Củ Chi, TP.HCM, Việt Nam",
+    shortAddress: "Củ Chi",
+    maskedAddress: "TP.HCM",
+    lat: 10.9733,
+    lng: 106.4934,
+    keywords: ["cu chi", "củ chi", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "hoc-mon",
+    name: "Hóc Môn - TP.HCM",
+    fullAddress: "Hóc Môn, TP.HCM, Việt Nam",
+    shortAddress: "Hóc Môn",
+    maskedAddress: "TP.HCM",
+    lat: 10.8833,
+    lng: 106.5833,
+    keywords: ["hoc mon", "hóc môn", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "binh-chanh",
+    name: "Bình Chánh - TP.HCM",
+    fullAddress: "Bình Chánh, TP.HCM, Việt Nam",
+    shortAddress: "Bình Chánh",
+    maskedAddress: "TP.HCM",
+    lat: 10.6874,
+    lng: 106.5939,
+    keywords: ["binh chanh", "bình chánh", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "nha-be",
+    name: "Nhà Bè - TP.HCM",
+    fullAddress: "Nhà Bè, TP.HCM, Việt Nam",
+    shortAddress: "Nhà Bè",
+    maskedAddress: "TP.HCM",
+    lat: 10.6953,
+    lng: 106.7405,
+    keywords: ["nha be", "nhà bè", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "can-gio",
+    name: "Cần Giờ - TP.HCM",
+    fullAddress: "Cần Giờ, TP.HCM, Việt Nam",
+    shortAddress: "Cần Giờ",
+    maskedAddress: "TP.HCM",
+    lat: 10.4114,
+    lng: 106.9547,
+    keywords: ["can gio", "cần giờ", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "ben-xe-mien-dong",
+    name: "Bến xe Miền Đông",
+    fullAddress: "Bến xe Miền Đông, Bình Thạnh, TP.HCM, Việt Nam",
+    shortAddress: "Bến xe Miền Đông",
+    maskedAddress: "Bình Thạnh, TP.HCM",
+    lat: 10.8142,
+    lng: 106.7108,
+    keywords: ["ben xe mien dong", "bến xe miền đông", "bxmd", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "ben-xe-mien-dong-moi",
+    name: "Bến xe Miền Đông mới",
+    fullAddress: "Bến xe Miền Đông mới, Thủ Đức, TP.HCM, Việt Nam",
+    shortAddress: "Bến xe Miền Đông mới",
+    maskedAddress: "Thủ Đức, TP.HCM",
+    lat: 10.8794,
+    lng: 106.8147,
+    keywords: ["ben xe mien dong moi", "bến xe miền đông mới", "bxmd moi", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "ben-xe-mien-tay",
+    name: "Bến xe Miền Tây",
+    fullAddress: "Bến xe Miền Tây, Bình Tân, TP.HCM, Việt Nam",
+    shortAddress: "Bến xe Miền Tây",
+    maskedAddress: "Bình Tân, TP.HCM",
+    lat: 10.7402,
+    lng: 106.6185,
+    keywords: ["ben xe mien tay", "bến xe miền tây", "bxmt", "tp hcm", "tphcm"],
+  }),
+
+  loc({
+    provinceSlug: "tp-hcm",
+    locationSlug: "ga-sai-gon",
+    name: "Ga Sài Gòn",
+    fullAddress: "Ga Sài Gòn, Quận 3, TP.HCM, Việt Nam",
+    shortAddress: "Ga Sài Gòn",
+    maskedAddress: "Quận 3, TP.HCM",
+    lat: 10.7829,
+    lng: 106.6779,
+    keywords: ["ga sai gon", "ga sài gòn", "ga tphcm", "tp hcm", "tphcm"],
+  }),
+    // =========================
+  // ĐỒNG NAI
+  // =========================
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "bien-hoa",
+    name: "Biên Hòa - Đồng Nai",
+    fullAddress: "Biên Hòa, Đồng Nai, Việt Nam",
+    shortAddress: "Biên Hòa",
+    maskedAddress: "Đồng Nai",
+    lat: 10.9447,
+    lng: 106.8243,
+    keywords: ["bien hoa", "biên hòa", "dong nai", "đồng nai", "xe đi biên hòa"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "long-thanh",
+    name: "Long Thành - Đồng Nai",
+    fullAddress: "Long Thành, Đồng Nai, Việt Nam",
+    shortAddress: "Long Thành",
+    maskedAddress: "Đồng Nai",
+    lat: 10.7939,
+    lng: 106.9972,
+    keywords: ["long thanh", "đồng nai", "sân bay long thành", "xe đi long thành"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "nhon-trach",
+    name: "Nhơn Trạch - Đồng Nai",
+    fullAddress: "Nhơn Trạch, Đồng Nai, Việt Nam",
+    shortAddress: "Nhơn Trạch",
+    maskedAddress: "Đồng Nai",
+    lat: 10.6908,
+    lng: 107.0025,
+    keywords: ["nhon trach", "nhơn trạch", "dong nai", "đồng nai", "xe đi nhơn trạch"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "long-khanh",
+    name: "Long Khánh - Đồng Nai",
+    fullAddress: "Long Khánh, Đồng Nai, Việt Nam",
+    shortAddress: "Long Khánh",
+    maskedAddress: "Đồng Nai",
+    lat: 10.9278,
+    lng: 107.2436,
+    keywords: ["long khanh", "long khánh", "dong nai", "đồng nai", "xe đi long khánh"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "trang-bom",
+    name: "Trảng Bom - Đồng Nai",
+    fullAddress: "Trảng Bom, Đồng Nai, Việt Nam",
+    shortAddress: "Trảng Bom",
+    maskedAddress: "Đồng Nai",
+    lat: 10.9503,
+    lng: 107.0072,
+    keywords: ["trang bom", "trảng bom", "dong nai", "đồng nai", "xe đi trảng bom"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "vinh-cuu",
+    name: "Vĩnh Cửu - Đồng Nai",
+    fullAddress: "Vĩnh Cửu, Đồng Nai, Việt Nam",
+    shortAddress: "Vĩnh Cửu",
+    maskedAddress: "Đồng Nai",
+    lat: 11.1900,
+    lng: 107.0500,
+    keywords: ["vinh cuu", "vĩnh cửu", "dong nai", "đồng nai", "xe đi vĩnh cửu"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "cam-my",
+    name: "Cẩm Mỹ - Đồng Nai",
+    fullAddress: "Cẩm Mỹ, Đồng Nai, Việt Nam",
+    shortAddress: "Cẩm Mỹ",
+    maskedAddress: "Đồng Nai",
+    lat: 10.8333,
+    lng: 107.3500,
+    keywords: ["cam my", "cẩm mỹ", "dong nai", "đồng nai", "xe đi cẩm mỹ"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "thong-nhat",
+    name: "Thống Nhất - Đồng Nai",
+    fullAddress: "Thống Nhất, Đồng Nai, Việt Nam",
+    shortAddress: "Thống Nhất",
+    maskedAddress: "Đồng Nai",
+    lat: 11.0167,
+    lng: 107.1833,
+    keywords: ["thong nhat", "thống nhất", "dong nai", "đồng nai", "xe đi thống nhất"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "xuan-loc",
+    name: "Xuân Lộc - Đồng Nai",
+    fullAddress: "Xuân Lộc, Đồng Nai, Việt Nam",
+    shortAddress: "Xuân Lộc",
+    maskedAddress: "Đồng Nai",
+    lat: 10.9333,
+    lng: 107.4000,
+    keywords: ["xuan loc", "xuân lộc", "dong nai", "đồng nai", "xe đi xuân lộc"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "dinh-quan",
+    name: "Định Quán - Đồng Nai",
+    fullAddress: "Định Quán, Đồng Nai, Việt Nam",
+    shortAddress: "Định Quán",
+    maskedAddress: "Đồng Nai",
+    lat: 11.2167,
+    lng: 107.3500,
+    keywords: ["dinh quan", "định quán", "dong nai", "đồng nai", "xe đi định quán"],
+  }),
+
+  // =========================
+  // KHU CÔNG NGHIỆP ĐỒNG NAI
+  // =========================
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "kcn-amata",
+    name: "KCN Amata",
+    fullAddress: "KCN Amata, Biên Hòa, Đồng Nai, Việt Nam",
+    shortAddress: "KCN Amata",
+    maskedAddress: "Biên Hòa, Đồng Nai",
+    lat: 10.9444,
+    lng: 106.8872,
+    keywords: ["kcn amata", "amata", "xe đi kcn amata"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "kcn-bien-hoa-1",
+    name: "KCN Biên Hòa 1",
+    fullAddress: "KCN Biên Hòa 1, Đồng Nai, Việt Nam",
+    shortAddress: "KCN Biên Hòa 1",
+    maskedAddress: "Biên Hòa, Đồng Nai",
+    lat: 10.9425,
+    lng: 106.8265,
+    keywords: ["kcn bien hoa 1", "biên hòa 1", "xe đi kcn biên hòa 1"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "kcn-bien-hoa-2",
+    name: "KCN Biên Hòa 2",
+    fullAddress: "KCN Biên Hòa 2, Đồng Nai, Việt Nam",
+    shortAddress: "KCN Biên Hòa 2",
+    maskedAddress: "Biên Hòa, Đồng Nai",
+    lat: 10.9397,
+    lng: 106.8606,
+    keywords: ["kcn bien hoa 2", "biên hòa 2", "xe đi kcn biên hòa 2"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "kcn-long-thanh",
+    name: "KCN Long Thành",
+    fullAddress: "KCN Long Thành, Đồng Nai, Việt Nam",
+    shortAddress: "KCN Long Thành",
+    maskedAddress: "Long Thành, Đồng Nai",
+    lat: 10.7908,
+    lng: 107.0317,
+    keywords: ["kcn long thanh", "xe đi kcn long thành"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "kcn-nhon-trach-1",
+    name: "KCN Nhơn Trạch 1",
+    fullAddress: "KCN Nhơn Trạch 1, Đồng Nai, Việt Nam",
+    shortAddress: "KCN Nhơn Trạch 1",
+    maskedAddress: "Nhơn Trạch, Đồng Nai",
+    lat: 10.7083,
+    lng: 107.0167,
+    keywords: ["kcn nhon trach 1", "nhơn trạch 1", "xe đi kcn nhơn trạch 1"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "kcn-nhon-trach-2",
+    name: "KCN Nhơn Trạch 2",
+    fullAddress: "KCN Nhơn Trạch 2, Đồng Nai, Việt Nam",
+    shortAddress: "KCN Nhơn Trạch 2",
+    maskedAddress: "Nhơn Trạch, Đồng Nai",
+    lat: 10.7125,
+    lng: 107.0283,
+    keywords: ["kcn nhon trach 2", "nhơn trạch 2", "xe đi kcn nhơn trạch 2"],
+  }),
+
+  loc({
+    provinceSlug: "dong-nai",
+    locationSlug: "san-bay-long-thanh",
+    name: "Sân bay Long Thành",
+    fullAddress: "Sân bay quốc tế Long Thành, Đồng Nai, Việt Nam",
+    shortAddress: "Sân bay Long Thành",
+    maskedAddress: "Long Thành, Đồng Nai",
+    lat: 10.7696,
+    lng: 107.0553,
+    keywords: [
+      "san bay long thanh",
+      "sân bay long thành",
+      "long thanh airport",
+      "xe đi sân bay long thành",
+    ],
+  }),
+    // =========================
+  // BÀ RỊA - VŨNG TÀU
+  // =========================
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "vung-tau",
+    name: "Vũng Tàu - Bà Rịa Vũng Tàu",
+    fullAddress: "Vũng Tàu, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Vũng Tàu",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 10.4114,
+    lng: 107.1362,
+    keywords: ["vung tau", "vũng tàu", "brvt", "xe đi vũng tàu"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "ba-ria",
+    name: "Bà Rịa - Bà Rịa Vũng Tàu",
+    fullAddress: "Bà Rịa, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Bà Rịa",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 10.4963,
+    lng: 107.1684,
+    keywords: ["ba ria", "bà rịa", "brvt", "xe đi bà rịa"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "phu-my",
+    name: "Phú Mỹ - Bà Rịa Vũng Tàu",
+    fullAddress: "Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Phú Mỹ",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 10.5681,
+    lng: 107.1047,
+    keywords: ["phu my", "phú mỹ", "cai mep", "cái mép", "xe đi phú mỹ"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "long-dien",
+    name: "Long Điền - Bà Rịa Vũng Tàu",
+    fullAddress: "Long Điền, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Long Điền",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 10.4850,
+    lng: 107.2130,
+    keywords: ["long dien", "long điền", "brvt", "xe đi long điền"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "long-hai",
+    name: "Long Hải - Bà Rịa Vũng Tàu",
+    fullAddress: "Long Hải, Long Điền, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Long Hải",
+    maskedAddress: "Long Điền, Bà Rịa - Vũng Tàu",
+    lat: 10.3864,
+    lng: 107.2408,
+    keywords: ["long hai", "long hải", "xe đi long hải"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "dat-do",
+    name: "Đất Đỏ - Bà Rịa Vũng Tàu",
+    fullAddress: "Đất Đỏ, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Đất Đỏ",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 10.4833,
+    lng: 107.2667,
+    keywords: ["dat do", "đất đỏ", "brvt", "xe đi đất đỏ"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "xuyen-moc",
+    name: "Xuyên Mộc - Bà Rịa Vũng Tàu",
+    fullAddress: "Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Xuyên Mộc",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 10.6200,
+    lng: 107.4500,
+    keywords: ["xuyen moc", "xuyên mộc", "brvt", "xe đi xuyên mộc"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "ho-tram",
+    name: "Hồ Tràm - Bà Rịa Vũng Tàu",
+    fullAddress: "Hồ Tràm, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Hồ Tràm",
+    maskedAddress: "Xuyên Mộc, Bà Rịa - Vũng Tàu",
+    lat: 10.4697,
+    lng: 107.4306,
+    keywords: ["ho tram", "hồ tràm", "resort hồ tràm", "xe đi hồ tràm"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "binh-chau",
+    name: "Bình Châu - Bà Rịa Vũng Tàu",
+    fullAddress: "Bình Châu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Bình Châu",
+    maskedAddress: "Xuyên Mộc, Bà Rịa - Vũng Tàu",
+    lat: 10.5667,
+    lng: 107.5333,
+    keywords: ["binh chau", "bình châu", "suối nước nóng bình châu", "xe đi bình châu"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "ho-coc",
+    name: "Hồ Cốc - Bà Rịa Vũng Tàu",
+    fullAddress: "Hồ Cốc, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Hồ Cốc",
+    maskedAddress: "Xuyên Mộc, Bà Rịa - Vũng Tàu",
+    lat: 10.4986,
+    lng: 107.4808,
+    keywords: ["ho coc", "hồ cốc", "xe đi hồ cốc"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "con-dao",
+    name: "Côn Đảo - Bà Rịa Vũng Tàu",
+    fullAddress: "Côn Đảo, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Côn Đảo",
+    maskedAddress: "Bà Rịa - Vũng Tàu",
+    lat: 8.6950,
+    lng: 106.6080,
+    keywords: ["con dao", "côn đảo", "xe đi côn đảo", "tàu đi côn đảo"],
+  }),
+
+  // =========================
+  // CẢNG / KCN / RESORT BÀ RỊA - VŨNG TÀU
+  // =========================
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "cang-cai-mep",
+    name: "Cảng Cái Mép",
+    fullAddress: "Cảng Cái Mép, Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Cảng Cái Mép",
+    maskedAddress: "Phú Mỹ, Bà Rịa - Vũng Tàu",
+    lat: 10.5200,
+    lng: 107.0300,
+    keywords: ["cang cai mep", "cảng cái mép", "cai mep", "xe đi cảng cái mép"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "kcn-phu-my-1",
+    name: "KCN Phú Mỹ 1",
+    fullAddress: "KCN Phú Mỹ 1, Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "KCN Phú Mỹ 1",
+    maskedAddress: "Phú Mỹ, Bà Rịa - Vũng Tàu",
+    lat: 10.5900,
+    lng: 107.0700,
+    keywords: ["kcn phu my 1", "kcn phú mỹ 1", "xe đi kcn phú mỹ 1"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "kcn-my-xuan",
+    name: "KCN Mỹ Xuân",
+    fullAddress: "KCN Mỹ Xuân, Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "KCN Mỹ Xuân",
+    maskedAddress: "Phú Mỹ, Bà Rịa - Vũng Tàu",
+    lat: 10.6150,
+    lng: 107.0800,
+    keywords: ["kcn my xuan", "kcn mỹ xuân", "xe đi kcn mỹ xuân"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "the-grand-ho-tram",
+    name: "The Grand Hồ Tràm",
+    fullAddress: "The Grand Hồ Tràm, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "The Grand Hồ Tràm",
+    maskedAddress: "Hồ Tràm, Bà Rịa - Vũng Tàu",
+    lat: 10.4625,
+    lng: 107.4136,
+    keywords: ["the grand ho tram", "grand hồ tràm", "resort hồ tràm", "xe đi the grand hồ tràm"],
+  }),
+
+  loc({
+    provinceSlug: "ba-ria-vung-tau",
+    locationSlug: "melia-ho-tram",
+    name: "Melia Hồ Tràm",
+    fullAddress: "Melia Hồ Tràm, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    shortAddress: "Melia Hồ Tràm",
+    maskedAddress: "Hồ Tràm, Bà Rịa - Vũng Tàu",
+    lat: 10.4890,
+    lng: 107.4480,
+    keywords: ["melia ho tram", "melia hồ tràm", "resort hồ tràm", "xe đi melia hồ tràm"],
+  }),
+    // =========================
+  // BÌNH DƯƠNG
+  // =========================
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "thu-dau-mot",
+    name: "Thủ Dầu Một - Bình Dương",
+    fullAddress: "Thủ Dầu Một, Bình Dương, Việt Nam",
+    shortAddress: "Thủ Dầu Một",
+    maskedAddress: "Bình Dương",
+    lat: 10.9804,
+    lng: 106.6519,
+    keywords: ["thu dau mot", "thủ dầu một", "binh duong", "bình dương", "xe đi thủ dầu một"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "di-an",
+    name: "Dĩ An - Bình Dương",
+    fullAddress: "Dĩ An, Bình Dương, Việt Nam",
+    shortAddress: "Dĩ An",
+    maskedAddress: "Bình Dương",
+    lat: 10.9068,
+    lng: 106.7696,
+    keywords: ["di an", "dĩ an", "binh duong", "bình dương", "xe đi dĩ an"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "thuan-an",
+    name: "Thuận An - Bình Dương",
+    fullAddress: "Thuận An, Bình Dương, Việt Nam",
+    shortAddress: "Thuận An",
+    maskedAddress: "Bình Dương",
+    lat: 10.9333,
+    lng: 106.7000,
+    keywords: ["thuan an", "thuận an", "binh duong", "bình dương", "xe đi thuận an"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "tan-uyen",
+    name: "Tân Uyên - Bình Dương",
+    fullAddress: "Tân Uyên, Bình Dương, Việt Nam",
+    shortAddress: "Tân Uyên",
+    maskedAddress: "Bình Dương",
+    lat: 11.0600,
+    lng: 106.7600,
+    keywords: ["tan uyen", "tân uyên", "binh duong", "bình dương", "xe đi tân uyên"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "ben-cat",
+    name: "Bến Cát - Bình Dương",
+    fullAddress: "Bến Cát, Bình Dương, Việt Nam",
+    shortAddress: "Bến Cát",
+    maskedAddress: "Bình Dương",
+    lat: 11.1500,
+    lng: 106.6000,
+    keywords: ["ben cat", "bến cát", "binh duong", "bình dương", "xe đi bến cát"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "bau-bang",
+    name: "Bàu Bàng - Bình Dương",
+    fullAddress: "Bàu Bàng, Bình Dương, Việt Nam",
+    shortAddress: "Bàu Bàng",
+    maskedAddress: "Bình Dương",
+    lat: 11.2800,
+    lng: 106.6100,
+    keywords: ["bau bang", "bàu bàng", "binh duong", "bình dương", "xe đi bàu bàng"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "phu-giao",
+    name: "Phú Giáo - Bình Dương",
+    fullAddress: "Phú Giáo, Bình Dương, Việt Nam",
+    shortAddress: "Phú Giáo",
+    maskedAddress: "Bình Dương",
+    lat: 11.2900,
+    lng: 106.7800,
+    keywords: ["phu giao", "phú giáo", "binh duong", "bình dương", "xe đi phú giáo"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "dau-tieng",
+    name: "Dầu Tiếng - Bình Dương",
+    fullAddress: "Dầu Tiếng, Bình Dương, Việt Nam",
+    shortAddress: "Dầu Tiếng",
+    maskedAddress: "Bình Dương",
+    lat: 11.3500,
+    lng: 106.3500,
+    keywords: ["dau tieng", "dầu tiếng", "binh duong", "bình dương", "xe đi dầu tiếng"],
+  }),
+
+  // =========================
+  // KHU CÔNG NGHIỆP BÌNH DƯƠNG
+  // =========================
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "vsip-1",
+    name: "VSIP 1 - Bình Dương",
+    fullAddress: "VSIP 1, Thuận An, Bình Dương, Việt Nam",
+    shortAddress: "VSIP 1",
+    maskedAddress: "Thuận An, Bình Dương",
+    lat: 10.9200,
+    lng: 106.7200,
+    keywords: ["vsip 1", "vsip binh duong", "vsip bình dương", "xe đi vsip 1"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "vsip-2",
+    name: "VSIP 2 - Bình Dương",
+    fullAddress: "VSIP 2, Thủ Dầu Một, Bình Dương, Việt Nam",
+    shortAddress: "VSIP 2",
+    maskedAddress: "Thủ Dầu Một, Bình Dương",
+    lat: 11.0650,
+    lng: 106.6700,
+    keywords: ["vsip 2", "vsip ii", "xe đi vsip 2"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "vsip-2a",
+    name: "VSIP 2A - Bình Dương",
+    fullAddress: "VSIP 2A, Tân Uyên, Bình Dương, Việt Nam",
+    shortAddress: "VSIP 2A",
+    maskedAddress: "Tân Uyên, Bình Dương",
+    lat: 11.0900,
+    lng: 106.7300,
+    keywords: ["vsip 2a", "vsip iia", "xe đi vsip 2a"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-my-phuoc-1",
+    name: "KCN Mỹ Phước 1",
+    fullAddress: "KCN Mỹ Phước 1, Bến Cát, Bình Dương, Việt Nam",
+    shortAddress: "KCN Mỹ Phước 1",
+    maskedAddress: "Bến Cát, Bình Dương",
+    lat: 11.1300,
+    lng: 106.6000,
+    keywords: ["kcn my phuoc 1", "mỹ phước 1", "xe đi kcn mỹ phước 1"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-my-phuoc-2",
+    name: "KCN Mỹ Phước 2",
+    fullAddress: "KCN Mỹ Phước 2, Bến Cát, Bình Dương, Việt Nam",
+    shortAddress: "KCN Mỹ Phước 2",
+    maskedAddress: "Bến Cát, Bình Dương",
+    lat: 11.1550,
+    lng: 106.6100,
+    keywords: ["kcn my phuoc 2", "mỹ phước 2", "xe đi kcn mỹ phước 2"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-my-phuoc-3",
+    name: "KCN Mỹ Phước 3",
+    fullAddress: "KCN Mỹ Phước 3, Bến Cát, Bình Dương, Việt Nam",
+    shortAddress: "KCN Mỹ Phước 3",
+    maskedAddress: "Bến Cát, Bình Dương",
+    lat: 11.1780,
+    lng: 106.6200,
+    keywords: ["kcn my phuoc 3", "mỹ phước 3", "xe đi kcn mỹ phước 3"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-song-than-1",
+    name: "KCN Sóng Thần 1",
+    fullAddress: "KCN Sóng Thần 1, Dĩ An, Bình Dương, Việt Nam",
+    shortAddress: "KCN Sóng Thần 1",
+    maskedAddress: "Dĩ An, Bình Dương",
+    lat: 10.8850,
+    lng: 106.7400,
+    keywords: ["kcn song than 1", "sóng thần 1", "xe đi kcn sóng thần 1"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-song-than-2",
+    name: "KCN Sóng Thần 2",
+    fullAddress: "KCN Sóng Thần 2, Dĩ An, Bình Dương, Việt Nam",
+    shortAddress: "KCN Sóng Thần 2",
+    maskedAddress: "Dĩ An, Bình Dương",
+    lat: 10.9020,
+    lng: 106.7420,
+    keywords: ["kcn song than 2", "sóng thần 2", "xe đi kcn sóng thần 2"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-nam-tan-uyen",
+    name: "KCN Nam Tân Uyên",
+    fullAddress: "KCN Nam Tân Uyên, Tân Uyên, Bình Dương, Việt Nam",
+    shortAddress: "KCN Nam Tân Uyên",
+    maskedAddress: "Tân Uyên, Bình Dương",
+    lat: 11.0600,
+    lng: 106.7600,
+    keywords: ["kcn nam tan uyen", "nam tân uyên", "xe đi kcn nam tân uyên"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "kcn-bau-bang",
+    name: "KCN Bàu Bàng",
+    fullAddress: "KCN Bàu Bàng, Bình Dương, Việt Nam",
+    shortAddress: "KCN Bàu Bàng",
+    maskedAddress: "Bàu Bàng, Bình Dương",
+    lat: 11.2900,
+    lng: 106.6100,
+    keywords: ["kcn bau bang", "kcn bàu bàng", "xe đi kcn bàu bàng"],
+  }),
+
+  loc({
+    provinceSlug: "binh-duong",
+    locationSlug: "aeon-binh-duong",
+    name: "AEON Mall Bình Dương",
+    fullAddress: "AEON Mall Bình Dương Canary, Thuận An, Bình Dương, Việt Nam",
+    shortAddress: "AEON Bình Dương",
+    maskedAddress: "Thuận An, Bình Dương",
+    lat: 10.9320,
+    lng: 106.7100,
+    keywords: ["aeon binh duong", "aeon bình dương", "aeon mall bình dương", "xe đi aeon bình dương"],
+  }),
+    // =========================
+  // TÂY NINH
+  // =========================
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "tay-ninh",
+    name: "Tây Ninh",
+    fullAddress: "Tây Ninh, Việt Nam",
+    shortAddress: "Tây Ninh",
+    maskedAddress: "Tây Ninh",
+    lat: 11.3100,
+    lng: 106.1000,
+    keywords: ["tay ninh", "tây ninh", "xe đi tây ninh"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "trang-bang",
+    name: "Trảng Bàng",
+    fullAddress: "Trảng Bàng, Tây Ninh, Việt Nam",
+    shortAddress: "Trảng Bàng",
+    maskedAddress: "Tây Ninh",
+    lat: 11.0300,
+    lng: 106.3700,
+    keywords: ["trang bang", "trảng bàng", "bánh canh trảng bàng", "xe đi trảng bàng"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "go-dau",
+    name: "Gò Dầu",
+    fullAddress: "Gò Dầu, Tây Ninh, Việt Nam",
+    shortAddress: "Gò Dầu",
+    maskedAddress: "Tây Ninh",
+    lat: 11.1600,
+    lng: 106.2700,
+    keywords: ["go dau", "gò dầu", "xe đi gò dầu"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "hoa-thanh",
+    name: "Hòa Thành",
+    fullAddress: "Hòa Thành, Tây Ninh, Việt Nam",
+    shortAddress: "Hòa Thành",
+    maskedAddress: "Tây Ninh",
+    lat: 11.2800,
+    lng: 106.1300,
+    keywords: ["hoa thanh", "hòa thành", "xe đi hòa thành"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "duong-minh-chau",
+    name: "Dương Minh Châu",
+    fullAddress: "Dương Minh Châu, Tây Ninh, Việt Nam",
+    shortAddress: "Dương Minh Châu",
+    maskedAddress: "Tây Ninh",
+    lat: 11.3500,
+    lng: 106.2500,
+    keywords: ["duong minh chau", "dương minh châu", "xe đi dương minh châu"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "tan-bien",
+    name: "Tân Biên",
+    fullAddress: "Tân Biên, Tây Ninh, Việt Nam",
+    shortAddress: "Tân Biên",
+    maskedAddress: "Tây Ninh",
+    lat: 11.5500,
+    lng: 106.0000,
+    keywords: ["tan bien", "tân biên", "xe đi tân biên"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "tan-chau",
+    name: "Tân Châu",
+    fullAddress: "Tân Châu, Tây Ninh, Việt Nam",
+    shortAddress: "Tân Châu",
+    maskedAddress: "Tây Ninh",
+    lat: 11.5800,
+    lng: 106.3000,
+    keywords: ["tan chau", "tân châu", "xe đi tân châu"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "chau-thanh",
+    name: "Châu Thành - Tây Ninh",
+    fullAddress: "Châu Thành, Tây Ninh, Việt Nam",
+    shortAddress: "Châu Thành",
+    maskedAddress: "Tây Ninh",
+    lat: 11.3300,
+    lng: 106.0200,
+    keywords: ["chau thanh tay ninh", "châu thành tây ninh", "xe đi châu thành tây ninh"],
+  }),
+
+  // =========================
+  // CỬA KHẨU / DU LỊCH
+  // =========================
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "moc-bai",
+    name: "Cửa khẩu Mộc Bài",
+    fullAddress: "Cửa khẩu quốc tế Mộc Bài, Tây Ninh, Việt Nam",
+    shortAddress: "Mộc Bài",
+    maskedAddress: "Tây Ninh",
+    lat: 11.0800,
+    lng: 106.4300,
+    keywords: [
+      "moc bai",
+      "mộc bài",
+      "cua khau moc bai",
+      "cửa khẩu mộc bài",
+      "xe đi mộc bài",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "xa-mat",
+    name: "Cửa khẩu Xa Mát",
+    fullAddress: "Cửa khẩu Xa Mát, Tây Ninh, Việt Nam",
+    shortAddress: "Xa Mát",
+    maskedAddress: "Tây Ninh",
+    lat: 11.8200,
+    lng: 106.1200,
+    keywords: [
+      "xa mat",
+      "xa mát",
+      "cua khau xa mat",
+      "cửa khẩu xa mát",
+      "xe đi xa mát",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "nui-ba-den",
+    name: "Núi Bà Đen",
+    fullAddress: "Núi Bà Đen, Tây Ninh, Việt Nam",
+    shortAddress: "Núi Bà Đen",
+    maskedAddress: "Tây Ninh",
+    lat: 11.3760,
+    lng: 106.1620,
+    keywords: [
+      "nui ba den",
+      "núi bà đen",
+      "sun world tay ninh",
+      "xe đi núi bà đen",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "toa-thanh-cao-dai",
+    name: "Tòa Thánh Cao Đài",
+    fullAddress: "Tòa Thánh Cao Đài, Tây Ninh, Việt Nam",
+    shortAddress: "Tòa Thánh Cao Đài",
+    maskedAddress: "Tây Ninh",
+    lat: 11.2700,
+    lng: 106.1300,
+    keywords: [
+      "toa thanh cao dai",
+      "tòa thánh cao đài",
+      "cao dai tay ninh",
+      "xe đi tòa thánh cao đài",
+    ],
+  }),
+
+  // =========================
+  // KHU CÔNG NGHIỆP
+  // =========================
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "kcn-phuoc-dong",
+    name: "KCN Phước Đông",
+    fullAddress: "KCN Phước Đông, Gò Dầu, Tây Ninh, Việt Nam",
+    shortAddress: "KCN Phước Đông",
+    maskedAddress: "Gò Dầu, Tây Ninh",
+    lat: 11.1800,
+    lng: 106.2800,
+    keywords: ["kcn phuoc dong", "kcn phước đông", "xe đi kcn phước đông"],
+  }),
+
+  loc({
+    provinceSlug: "tay-ninh",
+    locationSlug: "kcn-trang-bang",
+    name: "KCN Trảng Bàng",
+    fullAddress: "KCN Trảng Bàng, Tây Ninh, Việt Nam",
+    shortAddress: "KCN Trảng Bàng",
+    maskedAddress: "Tây Ninh",
+    lat: 11.0200,
+    lng: 106.3600,
+    keywords: ["kcn trang bang", "kcn trảng bàng", "xe đi kcn trảng bàng"],
+  }),
+    // =========================
+  // BÌNH PHƯỚC
+  // =========================
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "dong-xoai",
+    name: "Đồng Xoài - Bình Phước",
+    fullAddress: "Đồng Xoài, Bình Phước, Việt Nam",
+    shortAddress: "Đồng Xoài",
+    maskedAddress: "Bình Phước",
+    lat: 11.5347,
+    lng: 106.8839,
+    keywords: [
+      "dong xoai",
+      "đồng xoài",
+      "binh phuoc",
+      "bình phước",
+      "xe đi đồng xoài",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "chon-thanh",
+    name: "Chơn Thành - Bình Phước",
+    fullAddress: "Chơn Thành, Bình Phước, Việt Nam",
+    shortAddress: "Chơn Thành",
+    maskedAddress: "Bình Phước",
+    lat: 11.4305,
+    lng: 106.6669,
+    keywords: [
+      "chon thanh",
+      "chơn thành",
+      "binh phuoc",
+      "bình phước",
+      "xe đi chơn thành",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "binh-long",
+    name: "Bình Long - Bình Phước",
+    fullAddress: "Bình Long, Bình Phước, Việt Nam",
+    shortAddress: "Bình Long",
+    maskedAddress: "Bình Phước",
+    lat: 11.6475,
+    lng: 106.6058,
+    keywords: [
+      "binh long",
+      "bình long",
+      "binh phuoc",
+      "bình phước",
+      "xe đi bình long",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "phuoc-long",
+    name: "Phước Long - Bình Phước",
+    fullAddress: "Phước Long, Bình Phước, Việt Nam",
+    shortAddress: "Phước Long",
+    maskedAddress: "Bình Phước",
+    lat: 11.8100,
+    lng: 107.2400,
+    keywords: [
+      "phuoc long",
+      "phước long",
+      "binh phuoc",
+      "bình phước",
+      "xe đi phước long",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "dong-phu",
+    name: "Đồng Phú - Bình Phước",
+    fullAddress: "Đồng Phú, Bình Phước, Việt Nam",
+    shortAddress: "Đồng Phú",
+    maskedAddress: "Bình Phước",
+    lat: 11.4800,
+    lng: 107.0200,
+    keywords: [
+      "dong phu",
+      "đồng phú",
+      "binh phuoc",
+      "bình phước",
+      "xe đi đồng phú",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "hon-quan",
+    name: "Hớn Quản - Bình Phước",
+    fullAddress: "Hớn Quản, Bình Phước, Việt Nam",
+    shortAddress: "Hớn Quản",
+    maskedAddress: "Bình Phước",
+    lat: 11.5900,
+    lng: 106.6200,
+    keywords: [
+      "hon quan",
+      "hớn quản",
+      "binh phuoc",
+      "bình phước",
+      "xe đi hớn quản",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "loc-ninh",
+    name: "Lộc Ninh - Bình Phước",
+    fullAddress: "Lộc Ninh, Bình Phước, Việt Nam",
+    shortAddress: "Lộc Ninh",
+    maskedAddress: "Bình Phước",
+    lat: 11.8500,
+    lng: 106.6000,
+    keywords: [
+      "loc ninh",
+      "lộc ninh",
+      "binh phuoc",
+      "bình phước",
+      "xe đi lộc ninh",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "bu-dang",
+    name: "Bù Đăng - Bình Phước",
+    fullAddress: "Bù Đăng, Bình Phước, Việt Nam",
+    shortAddress: "Bù Đăng",
+    maskedAddress: "Bình Phước",
+    lat: 11.8000,
+    lng: 107.3500,
+    keywords: [
+      "bu dang",
+      "bù đăng",
+      "binh phuoc",
+      "bình phước",
+      "xe đi bù đăng",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "bu-dop",
+    name: "Bù Đốp - Bình Phước",
+    fullAddress: "Bù Đốp, Bình Phước, Việt Nam",
+    shortAddress: "Bù Đốp",
+    maskedAddress: "Bình Phước",
+    lat: 12.0000,
+    lng: 106.8000,
+    keywords: [
+      "bu dop",
+      "bù đốp",
+      "binh phuoc",
+      "bình phước",
+      "xe đi bù đốp",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "bu-gia-map",
+    name: "Bù Gia Mập - Bình Phước",
+    fullAddress: "Bù Gia Mập, Bình Phước, Việt Nam",
+    shortAddress: "Bù Gia Mập",
+    maskedAddress: "Bình Phước",
+    lat: 12.1000,
+    lng: 107.2000,
+    keywords: [
+      "bu gia map",
+      "bù gia mập",
+      "vuon quoc gia bu gia map",
+      "xe đi bù gia mập",
+    ],
+  }),
+
+  // =========================
+  // KHU CÔNG NGHIỆP BÌNH PHƯỚC
+  // =========================
+
+  loc({
+    provinceSlug: "binh-phuoc",
+    locationSlug: "kcn-becamex-binh-phuoc",
+    name: "KCN Becamex Bình Phước",
+    fullAddress: "KCN Becamex Bình Phước, Chơn Thành, Bình Phước, Việt Nam",
+    shortAddress: "KCN Becamex Bình Phước",
+    maskedAddress: "Chơn Thành, Bình Phước",
+    lat: 11.4200,
+    lng: 106.6800,
+    keywords: [
+      "becamex binh phuoc",
+      "kcn becamex bình phước",
+      "xe đi kcn becamex bình phước",
+    ],
+  }),
+    // =========================
+  // BÌNH THUẬN
+  // =========================
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "phan-thiet",
+    name: "Phan Thiết - Bình Thuận",
+    fullAddress: "Phan Thiết, Bình Thuận, Việt Nam",
+    shortAddress: "Phan Thiết",
+    maskedAddress: "Bình Thuận",
+    lat: 10.9289,
+    lng: 108.1022,
+    keywords: [
+      "phan thiet",
+      "phan thiết",
+      "binh thuan",
+      "bình thuận",
+      "xe đi phan thiết",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "mui-ne",
+    name: "Mũi Né - Bình Thuận",
+    fullAddress: "Mũi Né, Phan Thiết, Bình Thuận, Việt Nam",
+    shortAddress: "Mũi Né",
+    maskedAddress: "Phan Thiết, Bình Thuận",
+    lat: 10.9333,
+    lng: 108.2833,
+    keywords: [
+      "mui ne",
+      "mũi né",
+      "phan thiết",
+      "xe đi mũi né",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "la-gi",
+    name: "La Gi - Bình Thuận",
+    fullAddress: "La Gi, Bình Thuận, Việt Nam",
+    shortAddress: "La Gi",
+    maskedAddress: "Bình Thuận",
+    lat: 10.6597,
+    lng: 107.7728,
+    keywords: [
+      "la gi",
+      "lagi",
+      "thị xã la gi",
+      "xe đi la gi",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "ham-tan",
+    name: "Hàm Tân - Bình Thuận",
+    fullAddress: "Hàm Tân, Bình Thuận, Việt Nam",
+    shortAddress: "Hàm Tân",
+    maskedAddress: "Bình Thuận",
+    lat: 10.7000,
+    lng: 107.6500,
+    keywords: ["ham tan", "hàm tân", "xe đi hàm tân"],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "ham-thuan-nam",
+    name: "Hàm Thuận Nam - Bình Thuận",
+    fullAddress: "Hàm Thuận Nam, Bình Thuận, Việt Nam",
+    shortAddress: "Hàm Thuận Nam",
+    maskedAddress: "Bình Thuận",
+    lat: 10.8000,
+    lng: 107.9500,
+    keywords: ["ham thuan nam", "hàm thuận nam", "xe đi hàm thuận nam"],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "ham-thuan-bac",
+    name: "Hàm Thuận Bắc - Bình Thuận",
+    fullAddress: "Hàm Thuận Bắc, Bình Thuận, Việt Nam",
+    shortAddress: "Hàm Thuận Bắc",
+    maskedAddress: "Bình Thuận",
+    lat: 11.0000,
+    lng: 108.0000,
+    keywords: ["ham thuan bac", "hàm thuận bắc", "xe đi hàm thuận bắc"],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "bac-binh",
+    name: "Bắc Bình - Bình Thuận",
+    fullAddress: "Bắc Bình, Bình Thuận, Việt Nam",
+    shortAddress: "Bắc Bình",
+    maskedAddress: "Bình Thuận",
+    lat: 11.1500,
+    lng: 108.3500,
+    keywords: ["bac binh", "bắc bình", "xe đi bắc bình"],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "tuy-phong",
+    name: "Tuy Phong - Bình Thuận",
+    fullAddress: "Tuy Phong, Bình Thuận, Việt Nam",
+    shortAddress: "Tuy Phong",
+    maskedAddress: "Bình Thuận",
+    lat: 11.3500,
+    lng: 108.7000,
+    keywords: ["tuy phong", "xe đi tuy phong"],
+  }),
+
+  // =========================
+  // DU LỊCH / RESORT
+  // =========================
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "ke-ga",
+    name: "Kê Gà",
+    fullAddress: "Kê Gà, Bình Thuận, Việt Nam",
+    shortAddress: "Kê Gà",
+    maskedAddress: "Bình Thuận",
+    lat: 10.6958,
+    lng: 107.9992,
+    keywords: [
+      "ke ga",
+      "kê gà",
+      "hải đăng kê gà",
+      "xe đi kê gà",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "tien-thanh",
+    name: "Tiến Thành",
+    fullAddress: "Tiến Thành, Phan Thiết, Bình Thuận, Việt Nam",
+    shortAddress: "Tiến Thành",
+    maskedAddress: "Phan Thiết, Bình Thuận",
+    lat: 10.8500,
+    lng: 108.0500,
+    keywords: [
+      "tien thanh",
+      "tiến thành",
+      "phan thiết",
+      "xe đi tiến thành",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "novaworld-phan-thiet",
+    name: "NovaWorld Phan Thiết",
+    fullAddress: "NovaWorld Phan Thiết, Bình Thuận, Việt Nam",
+    shortAddress: "NovaWorld",
+    maskedAddress: "Phan Thiết, Bình Thuận",
+    lat: 10.8320,
+    lng: 108.0000,
+    keywords: [
+      "novaworld",
+      "novaworld phan thiet",
+      "novaworld phan thiết",
+      "xe đi novaworld",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "bau-trang",
+    name: "Bàu Trắng",
+    fullAddress: "Bàu Trắng, Bình Thuận, Việt Nam",
+    shortAddress: "Bàu Trắng",
+    maskedAddress: "Bình Thuận",
+    lat: 11.0700,
+    lng: 108.4300,
+    keywords: [
+      "bau trang",
+      "bàu trắng",
+      "đồi cát bàu trắng",
+      "xe đi bàu trắng",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "hon-rom",
+    name: "Hòn Rơm",
+    fullAddress: "Hòn Rơm, Mũi Né, Bình Thuận, Việt Nam",
+    shortAddress: "Hòn Rơm",
+    maskedAddress: "Mũi Né, Bình Thuận",
+    lat: 10.9700,
+    lng: 108.3000,
+    keywords: [
+      "hon rom",
+      "hòn rơm",
+      "mui ne",
+      "mũi né",
+      "xe đi hòn rơm",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "binh-thuan",
+    locationSlug: "suoi-tien",
+    name: "Suối Tiên Mũi Né",
+    fullAddress: "Suối Tiên, Mũi Né, Bình Thuận, Việt Nam",
+    shortAddress: "Suối Tiên",
+    maskedAddress: "Mũi Né, Bình Thuận",
+    lat: 10.9600,
+    lng: 108.2700,
+    keywords: [
+      "suoi tien mui ne",
+      "suối tiên mũi né",
+      "xe đi suối tiên",
+    ],
+  }),
+    // =========================
+  // LÂM ĐỒNG
+  // =========================
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "da-lat",
+    name: "Đà Lạt - Lâm Đồng",
+    fullAddress: "Đà Lạt, Lâm Đồng, Việt Nam",
+    shortAddress: "Đà Lạt",
+    maskedAddress: "Lâm Đồng",
+    lat: 11.9404,
+    lng: 108.4583,
+    keywords: [
+      "da lat",
+      "đà lạt",
+      "lam dong",
+      "lâm đồng",
+      "xe đi đà lạt",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "bao-loc",
+    name: "Bảo Lộc - Lâm Đồng",
+    fullAddress: "Bảo Lộc, Lâm Đồng, Việt Nam",
+    shortAddress: "Bảo Lộc",
+    maskedAddress: "Lâm Đồng",
+    lat: 11.5479,
+    lng: 107.8077,
+    keywords: [
+      "bao loc",
+      "bảo lộc",
+      "lam dong",
+      "lâm đồng",
+      "xe đi bảo lộc",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "duc-trong",
+    name: "Đức Trọng - Lâm Đồng",
+    fullAddress: "Đức Trọng, Lâm Đồng, Việt Nam",
+    shortAddress: "Đức Trọng",
+    maskedAddress: "Lâm Đồng",
+    lat: 11.7350,
+    lng: 108.3730,
+    keywords: [
+      "duc trong",
+      "đức trọng",
+      "lam dong",
+      "lâm đồng",
+      "xe đi đức trọng",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "di-linh",
+    name: "Di Linh - Lâm Đồng",
+    fullAddress: "Di Linh, Lâm Đồng, Việt Nam",
+    shortAddress: "Di Linh",
+    maskedAddress: "Lâm Đồng",
+    lat: 11.5770,
+    lng: 108.0150,
+    keywords: [
+      "di linh",
+      "lam dong",
+      "lâm đồng",
+      "xe đi di linh",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "don-duong",
+    name: "Đơn Dương - Lâm Đồng",
+    fullAddress: "Đơn Dương, Lâm Đồng, Việt Nam",
+    shortAddress: "Đơn Dương",
+    maskedAddress: "Lâm Đồng",
+    lat: 11.7700,
+    lng: 108.5500,
+    keywords: [
+      "don duong",
+      "đơn dương",
+      "lam dong",
+      "xe đi đơn dương",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "lac-duong",
+    name: "Lạc Dương - Lâm Đồng",
+    fullAddress: "Lạc Dương, Lâm Đồng, Việt Nam",
+    shortAddress: "Lạc Dương",
+    maskedAddress: "Lâm Đồng",
+    lat: 12.0000,
+    lng: 108.4400,
+    keywords: [
+      "lac duong",
+      "lạc dương",
+      "langbiang",
+      "xe đi lạc dương",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "dam-rong",
+    name: "Đam Rông - Lâm Đồng",
+    fullAddress: "Đam Rông, Lâm Đồng, Việt Nam",
+    shortAddress: "Đam Rông",
+    maskedAddress: "Lâm Đồng",
+    lat: 12.1500,
+    lng: 108.1500,
+    keywords: [
+      "dam rong",
+      "đam rông",
+      "lam dong",
+      "xe đi đam rông",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "cat-tien",
+    name: "Cát Tiên - Lâm Đồng",
+    fullAddress: "Cát Tiên, Lâm Đồng, Việt Nam",
+    shortAddress: "Cát Tiên",
+    maskedAddress: "Lâm Đồng",
+    lat: 11.6000,
+    lng: 107.4000,
+    keywords: [
+      "cat tien",
+      "cát tiên",
+      "vuon quoc gia cat tien",
+      "xe đi cát tiên",
+    ],
+  }),
+
+  // =========================
+  // DU LỊCH ĐÀ LẠT
+  // =========================
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "ho-xuan-huong",
+    name: "Hồ Xuân Hương",
+    fullAddress: "Hồ Xuân Hương, Đà Lạt, Lâm Đồng, Việt Nam",
+    shortAddress: "Hồ Xuân Hương",
+    maskedAddress: "Đà Lạt, Lâm Đồng",
+    lat: 11.9416,
+    lng: 108.4419,
+    keywords: [
+      "ho xuan huong",
+      "hồ xuân hương",
+      "xe đi hồ xuân hương",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "cho-da-lat",
+    name: "Chợ Đà Lạt",
+    fullAddress: "Chợ Đà Lạt, Lâm Đồng, Việt Nam",
+    shortAddress: "Chợ Đà Lạt",
+    maskedAddress: "Đà Lạt, Lâm Đồng",
+    lat: 11.9400,
+    lng: 108.4380,
+    keywords: [
+      "cho da lat",
+      "chợ đà lạt",
+      "xe đi chợ đà lạt",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "langbiang",
+    name: "LangBiang",
+    fullAddress: "LangBiang, Lạc Dương, Lâm Đồng, Việt Nam",
+    shortAddress: "LangBiang",
+    maskedAddress: "Lạc Dương, Lâm Đồng",
+    lat: 12.0167,
+    lng: 108.4333,
+    keywords: [
+      "langbiang",
+      "núi langbiang",
+      "xe đi langbiang",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "tuyen-lam",
+    name: "Hồ Tuyền Lâm",
+    fullAddress: "Hồ Tuyền Lâm, Đà Lạt, Lâm Đồng, Việt Nam",
+    shortAddress: "Hồ Tuyền Lâm",
+    maskedAddress: "Đà Lạt, Lâm Đồng",
+    lat: 11.9040,
+    lng: 108.4540,
+    keywords: [
+      "ho tuyen lam",
+      "hồ tuyền lâm",
+      "xe đi hồ tuyền lâm",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "thung-lung-tinh-yeu",
+    name: "Thung Lũng Tình Yêu",
+    fullAddress: "Thung Lũng Tình Yêu, Đà Lạt, Lâm Đồng, Việt Nam",
+    shortAddress: "Thung Lũng Tình Yêu",
+    maskedAddress: "Đà Lạt, Lâm Đồng",
+    lat: 11.9750,
+    lng: 108.4520,
+    keywords: [
+      "thung lung tinh yeu",
+      "thung lũng tình yêu",
+      "xe đi thung lũng tình yêu",
+    ],
+  }),
+
+  // =========================
+  // SÂN BAY / ĐIỂM GIAO THÔNG
+  // =========================
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "san-bay-lien-khuong",
+    name: "Sân bay Liên Khương",
+    fullAddress: "Sân bay Liên Khương, Đức Trọng, Lâm Đồng, Việt Nam",
+    shortAddress: "Sân bay Liên Khương",
+    maskedAddress: "Đức Trọng, Lâm Đồng",
+    lat: 11.7506,
+    lng: 108.3730,
+    keywords: [
+      "san bay lien khuong",
+      "sân bay liên khương",
+      "airport da lat",
+      "xe đi sân bay liên khương",
+    ],
+  }),
+
+  loc({
+    provinceSlug: "lam-dong",
+    locationSlug: "ben-xe-da-lat",
+    name: "Bến xe Đà Lạt",
+    fullAddress: "Bến xe Đà Lạt, Lâm Đồng, Việt Nam",
+    shortAddress: "Bến xe Đà Lạt",
+    maskedAddress: "Đà Lạt, Lâm Đồng",
+    lat: 11.9270,
+    lng: 108.4550,
+    keywords: [
+      "ben xe da lat",
+      "bến xe đà lạt",
+      "xe đi bến xe đà lạt",
+    ],
+  }),
+];
+
+export default SOUTH_LOCATIONS;
