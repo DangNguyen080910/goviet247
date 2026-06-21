@@ -405,26 +405,44 @@ export default function BookingCard() {
   };
 
   const normalizeSelectedPlace = (option, detail) => {
-    const raw = detail || option || {};
+    const raw =
+      detail?.data?.place ||
+      detail?.data ||
+      detail?.place ||
+      detail?.result ||
+      detail ||
+      option ||
+      {};
 
-    const location = raw?.geometry?.location || raw?.location || {};
+    const location =
+      raw?.geometry?.location || raw?.location || raw?.coordinates || {};
 
-    const lat =
+    const latValue =
       raw.lat ??
       raw.latitude ??
+      raw.locationLat ??
+      raw.location_lat ??
       location.lat ??
       (typeof location.lat === "function" ? location.lat() : undefined);
 
-    const lng =
+    const lngValue =
       raw.lng ??
+      raw.lon ??
       raw.longitude ??
+      raw.locationLng ??
+      raw.location_lng ??
       location.lng ??
+      location.lon ??
       (typeof location.lng === "function" ? location.lng() : undefined);
 
     return {
       ...raw,
       placeId:
-        raw.placeId || raw.place_id || option?.placeId || option?.place_id,
+        raw.placeId ||
+        raw.place_id ||
+        raw.id ||
+        option?.placeId ||
+        option?.place_id,
       name:
         raw.name ||
         option?.name ||
@@ -433,7 +451,9 @@ export default function BookingCard() {
         "",
       fullAddress:
         raw.fullAddress ||
+        raw.formattedAddress ||
         raw.formatted_address ||
+        raw.address ||
         raw.description ||
         option?.fullAddress ||
         option?.description ||
@@ -450,8 +470,8 @@ export default function BookingCard() {
         raw.formatted_address ||
         option?.description ||
         "",
-      lat: Number(lat),
-      lng: Number(lng),
+      lat: Number(latValue),
+      lng: Number(lngValue),
     };
   };
 
@@ -1244,6 +1264,10 @@ export default function BookingCard() {
         : await getPlaceDetail(option.placeId);
 
       const detail = normalizeSelectedPlace(option, rawDetail);
+      
+      console.log("PICKUP OPTION", option);
+      console.log("PICKUP RAW DETAIL", rawDetail);
+      console.log("PICKUP NORMALIZED", detail);
 
       setPickupPlace(detail);
       setPickupAddress(detail.fullAddress || "");
