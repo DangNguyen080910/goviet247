@@ -352,18 +352,51 @@ export default function BookingCard() {
     return autocompleteCacheRef.current.get(key) || null;
   };
 
+  const normalizeAutocompleteOption = (item) => {
+    if (!item) return null;
+
+    return {
+      ...item,
+      placeId: item.placeId || item.place_id,
+      name:
+        item.name ||
+        item.shortAddress ||
+        item.structured_formatting?.main_text ||
+        item.description ||
+        "",
+      fullAddress:
+        item.fullAddress ||
+        item.description ||
+        item.formatted_address ||
+        item.maskedAddress ||
+        "",
+      shortAddress:
+        item.shortAddress ||
+        item.structured_formatting?.main_text ||
+        item.name ||
+        "",
+      maskedAddress:
+        item.maskedAddress ||
+        item.structured_formatting?.secondary_text ||
+        item.description ||
+        "",
+    };
+  };
+
   const mergeVietnamLocationOptions = (keyword, googleItems = []) => {
     const vietnamItems = searchVietnamLocations(keyword, 8);
 
+    const normalizedGoogleItems = Array.isArray(googleItems)
+      ? googleItems.map(normalizeAutocompleteOption).filter(Boolean)
+      : [];
+
     const seenPlaceIds = new Set();
 
-    return [...vietnamItems, ...(Array.isArray(googleItems) ? googleItems : [])]
+    return [...vietnamItems, ...normalizedGoogleItems]
       .filter((item) => {
         if (!item?.placeId) return false;
 
-        if (seenPlaceIds.has(item.placeId)) {
-          return false;
-        }
+        if (seenPlaceIds.has(item.placeId)) return false;
 
         seenPlaceIds.add(item.placeId);
         return true;
@@ -1753,7 +1786,12 @@ export default function BookingCard() {
                   onChange={handleSelectPickupPlace}
                   getOptionLabel={(option) => {
                     if (typeof option === "string") return option;
-                    return option?.fullAddress || "";
+                    return (
+                      option?.fullAddress ||
+                      option?.description ||
+                      option?.name ||
+                      ""
+                    );
                   }}
                   filterOptions={(x) => x}
                   noOptionsText={
@@ -1843,7 +1881,12 @@ export default function BookingCard() {
                           }
                           getOptionLabel={(option) => {
                             if (typeof option === "string") return option;
-                            return option?.fullAddress || "";
+                            return (
+                              option?.fullAddress ||
+                              option?.description ||
+                              option?.name ||
+                              ""
+                            );
                           }}
                           filterOptions={(x) => x}
                           noOptionsText={
