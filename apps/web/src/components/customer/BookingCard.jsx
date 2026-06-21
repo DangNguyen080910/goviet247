@@ -371,6 +371,57 @@ export default function BookingCard() {
       .slice(0, 15);
   };
 
+  const normalizeSelectedPlace = (option, detail) => {
+    const raw = detail || option || {};
+
+    const location = raw?.geometry?.location || raw?.location || {};
+
+    const lat =
+      raw.lat ??
+      raw.latitude ??
+      location.lat ??
+      (typeof location.lat === "function" ? location.lat() : undefined);
+
+    const lng =
+      raw.lng ??
+      raw.longitude ??
+      location.lng ??
+      (typeof location.lng === "function" ? location.lng() : undefined);
+
+    return {
+      ...raw,
+      placeId:
+        raw.placeId || raw.place_id || option?.placeId || option?.place_id,
+      name:
+        raw.name ||
+        option?.name ||
+        option?.shortAddress ||
+        option?.structured_formatting?.main_text ||
+        "",
+      fullAddress:
+        raw.fullAddress ||
+        raw.formatted_address ||
+        raw.description ||
+        option?.fullAddress ||
+        option?.description ||
+        "",
+      shortAddress:
+        raw.shortAddress ||
+        option?.shortAddress ||
+        raw.name ||
+        option?.name ||
+        "",
+      maskedAddress:
+        raw.maskedAddress ||
+        option?.maskedAddress ||
+        raw.formatted_address ||
+        option?.description ||
+        "",
+      lat: Number(lat),
+      lng: Number(lng),
+    };
+  };
+
   const setCachedAutocompleteItems = (keyword, lat, lng, items) => {
     const key = buildAutocompleteCacheKey(keyword, lat, lng);
 
@@ -1155,12 +1206,14 @@ export default function BookingCard() {
     try {
       setPickupLoading(true);
 
-      const detail = isVietnamLocationOption(option)
+      const rawDetail = isVietnamLocationOption(option)
         ? option
         : await getPlaceDetail(option.placeId);
 
+      const detail = normalizeSelectedPlace(option, rawDetail);
+
       setPickupPlace(detail);
-      setPickupAddress(option?.fullAddress || detail?.fullAddress || "");
+      setPickupAddress(detail.fullAddress || "");
       setPickupOptions([]);
 
       await refreshRouteFromPlaces(detail, stopPlaces, { silent: true });
@@ -1197,17 +1250,17 @@ export default function BookingCard() {
     try {
       setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
 
-      const detail = isVietnamLocationOption(option)
+      const rawDetail = isVietnamLocationOption(option)
         ? option
         : await getPlaceDetail(option.placeId);
+
+      const detail = normalizeSelectedPlace(option, rawDetail);
 
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? detail : p));
 
       setStopPlaces(nextStopPlaces);
       setStops((prev) =>
-        prev.map((value, i) =>
-          i === idx ? option?.fullAddress || detail?.fullAddress || "" : value,
-        ),
+        prev.map((value, i) => (i === idx ? detail.fullAddress || "" : value)),
       );
       setStopOptions((prev) =>
         prev.map((items, i) => (i === idx ? [] : items)),
@@ -1710,7 +1763,7 @@ export default function BookingCard() {
                   }
                   loadingText="Đang tìm địa chỉ..."
                   isOptionEqualToValue={(option, value) =>
-                    option.placeId === value.placeId
+                    option?.placeId === value?.placeId
                   }
                   renderOption={(props, option) => (
                     <Box component="li" {...props}>
@@ -1800,7 +1853,7 @@ export default function BookingCard() {
                           }
                           loadingText="Đang tìm địa chỉ..."
                           isOptionEqualToValue={(option, value) =>
-                            option.placeId === value.placeId
+                            option?.placeId === value?.placeId
                           }
                           fullWidth
                           renderOption={(props, option) => (
