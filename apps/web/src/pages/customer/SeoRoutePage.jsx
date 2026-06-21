@@ -231,11 +231,18 @@ export default function SeoRoutePage({ routeKey }) {
         <h2 style={styles.sectionTitle}>Tuyến phổ biến khác</h2>
 
         <div style={styles.routeLinks}>
-          {SEO_ROUTES.filter((item) => item.key !== route.key).map((item) => (
-            <Link key={item.key} to={`/${item.path}`} style={styles.routeLink}>
-              {item.from} → {item.to}
-            </Link>
-          ))}
+          {SEO_ROUTES.filter((item) => item.key !== route.key)
+            .filter((item) => !["các tỉnh", "theo nhu cầu"].includes(item.to))
+            .slice(0, 60)
+            .map((item) => (
+              <Link
+                key={item.key}
+                to={`/${item.path}`}
+                style={styles.routeLink}
+              >
+                {item.from} → {item.to}
+              </Link>
+            ))}
         </div>
       </section>
 
