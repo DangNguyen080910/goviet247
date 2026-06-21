@@ -3,7 +3,52 @@ import { Link } from "react-router-dom";
 import HeroSection from "../../components/customer/HeroSection";
 import { SEO_ROUTES } from "../../data/seoRoutes";
 
+const PINNED_ROUTE_CARDS = [
+  {
+    key: "home-xe-lien-tinh",
+    path: "xe-lien-tinh",
+    label: "Liên tỉnh → theo nhu cầu",
+    duration: "Tùy tuyến",
+  },
+  {
+    key: "home-tp-hcm-di-cac-tinh",
+    path: "tp-hcm-di-cac-tinh",
+    label: "TP.HCM → các tỉnh",
+    duration: "Tùy tuyến",
+  },
+  {
+    key: "home-cac-tinh-di-tp-hcm",
+    path: "cac-tinh-di-tp-hcm",
+    label: "Các tỉnh → TP.HCM",
+    duration: "Tùy tuyến",
+  },
+  {
+    key: "home-thue-xe-di-tinh",
+    path: "thue-xe-di-tinh",
+    label: "Thuê xe đi tỉnh",
+    duration: "Tùy tuyến",
+  },
+];
+
+const HIDDEN_ROUTE_KEYS = new Set([
+  "xe-lien-tinh",
+  "xe-tu-tp-hcm-di-cac-tinh",
+  "xe-tu-cac-tinh-ve-tp-hcm",
+  "thue-xe-di-tinh",
+  "xe-di-tinh",
+  "taxi-di-tinh",
+  "taxi-duong-dai",
+  "xe-rieng-di-tinh",
+  "xe-tien-chuyen",
+  "xe-rieng-gia-tien-chuyen",
+  "xe-ve-que",
+]);
+
 export default function CustomerHome() {
+  const visibleRoutes = SEO_ROUTES.filter(
+    (route) => !HIDDEN_ROUTE_KEYS.has(route.key),
+  );
+
   return (
     <>
       <HeroSection />
@@ -21,7 +66,14 @@ export default function CustomerHome() {
           </p>
 
           <div style={styles.grid}>
-            {SEO_ROUTES.map((route) => (
+            {PINNED_ROUTE_CARDS.map((route) => (
+              <Link key={route.key} to={`/${route.path}`} style={styles.card}>
+                <strong>{route.label}</strong>
+                <span>{route.duration}</span>
+              </Link>
+            ))}
+
+            {visibleRoutes.map((route) => (
               <Link key={route.key} to={`/${route.path}`} style={styles.card}>
                 <strong>
                   {route.from} → {route.to}

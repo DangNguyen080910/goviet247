@@ -35,7 +35,23 @@ export default function HeroSection() {
     return "desktop";
   }, []);
 
-  const featuredRoutes = SEO_ROUTES.slice(0, 12);
+  const HIDDEN_HERO_ROUTE_KEYS = new Set([
+  "xe-lien-tinh",
+  "xe-tu-tp-hcm-di-cac-tinh",
+  "xe-tu-cac-tinh-ve-tp-hcm",
+  "thue-xe-di-tinh",
+  "xe-di-tinh",
+  "taxi-di-tinh",
+  "taxi-duong-dai",
+  "xe-rieng-di-tinh",
+  "xe-tien-chuyen",
+  "xe-rieng-gia-tien-chuyen",
+  "xe-ve-que",
+]);
+
+const featuredRoutes = SEO_ROUTES.filter(
+  (route) => !HIDDEN_HERO_ROUTE_KEYS.has(route.key),
+).slice(0, 12);
 
   const mainSeoLinks = [
     { label: "Xe liên tỉnh", path: "/xe-lien-tinh" },
