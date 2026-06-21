@@ -57,10 +57,13 @@ import { getPublicTripConfig } from "../../api/publicConfig";
 import { requestOtp, verifyOtp, getMe } from "../../api/auth";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
 import { searchPlaces, getPlaceDetail, getRoute } from "../../api/maps";
-import {
-  searchVietnamLocations,
-  isVietnamLocationOption,
-} from "../../data/vietnamLocations";
+import { searchVietnamLocations } from "../../data/vietnamLocations";
+
+const hasPlaceCoords = (place) => {
+  return (
+    Number.isFinite(Number(place?.lat)) && Number.isFinite(Number(place?.lng))
+  );
+};
 
 const DEFAULT_PUBLIC_CONFIG = {
   tripConfig: {
@@ -1259,12 +1262,12 @@ export default function BookingCard() {
     try {
       setPickupLoading(true);
 
-      const rawDetail = isVietnamLocationOption(option)
+      const rawDetail = hasPlaceCoords(option)
         ? option
         : await getPlaceDetail(option.placeId);
 
       const detail = normalizeSelectedPlace(option, rawDetail);
-      
+
       console.log("PICKUP OPTION", option);
       console.log("PICKUP RAW DETAIL", rawDetail);
       console.log("PICKUP NORMALIZED", detail);
@@ -1307,7 +1310,7 @@ export default function BookingCard() {
     try {
       setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
 
-      const rawDetail = isVietnamLocationOption(option)
+      const rawDetail = hasPlaceCoords(option)
         ? option
         : await getPlaceDetail(option.placeId);
 
