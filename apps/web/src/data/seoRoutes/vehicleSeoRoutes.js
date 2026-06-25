@@ -557,4 +557,403 @@ duration: "2 giờ",
   routeText: "TP.HCM → Phan Thiết → Tuy Phong",
   duration: "5 - 5.5 giờ",
 },
+//
+// =========================
+// NHA TRANG
+// =========================
+
+{
+key: "5-cho-nha-trang",
+path: "cho-thue-xe-5-cho-di-nha-trang",
+from: "TP.HCM",
+to: "Nha Trang",
+title: "Cho thuê xe 5 chỗ đi Nha Trang giá tốt",
+description:
+"Xe riêng đi Nha Trang từ TP.HCM, đón tận nơi, không ghép khách.",
+routeText: "TP.HCM → Phan Thiết → Cam Ranh → Nha Trang",
+duration: "8 - 9 giờ",
+},
+
+{
+key: "7-cho-nha-trang",
+path: "cho-thue-xe-7-cho-di-nha-trang",
+from: "TP.HCM",
+to: "Nha Trang",
+title: "Cho thuê xe 7 chỗ đi Nha Trang giá tốt",
+description:
+"Thuê xe 7 chỗ đi Nha Trang cho gia đình, nhóm bạn và khách du lịch.",
+routeText: "TP.HCM → Phan Thiết → Cam Ranh → Nha Trang",
+duration: "8 - 9 giờ",
+},
+
+{
+key: "16-cho-nha-trang",
+path: "cho-thue-xe-16-cho-di-nha-trang",
+from: "TP.HCM",
+to: "Nha Trang",
+title: "Cho thuê xe 16 chỗ đi Nha Trang giá tốt",
+description:
+"Xe 16 chỗ đi Nha Trang cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Phan Thiết → Cam Ranh → Nha Trang",
+duration: "8 - 9 giờ",
+},
+
+//
+// =========================
+// CAM RANH
+// =========================
+
+{
+key: "5-cho-cam-ranh",
+path: "cho-thue-xe-5-cho-di-cam-ranh",
+from: "TP.HCM",
+to: "Cam Ranh",
+title: "Cho thuê xe 5 chỗ đi Cam Ranh giá tốt",
+description:
+"Xe riêng đi Cam Ranh từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Phan Thiết → Cam Ranh",
+duration: "7 - 8 giờ",
+},
+
+{
+key: "7-cho-cam-ranh",
+path: "cho-thue-xe-7-cho-di-cam-ranh",
+from: "TP.HCM",
+to: "Cam Ranh",
+title: "Cho thuê xe 7 chỗ đi Cam Ranh giá tốt",
+description:
+"Thuê xe 7 chỗ đi Cam Ranh cho gia đình và công tác.",
+routeText: "TP.HCM → Phan Thiết → Cam Ranh",
+duration: "7 - 8 giờ",
+},
+
+{
+key: "16-cho-cam-ranh",
+path: "cho-thue-xe-16-cho-di-cam-ranh",
+from: "TP.HCM",
+to: "Cam Ranh",
+title: "Cho thuê xe 16 chỗ đi Cam Ranh giá tốt",
+description:
+"Xe 16 chỗ đi Cam Ranh cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Phan Thiết → Cam Ranh",
+duration: "7 - 8 giờ",
+},
+
+//
+// =========================
+// PHAN RANG
+// =========================
+
+{
+key: "5-cho-phan-rang",
+path: "cho-thue-xe-5-cho-di-phan-rang",
+from: "TP.HCM",
+to: "Phan Rang",
+title: "Cho thuê xe 5 chỗ đi Phan Rang giá tốt",
+description:
+"Xe riêng đi Phan Rang từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Phan Thiết → Phan Rang",
+duration: "6 - 7 giờ",
+},
+
+{
+key: "7-cho-phan-rang",
+path: "cho-thue-xe-7-cho-di-phan-rang",
+from: "TP.HCM",
+to: "Phan Rang",
+title: "Cho thuê xe 7 chỗ đi Phan Rang giá tốt",
+description:
+"Thuê xe 7 chỗ đi Phan Rang cho gia đình và công tác.",
+routeText: "TP.HCM → Phan Thiết → Phan Rang",
+duration: "6 - 7 giờ",
+},
+
+{
+key: "16-cho-phan-rang",
+path: "cho-thue-xe-16-cho-di-phan-rang",
+from: "TP.HCM",
+to: "Phan Rang",
+title: "Cho thuê xe 16 chỗ đi Phan Rang giá tốt",
+description:
+"Xe 16 chỗ đi Phan Rang cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Phan Thiết → Phan Rang",
+duration: "6 - 7 giờ",
+},
+// =========================
+// TUY HÒA
+// =========================
+
+{
+key: "5-cho-tuy-hoa",
+path: "cho-thue-xe-5-cho-di-tuy-hoa",
+from: "TP.HCM",
+to: "Tuy Hòa",
+title: "Cho thuê xe 5 chỗ đi Tuy Hòa giá tốt",
+description:
+"Xe riêng đi Tuy Hòa từ TP.HCM, đón tận nơi, không ghép khách.",
+routeText: "TP.HCM → Phan Rang → Nha Trang → Tuy Hòa",
+duration: "10 - 11 giờ",
+},
+
+{
+key: "7-cho-tuy-hoa",
+path: "cho-thue-xe-7-cho-di-tuy-hoa",
+from: "TP.HCM",
+to: "Tuy Hòa",
+title: "Cho thuê xe 7 chỗ đi Tuy Hòa giá tốt",
+description:
+"Thuê xe 7 chỗ đi Tuy Hòa cho gia đình, nhóm bạn và công tác.",
+routeText: "TP.HCM → Phan Rang → Nha Trang → Tuy Hòa",
+duration: "10 - 11 giờ",
+},
+
+{
+key: "16-cho-tuy-hoa",
+path: "cho-thue-xe-16-cho-di-tuy-hoa",
+from: "TP.HCM",
+to: "Tuy Hòa",
+title: "Cho thuê xe 16 chỗ đi Tuy Hòa giá tốt",
+description:
+"Xe 16 chỗ đi Tuy Hòa cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Phan Rang → Nha Trang → Tuy Hòa",
+duration: "10 - 11 giờ",
+},
+
+// =========================
+// QUY NHƠN
+// =========================
+
+{
+key: "5-cho-quy-nhon",
+path: "cho-thue-xe-5-cho-di-quy-nhon",
+from: "TP.HCM",
+to: "Quy Nhơn",
+title: "Cho thuê xe 5 chỗ đi Quy Nhơn giá tốt",
+description:
+"Xe riêng đi Quy Nhơn từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Nha Trang → Tuy Hòa → Quy Nhơn",
+duration: "12 - 13 giờ",
+},
+
+{
+key: "7-cho-quy-nhon",
+path: "cho-thue-xe-7-cho-di-quy-nhon",
+from: "TP.HCM",
+to: "Quy Nhơn",
+title: "Cho thuê xe 7 chỗ đi Quy Nhơn giá tốt",
+description:
+"Thuê xe 7 chỗ đi Quy Nhơn cho gia đình và công tác.",
+routeText: "TP.HCM → Nha Trang → Tuy Hòa → Quy Nhơn",
+duration: "12 - 13 giờ",
+},
+
+{
+key: "16-cho-quy-nhon",
+path: "cho-thue-xe-16-cho-di-quy-nhon",
+from: "TP.HCM",
+to: "Quy Nhơn",
+title: "Cho thuê xe 16 chỗ đi Quy Nhơn giá tốt",
+description:
+"Xe 16 chỗ đi Quy Nhơn cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Nha Trang → Tuy Hòa → Quy Nhơn",
+duration: "12 - 13 giờ",
+},
+
+// =========================
+// BUÔN MA THUỘT
+// =========================
+
+{
+key: "5-cho-buon-ma-thuot",
+path: "cho-thue-xe-5-cho-di-buon-ma-thuot",
+from: "TP.HCM",
+to: "Buôn Ma Thuột",
+title: "Cho thuê xe 5 chỗ đi Buôn Ma Thuột giá tốt",
+description:
+"Xe riêng đi Buôn Ma Thuột từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Đồng Xoài → Gia Nghĩa → Buôn Ma Thuột",
+duration: "7 - 8 giờ",
+},
+
+{
+key: "7-cho-buon-ma-thuot",
+path: "cho-thue-xe-7-cho-di-buon-ma-thuot",
+from: "TP.HCM",
+to: "Buôn Ma Thuột",
+title: "Cho thuê xe 7 chỗ đi Buôn Ma Thuột giá tốt",
+description:
+"Thuê xe 7 chỗ đi Buôn Ma Thuột cho gia đình và công tác.",
+routeText: "TP.HCM → Đồng Xoài → Gia Nghĩa → Buôn Ma Thuột",
+duration: "7 - 8 giờ",
+},
+
+{
+key: "16-cho-buon-ma-thuot",
+path: "cho-thue-xe-16-cho-di-buon-ma-thuot",
+from: "TP.HCM",
+to: "Buôn Ma Thuột",
+title: "Cho thuê xe 16 chỗ đi Buôn Ma Thuột giá tốt",
+description:
+"Xe 16 chỗ đi Buôn Ma Thuột cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Đồng Xoài → Gia Nghĩa → Buôn Ma Thuột",
+duration: "7 - 8 giờ",
+},
+// =========================
+// GIA NGHĨA
+// =========================
+
+{
+key: "5-cho-gia-nghia",
+path: "cho-thue-xe-5-cho-di-gia-nghia",
+from: "TP.HCM",
+to: "Gia Nghĩa",
+title: "Cho thuê xe 5 chỗ đi Gia Nghĩa giá tốt",
+description:
+"Xe riêng đi Gia Nghĩa từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Đồng Xoài → Gia Nghĩa",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "7-cho-gia-nghia",
+path: "cho-thue-xe-7-cho-di-gia-nghia",
+from: "TP.HCM",
+to: "Gia Nghĩa",
+title: "Cho thuê xe 7 chỗ đi Gia Nghĩa giá tốt",
+description:
+"Thuê xe 7 chỗ đi Gia Nghĩa cho gia đình và công tác.",
+routeText: "TP.HCM → Đồng Xoài → Gia Nghĩa",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "16-cho-gia-nghia",
+path: "cho-thue-xe-16-cho-di-gia-nghia",
+from: "TP.HCM",
+to: "Gia Nghĩa",
+title: "Cho thuê xe 16 chỗ đi Gia Nghĩa giá tốt",
+description:
+"Xe 16 chỗ đi Gia Nghĩa cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Đồng Xoài → Gia Nghĩa",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// PLEIKU
+// =========================
+
+{
+key: "5-cho-pleiku",
+path: "cho-thue-xe-5-cho-di-pleiku",
+from: "TP.HCM",
+to: "Pleiku",
+title: "Cho thuê xe 5 chỗ đi Pleiku giá tốt",
+description:
+"Xe riêng đi Pleiku từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Gia Nghĩa → Buôn Ma Thuột → Pleiku",
+duration: "10 - 11 giờ",
+},
+
+{
+key: "7-cho-pleiku",
+path: "cho-thue-xe-7-cho-di-pleiku",
+from: "TP.HCM",
+to: "Pleiku",
+title: "Cho thuê xe 7 chỗ đi Pleiku giá tốt",
+description:
+"Thuê xe 7 chỗ đi Pleiku cho gia đình và công tác.",
+routeText: "TP.HCM → Gia Nghĩa → Buôn Ma Thuột → Pleiku",
+duration: "10 - 11 giờ",
+},
+
+{
+key: "16-cho-pleiku",
+path: "cho-thue-xe-16-cho-di-pleiku",
+from: "TP.HCM",
+to: "Pleiku",
+title: "Cho thuê xe 16 chỗ đi Pleiku giá tốt",
+description:
+"Xe 16 chỗ đi Pleiku cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Gia Nghĩa → Buôn Ma Thuột → Pleiku",
+duration: "10 - 11 giờ",
+},
+// =========================
+// ĐÀ NẴNG
+// =========================
+
+{
+key: "5-cho-da-nang",
+path: "cho-thue-xe-5-cho-di-da-nang",
+from: "TP.HCM",
+to: "Đà Nẵng",
+title: "Cho thuê xe 5 chỗ đi Đà Nẵng giá tốt",
+description:
+"Xe riêng đi Đà Nẵng từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Nha Trang → Quy Nhơn → Đà Nẵng",
+duration: "16 - 18 giờ",
+},
+
+{
+key: "7-cho-da-nang",
+path: "cho-thue-xe-7-cho-di-da-nang",
+from: "TP.HCM",
+to: "Đà Nẵng",
+title: "Cho thuê xe 7 chỗ đi Đà Nẵng giá tốt",
+description:
+"Thuê xe 7 chỗ đi Đà Nẵng cho gia đình và công tác.",
+routeText: "TP.HCM → Nha Trang → Quy Nhơn → Đà Nẵng",
+duration: "16 - 18 giờ",
+},
+
+{
+key: "16-cho-da-nang",
+path: "cho-thue-xe-16-cho-di-da-nang",
+from: "TP.HCM",
+to: "Đà Nẵng",
+title: "Cho thuê xe 16 chỗ đi Đà Nẵng giá tốt",
+description:
+"Xe 16 chỗ đi Đà Nẵng cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Nha Trang → Quy Nhơn → Đà Nẵng",
+duration: "16 - 18 giờ",
+},
+
+// =========================
+// HỘI AN
+// =========================
+
+{
+key: "5-cho-hoi-an",
+path: "cho-thue-xe-5-cho-di-hoi-an",
+from: "TP.HCM",
+to: "Hội An",
+title: "Cho thuê xe 5 chỗ đi Hội An giá tốt",
+description:
+"Xe riêng đi Hội An từ TP.HCM, đón tận nơi.",
+routeText: "TP.HCM → Nha Trang → Quy Nhơn → Hội An",
+duration: "17 - 18 giờ",
+},
+
+{
+key: "7-cho-hoi-an",
+path: "cho-thue-xe-7-cho-di-hoi-an",
+from: "TP.HCM",
+to: "Hội An",
+title: "Cho thuê xe 7 chỗ đi Hội An giá tốt",
+description:
+"Thuê xe 7 chỗ đi Hội An cho gia đình và công tác.",
+routeText: "TP.HCM → Nha Trang → Quy Nhơn → Hội An",
+duration: "17 - 18 giờ",
+},
+
+{
+key: "16-cho-hoi-an",
+path: "cho-thue-xe-16-cho-di-hoi-an",
+from: "TP.HCM",
+to: "Hội An",
+title: "Cho thuê xe 16 chỗ đi Hội An giá tốt",
+description:
+"Xe 16 chỗ đi Hội An cho đoàn du lịch và doanh nghiệp.",
+routeText: "TP.HCM → Nha Trang → Quy Nhơn → Hội An",
+duration: "17 - 18 giờ",
+},
 ];
