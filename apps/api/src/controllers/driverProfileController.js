@@ -5,6 +5,7 @@ import {
   extractS3KeyFromUrlOrKey,
   getSignedViewUrl,
 } from "../services/s3Service.js";
+import { sendAdminPushNotification } from "../services/notificationService.js";
 
 const REQUIRED_DOCUMENT_TYPES = [
   "CCCD_FRONT",
@@ -1227,6 +1228,40 @@ export async function createDriverProfile(req, res) {
         },
       });
     });
+
+        if (profile) {
+      try {
+        const driverName =
+          profile.fullName ||
+          profile.user?.displayName ||
+          profile.user?.phones?.[0]?.e164 ||
+          "Tài xế mới";
+
+        await sendAdminPushNotification({
+          title: "🚗 Tài xế mới đăng ký",
+          body: `${driverName} vừa gửi hồ sơ chờ duyệt.`,
+          data: {
+            type: "NEW_DRIVER_PROFILE",
+            driverProfileId: profile.id,
+            driverId: profile.userId,
+            status: profile.status,
+          },
+        });
+
+        emitAdminDashboardChanged(req, {
+          source: "driver_profile_created",
+          driverId: profile.userId,
+          driverProfileId: profile.id,
+          status: profile.status,
+          updatedAt: profile.createdAt,
+        });
+      } catch (notifyError) {
+        console.error(
+          "[DriverProfile] send admin push new driver error:",
+          notifyError,
+        );
+      }
+    }
 
     return res.json({
       success: true,
