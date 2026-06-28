@@ -131,4 +131,115 @@ export const PORT_SEO_ROUTES = [
     routeText: "TP.HCM → Rạch Giá → Hà Tiên",
     duration: "7 – 9 giờ",
   },
+    // ==== CẢNG / BẾN TÀU ====
+  {
+    key: "cang-gemalink",
+    path: "xe-di-cang-gemalink",
+    from: "TP.HCM",
+    to: "Cảng Gemalink",
+    title: "Xe đi Cảng Gemalink giá tốt, xe riêng đưa đón tận nơi",
+    description:
+      "Dịch vụ xe riêng đi Cảng Gemalink từ TP.HCM. Không ghép khách, biết giá trước khi đặt, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+    routeText: "TP.HCM → Long Thành → Phú Mỹ → Cảng Gemalink",
+    duration: "2 - 2.5 giờ",
+  },
+  {
+    key: "cang-quoc-te-cai-mep",
+    path: "xe-di-cang-quoc-te-cai-mep",
+    from: "TP.HCM",
+    to: "Cảng Quốc tế Cái Mép",
+    title: "Xe đi Cảng Quốc tế Cái Mép, xe riêng không ghép khách",
+    description:
+      "Đặt xe riêng đi Cảng Quốc tế Cái Mép từ TP.HCM, đưa đón tận nơi, biết giá trước khi đặt, không đặt cọc và thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Long Thành → Phú Mỹ → Cảng Quốc tế Cái Mép",
+    duration: "2 - 2.5 giờ",
+  },
+  {
+    key: "cang-tan-cang-cai-mep-thi-vai",
+    path: "xe-di-tan-cang-cai-mep-thi-vai",
+    from: "TP.HCM",
+    to: "Tân Cảng Cái Mép - Thị Vải",
+    title: "Xe đi Tân Cảng Cái Mép Thị Vải, xe riêng đưa đón tận nơi",
+    description:
+      "Dịch vụ xe riêng đi Tân Cảng Cái Mép - Thị Vải từ TP.HCM. Không ghép khách, không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+    routeText: "TP.HCM → Long Thành → Phú Mỹ → Cái Mép - Thị Vải",
+    duration: "2 - 2.5 giờ",
+  },
+  {
+    key: "cang-cm-tv",
+    path: "xe-di-cang-cm-tv",
+    from: "TP.HCM",
+    to: "Cảng CM-TV",
+    title: "Xe đi Cảng CM-TV Cái Mép Thị Vải, xe riêng giá tốt",
+    description:
+      "Đặt xe riêng đi Cảng CM-TV từ TP.HCM, phù hợp công tác, đưa đón chuyên gia, thủy thủ. Không ghép khách, không đặt cọc, thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Long Thành → Phú Mỹ → Cảng CM-TV",
+    duration: "2 - 2.5 giờ",
+  },
+  {
+    key: "cang-ssit",
+    path: "xe-di-cang-ssit",
+    from: "TP.HCM",
+    to: "Cảng SSIT",
+    title: "Xe đi Cảng SSIT từ TP.HCM, xe riêng không ghép khách",
+    description:
+      "Dịch vụ xe riêng đi Cảng SSIT từ TP.HCM. Đưa đón tận nơi, biết giá trước khi đặt, không đặt cọc và thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Long Thành → Phú Mỹ → Cảng SSIT",
+    duration: "2 - 2.5 giờ",
+  },
+  {
+    key: "cang-vietsovpetro",
+    path: "xe-di-cang-vietsovpetro",
+    from: "TP.HCM",
+    to: "Cảng Vietsovpetro",
+    title: "Xe đi Cảng Vietsovpetro, xe riêng đưa đón tận nơi",
+    description:
+      "Đặt xe riêng đi Cảng Vietsovpetro từ TP.HCM. Không ghép khách, biết giá trước khi đặt, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+    routeText: "TP.HCM → Long Thành → Vũng Tàu → Cảng Vietsovpetro",
+    duration: "2.5 - 3 giờ",
+  },
+  {
+    key: "cang-ben-dam",
+    path: "xe-di-cang-ben-dam",
+    from: "TP.HCM",
+    to: "Cảng Bến Đầm",
+    title: "Xe đi Cảng Bến Đầm, xe riêng đưa đón tận nơi",
+    description:
+      "Dịch vụ xe riêng đi Cảng Bến Đầm, đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Vũng Tàu → Cảng Bến Đầm",
+    duration: "3 - 3.5 giờ",
+  },
+  {
+    key: "ben-tau-cao-toc-vung-tau",
+    path: "xe-di-ben-tau-cao-toc-vung-tau",
+    from: "TP.HCM",
+    to: "Bến tàu cao tốc Vũng Tàu",
+    title: "Xe đi bến tàu cao tốc Vũng Tàu, xe riêng giá tốt",
+    description:
+      "Đặt xe riêng đi bến tàu cao tốc Vũng Tàu từ TP.HCM. Không ghép khách, không đặt cọc, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Long Thành → Vũng Tàu",
+    duration: "2 - 2.5 giờ",
+  },
+  {
+    key: "ben-tau-tran-de",
+    path: "xe-di-ben-tau-tran-de",
+    from: "TP.HCM",
+    to: "Bến tàu Trần Đề",
+    title: "Xe đi bến tàu Trần Đề Sóc Trăng, xe riêng đưa đón tận nơi",
+    description:
+      "Dịch vụ xe riêng đi bến tàu Trần Đề từ TP.HCM, phù hợp khách đi Côn Đảo bằng tàu. Không ghép khách, không đặt cọc, thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Cần Thơ → Sóc Trăng → Trần Đề",
+    duration: "5 - 6.5 giờ",
+  },
+  {
+    key: "ben-tau-cai-rong",
+    path: "xe-di-ben-tau-cai-rong",
+    from: "TP.HCM",
+    to: "Bến tàu Cái Rồng",
+    title: "Xe đi bến tàu Cái Rồng, xe riêng đưa đón tận nơi",
+    description:
+      "Đặt xe riêng đi bến tàu Cái Rồng, đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText: "TP.HCM → Bến tàu Cái Rồng",
+    duration: "Theo lộ trình thực tế",
+  },
 ];
