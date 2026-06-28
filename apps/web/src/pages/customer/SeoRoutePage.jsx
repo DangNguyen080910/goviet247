@@ -92,6 +92,35 @@ export default function SeoRoutePage({ routeKey }) {
     return <main style={styles.page}>Không tìm thấy tuyến xe.</main>;
   }
 
+  const relatedRoutes = SEO_ROUTES.filter((item) => item.key !== route.key)
+    .filter((item) => item.path !== route.path)
+    .filter((item) => {
+      const sameFrom = item.from === route.from;
+      const sameTo = item.to === route.to;
+
+      const reverseRoute = item.from === route.to && item.to === route.from;
+
+      const sameArea =
+        item.from === route.from ||
+        item.to === route.from ||
+        item.from === route.to ||
+        item.to === route.to;
+
+      const isUsefulRoute =
+        !["các tỉnh", "theo nhu cầu"].includes(
+          String(item.to || "").toLowerCase(),
+        ) &&
+        !["các tỉnh", "theo nhu cầu"].includes(
+          String(item.from || "").toLowerCase(),
+        );
+
+      return isUsefulRoute && (sameFrom || sameTo || reverseRoute || sameArea);
+    })
+    .filter((item, index, arr) => {
+      return arr.findIndex((x) => x.path === item.path) === index;
+    })
+    .slice(0, 12);
+
   return (
     <main style={styles.page}>
       <section style={styles.hero}>
@@ -138,7 +167,6 @@ export default function SeoRoutePage({ routeKey }) {
           </a>
         </div>
       </section>
-
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
           Giá thuê xe {route.from} đi {route.to} được tính như thế nào?
@@ -167,7 +195,6 @@ export default function SeoRoutePage({ routeKey }) {
           rõ ràng, trọn gói theo chuyến và không phát sinh thêm.
         </p>
       </section>
-
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>Tại sao nên chọn GoViet247?</h2>
 
@@ -180,7 +207,6 @@ export default function SeoRoutePage({ routeKey }) {
           <li>Hỗ trợ nhanh qua hotline hoặc Zalo</li>
         </ul>
       </section>
-
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
           Lộ trình {route.from} đi {route.to}
@@ -196,7 +222,6 @@ export default function SeoRoutePage({ routeKey }) {
           cụ thể.
         </p>
       </section>
-
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>Câu hỏi thường gặp</h2>
 
@@ -227,14 +252,12 @@ export default function SeoRoutePage({ routeKey }) {
         </div>
       </section>
 
-      <section style={styles.popularRoutes}>
-        <h2 style={styles.sectionTitle}>Tuyến phổ biến khác</h2>
+      {relatedRoutes.length > 0 && (
+        <section style={styles.popularRoutes}>
+          <h2 style={styles.sectionTitle}>Tuyến liên quan</h2>
 
-        <div style={styles.routeLinks}>
-          {SEO_ROUTES.filter((item) => item.key !== route.key)
-            .filter((item) => !["các tỉnh", "theo nhu cầu"].includes(item.to))
-            .slice(0, 60)
-            .map((item) => (
+          <div style={styles.routeLinks}>
+            {relatedRoutes.map((item) => (
               <Link
                 key={item.key}
                 to={`/${item.path}`}
@@ -243,8 +266,9 @@ export default function SeoRoutePage({ routeKey }) {
                 {item.from} → {item.to}
               </Link>
             ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       <section style={styles.cta}>
         Đặt xe {route.from} → {route.to} ngay hôm nay
