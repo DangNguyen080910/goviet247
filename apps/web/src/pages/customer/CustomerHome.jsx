@@ -49,6 +49,8 @@ export default function CustomerHome() {
     (route) => !HIDDEN_ROUTE_KEYS.has(route.key),
   );
 
+  const featuredRoutes = visibleRoutes.slice(0, 28);
+
   return (
     <>
       <HeroSection />
@@ -73,7 +75,7 @@ export default function CustomerHome() {
               </Link>
             ))}
 
-            {visibleRoutes.map((route) => (
+            {featuredRoutes.map((route) => (
               <Link key={route.key} to={`/${route.path}`} style={styles.card}>
                 <strong>
                   {route.from} → {route.to}
@@ -81,6 +83,11 @@ export default function CustomerHome() {
                 <span>{route.duration}</span>
               </Link>
             ))}
+          </div>
+          <div style={styles.viewAllWrapper}>
+            <Link to="/xe-lien-tinh" style={styles.viewAllButton}>
+              Xem tất cả tuyến xe →
+            </Link>
           </div>
         </div>
       </section>
@@ -136,5 +143,22 @@ const styles = {
     color: "#172033",
     border: "1px solid #fed7aa",
     textDecoration: "none",
+  },
+  viewAllWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: 24,
+  },
+
+  viewAllButton: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "12px 24px",
+    borderRadius: 999,
+    background: "#f97316",
+    color: "#fff",
+    textDecoration: "none",
+    fontWeight: 800,
   },
 };
