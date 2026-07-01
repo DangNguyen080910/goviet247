@@ -20,6 +20,7 @@ import { BUSINESS_SEO_ROUTES } from "./businessSeoRoutes.js";
 import { VEHICLE_SEO_ROUTES } from "./vehicleSeoRoutes.js";
 import { VUNGTAU_SEO_ROUTES } from "./vungTauSeoRoutes.js";
 import { HOTRAM_SEO_ROUTES } from "./hoTramSeoRoutes.js";
+import { PHANTHIET_SEO_ROUTES } from "./phanThietSeoRoutes.js";
 
 const uniqueByPath = (items) => {
   const seen = new Set();
@@ -56,4 +57,5 @@ export const SEO_ROUTES = uniqueByPath([
   ...VEHICLE_SEO_ROUTES,
   ...VUNGTAU_SEO_ROUTES,
   ...HOTRAM_SEO_ROUTES,
+  ...PHANTHIET_SEO_ROUTES,
 ]);
