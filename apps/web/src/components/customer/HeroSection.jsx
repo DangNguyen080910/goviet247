@@ -4,7 +4,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import AppleIcon from "@mui/icons-material/Apple";
 import AndroidIcon from "@mui/icons-material/Android";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import heroImage from "../../assets/xe.png";
 import { HEADER_H, FOOTER_H } from "./CustomerLayout";
 import { getPublicSystemConfig } from "../../api/systemConfig";
@@ -19,21 +19,21 @@ export default function HeroSection() {
   const playStoreUrl =
     "https://play.google.com/store/apps/details?id=com.goviet247.rider";
 
-  const deviceType = useMemo(() => {
-    if (typeof window === "undefined") return "desktop";
+  // const deviceType = useMemo(() => {
+  //   if (typeof window === "undefined") return "desktop";
 
-    const ua = navigator.userAgent.toLowerCase();
+  //   const ua = navigator.userAgent.toLowerCase();
 
-    if (/iphone|ipad|ipod/.test(ua)) {
-      return "ios";
-    }
+  //   if (/iphone|ipad|ipod/.test(ua)) {
+  //     return "ios";
+  //   }
 
-    if (/android/.test(ua)) {
-      return "android";
-    }
+  //   if (/android/.test(ua)) {
+  //     return "android";
+  //   }
 
-    return "desktop";
-  }, []);
+  //   return "desktop";
+  // }, []);
 
 const FEATURED_HERO_ROUTE_KEYS = [
   "vung-tau",
@@ -254,7 +254,7 @@ const featuredRoutes = FEATURED_HERO_ROUTE_KEYS.map((key) =>
                   maxWidth: "100%",
                 }}
               >
-                {(deviceType === "ios" || deviceType === "desktop") && (
+                
                   <Button
                     variant="outlined"
                     startIcon={<AppleIcon />}
@@ -277,9 +277,7 @@ const featuredRoutes = FEATURED_HERO_ROUTE_KEYS.map((key) =>
                   >
                     App Store
                   </Button>
-                )}
-
-                {(deviceType === "android" || deviceType === "desktop") && (
+              
                   <Button
                     variant="outlined"
                     startIcon={<AndroidIcon />}
@@ -302,7 +300,7 @@ const featuredRoutes = FEATURED_HERO_ROUTE_KEYS.map((key) =>
                   >
                     Google Play
                   </Button>
-                )}
+
               </Stack>
             </Box>
           </Stack>
