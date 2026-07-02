@@ -3,6 +3,17 @@ export const BINHPHUOC_SEO_ROUTES = [
 // BÌNH PHƯỚC - XE RIÊNG
 // =========================
 {
+  key: "thue-xe-di-binh-phuoc",
+  path: "thue-xe-di-binh-phuoc",
+  from: "TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe đi Bình Phước giá tốt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe đi Bình Phước từ TP.HCM. Xe riêng, không ghép khách, đưa đón tận nơi, biết giá trước khi đặt và hoạt động 24/7.",
+  routeText: "TP.HCM → Quốc lộ 13 → Chơn Thành → Đồng Xoài",
+  duration: "2.5 - 3.5 giờ",
+},
+{
 key: "xe-rieng-binh-phuoc",
 path: "thue-xe-rieng-di-binh-phuoc",
 from: "TP.HCM",
