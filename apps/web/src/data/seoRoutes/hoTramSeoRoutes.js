@@ -180,7 +180,7 @@ duration: "2.5 - 3 giờ",
 
 {
 key: "xe-cuoi-tuan-ho-tram",
-path: "thue-xe-cuoi-tuan-di-ho-tram",
+path: "cho-thue-xe-cuoi-tuan-di-ho-tram",
 from: "TP.HCM",
 to: "Hồ Tràm",
 title: "Thuê xe cuối tuần đi Hồ Tràm cho gia đình, nhóm bạn",

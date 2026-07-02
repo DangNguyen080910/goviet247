@@ -1,3 +1,4 @@
+// apps/web/scripts/generateSitemap.mjs
 import fs from "fs";
 import path from "path";
 import { SEO_ROUTES } from "../src/data/seoRoutes/index.js";
@@ -16,10 +17,25 @@ const seoRoutes = SEO_ROUTES.map((route) => ({
   priority: route.path.includes("tp-hcm") ? "0.92" : "0.85",
 }));
 
-const uniqueRoutes = [...staticRoutes, ...seoRoutes].filter(
-  (route, index, arr) =>
-    arr.findIndex((item) => item.path === route.path) === index,
-);
+const allRoutes = [...staticRoutes, ...seoRoutes];
+
+const pathMap = new Map();
+
+for (const route of allRoutes) {
+  if (pathMap.has(route.path)) {
+    const first = pathMap.get(route.path);
+
+    throw new Error(
+      `❌ Duplicate sitemap path: "${route.path}"\n\n` +
+        `First priority: ${first.priority}\n` +
+        `Second priority: ${route.priority}\n`,
+    );
+  }
+
+  pathMap.set(route.path, route);
+}
+
+const uniqueRoutes = allRoutes;
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

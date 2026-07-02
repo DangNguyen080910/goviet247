@@ -232,7 +232,7 @@ export const PROVINCE_DISTRICT_SEO_ROUTES = [
   // BÌNH PHƯỚC - HUYỆN / THỊ XÃ
   // =========================
   {
-    key: "chon-thanh",
+    key: "binh-phuoc-chon-thanh",
     path: "xe-di-chon-thanh",
     from: "TP.HCM",
     to: "Chơn Thành",
@@ -298,7 +298,7 @@ export const PROVINCE_DISTRICT_SEO_ROUTES = [
     duration: "4 - 4.5 giờ",
   },
   {
-    key: "loc-ninh",
+    key: "thue-xe-di-loc-ninh",
     path: "xe-di-loc-ninh",
     from: "TP.HCM",
     to: "Lộc Ninh",
@@ -320,7 +320,7 @@ export const PROVINCE_DISTRICT_SEO_ROUTES = [
     duration: "4 - 4.5 giờ",
   },
   {
-    key: "bu-dang",
+    key: "thue-xe-di-bu-dang",
     path: "xe-di-bu-dang",
     from: "TP.HCM",
     to: "Bù Đăng",
@@ -968,7 +968,7 @@ export const PROVINCE_DISTRICT_SEO_ROUTES = [
   },
 
   {
-    key: "xuan-loc",
+    key: "thue-xe-di-xuan-loc",
     path: "xe-di-xuan-loc",
     from: "TP.HCM",
     to: "Xuân Lộc",

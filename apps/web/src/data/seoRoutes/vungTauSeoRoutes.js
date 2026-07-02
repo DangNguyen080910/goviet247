@@ -179,8 +179,8 @@ duration: "2 - 2.5 giờ",
 },
 
 {
-key: "xe-cuoi-tuan-vung-tau",
-path: "thue-xe-cuoi-tuan-di-vung-tau",
+key: "thue-xe-vao-cuoi-tuan-vung-tau",
+path: "thue-xe-vao-cuoi-tuan-di-vung-tau",
 from: "TP.HCM",
 to: "Vũng Tàu",
 title: "Thuê xe cuối tuần đi Vũng Tàu cho gia đình, nhóm bạn",
@@ -659,7 +659,7 @@ duration: "2 - 2.5 giờ",
 },
 
 {
-key: "du-lich-cuoi-tuan-vung-tau",
+key: "xe-du-lich-cuoi-tuan-vung-tau",
 path: "xe-du-lich-cuoi-tuan-di-vung-tau",
 from: "TP.HCM",
 to: "Vũng Tàu",
@@ -944,8 +944,8 @@ duration: "2 - 2.5 giờ",
 // VŨNG TÀU - TIỆN CHUYẾN
 // =========================
 {
-key: "xe-tien-chuyen-vung-tau",
-path: "xe-tien-chuyen-vung-tau",
+key: "xe-tien-chuyen-di-vung-tau",
+path: "xe-tien-chuyen-di-vung-tau",
 from: "TP.HCM",
 to: "Vũng Tàu",
 title: "Xe tiện chuyến Vũng Tàu giá tốt, xe riêng có tài xế",

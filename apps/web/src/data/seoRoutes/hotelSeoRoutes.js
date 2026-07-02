@@ -72,7 +72,7 @@ export const HOTEL_SEO_ROUTES = [
   // ===== PHAN THIẾT / MŨI NÉ =====
   {
     key: "hotel-centara-mirage-mui-ne",
-    path: "xe-di-centara-mirage-mui-ne",
+    path: "thue-xe-di-centara-mirage-mui-ne",
     from: "TP.HCM",
     to: "Centara Mirage Mũi Né",
     title: "Xe đi Centara Mirage Mũi Né, xe riêng đưa đón resort",

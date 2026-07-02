@@ -1,7 +1,7 @@
 export const RIDE_SHARE_SEO_ROUTES = [
   {
-    key: "xe-tien-chuyen-vung-tau",
-    path: "xe-tien-chuyen-vung-tau",
+    key: "cho-thue-xe-tien-chuyen-di-vung-tau",
+    path: "cho-thue-xe-tien-chuyen-di-vung-tau",
     from: "TP.HCM",
     to: "Vũng Tàu",
     title: "Xe tiện chuyến Vũng Tàu, xe riêng giá hợp lý",
@@ -11,8 +11,8 @@ export const RIDE_SHARE_SEO_ROUTES = [
     duration: "2 – 3 giờ",
   },
   {
-    key: "xe-tien-chuyen-binh-phuoc",
-    path: "xe-tien-chuyen-binh-phuoc",
+    key: "xe-tien-chuyen-di-binh-phuoc",
+    path: "xe-tien-chuyen-di-binh-phuoc",
     from: "TP.HCM",
     to: "Bình Phước",
     title: "Xe tiện chuyến Bình Phước, xe riêng đưa đón tận nơi",

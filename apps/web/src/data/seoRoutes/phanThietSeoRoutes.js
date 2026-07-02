@@ -184,7 +184,7 @@ duration: "3.5 - 4.5 giờ",
 
 {
 key: "xe-cuoi-tuan-phan-thiet",
-path: "thue-xe-cuoi-tuan-di-phan-thiet",
+path: "xe-cuoi-tuan-di-phan-thiet",
 from: "TP.HCM",
 to: "Phan Thiết",
 title: "Thuê xe cuối tuần đi Phan Thiết cho gia đình, nhóm bạn",

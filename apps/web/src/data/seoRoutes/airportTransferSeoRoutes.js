@@ -1,7 +1,7 @@
 export const AIRPORT_TRANSFER_SEO_ROUTES = [
   {
-    key: "san-bay-tsn-vung-tau",
-    path: "xe-tu-san-bay-tan-son-nhat-di-vung-tau",
+    key: "thue-xe-san-bay-tsn-vung-tau",
+    path: "thue-xe-tu-san-bay-tan-son-nhat-di-vung-tau",
     from: "Sân bay Tân Sơn Nhất",
     to: "Vũng Tàu",
     title: "Xe từ sân bay Tân Sơn Nhất đi Vũng Tàu giá tốt",
@@ -11,8 +11,8 @@ export const AIRPORT_TRANSFER_SEO_ROUTES = [
     duration: "2 – 3 giờ",
   },
   {
-    key: "san-bay-tsn-ho-tram",
-    path: "xe-tu-san-bay-tan-son-nhat-di-ho-tram",
+    key: "thue-xe-san-bay-tsn-ho-tram",
+    path: "thue-xe-tu-san-bay-tan-son-nhat-di-ho-tram",
     from: "Sân bay Tân Sơn Nhất",
     to: "Hồ Tràm",
     title: "Xe từ sân bay Tân Sơn Nhất đi Hồ Tràm resort",
@@ -209,8 +209,8 @@ export const AIRPORT_TRANSFER_SEO_ROUTES = [
     duration: "4 – 5.5 giờ",
   },
   {
-    key: "san-bay-tsn-phan-thiet",
-    path: "xe-tu-san-bay-tan-son-nhat-di-phan-thiet",
+    key: "thue-xe-san-bay-tsn-phan-thiet",
+    path: "thue-xe-tu-san-bay-tan-son-nhat-di-phan-thiet",
     from: "Sân bay Tân Sơn Nhất",
     to: "Phan Thiết",
     title: "Xe từ sân bay Tân Sơn Nhất đi Phan Thiết giá tốt",

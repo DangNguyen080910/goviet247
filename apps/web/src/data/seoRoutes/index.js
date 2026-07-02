@@ -1,3 +1,4 @@
+// apps/web/src/data/seoRoutes/index.js
 import { GENERIC_SEO_ROUTES } from "./genericSeoRoutes.js";
 import { SOUTH_SEO_ROUTES } from "./southSeoRoutes.js";
 import { MEKONG_SEO_ROUTES } from "./mekongSeoRoutes.js";
@@ -21,20 +22,56 @@ import { VEHICLE_SEO_ROUTES } from "./vehicleSeoRoutes.js";
 import { VUNGTAU_SEO_ROUTES } from "./vungTauSeoRoutes.js";
 import { HOTRAM_SEO_ROUTES } from "./hoTramSeoRoutes.js";
 import { PHANTHIET_SEO_ROUTES } from "./phanThietSeoRoutes.js";
+import { BINHPHUOC_SEO_ROUTES } from "./binhPhuocSeoRoutes.js";
 
-const uniqueByPath = (items) => {
-  const seen = new Set();
+const assertUniqueSeoRoutes = (items) => {
+  const pathMap = new Map();
+  const keyMap = new Map();
+  const errors = [];
 
-  return items.filter((item) => {
-    if (!item?.path) return false;
-    if (seen.has(item.path)) return false;
+  for (const item of items) {
+    if (!item?.path) {
+      errors.push(`❌ SEO route thiếu path:\n${JSON.stringify(item, null, 2)}`);
+      continue;
+    }
 
-    seen.add(item.path);
-    return true;
-  });
+    if (!item?.key) {
+      errors.push(`❌ SEO route thiếu key, path="${item.path}"`);
+      continue;
+    }
+
+    if (pathMap.has(item.path)) {
+      const first = pathMap.get(item.path);
+
+      errors.push(
+        `❌ Duplicate SEO path: "${item.path}"\n` +
+          `First: key=${first.key}, title=${first.title}\n` +
+          `Second: key=${item.key}, title=${item.title}`
+      );
+    }
+
+    if (keyMap.has(item.key)) {
+      const first = keyMap.get(item.key);
+
+      errors.push(
+        `❌ Duplicate SEO key: "${item.key}"\n` +
+          `First: path=${first.path}, title=${first.title}\n` +
+          `Second: path=${item.path}, title=${item.title}`
+      );
+    }
+
+    pathMap.set(item.path, item);
+    keyMap.set(item.key, item);
+  }
+
+  if (errors.length) {
+    throw new Error(`\n\n${errors.join("\n\n")}\n`);
+  }
+
+  return items;
 };
 
-export const SEO_ROUTES = uniqueByPath([
+export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...GENERIC_SEO_ROUTES,
   ...SOUTH_SEO_ROUTES,
   ...MEKONG_SEO_ROUTES,
@@ -58,4 +95,5 @@ export const SEO_ROUTES = uniqueByPath([
   ...VUNGTAU_SEO_ROUTES,
   ...HOTRAM_SEO_ROUTES,
   ...PHANTHIET_SEO_ROUTES,
+  ...BINHPHUOC_SEO_ROUTES,
 ]);

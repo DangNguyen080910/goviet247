@@ -82,8 +82,8 @@ export const AIRPORT_SEO_ROUTES = [
     duration: "1.5 - 2 giờ",
   },
   {
-    key: "san-bay-long-thanh-vung-tau",
-    path: "xe-tu-san-bay-long-thanh-di-vung-tau",
+    key: "thue-xe-san-bay-long-thanh-vung-tau",
+    path: "thue-xe-tu-san-bay-long-thanh-di-vung-tau",
     from: "Sân bay Long Thành",
     to: "Vũng Tàu",
     title: "Xe từ sân bay Long Thành đi Vũng Tàu, xe riêng đưa đón tận nơi",
@@ -93,8 +93,8 @@ export const AIRPORT_SEO_ROUTES = [
     duration: "1.5 - 2 giờ",
   },
   {
-    key: "san-bay-long-thanh-ho-tram",
-    path: "xe-tu-san-bay-long-thanh-di-ho-tram",
+    key: "san-bay-long-thanh-di-ho-tram",
+    path: "thue-xe-tu-san-bay-long-thanh-di-ho-tram",
     from: "Sân bay Long Thành",
     to: "Hồ Tràm",
     title: "Xe từ sân bay Long Thành đi Hồ Tràm, xe riêng giá tốt",
@@ -137,8 +137,8 @@ export const AIRPORT_SEO_ROUTES = [
     duration: "2 - 2.5 giờ",
   },
   {
-    key: "san-bay-long-thanh-phan-thiet",
-    path: "xe-tu-san-bay-long-thanh-di-phan-thiet",
+    key: "thue-xe-san-bay-long-thanh-phan-thiet",
+    path: "thue-xe-tu-san-bay-long-thanh-di-phan-thiet",
     from: "Sân bay Long Thành",
     to: "Phan Thiết",
     title: "Xe từ sân bay Long Thành đi Phan Thiết, xe riêng giá tốt",
