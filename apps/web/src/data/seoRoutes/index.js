@@ -23,6 +23,8 @@ import { VUNGTAU_SEO_ROUTES } from "./vungTauSeoRoutes.js";
 import { HOTRAM_SEO_ROUTES } from "./hoTramSeoRoutes.js";
 import { PHANTHIET_SEO_ROUTES } from "./phanThietSeoRoutes.js";
 import { BINHPHUOC_SEO_ROUTES } from "./binhPhuocSeoRoutes.js";
+import { BENTRE_SEO_ROUTES } from "./benTreSeoRoutes.js";
+
 
 const assertUniqueSeoRoutes = (items) => {
   const pathMap = new Map();
@@ -96,4 +98,5 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...HOTRAM_SEO_ROUTES,
   ...PHANTHIET_SEO_ROUTES,
   ...BINHPHUOC_SEO_ROUTES,
+  ...BENTRE_SEO_ROUTES,
 ]);

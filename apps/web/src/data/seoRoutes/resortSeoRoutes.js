@@ -1,7 +1,7 @@
 export const RESORT_SEO_ROUTES = [
   {
     key: "resort-the-grand-ho-tram",
-    path: "xe-di-the-grand-ho-tram",
+    path: "thue-xe-di-the-grand-ho-tram",
     from: "TP.HCM",
     to: "The Grand Hồ Tràm",
     title: "Xe đi The Grand Hồ Tràm, xe riêng đưa đón resort",
@@ -12,7 +12,7 @@ export const RESORT_SEO_ROUTES = [
   },
   {
     key: "resort-melia-ho-tram",
-    path: "xe-di-melia-ho-tram",
+    path: "thue-xe-di-melia-ho-tram",
     from: "TP.HCM",
     to: "Melia Hồ Tràm",
     title: "Xe đi Melia Hồ Tràm, xe riêng đưa đón tận nơi",
@@ -23,7 +23,7 @@ export const RESORT_SEO_ROUTES = [
   },
   {
     key: "resort-intercontinental-ho-tram",
-    path: "xe-di-intercontinental-ho-tram",
+    path: "thue-xe-di-intercontinental-ho-tram",
     from: "TP.HCM",
     to: "InterContinental Hồ Tràm",
     title: "Xe đi InterContinental Hồ Tràm, xe riêng resort",

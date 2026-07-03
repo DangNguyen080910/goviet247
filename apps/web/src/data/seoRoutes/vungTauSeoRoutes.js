@@ -1235,8 +1235,8 @@ duration: "2 - 2.5 giờ",
 },
 
 {
-key: "xe-di-bien-vung-tau",
-path: "xe-di-bien-vung-tau",
+key: "cho-thue-xe-di-bien-vung-tau",
+path: "cho-thue-xe-di-bien-vung-tau",
 from: "TP.HCM",
 to: "Vũng Tàu",
 title: "Xe đi biển Vũng Tàu giá tốt, có tài xế riêng",
@@ -1679,5 +1679,309 @@ description:
 "Xe riêng cho gia đình có trẻ em đi Vũng Tàu. Không ghép khách, chủ động nghỉ dọc đường.",
 routeText: "TP.HCM → Long Thành → Vũng Tàu",
 duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// LONG HẢI
+// =========================
+
+{
+key: "xe-di-long-hai",
+path: "xe-di-long-hai",
+from: "TP.HCM",
+to: "Long Hải",
+title: "Thuê xe đi Long Hải, xe riêng có tài xế",
+description:
+"Thuê xe riêng đi Long Hải từ TP.HCM. Đưa đón tận nơi, không ghép khách, phù hợp nghỉ dưỡng và du lịch biển cuối tuần.",
+routeText: "TP.HCM → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "xe-rieng-long-hai",
+path: "xe-rieng-di-long-hai",
+from: "TP.HCM",
+to: "Long Hải",
+title: "Xe riêng đi Long Hải, đưa đón tận nơi",
+description:
+"Dịch vụ xe riêng đi Long Hải với tài xế riêng, lịch trình linh hoạt và biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "xe-cuoi-tuan-long-hai",
+path: "xe-di-long-hai-cuoi-tuan",
+from: "TP.HCM",
+to: "Long Hải",
+title: "Xe đi Long Hải cuối tuần cho gia đình",
+description:
+"Thuê xe đi Long Hải cuối tuần. Xe riêng, không ghép khách, phù hợp nghỉ dưỡng biển và du lịch ngắn ngày.",
+routeText: "TP.HCM → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// BÌNH CHÂU
+// =========================
+
+{
+key: "xe-di-binh-chau",
+path: "xe-di-binh-chau",
+from: "TP.HCM",
+to: "Bình Châu",
+title: "Thuê xe đi Bình Châu, xe riêng có tài xế",
+description:
+"Xe riêng đi Bình Châu từ TP.HCM. Phù hợp nghỉ dưỡng, tắm khoáng nóng và du lịch cuối tuần.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-rieng-binh-chau",
+path: "xe-rieng-di-binh-chau",
+from: "TP.HCM",
+to: "Bình Châu",
+title: "Xe riêng đi Bình Châu, không ghép khách",
+description:
+"Thuê xe riêng đi Bình Châu với tài xế riêng, đưa đón tận nơi và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-nghi-duong-binh-chau",
+path: "xe-nghi-duong-binh-chau",
+from: "TP.HCM",
+to: "Bình Châu",
+title: "Xe nghỉ dưỡng Bình Châu, xe riêng có tài xế",
+description:
+"Đặt xe nghỉ dưỡng Bình Châu cho gia đình và cặp đôi. Xe riêng, lịch trình linh hoạt và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// HỒ CỐC
+// =========================
+
+{
+key: "xe-di-ho-coc",
+path: "xe-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Thuê xe đi Hồ Cốc, xe riêng có tài xế",
+description:
+"Xe riêng đi Hồ Cốc từ TP.HCM. Đưa đón tận nơi, phù hợp nghỉ dưỡng và du lịch biển cuối tuần.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "3 giờ",
+},
+
+{
+key: "xe-rieng-ho-coc",
+path: "xe-rieng-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Xe riêng đi Hồ Cốc, không ghép khách",
+description:
+"Thuê xe riêng đi Hồ Cốc với tài xế riêng. Chủ động thời gian và biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "3 giờ",
+},
+
+// =========================
+// RESORT HỒ TRÀM
+// =========================
+
+{
+key: "xe-di-melia-ho-tram",
+path: "xe-di-melia-ho-tram",
+from: "TP.HCM",
+to: "Melia Hồ Tràm",
+title: "Xe đi Melia Hồ Tràm, xe riêng có tài xế",
+description:
+"Đặt xe riêng đi Melia Hồ Tràm từ TP.HCM. Đưa đón tận nơi, không ghép khách và phù hợp nghỉ dưỡng cuối tuần.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-di-the-grand-ho-tram",
+path: "xe-di-the-grand-ho-tram",
+from: "TP.HCM",
+to: "The Grand Hồ Tràm",
+title: "Xe đi The Grand Hồ Tràm, xe riêng có tài xế",
+description:
+"Thuê xe đi The Grand Hồ Tràm với tài xế riêng. Xe riêng, lịch trình linh hoạt và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-di-intercontinental-ho-tram",
+path: "xe-di-intercontinental-ho-tram",
+from: "TP.HCM",
+to: "InterContinental Hồ Tràm",
+title: "Xe đi InterContinental Hồ Tràm, đưa đón tận nơi",
+description:
+"Dịch vụ xe riêng đi InterContinental Hồ Tràm từ TP.HCM. Không ghép khách, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-di-oceanami-long-hai",
+path: "xe-di-oceanami-long-hai",
+from: "TP.HCM",
+to: "Oceanami Long Hải",
+title: "Xe đi Oceanami Long Hải, xe riêng có tài xế",
+description:
+"Đặt xe đi Oceanami Long Hải với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng.",
+routeText: "TP.HCM → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// SÂN BAY → HỒ TRÀM / LONG HẢI / BÌNH CHÂU
+// =========================
+
+{
+key: "san-bay-ho-tram",
+path: "cho-thue-xe-tu-san-bay-tan-son-nhat-di-ho-tram",
+from: "Sân bay Tân Sơn Nhất",
+to: "Hồ Tràm",
+title: "Xe từ sân bay Tân Sơn Nhất đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Hồ Tràm. Đón tận cổng sân bay, không ghép khách, phù hợp khách du lịch và nghỉ dưỡng.",
+routeText: "Sân bay Tân Sơn Nhất → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "san-bay-long-hai",
+path: "thue-xe-tu-san-bay-tan-son-nhat-di-long-hai",
+from: "Sân bay Tân Sơn Nhất",
+to: "Long Hải",
+title: "Xe từ sân bay Tân Sơn Nhất đi Long Hải",
+description:
+"Đặt xe riêng từ sân bay Tân Sơn Nhất đi Long Hải. Xe riêng có tài xế, đưa đón tận nơi và không ghép khách.",
+routeText: "Sân bay Tân Sơn Nhất → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "san-bay-binh-chau",
+path: "thue-xe-tu-san-bay-tan-son-nhat-di-binh-chau",
+from: "Sân bay Tân Sơn Nhất",
+to: "Bình Châu",
+title: "Xe từ sân bay Tân Sơn Nhất đi Bình Châu",
+description:
+"Thuê xe riêng từ sân bay Tân Sơn Nhất đi Bình Châu. Phù hợp khách nghỉ dưỡng, tắm khoáng nóng và du lịch cuối tuần.",
+routeText: "Sân bay Tân Sơn Nhất → Long Thành → Hồ Tràm → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// ĐI BIỂN
+// =========================
+
+{
+key: "xe-di-bien-vung-tau",
+path: "xe-di-bien-vung-tau",
+from: "TP.HCM",
+to: "Vũng Tàu",
+title: "Thuê xe đi biển Vũng Tàu, xe riêng có tài xế",
+description:
+"Thuê xe đi biển Vũng Tàu cho gia đình và nhóm bạn. Xe riêng, không ghép khách, phù hợp du lịch cuối tuần.",
+routeText: "TP.HCM → Long Thành → Vũng Tàu",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "cho-thue-xe-di-bien-ho-tram",
+path: "cho-thue-xe-di-bien-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi biển Hồ Tràm, xe riêng có tài xế",
+description:
+"Xe riêng đi biển Hồ Tràm với tài xế riêng. Đưa đón tận nơi và phù hợp nghỉ dưỡng cuối tuần.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-di-bien-long-hai",
+path: "xe-di-bien-long-hai",
+from: "TP.HCM",
+to: "Long Hải",
+title: "Thuê xe đi biển Long Hải, xe riêng có tài xế",
+description:
+"Đặt xe đi biển Long Hải từ TP.HCM. Không ghép khách, chủ động thời gian và biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// GIA ĐÌNH ĐI BIỂN
+// =========================
+
+{
+key: "gia-dinh-di-vung-tau",
+path: "xe-gia-dinh-di-vung-tau",
+from: "TP.HCM",
+to: "Vũng Tàu",
+title: "Xe gia đình đi Vũng Tàu, xe riêng không ghép khách",
+description:
+"Xe riêng đi Vũng Tàu cho gia đình. Không ghép khách, phù hợp có trẻ em và người lớn tuổi.",
+routeText: "TP.HCM → Long Thành → Vũng Tàu",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "gia-dinh-di-ho-tram",
+path: "xe-gia-dinh-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe gia đình đi Hồ Tràm, nghỉ dưỡng cuối tuần",
+description:
+"Xe riêng đi Hồ Tràm cho gia đình nghỉ dưỡng cuối tuần. Đưa đón tận nơi và lịch trình linh hoạt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-dinh-di-long-hai",
+path: "xe-gia-dinh-di-long-hai",
+from: "TP.HCM",
+to: "Long Hải",
+title: "Xe gia đình đi Long Hải, xe riêng có tài xế",
+description:
+"Thuê xe gia đình đi Long Hải từ TP.HCM. Phù hợp du lịch biển, nghỉ dưỡng và đi cuối tuần.",
+routeText: "TP.HCM → Long Thành → Long Hải",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "thue-xe-cap-doi-ho-tram",
+path: "xe-cap-doi-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe cho cặp đôi đi Hồ Tràm, riêng tư và thoải mái",
+description:
+"Xe riêng cho cặp đôi đi Hồ Tràm nghỉ dưỡng cuối tuần. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "thue-xe-di-trang-mat-ho-tram",
+path: "thue-xe-di-ho-tram-trang-mat",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm trăng mật, xe riêng có tài xế",
+description:
+"Đặt xe đi Hồ Tràm cho kỳ nghỉ trăng mật. Xe riêng, đưa đón tận nơi và lịch trình linh hoạt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
 },
 ];

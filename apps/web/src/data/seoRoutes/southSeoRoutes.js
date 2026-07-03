@@ -50,7 +50,7 @@ export const SOUTH_SEO_ROUTES = [
   // ===== BÌNH CHÂU =====
   {
     key: "binh-chau",
-    path: "xe-di-binh-chau",
+    path: "thue-xe-di-binh-chau",
     from: "TP.HCM",
     to: "Bình Châu",
     title: "Thuê xe đi Bình Châu giá tốt, xe riêng đưa đón tận nơi",
@@ -74,7 +74,7 @@ export const SOUTH_SEO_ROUTES = [
   // ===== LONG HẢI =====
   {
     key: "long-hai",
-    path: "xe-di-long-hai",
+    path: "thue-xe-di-long-hai",
     from: "TP.HCM",
     to: "Long Hải",
     title: "Thuê xe đi Long Hải giá tốt, xe riêng đưa đón tận nơi",
