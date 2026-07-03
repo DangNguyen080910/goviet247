@@ -3,6 +3,17 @@ export const BENTRE_SEO_ROUTES = [
   // BẾN TRE - XE RIÊNG
   // =========================
   {
+  key: "thue-xe-ben-tre",
+  path: "thue-xe-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe đi Bến Tre từ TP.HCM. Xe riêng có tài xế, không ghép khách, biết giá trước khi đặt, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText: "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+  {
     key: "xe-rieng-ben-tre",
     path: "thue-xe-rieng-di-ben-tre",
     from: "TP.HCM",
