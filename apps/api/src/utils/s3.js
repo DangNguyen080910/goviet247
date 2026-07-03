@@ -15,7 +15,10 @@ const s3 = new S3Client({
   },
 });
 
-const BUCKET = process.env.S3_BUCKET_NAME;
+const BUCKET = process.env.AWS_S3_BUCKET || process.env.S3_BUCKET_NAME;
+if (!BUCKET) {
+  throw new Error("Missing S3 bucket env: AWS_S3_BUCKET or S3_BUCKET_NAME");
+}
 const PREFIX =
   process.env.S3_ACCOUNTING_DOCUMENT_PREFIX || "accounting-documents";
 
