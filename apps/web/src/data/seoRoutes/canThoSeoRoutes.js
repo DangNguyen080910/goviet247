@@ -1,0 +1,2121 @@
+export const CANTHO_SEO_ROUTES = [
+  // =========================
+  // CẦN THƠ - XE RIÊNG
+  // =========================
+  {
+    key: "thue-xe-can-tho",
+    path: "thue-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ, xe riêng đưa đón tận nơi",
+    description:
+      "Dịch vụ thuê xe đi Cần Thơ từ TP.HCM với xe riêng có tài xế, không ghép khách, biết giá trước khi đặt. Phù hợp đi công tác, về quê, du lịch Ninh Kiều, chợ nổi Cái Răng hoặc nghỉ cuối tuần ở miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-can-tho",
+    path: "thue-xe-rieng-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe riêng đi Cần Thơ, đưa đón tận nơi, không ghép khách",
+    description:
+      "Đặt xe riêng đi Cần Thơ từ TP.HCM cho gia đình, nhóm bạn, khách công tác hoặc người về quê. Xe có tài xế riêng, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-tai-xe-can-tho",
+    path: "xe-rieng-co-tai-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng có tài xế đi Cần Thơ giá tốt, phục vụ 24/7",
+    description:
+      "Thuê xe riêng có tài xế đi Cần Thơ với lịch trình linh hoạt, xe sạch sẽ, không ghép khách và biết giá trước khi đặt trên GoViet247.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-khong-ghep-can-tho",
+    path: "xe-rieng-khong-ghep-khach-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng không ghép khách đi Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Dịch vụ xe riêng không ghép khách đi Cần Thơ dành cho gia đình, người lớn tuổi, khách công tác hoặc nhóm bạn muốn di chuyển thoải mái từ TP.HCM về miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - GIÁ THUÊ XE
+  // =========================
+  {
+    key: "gia-thue-xe-can-tho",
+    path: "gia-thue-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá thuê xe đi Cần Thơ, xem giá nhanh trước khi đặt",
+    description:
+      "Nhập điểm đón, điểm đến và loại xe để xem giá thuê xe đi Cần Thơ ngay trên GoViet247. Có xe 5 chỗ, 7 chỗ, 16 chỗ, giá rõ ràng trước chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "bang-gia-xe-can-tho",
+    path: "bang-gia-thue-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Bảng giá thuê xe đi Cần Thơ, xe 5 chỗ, 7 chỗ, 16 chỗ",
+    description:
+      "Xem bảng giá thuê xe đi Cần Thơ theo từng loại xe. GoViet247 tính giá dựa trên địa chỉ đón trả thực tế, giúp khách biết chi phí trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "bao-gia-xe-can-tho",
+    path: "bao-gia-thue-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Báo giá thuê xe đi Cần Thơ nhanh, xe riêng có tài xế",
+    description:
+      "Nhận báo giá thuê xe đi Cần Thơ nhanh bằng cách nhập địa chỉ đón trả trên GoViet247. Xe riêng, không ghép khách, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE 1 CHIỀU
+  // =========================
+  {
+    key: "xe-1-chieu-can-tho",
+    path: "thue-xe-1-chieu-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe 1 chiều đi Cần Thơ giá tốt, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe 1 chiều đi Cần Thơ từ TP.HCM. Phù hợp khách về quê, đi công tác, thăm người thân hoặc cần xe đưa tận nơi tại trung tâm Cần Thơ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-mot-chieu-sg-can-tho",
+    path: "xe-1-chieu-sai-gon-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe 1 chiều Sài Gòn Cần Thơ giá hợp lý, đón tận nơi",
+    description:
+      "Đặt xe 1 chiều Sài Gòn đi Cần Thơ với xe riêng có tài xế. Không ghép khách, biết giá trước khi đặt, phù hợp đi công tác, về quê hoặc du lịch miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-1-chieu-can-tho",
+    path: "xe-rieng-1-chieu-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng 1 chiều đi Cần Thơ, không ghép khách",
+    description:
+      "Dịch vụ xe riêng 1 chiều đi Cần Thơ dành cho gia đình, khách công tác và người cần di chuyển riêng tư. Đón trả tận nơi, lịch trình linh hoạt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE HỢP ĐỒNG
+  // =========================
+  {
+    key: "xe-hop-dong-can-tho",
+    path: "thue-xe-hop-dong-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe hợp đồng đi Cần Thơ giá tốt, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe hợp đồng đi Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, đưa đón tận nơi và phục vụ 24/7 cho cá nhân, gia đình hoặc doanh nghiệp.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-hop-dong-sai-gon-can-tho",
+    path: "xe-hop-dong-sai-gon-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe hợp đồng Sài Gòn Cần Thơ, đưa đón tận nơi",
+    description:
+      "Đặt xe hợp đồng Sài Gòn đi Cần Thơ cho gia đình, doanh nghiệp hoặc khách công tác. Giá rõ ràng trước khi đặt, không cần đặt cọc.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-hop-dong-1-chieu-can-tho",
+    path: "xe-hop-dong-1-chieu-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe hợp đồng 1 chiều đi Cần Thơ giá tốt",
+    description:
+      "Dịch vụ xe hợp đồng 1 chiều đi Cần Thơ. Xe riêng, không ghép khách, thanh toán sau khi hoàn thành chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE GIA ĐÌNH
+  // =========================
+  {
+    key: "xe-gia-dinh-can-tho",
+    path: "thue-xe-gia-dinh-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe gia đình đi Cần Thơ, xe riêng đưa đón tận nơi",
+    description:
+      "Thuê xe gia đình đi Cần Thơ để về quê, thăm người thân, đi chợ nổi Cái Răng, bến Ninh Kiều hoặc nghỉ dưỡng cuối tuần. Xe riêng có tài xế, không ghép khách.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-du-lich-gia-dinh-can-tho",
+    path: "xe-du-lich-gia-dinh-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe du lịch gia đình đi Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Dịch vụ xe du lịch gia đình đi Cần Thơ. Phù hợp tham quan bến Ninh Kiều, chợ nổi Cái Răng, nhà cổ Bình Thủy, Cồn Sơn và các điểm du lịch sông nước.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-cuoi-tuan-can-tho",
+    path: "thue-xe-vao-cuoi-tuan-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe cuối tuần đi Cần Thơ cho gia đình, nhóm bạn",
+    description:
+      "Đặt xe cuối tuần đi Cần Thơ từ TP.HCM. Xe riêng, đón tận nơi, phù hợp nghỉ dưỡng, ăn uống miền Tây và khám phá thành phố bên sông Hậu.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE DU LỊCH
+  // =========================
+  {
+    key: "xe-du-lich-can-tho",
+    path: "thue-xe-du-lich-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe du lịch đi Cần Thơ giá tốt, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe du lịch đi Cần Thơ từ TP.HCM. Có xe 5 chỗ, 7 chỗ, 16 chỗ phục vụ gia đình, nhóm bạn và đoàn du lịch miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-du-lich-sai-gon-can-tho",
+    path: "xe-du-lich-sai-gon-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe du lịch Sài Gòn Cần Thơ, đặt xe riêng nhanh chóng",
+    description:
+      "Đặt xe du lịch Sài Gòn đi Cần Thơ để tham quan chợ nổi, bến Ninh Kiều, nhà cổ Bình Thủy hoặc các vườn trái cây ở Phong Điền.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE TRỌN GÓI
+  // =========================
+  {
+    key: "xe-tron-goi-can-tho",
+    path: "thue-xe-tron-goi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe trọn gói đi Cần Thơ, giá rõ ràng trước chuyến đi",
+    description:
+      "Thuê xe trọn gói đi Cần Thơ với xe riêng có tài xế. Không đặt cọc, không ghép khách, thanh toán sau khi hoàn thành chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "gia-xe-tron-goi-can-tho",
+    path: "gia-thue-xe-tron-goi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá thuê xe trọn gói đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Xem giá thuê xe trọn gói đi Cần Thơ. Giá được tính rõ ràng theo địa chỉ thực tế và loại xe khách hàng lựa chọn.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE SÂN BAY
+  // =========================
+  {
+    key: "san-bay-tsn-di-can-tho",
+    path: "thue-xe-tu-san-bay-tan-son-nhat-di-can-tho",
+    from: "Sân bay Tân Sơn Nhất",
+    to: "Cần Thơ",
+    title: "Xe từ sân bay Tân Sơn Nhất đi Cần Thơ, đón tận nơi",
+    description:
+      "Đặt xe từ sân bay Tân Sơn Nhất đi Cần Thơ với xe riêng có tài xế. Phù hợp khách đáp chuyến bay về quê, đi công tác hoặc du lịch miền Tây.",
+    routeText:
+      "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  {
+    key: "thue-xe-san-bay-can-tho",
+    path: "thue-xe-san-bay-di-can-tho",
+    from: "Sân bay Tân Sơn Nhất",
+    to: "Cần Thơ",
+    title: "Thuê xe sân bay đi Cần Thơ, xe riêng đưa đón tận nơi",
+    description:
+      "Dịch vụ thuê xe sân bay đi Cần Thơ từ Tân Sơn Nhất. Xe 5 chỗ, 7 chỗ, 16 chỗ, không ghép khách, biết giá trước khi đặt.",
+    routeText:
+      "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  {
+    key: "don-san-bay-can-tho",
+    path: "don-san-bay-di-can-tho",
+    from: "Sân bay Tân Sơn Nhất",
+    to: "Cần Thơ",
+    title: "Đón sân bay đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đón sân bay đi Cần Thơ nhanh chóng. Tài xế đón đúng điểm hẹn, đưa về tận nơi tại Cần Thơ, giá rõ ràng trước khi đặt.",
+    routeText:
+      "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  {
+    key: "xe-rieng-san-bay-can-tho",
+    path: "xe-rieng-tu-san-bay-di-can-tho",
+    from: "Sân bay Tân Sơn Nhất",
+    to: "Cần Thơ",
+    title: "Xe riêng từ sân bay đi Cần Thơ, không ghép khách",
+    description:
+      "Xe riêng từ sân bay Tân Sơn Nhất đi Cần Thơ cho gia đình, khách nước ngoài, chuyên gia và người cần di chuyển riêng tư sau chuyến bay.",
+    routeText:
+      "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  {
+    key: "thue-xe-san-bay-long-thanh-can-tho",
+    path: "thue-xe-tu-san-bay-long-thanh-di-can-tho",
+    from: "Sân bay Long Thành",
+    to: "Cần Thơ",
+    title: "Xe từ sân bay Long Thành đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Đặt xe từ sân bay Long Thành đi Cần Thơ với xe riêng có tài xế. Phù hợp khách du lịch, công tác và lịch trình cần xe đón trả tận nơi.",
+    routeText:
+      "Sân bay Long Thành → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE THEO LOẠI XE MỞ RỘNG
+  // =========================
+  {
+    key: "gia-xe-5-cho-can-tho",
+    path: "gia-xe-5-cho-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá xe 5 chỗ đi Cần Thơ, xem giá nhanh trước khi đặt",
+    description:
+      "Xem giá xe 5 chỗ đi Cần Thơ bằng cách nhập điểm đón, điểm đến trên GoViet247. Xe riêng có tài xế, phù hợp cá nhân, cặp đôi và gia đình nhỏ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "gia-xe-7-cho-can-tho",
+    path: "gia-xe-7-cho-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá xe 7 chỗ đi Cần Thơ, xe riêng cho gia đình",
+    description:
+      "Xem giá xe 7 chỗ đi Cần Thơ nhanh chóng. Phù hợp gia đình có trẻ em, nhóm bạn, khách về quê hoặc đi du lịch miền Tây cuối tuần.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "gia-xe-16-cho-can-tho",
+    path: "gia-xe-16-cho-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá xe 16 chỗ đi Cần Thơ cho công ty, đoàn du lịch",
+    description:
+      "Xem giá xe 16 chỗ đi Cần Thơ cho đoàn khách, công ty, nhóm gia đình đông người hoặc tour du lịch miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-5-cho-co-tai-xe-can-tho",
+    path: "xe-5-cho-co-tai-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe 5 chỗ có tài xế đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Đặt xe 5 chỗ có tài xế đi Cần Thơ từ TP.HCM. Xe riêng, sạch sẽ, lịch trình linh hoạt, phù hợp đi một mình hoặc gia đình nhỏ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-7-cho-co-tai-xe-can-tho",
+    path: "xe-7-cho-co-tai-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe 7 chỗ có tài xế đi Cần Thơ, xe riêng không ghép khách",
+    description:
+      "Thuê xe 7 chỗ có tài xế đi Cần Thơ cho gia đình, nhóm bạn hoặc khách cần không gian rộng rãi. Biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-16-cho-co-tai-xe-can-tho",
+    path: "xe-16-cho-co-tai-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe 16 chỗ có tài xế đi Cần Thơ cho đoàn, công ty",
+    description:
+      "Dịch vụ xe 16 chỗ có tài xế đi Cần Thơ. Phù hợp công ty, đoàn du lịch, team building, đám tiệc hoặc nhóm khách đông người.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+    // =========================
+  // CẦN THƠ - HAI CHIỀU / KHỨ HỒI
+  // =========================
+  {
+    key: "thue-xe-khu-hoi-can-tho",
+    path: "thue-xe-khu-hoi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe khứ hồi đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Thuê xe khứ hồi đi Cần Thơ từ TP.HCM. Xe riêng có tài xế, phù hợp gia đình về quê, đi công tác, du lịch Ninh Kiều, chợ nổi Cái Răng hoặc lịch trình đi về trong ngày.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ → TP.HCM",
+    duration: "3 - 3.5 giờ/lượt",
+  },
+
+  {
+    key: "thue-xe-2-chieu-can-tho",
+    path: "thue-xe-2-chieu-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe 2 chiều đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe 2 chiều đi Cần Thơ với lịch trình linh hoạt. Chủ động giờ đi, giờ về, không ghép khách và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ → TP.HCM",
+    duration: "3 - 3.5 giờ/lượt",
+  },
+
+  {
+    key: "xe-dua-don-khu-hoi-can-tho",
+    path: "xe-dua-don-can-tho-khu-hoi",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa đón Cần Thơ khứ hồi, phù hợp gia đình và nhóm bạn",
+    description:
+      "Dịch vụ xe đưa đón Cần Thơ khứ hồi từ TP.HCM. Xe riêng, đón tận nơi, thanh toán sau chuyến đi, phù hợp đi về trong ngày hoặc ở lại qua đêm.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ → TP.HCM",
+    duration: "3 - 3.5 giờ/lượt",
+  },
+
+  {
+    key: "gia-xe-khu-hoi-can-tho",
+    path: "gia-thue-xe-khu-hoi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá thuê xe khứ hồi đi Cần Thơ, xem giá nhanh",
+    description:
+      "Xem giá thuê xe khứ hồi đi Cần Thơ bằng cách nhập lịch trình, địa chỉ đón trả và loại xe trên GoViet247. Giá rõ ràng trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ → TP.HCM",
+    duration: "3 - 3.5 giờ/lượt",
+  },
+
+  // =========================
+  // CẦN THƠ - SÀI GÒN / TP.HCM
+  // =========================
+  {
+    key: "thue-xe-sai-gon-can-tho",
+    path: "thue-xe-sai-gon-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe Sài Gòn Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe Sài Gòn đi Cần Thơ với xe riêng, không ghép khách, đón tận nơi và biết giá trước khi đặt. Phù hợp về quê, du lịch miền Tây và công tác.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-tphcm-can-tho",
+    path: "thue-xe-tphcm-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe TP.HCM đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Đặt xe TP.HCM đi Cần Thơ nhanh chóng trên GoViet247. Xe riêng có tài xế, không cần đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "gia-xe-sai-gon-can-tho",
+    path: "gia-xe-sai-gon-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá xe Sài Gòn Cần Thơ, xem giá nhanh trước khi đặt",
+    description:
+      "Xem giá xe Sài Gòn Cần Thơ bằng cách nhập địa chỉ đón trả và chọn loại xe trên GoViet247. Có xe 5 chỗ, 7 chỗ, 16 chỗ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "gia-thue-xe-sai-gon-can-tho",
+    path: "gia-thue-xe-sai-gon-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Giá thuê xe Sài Gòn Cần Thơ, xe 5 chỗ, 7 chỗ, 16 chỗ",
+    description:
+      "Tham khảo giá thuê xe Sài Gòn Cần Thơ theo từng loại xe. Nhập địa chỉ thực tế để hệ thống tính giá rõ ràng trước chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐƯA ĐÓN TẬN NƠI
+  // =========================
+  {
+    key: "dua-don-tan-noi-can-tho",
+    path: "xe-dua-don-tan-noi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa đón tận nơi đi Cần Thơ, riêng tư và tiện lợi",
+    description:
+      "Đặt xe đưa đón tận nơi đi Cần Thơ từ TP.HCM. Xe riêng có tài xế, phù hợp gia đình, khách công tác và người về quê miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-don-tan-nha-can-tho",
+    path: "thue-xe-don-tan-nha-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đón tận nhà đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe đón tận nhà đi Cần Thơ. Tài xế đón đúng điểm hẹn tại TP.HCM, đưa khách về tận nơi tại Cần Thơ, không ghép khách và lịch trình linh hoạt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-dua-don-khach-san-can-tho",
+    path: "xe-dua-don-khach-san-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa đón khách sạn Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đưa đón khách sạn tại Cần Thơ từ TP.HCM hoặc chiều ngược lại. Xe riêng, không ghép khách, phù hợp khách du lịch, công tác và nghỉ dưỡng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-dua-don-resort-can-tho",
+    path: "xe-dua-don-resort-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa đón resort Cần Thơ, phù hợp nghỉ dưỡng miền Tây",
+    description:
+      "Dịch vụ xe đưa đón resort Cần Thơ cho gia đình, cặp đôi và nhóm bạn. Xe riêng có tài xế, đưa đón tận nơi, phù hợp lịch trình nghỉ dưỡng ven sông.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - GIÁ RẺ
+  // =========================
+  {
+    key: "gia-re-can-tho",
+    path: "thue-xe-di-can-tho-gia-re",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ giá rẻ, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe đi Cần Thơ giá rẻ từ TP.HCM. Xe riêng, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-gia-re-can-tho",
+    path: "xe-rieng-di-can-tho-gia-re",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng đi Cần Thơ giá rẻ, đưa đón tận nơi",
+    description:
+      "Đặt xe riêng đi Cần Thơ giá rẻ. Xe có tài xế, đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - BAO NHIÊU TIỀN
+  // =========================
+  {
+    key: "bao-nhieu-tien-can-tho",
+    path: "thue-xe-di-can-tho-bao-nhieu-tien",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ bao nhiêu tiền? Xem giá nhanh",
+    description:
+      "Nhập địa chỉ đón và địa chỉ trả để xem ngay giá thuê xe đi Cần Thơ trên GoViet247. Giá minh bạch trước khi đặt, không cần gọi hỏi nhiều nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "chi-phi-can-tho",
+    path: "chi-phi-thue-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Chi phí thuê xe đi Cần Thơ mới nhất",
+    description:
+      "Xem chi phí thuê xe đi Cần Thơ theo từng loại xe 5 chỗ, 7 chỗ và 16 chỗ. Phù hợp khách du lịch, công tác, về quê hoặc đi cùng gia đình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - UY TÍN
+  // =========================
+  {
+    key: "uy-tin-can-tho",
+    path: "thue-xe-di-can-tho-uy-tin",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ uy tín, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe đi Cần Thơ uy tín với giá rõ ràng, không ghép khách, đón tận nơi và phục vụ 24/7.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "dich-vu-uy-tin-can-tho",
+    path: "dich-vu-xe-di-can-tho-uy-tin",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Dịch vụ xe đi Cần Thơ uy tín, phục vụ 24/7",
+    description:
+      "Xe riêng đi Cần Thơ với tài xế chuyên nghiệp. Phù hợp gia đình, khách du lịch, người về quê và khách công tác cần chuyến đi rõ ràng, an tâm.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - TRONG NGÀY
+  // =========================
+  {
+    key: "trong-ngay-can-tho",
+    path: "thue-xe-di-can-tho-trong-ngay",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ trong ngày, sáng đi chiều về",
+    description:
+      "Dịch vụ thuê xe đi Cần Thơ trong ngày. Phù hợp đi họp, công tác, thăm người thân hoặc giải quyết việc cá nhân tại Cần Thơ rồi về lại TP.HCM.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "sang-di-chieu-ve-can-tho",
+    path: "xe-di-can-tho-sang-di-chieu-ve",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ sáng đi chiều về, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cần Thơ sáng đi chiều về. Chủ động thời gian, không ghép khách, phù hợp khách công tác, gia đình hoặc lịch trình cần đi gấp trong ngày.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CUỐI TUẦN
+  // =========================
+  {
+    key: "cuoi-tuan-can-tho",
+    path: "thue-xe-cuoi-tuan-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe cuối tuần đi Cần Thơ cho gia đình",
+    description:
+      "Xe riêng đi Cần Thơ cuối tuần. Đưa đón tận nơi, phù hợp gia đình và nhóm bạn khám phá chợ nổi Cái Răng, bến Ninh Kiều và ẩm thực miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-du-lich-cuoi-tuan-can-tho",
+    path: "xe-du-lich-cuoi-tuan-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe du lịch cuối tuần đi Cần Thơ giá tốt",
+    description:
+      "Thuê xe du lịch cuối tuần đi Cần Thơ. Xe riêng có tài xế, không ghép khách, phù hợp gia đình và nhóm bạn muốn nghỉ ngắn ngày ở miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - KHÔNG ĐẶT CỌC
+  // =========================
+  {
+    key: "khong-dat-coc-can-tho",
+    path: "thue-xe-di-can-tho-khong-dat-coc",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ không đặt cọc, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cần Thơ không cần đặt cọc. Xe riêng, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-khong-dat-coc-can-tho",
+    path: "xe-rieng-di-can-tho-khong-dat-coc",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng đi Cần Thơ không đặt cọc, đưa đón tận nơi",
+    description:
+      "Xe riêng đi Cần Thơ có tài xế, không cần đặt cọc trước, phù hợp khách về quê, công tác và du lịch miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - THANH TOÁN SAU
+  // =========================
+  {
+    key: "thanh-toan-sau-can-tho",
+    path: "thue-xe-di-can-tho-thanh-toan-sau",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ thanh toán sau khi hoàn thành chuyến",
+    description:
+      "Đặt xe đi Cần Thơ và thanh toán sau khi hoàn thành chuyến đi. Giá rõ ràng trước khi đặt, không phát sinh bất ngờ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-thanh-toan-sau-can-tho",
+    path: "xe-rieng-di-can-tho-thanh-toan-sau",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng đi Cần Thơ thanh toán sau, không ghép khách",
+    description:
+      "Xe riêng đi Cần Thơ với tài xế riêng. Không đặt cọc, thanh toán sau chuyến đi, phù hợp gia đình, khách công tác và người về quê.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+    // =========================
+  // CẦN THƠ - NHÓM BẠN
+  // =========================
+  {
+    key: "nhom-ban-can-tho",
+    path: "thue-xe-di-can-tho-cho-nhom-ban",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ cho nhóm bạn, xe riêng có tài xế",
+    description:
+      "Thuê xe đi Cần Thơ cho nhóm bạn du lịch miền Tây, ăn uống cuối tuần, đi chợ nổi Cái Răng, bến Ninh Kiều hoặc khám phá Cồn Sơn. Xe riêng, không ghép khách.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-nhom-ban-can-tho",
+    path: "xe-rieng-di-can-tho-cho-nhom-ban",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng đi Cần Thơ cho nhóm bạn cuối tuần",
+    description:
+      "Xe riêng đi Cần Thơ phù hợp nhóm bạn du lịch cuối tuần. Đưa đón tận nơi, lịch trình linh hoạt, biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - TEAM BUILDING
+  // =========================
+  {
+    key: "team-building-can-tho",
+    path: "thue-xe-team-building-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe team building đi Cần Thơ cho công ty",
+    description:
+      "Thuê xe team building đi Cần Thơ với xe 16 chỗ và nhiều lựa chọn khác. Phù hợp hoạt động tập thể, du lịch doanh nghiệp, hội nhóm và dã ngoại miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-cong-ty-can-tho",
+    path: "thue-xe-cong-ty-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe công ty đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Xe công ty đi Cần Thơ phục vụ hội nghị, công tác, team building, du lịch, khảo sát thị trường hoặc đưa đón nhân viên.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐẶT XE
+  // =========================
+  {
+    key: "dat-xe-can-tho",
+    path: "dat-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Đặt xe đi Cần Thơ nhanh chóng, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cần Thơ trực tuyến trên GoViet247. Xe riêng, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "dat-xe-rieng-can-tho",
+    path: "dat-xe-rieng-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Đặt xe riêng đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Đặt xe riêng đi Cần Thơ với tài xế riêng, phù hợp gia đình, khách công tác, người về quê và khách cần không gian riêng tư.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - BAO XE
+  // =========================
+  {
+    key: "bao-xe-can-tho",
+    path: "bao-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Bao xe đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Bao xe đi Cần Thơ cho gia đình, nhóm bạn và khách công tác. Xe riêng, không ghép khách, đón tận nơi và chủ động giờ đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "bao-xe-rieng-can-tho",
+    path: "bao-xe-rieng-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Bao xe riêng đi Cần Thơ giá tốt",
+    description:
+      "Dịch vụ bao xe riêng đi Cần Thơ. Chủ động thời gian, lịch trình linh hoạt và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - DỊCH VỤ
+  // =========================
+  {
+    key: "dich-vu-xe-can-tho",
+    path: "dich-vu-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Dịch vụ xe đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Dịch vụ xe đi Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, phục vụ 24/7 và đón tận nơi cho khách về quê, đi du lịch hoặc công tác.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "dich-vu-thue-xe-can-tho",
+    path: "dich-vu-thue-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Dịch vụ thuê xe đi Cần Thơ uy tín",
+    description:
+      "Dịch vụ thuê xe đi Cần Thơ cho gia đình, doanh nghiệp, khách du lịch và người về quê. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - NGUYÊN XE
+  // =========================
+  {
+    key: "thue-nguyen-xe-can-tho",
+    path: "thue-nguyen-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê nguyên xe đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê nguyên xe đi Cần Thơ cho gia đình, nhóm bạn hoặc công ty. Không ghép khách, đón tận nơi và chủ động lịch trình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-tron-xe-can-tho",
+    path: "thue-tron-xe-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê trọn xe đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Thuê trọn xe đi Cần Thơ với tài xế riêng. Chủ động lịch trình, biết giá trước khi đặt và không cần đặt cọc.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - KHÔNG GHÉP KHÁCH
+  // =========================
+  {
+    key: "khong-ghep-khach-can-tho",
+    path: "thue-xe-khong-ghep-khach-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe không ghép khách đi Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Xe riêng đi Cần Thơ không ghép khách. Phù hợp gia đình, khách công tác, người về quê và nhóm bạn cần chuyến đi riêng tư.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-khong-ghep-can-tho-2",
+    path: "xe-di-can-tho-khong-ghep-khach",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ không ghép khách, có tài xế riêng",
+    description:
+      "Dịch vụ xe đi Cần Thơ không ghép khách. Đón tận nơi, thanh toán sau chuyến đi và phục vụ 24/7.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - TIỆN CHUYẾN
+  // =========================
+  {
+    key: "xe-tien-chuyen-di-can-tho",
+    path: "xe-tien-chuyen-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe tiện chuyến Cần Thơ giá tốt, xe riêng có tài xế",
+    description:
+      "Tìm xe tiện chuyến Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "tien-chuyen-di-can-tho",
+    path: "tien-chuyen-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Tiện chuyến đi Cần Thơ, đặt xe nhanh chóng",
+    description:
+      "Dịch vụ xe tiện chuyến đi Cần Thơ cho gia đình, nhóm bạn, khách công tác và người về quê miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-tien-chuyen-can-tho",
+    path: "thue-xe-tien-chuyen-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe tiện chuyến đi Cần Thơ, xe riêng đưa đón tận nơi",
+    description:
+      "Thuê xe tiện chuyến đi Cần Thơ với tài xế riêng, lịch trình linh hoạt, không ghép khách và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - TIỆN CHUYẾN GIÁ RẺ
+  // =========================
+  {
+    key: "xe-tien-chuyen-gia-re-can-tho",
+    path: "xe-tien-chuyen-can-tho-gia-re",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe tiện chuyến Cần Thơ giá rẻ, xe riêng có tài xế",
+    description:
+      "Tìm xe tiện chuyến Cần Thơ giá rẻ. Biết giá trước khi đặt, không ghép khách và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "tien-chuyen-gia-re-can-tho",
+    path: "tien-chuyen-di-can-tho-gia-re",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Tiện chuyến đi Cần Thơ giá rẻ, đưa đón tận nơi",
+    description:
+      "Xe tiện chuyến đi Cần Thơ giá rẻ cho gia đình, khách du lịch, người về quê và khách công tác.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-tien-chuyen-gia-re-can-tho",
+    path: "thue-xe-tien-chuyen-di-can-tho-gia-re",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe tiện chuyến đi Cần Thơ giá rẻ, xe riêng có tài xế",
+    description:
+      "Thuê xe tiện chuyến đi Cần Thơ giá rẻ, đón tận nơi, không cần đặt cọc và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐẶT XE ONLINE
+  // =========================
+  {
+    key: "dat-xe-online-can-tho",
+    path: "dat-xe-can-tho-online",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Đặt xe Cần Thơ online, xem giá nhanh trước khi đặt",
+    description:
+      "Đặt xe đi Cần Thơ online trên GoViet247. Nhập địa chỉ để xem giá và chọn loại xe phù hợp, không cần đặt cọc trước.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-online-can-tho",
+    path: "thue-xe-can-tho-online",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe Cần Thơ online, xe riêng có tài xế",
+    description:
+      "Thuê xe đi Cần Thơ online nhanh chóng. Xe riêng, không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - 24/7
+  // =========================
+  {
+    key: "thue-xe-can-tho-24-7",
+    path: "thue-xe-di-can-tho-24-7",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ 24/7, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe đi Cần Thơ 24/7. Phù hợp đi sân bay, về quê, công tác, du lịch hoặc lịch trình linh hoạt bất kỳ thời điểm nào.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-can-tho-24h",
+    path: "xe-di-can-tho-24h",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ 24h, đưa đón tận nơi",
+    description:
+      "Đặt xe đi Cần Thơ 24h với tài xế riêng. Biết giá trước khi đặt, không ghép khách và phục vụ xuyên ngày đêm.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - BAN ĐÊM / KHUYA
+  // =========================
+  {
+    key: "xe-ban-dem-can-tho",
+    path: "xe-di-can-tho-ban-dem",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ ban đêm, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cần Thơ ban đêm từ TP.HCM. Xe riêng, đón tận nơi, phù hợp chuyến bay muộn, lịch công tác khuya hoặc cần về quê trong đêm.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-dem-khuya-can-tho",
+    path: "thue-xe-di-can-tho-dem-khuya",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ đêm khuya, phục vụ 24/7",
+    description:
+      "Thuê xe đi Cần Thơ đêm khuya với tài xế riêng. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - GẤP / HÔM NAY
+  // =========================
+  {
+    key: "dat-xe-gap-can-tho",
+    path: "dat-xe-gap-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Đặt xe gấp đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Cần đặt xe gấp đi Cần Thơ? GoViet247 hỗ trợ xe riêng, đưa đón tận nơi và xem giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-can-tho-hom-nay",
+    path: "xe-di-can-tho-hom-nay",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ hôm nay, đặt xe nhanh chóng",
+    description:
+      "Đặt xe đi Cần Thơ hôm nay với xe riêng có tài xế. Không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-can-tho-hom-nay",
+    path: "thue-xe-di-can-tho-hom-nay",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ hôm nay, đưa đón tận nơi",
+    description:
+      "Thuê xe đi Cần Thơ hôm nay từ TP.HCM. Xe riêng, có tài xế, biết giá trước khi đặt và không cần đặt cọc.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+    // =========================
+  // CẦN THƠ - XE GHÉP
+  // =========================
+  {
+    key: "xe-ghep-can-tho",
+    path: "xe-ghep-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe ghép đi Cần Thơ? Chọn xe riêng không ghép khách",
+    description:
+      "Nếu bạn đang tìm xe ghép đi Cần Thơ, GoViet247 cung cấp xe riêng không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-ghep-gia-re-can-tho",
+    path: "xe-ghep-can-tho-gia-re",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe ghép Cần Thơ giá rẻ? Tham khảo xe riêng GoViet247",
+    description:
+      "Thay vì đi xe ghép, bạn có thể chọn xe riêng đi Cần Thơ, không ghép khách, đưa đón tận nơi và chủ động lịch trình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CÔNG TÁC
+  // =========================
+  {
+    key: "cong-tac-can-tho",
+    path: "thue-xe-cong-tac-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe công tác đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe công tác đi Cần Thơ cho cá nhân, doanh nghiệp, chuyên gia và đối tác. Xe riêng, đưa đón tận nơi và chủ động lịch trình làm việc.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-cong-tac-can-tho",
+    path: "xe-cong-tac-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe công tác Cần Thơ, phục vụ doanh nghiệp và chuyên gia",
+    description:
+      "Xe công tác đi Cần Thơ với tài xế riêng, lịch trình linh hoạt, phù hợp đi họp, khảo sát thị trường, làm việc với đối tác hoặc khách hàng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - NGHỈ DƯỠNG
+  // =========================
+  {
+    key: "nghi-duong-can-tho",
+    path: "thue-xe-di-can-tho-nghi-duong",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ nghỉ dưỡng, xe riêng có tài xế",
+    description:
+      "Thuê xe đi Cần Thơ nghỉ dưỡng cho gia đình và nhóm bạn. Phù hợp đi resort ven sông, homestay, Cồn Sơn hoặc các khu sinh thái nổi tiếng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-nghi-duong-can-tho",
+    path: "xe-nghi-duong-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe nghỉ dưỡng Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Xe riêng đi nghỉ dưỡng Cần Thơ với tài xế riêng. Phù hợp gia đình, cặp đôi và nhóm bạn cần chuyến đi nhẹ nhàng cuối tuần.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐI CHƠI / DU LỊCH
+  // =========================
+  {
+    key: "di-choi-can-tho",
+    path: "thue-xe-di-choi-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi chơi Cần Thơ, xe riêng cho gia đình",
+    description:
+      "Thuê xe đi chơi Cần Thơ cuối tuần. Xe riêng, đưa đón tận nơi, phù hợp tham quan chợ nổi Cái Răng, bến Ninh Kiều, Cồn Sơn và các điểm du lịch miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "di-du-lich-can-tho",
+    path: "thue-xe-di-du-lich-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi du lịch Cần Thơ, xe riêng có tài xế",
+    description:
+      "Dịch vụ thuê xe đi du lịch Cần Thơ từ TP.HCM. Có xe 5 chỗ, 7 chỗ, 16 chỗ cho gia đình, nhóm bạn và đoàn khách.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "du-lich-cuoi-tuan-can-tho",
+    path: "thue-xe-du-lich-cuoi-tuan-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe du lịch cuối tuần đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe du lịch cuối tuần đi Cần Thơ cho gia đình và nhóm bạn. Xe riêng, không ghép khách, phù hợp lịch trình nghỉ dưỡng hoặc khám phá miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - RESORT / HOMESTAY
+  // =========================
+  {
+    key: "resort-can-tho",
+    path: "xe-di-resort-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi resort Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi resort Cần Thơ cho kỳ nghỉ cuối tuần. Xe riêng, đưa đón tận nơi, phù hợp gia đình, cặp đôi và nhóm bạn nghỉ dưỡng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-resort-can-tho",
+    path: "thue-xe-di-resort-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi resort Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Thuê xe đi resort Cần Thơ với tài xế riêng. Phù hợp lịch trình nghỉ dưỡng, du lịch sinh thái và nghỉ cuối tuần.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "homestay-can-tho",
+    path: "xe-di-homestay-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi homestay Cần Thơ, đưa đón tận nơi",
+    description:
+      "Đặt xe đi homestay Cần Thơ từ TP.HCM. Xe riêng có tài xế, phù hợp gia đình và nhóm bạn muốn nghỉ cuối tuần giữa không gian miền Tây sông nước.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - LỄ TẾT
+  // =========================
+  {
+    key: "le-tet-can-tho",
+    path: "thue-xe-di-can-tho-le-tet",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ dịp lễ Tết, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cần Thơ dịp lễ Tết để về quê, thăm gia đình hoặc du lịch miền Tây. Xe riêng, không ghép khách, chủ động lịch trình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-can-tho-le-tet",
+    path: "xe-di-can-tho-le-tet",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ lễ Tết, đưa đón tận nơi",
+    description:
+      "Xe đi Cần Thơ dịp lễ Tết với tài xế riêng. Phù hợp gia đình về quê, nhóm bạn du lịch và khách cần xe đưa đón tận nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CẶP ĐÔI
+  // =========================
+  {
+    key: "cap-doi-can-tho",
+    path: "thue-xe-cap-doi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe cặp đôi đi Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Xe riêng cho cặp đôi đi Cần Thơ nghỉ dưỡng cuối tuần, đi homestay hoặc du lịch miền Tây. Đưa đón tận nơi, không ghép khách.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-rieng-cap-doi-can-tho",
+    path: "xe-rieng-cap-doi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng cho cặp đôi đi Cần Thơ",
+    description:
+      "Đặt xe riêng cho cặp đôi đi Cần Thơ với tài xế riêng. Lịch trình linh hoạt, phù hợp chuyến đi nhẹ nhàng cuối tuần.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CHUYÊN GIA / FOREIGNER
+  // =========================
+  {
+    key: "chuyen-gia-can-tho",
+    path: "xe-cho-chuyen-gia-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe cho chuyên gia đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Xe riêng cho chuyên gia và khách nước ngoài đi Cần Thơ. Phù hợp công tác, khảo sát, làm việc với đối tác hoặc du lịch ngắn ngày.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "foreigner-can-tho",
+    path: "private-car-to-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Private car from Ho Chi Minh City to Can Tho",
+    description:
+      "Private car service from Ho Chi Minh City to Can Tho with driver. Door-to-door transportation for business trips, family travel and Mekong Delta tours.",
+    routeText:
+      "Ho Chi Minh City → Trung Luong Expressway → My Thuan → Can Tho",
+    duration: "3 - 3.5 hours",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐÓN ĐỐI TÁC
+  // =========================
+  {
+    key: "don-doi-tac-can-tho",
+    path: "xe-don-doi-tac-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đón đối tác đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Xe riêng đưa đón đối tác đi Cần Thơ. Phù hợp doanh nghiệp, khách công tác, chuyên gia và các chuyến làm việc quan trọng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "dua-don-doanh-nghiep-can-tho",
+    path: "xe-dua-don-doanh-nghiep-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa đón doanh nghiệp đi Cần Thơ",
+    description:
+      "Dịch vụ xe đưa đón doanh nghiệp đi Cần Thơ với tài xế riêng, lịch trình linh hoạt và đưa đón tận nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+    // =========================
+  // CẦN THƠ - ĐÓN KHÁCH / ĐƯA KHÁCH
+  // =========================
+  {
+    key: "don-khach-can-tho",
+    path: "xe-don-khach-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đón khách đi Cần Thơ, đưa đón tận nơi",
+    description:
+      "Dịch vụ xe đón khách đi Cần Thơ từ TP.HCM. Xe riêng có tài xế, không ghép khách và phục vụ 24/7.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "dua-khach-can-tho",
+    path: "xe-dua-khach-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa khách đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đưa khách đi Cần Thơ cho gia đình, doanh nghiệp hoặc khách du lịch. Biết giá trước khi đặt và không ghép khách.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐI HỌP / LÀM VIỆC
+  // =========================
+  {
+    key: "di-hop-can-tho",
+    path: "thue-xe-di-hop-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi họp Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe đi họp Cần Thơ cho cá nhân, doanh nghiệp và đối tác. Xe riêng, lịch trình linh hoạt, đưa đón tận nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "di-lam-viec-can-tho",
+    path: "thue-xe-di-lam-viec-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi làm việc Cần Thơ, phục vụ công tác",
+    description:
+      "Xe riêng đi làm việc tại Cần Thơ. Phù hợp khách công tác, chuyên gia, doanh nhân và các chuyến khảo sát thực tế.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - ĐÓN TRẢ TẬN NƠI
+  // =========================
+  {
+    key: "don-tra-tan-noi-can-tho",
+    path: "xe-don-tra-tan-noi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đón trả tận nơi đi Cần Thơ, riêng tư và tiện lợi",
+    description:
+      "Đặt xe đón trả tận nơi đi Cần Thơ. Xe riêng có tài xế, biết giá trước khi đặt và không ghép khách.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "dua-ruoc-can-tho",
+    path: "xe-dua-ruoc-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đưa rước Cần Thơ, xe riêng có tài xế",
+    description:
+      "Dịch vụ xe đưa rước Cần Thơ từ TP.HCM. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE ĐỜI MỚI / SẠCH SẼ
+  // =========================
+  {
+    key: "xe-doi-moi-can-tho",
+    path: "thue-xe-doi-moi-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đời mới đi Cần Thơ, sạch sẽ và thoải mái",
+    description:
+      "Thuê xe đời mới đi Cần Thơ với tài xế riêng. Phù hợp gia đình, nhóm bạn, khách công tác và khách du lịch.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-sach-se-can-tho",
+    path: "thue-xe-sach-se-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe sạch sẽ đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe sạch sẽ đi Cần Thơ, không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - XE CAO CẤP / VIP
+  // =========================
+  {
+    key: "xe-cao-cap-can-tho",
+    path: "thue-xe-cao-cap-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe cao cấp đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe cao cấp đi Cần Thơ cho doanh nhân, gia đình và khách VIP. Xe riêng, đưa đón tận nơi và lịch trình linh hoạt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-vip-can-tho",
+    path: "xe-vip-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe VIP đi Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Đặt xe VIP đi Cần Thơ với tài xế riêng. Biết giá trước khi đặt, phù hợp khách doanh nhân và gia đình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "doanh-nhan-can-tho",
+    path: "xe-doanh-nhan-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe doanh nhân đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Xe doanh nhân đi Cần Thơ cho khách công tác, đối tác, chuyên gia và các chuyến làm việc quan trọng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - GIA ĐÌNH CÓ TRẺ EM
+  // =========================
+  {
+    key: "gia-dinh-co-tre-em-can-tho",
+    path: "xe-gia-dinh-co-tre-em-di-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe gia đình có trẻ em đi Cần Thơ, riêng tư và thoải mái",
+    description:
+      "Xe riêng cho gia đình có trẻ em đi Cần Thơ. Không ghép khách, chủ động dừng nghỉ dọc đường khi cần.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - VỀ QUÊ
+  // =========================
+  {
+    key: "xe-ve-que-can-tho",
+    path: "xe-ve-que-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe về quê Cần Thơ, xe riêng đưa đón tận nơi",
+    description:
+      "Đặt xe về quê Cần Thơ từ TP.HCM với xe riêng có tài xế. Đón tận nhà, không ghép khách, phù hợp gia đình và người lớn tuổi.",
+    routeText:
+      "TP.HCM → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "thue-xe-ve-que-can-tho",
+    path: "thue-xe-ve-que-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe về quê Cần Thơ, không ghép khách",
+    description:
+      "Thuê xe về quê Cần Thơ với tài xế riêng. Chủ động thời gian, đón tận nơi và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-tu-sai-gon-ve-can-tho",
+    path: "xe-tu-sai-gon-ve-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe từ Sài Gòn về Cần Thơ, xe riêng giá tốt",
+    description:
+      "Dịch vụ xe từ Sài Gòn về Cần Thơ. Xe riêng có tài xế, đưa đón tận nơi và biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+    // =========================
+  // CẦN THƠ - NINH KIỀU
+  // =========================
+  {
+    key: "xe-di-ninh-kieu-can-tho",
+    path: "xe-di-ninh-kieu-can-tho",
+    from: "TP.HCM",
+    to: "Ninh Kiều, Cần Thơ",
+    title: "Thuê xe đi Ninh Kiều Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Ninh Kiều Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, đưa đón tận nơi, phù hợp đi bến Ninh Kiều, khách sạn trung tâm, công tác hoặc du lịch cuối tuần.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Ninh Kiều, Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-ve-ninh-kieu-can-tho",
+    path: "xe-ve-ninh-kieu-can-tho",
+    from: "TP.HCM",
+    to: "Ninh Kiều, Cần Thơ",
+    title: "Xe về Ninh Kiều Cần Thơ, đưa đón tận nơi",
+    description:
+      "Xe riêng về Ninh Kiều Cần Thơ cho gia đình, khách công tác và khách du lịch. Đón tận nơi tại TP.HCM, trả tận nơi tại trung tâm Cần Thơ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Ninh Kiều, Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CÁI RĂNG
+  // =========================
+  {
+    key: "xe-di-cai-rang-can-tho",
+    path: "xe-di-cai-rang-can-tho",
+    from: "TP.HCM",
+    to: "Cái Răng, Cần Thơ",
+    title: "Thuê xe đi Cái Răng Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cái Răng Cần Thơ từ TP.HCM. Phù hợp khách đi chợ nổi Cái Răng, về quê, công tác hoặc cần xe đưa đón tận nơi tại Cần Thơ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cái Răng, Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-di-cho-noi-cai-rang",
+    path: "xe-di-cho-noi-cai-rang-can-tho",
+    from: "TP.HCM",
+    to: "Chợ nổi Cái Răng, Cần Thơ",
+    title: "Xe đi chợ nổi Cái Răng Cần Thơ, đưa đón tận nơi",
+    description:
+      "Thuê xe đi chợ nổi Cái Răng từ TP.HCM với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách du lịch muốn khám phá miền Tây theo lịch trình riêng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Chợ nổi Cái Răng",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - BÌNH THỦY
+  // =========================
+  {
+    key: "xe-di-binh-thuy-can-tho",
+    path: "xe-di-binh-thuy-can-tho",
+    from: "TP.HCM",
+    to: "Bình Thủy, Cần Thơ",
+    title: "Thuê xe đi Bình Thủy Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Bình Thủy Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, phù hợp đi công tác, thăm gia đình, nhà cổ Bình Thủy hoặc đưa đón tận nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Bình Thủy, Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-ve-binh-thuy-can-tho",
+    path: "xe-ve-binh-thuy-can-tho",
+    from: "TP.HCM",
+    to: "Bình Thủy, Cần Thơ",
+    title: "Xe về Bình Thủy Cần Thơ, xe riêng không ghép khách",
+    description:
+      "Xe riêng về Bình Thủy Cần Thơ từ TP.HCM. Đón tận nhà, trả tận nơi, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Bình Thủy, Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - Ô MÔN
+  // =========================
+  {
+    key: "xe-di-o-mon-can-tho",
+    path: "xe-di-o-mon-can-tho",
+    from: "TP.HCM",
+    to: "Ô Môn, Cần Thơ",
+    title: "Thuê xe đi Ô Môn Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe đi Ô Môn Cần Thơ từ TP.HCM. Xe riêng, đưa đón tận nơi, phù hợp khách về quê, đi công tác hoặc thăm người thân tại Cần Thơ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Ô Môn, Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  {
+    key: "xe-ve-o-mon-can-tho",
+    path: "xe-ve-o-mon-can-tho",
+    from: "TP.HCM",
+    to: "Ô Môn, Cần Thơ",
+    title: "Xe về Ô Môn Cần Thơ, đưa đón tận nơi",
+    description:
+      "Xe riêng về Ô Môn Cần Thơ cho gia đình, người lớn tuổi và khách công tác. Không ghép khách, đón trả tận nơi theo địa chỉ thực tế.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Ô Môn, Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - THỐT NỐT
+  // =========================
+  {
+    key: "xe-di-thot-not-can-tho",
+    path: "xe-di-thot-not-can-tho",
+    from: "TP.HCM",
+    to: "Thốt Nốt, Cần Thơ",
+    title: "Thuê xe đi Thốt Nốt Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Thốt Nốt Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, phù hợp khách về quê, công tác hoặc cần xe đưa đón tận nơi khu vực phía Bắc Cần Thơ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Thốt Nốt, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  {
+    key: "xe-ve-thot-not-can-tho",
+    path: "xe-ve-thot-not-can-tho",
+    from: "TP.HCM",
+    to: "Thốt Nốt, Cần Thơ",
+    title: "Xe về Thốt Nốt Cần Thơ, xe riêng giá tốt",
+    description:
+      "Xe riêng về Thốt Nốt Cần Thơ từ TP.HCM. Đưa đón tận nơi, biết giá trước khi đặt, không đặt cọc và thanh toán sau chuyến đi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Thốt Nốt, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - PHONG ĐIỀN
+  // =========================
+  {
+    key: "xe-di-phong-dien-can-tho",
+    path: "xe-di-phong-dien-can-tho",
+    from: "TP.HCM",
+    to: "Phong Điền, Cần Thơ",
+    title: "Thuê xe đi Phong Điền Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe đi Phong Điền Cần Thơ từ TP.HCM. Phù hợp đi vườn trái cây, homestay, du lịch sinh thái hoặc về quê. Xe riêng, đưa đón tận nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Phong Điền, Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  {
+    key: "xe-di-vuon-trai-cay-phong-dien",
+    path: "xe-di-vuon-trai-cay-phong-dien-can-tho",
+    from: "TP.HCM",
+    to: "Phong Điền, Cần Thơ",
+    title: "Xe đi vườn trái cây Phong Điền Cần Thơ",
+    description:
+      "Đặt xe đi vườn trái cây Phong Điền Cần Thơ với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách du lịch tự túc muốn khám phá miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Phong Điền, Cần Thơ",
+    duration: "3.5 - 4 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CỜ ĐỎ
+  // =========================
+  {
+    key: "xe-di-co-do-can-tho",
+    path: "xe-di-co-do-can-tho",
+    from: "TP.HCM",
+    to: "Cờ Đỏ, Cần Thơ",
+    title: "Thuê xe đi Cờ Đỏ Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Cờ Đỏ Cần Thơ từ TP.HCM. Xe riêng, đón tận nơi, phù hợp khách về quê, đi công việc hoặc thăm gia đình ở khu vực ngoại thành Cần Thơ.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cờ Đỏ, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  {
+    key: "xe-ve-co-do-can-tho",
+    path: "xe-ve-co-do-can-tho",
+    from: "TP.HCM",
+    to: "Cờ Đỏ, Cần Thơ",
+    title: "Xe về Cờ Đỏ Cần Thơ, đưa đón tận nơi",
+    description:
+      "Xe riêng về Cờ Đỏ Cần Thơ cho gia đình, khách công tác và người về quê. Đón trả tận nơi, không ghép khách, biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cờ Đỏ, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - VĨNH THẠNH
+  // =========================
+  {
+    key: "xe-di-vinh-thanh-can-tho",
+    path: "xe-di-vinh-thanh-can-tho",
+    from: "TP.HCM",
+    to: "Vĩnh Thạnh, Cần Thơ",
+    title: "Thuê xe đi Vĩnh Thạnh Cần Thơ, xe riêng có tài xế",
+    description:
+      "Dịch vụ xe đi Vĩnh Thạnh Cần Thơ từ TP.HCM. Xe riêng, đưa đón tận nơi, phù hợp khách về quê, đi công tác hoặc lịch trình gia đình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Vĩnh Thạnh, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  {
+    key: "xe-ve-vinh-thanh-can-tho",
+    path: "xe-ve-vinh-thanh-can-tho",
+    from: "TP.HCM",
+    to: "Vĩnh Thạnh, Cần Thơ",
+    title: "Xe về Vĩnh Thạnh Cần Thơ, xe riêng không ghép khách",
+    description:
+      "Xe riêng về Vĩnh Thạnh Cần Thơ từ TP.HCM. Đón tận nhà, đưa về tận nơi, phù hợp gia đình, người lớn tuổi và khách cần chuyến đi riêng tư.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Vĩnh Thạnh, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - THỚI LAI
+  // =========================
+  {
+    key: "xe-di-thoi-lai-can-tho",
+    path: "xe-di-thoi-lai-can-tho",
+    from: "TP.HCM",
+    to: "Thới Lai, Cần Thơ",
+    title: "Thuê xe đi Thới Lai Cần Thơ, xe riêng có tài xế",
+    description:
+      "Đặt xe đi Thới Lai Cần Thơ từ TP.HCM. Xe riêng, không ghép khách, đưa đón tận nơi, phù hợp khách về quê hoặc đi công việc gia đình.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Thới Lai, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  {
+    key: "xe-ve-thoi-lai-can-tho",
+    path: "xe-ve-thoi-lai-can-tho",
+    from: "TP.HCM",
+    to: "Thới Lai, Cần Thơ",
+    title: "Xe về Thới Lai Cần Thơ, đưa đón tận nơi",
+    description:
+      "Xe riêng về Thới Lai Cần Thơ cho gia đình, khách công tác và người về quê. Không ghép khách, biết giá trước khi đặt.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Thới Lai, Cần Thơ",
+    duration: "4 - 4.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - DU LỊCH TỰ TÚC
+  // =========================
+  {
+    key: "tu-tuc-can-tho",
+    path: "thue-xe-di-can-tho-tu-tuc",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ tự túc, xe riêng có tài xế",
+    description:
+      "Thuê xe đi Cần Thơ tự túc cho gia đình và nhóm bạn. Chủ động lịch trình đi chợ nổi, bến Ninh Kiều, Cồn Sơn, Phong Điền hoặc các điểm du lịch miền Tây.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "xe-tu-tuc-can-tho",
+    path: "xe-rieng-di-can-tho-tu-tuc",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe riêng đi Cần Thơ tự túc, đưa đón tận nơi",
+    description:
+      "Xe riêng đi Cần Thơ tự túc với tài xế riêng, phù hợp nghỉ dưỡng cuối tuần, khám phá miền Tây và thăm người thân.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - CHỦ ĐỘNG LỊCH TRÌNH
+  // =========================
+  {
+    key: "chu-dong-lich-trinh-can-tho",
+    path: "xe-di-can-tho-chu-dong-lich-trinh",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ chủ động lịch trình, xe riêng có tài xế",
+    description:
+      "Chủ động thời gian khởi hành, điểm đón và điểm trả khi thuê xe đi Cần Thơ trên GoViet247. Phù hợp lịch trình gia đình, công tác hoặc du lịch tự túc.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "linh-hoat-can-tho",
+    path: "thue-xe-di-can-tho-lich-trinh-linh-hoat",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Thuê xe đi Cần Thơ với lịch trình linh hoạt",
+    description:
+      "Xe riêng đi Cần Thơ với lịch trình linh hoạt, phù hợp gia đình, khách công tác, khách du lịch và người về quê.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "doi-gio-khoi-hanh-can-tho",
+    path: "xe-di-can-tho-doi-gio-khoi-hanh-linh-hoat",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe đi Cần Thơ linh hoạt giờ khởi hành",
+    description:
+      "Đặt xe đi Cần Thơ với giờ khởi hành linh hoạt. Xe riêng có tài xế, phù hợp lịch trình thay đổi hoặc đặt xe gấp.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - VỀ QUÊ CUỐI TUẦN
+  // =========================
+  {
+    key: "ve-que-cuoi-tuan-can-tho",
+    path: "xe-ve-que-can-tho-cuoi-tuan",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe về quê Cần Thơ cuối tuần, xe riêng đưa đón tận nơi",
+    description:
+      "Xe riêng về quê Cần Thơ cuối tuần. Đón tận nơi tại TP.HCM và trả tận nhà tại Cần Thơ, phù hợp gia đình và người lớn tuổi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "ve-tham-gia-dinh-can-tho",
+    path: "xe-ve-tham-gia-dinh-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe về thăm gia đình tại Cần Thơ",
+    description:
+      "Đặt xe về thăm gia đình tại Cần Thơ với xe riêng có tài xế. Không ghép khách, thanh toán sau chuyến đi và chủ động giờ về.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "ve-can-tho-trong-ngay",
+    path: "xe-ve-can-tho-trong-ngay",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe về Cần Thơ trong ngày, sáng đi chiều về",
+    description:
+      "Thuê xe về Cần Thơ trong ngày cho công việc, thăm người thân hoặc giải quyết việc cá nhân. Xe riêng, không ghép khách, đưa đón tận nơi.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  // =========================
+  // CẦN THƠ - MIỀN TÂY
+  // =========================
+  {
+    key: "du-lich-mien-tay-can-tho",
+    path: "xe-du-lich-mien-tay-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe du lịch miền Tây đi Cần Thơ, xe riêng có tài xế",
+    description:
+      "Thuê xe du lịch miền Tây đi Cần Thơ. Khám phá bến Ninh Kiều, chợ nổi Cái Răng, Cồn Sơn, Phong Điền và các điểm du lịch sông nước nổi tiếng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+
+  {
+    key: "kham-pha-can-tho",
+    path: "xe-kham-pha-can-tho",
+    from: "TP.HCM",
+    to: "Cần Thơ",
+    title: "Xe khám phá Cần Thơ, du lịch miền Tây cuối tuần",
+    description:
+      "Đặt xe khám phá Cần Thơ với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách du lịch tự túc muốn đi theo lịch trình riêng.",
+    routeText:
+      "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
+    duration: "3 - 3.5 giờ",
+  },
+];

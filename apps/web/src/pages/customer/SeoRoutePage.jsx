@@ -6,6 +6,9 @@ import { getPublicSystemConfig } from "../../api/systemConfig";
 
 export default function SeoRoutePage({ routeKey }) {
   const [zaloPhone, setZaloPhone] = useState("0326184628");
+  const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
+  const playStoreUrl =
+    "https://play.google.com/store/apps/details?id=com.goviet247.rider";
 
   const route = useMemo(
     () => SEO_ROUTES.find((item) => item.key === routeKey),
@@ -166,6 +169,77 @@ export default function SeoRoutePage({ routeKey }) {
             Nhắn Zalo hỗ trợ
           </a>
         </div>
+        <Box>
+              <Typography
+                sx={{
+                  mb: 1,
+                  fontWeight: 700,
+                  fontSize: 13,
+                  px: 1.8,
+                  py: 0.7,
+                  opacity: 0.82,
+                }}
+              >
+                📱 Tải ứng dụng GoViet247
+              </Typography>
+
+              <Stack
+                direction="row"
+                sx={{
+                  flexWrap: "wrap",
+                  gap: 1,
+                  maxWidth: "100%",
+                }}
+              >
+                
+                  <Button
+                    variant="outlined"
+                    startIcon={<AppleIcon />}
+                    href={appStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: 999,
+                      fontWeight: 800,
+                      color: "white",
+                      borderColor: "rgba(255,255,255,0.35)",
+                      bgcolor: "rgba(255,255,255,0.06)",
+                      backdropFilter: "blur(8px)",
+                      "&:hover": {
+                        borderColor: "rgba(255,255,255,0.7)",
+                        bgcolor: "rgba(255,255,255,0.12)",
+                      },
+                    }}
+                  >
+                    App Store
+                  </Button>
+              
+                  <Button
+                    variant="outlined"
+                    startIcon={<AndroidIcon />}
+                    href={playStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      textTransform: "none",
+                      borderRadius: 999,
+                      fontWeight: 800,
+                      color: "white",
+                      borderColor: "rgba(255,255,255,0.35)",
+                      bgcolor: "rgba(255,255,255,0.06)",
+                      backdropFilter: "blur(8px)",
+                      "&:hover": {
+                        borderColor: "rgba(255,255,255,0.7)",
+                        bgcolor: "rgba(255,255,255,0.12)",
+                      },
+                    }}
+                  >
+                    Google Play
+                  </Button>
+
+              </Stack>
+            </Box>
       </section>
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
