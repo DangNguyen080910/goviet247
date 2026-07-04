@@ -169,77 +169,29 @@ export default function SeoRoutePage({ routeKey }) {
             Nhắn Zalo hỗ trợ
           </a>
         </div>
-        <Box>
-              <Typography
-                sx={{
-                  mb: 1,
-                  fontWeight: 700,
-                  fontSize: 13,
-                  px: 1.8,
-                  py: 0.7,
-                  opacity: 0.82,
-                }}
-              >
-                📱 Tải ứng dụng GoViet247
-              </Typography>
+        <div style={styles.downloadAppBox}>
+          <p style={styles.downloadTitle}>📱 Tải ứng dụng GoViet247</p>
 
-              <Stack
-                direction="row"
-                sx={{
-                  flexWrap: "wrap",
-                  gap: 1,
-                  maxWidth: "100%",
-                }}
-              >
-                
-                  <Button
-                    variant="outlined"
-                    startIcon={<AppleIcon />}
-                    href={appStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: 999,
-                      fontWeight: 800,
-                      color: "white",
-                      borderColor: "rgba(255,255,255,0.35)",
-                      bgcolor: "rgba(255,255,255,0.06)",
-                      backdropFilter: "blur(8px)",
-                      "&:hover": {
-                        borderColor: "rgba(255,255,255,0.7)",
-                        bgcolor: "rgba(255,255,255,0.12)",
-                      },
-                    }}
-                  >
-                    App Store
-                  </Button>
-              
-                  <Button
-                    variant="outlined"
-                    startIcon={<AndroidIcon />}
-                    href={playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: 999,
-                      fontWeight: 800,
-                      color: "white",
-                      borderColor: "rgba(255,255,255,0.35)",
-                      bgcolor: "rgba(255,255,255,0.06)",
-                      backdropFilter: "blur(8px)",
-                      "&:hover": {
-                        borderColor: "rgba(255,255,255,0.7)",
-                        bgcolor: "rgba(255,255,255,0.12)",
-                      },
-                    }}
-                  >
-                    Google Play
-                  </Button>
+          <div style={styles.downloadButtons}>
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.downloadButton}
+            >
+               App Store
+            </a>
 
-              </Stack>
-            </Box>
+            <a
+              href={playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.downloadButton}
+            >
+              🤖 Google Play
+            </a>
+          </div>
+        </div>
       </section>
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
@@ -515,4 +467,29 @@ const styles = {
     textDecoration: "none",
     fontWeight: 800,
   },
+  downloadAppBox: {
+  marginTop: 18,
+},
+downloadTitle: {
+  margin: "0 0 10px",
+  fontWeight: 800,
+  fontSize: 14,
+  color: "#475569",
+},
+downloadButtons: {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 10,
+},
+downloadButton: {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "10px 16px",
+  borderRadius: 999,
+  background: "#172033",
+  color: "#ffffff",
+  textDecoration: "none",
+  fontWeight: 800,
+},
 };
