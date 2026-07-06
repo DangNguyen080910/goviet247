@@ -26,6 +26,7 @@ import { BINHPHUOC_SEO_ROUTES } from "./binhPhuocSeoRoutes.js";
 import { BENTRE_SEO_ROUTES } from "./benTreSeoRoutes.js";
 import { CANTHO_SEO_ROUTES } from "./canThoSeoRoutes.js";
 import { NHATRANG_SEO_ROUTES } from "./nhaTrangSeoRoutes.js";
+import { DALAT_SEO_ROUTES } from "./daLatSeoRoutes.js";
 
 
 const assertUniqueSeoRoutes = (items) => {
@@ -103,4 +104,5 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...BENTRE_SEO_ROUTES,
   ...CANTHO_SEO_ROUTES,
   ...NHATRANG_SEO_ROUTES,
+  ...DALAT_SEO_ROUTES,
 ]);
