@@ -126,6 +126,14 @@ function shortTripId(id = "", n = 10) {
   return id.length <= n ? id : `${id.slice(0, n)}…`;
 }
 
+function trackGoogleAdsConversion() {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", "conversion", {
+      send_to: "AW-18265368618/9-a8CP2n1cocEKrQzVVE",
+    });
+  }
+}
+
 function formatCountdownLabel(ms) {
   const safeMs = Math.max(0, Number(ms || 0));
   const totalSeconds = Math.floor(safeMs / 1000);
@@ -1618,6 +1626,8 @@ export default function BookingCard() {
         res?.data?.tripId ||
         "";
 
+      trackGoogleAdsConversion();
+
       setShouldRedirectAfterSuccess(true);
       setSuccessDialog({ open: true, tripId });
 
@@ -1687,6 +1697,8 @@ export default function BookingCard() {
         res?.data?.trip?.id ||
         res?.data?.tripId ||
         "";
+
+      trackGoogleAdsConversion();
 
       setShouldRedirectAfterSuccess(true);
       setSuccessDialog({ open: true, tripId });
