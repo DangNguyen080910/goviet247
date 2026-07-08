@@ -28,6 +28,8 @@ import { CANTHO_SEO_ROUTES } from "./canThoSeoRoutes.js";
 import { NHATRANG_SEO_ROUTES } from "./nhaTrangSeoRoutes.js";
 import { DALAT_SEO_ROUTES } from "./daLatSeoRoutes.js";
 import { TAYNINH_SEO_ROUTES } from "./tayNinhSeoRoutes.js";
+import { LONGHAI_SEO_ROUTES } from "./longHaiSeoRoutes.js";
+import { MUINE_SEO_ROUTES } from "./muiNeSeoRoutes.js";
 
 
 const assertUniqueSeoRoutes = (items) => {
@@ -107,4 +109,6 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...NHATRANG_SEO_ROUTES,
   ...DALAT_SEO_ROUTES,
   ...TAYNINH_SEO_ROUTES,
+  ...LONGHAI_SEO_ROUTES,
+  ...MUINE_SEO_ROUTES,
 ]);
