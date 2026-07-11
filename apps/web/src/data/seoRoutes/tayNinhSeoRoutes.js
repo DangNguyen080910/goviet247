@@ -2413,4 +2413,3462 @@ export const TAYNINH_SEO_ROUTES = [
   routeText: "Ho Chi Minh City → Moc Bai Border",
   duration: "1.5 - 2 hours",
 },
+
+{
+  key: "quan-1-di-tay-ninh",
+  path: "thue-xe-tu-quan-1-di-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Tây Ninh, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Tây Ninh với xe riêng có tài xế. Phù hợp đi Núi Bà Đen, Tòa Thánh Tây Ninh, công tác hoặc về quê. Xe đón tận nơi tại Quận 1, không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 1 → Cách Mạng Tháng 8 → Củ Chi → Trảng Bàng → Gò Dầu → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-tay-ninh",
+  path: "thue-xe-tu-quan-3-di-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Tây Ninh giá tốt",
+  description:
+    "Đặt xe riêng từ Quận 3 đi Tây Ninh cho gia đình, nhóm bạn hoặc khách công tác. Xe riêng không ghép khách, đưa đón tận nơi, phù hợp các chuyến đi trong ngày đến Tây Ninh hoặc lịch trình khứ hồi cuối tuần.",
+  routeText:
+    "Quận 3 → Cách Mạng Tháng 8 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-4-di-tay-ninh",
+  path: "thue-xe-tu-quan-4-di-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Tây Ninh, không ghép khách",
+  description:
+    "Xe riêng từ Quận 4 đi Tây Ninh phục vụ 24/7. Phù hợp khách đi lễ Núi Bà Đen, tham quan hồ Dầu Tiếng hoặc về quê Tây Ninh. Đón tận nơi, chủ động giờ khởi hành và lịch trình.",
+  routeText:
+    "Quận 4 → Quận 1 → Củ Chi → Trảng Bàng → Gò Dầu → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-tay-ninh",
+  path: "thue-xe-tu-quan-5-di-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Tây Ninh, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Tây Ninh dành cho khách gia đình, khách công tác và khách du lịch. Không ghép khách, biết giá trước khi đặt, thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Quận 5 → Quốc lộ 22 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-tay-ninh",
+  path: "thue-xe-tu-quan-6-di-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Tây Ninh đưa đón tận nơi",
+  description:
+    "Đặt xe từ Quận 6 đi Tây Ninh với xe riêng có tài xế. Phù hợp đi công tác, đi lễ hoặc về quê. Xe đón tận nhà, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "Quận 6 → Quốc lộ 22 → Củ Chi → Trảng Bàng → Gò Dầu → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-tay-ninh",
+  path: "thue-xe-tu-quan-7-di-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Tây Ninh giá rõ ràng",
+  description:
+    "Xe riêng từ Quận 7 đi Tây Ninh dành cho khách cần chuyến đi riêng tư và thoải mái. Phù hợp gia đình, nhóm bạn hoặc khách đi công việc. Không cần đặt cọc và biết giá trước khi đặt.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-tay-ninh",
+  path: "thue-xe-tu-quan-8-di-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Tây Ninh, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Tây Ninh với xe riêng đưa đón tận nơi. Phù hợp đi Núi Bà Đen, công tác, về quê hoặc tham quan Tây Ninh trong ngày. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 8 → Quốc lộ 1A → Củ Chi → Trảng Bàng → Gò Dầu → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-tay-ninh",
+  path: "thue-xe-tu-quan-10-di-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Tây Ninh giá tốt",
+  description:
+    "Đặt xe riêng từ Quận 10 đi Tây Ninh cho gia đình, khách công tác hoặc khách du lịch. Xe đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Quận 10 → Cách Mạng Tháng 8 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-tay-ninh",
+  path: "thue-xe-tu-quan-11-di-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Tây Ninh",
+  description:
+    "Xe riêng từ Quận 11 đi Tây Ninh phục vụ 24/7. Đón tận nơi, không ghép khách, phù hợp đi lễ, du lịch, công tác hoặc về quê.",
+  routeText:
+    "Quận 11 → Quốc lộ 22 → Củ Chi → Trảng Bàng → Gò Dầu → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-12-di-tay-ninh",
+  path: "thue-xe-tu-quan-12-di-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Tây Ninh, đưa đón tận nơi",
+  description:
+    "Đặt xe từ Quận 12 đi Tây Ninh nhanh chóng với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách công tác cần lịch trình linh hoạt.",
+  routeText:
+    "Quận 12 → Quốc lộ 22 → Hóc Môn → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-tan-di-tay-ninh",
+  path: "thue-xe-tu-binh-tan-di-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Tây Ninh",
+  description:
+    "Xe riêng từ Bình Tân đi Tây Ninh cho khách về quê, công tác hoặc đi lễ Núi Bà Đen. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-phu-di-tay-ninh",
+  path: "thue-xe-tu-tan-phu-di-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Tây Ninh với tài xế riêng. Phù hợp gia đình, khách công tác và khách du lịch muốn di chuyển riêng tư.",
+  routeText:
+    "Tân Phú → Quốc lộ 22 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-tay-ninh",
+  path: "thue-xe-tu-tan-binh-di-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Tây Ninh",
+  description:
+    "Xe riêng từ Tân Bình đi Tây Ninh đón tận nơi, phù hợp khách gia đình, khách từ sân bay hoặc khách công tác cần xe riêng có tài xế.",
+  routeText:
+    "Tân Bình → Quốc lộ 22 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-tay-ninh",
+  path: "thue-xe-tu-phu-nhuan-di-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Tây Ninh",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Tây Ninh với lịch trình linh hoạt. Xe riêng không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Phú Nhuận → Tân Bình → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "go-vap-di-tay-ninh",
+  path: "thue-xe-tu-go-vap-di-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Tây Ninh",
+  description:
+    "Xe riêng từ Gò Vấp đi Tây Ninh phù hợp đi lễ, du lịch hoặc công tác. Chủ động giờ đi, điểm đón và điểm trả theo nhu cầu.",
+  routeText:
+    "Gò Vấp → Quốc lộ 22 → Hóc Môn → Củ Chi → Tây Ninh",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-tay-ninh",
+  path: "thue-xe-tu-binh-thanh-di-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Tây Ninh với tài xế riêng. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Bình Thạnh → Quốc lộ 13 → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-duc-di-tay-ninh",
+  path: "thue-xe-tu-thu-duc-di-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Tây Ninh với tài xế riêng. Phù hợp khách công tác, gia đình hoặc khách du lịch muốn di chuyển riêng tư và thoải mái.",
+  routeText:
+    "TP Thủ Đức → Phạm Văn Đồng → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-tay-ninh",
+  path: "thue-xe-tu-hoc-mon-di-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Tây Ninh",
+  description:
+    "Xe riêng từ Hóc Môn đi Tây Ninh đón tận nơi, không ghép khách. Phù hợp đi Núi Bà Đen, công tác hoặc về quê Tây Ninh.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "cu-chi-di-tay-ninh",
+  path: "thue-xe-tu-cu-chi-di-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Tây Ninh",
+  description:
+    "Đặt xe riêng từ Củ Chi đi Tây Ninh với tài xế riêng. Quãng đường thuận tiện, phù hợp khách đi công tác, đi lễ hoặc du lịch cuối tuần.",
+  routeText:
+    "Củ Chi → Trảng Bàng → Gò Dầu → Tây Ninh",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-tay-ninh",
+  path: "thue-xe-tu-binh-chanh-di-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Tây Ninh",
+  description:
+    "Xe riêng từ Bình Chánh đi Tây Ninh cho gia đình, khách công tác và khách về quê. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Bình Chánh → Quốc lộ 1A → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "nha-be-di-tay-ninh",
+  path: "thue-xe-tu-nha-be-di-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Tây Ninh với tài xế riêng. Phù hợp khách gia đình, nhóm bạn và khách công tác cần chuyến đi riêng tư.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "can-gio-di-tay-ninh",
+  path: "thue-xe-tu-can-gio-di-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Tây Ninh",
+  description:
+    "Xe riêng từ Cần Giờ đi Tây Ninh đưa đón tận nơi. Phù hợp khách công tác, khách du lịch hoặc người cần về quê Tây Ninh với lịch trình linh hoạt.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng → Tây Ninh",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "tphcm-di-thanh-pho-tay-ninh",
+  path: "thue-xe-tphcm-di-thanh-pho-tay-ninh",
+  from: "TP.HCM",
+  to: "Thành phố Tây Ninh",
+  title: "Thuê xe TP.HCM đi Thành phố Tây Ninh, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Thành phố Tây Ninh với xe riêng đưa đón tận nơi. Phù hợp khách công tác, thăm người thân, làm việc tại trung tâm hành chính hoặc kết hợp tham quan các điểm nổi tiếng của Tây Ninh.",
+  routeText:
+    "TP.HCM → Củ Chi → Trảng Bàng → Gò Dầu → Thành phố Tây Ninh",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tphcm-di-ben-cau",
+  path: "thue-xe-tphcm-di-ben-cau-tay-ninh",
+  from: "TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Bến Cầu Tây Ninh",
+  description:
+    "Xe riêng từ TP.HCM đi Bến Cầu Tây Ninh phục vụ khách công tác, thăm người thân hoặc làm việc khu vực cửa khẩu. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tphcm-di-trang-bang",
+  path: "thue-xe-tphcm-di-trang-bang",
+  from: "TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Trảng Bàng Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Trảng Bàng Tây Ninh. Phù hợp khách công tác, về quê, gặp đối tác hoặc làm việc tại các khu công nghiệp lớn trong khu vực.",
+  routeText:
+    "TP.HCM → Quốc lộ 22 → Trảng Bàng",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "tphcm-di-hoa-thanh",
+  path: "thue-xe-tphcm-di-hoa-thanh-tay-ninh",
+  from: "TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Hòa Thành Tây Ninh",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Hòa Thành Tây Ninh để tham quan Tòa Thánh Tây Ninh, đi lễ hoặc công tác. Xe riêng có tài xế, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Trảng Bàng → Gò Dầu → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tphcm-di-go-dau",
+  path: "thue-xe-tphcm-di-go-dau-tay-ninh",
+  from: "TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Gò Dầu Tây Ninh",
+  description:
+    "Xe riêng từ TP.HCM đi Gò Dầu Tây Ninh phục vụ nhu cầu công tác, gặp đối tác, về quê hoặc di chuyển đến các khu công nghiệp trong khu vực. Xe đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "tphcm-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tphcm-di-chau-thanh-tay-ninh",
+  from: "TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Châu Thành Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Châu Thành Tây Ninh dành cho khách về quê, công tác hoặc thăm người thân. Xe đón tận nơi, không ghép khách, phù hợp cả chuyến đi trong ngày và khứ hồi.",
+  routeText:
+    "TP.HCM → Củ Chi → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-duong-minh-chau",
+  path: "thue-xe-tphcm-di-duong-minh-chau",
+  from: "TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Dương Minh Châu Tây Ninh",
+  description:
+    "Xe riêng từ TP.HCM đi Dương Minh Châu phục vụ khách du lịch hồ Dầu Tiếng, công tác hoặc về quê. Xe có tài xế riêng, chủ động thời gian và lịch trình.",
+  routeText:
+    "TP.HCM → Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-tan-chau",
+  path: "thue-xe-tphcm-di-tan-chau-tay-ninh",
+  from: "TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Tân Châu Tây Ninh",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Tân Châu Tây Ninh cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-tan-bien",
+  path: "thue-xe-tphcm-di-tan-bien-tay-ninh",
+  from: "TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe TP.HCM đi Tân Biên Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Tân Biên Tây Ninh. Phù hợp khách công tác, về quê hoặc di chuyển đến khu vực biên giới. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-1-di-trang-bang",
+  path: "thue-xe-tu-quan-1-di-trang-bang",
+  from: "Quận 1, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 1 đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại các khu công nghiệp lớn trong khu vực. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Quận 1 → Củ Chi → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-1-di-go-dau",
+  path: "thue-xe-tu-quan-1-di-go-dau-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Gò Dầu Tây Ninh. Phù hợp khách công tác, gặp đối tác, khảo sát nhà máy hoặc về quê.",
+  routeText:
+    "Quận 1 → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-1-di-hoa-thanh",
+  path: "thue-xe-tu-quan-1-di-hoa-thanh-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 1 đi Hòa Thành Tây Ninh, phù hợp khách đi Tòa Thánh Tây Ninh, công tác hoặc thăm người thân. Xe có tài xế riêng, đón tận nơi.",
+  routeText:
+    "Quận 1 → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-1-di-ben-cau",
+  path: "thue-xe-tu-quan-1-di-ben-cau-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 1 đi Bến Cầu Tây Ninh. Phù hợp khách làm việc khu vực cửa khẩu, công tác hoặc thăm người thân.",
+  routeText:
+    "Quận 1 → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-1-di-chau-thanh",
+  path: "can-thue-xe-tu-quan-1-di-chau-thanh-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 1 đi Châu Thành Tây Ninh cho khách công tác, về quê hoặc thăm người thân. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Quận 1 → Củ Chi → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-quan-1-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-1-di-duong-minh-chau",
+  from: "Quận 1, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText:
+    "Quận 1 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "xe-quan-1-di-tan-chau",
+  path: "can-thue-xe-tu-quan-1-di-tan-chau-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 1 đi Tân Châu Tây Ninh cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Quận 1 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "xe-quan-1-di-tan-bien",
+  path: "can-thue-xe-tu-quan-1-di-tan-bien-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 1 đi Tân Biên Tây Ninh với tài xế riêng. Đón tận nơi, phù hợp công tác, về quê hoặc làm việc khu vực biên giới.",
+  routeText:
+    "Quận 1 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-3-di-trang-bang",
+  path: "thue-xe-tu-quan-3-di-trang-bang",
+  from: "Quận 3, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 3 đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại các khu công nghiệp trong khu vực. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 3 → Cách Mạng Tháng 8 → Củ Chi → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-3-di-go-dau",
+  path: "thue-xe-tu-quan-3-di-go-dau-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Gò Dầu Tây Ninh. Phù hợp khách công tác, gặp đối tác, khảo sát nhà máy hoặc về quê.",
+  routeText:
+    "Quận 3 → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-3-di-hoa-thanh",
+  path: "thue-xe-tu-quan-3-di-hoa-thanh-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 3 đi Hòa Thành Tây Ninh, phù hợp khách đi Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText:
+    "Quận 3 → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-ben-cau",
+  path: "thue-xe-tu-quan-3-di-ben-cau-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 3 đi Bến Cầu Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 3 → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-chau-thanh",
+  path: "can-thue-xe-tu-quan-3-di-chau-thanh-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 3 đi Châu Thành Tây Ninh cho khách công tác, về quê hoặc thăm người thân. Đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Quận 3 → Củ Chi → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-quan-3-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-3-di-duong-minh-chau",
+  from: "Quận 3, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText:
+    "Quận 3 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-4-di-trang-bang",
+  path: "thue-xe-tu-quan-4-di-trang-bang",
+  from: "Quận 4, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 4 đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại các khu công nghiệp lớn. Đón tận nơi, không ghép khách.",
+  routeText: "Quận 4 → Quận 1 → Củ Chi → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-4-di-go-dau",
+  path: "thue-xe-tu-quan-4-di-go-dau-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác, gặp đối tác hoặc về quê.",
+  routeText: "Quận 4 → Quận 1 → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-4-di-hoa-thanh",
+  path: "thue-xe-tu-quan-4-di-hoa-thanh-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 4 đi Hòa Thành Tây Ninh, phù hợp khách đi Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText: "Quận 4 → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-4-di-ben-cau",
+  path: "thue-xe-tu-quan-4-di-ben-cau-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bến Cầu Tây Ninh. Đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText: "Quận 4 → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-trang-bang",
+  path: "thue-xe-tu-quan-5-di-trang-bang",
+  from: "Quận 5, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 5 đi Trảng Bàng Tây Ninh cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Không ghép khách, đưa đón tận nơi.",
+  routeText: "Quận 5 → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-5-di-go-dau",
+  path: "thue-xe-tu-quan-5-di-go-dau-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Gò Dầu Tây Ninh. Phù hợp khách công tác, khảo sát nhà máy hoặc thăm người thân.",
+  routeText: "Quận 5 → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-5-di-hoa-thanh",
+  path: "thue-xe-tu-quan-5-di-hoa-thanh-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 5 đi Hòa Thành Tây Ninh phục vụ khách đi lễ, tham quan hoặc công tác. Xe có tài xế riêng và lịch trình linh hoạt.",
+  routeText: "Quận 5 → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-ben-cau",
+  path: "thue-xe-tu-quan-5-di-ben-cau-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Bến Cầu Tây Ninh. Xe riêng không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 5 → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-trang-bang",
+  path: "thue-xe-tu-quan-6-di-trang-bang",
+  from: "Quận 6, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 6 đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi và không ghép khách.",
+  routeText: "Quận 6 → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-6-di-go-dau",
+  path: "thue-xe-tu-quan-6-di-go-dau-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Gò Dầu Tây Ninh với tài xế riêng. Phù hợp khách công tác, gặp đối tác hoặc về quê.",
+  routeText: "Quận 6 → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-6-di-hoa-thanh",
+  path: "thue-xe-tu-quan-6-di-hoa-thanh-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 6 đi Hòa Thành Tây Ninh phục vụ khách đi Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText: "Quận 6 → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-ben-cau",
+  path: "thue-xe-tu-quan-6-di-ben-cau-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Bến Cầu Tây Ninh. Xe có tài xế riêng, đón tận nơi và không ghép khách.",
+  routeText: "Quận 6 → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-trang-bang",
+  path: "thue-xe-tu-quan-7-di-trang-bang",
+  from: "Quận 7, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 7 đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText: "Quận 7 → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-go-dau",
+  path: "thue-xe-tu-quan-7-di-go-dau-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Gò Dầu Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 7 → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-hoa-thanh",
+  path: "thue-xe-tu-quan-7-di-hoa-thanh-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 7 đi Hòa Thành Tây Ninh, phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText: "Quận 7 → Quốc lộ 22 → Trảng Bàng → Hòa Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-ben-cau",
+  path: "thue-xe-tu-quan-7-di-ben-cau-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 7 đi Bến Cầu Tây Ninh. Không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Quận 7 → Quốc lộ 22 → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-trang-bang",
+  path: "thue-xe-tu-quan-8-di-trang-bang",
+  from: "Quận 8, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 8 đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại khu công nghiệp. Xe riêng, không ghép khách.",
+  routeText: "Quận 8 → Quốc lộ 1A → Quốc lộ 22 → Trảng Bàng",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-8-di-go-dau",
+  path: "thue-xe-tu-quan-8-di-go-dau-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Gò Dầu Tây Ninh. Đưa đón tận nơi, phù hợp khách công tác hoặc về quê.",
+  routeText: "Quận 8 → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-8-di-hoa-thanh",
+  path: "thue-xe-tu-quan-8-di-hoa-thanh-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 8 đi Hòa Thành Tây Ninh với tài xế riêng. Phù hợp đi lễ, tham quan hoặc công tác.",
+  routeText: "Quận 8 → Quốc lộ 22 → Trảng Bàng → Hòa Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-ben-cau",
+  path: "thue-xe-tu-quan-8-di-ben-cau-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Bến Cầu Tây Ninh. Xe riêng có tài xế, không ghép khách và phục vụ 24/7.",
+  routeText: "Quận 8 → Quốc lộ 22 → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-10-di-trang-bang",
+  path: "thue-xe-tu-quan-10-di-trang-bang",
+  from: "Quận 10, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 10 đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc gặp đối tác. Đón tận nơi và không ghép khách.",
+  routeText: "Quận 10 → Cách Mạng Tháng 8 → Củ Chi → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-10-di-go-dau",
+  path: "thue-xe-tu-quan-10-di-go-dau-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Gò Dầu Tây Ninh. Xe có tài xế riêng, lịch trình linh hoạt và đưa đón tận nơi.",
+  routeText: "Quận 10 → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-10-di-hoa-thanh",
+  path: "thue-xe-tu-quan-10-di-hoa-thanh-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 10 đi Hòa Thành Tây Ninh, phù hợp khách đi Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText: "Quận 10 → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-ben-cau",
+  path: "thue-xe-tu-quan-10-di-ben-cau-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 10 đi Bến Cầu Tây Ninh. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText: "Quận 10 → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-trang-bang",
+  path: "thue-xe-tu-quan-11-di-trang-bang",
+  from: "Quận 11, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 11 đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText: "Quận 11 → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-11-di-go-dau",
+  path: "thue-xe-tu-quan-11-di-go-dau-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác, gặp đối tác hoặc về quê.",
+  routeText: "Quận 11 → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-11-di-hoa-thanh",
+  path: "thue-xe-tu-quan-11-di-hoa-thanh-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 11 đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc thăm người thân. Đón tận nơi và không ghép khách.",
+  routeText: "Quận 11 → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-ben-cau",
+  path: "thue-xe-tu-quan-11-di-ben-cau-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Bến Cầu Tây Ninh với tài xế riêng. Xe riêng, không ghép khách và phục vụ 24/7.",
+  routeText: "Quận 11 → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-12-di-trang-bang",
+  path: "thue-xe-tu-quan-12-di-trang-bang",
+  from: "Quận 12, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Quận 12 đi Trảng Bàng Tây Ninh cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Quận 12 → Hóc Môn → Quốc lộ 22 → Trảng Bàng",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "quan-12-di-go-dau",
+  path: "thue-xe-tu-quan-12-di-go-dau-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Gò Dầu Tây Ninh. Phù hợp khách công tác, khảo sát nhà máy hoặc gặp đối tác.",
+  routeText: "Quận 12 → Hóc Môn → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-12-di-hoa-thanh",
+  path: "thue-xe-tu-quan-12-di-hoa-thanh-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 12 đi Hòa Thành Tây Ninh với tài xế riêng. Phù hợp đi lễ, công tác hoặc du lịch cuối tuần.",
+  routeText: "Quận 12 → Trảng Bàng → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-12-di-ben-cau",
+  path: "thue-xe-tu-quan-12-di-ben-cau-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 12 đi Bến Cầu Tây Ninh. Xe có tài xế riêng, đón tận nơi và không ghép khách.",
+  routeText: "Quận 12 → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-tan-di-trang-bang",
+  path: "thue-xe-tu-binh-tan-di-trang-bang",
+  from: "Bình Tân, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Bình Tân đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại khu công nghiệp. Không ghép khách.",
+  routeText: "Bình Tân → Quốc lộ 1A → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-tan-di-go-dau",
+  path: "thue-xe-tu-binh-tan-di-go-dau-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Gò Dầu Tây Ninh với tài xế riêng. Đưa đón tận nơi và lịch trình linh hoạt.",
+  routeText: "Bình Tân → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-tan-di-hoa-thanh",
+  path: "thue-xe-tu-binh-tan-di-hoa-thanh-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bình Tân đi Hòa Thành Tây Ninh phục vụ khách đi lễ, công tác hoặc thăm người thân. Xe riêng, không ghép khách.",
+  routeText: "Bình Tân → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-tan-di-ben-cau",
+  path: "thue-xe-tu-binh-tan-di-ben-cau-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bình Tân đi Bến Cầu Tây Ninh. Xe có tài xế riêng, đón tận nơi và phục vụ 24/7.",
+  routeText: "Bình Tân → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-trang-bang",
+  path: "thue-xe-tu-tan-binh-di-trang-bang",
+  from: "Tân Bình, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Tân Bình đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại các khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText: "Tân Bình → Quốc lộ 22 → Trảng Bàng",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "tan-binh-di-go-dau",
+  path: "thue-xe-tu-tan-binh-di-go-dau-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác, gặp đối tác hoặc về quê.",
+  routeText: "Tân Bình → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tan-binh-di-hoa-thanh",
+  path: "thue-xe-tu-tan-binh-di-hoa-thanh-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Tân Bình đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText: "Tân Bình → Trảng Bàng → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tan-binh-di-ben-cau",
+  path: "thue-xe-tu-tan-binh-di-ben-cau-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Tân Bình đi Bến Cầu Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và không ghép khách.",
+  routeText: "Tân Bình → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-phu-di-trang-bang",
+  path: "thue-xe-tu-tan-phu-di-trang-bang",
+  from: "Tân Phú, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Tân Phú đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc làm việc tại khu công nghiệp. Không ghép khách.",
+  routeText: "Tân Phú → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tan-phu-di-go-dau",
+  path: "thue-xe-tu-tan-phu-di-go-dau-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Gò Dầu Tây Ninh với tài xế riêng. Đón tận nơi và lịch trình linh hoạt.",
+  routeText: "Tân Phú → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "tan-phu-di-hoa-thanh",
+  path: "thue-xe-tu-tan-phu-di-hoa-thanh-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Tân Phú đi Hòa Thành Tây Ninh phục vụ khách đi lễ, công tác hoặc thăm người thân.",
+  routeText: "Tân Phú → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-phu-di-ben-cau",
+  path: "thue-xe-tu-tan-phu-di-ben-cau-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Tân Phú đi Bến Cầu Tây Ninh. Xe có tài xế riêng, đón tận nơi và phục vụ 24/7.",
+  routeText: "Tân Phú → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-trang-bang",
+  path: "thue-xe-tu-phu-nhuan-di-trang-bang",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Phú Nhuận đi Trảng Bàng Tây Ninh cho khách công tác, về quê hoặc gặp đối tác. Xe riêng không ghép khách.",
+  routeText: "Phú Nhuận → Tân Bình → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-go-dau",
+  path: "thue-xe-tu-phu-nhuan-di-go-dau-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Gò Dầu Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Phú Nhuận → Tân Bình → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-hoa-thanh",
+  path: "thue-xe-tu-phu-nhuan-di-hoa-thanh-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Phú Nhuận đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc du lịch cuối tuần.",
+  routeText: "Phú Nhuận → Tân Bình → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-ben-cau",
+  path: "thue-xe-tu-phu-nhuan-di-ben-cau-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Bến Cầu Tây Ninh. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Phú Nhuận → Tân Bình → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "go-vap-di-trang-bang",
+  path: "thue-xe-tu-go-vap-di-trang-bang",
+  from: "Gò Vấp, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Gò Vấp đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText: "Gò Vấp → Hóc Môn → Quốc lộ 22 → Trảng Bàng",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "go-vap-di-go-dau",
+  path: "thue-xe-tu-go-vap-di-go-dau-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Gò Dầu Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Gò Vấp → Hóc Môn → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "go-vap-di-hoa-thanh",
+  path: "thue-xe-tu-go-vap-di-hoa-thanh-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Gò Vấp đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc thăm người thân.",
+  routeText: "Gò Vấp → Hóc Môn → Trảng Bàng → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "go-vap-di-ben-cau",
+  path: "thue-xe-tu-go-vap-di-ben-cau-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Gò Vấp đi Bến Cầu Tây Ninh. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Gò Vấp → Hóc Môn → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-thanh-di-trang-bang",
+  path: "thue-xe-tu-binh-thanh-di-trang-bang",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Bình Thạnh đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc gặp đối tác. Xe riêng không ghép khách.",
+  routeText: "Bình Thạnh → Quốc lộ 13 → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-go-dau",
+  path: "thue-xe-tu-binh-thanh-di-go-dau-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Gò Dầu Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Bình Thạnh → Quốc lộ 13 → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-hoa-thanh",
+  path: "thue-xe-tu-binh-thanh-di-hoa-thanh-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bình Thạnh đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc du lịch cuối tuần.",
+  routeText: "Bình Thạnh → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-thanh-di-ben-cau",
+  path: "thue-xe-tu-binh-thanh-di-ben-cau-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bình Thạnh đi Bến Cầu Tây Ninh. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Bình Thạnh → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-duc-di-trang-bang",
+  path: "thue-xe-tu-thu-duc-di-trang-bang",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Quốc lộ 22 → Trảng Bàng",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-duc-di-go-dau",
+  path: "thue-xe-tu-thu-duc-di-go-dau-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác hoặc về quê.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Trảng Bàng → Gò Dầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-hoa-thanh",
+  path: "thue-xe-tu-thu-duc-di-hoa-thanh-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc thăm người thân.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Trảng Bàng → Hòa Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-ben-cau",
+  path: "thue-xe-tu-thu-duc-di-ben-cau-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ TP Thủ Đức đi Bến Cầu Tây Ninh. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-trang-bang",
+  path: "thue-xe-tu-hoc-mon-di-trang-bang",
+  from: "Hóc Môn, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Hóc Môn đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText: "Hóc Môn → Quốc lộ 22 → Trảng Bàng",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-go-dau",
+  path: "thue-xe-tu-hoc-mon-di-go-dau-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác hoặc về quê.",
+  routeText: "Hóc Môn → Trảng Bàng → Gò Dầu",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "hoc-mon-di-hoa-thanh",
+  path: "thue-xe-tu-hoc-mon-di-hoa-thanh-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Hóc Môn đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc thăm người thân.",
+  routeText: "Hóc Môn → Trảng Bàng → Hòa Thành",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "hoc-mon-di-ben-cau",
+  path: "thue-xe-tu-hoc-mon-di-ben-cau-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Hóc Môn đi Bến Cầu Tây Ninh. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Hóc Môn → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "cu-chi-di-trang-bang",
+  path: "thue-xe-tu-cu-chi-di-trang-bang",
+  from: "Củ Chi, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Củ Chi đi Trảng Bàng Tây Ninh phục vụ khách công tác, về quê hoặc gặp đối tác. Xe riêng không ghép khách.",
+  routeText: "Củ Chi → Trảng Bàng",
+  duration: "30 - 45 phút",
+},
+
+{
+  key: "cu-chi-di-go-dau",
+  path: "thue-xe-tu-cu-chi-di-go-dau-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Gò Dầu Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "cu-chi-di-hoa-thanh",
+  path: "thue-xe-tu-cu-chi-di-hoa-thanh-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Củ Chi đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc du lịch cuối tuần.",
+  routeText: "Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "cu-chi-di-ben-cau",
+  path: "thue-xe-tu-cu-chi-di-ben-cau-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Củ Chi đi Bến Cầu Tây Ninh. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
+  routeText: "Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "binh-chanh-di-trang-bang",
+  path: "thue-xe-tu-binh-chanh-di-trang-bang",
+  from: "Bình Chánh, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Bình Chánh đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp.",
+  routeText: "Bình Chánh → Quốc lộ 1A → Quốc lộ 22 → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-go-dau",
+  path: "thue-xe-tu-binh-chanh-di-go-dau-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác hoặc về quê.",
+  routeText: "Bình Chánh → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-hoa-thanh",
+  path: "thue-xe-tu-binh-chanh-di-hoa-thanh-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bình Chánh đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc thăm người thân.",
+  routeText: "Bình Chánh → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-ben-cau",
+  path: "thue-xe-tu-binh-chanh-di-ben-cau-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bình Chánh đi Bến Cầu Tây Ninh. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText: "Bình Chánh → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "nha-be-di-trang-bang",
+  path: "thue-xe-tu-nha-be-di-trang-bang",
+  from: "Nhà Bè, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Nhà Bè đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "nha-be-di-go-dau",
+  path: "thue-xe-tu-nha-be-di-go-dau-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Gò Dầu Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng → Gò Dầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "nha-be-di-hoa-thanh",
+  path: "thue-xe-tu-nha-be-di-hoa-thanh-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Nhà Bè đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc thăm người thân.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Hòa Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "nha-be-di-ben-cau",
+  path: "thue-xe-tu-nha-be-di-ben-cau-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Nhà Bè đi Bến Cầu Tây Ninh. Không ghép khách, đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "can-gio-di-trang-bang",
+  path: "thue-xe-tu-can-gio-di-trang-bang",
+  from: "Cần Giờ, TP.HCM",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Cần Giờ đi Trảng Bàng Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu công nghiệp. Xe riêng, không ghép khách.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Quốc lộ 22 → Trảng Bàng",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-go-dau",
+  path: "thue-xe-tu-can-gio-di-go-dau-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Gò Dầu Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Gò Dầu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-hoa-thanh",
+  path: "thue-xe-tu-can-gio-di-hoa-thanh-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Cần Giờ đi Hòa Thành Tây Ninh phù hợp khách đi lễ, công tác hoặc du lịch cuối tuần.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Hòa Thành",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-ben-cau",
+  path: "thue-xe-tu-can-gio-di-ben-cau-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Bến Cầu Tây Ninh. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-1-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-1-di-chau-thanh-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 1 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 1 → Củ Chi → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-1-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-1-di-duong-minh-chau-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê. Xe riêng có tài xế và đưa đón tận nơi.",
+  routeText:
+    "Quận 1 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-1-di-tan-chau",
+  path: "thue-xe-tu-quan-1-di-tan-chau-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 1 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Quận 1 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-1-di-tan-bien",
+  path: "thue-xe-tu-quan-1-di-tan-bien-tay-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 1 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 1 đi Tân Biên Tây Ninh với tài xế riêng. Phù hợp công tác, về quê hoặc làm việc khu vực biên giới.",
+  routeText:
+    "Quận 1 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-3-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-3-di-chau-thanh-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 3 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 3 → Củ Chi → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-3-di-duong-minh-chau-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText:
+    "Quận 3 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-3-di-tan-chau",
+  path: "thue-xe-tu-quan-3-di-tan-chau-tay-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 3 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 3 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Quận 3 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-4-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-4-di-chau-thanh-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 4 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Xe riêng có tài xế, đón tận nơi.",
+  routeText: "Quận 4 → Quận 1 → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-4-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-4-di-duong-minh-chau-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 4 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-4-di-tan-chau",
+  path: "thue-xe-tu-quan-4-di-tan-chau-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 4 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 4 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-4-di-tan-bien",
+  path: "thue-xe-tu-quan-4-di-tan-bien-tay-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 4 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Tân Biên Tây Ninh với tài xế riêng. Đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 4 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-5-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-5-di-chau-thanh-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 5 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Không ghép khách.",
+  routeText: "Quận 5 → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-5-di-duong-minh-chau-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 5 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-5-di-tan-chau",
+  path: "thue-xe-tu-quan-5-di-tan-chau-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 5 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 5 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-5-di-tan-bien",
+  path: "thue-xe-tu-quan-5-di-tan-bien-tay-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 5 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi.",
+  routeText: "Quận 5 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-6-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-6-di-chau-thanh-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 6 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText: "Quận 6 → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-6-di-duong-minh-chau-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 6 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-6-di-tan-chau",
+  path: "thue-xe-tu-quan-6-di-tan-chau-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 6 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 6 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-6-di-tan-bien",
+  path: "thue-xe-tu-quan-6-di-tan-bien-tay-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 6 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 6 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-7-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-7-di-chau-thanh-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 7 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Xe có tài xế riêng, đón tận nơi.",
+  routeText: "Quận 7 → Quốc lộ 22 → Gò Dầu → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-7-di-duong-minh-chau-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 7 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-7-di-tan-chau",
+  path: "thue-xe-tu-quan-7-di-tan-chau-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 7 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 7 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-7-di-tan-bien",
+  path: "thue-xe-tu-quan-7-di-tan-bien-tay-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 7 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 7 đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 7 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-8-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-8-di-chau-thanh-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 8 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText: "Quận 8 → Quốc lộ 22 → Gò Dầu → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-8-di-duong-minh-chau-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 8 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-8-di-tan-chau",
+  path: "thue-xe-tu-quan-8-di-tan-chau-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 8 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 8 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-8-di-tan-bien",
+  path: "thue-xe-tu-quan-8-di-tan-bien-tay-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 8 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Tân Biên Tây Ninh. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
+  routeText: "Quận 8 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-10-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-10-di-chau-thanh-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 10 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText: "Quận 10 → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-10-di-duong-minh-chau-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 10 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-10-di-tan-chau",
+  path: "thue-xe-tu-quan-10-di-tan-chau-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 10 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 10 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-10-di-tan-bien",
+  path: "thue-xe-tu-quan-10-di-tan-bien-tay-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 10 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 10 đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 10 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-11-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-11-di-chau-thanh-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 11 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Xe có tài xế riêng, đưa đón tận nơi.",
+  routeText: "Quận 11 → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-11-di-duong-minh-chau-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 11 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-11-di-tan-chau",
+  path: "thue-xe-tu-quan-11-di-tan-chau-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 11 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 11 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-11-di-tan-bien",
+  path: "thue-xe-tu-quan-11-di-tan-bien-tay-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 11 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Tân Biên Tây Ninh. Xe riêng có tài xế, đón tận nơi và phục vụ 24/7.",
+  routeText: "Quận 11 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-12-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-quan-12-di-chau-thanh-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Quận 12 đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText: "Quận 12 → Hóc Môn → Gò Dầu → Châu Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-12-di-duong-minh-chau",
+  path: "thue-xe-tu-quan-12-di-duong-minh-chau-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Quận 12 → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-12-di-tan-chau",
+  path: "thue-xe-tu-quan-12-di-tan-chau-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Quận 12 đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Quận 12 → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-12-di-tan-bien",
+  path: "thue-xe-tu-quan-12-di-tan-bien-tay-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Quận 12 đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Quận 12 đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText: "Quận 12 → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-tan-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-binh-tan-di-chau-thanh-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bình Tân đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Không ghép khách, đón tận nơi.",
+  routeText: "Bình Tân → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-tan-di-duong-minh-chau",
+  path: "thue-xe-tu-binh-tan-di-duong-minh-chau-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Bình Tân → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-tan-chau",
+  path: "thue-xe-tu-binh-tan-di-tan-chau-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Bình Tân đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Bình Tân → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-tan-di-tan-bien",
+  path: "thue-xe-tu-binh-tan-di-tan-bien-tay-ninh",
+  from: "Bình Tân, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Bình Tân đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bình Tân đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Bình Tân → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "tan-binh-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-tan-binh-di-chau-thanh-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Tân Bình đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi, không ghép khách.",
+  routeText: "Tân Bình → Quốc lộ 22 → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-duong-minh-chau",
+  path: "thue-xe-tu-tan-binh-di-duong-minh-chau-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Tân Bình → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-tan-chau",
+  path: "thue-xe-tu-tan-binh-di-tan-chau-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Tân Bình đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Tân Bình → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-tan-bien",
+  path: "thue-xe-tu-tan-binh-di-tan-bien-tay-ninh",
+  from: "Tân Bình, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Tân Bình đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Tân Bình đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Tân Bình → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "tan-phu-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-tan-phu-di-chau-thanh-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Tân Phú đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Không ghép khách, đón tận nơi.",
+  routeText: "Tân Phú → Quốc lộ 22 → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-phu-di-duong-minh-chau",
+  path: "thue-xe-tu-tan-phu-di-duong-minh-chau-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Tân Phú → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-phu-di-tan-chau",
+  path: "thue-xe-tu-tan-phu-di-tan-chau-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Tân Phú đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Tân Phú → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "tan-phu-di-tan-bien",
+  path: "thue-xe-tu-tan-phu-di-tan-bien-tay-ninh",
+  from: "Tân Phú, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Tân Phú đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Tân Phú đi Tân Biên Tây Ninh. Xe riêng có tài xế, đón tận nơi và phục vụ 24/7.",
+  routeText: "Tân Phú → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-phu-nhuan-di-chau-thanh-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Phú Nhuận đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi, không ghép khách.",
+  routeText: "Phú Nhuận → Tân Bình → Quốc lộ 22 → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-duong-minh-chau",
+  path: "thue-xe-tu-phu-nhuan-di-duong-minh-chau-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Phú Nhuận → Tân Bình → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-tan-chau",
+  path: "thue-xe-tu-phu-nhuan-di-tan-chau-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Phú Nhuận đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Phú Nhuận → Tân Bình → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "phu-nhuan-di-tan-bien",
+  path: "thue-xe-tu-phu-nhuan-di-tan-bien-tay-ninh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Phú Nhuận đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Phú Nhuận → Tân Bình → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "go-vap-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-go-vap-di-chau-thanh-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Gò Vấp đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Xe có tài xế riêng, đón tận nơi.",
+  routeText: "Gò Vấp → Hóc Môn → Gò Dầu → Châu Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "go-vap-di-duong-minh-chau",
+  path: "thue-xe-tu-go-vap-di-duong-minh-chau-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Gò Vấp → Hóc Môn → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "go-vap-di-tan-chau",
+  path: "thue-xe-tu-go-vap-di-tan-chau-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Gò Vấp đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Gò Vấp → Hóc Môn → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "go-vap-di-tan-bien",
+  path: "thue-xe-tu-go-vap-di-tan-bien-tay-ninh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Gò Vấp đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Gò Vấp đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Gò Vấp → Hóc Môn → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-thanh-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-binh-thanh-di-chau-thanh-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bình Thạnh đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi, không ghép khách.",
+  routeText: "Bình Thạnh → Quốc lộ 13 → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-thanh-di-duong-minh-chau",
+  path: "thue-xe-tu-binh-thanh-di-duong-minh-chau-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Bình Thạnh → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-tan-chau",
+  path: "thue-xe-tu-binh-thanh-di-tan-chau-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Bình Thạnh đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Bình Thạnh → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-thanh-di-tan-bien",
+  path: "thue-xe-tu-binh-thanh-di-tan-bien-tay-ninh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Bình Thạnh đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bình Thạnh đi Tân Biên Tây Ninh. Xe riêng có tài xế, đón tận nơi và phục vụ 24/7.",
+  routeText: "Bình Thạnh → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thu-duc-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-thu-duc-di-chau-thanh-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Xe có tài xế riêng, đưa đón tận nơi.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Gò Dầu → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-duong-minh-chau",
+  path: "thue-xe-tu-thu-duc-di-duong-minh-chau-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "thu-duc-di-tan-chau",
+  path: "thue-xe-tu-thu-duc-di-tan-chau-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thu-duc-di-tan-bien",
+  path: "thue-xe-tu-thu-duc-di-tan-bien-tay-ninh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ TP Thủ Đức đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ TP Thủ Đức đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "TP Thủ Đức → Phạm Văn Đồng → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-hoc-mon-di-chau-thanh-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Hóc Môn đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi, không ghép khách.",
+  routeText: "Hóc Môn → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "hoc-mon-di-duong-minh-chau",
+  path: "thue-xe-tu-hoc-mon-di-duong-minh-chau-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Hóc Môn → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-tan-chau",
+  path: "thue-xe-tu-hoc-mon-di-tan-chau-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Hóc Môn đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Hóc Môn → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hoc-mon-di-tan-bien",
+  path: "thue-xe-tu-hoc-mon-di-tan-bien-tay-ninh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Hóc Môn đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Hóc Môn đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Hóc Môn → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "cu-chi-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-cu-chi-di-chau-thanh-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Củ Chi đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Không ghép khách, đón tận nơi.",
+  routeText: "Củ Chi → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "cu-chi-di-duong-minh-chau",
+  path: "thue-xe-tu-cu-chi-di-duong-minh-chau-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "cu-chi-di-tan-chau",
+  path: "thue-xe-tu-cu-chi-di-tan-chau-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Củ Chi đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "cu-chi-di-tan-bien",
+  path: "thue-xe-tu-cu-chi-di-tan-bien-tay-ninh",
+  from: "Củ Chi, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Củ Chi đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Củ Chi đi Tân Biên Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText: "Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-binh-chanh-di-chau-thanh-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bình Chánh đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi, không ghép khách.",
+  routeText: "Bình Chánh → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-duong-minh-chau",
+  path: "thue-xe-tu-binh-chanh-di-duong-minh-chau-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText: "Bình Chánh → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-tan-chau",
+  path: "thue-xe-tu-binh-chanh-di-tan-chau-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Bình Chánh đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText: "Bình Chánh → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-chanh-di-tan-bien",
+  path: "thue-xe-tu-binh-chanh-di-tan-bien-tay-ninh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Bình Chánh đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bình Chánh đi Tân Biên Tây Ninh. Xe riêng có tài xế, đón tận nơi và phục vụ 24/7.",
+  routeText: "Bình Chánh → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "nha-be-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-nha-be-di-chau-thanh-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Nhà Bè đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Xe có tài xế riêng, đưa đón tận nơi.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "nha-be-di-duong-minh-chau",
+  path: "thue-xe-tu-nha-be-di-duong-minh-chau-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "nha-be-di-tan-chau",
+  path: "thue-xe-tu-nha-be-di-tan-chau-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Nhà Bè đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "nha-be-di-tan-bien",
+  path: "thue-xe-tu-nha-be-di-tan-bien-tay-ninh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Nhà Bè đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Nhà Bè đi Tân Biên Tây Ninh. Xe riêng có tài xế, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "can-gio-di-chau-thanh-tay-ninh",
+  path: "thue-xe-tu-can-gio-di-chau-thanh-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Cần Giờ đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Không ghép khách, đón tận nơi.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Gò Dầu → Châu Thành",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "can-gio-di-duong-minh-chau",
+  path: "thue-xe-tu-can-gio-di-duong-minh-chau-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Dương Minh Châu phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "can-gio-di-tan-chau",
+  path: "thue-xe-tu-can-gio-di-tan-chau-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Cần Giờ đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "can-gio-di-tan-bien",
+  path: "thue-xe-tu-can-gio-di-tan-bien-tay-ninh",
+  from: "Cần Giờ, TP.HCM",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Cần Giờ đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Tân Biên Tây Ninh với tài xế riêng. Xe riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "5.5 - 6 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-tay-ninh",
+  path: "thue-xe-tu-thu-dau-mot-di-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Tây Ninh, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Thủ Dầu Một đi Tây Ninh dành cho khách công tác, đi lễ Núi Bà Đen hoặc thăm người thân. Xe đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Thủ Dầu Một → Bến Cát → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "di-an-di-tay-ninh",
+  path: "thue-xe-tu-di-an-di-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Tây Ninh",
+  description:
+    "Xe riêng từ Dĩ An đi Tây Ninh phục vụ khách công tác, về quê hoặc tham quan các điểm du lịch nổi tiếng tại Tây Ninh. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Dĩ An → Quốc lộ 13 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thuan-an-di-tay-ninh",
+  path: "thue-xe-tu-thuan-an-di-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Tây Ninh",
+  description:
+    "Đặt xe riêng từ Thuận An đi Tây Ninh với tài xế riêng. Phù hợp khách gia đình, khách công tác và khách đi lễ Núi Bà Đen.",
+  routeText:
+    "Thuận An → Quốc lộ 13 → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "ben-cat-di-tay-ninh",
+  path: "thue-xe-tu-ben-cat-di-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Tây Ninh",
+  description:
+    "Xe riêng từ Bến Cát đi Tây Ninh phục vụ khách công tác tại khu công nghiệp, khách về quê hoặc đi du lịch cuối tuần.",
+  routeText:
+    "Bến Cát → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "tan-uyen-di-tay-ninh",
+  path: "thue-xe-tu-tan-uyen-di-tay-ninh",
+  from: "Tân Uyên, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Tân Uyên đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Uyên đi Tây Ninh. Xe có tài xế riêng, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Tân Uyên → Thủ Dầu Một → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "bien-hoa-di-tay-ninh",
+  path: "thue-xe-tu-bien-hoa-di-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Tây Ninh",
+  description:
+    "Xe riêng từ Biên Hòa đi Tây Ninh dành cho khách công tác, về quê hoặc tham quan Núi Bà Đen. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Biên Hòa → Quốc lộ 1K → TP.HCM → Củ Chi → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "long-khanh-di-tay-ninh",
+  path: "thue-xe-tu-long-khanh-di-tay-ninh",
+  from: "Long Khánh, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Long Khánh đi Tây Ninh",
+  description:
+    "Xe riêng từ Long Khánh đi Tây Ninh phục vụ khách công tác, khách gia đình hoặc khách về quê. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "Long Khánh → Biên Hòa → TP.HCM → Củ Chi → Tây Ninh",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "nhon-trach-di-tay-ninh",
+  path: "thue-xe-tu-nhon-trach-di-tay-ninh",
+  from: "Nhơn Trạch, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Nhơn Trạch đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Nhơn Trạch đi Tây Ninh với tài xế riêng. Phù hợp khách công tác, khảo sát nhà máy hoặc đi lễ.",
+  routeText:
+    "Nhơn Trạch → TP.HCM → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "bau-bang-di-tay-ninh",
+  path: "thue-xe-tu-bau-bang-di-tay-ninh",
+  from: "Bàu Bàng, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Bàu Bàng đi Tây Ninh",
+  description:
+    "Xe riêng từ Bàu Bàng đi Tây Ninh phục vụ khách công tác tại khu công nghiệp, khách gia đình hoặc khách đi lễ Núi Bà Đen. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Bàu Bàng → Bến Cát → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "phu-giao-di-tay-ninh",
+  path: "thue-xe-tu-phu-giao-di-tay-ninh",
+  from: "Phú Giáo, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Phú Giáo đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Phú Giáo đi Tây Ninh với tài xế riêng. Phù hợp khách công tác, về quê hoặc du lịch cuối tuần.",
+  routeText:
+    "Phú Giáo → Tân Uyên → Thủ Dầu Một → Củ Chi → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "dau-tieng-di-tay-ninh",
+  path: "thue-xe-tu-dau-tieng-di-tay-ninh",
+  from: "Dầu Tiếng, Bình Dương",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Dầu Tiếng đi Tây Ninh",
+  description:
+    "Xe riêng từ Dầu Tiếng đi Tây Ninh dành cho khách công tác, khách gia đình hoặc khách đi tham quan hồ Dầu Tiếng và Núi Bà Đen.",
+  routeText:
+    "Dầu Tiếng → Dương Minh Châu → Tây Ninh",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "trang-bom-di-tay-ninh",
+  path: "thue-xe-tu-trang-bom-di-tay-ninh",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Trảng Bom đi Tây Ninh",
+  description:
+    "Xe riêng từ Trảng Bom đi Tây Ninh phục vụ khách công tác, khách về quê hoặc đi lễ Núi Bà Đen. Xe riêng không ghép khách.",
+  routeText:
+    "Trảng Bom → Biên Hòa → TP.HCM → Củ Chi → Tây Ninh",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "long-thanh-di-tay-ninh",
+  path: "thue-xe-tu-long-thanh-di-tay-ninh",
+  from: "Long Thành, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Long Thành đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Long Thành đi Tây Ninh với tài xế riêng. Đưa đón tận nơi, biết giá trước khi đặt.",
+  routeText:
+    "Long Thành → TP.HCM → Củ Chi → Trảng Bàng → Tây Ninh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "vinh-cuu-di-tay-ninh",
+  path: "thue-xe-tu-vinh-cuu-di-tay-ninh",
+  from: "Vĩnh Cửu, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Vĩnh Cửu đi Tây Ninh",
+  description:
+    "Xe riêng từ Vĩnh Cửu đi Tây Ninh phục vụ khách công tác, khách gia đình hoặc khách du lịch. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Vĩnh Cửu → Biên Hòa → TP.HCM → Củ Chi → Tây Ninh",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "dinh-quan-di-tay-ninh",
+  path: "thue-xe-tu-dinh-quan-di-tay-ninh",
+  from: "Định Quán, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Định Quán đi Tây Ninh",
+  description:
+    "Xe riêng từ Định Quán đi Tây Ninh dành cho khách công tác, khách về quê hoặc di chuyển liên tỉnh đường dài.",
+  routeText:
+    "Định Quán → Long Khánh → Biên Hòa → TP.HCM → Tây Ninh",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "xuan-loc-di-tay-ninh",
+  path: "thue-xe-tu-xuan-loc-di-tay-ninh",
+  from: "Xuân Lộc, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Xuân Lộc đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Xuân Lộc đi Tây Ninh. Xe có tài xế riêng, phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Xuân Lộc → Long Khánh → Biên Hòa → TP.HCM → Tây Ninh",
+  duration: "5.5 - 6 giờ",
+},
+
+{
+  key: "cam-my-di-tay-ninh",
+  path: "thue-xe-tu-cam-my-di-tay-ninh",
+  from: "Cẩm Mỹ, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Cẩm Mỹ đi Tây Ninh",
+  description:
+    "Xe riêng từ Cẩm Mỹ đi Tây Ninh phục vụ khách công tác, khách gia đình hoặc khách về quê. Xe riêng, không ghép khách.",
+  routeText:
+    "Cẩm Mỹ → Long Thành → TP.HCM → Củ Chi → Tây Ninh",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "thong-nhat-di-tay-ninh",
+  path: "thue-xe-tu-thong-nhat-di-tay-ninh",
+  from: "Thống Nhất, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Thống Nhất đi Tây Ninh",
+  description:
+    "Xe riêng từ Thống Nhất đi Tây Ninh phục vụ khách công tác, về quê hoặc tham quan Núi Bà Đen. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Thống Nhất → Biên Hòa → TP.HCM → Củ Chi → Tây Ninh",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "tan-phu-dong-nai-di-tay-ninh",
+  path: "thue-xe-tu-tan-phu-dong-nai-di-tay-ninh",
+  from: "Tân Phú, Đồng Nai",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Tân Phú Đồng Nai đi Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú Đồng Nai đi Tây Ninh với tài xế riêng. Phù hợp khách công tác, về quê hoặc di chuyển liên tỉnh đường dài.",
+  routeText:
+    "Tân Phú → Định Quán → Biên Hòa → TP.HCM → Tây Ninh",
+  duration: "5.5 - 6 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-nui-ba-den",
+  path: "thue-xe-tu-thu-dau-mot-di-nui-ba-den",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Núi Bà Đen",
+  title: "Thuê xe từ Thủ Dầu Một đi Núi Bà Đen Tây Ninh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Núi Bà Đen Tây Ninh dành cho khách hành hương, du lịch cuối tuần hoặc đi lễ. Xe đón tận nơi, không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Củ Chi → Trảng Bàng → Núi Bà Đen",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-nui-ba-den",
+  path: "thue-xe-tu-bien-hoa-di-nui-ba-den",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Núi Bà Đen",
+  title: "Thuê xe từ Biên Hòa đi Núi Bà Đen",
+  description:
+    "Xe riêng từ Biên Hòa đi Núi Bà Đen Tây Ninh phục vụ khách hành hương, khách du lịch và gia đình. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Trảng Bàng → Núi Bà Đen",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "di-an-di-nui-ba-den",
+  path: "thue-xe-tu-di-an-di-nui-ba-den",
+  from: "Dĩ An, Bình Dương",
+  to: "Núi Bà Đen",
+  title: "Thuê xe từ Dĩ An đi Núi Bà Đen",
+  description:
+    "Dịch vụ xe riêng từ Dĩ An đi Núi Bà Đen Tây Ninh. Phù hợp khách đi lễ đầu năm, du lịch cuối tuần hoặc tham quan cáp treo Núi Bà Đen.",
+  routeText:
+    "Dĩ An → TP.HCM → Củ Chi → Trảng Bàng → Núi Bà Đen",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-toa-thanh-tay-ninh",
+  path: "thue-xe-tu-thu-dau-mot-di-toa-thanh-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Tòa Thánh Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Tòa Thánh Tây Ninh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Tòa Thánh Tây Ninh phục vụ khách hành hương, tham quan kiến trúc độc đáo của đạo Cao Đài.",
+  routeText:
+    "Thủ Dầu Một → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-toa-thanh-tay-ninh",
+  path: "thue-xe-tu-bien-hoa-di-toa-thanh-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Tòa Thánh Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Tòa Thánh Tây Ninh",
+  description:
+    "Xe riêng từ Biên Hòa đi Tòa Thánh Tây Ninh dành cho khách hành hương, khách đoàn và gia đình. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "dau-tieng-di-ho-dau-tieng",
+  path: "thue-xe-tu-dau-tieng-di-ho-dau-tieng",
+  from: "Dầu Tiếng, Bình Dương",
+  to: "Hồ Dầu Tiếng",
+  title: "Thuê xe từ Dầu Tiếng đi Hồ Dầu Tiếng",
+  description:
+    "Xe riêng từ Dầu Tiếng đi Hồ Dầu Tiếng phục vụ khách du lịch, cắm trại hoặc tham quan cuối tuần. Đón tận nơi và lịch trình linh hoạt.",
+  routeText:
+    "Dầu Tiếng → Hồ Dầu Tiếng",
+  duration: "30 - 45 phút",
+},
+
+{
+  key: "bien-hoa-di-trang-bang",
+  path: "thue-xe-tu-bien-hoa-di-trang-bang",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Biên Hòa đi Trảng Bàng Tây Ninh phục vụ khách công tác, làm việc tại khu công nghiệp hoặc về quê. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Trảng Bàng",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "bien-hoa-di-go-dau",
+  path: "thue-xe-tu-bien-hoa-di-go-dau-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Gò Dầu Tây Ninh với tài xế riêng. Phù hợp khách công tác hoặc thăm người thân.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-hoa-thanh",
+  path: "thue-xe-tu-bien-hoa-di-hoa-thanh-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Biên Hòa đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc du lịch cuối tuần.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-ben-cau",
+  path: "thue-xe-tu-bien-hoa-di-ben-cau-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Biên Hòa đi Bến Cầu Tây Ninh. Xe có tài xế riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "bien-hoa-di-chau-thanh",
+  path: "thue-xe-tu-bien-hoa-di-chau-thanh-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Biên Hòa đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText:
+    "Biên Hòa → TP.HCM → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "bien-hoa-di-duong-minh-chau",
+  path: "thue-xe-tu-bien-hoa-di-duong-minh-chau-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng hoặc công tác.",
+  routeText:
+    "Biên Hòa → TP.HCM → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "bien-hoa-di-tan-chau",
+  path: "thue-xe-tu-bien-hoa-di-tan-chau-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Biên Hòa đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Biên Hòa → TP.HCM → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-tan-bien",
+  path: "thue-xe-tu-bien-hoa-di-tan-bien-tay-ninh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Biên Hòa đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Biên Hòa đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Biên Hòa → TP.HCM → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-trang-bang",
+  path: "thue-xe-tu-thu-dau-mot-di-trang-bang",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Trảng Bàng Tây Ninh phục vụ khách công tác, làm việc tại khu công nghiệp hoặc thăm người thân. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Bến Cát → Củ Chi → Trảng Bàng",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-go-dau",
+  path: "thue-xe-tu-thu-dau-mot-di-go-dau-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Thủ Dầu Một đi Gò Dầu Tây Ninh với tài xế riêng. Phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Thủ Dầu Một → Bến Cát → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-hoa-thanh",
+  path: "thue-xe-tu-thu-dau-mot-di-hoa-thanh-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc du lịch cuối tuần.",
+  routeText:
+    "Thủ Dầu Một → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-ben-cau",
+  path: "thue-xe-tu-thu-dau-mot-di-ben-cau-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Thủ Dầu Một đi Bến Cầu Tây Ninh. Xe có tài xế riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Thủ Dầu Một → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-chau-thanh",
+  path: "thue-xe-tu-thu-dau-mot-di-chau-thanh-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText:
+    "Thủ Dầu Một → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-duong-minh-chau",
+  path: "thue-xe-tu-thu-dau-mot-di-duong-minh-chau-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Thủ Dầu Một đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng hoặc công tác.",
+  routeText:
+    "Thủ Dầu Một → Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-tan-chau",
+  path: "thue-xe-tu-thu-dau-mot-di-tan-chau-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Thủ Dầu Một → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-tan-bien",
+  path: "thue-xe-tu-thu-dau-mot-di-tan-bien-tay-ninh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Thủ Dầu Một đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Thủ Dầu Một đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "di-an-di-trang-bang",
+  path: "thue-xe-tu-di-an-di-trang-bang",
+  from: "Dĩ An, Bình Dương",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Dĩ An đi Trảng Bàng Tây Ninh phục vụ khách công tác, làm việc tại khu công nghiệp hoặc thăm người thân. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Dĩ An → Quốc lộ 13 → Củ Chi → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "di-an-di-go-dau",
+  path: "thue-xe-tu-di-an-di-go-dau-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Dĩ An đi Gò Dầu Tây Ninh với tài xế riêng. Phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Dĩ An → Quốc lộ 13 → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "di-an-di-hoa-thanh",
+  path: "thue-xe-tu-di-an-di-hoa-thanh-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Dĩ An đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc du lịch cuối tuần.",
+  routeText:
+    "Dĩ An → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "di-an-di-ben-cau",
+  path: "thue-xe-tu-di-an-di-ben-cau-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Dĩ An đi Bến Cầu Tây Ninh. Xe có tài xế riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Dĩ An → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "di-an-di-chau-thanh",
+  path: "thue-xe-tu-di-an-di-chau-thanh-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Dĩ An đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText:
+    "Dĩ An → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "di-an-di-duong-minh-chau",
+  path: "thue-xe-tu-di-an-di-duong-minh-chau-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Dĩ An đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng hoặc công tác.",
+  routeText:
+    "Dĩ An → Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "di-an-di-tan-chau",
+  path: "thue-xe-tu-di-an-di-tan-chau-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Dĩ An đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Dĩ An → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "di-an-di-tan-bien",
+  path: "thue-xe-tu-di-an-di-tan-bien-tay-ninh",
+  from: "Dĩ An, Bình Dương",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Dĩ An đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Dĩ An đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Dĩ An → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thuan-an-di-trang-bang",
+  path: "thue-xe-tu-thuan-an-di-trang-bang",
+  from: "Thuận An, Bình Dương",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Thuận An đi Trảng Bàng Tây Ninh phục vụ khách công tác, làm việc tại khu công nghiệp hoặc thăm người thân. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Thuận An → Quốc lộ 13 → Củ Chi → Trảng Bàng",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thuan-an-di-go-dau",
+  path: "thue-xe-tu-thuan-an-di-go-dau-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Thuận An đi Gò Dầu Tây Ninh với tài xế riêng. Phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Thuận An → Quốc lộ 13 → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thuan-an-di-hoa-thanh",
+  path: "thue-xe-tu-thuan-an-di-hoa-thanh-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Thuận An đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc du lịch cuối tuần.",
+  routeText:
+    "Thuận An → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thuan-an-di-ben-cau",
+  path: "thue-xe-tu-thuan-an-di-ben-cau-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Thuận An đi Bến Cầu Tây Ninh. Xe có tài xế riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Thuận An → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thuan-an-di-chau-thanh",
+  path: "thue-xe-tu-thuan-an-di-chau-thanh-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Thuận An đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê.",
+  routeText:
+    "Thuận An → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thuan-an-di-duong-minh-chau",
+  path: "thue-xe-tu-thuan-an-di-duong-minh-chau-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Thuận An đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng hoặc công tác.",
+  routeText:
+    "Thuận An → Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thuan-an-di-tan-chau",
+  path: "thue-xe-tu-thuan-an-di-tan-chau-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Thuận An đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Thuận An → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "thuan-an-di-tan-bien",
+  path: "thue-xe-tu-thuan-an-di-tan-bien-tay-ninh",
+  from: "Thuận An, Bình Dương",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Thuận An đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Thuận An đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Thuận An → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "ben-cat-di-trang-bang",
+  path: "thue-xe-tu-ben-cat-di-trang-bang",
+  from: "Bến Cát, Bình Dương",
+  to: "Trảng Bàng, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Trảng Bàng Tây Ninh",
+  description:
+    "Xe riêng từ Bến Cát đi Trảng Bàng Tây Ninh phục vụ khách công tác, làm việc tại khu công nghiệp hoặc thăm người thân. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Bến Cát → Củ Chi → Trảng Bàng",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "ben-cat-di-go-dau",
+  path: "thue-xe-tu-ben-cat-di-go-dau-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Gò Dầu, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Gò Dầu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bến Cát đi Gò Dầu Tây Ninh với tài xế riêng. Phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Bến Cát → Củ Chi → Trảng Bàng → Gò Dầu",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "ben-cat-di-hoa-thanh",
+  path: "thue-xe-tu-ben-cat-di-hoa-thanh-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Hòa Thành, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Hòa Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bến Cát đi Hòa Thành Tây Ninh phù hợp khách đi lễ Tòa Thánh Tây Ninh, công tác hoặc du lịch cuối tuần.",
+  routeText:
+    "Bến Cát → Củ Chi → Trảng Bàng → Hòa Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "ben-cat-di-ben-cau",
+  path: "thue-xe-tu-ben-cat-di-ben-cau-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Bến Cầu, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Bến Cầu Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bến Cát đi Bến Cầu Tây Ninh. Xe có tài xế riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Bến Cát → Củ Chi → Trảng Bàng → Gò Dầu → Bến Cầu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "ben-cat-di-chau-thanh",
+  path: "thue-xe-tu-ben-cat-di-chau-thanh-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Châu Thành, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Châu Thành Tây Ninh",
+  description:
+    "Xe riêng từ Bến Cát đi Châu Thành Tây Ninh phục vụ khách công tác, thăm người thân hoặc về quê. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Bến Cát → Củ Chi → Gò Dầu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "ben-cat-di-duong-minh-chau",
+  path: "thue-xe-tu-ben-cat-di-duong-minh-chau-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Dương Minh Châu, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Dương Minh Châu Tây Ninh",
+  description:
+    "Dịch vụ xe riêng từ Bến Cát đi Dương Minh Châu. Phù hợp khách du lịch hồ Dầu Tiếng, công tác hoặc về quê.",
+  routeText:
+    "Bến Cát → Củ Chi → Trảng Bàng → Thành phố Tây Ninh → Dương Minh Châu",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "ben-cat-di-tan-chau",
+  path: "thue-xe-tu-ben-cat-di-tan-chau-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Tân Châu, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Tân Châu Tây Ninh",
+  description:
+    "Xe riêng từ Bến Cát đi Tân Châu Tây Ninh dành cho khách công tác, về quê hoặc làm việc tại khu vực phía bắc Tây Ninh.",
+  routeText:
+    "Bến Cát → Trảng Bàng → Thành phố Tây Ninh → Tân Châu",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "ben-cat-di-tan-bien",
+  path: "thue-xe-tu-ben-cat-di-tan-bien-tay-ninh",
+  from: "Bến Cát, Bình Dương",
+  to: "Tân Biên, Tây Ninh",
+  title: "Thuê xe từ Bến Cát đi Tân Biên Tây Ninh",
+  description:
+    "Đặt xe riêng từ Bến Cát đi Tân Biên Tây Ninh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bến Cát → Trảng Bàng → Thành phố Tây Ninh → Tân Biên",
+  duration: "3.5 - 4 giờ",
+},
+
 ];

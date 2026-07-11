@@ -1654,4 +1654,5105 @@ export const DALAT_SEO_ROUTES = [
     routeText: "TP.HCM → Dầu Giây → Bảo Lộc → Đà Lạt",
     duration: "6 - 7.5 giờ",
   },
+
+  // =========================
+// QUẬN HUYỆN TP.HCM → ĐÀ LẠT
+// =========================
+
+{
+  key: "quan-1-di-da-lat",
+  path: "thue-xe-tu-quan-1-di-da-lat",
+  from: "Quận 1, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 1 đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp khách lưu trú khách sạn trung tâm, khách công tác hoặc du lịch nghỉ dưỡng tại Đà Lạt.",
+  routeText:
+    "Quận 1 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đức Trọng → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-3-di-da-lat",
+  path: "thue-xe-tu-quan-3-di-da-lat",
+  from: "Quận 3, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 3 đi Đà Lạt giá tốt",
+  description:
+    "Xe riêng từ Quận 3 đi Đà Lạt dành cho gia đình, nhóm bạn và khách công tác. Không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 3 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-4-di-da-lat",
+  path: "thue-xe-tu-quan-4-di-da-lat",
+  from: "Quận 4, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 4 đi Đà Lạt, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe từ Quận 4 đi Đà Lạt với tài xế riêng. Phù hợp khách du lịch, nghỉ dưỡng, đi resort hoặc về thăm người thân tại Lâm Đồng.",
+  routeText:
+    "Quận 4 → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-5-di-da-lat",
+  path: "thue-xe-tu-quan-5-di-da-lat",
+  from: "Quận 5, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 5 đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Đà Lạt. Đón tận nơi, không ghép khách, phù hợp gia đình và khách du lịch cuối tuần.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-6-di-da-lat",
+  path: "thue-xe-tu-quan-6-di-da-lat",
+  from: "Quận 6, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 6 đi Đà Lạt giá rõ ràng",
+  description:
+    "Thuê xe riêng từ Quận 6 đi Đà Lạt cho gia đình, nhóm bạn hoặc khách công tác. Chủ động thời gian và điểm đón trả.",
+  routeText:
+    "Quận 6 → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-7-di-da-lat",
+  path: "thue-xe-tu-quan-7-di-da-lat",
+  from: "Quận 7, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 7 đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Quận 7 đi Đà Lạt phục vụ cư dân Phú Mỹ Hưng, khách công tác và khách nghỉ dưỡng. Đưa đón tận nơi 24/7.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-8-di-da-lat",
+  path: "thue-xe-tu-quan-8-di-da-lat",
+  from: "Quận 8, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 8 đi Đà Lạt",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Đà Lạt với tài xế chuyên nghiệp. Không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 8 → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-10-di-da-lat",
+  path: "thue-xe-tu-quan-10-di-da-lat",
+  from: "Quận 10, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 10 đi Đà Lạt, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Đà Lạt phù hợp khách du lịch, nghỉ dưỡng và công tác. Xe riêng, không ghép khách.",
+  routeText:
+    "Quận 10 → Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-11-di-da-lat",
+  path: "thue-xe-tu-quan-11-di-da-lat",
+  from: "Quận 11, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 11 đi Đà Lạt",
+  description:
+    "Xe riêng từ Quận 11 đi Đà Lạt dành cho gia đình, khách du lịch và nhóm bạn. Chủ động lịch trình và điểm dừng nghỉ.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-12-di-da-lat",
+  path: "thue-xe-tu-quan-12-di-da-lat",
+  from: "Quận 12, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Quận 12 đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 12 đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp gia đình, nhóm bạn, khách công tác hoặc nghỉ dưỡng cuối tuần tại thành phố ngàn hoa.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Đức Trọng → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-da-lat",
+  path: "thue-xe-tu-binh-thanh-di-da-lat",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bình Thạnh đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bình Thạnh đi Đà Lạt dành cho khách du lịch, công tác hoặc nghỉ dưỡng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Bình Thạnh → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "go-vap-di-da-lat",
+  path: "thue-xe-tu-go-vap-di-da-lat",
+  from: "Gò Vấp, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Gò Vấp đi Đà Lạt giá tốt",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Đà Lạt với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn hoặc khách cần chuyến đi riêng tư và thoải mái.",
+  routeText:
+    "Gò Vấp → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-da-lat",
+  path: "thue-xe-tu-phu-nhuan-di-da-lat",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Phú Nhuận đi Đà Lạt",
+  description:
+    "Xe riêng từ Phú Nhuận đi Đà Lạt, phù hợp khách du lịch, công tác hoặc nghỉ dưỡng dài ngày. Xe đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tan-binh-di-da-lat",
+  path: "thue-xe-tu-tan-binh-di-da-lat",
+  from: "Tân Bình, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tân Bình đi Đà Lạt, đón tận nơi",
+  description:
+    "Thuê xe từ Tân Bình đi Đà Lạt với xe riêng có tài xế. Thuận tiện cho khách ở gần sân bay Tân Sơn Nhất hoặc khu vực trung tâm TP.HCM.",
+  routeText:
+    "Tân Bình → Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tan-phu-di-da-lat",
+  path: "thue-xe-tu-tan-phu-di-da-lat",
+  from: "Tân Phú, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tân Phú đi Đà Lạt giá rõ ràng",
+  description:
+    "Xe riêng từ Tân Phú đi Đà Lạt cho gia đình, nhóm bạn và khách công tác. Không đặt cọc, thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Tân Phú → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "binh-tan-di-da-lat",
+  path: "thue-xe-tu-binh-tan-di-da-lat",
+  from: "Bình Tân, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bình Tân đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Đà Lạt. Phù hợp khách du lịch, nghỉ dưỡng hoặc về quê tại khu vực Lâm Đồng.",
+  routeText:
+    "Bình Tân → Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "thu-duc-di-da-lat",
+  path: "thue-xe-tu-thu-duc-di-da-lat",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ TP Thủ Đức đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ TP Thủ Đức đi Đà Lạt với tài xế chuyên nghiệp. Đón tận nơi tại Thảo Điền, An Phú, Hiệp Bình Chánh hoặc các khu đô thị mới.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-chanh-di-da-lat",
+  path: "thue-xe-tu-binh-chanh-di-da-lat",
+  from: "Bình Chánh, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bình Chánh đi Đà Lạt",
+  description:
+    "Xe riêng từ Bình Chánh đi Đà Lạt phục vụ gia đình, khách du lịch và khách công tác. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-da-lat",
+  path: "thue-xe-tu-hoc-mon-di-da-lat",
+  from: "Hóc Môn, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Hóc Môn đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Đà Lạt dành cho gia đình, nhóm bạn hoặc khách công tác. Chủ động lịch trình và thời gian khởi hành.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Dầu Giây → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "cu-chi-di-da-lat",
+  path: "thue-xe-tu-cu-chi-di-da-lat",
+  from: "Củ Chi, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Củ Chi đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp gia đình, nhóm bạn, khách công tác hoặc nghỉ dưỡng cuối tuần tại thành phố ngàn hoa.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Đức Trọng → Đà Lạt",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "nha-be-di-da-lat",
+  path: "thue-xe-tu-nha-be-di-da-lat",
+  from: "Nhà Bè, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Nhà Bè đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Nhà Bè đi Đà Lạt dành cho gia đình, khách nghỉ dưỡng hoặc khách công tác. Đưa đón tận nơi, biết giá trước khi đặt.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "can-gio-di-da-lat",
+  path: "thue-xe-tu-can-gio-di-da-lat",
+  from: "Cần Giờ, TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Cần Giờ đi Đà Lạt giá tốt",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Đà Lạt cho gia đình, nhóm bạn hoặc khách du lịch. Xe có tài xế riêng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "thao-dien-di-da-lat",
+  path: "thue-xe-tu-thao-dien-di-da-lat",
+  from: "Thảo Điền, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Thảo Điền đi Đà Lạt, xe riêng cao cấp",
+  description:
+    "Dịch vụ xe riêng từ Thảo Điền đi Đà Lạt dành cho gia đình, chuyên gia nước ngoài và khách nghỉ dưỡng. Đưa đón tận nơi tại căn hộ hoặc biệt thự.",
+  routeText:
+    "Thảo Điền → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "an-phu-di-da-lat",
+  path: "thue-xe-tu-an-phu-di-da-lat",
+  from: "An Phú, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ An Phú đi Đà Lạt",
+  description:
+    "Xe riêng từ An Phú đi Đà Lạt với tài xế chuyên nghiệp. Phù hợp khách công tác, khách du lịch hoặc gia đình cần chuyến đi riêng tư.",
+  routeText:
+    "An Phú → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "hiep-binh-chanh-di-da-lat",
+  path: "thue-xe-tu-hiep-binh-chanh-di-da-lat",
+  from: "Hiệp Bình Chánh, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Hiệp Bình Chánh đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Hiệp Bình Chánh đi Đà Lạt. Xe sạch sẽ, không ghép khách, phù hợp gia đình và nhóm bạn du lịch cuối tuần.",
+  routeText:
+    "Hiệp Bình Chánh → Phạm Văn Đồng → Dầu Giây → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "phu-my-hung-di-da-lat",
+  path: "thue-xe-tu-phu-my-hung-di-da-lat",
+  from: "Phú Mỹ Hưng, Quận 7",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Phú Mỹ Hưng đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Phú Mỹ Hưng đi Đà Lạt. Đưa đón tận nơi tại khu đô thị, phù hợp gia đình, doanh nhân và khách nước ngoài.",
+  routeText:
+    "Phú Mỹ Hưng → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "van-phuc-city-di-da-lat",
+  path: "thue-xe-tu-van-phuc-city-di-da-lat",
+  from: "Khu đô thị Vạn Phúc, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Vạn Phúc City đi Đà Lạt",
+  description:
+    "Xe riêng từ Vạn Phúc City đi Đà Lạt với tài xế riêng. Phù hợp khách nghỉ dưỡng, gia đình và khách công tác cần sự riêng tư.",
+  routeText:
+    "Vạn Phúc City → Phạm Văn Đồng → Dầu Giây → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "sala-di-da-lat",
+  path: "thue-xe-tu-sala-di-da-lat",
+  from: "Khu đô thị Sala, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Sala đi Đà Lạt, xe riêng cao cấp",
+  description:
+    "Thuê xe từ Sala đi Đà Lạt với xe riêng có tài xế. Phù hợp gia đình, khách VIP, doanh nhân và khách nước ngoài.",
+  routeText:
+    "Sala → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "vinhomes-grand-park-di-da-lat",
+  path: "thue-xe-tu-vinhomes-grand-park-di-da-lat",
+  from: "Vinhomes Grand Park, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Vinhomes Grand Park đi Đà Lạt",
+  description:
+    "Xe riêng từ Vinhomes Grand Park đi Đà Lạt, đưa đón tận nơi tại khu đô thị. Phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng.",
+  routeText:
+    "Vinhomes Grand Park → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-di-linh",
+  path: "thue-xe-tphcm-di-di-linh",
+  from: "TP.HCM",
+  to: "Di Linh, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Di Linh, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Di Linh với xe riêng đưa đón tận nơi. Phù hợp khách về quê, công tác, thăm người thân hoặc di chuyển đến các khu vực trồng cà phê nổi tiếng của Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-lam-ha",
+  path: "thue-xe-tphcm-di-lam-ha",
+  from: "TP.HCM",
+  to: "Lâm Hà, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Lâm Hà, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ TP.HCM đi Lâm Hà dành cho gia đình, khách công tác hoặc người về quê. Xe có tài xế riêng, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Nam Ban → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-don-duong",
+  path: "thue-xe-tphcm-di-don-duong",
+  from: "TP.HCM",
+  to: "Đơn Dương, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Đơn Dương giá tốt",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Đơn Dương với xe riêng có tài xế. Phù hợp khách làm việc trong lĩnh vực nông nghiệp công nghệ cao hoặc về thăm gia đình.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đơn Dương",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-bao-lam",
+  path: "thue-xe-tphcm-di-bao-lam",
+  from: "TP.HCM",
+  to: "Bảo Lâm, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Bảo Lâm, xe riêng có tài xế",
+  description:
+    "Xe riêng từ TP.HCM đi Bảo Lâm phục vụ khách công tác, về quê hoặc tham quan các vùng chè và cà phê nổi tiếng của Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "xe-tphcm-di-da-huoai",
+  path: "thue-xe-tphcm-di-da-huoai",
+  from: "TP.HCM",
+  to: "Đạ Huoai, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Đạ Huoai",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Đạ Huoai với tài xế riêng. Phù hợp khách công tác, vận chuyển gia đình hoặc đi du lịch khu vực phía nam Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "xe-tphcm-di-da-teh",
+  path: "thue-xe-tphcm-di-da-teh",
+  from: "TP.HCM",
+  to: "Đạ Tẻh, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Đạ Tẻh, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đạ Tẻh. Không ghép khách, đưa đón tận nơi và phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Tẻh",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-cat-tien",
+  path: "thue-xe-tphcm-di-cat-tien",
+  from: "TP.HCM",
+  to: "Cát Tiên, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Cát Tiên, xe riêng có tài xế",
+  description:
+    "Xe riêng từ TP.HCM đi Cát Tiên phù hợp khách tham quan Vườn Quốc Gia Cát Tiên, nghỉ dưỡng sinh thái hoặc công tác.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-dam-rong",
+  path: "thue-xe-tphcm-di-dam-rong",
+  from: "TP.HCM",
+  to: "Đam Rông, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Đam Rông",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Đam Rông với xe riêng đưa đón tận nơi. Phù hợp khách công tác, khảo sát dự án hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-lac-duong",
+  path: "thue-xe-tphcm-di-lac-duong",
+  from: "TP.HCM",
+  to: "Lạc Dương, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Lạc Dương, xe riêng có tài xế",
+  description:
+    "Xe riêng từ TP.HCM đi Lạc Dương dành cho khách du lịch Langbiang, khu du lịch Suối Vàng hoặc nghỉ dưỡng vùng ngoại ô Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-san-bay-lien-khuong",
+  path: "thue-xe-tphcm-di-san-bay-lien-khuong",
+  from: "TP.HCM",
+  to: "Sân bay Liên Khương",
+  title: "Thuê xe TP.HCM đi sân bay Liên Khương",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi sân bay Liên Khương. Phù hợp khách có chuyến bay nội địa hoặc quốc tế, đưa đón tận nơi và chủ động thời gian.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Liên Khương",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-nam-ban",
+  path: "thue-xe-tphcm-di-nam-ban",
+  from: "TP.HCM",
+  to: "Nam Ban, Lâm Đồng",
+  title: "Thuê xe TP.HCM đi Nam Ban, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Nam Ban với xe riêng đưa đón tận nơi. Phù hợp khách về quê, nghỉ dưỡng homestay, farmstay hoặc tham quan khu vực Lâm Hà.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-ta-nung",
+  path: "thue-xe-tphcm-di-ta-nung",
+  from: "TP.HCM",
+  to: "Tà Nung, Đà Lạt",
+  title: "Thuê xe TP.HCM đi Tà Nung Đà Lạt",
+  description:
+    "Xe riêng từ TP.HCM đi Tà Nung phù hợp khách nghỉ dưỡng, tham quan các quán cà phê săn mây, farm và homestay nổi tiếng của Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đà Lạt → Tà Nung",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-xuan-truong",
+  path: "thue-xe-tphcm-di-xuan-truong-da-lat",
+  from: "TP.HCM",
+  to: "Xuân Trường, Đà Lạt",
+  title: "Thuê xe TP.HCM đi Xuân Trường Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Xuân Trường. Đưa đón tận nơi đến khu vực đồi chè Cầu Đất, farm cà phê và các homestay nổi tiếng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đà Lạt → Xuân Trường",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-trai-mat",
+  path: "thue-xe-tphcm-di-trai-mat",
+  from: "TP.HCM",
+  to: "Trại Mát, Đà Lạt",
+  title: "Thuê xe TP.HCM đi Trại Mát Đà Lạt",
+  description:
+    "Xe riêng từ TP.HCM đi Trại Mát dành cho khách du lịch, nghỉ dưỡng hoặc săn mây tại khu vực ngoại ô nổi tiếng của Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đà Lạt → Trại Mát",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-dran",
+  path: "thue-xe-tphcm-di-dran",
+  from: "TP.HCM",
+  to: "D'Ran, Đơn Dương",
+  title: "Thuê xe TP.HCM đi D'Ran Lâm Đồng",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi D'Ran với xe riêng có tài xế. Phù hợp khách về quê, công tác hoặc nghỉ dưỡng khu vực Đơn Dương.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → D'Ran",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-ka-do",
+  path: "thue-xe-tphcm-di-ka-do",
+  from: "TP.HCM",
+  to: "Ka Đô, Đơn Dương",
+  title: "Thuê xe TP.HCM đi Ka Đô Lâm Đồng",
+  description:
+    "Xe riêng từ TP.HCM đi Ka Đô phục vụ khách công tác, thăm người thân hoặc di chuyển đến các vùng nông nghiệp công nghệ cao.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Ka Đô",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-lac-xuan",
+  path: "thue-xe-tphcm-di-lac-xuan",
+  from: "TP.HCM",
+  to: "Lạc Xuân, Đơn Dương",
+  title: "Thuê xe TP.HCM đi Lạc Xuân",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Lạc Xuân với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Lạc Xuân",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-loc-thang",
+  path: "thue-xe-tphcm-di-loc-thang",
+  from: "TP.HCM",
+  to: "Lộc Thắng, Bảo Lâm",
+  title: "Thuê xe TP.HCM đi Lộc Thắng Bảo Lâm",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Lộc Thắng phù hợp khách công tác, về quê hoặc tham quan vùng chè nổi tiếng của Bảo Lâm.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lộc Thắng",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-loc-an",
+  path: "thue-xe-tphcm-di-loc-an-bao-lam",
+  from: "TP.HCM",
+  to: "Lộc An, Bảo Lâm",
+  title: "Thuê xe TP.HCM đi Lộc An Bảo Lâm",
+  description:
+    "Xe riêng từ TP.HCM đi Lộc An với tài xế riêng. Phù hợp khách về quê, công tác hoặc làm việc tại khu vực Bảo Lâm.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lộc An",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-loc-nga",
+  path: "thue-xe-tphcm-di-loc-nga",
+  from: "TP.HCM",
+  to: "Lộc Nga, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Lộc Nga",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Lộc Nga với lịch trình linh hoạt, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lộc Nga",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "xe-tphcm-di-dai-lao",
+  path: "thue-xe-tphcm-di-dai-lao",
+  from: "TP.HCM",
+  to: "Đại Lào, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Đại Lào Bảo Lộc",
+  description:
+    "Xe riêng từ TP.HCM đi Đại Lào phục vụ khách về quê, công tác hoặc tham quan các khu du lịch sinh thái quanh Bảo Lộc.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đại Lào",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "quan-1-di-bao-loc",
+  path: "thue-xe-tu-quan-1-di-bao-loc",
+  from: "Quận 1, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 1 đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc tham quan các đồi chè, thác nước nổi tiếng tại Bảo Lộc.",
+  routeText:
+    "Quận 1 → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-1-di-di-linh",
+  path: "thue-xe-tu-quan-1-di-di-linh",
+  from: "Quận 1, TP.HCM",
+  to: "Di Linh, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Di Linh",
+  description:
+    "Xe riêng từ Quận 1 đi Di Linh dành cho khách về quê, công tác hoặc làm việc tại khu vực cao nguyên Lâm Đồng. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-1-di-duc-trong",
+  path: "thue-xe-tu-quan-1-di-duc-trong",
+  from: "Quận 1, TP.HCM",
+  to: "Đức Trọng, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Đức Trọng phù hợp khách công tác, về quê hoặc di chuyển đến khu vực sân bay Liên Khương.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-1-di-lien-nghia",
+  path: "thue-xe-tu-quan-1-di-lien-nghia",
+  from: "Quận 1, TP.HCM",
+  to: "Liên Nghĩa, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Quận 1 đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-1-di-nam-ban",
+  path: "thue-xe-tu-quan-1-di-nam-ban",
+  from: "Quận 1, TP.HCM",
+  to: "Nam Ban, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Nam Ban",
+  description:
+    "Thuê xe riêng từ Quận 1 đi Nam Ban dành cho khách nghỉ dưỡng, về quê hoặc tham quan các khu du lịch sinh thái khu vực Lâm Hà.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-1-di-don-duong",
+  path: "thue-xe-tu-quan-1-di-don-duong",
+  from: "Quận 1, TP.HCM",
+  to: "Đơn Dương, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Đơn Dương",
+  description:
+    "Xe riêng từ Quận 1 đi Đơn Dương phục vụ khách công tác, kỹ sư nông nghiệp hoặc khách về thăm người thân tại Lâm Đồng.",
+  routeText:
+    "Quận 1 → Dầu Giây → Đức Trọng → Đơn Dương",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-1-di-lac-duong",
+  path: "thue-xe-tu-quan-1-di-lac-duong",
+  from: "Quận 1, TP.HCM",
+  to: "Lạc Dương, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Lạc Dương. Phù hợp khách du lịch Langbiang, Suối Vàng hoặc nghỉ dưỡng ngoại ô Đà Lạt.",
+  routeText:
+    "Quận 1 → Dầu Giây → Đức Trọng → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-1-di-ta-nung",
+  path: "thue-xe-tu-quan-1-di-ta-nung",
+  from: "Quận 1, TP.HCM",
+  to: "Tà Nung, Đà Lạt",
+  title: "Thuê xe từ Quận 1 đi Tà Nung Đà Lạt",
+  description:
+    "Xe riêng từ Quận 1 đi Tà Nung dành cho khách nghỉ dưỡng, săn mây, tham quan các quán cà phê nổi tiếng và farmstay ngoại ô Đà Lạt.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Đà Lạt → Tà Nung",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-1-di-xuan-truong",
+  path: "thue-xe-tu-quan-1-di-xuan-truong",
+  from: "Quận 1, TP.HCM",
+  to: "Xuân Trường, Đà Lạt",
+  title: "Thuê xe từ Quận 1 đi Xuân Trường Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Xuân Trường, khu vực nổi tiếng với đồi chè Cầu Đất, các farm cà phê và homestay săn mây.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Đà Lạt → Xuân Trường",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-1-di-trai-mat",
+  path: "thue-xe-tu-quan-1-di-trai-mat",
+  from: "Quận 1, TP.HCM",
+  to: "Trại Mát, Đà Lạt",
+  title: "Thuê xe từ Quận 1 đi Trại Mát Đà Lạt",
+  description:
+    "Xe riêng từ Quận 1 đi Trại Mát với tài xế riêng. Đưa đón tận nơi, phù hợp khách du lịch và nghỉ dưỡng tại khu vực ngoại ô Đà Lạt.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Đà Lạt → Trại Mát",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "xe-thu-dau-mot-di-da-lat",
+  path: "can-thue-xe-tu-thu-dau-mot-di-da-lat",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Thủ Dầu Một đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Thủ Dầu Một đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp gia đình, nhóm bạn, khách công tác hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "xe-thu-dau-mot-di-bao-loc",
+  path: "can-thue-xe-tu-thu-dau-mot-di-bao-loc",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Thủ Dầu Một đi Bảo Lộc",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Bảo Lộc dành cho khách du lịch, công tác hoặc về quê. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Thủ Dầu Một → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "xe-thu-dau-mot-di-duc-trong",
+  path: "can-thue-xe-tu-thu-dau-mot-di-duc-trong",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Đức Trọng, Lâm Đồng",
+  title: "Thuê xe từ Thủ Dầu Một đi Đức Trọng",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Đức Trọng phục vụ khách công tác, về quê hoặc di chuyển đến khu vực sân bay Liên Khương.",
+  routeText:
+    "Thủ Dầu Một → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "xe-di-an-di-da-lat",
+  path: "can-thue-xe-tu-di-an-di-da-lat",
+  from: "Dĩ An, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Dĩ An đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Dĩ An đi Đà Lạt với xe riêng có tài xế. Đón tận nơi tại chung cư, khu dân cư hoặc khu công nghiệp.",
+  routeText:
+    "Dĩ An → Xa lộ Hà Nội → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "xe-thuan-an-di-da-lat",
+  path: "can-thue-xe-tu-thuan-an-di-da-lat",
+  from: "Thuận An, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Thuận An đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Xe riêng từ Thuận An đi Đà Lạt phù hợp gia đình, nhóm bạn và khách công tác. Chủ động thời gian và lịch trình.",
+  routeText:
+    "Thuận An → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "xe-tan-uyen-di-da-lat",
+  path: "can-thue-xe-tu-tan-uyen-di-da-lat",
+  from: "Tân Uyên, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tân Uyên đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Tân Uyên đi Đà Lạt với tài xế riêng. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Tân Uyên → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "xe-ben-cat-di-da-lat",
+  path: "can-thue-xe-tu-ben-cat-di-da-lat",
+  from: "Bến Cát, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bến Cát đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Bến Cát đi Đà Lạt dành cho gia đình, khách công tác và chuyên gia làm việc tại các khu công nghiệp.",
+  routeText:
+    "Bến Cát → Mỹ Phước → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "bau-bang-di-da-lat",
+  path: "thue-xe-tu-bau-bang-di-da-lat",
+  from: "Bàu Bàng, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bàu Bàng đi Đà Lạt",
+  description:
+    "Xe riêng từ Bàu Bàng đi Đà Lạt với tài xế riêng. Phù hợp khách công tác, về quê hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Bàu Bàng → Quốc lộ 13 → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "phu-giao-di-da-lat",
+  path: "thue-xe-tu-phu-giao-di-da-lat",
+  from: "Phú Giáo, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Phú Giáo đi Đà Lạt",
+  description:
+    "Đặt xe riêng từ Phú Giáo đi Đà Lạt. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Phú Giáo → Đồng Xoài → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "bac-tan-uyen-di-da-lat",
+  path: "thue-xe-tu-bac-tan-uyen-di-da-lat",
+  from: "Bắc Tân Uyên, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bắc Tân Uyên đi Đà Lạt",
+  description:
+    "Xe riêng từ Bắc Tân Uyên đi Đà Lạt phục vụ gia đình, nhóm bạn và khách công tác. Chủ động lịch trình và thời gian khởi hành.",
+  routeText:
+    "Bắc Tân Uyên → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "an-khanh-di-da-lat",
+  path: "thue-xe-tu-an-khanh-di-da-lat",
+  from: "An Khánh, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ An Khánh đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ An Khánh đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp cư dân khu đô thị mới Thủ Thiêm, gia đình, khách công tác và khách nghỉ dưỡng.",
+  routeText:
+    "An Khánh → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "cat-lai-di-da-lat",
+  path: "thue-xe-tu-cat-lai-di-da-lat",
+  from: "Cát Lái, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Cát Lái đi Đà Lạt",
+  description:
+    "Xe riêng từ Cát Lái đi Đà Lạt dành cho gia đình, nhóm bạn hoặc khách công tác. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Cát Lái → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "linh-dong-di-da-lat",
+  path: "thue-xe-tu-linh-dong-di-da-lat",
+  from: "Linh Đông, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Linh Đông đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Linh Đông đi Đà Lạt với tài xế chuyên nghiệp. Phù hợp khách du lịch, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Linh Đông → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "linh-xuan-di-da-lat",
+  path: "thue-xe-tu-linh-xuan-di-da-lat",
+  from: "Linh Xuân, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Linh Xuân đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Linh Xuân đi Đà Lạt. Đón tận nơi, không ghép khách và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Linh Xuân → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tam-phu-di-da-lat",
+  path: "thue-xe-tu-tam-phu-di-da-lat",
+  from: "Tam Phú, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tam Phú đi Đà Lạt",
+  description:
+    "Xe riêng từ Tam Phú đi Đà Lạt dành cho gia đình, nhóm bạn và khách công tác. Biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Tam Phú → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "hiep-binh-phuoc-di-da-lat",
+  path: "thue-xe-tu-hiep-binh-phuoc-di-da-lat",
+  from: "Hiệp Bình Phước, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Hiệp Bình Phước đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Hiệp Bình Phước đi Đà Lạt với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Hiệp Bình Phước → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "truong-tho-di-da-lat",
+  path: "thue-xe-tu-truong-tho-di-da-lat",
+  from: "Trường Thọ, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Trường Thọ đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Trường Thọ đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp gia đình, khách công tác và khách nghỉ dưỡng cần chuyến đi riêng tư, thoải mái.",
+  routeText:
+    "Trường Thọ → Xa lộ Hà Nội → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "long-thanh-my-di-da-lat",
+  path: "thue-xe-tu-long-thanh-my-di-da-lat",
+  from: "Long Thạnh Mỹ, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Long Thạnh Mỹ đi Đà Lạt",
+  description:
+    "Xe riêng từ Long Thạnh Mỹ đi Đà Lạt dành cho cư dân Vinhomes Grand Park, gia đình, nhóm bạn hoặc khách công tác.",
+  routeText:
+    "Long Thạnh Mỹ → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "long-phuoc-di-da-lat",
+  path: "thue-xe-tu-long-phuoc-di-da-lat",
+  from: "Long Phước, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Long Phước đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Long Phước đi Đà Lạt với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Long Phước → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "long-truong-di-da-lat",
+  path: "thue-xe-tu-long-truong-di-da-lat",
+  from: "Long Trường, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Long Trường đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Long Trường đi Đà Lạt dành cho gia đình, khách công tác và khách du lịch.",
+  routeText:
+    "Long Trường → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "phuoc-long-b-di-da-lat",
+  path: "thue-xe-tu-phuoc-long-b-di-da-lat",
+  from: "Phước Long B, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Phước Long B đi Đà Lạt",
+  description:
+    "Xe riêng từ Phước Long B đi Đà Lạt với tài xế riêng. Chủ động lịch trình, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Phước Long B → Xa lộ Hà Nội → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "phuoc-binh-di-da-lat",
+  path: "thue-xe-tu-phuoc-binh-di-da-lat",
+  from: "Phước Bình, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Phước Bình đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Phước Bình đi Đà Lạt cho gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Phước Bình → Xa lộ Hà Nội → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "hiep-phu-di-da-lat",
+  path: "thue-xe-tu-hiep-phu-di-da-lat",
+  from: "Hiệp Phú, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Hiệp Phú đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Hiệp Phú đi Đà Lạt với xe riêng đưa đón tận nơi, phù hợp khách du lịch và công tác.",
+  routeText:
+    "Hiệp Phú → Xa lộ Hà Nội → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tan-phu-thu-duc-di-da-lat",
+  path: "thue-xe-tu-tan-phu-thu-duc-di-da-lat",
+  from: "Tân Phú, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tân Phú Thủ Đức đi Đà Lạt",
+  description:
+    "Xe riêng từ Tân Phú Thủ Đức đi Đà Lạt dành cho gia đình, khách công tác hoặc khách nghỉ dưỡng dài ngày.",
+  routeText:
+    "Tân Phú → Xa lộ Hà Nội → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "thanh-my-loi-di-da-lat",
+  path: "thue-xe-tu-thanh-my-loi-di-da-lat",
+  from: "Thạnh Mỹ Lợi, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Thạnh Mỹ Lợi đi Đà Lạt",
+  description:
+    "Xe riêng từ Thạnh Mỹ Lợi đi Đà Lạt phục vụ khách gia đình, khách công tác và cư dân khu vực ven sông Sài Gòn.",
+  routeText:
+    "Thạnh Mỹ Lợi → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "thu-thiem-di-da-lat",
+  path: "thue-xe-tu-thu-thiem-di-da-lat",
+  from: "Thủ Thiêm, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Thủ Thiêm đi Đà Lạt, xe riêng cao cấp",
+  description:
+    "Dịch vụ xe riêng từ Thủ Thiêm đi Đà Lạt dành cho gia đình, doanh nhân, chuyên gia và khách nghỉ dưỡng cao cấp.",
+  routeText:
+    "Thủ Thiêm → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "vinhomes-central-park-di-da-lat",
+  path: "thue-xe-tu-vinhomes-central-park-di-da-lat",
+  from: "Vinhomes Central Park, Bình Thạnh",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Vinhomes Central Park đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Vinhomes Central Park đi Đà Lạt với xe riêng có tài xế. Phù hợp gia đình, khách nghỉ dưỡng, doanh nhân và khách nước ngoài.",
+  routeText:
+    "Vinhomes Central Park → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "sunrise-city-di-da-lat",
+  path: "thue-xe-tu-sunrise-city-di-da-lat",
+  from: "Sunrise City, Quận 7",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Sunrise City đi Đà Lạt",
+  description:
+    "Xe riêng từ Sunrise City đi Đà Lạt với tài xế riêng. Đưa đón tận nơi, không ghép khách và phù hợp các chuyến nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Sunrise City → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "him-lam-di-da-lat",
+  path: "thue-xe-tu-him-lam-di-da-lat",
+  from: "KDC Him Lam, Quận 7",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Him Lam đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Him Lam đi Đà Lạt cho gia đình, nhóm bạn và khách công tác. Xe đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Him Lam → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "trung-son-di-da-lat",
+  path: "thue-xe-tu-trung-son-di-da-lat",
+  from: "KDC Trung Sơn, Bình Chánh",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Trung Sơn đi Đà Lạt",
+  description:
+    "Xe riêng từ Trung Sơn đi Đà Lạt với tài xế riêng. Không ghép khách, phù hợp gia đình và khách nghỉ dưỡng.",
+  routeText:
+    "KDC Trung Sơn → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "celadon-city-di-da-lat",
+  path: "thue-xe-tu-celadon-city-di-da-lat",
+  from: "Celadon City, Tân Phú",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Celadon City đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Celadon City đi Đà Lạt với xe riêng có tài xế. Đưa đón tận nơi, chủ động thời gian và lịch trình.",
+  routeText:
+    "Celadon City → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "cityland-go-vap-di-da-lat",
+  path: "thue-xe-tu-cityland-go-vap-di-da-lat",
+  from: "CityLand Gò Vấp",
+  to: "Đà Lạt",
+  title: "Thuê xe từ CityLand Gò Vấp đi Đà Lạt",
+  description:
+    "Xe riêng từ CityLand Gò Vấp đi Đà Lạt dành cho gia đình, khách công tác và khách du lịch. Đón tận nơi và không ghép khách.",
+  routeText:
+    "CityLand Gò Vấp → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "vinhomes-golden-river-di-da-lat",
+  path: "thue-xe-tu-vinhomes-golden-river-di-da-lat",
+  from: "Vinhomes Golden River, Quận 1",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Vinhomes Golden River đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Vinhomes Golden River đi Đà Lạt dành cho khách nghỉ dưỡng, doanh nhân và chuyên gia nước ngoài.",
+  routeText:
+    "Vinhomes Golden River → Dầu Giây → Bảo Lộc → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "masteri-thao-dien-di-da-lat",
+  path: "thue-xe-tu-masteri-thao-dien-di-da-lat",
+  from: "Masteri Thảo Điền, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Masteri Thảo Điền đi Đà Lạt",
+  description:
+    "Xe riêng từ Masteri Thảo Điền đi Đà Lạt với tài xế chuyên nghiệp. Phù hợp gia đình, khách nước ngoài và khách nghỉ dưỡng cao cấp.",
+  routeText:
+    "Masteri Thảo Điền → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "estella-heights-di-da-lat",
+  path: "thue-xe-tu-estella-heights-di-da-lat",
+  from: "Estella Heights, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Estella Heights đi Đà Lạt",
+  description:
+    "Thuê xe riêng từ Estella Heights đi Đà Lạt. Xe đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Estella Heights → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "lumiere-riverside-di-da-lat",
+  path: "thue-xe-tu-lumiere-riverside-di-da-lat",
+  from: "Lumiere Riverside, TP Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Lumiere Riverside đi Đà Lạt",
+  description:
+    "Xe riêng từ Lumiere Riverside đi Đà Lạt dành cho gia đình, khách công tác và khách nghỉ dưỡng. Đưa đón tận nơi 24/7.",
+  routeText:
+    "Lumiere Riverside → Cao tốc Long Thành → Bảo Lộc → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-loc-son",
+  path: "thue-xe-tphcm-di-loc-son-bao-loc",
+  from: "TP.HCM",
+  to: "Lộc Sơn, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Lộc Sơn Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Lộc Sơn Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách về quê, công tác hoặc tham quan khu vực Bảo Lộc.",
+  routeText:
+    "TP.HCM → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Lộc Sơn",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-loc-phat",
+  path: "thue-xe-tphcm-di-loc-phat-bao-loc",
+  from: "TP.HCM",
+  to: "Lộc Phát, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Lộc Phát Bảo Lộc",
+  description:
+    "Xe riêng từ TP.HCM đi Lộc Phát Bảo Lộc. Đưa đón tận nơi, không ghép khách, phù hợp gia đình và khách công tác.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lộc Phát",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-loc-tien",
+  path: "thue-xe-tphcm-di-loc-tien-bao-loc",
+  from: "TP.HCM",
+  to: "Lộc Tiến, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Lộc Tiến Bảo Lộc",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Lộc Tiến. Xe có tài xế riêng, phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lộc Tiến",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-dambri",
+  path: "thue-xe-tphcm-di-dambri",
+  from: "TP.HCM",
+  to: "ĐamBri, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi ĐamBri Bảo Lộc",
+  description:
+    "Thuê xe riêng từ TP.HCM đi ĐamBri để du lịch, nghỉ dưỡng hoặc tham quan khu du lịch thác ĐamBri nổi tiếng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → ĐamBri",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-loc-nga-bao-loc",
+  path: "thue-xe-tphcm-di-loc-nga-bao-loc",
+  from: "TP.HCM",
+  to: "Lộc Nga, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Lộc Nga",
+  description:
+    "Xe riêng từ TP.HCM đi Lộc Nga với tài xế chuyên nghiệp. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lộc Nga",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-dai-lao",
+  path: "thue-xe-tphcm-di-dai-lao-bao-loc",
+  from: "TP.HCM",
+  to: "Đại Lào, Bảo Lộc",
+  title: "Thuê xe TP.HCM đi Đại Lào",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đại Lào. Phù hợp khách về quê, công tác hoặc du lịch khu vực ngoại ô Bảo Lộc.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đại Lào",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-loc-duc",
+  path: "thue-xe-tphcm-di-loc-duc-bao-loc",
+  from: "TP.HCM",
+  to: "Lộc Đức, Bảo Lâm",
+  title: "Thuê xe TP.HCM đi Lộc Đức Bảo Lâm",
+  description:
+    "Xe riêng từ TP.HCM đi Lộc Đức Bảo Lâm dành cho khách công tác, về quê hoặc làm việc tại khu vực trồng chè và cà phê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Bảo Lâm → Lộc Đức",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-loc-thanh",
+  path: "thue-xe-tphcm-di-loc-thanh-bao-lam",
+  from: "TP.HCM",
+  to: "Lộc Thành, Bảo Lâm",
+  title: "Thuê xe TP.HCM đi Lộc Thành Bảo Lâm",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Lộc Thành với lịch trình linh hoạt, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Bảo Lâm → Lộc Thành",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-hiep-thanh-duc-trong",
+  path: "thue-xe-tphcm-di-hiep-thanh-duc-trong",
+  from: "TP.HCM",
+  to: "Hiệp Thạnh, Đức Trọng",
+  title: "Thuê xe TP.HCM đi Hiệp Thạnh Đức Trọng",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Hiệp Thạnh Đức Trọng với xe riêng có tài xế. Phù hợp khách về quê, công tác hoặc di chuyển đến khu vực cửa ngõ Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đức Trọng → Hiệp Thạnh",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-phu-hoi",
+  path: "thue-xe-tphcm-di-phu-hoi-duc-trong",
+  from: "TP.HCM",
+  to: "Phú Hội, Đức Trọng",
+  title: "Thuê xe TP.HCM đi Phú Hội Đức Trọng",
+  description:
+    "Xe riêng từ TP.HCM đi Phú Hội Đức Trọng, đưa đón tận nơi, không ghép khách và phù hợp khách công tác hoặc về thăm gia đình.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đức Trọng → Phú Hội",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-ta-hine",
+  path: "thue-xe-tphcm-di-ta-hine",
+  from: "TP.HCM",
+  to: "Tà Hine, Đức Trọng",
+  title: "Thuê xe TP.HCM đi Tà Hine",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Tà Hine với tài xế riêng. Đưa đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đức Trọng → Tà Hine",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-ta-nang",
+  path: "thue-xe-tphcm-di-ta-nang",
+  from: "TP.HCM",
+  to: "Tà Năng, Đức Trọng",
+  title: "Thuê xe TP.HCM đi Tà Năng",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Tà Năng phục vụ khách trekking, cắm trại, khám phá cung đường Tà Năng nổi tiếng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đức Trọng → Tà Năng",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-lien-nghia-thi-tran",
+  path: "thue-xe-tphcm-di-thi-tran-lien-nghia",
+  from: "TP.HCM",
+  to: "Liên Nghĩa, Đức Trọng",
+  title: "Thuê xe TP.HCM đi thị trấn Liên Nghĩa",
+  description:
+    "Xe riêng từ TP.HCM đi thị trấn Liên Nghĩa với tài xế chuyên nghiệp. Phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-ka-do-don-duong",
+  path: "thue-xe-tphcm-di-ka-do-don-duong",
+  from: "TP.HCM",
+  to: "Ka Đô, Đơn Dương",
+  title: "Thuê xe TP.HCM đi Ka Đô Đơn Dương",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Ka Đô với xe riêng có tài xế. Phù hợp khách làm việc tại các vùng nông nghiệp công nghệ cao của Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đơn Dương → Ka Đô",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-dran-don-duong",
+  path: "thue-xe-tphcm-di-dran-don-duong",
+  from: "TP.HCM",
+  to: "D'Ran, Đơn Dương",
+  title: "Thuê xe TP.HCM đi D'Ran Đơn Dương",
+  description:
+    "Xe riêng từ TP.HCM đi D'Ran dành cho khách về quê, công tác hoặc du lịch khu vực cao nguyên Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đơn Dương → D'Ran",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-lac-xuan-don-duong",
+  path: "thue-xe-tphcm-di-lac-xuan-don-duong",
+  from: "TP.HCM",
+  to: "Lạc Xuân, Đơn Dương",
+  title: "Thuê xe TP.HCM đi Lạc Xuân Đơn Dương",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Lạc Xuân với tài xế riêng. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đơn Dương → Lạc Xuân",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-tu-tra",
+  path: "thue-xe-tphcm-di-tu-tra",
+  from: "TP.HCM",
+  to: "Tu Tra, Đơn Dương",
+  title: "Thuê xe TP.HCM đi Tu Tra Đơn Dương",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Tu Tra phù hợp khách công tác, về quê hoặc làm việc tại các trang trại nông nghiệp công nghệ cao.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đơn Dương → Tu Tra",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-qua-ngap",
+  path: "thue-xe-tphcm-di-qua-ngap",
+  from: "TP.HCM",
+  to: "Quảng Lập, Đơn Dương",
+  title: "Thuê xe TP.HCM đi Quảng Lập Đơn Dương",
+  description:
+    "Xe riêng từ TP.HCM đi Quảng Lập với tài xế riêng, đưa đón tận nơi và phù hợp khách công tác hoặc về thăm người thân.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đức Trọng → Đơn Dương → Quảng Lập",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-hoa-ninh-di-linh",
+  path: "thue-xe-tphcm-di-hoa-ninh-di-linh",
+  from: "TP.HCM",
+  to: "Hòa Ninh, Di Linh",
+  title: "Thuê xe TP.HCM đi Hòa Ninh Di Linh",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Hòa Ninh Di Linh với xe riêng có tài xế. Phù hợp khách về quê, công tác hoặc thăm người thân tại khu vực Di Linh.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Hòa Ninh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-hoa-bac-di-linh",
+  path: "thue-xe-tphcm-di-hoa-bac-di-linh",
+  from: "TP.HCM",
+  to: "Hòa Bắc, Di Linh",
+  title: "Thuê xe TP.HCM đi Hòa Bắc Di Linh",
+  description:
+    "Xe riêng từ TP.HCM đi Hòa Bắc Di Linh, đưa đón tận nơi, không ghép khách và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Hòa Bắc",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-hoa-trung-di-linh",
+  path: "thue-xe-tphcm-di-hoa-trung-di-linh",
+  from: "TP.HCM",
+  to: "Hòa Trung, Di Linh",
+  title: "Thuê xe TP.HCM đi Hòa Trung Di Linh",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Hòa Trung với tài xế chuyên nghiệp. Phù hợp khách về quê, khách công tác và khách du lịch.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Hòa Trung",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-gia-hiep-di-linh",
+  path: "thue-xe-tphcm-di-gia-hiep-di-linh",
+  from: "TP.HCM",
+  to: "Gia Hiệp, Di Linh",
+  title: "Thuê xe TP.HCM đi Gia Hiệp Di Linh",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Gia Hiệp. Đưa đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Gia Hiệp",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-dinh-trang-thuong",
+  path: "thue-xe-tphcm-di-dinh-trang-thuong",
+  from: "TP.HCM",
+  to: "Đinh Trang Thượng, Di Linh",
+  title: "Thuê xe TP.HCM đi Đinh Trang Thượng",
+  description:
+    "Xe riêng từ TP.HCM đi Đinh Trang Thượng dành cho khách về quê, công tác hoặc làm việc tại khu vực Di Linh.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Đinh Trang Thượng",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-dinh-lac",
+  path: "thue-xe-tphcm-di-dinh-lac",
+  from: "TP.HCM",
+  to: "Đinh Lạc, Di Linh",
+  title: "Thuê xe TP.HCM đi Đinh Lạc Di Linh",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Đinh Lạc với xe riêng có tài xế. Phù hợp khách công tác, về quê hoặc thăm người thân.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Đinh Lạc",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-tan-lam",
+  path: "thue-xe-tphcm-di-tan-lam-di-linh",
+  from: "TP.HCM",
+  to: "Tân Lâm, Di Linh",
+  title: "Thuê xe TP.HCM đi Tân Lâm Di Linh",
+  description:
+    "Xe riêng từ TP.HCM đi Tân Lâm với tài xế riêng. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Tân Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-bao-thuan",
+  path: "thue-xe-tphcm-di-bao-thuan-di-linh",
+  from: "TP.HCM",
+  to: "Bảo Thuận, Di Linh",
+  title: "Thuê xe TP.HCM đi Bảo Thuận Di Linh",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Bảo Thuận cho gia đình, khách công tác hoặc khách về quê tại Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Bảo Thuận",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-hoa-nam",
+  path: "thue-xe-tphcm-di-hoa-nam-di-linh",
+  from: "TP.HCM",
+  to: "Hòa Nam, Di Linh",
+  title: "Thuê xe TP.HCM đi Hòa Nam Di Linh",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Hòa Nam Di Linh. Xe có tài xế riêng, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Di Linh → Hòa Nam",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tphcm-di-thi-tran-di-linh",
+  path: "thue-xe-tphcm-di-thi-tran-di-linh",
+  from: "TP.HCM",
+  to: "Thị trấn Di Linh",
+  title: "Thuê xe TP.HCM đi thị trấn Di Linh",
+  description:
+    "Xe riêng từ TP.HCM đi thị trấn Di Linh với tài xế chuyên nghiệp. Phù hợp khách công tác, khách về quê hoặc khách du lịch.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Thị trấn Di Linh",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-nam-ban-lam-ha",
+  path: "thue-xe-tphcm-di-nam-ban-lam-ha",
+  from: "TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Nam Ban Lâm Hà",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Nam Ban với xe riêng có tài xế. Phù hợp khách nghỉ dưỡng, về quê, công tác hoặc tham quan khu vực Lâm Hà.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tphcm-di-me-linh-lam-ha",
+  path: "thue-xe-tphcm-di-me-linh-lam-ha",
+  from: "TP.HCM",
+  to: "Mê Linh, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Mê Linh Lâm Hà",
+  description:
+    "Xe riêng từ TP.HCM đi Mê Linh với tài xế chuyên nghiệp. Đưa đón tận nơi đến các farm cà phê, homestay và khu nghỉ dưỡng nổi tiếng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Nam Ban → Mê Linh",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-phu-son-lam-ha",
+  path: "thue-xe-tphcm-di-phu-son-lam-ha",
+  from: "TP.HCM",
+  to: "Phú Sơn, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Phú Sơn Lâm Hà",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Phú Sơn với lịch trình linh hoạt, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Phú Sơn",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-dong-thanh-lam-ha",
+  path: "thue-xe-tphcm-di-dong-thanh-lam-ha",
+  from: "TP.HCM",
+  to: "Đông Thanh, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Đông Thanh Lâm Hà",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đông Thanh dành cho khách công tác, về quê hoặc thăm người thân tại Lâm Hà.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đông Thanh",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-gia-lam-lam-ha",
+  path: "thue-xe-tphcm-di-gia-lam-lam-ha",
+  from: "TP.HCM",
+  to: "Gia Lâm, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Gia Lâm Lâm Hà",
+  description:
+    "Xe riêng từ TP.HCM đi Gia Lâm với tài xế riêng. Phù hợp khách công tác, khách về quê hoặc du lịch dài ngày.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Gia Lâm",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-nam-ha-lam-ha",
+  path: "thue-xe-tphcm-di-nam-ha-lam-ha",
+  from: "TP.HCM",
+  to: "Nam Hà, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Nam Hà Lâm Hà",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Nam Hà với xe riêng đưa đón tận nơi. Không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Nam Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-phuc-tho-lam-ha",
+  path: "thue-xe-tphcm-di-phuc-tho-lam-ha",
+  from: "TP.HCM",
+  to: "Phúc Thọ, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Phúc Thọ Lâm Hà",
+  description:
+    "Xe riêng từ TP.HCM đi Phúc Thọ dành cho khách công tác, khách về quê hoặc khách du lịch khám phá Lâm Hà.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Phúc Thọ",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-tan-ha-lam-ha",
+  path: "thue-xe-tphcm-di-tan-ha-lam-ha",
+  from: "TP.HCM",
+  to: "Tân Hà, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Tân Hà Lâm Hà",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Tân Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Tân Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-thi-tran-dinh-van",
+  path: "thue-xe-tphcm-di-thi-tran-dinh-van",
+  from: "TP.HCM",
+  to: "Đinh Văn, Lâm Hà",
+  title: "Thuê xe TP.HCM đi thị trấn Đinh Văn",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi thị trấn Đinh Văn với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc thăm người thân.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đinh Văn",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-hoai-duc-lam-ha",
+  path: "thue-xe-tphcm-di-hoai-duc-lam-ha",
+  from: "TP.HCM",
+  to: "Hoài Đức, Lâm Hà",
+  title: "Thuê xe TP.HCM đi Hoài Đức Lâm Hà",
+  description:
+    "Xe riêng từ TP.HCM đi Hoài Đức với tài xế riêng. Đưa đón tận nơi và phục vụ khách hàng 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Hoài Đức",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-langbiang",
+  path: "thue-xe-tphcm-di-langbiang",
+  from: "TP.HCM",
+  to: "LangBiang, Lạc Dương",
+  title: "Thuê xe TP.HCM đi LangBiang, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi LangBiang với xe riêng đưa đón tận nơi. Phù hợp khách du lịch, trekking, săn mây và khám phá cao nguyên Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Đà Lạt → LangBiang",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-lat",
+  path: "thue-xe-tphcm-di-lat-lac-duong",
+  from: "TP.HCM",
+  to: "Lát, Lạc Dương",
+  title: "Thuê xe TP.HCM đi Lát Lạc Dương",
+  description:
+    "Xe riêng từ TP.HCM đi Lát với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phù hợp khách du lịch hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Lát",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-da-sar",
+  path: "thue-xe-tphcm-di-da-sar",
+  from: "TP.HCM",
+  to: "Đạ Sar, Lạc Dương",
+  title: "Thuê xe TP.HCM đi Đạ Sar Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đạ Sar phục vụ khách du lịch, công tác hoặc nghỉ dưỡng tại khu vực ngoại ô Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Đạ Sar",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-da-nhim",
+  path: "thue-xe-tphcm-di-da-nhim",
+  from: "TP.HCM",
+  to: "Đạ Nhim, Lạc Dương",
+  title: "Thuê xe TP.HCM đi Đạ Nhim",
+  description:
+    "Xe riêng từ TP.HCM đi Đạ Nhim phù hợp khách công tác, kỹ sư dự án hoặc khách du lịch khám phá vùng núi Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Đạ Nhim",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-da-chais",
+  path: "thue-xe-tphcm-di-da-chais",
+  from: "TP.HCM",
+  to: "Đạ Chais, Lạc Dương",
+  title: "Thuê xe TP.HCM đi Đạ Chais",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Đạ Chais với tài xế riêng. Đưa đón tận nơi và phục vụ khách hàng 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Đạ Chais",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-dung-kno",
+  path: "thue-xe-tphcm-di-dung-kno",
+  from: "TP.HCM",
+  to: "Đưng K'Nớ, Lạc Dương",
+  title: "Thuê xe TP.HCM đi Đưng K'Nớ",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đưng K'Nớ dành cho khách công tác, khảo sát dự án hoặc khám phá thiên nhiên Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Đưng K'Nớ",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "tphcm-di-suoi-vang",
+  path: "thue-xe-tphcm-di-suoi-vang",
+  from: "TP.HCM",
+  to: "Suối Vàng, Lạc Dương",
+  title: "Thuê xe TP.HCM đi Suối Vàng",
+  description:
+    "Xe riêng từ TP.HCM đi Suối Vàng phù hợp khách du lịch, cắm trại, săn mây và nghỉ dưỡng gần Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Suối Vàng",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-ho-dankia",
+  path: "thue-xe-tphcm-di-ho-dankia",
+  from: "TP.HCM",
+  to: "Hồ Đan Kia",
+  title: "Thuê xe TP.HCM đi Hồ Đan Kia",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Hồ Đan Kia với xe riêng đưa đón tận nơi. Phù hợp khách nghỉ dưỡng và du lịch sinh thái.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Hồ Đan Kia",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-khu-du-lich-langbiang",
+  path: "thue-xe-tphcm-di-khu-du-lich-langbiang",
+  from: "TP.HCM",
+  to: "Khu du lịch LangBiang",
+  title: "Thuê xe TP.HCM đi khu du lịch LangBiang",
+  description:
+    "Xe riêng từ TP.HCM đi khu du lịch LangBiang dành cho gia đình, nhóm bạn và khách du lịch muốn khám phá biểu tượng của Đà Lạt.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → LangBiang",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-lac-duong-thi-tran",
+  path: "thue-xe-tphcm-di-thi-tran-lac-duong",
+  from: "TP.HCM",
+  to: "Thị trấn Lạc Dương",
+  title: "Thuê xe TP.HCM đi thị trấn Lạc Dương",
+  description:
+    "Thuê xe riêng từ TP.HCM đi thị trấn Lạc Dương với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tphcm-di-ro-men",
+  path: "thue-xe-tphcm-di-ro-men",
+  from: "TP.HCM",
+  to: "Rô Men, Đam Rông",
+  title: "Thuê xe TP.HCM đi Rô Men Đam Rông",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Rô Men với xe riêng có tài xế. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực Đam Rông.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông → Rô Men",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-da-ronsal",
+  path: "thue-xe-tphcm-di-da-rsal",
+  from: "TP.HCM",
+  to: "Đạ Rsal, Đam Rông",
+  title: "Thuê xe TP.HCM đi Đạ Rsal Đam Rông",
+  description:
+    "Xe riêng từ TP.HCM đi Đạ Rsal với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông → Đạ Rsal",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-da-mrong",
+  path: "thue-xe-tphcm-di-da-mrong",
+  from: "TP.HCM",
+  to: "Đạ M'Rông, Đam Rông",
+  title: "Thuê xe TP.HCM đi Đạ M'Rông",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Đạ M'Rông dành cho khách công tác, khảo sát dự án hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông → Đạ M'Rông",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "tphcm-di-da-k-nang",
+  path: "thue-xe-tphcm-di-da-k-nang",
+  from: "TP.HCM",
+  to: "Đạ K'Nàng, Đam Rông",
+  title: "Thuê xe TP.HCM đi Đạ K'Nàng",
+  description:
+    "Xe riêng từ TP.HCM đi Đạ K'Nàng với lịch trình linh hoạt, phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông → Đạ K'Nàng",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "tphcm-di-phi-lieng",
+  path: "thue-xe-tphcm-di-phi-lieng",
+  from: "TP.HCM",
+  to: "Phi Liêng, Đam Rông",
+  title: "Thuê xe TP.HCM đi Phi Liêng Đam Rông",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Phi Liêng. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Phi Liêng",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-lieng-srong",
+  path: "thue-xe-tphcm-di-lieng-srong",
+  from: "TP.HCM",
+  to: "Liêng Srônh, Đam Rông",
+  title: "Thuê xe TP.HCM đi Liêng Srônh",
+  description:
+    "Xe riêng từ TP.HCM đi Liêng Srônh phù hợp khách công tác, về quê hoặc làm việc tại khu vực Đam Rông.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông → Liêng Srônh",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "tphcm-di-dam-rong-thi-tran",
+  path: "thue-xe-tphcm-di-trung-tam-dam-rong",
+  from: "TP.HCM",
+  to: "Trung tâm Đam Rông",
+  title: "Thuê xe TP.HCM đi trung tâm Đam Rông",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Đam Rông với tài xế chuyên nghiệp. Đưa đón tận nơi và chủ động lịch trình.",
+  routeText:
+    "TP.HCM → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "tphcm-di-ma-da-gui",
+  path: "thue-xe-tphcm-di-madagui",
+  from: "TP.HCM",
+  to: "Ma Đa Guôi, Đạ Huoai",
+  title: "Thuê xe TP.HCM đi Ma Đa Guôi",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Ma Đa Guôi với xe riêng có tài xế. Phù hợp khách du lịch, nghỉ dưỡng hoặc khám phá rừng Madagui nổi tiếng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Madagui",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-da-mri",
+  path: "thue-xe-tphcm-di-da-mri",
+  from: "TP.HCM",
+  to: "Đạ M'Ri, Đạ Huoai",
+  title: "Thuê xe TP.HCM đi Đạ M'Ri",
+  description:
+    "Xe riêng từ TP.HCM đi Đạ M'Ri với tài xế chuyên nghiệp. Đưa đón tận nơi, phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ M'Ri",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-phuoc-cat",
+  path: "thue-xe-tphcm-di-phuoc-cat",
+  from: "TP.HCM",
+  to: "Phước Cát, Đạ Huoai",
+  title: "Thuê xe TP.HCM đi Phước Cát",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Phước Cát với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Phước Cát",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-doan-ket-da-huoai",
+  path: "thue-xe-tphcm-di-doan-ket-da-huoai",
+  from: "TP.HCM",
+  to: "Đoàn Kết, Đạ Huoai",
+  title: "Thuê xe TP.HCM đi Đoàn Kết Đạ Huoai",
+  description:
+    "Xe riêng từ TP.HCM đi Đoàn Kết phục vụ khách công tác, về quê hoặc thăm người thân tại Lâm Đồng.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đoàn Kết",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-ha-lam-da-huoai",
+  path: "thue-xe-tphcm-di-ha-lam-da-huoai",
+  from: "TP.HCM",
+  to: "Hà Lâm, Đạ Huoai",
+  title: "Thuê xe TP.HCM đi Hà Lâm Đạ Huoai",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Hà Lâm với tài xế riêng. Chủ động lịch trình và thời gian khởi hành.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Hà Lâm",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-da-huoai",
+  path: "thue-xe-tphcm-di-trung-tam-da-huoai",
+  from: "TP.HCM",
+  to: "Trung tâm Đạ Huoai",
+  title: "Thuê xe TP.HCM đi trung tâm Đạ Huoai",
+  description:
+    "Xe riêng từ TP.HCM đi Đạ Huoai với tài xế chuyên nghiệp. Phù hợp khách công tác, du lịch hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-an-nhon-da-teh",
+  path: "thue-xe-tphcm-di-an-nhon-da-teh",
+  from: "TP.HCM",
+  to: "An Nhơn, Đạ Tẻh",
+  title: "Thuê xe TP.HCM đi An Nhơn Đạ Tẻh",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi An Nhơn với xe riêng đưa đón tận nơi. Phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Tẻh → An Nhơn",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-my-duc-da-teh",
+  path: "thue-xe-tphcm-di-my-duc-da-teh",
+  from: "TP.HCM",
+  to: "Mỹ Đức, Đạ Tẻh",
+  title: "Thuê xe TP.HCM đi Mỹ Đức Đạ Tẻh",
+  description:
+    "Xe riêng từ TP.HCM đi Mỹ Đức Đạ Tẻh với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Tẻh → Mỹ Đức",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-quoc-oai-da-teh",
+  path: "thue-xe-tphcm-di-quoc-oai-da-teh",
+  from: "TP.HCM",
+  to: "Quốc Oai, Đạ Tẻh",
+  title: "Thuê xe TP.HCM đi Quốc Oai Đạ Tẻh",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Quốc Oai với tài xế chuyên nghiệp. Phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Tẻh → Quốc Oai",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-da-teh",
+  path: "thue-xe-tphcm-di-trung-tam-da-teh",
+  from: "TP.HCM",
+  to: "Trung tâm Đạ Tẻh",
+  title: "Thuê xe TP.HCM đi trung tâm Đạ Tẻh",
+  description:
+    "Xe riêng từ TP.HCM đi Đạ Tẻh với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Madagui → Đạ Tẻh",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-nam-cat-tien",
+  path: "thue-xe-tphcm-di-nam-cat-tien",
+  from: "TP.HCM",
+  to: "Nam Cát Tiên",
+  title: "Thuê xe TP.HCM đi Nam Cát Tiên, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Nam Cát Tiên với xe riêng đưa đón tận nơi. Phù hợp khách du lịch sinh thái, nghỉ dưỡng hoặc khám phá Vườn Quốc gia Cát Tiên.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Nam Cát Tiên",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-phuoc-cat-2",
+  path: "thue-xe-tphcm-di-phuoc-cat-2",
+  from: "TP.HCM",
+  to: "Phước Cát",
+  title: "Thuê xe TP.HCM đi Phước Cát",
+  description:
+    "Xe riêng từ TP.HCM đi Phước Cát với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Phước Cát",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "tphcm-di-duc-pho-cat-tien",
+  path: "thue-xe-tphcm-di-duc-pho-cat-tien",
+  from: "TP.HCM",
+  to: "Đức Phổ, Cát Tiên",
+  title: "Thuê xe TP.HCM đi Đức Phổ Cát Tiên",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đức Phổ dành cho khách công tác, về quê hoặc thăm người thân tại khu vực Cát Tiên.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên → Đức Phổ",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-gia-vien-cat-tien",
+  path: "thue-xe-tphcm-di-gia-vien-cat-tien",
+  from: "TP.HCM",
+  to: "Gia Viễn, Cát Tiên",
+  title: "Thuê xe TP.HCM đi Gia Viễn Cát Tiên",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Gia Viễn với lịch trình linh hoạt, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên → Gia Viễn",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-quang-ngai-cat-tien",
+  path: "thue-xe-tphcm-di-quang-ngai-cat-tien",
+  from: "TP.HCM",
+  to: "Quảng Ngãi, Cát Tiên",
+  title: "Thuê xe TP.HCM đi Quảng Ngãi Cát Tiên",
+  description:
+    "Xe riêng từ TP.HCM đi Quảng Ngãi, Cát Tiên với tài xế riêng. Phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên → Quảng Ngãi",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-tien-hoang-cat-tien",
+  path: "thue-xe-tphcm-di-tien-hoang-cat-tien",
+  from: "TP.HCM",
+  to: "Tiên Hoàng, Cát Tiên",
+  title: "Thuê xe TP.HCM đi Tiên Hoàng Cát Tiên",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Tiên Hoàng với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên → Tiên Hoàng",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tphcm-di-dong-nai-thuong",
+  path: "thue-xe-tphcm-di-dong-nai-thuong",
+  from: "TP.HCM",
+  to: "Đồng Nai Thượng, Cát Tiên",
+  title: "Thuê xe TP.HCM đi Đồng Nai Thượng",
+  description:
+    "Xe riêng từ TP.HCM đi Đồng Nai Thượng dành cho khách du lịch sinh thái, công tác hoặc khảo sát dự án.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên → Đồng Nai Thượng",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "tphcm-di-cat-tien-trung-tam",
+  path: "thue-xe-tphcm-di-trung-tam-cat-tien",
+  from: "TP.HCM",
+  to: "Trung tâm Cát Tiên",
+  title: "Thuê xe TP.HCM đi trung tâm Cát Tiên",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi trung tâm Cát Tiên với xe riêng có tài xế. Phù hợp khách công tác, du lịch hoặc về quê.",
+  routeText:
+    "TP.HCM → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-1-di-bao-lam",
+  path: "thue-xe-tu-quan-1-di-bao-lam",
+  from: "Quận 1, TP.HCM",
+  to: "Bảo Lâm, Lâm Đồng",
+  title: "Thuê xe từ Quận 1 đi Bảo Lâm, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Bảo Lâm với xe riêng đưa đón tận nơi. Phù hợp khách công tác, về quê hoặc tham quan vùng chè và cà phê nổi tiếng của Lâm Đồng.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-1-di-loc-thang",
+  path: "thue-xe-tu-quan-1-di-loc-thang",
+  from: "Quận 1, TP.HCM",
+  to: "Lộc Thắng, Bảo Lâm",
+  title: "Thuê xe từ Quận 1 đi Lộc Thắng Bảo Lâm",
+  description:
+    "Xe riêng từ Quận 1 đi Lộc Thắng với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Lộc Thắng",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-1-di-loc-duc",
+  path: "thue-xe-tu-quan-1-di-loc-duc",
+  from: "Quận 1, TP.HCM",
+  to: "Lộc Đức, Bảo Lâm",
+  title: "Thuê xe từ Quận 1 đi Lộc Đức Bảo Lâm",
+  description:
+    "Thuê xe riêng từ Quận 1 đi Lộc Đức phù hợp khách công tác, khách về quê hoặc làm việc tại khu vực Bảo Lâm.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Bảo Lâm → Lộc Đức",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "quan-1-di-loc-thanh",
+  path: "thue-xe-tu-quan-1-di-loc-thanh",
+  from: "Quận 1, TP.HCM",
+  to: "Lộc Thành, Bảo Lâm",
+  title: "Thuê xe từ Quận 1 đi Lộc Thành Bảo Lâm",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Lộc Thành với lịch trình linh hoạt, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Bảo Lâm → Lộc Thành",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "quan-1-di-da-huoai",
+  path: "thue-xe-tu-quan-1-di-da-huoai",
+  from: "Quận 1, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 1 đi Đạ Huoai",
+  description:
+    "Xe riêng từ Quận 1 đi Đạ Huoai dành cho khách công tác, về quê hoặc du lịch khu vực Madagui và phía Nam Lâm Đồng.",
+  routeText:
+    "Quận 1 → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-1-di-da-teh",
+  path: "thue-xe-tu-quan-1-di-da-teh",
+  from: "Quận 1, TP.HCM",
+  to: "Đạ Tẻh",
+  title: "Thuê xe từ Quận 1 đi Đạ Tẻh",
+  description:
+    "Thuê xe riêng từ Quận 1 đi Đạ Tẻh với tài xế chuyên nghiệp. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Quận 1 → Dầu Giây → Madagui → Đạ Tẻh",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "quan-1-di-cat-tien",
+  path: "thue-xe-tu-quan-1-di-cat-tien",
+  from: "Quận 1, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 1 đi Cát Tiên",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Cát Tiên phục vụ khách du lịch sinh thái, khám phá Vườn Quốc Gia Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Quận 1 → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-1-di-dam-rong",
+  path: "thue-xe-tu-quan-1-di-dam-rong",
+  from: "Quận 1, TP.HCM",
+  to: "Đam Rông",
+  title: "Thuê xe từ Quận 1 đi Đam Rông",
+  description:
+    "Xe riêng từ Quận 1 đi Đam Rông với tài xế riêng. Phù hợp khách công tác, khảo sát dự án hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 1 → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "quan-1-di-lat-lac-duong",
+  path: "thue-xe-tu-quan-1-di-lat-lac-duong",
+  from: "Quận 1, TP.HCM",
+  to: "Lát, Lạc Dương",
+  title: "Thuê xe từ Quận 1 đi Lát Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Lát với xe riêng đưa đón tận nơi. Phù hợp khách du lịch, nghỉ dưỡng và khám phá vùng ven Đà Lạt.",
+  routeText:
+    "Quận 1 → Dầu Giây → Đà Lạt → Lát",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-1-di-da-sar",
+  path: "thue-xe-tu-quan-1-di-da-sar",
+  from: "Quận 1, TP.HCM",
+  to: "Đạ Sar, Lạc Dương",
+  title: "Thuê xe từ Quận 1 đi Đạ Sar",
+  description:
+    "Thuê xe riêng từ Quận 1 đi Đạ Sar với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "Quận 1 → Dầu Giây → Đà Lạt → Đạ Sar",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-bao-loc",
+  path: "thue-xe-tu-quan-3-di-bao-loc",
+  from: "Quận 3, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 3 đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc tham quan các đồi chè và thác nước nổi tiếng.",
+  routeText:
+    "Quận 3 → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-3-di-di-linh",
+  path: "thue-xe-tu-quan-3-di-di-linh",
+  from: "Quận 3, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 3 đi Di Linh",
+  description:
+    "Xe riêng từ Quận 3 đi Di Linh dành cho khách về quê, công tác hoặc làm việc tại khu vực cao nguyên Lâm Đồng.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-3-di-duc-trong",
+  path: "thue-xe-tu-quan-3-di-duc-trong",
+  from: "Quận 3, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 3 đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Đức Trọng. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-3-di-lien-nghia",
+  path: "thue-xe-tu-quan-3-di-lien-nghia",
+  from: "Quận 3, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Quận 3 đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Quận 3 đi Liên Nghĩa với tài xế chuyên nghiệp. Phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-3-di-lam-ha",
+  path: "thue-xe-tu-quan-3-di-lam-ha",
+  from: "Quận 3, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 3 đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Quận 3 đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-3-di-don-duong",
+  path: "thue-xe-tu-quan-3-di-don-duong",
+  from: "Quận 3, TP.HCM",
+  to: "Đơn Dương",
+  title: "Thuê xe từ Quận 3 đi Đơn Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Đơn Dương dành cho khách công tác, kỹ sư nông nghiệp hoặc khách về thăm người thân.",
+  routeText:
+    "Quận 3 → Dầu Giây → Đức Trọng → Đơn Dương",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-3-di-bao-lam",
+  path: "thue-xe-tu-quan-3-di-bao-lam",
+  from: "Quận 3, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 3 đi Bảo Lâm",
+  description:
+    "Xe riêng từ Quận 3 đi Bảo Lâm phục vụ khách công tác, về quê hoặc tham quan vùng chè và cà phê nổi tiếng của Lâm Đồng.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-3-di-da-huoai",
+  path: "thue-xe-tu-quan-3-di-da-huoai",
+  from: "Quận 3, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 3 đi Đạ Huoai",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc du lịch.",
+  routeText:
+    "Quận 3 → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-3-di-da-teh",
+  path: "thue-xe-tu-quan-3-di-da-teh",
+  from: "Quận 3, TP.HCM",
+  to: "Đạ Tẻh",
+  title: "Thuê xe từ Quận 3 đi Đạ Tẻh",
+  description:
+    "Xe riêng từ Quận 3 đi Đạ Tẻh với tài xế chuyên nghiệp. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Quận 3 → Dầu Giây → Madagui → Đạ Tẻh",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "quan-3-di-cat-tien",
+  path: "thue-xe-tu-quan-3-di-cat-tien",
+  from: "Quận 3, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 3 đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Quận 3 đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Vườn Quốc gia Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Quận 3 → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-3-di-dam-rong",
+  path: "thue-xe-tu-quan-3-di-dam-rong",
+  from: "Quận 3, TP.HCM",
+  to: "Đam Rông",
+  title: "Thuê xe từ Quận 3 đi Đam Rông, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Đam Rông với xe riêng đưa đón tận nơi. Phù hợp khách công tác, khảo sát dự án hoặc về quê tại khu vực phía bắc Lâm Đồng.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Lâm Hà → Đam Rông",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "quan-3-di-lac-duong",
+  path: "thue-xe-tu-quan-3-di-lac-duong",
+  from: "Quận 3, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 3 đi Lạc Dương",
+  description:
+    "Xe riêng từ Quận 3 đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang và khu vực ngoại ô Đà Lạt.",
+  routeText:
+    "Quận 3 → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-langbiang",
+  path: "thue-xe-tu-quan-3-di-langbiang",
+  from: "Quận 3, TP.HCM",
+  to: "LangBiang",
+  title: "Thuê xe từ Quận 3 đi LangBiang",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi LangBiang với tài xế chuyên nghiệp. Phù hợp khách du lịch, trekking và săn mây.",
+  routeText:
+    "Quận 3 → Dầu Giây → Đà Lạt → LangBiang",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-nam-ban",
+  path: "thue-xe-tu-quan-3-di-nam-ban",
+  from: "Quận 3, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Quận 3 đi Nam Ban",
+  description:
+    "Xe riêng từ Quận 3 đi Nam Ban với lịch trình linh hoạt. Phù hợp khách nghỉ dưỡng farmstay, homestay hoặc về quê.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-3-di-me-linh",
+  path: "thue-xe-tu-quan-3-di-me-linh",
+  from: "Quận 3, TP.HCM",
+  to: "Mê Linh, Lâm Hà",
+  title: "Thuê xe từ Quận 3 đi Mê Linh",
+  description:
+    "Thuê xe riêng từ Quận 3 đi Mê Linh với tài xế riêng. Đưa đón tận nơi đến các farm cà phê và homestay nổi tiếng.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Nam Ban → Mê Linh",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-3-di-loc-thang",
+  path: "thue-xe-tu-quan-3-di-loc-thang",
+  from: "Quận 3, TP.HCM",
+  to: "Lộc Thắng, Bảo Lâm",
+  title: "Thuê xe từ Quận 3 đi Lộc Thắng Bảo Lâm",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Lộc Thắng với tài xế chuyên nghiệp. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Lộc Thắng",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-3-di-loc-duc",
+  path: "thue-xe-tu-quan-3-di-loc-duc",
+  from: "Quận 3, TP.HCM",
+  to: "Lộc Đức, Bảo Lâm",
+  title: "Thuê xe từ Quận 3 đi Lộc Đức",
+  description:
+    "Xe riêng từ Quận 3 đi Lộc Đức phục vụ khách công tác, về quê hoặc làm việc tại khu vực Bảo Lâm.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Bảo Lâm → Lộc Đức",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "quan-3-di-loc-thanh",
+  path: "thue-xe-tu-quan-3-di-loc-thanh",
+  from: "Quận 3, TP.HCM",
+  to: "Lộc Thành, Bảo Lâm",
+  title: "Thuê xe từ Quận 3 đi Lộc Thành",
+  description:
+    "Thuê xe riêng từ Quận 3 đi Lộc Thành với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Quận 3 → Dầu Giây → Bảo Lộc → Bảo Lâm → Lộc Thành",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "quan-3-di-da-sar",
+  path: "thue-xe-tu-quan-3-di-da-sar",
+  from: "Quận 3, TP.HCM",
+  to: "Đạ Sar, Lạc Dương",
+  title: "Thuê xe từ Quận 3 đi Đạ Sar",
+  description:
+    "Xe riêng từ Quận 3 đi Đạ Sar dành cho khách du lịch, nghỉ dưỡng hoặc công tác tại khu vực Lạc Dương.",
+  routeText:
+    "Quận 3 → Dầu Giây → Đà Lạt → Đạ Sar",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-lat-lac-duong",
+  path: "thue-xe-tu-quan-3-di-lat-lac-duong",
+  from: "Quận 3, TP.HCM",
+  to: "Lát, Lạc Dương",
+  title: "Thuê xe từ Quận 3 đi Lát Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Lát với tài xế riêng. Đưa đón tận nơi và phù hợp khách du lịch hoặc về quê.",
+  routeText:
+    "Quận 3 → Dầu Giây → Đà Lạt → Lát",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "binh-thanh-di-bao-loc",
+  path: "thue-xe-tu-binh-thanh-di-bao-loc",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Bình Thạnh đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc tham quan các đồi chè nổi tiếng của Lâm Đồng.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "binh-thanh-di-di-linh",
+  path: "thue-xe-tu-binh-thanh-di-di-linh",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Bình Thạnh đi Di Linh",
+  description:
+    "Xe riêng từ Bình Thạnh đi Di Linh dành cho khách về quê, công tác hoặc làm việc tại khu vực cao nguyên Lâm Đồng.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-duc-trong",
+  path: "thue-xe-tu-binh-thanh-di-duc-trong",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Bình Thạnh đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Đức Trọng. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-thanh-di-lien-nghia",
+  path: "thue-xe-tu-binh-thanh-di-lien-nghia",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Bình Thạnh đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Bình Thạnh đi Liên Nghĩa với tài xế chuyên nghiệp. Phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-thanh-di-lam-ha",
+  path: "thue-xe-tu-binh-thanh-di-lam-ha",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Bình Thạnh đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Bình Thạnh đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-nam-ban",
+  path: "thue-xe-tu-binh-thanh-di-nam-ban",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Bình Thạnh đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Nam Ban dành cho khách nghỉ dưỡng, farmstay, homestay hoặc về quê.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "binh-thanh-di-don-duong",
+  path: "thue-xe-tu-binh-thanh-di-don-duong",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Đơn Dương",
+  title: "Thuê xe từ Bình Thạnh đi Đơn Dương",
+  description:
+    "Xe riêng từ Bình Thạnh đi Đơn Dương phục vụ khách công tác, kỹ sư nông nghiệp hoặc khách về thăm người thân.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Đức Trọng → Đơn Dương",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "binh-thanh-di-bao-lam",
+  path: "thue-xe-tu-binh-thanh-di-bao-lam",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Bình Thạnh đi Bảo Lâm",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Bảo Lâm. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-da-huoai",
+  path: "thue-xe-tu-binh-thanh-di-da-huoai",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Bình Thạnh đi Đạ Huoai",
+  description:
+    "Xe riêng từ Bình Thạnh đi Đạ Huoai với tài xế riêng. Phù hợp khách công tác, du lịch hoặc về quê.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "binh-thanh-di-cat-tien",
+  path: "thue-xe-tu-binh-thanh-di-cat-tien",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Bình Thạnh đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Bình Thạnh đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Bình Thạnh → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "go-vap-di-bao-loc",
+  path: "thue-xe-tu-go-vap-di-bao-loc",
+  from: "Gò Vấp, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Gò Vấp đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "go-vap-di-di-linh",
+  path: "thue-xe-tu-go-vap-di-di-linh",
+  from: "Gò Vấp, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Gò Vấp đi Di Linh",
+  description:
+    "Xe riêng từ Gò Vấp đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "go-vap-di-duc-trong",
+  path: "thue-xe-tu-go-vap-di-duc-trong",
+  from: "Gò Vấp, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Gò Vấp đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Đức Trọng phù hợp khách công tác, khách về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "go-vap-di-lien-nghia",
+  path: "thue-xe-tu-go-vap-di-lien-nghia",
+  from: "Gò Vấp, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Gò Vấp đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Gò Vấp đi Liên Nghĩa với lịch trình linh hoạt. Đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "go-vap-di-lam-ha",
+  path: "thue-xe-tu-go-vap-di-lam-ha",
+  from: "Gò Vấp, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Gò Vấp đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Gò Vấp đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "go-vap-di-nam-ban",
+  path: "thue-xe-tu-go-vap-di-nam-ban",
+  from: "Gò Vấp, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Gò Vấp đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Nam Ban dành cho khách nghỉ dưỡng, farmstay, homestay hoặc về quê.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "go-vap-di-bao-lam",
+  path: "thue-xe-tu-go-vap-di-bao-lam",
+  from: "Gò Vấp, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Gò Vấp đi Bảo Lâm",
+  description:
+    "Xe riêng từ Gò Vấp đi Bảo Lâm với tài xế riêng. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê Lâm Đồng.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "go-vap-di-lac-duong",
+  path: "thue-xe-tu-go-vap-di-lac-duong",
+  from: "Gò Vấp, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Gò Vấp đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Lạc Dương phù hợp khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "go-vap-di-da-huoai",
+  path: "thue-xe-tu-go-vap-di-da-huoai",
+  from: "Gò Vấp, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Gò Vấp đi Đạ Huoai",
+  description:
+    "Xe riêng từ Gò Vấp đi Đạ Huoai với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "go-vap-di-cat-tien",
+  path: "thue-xe-tu-go-vap-di-cat-tien",
+  from: "Gò Vấp, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Gò Vấp đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Gò Vấp đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tan-binh-di-bao-loc",
+  path: "thue-xe-tu-tan-binh-di-bao-loc",
+  from: "Tân Bình, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Tân Bình đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Tân Bình đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tan-binh-di-di-linh",
+  path: "thue-xe-tu-tan-binh-di-di-linh",
+  from: "Tân Bình, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Tân Bình đi Di Linh",
+  description:
+    "Xe riêng từ Tân Bình đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tan-binh-di-duc-trong",
+  path: "thue-xe-tu-tan-binh-di-duc-trong",
+  from: "Tân Bình, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Tân Bình đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Đức Trọng phù hợp khách công tác, khách về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tan-binh-di-lien-nghia",
+  path: "thue-xe-tu-tan-binh-di-lien-nghia",
+  from: "Tân Bình, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Tân Bình đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Tân Bình đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tan-binh-di-lam-ha",
+  path: "thue-xe-tu-tan-binh-di-lam-ha",
+  from: "Tân Bình, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Tân Bình đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Tân Bình đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tan-binh-di-nam-ban",
+  path: "thue-xe-tu-tan-binh-di-nam-ban",
+  from: "Tân Bình, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Tân Bình đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tan-binh-di-bao-lam",
+  path: "thue-xe-tu-tan-binh-di-bao-lam",
+  from: "Tân Bình, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Tân Bình đi Bảo Lâm",
+  description:
+    "Xe riêng từ Tân Bình đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tan-binh-di-lac-duong",
+  path: "thue-xe-tu-tan-binh-di-lac-duong",
+  from: "Tân Bình, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Tân Bình đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tan-binh-di-da-huoai",
+  path: "thue-xe-tu-tan-binh-di-da-huoai",
+  from: "Tân Bình, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Tân Bình đi Đạ Huoai",
+  description:
+    "Xe riêng từ Tân Bình đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tan-binh-di-cat-tien",
+  path: "thue-xe-tu-tan-binh-di-cat-tien",
+  from: "Tân Bình, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Tân Bình đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Tân Bình đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Tân Bình → Trường Chinh → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "thu-duc-di-bao-loc",
+  path: "thue-xe-tu-thu-duc-di-bao-loc",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ TP Thủ Đức đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "thu-duc-di-di-linh",
+  path: "thue-xe-tu-thu-duc-di-di-linh",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ TP Thủ Đức đi Di Linh",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "thu-duc-di-duc-trong",
+  path: "thue-xe-tu-thu-duc-di-duc-trong",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ TP Thủ Đức đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Đức Trọng phù hợp khách công tác, khách về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "thu-duc-di-lien-nghia",
+  path: "thue-xe-tu-thu-duc-di-lien-nghia",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ TP Thủ Đức đi Liên Nghĩa",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "thu-duc-di-lam-ha",
+  path: "thue-xe-tu-thu-duc-di-lam-ha",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ TP Thủ Đức đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ TP Thủ Đức đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "thu-duc-di-nam-ban",
+  path: "thue-xe-tu-thu-duc-di-nam-ban",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ TP Thủ Đức đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thu-duc-di-bao-lam",
+  path: "thue-xe-tu-thu-duc-di-bao-lam",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ TP Thủ Đức đi Bảo Lâm",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "thu-duc-di-lac-duong",
+  path: "thue-xe-tu-thu-duc-di-lac-duong",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ TP Thủ Đức đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "thu-duc-di-da-huoai",
+  path: "thue-xe-tu-thu-duc-di-da-huoai",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ TP Thủ Đức đi Đạ Huoai",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "thu-duc-di-cat-tien",
+  path: "thue-xe-tu-thu-duc-di-cat-tien",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ TP Thủ Đức đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ TP Thủ Đức đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-7-di-bao-loc",
+  path: "thue-xe-tu-quan-7-di-bao-loc",
+  from: "Quận 7, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 7 đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-7-di-di-linh",
+  path: "thue-xe-tu-quan-7-di-di-linh",
+  from: "Quận 7, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 7 đi Di Linh",
+  description:
+    "Xe riêng từ Quận 7 đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-7-di-duc-trong",
+  path: "thue-xe-tu-quan-7-di-duc-trong",
+  from: "Quận 7, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 7 đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Đức Trọng phù hợp khách công tác, khách về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-7-di-lien-nghia",
+  path: "thue-xe-tu-quan-7-di-lien-nghia",
+  from: "Quận 7, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Quận 7 đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Quận 7 đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-7-di-lam-ha",
+  path: "thue-xe-tu-quan-7-di-lam-ha",
+  from: "Quận 7, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 7 đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Quận 7 đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-7-di-nam-ban",
+  path: "thue-xe-tu-quan-7-di-nam-ban",
+  from: "Quận 7, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Quận 7 đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-7-di-bao-lam",
+  path: "thue-xe-tu-quan-7-di-bao-lam",
+  from: "Quận 7, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 7 đi Bảo Lâm",
+  description:
+    "Xe riêng từ Quận 7 đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-7-di-lac-duong",
+  path: "thue-xe-tu-quan-7-di-lac-duong",
+  from: "Quận 7, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 7 đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-7-di-da-huoai",
+  path: "thue-xe-tu-quan-7-di-da-huoai",
+  from: "Quận 7, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 7 đi Đạ Huoai",
+  description:
+    "Xe riêng từ Quận 7 đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-7-di-cat-tien",
+  path: "thue-xe-tu-quan-7-di-cat-tien",
+  from: "Quận 7, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 7 đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Quận 7 đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-bao-loc",
+  path: "thue-xe-tu-phu-nhuan-di-bao-loc",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Phú Nhuận đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Phú Nhuận đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-di-linh",
+  path: "thue-xe-tu-phu-nhuan-di-di-linh",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Phú Nhuận đi Di Linh",
+  description:
+    "Xe riêng từ Phú Nhuận đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-duc-trong",
+  path: "thue-xe-tu-phu-nhuan-di-duc-trong",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Phú Nhuận đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "phu-nhuan-di-lam-ha",
+  path: "thue-xe-tu-phu-nhuan-di-lam-ha",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Phú Nhuận đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Phú Nhuận đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-nam-ban",
+  path: "thue-xe-tu-phu-nhuan-di-nam-ban",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Phú Nhuận đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "phu-nhuan-di-bao-lam",
+  path: "thue-xe-tu-phu-nhuan-di-bao-lam",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Phú Nhuận đi Bảo Lâm",
+  description:
+    "Xe riêng từ Phú Nhuận đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-lac-duong",
+  path: "thue-xe-tu-phu-nhuan-di-lac-duong",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Phú Nhuận đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "phu-nhuan-di-da-huoai",
+  path: "thue-xe-tu-phu-nhuan-di-da-huoai",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Phú Nhuận đi Đạ Huoai",
+  description:
+    "Xe riêng từ Phú Nhuận đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-cat-tien",
+  path: "thue-xe-tu-phu-nhuan-di-cat-tien",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Phú Nhuận đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Phú Nhuận đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "binh-tan-di-bao-loc",
+  path: "thue-xe-tu-binh-tan-di-bao-loc",
+  from: "Bình Tân, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Bình Tân đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Bình Tân đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "binh-tan-di-di-linh",
+  path: "thue-xe-tu-binh-tan-di-di-linh",
+  from: "Bình Tân, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Bình Tân đi Di Linh",
+  description:
+    "Xe riêng từ Bình Tân đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "binh-tan-di-duc-trong",
+  path: "thue-xe-tu-binh-tan-di-duc-trong",
+  from: "Bình Tân, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Bình Tân đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-tan-di-lam-ha",
+  path: "thue-xe-tu-binh-tan-di-lam-ha",
+  from: "Bình Tân, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Bình Tân đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Bình Tân đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "binh-tan-di-nam-ban",
+  path: "thue-xe-tu-binh-tan-di-nam-ban",
+  from: "Bình Tân, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Bình Tân đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "binh-tan-di-bao-lam",
+  path: "thue-xe-tu-binh-tan-di-bao-lam",
+  from: "Bình Tân, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Bình Tân đi Bảo Lâm",
+  description:
+    "Xe riêng từ Bình Tân đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "binh-tan-di-lac-duong",
+  path: "thue-xe-tu-binh-tan-di-lac-duong",
+  from: "Bình Tân, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Bình Tân đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "binh-tan-di-da-huoai",
+  path: "thue-xe-tu-binh-tan-di-da-huoai",
+  from: "Bình Tân, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Bình Tân đi Đạ Huoai",
+  description:
+    "Xe riêng từ Bình Tân đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "binh-tan-di-cat-tien",
+  path: "thue-xe-tu-binh-tan-di-cat-tien",
+  from: "Bình Tân, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Bình Tân đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Bình Tân đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tan-phu-di-bao-loc",
+  path: "thue-xe-tu-tan-phu-di-bao-loc",
+  from: "Tân Phú, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Tân Phú đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tan-phu-di-di-linh",
+  path: "thue-xe-tu-tan-phu-di-di-linh",
+  from: "Tân Phú, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Tân Phú đi Di Linh",
+  description:
+    "Xe riêng từ Tân Phú đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tan-phu-di-duc-trong",
+  path: "thue-xe-tu-tan-phu-di-duc-trong",
+  from: "Tân Phú, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Tân Phú đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tan-phu-di-lien-nghia",
+  path: "thue-xe-tu-tan-phu-di-lien-nghia",
+  from: "Tân Phú, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Tân Phú đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Tân Phú đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tan-phu-di-lam-ha",
+  path: "thue-xe-tu-tan-phu-di-lam-ha",
+  from: "Tân Phú, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Tân Phú đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Tân Phú đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tan-phu-di-nam-ban",
+  path: "thue-xe-tu-tan-phu-di-nam-ban",
+  from: "Tân Phú, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Tân Phú đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "tan-phu-di-bao-lam",
+  path: "thue-xe-tu-tan-phu-di-bao-lam",
+  from: "Tân Phú, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Tân Phú đi Bảo Lâm",
+  description:
+    "Xe riêng từ Tân Phú đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "tan-phu-di-lac-duong",
+  path: "thue-xe-tu-tan-phu-di-lac-duong",
+  from: "Tân Phú, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Tân Phú đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "tan-phu-di-da-huoai",
+  path: "thue-xe-tu-tan-phu-di-da-huoai",
+  from: "Tân Phú, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Tân Phú đi Đạ Huoai",
+  description:
+    "Xe riêng từ Tân Phú đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "tan-phu-di-cat-tien",
+  path: "thue-xe-tu-tan-phu-di-cat-tien",
+  from: "Tân Phú, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Tân Phú đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Tân Phú đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Tân Phú → Trường Chinh → Dầu Giây → Tân Phú Đồng Nai → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-10-di-bao-loc",
+  path: "thue-xe-tu-quan-10-di-bao-loc",
+  from: "Quận 10, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 10 đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 10 → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-10-di-di-linh",
+  path: "thue-xe-tu-quan-10-di-di-linh",
+  from: "Quận 10, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 10 đi Di Linh",
+  description:
+    "Xe riêng từ Quận 10 đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 10 → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-10-di-duc-trong",
+  path: "thue-xe-tu-quan-10-di-duc-trong",
+  from: "Quận 10, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 10 đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Quận 10 → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-10-di-lam-ha",
+  path: "thue-xe-tu-quan-10-di-lam-ha",
+  from: "Quận 10, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 10 đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Quận 10 đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 10 → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-10-di-bao-lam",
+  path: "thue-xe-tu-quan-10-di-bao-lam",
+  from: "Quận 10, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 10 đi Bảo Lâm",
+  description:
+    "Xe riêng từ Quận 10 đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè cà phê Lâm Đồng.",
+  routeText:
+    "Quận 10 → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-10-di-lac-duong",
+  path: "thue-xe-tu-quan-10-di-lac-duong",
+  from: "Quận 10, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 10 đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Quận 10 → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-10-di-da-huoai",
+  path: "thue-xe-tu-quan-10-di-da-huoai",
+  from: "Quận 10, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 10 đi Đạ Huoai",
+  description:
+    "Xe riêng từ Quận 10 đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 10 → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-10-di-cat-tien",
+  path: "thue-xe-tu-quan-10-di-cat-tien",
+  from: "Quận 10, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 10 đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Quận 10 đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Quận 10 → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-11-di-bao-loc",
+  path: "thue-xe-tu-quan-11-di-bao-loc",
+  from: "Quận 11, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 11 đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 11 đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 11 → Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-11-di-di-linh",
+  path: "thue-xe-tu-quan-11-di-di-linh",
+  from: "Quận 11, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 11 đi Di Linh",
+  description:
+    "Xe riêng từ Quận 11 đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-11-di-duc-trong",
+  path: "thue-xe-tu-quan-11-di-duc-trong",
+  from: "Quận 11, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 11 đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-11-di-lien-nghia",
+  path: "thue-xe-tu-quan-11-di-lien-nghia",
+  from: "Quận 11, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Quận 11 đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Quận 11 đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-11-di-lam-ha",
+  path: "thue-xe-tu-quan-11-di-lam-ha",
+  from: "Quận 11, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 11 đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Quận 11 đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-11-di-nam-ban",
+  path: "thue-xe-tu-quan-11-di-nam-ban",
+  from: "Quận 11, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Quận 11 đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-11-di-bao-lam",
+  path: "thue-xe-tu-quan-11-di-bao-lam",
+  from: "Quận 11, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 11 đi Bảo Lâm",
+  description:
+    "Xe riêng từ Quận 11 đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè và cà phê Lâm Đồng.",
+  routeText:
+    "Quận 11 → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-11-di-lac-duong",
+  path: "thue-xe-tu-quan-11-di-lac-duong",
+  from: "Quận 11, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 11 đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Quận 11 → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-11-di-da-huoai",
+  path: "thue-xe-tu-quan-11-di-da-huoai",
+  from: "Quận 11, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 11 đi Đạ Huoai",
+  description:
+    "Xe riêng từ Quận 11 đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 11 → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-11-di-cat-tien",
+  path: "thue-xe-tu-quan-11-di-cat-tien",
+  from: "Quận 11, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 11 đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Quận 11 đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Quận 11 → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "quan-12-di-bao-loc",
+  path: "thue-xe-tu-quan-12-di-bao-loc",
+  from: "Quận 12, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 12 đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 12 đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-12-di-di-linh",
+  path: "thue-xe-tu-quan-12-di-di-linh",
+  from: "Quận 12, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 12 đi Di Linh",
+  description:
+    "Xe riêng từ Quận 12 đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-12-di-duc-trong",
+  path: "thue-xe-tu-quan-12-di-duc-trong",
+  from: "Quận 12, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 12 đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-12-di-lien-nghia",
+  path: "thue-xe-tu-quan-12-di-lien-nghia",
+  from: "Quận 12, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Quận 12 đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Quận 12 đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "quan-12-di-lam-ha",
+  path: "thue-xe-tu-quan-12-di-lam-ha",
+  from: "Quận 12, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 12 đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Quận 12 đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "quan-12-di-nam-ban",
+  path: "thue-xe-tu-quan-12-di-nam-ban",
+  from: "Quận 12, TP.HCM",
+  to: "Nam Ban, Lâm Hà",
+  title: "Thuê xe từ Quận 12 đi Nam Ban",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Nam Ban phù hợp khách nghỉ dưỡng, farmstay, homestay hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Nam Ban",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "quan-12-di-bao-lam",
+  path: "thue-xe-tu-quan-12-di-bao-lam",
+  from: "Quận 12, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 12 đi Bảo Lâm",
+  description:
+    "Xe riêng từ Quận 12 đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè và cà phê Lâm Đồng.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-12-di-lac-duong",
+  path: "thue-xe-tu-quan-12-di-lac-duong",
+  from: "Quận 12, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 12 đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "quan-12-di-da-huoai",
+  path: "thue-xe-tu-quan-12-di-da-huoai",
+  from: "Quận 12, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 12 đi Đạ Huoai",
+  description:
+    "Xe riêng từ Quận 12 đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-12-di-cat-tien",
+  path: "thue-xe-tu-quan-12-di-cat-tien",
+  from: "Quận 12, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 12 đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Quận 12 đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-bao-loc",
+  path: "thue-xe-tu-binh-chanh-di-bao-loc",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Bình Chánh đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Bình Chánh đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Bình Chánh → Cao tốc TP.HCM - Long Thành → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "binh-chanh-di-di-linh",
+  path: "thue-xe-tu-binh-chanh-di-di-linh",
+  from: "Bình Chánh, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Bình Chánh đi Di Linh",
+  description:
+    "Xe riêng từ Bình Chánh đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-duc-trong",
+  path: "thue-xe-tu-binh-chanh-di-duc-trong",
+  from: "Bình Chánh, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Bình Chánh đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-chanh-di-lien-nghia",
+  path: "thue-xe-tu-binh-chanh-di-lien-nghia",
+  from: "Bình Chánh, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Bình Chánh đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Bình Chánh đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-chanh-di-lam-ha",
+  path: "thue-xe-tu-binh-chanh-di-lam-ha",
+  from: "Bình Chánh, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Bình Chánh đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Bình Chánh đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-bao-lam",
+  path: "thue-xe-tu-binh-chanh-di-bao-lam",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Bình Chánh đi Bảo Lâm",
+  description:
+    "Xe riêng từ Bình Chánh đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè và cà phê Lâm Đồng.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-lac-duong",
+  path: "thue-xe-tu-binh-chanh-di-lac-duong",
+  from: "Bình Chánh, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Bình Chánh đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "binh-chanh-di-da-huoai",
+  path: "thue-xe-tu-binh-chanh-di-da-huoai",
+  from: "Bình Chánh, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Bình Chánh đi Đạ Huoai",
+  description:
+    "Xe riêng từ Bình Chánh đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "binh-chanh-di-cat-tien",
+  path: "thue-xe-tu-binh-chanh-di-cat-tien",
+  from: "Bình Chánh, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Bình Chánh đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Bình Chánh đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-bao-loc",
+  path: "thue-xe-tu-hoc-mon-di-bao-loc",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Hóc Môn đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "hoc-mon-di-di-linh",
+  path: "thue-xe-tu-hoc-mon-di-di-linh",
+  from: "Hóc Môn, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Hóc Môn đi Di Linh",
+  description:
+    "Xe riêng từ Hóc Môn đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-duc-trong",
+  path: "thue-xe-tu-hoc-mon-di-duc-trong",
+  from: "Hóc Môn, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Hóc Môn đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "hoc-mon-di-lien-nghia",
+  path: "thue-xe-tu-hoc-mon-di-lien-nghia",
+  from: "Hóc Môn, TP.HCM",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Hóc Môn đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Hóc Môn đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi và phù hợp khách công tác hoặc về quê.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "hoc-mon-di-lam-ha",
+  path: "thue-xe-tu-hoc-mon-di-lam-ha",
+  from: "Hóc Môn, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Hóc Môn đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Hóc Môn đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-bao-lam",
+  path: "thue-xe-tu-hoc-mon-di-bao-lam",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Hóc Môn đi Bảo Lâm",
+  description:
+    "Xe riêng từ Hóc Môn đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè và cà phê Lâm Đồng.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-lac-duong",
+  path: "thue-xe-tu-hoc-mon-di-lac-duong",
+  from: "Hóc Môn, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Hóc Môn đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "hoc-mon-di-da-huoai",
+  path: "thue-xe-tu-hoc-mon-di-da-huoai",
+  from: "Hóc Môn, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Hóc Môn đi Đạ Huoai",
+  description:
+    "Xe riêng từ Hóc Môn đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "hoc-mon-di-cat-tien",
+  path: "thue-xe-tu-hoc-mon-di-cat-tien",
+  from: "Hóc Môn, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Hóc Môn đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Hóc Môn đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Hóc Môn → Quốc lộ 22 → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "cu-chi-di-bao-loc",
+  path: "thue-xe-tu-cu-chi-di-bao-loc",
+  from: "Củ Chi, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Củ Chi đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Bảo Lộc",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "cu-chi-di-di-linh",
+  path: "thue-xe-tu-cu-chi-di-di-linh",
+  from: "Củ Chi, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Củ Chi đi Di Linh",
+  description:
+    "Xe riêng từ Củ Chi đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "cu-chi-di-duc-trong",
+  path: "thue-xe-tu-cu-chi-di-duc-trong",
+  from: "Củ Chi, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Củ Chi đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "cu-chi-di-lam-ha",
+  path: "thue-xe-tu-cu-chi-di-lam-ha",
+  from: "Củ Chi, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Củ Chi đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Củ Chi đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "cu-chi-di-bao-lam",
+  path: "thue-xe-tu-cu-chi-di-bao-lam",
+  from: "Củ Chi, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Củ Chi đi Bảo Lâm",
+  description:
+    "Xe riêng từ Củ Chi đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè và cà phê Lâm Đồng.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "cu-chi-di-lac-duong",
+  path: "thue-xe-tu-cu-chi-di-lac-duong",
+  from: "Củ Chi, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Củ Chi đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "cu-chi-di-da-huoai",
+  path: "thue-xe-tu-cu-chi-di-da-huoai",
+  from: "Củ Chi, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Củ Chi đi Đạ Huoai",
+  description:
+    "Xe riêng từ Củ Chi đi Đạ Huoai với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "cu-chi-di-cat-tien",
+  path: "thue-xe-tu-cu-chi-di-cat-tien",
+  from: "Củ Chi, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Củ Chi đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Củ Chi đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "nha-be-di-bao-loc",
+  path: "thue-xe-tu-nha-be-di-bao-loc",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Nhà Bè đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Nhà Bè đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, nghỉ dưỡng hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Bảo Lộc",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "nha-be-di-di-linh",
+  path: "thue-xe-tu-nha-be-di-di-linh",
+  from: "Nhà Bè, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Nhà Bè đi Di Linh",
+  description:
+    "Xe riêng từ Nhà Bè đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "nha-be-di-duc-trong",
+  path: "thue-xe-tu-nha-be-di-duc-trong",
+  from: "Nhà Bè, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Nhà Bè đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "nha-be-di-lam-ha",
+  path: "thue-xe-tu-nha-be-di-lam-ha",
+  from: "Nhà Bè, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Nhà Bè đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Nhà Bè đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "nha-be-di-bao-lam",
+  path: "thue-xe-tu-nha-be-di-bao-lam",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Nhà Bè đi Bảo Lâm",
+  description:
+    "Xe riêng từ Nhà Bè đi Bảo Lâm với tài xế chuyên nghiệp. Phù hợp khách công tác, về quê hoặc làm việc tại vùng chè và cà phê Lâm Đồng.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "nha-be-di-lac-duong",
+  path: "thue-xe-tu-nha-be-di-lac-duong",
+  from: "Nhà Bè, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Nhà Bè đi Lạc Dương",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Lạc Dương dành cho khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "nha-be-di-cat-tien",
+  path: "thue-xe-tu-nha-be-di-cat-tien",
+  from: "Nhà Bè, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Nhà Bè đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Nhà Bè đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-bao-loc",
+  path: "thue-xe-tu-thu-dau-mot-di-bao-loc",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Thủ Dầu Một đi Bảo Lộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Thủ Dầu Một đi Bảo Lộc với xe riêng đưa đón tận nơi. Phù hợp khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-di-linh",
+  path: "thue-xe-tu-thu-dau-mot-di-di-linh",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Di Linh",
+  title: "Thuê xe từ Thủ Dầu Một đi Di Linh",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-duc-trong",
+  path: "thue-xe-tu-thu-dau-mot-di-duc-trong",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Thủ Dầu Một đi Đức Trọng",
+  description:
+    "Dịch vụ xe riêng từ Thủ Dầu Một đi Đức Trọng phù hợp khách công tác, khách về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-lien-nghia",
+  path: "thue-xe-tu-thu-dau-mot-di-lien-nghia",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Liên Nghĩa",
+  title: "Thuê xe từ Thủ Dầu Một đi Liên Nghĩa",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Liên Nghĩa với tài xế riêng. Đưa đón tận nơi, biết giá trước khi đặt và không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc → Liên Nghĩa",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-lam-ha",
+  path: "thue-xe-tu-thu-dau-mot-di-lam-ha",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Thủ Dầu Một đi Lâm Hà",
+  description:
+    "Thuê xe riêng từ Thủ Dầu Một đi Lâm Hà với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc → Lâm Hà",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-bao-lam",
+  path: "thue-xe-tu-thu-dau-mot-di-bao-lam",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Thủ Dầu Một đi Bảo Lâm",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Bảo Lâm phục vụ khách công tác, về quê hoặc làm việc tại khu vực chè và cà phê Lâm Đồng.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-da-lat",
+  path: "thue-xe-tu-thu-dau-mot-di-da-lat",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Thủ Dầu Một đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Thủ Dầu Một đi Đà Lạt dành cho khách du lịch, nghỉ dưỡng, công tác hoặc đưa đón sân bay Liên Khương.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Đà Lạt",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-lac-duong",
+  path: "thue-xe-tu-thu-dau-mot-di-lac-duong",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Thủ Dầu Một đi Lạc Dương",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Lạc Dương phù hợp khách du lịch, nghỉ dưỡng hoặc khám phá LangBiang.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-cat-tien",
+  path: "thue-xe-tu-thu-dau-mot-di-cat-tien",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Thủ Dầu Một đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Thủ Dầu Một đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên hoặc về quê.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+key: "thuan-an-di-da-lat",
+path: "thue-xe-tu-thuan-an-di-da-lat",
+from: "Thuận An, Bình Dương",
+to: "Đà Lạt",
+title: "Thuê xe từ Thuận An đi Đà Lạt, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe từ Thuận An đi Đà Lạt với xe riêng đưa đón tận nơi. Không ghép khách, biết giá trước khi đặt và hoạt động 24/7.",
+routeText:
+"Thuận An → Dầu Giây → Đà Lạt",
+duration: "6 - 8 giờ",
+},
+
+{
+key: "thuan-an-di-bao-loc",
+path: "thue-xe-tu-thuan-an-di-bao-loc",
+from: "Thuận An, Bình Dương",
+to: "Bảo Lộc",
+title: "Thuê xe từ Thuận An đi Bảo Lộc",
+description:
+"Xe riêng từ Thuận An đi Bảo Lộc dành cho khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+routeText:
+"Thuận An → Dầu Giây → Bảo Lộc",
+duration: "4.5 - 6 giờ",
+},
+
+{
+key: "thuan-an-di-di-linh",
+path: "thue-xe-tu-thuan-an-di-di-linh",
+from: "Thuận An, Bình Dương",
+to: "Di Linh",
+title: "Thuê xe từ Thuận An đi Di Linh",
+description:
+"Dịch vụ xe riêng từ Thuận An đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+routeText:
+"Thuận An → Dầu Giây → Bảo Lộc → Di Linh",
+duration: "5.5 - 7 giờ",
+},
+
+{
+key: "thuan-an-di-duc-trong",
+path: "thue-xe-tu-thuan-an-di-duc-trong",
+from: "Thuận An, Bình Dương",
+to: "Đức Trọng",
+title: "Thuê xe từ Thuận An đi Đức Trọng",
+description:
+"Xe riêng từ Thuận An đi Đức Trọng phù hợp khách công tác, về quê hoặc đi sân bay Liên Khương.",
+routeText:
+"Thuận An → Dầu Giây → Bảo Lộc → Đức Trọng",
+duration: "6 - 7.5 giờ",
+},
+
+{
+key: "thuan-an-di-cat-tien",
+path: "thue-xe-tu-thuan-an-di-cat-tien",
+from: "Thuận An, Bình Dương",
+to: "Cát Tiên",
+title: "Thuê xe từ Thuận An đi Cát Tiên",
+description:
+"Thuê xe riêng từ Thuận An đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Nam Cát Tiên.",
+routeText:
+"Thuận An → Dầu Giây → Tân Phú → Cát Tiên",
+duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "di-an-di-da-lat",
+  path: "thue-xe-tu-di-an-di-da-lat",
+  from: "Dĩ An, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Dĩ An đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Dĩ An đi Đà Lạt với xe riêng đưa đón tận nơi. Không ghép khách, biết giá trước khi đặt và hoạt động 24/7.",
+  routeText:
+    "Dĩ An → Dầu Giây → Đà Lạt",
+  duration: "6 - 8 giờ",
+},
+
+{
+  key: "di-an-di-bao-loc",
+  path: "thue-xe-tu-di-an-di-bao-loc",
+  from: "Dĩ An, Bình Dương",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Dĩ An đi Bảo Lộc",
+  description:
+    "Xe riêng từ Dĩ An đi Bảo Lộc dành cho khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Dĩ An → Dầu Giây → Bảo Lộc",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "di-an-di-di-linh",
+  path: "thue-xe-tu-di-an-di-di-linh",
+  from: "Dĩ An, Bình Dương",
+  to: "Di Linh",
+  title: "Thuê xe từ Dĩ An đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Dĩ An đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Dĩ An → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "di-an-di-duc-trong",
+  path: "thue-xe-tu-di-an-di-duc-trong",
+  from: "Dĩ An, Bình Dương",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Dĩ An đi Đức Trọng",
+  description:
+    "Xe riêng từ Dĩ An đi Đức Trọng phù hợp khách công tác, về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "Dĩ An → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "di-an-di-cat-tien",
+  path: "thue-xe-tu-di-an-di-cat-tien",
+  from: "Dĩ An, Bình Dương",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Dĩ An đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Dĩ An đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Vườn quốc gia Nam Cát Tiên.",
+  routeText:
+    "Dĩ An → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "tan-uyen-di-da-lat",
+  path: "thue-xe-tu-tan-uyen-di-da-lat",
+  from: "Tân Uyên, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tân Uyên đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ Tân Uyên đi Đà Lạt với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Tân Uyên → Dầu Giây → Đà Lạt",
+  duration: "6 - 8 giờ",
+},
+
+{
+  key: "tan-uyen-di-bao-loc",
+  path: "thue-xe-tu-tan-uyen-di-bao-loc",
+  from: "Tân Uyên, Bình Dương",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Tân Uyên đi Bảo Lộc",
+  description:
+    "Xe riêng từ Tân Uyên đi Bảo Lộc phục vụ khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Tân Uyên → Dầu Giây → Bảo Lộc",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "tan-uyen-di-di-linh",
+  path: "thue-xe-tu-tan-uyen-di-di-linh",
+  from: "Tân Uyên, Bình Dương",
+  to: "Di Linh",
+  title: "Thuê xe từ Tân Uyên đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Tân Uyên đi Di Linh. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Tân Uyên → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tan-uyen-di-duc-trong",
+  path: "thue-xe-tu-tan-uyen-di-duc-trong",
+  from: "Tân Uyên, Bình Dương",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Tân Uyên đi Đức Trọng",
+  description:
+    "Xe riêng từ Tân Uyên đi Đức Trọng phù hợp khách công tác, về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Tân Uyên → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "tan-uyen-di-cat-tien",
+  path: "thue-xe-tu-tan-uyen-di-cat-tien",
+  from: "Tân Uyên, Bình Dương",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Tân Uyên đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Tân Uyên đi Cát Tiên dành cho khách du lịch sinh thái và khám phá thiên nhiên.",
+  routeText:
+    "Tân Uyên → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "ben-cat-di-da-lat",
+  path: "thue-xe-tu-ben-cat-di-da-lat",
+  from: "Bến Cát, Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bến Cát đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Bến Cát đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp khách công tác, du lịch, nghỉ dưỡng hoặc về quê.",
+  routeText:
+    "Bến Cát → Mỹ Phước → Dầu Giây → Đà Lạt",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "ben-cat-di-bao-loc",
+  path: "thue-xe-tu-ben-cat-di-bao-loc",
+  from: "Bến Cát, Bình Dương",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Bến Cát đi Bảo Lộc",
+  description:
+    "Xe riêng từ Bến Cát đi Bảo Lộc dành cho khách công tác, du lịch hoặc về quê tại Lâm Đồng. Không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Bến Cát → Mỹ Phước → Dầu Giây → Bảo Lộc",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "ben-cat-di-di-linh",
+  path: "thue-xe-tu-ben-cat-di-di-linh",
+  from: "Bến Cát, Bình Dương",
+  to: "Di Linh",
+  title: "Thuê xe từ Bến Cát đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Bến Cát đi Di Linh với tài xế chuyên nghiệp. Đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Bến Cát → Mỹ Phước → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "ben-cat-di-duc-trong",
+  path: "thue-xe-tu-ben-cat-di-duc-trong",
+  from: "Bến Cát, Bình Dương",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Bến Cát đi Đức Trọng",
+  description:
+    "Xe riêng từ Bến Cát đi Đức Trọng phù hợp khách công tác, về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "Bến Cát → Mỹ Phước → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "6 - 7.5 giờ",
+},
+
+{
+  key: "ben-cat-di-cat-tien",
+  path: "thue-xe-tu-ben-cat-di-cat-tien",
+  from: "Bến Cát, Bình Dương",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Bến Cát đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Bến Cát đi Cát Tiên dành cho khách du lịch sinh thái, khám phá Vườn quốc gia Nam Cát Tiên.",
+  routeText:
+    "Bến Cát → Mỹ Phước → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "long-thanh-di-da-lat",
+  path: "thue-xe-tu-long-thanh-di-da-lat",
+  from: "Long Thành, Đồng Nai",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Long Thành đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Long Thành đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp khách du lịch, nghỉ dưỡng, công tác hoặc đưa đón sân bay Liên Khương.",
+  routeText:
+    "Long Thành → Dầu Giây → Đà Lạt",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "long-thanh-di-bao-loc",
+  path: "thue-xe-tu-long-thanh-di-bao-loc",
+  from: "Long Thành, Đồng Nai",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Long Thành đi Bảo Lộc",
+  description:
+    "Xe riêng từ Long Thành đi Bảo Lộc dành cho khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Long Thành → Dầu Giây → Bảo Lộc",
+  duration: "3 - 4.5 giờ",
+},
+
+{
+  key: "long-thanh-di-di-linh",
+  path: "thue-xe-tu-long-thanh-di-di-linh",
+  from: "Long Thành, Đồng Nai",
+  to: "Di Linh",
+  title: "Thuê xe từ Long Thành đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Long Thành đi Di Linh với tài xế chuyên nghiệp. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Long Thành → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "long-thanh-di-duc-trong",
+  path: "thue-xe-tu-long-thanh-di-duc-trong",
+  from: "Long Thành, Đồng Nai",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Long Thành đi Đức Trọng",
+  description:
+    "Xe riêng từ Long Thành đi Đức Trọng phù hợp khách công tác, về quê hoặc di chuyển đến sân bay Liên Khương.",
+  routeText:
+    "Long Thành → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "long-thanh-di-cat-tien",
+  path: "thue-xe-tu-long-thanh-di-cat-tien",
+  from: "Long Thành, Đồng Nai",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Long Thành đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Long Thành đi Cát Tiên dành cho khách du lịch sinh thái và khám phá Nam Cát Tiên.",
+  routeText:
+    "Long Thành → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "3 - 4.5 giờ",
+},
+
+{
+  key: "nhon-trach-di-da-lat",
+  path: "thue-xe-tu-nhon-trach-di-da-lat",
+  from: "Nhơn Trạch, Đồng Nai",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Nhơn Trạch đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Nhơn Trạch đi Đà Lạt với xe riêng đưa đón tận nơi. Không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Nhơn Trạch → Long Thành → Dầu Giây → Đà Lạt",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "nhon-trach-di-bao-loc",
+  path: "thue-xe-tu-nhon-trach-di-bao-loc",
+  from: "Nhơn Trạch, Đồng Nai",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Nhơn Trạch đi Bảo Lộc",
+  description:
+    "Xe riêng từ Nhơn Trạch đi Bảo Lộc phục vụ khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Nhơn Trạch → Long Thành → Dầu Giây → Bảo Lộc",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "nhon-trach-di-di-linh",
+  path: "thue-xe-tu-nhon-trach-di-di-linh",
+  from: "Nhơn Trạch, Đồng Nai",
+  to: "Di Linh",
+  title: "Thuê xe từ Nhơn Trạch đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Nhơn Trạch đi Di Linh. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Nhơn Trạch → Long Thành → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "nhon-trach-di-duc-trong",
+  path: "thue-xe-tu-nhon-trach-di-duc-trong",
+  from: "Nhơn Trạch, Đồng Nai",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Nhơn Trạch đi Đức Trọng",
+  description:
+    "Xe riêng từ Nhơn Trạch đi Đức Trọng phù hợp khách công tác, về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Nhơn Trạch → Long Thành → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "nhon-trach-di-cat-tien",
+  path: "thue-xe-tu-nhon-trach-di-cat-tien",
+  from: "Nhơn Trạch, Đồng Nai",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Nhơn Trạch đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Nhơn Trạch đi Cát Tiên dành cho khách du lịch sinh thái và khám phá Nam Cát Tiên.",
+  routeText:
+    "Nhơn Trạch → Long Thành → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "xe-trang-bom-di-da-lat",
+  path: "can-thue-xe-tu-trang-bom-di-da-lat",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Trảng Bom đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Trảng Bom đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp khách du lịch, nghỉ dưỡng hoặc công tác.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Đà Lạt",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "xe-trang-bom-di-bao-loc",
+  path: "can-thue-xe-tu-trang-bom-di-bao-loc",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Trảng Bom đi Bảo Lộc",
+  description:
+    "Xe riêng từ Trảng Bom đi Bảo Lộc dành cho khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Bảo Lộc",
+  duration: "3 - 4.5 giờ",
+},
+
+{
+  key: "xe-trang-bom-di-di-linh",
+  path: "can-thue-xe-tu-trang-bom-di-di-linh",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Di Linh",
+  title: "Thuê xe từ Trảng Bom đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Trảng Bom đi Di Linh với tài xế chuyên nghiệp. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "xe-trang-bom-di-duc-trong",
+  path: "can-thue-xe-tu-trang-bom-di-duc-trong",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Trảng Bom đi Đức Trọng",
+  description:
+    "Xe riêng từ Trảng Bom đi Đức Trọng phù hợp khách công tác, về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "xe-trang-bom-di-cat-tien",
+  path: "can-thue-xe-tu-trang-bom-di-cat-tien",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Trảng Bom đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Trảng Bom đi Cát Tiên dành cho khách du lịch sinh thái và khám phá Nam Cát Tiên.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "3 - 4.5 giờ",
+},
+
+{
+  key: "trang-bom-di-da-lat",
+  path: "thue-xe-tu-trang-bom-di-da-lat",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Trảng Bom đi Đà Lạt",
+  description:
+    "Dịch vụ thuê xe từ Trảng Bom đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp khách du lịch, nghỉ dưỡng hoặc công tác.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Đà Lạt",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "trang-bom-di-bao-loc",
+  path: "thue-xe-tu-trang-bom-di-bao-loc",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Trảng Bom đi Bảo Lộc",
+  description:
+    "Xe riêng từ Trảng Bom đi Bảo Lộc dành cho khách công tác, du lịch hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Bảo Lộc",
+  duration: "3 - 4.5 giờ",
+},
+
+{
+  key: "trang-bom-di-di-linh",
+  path: "thue-xe-tu-trang-bom-di-di-linh",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Di Linh",
+  title: "Thuê xe từ Trảng Bom đi Di Linh",
+  description:
+    "Dịch vụ xe riêng từ Trảng Bom đi Di Linh với tài xế chuyên nghiệp. Không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Bảo Lộc → Di Linh",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "trang-bom-di-duc-trong",
+  path: "thue-xe-tu-trang-bom-di-duc-trong",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Trảng Bom đi Đức Trọng",
+  description:
+    "Xe riêng từ Trảng Bom đi Đức Trọng phù hợp khách công tác, về quê hoặc đi sân bay Liên Khương.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Bảo Lộc → Đức Trọng",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "trang-bom-di-cat-tien",
+  path: "thue-xe-tu-trang-bom-di-cat-tien",
+  from: "Trảng Bom, Đồng Nai",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Trảng Bom đi Cát Tiên",
+  description:
+    "Thuê xe riêng từ Trảng Bom đi Cát Tiên dành cho khách du lịch sinh thái và khám phá Nam Cát Tiên.",
+  routeText:
+    "Trảng Bom → Dầu Giây → Tân Phú → Cát Tiên",
+  duration: "3 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-bao-lam",
+  path: "thue-xe-tu-bien-hoa-di-bao-lam",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Biên Hòa đi Bảo Lâm",
+  description:
+    "Xe riêng từ Biên Hòa đi Bảo Lâm dành cho khách công tác, làm việc tại các nông trường chè, cà phê hoặc về quê tại Lâm Đồng.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Bảo Lộc → Bảo Lâm",
+  duration: "4 - 5.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-da-huoai",
+  path: "thue-xe-tu-bien-hoa-di-da-huoai",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Biên Hòa đi Đạ Huoai",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Đạ Huoai với tài xế chuyên nghiệp. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Madagui → Đạ Huoai",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "bien-hoa-di-da-teh",
+  path: "thue-xe-tu-bien-hoa-di-da-teh",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Đạ Tẻh",
+  title: "Thuê xe từ Biên Hòa đi Đạ Tẻh",
+  description:
+    "Xe riêng từ Biên Hòa đi Đạ Tẻh phục vụ khách công tác, về quê hoặc làm việc tại khu vực phía nam tỉnh Lâm Đồng.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Madagui → Đạ Tẻh",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-don-duong",
+  path: "thue-xe-tu-bien-hoa-di-don-duong",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Đơn Dương",
+  title: "Thuê xe từ Biên Hòa đi Đơn Dương",
+  description:
+    "Dịch vụ thuê xe từ Biên Hòa đi Đơn Dương với xe riêng đưa đón tận nơi. Phù hợp khách công tác nông nghiệp công nghệ cao hoặc về quê.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Đức Trọng → Đơn Dương",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-lac-duong",
+  path: "thue-xe-tu-bien-hoa-di-lac-duong",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Biên Hòa đi Lạc Dương",
+  description:
+    "Xe riêng từ Biên Hòa đi Lạc Dương phù hợp khách du lịch, nghỉ dưỡng hoặc khám phá khu du lịch LangBiang.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Đà Lạt → Lạc Dương",
+  duration: "5.5 - 7 giờ",
+},
+
 ];

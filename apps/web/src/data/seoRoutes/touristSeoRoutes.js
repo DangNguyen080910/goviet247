@@ -13,7 +13,7 @@ export const TOURIST_SEO_ROUTES = [
   },
   {
     key: "tourist-binh-chau",
-    path: "xe-di-suoi-nuoc-nong-binh-chau",
+    path: "cho-thue-xe-di-suoi-nuoc-nong-binh-chau",
     from: "TP.HCM",
     to: "Suối nước nóng Bình Châu",
     title: "Xe đi suối nước nóng Bình Châu, xe riêng giá tốt",

@@ -1540,4 +1540,2061 @@ export const LONGHAI_SEO_ROUTES = [
     routeText: "TP.HCM → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Long Hải",
     duration: "2 - 2.5 giờ",
   },
+
+{
+  key: "quan-1-di-long-hai",
+  path: "thue-xe-tu-quan-1-di-long-hai",
+  from: "Quận 1, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 1 đi Long Hải, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Long Hải dành cho khách nghỉ dưỡng, du lịch biển hoặc đi resort cuối tuần. Xe đón tận nơi tại khách sạn, căn hộ hoặc văn phòng khu trung tâm Quận 1.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-3-di-long-hai",
+  path: "thue-xe-tu-quan-3-di-long-hai",
+  from: "Quận 3, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 3 đi Long Hải",
+  description:
+    "Xe riêng từ Quận 3 đi Long Hải phục vụ khách gia đình, nhóm bạn hoặc khách công tác. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-4-di-long-hai",
+  path: "thue-xe-tu-quan-4-di-long-hai",
+  from: "Quận 4, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 4 đi Long Hải",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Long Hải cho chuyến nghỉ dưỡng ven biển, du lịch cuối tuần hoặc đưa đón khách đến resort tại Long Hải.",
+  routeText:
+    "Quận 4 → Mai Chí Thọ → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-5-di-long-hai",
+  path: "thue-xe-tu-quan-5-di-long-hai",
+  from: "Quận 5, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 5 đi Long Hải",
+  description:
+    "Xe riêng từ Quận 5 đi Long Hải với tài xế riêng. Phù hợp khách gia đình, khách du lịch hoặc nhóm bạn đi biển cuối tuần.",
+  routeText:
+    "Quận 5 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-long-hai",
+  path: "thue-xe-tu-quan-6-di-long-hai",
+  from: "Quận 6, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 6 đi Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Long Hải phục vụ khách nghỉ dưỡng, khách công tác hoặc gia đình cần phương tiện riêng tư và thoải mái.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-long-hai",
+  path: "thue-xe-tu-quan-7-di-long-hai",
+  from: "Quận 7, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 7 đi Long Hải",
+  description:
+    "Xe riêng từ Quận 7 đi Long Hải dành cho cư dân Phú Mỹ Hưng, khách nghỉ dưỡng hoặc khách cần đưa đón tận nơi đến resort ven biển.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-8-di-long-hai",
+  path: "thue-xe-tu-quan-8-di-long-hai",
+  from: "Quận 8, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 8 đi Long Hải",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Long Hải với tài xế riêng. Xe không ghép khách, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-long-hai",
+  path: "thue-xe-tu-quan-10-di-long-hai",
+  from: "Quận 10, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 10 đi Long Hải",
+  description:
+    "Xe riêng từ Quận 10 đi Long Hải phục vụ khách du lịch biển, nghỉ dưỡng cuối tuần hoặc đi resort ven biển. Xe có tài xế riêng, đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 10 → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-long-hai",
+  path: "thue-xe-tu-quan-11-di-long-hai",
+  from: "Quận 11, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 11 đi Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Long Hải dành cho gia đình, nhóm bạn hoặc khách công tác. Đưa đón tận nơi và chủ động lịch trình.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-12-di-long-hai",
+  path: "thue-xe-tu-quan-12-di-long-hai",
+  from: "Quận 12, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Quận 12 đi Long Hải",
+  description:
+    "Xe riêng từ Quận 12 đi Long Hải phục vụ khách nghỉ dưỡng, khách du lịch hoặc gia đình muốn di chuyển riêng tư đến biển Long Hải.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-long-hai",
+  path: "thue-xe-tu-binh-thanh-di-long-hai",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Bình Thạnh đi Long Hải",
+  description:
+    "Đặt xe riêng từ Bình Thạnh đi Long Hải với tài xế riêng. Phù hợp khách nghỉ dưỡng, khách du lịch biển hoặc đi resort cuối tuần.",
+  routeText:
+    "Bình Thạnh → Xa lộ Hà Nội → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-long-hai",
+  path: "thue-xe-tu-phu-nhuan-di-long-hai",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Phú Nhuận đi Long Hải",
+  description:
+    "Xe riêng từ Phú Nhuận đi Long Hải dành cho gia đình, cặp đôi hoặc nhóm bạn muốn tận hưởng kỳ nghỉ bên biển với lịch trình linh hoạt.",
+  routeText:
+    "Phú Nhuận → Điện Biên Phủ → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "go-vap-di-long-hai",
+  path: "thue-xe-tu-go-vap-di-long-hai",
+  from: "Gò Vấp, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Gò Vấp đi Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Long Hải với tài xế riêng. Xe sạch sẽ, không ghép khách, phù hợp nghỉ dưỡng hoặc công tác.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-long-hai",
+  path: "thue-xe-tu-tan-binh-di-long-hai",
+  from: "Tân Bình, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Tân Bình đi Long Hải",
+  description:
+    "Xe riêng từ Tân Bình đi Long Hải phục vụ khách gần sân bay, khách du lịch hoặc gia đình đi nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Tân Bình → Trường Sơn → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-phu-di-long-hai",
+  path: "thue-xe-tu-tan-phu-di-long-hai",
+  from: "Tân Phú, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Tân Phú đi Long Hải",
+  description:
+    "Đặt xe riêng từ Tân Phú đi Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Tân Phú → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-long-hai",
+  path: "thue-xe-tu-binh-tan-di-long-hai",
+  from: "Bình Tân, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Bình Tân đi Long Hải",
+  description:
+    "Xe riêng từ Bình Tân đi Long Hải dành cho khách gia đình, khách công tác hoặc nhóm bạn đi biển cuối tuần. Đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Bình Tân → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-long-hai",
+  path: "thue-xe-tu-thu-duc-di-long-hai",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ TP Thủ Đức đi Long Hải",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Long Hải phục vụ khách nghỉ dưỡng, khách gia đình hoặc khách công tác. Xuất phát thuận tiện từ khu vực Xa lộ Hà Nội và cao tốc Long Thành.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "nha-be-di-long-hai",
+  path: "thue-xe-tu-nha-be-di-long-hai",
+  from: "Nhà Bè, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Nhà Bè đi Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Long Hải dành cho khách nghỉ dưỡng ven biển, du lịch cuối tuần hoặc đưa đón đến resort. Xe riêng, không ghép khách.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-long-hai",
+  path: "thue-xe-tu-binh-chanh-di-long-hai",
+  from: "Bình Chánh, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Bình Chánh đi Long Hải",
+  description:
+    "Xe riêng từ Bình Chánh đi Long Hải với tài xế riêng. Đón tận nơi, chủ động thời gian và phù hợp cho gia đình hoặc nhóm bạn đi biển.",
+  routeText:
+    "Bình Chánh → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-long-hai",
+  path: "thue-xe-tu-hoc-mon-di-long-hai",
+  from: "Hóc Môn, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Hóc Môn đi Long Hải",
+  description:
+    "Xe riêng từ Hóc Môn đi Long Hải phục vụ khách du lịch biển, khách nghỉ dưỡng hoặc khách công tác. Xe sạch sẽ, không ghép khách.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "cu-chi-di-long-hai",
+  path: "thue-xe-tu-cu-chi-di-long-hai",
+  from: "Củ Chi, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Củ Chi đi Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Long Hải phù hợp khách gia đình, khách công tác hoặc nhóm bạn muốn nghỉ dưỡng cuối tuần tại biển Long Hải.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "can-gio-di-long-hai",
+  path: "thue-xe-tu-can-gio-di-long-hai",
+  from: "Cần Giờ, TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ Cần Giờ đi Long Hải",
+  description:
+    "Xe riêng từ Cần Giờ đi Long Hải dành cho khách du lịch biển, khách nghỉ dưỡng hoặc gia đình cần xe riêng đường dài. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "hcm-di-bai-bien-long-hai",
+  path: "thue-xe-tu-hcm-di-bai-bien-long-hai",
+  from: "TP.HCM",
+  to: "Bãi biển Long Hải",
+  title: "Thuê xe từ TP.HCM đi Bãi biển Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Bãi biển Long Hải dành cho khách du lịch, nghỉ dưỡng hoặc đi biển cuối tuần. Xe đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Bãi biển Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-dinh-co-long-hai",
+  path: "thue-xe-tu-hcm-di-dinh-co-long-hai",
+  from: "TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ TP.HCM đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan và du lịch biển. Xe riêng có tài xế, đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Long Thành → Bà Rịa → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-hcm-di-deo-nuoc-ngot-long-hai",
+  from: "TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ TP.HCM đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Đèo Nước Ngọt Long Hải. Phù hợp khách du lịch, chụp ảnh, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-oceanami-villas-long-hai",
+  path: "thue-xe-tu-hcm-di-oceanami-villas-beach-club-long-hai",
+  from: "TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ TP.HCM đi Oceanami Villas & Beach Club Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Oceanami Villas & Beach Club Long Hải dành cho khách nghỉ dưỡng, hội họp doanh nghiệp hoặc du lịch gia đình.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-lan-rung-resort-long-hai",
+  path: "thue-xe-tu-hcm-di-lan-rung-resort-long-hai",
+  from: "TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ TP.HCM đi Lan Rừng Resort Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Lan Rừng Resort Long Hải. Đón tận nơi tại nhà, khách sạn hoặc sân bay và đưa đến resort nhanh chóng.",
+  routeText:
+    "TP.HCM → Long Thành → Bà Rịa → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-fleur-de-lys-resort-long-hai",
+  path: "thue-xe-tu-hcm-di-fleur-de-lys-resort-long-hai",
+  from: "TP.HCM",
+  to: "Fleur De Lys Resort Long Hải",
+  title: "Thuê xe từ TP.HCM đi Fleur De Lys Resort Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Fleur De Lys Resort Long Hải dành cho khách nghỉ dưỡng, du lịch cuối tuần hoặc tổ chức sự kiện.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-long-hai-channel-resort",
+  path: "thue-xe-tu-hcm-di-long-hai-channel-beach-resort",
+  from: "TP.HCM",
+  to: "Long Hải Channel Beach Resort",
+  title: "Thuê xe từ TP.HCM đi Long Hải Channel Beach Resort",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Long Hải Channel Beach Resort với tài xế riêng. Không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Long Thành → Quốc lộ 51 → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-chua-khi-long-hai",
+  path: "thue-xe-tu-hcm-di-chua-khi-long-hai",
+  from: "TP.HCM",
+  to: "Chùa Khỉ Long Hải",
+  title: "Thuê xe từ TP.HCM đi Chùa Khỉ Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Chùa Khỉ Long Hải phục vụ khách hành hương, tham quan hoặc kết hợp du lịch biển Long Hải trong ngày.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải → Chùa Khỉ",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-tropicana-resort-long-hai",
+  path: "thue-xe-tu-hcm-di-tropicana-resort-long-hai",
+  from: "TP.HCM",
+  to: "Tropicana Resort Long Hải",
+  title: "Thuê xe từ TP.HCM đi Tropicana Resort Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Tropicana Resort Long Hải dành cho khách nghỉ dưỡng, du lịch cuối tuần hoặc tổ chức team building. Đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Quốc lộ 51 → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-saint-simeon-resort",
+  path: "thue-xe-tu-hcm-di-saint-simeon-resort-spa-long-hai",
+  from: "TP.HCM",
+  to: "Saint Simeon Resort & Spa",
+  title: "Thuê xe từ TP.HCM đi Saint Simeon Resort & Spa Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Saint Simeon Resort & Spa Long Hải. Phù hợp khách nghỉ dưỡng cao cấp, gia đình hoặc cặp đôi.",
+  routeText:
+    "TP.HCM → Long Thành → Bà Rịa → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-long-hai-beach-resort",
+  path: "thue-xe-tu-hcm-di-long-hai-beach-resort",
+  from: "TP.HCM",
+  to: "Long Hai Beach Resort",
+  title: "Thuê xe từ TP.HCM đi Long Hai Beach Resort",
+  description:
+    "Xe riêng từ TP.HCM đi Long Hai Beach Resort với tài xế riêng. Đưa đón tận nơi và chủ động thời gian nghỉ dưỡng.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-khu-du-lich-thuy-duong",
+  path: "thue-xe-tu-hcm-di-khu-du-lich-thuy-duong-long-hai",
+  from: "TP.HCM",
+  to: "Khu du lịch Thùy Dương",
+  title: "Thuê xe từ TP.HCM đi Khu du lịch Thùy Dương Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Khu du lịch Thùy Dương Long Hải dành cho khách du lịch biển, nghỉ dưỡng hoặc picnic cuối tuần.",
+  routeText:
+    "TP.HCM → Long Thành → Quốc lộ 51 → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-khu-du-lich-deo-nuoc-ngot",
+  path: "thue-xe-tu-hcm-di-khu-du-lich-deo-nuoc-ngot",
+  from: "TP.HCM",
+  to: "Khu du lịch Đèo Nước Ngọt",
+  title: "Thuê xe từ TP.HCM đi Khu du lịch Đèo Nước Ngọt",
+  description:
+    "Xe riêng từ TP.HCM đi Khu du lịch Đèo Nước Ngọt phục vụ khách cắm trại, du lịch biển hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "TP.HCM → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-nui-minh-dam",
+  path: "thue-xe-tu-hcm-di-nui-minh-dam-long-hai",
+  from: "TP.HCM",
+  to: "Núi Minh Đạm",
+  title: "Thuê xe từ TP.HCM đi Núi Minh Đạm Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Núi Minh Đạm dành cho khách tham quan di tích lịch sử, trekking hoặc du lịch khám phá.",
+  routeText:
+    "TP.HCM → Long Hải → Núi Minh Đạm",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-thien-vien-truc-lam-chan-nguyen",
+  path: "thue-xe-tu-hcm-di-thien-vien-truc-lam-chan-nguyen",
+  from: "TP.HCM",
+  to: "Thiền viện Trúc Lâm Chân Nguyên",
+  title: "Thuê xe từ TP.HCM đi Thiền viện Trúc Lâm Chân Nguyên",
+  description:
+    "Xe riêng từ TP.HCM đi Thiền viện Trúc Lâm Chân Nguyên phục vụ khách hành hương, lễ Phật hoặc tham quan vãn cảnh.",
+  routeText:
+    "TP.HCM → Long Hải → Thiền viện Trúc Lâm Chân Nguyên",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-long-hai-camping",
+  path: "thue-xe-tu-hcm-di-long-hai-camping",
+  from: "TP.HCM",
+  to: "Long Hải Camping",
+  title: "Thuê xe từ TP.HCM đi Long Hải Camping",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Long Hải Camping dành cho nhóm bạn, gia đình hoặc khách cắm trại cuối tuần. Xe riêng, không ghép khách.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải Camping",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-mui-ky-van",
+  path: "thue-xe-tu-hcm-di-mui-ky-van-long-hai",
+  from: "TP.HCM",
+  to: "Mũi Kỳ Vân",
+  title: "Thuê xe từ TP.HCM đi Mũi Kỳ Vân Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Mũi Kỳ Vân Long Hải phục vụ khách du lịch biển, chụp ảnh hoặc nghỉ dưỡng cuối tuần. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải → Mũi Kỳ Vân",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-hai-dang-ky-van",
+  path: "thue-xe-tu-hcm-di-hai-dang-ky-van-long-hai",
+  from: "TP.HCM",
+  to: "Hải đăng Kỳ Vân",
+  title: "Thuê xe từ TP.HCM đi Hải đăng Kỳ Vân Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Hải đăng Kỳ Vân Long Hải. Phù hợp khách tham quan, check-in hoặc kết hợp du lịch biển Long Hải.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải → Hải đăng Kỳ Vân",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "hcm-di-bai-tam-long-hai",
+  path: "thue-xe-tu-hcm-di-bai-tam-long-hai",
+  from: "TP.HCM",
+  to: "Bãi tắm Long Hải",
+  title: "Thuê xe từ TP.HCM đi Bãi tắm Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Bãi tắm Long Hải dành cho khách gia đình, nhóm bạn hoặc khách du lịch muốn tận hưởng biển xanh và hải sản tươi sống.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-cho-long-hai",
+  path: "thue-xe-tu-hcm-di-cho-long-hai",
+  from: "TP.HCM",
+  to: "Chợ Long Hải",
+  title: "Thuê xe từ TP.HCM đi Chợ Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Chợ Long Hải phục vụ khách mua hải sản, du lịch hoặc kết hợp tham quan các địa điểm nổi tiếng trong khu vực.",
+  routeText:
+    "TP.HCM → Long Thành → Quốc lộ 51 → Chợ Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-lang-ca-long-hai",
+  path: "thue-xe-tu-hcm-di-lang-ca-long-hai",
+  from: "TP.HCM",
+  to: "Làng cá Long Hải",
+  title: "Thuê xe từ TP.HCM đi Làng cá Long Hải",
+  description:
+    "Xe riêng từ TP.HCM đi Làng cá Long Hải dành cho khách muốn trải nghiệm đời sống ngư dân, thưởng thức hải sản tươi sống và khám phá văn hóa địa phương.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải → Làng cá Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-villa-long-hai",
+  path: "thue-xe-tu-hcm-di-villa-long-hai-nguyen-can",
+  from: "TP.HCM",
+  to: "Villa Long Hải",
+  title: "Thuê xe từ TP.HCM đi Villa Long Hải nguyên căn",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Villa Long Hải nguyên căn dành cho nhóm bạn, gia đình hoặc khách tổ chức tiệc, nghỉ dưỡng cuối tuần.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-resort-long-hai-gia-dinh",
+  path: "thue-xe-tu-hcm-di-resort-long-hai-cho-gia-dinh",
+  from: "TP.HCM",
+  to: "Resort Long Hải",
+  title: "Thuê xe từ TP.HCM đi Resort Long Hải cho gia đình",
+  description:
+    "Xe riêng từ TP.HCM đi Resort Long Hải dành cho gia đình có trẻ nhỏ hoặc người lớn tuổi. Đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "TP.HCM → Long Thành → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "hcm-di-long-hai-cuoi-tuan",
+  path: "thue-xe-tu-hcm-di-long-hai-cuoi-tuan",
+  from: "TP.HCM",
+  to: "Long Hải",
+  title: "Thuê xe từ TP.HCM đi Long Hải cuối tuần",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Long Hải cuối tuần phù hợp khách nghỉ dưỡng ngắn ngày, du lịch biển hoặc đưa đón gia đình đến resort ven biển.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-1-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-1-di-oceanami-villas-long-hai",
+  from: "Quận 1, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 1 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 1 đi Oceanami Villas & Beach Club Long Hải dành cho khách nghỉ dưỡng, du lịch gia đình hoặc hội họp doanh nghiệp. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-1-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-1-di-dinh-co-long-hai",
+  from: "Quận 1, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 1 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc kết hợp du lịch biển cuối tuần.",
+  routeText:
+    "Quận 1 → Long Thành → Bà Rịa → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-1-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-1-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 1, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 1 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 1 đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, cắm trại hoặc chụp ảnh cuối tuần. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 1 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-1-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-1-di-lan-rung-resort-long-hai",
+  from: "Quận 1, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 1 đi Lan Rừng Resort Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Lan Rừng Resort Long Hải. Đưa đón tận nơi từ khách sạn, căn hộ hoặc văn phòng khu trung tâm.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-3-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-3-di-oceanami-villas-long-hai",
+  from: "Quận 3, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 3 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 3 đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, du lịch hoặc tổ chức sự kiện cuối tuần.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-3-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-3-di-dinh-co-long-hai",
+  from: "Quận 3, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 3 đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Quận 3 đi Dinh Cô Long Hải dành cho khách hành hương, du lịch hoặc tham quan biển Long Hải.",
+  routeText:
+    "Quận 3 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-3-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-3-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 3, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 3 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Đèo Nước Ngọt Long Hải. Phù hợp khách du lịch, nghỉ dưỡng hoặc cắm trại cuối tuần.",
+  routeText:
+    "Quận 3 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-3-di-lan-rung-resort-long-hai",
+  from: "Quận 3, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 3 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 3 đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-4-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-4-di-oceanami-villas-long-hai",
+  from: "Quận 4, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 4 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 4 đi Oceanami Villas & Beach Club Long Hải dành cho khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần.",
+  routeText:
+    "Quận 4 → Mai Chí Thọ → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-4-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-4-di-dinh-co-long-hai",
+  from: "Quận 4, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 4 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển Long Hải.",
+  routeText:
+    "Quận 4 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-4-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-4-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 4, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 4 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 4 đi Đèo Nước Ngọt Long Hải dành cho khách cắm trại, nghỉ dưỡng hoặc chụp ảnh cuối tuần.",
+  routeText:
+    "Quận 4 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-4-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-4-di-lan-rung-resort-long-hai",
+  from: "Quận 4, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 4 đi Lan Rừng Resort Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Lan Rừng Resort Long Hải. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 4 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-5-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-5-di-oceanami-villas-long-hai",
+  from: "Quận 5, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 5 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 5 đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, gia đình hoặc khách du lịch cuối tuần.",
+  routeText:
+    "Quận 5 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-5-di-dinh-co-long-hai",
+  from: "Quận 5, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 5 đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Quận 5 đi Dinh Cô Long Hải phù hợp khách hành hương, tham quan hoặc kết hợp nghỉ dưỡng ven biển.",
+  routeText:
+    "Quận 5 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-5-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 5, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 5 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Quận 5 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-5-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-5-di-lan-rung-resort-long-hai",
+  from: "Quận 5, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 5 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 5 đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi và chủ động thời gian.",
+  routeText:
+    "Quận 5 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-6-di-oceanami-villas-long-hai",
+  from: "Quận 6, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 6 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 6 đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch hoặc tổ chức sự kiện cuối tuần.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-6-di-dinh-co-long-hai",
+  from: "Quận 6, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 6 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển Long Hải.",
+  routeText:
+    "Quận 6 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-6-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 6, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 6 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 6 đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, nghỉ dưỡng hoặc cắm trại cuối tuần.",
+  routeText:
+    "Quận 6 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-6-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-6-di-lan-rung-resort-long-hai",
+  from: "Quận 6, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 6 đi Lan Rừng Resort Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Lan Rừng Resort Long Hải. Xe riêng có tài xế, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 6 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-7-di-oceanami-villas-long-hai",
+  from: "Quận 7, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 7 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 7 đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần. Đón tận nơi tại Phú Mỹ Hưng và khu Nam Sài Gòn.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-7-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-7-di-dinh-co-long-hai",
+  from: "Quận 7, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 7 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc du lịch biển cuối tuần.",
+  routeText:
+    "Quận 7 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-7-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-7-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 7, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 7 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 7 đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần. Xe riêng, không ghép khách.",
+  routeText:
+    "Quận 7 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-7-di-lan-rung-resort-long-hai",
+  from: "Quận 7, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 7 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 7 đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi và chủ động lịch trình nghỉ dưỡng.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "quan-8-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-8-di-oceanami-villas-long-hai",
+  from: "Quận 8, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 8 đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc khách du lịch cuối tuần.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-8-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-8-di-dinh-co-long-hai",
+  from: "Quận 8, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 8 đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Quận 8 đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch biển hoặc tham quan trong ngày.",
+  routeText:
+    "Quận 8 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-8-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-8-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 8, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 8 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Đèo Nước Ngọt Long Hải. Phù hợp khách du lịch, cắm trại hoặc chụp ảnh cuối tuần.",
+  routeText:
+    "Quận 8 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-8-di-lan-rung-resort-long-hai",
+  from: "Quận 8, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 8 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 8 đi Lan Rừng Resort Long Hải với tài xế riêng. Không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 8 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-10-di-oceanami-villas-long-hai",
+  from: "Quận 10, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 10 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 10 đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, khách gia đình hoặc nhóm bạn du lịch biển.",
+  routeText:
+    "Quận 10 → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-10-di-dinh-co-long-hai",
+  from: "Quận 10, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 10 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc kết hợp nghỉ dưỡng ven biển.",
+  routeText:
+    "Quận 10 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-10-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 10, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 10 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 10 đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Quận 10 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-10-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-10-di-lan-rung-resort-long-hai",
+  from: "Quận 10, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 10 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 10 đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 10 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-11-di-oceanami-villas-long-hai",
+  from: "Quận 11, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 11 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 11 đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển cuối tuần. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-11-di-dinh-co-long-hai",
+  from: "Quận 11, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 11 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Quận 11 → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-11-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 11, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 11 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 11 đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Quận 11 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-11-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-11-di-lan-rung-resort-long-hai",
+  from: "Quận 11, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 11 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 11 đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 11 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-12-di-oceanami-long-hai",
+  path: "thue-xe-tu-quan-12-di-oceanami-villas-long-hai",
+  from: "Quận 12, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Quận 12 đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Quận 12 đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, khách gia đình hoặc nhóm bạn đi biển cuối tuần.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-12-di-dinh-co-long-hai",
+  path: "thue-xe-tu-quan-12-di-dinh-co-long-hai",
+  from: "Quận 12, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Quận 12 đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc du lịch biển.",
+  routeText:
+    "Quận 12 → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-12-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-quan-12-di-deo-nuoc-ngot-long-hai",
+  from: "Quận 12, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Quận 12 đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Quận 12 đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Quận 12 → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-12-di-lan-rung-resort",
+  path: "thue-xe-tu-quan-12-di-lan-rung-resort-long-hai",
+  from: "Quận 12, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Quận 12 đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Quận 12 đi Lan Rừng Resort Long Hải với tài xế riêng. Không ghép khách và chủ động lịch trình nghỉ dưỡng.",
+  routeText:
+    "Quận 12 → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-oceanami-long-hai",
+  path: "thue-xe-tu-binh-thanh-di-oceanami-villas-long-hai",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Bình Thạnh đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Bình Thạnh đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc doanh nghiệp tổ chức sự kiện.",
+  routeText:
+    "Bình Thạnh → Xa lộ Hà Nội → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-dinh-co-long-hai",
+  path: "thue-xe-tu-binh-thanh-di-dinh-co-long-hai",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Bình Thạnh đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển.",
+  routeText:
+    "Bình Thạnh → Long Thành → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-binh-thanh-di-deo-nuoc-ngot-long-hai",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Bình Thạnh đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Bình Thạnh đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, chụp ảnh hoặc cắm trại cuối tuần.",
+  routeText:
+    "Bình Thạnh → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-thanh-di-lan-rung-resort",
+  path: "thue-xe-tu-binh-thanh-di-lan-rung-resort-long-hai",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Bình Thạnh đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Bình Thạnh đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bình Thạnh → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-oceanami-long-hai",
+  path: "thue-xe-tu-phu-nhuan-di-oceanami-villas-long-hai",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Phú Nhuận đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Phú Nhuận đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Phú Nhuận → Điện Biên Phủ → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-dinh-co-long-hai",
+  path: "thue-xe-tu-phu-nhuan-di-dinh-co-long-hai",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Phú Nhuận đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển.",
+  routeText:
+    "Phú Nhuận → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-phu-nhuan-di-deo-nuoc-ngot-long-hai",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Phú Nhuận đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Phú Nhuận đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Phú Nhuận → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-lan-rung-resort",
+  path: "thue-xe-tu-phu-nhuan-di-lan-rung-resort-long-hai",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Phú Nhuận đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Phú Nhuận đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Phú Nhuận → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "go-vap-di-oceanami-long-hai",
+  path: "thue-xe-tu-go-vap-di-oceanami-villas-long-hai",
+  from: "Gò Vấp, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Gò Vấp đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Gò Vấp đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch biển hoặc tổ chức sự kiện cuối tuần.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "go-vap-di-dinh-co-long-hai",
+  path: "thue-xe-tu-go-vap-di-dinh-co-long-hai",
+  from: "Gò Vấp, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Gò Vấp đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Gò Vấp → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "go-vap-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-go-vap-di-deo-nuoc-ngot-long-hai",
+  from: "Gò Vấp, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Gò Vấp đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Gò Vấp đi Đèo Nước Ngọt Long Hải dành cho khách du lịch, chụp ảnh hoặc cắm trại cuối tuần.",
+  routeText:
+    "Gò Vấp → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "go-vap-di-lan-rung-resort",
+  path: "thue-xe-tu-go-vap-di-lan-rung-resort-long-hai",
+  from: "Gò Vấp, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Gò Vấp đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Gò Vấp đi Lan Rừng Resort Long Hải với tài xế riêng. Không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Gò Vấp → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-oceanami-long-hai",
+  path: "thue-xe-tu-tan-binh-di-oceanami-villas-long-hai",
+  from: "Tân Bình, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Tân Bình đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Tân Bình đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển cuối tuần.",
+  routeText:
+    "Tân Bình → Trường Sơn → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-dinh-co-long-hai",
+  path: "thue-xe-tu-tan-binh-di-dinh-co-long-hai",
+  from: "Tân Bình, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Tân Bình đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển.",
+  routeText:
+    "Tân Bình → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-tan-binh-di-deo-nuoc-ngot-long-hai",
+  from: "Tân Bình, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Tân Bình đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Tân Bình đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Tân Bình → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-lan-rung-resort",
+  path: "thue-xe-tu-tan-binh-di-lan-rung-resort-long-hai",
+  from: "Tân Bình, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Tân Bình đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Tân Bình đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Tân Bình → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-phu-di-oceanami-long-hai",
+  path: "thue-xe-tu-tan-phu-di-oceanami-villas-long-hai",
+  from: "Tân Phú, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Tân Phú đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Tân Phú đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch biển hoặc tổ chức sự kiện cuối tuần. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Tân Phú → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-phu-di-dinh-co-long-hai",
+  path: "thue-xe-tu-tan-phu-di-dinh-co-long-hai",
+  from: "Tân Phú, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Tân Phú đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Tân Phú đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Tân Phú → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-phu-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-tan-phu-di-deo-nuoc-ngot-long-hai",
+  from: "Tân Phú, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Tân Phú đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Tân Phú đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Tân Phú → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "tan-phu-di-lan-rung-resort",
+  path: "thue-xe-tu-tan-phu-di-lan-rung-resort-long-hai",
+  from: "Tân Phú, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Tân Phú đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Tân Phú đi Lan Rừng Resort Long Hải với tài xế riêng. Không ghép khách, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Tân Phú → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-oceanami-long-hai",
+  path: "thue-xe-tu-binh-tan-di-oceanami-villas-long-hai",
+  from: "Bình Tân, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Bình Tân đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Bình Tân đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển cuối tuần.",
+  routeText:
+    "Bình Tân → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-dinh-co-long-hai",
+  path: "thue-xe-tu-binh-tan-di-dinh-co-long-hai",
+  from: "Bình Tân, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Bình Tân đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển.",
+  routeText:
+    "Bình Tân → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-binh-tan-di-deo-nuoc-ngot-long-hai",
+  from: "Bình Tân, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Bình Tân đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Bình Tân đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Bình Tân → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-tan-di-lan-rung-resort",
+  path: "thue-xe-tu-binh-tan-di-lan-rung-resort-long-hai",
+  from: "Bình Tân, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Bình Tân đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Bình Tân đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Bình Tân → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-oceanami-long-hai",
+  path: "thue-xe-tu-thu-duc-di-oceanami-villas-long-hai",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ TP Thủ Đức đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần. Xuất phát thuận tiện từ khu vực Xa lộ Hà Nội.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thu-duc-di-dinh-co-long-hai",
+  path: "thue-xe-tu-thu-duc-di-dinh-co-long-hai",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ TP Thủ Đức đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "TP Thủ Đức → Long Thành → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thu-duc-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-thu-duc-di-deo-nuoc-ngot-long-hai",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ TP Thủ Đức đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "TP Thủ Đức → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-duc-di-lan-rung-resort",
+  path: "thue-xe-tu-thu-duc-di-lan-rung-resort-long-hai",
+  from: "TP Thủ Đức, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ TP Thủ Đức đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-oceanami-long-hai",
+  path: "thue-xe-tu-binh-chanh-di-oceanami-villas-long-hai",
+  from: "Bình Chánh, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Bình Chánh đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Bình Chánh đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển cuối tuần.",
+  routeText:
+    "Bình Chánh → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-dinh-co-long-hai",
+  path: "thue-xe-tu-binh-chanh-di-dinh-co-long-hai",
+  from: "Bình Chánh, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Bình Chánh đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển.",
+  routeText:
+    "Bình Chánh → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-binh-chanh-di-deo-nuoc-ngot-long-hai",
+  from: "Bình Chánh, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Bình Chánh đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Bình Chánh đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Bình Chánh → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-chanh-di-lan-rung-resort",
+  path: "thue-xe-tu-binh-chanh-di-lan-rung-resort-long-hai",
+  from: "Bình Chánh, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Bình Chánh đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Bình Chánh đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Bình Chánh → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-oceanami-long-hai",
+  path: "thue-xe-tu-hoc-mon-di-oceanami-villas-long-hai",
+  from: "Hóc Môn, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Hóc Môn đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Hóc Môn đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-dinh-co-long-hai",
+  path: "thue-xe-tu-hoc-mon-di-dinh-co-long-hai",
+  from: "Hóc Môn, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Hóc Môn đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Hóc Môn → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-hoc-mon-di-deo-nuoc-ngot-long-hai",
+  from: "Hóc Môn, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Hóc Môn đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Hóc Môn đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Hóc Môn → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "hoc-mon-di-lan-rung-resort",
+  path: "thue-xe-tu-hoc-mon-di-lan-rung-resort-long-hai",
+  from: "Hóc Môn, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Hóc Môn đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Hóc Môn đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Hóc Môn → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "cu-chi-di-oceanami-long-hai",
+  path: "thue-xe-tu-cu-chi-di-oceanami-villas-long-hai",
+  from: "Củ Chi, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Củ Chi đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Củ Chi đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển cuối tuần.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "cu-chi-di-dinh-co-long-hai",
+  path: "thue-xe-tu-cu-chi-di-dinh-co-long-hai",
+  from: "Củ Chi, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Củ Chi đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Dinh Cô Long Hải phục vụ khách hành hương, du lịch hoặc tham quan biển Long Hải.",
+  routeText:
+    "Củ Chi → Long Thành → Long Hải → Dinh Cô",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "cu-chi-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-cu-chi-di-deo-nuoc-ngot-long-hai",
+  from: "Củ Chi, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Củ Chi đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Củ Chi đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Củ Chi → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "cu-chi-di-lan-rung-resort",
+  path: "thue-xe-tu-cu-chi-di-lan-rung-resort-long-hai",
+  from: "Củ Chi, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Củ Chi đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Củ Chi đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Củ Chi → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "nha-be-di-oceanami-long-hai",
+  path: "thue-xe-tu-nha-be-di-oceanami-villas-long-hai",
+  from: "Nhà Bè, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Nhà Bè đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Nhà Bè đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "nha-be-di-dinh-co-long-hai",
+  path: "thue-xe-tu-nha-be-di-dinh-co-long-hai",
+  from: "Nhà Bè, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Nhà Bè đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Nhà Bè → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "nha-be-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-nha-be-di-deo-nuoc-ngot-long-hai",
+  from: "Nhà Bè, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Nhà Bè đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Nhà Bè đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Nhà Bè → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "nha-be-di-lan-rung-resort",
+  path: "thue-xe-tu-nha-be-di-lan-rung-resort-long-hai",
+  from: "Nhà Bè, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Nhà Bè đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Nhà Bè đi Lan Rừng Resort Long Hải với tài xế riêng. Không ghép khách, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Nhà Bè → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "can-gio-di-oceanami-long-hai",
+  path: "thue-xe-tu-can-gio-di-oceanami-villas-long-hai",
+  from: "Cần Giờ, TP.HCM",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Cần Giờ đi Oceanami Villas Long Hải",
+  description:
+    "Xe riêng từ Cần Giờ đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch biển cuối tuần. Xe riêng, không ghép khách.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-dinh-co-long-hai",
+  path: "thue-xe-tu-can-gio-di-dinh-co-long-hai",
+  from: "Cần Giờ, TP.HCM",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Cần Giờ đi Dinh Cô Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc du lịch biển.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Long Thành → Long Hải → Dinh Cô",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-deo-nuoc-ngot",
+  path: "thue-xe-tu-can-gio-di-deo-nuoc-ngot-long-hai",
+  from: "Cần Giờ, TP.HCM",
+  to: "Đèo Nước Ngọt",
+  title: "Thuê xe từ Cần Giờ đi Đèo Nước Ngọt Long Hải",
+  description:
+    "Xe riêng từ Cần Giờ đi Đèo Nước Ngọt Long Hải phù hợp khách du lịch, cắm trại hoặc nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Long Thành → Long Hải → Đèo Nước Ngọt",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "can-gio-di-lan-rung-resort",
+  path: "thue-xe-tu-can-gio-di-lan-rung-resort-long-hai",
+  from: "Cần Giờ, TP.HCM",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Cần Giờ đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Cần Giờ đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-long-hai",
+  path: "thue-xe-tu-thu-dau-mot-di-long-hai",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Long Hải",
+  title: "Thuê xe từ Thủ Dầu Một đi Long Hải",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Long Hải dành cho khách nghỉ dưỡng, du lịch biển hoặc công tác. Xe có tài xế riêng, đón tận nơi và không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước Tân Vạn → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-oceanami-long-hai",
+  path: "thue-xe-tu-thu-dau-mot-di-oceanami-villas-long-hai",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Thủ Dầu Một đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Thủ Dầu Một đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước Tân Vạn → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-dinh-co-long-hai",
+  path: "thue-xe-tu-thu-dau-mot-di-dinh-co-long-hai",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Thủ Dầu Một đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Thủ Dầu Một → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-dau-mot-di-lan-rung-resort",
+  path: "thue-xe-tu-thu-dau-mot-di-lan-rung-resort-long-hai",
+  from: "Thủ Dầu Một, Bình Dương",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Thủ Dầu Một đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Thủ Dầu Một → Mỹ Phước Tân Vạn → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "di-an-di-long-hai",
+  path: "thue-xe-tu-di-an-di-long-hai",
+  from: "Dĩ An, Bình Dương",
+  to: "Long Hải",
+  title: "Thuê xe từ Dĩ An đi Long Hải",
+  description:
+    "Xe riêng từ Dĩ An đi Long Hải dành cho khách du lịch biển, nghỉ dưỡng cuối tuần hoặc công tác. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Dĩ An → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "di-an-di-oceanami-long-hai",
+  path: "thue-xe-tu-di-an-di-oceanami-villas-long-hai",
+  from: "Dĩ An, Bình Dương",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Dĩ An đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Dĩ An đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch cuối tuần.",
+  routeText:
+    "Dĩ An → Cao tốc Long Thành - Dầu Giây → Oceanami Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "di-an-di-dinh-co-long-hai",
+  path: "thue-xe-tu-di-an-di-dinh-co-long-hai",
+  from: "Dĩ An, Bình Dương",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Dĩ An đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Dĩ An đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Dĩ An → Long Thành → Long Hải → Dinh Cô",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "di-an-di-lan-rung-resort",
+  path: "thue-xe-tu-di-an-di-lan-rung-resort-long-hai",
+  from: "Dĩ An, Bình Dương",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Dĩ An đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Dĩ An đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Dĩ An → Cao tốc Long Thành - Dầu Giây → Lan Rừng Resort Long Hải",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thuan-an-di-long-hai",
+  path: "thue-xe-tu-thuan-an-di-long-hai",
+  from: "Thuận An, Bình Dương",
+  to: "Long Hải",
+  title: "Thuê xe từ Thuận An đi Long Hải",
+  description:
+    "Xe riêng từ Thuận An đi Long Hải dành cho khách nghỉ dưỡng, du lịch biển hoặc công tác. Đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Thuận An → Mỹ Phước Tân Vạn → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thuan-an-di-oceanami-long-hai",
+  path: "thue-xe-tu-thuan-an-di-oceanami-villas-long-hai",
+  from: "Thuận An, Bình Dương",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Thuận An đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Thuận An đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, gia đình hoặc nhóm bạn du lịch cuối tuần.",
+  routeText:
+    "Thuận An → Mỹ Phước Tân Vạn → Oceanami Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thuan-an-di-dinh-co-long-hai",
+  path: "thue-xe-tu-thuan-an-di-dinh-co-long-hai",
+  from: "Thuận An, Bình Dương",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Thuận An đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Thuận An đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Thuận An → Long Thành → Long Hải → Dinh Cô",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thuan-an-di-lan-rung-resort",
+  path: "thue-xe-tu-thuan-an-di-lan-rung-resort-long-hai",
+  from: "Thuận An, Bình Dương",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Thuận An đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Thuận An đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Thuận An → Mỹ Phước Tân Vạn → Lan Rừng Resort Long Hải",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "ben-cat-di-long-hai",
+  path: "thue-xe-tu-ben-cat-di-long-hai",
+  from: "Bến Cát, Bình Dương",
+  to: "Long Hải",
+  title: "Thuê xe từ Bến Cát đi Long Hải",
+  description:
+    "Xe riêng từ Bến Cát đi Long Hải dành cho khách du lịch biển, nghỉ dưỡng cuối tuần hoặc công tác. Xe riêng, không ghép khách.",
+  routeText:
+    "Bến Cát → Mỹ Phước Tân Vạn → Cao tốc Long Thành - Dầu Giây → Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "ben-cat-di-oceanami-long-hai",
+  path: "thue-xe-tu-ben-cat-di-oceanami-villas-long-hai",
+  from: "Bến Cát, Bình Dương",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Bến Cát đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Bến Cát đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, gia đình hoặc khách du lịch cuối tuần.",
+  routeText:
+    "Bến Cát → Mỹ Phước Tân Vạn → Oceanami Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "ben-cat-di-dinh-co-long-hai",
+  path: "thue-xe-tu-ben-cat-di-dinh-co-long-hai",
+  from: "Bến Cát, Bình Dương",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Bến Cát đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Bến Cát đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Bến Cát → Long Thành → Long Hải → Dinh Cô",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "ben-cat-di-lan-rung-resort",
+  path: "thue-xe-tu-ben-cat-di-lan-rung-resort-long-hai",
+  from: "Bến Cát, Bình Dương",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Bến Cát đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Bến Cát đi Lan Rừng Resort Long Hải với tài xế riêng. Đón tận nơi và không ghép khách.",
+  routeText:
+    "Bến Cát → Mỹ Phước Tân Vạn → Lan Rừng Resort Long Hải",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-long-hai",
+  path: "thue-xe-tu-bien-hoa-di-long-hai",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Long Hải",
+  title: "Thuê xe từ Biên Hòa đi Long Hải",
+  description:
+    "Xe riêng từ Biên Hòa đi Long Hải dành cho khách du lịch biển, nghỉ dưỡng cuối tuần hoặc công tác. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Biên Hòa → Quốc lộ 51 → Bà Rịa → Long Hải",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "bien-hoa-di-oceanami-long-hai",
+  path: "thue-xe-tu-bien-hoa-di-oceanami-villas-long-hai",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Biên Hòa đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Oceanami Villas Long Hải phục vụ khách nghỉ dưỡng, gia đình hoặc doanh nghiệp tổ chức sự kiện.",
+  routeText:
+    "Biên Hòa → Quốc lộ 51 → Oceanami Long Hải",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "bien-hoa-di-dinh-co-long-hai",
+  path: "thue-xe-tu-bien-hoa-di-dinh-co-long-hai",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Biên Hòa đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Biên Hòa đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Biên Hòa → Quốc lộ 51 → Long Hải → Dinh Cô",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "bien-hoa-di-lan-rung-resort",
+  path: "thue-xe-tu-bien-hoa-di-lan-rung-resort-long-hai",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Biên Hòa đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Biên Hòa đi Lan Rừng Resort Long Hải với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Biên Hòa → Quốc lộ 51 → Lan Rừng Resort Long Hải",
+  duration: "1.5 - 2 giờ",
+},
+
+{
+  key: "long-thanh-di-long-hai",
+  path: "thue-xe-tu-long-thanh-di-long-hai",
+  from: "Long Thành, Đồng Nai",
+  to: "Long Hải",
+  title: "Thuê xe từ Long Thành đi Long Hải",
+  description:
+    "Xe riêng từ Long Thành đi Long Hải dành cho khách du lịch biển, khách công tác hoặc đưa đón từ khu vực sân bay Long Thành trong tương lai.",
+  routeText:
+    "Long Thành → Quốc lộ 51 → Bà Rịa → Long Hải",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "long-thanh-di-oceanami-long-hai",
+  path: "thue-xe-tu-long-thanh-di-oceanami-villas-long-hai",
+  from: "Long Thành, Đồng Nai",
+  to: "Oceanami Villas & Beach Club",
+  title: "Thuê xe từ Long Thành đi Oceanami Villas Long Hải",
+  description:
+    "Dịch vụ xe riêng từ Long Thành đi Oceanami Villas Long Hải dành cho khách nghỉ dưỡng, du lịch gia đình hoặc tổ chức sự kiện cuối tuần.",
+  routeText:
+    "Long Thành → Quốc lộ 51 → Oceanami Long Hải",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "long-thanh-di-dinh-co-long-hai",
+  path: "thue-xe-tu-long-thanh-di-dinh-co-long-hai",
+  from: "Long Thành, Đồng Nai",
+  to: "Dinh Cô Long Hải",
+  title: "Thuê xe từ Long Thành đi Dinh Cô Long Hải",
+  description:
+    "Xe riêng từ Long Thành đi Dinh Cô Long Hải phục vụ khách hành hương, tham quan hoặc nghỉ dưỡng ven biển.",
+  routeText:
+    "Long Thành → Quốc lộ 51 → Long Hải → Dinh Cô",
+  duration: "1 - 1.5 giờ",
+},
+
+{
+  key: "long-thanh-di-lan-rung-resort",
+  path: "thue-xe-tu-long-thanh-di-lan-rung-resort-long-hai",
+  from: "Long Thành, Đồng Nai",
+  to: "Lan Rừng Resort Long Hải",
+  title: "Thuê xe từ Long Thành đi Lan Rừng Resort Long Hải",
+  description:
+    "Xe riêng từ Long Thành đi Lan Rừng Resort Long Hải với tài xế riêng. Không ghép khách, đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Long Thành → Quốc lộ 51 → Lan Rừng Resort Long Hải",
+  duration: "1 - 1.5 giờ",
+},
+
+
+
 ];

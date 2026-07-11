@@ -1865,7 +1865,7 @@ export const CANTHO_SEO_ROUTES = [
   // CẦN THƠ - PHONG ĐIỀN
   // =========================
   {
-    key: "xe-di-phong-dien-can-tho",
+    key: "thue-xe-di-phong-dien-can-tho",
     path: "xe-di-phong-dien-can-tho",
     from: "TP.HCM",
     to: "Phong Điền, Cần Thơ",
@@ -1923,7 +1923,7 @@ export const CANTHO_SEO_ROUTES = [
   // CẦN THƠ - VĨNH THẠNH
   // =========================
   {
-    key: "xe-di-vinh-thanh-can-tho",
+    key: "thue-xe-di-vinh-thanh-can-tho",
     path: "xe-di-vinh-thanh-can-tho",
     from: "TP.HCM",
     to: "Vĩnh Thạnh, Cần Thơ",
@@ -2118,4 +2118,2342 @@ export const CANTHO_SEO_ROUTES = [
       "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Thuận → Cần Thơ",
     duration: "3 - 3.5 giờ",
   },
+
+{
+key: "xe-di-tan-an-ninh-kieu",
+path: "xe-di-phuong-tan-an-ninh-kieu-can-tho",
+from: "TP.HCM",
+to: "Phường Tân An, Ninh Kiều, Cần Thơ",
+title: "Thuê xe đi phường Tân An Ninh Kiều Cần Thơ",
+description:
+"Dịch vụ thuê xe đi phường Tân An, quận Ninh Kiều từ TP.HCM. Xe riêng có tài xế, không ghép khách, phù hợp công tác, du lịch hoặc về quê.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Phường Tân An",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-an-cu-ninh-kieu",
+path: "xe-di-phuong-an-cu-ninh-kieu-can-tho",
+from: "TP.HCM",
+to: "Phường An Cư, Ninh Kiều, Cần Thơ",
+title: "Thuê xe đi phường An Cư Ninh Kiều Cần Thơ",
+description:
+"Đặt xe riêng đi phường An Cư từ TP.HCM. Đưa đón tận nơi, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Phường An Cư",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-an-hoa-ninh-kieu",
+path: "xe-di-phuong-an-hoa-ninh-kieu-can-tho",
+from: "TP.HCM",
+to: "Phường An Hòa, Ninh Kiều, Cần Thơ",
+title: "Thuê xe đi phường An Hòa Cần Thơ",
+description:
+"Dịch vụ xe riêng đi phường An Hòa từ TP.HCM. Phù hợp khách công tác, về quê và khách du lịch miền Tây.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Phường An Hòa",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-le-binh-cai-rang",
+path: "xe-di-phuong-le-binh-cai-rang-can-tho",
+from: "TP.HCM",
+to: "Phường Lê Bình, Cái Răng, Cần Thơ",
+title: "Thuê xe đi phường Lê Bình Cái Răng",
+description:
+"Dịch vụ thuê xe đi phường Lê Bình từ TP.HCM. Xe riêng, không ghép khách, phù hợp khách về quê và công tác.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng → Phường Lê Bình",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-hung-phu-cai-rang",
+path: "xe-di-phuong-hung-phu-cai-rang-can-tho",
+from: "TP.HCM",
+to: "Phường Hưng Phú, Cái Răng, Cần Thơ",
+title: "Thuê xe đi phường Hưng Phú Cần Thơ",
+description:
+"Xe riêng đi phường Hưng Phú từ TP.HCM. Đón tận nơi, lịch trình linh hoạt và phục vụ 24/7.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng → Phường Hưng Phú",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-thuong-thanh-cai-rang",
+path: "xe-di-phuong-thuong-thanh-cai-rang-can-tho",
+from: "TP.HCM",
+to: "Phường Thường Thạnh, Cái Răng, Cần Thơ",
+title: "Thuê xe đi phường Thường Thạnh Cần Thơ",
+description:
+"Dịch vụ xe riêng đi phường Thường Thạnh từ TP.HCM. Không ghép khách, thanh toán sau khi hoàn thành chuyến.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng → Phường Thường Thạnh",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-di-long-hoa-binh-thuy",
+path: "xe-di-phuong-long-hoa-binh-thuy-can-tho",
+from: "TP.HCM",
+to: "Phường Long Hòa, Bình Thủy, Cần Thơ",
+title: "Thuê xe đi phường Long Hòa Bình Thủy",
+description:
+"Dịch vụ thuê xe đi phường Long Hòa từ TP.HCM. Xe riêng có tài xế, phù hợp công tác và thăm người thân.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Phường Long Hòa",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-di-tra-an-binh-thuy",
+path: "xe-di-phuong-tra-an-binh-thuy-can-tho",
+from: "TP.HCM",
+to: "Phường Trà An, Bình Thủy, Cần Thơ",
+title: "Thuê xe đi phường Trà An Bình Thủy",
+description:
+"Đặt xe riêng đi phường Trà An từ TP.HCM. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Phường Trà An",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-di-bui-huu-nghia-binh-thuy",
+path: "xe-di-phuong-bui-huu-nghia-binh-thuy-can-tho",
+from: "TP.HCM",
+to: "Phường Bùi Hữu Nghĩa, Bình Thủy, Cần Thơ",
+title: "Thuê xe đi phường Bùi Hữu Nghĩa Cần Thơ",
+description:
+"Dịch vụ xe riêng đi phường Bùi Hữu Nghĩa từ TP.HCM. Phù hợp khách về quê, công tác hoặc du lịch miền Tây.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Phường Bùi Hữu Nghĩa",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// KCN TRÀ NÓC
+// =========================
+
+{
+key: "xe-di-kcn-tra-noc",
+path: "thue-xe-di-kcn-tra-noc-can-tho",
+from: "TP.HCM",
+to: "KCN Trà Nóc, Cần Thơ",
+title: "Thuê xe đi KCN Trà Nóc Cần Thơ",
+description:
+"Dịch vụ thuê xe đi KCN Trà Nóc từ TP.HCM. Phù hợp chuyên gia, kỹ sư, nhân viên công tác và khách làm việc tại các doanh nghiệp trong khu công nghiệp.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → KCN Trà Nóc",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-cong-tac-kcn-tra-noc",
+path: "xe-cong-tac-di-kcn-tra-noc",
+from: "TP.HCM",
+to: "KCN Trà Nóc, Cần Thơ",
+title: "Xe công tác đi KCN Trà Nóc",
+description:
+"Xe riêng đi KCN Trà Nóc cho khách công tác, khảo sát nhà máy và gặp gỡ đối tác. Đưa đón tận nơi và chủ động lịch trình.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → KCN Trà Nóc",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-chuyen-gia-kcn-tra-noc",
+path: "xe-chuyen-gia-di-kcn-tra-noc",
+from: "TP.HCM",
+to: "KCN Trà Nóc, Cần Thơ",
+title: "Xe chuyên gia đi KCN Trà Nóc",
+description:
+"Dịch vụ xe chuyên gia đi KCN Trà Nóc với tài xế riêng. Phù hợp khách doanh nghiệp và chuyên gia nước ngoài.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → KCN Trà Nóc",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// ĐẠI HỌC CẦN THƠ
+// =========================
+
+{
+key: "xe-di-dai-hoc-can-tho",
+path: "thue-xe-di-dai-hoc-can-tho",
+from: "TP.HCM",
+to: "Đại học Cần Thơ",
+title: "Thuê xe đi Đại học Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Đại học Cần Thơ từ TP.HCM. Phù hợp sinh viên, phụ huynh, giảng viên và khách tham dự hội thảo.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Đại học Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-dua-don-sinh-vien-can-tho",
+path: "xe-dua-don-sinh-vien-dai-hoc-can-tho",
+from: "TP.HCM",
+to: "Đại học Cần Thơ",
+title: "Xe đưa đón sinh viên Đại học Cần Thơ",
+description:
+"Xe riêng đưa đón sinh viên Đại học Cần Thơ từ TP.HCM. Không ghép khách, đón tận nơi và chủ động thời gian.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Đại học Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-phu-huynh-dai-hoc-can-tho",
+path: "xe-phu-huynh-di-dai-hoc-can-tho",
+from: "TP.HCM",
+to: "Đại học Cần Thơ",
+title: "Xe phụ huynh đi Đại học Cần Thơ",
+description:
+"Dịch vụ xe riêng dành cho phụ huynh đưa con nhập học, tốt nghiệp hoặc tham gia các hoạt động tại Đại học Cần Thơ.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Đại học Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// BV TRUNG ƯƠNG CẦN THƠ
+// =========================
+
+{
+key: "xe-di-bv-trung-uong-can-tho",
+path: "thue-xe-di-benh-vien-trung-uong-can-tho",
+from: "TP.HCM",
+to: "Bệnh viện Trung Ương Cần Thơ",
+title: "Thuê xe đi Bệnh viện Trung Ương Cần Thơ",
+description:
+"Dịch vụ xe riêng đưa đón khách đi khám chữa bệnh tại Bệnh viện Trung Ương Cần Thơ. Đưa đón tận nơi và chủ động thời gian.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → BV Trung Ương Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-kham-benh-can-tho",
+path: "xe-di-kham-benh-o-can-tho",
+from: "TP.HCM",
+to: "Cần Thơ",
+title: "Thuê xe đi khám bệnh tại Cần Thơ",
+description:
+"Dịch vụ xe riêng đi khám bệnh tại Cần Thơ cho người lớn tuổi, gia đình và khách cần di chuyển thoải mái.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-dua-don-benh-nhan-can-tho",
+path: "xe-dua-don-benh-nhan-di-can-tho",
+from: "TP.HCM",
+to: "Cần Thơ",
+title: "Xe đưa đón bệnh nhân đi Cần Thơ",
+description:
+"Xe riêng đưa đón bệnh nhân đi Cần Thơ với lịch trình linh hoạt. Không ghép khách và đón tận nhà.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// CỒN SƠN
+// =========================
+
+{
+key: "xe-di-con-son-can-tho",
+path: "thue-xe-di-con-son-can-tho",
+from: "TP.HCM",
+to: "Cồn Sơn, Cần Thơ",
+title: "Thuê xe đi Cồn Sơn Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Cồn Sơn từ TP.HCM. Điểm đến nổi tiếng với du lịch sinh thái, trải nghiệm sông nước và ẩm thực miền Tây.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Cồn Sơn",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-du-lich-con-son",
+path: "xe-du-lich-di-con-son-can-tho",
+from: "TP.HCM",
+to: "Cồn Sơn, Cần Thơ",
+title: "Xe du lịch đi Cồn Sơn Cần Thơ",
+description:
+"Thuê xe du lịch đi Cồn Sơn cho gia đình và nhóm bạn. Xe riêng, không ghép khách, phù hợp lịch trình cuối tuần.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Cồn Sơn",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-nghi-duong-con-son",
+path: "xe-nghi-duong-con-son-can-tho",
+from: "TP.HCM",
+to: "Cồn Sơn, Cần Thơ",
+title: "Xe nghỉ dưỡng đi Cồn Sơn",
+description:
+"Xe riêng đưa đón tận nơi đến Cồn Sơn. Phù hợp gia đình, cặp đôi và khách muốn trải nghiệm du lịch sinh thái miền Tây.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Cồn Sơn",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// THỚI LAI
+// =========================
+
+{
+key: "xe-di-thoi-lai",
+path: "thue-xe-di-thoi-lai-can-tho",
+from: "TP.HCM",
+to: "Thới Lai",
+title: "Thuê xe đi Thới Lai Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Thới Lai từ TP.HCM. Xe riêng không ghép khách, phù hợp về quê, công tác và thăm người thân tại khu vực trung tâm huyện Thới Lai.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Thới Lai",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "xe-rieng-thoi-lai",
+path: "xe-rieng-di-thoi-lai-can-tho",
+from: "TP.HCM",
+to: "Thới Lai",
+title: "Xe riêng đi Thới Lai",
+description:
+"Đặt xe riêng đi Thới Lai với tài xế chuyên nghiệp. Đưa đón tận nơi và phục vụ 24/7.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Thới Lai",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "gia-xe-thoi-lai",
+path: "gia-xe-di-thoi-lai-can-tho",
+from: "TP.HCM",
+to: "Thới Lai",
+title: "Giá xe đi Thới Lai Cần Thơ",
+description:
+"Xem giá xe đi Thới Lai theo địa chỉ đón trả thực tế. Xe riêng có tài xế và biết giá trước khi đặt.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Thới Lai",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// CỜ ĐỎ
+// =========================
+
+{
+key: "xe-di-co-do",
+path: "thue-xe-di-co-do-can-tho",
+from: "TP.HCM",
+to: "Cờ Đỏ",
+title: "Thuê xe đi Cờ Đỏ Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Cờ Đỏ từ TP.HCM. Phù hợp khách về quê, công tác và làm việc tại khu vực nông nghiệp trọng điểm của Cần Thơ.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Cờ Đỏ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "xe-rieng-co-do",
+path: "xe-rieng-di-co-do-can-tho",
+from: "TP.HCM",
+to: "Cờ Đỏ",
+title: "Xe riêng đi Cờ Đỏ",
+description:
+"Xe riêng đi Cờ Đỏ với tài xế chuyên nghiệp. Không ghép khách và chủ động lịch trình.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Cờ Đỏ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "gia-xe-co-do",
+path: "gia-xe-di-co-do-can-tho",
+from: "TP.HCM",
+to: "Cờ Đỏ",
+title: "Giá xe đi Cờ Đỏ",
+description:
+"Xem giá xe đi Cờ Đỏ nhanh chóng trên GoViet247. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Cờ Đỏ",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// VĨNH THẠNH
+// =========================
+
+{
+key: "xe-di-vinh-thanh-can-tho",
+path: "thue-xe-di-vinh-thanh-can-tho",
+from: "TP.HCM",
+to: "Vĩnh Thạnh",
+title: "Thuê xe đi Vĩnh Thạnh Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Vĩnh Thạnh từ TP.HCM. Xe riêng không ghép khách, phù hợp về quê và công tác tại khu vực phía Tây thành phố Cần Thơ.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Vĩnh Thạnh",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "xe-rieng-vinh-thanh-can-tho",
+path: "xe-rieng-di-vinh-thanh-can-tho",
+from: "TP.HCM",
+to: "Vĩnh Thạnh",
+title: "Xe riêng đi Vĩnh Thạnh",
+description:
+"Đặt xe riêng đi Vĩnh Thạnh với tài xế chuyên nghiệp. Đưa đón tận nơi và phục vụ 24/7.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Vĩnh Thạnh",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "gia-xe-vinh-thanh-can-tho",
+path: "gia-xe-di-vinh-thanh-can-tho",
+from: "TP.HCM",
+to: "Vĩnh Thạnh",
+title: "Giá xe đi Vĩnh Thạnh Cần Thơ",
+description:
+"Xem giá xe đi Vĩnh Thạnh theo địa chỉ đón trả thực tế. Xe riêng có tài xế.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Vĩnh Thạnh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// THỐT NỐT
+// =========================
+
+{
+key: "xe-di-thot-not",
+path: "thue-xe-di-thot-not-can-tho",
+from: "TP.HCM",
+to: "Thốt Nốt",
+title: "Thuê xe đi Thốt Nốt Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Thốt Nốt từ TP.HCM. Phù hợp khách công tác, về quê và làm việc tại khu vực công nghiệp phía Bắc Cần Thơ.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "xe-rieng-thot-not",
+path: "xe-rieng-di-thot-not-can-tho",
+from: "TP.HCM",
+to: "Thốt Nốt",
+title: "Xe riêng đi Thốt Nốt",
+description:
+"Đặt xe riêng đi Thốt Nốt với tài xế chuyên nghiệp. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "gia-xe-thot-not",
+path: "gia-xe-di-thot-not-can-tho",
+from: "TP.HCM",
+to: "Thốt Nốt",
+title: "Giá xe đi Thốt Nốt Cần Thơ",
+description:
+"Xem giá xe đi Thốt Nốt nhanh chóng trên GoViet247. Xe riêng có tài xế và biết giá trước khi đặt.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// SÂN BAY CẦN THƠ
+// =========================
+
+{
+key: "xe-di-san-bay-can-tho",
+path: "thue-xe-di-san-bay-can-tho",
+from: "TP.HCM",
+to: "Sân bay Cần Thơ",
+title: "Thuê xe đi sân bay Cần Thơ",
+description:
+"Dịch vụ thuê xe đi sân bay Cần Thơ từ TP.HCM. Xe riêng có tài xế, phù hợp khách công tác, du lịch và đón tiễn người thân.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Sân bay Cần Thơ",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-dua-don-san-bay-can-tho",
+path: "xe-dua-don-san-bay-can-tho",
+from: "TP.HCM",
+to: "Sân bay Cần Thơ",
+title: "Xe đưa đón sân bay Cần Thơ",
+description:
+"Dịch vụ xe riêng đưa đón sân bay Cần Thơ. Đón tận nơi, không ghép khách và chủ động thời gian.",
+routeText:
+"TP.HCM → Mỹ Thuận → Bình Thủy → Sân bay Cần Thơ",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-tu-san-bay-can-tho-ve-tphcm",
+path: "xe-tu-san-bay-can-tho-ve-tphcm",
+from: "Sân bay Cần Thơ",
+to: "TP.HCM",
+title: "Xe từ sân bay Cần Thơ về TP.HCM",
+description:
+"Dịch vụ xe riêng từ sân bay Cần Thơ về TP.HCM. Phù hợp khách du lịch, chuyên gia và khách công tác.",
+routeText:
+"Sân bay Cần Thơ → Mỹ Thuận → TP.HCM",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// THIỀN VIỆN TRÚC LÂM PHƯƠNG NAM
+// =========================
+
+{
+key: "xe-di-thien-vien-truc-lam-phuong-nam",
+path: "thue-xe-di-thien-vien-truc-lam-phuong-nam",
+from: "TP.HCM",
+to: "Thiền viện Trúc Lâm Phương Nam",
+title: "Thuê xe đi Thiền viện Trúc Lâm Phương Nam",
+description:
+"Dịch vụ xe riêng đi Thiền viện Trúc Lâm Phương Nam từ TP.HCM. Phù hợp khách hành hương, tham quan và du lịch tâm linh.",
+routeText:
+"TP.HCM → Mỹ Thuận → Phong Điền → Thiền viện Trúc Lâm",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-hanh-huong-can-tho",
+path: "xe-hanh-huong-thien-vien-truc-lam-can-tho",
+from: "TP.HCM",
+to: "Thiền viện Trúc Lâm Phương Nam",
+title: "Xe hành hương Thiền viện Trúc Lâm Cần Thơ",
+description:
+"Dịch vụ xe riêng hành hương Thiền viện Trúc Lâm Phương Nam. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"TP.HCM → Mỹ Thuận → Phong Điền",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// BẾN XE TRUNG TÂM CẦN THƠ
+// =========================
+
+{
+key: "xe-di-ben-xe-can-tho",
+path: "thue-xe-di-ben-xe-trung-tam-can-tho",
+from: "TP.HCM",
+to: "Bến xe Trung tâm Cần Thơ",
+title: "Thuê xe đi Bến xe Trung tâm Cần Thơ",
+description:
+"Dịch vụ xe riêng đi Bến xe Trung tâm Cần Thơ từ TP.HCM. Đưa đón tận nơi và chủ động lịch trình.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng → Bến xe Trung tâm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-rieng-ben-xe-can-tho",
+path: "xe-rieng-di-ben-xe-trung-tam-can-tho",
+from: "TP.HCM",
+to: "Bến xe Trung tâm Cần Thơ",
+title: "Xe riêng đi Bến xe Trung tâm Cần Thơ",
+description:
+"Đặt xe riêng đi Bến xe Trung tâm Cần Thơ. Không ghép khách, biết giá trước khi đặt.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// VINCOM XUÂN KHÁNH
+// =========================
+
+{
+key: "xe-di-vincom-xuan-khanh",
+path: "thue-xe-di-vincom-xuan-khanh-can-tho",
+from: "TP.HCM",
+to: "Vincom Plaza Xuân Khánh",
+title: "Thuê xe đi Vincom Xuân Khánh Cần Thơ",
+description:
+"Dịch vụ xe riêng đi Vincom Xuân Khánh từ TP.HCM. Phù hợp khách mua sắm, công tác và du lịch tại trung tâm Cần Thơ.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều → Vincom Xuân Khánh",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-trung-tam-ninh-kieu",
+path: "thue-xe-di-trung-tam-ninh-kieu-can-tho",
+from: "TP.HCM",
+to: "Trung tâm Ninh Kiều",
+title: "Thuê xe đi trung tâm Ninh Kiều Cần Thơ",
+description:
+"Dịch vụ xe riêng đi trung tâm Ninh Kiều từ TP.HCM. Đón tận nơi và không ghép khách.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// KCN HƯNG PHÚ
+// =========================
+
+{
+key: "xe-di-kcn-hung-phu",
+path: "thue-xe-di-kcn-hung-phu-can-tho",
+from: "TP.HCM",
+to: "KCN Hưng Phú",
+title: "Thuê xe đi KCN Hưng Phú Cần Thơ",
+description:
+"Dịch vụ thuê xe đi KCN Hưng Phú từ TP.HCM. Phù hợp chuyên gia, kỹ sư và khách công tác làm việc tại khu công nghiệp.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng → KCN Hưng Phú",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-chuyen-gia-kcn-hung-phu",
+path: "xe-chuyen-gia-di-kcn-hung-phu",
+from: "TP.HCM",
+to: "KCN Hưng Phú",
+title: "Xe chuyên gia đi KCN Hưng Phú",
+description:
+"Dịch vụ xe riêng đưa đón chuyên gia đến KCN Hưng Phú. Xe riêng không ghép khách và phục vụ 24/7.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cái Răng → KCN Hưng Phú",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → NINH KIỀU
+// =========================
+
+{
+key: "quan1-ninh-kieu",
+path: "thue-xe-tu-quan-1-di-ninh-kieu-can-tho",
+from: "Quận 1",
+to: "Ninh Kiều",
+title: "Thuê xe từ Quận 1 đi Ninh Kiều Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 1 đi Ninh Kiều Cần Thơ. Đón tận nơi tại khách sạn, căn hộ hoặc văn phòng khu trung tâm.",
+routeText:
+"Quận 1 → Cao tốc Trung Lương → Mỹ Thuận → Ninh Kiều",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "quan1-ben-ninh-kieu",
+path: "thue-xe-tu-quan-1-di-ben-ninh-kieu",
+from: "Quận 1",
+to: "Bến Ninh Kiều",
+title: "Thuê xe từ Quận 1 đi Bến Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Quận 1 đi Bến Ninh Kiều. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+routeText:
+"Quận 1 → Mỹ Thuận → Ninh Kiều → Bến Ninh Kiều",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "quan1-vincom-xuan-khanh",
+path: "thue-xe-tu-quan-1-di-vincom-xuan-khanh",
+from: "Quận 1",
+to: "Vincom Xuân Khánh",
+title: "Thuê xe từ Quận 1 đi Vincom Xuân Khánh",
+description:
+"Dịch vụ xe riêng từ Quận 1 đi Vincom Xuân Khánh Cần Thơ. Phù hợp khách du lịch, công tác và mua sắm.",
+routeText:
+"Quận 1 → Mỹ Thuận → Ninh Kiều → Vincom Xuân Khánh",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 7 → CÁI RĂNG
+// =========================
+
+{
+key: "quan7-cai-rang",
+path: "thue-xe-tu-quan-7-di-cai-rang-can-tho",
+from: "Quận 7",
+to: "Cái Răng",
+title: "Thuê xe từ Quận 7 đi Cái Răng Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi Cái Răng. Đón tận nơi tại Phú Mỹ Hưng và các khu dân cư lân cận.",
+routeText:
+"Quận 7 → Trung Lương → Mỹ Thuận → Cái Răng",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "quan7-cho-noi-cai-rang",
+path: "thue-xe-tu-quan-7-di-cho-noi-cai-rang",
+from: "Quận 7",
+to: "Chợ nổi Cái Răng",
+title: "Thuê xe từ Quận 7 đi Chợ nổi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi Chợ nổi Cái Răng. Phù hợp khách du lịch khám phá miền Tây.",
+routeText:
+"Quận 7 → Mỹ Thuận → Cái Răng → Chợ nổi",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "quan7-kcn-hung-phu",
+path: "thue-xe-tu-quan-7-di-kcn-hung-phu",
+from: "Quận 7",
+to: "KCN Hưng Phú",
+title: "Thuê xe từ Quận 7 đi KCN Hưng Phú",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi KCN Hưng Phú dành cho chuyên gia và khách công tác.",
+routeText:
+"Quận 7 → Mỹ Thuận → Cái Răng → KCN Hưng Phú",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → BÌNH THỦY
+// =========================
+
+{
+key: "thu-duc-binh-thuy",
+path: "thue-xe-tu-thu-duc-di-binh-thuy-can-tho",
+from: "TP Thủ Đức",
+to: "Bình Thủy",
+title: "Thuê xe từ TP Thủ Đức đi Bình Thủy",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi Bình Thủy. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"TP Thủ Đức → Mỹ Thuận → Bình Thủy",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "thu-duc-san-bay-can-tho",
+path: "thue-xe-tu-thu-duc-di-san-bay-can-tho",
+from: "TP Thủ Đức",
+to: "Sân bay Cần Thơ",
+title: "Thuê xe từ TP Thủ Đức đi sân bay Cần Thơ",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi sân bay Cần Thơ. Phù hợp khách công tác và du lịch.",
+routeText:
+"TP Thủ Đức → Mỹ Thuận → Bình Thủy → Sân bay",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "thu-duc-con-son",
+path: "thue-xe-tu-thu-duc-di-con-son-can-tho",
+from: "TP Thủ Đức",
+to: "Cồn Sơn",
+title: "Thuê xe từ TP Thủ Đức đi Cồn Sơn",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi Cồn Sơn. Không ghép khách và chủ động lịch trình.",
+routeText:
+"TP Thủ Đức → Mỹ Thuận → Bình Thủy → Cồn Sơn",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// BÌNH TÂN → THỐT NỐT
+// =========================
+
+{
+key: "binh-tan-thot-not",
+path: "thue-xe-tu-binh-tan-di-thot-not-can-tho",
+from: "Bình Tân",
+to: "Thốt Nốt",
+title: "Thuê xe từ Bình Tân đi Thốt Nốt",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi Thốt Nốt Cần Thơ. Phù hợp khách công tác, về quê và làm việc tại khu vực công nghiệp.",
+routeText:
+"Bình Tân → Trung Lương → Mỹ Thuận → Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-tan-kcn-thot-not",
+path: "thue-xe-tu-binh-tan-di-kcn-thot-not",
+from: "Bình Tân",
+to: "KCN Thốt Nốt",
+title: "Thuê xe từ Bình Tân đi KCN Thốt Nốt",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi KCN Thốt Nốt dành cho chuyên gia và khách công tác.",
+routeText:
+"Bình Tân → Mỹ Thuận → Thốt Nốt → KCN",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-tan-vinh-thanh",
+path: "thue-xe-tu-binh-tan-di-vinh-thanh-can-tho",
+from: "Bình Tân",
+to: "Vĩnh Thạnh",
+title: "Thuê xe từ Bình Tân đi Vĩnh Thạnh",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi Vĩnh Thạnh. Đưa đón tận nơi và không ghép khách.",
+routeText:
+"Bình Tân → Mỹ Thuận → Vĩnh Thạnh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// GÒ VẤP → NINH KIỀU
+// =========================
+
+{
+key: "go-vap-ninh-kieu",
+path: "thue-xe-tu-go-vap-di-ninh-kieu-can-tho",
+from: "Gò Vấp",
+to: "Ninh Kiều",
+title: "Thuê xe từ Gò Vấp đi Ninh Kiều Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Ninh Kiều Cần Thơ. Đón tận nơi tại nhà riêng, chung cư hoặc văn phòng. Xe riêng có tài xế, không ghép khách.",
+routeText:
+"Gò Vấp → Trung Lương → Mỹ Thuận → Ninh Kiều",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "go-vap-ben-ninh-kieu",
+path: "thue-xe-tu-go-vap-di-ben-ninh-kieu",
+from: "Gò Vấp",
+to: "Bến Ninh Kiều",
+title: "Thuê xe từ Gò Vấp đi Bến Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Bến Ninh Kiều. Phù hợp du lịch, công tác và nghỉ dưỡng tại trung tâm Cần Thơ.",
+routeText:
+"Gò Vấp → Mỹ Thuận → Ninh Kiều → Bến Ninh Kiều",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "go-vap-vincom-xuan-khanh",
+path: "thue-xe-tu-go-vap-di-vincom-xuan-khanh",
+from: "Gò Vấp",
+to: "Vincom Xuân Khánh",
+title: "Thuê xe từ Gò Vấp đi Vincom Xuân Khánh",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Vincom Xuân Khánh Cần Thơ. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"Gò Vấp → Mỹ Thuận → Ninh Kiều",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// TÂN BÌNH → CÁI RĂNG
+// =========================
+
+{
+key: "tan-binh-cai-rang",
+path: "thue-xe-tu-tan-binh-di-cai-rang-can-tho",
+from: "Tân Bình",
+to: "Cái Răng",
+title: "Thuê xe từ Tân Bình đi Cái Răng Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi Cái Răng. Phù hợp khách công tác, du lịch và về quê miền Tây.",
+routeText:
+"Tân Bình → Trung Lương → Mỹ Thuận → Cái Răng",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-binh-cho-noi-cai-rang",
+path: "thue-xe-tu-tan-binh-di-cho-noi-cai-rang",
+from: "Tân Bình",
+to: "Chợ nổi Cái Răng",
+title: "Thuê xe từ Tân Bình đi Chợ nổi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi Chợ nổi Cái Răng. Xe riêng không ghép khách và phục vụ 24/7.",
+routeText:
+"Tân Bình → Mỹ Thuận → Cái Răng",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-binh-kcn-hung-phu",
+path: "thue-xe-tu-tan-binh-di-kcn-hung-phu",
+from: "Tân Bình",
+to: "KCN Hưng Phú",
+title: "Thuê xe từ Tân Bình đi KCN Hưng Phú",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi KCN Hưng Phú dành cho chuyên gia và khách công tác.",
+routeText:
+"Tân Bình → Mỹ Thuận → Cái Răng → KCN Hưng Phú",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// PHÚ NHUẬN → BÌNH THỦY
+// =========================
+
+{
+key: "phu-nhuan-binh-thuy",
+path: "thue-xe-tu-phu-nhuan-di-binh-thuy-can-tho",
+from: "Phú Nhuận",
+to: "Bình Thủy",
+title: "Thuê xe từ Phú Nhuận đi Bình Thủy Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Bình Thủy. Đón tận nơi và không ghép khách.",
+routeText:
+"Phú Nhuận → Mỹ Thuận → Bình Thủy",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "phu-nhuan-san-bay-can-tho",
+path: "thue-xe-tu-phu-nhuan-di-san-bay-can-tho",
+from: "Phú Nhuận",
+to: "Sân bay Cần Thơ",
+title: "Thuê xe từ Phú Nhuận đi sân bay Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi sân bay Cần Thơ. Phù hợp khách công tác và khách du lịch.",
+routeText:
+"Phú Nhuận → Mỹ Thuận → Bình Thủy → Sân bay",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "phu-nhuan-con-son",
+path: "thue-xe-tu-phu-nhuan-di-con-son-can-tho",
+from: "Phú Nhuận",
+to: "Cồn Sơn",
+title: "Thuê xe từ Phú Nhuận đi Cồn Sơn",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Cồn Sơn. Chủ động lịch trình và không ghép khách.",
+routeText:
+"Phú Nhuận → Mỹ Thuận → Bình Thủy → Cồn Sơn",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// BÌNH THẠNH → THỐT NỐT
+// =========================
+
+{
+key: "binh-thanh-thot-not",
+path: "thue-xe-tu-binh-thanh-di-thot-not-can-tho",
+from: "Bình Thạnh",
+to: "Thốt Nốt",
+title: "Thuê xe từ Bình Thạnh đi Thốt Nốt Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi Thốt Nốt. Phù hợp khách công tác, về quê và làm việc tại khu công nghiệp.",
+routeText:
+"Bình Thạnh → Mỹ Thuận → Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-thanh-kcn-thot-not",
+path: "thue-xe-tu-binh-thanh-di-kcn-thot-not",
+from: "Bình Thạnh",
+to: "KCN Thốt Nốt",
+title: "Thuê xe từ Bình Thạnh đi KCN Thốt Nốt",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi KCN Thốt Nốt dành cho chuyên gia và khách công tác.",
+routeText:
+"Bình Thạnh → Mỹ Thuận → Thốt Nốt → KCN",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-thanh-vinh-thanh",
+path: "thue-xe-tu-binh-thanh-di-vinh-thanh-can-tho",
+from: "Bình Thạnh",
+to: "Vĩnh Thạnh",
+title: "Thuê xe từ Bình Thạnh đi Vĩnh Thạnh Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi Vĩnh Thạnh. Xe riêng có tài xế và đưa đón tận nơi.",
+routeText:
+"Bình Thạnh → Mỹ Thuận → Vĩnh Thạnh",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "go-vap-can-tho",
+path: "thue-xe-tu-go-vap-di-can-tho",
+from: "Gò Vấp",
+to: "Cần Thơ",
+title: "Thuê xe từ Gò Vấp đi Cần Thơ, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe từ Gò Vấp đi Cần Thơ. Xe riêng không ghép khách, đón tận nơi tại nhà riêng, chung cư hoặc văn phòng.",
+routeText:
+"Gò Vấp → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "go-vap-can-tho-1-chieu",
+path: "xe-1-chieu-tu-go-vap-di-can-tho",
+from: "Gò Vấp",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Gò Vấp đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Gò Vấp đi Cần Thơ. Không ghép khách và biết giá trước khi đặt.",
+routeText:
+"Gò Vấp → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "go-vap-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-go-vap-di-can-tho",
+from: "Gò Vấp",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Gò Vấp đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Gò Vấp đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Gò Vấp → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-binh-can-tho",
+path: "thue-xe-tu-tan-binh-di-can-tho",
+from: "Tân Bình",
+to: "Cần Thơ",
+title: "Thuê xe từ Tân Bình đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi Cần Thơ. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+routeText:
+"Tân Bình → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-binh-can-tho-1-chieu",
+path: "xe-1-chieu-tu-tan-binh-di-can-tho",
+from: "Tân Bình",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Tân Bình đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Tân Bình đi Cần Thơ. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText:
+"Tân Bình → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-binh-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-tan-binh-di-can-tho",
+from: "Tân Bình",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Tân Bình đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Tân Bình đi Cần Thơ. Không ghép khách và đón tận nơi.",
+routeText:
+"Tân Bình → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "binh-thanh-can-tho",
+path: "thue-xe-tu-binh-thanh-di-can-tho",
+from: "Bình Thạnh",
+to: "Cần Thơ",
+title: "Thuê xe từ Bình Thạnh đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi Cần Thơ. Phù hợp công tác, du lịch và về quê miền Tây.",
+routeText:
+"Bình Thạnh → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "binh-thanh-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-binh-thanh-di-can-tho",
+from: "Bình Thạnh",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Bình Thạnh đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Bình Thạnh đi Cần Thơ dành cho gia đình và khách công tác.",
+routeText:
+"Bình Thạnh → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "binh-thanh-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-binh-thanh-di-can-tho",
+from: "Bình Thạnh",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Bình Thạnh đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Bình Thạnh đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Bình Thạnh → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "phu-nhuan-can-tho",
+path: "thue-xe-tu-phu-nhuan-di-can-tho",
+from: "Phú Nhuận",
+to: "Cần Thơ",
+title: "Thuê xe từ Phú Nhuận đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Cần Thơ. Xe riêng không ghép khách và đưa đón tận nơi.",
+routeText:
+"Phú Nhuận → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "phu-nhuan-can-tho-1-chieu",
+path: "xe-1-chieu-tu-phu-nhuan-di-can-tho",
+from: "Phú Nhuận",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Phú Nhuận đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Phú Nhuận đi Cần Thơ. Biết giá trước khi đặt và không ghép khách.",
+routeText:
+"Phú Nhuận → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "phu-nhuan-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-phu-nhuan-di-can-tho",
+from: "Phú Nhuận",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Phú Nhuận đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Phú Nhuận đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Phú Nhuận → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan7-can-tho",
+path: "thue-xe-tu-quan-7-di-can-tho",
+from: "Quận 7",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 7 đi Cần Thơ, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe từ Quận 7 đi Cần Thơ. Đón tận nơi tại Phú Mỹ Hưng và các khu dân cư lân cận. Xe riêng không ghép khách.",
+routeText:
+"Quận 7 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan7-can-tho-1-chieu",
+path: "xe-1-chieu-tu-quan-7-di-can-tho",
+from: "Quận 7",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Quận 7 đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Quận 7 đi Cần Thơ. Biết giá trước khi đặt và thanh toán sau chuyến đi.",
+routeText:
+"Quận 7 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan7-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-quan-7-di-can-tho",
+from: "Quận 7",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Quận 7 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Quận 7 đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Quận 7 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "thu-duc-can-tho",
+path: "thue-xe-tu-thu-duc-di-can-tho",
+from: "TP Thủ Đức",
+to: "Cần Thơ",
+title: "Thuê xe từ TP Thủ Đức đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi Cần Thơ. Đón tận nơi tại căn hộ, chung cư hoặc văn phòng.",
+routeText:
+"TP Thủ Đức → Cao tốc TP.HCM Long Thành → Trung Lương → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "thu-duc-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-thu-duc-di-can-tho",
+from: "TP Thủ Đức",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ TP Thủ Đức đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ TP Thủ Đức đi Cần Thơ dành cho khách công tác và gia đình.",
+routeText:
+"TP Thủ Đức → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "thu-duc-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-thu-duc-di-can-tho",
+from: "TP Thủ Đức",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ TP Thủ Đức đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ TP Thủ Đức đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"TP Thủ Đức → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "binh-tan-can-tho",
+path: "thue-xe-tu-binh-tan-di-can-tho",
+from: "Bình Tân",
+to: "Cần Thơ",
+title: "Thuê xe từ Bình Tân đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi Cần Thơ. Vị trí thuận tiện ra cao tốc Trung Lương nên thời gian di chuyển nhanh chóng.",
+routeText:
+"Bình Tân → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "binh-tan-can-tho-1-chieu",
+path: "xe-1-chieu-tu-binh-tan-di-can-tho",
+from: "Bình Tân",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Bình Tân đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Bình Tân đi Cần Thơ. Không ghép khách và đón tận nơi.",
+routeText:
+"Bình Tân → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "binh-tan-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-binh-tan-di-can-tho",
+from: "Bình Tân",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Bình Tân đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Bình Tân đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Bình Tân → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "hoc-mon-can-tho",
+path: "thue-xe-tu-hoc-mon-di-can-tho",
+from: "Hóc Môn",
+to: "Cần Thơ",
+title: "Thuê xe từ Hóc Môn đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Hóc Môn đi Cần Thơ. Phù hợp khách về quê miền Tây, công tác hoặc du lịch.",
+routeText:
+"Hóc Môn → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "hoc-mon-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-hoc-mon-di-can-tho",
+from: "Hóc Môn",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Hóc Môn đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Hóc Môn đi Cần Thơ với tài xế riêng và lịch trình linh hoạt.",
+routeText:
+"Hóc Môn → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "hoc-mon-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-hoc-mon-di-can-tho",
+from: "Hóc Môn",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Hóc Môn đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Hóc Môn đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Hóc Môn → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 3 → CẦN THƠ
+// =========================
+
+{
+key: "quan3-can-tho",
+path: "thue-xe-tu-quan-3-di-can-tho",
+from: "Quận 3",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 3 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 3 đi Cần Thơ. Đón tận nơi tại nhà riêng, khách sạn hoặc văn phòng. Không ghép khách và phục vụ 24/7.",
+routeText:
+"Quận 3 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan3-can-tho-1-chieu",
+path: "xe-1-chieu-tu-quan-3-di-can-tho",
+from: "Quận 3",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Quận 3 đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Quận 3 đi Cần Thơ. Xe riêng có tài xế và biết giá trước khi đặt.",
+routeText:
+"Quận 3 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan3-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-quan-3-di-can-tho",
+from: "Quận 3",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Quận 3 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Quận 3 đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Quận 3 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 10 → CẦN THƠ
+// =========================
+
+{
+key: "quan10-can-tho",
+path: "thue-xe-tu-quan-10-di-can-tho",
+from: "Quận 10",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 10 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 10 đi Cần Thơ. Đưa đón tận nơi và không ghép khách.",
+routeText:
+"Quận 10 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan10-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-quan-10-di-can-tho",
+from: "Quận 10",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Quận 10 đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Quận 10 đi Cần Thơ dành cho khách công tác và gia đình.",
+routeText:
+"Quận 10 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan10-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-quan-10-di-can-tho",
+from: "Quận 10",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Quận 10 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Quận 10 đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Quận 10 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 12 → CẦN THƠ
+// =========================
+
+{
+key: "quan12-can-tho",
+path: "thue-xe-tu-quan-12-di-can-tho",
+from: "Quận 12",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 12 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 12 đi Cần Thơ. Xe riêng không ghép khách và đón tận nơi.",
+routeText:
+"Quận 12 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "quan12-can-tho-1-chieu",
+path: "xe-1-chieu-tu-quan-12-di-can-tho",
+from: "Quận 12",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Quận 12 đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Quận 12 đi Cần Thơ. Biết giá trước khi đặt và thanh toán sau chuyến đi.",
+routeText:
+"Quận 12 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "quan12-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-quan-12-di-can-tho",
+from: "Quận 12",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Quận 12 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Quận 12 đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Quận 12 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TÂN PHÚ → CẦN THƠ
+// =========================
+
+{
+key: "tan-phu-can-tho",
+path: "thue-xe-tu-tan-phu-di-can-tho",
+from: "Tân Phú",
+to: "Cần Thơ",
+title: "Thuê xe từ Tân Phú đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Tân Phú đi Cần Thơ. Đón tận nơi tại nhà riêng, căn hộ hoặc văn phòng.",
+routeText:
+"Tân Phú → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-phu-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-tan-phu-di-can-tho",
+from: "Tân Phú",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Tân Phú đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Tân Phú đi Cần Thơ với tài xế riêng và lịch trình linh hoạt.",
+routeText:
+"Tân Phú → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-phu-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-tan-phu-di-can-tho",
+from: "Tân Phú",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Tân Phú đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Tân Phú đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Tân Phú → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// BÌNH CHÁNH → CẦN THƠ
+// =========================
+
+{
+key: "binh-chanh-can-tho",
+path: "thue-xe-tu-binh-chanh-di-can-tho",
+from: "Bình Chánh",
+to: "Cần Thơ",
+title: "Thuê xe từ Bình Chánh đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Chánh đi Cần Thơ. Vị trí thuận tiện kết nối cao tốc nên thời gian di chuyển nhanh chóng.",
+routeText:
+"Bình Chánh → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "binh-chanh-can-tho-1-chieu",
+path: "xe-1-chieu-tu-binh-chanh-di-can-tho",
+from: "Bình Chánh",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Bình Chánh đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Bình Chánh đi Cần Thơ. Xe riêng không ghép khách và đón tận nơi.",
+routeText:
+"Bình Chánh → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "binh-chanh-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-binh-chanh-di-can-tho",
+from: "Bình Chánh",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Bình Chánh đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Bình Chánh đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Bình Chánh → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// NHÀ BÈ → CẦN THƠ
+// =========================
+
+{
+key: "nha-be-can-tho",
+path: "thue-xe-tu-nha-be-di-can-tho",
+from: "Nhà Bè",
+to: "Cần Thơ",
+title: "Thuê xe từ Nhà Bè đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Nhà Bè đi Cần Thơ. Đón tận nơi tại khu dân cư, căn hộ và văn phòng.",
+routeText:
+"Nhà Bè → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "nha-be-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-nha-be-di-can-tho",
+from: "Nhà Bè",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Nhà Bè đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Nhà Bè đi Cần Thơ với tài xế riêng và lịch trình linh hoạt.",
+routeText:
+"Nhà Bè → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "nha-be-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-nha-be-di-can-tho",
+from: "Nhà Bè",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Nhà Bè đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Nhà Bè đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Nhà Bè → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// CỦ CHI → CẦN THƠ
+// =========================
+
+{
+key: "cu-chi-can-tho",
+path: "thue-xe-tu-cu-chi-di-can-tho",
+from: "Củ Chi",
+to: "Cần Thơ",
+title: "Thuê xe từ Củ Chi đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Củ Chi đi Cần Thơ. Phù hợp khách về quê miền Tây, công tác và du lịch.",
+routeText:
+"Củ Chi → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "cu-chi-can-tho-1-chieu",
+path: "xe-1-chieu-tu-cu-chi-di-can-tho",
+from: "Củ Chi",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Củ Chi đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Củ Chi đi Cần Thơ. Không ghép khách và phục vụ 24/7.",
+routeText:
+"Củ Chi → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "cu-chi-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-cu-chi-di-can-tho",
+from: "Củ Chi",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Củ Chi đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Củ Chi đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Củ Chi → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// QUẬN 4 → CẦN THƠ
+// =========================
+
+{
+key: "quan4-can-tho",
+path: "thue-xe-tu-quan-4-di-can-tho",
+from: "Quận 4",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 4 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 4 đi Cần Thơ. Đưa đón tận nơi và không ghép khách.",
+routeText:
+"Quận 4 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan4-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-quan-4-di-can-tho",
+from: "Quận 4",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Quận 4 đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Quận 4 đi Cần Thơ dành cho khách công tác và gia đình.",
+routeText:
+"Quận 4 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan4-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-quan-4-di-can-tho",
+from: "Quận 4",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Quận 4 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Quận 4 đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Quận 4 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 5 → CẦN THƠ
+// =========================
+
+{
+key: "quan5-can-tho",
+path: "thue-xe-tu-quan-5-di-can-tho",
+from: "Quận 5",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 5 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 5 đi Cần Thơ. Đón tận nơi tại nhà riêng, khách sạn hoặc văn phòng. Không ghép khách và phục vụ 24/7.",
+routeText:
+"Quận 5 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan5-can-tho-1-chieu",
+path: "xe-1-chieu-tu-quan-5-di-can-tho",
+from: "Quận 5",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Quận 5 đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Quận 5 đi Cần Thơ. Xe riêng có tài xế và biết giá trước khi đặt.",
+routeText:
+"Quận 5 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan5-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-quan-5-di-can-tho",
+from: "Quận 5",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Quận 5 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Quận 5 đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Quận 5 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 6 → CẦN THƠ
+// =========================
+
+{
+key: "quan6-can-tho",
+path: "thue-xe-tu-quan-6-di-can-tho",
+from: "Quận 6",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 6 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 6 đi Cần Thơ. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"Quận 6 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan6-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-quan-6-di-can-tho",
+from: "Quận 6",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Quận 6 đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Quận 6 đi Cần Thơ dành cho khách công tác và gia đình.",
+routeText:
+"Quận 6 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan6-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-quan-6-di-can-tho",
+from: "Quận 6",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Quận 6 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Quận 6 đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Quận 6 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 8 → CẦN THƠ
+// =========================
+
+{
+key: "quan8-can-tho",
+path: "thue-xe-tu-quan-8-di-can-tho",
+from: "Quận 8",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 8 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 8 đi Cần Thơ. Xe riêng không ghép khách và đón tận nơi.",
+routeText:
+"Quận 8 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan8-can-tho-1-chieu",
+path: "xe-1-chieu-tu-quan-8-di-can-tho",
+from: "Quận 8",
+to: "Cần Thơ",
+title: "Xe 1 chiều từ Quận 8 đi Cần Thơ",
+description:
+"Dịch vụ xe 1 chiều từ Quận 8 đi Cần Thơ. Thanh toán sau chuyến đi và không ghép khách.",
+routeText:
+"Quận 8 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan8-can-tho-7-cho",
+path: "thue-xe-7-cho-tu-quan-8-di-can-tho",
+from: "Quận 8",
+to: "Cần Thơ",
+title: "Thuê xe 7 chỗ từ Quận 8 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 7 chỗ từ Quận 8 đi Cần Thơ dành cho gia đình và nhóm bạn.",
+routeText:
+"Quận 8 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 11 → CẦN THƠ
+// =========================
+
+{
+key: "quan11-can-tho",
+path: "thue-xe-tu-quan-11-di-can-tho",
+from: "Quận 11",
+to: "Cần Thơ",
+title: "Thuê xe từ Quận 11 đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Quận 11 đi Cần Thơ. Đưa đón tận nơi và phục vụ 24/7.",
+routeText:
+"Quận 11 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan11-can-tho-khu-hoi",
+path: "xe-khu-hoi-tu-quan-11-di-can-tho",
+from: "Quận 11",
+to: "Cần Thơ",
+title: "Xe khứ hồi từ Quận 11 đi Cần Thơ",
+description:
+"Dịch vụ xe khứ hồi từ Quận 11 đi Cần Thơ với tài xế riêng và lịch trình linh hoạt.",
+routeText:
+"Quận 11 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan11-can-tho-16-cho",
+path: "thue-xe-16-cho-tu-quan-11-di-can-tho",
+from: "Quận 11",
+to: "Cần Thơ",
+title: "Thuê xe 16 chỗ từ Quận 11 đi Cần Thơ",
+description:
+"Dịch vụ thuê xe 16 chỗ từ Quận 11 đi Cần Thơ dành cho đoàn khách và doanh nghiệp.",
+routeText:
+"Quận 11 → Trung Lương → Mỹ Thuận → Cần Thơ",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// TP.HCM → PHONG ĐIỀN
+// =========================
+
+{
+key: "xe-di-phong-dien-can-tho",
+path: "thue-xe-di-phong-dien-can-tho",
+from: "TP.HCM",
+to: "Phong Điền",
+title: "Thuê xe đi Phong Điền Cần Thơ",
+description:
+"Dịch vụ thuê xe đi Phong Điền từ TP.HCM. Xe riêng có tài xế, phù hợp du lịch sinh thái, nghỉ dưỡng và thăm người thân.",
+routeText:
+"TP.HCM → Mỹ Thuận → Cần Thơ → Phong Điền",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-rieng-phong-dien-can-tho",
+path: "xe-rieng-di-phong-dien-can-tho",
+from: "TP.HCM",
+to: "Phong Điền",
+title: "Xe riêng đi Phong Điền Cần Thơ",
+description:
+"Đặt xe riêng đi Phong Điền với tài xế chuyên nghiệp. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"TP.HCM → Mỹ Thuận → Phong Điền",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "gia-xe-phong-dien-can-tho",
+path: "gia-xe-di-phong-dien-can-tho",
+from: "TP.HCM",
+to: "Phong Điền",
+title: "Giá xe đi Phong Điền Cần Thơ",
+description:
+"Xem giá xe đi Phong Điền theo địa chỉ đón trả thực tế. Xe riêng có tài xế và phục vụ 24/7.",
+routeText:
+"TP.HCM → Mỹ Thuận → Phong Điền",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// TP.HCM → MỸ KHÁNH
+// =========================
+
+{
+key: "xe-di-my-khanh-can-tho",
+path: "thue-xe-di-my-khanh-can-tho",
+from: "TP.HCM",
+to: "Làng du lịch Mỹ Khánh",
+title: "Thuê xe đi Làng du lịch Mỹ Khánh Cần Thơ",
+description:
+"Dịch vụ xe riêng đi Làng du lịch Mỹ Khánh từ TP.HCM. Phù hợp gia đình, nhóm bạn và khách du lịch miền Tây.",
+routeText:
+"TP.HCM → Mỹ Thuận → Phong Điền → Mỹ Khánh",
+duration: "3.5 - 4 giờ",
+},
+
+{
+key: "xe-du-lich-my-khanh",
+path: "xe-du-lich-di-my-khanh-can-tho",
+from: "TP.HCM",
+to: "Làng du lịch Mỹ Khánh",
+title: "Xe du lịch đi Mỹ Khánh Cần Thơ",
+description:
+"Xe riêng đưa đón khách tham quan Làng du lịch Mỹ Khánh. Không ghép khách và chủ động lịch trình.",
+routeText:
+"TP.HCM → Mỹ Thuận → Mỹ Khánh",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// TP.HCM → CHỢ ĐÊM NINH KIỀU
+// =========================
+
+{
+key: "xe-di-cho-dem-ninh-kieu",
+path: "thue-xe-di-cho-dem-ninh-kieu",
+from: "TP.HCM",
+to: "Chợ đêm Ninh Kiều",
+title: "Thuê xe đi Chợ đêm Ninh Kiều",
+description:
+"Dịch vụ xe riêng đi Chợ đêm Ninh Kiều từ TP.HCM. Phù hợp khách du lịch khám phá ẩm thực và văn hóa miền Tây.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "xe-di-ben-ninh-kieu-buoi-toi",
+path: "xe-di-ben-ninh-kieu-buoi-toi",
+from: "TP.HCM",
+to: "Bến Ninh Kiều",
+title: "Thuê xe đi Bến Ninh Kiều buổi tối",
+description:
+"Dịch vụ xe riêng đi Bến Ninh Kiều buổi tối. Đón tận nơi và phục vụ lịch trình linh hoạt.",
+routeText:
+"TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM → KCN THỐT NỐT
+// =========================
+
+{
+key: "xe-di-kcn-thot-not",
+path: "thue-xe-di-kcn-thot-not-can-tho",
+from: "TP.HCM",
+to: "KCN Thốt Nốt",
+title: "Thuê xe đi KCN Thốt Nốt Cần Thơ",
+description:
+"Dịch vụ xe riêng đi KCN Thốt Nốt từ TP.HCM. Phù hợp chuyên gia, kỹ sư và khách công tác.",
+routeText:
+"TP.HCM → Mỹ Thuận → Thốt Nốt → KCN Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "xe-chuyen-gia-kcn-thot-not",
+path: "xe-chuyen-gia-di-kcn-thot-not",
+from: "TP.HCM",
+to: "KCN Thốt Nốt",
+title: "Xe chuyên gia đi KCN Thốt Nốt",
+description:
+"Dịch vụ xe riêng đưa đón chuyên gia đến KCN Thốt Nốt. Không ghép khách và phục vụ 24/7.",
+routeText:
+"TP.HCM → Mỹ Thuận → Thốt Nốt",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// BÌNH DƯƠNG → CẦN THƠ
+// =========================
+
+{
+key: "binh-duong-can-tho",
+path: "thue-xe-tu-binh-duong-di-can-tho",
+from: "Bình Dương",
+to: "Cần Thơ",
+title: "Thuê xe từ Bình Dương đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Dương đi Cần Thơ. Xe riêng có tài xế, không ghép khách, phù hợp công tác và về quê miền Tây.",
+routeText:
+"Bình Dương → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-duong-ninh-kieu",
+path: "thue-xe-tu-binh-duong-di-ninh-kieu-can-tho",
+from: "Bình Dương",
+to: "Ninh Kiều",
+title: "Thuê xe từ Bình Dương đi Ninh Kiều Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Dương đi Ninh Kiều. Đưa đón tận nơi và phục vụ 24/7.",
+routeText:
+"Bình Dương → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-duong-cai-rang",
+path: "thue-xe-tu-binh-duong-di-cai-rang-can-tho",
+from: "Bình Dương",
+to: "Cái Răng",
+title: "Thuê xe từ Bình Dương đi Cái Răng Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bình Dương đi Cái Răng. Không ghép khách và biết giá trước khi đặt.",
+routeText:
+"Bình Dương → TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// THUẬN AN → CẦN THƠ
+// =========================
+
+{
+key: "thuan-an-can-tho",
+path: "thue-xe-tu-thuan-an-di-can-tho",
+from: "Thuận An",
+to: "Cần Thơ",
+title: "Thuê xe từ Thuận An đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Thuận An đi Cần Thơ. Phù hợp khách công tác, du lịch và về quê.",
+routeText:
+"Thuận An → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "thuan-an-ninh-kieu",
+path: "thue-xe-tu-thuan-an-di-ninh-kieu",
+from: "Thuận An",
+to: "Ninh Kiều",
+title: "Thuê xe từ Thuận An đi Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Thuận An đi Ninh Kiều. Đón tận nơi và không ghép khách.",
+routeText:
+"Thuận An → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// DĨ AN → CẦN THƠ
+// =========================
+
+{
+key: "di-an-can-tho",
+path: "thue-xe-tu-di-an-di-can-tho",
+from: "Dĩ An",
+to: "Cần Thơ",
+title: "Thuê xe từ Dĩ An đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Dĩ An đi Cần Thơ. Xe riêng có tài xế, không ghép khách.",
+routeText:
+"Dĩ An → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "di-an-cai-rang",
+path: "thue-xe-tu-di-an-di-cai-rang",
+from: "Dĩ An",
+to: "Cái Răng",
+title: "Thuê xe từ Dĩ An đi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Dĩ An đi Cái Răng Cần Thơ. Đưa đón tận nơi và chủ động lịch trình.",
+routeText:
+"Dĩ An → TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// BIÊN HÒA → CẦN THƠ
+// =========================
+
+{
+key: "bien-hoa-can-tho",
+path: "thue-xe-tu-bien-hoa-di-can-tho",
+from: "Biên Hòa",
+to: "Cần Thơ",
+title: "Thuê xe từ Biên Hòa đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Biên Hòa đi Cần Thơ. Xe riêng không ghép khách và đưa đón tận nơi.",
+routeText:
+"Biên Hòa → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "bien-hoa-ninh-kieu",
+path: "thue-xe-tu-bien-hoa-di-ninh-kieu",
+from: "Biên Hòa",
+to: "Ninh Kiều",
+title: "Thuê xe từ Biên Hòa đi Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Biên Hòa đi Ninh Kiều Cần Thơ. Phù hợp công tác, du lịch và về quê.",
+routeText:
+"Biên Hòa → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "bien-hoa-san-bay-can-tho",
+path: "thue-xe-tu-bien-hoa-di-san-bay-can-tho",
+from: "Biên Hòa",
+to: "Sân bay Cần Thơ",
+title: "Thuê xe từ Biên Hòa đi sân bay Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Biên Hòa đi sân bay Cần Thơ. Đón tận nơi và không ghép khách.",
+routeText:
+"Biên Hòa → TP.HCM → Mỹ Thuận → Sân bay Cần Thơ",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// ĐỒNG NAI → CẦN THƠ
+// =========================
+
+{
+key: "dong-nai-can-tho",
+path: "thue-xe-tu-dong-nai-di-can-tho",
+from: "Đồng Nai",
+to: "Cần Thơ",
+title: "Thuê xe từ Đồng Nai đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Đồng Nai đi Cần Thơ. Xe riêng có tài xế và phục vụ 24/7.",
+routeText:
+"Đồng Nai → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4.5 - 6 giờ",
+},
+
+{
+key: "dong-nai-cai-rang",
+path: "thue-xe-tu-dong-nai-di-cai-rang",
+from: "Đồng Nai",
+to: "Cái Răng",
+title: "Thuê xe từ Đồng Nai đi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Đồng Nai đi Cái Răng. Không ghép khách và biết giá trước khi đặt.",
+routeText:
+"Đồng Nai → TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "4.5 - 6 giờ",
+},
+
+{
+key: "dong-nai-thot-not",
+path: "thue-xe-tu-dong-nai-di-thot-not",
+from: "Đồng Nai",
+to: "Thốt Nốt",
+title: "Thuê xe từ Đồng Nai đi Thốt Nốt",
+description:
+"Dịch vụ xe riêng từ Đồng Nai đi Thốt Nốt Cần Thơ. Phù hợp khách công tác và về quê miền Tây.",
+routeText:
+"Đồng Nai → TP.HCM → Mỹ Thuận → Thốt Nốt",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// THỦ DẦU MỘT → CẦN THƠ
+// =========================
+
+{
+key: "thu-dau-mot-can-tho",
+path: "thue-xe-tu-thu-dau-mot-di-can-tho",
+from: "Thủ Dầu Một",
+to: "Cần Thơ",
+title: "Thuê xe từ Thủ Dầu Một đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Thủ Dầu Một đi Cần Thơ. Xe riêng có tài xế, không ghép khách, phù hợp công tác và về quê miền Tây.",
+routeText:
+"Thủ Dầu Một → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "thu-dau-mot-ninh-kieu",
+path: "thue-xe-tu-thu-dau-mot-di-ninh-kieu",
+from: "Thủ Dầu Một",
+to: "Ninh Kiều",
+title: "Thuê xe từ Thủ Dầu Một đi Ninh Kiều Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Thủ Dầu Một đi Ninh Kiều. Đưa đón tận nơi và phục vụ 24/7.",
+routeText:
+"Thủ Dầu Một → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "thu-dau-mot-cai-rang",
+path: "thue-xe-tu-thu-dau-mot-di-cai-rang",
+from: "Thủ Dầu Một",
+to: "Cái Răng",
+title: "Thuê xe từ Thủ Dầu Một đi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Thủ Dầu Một đi Cái Răng Cần Thơ. Không ghép khách và biết giá trước khi đặt.",
+routeText:
+"Thủ Dầu Một → TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// BẾN CÁT → CẦN THƠ
+// =========================
+
+{
+key: "ben-cat-can-tho",
+path: "thue-xe-tu-ben-cat-di-can-tho",
+from: "Bến Cát",
+to: "Cần Thơ",
+title: "Thuê xe từ Bến Cát đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Bến Cát đi Cần Thơ. Phù hợp chuyên gia KCN, khách công tác và gia đình.",
+routeText:
+"Bến Cát → Bình Dương → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "ben-cat-ninh-kieu",
+path: "thue-xe-tu-ben-cat-di-ninh-kieu",
+from: "Bến Cát",
+to: "Ninh Kiều",
+title: "Thuê xe từ Bến Cát đi Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Bến Cát đi Ninh Kiều Cần Thơ. Đón tận nơi và không ghép khách.",
+routeText:
+"Bến Cát → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "ben-cat-thot-not",
+path: "thue-xe-tu-ben-cat-di-thot-not",
+from: "Bến Cát",
+to: "Thốt Nốt",
+title: "Thuê xe từ Bến Cát đi Thốt Nốt",
+description:
+"Dịch vụ xe riêng từ Bến Cát đi Thốt Nốt Cần Thơ. Phù hợp khách công tác và về quê miền Tây.",
+routeText:
+"Bến Cát → TP.HCM → Mỹ Thuận → Thốt Nốt",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// TÂN UYÊN → CẦN THƠ
+// =========================
+
+{
+key: "tan-uyen-can-tho",
+path: "thue-xe-tu-tan-uyen-di-can-tho",
+from: "Tân Uyên",
+to: "Cần Thơ",
+title: "Thuê xe từ Tân Uyên đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Tân Uyên đi Cần Thơ. Xe riêng không ghép khách và phục vụ 24/7.",
+routeText:
+"Tân Uyên → Bình Dương → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "tan-uyen-cai-rang",
+path: "thue-xe-tu-tan-uyen-di-cai-rang",
+from: "Tân Uyên",
+to: "Cái Răng",
+title: "Thuê xe từ Tân Uyên đi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Tân Uyên đi Cái Răng Cần Thơ. Không ghép khách và đưa đón tận nơi.",
+routeText:
+"Tân Uyên → TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "tan-uyen-ninh-kieu",
+path: "thue-xe-tu-tan-uyen-di-ninh-kieu",
+from: "Tân Uyên",
+to: "Ninh Kiều",
+title: "Thuê xe từ Tân Uyên đi Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Tân Uyên đi Ninh Kiều. Xe riêng có tài xế và biết giá trước khi đặt.",
+routeText:
+"Tân Uyên → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// LONG KHÁNH → CẦN THƠ
+// =========================
+
+{
+key: "long-khanh-can-tho",
+path: "thue-xe-tu-long-khanh-di-can-tho",
+from: "Long Khánh",
+to: "Cần Thơ",
+title: "Thuê xe từ Long Khánh đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Long Khánh đi Cần Thơ. Phù hợp khách công tác, du lịch và về quê miền Tây.",
+routeText:
+"Long Khánh → Đồng Nai → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "long-khanh-ninh-kieu",
+path: "thue-xe-tu-long-khanh-di-ninh-kieu",
+from: "Long Khánh",
+to: "Ninh Kiều",
+title: "Thuê xe từ Long Khánh đi Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Long Khánh đi Ninh Kiều Cần Thơ. Đưa đón tận nơi và không ghép khách.",
+routeText:
+"Long Khánh → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// TRẢNG BOM → CẦN THƠ
+// =========================
+
+{
+key: "trang-bom-can-tho",
+path: "thue-xe-tu-trang-bom-di-can-tho",
+from: "Trảng Bom",
+to: "Cần Thơ",
+title: "Thuê xe từ Trảng Bom đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Trảng Bom đi Cần Thơ. Xe riêng có tài xế và phục vụ 24/7.",
+routeText:
+"Trảng Bom → Biên Hòa → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "trang-bom-cai-rang",
+path: "thue-xe-tu-trang-bom-di-cai-rang",
+from: "Trảng Bom",
+to: "Cái Răng",
+title: "Thuê xe từ Trảng Bom đi Cái Răng",
+description:
+"Dịch vụ xe riêng từ Trảng Bom đi Cái Răng Cần Thơ. Không ghép khách và biết giá trước khi đặt.",
+routeText:
+"Trảng Bom → TP.HCM → Mỹ Thuận → Cái Răng",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// NHƠN TRẠCH → CẦN THƠ
+// =========================
+
+{
+key: "nhon-trach-can-tho",
+path: "thue-xe-tu-nhon-trach-di-can-tho",
+from: "Nhơn Trạch",
+to: "Cần Thơ",
+title: "Thuê xe từ Nhơn Trạch đi Cần Thơ",
+description:
+"Dịch vụ xe riêng từ Nhơn Trạch đi Cần Thơ. Phù hợp chuyên gia, khách công tác và gia đình.",
+routeText:
+"Nhơn Trạch → TP.HCM → Mỹ Thuận → Cần Thơ",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "nhon-trach-ninh-kieu",
+path: "thue-xe-tu-nhon-trach-di-ninh-kieu",
+from: "Nhơn Trạch",
+to: "Ninh Kiều",
+title: "Thuê xe từ Nhơn Trạch đi Ninh Kiều",
+description:
+"Dịch vụ xe riêng từ Nhơn Trạch đi Ninh Kiều Cần Thơ. Đón tận nơi và không ghép khách.",
+routeText:
+"Nhơn Trạch → TP.HCM → Mỹ Thuận → Ninh Kiều",
+duration: "4.5 - 5.5 giờ",
+},
+
 ];

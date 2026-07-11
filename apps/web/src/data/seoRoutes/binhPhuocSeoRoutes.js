@@ -1196,8 +1196,8 @@ duration: "2.5 - 3.5 giờ",
 },
 
 {
-key: "xe-cong-tac-binh-phuoc",
-path: "xe-cong-tac-binh-phuoc",
+key: "thue-xe-cong-tac-binh-phuoc",
+path: "thue-xe-cong-tac-binh-phuoc",
 from: "TP.HCM",
 to: "Bình Phước",
 title: "Xe công tác Bình Phước, phục vụ doanh nghiệp và chuyên gia",
@@ -1211,7 +1211,7 @@ duration: "2.5 - 3.5 giờ",
 // BÌNH PHƯỚC - CHUYÊN GIA
 // =========================
 {
-key: "chuyen-gia-binh-phuoc",
+key: "xe-chuyen-gia-binh-phuoc",
 path: "xe-cho-chuyen-gia-di-binh-phuoc",
 from: "TP.HCM",
 to: "Bình Phước",
@@ -1250,7 +1250,7 @@ duration: "2.5 - 3 giờ",
 },
 
 {
-key: "kcn-becamex-binh-phuoc",
+key: "xe-kcn-becamex-binh-phuoc",
 path: "xe-di-kcn-becamex-binh-phuoc",
 from: "TP.HCM",
 to: "KCN Becamex Bình Phước",
@@ -1773,7 +1773,7 @@ duration: "4.5 - 5 giờ",
 
 {
 key: "san-bay-cua-khau-hoa-lu",
-path: "xe-tu-san-bay-di-cua-khau-hoa-lu",
+path: "thue-xe-tu-san-bay-di-cua-khau-hoa-lu",
 from: "Sân bay Tân Sơn Nhất",
 to: "Cửa khẩu Hoa Lư",
 title: "Xe từ sân bay đi cửa khẩu Hoa Lư",
@@ -1782,5 +1782,1639 @@ description:
 routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Lộc Ninh → Cửa khẩu Hoa Lư",
 duration: "5 - 5.5 giờ",
 },
+
+// =========================
+// BÙ ĐĂNG
+// =========================
+
+{
+key: "xe-di-bu-dang",
+path: "thue-xe-di-bu-dang",
+from: "TP.HCM",
+to: "Bù Đăng",
+title: "Thuê xe đi Bù Đăng, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Bù Đăng từ TP.HCM. Xe riêng không ghép khách, phù hợp về quê, công tác, thăm người thân hoặc làm việc tại khu vực Bù Đăng Bình Phước.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "xe-rieng-bu-dang",
+path: "xe-rieng-di-bu-dang",
+from: "TP.HCM",
+to: "Bù Đăng",
+title: "Xe riêng đi Bù Đăng, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Bù Đăng với tài xế riêng. Xe sạch sẽ, lịch trình linh hoạt và biết giá trước khi đặt.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "gia-xe-bu-dang",
+path: "gia-xe-di-bu-dang",
+from: "TP.HCM",
+to: "Bù Đăng",
+title: "Giá xe đi Bù Đăng, xem giá nhanh",
+description:
+"Xem giá xe đi Bù Đăng theo địa chỉ đón trả thực tế. Xe riêng có tài xế, không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "sai-gon-bu-dang",
+path: "xe-sai-gon-bu-dang",
+from: "TP.HCM",
+to: "Bù Đăng",
+title: "Xe Sài Gòn Bù Đăng, xe riêng đưa đón tận nơi",
+description:
+"Thuê xe Sài Gòn đi Bù Đăng với xe riêng có tài xế. Phù hợp khách về quê, công tác hoặc thăm người thân.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "san-bay-bu-dang",
+path: "xe-tu-san-bay-di-bu-dang",
+from: "Sân bay Tân Sơn Nhất",
+to: "Bù Đăng",
+title: "Xe từ sân bay đi Bù Đăng",
+description:
+"Đặt xe từ sân bay Tân Sơn Nhất đi Bù Đăng. Xe riêng, đón tận nơi và không ghép khách.",
+routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Bù Đăng",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// ĐỒNG PHÚ
+// =========================
+
+{
+key: "xe-di-dong-phu",
+path: "thue-xe-di-dong-phu",
+from: "TP.HCM",
+to: "Đồng Phú",
+title: "Thuê xe đi Đồng Phú, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Đồng Phú từ TP.HCM. Xe riêng không ghép khách, phù hợp công tác, về quê và đưa đón người thân.",
+routeText: "TP.HCM → Đồng Xoài → Đồng Phú",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "xe-rieng-dong-phu",
+path: "xe-rieng-di-dong-phu",
+from: "TP.HCM",
+to: "Đồng Phú",
+title: "Xe riêng đi Đồng Phú, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Đồng Phú với tài xế riêng. Chủ động thời gian, lịch trình linh hoạt và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Đồng Phú",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "gia-xe-dong-phu",
+path: "gia-xe-di-dong-phu",
+from: "TP.HCM",
+to: "Đồng Phú",
+title: "Giá xe đi Đồng Phú, xem giá nhanh",
+description:
+"Xem giá xe đi Đồng Phú theo điểm đón và địa chỉ trả thực tế trên GoViet247.",
+routeText: "TP.HCM → Đồng Xoài → Đồng Phú",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "sai-gon-dong-phu",
+path: "xe-sai-gon-dong-phu",
+from: "TP.HCM",
+to: "Đồng Phú",
+title: "Xe Sài Gòn Đồng Phú, xe riêng có tài xế",
+description:
+"Thuê xe Sài Gòn đi Đồng Phú với xe riêng, không ghép khách và đưa đón tận nơi.",
+routeText: "TP.HCM → Đồng Xoài → Đồng Phú",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "san-bay-dong-phu",
+path: "xe-tu-san-bay-di-dong-phu",
+from: "Sân bay Tân Sơn Nhất",
+to: "Đồng Phú",
+title: "Xe từ sân bay đi Đồng Phú",
+description:
+"Đặt xe từ sân bay Tân Sơn Nhất đi Đồng Phú với tài xế riêng và hỗ trợ hành lý.",
+routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Đồng Phú",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// HỚN QUẢN
+// =========================
+
+{
+key: "xe-di-hon-quan",
+path: "thue-xe-di-hon-quan",
+from: "TP.HCM",
+to: "Hớn Quản",
+title: "Thuê xe đi Hớn Quản, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Hớn Quản từ TP.HCM. Xe riêng không ghép khách, phù hợp công tác, về quê hoặc làm việc tại các khu công nghiệp lân cận.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "xe-rieng-hon-quan",
+path: "xe-rieng-di-hon-quan",
+from: "TP.HCM",
+to: "Hớn Quản",
+title: "Xe riêng đi Hớn Quản, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Hớn Quản với tài xế riêng. Không ghép khách và biết giá trước khi đặt.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "gia-xe-hon-quan",
+path: "gia-xe-di-hon-quan",
+from: "TP.HCM",
+to: "Hớn Quản",
+title: "Giá xe đi Hớn Quản, xem giá nhanh",
+description:
+"Xem giá xe đi Hớn Quản theo điểm đón trả thực tế. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "san-bay-hon-quan",
+path: "xe-tu-san-bay-di-hon-quan",
+from: "Sân bay Tân Sơn Nhất",
+to: "Hớn Quản",
+title: "Xe từ sân bay đi Hớn Quản",
+description:
+"Đặt xe từ sân bay Tân Sơn Nhất đi Hớn Quản. Xe riêng, đón tận nơi và không ghép khách.",
+routeText: "Sân bay Tân Sơn Nhất → Chơn Thành → Hớn Quản",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// BÙ GIA MẬP
+// =========================
+
+{
+key: "xe-di-bu-gia-map",
+path: "thue-xe-di-bu-gia-map",
+from: "TP.HCM",
+to: "Bù Gia Mập",
+title: "Thuê xe đi Bù Gia Mập, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Bù Gia Mập từ TP.HCM. Xe riêng không ghép khách, phù hợp về quê, công tác hoặc thăm người thân tại khu vực phía bắc Bình Phước.",
+routeText: "TP.HCM → Đồng Xoài → Phước Long → Bù Gia Mập",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "xe-rieng-bu-gia-map",
+path: "xe-rieng-di-bu-gia-map",
+from: "TP.HCM",
+to: "Bù Gia Mập",
+title: "Xe riêng đi Bù Gia Mập, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Bù Gia Mập với tài xế riêng. Đón tận nơi tại TP.HCM và trả khách tận địa chỉ mong muốn.",
+routeText: "TP.HCM → Đồng Xoài → Phước Long → Bù Gia Mập",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "gia-xe-bu-gia-map",
+path: "gia-xe-di-bu-gia-map",
+from: "TP.HCM",
+to: "Bù Gia Mập",
+title: "Giá xe đi Bù Gia Mập, xem giá nhanh",
+description:
+"Xem giá xe đi Bù Gia Mập theo điểm đón và điểm trả thực tế. Xe riêng có tài xế, không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Phước Long → Bù Gia Mập",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "san-bay-bu-gia-map",
+path: "xe-tu-san-bay-di-bu-gia-map",
+from: "Sân bay Tân Sơn Nhất",
+to: "Bù Gia Mập",
+title: "Xe từ sân bay đi Bù Gia Mập",
+description:
+"Đặt xe từ sân bay Tân Sơn Nhất đi Bù Gia Mập với tài xế riêng, hỗ trợ hành lý và đưa đón tận nơi.",
+routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Phước Long → Bù Gia Mập",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "ve-que-bu-gia-map",
+path: "thue-xe-ve-que-bu-gia-map",
+from: "TP.HCM",
+to: "Bù Gia Mập",
+title: "Thuê xe về quê Bù Gia Mập, xe riêng có tài xế",
+description:
+"Thuê xe về quê Bù Gia Mập cho gia đình, người lớn tuổi và trẻ em. Đưa đón tận nhà và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Phước Long → Bù Gia Mập",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// BÙ ĐỐP
+// =========================
+
+{
+key: "xe-di-bu-dop",
+path: "thue-xe-di-bu-dop",
+from: "TP.HCM",
+to: "Bù Đốp",
+title: "Thuê xe đi Bù Đốp, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Bù Đốp từ TP.HCM. Phù hợp công tác, về quê hoặc làm việc tại khu vực biên giới Bình Phước.",
+routeText: "TP.HCM → Đồng Xoài → Lộc Ninh → Bù Đốp",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "xe-rieng-bu-dop",
+path: "xe-rieng-di-bu-dop",
+from: "TP.HCM",
+to: "Bù Đốp",
+title: "Xe riêng đi Bù Đốp, đưa đón tận nơi",
+description:
+"Xe riêng đi Bù Đốp với tài xế riêng. Chủ động thời gian và lịch trình cho chuyến đi đường dài.",
+routeText: "TP.HCM → Đồng Xoài → Lộc Ninh → Bù Đốp",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "gia-xe-bu-dop",
+path: "gia-xe-di-bu-dop",
+from: "TP.HCM",
+to: "Bù Đốp",
+title: "Giá xe đi Bù Đốp, xem giá nhanh",
+description:
+"Xem giá xe đi Bù Đốp theo địa chỉ đón trả thực tế trên GoViet247.",
+routeText: "TP.HCM → Đồng Xoài → Lộc Ninh → Bù Đốp",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "san-bay-bu-dop",
+path: "xe-tu-san-bay-di-bu-dop",
+from: "Sân bay Tân Sơn Nhất",
+to: "Bù Đốp",
+title: "Xe từ sân bay đi Bù Đốp",
+description:
+"Đặt xe từ sân bay Tân Sơn Nhất đi Bù Đốp. Xe riêng, không ghép khách và hỗ trợ hành lý.",
+routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Lộc Ninh → Bù Đốp",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "ve-que-bu-dop",
+path: "thue-xe-ve-que-bu-dop",
+from: "TP.HCM",
+to: "Bù Đốp",
+title: "Thuê xe về quê Bù Đốp, xe riêng có tài xế",
+description:
+"Thuê xe về quê Bù Đốp với xe riêng có tài xế. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Lộc Ninh → Bù Đốp",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// PHÚ RIỀNG
+// =========================
+
+{
+key: "xe-di-phu-rieng",
+path: "thue-xe-di-phu-rieng",
+from: "TP.HCM",
+to: "Phú Riềng",
+title: "Thuê xe đi Phú Riềng, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Phú Riềng từ TP.HCM. Xe riêng không ghép khách, phù hợp công tác, về quê hoặc thăm người thân.",
+routeText: "TP.HCM → Đồng Xoài → Phú Riềng",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "xe-rieng-phu-rieng",
+path: "xe-rieng-di-phu-rieng",
+from: "TP.HCM",
+to: "Phú Riềng",
+title: "Xe riêng đi Phú Riềng, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Phú Riềng với tài xế riêng. Chủ động lịch trình và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Phú Riềng",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "gia-xe-phu-rieng",
+path: "gia-xe-di-phu-rieng",
+from: "TP.HCM",
+to: "Phú Riềng",
+title: "Giá xe đi Phú Riềng, xem giá nhanh",
+description:
+"Xem giá xe đi Phú Riềng theo địa chỉ đón và điểm trả thực tế. Xe riêng có tài xế.",
+routeText: "TP.HCM → Đồng Xoài → Phú Riềng",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "san-bay-phu-rieng",
+path: "xe-tu-san-bay-di-phu-rieng",
+from: "Sân bay Tân Sơn Nhất",
+to: "Phú Riềng",
+title: "Xe từ sân bay đi Phú Riềng",
+description:
+"Đặt xe từ sân bay Tân Sơn Nhất đi Phú Riềng. Đón tận nơi, không ghép khách và hỗ trợ hành lý.",
+routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Phú Riềng",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "ve-que-phu-rieng",
+path: "thue-xe-ve-que-phu-rieng",
+from: "TP.HCM",
+to: "Phú Riềng",
+title: "Thuê xe về quê Phú Riềng, xe riêng có tài xế",
+description:
+"Thuê xe về quê Phú Riềng cho gia đình, người lớn tuổi và trẻ em. Đưa đón tận nhà và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Phú Riềng",
+duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// AN LỘC
+// =========================
+
+{
+key: "xe-di-an-loc",
+path: "thue-xe-di-an-loc-binh-phuoc",
+from: "TP.HCM",
+to: "An Lộc",
+title: "Thuê xe đi An Lộc Bình Phước, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi An Lộc Bình Long từ TP.HCM. Xe riêng không ghép khách, phù hợp về quê, công tác hoặc thăm người thân tại khu vực trung tâm Bình Long.",
+routeText: "TP.HCM → Chơn Thành → Bình Long → An Lộc",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "xe-rieng-an-loc",
+path: "xe-rieng-di-an-loc",
+from: "TP.HCM",
+to: "An Lộc",
+title: "Xe riêng đi An Lộc, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi An Lộc với tài xế riêng. Chủ động lịch trình, không ghép khách và hỗ trợ nhiều hành lý.",
+routeText: "TP.HCM → Chơn Thành → Bình Long → An Lộc",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "gia-xe-an-loc",
+path: "gia-xe-di-an-loc",
+from: "TP.HCM",
+to: "An Lộc",
+title: "Giá xe đi An Lộc Bình Long",
+description:
+"Xem giá xe đi An Lộc theo địa chỉ đón trả thực tế. Xe riêng có tài xế, biết giá trước khi đặt.",
+routeText: "TP.HCM → Chơn Thành → Bình Long → An Lộc",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "san-bay-an-loc",
+path: "xe-tu-san-bay-di-an-loc",
+from: "Sân bay Tân Sơn Nhất",
+to: "An Lộc",
+title: "Xe từ sân bay đi An Lộc",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi An Lộc. Đón tận nơi, không ghép khách và hỗ trợ hành lý.",
+routeText: "Sân bay Tân Sơn Nhất → Chơn Thành → Bình Long → An Lộc",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "ve-que-an-loc",
+path: "thue-xe-ve-que-an-loc",
+from: "TP.HCM",
+to: "An Lộc",
+title: "Thuê xe về quê An Lộc Bình Long",
+description:
+"Thuê xe về quê An Lộc với xe riêng có tài xế. Phù hợp gia đình, người lớn tuổi và trẻ nhỏ.",
+routeText: "TP.HCM → Chơn Thành → Bình Long → An Lộc",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// TÂN KHAI
+// =========================
+
+{
+key: "xe-di-tan-khai",
+path: "thue-xe-di-tan-khai",
+from: "TP.HCM",
+to: "Tân Khai",
+title: "Thuê xe đi Tân Khai Bình Phước, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Tân Khai từ TP.HCM. Xe riêng không ghép khách, phù hợp công tác, về quê và làm việc tại khu vực Hớn Quản.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản → Tân Khai",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "xe-rieng-tan-khai",
+path: "xe-rieng-di-tan-khai",
+from: "TP.HCM",
+to: "Tân Khai",
+title: "Xe riêng đi Tân Khai, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Tân Khai với tài xế riêng. Chủ động thời gian và không ghép khách.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản → Tân Khai",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "gia-xe-tan-khai",
+path: "gia-xe-di-tan-khai",
+from: "TP.HCM",
+to: "Tân Khai",
+title: "Giá xe đi Tân Khai Bình Phước",
+description:
+"Xem giá xe đi Tân Khai theo điểm đón và điểm trả thực tế. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản → Tân Khai",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "san-bay-tan-khai",
+path: "xe-tu-san-bay-di-tan-khai",
+from: "Sân bay Tân Sơn Nhất",
+to: "Tân Khai",
+title: "Xe từ sân bay đi Tân Khai",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Tân Khai. Đưa đón tận nơi, không ghép khách.",
+routeText: "Sân bay Tân Sơn Nhất → Chơn Thành → Hớn Quản → Tân Khai",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "ve-que-tan-khai",
+path: "thue-xe-ve-que-tan-khai",
+from: "TP.HCM",
+to: "Tân Khai",
+title: "Thuê xe về quê Tân Khai",
+description:
+"Thuê xe về quê Tân Khai với xe riêng có tài xế. Phù hợp gia đình, người lớn tuổi và khách mang nhiều hành lý.",
+routeText: "TP.HCM → Chơn Thành → Hớn Quản → Tân Khai",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// SÓC BOM BO
+// =========================
+
+{
+key: "xe-di-soc-bom-bo",
+path: "thue-xe-di-soc-bom-bo",
+from: "TP.HCM",
+to: "Sóc Bom Bo",
+title: "Thuê xe đi Sóc Bom Bo Bình Phước",
+description:
+"Dịch vụ xe riêng đi Sóc Bom Bo Bình Phước dành cho khách du lịch, đoàn tham quan, học sinh và khách tìm hiểu văn hóa dân tộc S'tiêng.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng → Sóc Bom Bo",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "du-lich-soc-bom-bo",
+path: "xe-du-lich-di-soc-bom-bo",
+from: "TP.HCM",
+to: "Sóc Bom Bo",
+title: "Xe du lịch đi Sóc Bom Bo",
+description:
+"Xe riêng đi Sóc Bom Bo cho gia đình, nhóm bạn và đoàn tham quan. Chủ động lịch trình và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng → Sóc Bom Bo",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "doan-tham-quan-soc-bom-bo",
+path: "xe-doan-tham-quan-soc-bom-bo",
+from: "TP.HCM",
+to: "Sóc Bom Bo",
+title: "Xe đoàn tham quan Sóc Bom Bo",
+description:
+"Dịch vụ xe riêng cho đoàn tham quan Sóc Bom Bo. Phù hợp trường học, cơ quan và đoàn thể.",
+routeText: "TP.HCM → Đồng Xoài → Bù Đăng → Sóc Bom Bo",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// ĐỒNG XOÀI → TP.HCM
+// =========================
+
+{
+key: "dong-xoai-ve-sai-gon",
+path: "xe-tu-dong-xoai-ve-sai-gon",
+from: "Đồng Xoài",
+to: "TP.HCM",
+title: "Xe từ Đồng Xoài về Sài Gòn, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng từ Đồng Xoài về TP.HCM. Đón tận nơi tại nhà riêng, khách sạn hoặc văn phòng, không ghép khách và chủ động giờ khởi hành.",
+routeText: "Đồng Xoài → Chơn Thành → TP.HCM",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "dong-xoai-san-bay",
+path: "xe-tu-dong-xoai-di-san-bay-tan-son-nhat",
+from: "Đồng Xoài",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Đồng Xoài đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ Đồng Xoài đi sân bay Tân Sơn Nhất. Phù hợp khách công tác, du lịch và khách quốc tế.",
+routeText: "Đồng Xoài → Chơn Thành → Sân bay Tân Sơn Nhất",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "dong-xoai-quan-1",
+path: "xe-tu-dong-xoai-ve-quan-1",
+from: "Đồng Xoài",
+to: "Quận 1",
+title: "Xe từ Đồng Xoài về Quận 1",
+description:
+"Xe riêng từ Đồng Xoài về Quận 1 với tài xế chuyên nghiệp. Không ghép khách và hỗ trợ nhiều hành lý.",
+routeText: "Đồng Xoài → Chơn Thành → Quận 1",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "dong-xoai-thu-duc",
+path: "xe-tu-dong-xoai-ve-thu-duc",
+from: "Đồng Xoài",
+to: "TP Thủ Đức",
+title: "Xe từ Đồng Xoài về TP Thủ Đức",
+description:
+"Dịch vụ xe riêng từ Đồng Xoài về TP Thủ Đức. Đưa đón tận nơi và chủ động thời gian.",
+routeText: "Đồng Xoài → Chơn Thành → TP Thủ Đức",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "dong-xoai-go-vap",
+path: "xe-tu-dong-xoai-ve-go-vap",
+from: "Đồng Xoài",
+to: "Gò Vấp",
+title: "Xe từ Đồng Xoài về Gò Vấp",
+description:
+"Xe riêng từ Đồng Xoài về Gò Vấp dành cho gia đình, khách công tác và người đi sân bay.",
+routeText: "Đồng Xoài → Chơn Thành → Gò Vấp",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// CHƠN THÀNH → TP.HCM
+// =========================
+
+{
+key: "chon-thanh-ve-sai-gon",
+path: "xe-tu-chon-thanh-ve-sai-gon",
+from: "Chơn Thành",
+to: "TP.HCM",
+title: "Xe từ Chơn Thành về Sài Gòn",
+description:
+"Dịch vụ xe riêng từ Chơn Thành về TP.HCM. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+routeText: "Chơn Thành → Quốc lộ 13 → TP.HCM",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "chon-thanh-san-bay",
+path: "xe-tu-chon-thanh-di-san-bay",
+from: "Chơn Thành",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Chơn Thành đi sân bay Tân Sơn Nhất",
+description:
+"Xe riêng từ Chơn Thành đi sân bay Tân Sơn Nhất cho khách công tác, du lịch và người dân Bình Phước.",
+routeText: "Chơn Thành → Quốc lộ 13 → Sân bay Tân Sơn Nhất",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "chon-thanh-thu-duc",
+path: "xe-tu-chon-thanh-ve-thu-duc",
+from: "Chơn Thành",
+to: "TP Thủ Đức",
+title: "Xe từ Chơn Thành về TP Thủ Đức",
+description:
+"Dịch vụ xe riêng từ Chơn Thành về TP Thủ Đức. Đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+routeText: "Chơn Thành → Bình Dương → TP Thủ Đức",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "chon-thanh-quan-7",
+path: "xe-tu-chon-thanh-ve-quan-7",
+from: "Chơn Thành",
+to: "Quận 7",
+title: "Xe từ Chơn Thành về Quận 7",
+description:
+"Xe riêng từ Chơn Thành về Quận 7 với tài xế chuyên nghiệp. Chủ động thời gian và hỗ trợ hành lý.",
+routeText: "Chơn Thành → Bình Dương → Quận 7",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "chon-thanh-phu-my-hung",
+path: "xe-tu-chon-thanh-ve-phu-my-hung",
+from: "Chơn Thành",
+to: "Phú Mỹ Hưng",
+title: "Xe từ Chơn Thành về Phú Mỹ Hưng",
+description:
+"Dịch vụ xe riêng từ Chơn Thành về Phú Mỹ Hưng. Không ghép khách và thanh toán sau chuyến đi.",
+routeText: "Chơn Thành → Bình Dương → Phú Mỹ Hưng",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "binh-long-ve-sai-gon",
+path: "xe-tu-binh-long-ve-sai-gon",
+from: "Bình Long",
+to: "TP.HCM",
+title: "Xe từ Bình Long về Sài Gòn",
+description:
+"Dịch vụ xe riêng từ Bình Long về TP.HCM. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+routeText: "Bình Long → Chơn Thành → TP.HCM",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "phuoc-long-ve-sai-gon",
+path: "xe-tu-phuoc-long-ve-sai-gon",
+from: "Phước Long",
+to: "TP.HCM",
+title: "Xe từ Phước Long về Sài Gòn",
+description:
+"Xe riêng từ Phước Long về TP.HCM dành cho gia đình, khách công tác và người đi sân bay.",
+routeText: "Phước Long → Đồng Xoài → TP.HCM",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "loc-ninh-ve-sai-gon",
+path: "xe-tu-loc-ninh-ve-sai-gon",
+from: "Lộc Ninh",
+to: "TP.HCM",
+title: "Xe từ Lộc Ninh về Sài Gòn",
+description:
+"Dịch vụ xe riêng từ Lộc Ninh về TP.HCM. Không ghép khách, đưa đón tận nơi và chủ động giờ đi.",
+routeText: "Lộc Ninh → Bình Long → Chơn Thành → TP.HCM",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "bu-dang-ve-sai-gon",
+path: "xe-tu-bu-dang-ve-sai-gon",
+from: "Bù Đăng",
+to: "TP.HCM",
+title: "Xe từ Bù Đăng về Sài Gòn",
+description:
+"Xe riêng từ Bù Đăng về TP.HCM dành cho khách về quê, công tác hoặc đưa đón người thân.",
+routeText: "Bù Đăng → Đồng Xoài → TP.HCM",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "bu-gia-map-ve-sai-gon",
+path: "xe-tu-bu-gia-map-ve-sai-gon",
+from: "Bù Gia Mập",
+to: "TP.HCM",
+title: "Xe từ Bù Gia Mập về Sài Gòn",
+description:
+"Dịch vụ xe riêng từ Bù Gia Mập về TP.HCM. Đón tận nơi và không ghép khách.",
+routeText: "Bù Gia Mập → Phước Long → Đồng Xoài → TP.HCM",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// QUẬN 1 → BÌNH PHƯỚC
+// =========================
+
+{
+key: "quan1-dong-xoai",
+path: "thue-xe-tu-quan-1-di-dong-xoai",
+from: "Quận 1",
+to: "Đồng Xoài",
+title: "Thuê xe từ Quận 1 đi Đồng Xoài, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng từ Quận 1 đi Đồng Xoài Bình Phước. Đón tận nơi tại khách sạn, văn phòng hoặc nhà riêng, không ghép khách.",
+routeText: "Quận 1 → Quốc lộ 13 → Đồng Xoài",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "quan1-chon-thanh",
+path: "thue-xe-tu-quan-1-di-chon-thanh",
+from: "Quận 1",
+to: "Chơn Thành",
+title: "Thuê xe từ Quận 1 đi Chơn Thành",
+description:
+"Xe riêng từ Quận 1 đi Chơn Thành dành cho khách công tác, chuyên gia và người lao động tại các khu công nghiệp.",
+routeText: "Quận 1 → Quốc lộ 13 → Chơn Thành",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "quan1-binh-long",
+path: "thue-xe-tu-quan-1-di-binh-long",
+from: "Quận 1",
+to: "Bình Long",
+title: "Thuê xe từ Quận 1 đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Quận 1 đi Bình Long. Không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+routeText: "Quận 1 → Chơn Thành → Bình Long",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan1-phuoc-long",
+path: "thue-xe-tu-quan-1-di-phuoc-long",
+from: "Quận 1",
+to: "Phước Long",
+title: "Thuê xe từ Quận 1 đi Phước Long",
+description:
+"Xe riêng từ Quận 1 đi Phước Long với tài xế chuyên nghiệp. Phù hợp về quê, công tác và thăm người thân.",
+routeText: "Quận 1 → Đồng Xoài → Phước Long",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "quan1-loc-ninh",
+path: "thue-xe-tu-quan-1-di-loc-ninh",
+from: "Quận 1",
+to: "Lộc Ninh",
+title: "Thuê xe từ Quận 1 đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Quận 1 đi Lộc Ninh. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+routeText: "Quận 1 → Bình Long → Lộc Ninh",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "quan7-dong-xoai",
+path: "thue-xe-tu-quan-7-di-dong-xoai",
+from: "Quận 7",
+to: "Đồng Xoài",
+title: "Thuê xe từ Quận 7 đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi Đồng Xoài Bình Phước. Xe riêng không ghép khách, đón tận nơi.",
+routeText: "Quận 7 → Quốc lộ 13 → Đồng Xoài",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "quan7-chon-thanh",
+path: "thue-xe-tu-quan-7-di-chon-thanh",
+from: "Quận 7",
+to: "Chơn Thành",
+title: "Thuê xe từ Quận 7 đi Chơn Thành",
+description:
+"Xe riêng từ Quận 7 đi Chơn Thành dành cho khách công tác và chuyên gia làm việc tại Bình Phước.",
+routeText: "Quận 7 → Quốc lộ 13 → Chơn Thành",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "quan7-binh-long",
+path: "thue-xe-tu-quan-7-di-binh-long",
+from: "Quận 7",
+to: "Bình Long",
+title: "Thuê xe từ Quận 7 đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi Bình Long. Không ghép khách, biết giá trước khi đặt.",
+routeText: "Quận 7 → Chơn Thành → Bình Long",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "quan7-phuoc-long",
+path: "thue-xe-tu-quan-7-di-phuoc-long",
+from: "Quận 7",
+to: "Phước Long",
+title: "Thuê xe từ Quận 7 đi Phước Long",
+description:
+"Xe riêng từ Quận 7 đi Phước Long dành cho khách về quê hoặc công tác dài ngày.",
+routeText: "Quận 7 → Đồng Xoài → Phước Long",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "quan7-loc-ninh",
+path: "thue-xe-tu-quan-7-di-loc-ninh",
+from: "Quận 7",
+to: "Lộc Ninh",
+title: "Thuê xe từ Quận 7 đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi Lộc Ninh. Đưa đón tận nơi và không ghép khách.",
+routeText: "Quận 7 → Bình Long → Lộc Ninh",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// BÌNH THẠNH → BÌNH PHƯỚC
+// =========================
+
+{
+key: "binh-thanh-dong-xoai",
+path: "thue-xe-tu-binh-thanh-di-dong-xoai",
+from: "Bình Thạnh",
+to: "Đồng Xoài",
+title: "Thuê xe từ Bình Thạnh đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi Đồng Xoài Bình Phước. Đón tận nơi tại nhà riêng, chung cư hoặc văn phòng, không ghép khách.",
+routeText: "Bình Thạnh → Quốc lộ 13 → Đồng Xoài",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "binh-thanh-chon-thanh",
+path: "thue-xe-tu-binh-thanh-di-chon-thanh",
+from: "Bình Thạnh",
+to: "Chơn Thành",
+title: "Thuê xe từ Bình Thạnh đi Chơn Thành",
+description:
+"Xe riêng từ Bình Thạnh đi Chơn Thành dành cho chuyên gia, khách công tác và người lao động tại các khu công nghiệp.",
+routeText: "Bình Thạnh → Quốc lộ 13 → Chơn Thành",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "binh-thanh-binh-long",
+path: "thue-xe-tu-binh-thanh-di-binh-long",
+from: "Bình Thạnh",
+to: "Bình Long",
+title: "Thuê xe từ Bình Thạnh đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi Bình Long với tài xế chuyên nghiệp. Không ghép khách và chủ động lịch trình.",
+routeText: "Bình Thạnh → Chơn Thành → Bình Long",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "binh-thanh-phuoc-long",
+path: "thue-xe-tu-binh-thanh-di-phuoc-long",
+from: "Bình Thạnh",
+to: "Phước Long",
+title: "Thuê xe từ Bình Thạnh đi Phước Long",
+description:
+"Xe riêng từ Bình Thạnh đi Phước Long dành cho khách về quê, công tác hoặc thăm người thân.",
+routeText: "Bình Thạnh → Đồng Xoài → Phước Long",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "binh-thanh-loc-ninh",
+path: "thue-xe-tu-binh-thanh-di-loc-ninh",
+from: "Bình Thạnh",
+to: "Lộc Ninh",
+title: "Thuê xe từ Bình Thạnh đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Bình Thạnh đi Lộc Ninh. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+routeText: "Bình Thạnh → Bình Long → Lộc Ninh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// GÒ VẤP → BÌNH PHƯỚC
+// =========================
+
+{
+key: "go-vap-dong-xoai",
+path: "thue-xe-tu-go-vap-di-dong-xoai",
+from: "Gò Vấp",
+to: "Đồng Xoài",
+title: "Thuê xe từ Gò Vấp đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Đồng Xoài Bình Phước. Xe riêng không ghép khách, đưa đón tận nơi.",
+routeText: "Gò Vấp → Quốc lộ 13 → Đồng Xoài",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "go-vap-chon-thanh",
+path: "thue-xe-tu-go-vap-di-chon-thanh",
+from: "Gò Vấp",
+to: "Chơn Thành",
+title: "Thuê xe từ Gò Vấp đi Chơn Thành",
+description:
+"Xe riêng từ Gò Vấp đi Chơn Thành dành cho khách công tác, chuyên gia và người lao động tại Bình Phước.",
+routeText: "Gò Vấp → Quốc lộ 13 → Chơn Thành",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "go-vap-binh-long",
+path: "thue-xe-tu-go-vap-di-binh-long",
+from: "Gò Vấp",
+to: "Bình Long",
+title: "Thuê xe từ Gò Vấp đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Bình Long. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+routeText: "Gò Vấp → Chơn Thành → Bình Long",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "go-vap-phuoc-long",
+path: "thue-xe-tu-go-vap-di-phuoc-long",
+from: "Gò Vấp",
+to: "Phước Long",
+title: "Thuê xe từ Gò Vấp đi Phước Long",
+description:
+"Xe riêng từ Gò Vấp đi Phước Long với tài xế chuyên nghiệp. Chủ động thời gian và lịch trình.",
+routeText: "Gò Vấp → Đồng Xoài → Phước Long",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "go-vap-loc-ninh",
+path: "thue-xe-tu-go-vap-di-loc-ninh",
+from: "Gò Vấp",
+to: "Lộc Ninh",
+title: "Thuê xe từ Gò Vấp đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Lộc Ninh. Đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+routeText: "Gò Vấp → Bình Long → Lộc Ninh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// TÂN BÌNH → BÌNH PHƯỚC
+// =========================
+
+{
+key: "tan-binh-dong-xoai",
+path: "thue-xe-tu-tan-binh-di-dong-xoai",
+from: "Tân Bình",
+to: "Đồng Xoài",
+title: "Thuê xe từ Tân Bình đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi Đồng Xoài Bình Phước. Đón tận nơi tại nhà riêng, khách sạn hoặc khu vực sân bay Tân Sơn Nhất.",
+routeText: "Tân Bình → Quốc lộ 13 → Đồng Xoài",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "tan-binh-chon-thanh",
+path: "thue-xe-tu-tan-binh-di-chon-thanh",
+from: "Tân Bình",
+to: "Chơn Thành",
+title: "Thuê xe từ Tân Bình đi Chơn Thành",
+description:
+"Xe riêng từ Tân Bình đi Chơn Thành dành cho khách công tác, chuyên gia và người lao động tại các khu công nghiệp Bình Phước.",
+routeText: "Tân Bình → Quốc lộ 13 → Chơn Thành",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "tan-binh-binh-long",
+path: "thue-xe-tu-tan-binh-di-binh-long",
+from: "Tân Bình",
+to: "Bình Long",
+title: "Thuê xe từ Tân Bình đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi Bình Long. Không ghép khách, biết giá trước khi đặt và đưa đón tận nơi.",
+routeText: "Tân Bình → Chơn Thành → Bình Long",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "tan-binh-phuoc-long",
+path: "thue-xe-tu-tan-binh-di-phuoc-long",
+from: "Tân Bình",
+to: "Phước Long",
+title: "Thuê xe từ Tân Bình đi Phước Long",
+description:
+"Xe riêng từ Tân Bình đi Phước Long với tài xế chuyên nghiệp. Phù hợp khách về quê và công tác dài ngày.",
+routeText: "Tân Bình → Đồng Xoài → Phước Long",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "tan-binh-loc-ninh",
+path: "thue-xe-tu-tan-binh-di-loc-ninh",
+from: "Tân Bình",
+to: "Lộc Ninh",
+title: "Thuê xe từ Tân Bình đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Tân Bình đi Lộc Ninh. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+routeText: "Tân Bình → Bình Long → Lộc Ninh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// TP THỦ ĐỨC → BÌNH PHƯỚC
+// =========================
+
+{
+key: "thu-duc-dong-xoai",
+path: "thue-xe-tu-thu-duc-di-dong-xoai",
+from: "TP Thủ Đức",
+to: "Đồng Xoài",
+title: "Thuê xe từ TP Thủ Đức đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi Đồng Xoài Bình Phước. Đón tận nơi tại Thảo Điền, An Phú, Linh Trung hoặc Vinhomes Grand Park.",
+routeText: "TP Thủ Đức → Quốc lộ 13 → Đồng Xoài",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "thu-duc-chon-thanh",
+path: "thue-xe-tu-thu-duc-di-chon-thanh",
+from: "TP Thủ Đức",
+to: "Chơn Thành",
+title: "Thuê xe từ TP Thủ Đức đi Chơn Thành",
+description:
+"Xe riêng từ TP Thủ Đức đi Chơn Thành dành cho chuyên gia và khách làm việc tại các khu công nghiệp Bình Phước.",
+routeText: "TP Thủ Đức → Quốc lộ 13 → Chơn Thành",
+duration: "1.5 - 2.5 giờ",
+},
+
+{
+key: "thu-duc-binh-long",
+path: "thue-xe-tu-thu-duc-di-binh-long",
+from: "TP Thủ Đức",
+to: "Bình Long",
+title: "Thuê xe từ TP Thủ Đức đi Bình Long",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi Bình Long. Không ghép khách, chủ động thời gian và hỗ trợ hành lý.",
+routeText: "TP Thủ Đức → Chơn Thành → Bình Long",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "thu-duc-phuoc-long",
+path: "thue-xe-tu-thu-duc-di-phuoc-long",
+from: "TP Thủ Đức",
+to: "Phước Long",
+title: "Thuê xe từ TP Thủ Đức đi Phước Long",
+description:
+"Xe riêng từ TP Thủ Đức đi Phước Long với tài xế chuyên nghiệp. Phù hợp khách về quê và công tác.",
+routeText: "TP Thủ Đức → Đồng Xoài → Phước Long",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "thu-duc-loc-ninh",
+path: "thue-xe-tu-thu-duc-di-loc-ninh",
+from: "TP Thủ Đức",
+to: "Lộc Ninh",
+title: "Thuê xe từ TP Thủ Đức đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ TP Thủ Đức đi Lộc Ninh. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP Thủ Đức → Bình Long → Lộc Ninh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// PHÚ NHUẬN → BÌNH PHƯỚC
+// =========================
+
+{
+key: "phu-nhuan-dong-xoai",
+path: "thue-xe-tu-phu-nhuan-di-dong-xoai",
+from: "Phú Nhuận",
+to: "Đồng Xoài",
+title: "Thuê xe từ Phú Nhuận đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Đồng Xoài Bình Phước. Đón tận nơi tại nhà riêng, khách sạn hoặc văn phòng, không ghép khách.",
+routeText: "Phú Nhuận → Quốc lộ 13 → Đồng Xoài",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "phu-nhuan-chon-thanh",
+path: "thue-xe-tu-phu-nhuan-di-chon-thanh",
+from: "Phú Nhuận",
+to: "Chơn Thành",
+title: "Thuê xe từ Phú Nhuận đi Chơn Thành",
+description:
+"Xe riêng từ Phú Nhuận đi Chơn Thành dành cho khách công tác, chuyên gia và người lao động tại các khu công nghiệp Bình Phước.",
+routeText: "Phú Nhuận → Quốc lộ 13 → Chơn Thành",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "phu-nhuan-binh-long",
+path: "thue-xe-tu-phu-nhuan-di-binh-long",
+from: "Phú Nhuận",
+to: "Bình Long",
+title: "Thuê xe từ Phú Nhuận đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Bình Long. Không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+routeText: "Phú Nhuận → Chơn Thành → Bình Long",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "phu-nhuan-phuoc-long",
+path: "thue-xe-tu-phu-nhuan-di-phuoc-long",
+from: "Phú Nhuận",
+to: "Phước Long",
+title: "Thuê xe từ Phú Nhuận đi Phước Long",
+description:
+"Xe riêng từ Phú Nhuận đi Phước Long với tài xế chuyên nghiệp. Phù hợp khách về quê và công tác.",
+routeText: "Phú Nhuận → Đồng Xoài → Phước Long",
+duration: "4 - 5 giờ",
+},
+
+{
+key: "phu-nhuan-loc-ninh",
+path: "thue-xe-tu-phu-nhuan-di-loc-ninh",
+from: "Phú Nhuận",
+to: "Lộc Ninh",
+title: "Thuê xe từ Phú Nhuận đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Lộc Ninh. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+routeText: "Phú Nhuận → Bình Long → Lộc Ninh",
+duration: "4 - 5 giờ",
+},
+
+// =========================
+// BÌNH TÂN → BÌNH PHƯỚC
+// =========================
+
+{
+key: "binh-tan-dong-xoai",
+path: "thue-xe-tu-binh-tan-di-dong-xoai",
+from: "Bình Tân",
+to: "Đồng Xoài",
+title: "Thuê xe từ Bình Tân đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi Đồng Xoài Bình Phước. Xe riêng không ghép khách, đón tận nơi và phục vụ 24/7.",
+routeText: "Bình Tân → Quốc lộ 13 → Đồng Xoài",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "binh-tan-chon-thanh",
+path: "thue-xe-tu-binh-tan-di-chon-thanh",
+from: "Bình Tân",
+to: "Chơn Thành",
+title: "Thuê xe từ Bình Tân đi Chơn Thành",
+description:
+"Xe riêng từ Bình Tân đi Chơn Thành dành cho khách công tác, chuyên gia và người lao động tại Bình Phước.",
+routeText: "Bình Tân → Quốc lộ 13 → Chơn Thành",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "binh-tan-binh-long",
+path: "thue-xe-tu-binh-tan-di-binh-long",
+from: "Bình Tân",
+to: "Bình Long",
+title: "Thuê xe từ Bình Tân đi Bình Long",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi Bình Long. Không ghép khách, đưa đón tận nơi và hỗ trợ hành lý.",
+routeText: "Bình Tân → Chơn Thành → Bình Long",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "binh-tan-phuoc-long",
+path: "thue-xe-tu-binh-tan-di-phuoc-long",
+from: "Bình Tân",
+to: "Phước Long",
+title: "Thuê xe từ Bình Tân đi Phước Long",
+description:
+"Xe riêng từ Bình Tân đi Phước Long với tài xế chuyên nghiệp. Phù hợp khách về quê và công tác dài ngày.",
+routeText: "Bình Tân → Đồng Xoài → Phước Long",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "binh-tan-loc-ninh",
+path: "thue-xe-tu-binh-tan-di-loc-ninh",
+from: "Bình Tân",
+to: "Lộc Ninh",
+title: "Thuê xe từ Bình Tân đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ Bình Tân đi Lộc Ninh. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+routeText: "Bình Tân → Bình Long → Lộc Ninh",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// SÂN BAY → BÌNH PHƯỚC
+// =========================
+
+{
+key: "airport-dong-xoai",
+path: "can-xe-tu-san-bay-tan-son-nhat-di-dong-xoai",
+from: "Sân bay Tân Sơn Nhất",
+to: "Đồng Xoài",
+title: "Xe từ sân bay Tân Sơn Nhất đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Đồng Xoài Bình Phước. Đón đúng giờ tại ga quốc nội hoặc quốc tế, không ghép khách.",
+routeText: "Sân bay Tân Sơn Nhất → Quốc lộ 13 → Đồng Xoài",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "airport-chon-thanh",
+path: "xe-tu-san-bay-tan-son-nhat-di-chon-thanh",
+from: "Sân bay Tân Sơn Nhất",
+to: "Chơn Thành",
+title: "Xe từ sân bay Tân Sơn Nhất đi Chơn Thành",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Chơn Thành dành cho chuyên gia, kỹ sư và người lao động tại các khu công nghiệp.",
+routeText: "Sân bay Tân Sơn Nhất → Quốc lộ 13 → Chơn Thành",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "airport-binh-long",
+path: "xe-tu-san-bay-tan-son-nhat-di-binh-long",
+from: "Sân bay Tân Sơn Nhất",
+to: "Bình Long",
+title: "Xe từ sân bay Tân Sơn Nhất đi Bình Long",
+description:
+"Xe riêng từ sân bay Tân Sơn Nhất đi Bình Long. Đưa đón tận nơi và hỗ trợ nhiều hành lý.",
+routeText: "Sân bay Tân Sơn Nhất → Chơn Thành → Bình Long",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "airport-phuoc-long",
+path: "xe-tu-san-bay-tan-son-nhat-di-phuoc-long",
+from: "Sân bay Tân Sơn Nhất",
+to: "Phước Long",
+title: "Xe từ sân bay Tân Sơn Nhất đi Phước Long",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Phước Long Bình Phước. Không ghép khách và đưa đón tận nơi.",
+routeText: "Sân bay Tân Sơn Nhất → Đồng Xoài → Phước Long",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "airport-loc-ninh",
+path: "xe-tu-san-bay-tan-son-nhat-di-loc-ninh",
+from: "Sân bay Tân Sơn Nhất",
+to: "Lộc Ninh",
+title: "Xe từ sân bay Tân Sơn Nhất đi Lộc Ninh",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Lộc Ninh. Phù hợp khách về quê, công tác và thăm người thân.",
+routeText: "Sân bay Tân Sơn Nhất → Bình Long → Lộc Ninh",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// BÌNH PHƯỚC → SÂN BAY
+// =========================
+
+{
+key: "dong-xoai-airport",
+path: "thue-xe-tu-dong-xoai-di-san-bay-tan-son-nhat",
+from: "Đồng Xoài",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Đồng Xoài đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ Đồng Xoài đi sân bay Tân Sơn Nhất. Chủ động giờ đón, phù hợp khách đi công tác và du lịch.",
+routeText: "Đồng Xoài → Quốc lộ 13 → Sân bay Tân Sơn Nhất",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "chon-thanh-airport",
+path: "xe-tu-chon-thanh-di-san-bay-tan-son-nhat",
+from: "Chơn Thành",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Chơn Thành đi sân bay Tân Sơn Nhất",
+description:
+"Xe riêng từ Chơn Thành đi sân bay Tân Sơn Nhất dành cho chuyên gia, doanh nhân và khách du lịch.",
+routeText: "Chơn Thành → Quốc lộ 13 → Sân bay Tân Sơn Nhất",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "binh-long-airport",
+path: "xe-tu-binh-long-di-san-bay-tan-son-nhat",
+from: "Bình Long",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Bình Long đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ Bình Long đi sân bay Tân Sơn Nhất. Đưa đón tận nơi, không ghép khách.",
+routeText: "Bình Long → Chơn Thành → Sân bay Tân Sơn Nhất",
+duration: "3.5 - 4.5 giờ",
+},
+
+{
+key: "phuoc-long-airport",
+path: "xe-tu-phuoc-long-di-san-bay-tan-son-nhat",
+from: "Phước Long",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Phước Long đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ Phước Long đi sân bay Tân Sơn Nhất. Hỗ trợ hành lý và chủ động lịch trình.",
+routeText: "Phước Long → Đồng Xoài → Sân bay Tân Sơn Nhất",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "loc-ninh-airport",
+path: "xe-tu-loc-ninh-di-san-bay-tan-son-nhat",
+from: "Lộc Ninh",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Lộc Ninh đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ Lộc Ninh đi sân bay Tân Sơn Nhất. Không ghép khách, đón tận nơi và phục vụ 24/7.",
+routeText: "Lộc Ninh → Bình Long → Sân bay Tân Sơn Nhất",
+duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// KHU CÔNG NGHIỆP BÌNH PHƯỚC
+// =========================
+
+{
+key: "kcn-minh-hung-3",
+path: "thue-xe-di-kcn-minh-hung-3",
+from: "TP.HCM",
+to: "KCN Minh Hưng III",
+title: "Thuê xe đi KCN Minh Hưng III Bình Phước",
+description:
+"Dịch vụ xe riêng đi KCN Minh Hưng III Bình Phước dành cho chuyên gia, kỹ sư và khách công tác. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Chơn Thành → KCN Minh Hưng III",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "kcn-minh-hung-sikico",
+path: "thue-xe-di-kcn-minh-hung-sikico",
+from: "TP.HCM",
+to: "KCN Minh Hưng Sikico",
+title: "Thuê xe đi KCN Minh Hưng Sikico",
+description:
+"Xe riêng đi KCN Minh Hưng Sikico Bình Phước với tài xế chuyên nghiệp. Phù hợp chuyên gia và doanh nghiệp.",
+routeText: "TP.HCM → Chơn Thành → KCN Minh Hưng Sikico",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "kcn-becamex-binh-phuoc",
+path: "thue-xe-di-kcn-becamex-binh-phuoc",
+from: "TP.HCM",
+to: "KCN Becamex Bình Phước",
+title: "Thuê xe đi KCN Becamex Bình Phước",
+description:
+"Dịch vụ xe riêng đi KCN Becamex Bình Phước dành cho khách công tác, chuyên gia và nhà đầu tư.",
+routeText: "TP.HCM → Chơn Thành → KCN Becamex",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "kcn-bac-dong-phu",
+path: "thue-xe-di-kcn-bac-dong-phu",
+from: "TP.HCM",
+to: "KCN Bắc Đồng Phú",
+title: "Thuê xe đi KCN Bắc Đồng Phú",
+description:
+"Xe riêng đi KCN Bắc Đồng Phú với lịch trình linh hoạt, đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Đồng Xoài → KCN Bắc Đồng Phú",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "kcn-nam-dong-phu",
+path: "thue-xe-di-kcn-nam-dong-phu",
+from: "TP.HCM",
+to: "KCN Nam Đồng Phú",
+title: "Thuê xe đi KCN Nam Đồng Phú",
+description:
+"Dịch vụ xe riêng đi KCN Nam Đồng Phú dành cho doanh nghiệp và khách công tác thường xuyên.",
+routeText: "TP.HCM → Đồng Xoài → KCN Nam Đồng Phú",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "kcn-dong-xoai-1",
+path: "thue-xe-di-kcn-dong-xoai-1",
+from: "TP.HCM",
+to: "KCN Đồng Xoài I",
+title: "Thuê xe đi KCN Đồng Xoài I",
+description:
+"Xe riêng đi KCN Đồng Xoài I Bình Phước. Không ghép khách, biết giá trước khi đặt.",
+routeText: "TP.HCM → Đồng Xoài → KCN Đồng Xoài I",
+duration: "3 - 4 giờ",
+},
+
+{
+key: "kcn-dong-xoai-2",
+path: "thue-xe-di-kcn-dong-xoai-2",
+from: "TP.HCM",
+to: "KCN Đồng Xoài II",
+title: "Thuê xe đi KCN Đồng Xoài II",
+description:
+"Dịch vụ xe riêng đi KCN Đồng Xoài II cho chuyên gia, kỹ sư và doanh nghiệp.",
+routeText: "TP.HCM → Đồng Xoài → KCN Đồng Xoài II",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// KCN → SÂN BAY
+// =========================
+
+{
+key: "becamex-airport",
+path: "xe-tu-kcn-becamex-binh-phuoc-di-san-bay",
+from: "KCN Becamex Bình Phước",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ KCN Becamex Bình Phước đi sân bay",
+description:
+"Dịch vụ xe riêng từ KCN Becamex Bình Phước đi sân bay Tân Sơn Nhất dành cho chuyên gia và khách công tác.",
+routeText: "KCN Becamex → TP.HCM → Sân bay",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "minh-hung-airport",
+path: "xe-tu-kcn-minh-hung-di-san-bay",
+from: "KCN Minh Hưng",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ KCN Minh Hưng đi sân bay",
+description:
+"Xe riêng từ KCN Minh Hưng đi sân bay Tân Sơn Nhất. Đưa đón tận nơi và hỗ trợ nhiều hành lý.",
+routeText: "KCN Minh Hưng → TP.HCM → Sân bay",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "dong-phu-airport",
+path: "xe-tu-kcn-bac-dong-phu-di-san-bay",
+from: "KCN Bắc Đồng Phú",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ KCN Bắc Đồng Phú đi sân bay",
+description:
+"Dịch vụ xe riêng từ KCN Bắc Đồng Phú đi sân bay. Không ghép khách và chủ động thời gian.",
+routeText: "KCN Bắc Đồng Phú → TP.HCM → Sân bay",
+duration: "3 - 4 giờ",
+},
+
+// =========================
+// CỬA KHẨU HOA LƯ
+// =========================
+
+{
+key: "hoa-lu-tu-tphcm",
+path: "thue-xe-tu-tphcm-di-cua-khau-hoa-lu",
+from: "TP.HCM",
+to: "Cửa khẩu Hoa Lư",
+title: "Thuê xe từ TP.HCM đi cửa khẩu Hoa Lư",
+description:
+"Dịch vụ xe riêng từ TP.HCM đi cửa khẩu Hoa Lư Bình Phước. Phù hợp khách xuất nhập cảnh, doanh nhân và chuyên gia làm việc khu vực biên giới.",
+routeText: "TP.HCM → Đồng Xoài → Lộc Ninh → Cửa khẩu Hoa Lư",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "hoa-lu-san-bay",
+path: "xe-tu-san-bay-di-cua-khau-hoa-lu",
+from: "Sân bay Tân Sơn Nhất",
+to: "Cửa khẩu Hoa Lư",
+title: "Xe từ sân bay đi cửa khẩu Hoa Lư",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi cửa khẩu Hoa Lư. Đón tận nơi tại ga quốc tế hoặc quốc nội.",
+routeText: "Sân bay → Đồng Xoài → Lộc Ninh → Hoa Lư",
+duration: "5 - 6 giờ",
+},
+
+{
+key: "hoa-lu-ve-tphcm",
+path: "xe-tu-cua-khau-hoa-lu-ve-tphcm",
+from: "Cửa khẩu Hoa Lư",
+to: "TP.HCM",
+title: "Xe từ cửa khẩu Hoa Lư về TP.HCM",
+description:
+"Dịch vụ xe riêng từ cửa khẩu Hoa Lư về TP.HCM. Không ghép khách và phục vụ 24/7.",
+routeText: "Hoa Lư → Lộc Ninh → Đồng Xoài → TP.HCM",
+duration: "4.5 - 5.5 giờ",
+},
+
+{
+key: "hoa-lu-airport",
+path: "xe-tu-cua-khau-hoa-lu-di-san-bay",
+from: "Cửa khẩu Hoa Lư",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ cửa khẩu Hoa Lư đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ cửa khẩu Hoa Lư đi sân bay Tân Sơn Nhất cho khách quốc tế và doanh nhân.",
+routeText: "Hoa Lư → Lộc Ninh → Đồng Xoài → Sân bay",
+duration: "5 - 6 giờ",
+},
+
+// =========================
+// CHUYÊN GIA / DOANH NGHIỆP
+// =========================
+
+{
+key: "chuyen-gia-binh-phuoc",
+path: "xe-dua-don-chuyen-gia-binh-phuoc",
+from: "TP.HCM",
+to: "Bình Phước",
+title: "Xe đưa đón chuyên gia Bình Phước",
+description:
+"Dịch vụ xe riêng đưa đón chuyên gia làm việc tại Bình Phước. Phù hợp chuyên gia Hàn Quốc, Trung Quốc, Nhật Bản và khách doanh nghiệp.",
+routeText: "TP.HCM → Bình Phước",
+duration: "2 - 5 giờ",
+},
+
+{
+key: "doanh-nghiep-binh-phuoc",
+path: "xe-cong-tac-binh-phuoc",
+from: "TP.HCM",
+to: "Bình Phước",
+title: "Xe công tác Bình Phước, xe riêng có tài xế",
+description:
+"Dịch vụ xe công tác Bình Phước dành cho doanh nghiệp, nhà máy và khách hàng cần di chuyển thường xuyên.",
+routeText: "TP.HCM → Bình Phước",
+duration: "2 - 5 giờ",
+},
+
+{
+key: "factory-visit-binh-phuoc",
+path: "xe-tham-quan-nha-may-binh-phuoc",
+from: "TP.HCM",
+to: "Bình Phước",
+title: "Xe tham quan nhà máy Bình Phước",
+description:
+"Dịch vụ xe riêng đưa đón đoàn tham quan nhà máy, khảo sát đầu tư và làm việc tại các khu công nghiệp Bình Phước.",
+routeText: "TP.HCM → KCN Bình Phước",
+duration: "2 - 5 giờ",
+},
+
+{
+key: "airport-transfer-kcn",
+path: "airport-transfer-kcn-binh-phuoc",
+from: "Sân bay Tân Sơn Nhất",
+to: "KCN Bình Phước",
+title: "Airport transfer đến khu công nghiệp Bình Phước",
+description:
+"Private airport transfer từ sân bay Tân Sơn Nhất đến các khu công nghiệp Bình Phước dành cho chuyên gia và khách doanh nghiệp.",
+routeText: "Sân bay → Bình Phước",
+duration: "2 - 5 giờ",
+},
+
+{
+key: "thu-dau-mot-dong-xoai",
+path: "thue-xe-tu-thu-dau-mot-di-dong-xoai",
+from: "Thủ Dầu Một",
+to: "Đồng Xoài",
+title: "Thuê xe từ Thủ Dầu Một đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Thủ Dầu Một đi Đồng Xoài Bình Phước. Không ghép khách và đón tận nơi.",
+routeText: "Thủ Dầu Một → Chơn Thành → Đồng Xoài",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "di-an-dong-xoai",
+path: "thue-xe-tu-di-an-di-dong-xoai",
+from: "Dĩ An",
+to: "Đồng Xoài",
+title: "Thuê xe từ Dĩ An đi Đồng Xoài",
+description:
+"Xe riêng từ Dĩ An đi Đồng Xoài với tài xế chuyên nghiệp. Phù hợp công tác và về quê.",
+routeText: "Dĩ An → Chơn Thành → Đồng Xoài",
+duration: "2 - 3 giờ",
+},
+
+{
+key: "thuan-an-dong-xoai",
+path: "thue-xe-tu-thuan-an-di-dong-xoai",
+from: "Thuận An",
+to: "Đồng Xoài",
+title: "Thuê xe từ Thuận An đi Đồng Xoài",
+description:
+"Dịch vụ xe riêng từ Thuận An đi Đồng Xoài. Không ghép khách và phục vụ 24/7.",
+routeText: "Thuận An → Chơn Thành → Đồng Xoài",
+duration: "2 - 3 giờ",
+},
+
+
 
 ];

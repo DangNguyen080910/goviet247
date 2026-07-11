@@ -1932,4 +1932,3777 @@ export const BENTRE_SEO_ROUTES = [
     routeText: "TP.HCM → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
     duration: "2 - 2.5 giờ",
   },
+
+{
+  key: "quan-1-di-ben-tre",
+  path: "thue-xe-quan-1-di-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 1 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Bến Tre dành cho khách lưu trú khách sạn, căn hộ, văn phòng và khách du lịch. Xe riêng có tài xế, không ghép khách, đón tận nơi tại Bến Nghé, Bến Thành, Đa Kao hoặc các khu vực trung tâm Quận 1.",
+  routeText:
+    "Quận 1 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-ben-tre",
+  path: "thue-xe-quan-7-di-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 7 đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Đặt xe từ Quận 7 đi Bến Tre. Phục vụ khách tại Phú Mỹ Hưng, Tân Phú, Tân Phong, Tân Quy và các khu dân cư Quận 7. Xe riêng có tài xế, biết giá trước khi đặt.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "thu-duc-di-ben-tre",
+  path: "thue-xe-thu-duc-di-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Bến Tre",
+  title: "Thuê xe Thủ Đức đi Bến Tre, đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Bến Tre. Đón tận nơi tại Thảo Điền, An Phú, Hiệp Bình Chánh, Linh Đông, Linh Xuân và các phường khác thuộc TP Thủ Đức.",
+  routeText:
+    "TP Thủ Đức → Vành Đai 2 → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "xe-binh-chanh-di-ben-tre",
+  path: "can-thue-xe-binh-chanh-di-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Bình Chánh đi Bến Tre giá tốt",
+  description:
+    "Xe riêng từ Bình Chánh đi Bến Tre cho khách tại Tân Túc, Vĩnh Lộc A, Vĩnh Lộc B, Bình Hưng, Bình Chánh và các khu dân cư lân cận.",
+  routeText:
+    "Bình Chánh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-hoc-mon-di-ben-tre",
+  path: "can-thue-xe-hoc-mon-di-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Hóc Môn đi Bến Tre, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Bến Tre. Đón tận nơi tại Bà Điểm, Xuân Thới Sơn, Tân Xuân, Trung Chánh và các xã thuộc huyện Hóc Môn.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "xe-di-mo-cay-bac-ben-tre",
+  path: "xe-di-mo-cay-bac-ben-tre",
+  from: "TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe đi Mỏ Cày Bắc Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ TP.HCM đi Mỏ Cày Bắc Bến Tre. Đón tận nơi tại tất cả quận huyện TP.HCM và trả tận nhà tại các xã thuộc Mỏ Cày Bắc.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "xe-di-mo-cay-nam-ben-tre",
+  path: "xe-di-mo-cay-nam-ben-tre",
+  from: "TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe đi Mỏ Cày Nam Bến Tre, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng đi Mỏ Cày Nam Bến Tre cho khách về quê, công tác hoặc thăm người thân. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "xe-di-thanh-pho-ben-tre",
+  path: "xe-di-thanh-pho-ben-tre",
+  from: "TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe đi Thành phố Bến Tre từ TP.HCM. Phù hợp khách công tác, du lịch hoặc làm việc tại trung tâm hành chính của tỉnh Bến Tre.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-di-an-hiep-ben-tre",
+  path: "xe-di-an-hiep-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "An Hiệp, Châu Thành, Bến Tre",
+  title: "Thuê xe đi An Hiệp Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi xã An Hiệp, huyện Châu Thành, Bến Tre. Đưa đón tận nơi tại nhà, công ty hoặc điểm hẹn theo yêu cầu.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Cầu Rạch Miễu → Châu Thành → An Hiệp",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-quan-7-di-chau-thanh-ben-tre",
+  path: "can-thue-xe-quan-7-di-chau-thanh-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 7 đi Châu Thành Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Châu Thành Bến Tre. Đón tận nơi tại Phú Mỹ Hưng, Tân Phong, Tân Quy, Tân Phú và các khu dân cư Quận 7. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-mo-cay-bac",
+  path: "can-thue-xe-quan-7-di-mo-cay-bac-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 7 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Mỏ Cày Bắc Bến Tre cho khách về quê, công tác hoặc thăm người thân. Đưa đón tận nơi và chủ động thời gian.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc Trung Lương → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-mo-cay-nam",
+  path: "can-thue-xe-quan-7-di-mo-cay-nam-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 7 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Mỏ Cày Nam Bến Tre. Không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 7 → Cao tốc TP.HCM - Trung Lương → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-ba-tri",
+  path: "can-thue-xe-quan-7-di-ba-tri-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 7 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Ba Tri Bến Tre. Phù hợp khách về quê, đi công tác hoặc thăm người thân tại khu vực ven biển Ba Tri.",
+  routeText:
+    "Quận 7 → Cao tốc Trung Lương → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-7-di-binh-dai",
+  path: "can-thue-xe-quan-7-di-binh-dai-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 7 đi Bình Đại Bến Tre",
+  description:
+    "Đặt xe từ Quận 7 đi Bình Đại Bến Tre. Xe riêng đưa đón tận nơi tại các xã ven biển và khu dân cư thuộc huyện Bình Đại.",
+  routeText:
+    "Quận 7 → Cao tốc Trung Lương → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "xe-thu-duc-di-chau-thanh-ben-tre",
+  path: "can-thue-xe-thu-duc-di-chau-thanh-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Thủ Đức đi Châu Thành Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Châu Thành Bến Tre. Đón tận nơi tại Thảo Điền, An Phú, Linh Đông, Hiệp Bình Chánh và các khu vực khác.",
+  routeText:
+    "TP Thủ Đức → Vành Đai 2 → Cao tốc TP.HCM - Trung Lương → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-giong-trom",
+  path: "can-thue-xe-thu-duc-di-giong-trom-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Thủ Đức đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Giồng Trôm Bến Tre. Đón tận nơi, không ghép khách, phù hợp khách về quê và công tác.",
+  routeText:
+    "TP Thủ Đức → Cao tốc TP.HCM - Trung Lương → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-cho-lach",
+  path: "xe-thue-xe-thu-duc-di-cho-lach-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Thủ Đức đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Chợ Lách Bến Tre. Phù hợp khách tham quan làng hoa kiểng, nhà vườn và các điểm du lịch sinh thái.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-thanh-phu",
+  path: "can-thue-xe-thu-duc-di-thanh-phu-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Thủ Đức đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Thạnh Phú Bến Tre. Đưa đón tận nơi tại các xã ven biển, phù hợp khách về quê và du lịch.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Trung Lương → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thu-duc-di-ba-tri",
+  path: "cho-thue-xe-thu-duc-di-ba-tri-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Thủ Đức đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Ba Tri Bến Tre. Không ghép khách, đón tận nơi và chủ động thời gian theo nhu cầu.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Trung Lương → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-3-di-ben-tre",
+  path: "thue-xe-quan-3-di-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 3 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Bến Tre dành cho khách tại Phường Võ Thị Sáu, Phường 1, Phường 2, Phường 3, Phường 4 và các khu vực trung tâm. Xe riêng có tài xế, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 3 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 4 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-4-di-ben-tre",
+  path: "thue-xe-quan-4-di-ben-tre",
+  from: "Quận 4, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 4 đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Đặt xe từ Quận 4 đi Bến Tre. Đón tận nơi tại các khu dân cư, chung cư và văn phòng trên địa bàn Quận 4. Xe riêng có tài xế, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 4 → Nguyễn Tất Thành → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 5 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-5-di-ben-tre",
+  path: "thue-xe-quan-5-di-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 5 đi Bến Tre, xe riêng có tài xế",
+  description:
+    "Xe riêng từ Quận 5 đi Bến Tre phục vụ khách tại Chợ Lớn, khu dân cư, bệnh viện, khách sạn và văn phòng. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Quận 5 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 6 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-6-di-ben-tre",
+  path: "thue-xe-quan-6-di-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 6 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Bến Tre dành cho khách về quê, đi công tác hoặc du lịch. Xe có tài xế riêng, lịch trình linh hoạt và không ghép khách.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 8 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-8-di-ben-tre",
+  path: "thue-xe-quan-8-di-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 8 đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Thuê xe từ Quận 8 đi Bến Tre cho gia đình, nhóm bạn và khách công tác. Đón tận nơi tại các phường thuộc Quận 8, xe riêng không ghép khách.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 10 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-10-di-ben-tre",
+  path: "thue-xe-quan-10-di-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 10 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Bến Tre dành cho khách tại các khu dân cư, văn phòng, bệnh viện và trung tâm thương mại. Xe riêng có tài xế, không ghép khách, đón tận nơi theo yêu cầu.",
+  routeText:
+    "Quận 10 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 11 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-11-di-ben-tre",
+  path: "thue-xe-quan-11-di-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 11 đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Quận 11 đi Bến Tre cho khách về quê, công tác hoặc du lịch. Đón tận nơi tại các phường thuộc Quận 11, lịch trình linh hoạt và biết giá trước khi đặt.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 12 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-12-di-ben-tre",
+  path: "thue-xe-quan-12-di-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Quận 12 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Bến Tre. Phục vụ khách tại Thạnh Xuân, Thạnh Lộc, Tân Chánh Hiệp, Hiệp Thành và các khu dân cư trên địa bàn Quận 12.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// BÌNH THẠNH -> BẾN TRE
+// =========================
+
+{
+  key: "binh-thanh-di-ben-tre",
+  path: "thue-xe-binh-thanh-di-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Bến Tre, xe riêng có tài xế",
+  description:
+    "Đặt xe từ Bình Thạnh đi Bến Tre. Đón tận nơi tại Phường 1, 2, 3, 5, 11, 12, 13, 14, 15, 17, 19, 21, 22, 24, 25, 26, 27, 28 và các khu vực lân cận.",
+  routeText:
+    "Bình Thạnh → Điện Biên Phủ → Võ Văn Kiệt → Cao tốc Trung Lương → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// PHÚ NHUẬN -> BẾN TRE
+// =========================
+
+{
+  key: "phu-nhuan-di-ben-tre",
+  path: "thue-xe-phu-nhuan-di-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Phú Nhuận đi Bến Tre cho khách tại các khu dân cư, văn phòng, khách sạn và căn hộ. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Phú Nhuận → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// GÒ VẤP -> BẾN TRE
+// =========================
+
+{
+  key: "go-vap-di-ben-tre",
+  path: "thue-xe-go-vap-di-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Gò Vấp đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Bến Tre. Đón tận nơi tại các phường thuộc Gò Vấp, phù hợp khách về quê, công tác hoặc du lịch miền Tây.",
+  routeText:
+    "Gò Vấp → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TÂN BÌNH -> BẾN TRE
+// =========================
+
+{
+  key: "tan-binh-di-ben-tre",
+  path: "thue-xe-tan-binh-di-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Tân Bình đi Bến Tre, xe riêng có tài xế",
+  description:
+    "Xe riêng từ Tân Bình đi Bến Tre. Phục vụ khách tại các khu dân cư, văn phòng và khu vực gần sân bay Tân Sơn Nhất. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Tân Bình → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TÂN PHÚ -> BẾN TRE
+// =========================
+
+{
+  key: "tan-phu-di-ben-tre",
+  path: "thue-xe-tan-phu-di-ben-tre",
+  from: "Tân Phú, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Tân Phú đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe từ Tân Phú đi Bến Tre cho gia đình, khách công tác và người về quê. Xe riêng có tài xế, chủ động thời gian và điểm đón trả.",
+  routeText:
+    "Tân Phú → Quốc lộ 1A → Cao tốc Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// BÌNH TÂN -> BẾN TRE
+// =========================
+
+{
+  key: "binh-tan-di-ben-tre",
+  path: "thue-xe-binh-tan-di-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Bình Tân đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Bình Tân đi Bến Tre. Đón tận nơi tại Bình Trị Đông, An Lạc, Tân Tạo và các khu dân cư trên địa bàn Bình Tân.",
+  routeText:
+    "Bình Tân → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// NHÀ BÈ -> BẾN TRE
+// =========================
+
+{
+  key: "nha-be-di-ben-tre",
+  path: "thue-xe-nha-be-di-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Nhà Bè đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Nhà Bè đi Bến Tre cho khách tại Phước Kiển, Phước Lộc, Nhơn Đức, Long Thới, Hiệp Phước và các khu vực lân cận.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// CỦ CHI -> BẾN TRE
+// =========================
+
+{
+  key: "cu-chi-di-ben-tre",
+  path: "thue-xe-cu-chi-di-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Củ Chi đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Bến Tre dành cho khách tại Tân Thông Hội, Tân Phú Trung, Trung Lập, Phước Vĩnh An và các xã khác thuộc huyện Củ Chi. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// HÓC MÔN -> BẾN TRE
+// =========================
+
+{
+  key: "hoc-mon-di-ben-tre",
+  path: "thue-xe-hoc-mon-di-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Hóc Môn đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Hóc Môn đi Bến Tre phục vụ khách tại Bà Điểm, Xuân Thới Thượng, Xuân Thới Sơn, Trung Chánh, Tân Xuân và các khu vực lân cận.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// BÌNH CHÁNH -> BẾN TRE
+// =========================
+
+{
+  key: "binh-chanh-di-ben-tre",
+  path: "thue-xe-binh-chanh-di-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Bình Chánh đi Bến Tre, xe riêng có tài xế",
+  description:
+    "Đặt xe từ Bình Chánh đi Bến Tre. Đón tận nơi tại Bình Hưng, Vĩnh Lộc A, Vĩnh Lộc B, Tân Kiên, Tân Nhựt, Bình Chánh và các xã khác.",
+  routeText:
+    "Bình Chánh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// CẦN GIỜ -> BẾN TRE
+// =========================
+
+{
+  key: "can-gio-di-ben-tre",
+  path: "thue-xe-can-gio-di-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Bến Tre",
+  title: "Thuê xe Cần Giờ đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Bến Tre dành cho khách tại Cần Thạnh, Long Hòa, Bình Khánh, An Thới Đông, Tam Thôn Hiệp và các khu vực khác thuộc huyện Cần Giờ.",
+  routeText:
+    "Cần Giờ → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// TP THỦ ĐỨC -> BẾN TRE
+// =========================
+
+{
+  key: "tp-thu-duc-di-ben-tre",
+  path: "thue-xe-tp-thu-duc-di-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Bến Tre. Đón tận nơi tại Thảo Điền, An Phú, An Khánh, Hiệp Bình Chánh, Linh Đông, Linh Xuân, Long Trường, Long Phước và các phường khác.",
+  routeText:
+    "TP Thủ Đức → Vành Đai 2 → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "tphcm-di-thanh-pho-ben-tre",
+  path: "thue-xe-tphcm-di-thanh-pho-ben-tre",
+  from: "TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe TP.HCM đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Thành phố Bến Tre. Đón tận nơi tại tất cả quận huyện TP.HCM và trả tận nơi tại các phường, xã thuộc trung tâm Thành phố Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> CHÂU THÀNH
+// =========================
+
+{
+  key: "tphcm-di-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Châu Thành Bến Tre, xe riêng có tài xế",
+  description:
+    "Xe riêng từ TP.HCM đi Châu Thành Bến Tre. Phục vụ khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Hữu Định, Tiên Thủy và các xã khác thuộc huyện Châu Thành.",
+  routeText:
+    "TP.HCM → Cao tốc Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> CHỢ LÁCH
+// =========================
+
+{
+  key: "tphcm-di-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Chợ Lách Bến Tre. Phù hợp khách tham quan làng hoa kiểng, nhà vườn, du lịch sinh thái hoặc về quê.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM -> GIỒNG TRÔM
+// =========================
+
+{
+  key: "tphcm-di-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Giồng Trôm Bến Tre. Đưa đón tận nơi tại các xã Châu Hòa, Châu Bình, Lương Quới, Mỹ Thạnh và các khu vực khác thuộc huyện Giồng Trôm.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM -> BÌNH ĐẠI
+// =========================
+
+{
+  key: "tphcm-di-binh-dai-ben-tre",
+  path: "thue-xe-tphcm-di-binh-dai-ben-tre",
+  from: "TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe TP.HCM đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Bình Đại Bến Tre. Phù hợp khách về quê, du lịch biển Thừa Đức hoặc công tác tại khu vực ven biển Bình Đại.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// TP.HCM -> BA TRI
+// =========================
+
+{
+  key: "tphcm-di-ba-tri-ben-tre",
+  path: "thue-xe-tphcm-di-ba-tri-ben-tre",
+  from: "TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe TP.HCM đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Ba Tri Bến Tre. Đón tận nơi tại TP.HCM và trả tận nơi tại các xã An Bình Tây, Bảo Thuận, Mỹ Chánh, Mỹ Hòa và các khu vực thuộc huyện Ba Tri.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// TP.HCM -> MỎ CÀY BẮC
+// =========================
+
+{
+  key: "tphcm-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-tphcm-di-mo-cay-bac-ben-tre",
+  from: "TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe TP.HCM đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Mỏ Cày Bắc Bến Tre. Xe riêng có tài xế, không ghép khách, phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM -> MỎ CÀY NAM
+// =========================
+
+{
+  key: "tphcm-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-tphcm-di-mo-cay-nam-ben-tre",
+  from: "TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe TP.HCM đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Mỏ Cày Nam Bến Tre. Đưa đón tận nơi tại các xã An Định, Bình Khánh Đông, Cẩm Sơn, Định Thủy và các khu vực khác.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM -> THẠNH PHÚ
+// =========================
+
+{
+  key: "tphcm-di-thanh-phu-ben-tre",
+  path: "thue-xe-tphcm-di-thanh-phu-ben-tre",
+  from: "TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe TP.HCM đi Thạnh Phú Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Thạnh Phú Bến Tre. Phù hợp khách về quê, du lịch biển Cồn Bửng hoặc công tác tại khu vực ven biển phía Nam tỉnh Bến Tre.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-1-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-1-di-thanh-pho-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 1 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Thành phố Bến Tre. Đón tận nơi tại Bến Nghé, Bến Thành, Đa Kao, Nguyễn Thái Bình và các khu vực trung tâm Quận 1. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 1 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 1 -> CHÂU THÀNH
+// =========================
+
+{
+  key: "quan-1-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-1-di-chau-thanh-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 1 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 1 đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Tiên Thủy, Hữu Định và các xã khác.",
+  routeText:
+    "Quận 1 → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// QUẬN 1 -> CHỢ LÁCH
+// =========================
+
+{
+  key: "quan-1-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-1-di-cho-lach-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 1 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "Quận 1 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 1 -> GIỒNG TRÔM
+// =========================
+
+{
+  key: "quan-1-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-1-di-giong-trom-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 1 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 1 đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Quận 1 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 1 -> BÌNH ĐẠI
+// =========================
+
+{
+  key: "quan-1-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-1-di-binh-dai-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 1 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Bình Đại Bến Tre. Phù hợp khách về quê, du lịch biển hoặc công tác tại khu vực ven biển Bình Đại.",
+  routeText:
+    "Quận 1 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 -> BA TRI
+// =========================
+
+{
+  key: "quan-1-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-1-di-ba-tri-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 1 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 1 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 1 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 -> MỎ CÀY BẮC
+// =========================
+
+{
+  key: "quan-1-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-1-di-mo-cay-bac-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 1 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 1 đi Mỏ Cày Bắc Bến Tre cho khách về quê, công tác hoặc thăm người thân. Đón tận nơi tại tất cả phường Quận 1.",
+  routeText:
+    "Quận 1 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 1 -> MỎ CÀY NAM
+// =========================
+
+{
+  key: "quan-1-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-1-di-mo-cay-nam-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 1 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, lịch trình linh hoạt và không ghép khách.",
+  routeText:
+    "Quận 1 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 1 -> THẠNH PHÚ
+// =========================
+
+{
+  key: "quan-1-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-1-di-thanh-phu-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 1 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 1 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, du lịch biển Cồn Bửng hoặc công tác tại khu vực ven biển phía Nam tỉnh Bến Tre.",
+  routeText:
+    "Quận 1 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 7 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-7-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-7-di-thanh-pho-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 7 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Thành phố Bến Tre. Đón tận nơi tại Phú Mỹ Hưng, Tân Phú, Tân Phong, Tân Hưng, Tân Quy và các khu vực khác thuộc Quận 7. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-7-di-chau-thanh-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 7 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Hữu Định, Tiên Thủy và các xã khác.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-7-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-7-di-cho-lach-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 7 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-7-di-giong-trom-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 7 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Quận 7 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-7-di-binh-dai-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 7 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Bình Đại Bến Tre. Phù hợp khách về quê, du lịch biển Thừa Đức hoặc công tác tại khu vực ven biển Bình Đại.",
+  routeText:
+    "Quận 7 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-7-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-7-di-ba-tri-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 7 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Ba Tri Bến Tre. Đưa đón tận nơi tại An Bình Tây, Bảo Thuận, Mỹ Chánh, Mỹ Hòa và các xã khác thuộc huyện Ba Tri.",
+  routeText:
+    "Quận 7 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-7-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-7-di-mo-cay-bac-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 7 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Mỏ Cày Bắc Bến Tre cho khách về quê, công tác hoặc thăm người thân. Xe riêng, không ghép khách.",
+  routeText:
+    "Quận 7 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-7-di-mo-cay-nam-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 7 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, đón tận nơi và lịch trình linh hoạt.",
+  routeText:
+    "Quận 7 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-7-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-7-di-thanh-phu-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 7 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 7 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, du lịch biển Cồn Bửng hoặc công tác tại khu vực ven biển phía Nam tỉnh Bến Tre.",
+  routeText:
+    "Quận 7 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// TP THỦ ĐỨC -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "thu-duc-di-thanh-pho-ben-tre",
+  path: "thue-xe-thu-duc-di-thanh-pho-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Thành phố Bến Tre. Đón tận nơi tại Thảo Điền, An Phú, An Khánh, Hiệp Bình Chánh, Linh Đông, Linh Xuân, Long Trường và các phường khác thuộc TP Thủ Đức.",
+  routeText:
+    "TP Thủ Đức → Vành Đai 2 → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-chau-thanh-ben-tre",
+  path: "thue-xe-thu-duc-di-chau-thanh-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, Quới Sơn, Tiên Thủy, Hữu Định và các xã khác.",
+  routeText:
+    "TP Thủ Đức → Vành Đai 2 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "thu-duc-di-cho-lach-ben-tre",
+  path: "thue-xe-thu-duc-di-cho-lach-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "thu-duc-di-giong-trom-ben-tre",
+  path: "thue-xe-thu-duc-di-giong-trom-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "TP Thủ Đức → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "thu-duc-di-binh-dai-ben-tre",
+  path: "thue-xe-thu-duc-di-binh-dai-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Bình Đại Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Thừa Đức, Bình Đại.",
+  routeText:
+    "TP Thủ Đức → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thu-duc-di-ba-tri-ben-tre",
+  path: "thue-xe-thu-duc-di-ba-tri-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Ba Tri Bến Tre. Đưa đón tận nơi tại Bảo Thuận, An Bình Tây, Mỹ Hòa, Mỹ Chánh và các xã thuộc huyện Ba Tri.",
+  routeText:
+    "TP Thủ Đức → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "thu-duc-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-thu-duc-di-mo-cay-bac-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Mỏ Cày Bắc Bến Tre cho khách về quê, công tác hoặc thăm người thân. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "TP Thủ Đức → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "thu-duc-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-thu-duc-di-mo-cay-nam-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, đón tận nơi và lịch trình linh hoạt.",
+  routeText:
+    "TP Thủ Đức → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "thu-duc-di-thanh-phu-ben-tre",
+  path: "thue-xe-thu-duc-di-thanh-phu-ben-tre",
+  from: "TP Thủ Đức",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe TP Thủ Đức đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng, Thạnh Phú.",
+  routeText:
+    "TP Thủ Đức → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4.5 - 5 giờ",
+},
+
+// =========================
+// BÌNH CHÁNH -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "binh-chanh-di-thanh-pho-ben-tre",
+  path: "thue-xe-binh-chanh-di-thanh-pho-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Bình Chánh đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Bình Chánh đi Thành phố Bến Tre. Đón tận nơi tại Bình Hưng, Tân Kiên, Tân Túc, Vĩnh Lộc A, Vĩnh Lộc B, Bình Chánh và các xã khác thuộc huyện Bình Chánh.",
+  routeText:
+    "Bình Chánh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-chau-thanh-ben-tre",
+  path: "thue-xe-binh-chanh-di-chau-thanh-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Bình Chánh đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Tiên Thủy và các xã khác.",
+  routeText:
+    "Bình Chánh → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-cho-lach-ben-tre",
+  path: "thue-xe-binh-chanh-di-cho-lach-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "Bình Chánh → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-giong-trom-ben-tre",
+  path: "thue-xe-binh-chanh-di-giong-trom-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Bình Chánh đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Bình Chánh → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-binh-dai-ben-tre",
+  path: "thue-xe-binh-chanh-di-binh-dai-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Bình Chánh đi Bình Đại Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Thừa Đức, Bình Đại.",
+  routeText:
+    "Bình Chánh → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-ba-tri-ben-tre",
+  path: "thue-xe-binh-chanh-di-ba-tri-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Bình Chánh đi Ba Tri Bến Tre. Đưa đón tận nơi tại Bảo Thuận, An Bình Tây, Mỹ Chánh, Mỹ Hòa và các xã khác thuộc huyện Ba Tri.",
+  routeText:
+    "Bình Chánh → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-binh-chanh-di-mo-cay-bac-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Bình Chánh đi Mỏ Cày Bắc Bến Tre. Không ghép khách, phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "Bình Chánh → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-binh-chanh-di-mo-cay-nam-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, lịch trình linh hoạt và đón tận nơi.",
+  routeText:
+    "Bình Chánh → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-chanh-di-thanh-phu-ben-tre",
+  path: "thue-xe-binh-chanh-di-thanh-phu-ben-tre",
+  from: "Bình Chánh, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Bình Chánh đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Bình Chánh đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng, Thạnh Phú.",
+  routeText:
+    "Bình Chánh → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// HÓC MÔN -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "hoc-mon-di-thanh-pho-ben-tre",
+  path: "thue-xe-hoc-mon-di-thanh-pho-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Hóc Môn đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Thành phố Bến Tre. Đón tận nơi tại Bà Điểm, Trung Chánh, Xuân Thới Thượng, Xuân Thới Sơn, Tân Xuân và các xã khác thuộc huyện Hóc Môn.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-chau-thanh-ben-tre",
+  path: "thue-xe-hoc-mon-di-chau-thanh-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Hóc Môn đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Tiên Thủy và các xã khác.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-cho-lach-ben-tre",
+  path: "thue-xe-hoc-mon-di-cho-lach-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "Hóc Môn → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "hoc-mon-di-giong-trom-ben-tre",
+  path: "thue-xe-hoc-mon-di-giong-trom-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Hóc Môn đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Hóc Môn → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "hoc-mon-di-binh-dai-ben-tre",
+  path: "thue-xe-hoc-mon-di-binh-dai-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Bình Đại Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Thừa Đức, Bình Đại.",
+  routeText:
+    "Hóc Môn → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-ba-tri-ben-tre",
+  path: "thue-xe-hoc-mon-di-ba-tri-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Hóc Môn đi Ba Tri Bến Tre. Đưa đón tận nơi tại Bảo Thuận, An Bình Tây, Mỹ Chánh, Mỹ Hòa và các xã khác thuộc huyện Ba Tri.",
+  routeText:
+    "Hóc Môn → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-hoc-mon-di-mo-cay-bac-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Hóc Môn đi Mỏ Cày Bắc Bến Tre. Không ghép khách, phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "Hóc Môn → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "hoc-mon-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-hoc-mon-di-mo-cay-nam-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, lịch trình linh hoạt và đón tận nơi.",
+  routeText:
+    "Hóc Môn → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "hoc-mon-di-thanh-phu-ben-tre",
+  path: "thue-xe-hoc-mon-di-thanh-phu-ben-tre",
+  from: "Hóc Môn, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Hóc Môn đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Hóc Môn đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng, Thạnh Phú.",
+  routeText:
+    "Hóc Môn → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4.5 - 5 giờ",
+},
+
+// =========================
+// CỦ CHI -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "cu-chi-di-thanh-pho-ben-tre",
+  path: "thue-xe-cu-chi-di-thanh-pho-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Củ Chi đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Thành phố Bến Tre. Đón tận nơi tại Tân Thông Hội, Tân Phú Trung, Phước Vĩnh An, Trung Lập Hạ, Trung Lập Thượng và các xã khác thuộc huyện Củ Chi.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "cu-chi-di-chau-thanh-ben-tre",
+  path: "thue-xe-cu-chi-di-chau-thanh-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Củ Chi đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Củ Chi đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Tiên Thủy, Hữu Định và các xã khác.",
+  routeText:
+    "Củ Chi → Quốc lộ 1A → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "cu-chi-di-cho-lach-ben-tre",
+  path: "thue-xe-cu-chi-di-cho-lach-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Củ Chi đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "Củ Chi → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "cu-chi-di-giong-trom-ben-tre",
+  path: "thue-xe-cu-chi-di-giong-trom-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Củ Chi đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Củ Chi đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Củ Chi → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "cu-chi-di-binh-dai-ben-tre",
+  path: "thue-xe-cu-chi-di-binh-dai-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Củ Chi đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Bình Đại Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Thừa Đức và các khu vực ven biển Bình Đại.",
+  routeText:
+    "Củ Chi → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "cu-chi-di-ba-tri-ben-tre",
+  path: "thue-xe-cu-chi-di-ba-tri-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Củ Chi đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Củ Chi đi Ba Tri Bến Tre. Đưa đón tận nơi tại Bảo Thuận, Mỹ Hòa, An Bình Tây, Mỹ Chánh và các xã khác thuộc huyện Ba Tri.",
+  routeText:
+    "Củ Chi → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "cu-chi-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-cu-chi-di-mo-cay-bac-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Củ Chi đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Củ Chi đi Mỏ Cày Bắc Bến Tre. Không ghép khách, phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "Củ Chi → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "cu-chi-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-cu-chi-di-mo-cay-nam-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Củ Chi đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, đón tận nơi và lịch trình linh hoạt.",
+  routeText:
+    "Củ Chi → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "cu-chi-di-thanh-phu-ben-tre",
+  path: "thue-xe-cu-chi-di-thanh-phu-ben-tre",
+  from: "Củ Chi, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Củ Chi đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Củ Chi đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng, Thạnh Phú.",
+  routeText:
+    "Củ Chi → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "5 - 5.5 giờ",
+},
+
+// =========================
+// GÒ VẤP -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "go-vap-di-thanh-pho-ben-tre",
+  path: "thue-xe-go-vap-di-thanh-pho-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Gò Vấp đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Thành phố Bến Tre. Đón tận nơi tại Phường 1, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16 và 17 thuộc quận Gò Vấp. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Gò Vấp → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "go-vap-di-chau-thanh-ben-tre",
+  path: "thue-xe-go-vap-di-chau-thanh-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Gò Vấp đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại An Hiệp, An Khánh, Quới Sơn, Hữu Định, Tiên Thủy và các xã khác.",
+  routeText:
+    "Gò Vấp → Quốc lộ 1A → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "go-vap-di-cho-lach-ben-tre",
+  path: "thue-xe-go-vap-di-cho-lach-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng, nhà vườn hoặc về quê.",
+  routeText:
+    "Gò Vấp → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "go-vap-di-giong-trom-ben-tre",
+  path: "thue-xe-go-vap-di-giong-trom-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Gò Vấp đi Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình theo nhu cầu.",
+  routeText:
+    "Gò Vấp → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "go-vap-di-binh-dai-ben-tre",
+  path: "thue-xe-go-vap-di-binh-dai-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Bình Đại Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Thừa Đức và khu vực ven biển Bình Đại.",
+  routeText:
+    "Gò Vấp → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "go-vap-di-ba-tri-ben-tre",
+  path: "thue-xe-go-vap-di-ba-tri-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Gò Vấp đi Ba Tri Bến Tre. Đưa đón tận nơi tại Bảo Thuận, Mỹ Chánh, Mỹ Hòa, An Bình Tây và các xã khác thuộc huyện Ba Tri.",
+  routeText:
+    "Gò Vấp → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "go-vap-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-go-vap-di-mo-cay-bac-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Gò Vấp đi Mỏ Cày Bắc Bến Tre. Không ghép khách, phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "Gò Vấp → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "go-vap-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-go-vap-di-mo-cay-nam-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, đón tận nơi và lịch trình linh hoạt.",
+  routeText:
+    "Gò Vấp → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "go-vap-di-thanh-phu-ben-tre",
+  path: "thue-xe-go-vap-di-thanh-phu-ben-tre",
+  from: "Gò Vấp, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Gò Vấp đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Gò Vấp đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng, Thạnh Phú.",
+  routeText:
+    "Gò Vấp → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4.5 - 5 giờ",
+},
+
+// =========================
+// BÌNH TÂN -> BẾN TRE
+// =========================
+
+{
+  key: "binh-tan-di-thanh-pho-ben-tre",
+  path: "thue-xe-binh-tan-di-thanh-pho-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Bình Tân đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description: "Dịch vụ thuê xe từ Bình Tân đi Thành phố Bến Tre. Đón tận nơi tại Bình Trị Đông, An Lạc, Tân Tạo, Bình Hưng Hòa và các khu vực lân cận. Xe riêng có tài xế, không ghép khách.",
+  routeText: "Bình Tân → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-tan-di-chau-thanh-ben-tre",
+  path: "thue-xe-binh-tan-di-chau-thanh-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Bình Tân đi Châu Thành Bến Tre",
+  description: "Xe riêng từ Bình Tân đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại các xã thuộc huyện Châu Thành.",
+  routeText: "Bình Tân → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "binh-tan-di-cho-lach-ben-tre",
+  path: "thue-xe-binh-tan-di-cho-lach-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Bình Tân đi Chợ Lách Bến Tre",
+  description: "Dịch vụ xe riêng từ Bình Tân đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng và nhà vườn.",
+  routeText: "Bình Tân → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-tan-di-giong-trom-ben-tre",
+  path: "thue-xe-binh-tan-di-giong-trom-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Bình Tân đi Giồng Trôm Bến Tre",
+  description: "Xe riêng từ Bình Tân đi Giồng Trôm Bến Tre. Không ghép khách, chủ động lịch trình theo yêu cầu.",
+  routeText: "Bình Tân → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-tan-di-binh-dai-ben-tre",
+  path: "thue-xe-binh-tan-di-binh-dai-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Bình Tân đi Bình Đại Bến Tre",
+  description: "Dịch vụ thuê xe từ Bình Tân đi Bình Đại Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển.",
+  routeText: "Bình Tân → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-ba-tri-ben-tre",
+  path: "thue-xe-binh-tan-di-ba-tri-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Bình Tân đi Ba Tri Bến Tre",
+  description: "Xe riêng từ Bình Tân đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText: "Bình Tân → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-tan-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-binh-tan-di-mo-cay-bac-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Bình Tân đi Mỏ Cày Bắc Bến Tre",
+  description: "Xe riêng từ Bình Tân đi Mỏ Cày Bắc Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText: "Bình Tân → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-tan-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-binh-tan-di-mo-cay-nam-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Bình Tân đi Mỏ Cày Nam Bến Tre",
+  description: "Dịch vụ xe riêng từ Bình Tân đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, lịch trình linh hoạt.",
+  routeText: "Bình Tân → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-tan-di-thanh-phu-ben-tre",
+  path: "thue-xe-binh-tan-di-thanh-phu-ben-tre",
+  from: "Bình Tân, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Bình Tân đi Thạnh Phú Bến Tre",
+  description: "Xe riêng từ Bình Tân đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText: "Bình Tân → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// TÂN BÌNH -> BẾN TRE
+// =========================
+
+{
+  key: "tan-binh-di-thanh-pho-ben-tre",
+  path: "thue-xe-tan-binh-di-thanh-pho-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Tân Bình đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description: "Dịch vụ thuê xe từ Tân Bình đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc quận Tân Bình và khu vực sân bay Tân Sơn Nhất.",
+  routeText: "Tân Bình → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-chau-thanh-ben-tre",
+  path: "thue-xe-tan-binh-di-chau-thanh-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Tân Bình đi Châu Thành Bến Tre",
+  description: "Xe riêng từ Tân Bình đi Châu Thành Bến Tre. Không ghép khách, đưa đón tận nơi.",
+  routeText: "Tân Bình → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tan-binh-di-cho-lach-ben-tre",
+  path: "thue-xe-tan-binh-di-cho-lach-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Tân Bình đi Chợ Lách Bến Tre",
+  description: "Dịch vụ xe riêng từ Tân Bình đi Chợ Lách Bến Tre. Phù hợp khách về quê hoặc tham quan làng hoa kiểng.",
+  routeText: "Tân Bình → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-giong-trom-ben-tre",
+  path: "thue-xe-tan-binh-di-giong-trom-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Tân Bình đi Giồng Trôm Bến Tre",
+  description: "Xe riêng từ Tân Bình đi Giồng Trôm Bến Tre. Chủ động lịch trình và thời gian khởi hành.",
+  routeText: "Tân Bình → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-binh-dai-ben-tre",
+  path: "thue-xe-tan-binh-di-binh-dai-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Tân Bình đi Bình Đại Bến Tre",
+  description: "Dịch vụ thuê xe từ Tân Bình đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText: "Tân Bình → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "tan-binh-di-ba-tri-ben-tre",
+  path: "thue-xe-tan-binh-di-ba-tri-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Tân Bình đi Ba Tri Bến Tre",
+  description: "Xe riêng từ Tân Bình đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText: "Tân Bình → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "tan-binh-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-tan-binh-di-mo-cay-bac-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Tân Bình đi Mỏ Cày Bắc Bến Tre",
+  description: "Xe riêng từ Tân Bình đi Mỏ Cày Bắc Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText: "Tân Bình → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-tan-binh-di-mo-cay-nam-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Tân Bình đi Mỏ Cày Nam Bến Tre",
+  description: "Dịch vụ xe riêng từ Tân Bình đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế, lịch trình linh hoạt.",
+  routeText: "Tân Bình → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tan-binh-di-thanh-phu-ben-tre",
+  path: "thue-xe-tan-binh-di-thanh-phu-ben-tre",
+  from: "Tân Bình, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Tân Bình đi Thạnh Phú Bến Tre",
+  description: "Xe riêng từ Tân Bình đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText: "Tân Bình → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// PHÚ NHUẬN -> BẾN TRE
+// =========================
+
+{
+  key: "phu-nhuan-di-thanh-pho-ben-tre",
+  path: "thue-xe-phu-nhuan-di-thanh-pho-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Phú Nhuận đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc quận Phú Nhuận, xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Phú Nhuận → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-chau-thanh-ben-tre",
+  path: "thue-xe-phu-nhuan-di-chau-thanh-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Phú Nhuận đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại các xã thuộc huyện Châu Thành.",
+  routeText:
+    "Phú Nhuận → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "phu-nhuan-di-cho-lach-ben-tre",
+  path: "thue-xe-phu-nhuan-di-cho-lach-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách về quê hoặc tham quan làng hoa kiểng.",
+  routeText:
+    "Phú Nhuận → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-giong-trom-ben-tre",
+  path: "thue-xe-phu-nhuan-di-giong-trom-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Phú Nhuận đi Giồng Trôm Bến Tre. Chủ động lịch trình và thời gian khởi hành.",
+  routeText:
+    "Phú Nhuận → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-binh-dai-ben-tre",
+  path: "thue-xe-phu-nhuan-di-binh-dai-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Phú Nhuận đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Phú Nhuận → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "phu-nhuan-di-ba-tri-ben-tre",
+  path: "thue-xe-phu-nhuan-di-ba-tri-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Phú Nhuận đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Phú Nhuận → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "phu-nhuan-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-phu-nhuan-di-mo-cay-bac-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Phú Nhuận đi Mỏ Cày Bắc Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText:
+    "Phú Nhuận → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-phu-nhuan-di-mo-cay-nam-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế, lịch trình linh hoạt.",
+  routeText:
+    "Phú Nhuận → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-thanh-phu-ben-tre",
+  path: "thue-xe-phu-nhuan-di-thanh-phu-ben-tre",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Phú Nhuận đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Phú Nhuận đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Phú Nhuận → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// BÌNH THẠNH -> BẾN TRE
+// =========================
+
+{
+  key: "binh-thanh-di-thanh-pho-ben-tre",
+  path: "thue-xe-binh-thanh-di-thanh-pho-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc quận Bình Thạnh, xe riêng có tài xế và không ghép khách.",
+  routeText:
+    "Bình Thạnh → Điện Biên Phủ → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-thanh-di-chau-thanh-ben-tre",
+  path: "thue-xe-binh-thanh-di-chau-thanh-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Bình Thạnh đi Châu Thành Bến Tre. Đưa đón tận nơi, phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "Bình Thạnh → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-thanh-di-cho-lach-ben-tre",
+  path: "thue-xe-binh-thanh-di-cho-lach-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Chợ Lách Bến Tre. Phù hợp khách tham quan làng hoa kiểng hoặc về quê.",
+  routeText:
+    "Bình Thạnh → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-giong-trom-ben-tre",
+  path: "thue-xe-binh-thanh-di-giong-trom-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Bình Thạnh đi Giồng Trôm Bến Tre. Không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "Bình Thạnh → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-binh-dai-ben-tre",
+  path: "thue-xe-binh-thanh-di-binh-dai-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Bình Thạnh → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-thanh-di-ba-tri-ben-tre",
+  path: "thue-xe-binh-thanh-di-ba-tri-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Bình Thạnh đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Bình Thạnh → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-thanh-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-binh-thanh-di-mo-cay-bac-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Bình Thạnh đi Mỏ Cày Bắc Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText:
+    "Bình Thạnh → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-binh-thanh-di-mo-cay-nam-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng và lịch trình linh hoạt.",
+  routeText:
+    "Bình Thạnh → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-thanh-phu-ben-tre",
+  path: "thue-xe-binh-thanh-di-thanh-phu-ben-tre",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Bình Thạnh đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Bình Thạnh đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Bình Thạnh → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 3 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-3-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-3-di-thanh-pho-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 3 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Thành phố Bến Tre. Đón tận nơi tại Võ Thị Sáu, Phường 1, Phường 2, Phường 3, Phường 4 và các khu vực trung tâm Quận 3.",
+  routeText:
+    "Quận 3 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-3-di-chau-thanh-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 3 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 3 đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại các xã thuộc huyện Châu Thành.",
+  routeText:
+    "Quận 3 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-3-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-3-di-cho-lach-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 3 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng hoặc về quê.",
+  routeText:
+    "Quận 3 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-3-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-3-di-giong-trom-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 3 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 3 đi Giồng Trôm Bến Tre. Không ghép khách, chủ động lịch trình và thời gian khởi hành.",
+  routeText:
+    "Quận 3 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-3-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-3-di-binh-dai-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 3 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 3 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-3-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-3-di-ba-tri-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 3 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 3 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Quận 3 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-3-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-3-di-mo-cay-bac-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 3 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 3 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText:
+    "Quận 3 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-3-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-3-di-mo-cay-nam-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 3 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng và lịch trình linh hoạt.",
+  routeText:
+    "Quận 3 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-3-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-3-di-thanh-phu-ben-tre",
+  from: "Quận 3, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 3 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 3 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 3 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 5 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-5-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-5-di-thanh-pho-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 5 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 5 đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc Quận 5, khu Chợ Lớn, bệnh viện, khách sạn và văn phòng. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 5 → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-5-di-chau-thanh-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 5 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 5 đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân tại các xã thuộc huyện Châu Thành.",
+  routeText:
+    "Quận 5 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-5-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-5-di-cho-lach-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 5 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Chợ Lách Bến Tre. Đưa đón tận nơi, phù hợp khách tham quan làng hoa kiểng hoặc về quê.",
+  routeText:
+    "Quận 5 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-5-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-5-di-giong-trom-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 5 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 5 đi Giồng Trôm Bến Tre. Không ghép khách, chủ động lịch trình và thời gian khởi hành.",
+  routeText:
+    "Quận 5 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-5-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-5-di-binh-dai-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 5 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 5 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 5 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-5-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-5-di-ba-tri-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 5 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 5 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Quận 5 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-5-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-5-di-mo-cay-bac-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 5 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 5 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText:
+    "Quận 5 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-5-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-5-di-mo-cay-nam-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 5 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng và lịch trình linh hoạt.",
+  routeText:
+    "Quận 5 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-5-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-5-di-thanh-phu-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 5 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 5 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 5 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 10 -> BẾN TRE
+// =========================
+
+{
+  key: "quan-10-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-10-di-thanh-pho-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 10 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Thành phố Bến Tre. Đón tận nơi tại các khu dân cư, văn phòng, bệnh viện và trung tâm thương mại thuộc Quận 10.",
+  routeText:
+    "Quận 10 → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-10-di-chau-thanh-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 10 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 10 đi Châu Thành Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình.",
+  routeText:
+    "Quận 10 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-10-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-10-di-cho-lach-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 10 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Chợ Lách Bến Tre. Phù hợp khách tham quan làng hoa kiểng hoặc về quê.",
+  routeText:
+    "Quận 10 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-10-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-10-di-giong-trom-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 10 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 10 đi Giồng Trôm Bến Tre. Chủ động thời gian khởi hành và điểm đón trả.",
+  routeText:
+    "Quận 10 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 10 -> BẾN TRE (TIẾP)
+// =========================
+
+{
+  key: "quan-10-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-10-di-binh-dai-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 10 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách, đón tận nơi.",
+  routeText:
+    "Quận 10 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-10-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-10-di-ba-tri-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 10 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 10 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri, lịch trình linh hoạt.",
+  routeText:
+    "Quận 10 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-10-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-10-di-mo-cay-bac-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 10 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 10 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 10 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-10-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-10-di-mo-cay-nam-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 10 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng, đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 10 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-10-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-10-di-thanh-phu-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 10 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 10 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 10 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 11 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-11-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-11-di-thanh-pho-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 11 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 11 đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc Quận 11, xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-11-di-chau-thanh-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 11 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 11 đi Châu Thành Bến Tre. Đưa đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "Quận 11 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-11-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-11-di-cho-lach-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 11 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Chợ Lách Bến Tre. Phù hợp khách về quê hoặc tham quan làng hoa kiểng nổi tiếng.",
+  routeText:
+    "Quận 11 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-11-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-11-di-giong-trom-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 11 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 11 đi Giồng Trôm Bến Tre. Không ghép khách, xe có tài xế riêng.",
+  routeText:
+    "Quận 11 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-11-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-11-di-binh-dai-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 11 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 11 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 11 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-11-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-11-di-ba-tri-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 11 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 11 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Quận 11 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-11-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-11-di-mo-cay-bac-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 11 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 11 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 11 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-11-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-11-di-mo-cay-nam-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 11 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế, đón tận nơi.",
+  routeText:
+    "Quận 11 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-11-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-11-di-thanh-phu-ben-tre",
+  from: "Quận 11, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 11 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 11 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 11 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 12 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-12-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-12-di-thanh-pho-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 12 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 12 đi Thành phố Bến Tre. Đón tận nơi tại Thạnh Xuân, Thạnh Lộc, Hiệp Thành, Tân Chánh Hiệp, Đông Hưng Thuận và các phường khác thuộc Quận 12.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-12-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-12-di-chau-thanh-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 12 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 12 đi Châu Thành Bến Tre. Đưa đón tận nơi, phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-12-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-12-di-cho-lach-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 12 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Chợ Lách Bến Tre. Phù hợp khách về quê hoặc tham quan làng hoa kiểng.",
+  routeText:
+    "Quận 12 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-12-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-12-di-giong-trom-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 12 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 12 đi Giồng Trôm Bến Tre. Không ghép khách, chủ động lịch trình.",
+  routeText:
+    "Quận 12 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-12-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-12-di-binh-dai-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 12 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 12 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 12 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-12-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-12-di-ba-tri-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 12 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 12 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Quận 12 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "quan-12-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-12-di-mo-cay-bac-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 12 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 12 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 12 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-12-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-12-di-mo-cay-nam-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 12 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế, đón tận nơi.",
+  routeText:
+    "Quận 12 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-12-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-12-di-thanh-phu-ben-tre",
+  from: "Quận 12, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 12 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 12 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 12 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4.5 - 5 giờ",
+},
+
+// =========================
+// QUẬN 6 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-6-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-6-di-thanh-pho-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 6 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 6 đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc Quận 6, khu dân cư, chợ Bình Tây và các khu vực lân cận.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-6-di-chau-thanh-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 6 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 6 đi Châu Thành Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình.",
+  routeText:
+    "Quận 6 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-6-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-6-di-cho-lach-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 6 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Chợ Lách Bến Tre. Phù hợp khách về quê hoặc tham quan làng hoa kiểng.",
+  routeText:
+    "Quận 6 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-6-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-6-di-giong-trom-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 6 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 6 đi Giồng Trôm Bến Tre. Không ghép khách, xe có tài xế riêng.",
+  routeText:
+    "Quận 6 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 6 -> BẾN TRE (TIẾP)
+// =========================
+
+{
+  key: "quan-6-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-6-di-binh-dai-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 6 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 6 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách và đón tận nơi.",
+  routeText:
+    "Quận 6 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-6-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-6-di-ba-tri-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 6 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 6 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri, lịch trình linh hoạt.",
+  routeText:
+    "Quận 6 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-6-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-6-di-mo-cay-bac-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 6 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 6 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 6 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-6-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-6-di-mo-cay-nam-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 6 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng và đón tận nơi.",
+  routeText:
+    "Quận 6 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-6-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-6-di-thanh-phu-ben-tre",
+  from: "Quận 6, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 6 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 6 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 6 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 8 -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "quan-8-di-thanh-pho-ben-tre",
+  path: "thue-xe-quan-8-di-thanh-pho-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Quận 8 đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Thành phố Bến Tre. Đón tận nơi tại các phường thuộc Quận 8, xe riêng có tài xế và không ghép khách.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc Trung Lương → Mỹ Tho → Thành phố Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-8-di-chau-thanh-ben-tre",
+  path: "thue-xe-quan-8-di-chau-thanh-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Quận 8 đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Quận 8 đi Châu Thành Bến Tre. Không ghép khách, đón tận nơi và chủ động lịch trình.",
+  routeText:
+    "Quận 8 → Cao tốc Trung Lương → Mỹ Tho → Châu Thành",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "quan-8-di-cho-lach-ben-tre",
+  path: "thue-xe-quan-8-di-cho-lach-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Quận 8 đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Chợ Lách Bến Tre. Phù hợp khách về quê hoặc tham quan làng hoa kiểng.",
+  routeText:
+    "Quận 8 → Cao tốc Trung Lương → Bến Tre → Chợ Lách",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-giong-trom-ben-tre",
+  path: "thue-xe-quan-8-di-giong-trom-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Quận 8 đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Quận 8 đi Giồng Trôm Bến Tre. Không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "Quận 8 → Mỹ Tho → Bến Tre → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-binh-dai-ben-tre",
+  path: "thue-xe-quan-8-di-binh-dai-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Quận 8 đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Bình Đại Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 8 → Mỹ Tho → Bến Tre → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-8-di-ba-tri-ben-tre",
+  path: "thue-xe-quan-8-di-ba-tri-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Quận 8 đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Quận 8 đi Ba Tri Bến Tre. Đưa đón tận nơi tại các xã thuộc huyện Ba Tri.",
+  routeText:
+    "Quận 8 → Mỹ Tho → Bến Tre → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-8-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-quan-8-di-mo-cay-bac-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Quận 8 đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Quận 8 đi Mỏ Cày Bắc Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 8 → Mỹ Tho → Bến Tre → Mỏ Cày Bắc",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-quan-8-di-mo-cay-nam-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Quận 8 đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Mỏ Cày Nam Bến Tre. Xe có tài xế riêng và lịch trình linh hoạt.",
+  routeText:
+    "Quận 8 → Mỹ Tho → Bến Tre → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "quan-8-di-thanh-phu-ben-tre",
+  path: "thue-xe-quan-8-di-thanh-phu-ben-tre",
+  from: "Quận 8, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Quận 8 đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Quận 8 đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Quận 8 → Mỹ Tho → Bến Tre → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+// =========================
+// TP.HCM -> AN HIỆP
+// =========================
+
+{
+  key: "tphcm-di-an-hiep-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-an-hiep-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "An Hiệp, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi An Hiệp Châu Thành Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi xã An Hiệp huyện Châu Thành tỉnh Bến Tre. Xe riêng có tài xế, đón tận nơi tại tất cả quận huyện TP.HCM và trả tận nơi tại An Hiệp.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → An Hiệp",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> AN KHÁNH
+// =========================
+
+{
+  key: "tphcm-di-an-khanh-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-an-khanh-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "An Khánh, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi An Khánh Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi An Khánh Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc Trung Lương → Mỹ Tho → An Khánh",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> GIAO LONG
+// =========================
+
+{
+  key: "tphcm-di-giao-long-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-giao-long-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Giao Long, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Giao Long Châu Thành Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Giao Long Châu Thành Bến Tre. Đưa đón tận nơi, xe riêng có tài xế, hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Cầu Rạch Miễu → Giao Long",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> HỮU ĐỊNH
+// =========================
+
+{
+  key: "tphcm-di-huu-dinh-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-huu-dinh-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Hữu Định, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Hữu Định Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Hữu Định Châu Thành Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Cầu Rạch Miễu → Hữu Định",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> PHÚ AN HÒA
+// =========================
+
+{
+  key: "tphcm-di-phu-an-hoa-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-phu-an-hoa-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Phú An Hòa, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Phú An Hòa Châu Thành Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Phú An Hòa Châu Thành Bến Tre. Xe riêng đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Phú An Hòa",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> PHÚ TÚC
+// =========================
+
+{
+  key: "tphcm-di-phu-tuc-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-phu-tuc-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Phú Túc, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Phú Túc Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Phú Túc Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Phú Túc",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> QUỚI SƠN
+// =========================
+
+{
+  key: "tphcm-di-quoi-son-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-quoi-son-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Quới Sơn, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Quới Sơn Châu Thành Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Quới Sơn Châu Thành Bến Tre. Xe riêng có tài xế, đón tận nơi tại tất cả quận huyện TP.HCM.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Quới Sơn",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-son-hoa-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-son-hoa-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Sơn Hòa, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Sơn Hòa Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Sơn Hòa Châu Thành Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Sơn Hòa",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-tam-phuoc-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-tam-phuoc-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Tam Phước, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Tam Phước Châu Thành Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Tam Phước Châu Thành Bến Tre. Xe riêng đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Tam Phước",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-tien-long-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-tien-long-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Tiên Long, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Tiên Long Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Tiên Long Châu Thành Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Tiên Long",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-tien-thuy-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-tien-thuy-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Tiên Thủy, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Tiên Thủy Châu Thành Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Tiên Thủy Châu Thành Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Tiên Thủy",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "tphcm-di-tien-thanh-chau-thanh-ben-tre",
+  path: "thue-xe-tphcm-di-tien-thanh-chau-thanh-ben-tre",
+  from: "TP.HCM",
+  to: "Tiên Thạnh, Châu Thành, Bến Tre",
+  title: "Thuê xe TP.HCM đi Tiên Thạnh Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Tiên Thạnh Châu Thành Bến Tre. Đón tận nơi, trả tận nơi theo yêu cầu.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Tiên Thạnh",
+  duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// TP.HCM -> HÒA NGHĨA
+// =========================
+
+{
+  key: "tphcm-di-hoa-nghia-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-hoa-nghia-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Hòa Nghĩa, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Hòa Nghĩa Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Hòa Nghĩa huyện Chợ Lách tỉnh Bến Tre. Xe riêng có tài xế, không ghép khách, đón tận nơi tại tất cả quận huyện TP.HCM.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Bến Tre → Hòa Nghĩa",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-hung-khanh-trung-b-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-hung-khanh-trung-b-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Hưng Khánh Trung B, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Hưng Khánh Trung B Chợ Lách Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Hưng Khánh Trung B Chợ Lách Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Hưng Khánh Trung B",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-long-thoi-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-long-thoi-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Long Thới, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Long Thới Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Long Thới Chợ Lách Bến Tre. Đưa đón tận nơi, xe riêng có tài xế.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Long Thới",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-phu-phung-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-phu-phung-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Phú Phụng, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Phú Phụng Chợ Lách Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Phú Phụng Chợ Lách Bến Tre. Phù hợp khách về quê hoặc tham quan khu du lịch sinh thái địa phương.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Phú Phụng",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-son-dinh-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-son-dinh-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Sơn Định, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Sơn Định Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Sơn Định Chợ Lách Bến Tre. Xe riêng không ghép khách, hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Sơn Định",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-vinh-binh-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-vinh-binh-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Vĩnh Bình, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Vĩnh Bình Chợ Lách Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Vĩnh Bình Chợ Lách Bến Tre. Biết giá trước khi đặt, đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Vĩnh Bình",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-vinh-hoa-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-vinh-hoa-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Vĩnh Hòa, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Vĩnh Hòa Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Vĩnh Hòa Chợ Lách Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Vĩnh Hòa",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-vinh-thanh-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-vinh-thanh-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Vĩnh Thành, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Vĩnh Thành Chợ Lách Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Vĩnh Thành Chợ Lách Bến Tre. Đón tận nơi tại tất cả quận huyện TP.HCM.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Vĩnh Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-hung-khanh-trung-a-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-hung-khanh-trung-a-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Hưng Khánh Trung A, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Hưng Khánh Trung A Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Hưng Khánh Trung A Chợ Lách Bến Tre. Không ghép khách, lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Hưng Khánh Trung A",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-tan-thieng-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-tan-thieng-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Tân Thiềng, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Tân Thiềng Chợ Lách Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Tân Thiềng Chợ Lách Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Tân Thiềng",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-phuoc-tan-cho-lach-ben-tre",
+  path: "thue-xe-tphcm-di-phuoc-tan-cho-lach-ben-tre",
+  from: "TP.HCM",
+  to: "Phước Tân, Chợ Lách, Bến Tre",
+  title: "Thuê xe TP.HCM đi Phước Tân Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Phước Tân Chợ Lách Bến Tre. Xe riêng đưa đón tận nơi, hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Phước Tân",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM -> BÌNH HÒA
+// =========================
+
+{
+  key: "tphcm-di-binh-hoa-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-binh-hoa-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Bình Hòa, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Bình Hòa Giồng Trôm Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Bình Hòa huyện Giồng Trôm tỉnh Bến Tre. Xe riêng có tài xế, không ghép khách, đón tận nơi tại tất cả quận huyện TP.HCM.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Bình Hòa",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-binh-thanh-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-binh-thanh-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Bình Thành, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Bình Thành Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Bình Thành Giồng Trôm Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Bình Thành",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-chau-binh-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-chau-binh-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Châu Bình, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Châu Bình Giồng Trôm Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Châu Bình Giồng Trôm Bến Tre. Đưa đón tận nơi, xe riêng có tài xế.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Châu Bình",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-chau-hoa-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-chau-hoa-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Châu Hòa, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Châu Hòa Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Châu Hòa Giồng Trôm Bến Tre. Biết giá trước khi đặt, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Châu Hòa",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-hung-le-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-hung-le-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Hưng Lễ, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Hưng Lễ Giồng Trôm Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Hưng Lễ Giồng Trôm Bến Tre. Xe riêng đưa đón tận nơi, hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Hưng Lễ",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-hung-nhuong-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-hung-nhuong-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Hưng Nhượng, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Hưng Nhượng Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Hưng Nhượng Giồng Trôm Bến Tre. Không ghép khách, đón tận nơi theo yêu cầu.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Hưng Nhượng",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-luong-hoa-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-luong-hoa-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Lương Hòa, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Lương Hòa Giồng Trôm Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Lương Hòa Giồng Trôm Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Lương Hòa",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-luong-phu-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-luong-phu-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Lương Phú, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Lương Phú Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Lương Phú Giồng Trôm Bến Tre. Đưa đón tận nơi và chủ động lịch trình.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Lương Phú",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-my-thanh-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-my-thanh-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Mỹ Thạnh, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Mỹ Thạnh Giồng Trôm Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Mỹ Thạnh Giồng Trôm Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Mỹ Thạnh",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-phong-nam-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-phong-nam-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Phong Nẫm, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Phong Nẫm Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Phong Nẫm Giồng Trôm Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Phong Nẫm",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-phuoc-long-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-phuoc-long-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Phước Long, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Phước Long Giồng Trôm Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Phước Long Giồng Trôm Bến Tre. Đưa đón tận nơi, hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Phước Long",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "tphcm-di-son-phu-giong-trom-ben-tre",
+  path: "thue-xe-tphcm-di-son-phu-giong-trom-ben-tre",
+  from: "TP.HCM",
+  to: "Sơn Phú, Giồng Trôm, Bến Tre",
+  title: "Thuê xe TP.HCM đi Sơn Phú Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ TP.HCM đi Sơn Phú Giồng Trôm Bến Tre. Biết giá trước khi đặt, không ghép khách.",
+  routeText:
+    "TP.HCM → Mỹ Tho → Bến Tre → Sơn Phú",
+  duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// BÌNH DƯƠNG -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "binh-duong-di-thanh-pho-ben-tre",
+  path: "thue-xe-binh-duong-di-thanh-pho-ben-tre",
+  from: "Bình Dương",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Bình Dương đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Bình Dương đi Thành phố Bến Tre. Đón tận nơi tại Thủ Dầu Một, Thuận An, Dĩ An, Tân Uyên, Bến Cát, Bàu Bàng và các khu công nghiệp lớn.",
+  routeText:
+    "Bình Dương → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-duong-di-chau-thanh-ben-tre",
+  path: "thue-xe-binh-duong-di-chau-thanh-ben-tre",
+  from: "Bình Dương",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Bình Dương đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Bình Dương đi Châu Thành Bến Tre. Phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "Bình Dương → TP.HCM → Mỹ Tho → Châu Thành",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "binh-duong-di-cho-lach-ben-tre",
+  path: "thue-xe-binh-duong-di-cho-lach-ben-tre",
+  from: "Bình Dương",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Bình Dương đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Bình Dương đi Chợ Lách Bến Tre. Không ghép khách, đón tận nơi.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Chợ Lách",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "binh-duong-di-giong-trom-ben-tre",
+  path: "thue-xe-binh-duong-di-giong-trom-ben-tre",
+  from: "Bình Dương",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Bình Dương đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Bình Dương đi Giồng Trôm Bến Tre. Xe riêng có tài xế, lịch trình linh hoạt.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Giồng Trôm",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "binh-duong-di-binh-dai-ben-tre",
+  path: "thue-xe-binh-duong-di-binh-dai-ben-tre",
+  from: "Bình Dương",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Bình Dương đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Bình Dương đi Bình Đại Bến Tre. Xe riêng đưa đón tận nơi.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Bình Đại",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "binh-duong-di-ba-tri-ben-tre",
+  path: "thue-xe-binh-duong-di-ba-tri-ben-tre",
+  from: "Bình Dương",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Bình Dương đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Bình Dương đi Ba Tri Bến Tre. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Ba Tri",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "binh-duong-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-binh-duong-di-mo-cay-bac-ben-tre",
+  from: "Bình Dương",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Bình Dương đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Bình Dương đi Mỏ Cày Bắc Bến Tre. Đón tận nơi tại tất cả thành phố, huyện thuộc Bình Dương.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Mỏ Cày Bắc",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "binh-duong-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-binh-duong-di-mo-cay-nam-ben-tre",
+  from: "Bình Dương",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Bình Dương đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Bình Dương đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Mỏ Cày Nam",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "binh-duong-di-thanh-phu-ben-tre",
+  path: "thue-xe-binh-duong-di-thanh-phu-ben-tre",
+  from: "Bình Dương",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Bình Dương đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Bình Dương đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển.",
+  routeText:
+    "Bình Dương → TP.HCM → Bến Tre → Thạnh Phú",
+  duration: "5 - 5.5 giờ",
+},
+
+// =========================
+// BIÊN HÒA -> THÀNH PHỐ BẾN TRE
+// =========================
+
+{
+  key: "bien-hoa-di-thanh-pho-ben-tre",
+  path: "thue-xe-bien-hoa-di-thanh-pho-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Biên Hòa đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Biên Hòa đi Thành phố Bến Tre. Đón tận nơi tại Trảng Dài, Tân Hiệp, Long Bình, Hóa An, Tam Hiệp và các phường xã khác thuộc Biên Hòa.",
+  routeText:
+    "Biên Hòa → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "bien-hoa-di-chau-thanh-ben-tre",
+  path: "thue-xe-bien-hoa-di-chau-thanh-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Biên Hòa đi Châu Thành Bến Tre. Không ghép khách, biết giá trước khi đặt và đưa đón tận nơi.",
+  routeText:
+    "Biên Hòa → TP.HCM → Mỹ Tho → Châu Thành",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "bien-hoa-di-cho-lach-ben-tre",
+  path: "thue-xe-bien-hoa-di-cho-lach-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Chợ Lách Bến Tre. Phù hợp khách về quê, tham quan làng hoa kiểng hoặc công tác.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Chợ Lách",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-giong-trom-ben-tre",
+  path: "thue-xe-bien-hoa-di-giong-trom-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Biên Hòa đi Giồng Trôm Bến Tre. Xe có tài xế riêng, đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Giồng Trôm",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-binh-dai-ben-tre",
+  path: "thue-xe-bien-hoa-di-binh-dai-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Biên Hòa đi Bình Đại Bến Tre. Xe riêng không ghép khách, đón trả tận nơi.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Bình Đại",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "bien-hoa-di-ba-tri-ben-tre",
+  path: "thue-xe-bien-hoa-di-ba-tri-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Biên Hòa đi Ba Tri Bến Tre. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Ba Tri",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "bien-hoa-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-bien-hoa-di-mo-cay-bac-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Biên Hòa đi Mỏ Cày Bắc Bến Tre. Đón tận nơi tại tất cả phường xã thuộc thành phố Biên Hòa.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Mỏ Cày Bắc",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-bien-hoa-di-mo-cay-nam-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế và không ghép khách.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Mỏ Cày Nam",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-thanh-phu-ben-tre",
+  path: "thue-xe-bien-hoa-di-thanh-phu-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Biên Hòa đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Biên Hòa đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển Cồn Bửng.",
+  routeText:
+    "Biên Hòa → TP.HCM → Bến Tre → Thạnh Phú",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "dong-nai-di-thanh-pho-ben-tre",
+  path: "thue-xe-dong-nai-di-thanh-pho-ben-tre",
+  from: "Đồng Nai",
+  to: "Thành phố Bến Tre",
+  title: "Thuê xe Đồng Nai đi Thành phố Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Đồng Nai đi Thành phố Bến Tre. Đón tận nơi tại Biên Hòa, Long Thành, Nhơn Trạch, Trảng Bom, Vĩnh Cửu, Xuân Lộc và các khu vực khác thuộc Đồng Nai.",
+  routeText:
+    "Đồng Nai → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Thành phố Bến Tre",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "dong-nai-di-chau-thanh-ben-tre",
+  path: "thue-xe-dong-nai-di-chau-thanh-ben-tre",
+  from: "Đồng Nai",
+  to: "Châu Thành, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Châu Thành Bến Tre",
+  description:
+    "Xe riêng từ Đồng Nai đi Châu Thành Bến Tre. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Đồng Nai → TP.HCM → Mỹ Tho → Châu Thành",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "dong-nai-di-cho-lach-ben-tre",
+  path: "thue-xe-dong-nai-di-cho-lach-ben-tre",
+  from: "Đồng Nai",
+  to: "Chợ Lách, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Chợ Lách Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Chợ Lách Bến Tre. Xe riêng có tài xế, đón tận nơi.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Chợ Lách",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "dong-nai-di-giong-trom-ben-tre",
+  path: "thue-xe-dong-nai-di-giong-trom-ben-tre",
+  from: "Đồng Nai",
+  to: "Giồng Trôm, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Giồng Trôm Bến Tre",
+  description:
+    "Xe riêng từ Đồng Nai đi Giồng Trôm Bến Tre. Không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Giồng Trôm",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "dong-nai-di-binh-dai-ben-tre",
+  path: "thue-xe-dong-nai-di-binh-dai-ben-tre",
+  from: "Đồng Nai",
+  to: "Bình Đại, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Bình Đại Bến Tre",
+  description:
+    "Dịch vụ thuê xe từ Đồng Nai đi Bình Đại Bến Tre. Xe riêng đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Bình Đại",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "dong-nai-di-ba-tri-ben-tre",
+  path: "thue-xe-dong-nai-di-ba-tri-ben-tre",
+  from: "Đồng Nai",
+  to: "Ba Tri, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Ba Tri Bến Tre",
+  description:
+    "Xe riêng từ Đồng Nai đi Ba Tri Bến Tre. Biết giá trước khi đặt, không đặt cọc.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Ba Tri",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "dong-nai-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-dong-nai-di-mo-cay-bac-ben-tre",
+  from: "Đồng Nai",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Mỏ Cày Bắc Bến Tre",
+  description:
+    "Xe riêng từ Đồng Nai đi Mỏ Cày Bắc Bến Tre. Đón tận nơi tại tất cả huyện, thành phố thuộc Đồng Nai.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Mỏ Cày Bắc",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "dong-nai-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-dong-nai-di-mo-cay-nam-ben-tre",
+  from: "Đồng Nai",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Mỏ Cày Nam Bến Tre",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Mỏ Cày Nam Bến Tre. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Mỏ Cày Nam",
+  duration: "4.5 - 5 giờ",
+},
+
+{
+  key: "dong-nai-di-thanh-phu-ben-tre",
+  path: "thue-xe-dong-nai-di-thanh-phu-ben-tre",
+  from: "Đồng Nai",
+  to: "Thạnh Phú, Bến Tre",
+  title: "Thuê xe Đồng Nai đi Thạnh Phú Bến Tre",
+  description:
+    "Xe riêng từ Đồng Nai đi Thạnh Phú Bến Tre. Phù hợp khách về quê, công tác hoặc du lịch biển.",
+  routeText:
+    "Đồng Nai → TP.HCM → Bến Tre → Thạnh Phú",
+  duration: "5.5 - 6 giờ",
+},
+
 ];

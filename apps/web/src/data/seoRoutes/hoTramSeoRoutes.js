@@ -1680,4 +1680,1599 @@ description:
 routeText: "TP.HCM → Long Thành → Hồ Tràm",
 duration: "2.5 - 3 giờ",
 },
+
+// =========================
+// HỒ TRÀM - QUẬN TP.HCM
+// =========================
+
+{
+key: "quan-1-ho-tram",
+path: "thue-xe-tu-quan-1-di-ho-tram",
+from: "Quận 1",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 1 đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe từ Quận 1 đi Hồ Tràm dành cho khách du lịch, công tác và nghỉ dưỡng cuối tuần. Xe riêng, không ghép khách, đón tận nơi tại khách sạn, căn hộ hoặc văn phòng khu trung tâm.",
+routeText: "Quận 1 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quan-2-ho-tram",
+path: "thue-xe-tu-quan-2-di-ho-tram",
+from: "Quận 2",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 2 đi Hồ Tràm giá tốt",
+description:
+"Dịch vụ xe riêng từ Quận 2 đi Hồ Tràm với tài xế chuyên nghiệp. Phù hợp gia đình, nhóm bạn và khách nước ngoài đang lưu trú tại khu Thảo Điền.",
+routeText: "Quận 2 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "quan-3-ho-tram",
+path: "thue-xe-tu-quan-3-di-ho-tram",
+from: "Quận 3",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 3 đi Hồ Tràm, đón tận nơi",
+description:
+"Đặt xe từ Quận 3 đi Hồ Tràm nhanh chóng trên GoViet247. Xe riêng có tài xế, biết giá trước khi đặt, không cần đặt cọc.",
+routeText: "Quận 3 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quan-4-ho-tram",
+path: "thue-xe-tu-quan-4-di-ho-tram",
+from: "Quận 4",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 4 đi Hồ Tràm không ghép khách",
+description:
+"Dịch vụ xe riêng từ Quận 4 đi Hồ Tràm. Đưa đón tận nơi, lịch trình linh hoạt, phù hợp cho gia đình và khách nghỉ dưỡng.",
+routeText: "Quận 4 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quan-5-ho-tram",
+path: "thue-xe-tu-quan-5-di-ho-tram",
+from: "Quận 5",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 5 đi Hồ Tràm giá hợp lý",
+description:
+"Xe riêng từ Quận 5 đi Hồ Tràm dành cho gia đình, nhóm bạn và khách công tác. Không ghép khách, thanh toán sau khi hoàn thành chuyến đi.",
+routeText: "Quận 5 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quan-6-ho-tram",
+path: "thue-xe-tu-quan-6-di-ho-tram",
+from: "Quận 6",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 6 đi Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Đặt xe từ Quận 6 đi Hồ Tràm với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Biết giá trước khi đặt, phục vụ 24/7.",
+routeText: "Quận 6 → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "quan-7-ho-tram",
+path: "thue-xe-tu-quan-7-di-ho-tram",
+from: "Quận 7",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 7 đi Hồ Tràm cho gia đình và doanh nghiệp",
+description:
+"Dịch vụ xe riêng từ Quận 7 đi Hồ Tràm. Đón tận nơi tại Phú Mỹ Hưng, chung cư hoặc văn phòng, phù hợp nghỉ dưỡng cuối tuần.",
+routeText: "Quận 7 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "quan-8-ho-tram",
+path: "thue-xe-tu-quan-8-di-ho-tram",
+from: "Quận 8",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 8 đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Thuê xe từ Quận 8 đi Hồ Tràm với lịch trình linh hoạt. Xe riêng, không ghép khách, đưa đón tận nơi.",
+routeText: "Quận 8 → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "quan-10-ho-tram",
+path: "thue-xe-tu-quan-10-di-ho-tram",
+from: "Quận 10",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 10 đi Hồ Tràm giá tốt",
+description:
+"Dịch vụ xe riêng từ Quận 10 đi Hồ Tràm. Xe sạch sẽ, tài xế kinh nghiệm, phù hợp gia đình và khách du lịch.",
+routeText: "Quận 10 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quan-11-ho-tram",
+path: "thue-xe-tu-quan-11-di-ho-tram",
+from: "Quận 11",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 11 đi Hồ Tràm không cần đặt cọc",
+description:
+"Đặt xe từ Quận 11 đi Hồ Tràm nhanh chóng. Xe riêng có tài xế, biết giá trước khi đặt, thanh toán sau chuyến đi.",
+routeText: "Quận 11 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quan-12-ho-tram",
+path: "thue-xe-tu-quan-12-di-ho-tram",
+from: "Quận 12",
+to: "Hồ Tràm",
+title: "Thuê xe từ Quận 12 đi Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Dịch vụ xe riêng từ Quận 12 đi Hồ Tràm. Phù hợp gia đình, nhóm bạn, khách công tác và khách du lịch cuối tuần.",
+routeText: "Quận 12 → Vành Đai 3 → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// HỒ TRÀM - THỦ ĐỨC & QUẬN LỚN
+// =========================
+
+{
+key: "thu-duc-ho-tram",
+path: "thue-xe-tu-thu-duc-di-ho-tram",
+from: "Thủ Đức",
+to: "Hồ Tràm",
+title: "Thuê xe từ Thủ Đức đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe từ Thủ Đức đi Hồ Tràm dành cho gia đình, nhóm bạn và khách công tác. Xe riêng, không ghép khách, đón tận nơi tại nhà hoặc chung cư.",
+routeText: "Thủ Đức → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "tp-thu-duc-ho-tram",
+path: "thue-xe-tu-tp-thu-duc-di-ho-tram",
+from: "TP Thủ Đức",
+to: "Hồ Tràm",
+title: "Thuê xe từ TP Thủ Đức đi Hồ Tràm giá tốt",
+description:
+"Xe riêng từ TP Thủ Đức đi Hồ Tràm với tài xế chuyên nghiệp. Phù hợp nghỉ dưỡng cuối tuần và du lịch biển.",
+routeText: "TP Thủ Đức → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "go-vap-ho-tram",
+path: "thue-xe-tu-go-vap-di-ho-tram",
+from: "Gò Vấp",
+to: "Hồ Tràm",
+title: "Thuê xe từ Gò Vấp đi Hồ Tràm, đón tận nơi",
+description:
+"Dịch vụ xe riêng từ Gò Vấp đi Hồ Tràm. Xe sạch sẽ, tài xế kinh nghiệm, không ghép khách.",
+routeText: "Gò Vấp → Phạm Văn Đồng → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "tan-binh-ho-tram",
+path: "thue-xe-tu-tan-binh-di-ho-tram",
+from: "Tân Bình",
+to: "Hồ Tràm",
+title: "Thuê xe từ Tân Bình đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Thuê xe từ Tân Bình đi Hồ Tràm với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Biết giá trước khi đặt.",
+routeText: "Tân Bình → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "phu-nhuan-ho-tram",
+path: "thue-xe-tu-phu-nhuan-di-ho-tram",
+from: "Phú Nhuận",
+to: "Hồ Tràm",
+title: "Thuê xe từ Phú Nhuận đi Hồ Tràm giá hợp lý",
+description:
+"Dịch vụ xe riêng từ Phú Nhuận đi Hồ Tràm. Đón tận nơi, không ghép khách, thanh toán sau chuyến đi.",
+routeText: "Phú Nhuận → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "binh-thanh-ho-tram",
+path: "thue-xe-tu-binh-thanh-di-ho-tram",
+from: "Bình Thạnh",
+to: "Hồ Tràm",
+title: "Thuê xe từ Bình Thạnh đi Hồ Tràm cho gia đình",
+description:
+"Xe riêng từ Bình Thạnh đi Hồ Tràm phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần.",
+routeText: "Bình Thạnh → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "tan-phu-ho-tram",
+path: "thue-xe-tu-tan-phu-di-ho-tram",
+from: "Tân Phú",
+to: "Hồ Tràm",
+title: "Thuê xe từ Tân Phú đi Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Dịch vụ xe từ Tân Phú đi Hồ Tràm. Không ghép khách, lịch trình linh hoạt, phục vụ 24/7.",
+routeText: "Tân Phú → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "binh-tan-ho-tram",
+path: "thue-xe-tu-binh-tan-di-ho-tram",
+from: "Bình Tân",
+to: "Hồ Tràm",
+title: "Thuê xe từ Bình Tân đi Hồ Tràm giá tốt",
+description:
+"Đặt xe từ Bình Tân đi Hồ Tràm nhanh chóng trên GoViet247. Xe riêng có tài xế, biết giá trước khi đặt.",
+routeText: "Bình Tân → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "nha-be-ho-tram",
+path: "thue-xe-tu-nha-be-di-ho-tram",
+from: "Nhà Bè",
+to: "Hồ Tràm",
+title: "Thuê xe từ Nhà Bè đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Xe riêng từ Nhà Bè đi Hồ Tràm dành cho gia đình và khách nghỉ dưỡng. Đưa đón tận nơi, không ghép khách.",
+routeText: "Nhà Bè → Cao tốc Bến Lức → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "hoc-mon-ho-tram",
+path: "thue-xe-tu-hoc-mon-di-ho-tram",
+from: "Hóc Môn",
+to: "Hồ Tràm",
+title: "Thuê xe từ Hóc Môn đi Hồ Tràm",
+description:
+"Dịch vụ thuê xe từ Hóc Môn đi Hồ Tràm với xe riêng có tài xế. Chủ động thời gian, thanh toán sau chuyến đi.",
+routeText: "Hóc Môn → Vành Đai 3 → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "cu-chi-ho-tram",
+path: "thue-xe-tu-cu-chi-di-ho-tram",
+from: "Củ Chi",
+to: "Hồ Tràm",
+title: "Thuê xe từ Củ Chi đi Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Xe riêng từ Củ Chi đi Hồ Tràm dành cho gia đình, khách du lịch và doanh nghiệp. Không ghép khách, biết giá trước khi đặt.",
+routeText: "Củ Chi → Vành Đai 3 → Cao tốc Long Thành → Hồ Tràm",
+duration: "3.5 - 4 giờ",
+},
+
+// =========================
+// HỒ TRÀM - KHU ĐÔ THỊ / ĐỊA ĐIỂM HOT
+// =========================
+
+{
+key: "landmark81-ho-tram",
+path: "thue-xe-tu-landmark-81-di-ho-tram",
+from: "Landmark 81",
+to: "Hồ Tràm",
+title: "Thuê xe từ Landmark 81 đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng từ Landmark 81 đi Hồ Tràm dành cho cư dân Vinhomes Central Park, khách lưu trú và khách nước ngoài. Đón tận nơi, không ghép khách.",
+routeText: "Landmark 81 → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "vinhomes-central-park-ho-tram",
+path: "thue-xe-tu-vinhomes-central-park-di-ho-tram",
+from: "Vinhomes Central Park",
+to: "Hồ Tràm",
+title: "Thuê xe từ Vinhomes Central Park đi Hồ Tràm",
+description:
+"Xe riêng từ Vinhomes Central Park đi Hồ Tràm với tài xế chuyên nghiệp, phù hợp gia đình và khách nghỉ dưỡng cuối tuần.",
+routeText: "Vinhomes Central Park → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "thao-dien-ho-tram",
+path: "thue-xe-tu-thao-dien-di-ho-tram",
+from: "Thảo Điền",
+to: "Hồ Tràm",
+title: "Thuê xe từ Thảo Điền đi Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Dịch vụ xe riêng từ Thảo Điền đi Hồ Tràm. Phù hợp chuyên gia nước ngoài, gia đình và khách lưu trú khu vực Quận 2.",
+routeText: "Thảo Điền → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "sala-ho-tram",
+path: "thue-xe-tu-sala-di-ho-tram",
+from: "Sala",
+to: "Hồ Tràm",
+title: "Thuê xe từ Sala đi Hồ Tràm giá tốt",
+description:
+"Đặt xe từ khu đô thị Sala đi Hồ Tràm. Xe riêng có tài xế, lịch trình linh hoạt và không ghép khách.",
+routeText: "Sala → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "vinhomes-grand-park-ho-tram",
+path: "thue-xe-tu-vinhomes-grand-park-di-ho-tram",
+from: "Vinhomes Grand Park",
+to: "Hồ Tràm",
+title: "Thuê xe từ Vinhomes Grand Park đi Hồ Tràm",
+description:
+"Xe riêng từ Vinhomes Grand Park đi Hồ Tràm dành cho cư dân và khách du lịch. Đón tận nơi, biết giá trước khi đặt.",
+routeText: "Vinhomes Grand Park → Cao tốc Long Thành → Hồ Tràm",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "phu-my-hung-ho-tram",
+path: "thue-xe-tu-phu-my-hung-di-ho-tram",
+from: "Phú Mỹ Hưng",
+to: "Hồ Tràm",
+title: "Thuê xe từ Phú Mỹ Hưng đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng từ Phú Mỹ Hưng đi Hồ Tràm cho gia đình, doanh nhân và khách nghỉ dưỡng cuối tuần.",
+routeText: "Phú Mỹ Hưng → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "sunrise-city-ho-tram",
+path: "thue-xe-tu-sunrise-city-di-ho-tram",
+from: "Sunrise City",
+to: "Hồ Tràm",
+title: "Thuê xe từ Sunrise City đi Hồ Tràm",
+description:
+"Đặt xe từ Sunrise City đi Hồ Tràm với tài xế riêng. Xe sạch sẽ, không ghép khách, phục vụ 24/7.",
+routeText: "Sunrise City → Cao tốc Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "estella-ho-tram",
+path: "thue-xe-tu-estella-heights-di-ho-tram",
+from: "Estella Heights",
+to: "Hồ Tràm",
+title: "Thuê xe từ Estella Heights đi Hồ Tràm",
+description:
+"Xe riêng từ Estella Heights đi Hồ Tràm cho gia đình và chuyên gia nước ngoài. Đưa đón tận nơi.",
+routeText: "Estella Heights → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "masteri-thao-dien-ho-tram",
+path: "thue-xe-tu-masteri-thao-dien-di-ho-tram",
+from: "Masteri Thảo Điền",
+to: "Hồ Tràm",
+title: "Thuê xe từ Masteri Thảo Điền đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng từ Masteri Thảo Điền đi Hồ Tràm. Xe riêng, không ghép khách, thanh toán sau chuyến đi.",
+routeText: "Masteri Thảo Điền → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "khu-cong-nghe-cao-ho-tram",
+path: "thue-xe-tu-khu-cong-nghe-cao-di-ho-tram",
+from: "Khu Công Nghệ Cao",
+to: "Hồ Tràm",
+title: "Thuê xe từ Khu Công Nghệ Cao đi Hồ Tràm",
+description:
+"Xe công tác từ Khu Công Nghệ Cao đi Hồ Tràm cho chuyên gia, đối tác và doanh nghiệp.",
+routeText: "Khu Công Nghệ Cao → Cao tốc Long Thành → Hồ Tràm",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "dh-quoc-gia-ho-tram",
+path: "thue-xe-tu-dai-hoc-quoc-gia-di-ho-tram",
+from: "Đại học Quốc Gia TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe từ Đại học Quốc Gia đi Hồ Tràm",
+description:
+"Thuê xe riêng từ Đại học Quốc Gia TP.HCM đi Hồ Tràm cho nhóm bạn, câu lạc bộ và hoạt động ngoại khóa.",
+routeText: "ĐHQG TP.HCM → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+// =========================
+// HỒ TRÀM - RESORT / ĐIỂM ĐẾN
+// =========================
+
+{
+key: "thue-xe-ben-xe-mien-dong-ho-tram",
+path: "thue-xe-tu-ben-xe-mien-dong-di-ho-tram",
+from: "Bến Xe Miền Đông",
+to: "Hồ Tràm",
+title: "Thuê xe từ Bến Xe Miền Đông đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng từ Bến Xe Miền Đông đi Hồ Tràm. Đón tận nơi tại bến xe, phù hợp khách từ các tỉnh đến TP.HCM rồi tiếp tục nghỉ dưỡng tại Hồ Tràm.",
+routeText: "Bến Xe Miền Đông → Cao tốc Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "ben-xe-mien-tay-ho-tram",
+path: "thue-xe-tu-ben-xe-mien-tay-di-ho-tram",
+from: "Bến Xe Miền Tây",
+to: "Hồ Tràm",
+title: "Thuê xe từ Bến Xe Miền Tây đi Hồ Tràm",
+description:
+"Xe riêng từ Bến Xe Miền Tây đi Hồ Tràm dành cho khách du lịch và gia đình. Không ghép khách, đưa đón tận nơi.",
+routeText: "Bến Xe Miền Tây → Cao tốc Long Thành → Hồ Tràm",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "the-grand-ho-tram",
+path: "xe-di-the-grand-ho-tram",
+from: "TP.HCM",
+to: "The Grand Hồ Tràm",
+title: "Thuê xe đi The Grand Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng đi The Grand Hồ Tràm từ TP.HCM. Đưa đón tận nơi tại resort, phù hợp nghỉ dưỡng cuối tuần và kỳ nghỉ lễ.",
+routeText: "TP.HCM → Long Thành → The Grand Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "melia-ho-tram",
+path: "xe-di-melia-ho-tram-beach-resort",
+from: "TP.HCM",
+to: "Melia Hồ Tràm Beach Resort",
+title: "Thuê xe đi Melia Hồ Tràm Beach Resort",
+description:
+"Đặt xe riêng đi Melia Hồ Tràm Beach Resort với tài xế chuyên nghiệp. Xe sạch sẽ, không ghép khách, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Melia Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "carmelina-ho-tram",
+path: "xe-di-carmelina-beach-resort-ho-tram",
+from: "TP.HCM",
+to: "Carmelina Beach Resort",
+title: "Thuê xe đi Carmelina Beach Resort Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi Carmelina Beach Resort Hồ Tràm dành cho gia đình và nhóm bạn. Đưa đón tận nơi, thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Carmelina Beach Resort",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "sanctuary-ho-tram",
+path: "sanctuary-ho-tram",
+from: "TP.HCM",
+to: "Sanctuary Hồ Tràm",
+title: "Thuê xe đi Sanctuary Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Xe riêng đi Sanctuary Hồ Tràm với lịch trình linh hoạt. Phù hợp gia đình nghỉ dưỡng và nhóm bạn cuối tuần.",
+routeText: "TP.HCM → Long Thành → Sanctuary Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "intercontinental-ho-tram",
+path: "xe-di-intercontinental-grand-ho-tram",
+from: "TP.HCM",
+to: "InterContinental Grand Hồ Tràm",
+title: "Thuê xe đi InterContinental Grand Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi InterContinental Grand Hồ Tràm. Xe có tài xế, không ghép khách, phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → InterContinental Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ixora-ho-tram",
+path: "xe-di-ixora-ho-tram-by-fusion",
+from: "TP.HCM",
+to: "Ixora Hồ Tràm By Fusion",
+title: "Thuê xe đi Ixora Hồ Tràm By Fusion",
+description:
+"Đặt xe riêng đi Ixora Hồ Tràm By Fusion từ TP.HCM. Đưa đón tận nơi, phù hợp gia đình và cặp đôi nghỉ dưỡng.",
+routeText: "TP.HCM → Long Thành → Ixora Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "holiday-inn-ho-tram",
+path: "xe-di-holiday-inn-resort-ho-tram",
+from: "TP.HCM",
+to: "Holiday Inn Resort Hồ Tràm",
+title: "Thuê xe đi Holiday Inn Resort Hồ Tràm",
+description:
+"Xe riêng đi Holiday Inn Resort Hồ Tràm với tài xế riêng. Không ghép khách, chủ động thời gian khởi hành.",
+routeText: "TP.HCM → Long Thành → Holiday Inn Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-strip",
+path: "xe-di-ho-tram-strip",
+from: "TP.HCM",
+to: "Hồ Tràm Strip",
+title: "Thuê xe đi Hồ Tràm Strip giá tốt",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm Strip cho khách nghỉ dưỡng, du lịch và công tác. Xe 5 chỗ, 7 chỗ, 16 chỗ.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm Strip",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HỒ TRÀM - ĐIỂM DU LỊCH THỰC TẾ
+// =========================
+
+{
+key: "ho-coc",
+path: "can-cho-thue-xe-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Thuê xe đi Hồ Cốc, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Hồ Cốc từ TP.HCM dành cho gia đình, cặp đôi và nhóm bạn. Xe riêng đưa đón tận nơi, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-rieng-ho-coc",
+path: "xe-rieng-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Xe riêng đi Hồ Cốc giá tốt, đưa đón tận nơi",
+description:
+"Đặt xe riêng đi Hồ Cốc với tài xế chuyên nghiệp. Chủ động lịch trình, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "binh-chau-hot-spring",
+path: "can-thue-xe-di-suoi-nuoc-nong-binh-chau",
+from: "TP.HCM",
+to: "Suối Nước Nóng Bình Châu",
+title: "Thuê xe đi Suối Nước Nóng Bình Châu",
+description:
+"Xe riêng đi Suối Nước Nóng Bình Châu phù hợp gia đình và khách nghỉ dưỡng. Đưa đón tận nơi, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "minera-binh-chau",
+path: "xe-di-minera-hot-springs-binh-chau",
+from: "TP.HCM",
+to: "Minera Hot Springs Bình Châu",
+title: "Thuê xe đi Minera Hot Springs Bình Châu",
+description:
+"Dịch vụ xe riêng đi Minera Hot Springs Bình Châu từ TP.HCM. Xe sạch sẽ, có tài xế, phù hợp nghỉ dưỡng cuối tuần.",
+routeText: "TP.HCM → Long Thành → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "casino-ho-tram",
+path: "xe-di-casino-ho-tram",
+from: "TP.HCM",
+to: "Casino Hồ Tràm",
+title: "Thuê xe đi Casino Hồ Tràm, xe riêng có tài xế",
+description:
+"Đặt xe riêng đi Casino Hồ Tràm nhanh chóng. Đón tận nơi tại nhà, khách sạn hoặc sân bay.",
+routeText: "TP.HCM → Long Thành → Casino Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "the-bluffs",
+path: "xe-di-the-bluffs-ho-tram-strip",
+from: "TP.HCM",
+to: "The Bluffs Hồ Tràm Strip",
+title: "Thuê xe đi The Bluffs Hồ Tràm Strip",
+description:
+"Dịch vụ xe riêng đi sân golf The Bluffs Hồ Tràm Strip dành cho golfer, doanh nhân và khách nghỉ dưỡng.",
+routeText: "TP.HCM → Long Thành → The Bluffs",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "san-golf-ho-tram",
+path: "xe-di-san-golf-ho-tram",
+from: "TP.HCM",
+to: "Sân Golf Hồ Tràm",
+title: "Thuê xe đi sân golf Hồ Tràm",
+description:
+"Xe riêng đi sân golf Hồ Tràm với khoang hành lý rộng rãi, phù hợp mang theo dụng cụ chơi golf.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "hamptons-ho-tram",
+path: "xe-di-hamptons-ho-tram",
+from: "TP.HCM",
+to: "Hamptons Hồ Tràm",
+title: "Thuê xe đi Hamptons Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi Hamptons Hồ Tràm cho gia đình và nhóm bạn. Đưa đón tận nơi, lịch trình linh hoạt.",
+routeText: "TP.HCM → Long Thành → Hamptons Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "cau-ngam-bien-hamptons",
+path: "xe-di-cau-ngam-bien-hamptons-ho-tram",
+from: "TP.HCM",
+to: "Cầu Ngắm Biển Hamptons",
+title: "Thuê xe đi Cầu Ngắm Biển Hamptons Hồ Tràm",
+description:
+"Đặt xe riêng đi Cầu Ngắm Biển Hamptons Hồ Tràm. Phù hợp du lịch cuối tuần và check-in biển.",
+routeText: "TP.HCM → Long Thành → Hamptons Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "rung-nguyen-sinh-binh-chau",
+path: "xe-di-rung-nguyen-sinh-binh-chau",
+from: "TP.HCM",
+to: "Rừng Nguyên Sinh Bình Châu",
+title: "Thuê xe đi Rừng Nguyên Sinh Bình Châu",
+description:
+"Xe riêng đi Rừng Nguyên Sinh Bình Châu cho gia đình và nhóm bạn yêu thiên nhiên. Không ghép khách, đưa đón tận nơi.",
+routeText: "TP.HCM → Long Thành → Bình Châu",
+duration: "3 - 3.5 giờ",
+},
+
+// =========================
+// HỒ TRÀM - DOANH NGHIỆP / TEAM BUILDING
+// =========================
+
+{
+key: "nhan-vien-ho-tram",
+path: "xe-dua-don-nhan-vien-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đưa đón nhân viên đi Hồ Tràm, xe riêng cho doanh nghiệp",
+description:
+"Dịch vụ xe đưa đón nhân viên đi Hồ Tràm cho doanh nghiệp, nhà máy và văn phòng. Xe riêng, đúng giờ, phù hợp đoàn từ nhỏ đến lớn.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "hoi-nghi-ho-tram",
+path: "thue-xe-di-hoi-nghi-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi hội nghị Hồ Tràm, xe riêng có tài xế",
+description:
+"Thuê xe đi hội nghị tại Hồ Tràm cho doanh nghiệp và tổ chức. Xe sạch sẽ, đưa đón tận nơi, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "hoi-thao-ho-tram",
+path: "thue-xe-di-hoi-thao-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi hội thảo Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi hội thảo Hồ Tràm cho công ty và đối tác. Chủ động lịch trình, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "su-kien-ho-tram",
+path: "thue-xe-di-su-kien-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi sự kiện Hồ Tràm, xe riêng đưa đón tận nơi",
+description:
+"Xe riêng phục vụ sự kiện tại Hồ Tràm. Phù hợp hội nghị khách hàng, lễ ra mắt sản phẩm và các chương trình doanh nghiệp.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "mice-ho-tram",
+path: "xe-mice-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe MICE đi Hồ Tràm cho doanh nghiệp",
+description:
+"Dịch vụ xe MICE đi Hồ Tràm dành cho doanh nghiệp tổ chức hội nghị kết hợp nghỉ dưỡng. Xe riêng, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "team-building-doanh-nghiep-ho-tram",
+path: "xe-team-building-doanh-nghiep-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe team building doanh nghiệp đi Hồ Tràm",
+description:
+"Thuê xe team building đi Hồ Tràm cho công ty, phòng ban và tổ chức. Có xe 5 chỗ, 7 chỗ, 16 chỗ.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "doan-cong-ty-ho-tram",
+path: "xe-doan-cong-ty-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đoàn công ty đi Hồ Tràm",
+description:
+"Dịch vụ xe đoàn công ty đi Hồ Tràm với nhiều lựa chọn phương tiện phù hợp số lượng nhân sự khác nhau.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "company-trip-ho-tram",
+path: "xe-company-trip-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe company trip đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Đặt xe company trip đi Hồ Tràm cho doanh nghiệp. Đưa đón tận nơi, chủ động giờ khởi hành và điểm đón.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "outbound-ho-tram",
+path: "xe-outbound-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe outbound đi Hồ Tràm cho doanh nghiệp",
+description:
+"Xe riêng phục vụ chương trình outbound Hồ Tràm. Phù hợp hoạt động gắn kết đội ngũ và du lịch công ty.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gala-dinner-ho-tram",
+path: "xe-di-gala-dinner-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Gala Dinner Hồ Tràm",
+description:
+"Dịch vụ xe đưa đón Gala Dinner Hồ Tràm cho doanh nghiệp và tổ chức. Xe riêng, lịch trình linh hoạt, phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "nghi-duong-doanh-nghiep-ho-tram",
+path: "xe-nghi-duong-doanh-nghiep-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe nghỉ dưỡng doanh nghiệp đi Hồ Tràm",
+description:
+"Dịch vụ xe nghỉ dưỡng doanh nghiệp đi Hồ Tràm dành cho nhân viên, khách hàng và đối tác. Đưa đón tận nơi, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HỒ TRÀM - KHÁCH HÀNG ĐẶC THÙ
+// =========================
+
+{
+key: "nguoi-lon-tuoi-ho-tram",
+path: "xe-di-ho-tram-cho-nguoi-lon-tuoi",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm cho người lớn tuổi, xe riêng thoải mái",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dành cho gia đình có người lớn tuổi. Chủ động nghỉ dọc đường, không ghép khách, đưa đón tận nơi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "tre-em-ho-tram",
+path: "xe-di-ho-tram-cho-gia-dinh-co-tre-em",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm cho gia đình có trẻ em",
+description:
+"Xe riêng đi Hồ Tràm phù hợp gia đình có trẻ nhỏ. Không ghép khách, thoải mái mang theo hành lý và đồ dùng cho bé.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "wedding-ho-tram",
+path: "xe-di-dam-cuoi-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi đám cưới tại Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi đám cưới tại Hồ Tràm cho gia đình, bạn bè và khách mời. Đưa đón tận nơi, đúng giờ.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "chup-anh-cuoi-ho-tram",
+path: "xe-di-chup-anh-cuoi-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi chụp ảnh cưới Hồ Tràm",
+description:
+"Xe riêng đi chụp ảnh cưới tại Hồ Tràm cho cô dâu chú rể và ekip. Chủ động lịch trình, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "khach-nuoc-ngoai-ho-tram",
+path: "xe-cho-khach-nuoc-ngoai-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe cho khách nước ngoài đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng đưa đón khách nước ngoài đi Hồ Tràm. Phù hợp chuyên gia, khách du lịch và đối tác quốc tế.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "airport-transfer-ho-tram",
+path: "airport-transfer-to-ho-tram",
+from: "Tan Son Nhat Airport",
+to: "Ho Tram",
+title: "Private airport transfer from Tan Son Nhat to Ho Tram",
+description:
+"Private airport transfer service from Tan Son Nhat Airport to Ho Tram. Door-to-door transportation with professional driver.",
+routeText: "Tan Son Nhat Airport → Long Thanh → Ho Tram",
+duration: "2.5 - 3 hours",
+},
+
+{
+key: "workation-ho-tram",
+path: "xe-di-ho-tram-nghi-duong-lam-viec",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm nghỉ dưỡng kết hợp làm việc",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dành cho khách workation, làm việc từ xa kết hợp nghỉ dưỡng cuối tuần.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "digital-nomad-ho-tram",
+path: "private-car-to-ho-tram-for-remote-work",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Private car to Ho Tram for remote work and vacation",
+description:
+"Private transportation to Ho Tram for digital nomads, remote workers and long-stay travelers.",
+routeText: "Ho Chi Minh City → Long Thanh → Ho Tram",
+duration: "2.5 - 3 hours",
+},
+
+{
+key: "ky-niem-ngay-cuoi-ho-tram",
+path: "xe-di-ho-tram-ky-niem-ngay-cuoi",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm kỷ niệm ngày cưới",
+description:
+"Xe riêng đi Hồ Tràm cho cặp đôi kỷ niệm ngày cưới hoặc dịp đặc biệt. Riêng tư, thoải mái và chủ động thời gian.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "cau-hon-ho-tram",
+path: "xe-di-ho-tram-cau-hon",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi Hồ Tràm cầu hôn, nghỉ dưỡng cuối tuần",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dành cho các chuyến đi đặc biệt như cầu hôn, kỷ niệm và nghỉ dưỡng cặp đôi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HỒ TRÀM → TP.HCM
+// =========================
+
+{
+key: "ho-tram-ve-sai-gon",
+path: "thue-xe-tu-ho-tram-ve-sai-gon",
+from: "Hồ Tràm",
+to: "TP.HCM",
+title: "Thuê xe từ Hồ Tràm về Sài Gòn, xe riêng có tài xế",
+description:
+"Dịch vụ xe riêng từ Hồ Tràm về TP.HCM. Đón tận nơi tại resort, khách sạn hoặc villa, không ghép khách.",
+routeText: "Hồ Tràm → Long Thành → TP.HCM",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-ve-tphcm",
+path: "thue-xe-tu-ho-tram-ve-tphcm",
+from: "Hồ Tràm",
+to: "TP.HCM",
+title: "Thuê xe từ Hồ Tràm về TP.HCM giá tốt",
+description:
+"Đặt xe từ Hồ Tràm về TP.HCM với tài xế riêng. Biết giá trước khi đặt, thanh toán sau chuyến đi.",
+routeText: "Hồ Tràm → Long Thành → TP.HCM",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-san-bay",
+path: "xe-tu-ho-tram-di-san-bay-tan-son-nhat",
+from: "Hồ Tràm",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Hồ Tràm đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ Hồ Tràm đi sân bay Tân Sơn Nhất. Phù hợp khách du lịch, khách công tác và khách nước ngoài.",
+routeText: "Hồ Tràm → Long Thành → Sân bay Tân Sơn Nhất",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-quan-1",
+path: "xe-tu-ho-tram-ve-quan-1",
+from: "Hồ Tràm",
+to: "Quận 1",
+title: "Xe từ Hồ Tràm về Quận 1, đón tận nơi tại resort",
+description:
+"Xe riêng từ Hồ Tràm về Quận 1. Đón tận nơi tại khách sạn hoặc resort, không ghép khách.",
+routeText: "Hồ Tràm → Long Thành → Quận 1",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-thao-dien",
+path: "xe-tu-ho-tram-ve-thao-dien",
+from: "Hồ Tràm",
+to: "Thảo Điền",
+title: "Xe từ Hồ Tràm về Thảo Điền",
+description:
+"Dịch vụ xe riêng từ Hồ Tràm về Thảo Điền dành cho chuyên gia nước ngoài và cư dân khu vực Quận 2.",
+routeText: "Hồ Tràm → Long Thành → Thảo Điền",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "ho-tram-phu-my-hung",
+path: "xe-tu-ho-tram-ve-phu-my-hung",
+from: "Hồ Tràm",
+to: "Phú Mỹ Hưng",
+title: "Xe từ Hồ Tràm về Phú Mỹ Hưng",
+description:
+"Xe riêng từ Hồ Tràm về Phú Mỹ Hưng với tài xế chuyên nghiệp. Đưa đón tận nơi, lịch trình linh hoạt.",
+routeText: "Hồ Tràm → Long Thành → Phú Mỹ Hưng",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-landmark81",
+path: "xe-tu-ho-tram-ve-landmark-81",
+from: "Hồ Tràm",
+to: "Landmark 81",
+title: "Xe từ Hồ Tràm về Landmark 81",
+description:
+"Dịch vụ xe riêng từ Hồ Tràm về Landmark 81 và Vinhomes Central Park. Không ghép khách, biết giá trước khi đặt.",
+routeText: "Hồ Tràm → Long Thành → Landmark 81",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-thu-duc",
+path: "xe-tu-ho-tram-ve-thu-duc",
+from: "Hồ Tràm",
+to: "Thủ Đức",
+title: "Xe từ Hồ Tràm về Thủ Đức",
+description:
+"Đặt xe riêng từ Hồ Tràm về Thủ Đức nhanh chóng. Đưa đón tận nơi, thanh toán sau chuyến đi.",
+routeText: "Hồ Tràm → Long Thành → Thủ Đức",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "ho-tram-go-vap",
+path: "xe-tu-ho-tram-ve-go-vap",
+from: "Hồ Tràm",
+to: "Gò Vấp",
+title: "Xe từ Hồ Tràm về Gò Vấp",
+description:
+"Xe riêng từ Hồ Tràm về Gò Vấp cho gia đình và khách du lịch. Không ghép khách, phục vụ 24/7.",
+routeText: "Hồ Tràm → Long Thành → Gò Vấp",
+duration: "3 - 3.5 giờ",
+},
+
+{
+key: "ho-tram-tan-binh",
+path: "xe-tu-ho-tram-ve-tan-binh",
+from: "Hồ Tràm",
+to: "Tân Bình",
+title: "Xe từ Hồ Tràm về Tân Bình",
+description:
+"Dịch vụ xe riêng từ Hồ Tràm về Tân Bình. Phù hợp khách cần ra sân bay hoặc trở về khu vực trung tâm.",
+routeText: "Hồ Tràm → Long Thành → Tân Bình",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ho-tram-vinhomes-grand-park",
+path: "xe-tu-ho-tram-ve-vinhomes-grand-park",
+from: "Hồ Tràm",
+to: "Vinhomes Grand Park",
+title: "Xe từ Hồ Tràm về Vinhomes Grand Park",
+description:
+"Đặt xe riêng từ Hồ Tràm về Vinhomes Grand Park. Đón tận nơi tại resort, không ghép khách.",
+routeText: "Hồ Tràm → Long Thành → Vinhomes Grand Park",
+duration: "1.5 - 2 giờ",
+},
+
+// =========================
+// RESORT HỒ TRÀM → TP.HCM
+// =========================
+
+{
+key: "the-grand-ve-sai-gon",
+path: "xe-tu-the-grand-ho-tram-ve-sai-gon",
+from: "The Grand Hồ Tràm",
+to: "TP.HCM",
+title: "Xe từ The Grand Hồ Tràm về Sài Gòn",
+description:
+"Dịch vụ xe riêng từ The Grand Hồ Tràm về TP.HCM. Đón tận nơi tại resort, không ghép khách, biết giá trước khi đặt.",
+routeText: "The Grand Hồ Tràm → Long Thành → TP.HCM",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "the-grand-san-bay",
+path: "xe-tu-the-grand-ho-tram-di-san-bay",
+from: "The Grand Hồ Tràm",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ The Grand Hồ Tràm đi sân bay Tân Sơn Nhất",
+description:
+"Đặt xe riêng từ The Grand Hồ Tràm đi sân bay Tân Sơn Nhất. Phù hợp khách du lịch và khách quốc tế.",
+routeText: "The Grand Hồ Tràm → Long Thành → Sân bay Tân Sơn Nhất",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "melia-ve-sai-gon",
+path: "xe-tu-melia-ho-tram-ve-sai-gon",
+from: "Melia Hồ Tràm Beach Resort",
+to: "TP.HCM",
+title: "Xe từ Melia Hồ Tràm về Sài Gòn",
+description:
+"Xe riêng từ Melia Hồ Tràm Beach Resort về TP.HCM. Đưa đón tận nơi, thanh toán sau chuyến đi.",
+routeText: "Melia Hồ Tràm → Long Thành → TP.HCM",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "melia-san-bay",
+path: "xe-tu-melia-ho-tram-di-san-bay",
+from: "Melia Hồ Tràm Beach Resort",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Melia Hồ Tràm đi sân bay",
+description:
+"Dịch vụ xe riêng từ Melia Hồ Tràm đi sân bay Tân Sơn Nhất. Không ghép khách, lịch trình linh hoạt.",
+routeText: "Melia Hồ Tràm → Long Thành → Sân bay Tân Sơn Nhất",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "carmelina-ve-quan1",
+path: "xe-tu-carmelina-ho-tram-ve-quan-1",
+from: "Carmelina Beach Resort",
+to: "Quận 1",
+title: "Xe từ Carmelina Beach Resort về Quận 1",
+description:
+"Đặt xe riêng từ Carmelina Beach Resort về Quận 1. Đón tận nơi tại resort, không ghép khách.",
+routeText: "Carmelina Beach Resort → Long Thành → Quận 1",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "intercontinental-thao-dien",
+path: "xe-tu-intercontinental-ho-tram-ve-thao-dien",
+from: "InterContinental Grand Hồ Tràm",
+to: "Thảo Điền",
+title: "Xe từ InterContinental Hồ Tràm về Thảo Điền",
+description:
+"Dịch vụ xe riêng từ InterContinental Grand Hồ Tràm về Thảo Điền cho gia đình và chuyên gia nước ngoài.",
+routeText: "InterContinental Hồ Tràm → Long Thành → Thảo Điền",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "ixora-ve-tphcm",
+path: "xe-tu-ixora-ho-tram-ve-tphcm",
+from: "Ixora Hồ Tràm By Fusion",
+to: "TP.HCM",
+title: "Xe từ Ixora Hồ Tràm về TP.HCM",
+description:
+"Xe riêng từ Ixora Hồ Tràm By Fusion về TP.HCM. Xe có tài xế, không ghép khách, phục vụ 24/7.",
+routeText: "Ixora Hồ Tràm → Long Thành → TP.HCM",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "holiday-inn-ve-san-bay",
+path: "xe-tu-holiday-inn-ho-tram-di-san-bay",
+from: "Holiday Inn Resort Hồ Tràm",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ Holiday Inn Hồ Tràm đi sân bay",
+description:
+"Dịch vụ xe riêng từ Holiday Inn Resort Hồ Tràm đi sân bay. Phù hợp khách du lịch và khách công tác.",
+routeText: "Holiday Inn Hồ Tràm → Long Thành → Sân bay Tân Sơn Nhất",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "sanctuary-ve-phu-my-hung",
+path: "xe-tu-sanctuary-ho-tram-ve-phu-my-hung",
+from: "Sanctuary Hồ Tràm",
+to: "Phú Mỹ Hưng",
+title: "Xe từ Sanctuary Hồ Tràm về Phú Mỹ Hưng",
+description:
+"Đặt xe riêng từ Sanctuary Hồ Tràm về Phú Mỹ Hưng. Đưa đón tận nơi, biết giá trước khi đặt.",
+routeText: "Sanctuary Hồ Tràm → Long Thành → Phú Mỹ Hưng",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "hamptons-ve-landmark81",
+path: "xe-tu-hamptons-ho-tram-ve-landmark-81",
+from: "Hamptons Hồ Tràm",
+to: "Landmark 81",
+title: "Xe từ Hamptons Hồ Tràm về Landmark 81",
+description:
+"Xe riêng từ Hamptons Hồ Tràm về Landmark 81 và Vinhomes Central Park. Không ghép khách, thanh toán sau chuyến đi.",
+routeText: "Hamptons Hồ Tràm → Long Thành → Landmark 81",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HỒ TRÀM - LỄ TẾT / KỲ NGHỈ
+// =========================
+
+{
+key: "tet-nguyen-dan-ho-tram",
+path: "thue-xe-di-ho-tram-tet-nguyen-dan",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi Hồ Tràm dịp Tết Nguyên Đán",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dịp Tết Nguyên Đán cho gia đình và nhóm bạn. Đưa đón tận nơi, chủ động lịch trình nghỉ dưỡng đầu năm.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "30-4-ho-tram",
+path: "thue-xe-di-ho-tram-dip-30-4",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi Hồ Tràm dịp lễ 30/4",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dịp lễ 30/4 và 1/5. Không ghép khách, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "quoc-khanh-ho-tram",
+path: "thue-xe-di-ho-tram-dip-quoc-khanh",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi Hồ Tràm dịp Quốc Khánh",
+description:
+"Xe riêng đi Hồ Tràm dịp Quốc Khánh dành cho gia đình và khách nghỉ dưỡng cuối tuần kéo dài.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "giang-sinh-ho-tram",
+path: "thue-xe-di-ho-tram-giang-sinh",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi Hồ Tràm dịp Giáng Sinh",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dịp Giáng Sinh. Phù hợp cặp đôi, gia đình và nhóm bạn nghỉ dưỡng cuối năm.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "nam-moi-ho-tram",
+path: "thue-xe-di-ho-tram-don-nam-moi",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Thuê xe đi Hồ Tràm đón năm mới",
+description:
+"Đặt xe riêng đi Hồ Tràm đón năm mới. Đưa đón tận nơi, không ghép khách, lịch trình linh hoạt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "cuoi-tuan-2n1d-ho-tram",
+path: "xe-di-ho-tram-2-ngay-1-dem",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm 2 ngày 1 đêm cho gia đình",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm 2 ngày 1 đêm. Phù hợp nghỉ dưỡng cuối tuần, cặp đôi và gia đình.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "cuoi-tuan-3n2d-ho-tram",
+path: "xe-di-ho-tram-3-ngay-2-dem",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe đi Hồ Tràm 3 ngày 2 đêm",
+description:
+"Thuê xe đi Hồ Tràm 3 ngày 2 đêm với tài xế riêng. Chủ động thời gian và điểm đón trả.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "nghi-duong-gia-dinh-ho-tram",
+path: "xe-nghi-duong-gia-dinh-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe nghỉ dưỡng gia đình đi Hồ Tràm",
+description:
+"Xe riêng đi Hồ Tràm dành cho gia đình nhiều thế hệ. Không ghép khách, đưa đón tận nơi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "nghi-duong-cap-doi-ho-tram",
+path: "xe-nghi-duong-cap-doi-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe nghỉ dưỡng cặp đôi đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi Hồ Tràm dành cho cặp đôi nghỉ dưỡng cuối tuần hoặc kỷ niệm dịp đặc biệt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "nghi-duong-cong-ty-ho-tram",
+path: "xe-nghi-duong-cong-ty-di-ho-tram",
+from: "TP.HCM",
+to: "Hồ Tràm",
+title: "Xe nghỉ dưỡng công ty đi Hồ Tràm",
+description:
+"Xe riêng đi Hồ Tràm phục vụ chương trình nghỉ dưỡng công ty, team building và hội nghị khách hàng.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// ĐỒNG NAI / BÌNH DƯƠNG → HỒ TRÀM
+// =========================
+
+{
+key: "bien-hoa-ho-tram",
+path: "thue-xe-tu-bien-hoa-di-ho-tram",
+from: "Biên Hòa",
+to: "Hồ Tràm",
+title: "Thuê xe từ Biên Hòa đi Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe từ Biên Hòa đi Hồ Tràm dành cho gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần. Xe riêng, không ghép khách, đón tận nơi.",
+routeText: "Biên Hòa → Long Thành → Hồ Tràm",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "long-thanh-ho-tram",
+path: "thue-xe-tu-long-thanh-di-ho-tram",
+from: "Long Thành",
+to: "Hồ Tràm",
+title: "Thuê xe từ Long Thành đi Hồ Tràm giá tốt",
+description:
+"Xe riêng từ Long Thành đi Hồ Tràm với tài xế chuyên nghiệp. Phù hợp khách sân bay và khách du lịch nghỉ dưỡng.",
+routeText: "Long Thành → Hồ Tràm",
+duration: "1 - 1.5 giờ",
+},
+
+{
+key: "nhon-trach-ho-tram",
+path: "thue-xe-tu-nhon-trach-di-ho-tram",
+from: "Nhơn Trạch",
+to: "Hồ Tràm",
+title: "Thuê xe từ Nhơn Trạch đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng từ Nhơn Trạch đi Hồ Tràm. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt.",
+routeText: "Nhơn Trạch → Long Thành → Hồ Tràm",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "di-an-ho-tram",
+path: "thue-xe-tu-di-an-di-ho-tram",
+from: "Dĩ An",
+to: "Hồ Tràm",
+title: "Thuê xe từ Dĩ An đi Hồ Tràm",
+description:
+"Xe riêng từ Dĩ An đi Hồ Tràm cho gia đình và nhóm bạn. Chủ động thời gian, thanh toán sau chuyến đi.",
+routeText: "Dĩ An → Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "thuan-an-ho-tram",
+path: "thue-xe-tu-thuan-an-di-ho-tram",
+from: "Thuận An",
+to: "Hồ Tràm",
+title: "Thuê xe từ Thuận An đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng từ Thuận An đi Hồ Tràm. Xe sạch sẽ, có tài xế, phù hợp nghỉ dưỡng cuối tuần.",
+routeText: "Thuận An → Long Thành → Hồ Tràm",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "thu-dau-mot-ho-tram",
+path: "thue-xe-tu-thu-dau-mot-di-ho-tram",
+from: "Thủ Dầu Một",
+to: "Hồ Tràm",
+title: "Thuê xe từ Thủ Dầu Một đi Hồ Tràm",
+description:
+"Đặt xe từ Thủ Dầu Một đi Hồ Tràm nhanh chóng trên GoViet247. Xe riêng, không ghép khách.",
+routeText: "Thủ Dầu Một → Long Thành → Hồ Tràm",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "ba-ria-ho-tram",
+path: "thue-xe-tu-ba-ria-di-ho-tram",
+from: "Bà Rịa",
+to: "Hồ Tràm",
+title: "Thuê xe từ Bà Rịa đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng từ Bà Rịa đi Hồ Tràm. Đưa đón tận nơi, phù hợp khách du lịch và công tác.",
+routeText: "Bà Rịa → Hồ Tràm",
+duration: "35 - 45 phút",
+},
+
+{
+key: "vung-tau-ho-tram",
+path: "thue-xe-tu-vung-tau-di-ho-tram",
+from: "Vũng Tàu",
+to: "Hồ Tràm",
+title: "Thuê xe từ Vũng Tàu đi Hồ Tràm",
+description:
+"Xe riêng từ Vũng Tàu đi Hồ Tràm cho gia đình và nhóm bạn. Không ghép khách, lịch trình linh hoạt.",
+routeText: "Vũng Tàu → Hồ Tràm",
+duration: "1 - 1.5 giờ",
+},
+
+{
+key: "xuyen-moc-ho-tram",
+path: "thue-xe-tu-xuyen-moc-di-ho-tram",
+from: "Xuyên Mộc",
+to: "Hồ Tràm",
+title: "Thuê xe từ Xuyên Mộc đi Hồ Tràm",
+description:
+"Dịch vụ xe riêng từ Xuyên Mộc đi Hồ Tràm. Đón tận nơi, phục vụ 24/7.",
+routeText: "Xuyên Mộc → Hồ Tràm",
+duration: "15 - 30 phút",
+},
+
+{
+key: "long-dien-ho-tram",
+path: "thue-xe-tu-long-dien-di-ho-tram",
+from: "Long Điền",
+to: "Hồ Tràm",
+title: "Thuê xe từ Long Điền đi Hồ Tràm",
+description:
+"Xe riêng từ Long Điền đi Hồ Tràm cho khách du lịch và nghỉ dưỡng cuối tuần.",
+routeText: "Long Điền → Hồ Tràm",
+duration: "45 - 60 phút",
+},
+
+// =========================
+// PHƯỚC THUẬN
+// =========================
+
+{
+key: "xe-di-phuoc-thuan",
+path: "thue-xe-di-phuoc-thuan-ho-tram",
+from: "TP.HCM",
+to: "Phước Thuận",
+title: "Thuê xe đi Phước Thuận Hồ Tràm, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Phước Thuận từ TP.HCM. Khu vực trung tâm Hồ Tràm với nhiều resort, homestay và khu nghỉ dưỡng ven biển.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Phước Thuận",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-rieng-phuoc-thuan",
+path: "xe-rieng-di-phuoc-thuan-ho-tram",
+from: "TP.HCM",
+to: "Phước Thuận",
+title: "Xe riêng đi Phước Thuận Hồ Tràm",
+description:
+"Xe riêng đi Phước Thuận với tài xế chuyên nghiệp. Không ghép khách, đón tận nơi và phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Phước Thuận",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-xe-phuoc-thuan",
+path: "gia-xe-di-phuoc-thuan-ho-tram",
+from: "TP.HCM",
+to: "Phước Thuận",
+title: "Giá xe đi Phước Thuận Hồ Tràm",
+description:
+"Xem giá xe đi Phước Thuận Hồ Tràm. Xe riêng có tài xế, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Phước Thuận",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// BƯNG RIỀNG
+// =========================
+
+{
+key: "xe-di-bung-rieng",
+path: "thue-xe-di-bung-rieng",
+from: "TP.HCM",
+to: "Bưng Riềng",
+title: "Thuê xe đi Bưng Riềng Hồ Tràm",
+description:
+"Dịch vụ xe riêng đi Bưng Riềng từ TP.HCM. Phù hợp khách nghỉ dưỡng tại khu vực Hồ Tràm và Xuyên Mộc.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Bưng Riềng",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-xe-bung-rieng",
+path: "gia-xe-di-bung-rieng",
+from: "TP.HCM",
+to: "Bưng Riềng",
+title: "Giá xe đi Bưng Riềng Hồ Tràm",
+description:
+"Xem giá xe đi Bưng Riềng theo địa chỉ đón trả thực tế trên GoViet247.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Bưng Riềng",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HÒA BÌNH
+// =========================
+
+{
+key: "gia-xe-hoa-binh-xuyen-moc",
+path: "gia-xe-di-hoa-binh-xuyen-moc",
+from: "TP.HCM",
+to: "Hòa Bình",
+title: "Giá xe đi Hòa Bình Xuyên Mộc",
+description:
+"Xem giá xe đi Hòa Bình Xuyên Mộc. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hòa Bình",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HÒA HIỆP
+// =========================
+
+{
+key: "xe-rieng-hoa-hiep",
+path: "xe-rieng-di-hoa-hiep-xuyen-moc",
+from: "TP.HCM",
+to: "Hòa Hiệp",
+title: "Xe riêng đi Hòa Hiệp Xuyên Mộc",
+description:
+"Đặt xe riêng đi Hòa Hiệp với tài xế chuyên nghiệp. Không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hòa Hiệp",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-xe-hoa-hiep",
+path: "gia-xe-di-hoa-hiep-xuyen-moc",
+from: "TP.HCM",
+to: "Hòa Hiệp",
+title: "Giá xe đi Hòa Hiệp Xuyên Mộc",
+description:
+"Xem giá xe đi Hòa Hiệp theo địa chỉ đón trả thực tế. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hòa Hiệp",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// BÔNG TRANG
+// =========================
+
+{
+key: "gia-xe-bong-trang",
+path: "gia-xe-di-bong-trang",
+from: "TP.HCM",
+to: "Bông Trang",
+title: "Giá xe đi Bông Trang",
+description:
+"Xem giá xe đi Bông Trang nhanh chóng trên GoViet247. Xe riêng, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Xuyên Mộc → Bông Trang",
+duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// CHỢ XUYÊN MỘC
+// =========================
+
+{
+key: "xe-di-cho-xuyen-moc",
+path: "thue-xe-di-cho-xuyen-moc",
+from: "TP.HCM",
+to: "Chợ Xuyên Mộc",
+title: "Thuê xe đi Chợ Xuyên Mộc",
+description:
+"Dịch vụ xe riêng đi Chợ Xuyên Mộc từ TP.HCM. Phù hợp khách về quê, thăm người thân hoặc công tác tại huyện Xuyên Mộc.",
+routeText: "TP.HCM → Long Thành → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "xe-rieng-cho-xuyen-moc",
+path: "xe-rieng-di-cho-xuyen-moc",
+from: "TP.HCM",
+to: "Chợ Xuyên Mộc",
+title: "Xe riêng đi Chợ Xuyên Mộc",
+description:
+"Xe riêng đi Chợ Xuyên Mộc với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "gia-xe-cho-xuyen-moc",
+path: "gia-xe-di-cho-xuyen-moc",
+from: "TP.HCM",
+to: "Chợ Xuyên Mộc",
+title: "Giá xe đi Chợ Xuyên Mộc",
+description:
+"Xem giá xe đi Chợ Xuyên Mộc theo địa chỉ đón trả thực tế. Xe riêng có tài xế.",
+routeText: "TP.HCM → Long Thành → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+
+
 ];

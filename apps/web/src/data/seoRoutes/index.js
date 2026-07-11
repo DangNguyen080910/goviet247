@@ -31,6 +31,7 @@ import { TAYNINH_SEO_ROUTES } from "./tayNinhSeoRoutes.js";
 import { LONGHAI_SEO_ROUTES } from "./longHaiSeoRoutes.js";
 import { MUINE_SEO_ROUTES } from "./muiNeSeoRoutes.js";
 import { BINHCHAU_SEO_ROUTES } from "./binhChauSeoRoutes.js";
+import { LONGAN_SEO_ROUTES } from "./longAnSeoRoutes.js";
 
 
 const assertUniqueSeoRoutes = (items) => {
@@ -113,4 +114,5 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...LONGHAI_SEO_ROUTES,
   ...MUINE_SEO_ROUTES,
   ...BINHCHAU_SEO_ROUTES,
+  ...LONGAN_SEO_ROUTES,
 ]);

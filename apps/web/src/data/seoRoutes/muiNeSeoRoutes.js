@@ -176,21 +176,8 @@ export const MUINE_SEO_ROUTES = [
 // =========================
 
 {
-  key: "can-thue-xe-di-novaworld-phan-thiet",
-  path: "can-thue-xe-di-novaworld-phan-thiet",
-  from: "TP.HCM",
-  to: "NovaWorld Phan Thiết",
-  title: "Xe đi NovaWorld Phan Thiết, xe riêng có tài xế",
-  description:
-    "Dịch vụ xe riêng đi NovaWorld Phan Thiết từ TP.HCM. Đưa đón tận nơi, không ghép khách và phù hợp gia đình nghỉ dưỡng cuối tuần.",
-  routeText:
-    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → NovaWorld",
-  duration: "3 - 4 giờ",
-},
-
-{
   key: "thue-xe-novaworld",
-  path: "thue-xe-di-novaworld-phan-thiet",
+  path: "can-cho-thue-xe-di-novaworld-phan-thiet",
   from: "TP.HCM",
   to: "NovaWorld Phan Thiết",
   title: "Thuê xe đi NovaWorld Phan Thiết giá tốt",
@@ -812,7 +799,7 @@ export const MUINE_SEO_ROUTES = [
 
 {
   key: "thue-xe-pandanus",
-  path: "thue-xe-di-pandanus-resort-mui-ne",
+  path: "can-thue-xe-di-pandanus-resort-mui-ne",
   from: "TP.HCM",
   to: "Pandanus Resort Mũi Né",
   title: "Thuê xe đi Pandanus Resort Mũi Né",
@@ -826,19 +813,6 @@ export const MUINE_SEO_ROUTES = [
 // =========================
 // ANANTARA
 // =========================
-
-{
-  key: "anantara-mui-ne",
-  path: "can-thue-xe-di-anantara-mui-ne",
-  from: "TP.HCM",
-  to: "Anantara Mũi Né",
-  title: "Xe đi Anantara Mũi Né Resort",
-  description:
-    "Xe riêng đi Anantara Mũi Né Resort cho khách nghỉ dưỡng, cặp đôi và gia đình. Đưa đón tận nơi từ TP.HCM.",
-  routeText:
-    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Anantara Mũi Né",
-  duration: "3.5 - 4.5 giờ",
-},
 
 {
   key: "thue-xe-anantara",
@@ -1732,6 +1706,600 @@ export const MUINE_SEO_ROUTES = [
   routeText:
     "TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
   duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 4
+// =========================
+
+{
+  key: "quan-4-mui-ne",
+  path: "thue-xe-tu-quan-4-di-mui-ne",
+  from: "Quận 4",
+  to: "Mũi Né",
+  title: "Thuê xe từ Quận 4 đi Mũi Né, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 4 đi Mũi Né với xe riêng có tài xế. Đón tận nơi tại căn hộ, khách sạn hoặc văn phòng, không ghép khách và phù hợp nghỉ dưỡng cuối tuần tại các resort ven biển Mũi Né.",
+  routeText:
+    "Quận 4 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// QUẬN 5
+// =========================
+
+{
+  key: "quan-5-mui-ne",
+  path: "thue-xe-tu-quan-5-di-mui-ne",
+  from: "Quận 5",
+  to: "Mũi Né",
+  title: "Thuê xe từ Quận 5 đi Mũi Né",
+  description:
+    "Xe riêng từ Quận 5 đi Mũi Né dành cho gia đình, nhóm bạn và khách du lịch. Xe có tài xế riêng, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Quận 5 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// QUẬN 6
+// =========================
+
+{
+  key: "quan-6-mui-ne",
+  path: "thue-xe-tu-quan-6-di-mui-ne",
+  from: "Quận 6",
+  to: "Mũi Né",
+  title: "Thuê xe từ Quận 6 đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Quận 6 đi Mũi Né với lịch trình linh hoạt. Phù hợp gia đình đi nghỉ dưỡng, nhóm bạn du lịch biển hoặc khách cần xe riêng không ghép khách.",
+  routeText:
+    "Quận 6 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// QUẬN 8
+// =========================
+
+{
+  key: "quan-8-mui-ne",
+  path: "thue-xe-tu-quan-8-di-mui-ne",
+  from: "Quận 8",
+  to: "Mũi Né",
+  title: "Thuê xe từ Quận 8 đi Mũi Né",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Mũi Né. Đưa đón tận nơi, không ghép khách, phù hợp các chuyến nghỉ dưỡng tại resort, khách sạn hoặc villa ven biển.",
+  routeText:
+    "Quận 8 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// QUẬN 11
+// =========================
+
+{
+  key: "quan-11-mui-ne",
+  path: "thue-xe-tu-quan-11-di-mui-ne",
+  from: "Quận 11",
+  to: "Mũi Né",
+  title: "Thuê xe từ Quận 11 đi Mũi Né",
+  description:
+    "Xe riêng từ Quận 11 đi Mũi Né với tài xế riêng. Chủ động thời gian khởi hành, không ghép khách và phù hợp gia đình hoặc nhóm bạn đi biển cuối tuần.",
+  routeText:
+    "Quận 11 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// QUẬN 12
+// =========================
+
+{
+  key: "quan-12-mui-ne",
+  path: "thue-xe-tu-quan-12-di-mui-ne",
+  from: "Quận 12",
+  to: "Mũi Né",
+  title: "Thuê xe từ Quận 12 đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Quận 12 đi Mũi Né với xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// TÂN PHÚ
+// =========================
+
+{
+  key: "tan-phu-mui-ne",
+  path: "thue-xe-tu-tan-phu-di-mui-ne",
+  from: "Tân Phú",
+  to: "Mũi Né",
+  title: "Thuê xe từ Tân Phú đi Mũi Né, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Mũi Né với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn hoặc khách nghỉ dưỡng tại các resort ven biển. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Tân Phú → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// BÌNH TÂN
+// =========================
+
+{
+  key: "binh-tan-mui-ne",
+  path: "thue-xe-tu-binh-tan-di-mui-ne",
+  from: "Bình Tân",
+  to: "Mũi Né",
+  title: "Thuê xe từ Bình Tân đi Mũi Né",
+  description:
+    "Xe riêng từ Bình Tân đi Mũi Né dành cho khách du lịch, gia đình và nhóm bạn. Xe có tài xế riêng, lịch trình linh hoạt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// BÌNH CHÁNH
+// =========================
+
+{
+  key: "binh-chanh-mui-ne",
+  path: "thue-xe-tu-binh-chanh-di-mui-ne",
+  from: "Bình Chánh",
+  to: "Mũi Né",
+  title: "Thuê xe từ Bình Chánh đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Bình Chánh đi Mũi Né với xe 5 chỗ, 7 chỗ và 16 chỗ. Không ghép khách, đưa đón tận nơi và phù hợp các chuyến nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Bình Chánh → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// HÓC MÔN
+// =========================
+
+{
+  key: "hoc-mon-mui-ne",
+  path: "thue-xe-tu-hoc-mon-di-mui-ne",
+  from: "Hóc Môn",
+  to: "Mũi Né",
+  title: "Thuê xe từ Hóc Môn đi Mũi Né",
+  description:
+    "Xe riêng từ Hóc Môn đi Mũi Né với tài xế riêng. Phù hợp gia đình, nhóm bạn hoặc khách cần di chuyển thẳng đến resort, khách sạn và khu nghỉ dưỡng ven biển.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// CỦ CHI
+// =========================
+
+{
+  key: "cu-chi-mui-ne",
+  path: "thue-xe-tu-cu-chi-di-mui-ne",
+  from: "Củ Chi",
+  to: "Mũi Né",
+  title: "Thuê xe từ Củ Chi đi Mũi Né",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Mũi Né với xe riêng có tài xế. Đón tận nơi tại nhà riêng, khu dân cư hoặc doanh nghiệp, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// CẦN GIỜ
+// =========================
+
+{
+  key: "can-gio-mui-ne",
+  path: "thue-xe-tu-can-gio-di-mui-ne",
+  from: "Cần Giờ",
+  to: "Mũi Né",
+  title: "Thuê xe từ Cần Giờ đi Mũi Né",
+  description:
+    "Xe riêng từ Cần Giờ đi Mũi Né dành cho gia đình, nhóm bạn và khách nghỉ dưỡng. Xe có tài xế riêng, không ghép khách, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Cần Giờ → TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Mũi Né",
+  duration: "5 - 6 giờ",
+},
+
+// =========================
+// THỦ DẦU MỘT
+// =========================
+
+{
+  key: "thu-dau-mot-mui-ne",
+  path: "thue-xe-tu-thu-dau-mot-di-mui-ne",
+  from: "Thủ Dầu Một",
+  to: "Mũi Né",
+  title: "Thuê xe từ Thủ Dầu Một đi Mũi Né, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Thủ Dầu Một đi Mũi Né dành cho gia đình, nhóm bạn và khách nghỉ dưỡng. Xe riêng không ghép khách, đón tận nơi tại nhà, khách sạn hoặc văn phòng và đưa thẳng đến resort ven biển Mũi Né.",
+  routeText:
+    "Thủ Dầu Một → Quốc lộ 13 → Cao tốc Phan Thiết → Mũi Né",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-thu-dau-mot-mui-ne",
+  path: "xe-rieng-tu-thu-dau-mot-di-mui-ne",
+  from: "Thủ Dầu Một",
+  to: "Mũi Né",
+  title: "Xe riêng từ Thủ Dầu Một đi Mũi Né",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Mũi Né với tài xế riêng, lịch trình linh hoạt và đưa đón tận nơi. Phù hợp các chuyến nghỉ dưỡng cuối tuần, du lịch biển hoặc công tác.",
+  routeText:
+    "Thủ Dầu Một → Quốc lộ 13 → Cao tốc Phan Thiết → Mũi Né",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TÂN UYÊN
+// =========================
+
+{
+  key: "tan-uyen-mui-ne",
+  path: "thue-xe-tu-tan-uyen-di-mui-ne",
+  from: "Tân Uyên",
+  to: "Mũi Né",
+  title: "Thuê xe từ Tân Uyên đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Tân Uyên đi Mũi Né với xe 5 chỗ, 7 chỗ và 16 chỗ. Không ghép khách, biết giá trước khi đặt và phù hợp gia đình hoặc nhóm bạn du lịch biển.",
+  routeText:
+    "Tân Uyên → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tan-uyen-mui-ne",
+  path: "xe-rieng-tu-tan-uyen-di-mui-ne",
+  from: "Tân Uyên",
+  to: "Mũi Né",
+  title: "Xe riêng từ Tân Uyên đi Mũi Né",
+  description:
+    "Xe riêng từ Tân Uyên đi Mũi Né với tài xế riêng. Đưa đón tận nơi, thanh toán sau chuyến đi và phù hợp các chuyến nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Tân Uyên → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// BÀU BÀNG
+// =========================
+
+{
+  key: "bau-bang-mui-ne",
+  path: "thue-xe-tu-bau-bang-di-mui-ne",
+  from: "Bàu Bàng",
+  to: "Mũi Né",
+  title: "Thuê xe từ Bàu Bàng đi Mũi Né",
+  description:
+    "Dịch vụ thuê xe từ Bàu Bàng đi Mũi Né dành cho gia đình, chuyên gia, khách công tác và nhóm du lịch. Xe riêng có tài xế, không ghép khách và đón tận nơi.",
+  routeText:
+    "Bàu Bàng → Quốc lộ 13 → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "xe-rieng-bau-bang-mui-ne",
+  path: "xe-rieng-tu-bau-bang-di-mui-ne",
+  from: "Bàu Bàng",
+  to: "Mũi Né",
+  title: "Xe riêng từ Bàu Bàng đi Mũi Né",
+  description:
+    "Xe riêng từ Bàu Bàng đi Mũi Né với tài xế riêng. Chủ động thời gian khởi hành, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Bàu Bàng → Quốc lộ 13 → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// PHÚ GIÁO
+// =========================
+
+{
+  key: "phu-giao-mui-ne",
+  path: "thue-xe-tu-phu-giao-di-mui-ne",
+  from: "Phú Giáo",
+  to: "Mũi Né",
+  title: "Thuê xe từ Phú Giáo đi Mũi Né",
+  description:
+    "Xe riêng từ Phú Giáo đi Mũi Né dành cho khách nghỉ dưỡng, gia đình và nhóm bạn. Đưa đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Phú Giáo → ĐT741 → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "xe-rieng-phu-giao-mui-ne",
+  path: "xe-rieng-tu-phu-giao-di-mui-ne",
+  from: "Phú Giáo",
+  to: "Mũi Né",
+  title: "Xe riêng từ Phú Giáo đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Phú Giáo đi Mũi Né với tài xế riêng. Phù hợp du lịch biển, nghỉ dưỡng cuối tuần hoặc các chuyến đi gia đình.",
+  routeText:
+    "Phú Giáo → ĐT741 → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// BẮC TÂN UYÊN
+// =========================
+
+{
+  key: "bac-tan-uyen-mui-ne",
+  path: "thue-xe-tu-bac-tan-uyen-di-mui-ne",
+  from: "Bắc Tân Uyên",
+  to: "Mũi Né",
+  title: "Thuê xe từ Bắc Tân Uyên đi Mũi Né",
+  description:
+    "Dịch vụ thuê xe từ Bắc Tân Uyên đi Mũi Né với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng muốn di chuyển thẳng đến resort, khách sạn hoặc villa ven biển.",
+  routeText:
+    "Bắc Tân Uyên → ĐT746 → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "xe-rieng-bac-tan-uyen-mui-ne",
+  path: "xe-rieng-tu-bac-tan-uyen-di-mui-ne",
+  from: "Bắc Tân Uyên",
+  to: "Mũi Né",
+  title: "Xe riêng từ Bắc Tân Uyên đi Mũi Né",
+  description:
+    "Xe riêng từ Bắc Tân Uyên đi Mũi Né với tài xế riêng, không ghép khách và đưa đón tận nơi. Chủ động thời gian khởi hành và thanh toán sau chuyến đi.",
+  routeText:
+    "Bắc Tân Uyên → ĐT746 → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// DẦU TIẾNG
+// =========================
+
+{
+  key: "dau-tieng-mui-ne",
+  path: "thue-xe-tu-dau-tieng-di-mui-ne",
+  from: "Dầu Tiếng",
+  to: "Mũi Né",
+  title: "Thuê xe từ Dầu Tiếng đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Dầu Tiếng đi Mũi Né dành cho gia đình, khách công tác và nhóm bạn du lịch biển. Xe có tài xế riêng, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Dầu Tiếng → Quốc lộ 13 → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "xe-rieng-dau-tieng-mui-ne",
+  path: "xe-rieng-tu-dau-tieng-di-mui-ne",
+  from: "Dầu Tiếng",
+  to: "Mũi Né",
+  title: "Xe riêng từ Dầu Tiếng đi Mũi Né",
+  description:
+    "Xe riêng từ Dầu Tiếng đi Mũi Né với lịch trình linh hoạt. Phù hợp các chuyến nghỉ dưỡng cuối tuần, du lịch biển hoặc đưa đón người thân.",
+  routeText:
+    "Dầu Tiếng → Quốc lộ 13 → Quốc lộ 1A → Cao tốc Phan Thiết → Mũi Né",
+  duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// TRẢNG BOM
+// =========================
+
+{
+  key: "trang-bom-mui-ne",
+  path: "thue-xe-tu-trang-bom-di-mui-ne",
+  from: "Trảng Bom",
+  to: "Mũi Né",
+  title: "Thuê xe từ Trảng Bom đi Mũi Né, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Trảng Bom đi Mũi Né với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp gia đình, nhóm bạn hoặc khách nghỉ dưỡng tại các resort ven biển Mũi Né.",
+  routeText:
+    "Trảng Bom → Cao tốc Phan Thiết → Phan Thiết → Mũi Né",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-trang-bom-mui-ne",
+  path: "xe-rieng-tu-trang-bom-di-mui-ne",
+  from: "Trảng Bom",
+  to: "Mũi Né",
+  title: "Xe riêng từ Trảng Bom đi Mũi Né",
+  description:
+    "Xe riêng từ Trảng Bom đi Mũi Né với tài xế riêng, lịch trình linh hoạt và chủ động thời gian khởi hành. Phù hợp các chuyến nghỉ dưỡng cuối tuần hoặc du lịch biển.",
+  routeText:
+    "Trảng Bom → Cao tốc Phan Thiết → Phan Thiết → Mũi Né",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// LONG THÀNH
+// =========================
+
+{
+  key: "long-thanh-mui-ne",
+  path: "thue-xe-tu-long-thanh-di-mui-ne",
+  from: "Long Thành",
+  to: "Mũi Né",
+  title: "Thuê xe từ Long Thành đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Long Thành đi Mũi Né với xe 5 chỗ, 7 chỗ và 16 chỗ. Không ghép khách, đón tận nơi và phù hợp gia đình, nhóm bạn hoặc khách công tác kết hợp nghỉ dưỡng.",
+  routeText:
+    "Long Thành → Cao tốc Phan Thiết → Mũi Né",
+  duration: "2 - 3 giờ",
+},
+
+{
+  key: "xe-rieng-long-thanh-mui-ne",
+  path: "xe-rieng-tu-long-thanh-di-mui-ne",
+  from: "Long Thành",
+  to: "Mũi Né",
+  title: "Xe riêng từ Long Thành đi Mũi Né",
+  description:
+    "Xe riêng từ Long Thành đi Mũi Né với tài xế riêng. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Long Thành → Cao tốc Phan Thiết → Mũi Né",
+  duration: "2 - 3 giờ",
+},
+
+// =========================
+// NHƠN TRẠCH
+// =========================
+
+{
+  key: "nhon-trach-mui-ne",
+  path: "thue-xe-tu-nhon-trach-di-mui-ne",
+  from: "Nhơn Trạch",
+  to: "Mũi Né",
+  title: "Thuê xe từ Nhơn Trạch đi Mũi Né",
+  description:
+    "Dịch vụ thuê xe từ Nhơn Trạch đi Mũi Né với xe riêng có tài xế. Phù hợp chuyên gia, gia đình và nhóm bạn muốn di chuyển thẳng đến resort hoặc khách sạn ven biển.",
+  routeText:
+    "Nhơn Trạch → Cao tốc Long Thành → Cao tốc Phan Thiết → Mũi Né",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-nhon-trach-mui-ne",
+  path: "xe-rieng-tu-nhon-trach-di-mui-ne",
+  from: "Nhơn Trạch",
+  to: "Mũi Né",
+  title: "Xe riêng từ Nhơn Trạch đi Mũi Né",
+  description:
+    "Xe riêng từ Nhơn Trạch đi Mũi Né với tài xế riêng, không ghép khách và đưa đón tận nơi. Chủ động thời gian và thanh toán sau chuyến đi.",
+  routeText:
+    "Nhơn Trạch → Cao tốc Long Thành → Cao tốc Phan Thiết → Mũi Né",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// VĨNH CỬU
+// =========================
+
+{
+  key: "vinh-cuu-mui-ne",
+  path: "thue-xe-tu-vinh-cuu-di-mui-ne",
+  from: "Vĩnh Cửu",
+  to: "Mũi Né",
+  title: "Thuê xe từ Vĩnh Cửu đi Mũi Né, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Vĩnh Cửu đi Mũi Né với xe riêng có tài xế. Phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng muốn di chuyển thoải mái đến các resort, khách sạn ven biển Mũi Né.",
+  routeText:
+    "Vĩnh Cửu → Biên Hòa → Cao tốc Phan Thiết → Mũi Né",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-vinh-cuu-mui-ne",
+  path: "xe-rieng-tu-vinh-cuu-di-mui-ne",
+  from: "Vĩnh Cửu",
+  to: "Mũi Né",
+  title: "Xe riêng từ Vĩnh Cửu đi Mũi Né",
+  description:
+    "Xe riêng từ Vĩnh Cửu đi Mũi Né với tài xế riêng, không ghép khách và đưa đón tận nơi. Chủ động lịch trình và biết giá trước khi đặt.",
+  routeText:
+    "Vĩnh Cửu → Biên Hòa → Cao tốc Phan Thiết → Mũi Né",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// XUÂN LỘC
+// =========================
+
+{
+  key: "xuan-loc-mui-ne",
+  path: "thue-xe-tu-xuan-loc-di-mui-ne",
+  from: "Xuân Lộc",
+  to: "Mũi Né",
+  title: "Thuê xe từ Xuân Lộc đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Xuân Lộc đi Mũi Né với xe 5 chỗ, 7 chỗ và 16 chỗ. Phù hợp gia đình, khách du lịch và nhóm bạn đi nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Xuân Lộc → Quốc lộ 1A → Phan Thiết → Mũi Né",
+  duration: "2 - 3 giờ",
+},
+
+{
+  key: "xe-rieng-xuan-loc-mui-ne",
+  path: "xe-rieng-tu-xuan-loc-di-mui-ne",
+  from: "Xuân Lộc",
+  to: "Mũi Né",
+  title: "Xe riêng từ Xuân Lộc đi Mũi Né",
+  description:
+    "Xe riêng từ Xuân Lộc đi Mũi Né với tài xế riêng. Không ghép khách, đón tận nơi và phù hợp các chuyến du lịch biển hoặc công tác.",
+  routeText:
+    "Xuân Lộc → Quốc lộ 1A → Phan Thiết → Mũi Né",
+  duration: "2 - 3 giờ",
+},
+
+// =========================
+// ĐỊNH QUÁN
+// =========================
+
+{
+  key: "dinh-quan-mui-ne",
+  path: "thue-xe-tu-dinh-quan-di-mui-ne",
+  from: "Định Quán",
+  to: "Mũi Né",
+  title: "Thuê xe từ Định Quán đi Mũi Né",
+  description:
+    "Dịch vụ thuê xe từ Định Quán đi Mũi Né với xe riêng có tài xế. Phù hợp khách du lịch, gia đình và nhóm bạn muốn đến Mũi Né nhanh chóng và thoải mái.",
+  routeText:
+    "Định Quán → Quốc lộ 20 → Quốc lộ 1A → Phan Thiết → Mũi Né",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-dinh-quan-mui-ne",
+  path: "xe-rieng-tu-dinh-quan-di-mui-ne",
+  from: "Định Quán",
+  to: "Mũi Né",
+  title: "Xe riêng từ Định Quán đi Mũi Né",
+  description:
+    "Xe riêng từ Định Quán đi Mũi Né với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp các chuyến nghỉ dưỡng cuối tuần và du lịch biển.",
+  routeText:
+    "Định Quán → Quốc lộ 20 → Quốc lộ 1A → Phan Thiết → Mũi Né",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// CẨM MỸ
+// =========================
+
+{
+  key: "cam-my-mui-ne",
+  path: "thue-xe-tu-cam-my-di-mui-ne",
+  from: "Cẩm Mỹ",
+  to: "Mũi Né",
+  title: "Thuê xe từ Cẩm Mỹ đi Mũi Né",
+  description:
+    "Thuê xe riêng từ Cẩm Mỹ đi Mũi Né với tài xế riêng. Xe không ghép khách, đưa đón tận nơi và phù hợp gia đình, nhóm bạn hoặc khách nghỉ dưỡng.",
+  routeText:
+    "Cẩm Mỹ → Quốc lộ 56 → Quốc lộ 1A → Phan Thiết → Mũi Né",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-cam-my-mui-ne",
+  path: "xe-rieng-tu-cam-my-di-mui-ne",
+  from: "Cẩm Mỹ",
+  to: "Mũi Né",
+  title: "Xe riêng từ Cẩm Mỹ đi Mũi Né",
+  description:
+    "Xe riêng từ Cẩm Mỹ đi Mũi Né với lịch trình linh hoạt, tài xế riêng và không ghép khách. Phù hợp các chuyến đi biển, nghỉ dưỡng hoặc thăm người thân.",
+  routeText:
+    "Cẩm Mỹ → Quốc lộ 56 → Quốc lộ 1A → Phan Thiết → Mũi Né",
+  duration: "2.5 - 3.5 giờ",
 },
 
 ];

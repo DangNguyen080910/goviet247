@@ -1272,8 +1272,8 @@ export const BINHCHAU_SEO_ROUTES = [
 // =========================
 
 {
-  key: "xe-di-xuyen-moc",
-  path: "thue-xe-di-xuyen-moc",
+  key: "can-xe-di-xuyen-moc",
+  path: "can-thue-xe-di-xuyen-moc",
   from: "TP.HCM",
   to: "Xuyên Mộc",
   title: "Thuê xe đi Xuyên Mộc",
@@ -1291,18 +1291,6 @@ export const BINHCHAU_SEO_ROUTES = [
   title: "Xe về Xuyên Mộc",
   description:
     "Xe riêng về Xuyên Mộc, đưa đón tận nơi và không ghép khách. Phù hợp gia đình và khách công tác.",
-  routeText: "TP.HCM → Long Thành → Xuyên Mộc",
-  duration: "2.5 - 3 giờ",
-},
-
-{
-  key: "gia-xe-xuyen-moc",
-  path: "gia-thue-xe-di-xuyen-moc",
-  from: "TP.HCM",
-  to: "Xuyên Mộc",
-  title: "Giá thuê xe đi Xuyên Mộc",
-  description:
-    "Xem giá thuê xe đi Xuyên Mộc theo địa chỉ đón trả thực tế và loại xe khách lựa chọn.",
   routeText: "TP.HCM → Long Thành → Xuyên Mộc",
   duration: "2.5 - 3 giờ",
 },
@@ -1331,18 +1319,6 @@ export const BINHCHAU_SEO_ROUTES = [
   title: "Xe riêng đi Hồ Cốc",
   description:
     "Đặt xe riêng đi Hồ Cốc cho gia đình, nhóm bạn hoặc cặp đôi muốn tận hưởng không gian biển yên tĩnh.",
-  routeText: "TP.HCM → Long Thành → Hồ Cốc",
-  duration: "2.5 - 3.5 giờ",
-},
-
-{
-  key: "gia-xe-ho-coc",
-  path: "gia-thue-xe-di-ho-coc",
-  from: "TP.HCM",
-  to: "Hồ Cốc",
-  title: "Giá thuê xe đi Hồ Cốc",
-  description:
-    "Xem giá thuê xe đi Hồ Cốc nhanh chóng trên GoViet247. Xe riêng, không ghép khách và biết giá trước khi đặt.",
   routeText: "TP.HCM → Long Thành → Hồ Cốc",
   duration: "2.5 - 3.5 giờ",
 },
@@ -2132,62 +2108,6 @@ export const BINHCHAU_SEO_ROUTES = [
 },
 
 // =========================
-// QUẬN 7 → BÌNH CHÂU
-// =========================
-
-{
-  key: "quan-7-binh-chau",
-  path: "thue-xe-tu-quan-7-di-binh-chau",
-  from: "Quận 7, TP.HCM",
-  to: "Bình Châu",
-  title: "Thuê xe từ Quận 7 đi Bình Châu",
-  description:
-    "Đặt xe từ Quận 7 đi Bình Châu với tài xế riêng. Đón tận nơi tại Phú Mỹ Hưng, căn hộ hoặc nhà riêng.",
-  routeText: "Quận 7 → Long Thành → Xuyên Mộc → Bình Châu",
-  duration: "2.5 - 3.5 giờ",
-},
-
-{
-  key: "xe-rieng-quan-7-binh-chau",
-  path: "xe-rieng-tu-quan-7-di-binh-chau",
-  from: "Quận 7, TP.HCM",
-  to: "Bình Châu",
-  title: "Xe riêng từ Quận 7 đi Bình Châu",
-  description:
-    "Xe riêng từ Quận 7 đi Bình Châu cho gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần.",
-  routeText: "Quận 7 → Long Thành → Bình Châu",
-  duration: "2.5 - 3.5 giờ",
-},
-
-// =========================
-// THỦ ĐỨC → BÌNH CHÂU
-// =========================
-
-{
-  key: "thu-duc-binh-chau",
-  path: "thue-xe-tu-thu-duc-di-binh-chau",
-  from: "TP. Thủ Đức",
-  to: "Bình Châu",
-  title: "Thuê xe từ Thủ Đức đi Bình Châu",
-  description:
-    "Thuê xe từ Thủ Đức đi Bình Châu với xe riêng có tài xế. Thuận tiện cho khách khu vực Thảo Điền, An Phú và Vinhomes Grand Park.",
-  routeText: "Thủ Đức → Long Thành → Xuyên Mộc → Bình Châu",
-  duration: "2 - 3 giờ",
-},
-
-{
-  key: "xe-rieng-thu-duc-binh-chau",
-  path: "xe-rieng-tu-thu-duc-di-binh-chau",
-  from: "TP. Thủ Đức",
-  to: "Bình Châu",
-  title: "Xe riêng từ Thủ Đức đi Bình Châu",
-  description:
-    "Xe riêng từ Thủ Đức đi Bình Châu với tài xế riêng, đón tận nơi và chủ động lịch trình.",
-  routeText: "Thủ Đức → Long Thành → Bình Châu",
-  duration: "2 - 3 giờ",
-},
-
-// =========================
 // GÒ VẤP → BÌNH CHÂU
 // =========================
 
@@ -2584,18 +2504,6 @@ export const BINHCHAU_SEO_ROUTES = [
 // =========================
 
 {
-  key: "xe-di-bung-rieng",
-  path: "thue-xe-di-bung-rieng-xuyen-moc",
-  from: "TP.HCM",
-  to: "Bưng Riềng",
-  title: "Thuê xe đi Bưng Riềng Xuyên Mộc",
-  description:
-    "Dịch vụ thuê xe đi Bưng Riềng thuộc huyện Xuyên Mộc. Xe riêng có tài xế, phù hợp nghỉ dưỡng ven biển và lưu trú resort.",
-  routeText: "TP.HCM → Long Thành → Xuyên Mộc → Bưng Riềng",
-  duration: "2.5 - 3.5 giờ",
-},
-
-{
   key: "xe-rieng-bung-rieng",
   path: "xe-rieng-di-bung-rieng",
   from: "TP.HCM",
@@ -2648,18 +2556,6 @@ export const BINHCHAU_SEO_ROUTES = [
   description:
     "Thuê xe đi Hòa Hiệp Xuyên Mộc với xe riêng có tài xế. Đưa đón tận nơi và biết giá trước khi đặt.",
   routeText: "TP.HCM → Long Thành → Xuyên Mộc → Hòa Hiệp",
-  duration: "2.5 - 3.5 giờ",
-},
-
-{
-  key: "xe-rieng-hoa-hiep",
-  path: "xe-rieng-di-hoa-hiep-xuyen-moc",
-  from: "TP.HCM",
-  to: "Hòa Hiệp",
-  title: "Xe riêng đi Hòa Hiệp Xuyên Mộc",
-  description:
-    "Xe riêng đi Hòa Hiệp dành cho gia đình, khách công tác hoặc khách nghỉ dưỡng khu vực Xuyên Mộc.",
-  routeText: "TP.HCM → Long Thành → Hòa Hiệp",
   duration: "2.5 - 3.5 giờ",
 },
 
@@ -2889,34 +2785,6 @@ export const BINHCHAU_SEO_ROUTES = [
 },
 
 // =========================
-// PHƯỚC THUẬN
-// =========================
-
-{
-  key: "xe-di-phuoc-thuan",
-  path: "thue-xe-di-phuoc-thuan-xuyen-moc",
-  from: "TP.HCM",
-  to: "Phước Thuận",
-  title: "Thuê xe đi Phước Thuận Xuyên Mộc",
-  description:
-    "Thuê xe đi Phước Thuận với xe riêng có tài xế. Khu vực gần Hồ Tràm, Hồ Cốc và nhiều resort nghỉ dưỡng.",
-  routeText: "TP.HCM → Long Thành → Xuyên Mộc → Phước Thuận",
-  duration: "2.5 - 3.5 giờ",
-},
-
-{
-  key: "xe-rieng-phuoc-thuan",
-  path: "xe-rieng-di-phuoc-thuan",
-  from: "TP.HCM",
-  to: "Phước Thuận",
-  title: "Xe riêng đi Phước Thuận",
-  description:
-    "Xe riêng đi Phước Thuận cho khách nghỉ dưỡng, du lịch biển hoặc công tác tại khu vực Hồ Tràm.",
-  routeText: "TP.HCM → Long Thành → Phước Thuận",
-  duration: "2.5 - 3.5 giờ",
-},
-
-// =========================
 // BÌNH CHÂU
 // =========================
 
@@ -2977,18 +2845,6 @@ export const BINHCHAU_SEO_ROUTES = [
 // =========================
 
 {
-  key: "xe-di-hoa-binh-xuyen-moc",
-  path: "thue-xe-di-hoa-binh-xuyen-moc",
-  from: "TP.HCM",
-  to: "Hòa Bình",
-  title: "Thuê xe đi Hòa Bình Xuyên Mộc",
-  description:
-    "Dịch vụ thuê xe đi Hòa Bình thuộc huyện Xuyên Mộc. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
-  routeText: "TP.HCM → Long Thành → Xuyên Mộc → Hòa Bình",
-  duration: "2.5 - 3.5 giờ",
-},
-
-{
   key: "xe-rieng-hoa-binh-xuyen-moc",
   path: "xe-rieng-di-hoa-binh-xuyen-moc",
   from: "TP.HCM",
@@ -2999,5 +2855,2468 @@ export const BINHCHAU_SEO_ROUTES = [
   routeText: "TP.HCM → Long Thành → Hòa Bình",
   duration: "2.5 - 3.5 giờ",
 },
+
+
+// =========================
+// QUẬN 4 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-4-binh-chau",
+  path: "thue-xe-tu-quan-4-di-binh-chau",
+  from: "Quận 4, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 4 đi Bình Châu",
+  description:
+    "Thuê xe từ Quận 4 đi Bình Châu với tài xế riêng, đưa đón tận nơi và không ghép khách. Chuyến xe phù hợp gia đình đi suối khoáng nóng, nhóm bạn nghỉ cuối tuần hoặc khách lưu trú tại resort ven biển Bình Châu.",
+  routeText:
+    "Quận 4 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-4-binh-chau",
+  path: "xe-rieng-tu-quan-4-di-binh-chau",
+  from: "Quận 4, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 4 đi Bình Châu",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bình Châu để chủ động thời gian và điểm đón trả. Xe phục vụ riêng từng nhóm khách, phù hợp chuyến nghỉ dưỡng ngắn ngày, tham quan biển hoặc thư giãn tại khu khoáng nóng.",
+  routeText:
+    "Quận 4 → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 5 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-5-binh-chau",
+  path: "thue-xe-tu-quan-5-di-binh-chau",
+  from: "Quận 5, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 5 đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Quận 5 đi Bình Châu dành cho gia đình, người lớn tuổi và nhóm khách nghỉ dưỡng. Xe riêng có tài xế, đón theo địa chỉ thực tế và thuận tiện di chuyển đến Minera Hot Springs, resort hoặc biển Bình Châu.",
+  routeText:
+    "Quận 5 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-5-binh-chau",
+  path: "xe-rieng-tu-quan-5-di-binh-chau",
+  from: "Quận 5, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 5 đi Bình Châu",
+  description:
+    "Xe riêng từ Quận 5 đi Bình Châu giúp khách thoải mái mang hành lý, chủ động dừng nghỉ và không phải ghép chung với người lạ. Phù hợp chuyến đi gia đình, nghỉ dưỡng cuối tuần hoặc thăm người thân tại Xuyên Mộc.",
+  routeText:
+    "Quận 5 → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 6 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-6-binh-chau",
+  path: "thue-xe-tu-quan-6-di-binh-chau",
+  from: "Quận 6, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 6 đi Bình Châu",
+  description:
+    "Thuê xe từ Quận 6 đi Bình Châu với xe riêng có tài xế, phù hợp gia đình đông người, nhóm bạn hoặc khách cần nghỉ dưỡng gần biển. Đón tận nơi, không đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-6-binh-chau",
+  path: "xe-rieng-tu-quan-6-di-binh-chau",
+  from: "Quận 6, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 6 đi Bình Châu",
+  description:
+    "Xe riêng từ Quận 6 đi Bình Châu với lịch trình linh hoạt, đưa đón tận nơi tại nhà, khu dân cư hoặc điểm hẹn. Phù hợp khách đi tắm khoáng nóng, nghỉ tại resort hoặc kết hợp tham quan Hồ Cốc và Hồ Tràm.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 8 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-8-binh-chau",
+  path: "thue-xe-tu-quan-8-di-binh-chau",
+  from: "Quận 8, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 8 đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Bình Châu với xe 5 chỗ, 7 chỗ và 16 chỗ có tài xế. Xe đón tận nơi, không ghép khách và phù hợp chuyến nghỉ dưỡng gia đình, du lịch biển hoặc thư giãn tại khu khoáng nóng.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-8-binh-chau",
+  path: "xe-rieng-tu-quan-8-di-binh-chau",
+  from: "Quận 8, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 8 đi Bình Châu",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Bình Châu để chủ động giờ xuất phát và địa điểm dừng nghỉ. Xe phục vụ riêng cho gia đình hoặc nhóm khách, đưa thẳng đến resort, homestay hay khu dân cư theo yêu cầu.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 10 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-10-binh-chau",
+  path: "thue-xe-tu-quan-10-di-binh-chau",
+  from: "Quận 10, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 10 đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Bình Châu với xe riêng có tài xế, đón tận nơi tại nhà riêng, bệnh viện, khách sạn hoặc văn phòng. Phù hợp gia đình, nhóm bạn và người lớn tuổi đi nghỉ dưỡng, tắm khoáng nóng hoặc lưu trú tại resort khu vực Bình Châu.",
+  routeText:
+    "Quận 10 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-10-binh-chau",
+  path: "xe-rieng-tu-quan-10-di-binh-chau",
+  from: "Quận 10, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 10 đi Bình Châu",
+  description:
+    "Xe riêng từ Quận 10 đi Bình Châu giúp khách chủ động giờ xuất phát, điểm dừng nghỉ và địa chỉ trả khách. Không ghép khách, biết giá trước khi đặt và thuận tiện di chuyển thẳng đến Minera Hot Springs, resort hoặc biển Bình Châu.",
+  routeText:
+    "Quận 10 → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 11 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-11-binh-chau",
+  path: "thue-xe-tu-quan-11-di-binh-chau",
+  from: "Quận 11, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 11 đi Bình Châu",
+  description:
+    "Thuê xe từ Quận 11 đi Bình Châu với tài xế riêng, đưa đón tận nơi và không ghép khách. Dịch vụ phù hợp gia đình đi nghỉ dưỡng cuối tuần, nhóm bạn tham quan biển hoặc khách muốn thư giãn tại khu suối khoáng nóng Bình Châu.",
+  routeText:
+    "Quận 11 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-11-binh-chau",
+  path: "xe-rieng-tu-quan-11-di-binh-chau",
+  from: "Quận 11, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 11 đi Bình Châu",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Bình Châu để có hành trình riêng tư và thoải mái hơn. Xe đón theo địa chỉ thực tế, chủ động dừng nghỉ khi cần và đưa khách tận nơi tại resort, homestay hoặc nhà riêng.",
+  routeText:
+    "Quận 11 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 12 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-12-binh-chau",
+  path: "thue-xe-tu-quan-12-di-binh-chau",
+  from: "Quận 12, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 12 đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Quận 12 đi Bình Châu với xe 5 chỗ, 7 chỗ và 16 chỗ có tài xế. Đón tận nơi tại nhà, khu dân cư hoặc điểm hẹn, phù hợp gia đình, nhóm bạn và khách đi nghỉ dưỡng ven biển cuối tuần.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-12-binh-chau",
+  path: "xe-rieng-tu-quan-12-di-binh-chau",
+  from: "Quận 12, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 12 đi Bình Châu",
+  description:
+    "Xe riêng từ Quận 12 đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Khách có thể đi thẳng đến khu khoáng nóng, resort ven biển hoặc kết hợp tham quan Hồ Cốc và Xuyên Mộc.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// BÌNH THẠNH → BÌNH CHÂU
+// =========================
+
+{
+  key: "binh-thanh-binh-chau",
+  path: "thue-xe-tu-binh-thanh-di-binh-chau",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Bình Thạnh đi Bình Châu",
+  description:
+    "Thuê xe từ Bình Thạnh đi Bình Châu với xe riêng có tài xế, thuận tiện đón khách tại căn hộ, khách sạn hoặc nhà riêng. Phù hợp gia đình, cặp đôi và nhóm bạn đi tắm khoáng nóng, nghỉ dưỡng resort hoặc du lịch biển.",
+  routeText:
+    "Bình Thạnh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-binh-thanh-binh-chau",
+  path: "xe-rieng-tu-binh-thanh-di-binh-chau",
+  from: "Bình Thạnh, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Bình Thạnh đi Bình Châu",
+  description:
+    "Xe riêng từ Bình Thạnh đi Bình Châu giúp khách chủ động giờ đi và không gian riêng trong suốt hành trình. Đưa đón tận nơi, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bình Thạnh → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// PHÚ NHUẬN → BÌNH CHÂU
+// =========================
+
+{
+  key: "phu-nhuan-binh-chau",
+  path: "thue-xe-tu-phu-nhuan-di-binh-chau",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Phú Nhuận đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Phú Nhuận đi Bình Châu với tài xế riêng, đón tận nơi tại nhà, khách sạn hoặc khu vực gần sân bay. Phù hợp khách nghỉ dưỡng cuối tuần, gia đình có trẻ nhỏ và người lớn tuổi cần chuyến đi riêng tư.",
+  routeText:
+    "Phú Nhuận → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-phu-nhuan-binh-chau",
+  path: "xe-rieng-tu-phu-nhuan-di-binh-chau",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Phú Nhuận đi Bình Châu",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Bình Châu để được đón đúng địa chỉ và di chuyển thẳng đến resort, biển hoặc suối khoáng nóng. Xe không ghép khách, lịch trình linh hoạt và biết giá trước khi đặt.",
+  routeText:
+    "Phú Nhuận → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// TÂN PHÚ → BÌNH CHÂU
+// =========================
+
+{
+  key: "tan-phu-binh-chau",
+  path: "thue-xe-tu-tan-phu-di-binh-chau",
+  from: "Tân Phú, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Tân Phú đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Bình Châu với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp gia đình, nhóm bạn hoặc cặp đôi muốn nghỉ dưỡng tại các resort ven biển, khu suối khoáng nóng và điểm du lịch nổi tiếng của Bình Châu.",
+  routeText:
+    "Tân Phú → Quốc lộ 1A → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tan-phu-binh-chau",
+  path: "xe-rieng-tu-tan-phu-di-binh-chau",
+  from: "Tân Phú, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Tân Phú đi Bình Châu",
+  description:
+    "Xe riêng từ Tân Phú đi Bình Châu với lịch trình linh hoạt, tài xế riêng và không gian thoải mái cho cả gia đình. Đưa đón tận nơi và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Tân Phú → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// BÌNH TÂN → BÌNH CHÂU
+// =========================
+
+{
+  key: "binh-tan-binh-chau",
+  path: "thue-xe-tu-binh-tan-di-binh-chau",
+  from: "Bình Tân, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Bình Tân đi Bình Châu",
+  description:
+    "Thuê xe từ Bình Tân đi Bình Châu với xe 5 chỗ, 7 chỗ và 16 chỗ có tài xế. Xe riêng không ghép khách, phù hợp các chuyến du lịch biển, nghỉ dưỡng cuối tuần hoặc đưa đón người thân.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-binh-tan-binh-chau",
+  path: "xe-rieng-tu-binh-tan-di-binh-chau",
+  from: "Bình Tân, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Bình Tân đi Bình Châu",
+  description:
+    "Xe riêng từ Bình Tân đi Bình Châu giúp khách chủ động thời gian khởi hành và điểm dừng nghỉ. Phù hợp gia đình có trẻ nhỏ hoặc nhóm khách mang nhiều hành lý đi nghỉ dưỡng.",
+  routeText:
+    "Bình Tân → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// NHÀ BÈ → BÌNH CHÂU
+// =========================
+
+{
+  key: "nha-be-binh-chau",
+  path: "thue-xe-tu-nha-be-di-binh-chau",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Nhà Bè đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Nhà Bè đi Bình Châu với xe riêng có tài xế. Đón tận nơi tại khu dân cư, căn hộ hoặc biệt thự, phù hợp gia đình và nhóm bạn đi nghỉ dưỡng tại Bình Châu.",
+  routeText:
+    "Nhà Bè → Nguyễn Hữu Thọ → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-nha-be-binh-chau",
+  path: "xe-rieng-tu-nha-be-di-binh-chau",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Nhà Bè đi Bình Châu",
+  description:
+    "Xe riêng từ Nhà Bè đi Bình Châu với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp các chuyến nghỉ dưỡng cuối tuần hoặc lưu trú dài ngày tại resort ven biển.",
+  routeText:
+    "Nhà Bè → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// BÌNH CHÁNH → BÌNH CHÂU
+// =========================
+
+{
+  key: "binh-chanh-binh-chau",
+  path: "thue-xe-tu-binh-chanh-di-binh-chau",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Bình Chánh đi Bình Châu",
+  description:
+    "Thuê xe riêng từ Bình Chánh đi Bình Châu với xe đời mới, tài xế kinh nghiệm và lịch trình linh hoạt. Phù hợp gia đình, nhóm bạn hoặc khách cần xe riêng đi nghỉ dưỡng.",
+  routeText:
+    "Bình Chánh → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-binh-chanh-binh-chau",
+  path: "xe-rieng-tu-binh-chanh-di-binh-chau",
+  from: "Bình Chánh, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Bình Chánh đi Bình Châu",
+  description:
+    "Xe riêng từ Bình Chánh đi Bình Châu không ghép khách, đưa đón tận nơi và biết giá trước khi đặt. Phù hợp các chuyến đi gia đình hoặc du lịch cuối tuần.",
+  routeText:
+    "Bình Chánh → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// HÓC MÔN → BÌNH CHÂU
+// =========================
+
+{
+  key: "hoc-mon-binh-chau",
+  path: "thue-xe-tu-hoc-mon-di-binh-chau",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Hóc Môn đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng. Xe đón tận nơi, không ghép khách và đưa thẳng đến khu suối khoáng nóng, resort hoặc bãi biển Bình Châu.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-hoc-mon-binh-chau",
+  path: "xe-rieng-tu-hoc-mon-di-binh-chau",
+  from: "Hóc Môn, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Hóc Môn đi Bình Châu",
+  description:
+    "Xe riêng từ Hóc Môn đi Bình Châu với lịch trình linh hoạt, không ghép khách và chủ động thời gian khởi hành. Phù hợp các chuyến du lịch biển, nghỉ dưỡng cuối tuần hoặc đưa đón người thân.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// CỦ CHI → BÌNH CHÂU
+// =========================
+
+{
+  key: "cu-chi-binh-chau",
+  path: "thue-xe-tu-cu-chi-di-binh-chau",
+  from: "Củ Chi, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Củ Chi đi Bình Châu",
+  description:
+    "Thuê xe từ Củ Chi đi Bình Châu với xe 5 chỗ, 7 chỗ hoặc 16 chỗ có tài xế riêng. Xe đưa đón tận nơi, không ghép khách và phù hợp các chuyến nghỉ dưỡng gia đình hoặc nhóm bạn đi biển.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "xe-rieng-cu-chi-binh-chau",
+  path: "xe-rieng-tu-cu-chi-di-binh-chau",
+  from: "Củ Chi, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Củ Chi đi Bình Châu",
+  description:
+    "Xe riêng từ Củ Chi đi Bình Châu với tài xế riêng, không ghép khách và đưa đón tận nơi. Thích hợp cho gia đình có trẻ nhỏ, người lớn tuổi hoặc khách mang nhiều hành lý.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// CẦN GIỜ → BÌNH CHÂU
+// =========================
+
+{
+  key: "can-gio-binh-chau",
+  path: "thue-xe-tu-can-gio-di-binh-chau",
+  from: "Cần Giờ, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Cần Giờ đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Cần Giờ đi Bình Châu với xe riêng có tài xế. Đón tận nơi tại nhà riêng, khu du lịch hoặc khách sạn, phù hợp gia đình và nhóm bạn muốn nghỉ dưỡng tại Bình Châu, Hồ Cốc hoặc Hồ Tràm.",
+  routeText:
+    "Cần Giờ → TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "xe-rieng-can-gio-binh-chau",
+  path: "xe-rieng-tu-can-gio-di-binh-chau",
+  from: "Cần Giờ, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Cần Giờ đi Bình Châu",
+  description:
+    "Xe riêng từ Cần Giờ đi Bình Châu với không gian riêng tư, tài xế kinh nghiệm và lịch trình linh hoạt. Không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Cần Giờ → TP.HCM → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// TP.HCM → XUYÊN MỘC
+// =========================
+
+{
+  key: "tphcm-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-xuyen-moc",
+  from: "TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Thuê xe từ TP.HCM đi Xuyên Mộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Xuyên Mộc với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng. Đưa đón tận nơi, không ghép khách và thuận tiện di chuyển đến các khu du lịch sinh thái, biển Hồ Cốc, Bình Châu và các resort ven biển.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-xuyen-moc",
+  path: "xe-rieng-tu-tp-hcm-di-xuyen-moc",
+  from: "TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Xe riêng từ TP.HCM đi Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Xuyên Mộc với lịch trình linh hoạt, tài xế riêng và không ghép khách. Phù hợp khách đi công tác, nghỉ dưỡng hoặc thăm người thân tại khu vực Xuyên Mộc.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// TP.HCM → HÒA HỘI
+// =========================
+
+{
+  key: "tphcm-hoa-hoi-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-hoa-hoi-xuyen-moc",
+  from: "TP.HCM",
+  to: "Hòa Hội",
+  title: "Thuê xe từ TP.HCM đi Hòa Hội Xuyên Mộc",
+  description:
+    "Thuê xe từ TP.HCM đi Hòa Hội, Xuyên Mộc với xe riêng có tài xế. Phù hợp khách về quê, công tác hoặc di chuyển đến các khu vực dân cư, trang trại và cơ sở sản xuất tại Hòa Hội.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hội",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-hoa-hoi",
+  path: "xe-rieng-tu-tp-hcm-di-hoa-hoi-xuyen-moc",
+  from: "TP.HCM",
+  to: "Hòa Hội",
+  title: "Xe riêng từ TP.HCM đi Hòa Hội Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Hòa Hội với tài xế riêng, đưa đón tận nơi và không ghép khách. Chủ động thời gian khởi hành và phù hợp cho cả cá nhân lẫn gia đình.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Hòa Hội",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// TP.HCM → HÒA HƯNG
+// =========================
+
+{
+  key: "tphcm-hoa-hung-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-hoa-hung-xuyen-moc",
+  from: "TP.HCM",
+  to: "Hòa Hưng",
+  title: "Thuê xe từ TP.HCM đi Hòa Hưng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Hòa Hưng, Xuyên Mộc với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc làm việc tại khu vực địa phương.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hưng",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-hoa-hung",
+  path: "xe-rieng-tu-tp-hcm-di-hoa-hung-xuyen-moc",
+  from: "TP.HCM",
+  to: "Hòa Hưng",
+  title: "Xe riêng từ TP.HCM đi Hòa Hưng Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Hòa Hưng với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách cần di chuyển nhanh chóng và thoải mái.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Hòa Hưng",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// TP.HCM → BÀU LÂM
+// =========================
+
+{
+  key: "tphcm-bau-lam-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-bau-lam-xuyen-moc",
+  from: "TP.HCM",
+  to: "Bàu Lâm",
+  title: "Thuê xe từ TP.HCM đi Bàu Lâm Xuyên Mộc",
+  description:
+    "Thuê xe từ TP.HCM đi Bàu Lâm với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực sản xuất nông nghiệp tại Xuyên Mộc.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bàu Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-bau-lam",
+  path: "xe-rieng-tu-tp-hcm-di-bau-lam-xuyen-moc",
+  from: "TP.HCM",
+  to: "Bàu Lâm",
+  title: "Xe riêng từ TP.HCM đi Bàu Lâm Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Bàu Lâm với tài xế riêng, không ghép khách và đón tận nơi. Chủ động thời gian và phù hợp nhiều nhu cầu di chuyển khác nhau.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Bàu Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TP.HCM → BÀU CHINH
+// =========================
+
+{
+  key: "tphcm-bau-chinh",
+  path: "thue-xe-tu-tp-hcm-di-bau-chinh",
+  from: "TP.HCM",
+  to: "Bàu Chinh",
+  title: "Thuê xe từ TP.HCM đi Bàu Chinh, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Bàu Chinh với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư và sản xuất nông nghiệp trong khu vực.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Bà Rịa → Bàu Chinh",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-bau-chinh",
+  path: "xe-rieng-tu-tp-hcm-di-bau-chinh",
+  from: "TP.HCM",
+  to: "Bàu Chinh",
+  title: "Xe riêng từ TP.HCM đi Bàu Chinh",
+  description:
+    "Xe riêng từ TP.HCM đi Bàu Chinh với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp cá nhân, gia đình hoặc khách cần di chuyển đường dài thoải mái.",
+  routeText:
+    "TP.HCM → Long Thành → Bà Rịa → Bàu Chinh",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// TP.HCM → TÂN LÂM
+// =========================
+
+{
+  key: "tphcm-tan-lam",
+  path: "thue-xe-tu-tp-hcm-di-tan-lam",
+  from: "TP.HCM",
+  to: "Tân Lâm",
+  title: "Thuê xe từ TP.HCM đi Tân Lâm Xuyên Mộc",
+  description:
+    "Thuê xe từ TP.HCM đi Tân Lâm với xe riêng có tài xế. Dịch vụ phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư, trang trại và cơ sở sản xuất tại Xuyên Mộc.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Tân Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-tan-lam",
+  path: "xe-rieng-tu-tp-hcm-di-tan-lam",
+  from: "TP.HCM",
+  to: "Tân Lâm",
+  title: "Xe riêng từ TP.HCM đi Tân Lâm Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Tân Lâm với tài xế riêng, đón tận nơi và không ghép khách. Chủ động thời gian khởi hành và phù hợp nhiều nhu cầu di chuyển khác nhau.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Tân Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TP.HCM → TÂN LỢI
+// =========================
+
+{
+  key: "tphcm-tan-loi",
+  path: "thue-xe-tu-tp-hcm-di-tan-loi",
+  from: "TP.HCM",
+  to: "Tân Lợi",
+  title: "Thuê xe từ TP.HCM đi Tân Lợi Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Tân Lợi với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc làm việc tại khu vực Xuyên Mộc.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Tân Lợi",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-tan-loi",
+  path: "xe-rieng-tu-tp-hcm-di-tan-loi",
+  from: "TP.HCM",
+  to: "Tân Lợi",
+  title: "Xe riêng từ TP.HCM đi Tân Lợi Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Tân Lợi với không gian riêng tư, tài xế kinh nghiệm và lịch trình linh hoạt. Phù hợp khách cá nhân, gia đình và nhóm nhỏ.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Tân Lợi",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TP.HCM → PHƯỚC TÂN
+// =========================
+
+{
+  key: "tphcm-phuoc-tan-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-phuoc-tan-xuyen-moc",
+  from: "TP.HCM",
+  to: "Phước Tân",
+  title: "Thuê xe từ TP.HCM đi Phước Tân Xuyên Mộc",
+  description:
+    "Thuê xe từ TP.HCM đi Phước Tân với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư thuộc huyện Xuyên Mộc.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Tân",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-phuoc-tan-xuyen-moc",
+  path: "xe-rieng-tu-tp-hcm-di-phuoc-tan-xuyen-moc",
+  from: "TP.HCM",
+  to: "Phước Tân",
+  title: "Xe riêng từ TP.HCM đi Phước Tân Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Phước Tân với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cần di chuyển nhanh chóng và riêng tư.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Phước Tân",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TP.HCM → PHƯỚC HỘI
+// =========================
+
+{
+  key: "tphcm-phuoc-hoi-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-phuoc-hoi-xuyen-moc",
+  from: "TP.HCM",
+  to: "Phước Hội",
+  title: "Thuê xe từ TP.HCM đi Phước Hội Xuyên Mộc, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Phước Hội, Xuyên Mộc với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư, trang trại và cơ sở sản xuất trong khu vực.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Phước Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-phuoc-hoi-xuyen-moc",
+  path: "xe-rieng-tu-tp-hcm-di-phuoc-hoi-xuyen-moc",
+  from: "TP.HCM",
+  to: "Phước Hội",
+  title: "Xe riêng từ TP.HCM đi Phước Hội Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Phước Hội với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp gia đình, cá nhân hoặc khách cần phương tiện riêng để di chuyển đường dài.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Phước Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// TP.HCM → SƠN BÌNH
+// =========================
+
+{
+  key: "tphcm-son-binh-xuyen-moc",
+  path: "thue-xe-tu-tp-hcm-di-son-binh-xuyen-moc",
+  from: "TP.HCM",
+  to: "Sơn Bình",
+  title: "Thuê xe từ TP.HCM đi Sơn Bình Xuyên Mộc",
+  description:
+    "Thuê xe từ TP.HCM đi Sơn Bình với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư thuộc huyện Xuyên Mộc. Xe đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Sơn Bình",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-son-binh-xuyen-moc",
+  path: "xe-rieng-tu-tp-hcm-di-son-binh-xuyen-moc",
+  from: "TP.HCM",
+  to: "Sơn Bình",
+  title: "Xe riêng từ TP.HCM đi Sơn Bình Xuyên Mộc",
+  description:
+    "Xe riêng từ TP.HCM đi Sơn Bình với tài xế riêng, không ghép khách và chủ động thời gian khởi hành. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ cần chuyến đi riêng tư và thoải mái.",
+  routeText:
+    "TP.HCM → Xuyên Mộc → Sơn Bình",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → PHƯỚC BỬU
+// =========================
+
+{
+  key: "quan-1-phuoc-buu",
+  path: "thue-xe-tu-quan-1-di-phuoc-buu",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Bửu",
+  title: "Thuê xe từ Quận 1 đi Phước Bửu Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Phước Bửu với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến trung tâm hành chính khu vực Xuyên Mộc. Xe đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Phước Bửu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-phuoc-buu",
+  path: "xe-rieng-tu-quan-1-di-phuoc-buu",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Bửu",
+  title: "Xe riêng từ Quận 1 đi Phước Bửu",
+  description:
+    "Xe riêng từ Quận 1 đi Phước Bửu với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp gia đình, cá nhân hoặc khách cần di chuyển riêng tư và thoải mái.",
+  routeText:
+    "Quận 1 → Long Thành → Xuyên Mộc → Phước Bửu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 → BƯNG RIỀNG
+// =========================
+
+{
+  key: "quan-1-bung-rieng",
+  path: "thue-xe-tu-quan-1-di-bung-rieng",
+  from: "Quận 1, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Thuê xe từ Quận 1 đi Bưng Riềng Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 1 đi Bưng Riềng với xe riêng có tài xế, phù hợp khách đi công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư ven biển thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-bung-rieng",
+  path: "xe-rieng-tu-quan-1-di-bung-rieng",
+  from: "Quận 1, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Xe riêng từ Quận 1 đi Bưng Riềng",
+  description:
+    "Xe riêng từ Quận 1 đi Bưng Riềng với tài xế riêng, không ghép khách và đưa đón tận nơi. Chủ động thời gian khởi hành và phù hợp nhiều nhu cầu di chuyển khác nhau.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 → HÒA BÌNH
+// =========================
+
+{
+  key: "quan-1-hoa-binh-xuyen-moc",
+  path: "thue-xe-tu-quan-1-di-hoa-binh-xuyen-moc",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Bình",
+  title: "Thuê xe từ Quận 1 đi Hòa Bình Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Hòa Bình với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc làm việc tại khu vực Xuyên Mộc.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-hoa-binh-xuyen-moc",
+  path: "xe-rieng-tu-quan-1-di-hoa-binh-xuyen-moc",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Bình",
+  title: "Xe riêng từ Quận 1 đi Hòa Bình Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 1 đi Hòa Bình với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 → PHƯỚC THUẬN
+// =========================
+
+{
+  key: "quan-1-phuoc-thuan",
+  path: "thue-xe-tu-quan-1-di-phuoc-thuan",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Thuận",
+  title: "Thuê xe từ Quận 1 đi Phước Thuận Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 1 đi Phước Thuận với xe riêng có tài xế, thuận tiện di chuyển đến các resort ven biển, khu nghỉ dưỡng hoặc địa chỉ cá nhân trong khu vực.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Thuận",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-phuoc-thuan",
+  path: "xe-rieng-tu-quan-1-di-phuoc-thuan",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Thuận",
+  title: "Xe riêng từ Quận 1 đi Phước Thuận",
+  description:
+    "Xe riêng từ Quận 1 đi Phước Thuận với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách nghỉ dưỡng tại Hồ Tràm, Bình Châu và khu vực ven biển.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Phước Thuận",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 → HÒA HIỆP
+// =========================
+
+{
+  key: "quan-1-hoa-hiep",
+  path: "thue-xe-tu-quan-1-di-hoa-hiep",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Thuê xe từ Quận 1 đi Hòa Hiệp Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Hòa Hiệp với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư và cơ sở sản xuất tại huyện Xuyên Mộc. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-hoa-hiep",
+  path: "xe-rieng-tu-quan-1-di-hoa-hiep",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Xe riêng từ Quận 1 đi Hòa Hiệp",
+  description:
+    "Xe riêng từ Quận 1 đi Hòa Hiệp với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp gia đình, cá nhân hoặc khách cần di chuyển đường dài thoải mái.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 → HÒA HỘI
+// =========================
+
+{
+  key: "quan-1-hoa-hoi",
+  path: "thue-xe-tu-quan-1-di-hoa-hoi",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Hội",
+  title: "Thuê xe từ Quận 1 đi Hòa Hội Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 1 đi Hòa Hội với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách về quê, công tác hoặc làm việc tại khu vực phía bắc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-hoa-hoi",
+  path: "xe-rieng-tu-quan-1-di-hoa-hoi",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Hội",
+  title: "Xe riêng từ Quận 1 đi Hòa Hội",
+  description:
+    "Xe riêng từ Quận 1 đi Hòa Hội với tài xế riêng, không ghép khách và đưa đón tận nơi. Chủ động thời gian khởi hành và phù hợp nhiều nhu cầu di chuyển khác nhau.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Hòa Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → HÒA HƯNG
+// =========================
+
+{
+  key: "quan-1-hoa-hung",
+  path: "thue-xe-tu-quan-1-di-hoa-hung",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Thuê xe từ Quận 1 đi Hòa Hưng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Hòa Hưng với xe riêng có tài xế. Xe đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc làm việc tại địa phương.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hưng",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-hoa-hung",
+  path: "xe-rieng-tu-quan-1-di-hoa-hung",
+  from: "Quận 1, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Xe riêng từ Quận 1 đi Hòa Hưng",
+  description:
+    "Xe riêng từ Quận 1 đi Hòa Hưng với không gian riêng tư, tài xế kinh nghiệm và lịch trình linh hoạt. Phù hợp cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Hòa Hưng",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → XUYÊN MỘC
+// =========================
+
+{
+  key: "quan-1-xuyen-moc",
+  path: "thue-xe-tu-quan-1-di-xuyen-moc",
+  from: "Quận 1, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Thuê xe từ Quận 1 đi Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 1 đi Xuyên Mộc với xe riêng có tài xế, phù hợp khách du lịch, công tác hoặc thăm người thân. Xe đưa đón tận nơi, không ghép khách và thuận tiện di chuyển đến Bình Châu, Hồ Cốc, Hồ Tràm cùng các resort ven biển.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-xuyen-moc",
+  path: "xe-rieng-tu-quan-1-di-xuyen-moc",
+  from: "Quận 1, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Xe riêng từ Quận 1 đi Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 1 đi Xuyên Mộc với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp chuyến đi gia đình, nghỉ dưỡng cuối tuần hoặc công tác.",
+  routeText:
+    "Quận 1 → Long Thành → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 1 → BÀU LÂM
+// =========================
+
+{
+  key: "quan-1-bau-lam",
+  path: "thue-xe-tu-quan-1-di-bau-lam",
+  from: "Quận 1, TP.HCM",
+  to: "Bàu Lâm",
+  title: "Thuê xe từ Quận 1 đi Bàu Lâm Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Bàu Lâm với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư và sản xuất nông nghiệp thuộc huyện Xuyên Mộc. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Bàu Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-bau-lam",
+  path: "xe-rieng-tu-quan-1-di-bau-lam",
+  from: "Quận 1, TP.HCM",
+  to: "Bàu Lâm",
+  title: "Xe riêng từ Quận 1 đi Bàu Lâm",
+  description:
+    "Xe riêng từ Quận 1 đi Bàu Lâm với tài xế riêng, không ghép khách và chủ động thời gian khởi hành. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ cần chuyến đi riêng tư.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Bàu Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → BÀU CHINH
+// =========================
+
+{
+  key: "quan-1-bau-chinh",
+  path: "thue-xe-tu-quan-1-di-bau-chinh",
+  from: "Quận 1, TP.HCM",
+  to: "Bàu Chinh",
+  title: "Thuê xe từ Quận 1 đi Bàu Chinh",
+  description:
+    "Thuê xe từ Quận 1 đi Bàu Chinh với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc làm việc tại khu vực Châu Đức, Bà Rịa.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Bà Rịa → Bàu Chinh",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-bau-chinh",
+  path: "xe-rieng-tu-quan-1-di-bau-chinh",
+  from: "Quận 1, TP.HCM",
+  to: "Bàu Chinh",
+  title: "Xe riêng từ Quận 1 đi Bàu Chinh",
+  description:
+    "Xe riêng từ Quận 1 đi Bàu Chinh với tài xế riêng, lịch trình linh hoạt và không ghép khách. Chủ động thời gian và điểm đón trả theo yêu cầu.",
+  routeText:
+    "Quận 1 → Long Thành → Bà Rịa → Bàu Chinh",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → TÂN LÂM
+// =========================
+
+{
+  key: "quan-1-tan-lam",
+  path: "thue-xe-tu-quan-1-di-tan-lam",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Lâm",
+  title: "Thuê xe từ Quận 1 đi Tân Lâm Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Tân Lâm với xe riêng có tài xế. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Tân Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-tan-lam",
+  path: "xe-rieng-tu-quan-1-di-tan-lam",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Lâm",
+  title: "Xe riêng từ Quận 1 đi Tân Lâm",
+  description:
+    "Xe riêng từ Quận 1 đi Tân Lâm với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Tân Lâm",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → TÂN LỢI
+// =========================
+
+{
+  key: "quan-1-tan-loi",
+  path: "thue-xe-tu-quan-1-di-tan-loi",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Lợi",
+  title: "Thuê xe từ Quận 1 đi Tân Lợi Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 1 đi Tân Lợi với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc làm việc tại địa phương.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Tân Lợi",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-tan-loi",
+  path: "xe-rieng-tu-quan-1-di-tan-loi",
+  from: "Quận 1, TP.HCM",
+  to: "Tân Lợi",
+  title: "Xe riêng từ Quận 1 đi Tân Lợi",
+  description:
+    "Xe riêng từ Quận 1 đi Tân Lợi với tài xế riêng, lịch trình linh hoạt và không ghép khách. Chủ động thời gian khởi hành và điểm trả khách.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Tân Lợi",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → PHƯỚC TÂN
+// =========================
+
+{
+  key: "quan-1-phuoc-tan-xuyen-moc",
+  path: "thue-xe-tu-quan-1-di-phuoc-tan-xuyen-moc",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Tân",
+  title: "Thuê xe từ Quận 1 đi Phước Tân Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Phước Tân với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Phước Tân",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-phuoc-tan-xuyen-moc",
+  path: "xe-rieng-tu-quan-1-di-phuoc-tan-xuyen-moc",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Tân",
+  title: "Xe riêng từ Quận 1 đi Phước Tân Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 1 đi Phước Tân với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ cần chuyến đi riêng tư.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Phước Tân",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → PHƯỚC HỘI
+// =========================
+
+{
+  key: "quan-1-phuoc-hoi",
+  path: "thue-xe-tu-quan-1-di-phuoc-hoi",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Hội",
+  title: "Thuê xe từ Quận 1 đi Phước Hội Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 1 đi Phước Hội với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc làm việc tại khu vực Xuyên Mộc. Xe đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-phuoc-hoi",
+  path: "xe-rieng-tu-quan-1-di-phuoc-hoi",
+  from: "Quận 1, TP.HCM",
+  to: "Phước Hội",
+  title: "Xe riêng từ Quận 1 đi Phước Hội",
+  description:
+    "Xe riêng từ Quận 1 đi Phước Hội với tài xế riêng, không ghép khách và chủ động thời gian khởi hành. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Phước Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 1 → SƠN BÌNH
+// =========================
+
+{
+  key: "quan-1-son-binh",
+  path: "thue-xe-tu-quan-1-di-son-binh",
+  from: "Quận 1, TP.HCM",
+  to: "Sơn Bình",
+  title: "Thuê xe từ Quận 1 đi Sơn Bình Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Sơn Bình với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu vực dân cư thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Sơn Bình",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-1-son-binh",
+  path: "xe-rieng-tu-quan-1-di-son-binh",
+  from: "Quận 1, TP.HCM",
+  to: "Sơn Bình",
+  title: "Xe riêng từ Quận 1 đi Sơn Bình",
+  description:
+    "Xe riêng từ Quận 1 đi Sơn Bình với tài xế riêng, không ghép khách và đưa đón tận nơi. Lịch trình linh hoạt, phù hợp gia đình hoặc khách cần phương tiện riêng để di chuyển đường dài.",
+  routeText:
+    "Quận 1 → Xuyên Mộc → Sơn Bình",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 3 → PHƯỚC BỬU
+// =========================
+
+{
+  key: "quan-3-phuoc-buu",
+  path: "thue-xe-tu-quan-3-di-phuoc-buu",
+  from: "Quận 3, TP.HCM",
+  to: "Phước Bửu",
+  title: "Thuê xe từ Quận 3 đi Phước Bửu Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Phước Bửu với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến trung tâm hành chính huyện Xuyên Mộc. Xe đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Quận 3 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Phước Bửu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-phuoc-buu",
+  path: "xe-rieng-tu-quan-3-di-phuoc-buu",
+  from: "Quận 3, TP.HCM",
+  to: "Phước Bửu",
+  title: "Xe riêng từ Quận 3 đi Phước Bửu",
+  description:
+    "Xe riêng từ Quận 3 đi Phước Bửu với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ cần chuyến đi riêng tư.",
+  routeText:
+    "Quận 3 → Long Thành → Xuyên Mộc → Phước Bửu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-3-binh-chau-xuyen-moc",
+  path: "thue-xe-tu-quan-3-di-binh-chau",
+  from: "Quận 3, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 3 đi Bình Châu",
+  description:
+    "Thuê xe từ Quận 3 đi Bình Châu với xe riêng có tài xế. Phù hợp khách nghỉ dưỡng tại resort ven biển, suối khoáng nóng Bình Châu hoặc kết hợp tham quan Hồ Cốc, Hồ Tràm.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-binh-chau",
+  path: "xe-rieng-tu-quan-3-di-binh-chau",
+  from: "Quận 3, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 3 đi Bình Châu",
+  description:
+    "Xe riêng từ Quận 3 đi Bình Châu với lịch trình linh hoạt, tài xế riêng và không ghép khách. Đưa đón tận nơi tại resort, khách sạn hoặc địa chỉ theo yêu cầu.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 → BƯNG RIỀNG
+// =========================
+
+{
+  key: "quan-3-bung-rieng",
+  path: "thue-xe-tu-quan-3-di-bung-rieng",
+  from: "Quận 3, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Thuê xe từ Quận 3 đi Bưng Riềng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Bưng Riềng với xe riêng có tài xế. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến khu vực ven biển thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-bung-rieng",
+  path: "xe-rieng-tu-quan-3-di-bung-rieng",
+  from: "Quận 3, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Xe riêng từ Quận 3 đi Bưng Riềng",
+  description:
+    "Xe riêng từ Quận 3 đi Bưng Riềng với tài xế riêng, đưa đón tận nơi và không ghép khách. Chủ động thời gian và điểm trả khách theo yêu cầu.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 → HÒA BÌNH
+// =========================
+
+{
+  key: "quan-3-hoa-binh-xuyen-moc",
+  path: "thue-xe-tu-quan-3-di-hoa-binh-xuyen-moc",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Bình",
+  title: "Thuê xe từ Quận 3 đi Hòa Bình Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Hòa Bình với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 3 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-hoa-binh-xuyen-moc",
+  path: "xe-rieng-tu-quan-3-di-hoa-binh-xuyen-moc",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Bình",
+  title: "Xe riêng từ Quận 3 đi Hòa Bình Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 3 đi Hòa Bình với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp gia đình, cá nhân hoặc khách cần chuyến đi riêng tư.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 → PHƯỚC THUẬN
+// =========================
+
+{
+  key: "quan-3-phuoc-thuan",
+  path: "thue-xe-tu-quan-3-di-phuoc-thuan",
+  from: "Quận 3, TP.HCM",
+  to: "Phước Thuận",
+  title: "Thuê xe từ Quận 3 đi Phước Thuận Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 3 đi Phước Thuận với xe riêng có tài xế, thuận tiện di chuyển đến các resort ven biển, khu nghỉ dưỡng Hồ Tràm hoặc địa chỉ cá nhân trong khu vực.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Thuận",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-phuoc-thuan",
+  path: "xe-rieng-tu-quan-3-di-phuoc-thuan",
+  from: "Quận 3, TP.HCM",
+  to: "Phước Thuận",
+  title: "Xe riêng từ Quận 3 đi Phước Thuận",
+  description:
+    "Xe riêng từ Quận 3 đi Phước Thuận với tài xế riêng, đưa đón tận nơi và không ghép khách. Phù hợp khách nghỉ dưỡng tại Hồ Tràm, Bình Châu hoặc khu vực ven biển.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Phước Thuận",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 → HÒA HIỆP
+// =========================
+
+{
+  key: "quan-3-hoa-hiep",
+  path: "thue-xe-tu-quan-3-di-hoa-hiep",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Thuê xe từ Quận 3 đi Hòa Hiệp Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Hòa Hiệp với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc làm việc tại địa phương.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-hoa-hiep",
+  path: "xe-rieng-tu-quan-3-di-hoa-hiep",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Xe riêng từ Quận 3 đi Hòa Hiệp",
+  description:
+    "Xe riêng từ Quận 3 đi Hòa Hiệp với tài xế riêng, lịch trình linh hoạt và không ghép khách. Chủ động thời gian khởi hành và điểm đón trả.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 3 → HÒA HỘI
+// =========================
+
+{
+  key: "quan-3-hoa-hoi",
+  path: "thue-xe-tu-quan-3-di-hoa-hoi",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Hội",
+  title: "Thuê xe từ Quận 3 đi Hòa Hội Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 3 đi Hòa Hội với xe riêng có tài xế, phù hợp khách về quê, công tác hoặc làm việc tại khu vực phía bắc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-hoa-hoi",
+  path: "xe-rieng-tu-quan-3-di-hoa-hoi",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Hội",
+  title: "Xe riêng từ Quận 3 đi Hòa Hội",
+  description:
+    "Xe riêng từ Quận 3 đi Hòa Hội với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Hòa Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 3 → HÒA HƯNG
+// =========================
+
+{
+  key: "quan-3-hoa-hung",
+  path: "thue-xe-tu-quan-3-di-hoa-hung",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Thuê xe từ Quận 3 đi Hòa Hưng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Hòa Hưng với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 3 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hưng",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-hoa-hung",
+  path: "xe-rieng-tu-quan-3-di-hoa-hung",
+  from: "Quận 3, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Xe riêng từ Quận 3 đi Hòa Hưng",
+  description:
+    "Xe riêng từ Quận 3 đi Hòa Hưng với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ cần chuyến đi riêng tư và thoải mái.",
+  routeText:
+    "Quận 3 → Xuyên Mộc → Hòa Hưng",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 3 → XUYÊN MỘC
+// =========================
+
+{
+  key: "quan-3-xuyen-moc",
+  path: "thue-xe-tu-quan-3-di-xuyen-moc",
+  from: "Quận 3, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Thuê xe từ Quận 3 đi Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 3 đi Xuyên Mộc với xe riêng có tài xế, phù hợp khách du lịch, nghỉ dưỡng, công tác hoặc thăm người thân. Xe đưa đón tận nơi và thuận tiện di chuyển đến Bình Châu, Hồ Cốc, Hồ Tràm cùng các khu nghỉ dưỡng ven biển.",
+  routeText:
+    "Quận 3 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-3-xuyen-moc",
+  path: "xe-rieng-tu-quan-3-di-xuyen-moc",
+  from: "Quận 3, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Xe riêng từ Quận 3 đi Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 3 đi Xuyên Mộc với tài xế riêng, không ghép khách và chủ động thời gian khởi hành. Phù hợp gia đình, nhóm bạn hoặc khách công tác cần phương tiện riêng.",
+  routeText:
+    "Quận 3 → Long Thành → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 7 → BÌNH CHÂU
+// =========================
+
+{
+  key: "quan-7-binh-chau",
+  path: "thue-xe-tu-quan-7-di-binh-chau",
+  from: "Quận 7, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Quận 7 đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng tại các resort ven biển. Xe đón tận nơi tại Phú Mỹ Hưng, căn hộ, khách sạn hoặc văn phòng và đưa thẳng đến Bình Châu.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-binh-chau",
+  path: "xe-rieng-tu-quan-7-di-binh-chau",
+  from: "Quận 7, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Quận 7 đi Bình Châu",
+  description:
+    "Xe riêng từ Quận 7 đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách nghỉ dưỡng cuối tuần, đi suối khoáng nóng hoặc resort ven biển.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 7 → PHƯỚC BỬU
+// =========================
+
+{
+  key: "quan-7-phuoc-buu",
+  path: "thue-xe-tu-quan-7-di-phuoc-buu",
+  from: "Quận 7, TP.HCM",
+  to: "Phước Bửu",
+  title: "Thuê xe từ Quận 7 đi Phước Bửu Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 7 đi Phước Bửu với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc làm việc tại trung tâm huyện Xuyên Mộc. Xe đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Bửu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-phuoc-buu",
+  path: "xe-rieng-tu-quan-7-di-phuoc-buu",
+  from: "Quận 7, TP.HCM",
+  to: "Phước Bửu",
+  title: "Xe riêng từ Quận 7 đi Phước Bửu",
+  description:
+    "Xe riêng từ Quận 7 đi Phước Bửu với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 7 → Long Thành → Xuyên Mộc → Phước Bửu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 7 → BƯNG RIỀNG
+// =========================
+
+{
+  key: "quan-7-bung-rieng",
+  path: "thue-xe-tu-quan-7-di-bung-rieng",
+  from: "Quận 7, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Thuê xe từ Quận 7 đi Bưng Riềng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Bưng Riềng với xe riêng có tài xế. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến khu vực ven biển thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-bung-rieng",
+  path: "xe-rieng-tu-quan-7-di-bung-rieng",
+  from: "Quận 7, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Xe riêng từ Quận 7 đi Bưng Riềng",
+  description:
+    "Xe riêng từ Quận 7 đi Bưng Riềng với tài xế riêng, đưa đón tận nơi và không ghép khách. Chủ động thời gian khởi hành và điểm trả khách theo yêu cầu.",
+  routeText:
+    "Quận 7 → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 7 → HÒA BÌNH
+// =========================
+
+{
+  key: "quan-7-hoa-binh-xuyen-moc",
+  path: "thue-xe-tu-quan-7-di-hoa-binh-xuyen-moc",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Bình",
+  title: "Thuê xe từ Quận 7 đi Hòa Bình Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Hòa Bình với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc. Xe đón tận nơi tại Phú Mỹ Hưng, căn hộ hoặc văn phòng và không ghép khách.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-hoa-binh-xuyen-moc",
+  path: "xe-rieng-tu-quan-7-di-hoa-binh-xuyen-moc",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Bình",
+  title: "Xe riêng từ Quận 7 đi Hòa Bình Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 7 đi Hòa Bình với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp gia đình, khách cá nhân hoặc nhóm nhỏ cần chuyến đi riêng tư.",
+  routeText:
+    "Quận 7 → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 7 → PHƯỚC THUẬN
+// =========================
+
+{
+  key: "quan-7-phuoc-thuan",
+  path: "thue-xe-tu-quan-7-di-phuoc-thuan",
+  from: "Quận 7, TP.HCM",
+  to: "Phước Thuận",
+  title: "Thuê xe từ Quận 7 đi Phước Thuận Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 7 đi Phước Thuận với xe riêng có tài xế, thuận tiện di chuyển đến các resort Hồ Tràm, khu nghỉ dưỡng ven biển hoặc địa chỉ cá nhân trong khu vực.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Thuận",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-phuoc-thuan",
+  path: "xe-rieng-tu-quan-7-di-phuoc-thuan",
+  from: "Quận 7, TP.HCM",
+  to: "Phước Thuận",
+  title: "Xe riêng từ Quận 7 đi Phước Thuận",
+  description:
+    "Xe riêng từ Quận 7 đi Phước Thuận với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách nghỉ dưỡng cuối tuần hoặc du lịch biển.",
+  routeText:
+    "Quận 7 → Xuyên Mộc → Phước Thuận",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// QUẬN 7 → HÒA HIỆP
+// =========================
+
+{
+  key: "quan-7-hoa-hiep",
+  path: "thue-xe-tu-quan-7-di-hoa-hiep",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Thuê xe từ Quận 7 đi Hòa Hiệp Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Hòa Hiệp với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc làm việc tại địa phương.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-hoa-hiep",
+  path: "xe-rieng-tu-quan-7-di-hoa-hiep",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Xe riêng từ Quận 7 đi Hòa Hiệp",
+  description:
+    "Xe riêng từ Quận 7 đi Hòa Hiệp với tài xế riêng, lịch trình linh hoạt và không ghép khách. Chủ động thời gian khởi hành và điểm đón trả theo yêu cầu.",
+  routeText:
+    "Quận 7 → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// QUẬN 7 → HÒA HỘI
+// =========================
+
+{
+  key: "quan-7-hoa-hoi",
+  path: "thue-xe-tu-quan-7-di-hoa-hoi",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Hội",
+  title: "Thuê xe từ Quận 7 đi Hòa Hội Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 7 đi Hòa Hội với xe riêng có tài xế, phù hợp khách về quê, công tác hoặc làm việc tại khu vực phía bắc huyện Xuyên Mộc. Xe riêng không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 7 → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-hoa-hoi",
+  path: "xe-rieng-tu-quan-7-di-hoa-hoi",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Hội",
+  title: "Xe riêng từ Quận 7 đi Hòa Hội",
+  description:
+    "Xe riêng từ Quận 7 đi Hòa Hội với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Quận 7 → Xuyên Mộc → Hòa Hội",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 7 → HÒA HƯNG
+// =========================
+
+{
+  key: "quan-7-hoa-hung",
+  path: "thue-xe-tu-quan-7-di-hoa-hung",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Thuê xe từ Quận 7 đi Hòa Hưng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Hòa Hưng với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hưng",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-hoa-hung",
+  path: "xe-rieng-tu-quan-7-di-hoa-hung",
+  from: "Quận 7, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Xe riêng từ Quận 7 đi Hòa Hưng",
+  description:
+    "Xe riêng từ Quận 7 đi Hòa Hưng với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp gia đình, khách cá nhân hoặc nhóm nhỏ cần chuyến đi riêng tư và thoải mái.",
+  routeText:
+    "Quận 7 → Xuyên Mộc → Hòa Hưng",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// QUẬN 7 → XUYÊN MỘC
+// =========================
+
+{
+  key: "quan-7-xuyen-moc",
+  path: "thue-xe-tu-quan-7-di-xuyen-moc",
+  from: "Quận 7, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Thuê xe từ Quận 7 đi Xuyên Mộc",
+  description:
+    "Thuê xe từ Quận 7 đi Xuyên Mộc với xe riêng có tài xế, phù hợp khách nghỉ dưỡng, công tác hoặc thăm người thân. Xe đưa đón tận nơi từ Phú Mỹ Hưng, căn hộ, khách sạn và thuận tiện di chuyển đến Bình Châu, Hồ Tràm, Hồ Cốc cùng các resort ven biển.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-quan-7-xuyen-moc",
+  path: "xe-rieng-tu-quan-7-di-xuyen-moc",
+  from: "Quận 7, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Xe riêng từ Quận 7 đi Xuyên Mộc",
+  description:
+    "Xe riêng từ Quận 7 đi Xuyên Mộc với tài xế riêng, không ghép khách và chủ động thời gian khởi hành. Phù hợp gia đình, nhóm bạn hoặc khách công tác cần phương tiện riêng cho hành trình đường dài.",
+  routeText:
+    "Quận 7 → Long Thành → Xuyên Mộc",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → BÌNH CHÂU
+// =========================
+
+{
+  key: "thu-duc-binh-chau",
+  path: "thue-xe-tu-thu-duc-di-binh-chau",
+  from: "Thủ Đức, TP.HCM",
+  to: "Bình Châu",
+  title: "Thuê xe từ Thủ Đức đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Thủ Đức đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần. Xe đón tận nơi tại căn hộ, khu đô thị hoặc văn phòng và đưa thẳng đến Bình Châu, không ghép khách.",
+  routeText:
+    "Thủ Đức → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-binh-chau",
+  path: "xe-rieng-tu-thu-duc-di-binh-chau",
+  from: "Thủ Đức, TP.HCM",
+  to: "Bình Châu",
+  title: "Xe riêng từ Thủ Đức đi Bình Châu",
+  description:
+    "Xe riêng từ Thủ Đức đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách nghỉ dưỡng tại resort, suối khoáng nóng hoặc du lịch biển cuối tuần.",
+  routeText:
+    "Thủ Đức → Cao tốc Long Thành - Dầu Giây → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → PHƯỚC BỬU
+// =========================
+
+{
+  key: "thu-duc-phuoc-buu",
+  path: "thue-xe-tu-thu-duc-di-phuoc-buu",
+  from: "Thủ Đức, TP.HCM",
+  to: "Phước Bửu",
+  title: "Thuê xe từ Thủ Đức đi Phước Bửu Xuyên Mộc",
+  description:
+    "Thuê xe từ Thủ Đức đi Phước Bửu với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc làm việc tại trung tâm huyện Xuyên Mộc. Xe đón tận nơi và không ghép khách.",
+  routeText:
+    "Thủ Đức → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Bửu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-phuoc-buu",
+  path: "xe-rieng-tu-thu-duc-di-phuoc-buu",
+  from: "Thủ Đức, TP.HCM",
+  to: "Phước Bửu",
+  title: "Xe riêng từ Thủ Đức đi Phước Bửu",
+  description:
+    "Xe riêng từ Thủ Đức đi Phước Bửu với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Thủ Đức → Long Thành → Xuyên Mộc → Phước Bửu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → BƯNG RIỀNG
+// =========================
+
+{
+  key: "thu-duc-bung-rieng",
+  path: "thue-xe-tu-thu-duc-di-bung-rieng",
+  from: "Thủ Đức, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Thuê xe từ Thủ Đức đi Bưng Riềng Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Thủ Đức đi Bưng Riềng với xe riêng có tài xế. Phù hợp khách công tác, thăm người thân hoặc di chuyển đến khu vực ven biển thuộc huyện Xuyên Mộc.",
+  routeText:
+    "Thủ Đức → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-bung-rieng",
+  path: "xe-rieng-tu-thu-duc-di-bung-rieng",
+  from: "Thủ Đức, TP.HCM",
+  to: "Bưng Riềng",
+  title: "Xe riêng từ Thủ Đức đi Bưng Riềng",
+  description:
+    "Xe riêng từ Thủ Đức đi Bưng Riềng với tài xế riêng, đưa đón tận nơi và không ghép khách. Chủ động thời gian khởi hành và điểm trả khách theo yêu cầu.",
+  routeText:
+    "Thủ Đức → Xuyên Mộc → Bưng Riềng",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → HÒA BÌNH
+// =========================
+
+{
+  key: "thu-duc-hoa-binh-xuyen-moc",
+  path: "thue-xe-tu-thu-duc-di-hoa-binh-xuyen-moc",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Bình",
+  title: "Thuê xe từ Thủ Đức đi Hòa Bình Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Thủ Đức đi Hòa Bình với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc. Xe đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Thủ Đức → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-hoa-binh-xuyen-moc",
+  path: "xe-rieng-tu-thu-duc-di-hoa-binh-xuyen-moc",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Bình",
+  title: "Xe riêng từ Thủ Đức đi Hòa Bình Xuyên Mộc",
+  description:
+    "Xe riêng từ Thủ Đức đi Hòa Bình với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp gia đình, khách cá nhân hoặc nhóm nhỏ cần chuyến đi riêng tư.",
+  routeText:
+    "Thủ Đức → Xuyên Mộc → Hòa Bình",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → PHƯỚC THUẬN
+// =========================
+
+{
+  key: "thu-duc-phuoc-thuan",
+  path: "thue-xe-tu-thu-duc-di-phuoc-thuan",
+  from: "Thủ Đức, TP.HCM",
+  to: "Phước Thuận",
+  title: "Thuê xe từ Thủ Đức đi Phước Thuận Xuyên Mộc",
+  description:
+    "Thuê xe từ Thủ Đức đi Phước Thuận với xe riêng có tài xế, thuận tiện di chuyển đến các resort Hồ Tràm, khu nghỉ dưỡng ven biển hoặc địa chỉ cá nhân trong khu vực. Xe riêng không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Thủ Đức → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Phước Thuận",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-phuoc-thuan",
+  path: "xe-rieng-tu-thu-duc-di-phuoc-thuan",
+  from: "Thủ Đức, TP.HCM",
+  to: "Phước Thuận",
+  title: "Xe riêng từ Thủ Đức đi Phước Thuận",
+  description:
+    "Xe riêng từ Thủ Đức đi Phước Thuận với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách nghỉ dưỡng tại Hồ Tràm, Bình Châu hoặc các resort ven biển.",
+  routeText:
+    "Thủ Đức → Xuyên Mộc → Phước Thuận",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → HÒA HIỆP
+// =========================
+
+{
+  key: "thu-duc-hoa-hiep",
+  path: "thue-xe-tu-thu-duc-di-hoa-hiep",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Thuê xe từ Thủ Đức đi Hòa Hiệp Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Thủ Đức đi Hòa Hiệp với xe riêng có tài xế. Đưa đón tận nơi, không ghép khách và phù hợp khách công tác, thăm người thân hoặc làm việc tại địa phương.",
+  routeText:
+    "Thủ Đức → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-hoa-hiep",
+  path: "xe-rieng-tu-thu-duc-di-hoa-hiep",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Hiệp",
+  title: "Xe riêng từ Thủ Đức đi Hòa Hiệp",
+  description:
+    "Xe riêng từ Thủ Đức đi Hòa Hiệp với tài xế riêng, lịch trình linh hoạt và không ghép khách. Chủ động thời gian khởi hành và điểm đón trả theo yêu cầu.",
+  routeText:
+    "Thủ Đức → Xuyên Mộc → Hòa Hiệp",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → HÒA HỘI
+// =========================
+
+{
+  key: "thu-duc-hoa-hoi",
+  path: "thue-xe-tu-thu-duc-di-hoa-hoi",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Hội",
+  title: "Thuê xe từ Thủ Đức đi Hòa Hội Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Thủ Đức đi Hòa Hội với xe riêng có tài xế, phù hợp khách về quê, công tác hoặc làm việc tại khu vực phía bắc huyện Xuyên Mộc. Xe đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "Thủ Đức → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hội",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-hoa-hoi",
+  path: "xe-rieng-tu-thu-duc-di-hoa-hoi",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Hội",
+  title: "Xe riêng từ Thủ Đức đi Hòa Hội",
+  description:
+    "Xe riêng từ Thủ Đức đi Hòa Hội với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cá nhân, gia đình hoặc nhóm nhỏ cần chuyến đi riêng tư và thoải mái.",
+  routeText:
+    "Thủ Đức → Xuyên Mộc → Hòa Hội",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → HÒA HƯNG
+// =========================
+
+{
+  key: "thu-duc-hoa-hung",
+  path: "thue-xe-tu-thu-duc-di-hoa-hung",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Thuê xe từ Thủ Đức đi Hòa Hưng Xuyên Mộc",
+  description:
+    "Thuê xe từ Thủ Đức đi Hòa Hưng với xe riêng có tài xế, phù hợp khách công tác, thăm người thân hoặc di chuyển đến các khu dân cư thuộc huyện Xuyên Mộc. Xe đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Thủ Đức → Cao tốc Long Thành - Dầu Giây → Xuyên Mộc → Hòa Hưng",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-hoa-hung",
+  path: "xe-rieng-tu-thu-duc-di-hoa-hung",
+  from: "Thủ Đức, TP.HCM",
+  to: "Hòa Hưng",
+  title: "Xe riêng từ Thủ Đức đi Hòa Hưng",
+  description:
+    "Xe riêng từ Thủ Đức đi Hòa Hưng với tài xế riêng, lịch trình linh hoạt và không ghép khách. Chủ động thời gian khởi hành và điểm đón trả theo yêu cầu.",
+  routeText:
+    "Thủ Đức → Xuyên Mộc → Hòa Hưng",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// THỦ ĐỨC → XUYÊN MỘC
+// =========================
+
+{
+  key: "thu-duc-xuyen-moc",
+  path: "thue-xe-tu-thu-duc-di-xuyen-moc",
+  from: "Thủ Đức, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Thuê xe từ Thủ Đức đi Xuyên Mộc",
+  description:
+    "Dịch vụ thuê xe từ Thủ Đức đi Xuyên Mộc với xe riêng có tài xế, phù hợp khách du lịch, nghỉ dưỡng, công tác hoặc thăm người thân. Thuận tiện di chuyển đến Bình Châu, Hồ Tràm, Hồ Cốc và các khu nghỉ dưỡng ven biển nổi tiếng.",
+  routeText:
+    "Thủ Đức → Cao tốc TP.HCM - Long Thành - Dầu Giây → Xuyên Mộc",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-thu-duc-xuyen-moc",
+  path: "xe-rieng-tu-thu-duc-di-xuyen-moc",
+  from: "Thủ Đức, TP.HCM",
+  to: "Xuyên Mộc",
+  title: "Xe riêng từ Thủ Đức đi Xuyên Mộc",
+  description:
+    "Xe riêng từ Thủ Đức đi Xuyên Mộc với tài xế riêng, không ghép khách và chủ động thời gian khởi hành. Phù hợp gia đình, nhóm bạn hoặc khách công tác cần phương tiện riêng cho hành trình đường dài.",
+  routeText:
+    "Thủ Đức → Long Thành → Xuyên Mộc",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// TÂN UYÊN → BÌNH CHÂU
+// =========================
+
+{
+  key: "tan-uyen-binh-chau",
+  path: "thue-xe-tu-tan-uyen-di-binh-chau",
+  from: "Tân Uyên",
+  to: "Bình Châu",
+  title: "Thuê xe từ Tân Uyên đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Tân Uyên đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần. Xe đón tận nơi tại nhà riêng, khu đô thị hoặc khu công nghiệp, không ghép khách và đưa thẳng đến suối khoáng nóng, resort hoặc biển Bình Châu.",
+  routeText:
+    "Tân Uyên → Biên Hòa → Long Thành → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-tan-uyen-binh-chau",
+  path: "xe-rieng-tu-tan-uyen-di-binh-chau",
+  from: "Tân Uyên",
+  to: "Bình Châu",
+  title: "Xe riêng từ Tân Uyên đi Bình Châu",
+  description:
+    "Xe riêng từ Tân Uyên đi Bình Châu với tài xế riêng, lịch trình linh hoạt và đưa đón tận nơi. Phù hợp khách đi nghỉ dưỡng, tắm khoáng nóng hoặc kết hợp tham quan Hồ Cốc và khu vực Xuyên Mộc.",
+  routeText:
+    "Tân Uyên → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// BẾN CÁT → BÌNH CHÂU
+// =========================
+
+{
+  key: "ben-cat-binh-chau",
+  path: "thue-xe-tu-ben-cat-di-binh-chau",
+  from: "Bến Cát",
+  to: "Bình Châu",
+  title: "Thuê xe từ Bến Cát đi Bình Châu",
+  description:
+    "Thuê xe từ Bến Cát đi Bình Châu với xe riêng có tài xế, đón tận nơi tại khu dân cư, doanh nghiệp hoặc khu công nghiệp. Chuyến xe phù hợp gia đình, nhóm bạn và khách công tác kết hợp nghỉ dưỡng tại resort, biển hoặc suối khoáng nóng Bình Châu.",
+  routeText:
+    "Bến Cát → Thủ Dầu Một → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-ben-cat-binh-chau",
+  path: "xe-rieng-tu-ben-cat-di-binh-chau",
+  from: "Bến Cát",
+  to: "Bình Châu",
+  title: "Xe riêng từ Bến Cát đi Bình Châu",
+  description:
+    "Xe riêng từ Bến Cát đi Bình Châu giúp khách chủ động giờ khởi hành, điểm dừng nghỉ và địa chỉ trả khách. Không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Bến Cát → Thủ Dầu Một → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// BÀU BÀNG → BÌNH CHÂU
+// =========================
+
+{
+  key: "bau-bang-binh-chau",
+  path: "thue-xe-tu-bau-bang-di-binh-chau",
+  from: "Bàu Bàng",
+  to: "Bình Châu",
+  title: "Thuê xe từ Bàu Bàng đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Bàu Bàng đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, chuyên gia, khách doanh nghiệp và nhóm bạn. Xe đón tận nơi tại nhà, khách sạn hoặc khu công nghiệp, sau đó đưa thẳng đến khu nghỉ dưỡng Bình Châu.",
+  routeText:
+    "Bàu Bàng → Quốc lộ 13 → Thủ Dầu Một → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "xe-rieng-bau-bang-binh-chau",
+  path: "xe-rieng-tu-bau-bang-di-binh-chau",
+  from: "Bàu Bàng",
+  to: "Bình Châu",
+  title: "Xe riêng từ Bàu Bàng đi Bình Châu",
+  description:
+    "Xe riêng từ Bàu Bàng đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp chuyến nghỉ dưỡng cuối tuần, du lịch biển hoặc đưa đón khách công tác đến khu vực Xuyên Mộc.",
+  routeText:
+    "Bàu Bàng → Thủ Dầu Một → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// BẮC TÂN UYÊN → BÌNH CHÂU
+// =========================
+
+{
+  key: "bac-tan-uyen-binh-chau",
+  path: "thue-xe-tu-bac-tan-uyen-di-binh-chau",
+  from: "Bắc Tân Uyên",
+  to: "Bình Châu",
+  title: "Thuê xe từ Bắc Tân Uyên đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Bắc Tân Uyên đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần. Xe đón tận nơi, không ghép khách và đưa thẳng đến khu suối khoáng nóng, resort hoặc biển Bình Châu.",
+  routeText:
+    "Bắc Tân Uyên → Tân Uyên → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "xe-rieng-bac-tan-uyen-binh-chau",
+  path: "xe-rieng-tu-bac-tan-uyen-di-binh-chau",
+  from: "Bắc Tân Uyên",
+  to: "Bình Châu",
+  title: "Xe riêng từ Bắc Tân Uyên đi Bình Châu",
+  description:
+    "Xe riêng từ Bắc Tân Uyên đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách nghỉ dưỡng, du lịch biển hoặc đi suối khoáng nóng Bình Châu.",
+  routeText:
+    "Bắc Tân Uyên → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3.5 - 4.5 giờ",
+},
+
+// =========================
+// PHÚ GIÁO → BÌNH CHÂU
+// =========================
+
+{
+  key: "phu-giao-binh-chau",
+  path: "thue-xe-tu-phu-giao-di-binh-chau",
+  from: "Phú Giáo",
+  to: "Bình Châu",
+  title: "Thuê xe từ Phú Giáo đi Bình Châu",
+  description:
+    "Thuê xe từ Phú Giáo đi Bình Châu với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp gia đình, khách công tác hoặc nhóm bạn muốn nghỉ dưỡng tại khu vực Bình Châu, Hồ Cốc và Hồ Tràm.",
+  routeText:
+    "Phú Giáo → Tân Uyên → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "xe-rieng-phu-giao-binh-chau",
+  path: "xe-rieng-tu-phu-giao-di-binh-chau",
+  from: "Phú Giáo",
+  to: "Bình Châu",
+  title: "Xe riêng từ Phú Giáo đi Bình Châu",
+  description:
+    "Xe riêng từ Phú Giáo đi Bình Châu với tài xế riêng, chủ động thời gian khởi hành và điểm đón trả. Không ghép khách và phù hợp các chuyến đi nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Phú Giáo → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "4 - 5 giờ",
+},
+
+// =========================
+// DẦU TIẾNG → BÌNH CHÂU
+// =========================
+
+{
+  key: "dau-tieng-binh-chau",
+  path: "thue-xe-tu-dau-tieng-di-binh-chau",
+  from: "Dầu Tiếng",
+  to: "Bình Châu",
+  title: "Thuê xe từ Dầu Tiếng đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Dầu Tiếng đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách doanh nghiệp. Xe đón tận nơi và đưa thẳng đến khu nghỉ dưỡng, biển hoặc suối khoáng nóng Bình Châu.",
+  routeText:
+    "Dầu Tiếng → Thủ Dầu Một → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "4.5 - 5.5 giờ",
+},
+
+{
+  key: "xe-rieng-dau-tieng-binh-chau",
+  path: "xe-rieng-tu-dau-tieng-di-binh-chau",
+  from: "Dầu Tiếng",
+  to: "Bình Châu",
+  title: "Xe riêng từ Dầu Tiếng đi Bình Châu",
+  description:
+    "Xe riêng từ Dầu Tiếng đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách đi nghỉ dưỡng, du lịch biển hoặc đưa đón người thân.",
+  routeText:
+    "Dầu Tiếng → Thủ Dầu Một → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "4.5 - 5.5 giờ",
+},
+
+// =========================
+// TRẢNG BOM → BÌNH CHÂU
+// =========================
+
+{
+  key: "trang-bom-binh-chau",
+  path: "thue-xe-tu-trang-bom-di-binh-chau",
+  from: "Trảng Bom",
+  to: "Bình Châu",
+  title: "Thuê xe từ Trảng Bom đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Trảng Bom đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn và khách nghỉ dưỡng cuối tuần. Xe đón tận nơi, không ghép khách và đưa thẳng đến khu suối khoáng nóng, resort hoặc biển Bình Châu.",
+  routeText:
+    "Trảng Bom → Long Thành → Bà Rịa → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-trang-bom-binh-chau",
+  path: "xe-rieng-tu-trang-bom-di-binh-chau",
+  from: "Trảng Bom",
+  to: "Bình Châu",
+  title: "Xe riêng từ Trảng Bom đi Bình Châu",
+  description:
+    "Xe riêng từ Trảng Bom đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách nghỉ dưỡng, du lịch biển hoặc đi suối khoáng nóng Bình Châu.",
+  routeText:
+    "Trảng Bom → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// LONG KHÁNH → BÌNH CHÂU
+// =========================
+
+{
+  key: "long-khanh-binh-chau",
+  path: "thue-xe-tu-long-khanh-di-binh-chau",
+  from: "Long Khánh",
+  to: "Bình Châu",
+  title: "Thuê xe từ Long Khánh đi Bình Châu",
+  description:
+    "Thuê xe từ Long Khánh đi Bình Châu với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp gia đình, khách công tác hoặc nhóm bạn muốn nghỉ dưỡng tại Bình Châu, Hồ Cốc và Hồ Tràm.",
+  routeText:
+    "Long Khánh → Quốc lộ 1A → Xuyên Mộc → Bình Châu",
+  duration: "1.5 - 2.5 giờ",
+},
+
+{
+  key: "xe-rieng-long-khanh-binh-chau",
+  path: "xe-rieng-tu-long-khanh-di-binh-chau",
+  from: "Long Khánh",
+  to: "Bình Châu",
+  title: "Xe riêng từ Long Khánh đi Bình Châu",
+  description:
+    "Xe riêng từ Long Khánh đi Bình Châu với tài xế riêng, chủ động thời gian khởi hành và điểm đón trả. Không ghép khách và phù hợp các chuyến nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Long Khánh → Quốc lộ 1A → Bình Châu",
+  duration: "1.5 - 2.5 giờ",
+},
+
+// =========================
+// VĨNH CỬU → BÌNH CHÂU
+// =========================
+
+{
+  key: "vinh-cuu-binh-chau",
+  path: "thue-xe-tu-vinh-cuu-di-binh-chau",
+  from: "Vĩnh Cửu",
+  to: "Bình Châu",
+  title: "Thuê xe từ Vĩnh Cửu đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Vĩnh Cửu đi Bình Châu với xe riêng có tài xế. Xe đón tận nơi, không ghép khách và phù hợp gia đình, nhóm bạn hoặc khách nghỉ dưỡng tại khu vực Bình Châu.",
+  routeText:
+    "Vĩnh Cửu → Biên Hòa → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-vinh-cuu-binh-chau",
+  path: "xe-rieng-tu-vinh-cuu-di-binh-chau",
+  from: "Vĩnh Cửu",
+  to: "Bình Châu",
+  title: "Xe riêng từ Vĩnh Cửu đi Bình Châu",
+  description:
+    "Xe riêng từ Vĩnh Cửu đi Bình Châu với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách nghỉ dưỡng, du lịch biển hoặc đưa đón người thân.",
+  routeText:
+    "Vĩnh Cửu → Long Thành → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+// =========================
+// XUÂN LỘC → BÌNH CHÂU
+// =========================
+
+{
+  key: "xuan-loc-binh-chau",
+  path: "thue-xe-tu-xuan-loc-di-binh-chau",
+  from: "Xuân Lộc",
+  to: "Bình Châu",
+  title: "Thuê xe từ Xuân Lộc đi Bình Châu",
+  description:
+    "Thuê xe từ Xuân Lộc đi Bình Châu với xe riêng có tài xế, phù hợp khách du lịch, gia đình hoặc nhóm bạn muốn đến suối khoáng nóng, biển Bình Châu hoặc các resort ven biển.",
+  routeText:
+    "Xuân Lộc → Quốc lộ 1A → Xuyên Mộc → Bình Châu",
+  duration: "1 - 2 giờ",
+},
+
+{
+  key: "xe-rieng-xuan-loc-binh-chau",
+  path: "xe-rieng-tu-xuan-loc-di-binh-chau",
+  from: "Xuân Lộc",
+  to: "Bình Châu",
+  title: "Xe riêng từ Xuân Lộc đi Bình Châu",
+  description:
+    "Xe riêng từ Xuân Lộc đi Bình Châu với tài xế riêng, lịch trình linh hoạt và không ghép khách. Phù hợp các chuyến nghỉ dưỡng ngắn ngày hoặc di chuyển cá nhân.",
+  routeText:
+    "Xuân Lộc → Quốc lộ 1A → Bình Châu",
+  duration: "1 - 2 giờ",
+},
+
+// =========================
+// CẨM MỸ → BÌNH CHÂU
+// =========================
+
+{
+  key: "cam-my-binh-chau",
+  path: "thue-xe-tu-cam-my-di-binh-chau",
+  from: "Cẩm Mỹ",
+  to: "Bình Châu",
+  title: "Thuê xe từ Cẩm Mỹ đi Bình Châu, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Cẩm Mỹ đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn hoặc khách nghỉ dưỡng cuối tuần. Xe đón tận nơi, không ghép khách và đưa thẳng đến khu suối khoáng nóng, resort hoặc biển Bình Châu.",
+  routeText:
+    "Cẩm Mỹ → Quốc lộ 56 → Xuyên Mộc → Bình Châu",
+  duration: "1.5 - 2.5 giờ",
+},
+
+{
+  key: "xe-rieng-cam-my-binh-chau",
+  path: "xe-rieng-tu-cam-my-di-binh-chau",
+  from: "Cẩm Mỹ",
+  to: "Bình Châu",
+  title: "Xe riêng từ Cẩm Mỹ đi Bình Châu",
+  description:
+    "Xe riêng từ Cẩm Mỹ đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách du lịch, nghỉ dưỡng hoặc đưa đón người thân.",
+  routeText:
+    "Cẩm Mỹ → Xuyên Mộc → Bình Châu",
+  duration: "1.5 - 2.5 giờ",
+},
+
+// =========================
+// ĐỊNH QUÁN → BÌNH CHÂU
+// =========================
+
+{
+  key: "dinh-quan-binh-chau",
+  path: "thue-xe-tu-dinh-quan-di-binh-chau",
+  from: "Định Quán",
+  to: "Bình Châu",
+  title: "Thuê xe từ Định Quán đi Bình Châu",
+  description:
+    "Thuê xe từ Định Quán đi Bình Châu với xe riêng có tài xế, đưa đón tận nơi và không ghép khách. Phù hợp khách công tác, gia đình hoặc nhóm bạn muốn nghỉ dưỡng tại Bình Châu, Hồ Cốc và Hồ Tràm.",
+  routeText:
+    "Định Quán → Quốc lộ 20 → Xuân Lộc → Xuyên Mộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+{
+  key: "xe-rieng-dinh-quan-binh-chau",
+  path: "xe-rieng-tu-dinh-quan-di-binh-chau",
+  from: "Định Quán",
+  to: "Bình Châu",
+  title: "Xe riêng từ Định Quán đi Bình Châu",
+  description:
+    "Xe riêng từ Định Quán đi Bình Châu với tài xế riêng, chủ động thời gian khởi hành và điểm đón trả. Không ghép khách và phù hợp các chuyến nghỉ dưỡng cuối tuần.",
+  routeText:
+    "Định Quán → Xuân Lộc → Bình Châu",
+  duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// THỐNG NHẤT → BÌNH CHÂU
+// =========================
+
+{
+  key: "thong-nhat-binh-chau",
+  path: "thue-xe-tu-thong-nhat-di-binh-chau",
+  from: "Thống Nhất",
+  to: "Bình Châu",
+  title: "Thuê xe từ Thống Nhất đi Bình Châu",
+  description:
+    "Dịch vụ thuê xe từ Thống Nhất đi Bình Châu với xe riêng có tài xế, phù hợp gia đình, nhóm bạn hoặc khách nghỉ dưỡng. Xe đón tận nơi, không ghép khách và đưa thẳng đến các resort, bãi biển hoặc khu khoáng nóng Bình Châu.",
+  routeText:
+    "Thống Nhất → Long Khánh → Xuyên Mộc → Bình Châu",
+  duration: "2 - 3 giờ",
+},
+
+{
+  key: "xe-rieng-thong-nhat-binh-chau",
+  path: "xe-rieng-tu-thong-nhat-di-binh-chau",
+  from: "Thống Nhất",
+  to: "Bình Châu",
+  title: "Xe riêng từ Thống Nhất đi Bình Châu",
+  description:
+    "Xe riêng từ Thống Nhất đi Bình Châu với tài xế riêng, không ghép khách và lịch trình linh hoạt. Phù hợp khách du lịch, nghỉ dưỡng hoặc đưa đón người thân.",
+  routeText:
+    "Thống Nhất → Long Khánh → Bình Châu",
+  duration: "2 - 3 giờ",
+},
+
+// =========================
+// TÂN PHÚ → BÌNH CHÂU
+// =========================
+
+{
+  key: "tan-phu-dong-nai-binh-chau",
+  path: "thue-xe-tu-tan-phu-dong-nai-di-binh-chau",
+  from: "Tân Phú, Đồng Nai",
+  to: "Bình Châu",
+  title: "Thuê xe từ Tân Phú Đồng Nai đi Bình Châu",
+  description:
+    "Thuê xe từ Tân Phú Đồng Nai đi Bình Châu với xe riêng có tài xế, phù hợp khách công tác, gia đình hoặc nhóm bạn muốn đến Bình Châu nghỉ dưỡng, tắm khoáng nóng hoặc du lịch biển.",
+  routeText:
+    "Tân Phú → Định Quán → Xuân Lộc → Xuyên Mộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-rieng-tan-phu-dong-nai-binh-chau",
+  path: "xe-rieng-tu-tan-phu-dong-nai-di-binh-chau",
+  from: "Tân Phú, Đồng Nai",
+  to: "Bình Châu",
+  title: "Xe riêng từ Tân Phú Đồng Nai đi Bình Châu",
+  description:
+    "Xe riêng từ Tân Phú Đồng Nai đi Bình Châu với tài xế riêng, không ghép khách và đưa đón tận nơi. Phù hợp khách cần chuyến đi riêng tư và thoải mái.",
+  routeText:
+    "Tân Phú → Xuân Lộc → Bình Châu",
+  duration: "3 - 4 giờ",
+},
+
+
 
 ];

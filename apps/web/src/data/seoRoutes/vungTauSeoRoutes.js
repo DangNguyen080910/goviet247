@@ -1766,8 +1766,8 @@ duration: "3 - 3.5 giờ",
 // =========================
 
 {
-key: "xe-di-ho-coc",
-path: "xe-di-ho-coc",
+key: "cho-thue-xe-di-ho-coc",
+path: "cho-thue-xe-di-ho-coc",
 from: "TP.HCM",
 to: "Hồ Cốc",
 title: "Thuê xe đi Hồ Cốc, xe riêng có tài xế",
@@ -1778,8 +1778,8 @@ duration: "3 giờ",
 },
 
 {
-key: "xe-rieng-ho-coc",
-path: "xe-rieng-di-ho-coc",
+key: "can-thue-xe-rieng-ho-coc",
+path: "can-thue-xe-rieng-di-ho-coc",
 from: "TP.HCM",
 to: "Hồ Cốc",
 title: "Xe riêng đi Hồ Cốc, không ghép khách",
@@ -1806,8 +1806,8 @@ duration: "2.5 - 3 giờ",
 },
 
 {
-key: "xe-di-the-grand-ho-tram",
-path: "xe-di-the-grand-ho-tram",
+key: "can-thue-xe-di-the-grand-ho-tram",
+path: "can-thue-xe-di-the-grand-ho-tram",
 from: "TP.HCM",
 to: "The Grand Hồ Tràm",
 title: "Xe đi The Grand Hồ Tràm, xe riêng có tài xế",
@@ -2362,7 +2362,7 @@ duration: "2 - 2.5 giờ",
 // =========================
 
 {
-key: "xe-di-phu-my",
+key: "thue-xe-di-phu-my-ba-ria-vung-tau",
 path: "thue-xe-di-phu-my-ba-ria-vung-tau",
 from: "TP.HCM",
 to: "Phú Mỹ",
@@ -2374,8 +2374,8 @@ duration: "1.5 - 2 giờ",
 },
 
 {
-key: "xe-di-cang-cai-mep",
-path: "thue-xe-di-cang-cai-mep",
+key: "can-xe-di-cang-cai-mep",
+path: "cho-thue-xe-di-cang-cai-mep",
 from: "TP.HCM",
 to: "Cảng Cái Mép",
 title: "Thuê xe đi cảng Cái Mép, xe riêng có tài xế",
@@ -4352,6 +4352,454 @@ description:
 "Đặt xe riêng từ Đức Trọng đi Vũng Tàu với tài xế riêng. Đưa đón tận nơi và không ghép khách.",
 routeText: "Đức Trọng → Bảo Lộc → Long Thành → Vũng Tàu",
 duration: "6 - 7 giờ",
+},
+
+// =========================
+// PHƯỚC HẢI
+// =========================
+
+{
+key: "xe-di-phuoc-hai",
+path: "thue-xe-di-phuoc-hai",
+from: "TP.HCM",
+to: "Phước Hải",
+title: "Thuê xe đi Phước Hải, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Phước Hải từ TP.HCM. Xe riêng không ghép khách, phù hợp nghỉ dưỡng biển, du lịch gia đình hoặc công tác.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Phước Hải",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-7-cho-phuoc-hai",
+path: "thue-xe-7-cho-di-phuoc-hai",
+from: "TP.HCM",
+to: "Phước Hải",
+title: "Thuê xe 7 chỗ đi Phước Hải",
+description:
+"Dịch vụ thuê xe 7 chỗ đi Phước Hải dành cho gia đình và nhóm bạn. Đưa đón tận nơi và biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Phước Hải",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-rieng-phuoc-hai",
+path: "xe-rieng-di-phuoc-hai",
+from: "TP.HCM",
+to: "Phước Hải",
+title: "Xe riêng đi Phước Hải, không ghép khách",
+description:
+"Đặt xe riêng đi Phước Hải với tài xế chuyên nghiệp. Không đặt cọc và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Phước Hải",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-xe-phuoc-hai",
+path: "gia-xe-di-phuoc-hai",
+from: "TP.HCM",
+to: "Phước Hải",
+title: "Giá xe đi Phước Hải",
+description:
+"Xem giá xe đi Phước Hải theo địa chỉ đón trả thực tế. Xe riêng có tài xế và phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Phước Hải",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-1-chieu-phuoc-hai",
+path: "xe-1-chieu-di-phuoc-hai",
+from: "TP.HCM",
+to: "Phước Hải",
+title: "Xe 1 chiều đi Phước Hải",
+description:
+"Dịch vụ xe 1 chiều đi Phước Hải dành cho khách nghỉ dưỡng và du lịch biển. Không ghép khách.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Phước Hải",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// HỒ CỐC
+// =========================
+
+{
+key: "xe-di-ho-coc",
+path: "can-thue-xe-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Thuê xe đi Hồ Cốc, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Hồ Cốc từ TP.HCM. Phù hợp nghỉ dưỡng cuối tuần, resort biển và du lịch gia đình.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "cho-thue-xe-rieng-ho-coc",
+path: "cho-thue-xe-rieng-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Xe riêng đi Hồ Cốc",
+description:
+"Dịch vụ xe riêng đi Hồ Cốc với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-7-cho-ho-coc",
+path: "thue-xe-7-cho-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Thuê xe 7 chỗ đi Hồ Cốc",
+description:
+"Thuê xe 7 chỗ đi Hồ Cốc cho gia đình và nhóm bạn. Chủ động thời gian và lịch trình.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-xe-ho-coc",
+path: "gia-xe-di-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Giá xe đi Hồ Cốc",
+description:
+"Xem giá xe đi Hồ Cốc nhanh chóng trên GoViet247. Xe riêng, không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-resort-ho-coc",
+path: "xe-di-resort-ho-coc",
+from: "TP.HCM",
+to: "Hồ Cốc",
+title: "Xe đi resort Hồ Cốc",
+description:
+"Dịch vụ xe riêng đưa đón khách đến các resort tại Hồ Cốc. Đưa đón tận nơi và phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Hồ Cốc",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// XUYÊN MỘC
+// =========================
+
+{
+key: "xe-di-xuyen-moc",
+path: "thue-xe-di-xuyen-moc",
+from: "TP.HCM",
+to: "Xuyên Mộc",
+title: "Thuê xe đi Xuyên Mộc, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Xuyên Mộc từ TP.HCM. Xe riêng không ghép khách, phù hợp nghỉ dưỡng, công tác hoặc thăm người thân tại khu vực Xuyên Mộc.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "xe-rieng-xuyen-moc",
+path: "xe-rieng-di-xuyen-moc",
+from: "TP.HCM",
+to: "Xuyên Mộc",
+title: "Xe riêng đi Xuyên Mộc",
+description:
+"Đặt xe riêng đi Xuyên Mộc với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "xe-7-cho-xuyen-moc",
+path: "thue-xe-7-cho-di-xuyen-moc",
+from: "TP.HCM",
+to: "Xuyên Mộc",
+title: "Thuê xe 7 chỗ đi Xuyên Mộc",
+description:
+"Dịch vụ thuê xe 7 chỗ đi Xuyên Mộc dành cho gia đình và nhóm bạn. Chủ động thời gian và lịch trình.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "gia-xe-xuyen-moc",
+path: "gia-xe-di-xuyen-moc",
+from: "TP.HCM",
+to: "Xuyên Mộc",
+title: "Giá xe đi Xuyên Mộc",
+description:
+"Xem giá xe đi Xuyên Mộc nhanh chóng. Xe riêng có tài xế, không đặt cọc và biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+{
+key: "xe-1-chieu-xuyen-moc",
+path: "xe-1-chieu-di-xuyen-moc",
+from: "TP.HCM",
+to: "Xuyên Mộc",
+title: "Xe 1 chiều đi Xuyên Mộc",
+description:
+"Dịch vụ xe 1 chiều đi Xuyên Mộc dành cho khách du lịch, công tác và nghỉ dưỡng. Không ghép khách.",
+routeText: "TP.HCM → Long Thành → Hồ Tràm → Xuyên Mộc",
+duration: "2.5 - 3.5 giờ",
+},
+
+// =========================
+// ĐẤT ĐỎ
+// =========================
+
+{
+key: "xe-di-dat-do",
+path: "thue-xe-di-dat-do",
+from: "TP.HCM",
+to: "Đất Đỏ",
+title: "Thuê xe đi Đất Đỏ, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Đất Đỏ từ TP.HCM. Xe riêng không ghép khách, phù hợp công tác, về quê hoặc du lịch biển.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Đất Đỏ",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-rieng-dat-do",
+path: "xe-rieng-di-dat-do",
+from: "TP.HCM",
+to: "Đất Đỏ",
+title: "Xe riêng đi Đất Đỏ",
+description:
+"Đặt xe riêng đi Đất Đỏ với tài xế chuyên nghiệp. Đưa đón tận nơi và phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Đất Đỏ",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-7-cho-dat-do",
+path: "thue-xe-7-cho-di-dat-do",
+from: "TP.HCM",
+to: "Đất Đỏ",
+title: "Thuê xe 7 chỗ đi Đất Đỏ",
+description:
+"Dịch vụ thuê xe 7 chỗ đi Đất Đỏ dành cho gia đình và nhóm bạn. Không ghép khách và biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Đất Đỏ",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "gia-xe-dat-do",
+path: "gia-xe-di-dat-do",
+from: "TP.HCM",
+to: "Đất Đỏ",
+title: "Giá xe đi Đất Đỏ",
+description:
+"Xem giá xe đi Đất Đỏ theo địa chỉ đón trả thực tế. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Đất Đỏ",
+duration: "2.5 - 3 giờ",
+},
+
+{
+key: "xe-1-chieu-dat-do",
+path: "xe-1-chieu-di-dat-do",
+from: "TP.HCM",
+to: "Đất Đỏ",
+title: "Xe 1 chiều đi Đất Đỏ",
+description:
+"Dịch vụ xe 1 chiều đi Đất Đỏ dành cho khách du lịch, công tác hoặc về quê. Không ghép khách.",
+routeText: "TP.HCM → Long Thành → Bà Rịa → Đất Đỏ",
+duration: "2.5 - 3 giờ",
+},
+
+// =========================
+// BÀ RỊA
+// =========================
+
+{
+key: "xe-di-ba-ria",
+path: "thue-xe-di-ba-ria",
+from: "TP.HCM",
+to: "Bà Rịa",
+title: "Thuê xe đi Bà Rịa, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Bà Rịa từ TP.HCM. Xe riêng không ghép khách, phù hợp công tác, thăm người thân hoặc làm việc tại trung tâm tỉnh Bà Rịa - Vũng Tàu.",
+routeText: "TP.HCM → Long Thành → Bà Rịa",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-rieng-ba-ria",
+path: "xe-rieng-di-ba-ria",
+from: "TP.HCM",
+to: "Bà Rịa",
+title: "Xe riêng đi Bà Rịa",
+description:
+"Đặt xe riêng đi Bà Rịa với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Bà Rịa",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-7-cho-ba-ria",
+path: "thue-xe-7-cho-di-ba-ria",
+from: "TP.HCM",
+to: "Bà Rịa",
+title: "Thuê xe 7 chỗ đi Bà Rịa",
+description:
+"Dịch vụ thuê xe 7 chỗ đi Bà Rịa dành cho gia đình, khách công tác và nhóm bạn.",
+routeText: "TP.HCM → Long Thành → Bà Rịa",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "gia-xe-ba-ria",
+path: "gia-xe-di-ba-ria",
+from: "TP.HCM",
+to: "Bà Rịa",
+title: "Giá xe đi Bà Rịa",
+description:
+"Xem giá xe đi Bà Rịa theo địa chỉ đón trả thực tế. Xe riêng có tài xế và thanh toán sau chuyến đi.",
+routeText: "TP.HCM → Long Thành → Bà Rịa",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-1-chieu-ba-ria",
+path: "xe-1-chieu-di-ba-ria",
+from: "TP.HCM",
+to: "Bà Rịa",
+title: "Xe 1 chiều đi Bà Rịa",
+description:
+"Dịch vụ xe 1 chiều đi Bà Rịa dành cho khách công tác, du lịch hoặc về quê.",
+routeText: "TP.HCM → Long Thành → Bà Rịa",
+duration: "1.5 - 2 giờ",
+},
+
+// =========================
+// PHÚ MỸ
+// =========================
+
+{
+key: "xe-di-phu-my",
+path: "thue-xe-di-phu-my",
+from: "TP.HCM",
+to: "Phú Mỹ",
+title: "Thuê xe đi Phú Mỹ, xe riêng có tài xế",
+description:
+"Dịch vụ thuê xe đi Phú Mỹ từ TP.HCM. Phù hợp khách công tác, chuyên gia và người lao động làm việc tại các khu công nghiệp.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-rieng-phu-my",
+path: "xe-rieng-di-phu-my",
+from: "TP.HCM",
+to: "Phú Mỹ",
+title: "Xe riêng đi Phú Mỹ",
+description:
+"Đặt xe riêng đi Phú Mỹ với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-7-cho-phu-my",
+path: "thue-xe-7-cho-di-phu-my",
+from: "TP.HCM",
+to: "Phú Mỹ",
+title: "Thuê xe 7 chỗ đi Phú Mỹ",
+description:
+"Dịch vụ thuê xe 7 chỗ đi Phú Mỹ dành cho chuyên gia, doanh nghiệp và gia đình.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "gia-xe-phu-my",
+path: "gia-xe-di-phu-my",
+from: "TP.HCM",
+to: "Phú Mỹ",
+title: "Giá xe đi Phú Mỹ",
+description:
+"Xem giá xe đi Phú Mỹ nhanh chóng. Xe riêng có tài xế, biết giá trước khi đặt.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-1-chieu-phu-my",
+path: "xe-1-chieu-di-phu-my",
+from: "TP.HCM",
+to: "Phú Mỹ",
+title: "Xe 1 chiều đi Phú Mỹ",
+description:
+"Dịch vụ xe 1 chiều đi Phú Mỹ dành cho khách công tác, làm việc ngắn hạn và chuyên gia.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ",
+duration: "1.5 - 2 giờ",
+},
+
+// =========================
+// CẢNG CÁI MÉP - THỊ VẢI
+// =========================
+
+{
+key: "can-thue-xe-di-cang-cai-mep",
+path: "thue-xe-di-cang-cai-mep",
+from: "TP.HCM",
+to: "Cảng Cái Mép",
+title: "Thuê xe đi cảng Cái Mép",
+description:
+"Dịch vụ xe riêng đi cảng Cái Mép từ TP.HCM. Phù hợp doanh nghiệp logistics, khách hàng xuất nhập khẩu và chuyên gia cảng biển.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ → Cảng Cái Mép",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-di-cang-thi-vai",
+path: "thue-xe-di-cang-thi-vai",
+from: "TP.HCM",
+to: "Cảng Thị Vải",
+title: "Thuê xe đi cảng Thị Vải",
+description:
+"Dịch vụ xe riêng đi cảng Thị Vải. Đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+routeText: "TP.HCM → Long Thành → Phú Mỹ → Cảng Thị Vải",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "xe-dua-don-chuyen-gia-cai-mep",
+path: "xe-dua-don-chuyen-gia-cang-cai-mep",
+from: "TP.HCM",
+to: "Cảng Cái Mép",
+title: "Xe đưa đón chuyên gia cảng Cái Mép",
+description:
+"Dịch vụ xe riêng đưa đón chuyên gia làm việc tại khu vực cảng Cái Mép và Phú Mỹ. Phù hợp khách doanh nghiệp và đối tác quốc tế.",
+routeText: "TP.HCM → Long Thành → Cái Mép",
+duration: "1.5 - 2 giờ",
+},
+
+{
+key: "airport-cai-mep",
+path: "xe-tu-san-bay-di-cang-cai-mep",
+from: "Sân bay Tân Sơn Nhất",
+to: "Cảng Cái Mép",
+title: "Xe từ sân bay đi cảng Cái Mép",
+description:
+"Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi cảng Cái Mép. Đón tận nơi tại ga quốc tế hoặc quốc nội.",
+routeText: "Sân bay → Long Thành → Phú Mỹ → Cảng Cái Mép",
+duration: "2 - 2.5 giờ",
+},
+
+{
+key: "cai-mep-airport",
+path: "xe-tu-cang-cai-mep-di-san-bay",
+from: "Cảng Cái Mép",
+to: "Sân bay Tân Sơn Nhất",
+title: "Xe từ cảng Cái Mép đi sân bay Tân Sơn Nhất",
+description:
+"Dịch vụ xe riêng từ cảng Cái Mép đi sân bay Tân Sơn Nhất dành cho chuyên gia và khách quốc tế.",
+routeText: "Cảng Cái Mép → Phú Mỹ → Long Thành → Sân bay",
+duration: "2 - 2.5 giờ",
 },
 
 ];

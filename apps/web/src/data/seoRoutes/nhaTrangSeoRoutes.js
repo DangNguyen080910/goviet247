@@ -1711,4 +1711,2860 @@ export const NHATRANG_SEO_ROUTES = [
     routeText: "TP.HCM → Cam Ranh → Wyndham Garden",
     duration: "6.5 - 8 giờ",
   },
+
+  {
+  key: "thu-duc-di-nha-trang",
+  path: "thue-xe-thu-duc-di-nha-trang",
+  from: "TP Thủ Đức",
+  to: "Nha Trang",
+  title: "Thuê xe TP Thủ Đức đi Nha Trang, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Nha Trang. Đón tận nơi tại Linh Xuân, Linh Trung, Hiệp Bình Chánh, Trường Thọ, Tam Phú, Long Thạnh Mỹ và các phường khác thuộc TP Thủ Đức. Xe riêng không ghép khách, phù hợp du lịch biển, công tác hoặc nghỉ dưỡng.",
+  routeText:
+    "TP Thủ Đức → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-1-di-nha-trang",
+  path: "thue-xe-quan-1-di-nha-trang",
+  from: "Quận 1",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 1 đi Nha Trang, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Nha Trang. Đón tận nơi tại Bến Nghé, Bến Thành, Cầu Kho, Đa Kao, Nguyễn Cư Trinh, Tân Định và các phường trung tâm khác.",
+  routeText:
+    "Quận 1 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-nha-trang",
+  path: "thue-xe-quan-3-di-nha-trang",
+  from: "Quận 3",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 3 đi Nha Trang giá tốt",
+  description:
+    "Xe riêng từ Quận 3 đi Nha Trang. Đón tận nơi tại Võ Thị Sáu, Bàn Cờ, Nhiêu Lộc, Xuân Hòa và các khu vực khác thuộc Quận 3.",
+  routeText:
+    "Quận 3 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-4-di-nha-trang",
+  path: "thue-xe-quan-4-di-nha-trang",
+  from: "Quận 4",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 4 đi Nha Trang, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe từ Quận 4 đi Nha Trang. Xe riêng có tài xế, đón tận nơi tại Khánh Hội, Vĩnh Hội, Xóm Chiếu và các khu vực khác.",
+  routeText:
+    "Quận 4 → Long Thành → Dầu Giây → Phan Thiết → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-5-di-nha-trang",
+  path: "thue-xe-quan-5-di-nha-trang",
+  from: "Quận 5",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 5 đi Nha Trang",
+  description:
+    "Xe riêng từ Quận 5 đi Nha Trang. Đón tận nơi tại Chợ Lớn, An Đông, Nguyễn Trãi, Hùng Vương và các khu vực khác thuộc Quận 5.",
+  routeText:
+    "Quận 5 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-6-di-nha-trang",
+  path: "thue-xe-quan-6-di-nha-trang",
+  from: "Quận 6",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 6 đi Nha Trang, đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 6 đi Nha Trang. Đón tận nơi tại Bình Tây, Phú Lâm, Chợ Lớn và các khu vực khác thuộc Quận 6.",
+  routeText:
+    "Quận 6 → Long Thành → Dầu Giây → Phan Thiết → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+{
+  key: "quan-7-di-nha-trang",
+  path: "thue-xe-quan-7-di-nha-trang",
+  from: "Quận 7",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 7 đi Nha Trang",
+  description:
+    "Xe riêng từ Quận 7 đi Nha Trang. Đón tận nơi tại Phú Mỹ Hưng, Tân Phong, Tân Phú, Phú Thuận và các khu vực khác.",
+  routeText:
+    "Quận 7 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-8-di-nha-trang",
+  path: "thue-xe-quan-8-di-nha-trang",
+  from: "Quận 8",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 8 đi Nha Trang",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Nha Trang. Xe riêng có tài xế, không ghép khách, đón tận nơi.",
+  routeText:
+    "Quận 8 → Long Thành → Dầu Giây → Phan Thiết → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-10-di-nha-trang",
+  path: "thue-xe-quan-10-di-nha-trang",
+  from: "Quận 10",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 10 đi Nha Trang",
+  description:
+    "Xe riêng từ Quận 10 đi Nha Trang. Đón tận nơi tại Hòa Hưng, Thành Thái, Bắc Hải và các khu vực khác.",
+  routeText:
+    "Quận 10 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-11-di-nha-trang",
+  path: "thue-xe-quan-11-di-nha-trang",
+  from: "Quận 11",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 11 đi Nha Trang",
+  description:
+    "Xe riêng từ Quận 11 đi Nha Trang. Phù hợp du lịch biển, công tác hoặc về quê Khánh Hòa.",
+  routeText:
+    "Quận 11 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-12-di-nha-trang",
+  path: "thue-xe-quan-12-di-nha-trang",
+  from: "Quận 12",
+  to: "Nha Trang",
+  title: "Thuê xe Quận 12 đi Nha Trang",
+  description:
+    "Đón tận nơi tại Thạnh Xuân, Thạnh Lộc, Tân Chánh Hiệp, Hiệp Thành và các phường thuộc Quận 12.",
+  routeText:
+    "Quận 12 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "binh-tan-di-nha-trang",
+  path: "thue-xe-binh-tan-di-nha-trang",
+  from: "Quận Bình Tân",
+  to: "Nha Trang",
+  title: "Thuê xe Bình Tân đi Nha Trang, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Bình Tân đi Nha Trang. Đón tận nơi tại Bình Trị Đông, An Lạc, Tân Tạo, Bình Hưng Hòa và các khu vực khác thuộc Bình Tân. Xe riêng không ghép khách, phù hợp du lịch biển hoặc công tác.",
+  routeText:
+    "Bình Tân → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "tan-phu-di-nha-trang",
+  path: "thue-xe-tan-phu-di-nha-trang",
+  from: "Quận Tân Phú",
+  to: "Nha Trang",
+  title: "Thuê xe Tân Phú đi Nha Trang, đưa đón tận nơi",
+  description:
+    "Xe riêng từ Tân Phú đi Nha Trang. Đón tận nơi tại Sơn Kỳ, Tây Thạnh, Phú Thạnh, Tân Sơn Nhì và các phường khác thuộc Tân Phú.",
+  routeText:
+    "Tân Phú → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "tan-binh-di-nha-trang",
+  path: "thue-xe-tan-binh-di-nha-trang",
+  from: "Quận Tân Bình",
+  to: "Nha Trang",
+  title: "Thuê xe Tân Bình đi Nha Trang giá tốt",
+  description:
+    "Dịch vụ thuê xe từ Tân Bình đi Nha Trang. Đón tận nơi tại Phường 1 đến Phường 15, khu vực sân bay Tân Sơn Nhất, Cộng Hòa, Hoàng Văn Thụ và các khu vực khác.",
+  routeText:
+    "Tân Bình → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "go-vap-di-nha-trang",
+  path: "thue-xe-go-vap-di-nha-trang",
+  from: "Quận Gò Vấp",
+  to: "Nha Trang",
+  title: "Thuê xe Gò Vấp đi Nha Trang, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Gò Vấp đi Nha Trang. Đón tận nơi tại Phường 1, 3, 5, 10, 11, 14, 15, 17 và các khu vực khác thuộc Gò Vấp.",
+  routeText:
+    "Gò Vấp → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "binh-thanh-di-nha-trang",
+  path: "thue-xe-binh-thanh-di-nha-trang",
+  from: "Quận Bình Thạnh",
+  to: "Nha Trang",
+  title: "Thuê xe Bình Thạnh đi Nha Trang",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Nha Trang. Đón tận nơi tại Phường 1, 2, 3, 11, 12, 13, 14, 15, 22, 25, 26, 27, 28 và các khu vực khác.",
+  routeText:
+    "Bình Thạnh → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "phu-nhuan-di-nha-trang",
+  path: "thue-xe-phu-nhuan-di-nha-trang",
+  from: "Quận Phú Nhuận",
+  to: "Nha Trang",
+  title: "Thuê xe Phú Nhuận đi Nha Trang",
+  description:
+    "Xe riêng từ Phú Nhuận đi Nha Trang. Đón tận nơi tại Phường 1 đến Phường 17, phù hợp khách du lịch, công tác hoặc về quê Khánh Hòa.",
+  routeText:
+    "Phú Nhuận → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "hoc-mon-di-nha-trang",
+  path: "thue-xe-hoc-mon-di-nha-trang",
+  from: "Hóc Môn",
+  to: "Nha Trang",
+  title: "Thuê xe Hóc Môn đi Nha Trang, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Nha Trang. Đón tận nơi tại Bà Điểm, Xuân Thới Thượng, Xuân Thới Đông, Tân Hiệp, Tân Xuân và các xã khác thuộc Hóc Môn.",
+  routeText:
+    "Hóc Môn → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "cu-chi-di-nha-trang",
+  path: "thue-xe-cu-chi-di-nha-trang",
+  from: "Củ Chi",
+  to: "Nha Trang",
+  title: "Thuê xe Củ Chi đi Nha Trang, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Củ Chi đi Nha Trang. Đón tận nơi tại Tân Thạnh Đông, Tân Thạnh Tây, Trung Lập Hạ, Nhuận Đức, Phước Hiệp và các xã khác thuộc Củ Chi.",
+  routeText:
+    "Củ Chi → TP.HCM → Long Thành → Dầu Giây → Phan Thiết → Nha Trang",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "binh-chanh-di-nha-trang",
+  path: "thue-xe-binh-chanh-di-nha-trang",
+  from: "Bình Chánh",
+  to: "Nha Trang",
+  title: "Thuê xe Bình Chánh đi Nha Trang",
+  description:
+    "Dịch vụ thuê xe từ Bình Chánh đi Nha Trang. Đón tận nơi tại Vĩnh Lộc A, Vĩnh Lộc B, Tân Kiên, Bình Hưng, Bình Chánh và các xã khác.",
+  routeText:
+    "Bình Chánh → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "nha-be-di-nha-trang",
+  path: "thue-xe-nha-be-di-nha-trang",
+  from: "Nhà Bè",
+  to: "Nha Trang",
+  title: "Thuê xe Nhà Bè đi Nha Trang",
+  description:
+    "Xe riêng từ Nhà Bè đi Nha Trang. Đón tận nơi tại Phước Kiển, Phước Lộc, Nhơn Đức, Hiệp Phước, Long Thới và các xã khác thuộc Nhà Bè.",
+  routeText:
+    "Nhà Bè → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "can-gio-di-nha-trang",
+  path: "thue-xe-can-gio-di-nha-trang",
+  from: "Cần Giờ",
+  to: "Nha Trang",
+  title: "Thuê xe Cần Giờ đi Nha Trang, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe từ Cần Giờ đi Nha Trang. Đón tận nơi tại Cần Thạnh, Bình Khánh, Long Hòa, Lý Nhơn, Tam Thôn Hiệp, An Thới Đông và các xã khác.",
+  routeText:
+    "Cần Giờ → TP.HCM → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang",
+  duration: "8 - 9 giờ",
+},
+
+// =========================
+// TP.HCM -> CAM LÂM, KHÁNH HÒA
+// =========================
+
+{
+  key: "tphcm-di-cam-lam-khanh-hoa",
+  path: "can-thue-xe-tphcm-di-cam-lam-khanh-hoa",
+  from: "TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe TP.HCM đi Cam Lâm Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Cam Lâm Khánh Hòa dành cho khách về quê, đi công tác hoặc nghỉ dưỡng tại khu vực Bãi Dài và các resort ven biển. Xe riêng có tài xế, không ghép khách, đón tận nơi tại các quận huyện TP.HCM và trả đúng địa chỉ theo yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Cam Lâm",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-di-cam-lam",
+  path: "xe-rieng-tphcm-di-cam-lam-khanh-hoa",
+  from: "TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Xe riêng TP.HCM đi Cam Lâm Khánh Hòa, không ghép khách",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Cam Lâm Khánh Hòa với lịch trình linh hoạt, phù hợp gia đình, nhóm bạn, khách công tác và khách nghỉ dưỡng. Xe đón tận nhà, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Dầu Giây → Phan Thiết → Ninh Thuận → Cam Ranh → Cam Lâm",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "gia-xe-tphcm-di-cam-lam",
+  path: "gia-thue-xe-tphcm-di-cam-lam-khanh-hoa",
+  from: "TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Giá thuê xe TP.HCM đi Cam Lâm Khánh Hòa",
+  description:
+    "Xem giá thuê xe từ TP.HCM đi Cam Lâm Khánh Hòa theo địa chỉ đón trả thực tế và loại xe 5 chỗ, 7 chỗ hoặc 16 chỗ. Xe riêng có tài xế, không cần đặt cọc và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Long Thành → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "6.5 - 8 giờ",
+},
+
+// =========================
+// TP.HCM -> KHÁNH VĨNH, KHÁNH HÒA
+// =========================
+
+{
+  key: "tphcm-di-khanh-vinh-khanh-hoa",
+  path: "can-thue-xe-tphcm-di-khanh-vinh-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe TP.HCM đi Khánh Vĩnh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Khánh Vĩnh Khánh Hòa dành cho khách về quê, công tác, khảo sát công trình hoặc thăm người thân. Xe riêng không ghép khách, đón tận nơi tại TP.HCM và trả tận địa chỉ tại khu vực Khánh Vĩnh.",
+  routeText:
+    "TP.HCM → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-di-khanh-vinh",
+  path: "xe-rieng-tphcm-di-khanh-vinh-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Xe riêng TP.HCM đi Khánh Vĩnh Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Khánh Vĩnh Khánh Hòa cho gia đình, khách công tác và người cần hành trình riêng tư. Tài xế phục vụ linh hoạt, có thể dừng nghỉ dọc đường và đưa khách đến đúng điểm hẹn.",
+  routeText:
+    "TP.HCM → Phan Thiết → Phan Rang → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "gia-xe-tphcm-di-khanh-vinh",
+  path: "gia-thue-xe-tphcm-di-khanh-vinh-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Giá thuê xe TP.HCM đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xem giá thuê xe từ TP.HCM đi Khánh Vĩnh Khánh Hòa theo điểm đón, điểm trả và loại xe thực tế. Có xe riêng 5 chỗ, 7 chỗ và 16 chỗ, phù hợp chuyến đi đường dài và địa hình miền núi.",
+  routeText:
+    "TP.HCM → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9.5 giờ",
+},
+
+// =========================
+// TP.HCM -> KHÁNH SƠN, KHÁNH HÒA
+// =========================
+
+{
+  key: "tphcm-di-khanh-son-khanh-hoa",
+  path: "can-thue-xe-tphcm-di-khanh-son-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe TP.HCM đi Khánh Sơn Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Khánh Sơn Khánh Hòa dành cho khách về quê, công tác, khảo sát hoặc thăm người thân tại khu vực miền núi. Xe riêng có tài xế, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "TP.HCM → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "xe-rieng-tphcm-di-khanh-son",
+  path: "xe-rieng-tphcm-di-khanh-son-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Xe riêng TP.HCM đi Khánh Sơn Khánh Hòa, không ghép khách",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Khánh Sơn Khánh Hòa với tài xế phục vụ hành trình đường dài. Xe đón tận nơi, không ghép khách, có thể dừng nghỉ khi cần và trả khách đúng địa chỉ tại Khánh Sơn.",
+  routeText:
+    "TP.HCM → Phan Thiết → Ninh Thuận → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "gia-xe-tphcm-di-khanh-son",
+  path: "gia-thue-xe-tphcm-di-khanh-son-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Giá thuê xe TP.HCM đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xem giá thuê xe từ TP.HCM đi Khánh Sơn Khánh Hòa theo địa chỉ và loại xe thực tế. Xe riêng 5 chỗ, 7 chỗ hoặc 16 chỗ, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9.5 giờ",
+},
+
+// =========================
+// THỦ ĐỨC -> CAM RANH
+// =========================
+
+{
+  key: "thu-duc-di-cam-ranh",
+  path: "thue-xe-thu-duc-di-cam-ranh",
+  from: "TP Thủ Đức",
+  to: "Cam Ranh",
+  title: "Thuê xe TP Thủ Đức đi Cam Ranh, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Cam Ranh Khánh Hòa. Đón tận nơi tại Linh Xuân, Linh Trung, Tam Bình, Trường Thọ, Long Thạnh Mỹ, Hiệp Bình Chánh và các phường khác thuộc TP Thủ Đức.",
+  routeText:
+    "TP Thủ Đức → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "thu-duc-di-dien-khanh",
+  path: "thue-xe-thu-duc-di-dien-khanh",
+  from: "TP Thủ Đức",
+  to: "Diên Khánh",
+  title: "Thuê xe TP Thủ Đức đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Diên Khánh. Phù hợp khách về quê, công tác hoặc thăm người thân tại các xã thuộc Diên Khánh.",
+  routeText:
+    "TP Thủ Đức → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "thu-duc-di-ninh-hoa",
+  path: "thue-xe-thu-duc-di-ninh-hoa",
+  from: "TP Thủ Đức",
+  to: "Ninh Hòa",
+  title: "Thuê xe TP Thủ Đức đi Ninh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP Thủ Đức đi Ninh Hòa. Xe riêng không ghép khách, đón tận nơi và chủ động thời gian.",
+  routeText:
+    "TP Thủ Đức → Dầu Giây → Phan Thiết → Nha Trang → Ninh Hòa",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "thu-duc-di-van-ninh",
+  path: "thue-xe-thu-duc-di-van-ninh",
+  from: "TP Thủ Đức",
+  to: "Vạn Ninh",
+  title: "Thuê xe TP Thủ Đức đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Vạn Ninh Khánh Hòa. Đưa đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "TP Thủ Đức → Dầu Giây → Phan Thiết → Nha Trang → Vạn Ninh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "thu-duc-di-cam-lam",
+  path: "thue-xe-thu-duc-di-cam-lam",
+  from: "TP Thủ Đức",
+  to: "Cam Lâm",
+  title: "Thuê xe TP Thủ Đức đi Cam Lâm Khánh Hòa",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Cam Lâm. Đón tận nơi tại tất cả phường thuộc TP Thủ Đức, trả tận nơi tại Cam Lâm.",
+  routeText:
+    "TP Thủ Đức → Long Thành → Dầu Giây → Phan Rang → Cam Lâm",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "thu-duc-di-khanh-vinh",
+  path: "thue-xe-thu-duc-di-khanh-vinh",
+  from: "TP Thủ Đức",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe TP Thủ Đức đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ TP Thủ Đức đi Khánh Vĩnh. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP Thủ Đức → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "thu-duc-di-khanh-son",
+  path: "thue-xe-thu-duc-di-khanh-son",
+  from: "TP Thủ Đức",
+  to: "Khánh Sơn",
+  title: "Thuê xe TP Thủ Đức đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ TP Thủ Đức đi Khánh Sơn. Phù hợp khách công tác, về quê hoặc thăm người thân.",
+  routeText:
+    "TP Thủ Đức → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-1-di-cam-ranh",
+  path: "thue-xe-quan-1-di-cam-ranh",
+  from: "Quận 1",
+  to: "Cam Ranh",
+  title: "Thuê xe Quận 1 đi Cam Ranh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Cam Ranh. Đón tận nơi tại Bến Nghé, Đa Kao, Bến Thành, Tân Định và các khu vực khác thuộc Quận 1.",
+  routeText:
+    "Quận 1 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "quan-1-di-dien-khanh",
+  path: "thue-xe-quan-1-di-dien-khanh",
+  from: "Quận 1",
+  to: "Diên Khánh",
+  title: "Thuê xe Quận 1 đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 1 đi Diên Khánh. Không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Quận 1 → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-1-di-ninh-hoa",
+  path: "thue-xe-quan-1-di-ninh-hoa",
+  from: "Quận 1",
+  to: "Ninh Hòa",
+  title: "Thuê xe Quận 1 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Ninh Hòa. Xe riêng có tài xế, đón tận nơi.",
+  routeText:
+    "Quận 1 → Phan Thiết → Nha Trang → Ninh Hòa",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-1-di-van-ninh",
+  path: "thue-xe-quan-1-di-van-ninh",
+  from: "Quận 1",
+  to: "Vạn Ninh",
+  title: "Thuê xe Quận 1 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 1 đi Vạn Ninh. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Quận 1 → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-1-di-cam-lam",
+  path: "thue-xe-quan-1-di-cam-lam",
+  from: "Quận 1",
+  to: "Cam Lâm",
+  title: "Thuê xe Quận 1 đi Cam Lâm Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Cam Lâm. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 1 → Phan Rang → Cam Lâm",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-cam-lam",
+  path: "thue-xe-tphcm-di-cam-lam-khanh-hoa",
+  from: "TP.HCM",
+  to: "Cam Lâm",
+  title: "Thuê xe TP.HCM đi Cam Lâm Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Cam Lâm Khánh Hòa. Đón tận nơi tại tất cả quận huyện TP.HCM như TP Thủ Đức, Quận 1, Quận 7, Bình Thạnh, Gò Vấp, Tân Bình, Bình Chánh, Củ Chi, Hóc Môn và các khu vực khác. Xe riêng không ghép khách, phù hợp du lịch, công tác hoặc nghỉ dưỡng.",
+  routeText:
+    "TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Cam Lâm",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "tphcm-di-khanh-vinh",
+  path: "thue-xe-tphcm-di-khanh-vinh-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe TP.HCM đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xe riêng từ TP.HCM đi Khánh Vĩnh Khánh Hòa. Đưa đón tận nơi tại tất cả quận huyện TP.HCM và trả tận nơi tại các xã thuộc khu vực Khánh Vĩnh.",
+  routeText:
+    "TP.HCM → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "tphcm-di-khanh-son",
+  path: "thue-xe-tphcm-di-khanh-son-khanh-hoa",
+  from: "TP.HCM",
+  to: "Khánh Sơn",
+  title: "Thuê xe TP.HCM đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Khánh Sơn Khánh Hòa. Xe riêng có tài xế, không ghép khách, phù hợp khách về quê, công tác hoặc thăm người thân.",
+  routeText:
+    "TP.HCM → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9 giờ",
+},
+
+// =========================
+// QUẬN 7 -> CAM RANH
+// =========================
+
+{
+  key: "quan-7-di-cam-ranh",
+  path: "thue-xe-quan-7-di-cam-ranh",
+  from: "Quận 7",
+  to: "Cam Ranh",
+  title: "Thuê xe Quận 7 đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Cam Ranh. Đón tận nơi tại Tân Phú, Tân Phong, Phú Mỹ, Phú Thuận, Tân Hưng và các khu vực khác thuộc Quận 7. Xe riêng không ghép khách.",
+  routeText:
+    "Quận 7 → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "quan-7-di-dien-khanh",
+  path: "thue-xe-quan-7-di-dien-khanh",
+  from: "Quận 7",
+  to: "Diên Khánh",
+  title: "Thuê xe Quận 7 đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 7 đi Diên Khánh. Đưa đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "Quận 7 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-7-di-ninh-hoa",
+  path: "thue-xe-quan-7-di-ninh-hoa",
+  from: "Quận 7",
+  to: "Ninh Hòa",
+  title: "Thuê xe Quận 7 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Ninh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 7 → Phan Thiết → Nha Trang → Ninh Hòa",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-7-di-van-ninh",
+  path: "thue-xe-quan-7-di-van-ninh",
+  from: "Quận 7",
+  to: "Vạn Ninh",
+  title: "Thuê xe Quận 7 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 7 đi Vạn Ninh. Đón tận nơi tại tất cả phường thuộc Quận 7.",
+  routeText:
+    "Quận 7 → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-7-di-cam-lam",
+  path: "thue-xe-quan-7-di-cam-lam",
+  from: "Quận 7",
+  to: "Cam Lâm",
+  title: "Thuê xe Quận 7 đi Cam Lâm Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Cam Lâm. Xe riêng có tài xế, đón tận nơi.",
+  routeText:
+    "Quận 7 → Dầu Giây → Phan Rang → Cam Lâm",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "quan-7-di-khanh-vinh",
+  path: "thue-xe-quan-7-di-khanh-vinh",
+  from: "Quận 7",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe Quận 7 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 7 đi Khánh Vĩnh. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 7 → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-7-di-khanh-son",
+  path: "thue-xe-quan-7-di-khanh-son",
+  from: "Quận 7",
+  to: "Khánh Sơn",
+  title: "Thuê xe Quận 7 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Khánh Sơn. Xe riêng không ghép khách, phù hợp khách về quê hoặc công tác.",
+  routeText:
+    "Quận 7 → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9 giờ",
+},
+
+// =========================
+// BÌNH THẠNH -> CAM RANH
+// =========================
+
+{
+  key: "binh-thanh-di-cam-ranh",
+  path: "thue-xe-binh-thanh-di-cam-ranh",
+  from: "Bình Thạnh",
+  to: "Cam Ranh",
+  title: "Thuê xe Bình Thạnh đi Cam Ranh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Cam Ranh. Đón tận nơi tại Phường 1, 2, 3, 11, 12, 13, 14, 15, 22, 25, 26, 27, 28 và các khu vực khác thuộc Bình Thạnh.",
+  routeText:
+    "Bình Thạnh → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh",
+  duration: "6.5 - 7.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-dien-khanh",
+  path: "thue-xe-binh-thanh-di-dien-khanh",
+  from: "Bình Thạnh",
+  to: "Diên Khánh",
+  title: "Thuê xe Bình Thạnh đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Thạnh đi Diên Khánh. Không ghép khách và đón tận nơi.",
+  routeText:
+    "Bình Thạnh → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "binh-thanh-di-ninh-hoa",
+  path: "thue-xe-binh-thanh-di-ninh-hoa",
+  from: "Bình Thạnh",
+  to: "Ninh Hòa",
+  title: "Thuê xe Bình Thạnh đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Ninh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Bình Thạnh → Nha Trang → Ninh Hòa",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "binh-thanh-di-van-ninh",
+  path: "thue-xe-binh-thanh-di-van-ninh",
+  from: "Bình Thạnh",
+  to: "Vạn Ninh",
+  title: "Thuê xe Bình Thạnh đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Thạnh đi Vạn Ninh. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Bình Thạnh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "8 - 9 giờ",
+},
+
+// ============================================================
+// TÂN BÌNH -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "tan-binh-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-tan-binh-di-cam-ranh-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Tân Bình đi Cam Ranh Khánh Hòa dành cho gia đình, nhóm bạn, khách công tác và khách nghỉ dưỡng. Đón tận nơi tại khu vực sân bay Tân Sơn Nhất, Cộng Hòa, Bảy Hiền, Hoàng Văn Thụ và các phường thuộc Tân Bình. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Tân Bình → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "tan-binh-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-tan-binh-di-dien-khanh-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Diên Khánh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Tân Bình đi Diên Khánh Khánh Hòa cho khách về quê, thăm người thân, công tác hoặc khảo sát. Tài xế đón tận nhà, khách sạn, văn phòng hoặc khu vực gần sân bay, không ghép khách và chủ động điểm dừng nghỉ dọc đường.",
+  routeText:
+    "Tân Bình → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "tan-binh-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-tan-binh-di-ninh-hoa-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, nghỉ dưỡng tại khu vực Dốc Lết hoặc di chuyển đến các địa chỉ thuộc Ninh Hòa. Xe đón tận nơi, lịch trình linh hoạt, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Tân Bình → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "tan-binh-di-van-ninh-khanh-hoa",
+  path: "thue-xe-tan-binh-di-van-ninh-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Vạn Ninh Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Đặt xe từ Tân Bình đi Vạn Ninh Khánh Hòa với xe riêng có tài xế, phù hợp khách về quê, đi công việc hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Đón tận nơi tại Tân Bình, không ghép khách và biết giá trước khi khởi hành.",
+  routeText:
+    "Tân Bình → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "tan-binh-di-cam-lam-khanh-hoa",
+  path: "thue-xe-tan-binh-di-cam-lam-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Dịch vụ thuê xe từ Tân Bình đi Cam Lâm Khánh Hòa dành cho khách nghỉ dưỡng tại Bãi Dài, resort Cam Ranh, khách công tác hoặc về quê. Xe riêng có tài xế, đón tận nơi tại các phường Tân Bình và đưa khách đến đúng địa chỉ yêu cầu.",
+  routeText:
+    "Tân Bình → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "tan-binh-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-tan-binh-di-khanh-vinh-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Tân Bình đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, thăm người thân hoặc về quê. Hành trình dài được chủ động thời gian nghỉ, xe không ghép khách, đón và trả tận nơi theo địa chỉ thực tế.",
+  routeText:
+    "Tân Bình → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "tan-binh-di-khanh-son-khanh-hoa",
+  path: "thue-xe-tan-binh-di-khanh-son-khanh-hoa",
+  from: "Tân Bình, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Tân Bình đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Tân Bình đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc cần di chuyển đến khu vực miền núi. Xe có tài xế, không ghép khách, chủ động lịch trình và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Tân Bình → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 10 giờ",
+},
+
+// ============================================================
+// GÒ VẤP -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "go-vap-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-go-vap-di-cam-ranh-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Cam Ranh Khánh Hòa. Đón tận nơi tại Quang Trung, Nguyễn Oanh, Phan Văn Trị, Lê Đức Thọ và các phường thuộc Gò Vấp. Xe riêng không ghép khách, phù hợp gia đình đi nghỉ dưỡng, khách công tác hoặc về quê.",
+  routeText:
+    "Gò Vấp → Phạm Văn Đồng → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "go-vap-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-go-vap-di-dien-khanh-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Gò Vấp đi Diên Khánh Khánh Hòa dành cho khách về quê, thăm gia đình hoặc đi công tác. Đón tận nhà, không ghép khách, có thể dừng nghỉ linh hoạt và trả tận địa chỉ tại khu vực Diên Khánh.",
+  routeText:
+    "Gò Vấp → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "go-vap-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-go-vap-di-ninh-hoa-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Ninh Hòa Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Gò Vấp đi Ninh Hòa Khánh Hòa với tài xế phục vụ hành trình đường dài. Phù hợp khách về quê, công tác, đi Dốc Lết hoặc các khu vực thuộc Ninh Hòa. Biết giá trước khi đặt và không cần đặt cọc.",
+  routeText:
+    "Gò Vấp → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "go-vap-di-van-ninh-khanh-hoa",
+  path: "thue-xe-go-vap-di-van-ninh-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Vạn Ninh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Gò Vấp đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, đón tận nơi và không đón thêm khách dọc đường.",
+  routeText:
+    "Gò Vấp → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10.5 giờ",
+},
+
+{
+  key: "go-vap-di-cam-lam-khanh-hoa",
+  path: "thue-xe-go-vap-di-cam-lam-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Cam Lâm Khánh Hòa, xe riêng không ghép khách",
+  description:
+    "Thuê xe từ Gò Vấp đi Cam Lâm Khánh Hòa cho chuyến nghỉ dưỡng tại Bãi Dài, resort ven biển, công tác hoặc về quê. Xe riêng đưa đón tận nơi, lịch trình chủ động và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Gò Vấp → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "go-vap-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-go-vap-di-khanh-vinh-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Khánh Vĩnh Khánh Hòa phù hợp khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách và đưa khách đến tận địa chỉ yêu cầu.",
+  routeText:
+    "Gò Vấp → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "go-vap-di-khanh-son-khanh-hoa",
+  path: "thue-xe-go-vap-di-khanh-son-khanh-hoa",
+  from: "Gò Vấp, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Gò Vấp đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Gò Vấp đi Khánh Sơn Khánh Hòa cho khách về quê, đi công việc hoặc thăm gia đình. Tài xế đón tận nơi, không ghép khách và hỗ trợ hành trình dài với thời gian dừng nghỉ linh hoạt.",
+  routeText:
+    "Gò Vấp → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// PHÚ NHUẬN -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "phu-nhuan-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-cam-ranh-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Cam Ranh Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Phú Nhuận đi Cam Ranh Khánh Hòa. Đón tận nơi tại Phan Xích Long, Nguyễn Văn Trỗi, Phan Đăng Lưu và các khu vực thuộc Phú Nhuận. Xe riêng có tài xế, phù hợp khách nghỉ dưỡng, công tác hoặc về quê.",
+  routeText:
+    "Phú Nhuận → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "phu-nhuan-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-dien-khanh-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Phú Nhuận đi Diên Khánh Khánh Hòa cho khách về quê, thăm người thân hoặc công tác. Không ghép khách, đón tận nhà và biết giá trước khi đặt chuyến.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "phu-nhuan-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-ninh-hoa-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Ninh Hòa Khánh Hòa dành cho gia đình, khách công tác, khách về quê hoặc nghỉ dưỡng tại Dốc Lết. Xe đưa đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "Phú Nhuận → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "phu-nhuan-di-van-ninh-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-van-ninh-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Phú Nhuận đi Vạn Ninh Khánh Hòa với xe riêng có tài xế. Phù hợp khách về quê, công tác hoặc du lịch Vạn Giã, vịnh Vân Phong. Không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Phú Nhuận → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "phu-nhuan-di-cam-lam-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-cam-lam-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Phú Nhuận đi Cam Lâm Khánh Hòa để nghỉ dưỡng tại Bãi Dài, resort ven biển, về quê hoặc đi công tác. Xe đón tận nơi, không ghép khách và có thể dừng nghỉ theo nhu cầu của hành khách.",
+  routeText:
+    "Phú Nhuận → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "phu-nhuan-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-khanh-vinh-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, thăm gia đình hoặc về quê. Xe có tài xế, hành trình linh hoạt, không ghép khách và trả tận nơi.",
+  routeText:
+    "Phú Nhuận → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "phu-nhuan-di-khanh-son-khanh-hoa",
+  path: "thue-xe-phu-nhuan-di-khanh-son-khanh-hoa",
+  from: "Phú Nhuận, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Phú Nhuận đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Phú Nhuận đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm người thân tại khu vực miền núi. Đón tận nơi, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Phú Nhuận → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "quan-1-di-khanh-vinh",
+  path: "thue-xe-quan-1-di-khanh-vinh",
+  from: "Quận 1",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe Quận 1 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Khánh Vĩnh Khánh Hòa. Đón tận nơi tại Bến Nghé, Bến Thành, Đa Kao, Tân Định và các khu vực khác thuộc Quận 1. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 1 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-1-di-khanh-son",
+  path: "thue-xe-quan-1-di-khanh-son",
+  from: "Quận 1",
+  to: "Khánh Sơn",
+  title: "Thuê xe Quận 1 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 1 đi Khánh Sơn Khánh Hòa. Phù hợp khách công tác, về quê hoặc thăm người thân. Đưa đón tận nơi và chủ động thời gian.",
+  routeText:
+    "Quận 1 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "binh-thanh-di-cam-lam",
+  path: "thue-xe-binh-thanh-di-cam-lam",
+  from: "Bình Thạnh",
+  to: "Cam Lâm",
+  title: "Thuê xe Bình Thạnh đi Cam Lâm Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Cam Lâm Khánh Hòa. Đón tận nơi tại tất cả phường thuộc Bình Thạnh, xe riêng không ghép khách.",
+  routeText:
+    "Bình Thạnh → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "binh-thanh-di-khanh-vinh",
+  path: "thue-xe-binh-thanh-di-khanh-vinh",
+  from: "Bình Thạnh",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe Bình Thạnh đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Thạnh đi Khánh Vĩnh. Không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Bình Thạnh → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "binh-thanh-di-khanh-son",
+  path: "thue-xe-binh-thanh-di-khanh-son",
+  from: "Bình Thạnh",
+  to: "Khánh Sơn",
+  title: "Thuê xe Bình Thạnh đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Thạnh đi Khánh Sơn Khánh Hòa. Xe riêng có tài xế, đón tận nơi và không ghép khách.",
+  routeText:
+    "Bình Thạnh → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "binh-tan-di-cam-ranh",
+  path: "thue-xe-binh-tan-di-cam-ranh",
+  from: "Bình Tân",
+  to: "Cam Ranh",
+  title: "Thuê xe Bình Tân đi Cam Ranh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Tân đi Cam Ranh. Đón tận nơi tại Bình Trị Đông, An Lạc, Tân Tạo, Bình Hưng Hòa và các khu vực khác thuộc Bình Tân.",
+  routeText:
+    "Bình Tân → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "binh-tan-di-dien-khanh",
+  path: "thue-xe-binh-tan-di-dien-khanh",
+  from: "Bình Tân",
+  to: "Diên Khánh",
+  title: "Thuê xe Bình Tân đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Tân đi Diên Khánh. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Bình Tân → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "binh-tan-di-ninh-hoa",
+  path: "thue-xe-binh-tan-di-ninh-hoa",
+  from: "Bình Tân",
+  to: "Ninh Hòa",
+  title: "Thuê xe Bình Tân đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Tân đi Ninh Hòa Khánh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Bình Tân → Phan Thiết → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "binh-tan-di-van-ninh",
+  path: "thue-xe-binh-tan-di-van-ninh",
+  from: "Bình Tân",
+  to: "Vạn Ninh",
+  title: "Thuê xe Bình Tân đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Tân đi Vạn Ninh. Đón tận nơi tại tất cả phường thuộc Bình Tân.",
+  routeText:
+    "Bình Tân → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "binh-tan-di-cam-lam",
+  path: "thue-xe-binh-tan-di-cam-lam",
+  from: "Bình Tân",
+  to: "Cam Lâm",
+  title: "Thuê xe Bình Tân đi Cam Lâm Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Tân đi Cam Lâm. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Bình Tân → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "binh-tan-di-khanh-vinh",
+  path: "thue-xe-binh-tan-di-khanh-vinh",
+  from: "Bình Tân",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe Bình Tân đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Tân đi Khánh Vĩnh. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bình Tân → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "binh-tan-di-khanh-son",
+  path: "thue-xe-binh-tan-di-khanh-son",
+  from: "Bình Tân",
+  to: "Khánh Sơn",
+  title: "Thuê xe Bình Tân đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Tân đi Khánh Sơn. Xe riêng không ghép khách, đón tận nơi.",
+  routeText:
+    "Bình Tân → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "tan-phu-di-cam-ranh",
+  path: "thue-xe-tan-phu-di-cam-ranh",
+  from: "Tân Phú",
+  to: "Cam Ranh",
+  title: "Thuê xe Tân Phú đi Cam Ranh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Cam Ranh Khánh Hòa. Đón tận nơi tại Tây Thạnh, Sơn Kỳ, Phú Thọ Hòa, Tân Sơn Nhì, Phú Trung và các phường khác thuộc quận Tân Phú.",
+  routeText:
+    "Tân Phú → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "tan-phu-di-dien-khanh",
+  path: "thue-xe-tan-phu-di-dien-khanh",
+  from: "Tân Phú",
+  to: "Diên Khánh",
+  title: "Thuê xe Tân Phú đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Tân Phú đi Diên Khánh. Không ghép khách, đưa đón tận nơi và chủ động thời gian khởi hành.",
+  routeText:
+    "Tân Phú → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "tan-phu-di-ninh-hoa",
+  path: "thue-xe-tan-phu-di-ninh-hoa",
+  from: "Tân Phú",
+  to: "Ninh Hòa",
+  title: "Thuê xe Tân Phú đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Ninh Hòa Khánh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Tân Phú → Phan Thiết → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "tan-phu-di-van-ninh",
+  path: "thue-xe-tan-phu-di-van-ninh",
+  from: "Tân Phú",
+  to: "Vạn Ninh",
+  title: "Thuê xe Tân Phú đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Tân Phú đi Vạn Ninh. Đón tận nơi tại tất cả phường thuộc Tân Phú.",
+  routeText:
+    "Tân Phú → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "tan-phu-di-cam-lam",
+  path: "thue-xe-tan-phu-di-cam-lam",
+  from: "Tân Phú",
+  to: "Cam Lâm",
+  title: "Thuê xe Tân Phú đi Cam Lâm Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Cam Lâm Khánh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Tân Phú → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "tan-phu-di-khanh-vinh",
+  path: "thue-xe-tan-phu-di-khanh-vinh",
+  from: "Tân Phú",
+  to: "Khánh Vĩnh",
+  title: "Thuê xe Tân Phú đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xe riêng từ Tân Phú đi Khánh Vĩnh. Không đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Tân Phú → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "tan-phu-di-khanh-son",
+  path: "thue-xe-tan-phu-di-khanh-son",
+  from: "Tân Phú",
+  to: "Khánh Sơn",
+  title: "Thuê xe Tân Phú đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Tân Phú đi Khánh Sơn. Xe riêng không ghép khách, đón tận nơi.",
+  routeText:
+    "Tân Phú → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "quan-3-di-cam-ranh",
+  path: "thue-xe-quan-3-di-cam-ranh",
+  from: "Quận 3",
+  to: "Cam Ranh",
+  title: "Thuê xe Quận 3 đi Cam Ranh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Cam Ranh. Đón tận nơi tại Võ Thị Sáu, Bàn Cờ, Nhiêu Lộc, Xuân Hòa và các khu vực khác thuộc Quận 3.",
+  routeText:
+    "Quận 3 → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-dien-khanh",
+  path: "thue-xe-quan-3-di-dien-khanh",
+  from: "Quận 3",
+  to: "Diên Khánh",
+  title: "Thuê xe Quận 3 đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 3 đi Diên Khánh. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Quận 3 → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-3-di-ninh-hoa",
+  path: "thue-xe-quan-3-di-ninh-hoa",
+  from: "Quận 3",
+  to: "Ninh Hòa",
+  title: "Thuê xe Quận 3 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Ninh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 3 → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-3-di-van-ninh",
+  path: "thue-xe-quan-3-di-van-ninh",
+  from: "Quận 3",
+  to: "Vạn Ninh",
+  title: "Thuê xe Quận 3 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 3 đi Vạn Ninh. Đón tận nơi và trả tận nơi theo yêu cầu.",
+  routeText:
+    "Quận 3 → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-10-di-cam-ranh",
+  path: "thue-xe-quan-10-di-cam-ranh",
+  from: "Quận 10",
+  to: "Cam Ranh",
+  title: "Thuê xe Quận 10 đi Cam Ranh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Cam Ranh. Đón tận nơi tại Hòa Hưng, Thành Thái, Bắc Hải, Cách Mạng Tháng 8 và các khu vực khác thuộc Quận 10.",
+  routeText:
+    "Quận 10 → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-10-di-dien-khanh",
+  path: "thue-xe-quan-10-di-dien-khanh",
+  from: "Quận 10",
+  to: "Diên Khánh",
+  title: "Thuê xe Quận 10 đi Diên Khánh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 10 đi Diên Khánh. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Quận 10 → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-10-di-ninh-hoa",
+  path: "thue-xe-quan-10-di-ninh-hoa",
+  from: "Quận 10",
+  to: "Ninh Hòa",
+  title: "Thuê xe Quận 10 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Ninh Hòa. Xe riêng có tài xế, không ghép khách.",
+  routeText:
+    "Quận 10 → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-10-di-van-ninh",
+  path: "thue-xe-quan-10-di-van-ninh",
+  from: "Quận 10",
+  to: "Vạn Ninh",
+  title: "Thuê xe Quận 10 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 10 đi Vạn Ninh. Đón tận nơi và trả tận nơi theo yêu cầu.",
+  routeText:
+    "Quận 10 → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 3 -> CÁC KHU VỰC KHÁNH HÒA (PHẦN CÒN LẠI)
+// ============================================================
+
+{
+  key: "quan-3-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-3-di-cam-lam-khanh-hoa",
+  from: "Quận 3, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 3 đi Cam Lâm Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 3 đi Cam Lâm Khánh Hòa dành cho gia đình, nhóm bạn, khách công tác hoặc khách nghỉ dưỡng tại Bãi Dài và các resort ven biển. Xe riêng có tài xế, không ghép khách, đón tận nhà và biết giá trước khi đặt.",
+  routeText:
+    "Quận 3 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-3-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-3-di-khanh-vinh-khanh-hoa",
+  from: "Quận 3, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 3 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 3 đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe đón tận nơi, không ghép khách, có thể dừng nghỉ linh hoạt trên hành trình dài và trả đúng địa chỉ yêu cầu.",
+  routeText:
+    "Quận 3 → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "quan-3-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-3-di-khanh-son-khanh-hoa",
+  from: "Quận 3, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 3 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, đi công tác hoặc thăm gia đình tại khu vực miền núi. Xe có tài xế, không ghép khách, chủ động lịch trình và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 3 → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 10 -> CÁC KHU VỰC KHÁNH HÒA (PHẦN CÒN LẠI)
+// ============================================================
+
+{
+  key: "quan-10-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-10-di-cam-lam-khanh-hoa",
+  from: "Quận 10, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 10 đi Cam Lâm Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe từ Quận 10 đi Cam Lâm Khánh Hòa cho khách nghỉ dưỡng tại Bãi Dài, resort Cam Ranh, đi công tác hoặc về quê. Xe riêng đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và không cần đặt cọc.",
+  routeText:
+    "Quận 10 → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-10-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-10-di-khanh-vinh-khanh-hoa",
+  from: "Quận 10, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 10 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, đón tận nơi, không ghép khách và chủ động thời gian nghỉ dọc đường.",
+  routeText:
+    "Quận 10 → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "quan-10-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-10-di-khanh-son-khanh-hoa",
+  from: "Quận 10, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 10 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 10 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình. Tài xế đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 10 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 4 -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "quan-4-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-quan-4-di-cam-ranh-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 4 đi Cam Ranh Khánh Hòa. Đón tận nơi tại Khánh Hội, Vĩnh Hội, Xóm Chiếu và các khu dân cư thuộc Quận 4. Xe riêng có tài xế, không ghép khách, phù hợp khách nghỉ dưỡng, công tác hoặc về quê.",
+  routeText:
+    "Quận 4 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-4-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-quan-4-di-dien-khanh-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 4 đi Diên Khánh Khánh Hòa cho khách về quê, công tác hoặc thăm người thân. Xe đón tận nhà, không ghép khách, chủ động thời gian khởi hành và dừng nghỉ trên đường.",
+  routeText:
+    "Quận 4 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-4-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-quan-4-di-ninh-hoa-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, không ghép khách, đón tận nơi và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 4 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-4-di-van-ninh-khanh-hoa",
+  path: "thue-xe-quan-4-di-van-ninh-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Quận 4 đi Vạn Ninh Khánh Hòa cho khách về quê, đi công việc hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 4 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-4-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-4-di-cam-lam-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Cam Lâm Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ thuê xe từ Quận 4 đi Cam Lâm Khánh Hòa dành cho gia đình, nhóm bạn, khách công tác và khách nghỉ dưỡng tại Bãi Dài. Xe riêng có tài xế, đón tận nơi, không cần đặt cọc và trả đúng địa chỉ yêu cầu.",
+  routeText:
+    "Quận 4 → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-4-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-4-di-khanh-vinh-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 4 đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, thăm gia đình hoặc về quê. Hành trình được chủ động thời gian nghỉ, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Quận 4 → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "quan-4-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-4-di-khanh-son-khanh-hoa",
+  from: "Quận 4, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 4 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, đi công tác hoặc thăm người thân tại khu vực miền núi. Xe có tài xế, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 4 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 5 -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "quan-5-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-quan-5-di-cam-ranh-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 5 đi Cam Ranh Khánh Hòa. Đón tận nơi tại khu Chợ Lớn, An Đông, Hùng Vương, Nguyễn Trãi, bệnh viện, khách sạn và các khu dân cư thuộc Quận 5. Xe riêng không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 5 → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-5-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-quan-5-di-dien-khanh-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 5 đi Diên Khánh Khánh Hòa dành cho khách về quê, thăm gia đình hoặc đi công tác. Tài xế đón tận nơi, không ghép khách và có thể dừng nghỉ linh hoạt trên hành trình dài.",
+  routeText:
+    "Quận 5 → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-5-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-quan-5-di-ninh-hoa-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm người thân hoặc nghỉ dưỡng tại Dốc Lết. Xe đưa đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 5 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-5-di-van-ninh-khanh-hoa",
+  path: "thue-xe-quan-5-di-van-ninh-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Quận 5 đi Vạn Ninh Khánh Hòa cho khách về quê, đi công việc hoặc du lịch Vạn Giã, vịnh Vân Phong. Xe riêng có tài xế, không ghép khách, đón và trả tận nơi theo yêu cầu.",
+  routeText:
+    "Quận 5 → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-5-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-5-di-cam-lam-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Quận 5 đi Cam Lâm Khánh Hòa để nghỉ dưỡng tại Bãi Dài, resort ven biển, đi công tác hoặc về quê. Xe không ghép khách, đón tận nơi, biết giá trước khi đặt và không cần đặt cọc.",
+  routeText:
+    "Quận 5 → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "quan-5-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-5-di-khanh-vinh-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách và chủ động điểm dừng nghỉ.",
+  routeText:
+    "Quận 5 → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "quan-5-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-5-di-khanh-son-khanh-hoa",
+  from: "Quận 5, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 5 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 5 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình. Đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 5 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8.5 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 6 -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "quan-6-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-quan-6-di-cam-ranh-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 6 đi Cam Ranh Khánh Hòa. Đón tận nơi tại Bình Tây, Phú Lâm, Hậu Giang, Võ Văn Kiệt và các khu vực thuộc Quận 6. Xe riêng có tài xế, không ghép khách, phù hợp đi nghỉ dưỡng, công tác hoặc về quê.",
+  routeText:
+    "Quận 6 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-6-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-quan-6-di-dien-khanh-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 6 đi Diên Khánh Khánh Hòa cho khách về quê, công tác hoặc thăm người thân. Xe đón tận nơi, không ghép khách và chủ động lịch trình đường dài.",
+  routeText:
+    "Quận 6 → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-6-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-quan-6-di-ninh-hoa-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Ninh Hòa Khánh Hòa phù hợp khách về quê, đi công việc hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 6 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "quan-6-di-van-ninh-khanh-hoa",
+  path: "thue-xe-quan-6-di-van-ninh-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Quận 6 đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 6 → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "quan-6-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-6-di-cam-lam-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Cam Lâm Khánh Hòa, xe riêng không ghép khách",
+  description:
+    "Thuê xe riêng từ Quận 6 đi Cam Lâm Khánh Hòa dành cho gia đình, nhóm bạn, khách nghỉ dưỡng tại Bãi Dài hoặc khách công tác. Xe đón tận nơi, lịch trình linh hoạt, không cần đặt cọc và trả tận địa chỉ.",
+  routeText:
+    "Quận 6 → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-6-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-6-di-khanh-vinh-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, thăm người thân hoặc về quê. Xe có tài xế, không ghép khách và hỗ trợ dừng nghỉ linh hoạt.",
+  routeText:
+    "Quận 6 → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-6-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-6-di-khanh-son-khanh-hoa",
+  from: "Quận 6, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 6 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 6 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, đi công tác hoặc thăm gia đình. Tài xế đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 6 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 8 -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "quan-8-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-quan-8-di-cam-ranh-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Cam Ranh Khánh Hòa dành cho gia đình, nhóm bạn, khách nghỉ dưỡng hoặc khách công tác. Đón tận nơi tại các phường thuộc Quận 8, khu vực Võ Văn Kiệt, Phạm Thế Hiển và các khu dân cư lân cận. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-8-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-quan-8-di-dien-khanh-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Diên Khánh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Quận 8 đi Diên Khánh Khánh Hòa cho khách về quê, công tác, thăm người thân hoặc khảo sát. Xe đón tận nơi, không ghép khách, có thể dừng nghỉ linh hoạt trên hành trình dài và trả đúng địa chỉ tại khu vực Diên Khánh.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-8-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-quan-8-di-ninh-hoa-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 8 → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "quan-8-di-van-ninh-khanh-hoa",
+  path: "thue-xe-quan-8-di-van-ninh-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Vạn Ninh Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Đặt xe từ Quận 8 đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, không ghép khách, đón tận nơi và trả đúng địa chỉ theo yêu cầu.",
+  routeText:
+    "Quận 8 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "quan-8-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-8-di-cam-lam-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Dịch vụ thuê xe từ Quận 8 đi Cam Lâm Khánh Hòa dành cho khách nghỉ dưỡng tại Bãi Dài, resort ven biển, khách đi công tác hoặc về quê. Xe riêng đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và không cần đặt cọc.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-8-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-8-di-khanh-vinh-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 8 đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, chủ động thời gian dừng nghỉ và đưa khách đến tận địa chỉ yêu cầu.",
+  routeText:
+    "Quận 8 → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-8-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-8-di-khanh-son-khanh-hoa",
+  from: "Quận 8, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 8 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Xe đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 8 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 11 -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "quan-11-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-quan-11-di-cam-ranh-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Quận 11 đi Cam Ranh Khánh Hòa. Đón tận nơi tại các phường thuộc Quận 11, khu vực Lạc Long Quân, Bình Thới, Lê Đại Hành và các khu dân cư lân cận. Xe riêng không ghép khách, phù hợp khách nghỉ dưỡng, công tác hoặc về quê.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-11-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-quan-11-di-dien-khanh-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 11 đi Diên Khánh Khánh Hòa dành cho khách về quê, thăm gia đình hoặc đi công tác. Xe đón tận nơi, không ghép khách, có thể dừng nghỉ khi cần và trả tận địa chỉ tại Diên Khánh.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-11-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-quan-11-di-ninh-hoa-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Ninh Hòa Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm người thân hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, không ghép khách, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Quận 11 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "quan-11-di-van-ninh-khanh-hoa",
+  path: "thue-xe-quan-11-di-van-ninh-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Quận 11 đi Vạn Ninh Khánh Hòa cho khách về quê, đi công việc hoặc du lịch Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, không ghép khách, chủ động lịch trình và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 11 → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "quan-11-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-11-di-cam-lam-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Cam Lâm Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Thuê xe riêng từ Quận 11 đi Cam Lâm Khánh Hòa để nghỉ dưỡng tại Bãi Dài, resort ven biển, đi công tác hoặc về quê. Xe đón tận nơi, không ghép khách, không cần đặt cọc và trả đúng địa chỉ theo yêu cầu.",
+  routeText:
+    "Quận 11 → Võ Văn Kiệt → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "quan-11-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-11-di-khanh-vinh-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, thăm người thân hoặc về quê. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa đón tận nơi.",
+  routeText:
+    "Quận 11 → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-11-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-11-di-khanh-son-khanh-hoa",
+  from: "Quận 11, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 11 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 11 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình. Tài xế đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 11 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// QUẬN 12 -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "quan-12-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-quan-12-di-cam-ranh-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 12 đi Cam Ranh Khánh Hòa. Đón tận nơi tại Thạnh Xuân, Thạnh Lộc, Hiệp Thành, Tân Chánh Hiệp, Đông Hưng Thuận và các phường khác thuộc Quận 12. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-12-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-quan-12-di-dien-khanh-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Quận 12 đi Diên Khánh Khánh Hòa cho khách về quê, công tác hoặc thăm người thân. Xe đón tận nơi, không ghép khách, chủ động thời gian nghỉ dọc đường và trả tận địa chỉ yêu cầu.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "quan-12-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-quan-12-di-ninh-hoa-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 12 → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "quan-12-di-van-ninh-khanh-hoa",
+  path: "thue-xe-quan-12-di-van-ninh-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Quận 12 đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng đưa đón tận nơi, không ghép khách và chủ động lịch trình đường dài.",
+  routeText:
+    "Quận 12 → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "10 - 11 giờ",
+},
+
+{
+  key: "quan-12-di-cam-lam-khanh-hoa",
+  path: "thue-xe-quan-12-di-cam-lam-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Cam Lâm Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Quận 12 đi Cam Lâm Khánh Hòa dành cho gia đình, nhóm bạn, khách nghỉ dưỡng tại Bãi Dài hoặc khách công tác. Xe đón tận nơi, không ghép khách, biết giá trước khi đặt và không cần đặt cọc.",
+  routeText:
+    "Quận 12 → Quốc lộ 1A → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "quan-12-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-quan-12-di-khanh-vinh-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến tận địa chỉ.",
+  routeText:
+    "Quận 12 → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "quan-12-di-khanh-son-khanh-hoa",
+  path: "thue-xe-quan-12-di-khanh-son-khanh-hoa",
+  from: "Quận 12, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Quận 12 đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Quận 12 đi Khánh Sơn Khánh Hòa phù hợp khách về quê, đi công tác hoặc thăm gia đình tại khu vực miền núi. Đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 12 → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9.5 - 10.5 giờ",
+},
+
+// ============================================================
+// HÓC MÔN -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "hoc-mon-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-cam-ranh-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Cam Ranh Khánh Hòa dành cho gia đình, nhóm bạn, khách nghỉ dưỡng hoặc khách công tác. Đón tận nơi tại Bà Điểm, Trung Chánh, Tân Xuân, Tân Hiệp, Xuân Thới Sơn, Xuân Thới Thượng và các xã khác thuộc Hóc Môn. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "hoc-mon-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-dien-khanh-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Diên Khánh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Hóc Môn đi Diên Khánh Khánh Hòa cho khách về quê, công tác, khảo sát hoặc thăm người thân. Xe đón tận nhà tại các xã thuộc Hóc Môn, không ghép khách, chủ động thời gian dừng nghỉ và trả tận địa chỉ tại Diên Khánh.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-ninh-hoa-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Ninh Hòa Khánh Hòa phù hợp khách về quê, đi công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, đón tận nơi, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Hóc Môn → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "hoc-mon-di-van-ninh-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-van-ninh-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Vạn Ninh Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Đặt xe từ Hóc Môn đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, đón tận nơi tại Hóc Môn, không ghép khách và trả đúng địa chỉ theo yêu cầu.",
+  routeText:
+    "Hóc Môn → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "10 - 11 giờ",
+},
+
+{
+  key: "hoc-mon-di-cam-lam-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-cam-lam-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Dịch vụ thuê xe từ Hóc Môn đi Cam Lâm Khánh Hòa dành cho khách nghỉ dưỡng tại Bãi Dài, các resort ven biển, khách đi công tác hoặc về quê. Xe riêng đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Hóc Môn → Quốc lộ 1A → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "hoc-mon-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-khanh-vinh-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Hóc Môn đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến tận địa chỉ yêu cầu.",
+  routeText:
+    "Hóc Môn → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "hoc-mon-di-khanh-son-khanh-hoa",
+  path: "thue-xe-hoc-mon-di-khanh-son-khanh-hoa",
+  from: "Hóc Môn, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Hóc Môn đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Hóc Môn đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Xe đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Hóc Môn → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9.5 - 10.5 giờ",
+},
+
+// ============================================================
+// CỦ CHI -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "cu-chi-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-cu-chi-di-cam-ranh-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ thuê xe từ Củ Chi đi Cam Ranh Khánh Hòa. Đón tận nơi tại Tân Thông Hội, Tân Phú Trung, Phước Vĩnh An, Nhuận Đức, Trung Lập Hạ, Trung Lập Thượng và các xã khác thuộc Củ Chi. Xe riêng không ghép khách, phù hợp khách nghỉ dưỡng, công tác hoặc về quê.",
+  routeText:
+    "Củ Chi → Quốc lộ 22 → TP.HCM → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "cu-chi-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-cu-chi-di-dien-khanh-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Củ Chi đi Diên Khánh Khánh Hòa dành cho khách về quê, thăm gia đình, công tác hoặc khảo sát. Xe đón tận nơi tại các xã thuộc Củ Chi, không ghép khách và chủ động thời gian nghỉ trên hành trình dài.",
+  routeText:
+    "Củ Chi → TP.HCM → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "cu-chi-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-cu-chi-di-ninh-hoa-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Ninh Hòa Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm người thân hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Củ Chi → TP.HCM → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "cu-chi-di-van-ninh-khanh-hoa",
+  path: "thue-xe-cu-chi-di-van-ninh-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Củ Chi đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch Vạn Giã, vịnh Vân Phong. Xe riêng đưa đón tận nơi, không đón thêm khách dọc đường và chủ động thời gian khởi hành.",
+  routeText:
+    "Củ Chi → TP.HCM → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "10.5 - 11.5 giờ",
+},
+
+{
+  key: "cu-chi-di-cam-lam-khanh-hoa",
+  path: "thue-xe-cu-chi-di-cam-lam-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Cam Lâm Khánh Hòa, xe riêng không ghép khách",
+  description:
+    "Thuê xe riêng từ Củ Chi đi Cam Lâm Khánh Hòa để nghỉ dưỡng tại Bãi Dài, resort ven biển, đi công tác hoặc về quê. Xe đón tận nơi, lịch trình linh hoạt, không cần đặt cọc và trả đúng địa chỉ yêu cầu.",
+  routeText:
+    "Củ Chi → TP.HCM → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "cu-chi-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-cu-chi-di-khanh-vinh-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và trả tận nơi.",
+  routeText:
+    "Củ Chi → TP.HCM → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "10 - 11 giờ",
+},
+
+{
+  key: "cu-chi-di-khanh-son-khanh-hoa",
+  path: "thue-xe-cu-chi-di-khanh-son-khanh-hoa",
+  from: "Củ Chi, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Củ Chi đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Củ Chi đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Tài xế đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Củ Chi → TP.HCM → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "10 - 11 giờ",
+},
+
+// ============================================================
+// BÌNH CHÁNH -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "binh-chanh-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-cam-ranh-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Bình Chánh đi Cam Ranh Khánh Hòa. Đón tận nơi tại Bình Hưng, Tân Kiên, Tân Túc, Vĩnh Lộc A, Vĩnh Lộc B, Phong Phú, Bình Chánh và các xã khác. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Bình Chánh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-dien-khanh-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Diên Khánh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Bình Chánh đi Diên Khánh Khánh Hòa cho khách về quê, công tác, khảo sát hoặc thăm người thân. Xe đón tận nơi tại các xã thuộc Bình Chánh, không ghép khách và trả đúng địa chỉ theo yêu cầu.",
+  routeText:
+    "Bình Chánh → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "binh-chanh-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-ninh-hoa-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Ninh Hòa Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe đưa đón tận nơi, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-van-ninh-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-van-ninh-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Bình Chánh đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, không ghép khách, chủ động lịch trình và trả tận nơi.",
+  routeText:
+    "Bình Chánh → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-cam-lam-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-cam-lam-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Bình Chánh đi Cam Lâm Khánh Hòa cho khách nghỉ dưỡng tại Bãi Dài, resort Cam Ranh, đi công tác hoặc về quê. Xe đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Bình Chánh → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "binh-chanh-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-khanh-vinh-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Bình Chánh đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, chủ động thời gian nghỉ và đưa khách đến tận địa chỉ.",
+  routeText:
+    "Bình Chánh → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "binh-chanh-di-khanh-son-khanh-hoa",
+  path: "thue-xe-binh-chanh-di-khanh-son-khanh-hoa",
+  from: "Bình Chánh, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Bình Chánh đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Chánh đi Khánh Sơn Khánh Hòa phù hợp khách về quê, đi công tác hoặc thăm gia đình tại khu vực miền núi. Đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bình Chánh → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// NHÀ BÈ -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "nha-be-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-nha-be-di-cam-ranh-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Nhà Bè đi Cam Ranh Khánh Hòa dành cho gia đình, nhóm bạn, khách công tác hoặc khách nghỉ dưỡng. Đón tận nơi tại Phước Kiển, Phước Lộc, Nhơn Đức, Long Thới, Hiệp Phước, Phú Xuân và các khu vực thuộc Nhà Bè. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "nha-be-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-nha-be-di-dien-khanh-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Diên Khánh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Nhà Bè đi Diên Khánh Khánh Hòa cho khách về quê, công tác, khảo sát hoặc thăm người thân. Xe đón tận nhà tại các xã thuộc Nhà Bè, không ghép khách, chủ động thời gian dừng nghỉ và trả tận địa chỉ tại Diên Khánh.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9 giờ",
+},
+
+{
+  key: "nha-be-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-nha-be-di-ninh-hoa-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Ninh Hòa Khánh Hòa phù hợp khách về quê, đi công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, đón tận nơi, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Nhà Bè → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 9.5 giờ",
+},
+
+{
+  key: "nha-be-di-van-ninh-khanh-hoa",
+  path: "thue-xe-nha-be-di-van-ninh-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Vạn Ninh Khánh Hòa, đưa đón tận nơi",
+  description:
+    "Đặt xe từ Nhà Bè đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, đón tận nơi, không ghép khách và đưa khách đến đúng địa chỉ yêu cầu.",
+  routeText:
+    "Nhà Bè → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9.5 - 10.5 giờ",
+},
+
+{
+  key: "nha-be-di-cam-lam-khanh-hoa",
+  path: "thue-xe-nha-be-di-cam-lam-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Dịch vụ thuê xe từ Nhà Bè đi Cam Lâm Khánh Hòa dành cho khách nghỉ dưỡng tại Bãi Dài, các resort ven biển, khách công tác hoặc về quê. Xe riêng đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 8.5 giờ",
+},
+
+{
+  key: "nha-be-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-nha-be-di-khanh-vinh-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Thuê xe riêng từ Nhà Bè đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến tận địa chỉ.",
+  routeText:
+    "Nhà Bè → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10 giờ",
+},
+
+{
+  key: "nha-be-di-khanh-son-khanh-hoa",
+  path: "thue-xe-nha-be-di-khanh-son-khanh-hoa",
+  from: "Nhà Bè, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Nhà Bè đi Khánh Sơn Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Xe đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Nhà Bè → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10 giờ",
+},
+
+// ============================================================
+// CẦN GIỜ -> CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "can-gio-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-can-gio-di-cam-ranh-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Cam Ranh Khánh Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Cần Giờ đi Cam Ranh Khánh Hòa. Đón tận nơi tại Cần Thạnh, Long Hòa, Bình Khánh, An Thới Đông, Tam Thôn Hiệp, Lý Nhơn, Thạnh An và các khu vực khác thuộc Cần Giờ. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "can-gio-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-can-gio-di-dien-khanh-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Diên Khánh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Cần Giờ đi Diên Khánh Khánh Hòa cho khách về quê, công tác, khảo sát hoặc thăm người thân. Xe đón tận nơi tại các xã thuộc Cần Giờ, không ghép khách, chủ động thời gian nghỉ và trả tận địa chỉ tại Diên Khánh.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Long Thành → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "9 - 10.5 giờ",
+},
+
+{
+  key: "can-gio-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-can-gio-di-ninh-hoa-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Ninh Hòa Khánh Hòa phù hợp khách về quê, công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe có tài xế, đưa đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "9.5 - 11 giờ",
+},
+
+{
+  key: "can-gio-di-van-ninh-khanh-hoa",
+  path: "thue-xe-can-gio-di-van-ninh-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Vạn Ninh Khánh Hòa",
+  description:
+    "Đặt xe từ Cần Giờ đi Vạn Ninh Khánh Hòa cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, không ghép khách, chủ động lịch trình đường dài và trả tận nơi.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "10.5 - 12 giờ",
+},
+
+{
+  key: "can-gio-di-cam-lam-khanh-hoa",
+  path: "thue-xe-can-gio-di-cam-lam-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Cần Giờ đi Cam Lâm Khánh Hòa cho khách nghỉ dưỡng tại Bãi Dài, resort Cam Ranh, đi công tác hoặc về quê. Xe đón tận nơi, không ghép khách, biết giá trước khi đặt và không cần đặt cọc.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Nguyễn Văn Linh → Long Thành → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "can-gio-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-can-gio-di-khanh-vinh-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến đúng địa chỉ.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "10 - 11.5 giờ",
+},
+
+{
+  key: "can-gio-di-khanh-son-khanh-hoa",
+  path: "thue-xe-can-gio-di-khanh-son-khanh-hoa",
+  from: "Cần Giờ, TP.HCM",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Cần Giờ đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Cần Giờ đi Khánh Sơn Khánh Hòa phù hợp khách về quê, đi công tác hoặc thăm gia đình tại khu vực miền núi. Đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau chuyến đi.",
+  routeText:
+    "Cần Giờ → Nhà Bè → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "10 - 11.5 giờ",
+},
+
+// ============================================================
+// BÌNH DƯƠNG -> NHA TRANG VÀ CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "binh-duong-di-nha-trang",
+  path: "thue-xe-binh-duong-di-nha-trang",
+  from: "Bình Dương",
+  to: "Nha Trang",
+  title: "Thuê xe Bình Dương đi Nha Trang, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Bình Dương đi Nha Trang dành cho gia đình, nhóm bạn, khách công tác và khách nghỉ dưỡng. Đón tận nơi tại Thủ Dầu Một, Thuận An, Dĩ An, Tân Uyên, Bến Cát, Bàu Bàng và các khu công nghiệp thuộc Bình Dương. Xe riêng có tài xế, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Bình Dương → TP Thủ Đức → Cao tốc Long Thành - Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Nha Trang",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "binh-duong-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-binh-duong-di-cam-ranh-khanh-hoa",
+  from: "Bình Dương",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Bình Dương đi Cam Ranh Khánh Hòa cho khách nghỉ dưỡng tại Bãi Dài, resort ven biển, về quê hoặc đi công tác. Tài xế đón tận nhà, công ty hoặc khu công nghiệp, không ghép khách và đưa khách đến đúng địa chỉ yêu cầu.",
+  routeText:
+    "Bình Dương → TP.HCM → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "binh-duong-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-binh-duong-di-dien-khanh-khanh-hoa",
+  from: "Bình Dương",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Diên Khánh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Bình Dương đi Diên Khánh Khánh Hòa phù hợp khách về quê, thăm người thân, công tác hoặc khảo sát. Xe đón tận nơi tại các thành phố, huyện thuộc Bình Dương, lịch trình linh hoạt và không đón thêm khách dọc đường.",
+  routeText:
+    "Bình Dương → TP Thủ Đức → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "binh-duong-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-binh-duong-di-ninh-hoa-khanh-hoa",
+  from: "Bình Dương",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Đặt xe từ Bình Dương đi Ninh Hòa Khánh Hòa cho khách về quê, công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe riêng có tài xế, đưa đón tận nơi, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bình Dương → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "binh-duong-di-van-ninh-khanh-hoa",
+  path: "thue-xe-binh-duong-di-van-ninh-khanh-hoa",
+  from: "Bình Dương",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Vạn Ninh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Bình Dương đi Vạn Ninh Khánh Hòa dành cho khách về quê, công tác hoặc du lịch Vạn Giã và vịnh Vân Phong. Xe riêng không ghép khách, đón tận nơi và chủ động thời gian dừng nghỉ trên hành trình dài.",
+  routeText:
+    "Bình Dương → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "9.5 - 11 giờ",
+},
+
+{
+  key: "binh-duong-di-cam-lam-khanh-hoa",
+  path: "thue-xe-binh-duong-di-cam-lam-khanh-hoa",
+  from: "Bình Dương",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Bình Dương đi Cam Lâm Khánh Hòa để nghỉ dưỡng tại Bãi Dài, các resort khu vực Cam Ranh, đi công tác hoặc về quê. Xe đón tận nơi tại Bình Dương, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Bình Dương → TP Thủ Đức → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "binh-duong-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-binh-duong-di-khanh-vinh-khanh-hoa",
+  from: "Bình Dương",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Bình Dương đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe có tài xế, không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến tận địa chỉ.",
+  routeText:
+    "Bình Dương → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "9 - 10.5 giờ",
+},
+
+{
+  key: "binh-duong-di-khanh-son-khanh-hoa",
+  path: "thue-xe-binh-duong-di-khanh-son-khanh-hoa",
+  from: "Bình Dương",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Bình Dương đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Bình Dương đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Đón tận nơi, không ghép khách, chủ động lịch trình và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bình Dương → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "9 - 10.5 giờ",
+},
+
+// ============================================================
+// BIÊN HÒA -> NHA TRANG VÀ CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "bien-hoa-di-nha-trang",
+  path: "thue-xe-bien-hoa-di-nha-trang",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Nha Trang",
+  title: "Thuê xe Biên Hòa đi Nha Trang, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Biên Hòa đi Nha Trang dành cho khách du lịch biển, công tác, nghỉ dưỡng hoặc về quê. Đón tận nơi tại Trảng Dài, Long Bình, Tam Hiệp, Tân Hiệp, Hố Nai, Hóa An và các phường xã thuộc Biên Hòa. Xe riêng có tài xế và không ghép khách.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Nha Trang",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-cam-ranh-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Biên Hòa đi Cam Ranh Khánh Hòa cho gia đình, nhóm bạn, khách nghỉ dưỡng tại Bãi Dài hoặc khách đi công tác. Xe đón tận nhà, văn phòng và khu công nghiệp, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "bien-hoa-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-dien-khanh-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Diên Khánh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Diên Khánh Khánh Hòa phù hợp khách về quê, công tác, khảo sát hoặc thăm người thân. Xe có tài xế, đón tận nơi tại Biên Hòa và trả đúng địa chỉ tại khu vực Diên Khánh.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7 - 8.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-ninh-hoa-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Đặt xe từ Biên Hòa đi Ninh Hòa Khánh Hòa cho khách về quê, công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe riêng đưa đón tận nơi, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "7.5 - 9 giờ",
+},
+
+{
+  key: "bien-hoa-di-van-ninh-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-van-ninh-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Vạn Ninh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Biên Hòa đi Vạn Ninh Khánh Hòa dành cho khách về quê, công tác hoặc du lịch khu vực Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, không ghép khách và chủ động điểm dừng nghỉ dọc đường.",
+  routeText:
+    "Biên Hòa → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "8.5 - 10 giờ",
+},
+
+{
+  key: "bien-hoa-di-cam-lam-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-cam-lam-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Biên Hòa đi Cam Lâm Khánh Hòa cho khách nghỉ dưỡng tại Bãi Dài, các resort Cam Ranh, khách công tác hoặc người về quê. Xe đón tận nơi, không ghép khách và biết giá trước khi khởi hành.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "bien-hoa-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-khanh-vinh-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Khánh Vĩnh Khánh Hòa cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến tận địa chỉ yêu cầu.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 9.5 giờ",
+},
+
+{
+  key: "bien-hoa-di-khanh-son-khanh-hoa",
+  path: "thue-xe-bien-hoa-di-khanh-son-khanh-hoa",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Biên Hòa đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Biên Hòa đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 9.5 giờ",
+},
+
+// ============================================================
+// ĐỒNG NAI -> NHA TRANG VÀ CÁC KHU VỰC KHÁNH HÒA
+// ============================================================
+
+{
+  key: "dong-nai-di-nha-trang",
+  path: "thue-xe-dong-nai-di-nha-trang",
+  from: "Đồng Nai",
+  to: "Nha Trang",
+  title: "Thuê xe Đồng Nai đi Nha Trang, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Đồng Nai đi Nha Trang dành cho gia đình, nhóm bạn, khách công tác và khách nghỉ dưỡng. Đón tận nơi tại Biên Hòa, Long Thành, Nhơn Trạch, Trảng Bom, Long Khánh, Xuân Lộc, Cẩm Mỹ và các địa phương khác thuộc Đồng Nai. Xe riêng không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Nha Trang",
+  duration: "7 - 9 giờ",
+},
+
+{
+  key: "dong-nai-di-cam-ranh-khanh-hoa",
+  path: "thue-xe-dong-nai-di-cam-ranh-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Cam Ranh, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Cam Ranh Khánh Hòa, xe riêng có tài xế",
+  description:
+    "Thuê xe riêng từ Đồng Nai đi Cam Ranh Khánh Hòa cho khách nghỉ dưỡng tại Bãi Dài, resort ven biển, về quê hoặc đi công tác. Xe đón tận nơi tại các huyện, thành phố thuộc Đồng Nai, không ghép khách và đưa khách đến đúng địa chỉ.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh",
+  duration: "6.5 - 8.5 giờ",
+},
+
+{
+  key: "dong-nai-di-dien-khanh-khanh-hoa",
+  path: "thue-xe-dong-nai-di-dien-khanh-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Diên Khánh, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Diên Khánh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Diên Khánh Khánh Hòa phù hợp khách về quê, công tác, khảo sát hoặc thăm người thân. Xe có tài xế, lịch trình linh hoạt, không ghép khách và trả tận địa chỉ theo yêu cầu.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh",
+  duration: "7 - 9 giờ",
+},
+
+{
+  key: "dong-nai-di-ninh-hoa-khanh-hoa",
+  path: "thue-xe-dong-nai-di-ninh-hoa-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Ninh Hòa, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Ninh Hòa Khánh Hòa, không ghép khách",
+  description:
+    "Đặt xe từ Đồng Nai đi Ninh Hòa Khánh Hòa cho khách về quê, đi công tác, thăm gia đình hoặc nghỉ dưỡng tại Dốc Lết. Xe riêng đưa đón tận nơi, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa",
+  duration: "7.5 - 9.5 giờ",
+},
+
+{
+  key: "dong-nai-di-van-ninh-khanh-hoa",
+  path: "thue-xe-dong-nai-di-van-ninh-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Vạn Ninh, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Vạn Ninh Khánh Hòa",
+  description:
+    "Dịch vụ thuê xe từ Đồng Nai đi Vạn Ninh Khánh Hòa dành cho khách về quê, công tác hoặc du lịch Vạn Giã và vịnh Vân Phong. Xe riêng có tài xế, không ghép khách, chủ động giờ khởi hành và điểm dừng nghỉ.",
+  routeText:
+    "Đồng Nai → Phan Thiết → Cam Ranh → Nha Trang → Ninh Hòa → Vạn Ninh",
+  duration: "8.5 - 10.5 giờ",
+},
+
+{
+  key: "dong-nai-di-cam-lam-khanh-hoa",
+  path: "thue-xe-dong-nai-di-cam-lam-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Cam Lâm, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Cam Lâm Khánh Hòa, xe riêng giá tốt",
+  description:
+    "Thuê xe riêng từ Đồng Nai đi Cam Lâm Khánh Hòa để nghỉ dưỡng tại Bãi Dài, các khu resort Cam Ranh, đi công tác hoặc về quê. Xe đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Phan Rang → Cam Lâm",
+  duration: "6.5 - 8.5 giờ",
+},
+
+{
+  key: "dong-nai-di-khanh-vinh-khanh-hoa",
+  path: "thue-xe-dong-nai-di-khanh-vinh-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Khánh Vĩnh, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Khánh Vĩnh Khánh Hòa",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Khánh Vĩnh Khánh Hòa dành cho khách công tác, khảo sát, về quê hoặc thăm người thân. Xe không ghép khách, hỗ trợ dừng nghỉ linh hoạt và đưa khách đến tận nơi.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Cam Ranh → Diên Khánh → Khánh Vĩnh",
+  duration: "8 - 10 giờ",
+},
+
+{
+  key: "dong-nai-di-khanh-son-khanh-hoa",
+  path: "thue-xe-dong-nai-di-khanh-son-khanh-hoa",
+  from: "Đồng Nai",
+  to: "Khánh Sơn, Khánh Hòa",
+  title: "Thuê xe Đồng Nai đi Khánh Sơn Khánh Hòa",
+  description:
+    "Xe riêng từ Đồng Nai đi Khánh Sơn Khánh Hòa phù hợp khách về quê, công tác hoặc thăm gia đình tại khu vực miền núi. Đón tận nơi, không ghép khách, lịch trình linh hoạt và thanh toán sau chuyến đi.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Phan Thiết → Phan Rang → Cam Ranh → Khánh Sơn",
+  duration: "8 - 10 giờ",
+},
+
 ];
