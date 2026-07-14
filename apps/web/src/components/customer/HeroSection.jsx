@@ -234,10 +234,7 @@ export default function HeroSection() {
             md: 2,
           }}
           sx={{
-            width: "100%",
             maxWidth: 900,
-            mx: "auto",
-            boxSizing: "border-box",
 
             pt: {
               xs: 3,
