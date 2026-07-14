@@ -4,6 +4,33 @@ import { Link } from "react-router-dom";
 import { SEO_ROUTES } from "../../data/seoRoutes";
 import { getPublicSystemConfig } from "../../api/systemConfig";
 
+/*
+ * Các Hub SEO chính.
+ *
+ * Mỗi trang tuyến xe đều liên kết về các Hub để:
+ * - Tạo cấu trúc Homepage → Hub → Route
+ * - Giúp Google hiểu nhóm nội dung
+ * - Tăng internal link cho các trang danh mục
+ */
+const SEO_HUB_LINKS = [
+  {
+    label: "Xe liên tỉnh",
+    path: "/xe-lien-tinh",
+  },
+  {
+    label: "TP.HCM đi các tỉnh",
+    path: "/tp-hcm-di-cac-tinh",
+  },
+  {
+    label: "Các tỉnh về TP.HCM",
+    path: "/cac-tinh-di-tp-hcm",
+  },
+  {
+    label: "Thuê xe đi tỉnh",
+    path: "/thue-xe-di-tinh",
+  },
+];
+
 export default function SeoRoutePage({ routeKey }) {
   const [zaloPhone, setZaloPhone] = useState("0326184628");
   const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
@@ -126,6 +153,40 @@ export default function SeoRoutePage({ routeKey }) {
 
   return (
     <main style={styles.page}>
+      {/* ===================================================== */}
+      {/* BREADCRUMB */}
+      {/* ===================================================== */}
+
+      <nav style={styles.breadcrumb} aria-label="Breadcrumb">
+        <Link to="/" style={styles.breadcrumbLink}>
+          Trang chủ
+        </Link>
+
+        <span style={styles.breadcrumbSeparator}>›</span>
+
+        <Link to="/xe-lien-tinh" style={styles.breadcrumbLink}>
+          Xe liên tỉnh
+        </Link>
+
+        <span style={styles.breadcrumbSeparator}>›</span>
+
+        <span style={styles.breadcrumbCurrent}>
+          {route.from} → {route.to}
+        </span>
+      </nav>
+
+      {/* ===================================================== */}
+      {/* SEO HUB NAVIGATION */}
+      {/* ===================================================== */}
+
+      <nav style={styles.hubNavigation} aria-label="Danh mục xe đi tỉnh">
+        {SEO_HUB_LINKS.map((item) => (
+          <Link key={item.path} to={item.path} style={styles.hubNavigationLink}>
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+
       <section style={styles.hero}>
         <p style={styles.badge}>GoViet247 • Xe riêng đi tỉnh</p>
 
@@ -317,6 +378,55 @@ const styles = {
     padding: "32px 16px 56px",
     color: "#172033",
   },
+  breadcrumb: {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: 8,
+    marginBottom: 14,
+    color: "#64748b",
+    fontSize: 14,
+  },
+
+  breadcrumbLink: {
+    color: "#c2410c",
+    textDecoration: "none",
+    fontWeight: 700,
+  },
+
+  breadcrumbSeparator: {
+    color: "#94a3b8",
+  },
+
+  breadcrumbCurrent: {
+    color: "#475569",
+    fontWeight: 700,
+  },
+
+  hubNavigation: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 9,
+    padding: 14,
+    marginBottom: 18,
+    borderRadius: 18,
+    background: "#ffffff",
+    border: "1px solid #e2e8f0",
+  },
+
+  hubNavigationLink: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "9px 13px",
+    borderRadius: 999,
+    background: "#fff7ed",
+    color: "#c2410c",
+    border: "1px solid #fed7aa",
+    textDecoration: "none",
+    fontSize: 14,
+    fontWeight: 800,
+  },
   hero: {
     background: "linear-gradient(135deg, #fff7ed, #ffffff)",
     border: "1px solid #fed7aa",
@@ -468,28 +578,28 @@ const styles = {
     fontWeight: 800,
   },
   downloadAppBox: {
-  marginTop: 18,
-},
-downloadTitle: {
-  margin: "0 0 10px",
-  fontWeight: 800,
-  fontSize: 14,
-  color: "#475569",
-},
-downloadButtons: {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: 10,
-},
-downloadButton: {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "10px 16px",
-  borderRadius: 999,
-  background: "#172033",
-  color: "#ffffff",
-  textDecoration: "none",
-  fontWeight: 800,
-},
+    marginTop: 18,
+  },
+  downloadTitle: {
+    margin: "0 0 10px",
+    fontWeight: 800,
+    fontSize: 14,
+    color: "#475569",
+  },
+  downloadButtons: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+  downloadButton: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "10px 16px",
+    borderRadius: 999,
+    background: "#172033",
+    color: "#ffffff",
+    textDecoration: "none",
+    fontWeight: 800,
+  },
 };
