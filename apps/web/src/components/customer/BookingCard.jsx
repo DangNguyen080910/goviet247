@@ -50,7 +50,7 @@ dayjs.updateLocale("vi", {
 dayjs.locale("vi");
 
 import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { quotePrice } from "../../api/pricing";
 import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
@@ -243,6 +243,7 @@ function formatWeekdayHeader(day) {
 
 export default function BookingCard() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, login } = useCustomerAuth();
 
   const ZALO_BTN_HEIGHT = 64; // chiều cao button Zalo
@@ -306,6 +307,9 @@ export default function BookingCard() {
   const [shouldRedirectAfterSuccess, setShouldRedirectAfterSuccess] =
     useState(false);
 
+  // ✅ Ref cho ô Điểm đón
+  const pickupInputRef = useRef(null);
+
   // ✅ Ref để focus + scroll tới input stop mới thêm
   const stopInputRefs = useRef([]);
 
@@ -343,6 +347,37 @@ export default function BookingCard() {
   const getScrollEl = () => {
     return document.getElementById(CUSTOMER_SCROLL_ID);
   };
+
+  // ✅ Khi khách từ homepage bấm vào ô hành trình hoặc nút xem giá,
+  // tự cuộn tới và focus vào ô Điểm đón.
+  useEffect(() => {
+    if (location.state?.focusField !== "pickup") return;
+
+    const timer = setTimeout(() => {
+      const input = pickupInputRef.current;
+
+      if (!input) return;
+
+      try {
+        input.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      } catch {
+        // Trình duyệt cũ không hỗ trợ smooth scroll
+      }
+
+      setTimeout(() => {
+        try {
+          input.focus();
+        } catch {
+          // Không làm gián đoạn trang nếu focus thất bại
+        }
+      }, 350);
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [location.state?.focusField]);
 
   const buildAutocompleteCacheKey = (keyword, lat, lng) => {
     const safeKeyword = String(keyword || "")
@@ -1864,6 +1899,7 @@ export default function BookingCard() {
                       label="Điểm đón"
                       fullWidth
                       size="small"
+                      inputRef={pickupInputRef}
                       placeholder="Ví dụ: 12 Nguyễn Huệ, Bến Nghé, Quận 1, TP.HCM"
                     />
                   )}
