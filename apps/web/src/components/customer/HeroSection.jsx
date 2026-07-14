@@ -287,7 +287,7 @@ export default function HeroSection() {
                 textShadow: "0 4px 16px rgba(0,0,0,0.28)",
               }}
             >
-              Bạn cần đi đâu hôm nay?
+              Bạn cần đi đâu?
             </Typography>
 
             <Stack
