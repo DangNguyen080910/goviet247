@@ -31,8 +31,7 @@ export default function HeroSection() {
   const [zaloPhone, setZaloPhone] = useState("1900-0000");
   const [heroImageUrl, setHeroImageUrl] = useState("");
 
-  const appStoreUrl =
-    "https://apps.apple.com/vn/app/goviet247/id6767422059";
+  const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
 
   const playStoreUrl =
     "https://play.google.com/store/apps/details?id=com.goviet247.rider";
@@ -235,7 +234,10 @@ export default function HeroSection() {
             md: 2,
           }}
           sx={{
+            width: "100%",
             maxWidth: 900,
+            mx: "auto",
+            boxSizing: "border-box",
 
             pt: {
               xs: 3,
@@ -256,6 +258,8 @@ export default function HeroSection() {
             sx={{
               width: "100%",
               maxWidth: 900,
+              mx: "auto",
+              boxSizing: "border-box",
 
               p: {
                 xs: 1.5,
