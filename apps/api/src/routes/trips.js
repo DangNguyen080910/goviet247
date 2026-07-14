@@ -468,6 +468,51 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       },
     });
 
+    const io = req.app?.get?.("io");
+
+    if (io) {
+      const realtimePayload = {
+        tripId: updated.id,
+        fromStatus: trip.status,
+        toStatus: updated.status,
+        driverId: null,
+        previousDriverId: null,
+        updatedAt: updated.updatedAt,
+        reason: "rider_cancel_trip",
+      };
+
+      // Báo toàn bộ app tài xế reload danh sách chuyến đang chờ
+      io.to("drivers").emit("trip:changed", realtimePayload);
+
+      // Báo admin reload dashboard / badge
+      io.to("admins").emit("admin:trip_status_changed", realtimePayload);
+
+      io.to("admins").emit("admin:dashboard_changed", {
+        source: "rider_cancel_trip",
+        tripId: updated.id,
+        status: updated.status,
+        fromStatus: trip.status,
+        toStatus: updated.status,
+        updatedAt: updated.updatedAt,
+      });
+
+      // Báo cho Rider app cập nhật chính chuyến vừa huỷ
+      if (riderId) {
+        io.to(`rider:${riderId}`).emit("rider:trip_changed", {
+          tripId: updated.id,
+          riderId,
+          fromStatus: trip.status,
+          toStatus: updated.status,
+          updatedAt: updated.updatedAt,
+          reason: "rider_cancel_trip",
+        });
+      }
+
+      console.log(
+        `[Socket] Rider cancelled trip ${updated.id} → emitted trip:changed`,
+      );
+    }
+
     return res.json({
       success: true,
       trip: updated,
