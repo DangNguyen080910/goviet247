@@ -1,6 +1,17 @@
 // Path: goviet247/apps/web/src/pages/customer/SeoRoutePage.jsx
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { SEO_ROUTES } from "../../data/seoRoutes";
 import { getPublicSystemConfig } from "../../api/systemConfig";
 
@@ -32,6 +43,7 @@ const SEO_HUB_LINKS = [
 ];
 
 export default function SeoRoutePage({ routeKey }) {
+  const navigate = useNavigate();
   const [zaloPhone, setZaloPhone] = useState("0326184628");
   const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
   const playStoreUrl =
@@ -41,6 +53,69 @@ export default function SeoRoutePage({ routeKey }) {
     () => SEO_ROUTES.find((item) => item.key === routeKey),
     [routeKey],
   );
+
+  /*
+   * Chuyển khách sang trang đặt xe và yêu cầu trang /dat-xe
+   * tự cuộn tới, sau đó focus vào ô Điểm đón.
+   */
+  const goToBookingPage = () => {
+    navigate("/dat-xe", {
+      state: {
+        focusField: "pickup",
+        source: "seo-route",
+      },
+    });
+  };
+
+  /*
+   * Style dùng chung cho 2 ô nhập giả.
+   * Hai ô này chỉ đóng vai trò CTA, khách bấm vào sẽ sang trang /dat-xe.
+   */
+  const fakeInputSx = {
+    flex: 1,
+    minWidth: {
+      xs: "100%",
+      md: 220,
+    },
+
+    "& .MuiOutlinedInput-root": {
+      height: 54,
+      borderRadius: 2.5,
+      bgcolor: "#ffffff",
+      cursor: "pointer",
+      transition: "transform 160ms ease, box-shadow 160ms ease",
+
+      "& fieldset": {
+        borderColor: "#fed7aa",
+      },
+
+      "&:hover": {
+        transform: "translateY(-1px)",
+        boxShadow: "0 8px 22px rgba(15,23,42,0.10)",
+      },
+
+      "&:hover fieldset": {
+        borderColor: "#f97316",
+      },
+
+      "&.Mui-focused fieldset": {
+        borderColor: "#f97316",
+        borderWidth: 2,
+      },
+    },
+
+    "& .MuiInputBase-input": {
+      cursor: "pointer",
+      fontWeight: 700,
+      fontSize: 15,
+    },
+
+    "& .MuiInputBase-input::placeholder": {
+      color: "#64748b",
+      opacity: 1,
+      fontWeight: 600,
+    },
+  };
 
   useEffect(() => {
     async function loadConfig() {
@@ -216,11 +291,87 @@ export default function SeoRoutePage({ routeKey }) {
           nhận chuyến.
         </p>
 
-        <div style={styles.actions}>
-          <Link to="/dat-xe" style={styles.primaryButton}>
-            Tính giá & đặt xe
-          </Link>
+        {/* ===================================================== */}
+        {/* KHỐI NHẬP HÀNH TRÌNH */}
+        {/* ===================================================== */}
 
+        <Box sx={styles.routeSearchBox}>
+          <Typography sx={styles.routeSearchTitle}>
+            Bạn muốn đi đâu?
+          </Typography>
+
+          <Stack
+            direction={{
+              xs: "column",
+              md: "row",
+            }}
+            spacing={1.2}
+            sx={{
+              width: "100%",
+            }}
+          >
+            <TextField
+              fullWidth
+              placeholder="Nhập điểm đón"
+              value=""
+              onClick={goToBookingPage}
+              onFocus={goToBookingPage}
+              slotProps={{
+                input: {
+                  readOnly: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LocationOnOutlinedIcon sx={{ color: "#1976d2" }} />
+                    </InputAdornment>
+                  ),
+                },
+                htmlInput: {
+                  "aria-label": "Nhập điểm đón",
+                },
+              }}
+              sx={fakeInputSx}
+            />
+
+            <TextField
+              fullWidth
+              placeholder="Nhập điểm đến"
+              value=""
+              onClick={goToBookingPage}
+              onFocus={goToBookingPage}
+              slotProps={{
+                input: {
+                  readOnly: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <FlagOutlinedIcon sx={{ color: "#f97316" }} />
+                    </InputAdornment>
+                  ),
+                },
+                htmlInput: {
+                  "aria-label": "Nhập điểm đến",
+                },
+              }}
+              sx={fakeInputSx}
+            />
+
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<ArrowForwardRoundedIcon />}
+              onClick={goToBookingPage}
+              sx={styles.routeSearchButton}
+            >
+              Xem giá chuyến đi
+            </Button>
+          </Stack>
+
+          <Typography sx={styles.routeSearchNote}>
+            Nhập hành trình để xem quãng đường và nhận báo giá trước khi đặt
+            xe.
+          </Typography>
+        </Box>
+
+        <div style={styles.actions}>
           <a
             href={`https://zalo.me/${zaloPhone}`}
             target="_blank"
@@ -278,7 +429,7 @@ export default function SeoRoutePage({ routeKey }) {
 
         <p style={styles.note}>
           Giá được tính theo điểm đón, điểm đến, loại xe và thời gian di chuyển.
-          Bạn có thể bấm “Tính giá & đặt xe” để xem giá trước khi xác nhận. Giá
+          Bạn có thể nhập điểm đón và điểm đến phía trên để xem quãng đường, nhận báo giá và đặt xe. Giá
           rõ ràng, trọn gói theo chuyến và không phát sinh thêm.
         </p>
       </section>
@@ -456,6 +607,63 @@ const styles = {
     lineHeight: 1.7,
     color: "#475569",
   },
+  routeSearchBox: {
+    mt: 3,
+    p: {
+      xs: 1.5,
+      sm: 2,
+    },
+    borderRadius: 3,
+    background: "rgba(255,255,255,0.82)",
+    border: "1px solid #fed7aa",
+    boxShadow: "0 12px 30px rgba(15,23,42,0.08)",
+  },
+
+  routeSearchTitle: {
+    mb: 1.3,
+    fontSize: {
+      xs: 17,
+      sm: 19,
+    },
+    fontWeight: 900,
+    color: "#172033",
+  },
+
+  routeSearchButton: {
+    minWidth: {
+      xs: "100%",
+      md: 190,
+    },
+    minHeight: 54,
+    px: 2.6,
+    borderRadius: 2.5,
+    textTransform: "none",
+    fontSize: {
+      xs: 15,
+      md: 16,
+    },
+    fontWeight: 900,
+    bgcolor: "#f97316",
+    color: "#ffffff",
+    boxShadow: "0 10px 24px rgba(249,115,22,0.24)",
+
+    "&:hover": {
+      bgcolor: "#ea580c",
+      boxShadow: "0 12px 28px rgba(249,115,22,0.34)",
+      transform: "translateY(-1px)",
+    },
+  },
+
+  routeSearchNote: {
+    mt: 1.1,
+    fontSize: {
+      xs: 12,
+      sm: 13,
+    },
+    fontWeight: 600,
+    color: "#64748b",
+  },
+
   actions: {
     display: "flex",
     flexWrap: "wrap",
