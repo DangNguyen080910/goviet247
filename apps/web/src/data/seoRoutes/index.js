@@ -35,6 +35,7 @@ import { LONGAN_SEO_ROUTES } from "./longAnSeoRoutes.js";
 import { TIENGIANG_SEO_ROUTES } from "./tienGiangSeoRoutes.js";
 import { VINH_LONG_SEO_ROUTES } from "./vinhLongSeoRoutes.js";
 import { DONGTHAP_SEO_ROUTES } from "./dongThapSeoRoutes.js";
+import { ANGIANG_SEO_ROUTES } from "./anGiangSeoRoutes.js";
 
 
 const assertUniqueSeoRoutes = (items) => {
@@ -120,5 +121,6 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...LONGAN_SEO_ROUTES,
   ...TIENGIANG_SEO_ROUTES,
   ...VINH_LONG_SEO_ROUTES,
-  ...DONGTHAP_SEO_ROUTES
+  ...DONGTHAP_SEO_ROUTES,
+  ...ANGIANG_SEO_ROUTES
 ]);
