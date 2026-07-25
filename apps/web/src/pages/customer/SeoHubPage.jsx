@@ -257,169 +257,6 @@ const HUB_CONFIGS = {
       );
     },
   },
-
-  tourism: {
-    path: "/xe-di-du-lich",
-
-    badge: "GoViet247 • Xe riêng đi du lịch",
-
-    title: "Xe đi du lịch, xe riêng đưa đón tận nơi",
-
-    description:
-      "Tổng hợp các tuyến xe riêng đi du lịch dành cho gia đình, nhóm bạn và đoàn khách. Không ghép khách, chủ động lịch trình và biết giá trước khi đặt.",
-
-    heading: "Danh sách tuyến xe đi du lịch",
-
-    intro:
-      "Dịch vụ phù hợp cho khách đi biển, nghỉ dưỡng, tham quan và khám phá các điểm đến nổi tiếng. Hỗ trợ xe 5 chỗ, 7 chỗ và 16 chỗ.",
-
-    emptyText: "Hiện chưa tìm thấy tuyến xe du lịch phù hợp.",
-
-    filter: (route) => {
-      const searchableText = [
-        route.key,
-        route.path,
-        route.title,
-        route.description,
-        route.routeText,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return (
-        searchableText.includes("du lịch") ||
-        searchableText.includes("du lich") ||
-        searchableText.includes("tham quan") ||
-        searchableText.includes("nghỉ dưỡng") ||
-        searchableText.includes("nghi duong")
-      );
-    },
-  },
-
-  business: {
-    path: "/xe-di-cong-tac",
-
-    badge: "GoViet247 • Xe riêng đi công tác",
-
-    title: "Xe đi công tác, đưa đón đúng giờ và tận nơi",
-
-    description:
-      "Tổng hợp các tuyến xe riêng phục vụ khách đi công tác, gặp đối tác, làm việc tại khu công nghiệp hoặc di chuyển liên tỉnh trong ngày.",
-
-    heading: "Danh sách tuyến xe đi công tác",
-
-    intro:
-      "Xe riêng giúp khách chủ động thời gian, không phải chờ ghép khách và thuận tiện khi cần di chuyển nhiều địa điểm trong hành trình.",
-
-    emptyText: "Hiện chưa tìm thấy tuyến xe công tác phù hợp.",
-
-    filter: (route) => {
-      const searchableText = [
-        route.key,
-        route.path,
-        route.title,
-        route.description,
-        route.routeText,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return (
-        searchableText.includes("công tác") ||
-        searchableText.includes("cong tac") ||
-        searchableText.includes("gặp đối tác") ||
-        searchableText.includes("gap doi tac") ||
-        searchableText.includes("khu công nghiệp") ||
-        searchableText.includes("khu cong nghiep")
-      );
-    },
-  },
-
-  airport: {
-    path: "/xe-dua-don-san-bay",
-
-    badge: "GoViet247 • Xe đưa đón sân bay",
-
-    title: "Xe đưa đón sân bay, đón trả tận nơi 24/7",
-
-    description:
-      "Tổng hợp các tuyến xe đưa đón sân bay đi tỉnh và từ các tỉnh về sân bay. Hỗ trợ hành lý, theo dõi lịch trình và đón trả tận nơi.",
-
-    heading: "Danh sách tuyến xe đưa đón sân bay",
-
-    intro:
-      "Phù hợp khách đi sân bay Tân Sơn Nhất, Long Thành, Cam Ranh và các sân bay khác. Có xe 5 chỗ, 7 chỗ và 16 chỗ.",
-
-    emptyText: "Hiện chưa tìm thấy tuyến xe sân bay phù hợp.",
-
-    filter: (route) => {
-      const searchableText = [
-        route.key,
-        route.path,
-        route.from,
-        route.to,
-        route.title,
-        route.description,
-        route.routeText,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return (
-        searchableText.includes("sân bay") ||
-        searchableText.includes("san bay") ||
-        searchableText.includes("tân sơn nhất") ||
-        searchableText.includes("tan son nhat") ||
-        searchableText.includes("cam ranh") ||
-        searchableText.includes("long thành") ||
-        searchableText.includes("long thanh")
-      );
-    },
-  },
-
-  resort: {
-    path: "/xe-dua-don-resort",
-
-    badge: "GoViet247 • Xe đưa đón resort",
-
-    title: "Xe đưa đón resort, khách sạn và khu nghỉ dưỡng",
-
-    description:
-      "Tổng hợp các tuyến xe riêng đưa đón khách sạn, resort và khu nghỉ dưỡng. Phù hợp gia đình, nhóm bạn và khách cần hành trình riêng tư.",
-
-    heading: "Danh sách tuyến xe đưa đón resort",
-
-    intro:
-      "GoViet247 hỗ trợ đón tận nhà và trả tận resort, khách sạn hoặc khu nghỉ dưỡng tại Hồ Tràm, Mũi Né, Đà Lạt, Nha Trang và nhiều điểm đến khác.",
-
-    emptyText: "Hiện chưa tìm thấy tuyến xe resort phù hợp.",
-
-    filter: (route) => {
-      const searchableText = [
-        route.key,
-        route.path,
-        route.from,
-        route.to,
-        route.title,
-        route.description,
-        route.routeText,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return (
-        searchableText.includes("resort") ||
-        searchableText.includes("khách sạn") ||
-        searchableText.includes("khach san") ||
-        searchableText.includes("nghỉ dưỡng") ||
-        searchableText.includes("nghi duong")
-      );
-    },
-  },
 };
 
 function normalizeText(value) {
@@ -626,35 +463,126 @@ export default function SeoHubPage({ hubType }) {
         </div>
       </section>
 
-      <Link
-        to="/xe-5-cho"
-        style={{
-          ...styles.hubNavigationLink,
-          ...(hubType === "car-5-seat" ? styles.hubNavigationLinkActive : {}),
-        }}
-      >
-        Xe 5 chỗ
-      </Link>
+      <nav style={styles.hubNavigation} aria-label="Danh mục tuyến xe">
+        <Link
+          to="/xe-lien-tinh"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "inter-province"
+              ? styles.hubNavigationLinkActive
+              : {}),
+          }}
+        >
+          Xe liên tỉnh
+        </Link>
 
-      <Link
-        to="/xe-7-cho"
-        style={{
-          ...styles.hubNavigationLink,
-          ...(hubType === "car-7-seat" ? styles.hubNavigationLinkActive : {}),
-        }}
-      >
-        Xe 7 chỗ
-      </Link>
+        <Link
+          to="/tp-hcm-di-cac-tinh"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "from-hcm" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          TP.HCM đi các tỉnh
+        </Link>
 
-      <Link
-        to="/xe-16-cho"
-        style={{
-          ...styles.hubNavigationLink,
-          ...(hubType === "car-16-seat" ? styles.hubNavigationLinkActive : {}),
-        }}
+        <Link
+          to="/cac-tinh-di-tp-hcm"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "to-hcm" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Các tỉnh về TP.HCM
+        </Link>
+
+        <Link
+          to="/thue-xe-di-tinh"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "rental" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Thuê xe đi tỉnh
+        </Link>
+        <Link
+          to="/xe-5-cho"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "car-5-seat" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Xe 5 chỗ
+        </Link>
+
+        <Link
+          to="/xe-7-cho"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "car-7-seat" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Xe 7 chỗ
+        </Link>
+
+        <Link
+          to="/xe-16-cho"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "car-16-seat"
+              ? styles.hubNavigationLinkActive
+              : {}),
+          }}
+        >
+          Xe 16 chỗ
+        </Link>
+      </nav>
+      <nav
+        style={styles.purposeNavigation}
+        aria-label="Danh mục xe theo nhu cầu"
       >
-        Xe 16 chỗ
-      </Link>
+        <span style={styles.purposeNavigationLabel}>Chọn theo nhu cầu:</span>
+
+        <Link
+          to="/xe-di-du-lich"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "tourism" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Xe đi du lịch
+        </Link>
+
+        <Link
+          to="/xe-di-cong-tac"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "business" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Xe đi công tác
+        </Link>
+
+        <Link
+          to="/xe-dua-don-san-bay"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "airport" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Đưa đón sân bay
+        </Link>
+
+        <Link
+          to="/xe-dua-don-resort"
+          style={{
+            ...styles.hubNavigationLink,
+            ...(hubType === "resort" ? styles.hubNavigationLinkActive : {}),
+          }}
+        >
+          Đưa đón resort
+        </Link>
+      </nav>
 
       <section style={styles.routesSection}>
         <div style={styles.sectionHeader}>
@@ -856,6 +784,26 @@ const styles = {
     borderRadius: 20,
     background: "#ffffff",
     border: "1px solid #e2e8f0",
+  },
+
+  purposeNavigation: {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: 10,
+    padding: 16,
+    marginTop: 10,
+    marginBottom: 18,
+    borderRadius: 20,
+    background: "#fff7ed",
+    border: "1px solid #fed7aa",
+  },
+
+  purposeNavigationLabel: {
+    marginRight: 2,
+    color: "#9a3412",
+    fontSize: 14,
+    fontWeight: 900,
   },
 
   hubNavigationLink: {
