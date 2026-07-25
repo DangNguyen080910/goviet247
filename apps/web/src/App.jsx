@@ -67,6 +67,11 @@ const SEO_HUB_PATHS = new Set([
   "xe-5-cho",
   "xe-7-cho",
   "xe-16-cho",
+
+  "xe-di-du-lich",
+  "xe-di-cong-tac",
+  "xe-dua-don-san-bay",
+  "xe-dua-don-resort",
 ]);
 
 export default function App() {
@@ -118,6 +123,30 @@ export default function App() {
         <Route
           path="xe-16-cho"
           element={<SeoHubPage hubType="car-16-seat" />}
+        />
+
+                {/* ==================================================== */}
+        {/* SEO HUBS THEO NHU CẦU CHUYẾN ĐI */}
+        {/* ==================================================== */}
+
+        <Route
+          path="xe-di-du-lich"
+          element={<SeoHubPage hubType="tourism" />}
+        />
+
+        <Route
+          path="xe-di-cong-tac"
+          element={<SeoHubPage hubType="business" />}
+        />
+
+        <Route
+          path="xe-dua-don-san-bay"
+          element={<SeoHubPage hubType="airport" />}
+        />
+
+        <Route
+          path="xe-dua-don-resort"
+          element={<SeoHubPage hubType="resort" />}
         />
 
         {/* ==================================================== */}
