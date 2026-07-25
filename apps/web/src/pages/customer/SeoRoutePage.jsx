@@ -518,62 +518,8 @@ export default function SeoRoutePage({ routeKey }) {
       </nav>
 
       {/* ===================================================== */}
-      {/* SEO HUB NAVIGATION */}
+      {/* SEO HUB description */}
       {/* ===================================================== */}
-
-      <nav style={styles.hubNavigation} aria-label="Danh mục xe đi tỉnh">
-        {SEO_HUB_LINKS.map((item) => (
-          <Link key={item.path} to={item.path} style={styles.hubNavigationLink}>
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-
-      {provinceHubLinks.length > 0 && (
-        <section style={styles.provinceHubSection}>
-          <div style={styles.provinceHubHeader}>
-            <div>
-              <p style={styles.provinceHubBadge}>Khám phá theo điểm đến</p>
-
-              <h2 style={styles.provinceHubTitle}>
-                Xem thêm các tuyến xe cùng khu vực
-              </h2>
-            </div>
-          </div>
-
-          <div style={styles.provinceHubLinks}>
-            {provinceHubLinks.map((hub) => (
-              <Link key={hub.path} to={hub.path} style={styles.provinceHubLink}>
-                Xe đi {hub.label}
-                <span style={styles.provinceHubArrow}>→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {smartHubLinks.length > 0 && (
-        <section style={styles.smartHubSection}>
-          <div style={styles.smartHubHeader}>
-            <div>
-              <p style={styles.smartHubBadge}>Gợi ý theo hành trình</p>
-
-              <h2 style={styles.smartHubTitle}>
-                Dịch vụ phù hợp với tuyến này
-              </h2>
-            </div>
-          </div>
-
-          <div style={styles.smartHubLinks}>
-            {smartHubLinks.map((hub) => (
-              <Link key={hub.key} to={hub.path} style={styles.smartHubLink}>
-                <span>{hub.label}</span>
-                <span style={styles.smartHubArrow}>→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
 
       <section style={styles.hero}>
         <p style={styles.badge}>GoViet247 • Xe riêng đi tỉnh</p>
@@ -715,6 +661,7 @@ export default function SeoRoutePage({ routeKey }) {
           </div>
         </div>
       </section>
+
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
           Giá thuê xe {route.from} đi {route.to} được tính như thế nào?
@@ -800,6 +747,65 @@ export default function SeoRoutePage({ routeKey }) {
           </p>
         </div>
       </section>
+
+      {/* ===================================================== */}
+      {/* SEO HUB NAVIGATION */}
+      {/* ===================================================== */}
+
+      <nav style={styles.hubNavigation} aria-label="Danh mục xe đi tỉnh">
+        {SEO_HUB_LINKS.map((item) => (
+          <Link key={item.path} to={item.path} style={styles.hubNavigationLink}>
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+
+      {provinceHubLinks.length > 0 && (
+        <section style={styles.provinceHubSection}>
+          <div style={styles.provinceHubHeader}>
+            <div>
+              <p style={styles.provinceHubBadge}>Khám phá theo điểm đến</p>
+
+              <h2 style={styles.provinceHubTitle}>
+                Xem thêm các tuyến xe cùng khu vực
+              </h2>
+            </div>
+          </div>
+
+          <div style={styles.provinceHubLinks}>
+            {provinceHubLinks.map((hub) => (
+              <Link key={hub.path} to={hub.path} style={styles.provinceHubLink}>
+                Xe đi {hub.label}
+                <span style={styles.provinceHubArrow}>→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {smartHubLinks.length > 0 && (
+        <section style={styles.smartHubSection}>
+          <div style={styles.smartHubHeader}>
+            <div>
+              <p style={styles.smartHubBadge}>Gợi ý theo hành trình</p>
+
+              <h2 style={styles.smartHubTitle}>
+                Dịch vụ phù hợp với tuyến này
+              </h2>
+            </div>
+          </div>
+
+          <div style={styles.smartHubLinks}>
+            {smartHubLinks.map((hub) => (
+              <Link key={hub.key} to={hub.path} style={styles.smartHubLink}>
+                <span>{hub.label}</span>
+                <span style={styles.smartHubArrow}>→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+      {/* ----------------------------- */}
 
       {relatedRoutes.length > 0 && (
         <section style={styles.popularRoutes}>
@@ -1012,7 +1018,7 @@ const styles = {
     border: "1px solid #fed7aa",
   },
 
-    smartHubSection: {
+  smartHubSection: {
     padding: 18,
     marginBottom: 18,
     borderRadius: 20,
