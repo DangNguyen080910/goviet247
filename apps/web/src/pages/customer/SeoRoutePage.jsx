@@ -197,6 +197,115 @@ function getProvinceHubLinks(route) {
   );
 }
 
+/*
+ * Hub thông minh theo nội dung của từng tuyến.
+ *
+ * Ví dụ:
+ * - Tuyến có "5 chỗ" → link Hub xe 5 chỗ
+ * - Tuyến có "du lịch" → link Hub xe đi du lịch
+ * - Tuyến có "sân bay" → link Hub đưa đón sân bay
+ */
+const SMART_HUB_CONFIGS = [
+  {
+    key: "car-5-seat",
+    label: "Xe 5 chỗ",
+    path: "/xe-5-cho",
+    keywords: ["5 chỗ", "5 cho", "xe-5-cho"],
+  },
+  {
+    key: "car-7-seat",
+    label: "Xe 7 chỗ",
+    path: "/xe-7-cho",
+    keywords: ["7 chỗ", "7 cho", "xe-7-cho"],
+  },
+  {
+    key: "car-16-seat",
+    label: "Xe 16 chỗ",
+    path: "/xe-16-cho",
+    keywords: ["16 chỗ", "16 cho", "xe-16-cho"],
+  },
+  {
+    key: "tourism",
+    label: "Xe đi du lịch",
+    path: "/xe-di-du-lich",
+    keywords: [
+      "du lịch",
+      "du lich",
+      "tham quan",
+      "nghỉ dưỡng",
+      "nghi duong",
+      "khám phá",
+      "kham pha",
+    ],
+  },
+  {
+    key: "business",
+    label: "Xe đi công tác",
+    path: "/xe-di-cong-tac",
+    keywords: [
+      "công tác",
+      "cong tac",
+      "đối tác",
+      "doi tac",
+      "chuyên gia",
+      "chuyen gia",
+      "khu công nghiệp",
+      "khu cong nghiep",
+      "nhà máy",
+      "nha may",
+    ],
+  },
+  {
+    key: "airport",
+    label: "Xe đưa đón sân bay",
+    path: "/xe-dua-don-san-bay",
+    keywords: [
+      "sân bay",
+      "san bay",
+      "tân sơn nhất",
+      "tan son nhat",
+      "cam ranh",
+      "long thành",
+      "long thanh",
+    ],
+  },
+  {
+    key: "resort",
+    label: "Xe đưa đón resort",
+    path: "/xe-dua-don-resort",
+    keywords: [
+      "resort",
+      "khách sạn",
+      "khach san",
+      "khu nghỉ dưỡng",
+      "khu nghi duong",
+    ],
+  },
+  {
+    key: "rental",
+    label: "Thuê xe đi tỉnh",
+    path: "/thue-xe-di-tinh",
+    keywords: [
+      "thuê xe",
+      "thue xe",
+      "thue-xe",
+      "xe riêng",
+      "xe rieng",
+      "xe-rieng",
+    ],
+  },
+];
+
+function getSmartHubLinks(route) {
+  const searchableText = getRouteSearchableText(route);
+
+  return SMART_HUB_CONFIGS.filter((hub) =>
+    hub.keywords.some((keyword) =>
+      searchableText.includes(normalizeSeoText(keyword)),
+    ),
+  ).slice(0, 6);
+}
+
 export default function SeoRoutePage({ routeKey }) {
   const navigate = useNavigate();
   const [zaloPhone, setZaloPhone] = useState("0326184628");
@@ -353,6 +462,7 @@ export default function SeoRoutePage({ routeKey }) {
   }
 
   const provinceHubLinks = getProvinceHubLinks(route);
+  const smartHubLinks = getSmartHubLinks(route);
 
   const relatedRoutes = SEO_ROUTES.filter((item) => item.key !== route.key)
     .filter((item) => item.path !== route.path)
@@ -436,6 +546,29 @@ export default function SeoRoutePage({ routeKey }) {
               <Link key={hub.path} to={hub.path} style={styles.provinceHubLink}>
                 Xe đi {hub.label}
                 <span style={styles.provinceHubArrow}>→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {smartHubLinks.length > 0 && (
+        <section style={styles.smartHubSection}>
+          <div style={styles.smartHubHeader}>
+            <div>
+              <p style={styles.smartHubBadge}>Gợi ý theo hành trình</p>
+
+              <h2 style={styles.smartHubTitle}>
+                Dịch vụ phù hợp với tuyến này
+              </h2>
+            </div>
+          </div>
+
+          <div style={styles.smartHubLinks}>
+            {smartHubLinks.map((hub) => (
+              <Link key={hub.key} to={hub.path} style={styles.smartHubLink}>
+                <span>{hub.label}</span>
+                <span style={styles.smartHubArrow}>→</span>
               </Link>
             ))}
           </div>
@@ -877,6 +1010,65 @@ const styles = {
     borderRadius: 20,
     background: "linear-gradient(135deg, #fff7ed, #ffffff)",
     border: "1px solid #fed7aa",
+  },
+
+    smartHubSection: {
+    padding: 18,
+    marginBottom: 18,
+    borderRadius: 20,
+    background: "#ffffff",
+    border: "1px solid #e2e8f0",
+    boxShadow: "0 8px 24px rgba(15, 23, 42, 0.04)",
+  },
+
+  smartHubHeader: {
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 10,
+    marginBottom: 14,
+  },
+
+  smartHubBadge: {
+    margin: "0 0 5px",
+    color: "#ea580c",
+    fontSize: 13,
+    fontWeight: 800,
+  },
+
+  smartHubTitle: {
+    margin: 0,
+    color: "#172033",
+    fontSize: 20,
+    lineHeight: 1.35,
+    fontWeight: 900,
+  },
+
+  smartHubLinks: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
+    gap: 10,
+  },
+
+  smartHubLink: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    padding: "12px 14px",
+    borderRadius: 14,
+    background: "#f8fafc",
+    color: "#334155",
+    border: "1px solid #e2e8f0",
+    textDecoration: "none",
+    fontWeight: 800,
+  },
+
+  smartHubArrow: {
+    color: "#ea580c",
+    fontSize: 17,
+    lineHeight: 1,
   },
 
   provinceHubHeader: {
