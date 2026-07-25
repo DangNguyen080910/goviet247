@@ -42,6 +42,149 @@ const SEO_HUB_LINKS = [
   },
 ];
 
+/*
+ * Các Hub SEO theo tỉnh hoặc điểm đến.
+ *
+ * aliases dùng để nhận diện tỉnh trong:
+ * - route.from
+ * - route.to
+ * - route.title
+ * - route.description
+ * - route.routeText
+ * - route.path
+ */
+const PROVINCE_HUB_LINKS = [
+  {
+    label: "Vũng Tàu",
+    path: "/vung-tau",
+    aliases: [
+      "vũng tàu",
+      "vung tau",
+      "bà rịa - vũng tàu",
+      "bà rịa vũng tàu",
+      "ba ria vung tau",
+    ],
+  },
+  {
+    label: "Hồ Tràm",
+    path: "/ho-tram",
+    aliases: ["hồ tràm", "ho tram"],
+  },
+  {
+    label: "Long Hải",
+    path: "/long-hai",
+    aliases: ["long hải", "long hai"],
+  },
+  {
+    label: "Bình Châu",
+    path: "/binh-chau",
+    aliases: ["bình châu", "binh chau"],
+  },
+  {
+    label: "Phan Thiết",
+    path: "/phan-thiet",
+    aliases: ["phan thiết", "phan thiet"],
+  },
+  {
+    label: "Mũi Né",
+    path: "/mui-ne",
+    aliases: ["mũi né", "mui ne"],
+  },
+  {
+    label: "Đà Lạt",
+    path: "/da-lat",
+    aliases: ["đà lạt", "da lat"],
+  },
+  {
+    label: "Nha Trang",
+    path: "/nha-trang",
+    aliases: ["nha trang"],
+  },
+  {
+    label: "Tây Ninh",
+    path: "/tay-ninh",
+    aliases: ["tây ninh", "tay ninh"],
+  },
+  {
+    label: "Cần Thơ",
+    path: "/can-tho",
+    aliases: ["cần thơ", "can tho"],
+  },
+  {
+    label: "Bến Tre",
+    path: "/ben-tre",
+    aliases: ["bến tre", "ben tre"],
+  },
+  {
+    label: "Long An",
+    path: "/long-an",
+    aliases: ["long an"],
+  },
+  {
+    label: "Tiền Giang",
+    path: "/tien-giang",
+    aliases: ["tiền giang", "tien giang"],
+  },
+  {
+    label: "Vĩnh Long",
+    path: "/vinh-long",
+    aliases: ["vĩnh long", "vinh long"],
+  },
+  {
+    label: "Đồng Tháp",
+    path: "/dong-thap",
+    aliases: ["đồng tháp", "dong thap"],
+  },
+  {
+    label: "An Giang",
+    path: "/an-giang",
+    aliases: ["an giang"],
+  },
+  {
+    label: "Kiên Giang",
+    path: "/kien-giang",
+    aliases: ["kiên giang", "kien giang"],
+  },
+];
+
+function normalizeSeoText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .replace(/[–—]/g, "-")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getRouteSearchableText(route) {
+  return normalizeSeoText(
+    [
+      route?.from,
+      route?.to,
+      route?.title,
+      route?.description,
+      route?.routeText,
+      route?.path,
+      route?.key,
+    ]
+      .filter(Boolean)
+      .join(" "),
+  );
+}
+
+function getProvinceHubLinks(route) {
+  const searchableText = getRouteSearchableText(route);
+
+  return PROVINCE_HUB_LINKS.filter((hub) =>
+    hub.aliases.some((alias) =>
+      searchableText.includes(normalizeSeoText(alias)),
+    ),
+  );
+}
+
 export default function SeoRoutePage({ routeKey }) {
   const navigate = useNavigate();
   const [zaloPhone, setZaloPhone] = useState("0326184628");
@@ -197,6 +340,8 @@ export default function SeoRoutePage({ routeKey }) {
     return <main style={styles.page}>Không tìm thấy tuyến xe.</main>;
   }
 
+  const provinceHubLinks = getProvinceHubLinks(route);
+
   const relatedRoutes = SEO_ROUTES.filter((item) => item.key !== route.key)
     .filter((item) => item.path !== route.path)
     .filter((item) => {
@@ -262,6 +407,29 @@ export default function SeoRoutePage({ routeKey }) {
         ))}
       </nav>
 
+      {provinceHubLinks.length > 0 && (
+        <section style={styles.provinceHubSection}>
+          <div style={styles.provinceHubHeader}>
+            <div>
+              <p style={styles.provinceHubBadge}>Khám phá theo điểm đến</p>
+
+              <h2 style={styles.provinceHubTitle}>
+                Xem thêm các tuyến xe cùng khu vực
+              </h2>
+            </div>
+          </div>
+
+          <div style={styles.provinceHubLinks}>
+            {provinceHubLinks.map((hub) => (
+              <Link key={hub.path} to={hub.path} style={styles.provinceHubLink}>
+                Xe đi {hub.label}
+                <span style={styles.provinceHubArrow}>→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section style={styles.hero}>
         <p style={styles.badge}>GoViet247 • Xe riêng đi tỉnh</p>
 
@@ -296,9 +464,7 @@ export default function SeoRoutePage({ routeKey }) {
         {/* ===================================================== */}
 
         <Box sx={styles.routeSearchBox}>
-          <Typography sx={styles.routeSearchTitle}>
-            Bạn muốn đi đâu?
-          </Typography>
+          <Typography sx={styles.routeSearchTitle}>Bạn muốn đi đâu?</Typography>
 
           <Stack
             direction={{
@@ -366,8 +532,7 @@ export default function SeoRoutePage({ routeKey }) {
           </Stack>
 
           <Typography sx={styles.routeSearchNote}>
-            Nhập hành trình để xem quãng đường và nhận báo giá trước khi đặt
-            xe.
+            Nhập hành trình để xem quãng đường và nhận báo giá trước khi đặt xe.
           </Typography>
         </Box>
 
@@ -429,8 +594,9 @@ export default function SeoRoutePage({ routeKey }) {
 
         <p style={styles.note}>
           Giá được tính theo điểm đón, điểm đến, loại xe và thời gian di chuyển.
-          Bạn có thể nhập điểm đón và điểm đến phía trên để xem quãng đường, nhận báo giá và đặt xe. Giá
-          rõ ràng, trọn gói theo chuyến và không phát sinh thêm.
+          Bạn có thể nhập điểm đón và điểm đến phía trên để xem quãng đường,
+          nhận báo giá và đặt xe. Giá rõ ràng, trọn gói theo chuyến và không
+          phát sinh thêm.
         </p>
       </section>
       <section style={styles.card}>
@@ -692,6 +858,63 @@ const styles = {
     textDecoration: "none",
     fontWeight: 800,
     border: "1px solid #fdba74",
+  },
+  provinceHubSection: {
+    padding: 18,
+    marginBottom: 18,
+    borderRadius: 20,
+    background: "linear-gradient(135deg, #fff7ed, #ffffff)",
+    border: "1px solid #fed7aa",
+  },
+
+  provinceHubHeader: {
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 10,
+    marginBottom: 14,
+  },
+
+  provinceHubBadge: {
+    margin: "0 0 5px",
+    color: "#ea580c",
+    fontSize: 13,
+    fontWeight: 800,
+  },
+
+  provinceHubTitle: {
+    margin: 0,
+    color: "#172033",
+    fontSize: 20,
+    lineHeight: 1.35,
+    fontWeight: 900,
+  },
+
+  provinceHubLinks: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+
+  provinceHubLink: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    minWidth: 170,
+    padding: "11px 14px",
+    borderRadius: 14,
+    background: "#ffffff",
+    color: "#c2410c",
+    border: "1px solid #fdba74",
+    textDecoration: "none",
+    fontWeight: 800,
+  },
+
+  provinceHubArrow: {
+    fontSize: 17,
+    lineHeight: 1,
   },
   card: {
     background: "#ffffff",
