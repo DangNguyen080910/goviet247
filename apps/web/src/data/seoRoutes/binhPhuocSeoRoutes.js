@@ -3415,6 +3415,6561 @@ routeText: "Thuận An → Chơn Thành → Đồng Xoài",
 duration: "2 - 3 giờ",
 },
 
+// =====================================================
+// PHASE 1: QUẬN/HUYỆN TP.HCM → BÌNH PHƯỚC
+// BATCH 1/3
+// =====================================================
 
+{
+  key: "quan-1-di-binh-phuoc",
+  path: "thue-xe-tu-quan-1-di-binh-phuoc",
+  from: "Quận 1, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 1 đi Bình Phước, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 1 đi Bình Phước phù hợp cho khách công tác, về quê, thăm người thân hoặc làm việc tại các khu công nghiệp. Xe riêng có tài xế đón tận khách sạn, căn hộ, văn phòng hoặc nhà riêng tại Quận 1 và đưa thẳng đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long cùng các khu vực khác của Bình Phước. Không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 1 → Điện Biên Phủ → Quốc lộ 13 → Chơn Thành → Bình Phước",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "quan-3-di-binh-phuoc",
+  path: "thue-xe-tu-quan-3-di-binh-phuoc",
+  from: "Quận 3, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 3 đi Bình Phước, xe riêng có tài xế",
+  description:
+    "Đặt xe riêng từ Quận 3 đi Bình Phước cho gia đình, khách doanh nghiệp hoặc người cần về quê bằng lịch trình riêng. Tài xế đến đón tận nhà, bệnh viện, khách sạn hay văn phòng tại Quận 3, hỗ trợ hành lý và đưa khách đến đúng địa chỉ tại Bình Phước. Chuyến đi không ghép thêm người lạ, không cần đặt cọc và có thể khởi hành linh hoạt cả ngày lẫn đêm.",
+  routeText:
+    "Quận 3 → Điện Biên Phủ → Quốc lộ 13 → Chơn Thành → Bình Phước",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "quan-4-di-binh-phuoc",
+  path: "thue-xe-tu-quan-4-di-binh-phuoc",
+  from: "Quận 4, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 4 đi Bình Phước, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Bình Phước dành cho khách về quê, dự đám tiệc, đi công tác hoặc đưa đón người thân. Xe đón tận chung cư, khách sạn, văn phòng và khu dân cư trong Quận 4, sau đó di chuyển thẳng đến Đồng Xoài, Chơn Thành, Bình Long hoặc địa chỉ theo yêu cầu. Khách chủ động giờ đi, điểm dừng nghỉ và toàn bộ lịch trình.",
+  routeText:
+    "Quận 4 → Nguyễn Hữu Cảnh → Quốc lộ 13 → Chơn Thành → Bình Phước",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "quan-5-di-binh-phuoc",
+  path: "thue-xe-tu-quan-5-di-binh-phuoc",
+  from: "Quận 5, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 5 đi Bình Phước, đón trả tận nơi",
+  description:
+    "Thuê xe từ Quận 5 đi Bình Phước bằng xe riêng có tài xế, phù hợp gia đình có trẻ nhỏ, người lớn tuổi, khách mang nhiều hành lý hoặc người cần chuyến đi đường dài thoải mái. Xe đón tận nhà, bệnh viện, khách sạn hoặc khu vực Chợ Lớn và đưa thẳng đến địa chỉ yêu cầu tại Bình Phước. Không trung chuyển, không ghép khách và báo giá rõ ràng trước khi đặt.",
+  routeText:
+    "Quận 5 → Võ Văn Kiệt → Điện Biên Phủ → Quốc lộ 13 → Bình Phước",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "quan-6-di-binh-phuoc",
+  path: "thue-xe-tu-quan-6-di-binh-phuoc",
+  from: "Quận 6, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 6 đi Bình Phước, xe riêng giá rõ ràng",
+  description:
+    "Đặt xe từ Quận 6 đi Bình Phước cho nhu cầu về quê, thăm người thân, đi công tác hoặc đến các khu công nghiệp tại Chơn Thành và Đồng Xoài. Xe riêng đến đón tận địa chỉ, hành lý đi cùng xe và không phải đổi phương tiện giữa đường. Khách biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 6 → Võ Văn Kiệt → Điện Biên Phủ → Quốc lộ 13 → Bình Phước",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "quan-7-di-binh-phuoc",
+  path: "thue-xe-tu-quan-7-di-binh-phuoc",
+  from: "Quận 7, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 7 đi Bình Phước, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ Quận 7 đi Bình Phước phục vụ khách tại Phú Mỹ Hưng, khu căn hộ, khách sạn, văn phòng và các khu dân cư trong quận. Xe riêng có tài xế đón tận nơi, hỗ trợ hành lý và đưa thẳng đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc khu vực khác theo lịch trình. Không ghép khách và hoạt động linh hoạt 24/7.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Nguyễn Hữu Thọ → Quốc lộ 13 → Bình Phước",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "quan-8-di-binh-phuoc",
+  path: "thue-xe-tu-quan-8-di-binh-phuoc",
+  from: "Quận 8, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 8 đi Bình Phước, xe riêng có tài xế",
+  description:
+    "Xe riêng từ Quận 8 đi Bình Phước phù hợp cho khách về quê, công tác, thăm gia đình hoặc cần đưa đón người thân tận nơi. Tài xế đến đón tại nhà, chung cư, khách sạn hay văn phòng trong Quận 8 và đưa khách thẳng đến địa chỉ mong muốn tại Bình Phước. Chuyến đi riêng tư, không ghép khách, chủ động giờ khởi hành và điểm dừng nghỉ.",
+  routeText:
+    "Quận 8 → Võ Văn Kiệt → Điện Biên Phủ → Quốc lộ 13 → Bình Phước",
+  duration: "3.5 - 4.5 giờ",
+},
+
+{
+  key: "quan-10-di-binh-phuoc",
+  path: "thue-xe-tu-quan-10-di-binh-phuoc",
+  from: "Quận 10, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 10 đi Bình Phước, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe từ Quận 10 đi Bình Phước phù hợp khách đi công tác, khảo sát nhà máy, về quê hoặc thăm người thân. Xe có tài xế đón tận nhà, bệnh viện, khách sạn và văn phòng tại Quận 10, sau đó đưa khách đến Đồng Xoài, Chơn Thành, Bình Long hoặc các huyện xa hơn trong tỉnh. Xe riêng không ghép khách, biết giá trước khi đặt và không yêu cầu đặt cọc.",
+  routeText:
+    "Quận 10 → Điện Biên Phủ → Quốc lộ 13 → Chơn Thành → Bình Phước",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "quan-11-di-binh-phuoc",
+  path: "quan-11-di-binh-phuoc",
+  from: "Quận 11, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe riêng từ Quận 11 đi Bình Phước giá tốt",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Bình Phước, đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 11, xe di chuyển qua khu vực trung tâm TP.HCM, theo Quốc lộ 13 hướng Bình Dương, Chơn Thành và các địa điểm tại Bình Phước.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-12-di-binh-phuoc",
+  path: "quan-12-di-binh-phuoc",
+  from: "Quận 12, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe từ Quận 12 đi Bình Phước đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Bình Phước hoạt động 24/7, phù hợp đi công tác, thăm người thân hoặc du lịch. Xe không ghép khách, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe đi theo hướng Bình Dương, Quốc lộ 13, qua Chơn Thành để đến Đồng Xoài và các huyện, thị xã thuộc Bình Phước.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "binh-tan-di-binh-phuoc",
+  path: "binh-tan-di-binh-phuoc",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe riêng Bình Tân đi Bình Phước không ghép khách",
+  description:
+    "Đặt xe từ Bình Tân đi Bình Phước với xe riêng nguyên chuyến, đón trả tận địa chỉ. Khách được biết giá trước, không cần đặt cọc và chỉ thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Bình Tân, xe di chuyển qua nội thành TP.HCM, kết nối Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến các khu vực tại Bình Phước.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "binh-thanh-di-binh-phuoc",
+  path: "binh-thanh-di-binh-phuoc",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe Bình Thạnh đi Bình Phước giá trọn gói",
+  description:
+    "Thuê xe riêng từ Bình Thạnh đi Bình Phước, đưa đón tận nhà và không ghép khách. Giá được thông báo trước khi đặt, không thu cọc và thanh toán khi kết thúc chuyến.",
+  routeText:
+    "Từ Bình Thạnh, xe thuận tiện kết nối Quốc lộ 13, đi qua Bình Dương, Chơn Thành và tiếp tục đến Đồng Xoài hoặc các địa phương khác của Bình Phước.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "go-vap-di-binh-phuoc",
+  path: "go-vap-di-binh-phuoc",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Bình Phước",
+  title: "Đặt xe Gò Vấp đi Bình Phước 24/7",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Bình Phước phục vụ 24/7, đón tận nơi và đi thẳng không ghép khách. Biết giá trước, không đặt cọc, thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Gò Vấp, xe di chuyển theo hướng Quốc lộ 13 qua Bình Dương, Chơn Thành, sau đó đến Đồng Xoài và các huyện, thị xã tại Bình Phước.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "phu-nhuan-di-binh-phuoc",
+  path: "phu-nhuan-di-binh-phuoc",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe riêng Phú Nhuận đi Bình Phước đón tận nhà",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Bình Phước dành cho gia đình, nhóm bạn hoặc khách công tác. Xe đón tận nơi, không ghép khách, báo giá trước và thanh toán sau.",
+  routeText:
+    "Từ Phú Nhuận, xe đi qua khu vực Bình Thạnh, kết nối Quốc lộ 13, qua Bình Dương và Chơn Thành để đến các điểm tại Bình Phước.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-binh-di-binh-phuoc",
+  path: "tan-binh-di-binh-phuoc",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe Tân Bình đi Bình Phước giá tốt",
+  description:
+    "Xe riêng từ Tân Bình đi Bình Phước, nhận đón tại nhà, khách sạn hoặc khu vực sân bay Tân Sơn Nhất. Không ghép khách, biết giá trước, không cần đặt cọc.",
+  routeText:
+    "Từ Tân Bình, xe di chuyển qua nội thành TP.HCM, kết nối Quốc lộ 13 qua Bình Dương, Chơn Thành và tiếp tục đến Bình Phước.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-phu-di-binh-phuoc",
+  path: "tan-phu-di-binh-phuoc",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe riêng Tân Phú đi Bình Phước giá trọn gói",
+  description:
+    "Đặt xe riêng từ Tân Phú đi Bình Phước, đón tận địa chỉ và không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Tân Phú, xe di chuyển qua nội thành TP.HCM, kết nối Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến các địa điểm tại Bình Phước.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "thu-duc-di-binh-phuoc",
+  path: "thu-duc-di-binh-phuoc",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe Thủ Đức đi Bình Phước đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Đức đi Bình Phước hoạt động 24/7, phù hợp đi công tác, du lịch hoặc thăm người thân. Xe không ghép khách, báo giá trước và thanh toán sau chuyến.",
+  routeText:
+    "Từ TP. Thủ Đức, xe đi theo hướng Bình Dương, kết nối Quốc lộ 13 qua Bến Cát, Chơn Thành rồi đến Đồng Xoài và các địa phương tại Bình Phước.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "hoc-mon-di-binh-phuoc",
+  path: "hoc-mon-di-binh-phuoc",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Bình Phước",
+  title: "Thuê xe Hóc Môn đi Bình Phước không ghép khách",
+  description:
+    "Xe riêng từ Hóc Môn đi Bình Phước, nhận đón tận nhà, tận khu công nghiệp hoặc địa điểm theo yêu cầu. Giá được thông báo trước, không đặt cọc và không ghép khách.",
+  routeText:
+    "Từ Hóc Môn, xe di chuyển theo hướng Bình Dương, kết nối Quốc lộ 13 qua Chơn Thành để đến Đồng Xoài và các huyện, thị xã thuộc Bình Phước.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "binh-chanh-di-binh-phuoc",
+  path: "binh-chanh-di-binh-phuoc",
+  from: "Huyện Bình Chánh, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe riêng Bình Chánh đi Bình Phước 24/7",
+  description:
+    "Đặt xe từ Bình Chánh đi Bình Phước với xe riêng nguyên chuyến, đưa đón tận nơi và phục vụ 24/7. Khách biết giá trước, không cần đặt cọc và thanh toán sau.",
+  routeText:
+    "Từ Bình Chánh, xe đi qua khu vực nội thành TP.HCM, kết nối Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến các địa điểm tại Bình Phước.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "cu-chi-di-binh-phuoc",
+  path: "cu-chi-di-binh-phuoc",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe Củ Chi đi Bình Phước giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Củ Chi đi Bình Phước dành cho cá nhân, gia đình và doanh nghiệp. Đón tận nơi, không ghép khách, biết giá trước và chỉ thanh toán sau chuyến.",
+  routeText:
+    "Từ Củ Chi, xe di chuyển theo hướng Bình Dương, kết nối Quốc lộ 13 qua Bến Cát, Chơn Thành và tiếp tục đến các khu vực tại Bình Phước.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "nha-be-di-binh-phuoc",
+  path: "nha-be-di-binh-phuoc",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Bình Phước",
+  title: "Đặt xe Nhà Bè đi Bình Phước đưa đón tận nhà",
+  description:
+    "Thuê xe riêng từ Nhà Bè đi Bình Phước, đón trả tận địa chỉ và không ghép khách. Giá trọn gói được báo trước, không thu cọc và thanh toán khi kết thúc chuyến.",
+  routeText:
+    "Từ Nhà Bè, xe di chuyển qua trung tâm TP.HCM, kết nối Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến Đồng Xoài và các địa phương tại Bình Phước.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "can-gio-di-binh-phuoc",
+  path: "can-gio-di-binh-phuoc",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Bình Phước",
+  title: "Xe riêng Cần Giờ đi Bình Phước trọn gói",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Bình Phước, phục vụ tận nơi, không ghép khách và phù hợp cho hành trình đường dài. Biết giá trước, không đặt cọc, thanh toán sau chuyến.",
+  routeText:
+    "Từ Cần Giờ, xe di chuyển qua phà Bình Khánh, vào trung tâm TP.HCM, sau đó kết nối Quốc lộ 13 qua Bình Dương, Chơn Thành để đến Bình Phước.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tp-hcm-di-dong-xoai",
+  path: "tp-hcm-di-dong-xoai",
+  from: "TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng TP.HCM đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi TP. Đồng Xoài đưa đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP.HCM, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành và đến trung tâm TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "tp-hcm-di-chon-thanh",
+  path: "tp-hcm-di-chon-thanh",
+  from: "TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe TP.HCM đi Chơn Thành Bình Phước",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Giá báo trước, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP.HCM, xe đi theo Quốc lộ 13 qua Bình Dương đến trung tâm thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "tp-hcm-di-binh-long",
+  path: "tp-hcm-di-binh-long",
+  from: "TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe TP.HCM đi Bình Long trọn gói",
+  description:
+    "Xe riêng từ TP.HCM đi Bình Long phù hợp đi công tác, thăm người thân hoặc du lịch. Không ghép khách, biết giá trước và thanh toán sau.",
+  routeText:
+    "Từ TP.HCM, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "tp-hcm-di-phuoc-long",
+  path: "tp-hcm-di-phuoc-long",
+  from: "TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe TP.HCM đi Phước Long Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi TP. Phước Long đưa đón tận nhà, không ghép khách. Báo giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP.HCM, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "tp-hcm-di-bu-dang",
+  path: "tp-hcm-di-bu-dang",
+  from: "TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng TP.HCM đi Bù Đăng",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Bù Đăng với tài xế kinh nghiệm, đón tận nơi và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau.",
+  routeText:
+    "Từ TP.HCM, xe đi qua Bình Dương, Đồng Xoài rồi tiếp tục theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "tp-hcm-di-bu-dop",
+  path: "tp-hcm-di-bu-dop",
+  from: "TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe TP.HCM đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Bù Đốp phục vụ 24/7, không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP.HCM, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tp-hcm-di-hon-quan",
+  path: "tp-hcm-di-hon-quan",
+  from: "TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe TP.HCM đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP.HCM, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tp-hcm-di-bu-gia-map",
+  path: "tp-hcm-di-bu-gia-map",
+  from: "TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng TP.HCM đi Bù Gia Mập giá tốt",
+  description:
+    "Đặt xe riêng từ TP.HCM đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Giá được báo trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP.HCM, xe đi theo Quốc lộ 13 qua Đồng Xoài, Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tp-hcm-di-loc-ninh",
+  path: "tp-hcm-di-loc-ninh",
+  from: "TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe TP.HCM đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP.HCM đi Lộc Ninh phù hợp cho khách đi công tác, thăm người thân hoặc làm việc tại khu vực biên giới. Xe đón tận nơi, không ghép khách, thanh toán sau chuyến.",
+  routeText:
+    "Từ TP.HCM, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "tp-hcm-di-dong-phu",
+  path: "tp-hcm-di-dong-phu",
+  from: "TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe TP.HCM đi Đồng Phú Bình Phước",
+  description:
+    "Thuê xe riêng từ TP.HCM đi Đồng Phú với tài xế nhiều kinh nghiệm, đưa đón tận nơi và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau.",
+  routeText:
+    "Từ TP.HCM, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tp-hcm-di-phu-rieng",
+  path: "tp-hcm-di-phu-rieng",
+  from: "TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng TP.HCM đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP.HCM đi Phú Riềng hoạt động 24/7, đón tận nhà và không ghép khách. Giá minh bạch, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP.HCM, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "dong-xoai-di-tp-hcm",
+  path: "dong-xoai-di-tp-hcm",
+  from: "TP. Đồng Xoài, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe riêng Đồng Xoài đi TP.HCM giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Đồng Xoài đi TP.HCM đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Đồng Xoài, xe di chuyển theo Quốc lộ 13 qua Chơn Thành, Bình Dương rồi vào trung tâm TP.HCM.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "chon-thanh-di-tp-hcm",
+  path: "chon-thanh-di-tp-hcm",
+  from: "Thị xã Chơn Thành, Bình Phước",
+  to: "TP.HCM",
+  title: "Thuê xe Chơn Thành đi TP.HCM",
+  description:
+    "Xe riêng từ Chơn Thành đi TP.HCM phục vụ 24/7, đưa đón tận nơi và không ghép khách. Giá được báo trước, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Chơn Thành, xe theo Quốc lộ 13 qua Bình Dương rồi đến các quận huyện tại TP.HCM.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "binh-long-di-tp-hcm",
+  path: "binh-long-di-tp-hcm",
+  from: "Thị xã Bình Long, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe Bình Long đi TP.HCM trọn gói",
+  description:
+    "Đặt xe riêng từ Bình Long đi TP.HCM với tài xế nhiều kinh nghiệm, xe không ghép khách. Biết giá trước và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Bình Long, xe đi qua Chơn Thành, Bình Dương theo Quốc lộ 13 rồi vào TP.HCM.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "phuoc-long-di-tp-hcm",
+  path: "phuoc-long-di-tp-hcm",
+  from: "TP. Phước Long, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe riêng Phước Long đi TP.HCM",
+  description:
+    "Thuê xe riêng từ TP. Phước Long đi TP.HCM, đón tận nơi và không ghép khách. Không cần đặt cọc, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Phước Long, xe di chuyển qua Đồng Xoài, Chơn Thành rồi theo Quốc lộ 13 về TP.HCM.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "bu-dang-di-tp-hcm",
+  path: "bu-dang-di-tp-hcm",
+  from: "Huyện Bù Đăng, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe Bù Đăng đi TP.HCM đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Bù Đăng đi TP.HCM hoạt động 24/7, phù hợp đi công tác hoặc về thành phố. Xe không ghép khách, báo giá trước và thanh toán sau.",
+  routeText:
+    "Từ Bù Đăng, xe theo Quốc lộ 14 đến Đồng Xoài, tiếp tục Quốc lộ 13 qua Bình Dương rồi đến TP.HCM.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "bu-dop-di-tp-hcm",
+  path: "bu-dop-di-tp-hcm",
+  from: "Huyện Bù Đốp, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe riêng Bù Đốp đi TP.HCM giá tốt",
+  description:
+    "Xe riêng từ Bù Đốp đi TP.HCM đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Bù Đốp, xe đi qua Lộc Ninh, Chơn Thành, Bình Dương rồi vào trung tâm TP.HCM.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "hon-quan-di-tp-hcm",
+  path: "hon-quan-di-tp-hcm",
+  from: "Huyện Hớn Quản, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe riêng Hớn Quản đi TP.HCM",
+  description:
+    "Dịch vụ xe riêng từ Hớn Quản đi TP.HCM đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Hớn Quản, xe di chuyển theo Quốc lộ 13 qua Chơn Thành, Bình Dương rồi vào trung tâm TP.HCM.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "bu-gia-map-di-tp-hcm",
+  path: "bu-gia-map-di-tp-hcm",
+  from: "Huyện Bù Gia Mập, Bình Phước",
+  to: "TP.HCM",
+  title: "Thuê xe Bù Gia Mập đi TP.HCM giá tốt",
+  description:
+    "Xe riêng từ Bù Gia Mập đi TP.HCM phục vụ 24/7, đưa đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Bù Gia Mập, xe đi qua TP. Phước Long, Đồng Xoài, Chơn Thành rồi theo Quốc lộ 13 về TP.HCM.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "loc-ninh-di-tp-hcm",
+  path: "loc-ninh-di-tp-hcm",
+  from: "Huyện Lộc Ninh, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe Lộc Ninh đi TP.HCM không ghép khách",
+  description:
+    "Đặt xe riêng từ Lộc Ninh đi TP.HCM dành cho khách công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, không đặt cọc và thanh toán sau.",
+  routeText:
+    "Từ Lộc Ninh, xe di chuyển qua Bình Long, Chơn Thành, Bình Dương rồi đến các quận huyện TP.HCM.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "dong-phu-di-tp-hcm",
+  path: "dong-phu-di-tp-hcm",
+  from: "Huyện Đồng Phú, Bình Phước",
+  to: "TP.HCM",
+  title: "Xe riêng Đồng Phú đi TP.HCM",
+  description:
+    "Dịch vụ xe riêng từ Đồng Phú đi TP.HCM với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Đồng Phú, xe đi qua TP. Đồng Xoài, Chơn Thành, Bình Dương theo Quốc lộ 13 rồi vào TP.HCM.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "phu-rieng-di-tp-hcm",
+  path: "phu-rieng-di-tp-hcm",
+  from: "Huyện Phú Riềng, Bình Phước",
+  to: "TP.HCM",
+  title: "Đặt xe Phú Riềng đi TP.HCM trọn gói",
+  description:
+    "Thuê xe riêng từ Phú Riềng đi TP.HCM đón tận nơi, không ghép khách và hoạt động 24/7. Giá được báo trước, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Phú Riềng, xe di chuyển qua Đồng Xoài, Chơn Thành, Bình Dương rồi đến TP.HCM.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "sai-gon-di-dong-xoai",
+  path: "sai-gon-di-dong-xoai",
+  from: "Sài Gòn",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Đồng Xoài giá tốt",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi TP. Đồng Xoài, đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Sài Gòn, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến trung tâm TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "sai-gon-di-chon-thanh",
+  path: "sai-gon-di-chon-thanh",
+  from: "Sài Gòn",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Sài Gòn đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Sài Gòn đi Chơn Thành phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-binh-long",
+  path: "sai-gon-di-binh-long",
+  from: "Sài Gòn",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Sài Gòn đi Bình Long trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "sai-gon-di-phuoc-long",
+  path: "sai-gon-di-phuoc-long",
+  from: "Sài Gòn",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Sài Gòn đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Sài Gòn đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "sai-gon-di-bu-dang",
+  path: "sai-gon-di-bu-dang",
+  from: "Sài Gòn",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm, không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Sài Gòn, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-bu-dop",
+  path: "sai-gon-di-bu-dop",
+  from: "Sài Gòn",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Sài Gòn đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "sai-gon-di-hon-quan",
+  path: "sai-gon-di-hon-quan",
+  from: "Sài Gòn",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Sài Gòn đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Sài Gòn, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-bu-gia-map",
+  path: "sai-gon-di-bu-gia-map",
+  from: "Sài Gòn",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "sai-gon-di-loc-ninh",
+  path: "sai-gon-di-loc-ninh",
+  from: "Sài Gòn",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Sài Gòn đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Sài Gòn đi Lộc Ninh dành cho khách công tác, thăm người thân hoặc làm việc tại khu vực biên giới. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau.",
+  routeText:
+    "Từ Sài Gòn, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-dong-phu",
+  path: "sai-gon-di-dong-phu",
+  from: "Sài Gòn",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Sài Gòn đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Sài Gòn đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Sài Gòn, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-phu-rieng",
+  path: "sai-gon-di-phu-rieng",
+  from: "Sài Gòn",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "dong-xoai-di-sai-gon",
+  path: "dong-xoai-di-sai-gon",
+  from: "TP. Đồng Xoài, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe riêng Đồng Xoài đi Sài Gòn giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Đồng Xoài đi Sài Gòn đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Đồng Xoài, xe di chuyển theo Quốc lộ 13 qua Chơn Thành, Bình Dương rồi vào trung tâm Sài Gòn.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "chon-thanh-di-sai-gon",
+  path: "chon-thanh-di-sai-gon",
+  from: "Thị xã Chơn Thành, Bình Phước",
+  to: "Sài Gòn",
+  title: "Thuê xe Chơn Thành đi Sài Gòn",
+  description:
+    "Xe riêng từ Chơn Thành đi Sài Gòn phục vụ 24/7, đón tận nơi và không ghép khách. Giá được báo trước, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Chơn Thành, xe theo Quốc lộ 13 qua Bình Dương rồi đến các quận huyện tại Sài Gòn.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "binh-long-di-sai-gon",
+  path: "binh-long-di-sai-gon",
+  from: "Thị xã Bình Long, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe Bình Long đi Sài Gòn trọn gói",
+  description:
+    "Đặt xe riêng từ Bình Long đi Sài Gòn với tài xế nhiều kinh nghiệm, xe không ghép khách. Biết giá trước và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Bình Long, xe đi qua Chơn Thành, Bình Dương theo Quốc lộ 13 rồi vào trung tâm Sài Gòn.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "phuoc-long-di-sai-gon",
+  path: "phuoc-long-di-sai-gon",
+  from: "TP. Phước Long, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe riêng Phước Long đi Sài Gòn",
+  description:
+    "Thuê xe riêng từ TP. Phước Long đi Sài Gòn, đón tận nơi và không ghép khách. Không cần đặt cọc, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Phước Long, xe di chuyển qua Đồng Xoài, Chơn Thành rồi theo Quốc lộ 13 về Sài Gòn.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "bu-dang-di-sai-gon",
+  path: "bu-dang-di-sai-gon",
+  from: "Huyện Bù Đăng, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe Bù Đăng đi Sài Gòn đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Bù Đăng đi Sài Gòn hoạt động 24/7, phù hợp đi công tác hoặc du lịch. Xe không ghép khách, báo giá trước và thanh toán sau.",
+  routeText:
+    "Từ Bù Đăng, xe theo Quốc lộ 14 đến Đồng Xoài, tiếp tục Quốc lộ 13 qua Bình Dương rồi đến Sài Gòn.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "bu-dop-di-sai-gon",
+  path: "bu-dop-di-sai-gon",
+  from: "Huyện Bù Đốp, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe riêng Bù Đốp đi Sài Gòn giá tốt",
+  description:
+    "Xe riêng từ Bù Đốp đi Sài Gòn đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Bù Đốp, xe đi qua Lộc Ninh, Chơn Thành, Bình Dương rồi vào trung tâm Sài Gòn.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "hon-quan-di-sai-gon",
+  path: "hon-quan-di-sai-gon",
+  from: "Huyện Hớn Quản, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe riêng Hớn Quản đi Sài Gòn",
+  description:
+    "Dịch vụ xe riêng từ Hớn Quản đi Sài Gòn đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Hớn Quản, xe di chuyển theo Quốc lộ 13 qua Chơn Thành, Bình Dương rồi vào trung tâm Sài Gòn.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "bu-gia-map-di-sai-gon",
+  path: "bu-gia-map-di-sai-gon",
+  from: "Huyện Bù Gia Mập, Bình Phước",
+  to: "Sài Gòn",
+  title: "Thuê xe Bù Gia Mập đi Sài Gòn giá tốt",
+  description:
+    "Xe riêng từ Bù Gia Mập đi Sài Gòn phục vụ 24/7, đưa đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Bù Gia Mập, xe đi qua TP. Phước Long, Đồng Xoài, Chơn Thành rồi theo Quốc lộ 13 về Sài Gòn.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "loc-ninh-di-sai-gon",
+  path: "loc-ninh-di-sai-gon",
+  from: "Huyện Lộc Ninh, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe Lộc Ninh đi Sài Gòn không ghép khách",
+  description:
+    "Đặt xe riêng từ Lộc Ninh đi Sài Gòn dành cho khách công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Lộc Ninh, xe di chuyển qua Bình Long, Chơn Thành, Bình Dương rồi đến các quận huyện tại Sài Gòn.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "dong-phu-di-sai-gon",
+  path: "dong-phu-di-sai-gon",
+  from: "Huyện Đồng Phú, Bình Phước",
+  to: "Sài Gòn",
+  title: "Xe riêng Đồng Phú đi Sài Gòn",
+  description:
+    "Dịch vụ xe riêng từ Đồng Phú đi Sài Gòn với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Đồng Phú, xe đi qua TP. Đồng Xoài, Chơn Thành, Bình Dương theo Quốc lộ 13 rồi vào Sài Gòn.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "phu-rieng-di-sai-gon",
+  path: "phu-rieng-di-sai-gon",
+  from: "Huyện Phú Riềng, Bình Phước",
+  to: "Sài Gòn",
+  title: "Đặt xe Phú Riềng đi Sài Gòn trọn gói",
+  description:
+    "Thuê xe riêng từ Phú Riềng đi Sài Gòn đón tận nơi, không ghép khách và hoạt động 24/7. Giá được báo trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Phú Riềng, xe di chuyển qua Đồng Xoài, Chơn Thành, Bình Dương rồi đến trung tâm Sài Gòn.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-1-di-dong-xoai",
+  path: "quan-1-di-dong-xoai",
+  from: "Quận 1, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 1 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 1, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-1-di-chon-thanh",
+  path: "quan-1-di-chon-thanh",
+  from: "Quận 1, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 1 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 1 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-1-di-binh-long",
+  path: "quan-1-di-binh-long",
+  from: "Quận 1, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 1 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 1 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-1-di-phuoc-long",
+  path: "quan-1-di-phuoc-long",
+  from: "Quận 1, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 1 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 1 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-1-di-bu-dang",
+  path: "quan-1-di-bu-dang",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 1 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 1 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 1, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-1-di-bu-dop",
+  path: "quan-1-di-bu-dop",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 1 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-1-di-hon-quan",
+  path: "quan-1-di-hon-quan",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 1 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 1, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-1-di-bu-gia-map",
+  path: "quan-1-di-bu-gia-map",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 1 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 1 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-1-di-loc-ninh",
+  path: "quan-1-di-loc-ninh",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 1 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 1 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-1-di-dong-phu",
+  path: "quan-1-di-dong-phu",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 1 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 1 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 1, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-1-di-phu-rieng",
+  path: "quan-1-di-phu-rieng",
+  from: "Quận 1, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 1 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 1 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 1, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-3-di-dong-xoai",
+  path: "quan-3-di-dong-xoai",
+  from: "Quận 3, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 3 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 3, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-3-di-chon-thanh",
+  path: "quan-3-di-chon-thanh",
+  from: "Quận 3, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 3 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 3 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-3-di-binh-long",
+  path: "quan-3-di-binh-long",
+  from: "Quận 3, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 3 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 3 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-3-di-phuoc-long",
+  path: "quan-3-di-phuoc-long",
+  from: "Quận 3, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 3 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 3 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-3-di-bu-dang",
+  path: "quan-3-di-bu-dang",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 3 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 3 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 3, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-3-di-bu-dop",
+  path: "quan-3-di-bu-dop",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 3 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-3-di-hon-quan",
+  path: "quan-3-di-hon-quan",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 3 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 3, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-3-di-bu-gia-map",
+  path: "quan-3-di-bu-gia-map",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 3 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 3 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-3-di-loc-ninh",
+  path: "quan-3-di-loc-ninh",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 3 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 3 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-3-di-dong-phu",
+  path: "quan-3-di-dong-phu",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 3 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 3 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 3, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-3-di-phu-rieng",
+  path: "quan-3-di-phu-rieng",
+  from: "Quận 3, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 3 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 3 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 3, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-4-di-dong-xoai",
+  path: "quan-4-di-dong-xoai",
+  from: "Quận 4, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 4 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 4, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-4-di-chon-thanh",
+  path: "quan-4-di-chon-thanh",
+  from: "Quận 4, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 4 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 4 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-4-di-binh-long",
+  path: "quan-4-di-binh-long",
+  from: "Quận 4, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 4 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-4-di-phuoc-long",
+  path: "quan-4-di-phuoc-long",
+  from: "Quận 4, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 4 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 4 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-4-di-bu-dang",
+  path: "quan-4-di-bu-dang",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 4 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 4, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-4-di-bu-dop",
+  path: "quan-4-di-bu-dop",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 4 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-4-di-hon-quan",
+  path: "quan-4-di-hon-quan",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 4 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 4, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-4-di-bu-gia-map",
+  path: "quan-4-di-bu-gia-map",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 4 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-4-di-loc-ninh",
+  path: "quan-4-di-loc-ninh",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 4 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 4 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-4-di-dong-phu",
+  path: "quan-4-di-dong-phu",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 4 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 4 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 4, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-4-di-phu-rieng",
+  path: "quan-4-di-phu-rieng",
+  from: "Quận 4, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 4 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 4, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-5-di-dong-xoai",
+  path: "quan-5-di-dong-xoai",
+  from: "Quận 5, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 5 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 5, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-5-di-chon-thanh",
+  path: "quan-5-di-chon-thanh",
+  from: "Quận 5, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 5 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 5 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-5-di-binh-long",
+  path: "quan-5-di-binh-long",
+  from: "Quận 5, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 5 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-5-di-phuoc-long",
+  path: "quan-5-di-phuoc-long",
+  from: "Quận 5, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 5 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 5 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-5-di-bu-dang",
+  path: "quan-5-di-bu-dang",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 5 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 5, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-5-di-bu-dop",
+  path: "quan-5-di-bu-dop",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 5 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-5-di-hon-quan",
+  path: "quan-5-di-hon-quan",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 5 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 5, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-5-di-bu-gia-map",
+  path: "quan-5-di-bu-gia-map",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 5 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-5-di-loc-ninh",
+  path: "quan-5-di-loc-ninh",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 5 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 5 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-5-di-dong-phu",
+  path: "quan-5-di-dong-phu",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 5 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 5 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 5, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-5-di-phu-rieng",
+  path: "quan-5-di-phu-rieng",
+  from: "Quận 5, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 5 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 5, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-6-di-dong-xoai",
+  path: "quan-6-di-dong-xoai",
+  from: "Quận 6, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 6 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 6, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-6-di-chon-thanh",
+  path: "quan-6-di-chon-thanh",
+  from: "Quận 6, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 6 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 6 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-6-di-binh-long",
+  path: "quan-6-di-binh-long",
+  from: "Quận 6, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 6 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-6-di-phuoc-long",
+  path: "quan-6-di-phuoc-long",
+  from: "Quận 6, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 6 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 6 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-6-di-bu-dang",
+  path: "quan-6-di-bu-dang",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 6 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 6, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-6-di-bu-dop",
+  path: "quan-6-di-bu-dop",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 6 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-6-di-hon-quan",
+  path: "quan-6-di-hon-quan",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 6 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 6, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-6-di-bu-gia-map",
+  path: "quan-6-di-bu-gia-map",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 6 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-6-di-loc-ninh",
+  path: "quan-6-di-loc-ninh",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 6 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 6 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-6-di-dong-phu",
+  path: "quan-6-di-dong-phu",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 6 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 6 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 6, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-6-di-phu-rieng",
+  path: "quan-6-di-phu-rieng",
+  from: "Quận 6, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 6 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 6, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-7-di-dong-xoai",
+  path: "quan-7-di-dong-xoai",
+  from: "Quận 7, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 7 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 7, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-7-di-chon-thanh",
+  path: "quan-7-di-chon-thanh",
+  from: "Quận 7, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 7 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 7 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-7-di-binh-long",
+  path: "quan-7-di-binh-long",
+  from: "Quận 7, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 7 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 7 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-7-di-phuoc-long",
+  path: "quan-7-di-phuoc-long",
+  from: "Quận 7, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 7 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 7 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-7-di-bu-dang",
+  path: "quan-7-di-bu-dang",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 7 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 7 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 7, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-7-di-bu-dop",
+  path: "quan-7-di-bu-dop",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 7 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-7-di-hon-quan",
+  path: "quan-7-di-hon-quan",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 7 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 7, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-7-di-bu-gia-map",
+  path: "quan-7-di-bu-gia-map",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 7 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 7 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-7-di-loc-ninh",
+  path: "quan-7-di-loc-ninh",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 7 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 7 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-7-di-dong-phu",
+  path: "quan-7-di-dong-phu",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 7 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 7 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 7, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-7-di-phu-rieng",
+  path: "quan-7-di-phu-rieng",
+  from: "Quận 7, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 7 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 7 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 7, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-8-di-dong-xoai",
+  path: "quan-8-di-dong-xoai",
+  from: "Quận 8, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 8 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 8, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-8-di-chon-thanh",
+  path: "quan-8-di-chon-thanh",
+  from: "Quận 8, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 8 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 8 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-8-di-binh-long",
+  path: "quan-8-di-binh-long",
+  from: "Quận 8, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 8 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-8-di-phuoc-long",
+  path: "quan-8-di-phuoc-long",
+  from: "Quận 8, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 8 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 8 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-8-di-bu-dang",
+  path: "quan-8-di-bu-dang",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 8 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 8, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-8-di-bu-dop",
+  path: "quan-8-di-bu-dop",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 8 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-8-di-hon-quan",
+  path: "quan-8-di-hon-quan",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 8 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 8, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-8-di-bu-gia-map",
+  path: "quan-8-di-bu-gia-map",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 8 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 8 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-8-di-loc-ninh",
+  path: "quan-8-di-loc-ninh",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 8 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 8 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-8-di-dong-phu",
+  path: "quan-8-di-dong-phu",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 8 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 8 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 8, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-8-di-phu-rieng",
+  path: "quan-8-di-phu-rieng",
+  from: "Quận 8, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 8 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 8 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 8, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-10-di-dong-xoai",
+  path: "quan-10-di-dong-xoai",
+  from: "Quận 10, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 10 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 10, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-10-di-chon-thanh",
+  path: "quan-10-di-chon-thanh",
+  from: "Quận 10, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 10 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 10 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-10-di-binh-long",
+  path: "quan-10-di-binh-long",
+  from: "Quận 10, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 10 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 10 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-10-di-phuoc-long",
+  path: "quan-10-di-phuoc-long",
+  from: "Quận 10, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 10 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 10 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-10-di-bu-dang",
+  path: "quan-10-di-bu-dang",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 10 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 10 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 10, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-10-di-bu-dop",
+  path: "quan-10-di-bu-dop",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 10 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-10-di-hon-quan",
+  path: "quan-10-di-hon-quan",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 10 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 10, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-10-di-bu-gia-map",
+  path: "quan-10-di-bu-gia-map",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 10 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 10 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-10-di-loc-ninh",
+  path: "quan-10-di-loc-ninh",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 10 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 10 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-10-di-dong-phu",
+  path: "quan-10-di-dong-phu",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 10 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 10 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 10, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-10-di-phu-rieng",
+  path: "quan-10-di-phu-rieng",
+  from: "Quận 10, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 10 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 10 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 10, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-11-di-dong-xoai",
+  path: "quan-11-di-dong-xoai",
+  from: "Quận 11, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 11 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 11, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-11-di-chon-thanh",
+  path: "quan-11-di-chon-thanh",
+  from: "Quận 11, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 11 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 11 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-11-di-binh-long",
+  path: "quan-11-di-binh-long",
+  from: "Quận 11, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 11 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-11-di-phuoc-long",
+  path: "quan-11-di-phuoc-long",
+  from: "Quận 11, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 11 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 11 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-11-di-bu-dang",
+  path: "quan-11-di-bu-dang",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 11 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 11, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-11-di-bu-dop",
+  path: "quan-11-di-bu-dop",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 11 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-11-di-hon-quan",
+  path: "quan-11-di-hon-quan",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 11 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 11, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-11-di-bu-gia-map",
+  path: "quan-11-di-bu-gia-map",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 11 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 11 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-11-di-loc-ninh",
+  path: "quan-11-di-loc-ninh",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 11 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 11 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-11-di-dong-phu",
+  path: "quan-11-di-dong-phu",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 11 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 11 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 11, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-11-di-phu-rieng",
+  path: "quan-11-di-phu-rieng",
+  from: "Quận 11, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 11 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 11 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 11, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-12-di-dong-xoai",
+  path: "quan-12-di-dong-xoai",
+  from: "Quận 12, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Quận 12 đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 12, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-12-di-chon-thanh",
+  path: "quan-12-di-chon-thanh",
+  from: "Quận 12, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Quận 12 đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận 12 đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "quan-12-di-binh-long",
+  path: "quan-12-di-binh-long",
+  from: "Quận 12, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Quận 12 đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận 12 đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "quan-12-di-phuoc-long",
+  path: "quan-12-di-phuoc-long",
+  from: "Quận 12, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Quận 12 đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận 12 đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "quan-12-di-bu-dang",
+  path: "quan-12-di-bu-dang",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Quận 12 đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận 12 đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 12, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-12-di-bu-dop",
+  path: "quan-12-di-bu-dop",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Quận 12 đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-12-di-hon-quan",
+  path: "quan-12-di-hon-quan",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Quận 12 đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 12, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-12-di-bu-gia-map",
+  path: "quan-12-di-bu-gia-map",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Quận 12 đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận 12 đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "quan-12-di-loc-ninh",
+  path: "quan-12-di-loc-ninh",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Quận 12 đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận 12 đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "quan-12-di-dong-phu",
+  path: "quan-12-di-dong-phu",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Quận 12 đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận 12 đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận 12, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "quan-12-di-phu-rieng",
+  path: "quan-12-di-phu-rieng",
+  from: "Quận 12, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Quận 12 đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận 12 đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận 12, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "binh-thanh-di-dong-xoai",
+  path: "binh-thanh-di-dong-xoai",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Bình Thạnh đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "binh-thanh-di-chon-thanh",
+  path: "binh-thanh-di-chon-thanh",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Bình Thạnh đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Bình Thạnh đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "binh-thanh-di-binh-long",
+  path: "binh-thanh-di-binh-long",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Bình Thạnh đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Bình Thạnh đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "binh-thanh-di-phuoc-long",
+  path: "binh-thanh-di-phuoc-long",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Bình Thạnh đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Bình Thạnh đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "binh-thanh-di-bu-dang",
+  path: "binh-thanh-di-bu-dang",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Bình Thạnh đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Bình Thạnh đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "binh-thanh-di-bu-dop",
+  path: "binh-thanh-di-bu-dop",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Bình Thạnh đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "binh-thanh-di-hon-quan",
+  path: "binh-thanh-di-hon-quan",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Bình Thạnh đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "binh-thanh-di-bu-gia-map",
+  path: "binh-thanh-di-bu-gia-map",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Bình Thạnh đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Bình Thạnh đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "binh-thanh-di-loc-ninh",
+  path: "binh-thanh-di-loc-ninh",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Bình Thạnh đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Bình Thạnh đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "binh-thanh-di-dong-phu",
+  path: "binh-thanh-di-dong-phu",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Bình Thạnh đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Bình Thạnh đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "binh-thanh-di-phu-rieng",
+  path: "binh-thanh-di-phu-rieng",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Bình Thạnh đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Bình Thạnh đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Thạnh, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "go-vap-di-dong-xoai",
+  path: "go-vap-di-dong-xoai",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Gò Vấp đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Gò Vấp, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "go-vap-di-chon-thanh",
+  path: "go-vap-di-chon-thanh",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Gò Vấp đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Gò Vấp đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "go-vap-di-binh-long",
+  path: "go-vap-di-binh-long",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Gò Vấp đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Gò Vấp đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "go-vap-di-phuoc-long",
+  path: "go-vap-di-phuoc-long",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Gò Vấp đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Gò Vấp đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "go-vap-di-bu-dang",
+  path: "go-vap-di-bu-dang",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Gò Vấp đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Gò Vấp đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Gò Vấp, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "go-vap-di-bu-dop",
+  path: "go-vap-di-bu-dop",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Gò Vấp đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "go-vap-di-hon-quan",
+  path: "go-vap-di-hon-quan",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Gò Vấp đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Gò Vấp, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "go-vap-di-bu-gia-map",
+  path: "go-vap-di-bu-gia-map",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Gò Vấp đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Gò Vấp đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "go-vap-di-loc-ninh",
+  path: "go-vap-di-loc-ninh",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Gò Vấp đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Gò Vấp đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "go-vap-di-dong-phu",
+  path: "go-vap-di-dong-phu",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Gò Vấp đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Gò Vấp đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Gò Vấp, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "go-vap-di-phu-rieng",
+  path: "go-vap-di-phu-rieng",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Gò Vấp đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Gò Vấp đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Gò Vấp, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "phu-nhuan-di-dong-xoai",
+  path: "phu-nhuan-di-dong-xoai",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Phú Nhuận đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "phu-nhuan-di-chon-thanh",
+  path: "phu-nhuan-di-chon-thanh",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Phú Nhuận đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Phú Nhuận đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "phu-nhuan-di-binh-long",
+  path: "phu-nhuan-di-binh-long",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Phú Nhuận đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "phu-nhuan-di-phuoc-long",
+  path: "phu-nhuan-di-phuoc-long",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Phú Nhuận đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Phú Nhuận đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "phu-nhuan-di-bu-dang",
+  path: "phu-nhuan-di-bu-dang",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Phú Nhuận đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "phu-nhuan-di-bu-dop",
+  path: "phu-nhuan-di-bu-dop",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Phú Nhuận đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "phu-nhuan-di-hon-quan",
+  path: "phu-nhuan-di-hon-quan",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Phú Nhuận đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "phu-nhuan-di-bu-gia-map",
+  path: "phu-nhuan-di-bu-gia-map",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Phú Nhuận đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Phú Nhuận đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "phu-nhuan-di-loc-ninh",
+  path: "phu-nhuan-di-loc-ninh",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Phú Nhuận đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Phú Nhuận đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "phu-nhuan-di-dong-phu",
+  path: "phu-nhuan-di-dong-phu",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Phú Nhuận đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Phú Nhuận đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "phu-nhuan-di-phu-rieng",
+  path: "phu-nhuan-di-phu-rieng",
+  from: "Quận Phú Nhuận, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Phú Nhuận đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Phú Nhuận đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Phú Nhuận, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "tan-binh-di-dong-xoai",
+  path: "tan-binh-di-dong-xoai",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Tân Bình đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Bình đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Bình, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "tan-binh-di-chon-thanh",
+  path: "tan-binh-di-chon-thanh",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Tân Bình đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận Tân Bình đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "tan-binh-di-binh-long",
+  path: "tan-binh-di-binh-long",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Tân Bình đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận Tân Bình đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "tan-binh-di-phuoc-long",
+  path: "tan-binh-di-phuoc-long",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Tân Bình đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận Tân Bình đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "tan-binh-di-bu-dang",
+  path: "tan-binh-di-bu-dang",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Tân Bình đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận Tân Bình đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Bình, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "tan-binh-di-bu-dop",
+  path: "tan-binh-di-bu-dop",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Tân Bình đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Bình đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tan-binh-di-hon-quan",
+  path: "tan-binh-di-hon-quan",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Tân Bình đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Bình đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Bình, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-binh-di-bu-gia-map",
+  path: "tan-binh-di-bu-gia-map",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Tân Bình đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận Tân Bình đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tan-binh-di-loc-ninh",
+  path: "tan-binh-di-loc-ninh",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Tân Bình đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận Tân Bình đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "tan-binh-di-dong-phu",
+  path: "tan-binh-di-dong-phu",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Tân Bình đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận Tân Bình đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Bình, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-binh-di-phu-rieng",
+  path: "tan-binh-di-phu-rieng",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Tân Bình đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Bình đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Bình, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "tan-phu-di-dong-xoai",
+  path: "tan-phu-di-dong-xoai",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Tân Phú đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Phú đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Phú, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "tan-phu-di-chon-thanh",
+  path: "tan-phu-di-chon-thanh",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Tân Phú đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận Tân Phú đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "tan-phu-di-binh-long",
+  path: "tan-phu-di-binh-long",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Tân Phú đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận Tân Phú đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "tan-phu-di-phuoc-long",
+  path: "tan-phu-di-phuoc-long",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Tân Phú đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận Tân Phú đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "tan-phu-di-bu-dang",
+  path: "tan-phu-di-bu-dang",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Tân Phú đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận Tân Phú đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Phú, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "tan-phu-di-bu-dop",
+  path: "tan-phu-di-bu-dop",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Tân Phú đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Phú đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tan-phu-di-hon-quan",
+  path: "tan-phu-di-hon-quan",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Tân Phú đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Phú đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Phú, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-phu-di-bu-gia-map",
+  path: "tan-phu-di-bu-gia-map",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Tân Phú đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận Tân Phú đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "tan-phu-di-loc-ninh",
+  path: "tan-phu-di-loc-ninh",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Tân Phú đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận Tân Phú đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "tan-phu-di-dong-phu",
+  path: "tan-phu-di-dong-phu",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Tân Phú đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận Tân Phú đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Tân Phú, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-phu-di-phu-rieng",
+  path: "tan-phu-di-phu-rieng",
+  from: "Quận Tân Phú, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Tân Phú đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận Tân Phú đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Tân Phú, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "binh-tan-di-dong-xoai",
+  path: "binh-tan-di-dong-xoai",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Bình Tân đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Quận Bình Tân đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Tân, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "binh-tan-di-chon-thanh",
+  path: "binh-tan-di-chon-thanh",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Bình Tân đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Quận Bình Tân đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "binh-tan-di-binh-long",
+  path: "binh-tan-di-binh-long",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Bình Tân đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Quận Bình Tân đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "binh-tan-di-phuoc-long",
+  path: "binh-tan-di-phuoc-long",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Bình Tân đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Quận Bình Tân đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "binh-tan-di-bu-dang",
+  path: "binh-tan-di-bu-dang",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Bình Tân đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Quận Bình Tân đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Tân, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "binh-tan-di-bu-dop",
+  path: "binh-tan-di-bu-dop",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Bình Tân đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Quận Bình Tân đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "binh-tan-di-hon-quan",
+  path: "binh-tan-di-hon-quan",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Bình Tân đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Quận Bình Tân đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Tân, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "binh-tan-di-bu-gia-map",
+  path: "binh-tan-di-bu-gia-map",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Bình Tân đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Quận Bình Tân đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "binh-tan-di-loc-ninh",
+  path: "binh-tan-di-loc-ninh",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Bình Tân đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Quận Bình Tân đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "binh-tan-di-dong-phu",
+  path: "binh-tan-di-dong-phu",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Bình Tân đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Quận Bình Tân đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Quận Bình Tân, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "binh-tan-di-phu-rieng",
+  path: "binh-tan-di-phu-rieng",
+  from: "Quận Bình Tân, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Bình Tân đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Quận Bình Tân đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Quận Bình Tân, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "thu-duc-di-dong-xoai",
+  path: "thu-duc-di-dong-xoai",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Thủ Đức đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Đức đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Đức, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "thu-duc-di-chon-thanh",
+  path: "thu-duc-di-chon-thanh",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Thủ Đức đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Thủ Đức đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ - 3 giờ"
+},
+
+{
+  key: "thu-duc-di-binh-long",
+  path: "thu-duc-di-binh-long",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Thủ Đức đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Thủ Đức đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "thu-duc-di-phuoc-long",
+  path: "thu-duc-di-phuoc-long",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Thủ Đức đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Thủ Đức đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "thu-duc-di-bu-dang",
+  path: "thu-duc-di-bu-dang",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Thủ Đức đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Thủ Đức đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Đức, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "thu-duc-di-bu-dop",
+  path: "thu-duc-di-bu-dop",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Thủ Đức đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Đức đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "thu-duc-di-hon-quan",
+  path: "thu-duc-di-hon-quan",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Thủ Đức đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Đức đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Đức, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "thu-duc-di-bu-gia-map",
+  path: "thu-duc-di-bu-gia-map",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Thủ Đức đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Thủ Đức đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "thu-duc-di-loc-ninh",
+  path: "thu-duc-di-loc-ninh",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Thủ Đức đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Thủ Đức đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "thu-duc-di-dong-phu",
+  path: "thu-duc-di-dong-phu",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Thủ Đức đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Thủ Đức đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Đức, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "thu-duc-di-phu-rieng",
+  path: "thu-duc-di-phu-rieng",
+  from: "TP. Thủ Đức, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Thủ Đức đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Đức đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Đức, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "hoc-mon-di-dong-xoai",
+  path: "hoc-mon-di-dong-xoai",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Hóc Môn đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Hóc Môn đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "hoc-mon-di-chon-thanh",
+  path: "hoc-mon-di-chon-thanh",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Hóc Môn đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Hóc Môn đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ - 3 giờ"
+},
+
+{
+  key: "hoc-mon-di-binh-long",
+  path: "hoc-mon-di-binh-long",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Hóc Môn đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Hóc Môn đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "hoc-mon-di-phuoc-long",
+  path: "hoc-mon-di-phuoc-long",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Hóc Môn đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Hóc Môn đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "hoc-mon-di-bu-dang",
+  path: "hoc-mon-di-bu-dang",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Hóc Môn đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Hóc Môn đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "hoc-mon-di-bu-dop",
+  path: "hoc-mon-di-bu-dop",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Hóc Môn đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Hóc Môn đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "hoc-mon-di-hon-quan",
+  path: "hoc-mon-di-hon-quan",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Hóc Môn đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Hóc Môn đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "hoc-mon-di-bu-gia-map",
+  path: "hoc-mon-di-bu-gia-map",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Hóc Môn đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Hóc Môn đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "hoc-mon-di-loc-ninh",
+  path: "hoc-mon-di-loc-ninh",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Hóc Môn đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Hóc Môn đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "hoc-mon-di-dong-phu",
+  path: "hoc-mon-di-dong-phu",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Hóc Môn đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Hóc Môn đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "hoc-mon-di-phu-rieng",
+  path: "hoc-mon-di-phu-rieng",
+  from: "Huyện Hóc Môn, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Hóc Môn đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Hóc Môn đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Hóc Môn, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "cu-chi-di-dong-xoai",
+  path: "cu-chi-di-dong-xoai",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Củ Chi đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Củ Chi đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Củ Chi, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 30 phút"
+},
+
+{
+  key: "cu-chi-di-chon-thanh",
+  path: "cu-chi-di-chon-thanh",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Củ Chi đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Củ Chi đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ - 3 giờ"
+},
+
+{
+  key: "cu-chi-di-binh-long",
+  path: "cu-chi-di-binh-long",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Củ Chi đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Củ Chi đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "cu-chi-di-phuoc-long",
+  path: "cu-chi-di-phuoc-long",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Củ Chi đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Củ Chi đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "cu-chi-di-bu-dang",
+  path: "cu-chi-di-bu-dang",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Củ Chi đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Củ Chi đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Củ Chi, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "cu-chi-di-bu-dop",
+  path: "cu-chi-di-bu-dop",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Củ Chi đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Củ Chi đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "cu-chi-di-hon-quan",
+  path: "cu-chi-di-hon-quan",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Củ Chi đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Củ Chi đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Củ Chi, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "cu-chi-di-bu-gia-map",
+  path: "cu-chi-di-bu-gia-map",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Củ Chi đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Củ Chi đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "cu-chi-di-loc-ninh",
+  path: "cu-chi-di-loc-ninh",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Củ Chi đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Củ Chi đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "cu-chi-di-dong-phu",
+  path: "cu-chi-di-dong-phu",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Củ Chi đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Củ Chi đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Củ Chi, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "cu-chi-di-phu-rieng",
+  path: "cu-chi-di-phu-rieng",
+  from: "Huyện Củ Chi, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Củ Chi đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Củ Chi đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Củ Chi, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "nha-be-di-dong-xoai",
+  path: "nha-be-di-dong-xoai",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Nhà Bè đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Nhà Bè đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "nha-be-di-chon-thanh",
+  path: "nha-be-di-chon-thanh",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Nhà Bè đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Nhà Bè đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe đi theo Quốc lộ 13 qua Bình Dương rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 3 giờ - 4 giờ"
+},
+
+{
+  key: "nha-be-di-binh-long",
+  path: "nha-be-di-binh-long",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Nhà Bè đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Nhà Bè đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "nha-be-di-phuoc-long",
+  path: "nha-be-di-phuoc-long",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Nhà Bè đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Nhà Bè đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe đi theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "nha-be-di-bu-dang",
+  path: "nha-be-di-bu-dang",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Nhà Bè đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Nhà Bè đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "nha-be-di-bu-dop",
+  path: "nha-be-di-bu-dop",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Nhà Bè đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Nhà Bè đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ 30 phút"
+},
+
+{
+  key: "nha-be-di-hon-quan",
+  path: "nha-be-di-hon-quan",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Nhà Bè đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Nhà Bè đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe di chuyển theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "nha-be-di-bu-gia-map",
+  path: "nha-be-di-bu-gia-map",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Nhà Bè đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Nhà Bè đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe đi theo Quốc lộ 13 qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ 30 phút"
+},
+
+{
+  key: "nha-be-di-loc-ninh",
+  path: "nha-be-di-loc-ninh",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Nhà Bè đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Nhà Bè đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "nha-be-di-dong-phu",
+  path: "nha-be-di-dong-phu",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Nhà Bè đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Nhà Bè đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "nha-be-di-phu-rieng",
+  path: "nha-be-di-phu-rieng",
+  from: "Huyện Nhà Bè, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Nhà Bè đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Nhà Bè đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Nhà Bè, xe di chuyển theo Quốc lộ 13 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "can-gio-di-dong-xoai",
+  path: "can-gio-di-dong-xoai",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Cần Giờ đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Cần Giờ đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe di chuyển qua trung tâm TP.HCM, theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ 30 phút"
+},
+
+{
+  key: "can-gio-di-chon-thanh",
+  path: "can-gio-di-chon-thanh",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Cần Giờ đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Cần Giờ đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe đi qua trung tâm TP.HCM rồi theo Quốc lộ 13 đến thị xã Chơn Thành.",
+  duration: "Khoảng 4 giờ - 5 giờ"
+},
+
+{
+  key: "can-gio-di-binh-long",
+  path: "can-gio-di-binh-long",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Cần Giờ đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Cần Giờ đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "can-gio-di-phuoc-long",
+  path: "can-gio-di-phuoc-long",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Cần Giờ đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Cần Giờ đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe đi qua TP.HCM, Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ 30 phút"
+},
+
+{
+  key: "can-gio-di-bu-dang",
+  path: "can-gio-di-bu-dang",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Cần Giờ đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Cần Giờ đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe di chuyển qua Bình Dương, Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 6 giờ - 7 giờ"
+},
+
+{
+  key: "can-gio-di-bu-dop",
+  path: "can-gio-di-bu-dop",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Cần Giờ đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Cần Giờ đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 6 giờ - 7 giờ"
+},
+
+{
+  key: "can-gio-di-hon-quan",
+  path: "can-gio-di-hon-quan",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Cần Giờ đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Cần Giờ đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe di chuyển qua trung tâm TP.HCM, theo Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "can-gio-di-bu-gia-map",
+  path: "can-gio-di-bu-gia-map",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Cần Giờ đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Cần Giờ đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe đi qua TP.HCM, Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 6 giờ - 7 giờ"
+},
+
+{
+  key: "can-gio-di-loc-ninh",
+  path: "can-gio-di-loc-ninh",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Cần Giờ đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Cần Giờ đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ 30 phút"
+},
+
+{
+  key: "can-gio-di-dong-phu",
+  path: "can-gio-di-dong-phu",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Cần Giờ đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Cần Giờ đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 5 giờ - 6 giờ"
+},
+
+{
+  key: "can-gio-di-phu-rieng",
+  path: "can-gio-di-phu-rieng",
+  from: "Huyện Cần Giờ, TP.HCM",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Cần Giờ đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Cần Giờ đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Cần Giờ, xe di chuyển qua TP. Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ 30 phút"
+},
+
+{
+  key: "thu-dau-mot-di-dong-xoai",
+  path: "thu-dau-mot-di-dong-xoai",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Thủ Dầu Một đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Dầu Một đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe đi theo Quốc lộ 13 qua Bến Cát, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "thu-dau-mot-di-chon-thanh",
+  path: "thu-dau-mot-di-chon-thanh",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Thủ Dầu Một đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Thủ Dầu Một đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe theo Quốc lộ 13 qua Bến Cát rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-binh-long",
+  path: "thu-dau-mot-di-binh-long",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Thủ Dầu Một đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Thủ Dầu Một đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe theo Quốc lộ 13 qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-phuoc-long",
+  path: "thu-dau-mot-di-phuoc-long",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Thủ Dầu Một đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Thủ Dầu Một đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-bu-dang",
+  path: "thu-dau-mot-di-bu-dang",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Thủ Dầu Một đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Thủ Dầu Một đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "thu-dau-mot-di-bu-dop",
+  path: "thu-dau-mot-di-bu-dop",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Thủ Dầu Một đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Dầu Một đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-hon-quan",
+  path: "thu-dau-mot-di-hon-quan",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Thủ Dầu Một đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Dầu Một đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe di chuyển theo Quốc lộ 13 qua Bến Cát, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-bu-gia-map",
+  path: "thu-dau-mot-di-bu-gia-map",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Thủ Dầu Một đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Thủ Dầu Một đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-loc-ninh",
+  path: "thu-dau-mot-di-loc-ninh",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Thủ Dầu Một đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Thủ Dầu Một đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-dong-phu",
+  path: "thu-dau-mot-di-dong-phu",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Thủ Dầu Một đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Thủ Dầu Một đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "thu-dau-mot-di-phu-rieng",
+  path: "thu-dau-mot-di-phu-rieng",
+  from: "TP. Thủ Dầu Một, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Thủ Dầu Một đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Thủ Dầu Một đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thủ Dầu Một, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-dong-xoai",
+  path: "thuan-an-di-dong-xoai",
+  from: "TP. Thuận An, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Thuận An đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Thuận An đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thuận An, xe đi theo Quốc lộ 13 qua Thủ Dầu Một, Bến Cát, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "thuan-an-di-chon-thanh",
+  path: "thuan-an-di-chon-thanh",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Thuận An đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Thuận An đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe theo Quốc lộ 13 qua Thủ Dầu Một, Bến Cát rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-binh-long",
+  path: "thuan-an-di-binh-long",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Thuận An đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Thuận An đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe theo Quốc lộ 13 qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-phuoc-long",
+  path: "thuan-an-di-phuoc-long",
+  from: "TP. Thuận An, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Thuận An đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Thuận An đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-bu-dang",
+  path: "thuan-an-di-bu-dang",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Thuận An đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Thuận An đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thuận An, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "thuan-an-di-bu-dop",
+  path: "thuan-an-di-bu-dop",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Thuận An đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Thuận An đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-hon-quan",
+  path: "thuan-an-di-hon-quan",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Thuận An đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Thuận An đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thuận An, xe di chuyển theo Quốc lộ 13 qua Thủ Dầu Một, Bến Cát, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-bu-gia-map",
+  path: "thuan-an-di-bu-gia-map",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Thuận An đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Thuận An đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-loc-ninh",
+  path: "thuan-an-di-loc-ninh",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Thuận An đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Thuận An đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-dong-phu",
+  path: "thuan-an-di-dong-phu",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Thuận An đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Thuận An đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Thuận An, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "thuan-an-di-phu-rieng",
+  path: "thuan-an-di-phu-rieng",
+  from: "TP. Thuận An, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Thuận An đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Thuận An đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Thuận An, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "di-an-di-dong-xoai",
+  path: "di-an-di-dong-xoai",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Dĩ An đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Dĩ An đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Dĩ An, xe đi theo Quốc lộ 13 qua Thuận An, Thủ Dầu Một, Bến Cát, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "di-an-di-chon-thanh",
+  path: "di-an-di-chon-thanh",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Dĩ An đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Dĩ An đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe theo Quốc lộ 13 qua Thuận An, Thủ Dầu Một, Bến Cát rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "di-an-di-binh-long",
+  path: "di-an-di-binh-long",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Dĩ An đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Dĩ An đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe theo Quốc lộ 13 qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "di-an-di-phuoc-long",
+  path: "di-an-di-phuoc-long",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Dĩ An đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Dĩ An đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "di-an-di-bu-dang",
+  path: "di-an-di-bu-dang",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Dĩ An đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Dĩ An đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Dĩ An, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút"
+},
+
+{
+  key: "di-an-di-bu-dop",
+  path: "di-an-di-bu-dop",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Dĩ An đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Dĩ An đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ"
+},
+
+{
+  key: "di-an-di-hon-quan",
+  path: "di-an-di-hon-quan",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Dĩ An đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Dĩ An đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Dĩ An, xe di chuyển theo Quốc lộ 13 qua Thuận An, Thủ Dầu Một, Bến Cát, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "di-an-di-bu-gia-map",
+  path: "di-an-di-bu-gia-map",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Dĩ An đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Dĩ An đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ"
+},
+
+{
+  key: "di-an-di-loc-ninh",
+  path: "di-an-di-loc-ninh",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Dĩ An đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Dĩ An đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "di-an-di-dong-phu",
+  path: "di-an-di-dong-phu",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Dĩ An đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Dĩ An đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Dĩ An, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "di-an-di-phu-rieng",
+  path: "di-an-di-phu-rieng",
+  from: "TP. Dĩ An, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Dĩ An đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Dĩ An đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Dĩ An, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-uyen-di-dong-xoai",
+  path: "tan-uyen-di-dong-xoai",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Tân Uyên đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Tân Uyên đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Tân Uyên, xe di chuyển theo đường ĐT746 kết nối Quốc lộ 13 qua Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "tan-uyen-di-chon-thanh",
+  path: "tan-uyen-di-chon-thanh",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Tân Uyên đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Tân Uyên đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe đi theo ĐT746 kết nối Quốc lộ 13 rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "tan-uyen-di-binh-long",
+  path: "tan-uyen-di-binh-long",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Tân Uyên đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Tân Uyên đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe theo Quốc lộ 13 qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "tan-uyen-di-phuoc-long",
+  path: "tan-uyen-di-phuoc-long",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Tân Uyên đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Tân Uyên đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "tan-uyen-di-bu-dang",
+  path: "tan-uyen-di-bu-dang",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Tân Uyên đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Tân Uyên đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Tân Uyên, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "tan-uyen-di-bu-dop",
+  path: "tan-uyen-di-bu-dop",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Tân Uyên đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Tân Uyên đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "tan-uyen-di-hon-quan",
+  path: "tan-uyen-di-hon-quan",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Tân Uyên đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Tân Uyên đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Tân Uyên, xe di chuyển theo ĐT746 kết nối Quốc lộ 13 qua Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "tan-uyen-di-bu-gia-map",
+  path: "tan-uyen-di-bu-gia-map",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Tân Uyên đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Tân Uyên đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "tan-uyen-di-loc-ninh",
+  path: "tan-uyen-di-loc-ninh",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Tân Uyên đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Tân Uyên đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "tan-uyen-di-dong-phu",
+  path: "tan-uyen-di-dong-phu",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Tân Uyên đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Tân Uyên đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Tân Uyên, xe đi theo ĐT746 kết nối Quốc lộ 14 qua Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "tan-uyen-di-phu-rieng",
+  path: "tan-uyen-di-phu-rieng",
+  from: "TP. Tân Uyên, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Tân Uyên đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Tân Uyên đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Tân Uyên, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "ben-cat-di-dong-xoai",
+  path: "ben-cat-di-dong-xoai",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Bến Cát đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Bến Cát đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Bến Cát, xe theo Quốc lộ 13 qua Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "ben-cat-di-chon-thanh",
+  path: "ben-cat-di-chon-thanh",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Bến Cát đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Bến Cát đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe theo Quốc lộ 13 đi thẳng đến thị xã Chơn Thành.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-binh-long",
+  path: "ben-cat-di-binh-long",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Bến Cát đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Bến Cát đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe theo Quốc lộ 13 qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-phuoc-long",
+  path: "ben-cat-di-phuoc-long",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Bến Cát đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Bến Cát đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-bu-dang",
+  path: "ben-cat-di-bu-dang",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Bến Cát đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Bến Cát đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Bến Cát, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "ben-cat-di-bu-dop",
+  path: "ben-cat-di-bu-dop",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Bến Cát đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Bến Cát đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-hon-quan",
+  path: "ben-cat-di-hon-quan",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Bến Cát đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Bến Cát đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Bến Cát, xe di chuyển theo Quốc lộ 13 qua Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-bu-gia-map",
+  path: "ben-cat-di-bu-gia-map",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Bến Cát đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Bến Cát đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-loc-ninh",
+  path: "ben-cat-di-loc-ninh",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Bến Cát đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Bến Cát đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "ben-cat-di-dong-phu",
+  path: "ben-cat-di-dong-phu",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Bến Cát đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Bến Cát đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Bến Cát, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "ben-cat-di-phu-rieng",
+  path: "ben-cat-di-phu-rieng",
+  from: "TP. Bến Cát, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Bến Cát đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Bến Cát đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Bến Cát, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bau-bang-di-dong-xoai",
+  path: "bau-bang-di-dong-xoai",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Bàu Bàng đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bàu Bàng đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe theo Quốc lộ 13 qua Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút"
+},
+
+{
+  key: "bau-bang-di-chon-thanh",
+  path: "bau-bang-di-chon-thanh",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Bàu Bàng đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Bàu Bàng đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe theo Quốc lộ 13 đi thẳng đến thị xã Chơn Thành.",
+  duration: "Khoảng 40 phút - 1 giờ"
+},
+
+{
+  key: "bau-bang-di-binh-long",
+  path: "bau-bang-di-binh-long",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Bàu Bàng đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Bàu Bàng đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe theo Quốc lộ 13 qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "bau-bang-di-phuoc-long",
+  path: "bau-bang-di-phuoc-long",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Bàu Bàng đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Bàu Bàng đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "bau-bang-di-bu-dang",
+  path: "bau-bang-di-bu-dang",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Bàu Bàng đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Bàu Bàng đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bau-bang-di-bu-dop",
+  path: "bau-bang-di-bu-dop",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Bàu Bàng đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bàu Bàng đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "bau-bang-di-hon-quan",
+  path: "bau-bang-di-hon-quan",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Bàu Bàng đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bàu Bàng đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe di chuyển theo Quốc lộ 13 qua Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "bau-bang-di-bu-gia-map",
+  path: "bau-bang-di-bu-gia-map",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Bàu Bàng đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Bàu Bàng đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "bau-bang-di-loc-ninh",
+  path: "bau-bang-di-loc-ninh",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Bàu Bàng đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Bàu Bàng đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "bau-bang-di-dong-phu",
+  path: "bau-bang-di-dong-phu",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Bàu Bàng đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Bàu Bàng đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "bau-bang-di-phu-rieng",
+  path: "bau-bang-di-phu-rieng",
+  from: "Huyện Bàu Bàng, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Bàu Bàng đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bàu Bàng đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bàu Bàng, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "phu-giao-di-dong-xoai",
+  path: "phu-giao-di-dong-xoai",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Phú Giáo đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Phú Giáo đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe theo tuyến ĐT741 đi thẳng đến TP. Đồng Xoài.",
+  duration: "Khoảng 1 giờ 15 phút - 1 giờ 45 phút"
+},
+
+{
+  key: "phu-giao-di-chon-thanh",
+  path: "phu-giao-di-chon-thanh",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Phú Giáo đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Phú Giáo đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe theo ĐT741 kết nối Quốc lộ 14 rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút"
+},
+
+{
+  key: "phu-giao-di-binh-long",
+  path: "phu-giao-di-binh-long",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Phú Giáo đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Phú Giáo đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe đi qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "phu-giao-di-phuoc-long",
+  path: "phu-giao-di-phuoc-long",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Phú Giáo đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Phú Giáo đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "phu-giao-di-bu-dang",
+  path: "phu-giao-di-bu-dang",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Phú Giáo đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Phú Giáo đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "phu-giao-di-bu-dop",
+  path: "phu-giao-di-bu-dop",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Phú Giáo đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Phú Giáo đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe đi qua Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "phu-giao-di-hon-quan",
+  path: "phu-giao-di-hon-quan",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Phú Giáo đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Phú Giáo đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe di chuyển theo ĐT741 qua Đồng Xoài rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "phu-giao-di-bu-gia-map",
+  path: "phu-giao-di-bu-gia-map",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Phú Giáo đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Phú Giáo đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "phu-giao-di-loc-ninh",
+  path: "phu-giao-di-loc-ninh",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Phú Giáo đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Phú Giáo đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe đi qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "phu-giao-di-dong-phu",
+  path: "phu-giao-di-dong-phu",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Phú Giáo đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Phú Giáo đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe theo ĐT741 đi thẳng đến huyện Đồng Phú.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút"
+},
+
+{
+  key: "phu-giao-di-phu-rieng",
+  path: "phu-giao-di-phu-rieng",
+  from: "Huyện Phú Giáo, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Phú Giáo đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Phú Giáo đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Phú Giáo, xe di chuyển theo ĐT741 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-dong-xoai",
+  path: "bac-tan-uyen-di-dong-xoai",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Bắc Tân Uyên đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bắc Tân Uyên đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe theo ĐT741 đi thẳng đến TP. Đồng Xoài.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-chon-thanh",
+  path: "bac-tan-uyen-di-chon-thanh",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Bắc Tân Uyên đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Bắc Tân Uyên đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe theo ĐT741 kết nối Quốc lộ 14 rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 1 giờ - 1 giờ 20 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-binh-long",
+  path: "bac-tan-uyen-di-binh-long",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Bắc Tân Uyên đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Bắc Tân Uyên đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe đi qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-phuoc-long",
+  path: "bac-tan-uyen-di-phuoc-long",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Bắc Tân Uyên đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Bắc Tân Uyên đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "bac-tan-uyen-di-bu-dang",
+  path: "bac-tan-uyen-di-bu-dang",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Bắc Tân Uyên đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Bắc Tân Uyên đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-bu-dop",
+  path: "bac-tan-uyen-di-bu-dop",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Bắc Tân Uyên đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bắc Tân Uyên đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe đi qua Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "bac-tan-uyen-di-hon-quan",
+  path: "bac-tan-uyen-di-hon-quan",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Bắc Tân Uyên đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bắc Tân Uyên đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe di chuyển theo ĐT741 qua Đồng Xoài rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-bu-gia-map",
+  path: "bac-tan-uyen-di-bu-gia-map",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Bắc Tân Uyên đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Bắc Tân Uyên đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút"
+},
+
+{
+  key: "bac-tan-uyen-di-loc-ninh",
+  path: "bac-tan-uyen-di-loc-ninh",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Bắc Tân Uyên đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Bắc Tân Uyên đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe đi qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "bac-tan-uyen-di-dong-phu",
+  path: "bac-tan-uyen-di-dong-phu",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Bắc Tân Uyên đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Bắc Tân Uyên đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe theo ĐT741 đi thẳng đến huyện Đồng Phú.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "bac-tan-uyen-di-phu-rieng",
+  path: "bac-tan-uyen-di-phu-rieng",
+  from: "Huyện Bắc Tân Uyên, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Bắc Tân Uyên đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Bắc Tân Uyên đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Bắc Tân Uyên, xe di chuyển theo ĐT741 qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "dau-tieng-di-dong-xoai",
+  path: "dau-tieng-di-dong-xoai",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Dầu Tiếng đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Huyện Dầu Tiếng đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe di chuyển theo ĐT750 kết nối Quốc lộ 14 rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "dau-tieng-di-chon-thanh",
+  path: "dau-tieng-di-chon-thanh",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Dầu Tiếng đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Huyện Dầu Tiếng đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe theo ĐT750 rồi nhập Quốc lộ 14 đến thị xã Chơn Thành.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ"
+},
+
+{
+  key: "dau-tieng-di-binh-long",
+  path: "dau-tieng-di-binh-long",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Dầu Tiếng đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Huyện Dầu Tiếng đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe theo Quốc lộ 13 và Quốc lộ 14 qua Chơn Thành rồi đến thị xã Bình Long.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "dau-tieng-di-phuoc-long",
+  path: "dau-tieng-di-phuoc-long",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Dầu Tiếng đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Huyện Dầu Tiếng đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "dau-tieng-di-bu-dang",
+  path: "dau-tieng-di-bu-dang",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Dầu Tiếng đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Huyện Dầu Tiếng đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "dau-tieng-di-bu-dop",
+  path: "dau-tieng-di-bu-dop",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Dầu Tiếng đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Huyện Dầu Tiếng đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe đi qua Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "dau-tieng-di-hon-quan",
+  path: "dau-tieng-di-hon-quan",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Dầu Tiếng đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Huyện Dầu Tiếng đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe theo ĐT750 kết nối Quốc lộ 14 qua Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "dau-tieng-di-bu-gia-map",
+  path: "dau-tieng-di-bu-gia-map",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Dầu Tiếng đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Huyện Dầu Tiếng đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "dau-tieng-di-loc-ninh",
+  path: "dau-tieng-di-loc-ninh",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Dầu Tiếng đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Huyện Dầu Tiếng đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe theo Quốc lộ 14 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "dau-tieng-di-dong-phu",
+  path: "dau-tieng-di-dong-phu",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Dầu Tiếng đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Huyện Dầu Tiếng đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe theo ĐT750 kết nối Quốc lộ 14 rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "dau-tieng-di-phu-rieng",
+  path: "dau-tieng-di-phu-rieng",
+  from: "Huyện Dầu Tiếng, Bình Dương",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Dầu Tiếng đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Huyện Dầu Tiếng đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Huyện Dầu Tiếng, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-dong-xoai",
+  path: "bien-hoa-di-dong-xoai",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Biên Hòa đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ TP. Biên Hòa đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi theo Quốc lộ 1, Quốc lộ 13 qua Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "bien-hoa-di-chon-thanh",
+  path: "bien-hoa-di-chon-thanh",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Biên Hòa đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ TP. Biên Hòa đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi qua Bình Dương theo Quốc lộ 13 rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-binh-long",
+  path: "bien-hoa-di-binh-long",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Biên Hòa đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ TP. Biên Hòa đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-phuoc-long",
+  path: "bien-hoa-di-phuoc-long",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Biên Hòa đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ TP. Biên Hòa đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-bu-dang",
+  path: "bien-hoa-di-bu-dang",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Biên Hòa đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ TP. Biên Hòa đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "bien-hoa-di-bu-dop",
+  path: "bien-hoa-di-bu-dop",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Biên Hòa đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP. Biên Hòa đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-hon-quan",
+  path: "bien-hoa-di-hon-quan",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Biên Hòa đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ TP. Biên Hòa đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Biên Hòa, xe di chuyển qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-bu-gia-map",
+  path: "bien-hoa-di-bu-gia-map",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Biên Hòa đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ TP. Biên Hòa đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-loc-ninh",
+  path: "bien-hoa-di-loc-ninh",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Biên Hòa đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ TP. Biên Hòa đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-dong-phu",
+  path: "bien-hoa-di-dong-phu",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Biên Hòa đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ TP. Biên Hòa đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ TP. Biên Hòa, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "bien-hoa-di-phu-rieng",
+  path: "bien-hoa-di-phu-rieng",
+  from: "TP. Biên Hòa, Đồng Nai",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Biên Hòa đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ TP. Biên Hòa đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ TP. Biên Hòa, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "dong-nai-di-dong-xoai",
+  path: "dong-nai-di-dong-xoai",
+  from: "Đồng Nai",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe riêng Đồng Nai đi Đồng Xoài giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi TP. Đồng Xoài đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Đồng Nai, xe di chuyển theo các tuyến quốc lộ kết nối Bình Dương, Chơn Thành rồi đến TP. Đồng Xoài.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "dong-nai-di-chon-thanh",
+  path: "dong-nai-di-chon-thanh",
+  from: "Đồng Nai",
+  to: "Thị xã Chơn Thành, Bình Phước",
+  title: "Thuê xe Đồng Nai đi Chơn Thành Bình Phước",
+  description:
+    "Xe riêng từ Đồng Nai đi Chơn Thành phục vụ 24/7, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe đi qua Bình Dương theo Quốc lộ 13 rồi đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "dong-nai-di-binh-long",
+  path: "dong-nai-di-binh-long",
+  from: "Đồng Nai",
+  to: "Thị xã Bình Long, Bình Phước",
+  title: "Xe Đồng Nai đi Bình Long trọn gói",
+  description:
+    "Đặt xe riêng từ Đồng Nai đi Bình Long dành cho khách công tác, du lịch hoặc thăm người thân. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe đi qua Chơn Thành rồi tiếp tục đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "dong-nai-di-phuoc-long",
+  path: "dong-nai-di-phuoc-long",
+  from: "Đồng Nai",
+  to: "TP. Phước Long, Bình Phước",
+  title: "Đặt xe Đồng Nai đi Phước Long Bình Phước",
+  description:
+    "Thuê xe riêng từ Đồng Nai đi TP. Phước Long, đón tận nhà, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe đi qua Đồng Xoài rồi tiếp tục đến TP. Phước Long.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "dong-nai-di-bu-dang",
+  path: "dong-nai-di-bu-dang",
+  from: "Đồng Nai",
+  to: "Huyện Bù Đăng, Bình Phước",
+  title: "Xe riêng Đồng Nai đi Bù Đăng",
+  description:
+    "Đặt xe riêng từ Đồng Nai đi Bù Đăng với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Đồng Nai, xe đi qua Đồng Xoài rồi theo Quốc lộ 14 đến huyện Bù Đăng.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút"
+},
+
+{
+  key: "dong-nai-di-bu-dop",
+  path: "dong-nai-di-bu-dop",
+  from: "Đồng Nai",
+  to: "Huyện Bù Đốp, Bình Phước",
+  title: "Xe Đồng Nai đi Bù Đốp đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Bù Đốp hoạt động 24/7, không ghép khách và đón trả tận địa chỉ. Biết giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe đi qua Chơn Thành, Đồng Xoài rồi tiếp tục đến huyện Bù Đốp.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ"
+},
+
+{
+  key: "dong-nai-di-hon-quan",
+  path: "dong-nai-di-hon-quan",
+  from: "Đồng Nai",
+  to: "Huyện Hớn Quản, Bình Phước",
+  title: "Thuê xe Đồng Nai đi Hớn Quản Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Hớn Quản đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Đồng Nai, xe di chuyển qua Bình Dương, Chơn Thành rồi đến huyện Hớn Quản.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "dong-nai-di-bu-gia-map",
+  path: "dong-nai-di-bu-gia-map",
+  from: "Đồng Nai",
+  to: "Huyện Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Đồng Nai đi Bù Gia Mập",
+  description:
+    "Đặt xe riêng từ Đồng Nai đi Bù Gia Mập phục vụ 24/7, đưa đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe đi qua Đồng Xoài, TP. Phước Long rồi tiếp tục đến huyện Bù Gia Mập.",
+  duration: "Khoảng 5 giờ 30 phút - 6 giờ"
+},
+
+{
+  key: "dong-nai-di-loc-ninh",
+  path: "dong-nai-di-loc-ninh",
+  from: "Đồng Nai",
+  to: "Huyện Lộc Ninh, Bình Phước",
+  title: "Xe Đồng Nai đi Lộc Ninh không ghép khách",
+  description:
+    "Xe riêng từ Đồng Nai đi Lộc Ninh phù hợp đi công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe theo Quốc lộ 13 qua Chơn Thành, Bình Long rồi tiếp tục đến huyện Lộc Ninh.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "dong-nai-di-dong-phu",
+  path: "dong-nai-di-dong-phu",
+  from: "Đồng Nai",
+  to: "Huyện Đồng Phú, Bình Phước",
+  title: "Đặt xe Đồng Nai đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ Đồng Nai đi Đồng Phú với xe đời mới, tài xế kinh nghiệm và không ghép khách. Biết giá trước, không đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Từ Đồng Nai, xe đi theo Quốc lộ 13 qua Chơn Thành, Đồng Xoài rồi đến huyện Đồng Phú.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "dong-nai-di-phu-rieng",
+  path: "dong-nai-di-phu-rieng",
+  from: "Đồng Nai",
+  to: "Huyện Phú Riềng, Bình Phước",
+  title: "Xe riêng Đồng Nai đi Phú Riềng",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Phú Riềng hoạt động 24/7, đón tận nơi và không ghép khách. Giá minh bạch, biết trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Đồng Nai, xe di chuyển qua Đồng Xoài rồi tiếp tục đến huyện Phú Riềng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "thue-xe-sai-gon-di-binh-phuoc",
+  path: "thue-xe-sai-gon-di-binh-phuoc",
+  from: "Sài Gòn",
+  to: "Bình Phước",
+  title: "Thuê xe Sài Gòn đi Bình Phước giá tốt",
+  description:
+    "Thuê xe riêng từ Sài Gòn đi Bình Phước, đón tận nơi và không ghép khách. Biết giá trước khi đặt, không cần đặt cọc, thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe di chuyển theo Quốc lộ 13 hoặc tuyến phù hợp với điểm đến tại Bình Phước như Chơn Thành, Đồng Xoài, Bình Long và Phước Long.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dat-xe-sai-gon-di-binh-phuoc",
+  path: "dat-xe-sai-gon-di-binh-phuoc",
+  from: "Sài Gòn",
+  to: "Bình Phước",
+  title: "Đặt xe Sài Gòn đi Bình Phước nhanh chóng",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Bình Phước với giá được thông báo trước, không đặt cọc và không ghép khách. Xe đón tận nhà, phù hợp chuyến đi một chiều hoặc khứ hồi.",
+  routeText:
+    "Xe đón khách tại Sài Gòn rồi di chuyển theo tuyến phù hợp đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các huyện tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-du-lich-sai-gon-di-binh-phuoc",
+  path: "xe-du-lich-sai-gon-di-binh-phuoc",
+  from: "Sài Gòn",
+  to: "Bình Phước",
+  title: "Xe du lịch Sài Gòn đi Bình Phước",
+  description:
+    "Thuê xe du lịch riêng từ Sài Gòn đi Bình Phước cho gia đình, nhóm bạn hoặc khách công tác. Xe đưa đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Từ Sài Gòn, xe đi qua Bình Dương và tiếp tục theo Quốc lộ 13 hoặc Quốc lộ 14 đến điểm trả tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-hop-dong-di-binh-phuoc",
+  path: "xe-hop-dong-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe hợp đồng đi Bình Phước giá trọn gói",
+  description:
+    "Dịch vụ xe hợp đồng đi Bình Phước với xe riêng, không ghép khách và đón tận nơi. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại TP.HCM rồi di chuyển theo Quốc lộ 13 hoặc tuyến đường phù hợp đến các khu vực của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-rieng-di-binh-phuoc",
+  path: "xe-rieng-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe riêng đi Bình Phước đưa đón tận nơi",
+  description:
+    "Thuê xe riêng đi Bình Phước dành cho cá nhân, gia đình và doanh nghiệp. Xe không ghép khách, đón tận nơi, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Hành trình từ TP.HCM đến Bình Phước được lựa chọn theo điểm đón và điểm trả để tối ưu thời gian di chuyển.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-di-binh-phuoc-1-chieu",
+  path: "xe-di-binh-phuoc-1-chieu",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đi Bình Phước một chiều giá tốt",
+  description:
+    "Đặt xe một chiều đi Bình Phước với xe riêng, không ghép khách và đón tận nơi. Giá được báo trước, không cần đặt cọc và thanh toán khi kết thúc chuyến.",
+  routeText:
+    "Xe xuất phát từ TP.HCM và di chuyển theo tuyến phù hợp đến Đồng Xoài, Chơn Thành, Bình Long hoặc các huyện tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-di-binh-phuoc-khu-hoi",
+  path: "xe-di-binh-phuoc-khu-hoi",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe đi Bình Phước khứ hồi",
+  description:
+    "Dịch vụ thuê xe khứ hồi đi Bình Phước giúp chủ động lịch trình công tác hoặc du lịch. Xe riêng, không ghép khách, tài xế chờ theo yêu cầu.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến Bình Phước và quay về theo thời gian khách đặt trước.",
+  duration: "Linh hoạt theo lịch trình"
+},
+
+{
+  key: "dat-xe-di-binh-phuoc-online",
+  path: "dat-xe-di-binh-phuoc-online",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Đặt xe đi Bình Phước online nhanh chóng",
+  description:
+    "Đặt xe online đi Bình Phước chỉ trong vài phút. Xe riêng, đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại địa chỉ yêu cầu ở TP.HCM và di chuyển đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-xe-sai-gon-di-binh-phuoc",
+  path: "gia-xe-sai-gon-di-binh-phuoc",
+  from: "Sài Gòn",
+  to: "Bình Phước",
+  title: "Giá xe Sài Gòn đi Bình Phước mới nhất",
+  description:
+    "Xem giá xe riêng từ Sài Gòn đi Bình Phước minh bạch, biết giá trước khi đặt. Xe không ghép khách, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại Sài Gòn và di chuyển đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-xe-tphcm-di-binh-phuoc",
+  path: "gia-xe-tphcm-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá xe TP.HCM đi Bình Phước trọn gói",
+  description:
+    "Tham khảo giá xe TP.HCM đi Bình Phước với chi phí rõ ràng, không phát sinh. Xe riêng đưa đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe di chuyển từ TP.HCM đến các địa điểm tại Bình Phước theo tuyến đường phù hợp với điểm đến.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "bao-gia-xe-di-binh-phuoc",
+  path: "bao-gia-xe-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Báo giá xe đi Bình Phước nhanh chóng",
+  description:
+    "Nhận báo giá xe riêng đi Bình Phước nhanh chóng và chính xác theo lịch trình. Không ghép khách, không cần đặt cọc và biết giá trước khi xác nhận chuyến.",
+  routeText:
+    "Xe đón khách tận nơi tại TP.HCM và đưa đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-thue-xe-rieng-di-binh-phuoc",
+  path: "gia-thue-xe-rieng-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá thuê xe riêng đi Bình Phước",
+  description:
+    "Xem giá thuê xe riêng đi Bình Phước cho gia đình, doanh nghiệp và khách công tác. Xe không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe xuất phát từ TP.HCM và đưa khách đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long cùng các huyện tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-xe-1-chieu-di-binh-phuoc",
+  path: "gia-xe-1-chieu-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá xe một chiều đi Bình Phước",
+  description:
+    "Tham khảo giá xe một chiều đi Bình Phước với xe riêng, không ghép khách. Báo giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại TP.HCM và di chuyển đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-xe-khu-hoi-di-binh-phuoc",
+  path: "gia-xe-khu-hoi-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá xe khứ hồi đi Bình Phước",
+  description:
+    "Xem giá xe khứ hồi đi Bình Phước dành cho khách công tác, du lịch và về quê. Xe riêng, tài xế chờ theo lịch trình và không ghép khách.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến Bình Phước và quay về theo thời gian khách yêu cầu.",
+  duration: "Linh hoạt theo lịch trình"
+},
+
+{
+  key: "gia-xe-hop-dong-di-binh-phuoc",
+  path: "gia-xe-hop-dong-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá xe hợp đồng đi Bình Phước",
+  description:
+    "Báo giá xe hợp đồng đi Bình Phước minh bạch theo lịch trình thực tế. Xe riêng, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe phục vụ đưa đón từ TP.HCM đến các thành phố, thị xã và huyện thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-thue-xe-4-cho-di-binh-phuoc",
+  path: "gia-thue-xe-4-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá thuê xe 4 chỗ đi Bình Phước",
+  description:
+    "Tham khảo giá thuê xe 4 chỗ đi Bình Phước dành cho cá nhân và gia đình nhỏ. Xe riêng, đón tận nơi, không ghép khách và báo giá trước khi đặt.",
+  routeText:
+    "Xe 4 chỗ xuất phát từ TP.HCM và di chuyển đến mọi khu vực tại Bình Phước theo yêu cầu.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-thue-xe-7-cho-di-binh-phuoc",
+  path: "gia-thue-xe-7-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá thuê xe 7 chỗ đi Bình Phước",
+  description:
+    "Xem giá thuê xe 7 chỗ đi Bình Phước với xe đời mới, rộng rãi và tài xế nhiều kinh nghiệm. Không ghép khách, biết giá trước và thanh toán sau chuyến.",
+  routeText:
+    "Xe 7 chỗ đưa khách từ TP.HCM đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long và các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "gia-thue-xe-16-cho-di-binh-phuoc",
+  path: "gia-thue-xe-16-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Giá thuê xe 16 chỗ đi Bình Phước",
+  description:
+    "Tham khảo giá thuê xe 16 chỗ đi Bình Phước cho đoàn du lịch, công ty hoặc gia đình đông người. Xe riêng, không ghép khách, giá rõ ràng và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe 16 chỗ khởi hành từ TP.HCM đến các điểm tại Bình Phước theo lịch trình khách hàng yêu cầu.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-5-cho-di-binh-phuoc",
+  path: "xe-5-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe 5 chỗ đi Bình Phước đưa đón tận nơi",
+  description:
+    "Dịch vụ xe 5 chỗ đi Bình Phước với xe riêng, không ghép khách và đón tận nơi. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe 5 chỗ khởi hành từ TP.HCM đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-5-cho-di-binh-phuoc",
+  path: "thue-xe-5-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe 5 chỗ đi Bình Phước giá tốt",
+  description:
+    "Thuê xe 5 chỗ đi Bình Phước dành cho cá nhân và gia đình nhỏ. Xe riêng, không ghép khách, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tận nơi tại TP.HCM và di chuyển theo tuyến phù hợp đến Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-7-cho-di-binh-phuoc",
+  path: "xe-7-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe 7 chỗ đi Bình Phước không ghép khách",
+  description:
+    "Dịch vụ xe 7 chỗ đi Bình Phước với khoang xe rộng rãi, phù hợp gia đình và nhóm bạn. Đưa đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe 7 chỗ xuất phát từ TP.HCM và đưa khách đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-7-cho-di-binh-phuoc",
+  path: "thue-xe-7-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe 7 chỗ đi Bình Phước",
+  description:
+    "Thuê xe 7 chỗ đi Bình Phước với tài xế nhiều kinh nghiệm, xe đời mới và không ghép khách. Giá minh bạch, không cần đặt cọc.",
+  routeText:
+    "Xe phục vụ tuyến TP.HCM đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long và các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-16-cho-di-binh-phuoc",
+  path: "xe-16-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe 16 chỗ đi Bình Phước trọn gói",
+  description:
+    "Xe 16 chỗ đi Bình Phước phù hợp đoàn du lịch, công ty hoặc gia đình đông người. Xe riêng, không ghép khách và đón tận nơi.",
+  routeText:
+    "Xe 16 chỗ khởi hành từ TP.HCM đến các điểm trong tỉnh Bình Phước theo lịch trình khách yêu cầu.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-16-cho-di-binh-phuoc",
+  path: "thue-xe-16-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe 16 chỗ đi Bình Phước giá tốt",
+  description:
+    "Thuê xe 16 chỗ đi Bình Phước với xe đời mới, tài xế chuyên nghiệp và phục vụ 24/7. Không ghép khách, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón đoàn tại TP.HCM rồi di chuyển đến Đồng Xoài, Chơn Thành và các khu vực khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-du-lich-di-binh-phuoc",
+  path: "xe-du-lich-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe du lịch đi Bình Phước xe riêng giá tốt",
+  description:
+    "Dịch vụ xe du lịch đi Bình Phước dành cho gia đình, nhóm bạn và công ty. Xe riêng, không ghép khách, đón tận nơi, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe xuất phát từ TP.HCM và đưa khách đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các điểm du lịch tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-gia-dinh-di-binh-phuoc",
+  path: "xe-gia-dinh-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe gia đình đi Bình Phước an toàn",
+  description:
+    "Dịch vụ xe gia đình đi Bình Phước với xe sạch sẽ, rộng rãi và không ghép khách. Đưa đón tận nơi, báo giá trước và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe phục vụ đưa đón tận nhà từ TP.HCM đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-cong-tac-di-binh-phuoc",
+  path: "xe-cong-tac-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe công tác đi Bình Phước",
+  description:
+    "Đặt xe công tác đi Bình Phước cho doanh nghiệp và cá nhân. Xe riêng, không ghép khách, tài xế đúng giờ và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến các khu công nghiệp, văn phòng và địa điểm làm việc tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-di-su-kien-o-binh-phuoc",
+  path: "xe-di-su-kien-o-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe đi sự kiện ở Bình Phước",
+  description:
+    "Thuê xe riêng đi sự kiện tại Bình Phước với dịch vụ đưa đón đúng giờ, không ghép khách và lịch trình linh hoạt theo yêu cầu.",
+  routeText:
+    "Xe đón khách tại TP.HCM và di chuyển đến địa điểm tổ chức sự kiện ở Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-theo-ngay-di-binh-phuoc",
+  path: "thue-xe-theo-ngay-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe theo ngày đi Bình Phước",
+  description:
+    "Dịch vụ thuê xe theo ngày đi Bình Phước phù hợp công tác, khảo sát, gặp đối tác hoặc du lịch. Xe riêng, không ghép khách, tài xế chuyên nghiệp và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại TP.HCM và phục vụ theo lịch trình riêng đến các địa điểm tại Bình Phước.",
+  duration: "Linh hoạt theo lịch trình"
+},
+
+{
+  key: "thue-xe-di-cong-tac-binh-phuoc",
+  path: "thue-xe-di-cong-tac-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe đi công tác Bình Phước",
+  description:
+    "Thuê xe riêng đi công tác Bình Phước với lịch trình linh hoạt, đón tận nơi và không ghép khách. Biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến Đồng Xoài, Chơn Thành, các khu công nghiệp và địa điểm làm việc tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-gap-doi-tac-o-binh-phuoc",
+  path: "thue-xe-gap-doi-tac-o-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe gặp đối tác tại Bình Phước",
+  description:
+    "Dịch vụ thuê xe riêng gặp đối tác tại Bình Phước với xe đời mới, tài xế lịch sự và đúng giờ. Không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại TP.HCM và di chuyển theo lịch hẹn đến các địa điểm tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-tham-nguoi-than-o-binh-phuoc",
+  path: "thue-xe-tham-nguoi-than-o-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe thăm người thân ở Bình Phước",
+  description:
+    "Đặt xe riêng đi thăm người thân tại Bình Phước với dịch vụ đưa đón tận nhà, không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến.",
+  routeText:
+    "Xe xuất phát từ TP.HCM đến Đồng Xoài, Bình Long, Phước Long hoặc các huyện theo yêu cầu.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-khao-sat-du-an-o-binh-phuoc",
+  path: "thue-xe-khao-sat-du-an-o-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe khảo sát dự án tại Bình Phước",
+  description:
+    "Thuê xe riêng đi khảo sát dự án tại Bình Phước dành cho doanh nghiệp và kỹ sư. Xe đón tận nơi, không ghép khách và phục vụ theo lịch trình riêng.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến các khu công nghiệp, khu dân cư và địa điểm khảo sát tại Bình Phước.",
+  duration: "Linh hoạt theo lịch trình"
+},
+
+{
+  key: "thue-xe-lam-viec-o-binh-phuoc",
+  path: "thue-xe-lam-viec-o-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe đi làm việc tại Bình Phước",
+  description:
+    "Dịch vụ thuê xe đi làm việc tại Bình Phước với xe riêng, không ghép khách và tài xế nhiều kinh nghiệm. Giá minh bạch, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe phục vụ đưa đón từ TP.HCM đến các cơ quan, doanh nghiệp và khu công nghiệp tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-di-kcn-binh-phuoc",
+  path: "thue-xe-di-kcn-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Các khu công nghiệp Bình Phước",
+  title: "Thuê xe đi khu công nghiệp Bình Phước",
+  description:
+    "Dịch vụ thuê xe riêng đi các khu công nghiệp Bình Phước, đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến các khu công nghiệp tại Đồng Xoài, Chơn Thành, Đồng Phú và các khu vực khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-di-nha-may-binh-phuoc",
+  path: "xe-di-nha-may-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Các nhà máy tại Bình Phước",
+  title: "Xe đưa đón đến nhà máy Bình Phước",
+  description:
+    "Dịch vụ xe riêng đưa đón đến các nhà máy tại Bình Phước dành cho doanh nghiệp và cá nhân. Không ghép khách, đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến các nhà máy tại Chơn Thành, Đồng Phú, Đồng Xoài và các khu vực khác.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-di-kho-hang-binh-phuoc",
+  path: "xe-di-kho-hang-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Kho hàng tại Bình Phước",
+  title: "Thuê xe đi kho hàng Bình Phước",
+  description:
+    "Thuê xe riêng đi kho hàng tại Bình Phước cho khách làm việc, kiểm tra hàng hóa hoặc giao dịch. Xe riêng, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại TP.HCM rồi di chuyển đến các trung tâm logistics và kho hàng tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-di-trung-tam-logistics-binh-phuoc",
+  path: "xe-di-trung-tam-logistics-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Trung tâm logistics Bình Phước",
+  title: "Xe đi trung tâm logistics Bình Phước",
+  description:
+    "Dịch vụ xe riêng đến các trung tâm logistics tại Bình Phước, phù hợp cho doanh nghiệp, đối tác và chuyên gia. Xe đón tận nơi, không ghép khách và giá minh bạch.",
+  routeText:
+    "Xe xuất phát từ TP.HCM và di chuyển đến các trung tâm logistics theo yêu cầu của khách hàng.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-don-tan-noi-di-binh-phuoc",
+  path: "xe-don-tan-noi-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đón tận nơi đi Bình Phước",
+  description:
+    "Dịch vụ xe riêng đón tận nơi đi Bình Phước dành cho cá nhân, gia đình và doanh nghiệp. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại địa chỉ yêu cầu ở TP.HCM và đưa đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-cao-cap-di-binh-phuoc",
+  path: "xe-cao-cap-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe cao cấp đi Bình Phước",
+  description:
+    "Thuê xe cao cấp đi Bình Phước với nội thất tiện nghi, sạch sẽ và riêng tư. Xe không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe xuất phát từ TP.HCM đến các thành phố, thị xã và huyện của Bình Phước theo yêu cầu.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dat-xe-nhanh-di-binh-phuoc",
+  path: "dat-xe-nhanh-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Đặt xe nhanh đi Bình Phước",
+  description:
+    "Đặt xe nhanh đi Bình Phước chỉ với vài bước, xác nhận nhanh và báo giá trước khi đặt. Xe riêng, không ghép khách và không cần đặt cọc.",
+  routeText:
+    "Xe đón khách tại TP.HCM và di chuyển theo tuyến đường phù hợp đến Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "goi-xe-di-binh-phuoc",
+  path: "goi-xe-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Gọi xe đi Bình Phước 24/7",
+  description:
+    "Dịch vụ gọi xe đi Bình Phước hoạt động 24/7 với xe riêng, không ghép khách. Biết giá trước, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe phục vụ đưa khách từ TP.HCM đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long và các địa phương khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-rieng-cao-cap-di-binh-phuoc",
+  path: "xe-rieng-cao-cap-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe riêng cao cấp đi Bình Phước",
+  description:
+    "Dịch vụ xe riêng cao cấp đi Bình Phước phù hợp cho khách doanh nhân, gia đình và đối tác. Đón tận nơi, không ghép khách, giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe khởi hành từ TP.HCM và đưa khách đến mọi khu vực thuộc tỉnh Bình Phước theo lịch trình riêng.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-binh-phuoc",
+  path: "san-bay-tan-son-nhat-di-binh-phuoc",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Bình Phước đón đúng giờ, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại ga Quốc nội hoặc Quốc tế sân bay Tân Sơn Nhất rồi di chuyển đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long và các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dua-don-san-bay-di-binh-phuoc",
+  path: "dua-don-san-bay-di-binh-phuoc",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đưa đón sân bay đi Bình Phước",
+  description:
+    "Xe đưa đón sân bay đi Bình Phước với lịch trình linh hoạt, tài xế chuyên nghiệp và không ghép khách. Biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại sân bay Tân Sơn Nhất rồi đưa đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long hoặc các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "thue-xe-tu-san-bay-di-binh-phuoc",
+  path: "thue-xe-tu-san-bay-di-binh-phuoc",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Thuê xe từ sân bay đi Bình Phước",
+  description:
+    "Thuê xe riêng từ sân bay đi Bình Phước với nhiều lựa chọn xe 5, 7 và 16 chỗ. Xe sạch sẽ, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách ngay tại sân bay Tân Sơn Nhất và di chuyển đến mọi khu vực của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-san-bay-tan-son-nhat-di-dong-xoai",
+  path: "xe-san-bay-tan-son-nhat-di-dong-xoai",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "TP. Đồng Xoài, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Đồng Xoài",
+  description:
+    "Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi TP. Đồng Xoài đón đúng giờ, không ghép khách. Giá minh bạch, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại sân bay Tân Sơn Nhất rồi đi theo Quốc lộ 13 hoặc tuyến phù hợp đến TP. Đồng Xoài.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "xe-tien-chuyen-sai-gon-di-binh-phuoc",
+  path: "xe-tien-chuyen-sai-gon-di-binh-phuoc",
+  from: "Sài Gòn",
+  to: "Bình Phước",
+  title: "Xe tiện chuyến Sài Gòn đi Bình Phước",
+  description:
+    "Xe tiện chuyến từ Sài Gòn đi Bình Phước với xe riêng, đón tận nơi và không ghép khách. Báo giá trước, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe xuất phát từ Sài Gòn và di chuyển theo Quốc lộ 13 đến các địa phương thuộc Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-rong-chieu-ve-binh-phuoc",
+  path: "xe-rong-chieu-ve-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe rỗng chiều về Bình Phước",
+  description:
+    "Tìm xe rỗng chiều về Bình Phước với mức giá hợp lý. Xe riêng, không ghép khách, đón tận nơi và phục vụ linh hoạt theo thời gian khách yêu cầu.",
+  routeText:
+    "Xe nhận khách tại TP.HCM trên hành trình quay về Bình Phước sau khi hoàn thành chuyến trước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-ghep-chieu-di-binh-phuoc",
+  path: "xe-ghep-chieu-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe ghép chiều đi Bình Phước",
+  description:
+    "Dịch vụ xe ghép chiều đi Bình Phước giúp tối ưu chi phí trên các chuyến phù hợp. Có nhiều lựa chọn xe theo lịch trình thực tế.",
+  routeText:
+    "Xe khởi hành từ TP.HCM đến Đồng Xoài, Chơn Thành và các khu vực lân cận của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "xe-2-chieu-di-binh-phuoc",
+  path: "xe-2-chieu-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe hai chiều đi Bình Phước",
+  description:
+    "Thuê xe hai chiều đi Bình Phước với lịch trình chủ động, tài xế chờ theo yêu cầu. Xe riêng, không ghép khách, giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đưa khách từ TP.HCM đến Bình Phước và quay về theo lịch hẹn của khách.",
+  duration: "Linh hoạt theo lịch trình"
+},
+
+{
+  key: "tim-xe-di-binh-phuoc",
+  path: "tim-xe-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Tìm xe đi Bình Phước nhanh chóng",
+  description:
+    "Tìm xe đi Bình Phước nhanh chóng với xe riêng đưa đón tận nơi. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe phục vụ tuyến TP.HCM đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long và các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-vuon-quoc-gia-bu-gia-map",
+  path: "sai-gon-di-vuon-quoc-gia-bu-gia-map",
+  from: "Sài Gòn",
+  to: "Vườn quốc gia Bù Gia Mập, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Vườn quốc gia Bù Gia Mập",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Vườn quốc gia Bù Gia Mập đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe xuất phát từ Sài Gòn, đi qua Đồng Xoài rồi tiếp tục đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ"
+},
+
+{
+  key: "sai-gon-di-nui-ba-ra",
+  path: "sai-gon-di-nui-ba-ra",
+  from: "Sài Gòn",
+  to: "Núi Bà Rá, Bình Phước",
+  title: "Thuê xe Sài Gòn đi Núi Bà Rá",
+  description:
+    "Thuê xe riêng từ Sài Gòn đi Núi Bà Rá với xe đời mới, không ghép khách và đưa đón tận nơi. Báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đi theo Quốc lộ 13 đến Đồng Xoài rồi tiếp tục đến khu du lịch Núi Bà Rá.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "sai-gon-di-soc-bom-bo",
+  path: "sai-gon-di-soc-bom-bo",
+  from: "Sài Gòn",
+  to: "Sóc Bom Bo, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Sóc Bom Bo",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Sóc Bom Bo để tham quan di tích lịch sử nổi tiếng của Bình Phước. Xe không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe khởi hành từ Sài Gòn, qua Đồng Xoài rồi đến Khu bảo tồn văn hóa dân tộc S'tiêng Sóc Bom Bo.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "sai-gon-di-trang-co-bu-lach",
+  path: "sai-gon-di-trang-co-bu-lach",
+  from: "Sài Gòn",
+  to: "Trảng cỏ Bù Lạch, Bình Phước",
+  title: "Xe Sài Gòn đi Trảng cỏ Bù Lạch",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Trảng cỏ Bù Lạch dành cho khách du lịch và dã ngoại. Xe riêng, không ghép khách, giá minh bạch và thanh toán sau chuyến.",
+  routeText:
+    "Xe đi từ Sài Gòn đến huyện Bù Đăng rồi tiếp tục vào khu du lịch Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-ho-suoi-lam",
+  path: "sai-gon-di-ho-suoi-lam",
+  from: "Sài Gòn",
+  to: "Hồ Suối Lam, Bình Phước",
+  title: "Thuê xe Sài Gòn đi Hồ Suối Lam",
+  description:
+    "Thuê xe riêng từ Sài Gòn đi Hồ Suối Lam với dịch vụ đưa đón tận nơi, không ghép khách. Biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe xuất phát từ Sài Gòn đến Đồng Xoài rồi di chuyển đến khu vực Hồ Suối Lam.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "sai-gon-di-ho-thac-mo",
+  path: "sai-gon-di-ho-thac-mo",
+  from: "Sài Gòn",
+  to: "Hồ Thác Mơ, Bình Phước",
+  title: "Xe riêng Sài Gòn đi Hồ Thác Mơ",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Hồ Thác Mơ để nghỉ dưỡng hoặc tham quan. Xe không ghép khách, đón tận nơi, báo giá trước và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe di chuyển từ Sài Gòn qua Đồng Xoài rồi tiếp tục đến Hồ Thác Mơ thuộc thị xã Phước Long.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "ben-xe-mien-dong-di-binh-phuoc",
+  path: "ben-xe-mien-dong-di-binh-phuoc",
+  from: "Bến xe Miền Đông, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe Bến xe Miền Đông đi Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Bến xe Miền Đông đi Bình Phước đón tận nơi, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại Bến xe Miền Đông rồi di chuyển theo Quốc lộ 13 đến Đồng Xoài, Chơn Thành và các địa phương của Bình Phước.",
+  duration: "Khoảng 2 giờ - 4 giờ"
+},
+
+{
+  key: "ben-xe-mien-tay-di-binh-phuoc",
+  path: "ben-xe-mien-tay-di-binh-phuoc",
+  from: "Bến xe Miền Tây, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe Bến xe Miền Tây đi Bình Phước",
+  description:
+    "Thuê xe riêng từ Bến xe Miền Tây đi Bình Phước với xe đời mới, không ghép khách và đưa đón tận nơi. Báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại Bến xe Miền Tây rồi kết nối Quốc lộ 1 và Quốc lộ 13 để đến Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "ga-sai-gon-di-binh-phuoc",
+  path: "ga-sai-gon-di-binh-phuoc",
+  from: "Ga Sài Gòn, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe Ga Sài Gòn đi Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Ga Sài Gòn đi Bình Phước đón đúng giờ theo lịch tàu, không ghép khách. Biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại Ga Sài Gòn rồi di chuyển đến Đồng Xoài, Chơn Thành hoặc các địa phương khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "landmark-81-di-binh-phuoc",
+  path: "landmark-81-di-binh-phuoc",
+  from: "Landmark 81, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe Landmark 81 đi Bình Phước",
+  description:
+    "Thuê xe riêng từ Landmark 81 đi Bình Phước với dịch vụ đón tận nơi, không ghép khách. Không cần đặt cọc, giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại Landmark 81 rồi theo Quốc lộ 13 đến các khu vực của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ"
+},
+
+{
+  key: "pho-di-bo-nguyen-hue-di-binh-phuoc",
+  path: "pho-di-bo-nguyen-hue-di-binh-phuoc",
+  from: "Phố đi bộ Nguyễn Huệ, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe Phố đi bộ Nguyễn Huệ đi Bình Phước",
+  description:
+    "Đặt xe riêng từ Phố đi bộ Nguyễn Huệ đi Bình Phước với xe không ghép khách, đón tận nơi và phục vụ 24/7. Thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại trung tâm Quận 1 rồi di chuyển đến Bình Phước theo tuyến đường phù hợp.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "phu-my-hung-di-binh-phuoc",
+  path: "phu-my-hung-di-binh-phuoc",
+  from: "Khu đô thị Phú Mỹ Hưng, TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe Phú Mỹ Hưng đi Bình Phước",
+  description:
+    "Dịch vụ xe riêng từ Phú Mỹ Hưng đi Bình Phước dành cho gia đình, chuyên gia và doanh nghiệp. Xe không ghép khách, đón tận nơi, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe xuất phát từ Phú Mỹ Hưng, kết nối Quốc lộ 1 và Quốc lộ 13 để đến các địa phương thuộc Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-chon-thanh",
+  path: "san-bay-tan-son-nhat-di-chon-thanh",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Chơn Thành, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Chơn Thành",
+  description:
+    "Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Chơn Thành đón đúng giờ theo lịch bay. Xe không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại ga Quốc nội hoặc Quốc tế sân bay Tân Sơn Nhất rồi di chuyển đến thị xã Chơn Thành.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-dong-phu",
+  path: "san-bay-tan-son-nhat-di-dong-phu",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Đồng Phú, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Đồng Phú",
+  description:
+    "Thuê xe riêng từ sân bay Tân Sơn Nhất đi Đồng Phú với tài xế theo dõi giờ hạ cánh, đón tận nơi và không ghép khách.",
+  routeText:
+    "Xe đón khách tại sân bay Tân Sơn Nhất rồi di chuyển đến huyện Đồng Phú theo tuyến đường phù hợp.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-binh-long",
+  path: "san-bay-tan-son-nhat-di-binh-long",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Bình Long, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Bình Long",
+  description:
+    "Đặt xe riêng từ sân bay Tân Sơn Nhất đi Bình Long với xe đời mới, không ghép khách, đưa đón tận nơi và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe xuất phát từ sân bay Tân Sơn Nhất và đưa khách đến thị xã Bình Long.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-phuoc-long",
+  path: "san-bay-tan-son-nhat-di-phuoc-long",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Phước Long, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Phước Long",
+  description:
+    "Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Phước Long đón tận nơi, không ghép khách. Báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại sân bay Tân Sơn Nhất rồi di chuyển đến thị xã Phước Long.",
+  duration: "Khoảng 4 giờ"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-bu-dang",
+  path: "san-bay-tan-son-nhat-di-bu-dang",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Bù Đăng, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Bù Đăng",
+  description:
+    "Thuê xe riêng từ sân bay Tân Sơn Nhất đi Bù Đăng với dịch vụ đưa đón 24/7, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại sân bay rồi di chuyển đến huyện Bù Đăng theo lịch trình yêu cầu.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "san-bay-tan-son-nhat-di-loc-ninh",
+  path: "san-bay-tan-son-nhat-di-loc-ninh",
+  from: "Sân bay Tân Sơn Nhất, TP. Hồ Chí Minh",
+  to: "Lộc Ninh, Bình Phước",
+  title: "Xe sân bay Tân Sơn Nhất đi Lộc Ninh",
+  description:
+    "Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Lộc Ninh phù hợp cho khách công tác và du lịch. Xe không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại sân bay Tân Sơn Nhất rồi đưa đến huyện Lộc Ninh theo tuyến Quốc lộ 13.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút"
+},
+
+{
+  key: "dat-xe-online-di-binh-phuoc",
+  path: "dat-xe-online-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Đặt xe online đi Bình Phước",
+  description:
+    "Đặt xe online đi Bình Phước mọi lúc với quy trình đơn giản, xác nhận nhanh. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Khách có thể đặt xe từ TP.HCM đến Đồng Xoài, Chơn Thành, Bù Đăng, Lộc Ninh và các huyện khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dat-xe-5-cho-di-binh-phuoc",
+  path: "dat-xe-5-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Đặt xe 5 chỗ đi Bình Phước",
+  description:
+    "Đặt xe 5 chỗ đi Bình Phước với nhiều dòng xe đời mới, sạch sẽ và riêng tư. Xe không ghép khách, đón tận nơi và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe 5 chỗ phục vụ tuyến TP.HCM đi các thành phố, thị xã và huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dat-xe-7-cho-di-binh-phuoc",
+  path: "dat-xe-7-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Đặt xe 7 chỗ đi Bình Phước",
+  description:
+    "Thuê xe 7 chỗ đi Bình Phước phù hợp cho gia đình và nhóm bạn. Xe riêng, không ghép khách, báo giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe 7 chỗ đưa đón khách từ TP.HCM đến mọi địa điểm tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dat-xe-16-cho-di-binh-phuoc",
+  path: "dat-xe-16-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Đặt xe 16 chỗ đi Bình Phước",
+  description:
+    "Dịch vụ đặt xe 16 chỗ đi Bình Phước dành cho đoàn du lịch, công ty và tập thể. Xe rộng rãi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Xe 16 chỗ khởi hành từ TP.HCM đến Bình Phước theo lịch trình riêng của đoàn.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "taxi-lien-tinh-di-binh-phuoc",
+  path: "taxi-lien-tinh-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Taxi liên tỉnh TP.HCM đi Bình Phước",
+  description:
+    "Dịch vụ taxi liên tỉnh từ TP.HCM đi Bình Phước bằng xe riêng, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc, đưa đón tận nơi và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Taxi liên tỉnh phục vụ từ TP.HCM đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long và các địa phương khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "taxi-sai-gon-di-binh-phuoc",
+  path: "taxi-sai-gon-di-binh-phuoc",
+  from: "Sài Gòn",
+  to: "Bình Phước",
+  title: "Taxi Sài Gòn đi Bình Phước",
+  description:
+    "Thuê taxi riêng từ Sài Gòn đi Bình Phước với xe đời mới, tài xế nhiều kinh nghiệm và không ghép khách. Giá minh bạch, thanh toán sau chuyến đi.",
+  routeText:
+    "Taxi đón khách tận nơi tại Sài Gòn và đưa đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "taxi-duong-dai-di-binh-phuoc",
+  path: "taxi-duong-dai-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Taxi đường dài đi Bình Phước",
+  description:
+    "Dịch vụ taxi đường dài đi Bình Phước dành cho khách cá nhân, gia đình và doanh nghiệp. Xe riêng, không ghép khách, đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Taxi phục vụ tuyến TP.HCM đến Đồng Xoài, Chơn Thành, Lộc Ninh, Bù Đăng và các huyện của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "taxi-5-cho-di-binh-phuoc",
+  path: "taxi-5-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Taxi 5 chỗ đi Bình Phước",
+  description:
+    "Taxi 5 chỗ đi Bình Phước phù hợp cho cá nhân hoặc gia đình nhỏ. Xe sạch sẽ, riêng tư, không ghép khách và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Taxi 5 chỗ đón khách tại TP.HCM và đưa đến các địa điểm theo yêu cầu tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "taxi-7-cho-di-binh-phuoc",
+  path: "taxi-7-cho-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Taxi 7 chỗ đi Bình Phước",
+  description:
+    "Dịch vụ taxi 7 chỗ đi Bình Phước dành cho gia đình và nhóm khách. Xe riêng, không ghép khách, đưa đón tận nơi và báo giá trước khi đặt.",
+  routeText:
+    "Taxi 7 chỗ phục vụ từ TP.HCM đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "taxi-hop-dong-di-binh-phuoc",
+  path: "taxi-hop-dong-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Taxi hợp đồng đi Bình Phước",
+  description:
+    "Taxi hợp đồng đi Bình Phước với lịch trình linh hoạt, xe riêng không ghép khách và tài xế chuyên nghiệp. Không cần đặt cọc, thanh toán sau chuyến đi.",
+  routeText:
+    "Taxi hợp đồng đưa đón khách từ TP.HCM đến Đồng Xoài, Chơn Thành và các địa phương khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "don-tan-nha-di-binh-phuoc",
+  path: "don-tan-nha-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đón tận nhà đi Bình Phước",
+  description:
+    "Dịch vụ xe đón tận nhà đi Bình Phước bằng xe riêng, không ghép khách. Biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tận nhà tại TP.HCM và đưa đến Đồng Xoài, Chơn Thành, Bình Long, Phước Long cùng các địa phương khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dua-tan-nha-di-binh-phuoc",
+  path: "dua-tan-nha-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đưa tận nhà đi Bình Phước",
+  description:
+    "Thuê xe đưa tận nhà đi Bình Phước với tài xế chuyên nghiệp, xe riêng không ghép khách và lịch trình linh hoạt theo yêu cầu của khách.",
+  routeText:
+    "Xe đưa đón tận địa chỉ từ TP.HCM đến mọi khu vực thuộc tỉnh Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "dua-don-tan-nha-di-binh-phuoc",
+  path: "dua-don-tan-nha-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đưa đón tận nhà đi Bình Phước",
+  description:
+    "Dịch vụ xe đưa đón tận nhà đi Bình Phước phù hợp cho cá nhân, gia đình và doanh nghiệp. Xe riêng, không ghép khách, giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe phục vụ đưa đón tận nhà từ TP.HCM đến Đồng Xoài, Chơn Thành, Lộc Ninh, Bù Đăng và các khu vực khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "ruoc-tan-noi-di-binh-phuoc",
+  path: "ruoc-tan-noi-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe rước tận nơi đi Bình Phước",
+  description:
+    "Xe rước tận nơi đi Bình Phước hoạt động 24/7 với xe riêng, không ghép khách. Không cần đặt cọc, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe rước khách tận nơi tại TP.HCM và đưa đến mọi địa điểm tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "don-tan-cong-ty-di-binh-phuoc",
+  path: "don-tan-cong-ty-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đón tận công ty đi Bình Phước",
+  description:
+    "Dịch vụ xe đón tận công ty đi Bình Phước dành cho chuyên gia, doanh nghiệp và khách công tác. Xe riêng, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Xe đón khách tại văn phòng hoặc công ty ở TP.HCM và đưa đến các khu công nghiệp, doanh nghiệp hoặc địa điểm tại Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
+
+{
+  key: "don-tan-khach-san-di-binh-phuoc",
+  path: "don-tan-khach-san-di-binh-phuoc",
+  from: "TP. Hồ Chí Minh",
+  to: "Bình Phước",
+  title: "Xe đón tận khách sạn đi Bình Phước",
+  description:
+    "Thuê xe đón tận khách sạn đi Bình Phước với dịch vụ chuyên nghiệp, xe đời mới và không ghép khách. Báo giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Xe đón khách tại khách sạn ở TP.HCM rồi đưa đến Đồng Xoài, Chơn Thành và các địa phương khác của Bình Phước.",
+  duration: "Khoảng 2 giờ 30 phút - 4 giờ 30 phút"
+},
 
 ];
