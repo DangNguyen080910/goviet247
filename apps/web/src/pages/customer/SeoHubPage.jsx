@@ -1,8 +1,22 @@
 // Path: goviet247/apps/web/src/pages/customer/SeoHubPage.jsx
 
-import { useEffect, useMemo } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import {
+  Box,
+  Button,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { SEO_ROUTES } from "../../data/seoRoutes";
+import { getPublicSystemConfig } from "../../api/systemConfig";
 
 /*
  * Các route tổng quát này được dùng làm Hub SEO.
@@ -494,8 +508,59 @@ function getPageNumber(search) {
 
 export default function SeoHubPage({ hubType }) {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const [zaloPhone, setZaloPhone] = useState("0326184628");
+
+  const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
+
+  const playStoreUrl =
+    "https://play.google.com/store/apps/details?id=com.goviet247.rider";
 
   const config = HUB_CONFIGS[hubType] || HUB_CONFIGS["inter-province"];
+
+  const goToBookingPage = () => {
+    navigate("/dat-xe", {
+      state: {
+        focusField: "pickup",
+        source: "seo-hub",
+      },
+    });
+  };
+
+  const fakeInputSx = {
+    flex: 1,
+    minWidth: {
+      xs: "100%",
+      md: 220,
+    },
+
+    "& .MuiOutlinedInput-root": {
+      height: 54,
+      borderRadius: 2.5,
+      bgcolor: "#ffffff",
+      cursor: "pointer",
+      transition: "transform 160ms ease, box-shadow 160ms ease",
+
+      "& fieldset": {
+        borderColor: "#fed7aa",
+      },
+
+      "&:hover": {
+        transform: "translateY(-1px)",
+        boxShadow: "0 8px 22px rgba(15,23,42,0.10)",
+      },
+
+      "&:hover fieldset": {
+        borderColor: "#f97316",
+      },
+    },
+
+    "& .MuiInputBase-input": {
+      cursor: "pointer",
+      fontWeight: 700,
+    },
+  };
 
   const filteredRoutes = useMemo(() => {
     const routes = SEO_ROUTES.filter(isUsefulRoute).filter(config.filter);
@@ -518,6 +583,22 @@ export default function SeoHubPage({ hubType }) {
 
     return filteredRoutes.slice(startIndex, endIndex);
   }, [filteredRoutes, currentPage]);
+
+  useEffect(() => {
+    async function loadPublicConfig() {
+      try {
+        const cfg = await getPublicSystemConfig();
+
+        setZaloPhone(
+          cfg?.supportPhoneRider || cfg?.supportPhone || "0326184628",
+        );
+      } catch (error) {
+        console.error("Load SEO Hub system config failed:", error);
+      }
+    }
+
+    loadPublicConfig();
+  }, []);
 
   /*
    * Cập nhật title, description, canonical và ItemList schema.
@@ -615,14 +696,120 @@ export default function SeoHubPage({ hubType }) {
           <span style={styles.benefit}>Hỗ trợ 24/7</span>
         </div>
 
+        {/* ===================================================== */}
+        {/* KHỐI NHẬP HÀNH TRÌNH */}
+        {/* ===================================================== */}
+
+        <Box sx={styles.routeSearchBox}>
+          <Typography sx={styles.routeSearchTitle}>Bạn muốn đi đâu?</Typography>
+
+          <Stack
+            direction={{
+              xs: "column",
+              md: "row",
+            }}
+            spacing={1.2}
+            sx={{
+              width: "100%",
+            }}
+          >
+            <TextField
+              fullWidth
+              placeholder="Nhập điểm đón"
+              value=""
+              onClick={goToBookingPage}
+              onFocus={goToBookingPage}
+              slotProps={{
+                input: {
+                  readOnly: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LocationOnOutlinedIcon sx={{ color: "#1976d2" }} />
+                    </InputAdornment>
+                  ),
+                },
+                htmlInput: {
+                  "aria-label": "Nhập điểm đón",
+                },
+              }}
+              sx={fakeInputSx}
+            />
+
+            <TextField
+              fullWidth
+              placeholder="Nhập điểm đến"
+              value=""
+              onClick={goToBookingPage}
+              onFocus={goToBookingPage}
+              slotProps={{
+                input: {
+                  readOnly: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <FlagOutlinedIcon sx={{ color: "#f97316" }} />
+                    </InputAdornment>
+                  ),
+                },
+                htmlInput: {
+                  "aria-label": "Nhập điểm đến",
+                },
+              }}
+              sx={fakeInputSx}
+            />
+
+            <Button
+              variant="contained"
+              size="large"
+              endIcon={<ArrowForwardRoundedIcon />}
+              onClick={goToBookingPage}
+              sx={styles.routeSearchButton}
+            >
+              Xem giá chuyến đi
+            </Button>
+          </Stack>
+
+          <Typography sx={styles.routeSearchNote}>
+            Nhập hành trình để xem quãng đường và nhận báo giá trước khi đặt xe.
+          </Typography>
+        </Box>
+
         <div style={styles.actions}>
-          <Link to="/dat-xe" style={styles.primaryButton}>
-            Tính giá và đặt xe
-          </Link>
+          <a
+            href={`https://zalo.me/${zaloPhone}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.secondaryButton}
+          >
+            Nhắn Zalo hỗ trợ
+          </a>
 
           <Link to="/" style={styles.secondaryButton}>
             Về trang chủ
           </Link>
+        </div>
+
+        <div style={styles.downloadAppBox}>
+          <p style={styles.downloadTitle}>📱 Tải ứng dụng GoViet247</p>
+
+          <div style={styles.downloadButtons}>
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.downloadButton}
+            >
+               App Store
+            </a>
+
+            <a
+              href={playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.downloadButton}
+            >
+              🤖 Google Play
+            </a>
+          </div>
         </div>
       </section>
 
@@ -904,6 +1091,91 @@ const styles = {
     color: "#9a3412",
     fontSize: 14,
     fontWeight: 700,
+  },
+
+  routeSearchBox: {
+    width: "100%",
+    boxSizing: "border-box",
+    mt: 2.5,
+    p: {
+      xs: 1.5,
+      sm: 2,
+    },
+    borderRadius: 3,
+    bgcolor: "#ffffff",
+    border: "1px solid #fed7aa",
+    boxShadow: "0 12px 30px rgba(15,23,42,0.07)",
+  },
+
+  routeSearchTitle: {
+    mb: 1.2,
+    color: "#172033",
+    fontSize: {
+      xs: 17,
+      sm: 19,
+    },
+    fontWeight: 900,
+  },
+
+  routeSearchButton: {
+    minWidth: {
+      xs: "100%",
+      md: 190,
+    },
+    minHeight: 54,
+    px: 2.6,
+    borderRadius: 2.5,
+    textTransform: "none",
+    fontSize: {
+      xs: 15,
+      md: 16,
+    },
+    fontWeight: 900,
+    bgcolor: "#f97316",
+    color: "#ffffff",
+    boxShadow: "0 10px 24px rgba(249,115,22,0.28)",
+
+    "&:hover": {
+      bgcolor: "#ea580c",
+      boxShadow: "0 12px 28px rgba(249,115,22,0.38)",
+      transform: "translateY(-1px)",
+    },
+  },
+
+  routeSearchNote: {
+    mt: 1,
+    color: "#64748b",
+    fontSize: 13,
+    fontWeight: 700,
+  },
+
+  downloadAppBox: {
+    marginTop: 16,
+  },
+
+  downloadTitle: {
+    margin: "0 0 10px",
+    color: "#334155",
+    fontSize: 14,
+    fontWeight: 800,
+  },
+
+  downloadButtons: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10,
+  },
+
+  downloadButton: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "10px 16px",
+    borderRadius: 999,
+    background: "#172033",
+    color: "#ffffff",
+    textDecoration: "none",
+    fontWeight: 800,
   },
 
   actions: {
