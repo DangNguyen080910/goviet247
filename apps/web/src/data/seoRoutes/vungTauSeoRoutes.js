@@ -4804,7 +4804,7 @@ duration: "2 - 2.5 giờ",
 
 {
   key: "can-gio-di-vung-tau",
-  path: "/can-gio-di-vung-tau",
+  path: "can-gio-di-vung-tau",
   from: "Cần Giờ",
   to: "Vũng Tàu",
   title: "Thuê xe Cần Giờ đi Vũng Tàu, đưa đón tận nơi",

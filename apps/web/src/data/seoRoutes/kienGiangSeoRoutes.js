@@ -1,7 +1,7 @@
 export const KIENGIANG_SEO_ROUTES = [
 {
   key: "quan-1-di-kien-giang",
-  path: "/quan-1-di-kien-giang",
+  path: "quan-1-di-kien-giang",
   from: "Quận 1",
   to: "Kiên Giang",
   title: "Xe Quận 1 đi Kiên Giang giá tốt, đưa đón tận nơi",
@@ -13,7 +13,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-kien-giang",
-  path: "/quan-3-di-kien-giang",
+  path: "quan-3-di-kien-giang",
   from: "Quận 3",
   to: "Kiên Giang",
   title: "Thuê xe Quận 3 đi Kiên Giang trọn gói",
@@ -25,7 +25,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-kien-giang",
-  path: "/quan-4-di-kien-giang",
+  path: "quan-4-di-kien-giang",
   from: "Quận 4",
   to: "Kiên Giang",
   title: "Đặt xe Quận 4 đi Kiên Giang nhanh chóng",
@@ -37,7 +37,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-kien-giang",
-  path: "/quan-5-di-kien-giang",
+  path: "quan-5-di-kien-giang",
   from: "Quận 5",
   to: "Kiên Giang",
   title: "Xe hợp đồng Quận 5 đi Kiên Giang",
@@ -49,7 +49,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-kien-giang",
-  path: "/quan-6-di-kien-giang",
+  path: "quan-6-di-kien-giang",
   from: "Quận 6",
   to: "Kiên Giang",
   title: "Xe riêng Quận 6 đi Kiên Giang giá hợp lý",
@@ -61,7 +61,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-kien-giang",
-  path: "/quan-7-di-kien-giang",
+  path: "quan-7-di-kien-giang",
   from: "Quận 7",
   to: "Kiên Giang",
   title: "Thuê xe Quận 7 đi Kiên Giang an toàn",
@@ -73,7 +73,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-kien-giang",
-  path: "/quan-8-di-kien-giang",
+  path: "quan-8-di-kien-giang",
   from: "Quận 8",
   to: "Kiên Giang",
   title: "Dịch vụ xe Quận 8 đi Kiên Giang tận nơi",
@@ -85,7 +85,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
     {
   key: "quan-10-di-kien-giang",
-  path: "/quan-10-di-kien-giang",
+  path: "quan-10-di-kien-giang",
   from: "Quận 10",
   to: "Kiên Giang",
   title: "Xe Quận 10 đi Kiên Giang đưa đón tận nơi",
@@ -97,7 +97,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-kien-giang",
-  path: "/quan-11-di-kien-giang",
+  path: "quan-11-di-kien-giang",
   from: "Quận 11",
   to: "Kiên Giang",
   title: "Thuê xe Quận 11 đi Kiên Giang giá tốt",
@@ -109,7 +109,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-kien-giang",
-  path: "/quan-12-di-kien-giang",
+  path: "quan-12-di-kien-giang",
   from: "Quận 12",
   to: "Kiên Giang",
   title: "Xe riêng Quận 12 đi Kiên Giang trọn gói",
@@ -121,7 +121,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-kien-giang",
-  path: "/binh-thanh-di-kien-giang",
+  path: "binh-thanh-di-kien-giang",
   from: "Bình Thạnh",
   to: "Kiên Giang",
   title: "Đặt xe Bình Thạnh đi Kiên Giang nhanh chóng",
@@ -133,7 +133,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-kien-giang",
-  path: "/phu-nhuan-di-kien-giang",
+  path: "phu-nhuan-di-kien-giang",
   from: "Phú Nhuận",
   to: "Kiên Giang",
   title: "Xe Phú Nhuận đi Kiên Giang không ghép khách",
@@ -145,7 +145,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-kien-giang",
-  path: "/go-vap-di-kien-giang",
+  path: "go-vap-di-kien-giang",
   from: "Gò Vấp",
   to: "Kiên Giang",
   title: "Thuê xe Gò Vấp đi Kiên Giang tận nơi",
@@ -157,7 +157,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-kien-giang",
-  path: "/tan-binh-di-kien-giang",
+  path: "tan-binh-di-kien-giang",
   from: "Tân Bình",
   to: "Kiên Giang",
   title: "Xe Tân Bình đi Kiên Giang đón tận nhà",
@@ -169,7 +169,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-kien-giang",
-  path: "/tan-phu-di-kien-giang",
+  path: "tan-phu-di-kien-giang",
   from: "Tân Phú",
   to: "Kiên Giang",
   title: "Xe Tân Phú đi Kiên Giang giá hợp lý",
@@ -181,7 +181,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-kien-giang",
-  path: "/binh-tan-di-kien-giang",
+  path: "binh-tan-di-kien-giang",
   from: "Bình Tân",
   to: "Kiên Giang",
   title: "Xe Bình Tân đi Kiên Giang đưa đón tận nơi",
@@ -193,7 +193,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-kien-giang",
-  path: "/tp-thu-duc-di-kien-giang",
+  path: "tp-thu-duc-di-kien-giang",
   from: "TP Thủ Đức",
   to: "Kiên Giang",
   title: "Thuê xe TP Thủ Đức đi Kiên Giang giá tốt",
@@ -205,7 +205,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-kien-giang",
-  path: "/hoc-mon-di-kien-giang",
+  path: "hoc-mon-di-kien-giang",
   from: "Hóc Môn",
   to: "Kiên Giang",
   title: "Xe Hóc Môn đi Kiên Giang trọn gói",
@@ -217,7 +217,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "cu-chi-di-kien-giang",
-  path: "/cu-chi-di-kien-giang",
+  path: "cu-chi-di-kien-giang",
   from: "Củ Chi",
   to: "Kiên Giang",
   title: "Xe Củ Chi đi Kiên Giang an toàn, tiện lợi",
@@ -229,7 +229,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-kien-giang",
-  path: "/binh-chanh-di-kien-giang",
+  path: "binh-chanh-di-kien-giang",
   from: "Bình Chánh",
   to: "Kiên Giang",
   title: "Đặt xe Bình Chánh đi Kiên Giang nhanh chóng",
@@ -241,7 +241,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-kien-giang",
-  path: "/nha-be-di-kien-giang",
+  path: "nha-be-di-kien-giang",
   from: "Nhà Bè",
   to: "Kiên Giang",
   title: "Thuê xe Nhà Bè đi Kiên Giang không ghép khách",
@@ -253,7 +253,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-kien-giang",
-  path: "/can-gio-di-kien-giang",
+  path: "can-gio-di-kien-giang",
   from: "Cần Giờ",
   to: "Kiên Giang",
   title: "Xe Cần Giờ đi Kiên Giang đưa đón tận nơi",
@@ -265,7 +265,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-rach-gia",
-  path: "/tp-hcm-di-rach-gia",
+  path: "tp-hcm-di-rach-gia",
   from: "TP.HCM",
   to: "Rạch Giá",
   title: "Thuê xe TP.HCM đi Rạch Giá Kiên Giang",
@@ -277,7 +277,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-ha-tien",
-  path: "/tp-hcm-di-ha-tien",
+  path: "tp-hcm-di-ha-tien",
   from: "TP.HCM",
   to: "Hà Tiên",
   title: "Xe TP.HCM đi Hà Tiên giá tốt",
@@ -289,7 +289,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-kien-luong",
-  path: "/tp-hcm-di-kien-luong",
+  path: "tp-hcm-di-kien-luong",
   from: "TP.HCM",
   to: "Kiên Lương",
   title: "Xe riêng TP.HCM đi Kiên Lương",
@@ -301,7 +301,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-hon-dat",
-  path: "/tp-hcm-di-hon-dat",
+  path: "tp-hcm-di-hon-dat",
   from: "TP.HCM",
   to: "Hòn Đất",
   title: "Đặt xe TP.HCM đi Hòn Đất Kiên Giang",
@@ -313,7 +313,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-chau-thanh-kien-giang",
-  path: "/tp-hcm-di-chau-thanh-kien-giang",
+  path: "tp-hcm-di-chau-thanh-kien-giang",
   from: "TP.HCM",
   to: "Châu Thành",
   title: "Thuê xe TP.HCM đi Châu Thành Kiên Giang",
@@ -325,7 +325,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-giong-rieng",
-  path: "/tp-hcm-di-giong-rieng",
+  path: "tp-hcm-di-giong-rieng",
   from: "TP.HCM",
   to: "Giồng Riềng",
   title: "Xe TP.HCM đi Giồng Riềng trọn gói",
@@ -337,7 +337,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-go-quao",
-  path: "/tp-hcm-di-go-quao",
+  path: "tp-hcm-di-go-quao",
   from: "TP.HCM",
   to: "Gò Quao",
   title: "Xe TP.HCM đi Gò Quao Kiên Giang",
@@ -349,7 +349,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-tan-hiep-kien-giang",
-  path: "/tp-hcm-di-tan-hiep-kien-giang",
+  path: "tp-hcm-di-tan-hiep-kien-giang",
   from: "TP.HCM",
   to: "Tân Hiệp",
   title: "Thuê xe TP.HCM đi Tân Hiệp Kiên Giang",
@@ -361,7 +361,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-an-bien",
-  path: "/tp-hcm-di-an-bien",
+  path: "tp-hcm-di-an-bien",
   from: "TP.HCM",
   to: "An Biên",
   title: "Xe TP.HCM đi An Biên Kiên Giang",
@@ -373,7 +373,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-an-minh",
-  path: "/tp-hcm-di-an-minh",
+  path: "tp-hcm-di-an-minh",
   from: "TP.HCM",
   to: "An Minh",
   title: "Thuê xe TP.HCM đi An Minh Kiên Giang",
@@ -385,7 +385,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-vinh-thuan",
-  path: "/tp-hcm-di-vinh-thuan",
+  path: "tp-hcm-di-vinh-thuan",
   from: "TP.HCM",
   to: "Vĩnh Thuận",
   title: "Xe riêng TP.HCM đi Vĩnh Thuận",
@@ -397,7 +397,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-u-minh-thuong",
-  path: "/tp-hcm-di-u-minh-thuong",
+  path: "tp-hcm-di-u-minh-thuong",
   from: "TP.HCM",
   to: "U Minh Thượng",
   title: "Xe TP.HCM đi U Minh Thượng Kiên Giang",
@@ -409,7 +409,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-hcm-di-giang-thanh",
-  path: "/tp-hcm-di-giang-thanh",
+  path: "tp-hcm-di-giang-thanh",
   from: "TP.HCM",
   to: "Giang Thành",
   title: "Thuê xe TP.HCM đi Giang Thành Kiên Giang",
@@ -421,7 +421,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "rach-gia-di-tp-hcm",
-  path: "/rach-gia-di-tp-hcm",
+  path: "rach-gia-di-tp-hcm",
   from: "Rạch Giá",
   to: "TP.HCM",
   title: "Xe Rạch Giá đi TP.HCM đưa đón tận nơi",
@@ -433,7 +433,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "ha-tien-di-tp-hcm",
-  path: "/ha-tien-di-tp-hcm",
+  path: "ha-tien-di-tp-hcm",
   from: "Hà Tiên",
   to: "TP.HCM",
   title: "Thuê xe Hà Tiên đi TP.HCM",
@@ -445,7 +445,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-luong-di-tp-hcm",
-  path: "/kien-luong-di-tp-hcm",
+  path: "kien-luong-di-tp-hcm",
   from: "Kiên Lương",
   to: "TP.HCM",
   title: "Xe Kiên Lương đi TP.HCM giá tốt",
@@ -457,7 +457,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hon-dat-di-tp-hcm",
-  path: "/hon-dat-di-tp-hcm",
+  path: "hon-dat-di-tp-hcm",
   from: "Hòn Đất",
   to: "TP.HCM",
   title: "Xe Hòn Đất đi TP.HCM trọn gói",
@@ -469,7 +469,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "chau-thanh-kien-giang-di-tp-hcm",
-  path: "/chau-thanh-kien-giang-di-tp-hcm",
+  path: "chau-thanh-kien-giang-di-tp-hcm",
   from: "Châu Thành",
   to: "TP.HCM",
   title: "Xe Châu Thành Kiên Giang đi TP.HCM",
@@ -481,7 +481,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "giong-rieng-di-tp-hcm",
-  path: "/giong-rieng-di-tp-hcm",
+  path: "giong-rieng-di-tp-hcm",
   from: "Giồng Riềng",
   to: "TP.HCM",
   title: "Thuê xe Giồng Riềng đi TP.HCM",
@@ -493,7 +493,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-quao-di-tp-hcm",
-  path: "/go-quao-di-tp-hcm",
+  path: "go-quao-di-tp-hcm",
   from: "Gò Quao",
   to: "TP.HCM",
   title: "Xe Gò Quao đi TP.HCM đưa đón tận nơi",
@@ -505,7 +505,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-hiep-kien-giang-di-tp-hcm",
-  path: "/tan-hiep-kien-giang-di-tp-hcm",
+  path: "tan-hiep-kien-giang-di-tp-hcm",
   from: "Tân Hiệp",
   to: "TP.HCM",
   title: "Xe Tân Hiệp đi TP.HCM giá tốt",
@@ -517,7 +517,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "an-bien-di-tp-hcm",
-  path: "/an-bien-di-tp-hcm",
+  path: "an-bien-di-tp-hcm",
   from: "An Biên",
   to: "TP.HCM",
   title: "Thuê xe An Biên đi TP.HCM",
@@ -529,7 +529,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "an-minh-di-tp-hcm",
-  path: "/an-minh-di-tp-hcm",
+  path: "an-minh-di-tp-hcm",
   from: "An Minh",
   to: "TP.HCM",
   title: "Xe riêng An Minh đi TP.HCM",
@@ -541,7 +541,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "vinh-thuan-di-tp-hcm",
-  path: "/vinh-thuan-di-tp-hcm",
+  path: "vinh-thuan-di-tp-hcm",
   from: "Vĩnh Thuận",
   to: "TP.HCM",
   title: "Xe Vĩnh Thuận đi TP.HCM trọn gói",
@@ -553,7 +553,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "u-minh-thuong-di-tp-hcm",
-  path: "/u-minh-thuong-di-tp-hcm",
+  path: "u-minh-thuong-di-tp-hcm",
   from: "U Minh Thượng",
   to: "TP.HCM",
   title: "Xe U Minh Thượng đi TP.HCM",
@@ -565,7 +565,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "giang-thanh-di-tp-hcm",
-  path: "/giang-thanh-di-tp-hcm",
+  path: "giang-thanh-di-tp-hcm",
   from: "Giang Thành",
   to: "TP.HCM",
   title: "Xe Giang Thành đi TP.HCM đưa đón tận nơi",
@@ -577,7 +577,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-rach-gia",
-  path: "/sai-gon-di-rach-gia",
+  path: "sai-gon-di-rach-gia",
   from: "Sài Gòn",
   to: "Rạch Giá",
   title: "Xe Sài Gòn đi Rạch Giá Kiên Giang",
@@ -589,7 +589,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-ha-tien-gia-tot",
-  path: "/sai-gon-di-ha-tien-gia-tot",
+  path: "sai-gon-di-ha-tien-gia-tot",
   from: "Sài Gòn",
   to: "Hà Tiên",
   title: "Thuê xe Sài Gòn đi Hà Tiên giá tốt",
@@ -601,7 +601,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-kien-luong",
-  path: "/sai-gon-di-kien-luong",
+  path: "sai-gon-di-kien-luong",
   from: "Sài Gòn",
   to: "Kiên Lương",
   title: "Xe Sài Gòn đi Kiên Lương trọn gói",
@@ -613,7 +613,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-hon-dat",
-  path: "/sai-gon-di-hon-dat",
+  path: "sai-gon-di-hon-dat",
   from: "Sài Gòn",
   to: "Hòn Đất",
   title: "Đặt xe Sài Gòn đi Hòn Đất Kiên Giang",
@@ -625,7 +625,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-chau-thanh-kien-giang",
-  path: "/sai-gon-di-chau-thanh-kien-giang",
+  path: "sai-gon-di-chau-thanh-kien-giang",
   from: "Sài Gòn",
   to: "Châu Thành",
   title: "Xe Sài Gòn đi Châu Thành Kiên Giang",
@@ -637,7 +637,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-giong-rieng",
-  path: "/sai-gon-di-giong-rieng",
+  path: "sai-gon-di-giong-rieng",
   from: "Sài Gòn",
   to: "Giồng Riềng",
   title: "Thuê xe Sài Gòn đi Giồng Riềng",
@@ -649,7 +649,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-go-quao",
-  path: "/sai-gon-di-go-quao",
+  path: "sai-gon-di-go-quao",
   from: "Sài Gòn",
   to: "Gò Quao",
   title: "Xe riêng Sài Gòn đi Gò Quao",
@@ -661,7 +661,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-tan-hiep-kien-giang",
-  path: "/sai-gon-di-tan-hiep-kien-giang",
+  path: "sai-gon-di-tan-hiep-kien-giang",
   from: "Sài Gòn",
   to: "Tân Hiệp",
   title: "Thuê xe Sài Gòn đi Tân Hiệp Kiên Giang",
@@ -673,7 +673,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-an-bien",
-  path: "/sai-gon-di-an-bien",
+  path: "sai-gon-di-an-bien",
   from: "Sài Gòn",
   to: "An Biên",
   title: "Xe Sài Gòn đi An Biên Kiên Giang",
@@ -685,7 +685,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-an-minh",
-  path: "/sai-gon-di-an-minh",
+  path: "sai-gon-di-an-minh",
   from: "Sài Gòn",
   to: "An Minh",
   title: "Thuê xe Sài Gòn đi An Minh",
@@ -697,7 +697,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-vinh-thuan",
-  path: "/sai-gon-di-vinh-thuan",
+  path: "sai-gon-di-vinh-thuan",
   from: "Sài Gòn",
   to: "Vĩnh Thuận",
   title: "Xe Sài Gòn đi Vĩnh Thuận Kiên Giang",
@@ -709,7 +709,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-u-minh-thuong",
-  path: "/sai-gon-di-u-minh-thuong",
+  path: "sai-gon-di-u-minh-thuong",
   from: "Sài Gòn",
   to: "U Minh Thượng",
   title: "Xe riêng Sài Gòn đi U Minh Thượng",
@@ -721,7 +721,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-giang-thanh",
-  path: "/sai-gon-di-giang-thanh",
+  path: "sai-gon-di-giang-thanh",
   from: "Sài Gòn",
   to: "Giang Thành",
   title: "Thuê xe Sài Gòn đi Giang Thành",
@@ -733,7 +733,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "rach-gia-di-sai-gon",
-  path: "/rach-gia-di-sai-gon",
+  path: "rach-gia-di-sai-gon",
   from: "Rạch Giá",
   to: "Sài Gòn",
   title: "Xe Rạch Giá đi Sài Gòn đưa đón tận nơi",
@@ -745,7 +745,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "ha-tien-di-sai-gon",
-  path: "/ha-tien-di-sai-gon",
+  path: "ha-tien-di-sai-gon",
   from: "Hà Tiên",
   to: "Sài Gòn",
   title: "Thuê xe Hà Tiên đi Sài Gòn",
@@ -757,7 +757,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-luong-di-sai-gon",
-  path: "/kien-luong-di-sai-gon",
+  path: "kien-luong-di-sai-gon",
   from: "Kiên Lương",
   to: "Sài Gòn",
   title: "Xe Kiên Lương đi Sài Gòn giá tốt",
@@ -769,7 +769,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hon-dat-di-sai-gon",
-  path: "/hon-dat-di-sai-gon",
+  path: "hon-dat-di-sai-gon",
   from: "Hòn Đất",
   to: "Sài Gòn",
   title: "Xe Hòn Đất đi Sài Gòn trọn gói",
@@ -781,7 +781,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "chau-thanh-kien-giang-di-sai-gon",
-  path: "/chau-thanh-kien-giang-di-sai-gon",
+  path: "chau-thanh-kien-giang-di-sai-gon",
   from: "Châu Thành",
   to: "Sài Gòn",
   title: "Xe Châu Thành Kiên Giang đi Sài Gòn",
@@ -793,7 +793,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "giong-rieng-di-sai-gon",
-  path: "/giong-rieng-di-sai-gon",
+  path: "giong-rieng-di-sai-gon",
   from: "Giồng Riềng",
   to: "Sài Gòn",
   title: "Thuê xe Giồng Riềng đi Sài Gòn",
@@ -805,7 +805,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-quao-di-sai-gon",
-  path: "/go-quao-di-sai-gon",
+  path: "go-quao-di-sai-gon",
   from: "Gò Quao",
   to: "Sài Gòn",
   title: "Xe Gò Quao đi Sài Gòn đưa đón tận nơi",
@@ -817,7 +817,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-hiep-kien-giang-di-sai-gon",
-  path: "/tan-hiep-kien-giang-di-sai-gon",
+  path: "tan-hiep-kien-giang-di-sai-gon",
   from: "Tân Hiệp",
   to: "Sài Gòn",
   title: "Xe Tân Hiệp đi Sài Gòn giá tốt",
@@ -829,7 +829,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "an-bien-di-sai-gon",
-  path: "/an-bien-di-sai-gon",
+  path: "an-bien-di-sai-gon",
   from: "An Biên",
   to: "Sài Gòn",
   title: "Thuê xe An Biên đi Sài Gòn",
@@ -841,7 +841,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "an-minh-di-sai-gon",
-  path: "/an-minh-di-sai-gon",
+  path: "an-minh-di-sai-gon",
   from: "An Minh",
   to: "Sài Gòn",
   title: "Xe riêng An Minh đi Sài Gòn",
@@ -853,7 +853,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "vinh-thuan-di-sai-gon",
-  path: "/vinh-thuan-di-sai-gon",
+  path: "vinh-thuan-di-sai-gon",
   from: "Vĩnh Thuận",
   to: "Sài Gòn",
   title: "Xe Vĩnh Thuận đi Sài Gòn trọn gói",
@@ -865,7 +865,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "u-minh-thuong-di-sai-gon",
-  path: "/u-minh-thuong-di-sai-gon",
+  path: "u-minh-thuong-di-sai-gon",
   from: "U Minh Thượng",
   to: "Sài Gòn",
   title: "Xe U Minh Thượng đi Sài Gòn",
@@ -877,7 +877,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "giang-thanh-di-sai-gon",
-  path: "/giang-thanh-di-sai-gon",
+  path: "giang-thanh-di-sai-gon",
   from: "Giang Thành",
   to: "Sài Gòn",
   title: "Xe Giang Thành đi Sài Gòn đưa đón tận nơi",
@@ -889,7 +889,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-rach-gia",
-  path: "/quan-1-di-rach-gia",
+  path: "quan-1-di-rach-gia",
   from: "Quận 1",
   to: "Rạch Giá",
   title: "Xe Quận 1 đi Rạch Giá Kiên Giang",
@@ -901,7 +901,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-ha-tien",
-  path: "/quan-1-di-ha-tien",
+  path: "quan-1-di-ha-tien",
   from: "Quận 1",
   to: "Hà Tiên",
   title: "Thuê xe Quận 1 đi Hà Tiên",
@@ -913,7 +913,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-kien-luong",
-  path: "/quan-1-di-kien-luong",
+  path: "quan-1-di-kien-luong",
   from: "Quận 1",
   to: "Kiên Lương",
   title: "Xe Quận 1 đi Kiên Lương giá tốt",
@@ -925,7 +925,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-hon-dat",
-  path: "/quan-1-di-hon-dat",
+  path: "quan-1-di-hon-dat",
   from: "Quận 1",
   to: "Hòn Đất",
   title: "Đặt xe Quận 1 đi Hòn Đất",
@@ -937,7 +937,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-chau-thanh-kien-giang",
-  path: "/quan-1-di-chau-thanh-kien-giang",
+  path: "quan-1-di-chau-thanh-kien-giang",
   from: "Quận 1",
   to: "Châu Thành",
   title: "Xe Quận 1 đi Châu Thành Kiên Giang",
@@ -949,7 +949,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-giong-rieng",
-  path: "/quan-1-di-giong-rieng",
+  path: "quan-1-di-giong-rieng",
   from: "Quận 1",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 1 đi Giồng Riềng",
@@ -961,7 +961,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-go-quao",
-  path: "/quan-1-di-go-quao",
+  path: "quan-1-di-go-quao",
   from: "Quận 1",
   to: "Gò Quao",
   title: "Xe Quận 1 đi Gò Quao Kiên Giang",
@@ -973,7 +973,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-tan-hiep-kien-giang",
-  path: "/quan-1-di-tan-hiep-kien-giang",
+  path: "quan-1-di-tan-hiep-kien-giang",
   from: "Quận 1",
   to: "Tân Hiệp",
   title: "Thuê xe Quận 1 đi Tân Hiệp",
@@ -985,7 +985,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-an-bien",
-  path: "/quan-1-di-an-bien",
+  path: "quan-1-di-an-bien",
   from: "Quận 1",
   to: "An Biên",
   title: "Xe Quận 1 đi An Biên Kiên Giang",
@@ -997,7 +997,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-an-minh",
-  path: "/quan-1-di-an-minh",
+  path: "quan-1-di-an-minh",
   from: "Quận 1",
   to: "An Minh",
   title: "Thuê xe Quận 1 đi An Minh",
@@ -1009,7 +1009,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-vinh-thuan",
-  path: "/quan-1-di-vinh-thuan",
+  path: "quan-1-di-vinh-thuan",
   from: "Quận 1",
   to: "Vĩnh Thuận",
   title: "Xe Quận 1 đi Vĩnh Thuận giá tốt",
@@ -1021,7 +1021,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-u-minh-thuong",
-  path: "/quan-1-di-u-minh-thuong",
+  path: "quan-1-di-u-minh-thuong",
   from: "Quận 1",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 1 đi U Minh Thượng",
@@ -1033,7 +1033,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-1-di-giang-thanh",
-  path: "/quan-1-di-giang-thanh",
+  path: "quan-1-di-giang-thanh",
   from: "Quận 1",
   to: "Giang Thành",
   title: "Thuê xe Quận 1 đi Giang Thành",
@@ -1045,7 +1045,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-rach-gia",
-  path: "/quan-3-di-rach-gia",
+  path: "quan-3-di-rach-gia",
   from: "Quận 3",
   to: "Rạch Giá",
   title: "Xe Quận 3 đi Rạch Giá Kiên Giang",
@@ -1057,7 +1057,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-ha-tien",
-  path: "/quan-3-di-ha-tien",
+  path: "quan-3-di-ha-tien",
   from: "Quận 3",
   to: "Hà Tiên",
   title: "Thuê xe Quận 3 đi Hà Tiên",
@@ -1069,7 +1069,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-kien-luong",
-  path: "/quan-3-di-kien-luong",
+  path: "quan-3-di-kien-luong",
   from: "Quận 3",
   to: "Kiên Lương",
   title: "Xe Quận 3 đi Kiên Lương trọn gói",
@@ -1081,7 +1081,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-hon-dat",
-  path: "/quan-3-di-hon-dat",
+  path: "quan-3-di-hon-dat",
   from: "Quận 3",
   to: "Hòn Đất",
   title: "Đặt xe Quận 3 đi Hòn Đất",
@@ -1093,7 +1093,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-chau-thanh-kien-giang",
-  path: "/quan-3-di-chau-thanh-kien-giang",
+  path: "quan-3-di-chau-thanh-kien-giang",
   from: "Quận 3",
   to: "Châu Thành",
   title: "Xe Quận 3 đi Châu Thành Kiên Giang",
@@ -1105,7 +1105,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-giong-rieng",
-  path: "/quan-3-di-giong-rieng",
+  path: "quan-3-di-giong-rieng",
   from: "Quận 3",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 3 đi Giồng Riềng",
@@ -1117,7 +1117,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-go-quao",
-  path: "/quan-3-di-go-quao",
+  path: "quan-3-di-go-quao",
   from: "Quận 3",
   to: "Gò Quao",
   title: "Xe Quận 3 đi Gò Quao Kiên Giang",
@@ -1129,7 +1129,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-tan-hiep-kien-giang",
-  path: "/quan-3-di-tan-hiep-kien-giang",
+  path: "quan-3-di-tan-hiep-kien-giang",
   from: "Quận 3",
   to: "Tân Hiệp",
   title: "Xe Quận 3 đi Tân Hiệp Kiên Giang",
@@ -1141,7 +1141,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-an-bien",
-  path: "/quan-3-di-an-bien",
+  path: "quan-3-di-an-bien",
   from: "Quận 3",
   to: "An Biên",
   title: "Xe Quận 3 đi An Biên Kiên Giang",
@@ -1153,7 +1153,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-an-minh",
-  path: "/quan-3-di-an-minh",
+  path: "quan-3-di-an-minh",
   from: "Quận 3",
   to: "An Minh",
   title: "Thuê xe Quận 3 đi An Minh",
@@ -1165,7 +1165,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-vinh-thuan",
-  path: "/quan-3-di-vinh-thuan",
+  path: "quan-3-di-vinh-thuan",
   from: "Quận 3",
   to: "Vĩnh Thuận",
   title: "Xe Quận 3 đi Vĩnh Thuận",
@@ -1177,7 +1177,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-u-minh-thuong",
-  path: "/quan-3-di-u-minh-thuong",
+  path: "quan-3-di-u-minh-thuong",
   from: "Quận 3",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 3 đi U Minh Thượng",
@@ -1189,7 +1189,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-3-di-giang-thanh",
-  path: "/quan-3-di-giang-thanh",
+  path: "quan-3-di-giang-thanh",
   from: "Quận 3",
   to: "Giang Thành",
   title: "Thuê xe Quận 3 đi Giang Thành",
@@ -1201,7 +1201,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-rach-gia",
-  path: "/quan-4-di-rach-gia",
+  path: "quan-4-di-rach-gia",
   from: "Quận 4",
   to: "Rạch Giá",
   title: "Xe Quận 4 đi Rạch Giá Kiên Giang",
@@ -1213,7 +1213,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-ha-tien",
-  path: "/quan-4-di-ha-tien",
+  path: "quan-4-di-ha-tien",
   from: "Quận 4",
   to: "Hà Tiên",
   title: "Thuê xe Quận 4 đi Hà Tiên",
@@ -1225,7 +1225,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-kien-luong",
-  path: "/quan-4-di-kien-luong",
+  path: "quan-4-di-kien-luong",
   from: "Quận 4",
   to: "Kiên Lương",
   title: "Xe Quận 4 đi Kiên Lương giá tốt",
@@ -1237,7 +1237,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-hon-dat",
-  path: "/quan-4-di-hon-dat",
+  path: "quan-4-di-hon-dat",
   from: "Quận 4",
   to: "Hòn Đất",
   title: "Đặt xe Quận 4 đi Hòn Đất",
@@ -1249,7 +1249,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-chau-thanh-kien-giang",
-  path: "/quan-4-di-chau-thanh-kien-giang",
+  path: "quan-4-di-chau-thanh-kien-giang",
   from: "Quận 4",
   to: "Châu Thành",
   title: "Xe Quận 4 đi Châu Thành Kiên Giang",
@@ -1261,7 +1261,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-giong-rieng",
-  path: "/quan-4-di-giong-rieng",
+  path: "quan-4-di-giong-rieng",
   from: "Quận 4",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 4 đi Giồng Riềng",
@@ -1273,7 +1273,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-go-quao",
-  path: "/quan-4-di-go-quao",
+  path: "quan-4-di-go-quao",
   from: "Quận 4",
   to: "Gò Quao",
   title: "Xe Quận 4 đi Gò Quao Kiên Giang",
@@ -1285,7 +1285,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-tan-hiep-kien-giang",
-  path: "/quan-4-di-tan-hiep-kien-giang",
+  path: "quan-4-di-tan-hiep-kien-giang",
   from: "Quận 4",
   to: "Tân Hiệp",
   title: "Xe Quận 4 đi Tân Hiệp Kiên Giang",
@@ -1297,7 +1297,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-an-bien",
-  path: "/quan-4-di-an-bien",
+  path: "quan-4-di-an-bien",
   from: "Quận 4",
   to: "An Biên",
   title: "Xe Quận 4 đi An Biên Kiên Giang",
@@ -1309,7 +1309,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-an-minh",
-  path: "/quan-4-di-an-minh",
+  path: "quan-4-di-an-minh",
   from: "Quận 4",
   to: "An Minh",
   title: "Thuê xe Quận 4 đi An Minh",
@@ -1321,7 +1321,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-vinh-thuan",
-  path: "/quan-4-di-vinh-thuan",
+  path: "quan-4-di-vinh-thuan",
   from: "Quận 4",
   to: "Vĩnh Thuận",
   title: "Xe Quận 4 đi Vĩnh Thuận",
@@ -1333,7 +1333,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-u-minh-thuong",
-  path: "/quan-4-di-u-minh-thuong",
+  path: "quan-4-di-u-minh-thuong",
   from: "Quận 4",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 4 đi U Minh Thượng",
@@ -1345,7 +1345,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-4-di-giang-thanh",
-  path: "/quan-4-di-giang-thanh",
+  path: "quan-4-di-giang-thanh",
   from: "Quận 4",
   to: "Giang Thành",
   title: "Thuê xe Quận 4 đi Giang Thành",
@@ -1357,7 +1357,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-rach-gia",
-  path: "/quan-5-di-rach-gia",
+  path: "quan-5-di-rach-gia",
   from: "Quận 5",
   to: "Rạch Giá",
   title: "Xe Quận 5 đi Rạch Giá Kiên Giang",
@@ -1369,7 +1369,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-ha-tien",
-  path: "/quan-5-di-ha-tien",
+  path: "quan-5-di-ha-tien",
   from: "Quận 5",
   to: "Hà Tiên",
   title: "Thuê xe Quận 5 đi Hà Tiên",
@@ -1381,7 +1381,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-kien-luong",
-  path: "/quan-5-di-kien-luong",
+  path: "quan-5-di-kien-luong",
   from: "Quận 5",
   to: "Kiên Lương",
   title: "Xe Quận 5 đi Kiên Lương giá tốt",
@@ -1393,7 +1393,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-hon-dat",
-  path: "/quan-5-di-hon-dat",
+  path: "quan-5-di-hon-dat",
   from: "Quận 5",
   to: "Hòn Đất",
   title: "Đặt xe Quận 5 đi Hòn Đất",
@@ -1405,7 +1405,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-chau-thanh-kien-giang",
-  path: "/quan-5-di-chau-thanh-kien-giang",
+  path: "quan-5-di-chau-thanh-kien-giang",
   from: "Quận 5",
   to: "Châu Thành",
   title: "Xe Quận 5 đi Châu Thành Kiên Giang",
@@ -1417,7 +1417,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-giong-rieng",
-  path: "/quan-5-di-giong-rieng",
+  path: "quan-5-di-giong-rieng",
   from: "Quận 5",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 5 đi Giồng Riềng",
@@ -1429,7 +1429,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-go-quao",
-  path: "/quan-5-di-go-quao",
+  path: "quan-5-di-go-quao",
   from: "Quận 5",
   to: "Gò Quao",
   title: "Xe Quận 5 đi Gò Quao Kiên Giang",
@@ -1441,7 +1441,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-tan-hiep-kien-giang",
-  path: "/quan-5-di-tan-hiep-kien-giang",
+  path: "quan-5-di-tan-hiep-kien-giang",
   from: "Quận 5",
   to: "Tân Hiệp",
   title: "Xe Quận 5 đi Tân Hiệp Kiên Giang",
@@ -1453,7 +1453,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-an-bien",
-  path: "/quan-5-di-an-bien",
+  path: "quan-5-di-an-bien",
   from: "Quận 5",
   to: "An Biên",
   title: "Xe Quận 5 đi An Biên Kiên Giang",
@@ -1465,7 +1465,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-an-minh",
-  path: "/quan-5-di-an-minh",
+  path: "quan-5-di-an-minh",
   from: "Quận 5",
   to: "An Minh",
   title: "Thuê xe Quận 5 đi An Minh",
@@ -1477,7 +1477,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-vinh-thuan",
-  path: "/quan-5-di-vinh-thuan",
+  path: "quan-5-di-vinh-thuan",
   from: "Quận 5",
   to: "Vĩnh Thuận",
   title: "Xe Quận 5 đi Vĩnh Thuận",
@@ -1489,7 +1489,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-u-minh-thuong",
-  path: "/quan-5-di-u-minh-thuong",
+  path: "quan-5-di-u-minh-thuong",
   from: "Quận 5",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 5 đi U Minh Thượng",
@@ -1501,7 +1501,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-5-di-giang-thanh",
-  path: "/quan-5-di-giang-thanh",
+  path: "quan-5-di-giang-thanh",
   from: "Quận 5",
   to: "Giang Thành",
   title: "Thuê xe Quận 5 đi Giang Thành",
@@ -1513,7 +1513,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-rach-gia",
-  path: "/quan-6-di-rach-gia",
+  path: "quan-6-di-rach-gia",
   from: "Quận 6",
   to: "Rạch Giá",
   title: "Xe Quận 6 đi Rạch Giá Kiên Giang",
@@ -1525,7 +1525,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-ha-tien",
-  path: "/quan-6-di-ha-tien",
+  path: "quan-6-di-ha-tien",
   from: "Quận 6",
   to: "Hà Tiên",
   title: "Thuê xe Quận 6 đi Hà Tiên",
@@ -1537,7 +1537,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-kien-luong",
-  path: "/quan-6-di-kien-luong",
+  path: "quan-6-di-kien-luong",
   from: "Quận 6",
   to: "Kiên Lương",
   title: "Xe Quận 6 đi Kiên Lương giá tốt",
@@ -1549,7 +1549,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-hon-dat",
-  path: "/quan-6-di-hon-dat",
+  path: "quan-6-di-hon-dat",
   from: "Quận 6",
   to: "Hòn Đất",
   title: "Đặt xe Quận 6 đi Hòn Đất",
@@ -1561,7 +1561,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-chau-thanh-kien-giang",
-  path: "/quan-6-di-chau-thanh-kien-giang",
+  path: "quan-6-di-chau-thanh-kien-giang",
   from: "Quận 6",
   to: "Châu Thành",
   title: "Xe Quận 6 đi Châu Thành Kiên Giang",
@@ -1573,7 +1573,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-giong-rieng",
-  path: "/quan-6-di-giong-rieng",
+  path: "quan-6-di-giong-rieng",
   from: "Quận 6",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 6 đi Giồng Riềng",
@@ -1585,7 +1585,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-go-quao",
-  path: "/quan-6-di-go-quao",
+  path: "quan-6-di-go-quao",
   from: "Quận 6",
   to: "Gò Quao",
   title: "Xe Quận 6 đi Gò Quao Kiên Giang",
@@ -1597,7 +1597,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-tan-hiep-kien-giang",
-  path: "/quan-6-di-tan-hiep-kien-giang",
+  path: "quan-6-di-tan-hiep-kien-giang",
   from: "Quận 6",
   to: "Tân Hiệp",
   title: "Xe Quận 6 đi Tân Hiệp Kiên Giang",
@@ -1609,7 +1609,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-an-bien",
-  path: "/quan-6-di-an-bien",
+  path: "quan-6-di-an-bien",
   from: "Quận 6",
   to: "An Biên",
   title: "Xe Quận 6 đi An Biên Kiên Giang",
@@ -1621,7 +1621,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-an-minh",
-  path: "/quan-6-di-an-minh",
+  path: "quan-6-di-an-minh",
   from: "Quận 6",
   to: "An Minh",
   title: "Thuê xe Quận 6 đi An Minh",
@@ -1633,7 +1633,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-vinh-thuan",
-  path: "/quan-6-di-vinh-thuan",
+  path: "quan-6-di-vinh-thuan",
   from: "Quận 6",
   to: "Vĩnh Thuận",
   title: "Xe Quận 6 đi Vĩnh Thuận",
@@ -1645,7 +1645,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-u-minh-thuong",
-  path: "/quan-6-di-u-minh-thuong",
+  path: "quan-6-di-u-minh-thuong",
   from: "Quận 6",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 6 đi U Minh Thượng",
@@ -1657,7 +1657,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-6-di-giang-thanh",
-  path: "/quan-6-di-giang-thanh",
+  path: "quan-6-di-giang-thanh",
   from: "Quận 6",
   to: "Giang Thành",
   title: "Thuê xe Quận 6 đi Giang Thành",
@@ -1669,7 +1669,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-rach-gia",
-  path: "/quan-7-di-rach-gia",
+  path: "quan-7-di-rach-gia",
   from: "Quận 7",
   to: "Rạch Giá",
   title: "Xe Quận 7 đi Rạch Giá Kiên Giang",
@@ -1681,7 +1681,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-ha-tien",
-  path: "/quan-7-di-ha-tien",
+  path: "quan-7-di-ha-tien",
   from: "Quận 7",
   to: "Hà Tiên",
   title: "Thuê xe Quận 7 đi Hà Tiên",
@@ -1693,7 +1693,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-kien-luong",
-  path: "/quan-7-di-kien-luong",
+  path: "quan-7-di-kien-luong",
   from: "Quận 7",
   to: "Kiên Lương",
   title: "Xe Quận 7 đi Kiên Lương giá tốt",
@@ -1705,7 +1705,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-hon-dat",
-  path: "/quan-7-di-hon-dat",
+  path: "quan-7-di-hon-dat",
   from: "Quận 7",
   to: "Hòn Đất",
   title: "Đặt xe Quận 7 đi Hòn Đất",
@@ -1717,7 +1717,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-chau-thanh-kien-giang",
-  path: "/quan-7-di-chau-thanh-kien-giang",
+  path: "quan-7-di-chau-thanh-kien-giang",
   from: "Quận 7",
   to: "Châu Thành",
   title: "Xe Quận 7 đi Châu Thành Kiên Giang",
@@ -1729,7 +1729,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-giong-rieng",
-  path: "/quan-7-di-giong-rieng",
+  path: "quan-7-di-giong-rieng",
   from: "Quận 7",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 7 đi Giồng Riềng",
@@ -1741,7 +1741,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-go-quao",
-  path: "/quan-7-di-go-quao",
+  path: "quan-7-di-go-quao",
   from: "Quận 7",
   to: "Gò Quao",
   title: "Xe Quận 7 đi Gò Quao Kiên Giang",
@@ -1753,7 +1753,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-tan-hiep-kien-giang",
-  path: "/quan-7-di-tan-hiep-kien-giang",
+  path: "quan-7-di-tan-hiep-kien-giang",
   from: "Quận 7",
   to: "Tân Hiệp",
   title: "Xe Quận 7 đi Tân Hiệp Kiên Giang",
@@ -1765,7 +1765,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-an-bien",
-  path: "/quan-7-di-an-bien",
+  path: "quan-7-di-an-bien",
   from: "Quận 7",
   to: "An Biên",
   title: "Xe Quận 7 đi An Biên Kiên Giang",
@@ -1777,7 +1777,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-an-minh",
-  path: "/quan-7-di-an-minh",
+  path: "quan-7-di-an-minh",
   from: "Quận 7",
   to: "An Minh",
   title: "Thuê xe Quận 7 đi An Minh",
@@ -1789,7 +1789,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-vinh-thuan",
-  path: "/quan-7-di-vinh-thuan",
+  path: "quan-7-di-vinh-thuan",
   from: "Quận 7",
   to: "Vĩnh Thuận",
   title: "Xe Quận 7 đi Vĩnh Thuận",
@@ -1801,7 +1801,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-u-minh-thuong",
-  path: "/quan-7-di-u-minh-thuong",
+  path: "quan-7-di-u-minh-thuong",
   from: "Quận 7",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 7 đi U Minh Thượng",
@@ -1813,7 +1813,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-7-di-giang-thanh",
-  path: "/quan-7-di-giang-thanh",
+  path: "quan-7-di-giang-thanh",
   from: "Quận 7",
   to: "Giang Thành",
   title: "Thuê xe Quận 7 đi Giang Thành",
@@ -1825,7 +1825,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-rach-gia",
-  path: "/quan-8-di-rach-gia",
+  path: "quan-8-di-rach-gia",
   from: "Quận 8",
   to: "Rạch Giá",
   title: "Xe Quận 8 đi Rạch Giá Kiên Giang",
@@ -1837,7 +1837,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-ha-tien",
-  path: "/quan-8-di-ha-tien",
+  path: "quan-8-di-ha-tien",
   from: "Quận 8",
   to: "Hà Tiên",
   title: "Thuê xe Quận 8 đi Hà Tiên",
@@ -1849,7 +1849,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-kien-luong",
-  path: "/quan-8-di-kien-luong",
+  path: "quan-8-di-kien-luong",
   from: "Quận 8",
   to: "Kiên Lương",
   title: "Xe Quận 8 đi Kiên Lương giá tốt",
@@ -1861,7 +1861,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-hon-dat",
-  path: "/quan-8-di-hon-dat",
+  path: "quan-8-di-hon-dat",
   from: "Quận 8",
   to: "Hòn Đất",
   title: "Đặt xe Quận 8 đi Hòn Đất",
@@ -1873,7 +1873,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-chau-thanh-kien-giang",
-  path: "/quan-8-di-chau-thanh-kien-giang",
+  path: "quan-8-di-chau-thanh-kien-giang",
   from: "Quận 8",
   to: "Châu Thành",
   title: "Xe Quận 8 đi Châu Thành Kiên Giang",
@@ -1885,7 +1885,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-giong-rieng",
-  path: "/quan-8-di-giong-rieng",
+  path: "quan-8-di-giong-rieng",
   from: "Quận 8",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 8 đi Giồng Riềng",
@@ -1897,7 +1897,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-go-quao",
-  path: "/quan-8-di-go-quao",
+  path: "quan-8-di-go-quao",
   from: "Quận 8",
   to: "Gò Quao",
   title: "Xe Quận 8 đi Gò Quao Kiên Giang",
@@ -1909,7 +1909,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-tan-hiep-kien-giang",
-  path: "/quan-8-di-tan-hiep-kien-giang",
+  path: "quan-8-di-tan-hiep-kien-giang",
   from: "Quận 8",
   to: "Tân Hiệp",
   title: "Xe Quận 8 đi Tân Hiệp Kiên Giang",
@@ -1921,7 +1921,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-an-bien",
-  path: "/quan-8-di-an-bien",
+  path: "quan-8-di-an-bien",
   from: "Quận 8",
   to: "An Biên",
   title: "Xe Quận 8 đi An Biên Kiên Giang",
@@ -1933,7 +1933,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-an-minh",
-  path: "/quan-8-di-an-minh",
+  path: "quan-8-di-an-minh",
   from: "Quận 8",
   to: "An Minh",
   title: "Thuê xe Quận 8 đi An Minh",
@@ -1945,7 +1945,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-vinh-thuan",
-  path: "/quan-8-di-vinh-thuan",
+  path: "quan-8-di-vinh-thuan",
   from: "Quận 8",
   to: "Vĩnh Thuận",
   title: "Xe Quận 8 đi Vĩnh Thuận",
@@ -1957,7 +1957,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-u-minh-thuong",
-  path: "/quan-8-di-u-minh-thuong",
+  path: "quan-8-di-u-minh-thuong",
   from: "Quận 8",
   to: "U Minh Thượng",
   title: "Xe Quận 8 đi U Minh Thượng",
@@ -1969,7 +1969,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-8-di-giang-thanh",
-  path: "/quan-8-di-giang-thanh",
+  path: "quan-8-di-giang-thanh",
   from: "Quận 8",
   to: "Giang Thành",
   title: "Thuê xe Quận 8 đi Giang Thành",
@@ -1981,7 +1981,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-rach-gia",
-  path: "/quan-10-di-rach-gia",
+  path: "quan-10-di-rach-gia",
   from: "Quận 10",
   to: "Rạch Giá",
   title: "Xe Quận 10 đi Rạch Giá Kiên Giang",
@@ -1993,7 +1993,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-ha-tien",
-  path: "/quan-10-di-ha-tien",
+  path: "quan-10-di-ha-tien",
   from: "Quận 10",
   to: "Hà Tiên",
   title: "Thuê xe Quận 10 đi Hà Tiên",
@@ -2005,7 +2005,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-kien-luong",
-  path: "/quan-10-di-kien-luong",
+  path: "quan-10-di-kien-luong",
   from: "Quận 10",
   to: "Kiên Lương",
   title: "Xe Quận 10 đi Kiên Lương giá tốt",
@@ -2017,7 +2017,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-hon-dat",
-  path: "/quan-10-di-hon-dat",
+  path: "quan-10-di-hon-dat",
   from: "Quận 10",
   to: "Hòn Đất",
   title: "Đặt xe Quận 10 đi Hòn Đất",
@@ -2029,7 +2029,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-chau-thanh-kien-giang",
-  path: "/quan-10-di-chau-thanh-kien-giang",
+  path: "quan-10-di-chau-thanh-kien-giang",
   from: "Quận 10",
   to: "Châu Thành",
   title: "Xe Quận 10 đi Châu Thành Kiên Giang",
@@ -2041,7 +2041,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-giong-rieng",
-  path: "/quan-10-di-giong-rieng",
+  path: "quan-10-di-giong-rieng",
   from: "Quận 10",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 10 đi Giồng Riềng",
@@ -2053,7 +2053,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-go-quao",
-  path: "/quan-10-di-go-quao",
+  path: "quan-10-di-go-quao",
   from: "Quận 10",
   to: "Gò Quao",
   title: "Xe Quận 10 đi Gò Quao Kiên Giang",
@@ -2065,7 +2065,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-tan-hiep-kien-giang",
-  path: "/quan-10-di-tan-hiep-kien-giang",
+  path: "quan-10-di-tan-hiep-kien-giang",
   from: "Quận 10",
   to: "Tân Hiệp",
   title: "Xe Quận 10 đi Tân Hiệp Kiên Giang",
@@ -2077,7 +2077,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-an-bien",
-  path: "/quan-10-di-an-bien",
+  path: "quan-10-di-an-bien",
   from: "Quận 10",
   to: "An Biên",
   title: "Xe Quận 10 đi An Biên Kiên Giang",
@@ -2089,7 +2089,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-an-minh",
-  path: "/quan-10-di-an-minh",
+  path: "quan-10-di-an-minh",
   from: "Quận 10",
   to: "An Minh",
   title: "Thuê xe Quận 10 đi An Minh",
@@ -2101,7 +2101,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-vinh-thuan",
-  path: "/quan-10-di-vinh-thuan",
+  path: "quan-10-di-vinh-thuan",
   from: "Quận 10",
   to: "Vĩnh Thuận",
   title: "Xe Quận 10 đi Vĩnh Thuận",
@@ -2113,7 +2113,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-u-minh-thuong",
-  path: "/quan-10-di-u-minh-thuong",
+  path: "quan-10-di-u-minh-thuong",
   from: "Quận 10",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 10 đi U Minh Thượng",
@@ -2125,7 +2125,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-10-di-giang-thanh",
-  path: "/quan-10-di-giang-thanh",
+  path: "quan-10-di-giang-thanh",
   from: "Quận 10",
   to: "Giang Thành",
   title: "Thuê xe Quận 10 đi Giang Thành",
@@ -2137,7 +2137,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-rach-gia",
-  path: "/quan-11-di-rach-gia",
+  path: "quan-11-di-rach-gia",
   from: "Quận 11",
   to: "Rạch Giá",
   title: "Xe Quận 11 đi Rạch Giá Kiên Giang",
@@ -2149,7 +2149,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-ha-tien",
-  path: "/quan-11-di-ha-tien",
+  path: "quan-11-di-ha-tien",
   from: "Quận 11",
   to: "Hà Tiên",
   title: "Thuê xe Quận 11 đi Hà Tiên",
@@ -2161,7 +2161,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-kien-luong",
-  path: "/quan-11-di-kien-luong",
+  path: "quan-11-di-kien-luong",
   from: "Quận 11",
   to: "Kiên Lương",
   title: "Xe Quận 11 đi Kiên Lương giá tốt",
@@ -2173,7 +2173,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-hon-dat",
-  path: "/quan-11-di-hon-dat",
+  path: "quan-11-di-hon-dat",
   from: "Quận 11",
   to: "Hòn Đất",
   title: "Đặt xe Quận 11 đi Hòn Đất",
@@ -2185,7 +2185,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-chau-thanh-kien-giang",
-  path: "/quan-11-di-chau-thanh-kien-giang",
+  path: "quan-11-di-chau-thanh-kien-giang",
   from: "Quận 11",
   to: "Châu Thành",
   title: "Xe Quận 11 đi Châu Thành Kiên Giang",
@@ -2197,7 +2197,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-giong-rieng",
-  path: "/quan-11-di-giong-rieng",
+  path: "quan-11-di-giong-rieng",
   from: "Quận 11",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 11 đi Giồng Riềng",
@@ -2209,7 +2209,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-go-quao",
-  path: "/quan-11-di-go-quao",
+  path: "quan-11-di-go-quao",
   from: "Quận 11",
   to: "Gò Quao",
   title: "Xe Quận 11 đi Gò Quao Kiên Giang",
@@ -2221,7 +2221,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-tan-hiep-kien-giang",
-  path: "/quan-11-di-tan-hiep-kien-giang",
+  path: "quan-11-di-tan-hiep-kien-giang",
   from: "Quận 11",
   to: "Tân Hiệp",
   title: "Xe Quận 11 đi Tân Hiệp Kiên Giang",
@@ -2233,7 +2233,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-an-bien",
-  path: "/quan-11-di-an-bien",
+  path: "quan-11-di-an-bien",
   from: "Quận 11",
   to: "An Biên",
   title: "Xe Quận 11 đi An Biên Kiên Giang",
@@ -2245,7 +2245,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-an-minh",
-  path: "/quan-11-di-an-minh",
+  path: "quan-11-di-an-minh",
   from: "Quận 11",
   to: "An Minh",
   title: "Thuê xe Quận 11 đi An Minh",
@@ -2257,7 +2257,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-vinh-thuan",
-  path: "/quan-11-di-vinh-thuan",
+  path: "quan-11-di-vinh-thuan",
   from: "Quận 11",
   to: "Vĩnh Thuận",
   title: "Xe Quận 11 đi Vĩnh Thuận",
@@ -2269,7 +2269,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-u-minh-thuong",
-  path: "/quan-11-di-u-minh-thuong",
+  path: "quan-11-di-u-minh-thuong",
   from: "Quận 11",
   to: "U Minh Thượng",
   title: "Xe riêng Quận 11 đi U Minh Thượng",
@@ -2281,7 +2281,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-11-di-giang-thanh",
-  path: "/quan-11-di-giang-thanh",
+  path: "quan-11-di-giang-thanh",
   from: "Quận 11",
   to: "Giang Thành",
   title: "Thuê xe Quận 11 đi Giang Thành",
@@ -2293,7 +2293,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-rach-gia",
-  path: "/quan-12-di-rach-gia",
+  path: "quan-12-di-rach-gia",
   from: "Quận 12",
   to: "Rạch Giá",
   title: "Xe Quận 12 đi Rạch Giá Kiên Giang",
@@ -2305,7 +2305,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-ha-tien",
-  path: "/quan-12-di-ha-tien",
+  path: "quan-12-di-ha-tien",
   from: "Quận 12",
   to: "Hà Tiên",
   title: "Thuê xe Quận 12 đi Hà Tiên",
@@ -2317,7 +2317,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-kien-luong",
-  path: "/quan-12-di-kien-luong",
+  path: "quan-12-di-kien-luong",
   from: "Quận 12",
   to: "Kiên Lương",
   title: "Xe Quận 12 đi Kiên Lương giá tốt",
@@ -2329,7 +2329,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-hon-dat",
-  path: "/quan-12-di-hon-dat",
+  path: "quan-12-di-hon-dat",
   from: "Quận 12",
   to: "Hòn Đất",
   title: "Đặt xe Quận 12 đi Hòn Đất",
@@ -2341,7 +2341,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-chau-thanh-kien-giang",
-  path: "/quan-12-di-chau-thanh-kien-giang",
+  path: "quan-12-di-chau-thanh-kien-giang",
   from: "Quận 12",
   to: "Châu Thành",
   title: "Xe Quận 12 đi Châu Thành Kiên Giang",
@@ -2353,7 +2353,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-giong-rieng",
-  path: "/quan-12-di-giong-rieng",
+  path: "quan-12-di-giong-rieng",
   from: "Quận 12",
   to: "Giồng Riềng",
   title: "Thuê xe Quận 12 đi Giồng Riềng",
@@ -2365,7 +2365,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-go-quao",
-  path: "/quan-12-di-go-quao",
+  path: "quan-12-di-go-quao",
   from: "Quận 12",
   to: "Gò Quao",
   title: "Xe Quận 12 đi Gò Quao Kiên Giang",
@@ -2377,7 +2377,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-tan-hiep-kien-giang",
-  path: "/quan-12-di-tan-hiep-kien-giang",
+  path: "quan-12-di-tan-hiep-kien-giang",
   from: "Quận 12",
   to: "Tân Hiệp",
   title: "Xe Quận 12 đi Tân Hiệp Kiên Giang",
@@ -2389,7 +2389,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-an-bien",
-  path: "/quan-12-di-an-bien",
+  path: "quan-12-di-an-bien",
   from: "Quận 12",
   to: "An Biên",
   title: "Xe Quận 12 đi An Biên Kiên Giang",
@@ -2401,7 +2401,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-an-minh",
-  path: "/quan-12-di-an-minh",
+  path: "quan-12-di-an-minh",
   from: "Quận 12",
   to: "An Minh",
   title: "Thuê xe Quận 12 đi An Minh",
@@ -2413,7 +2413,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-vinh-thuan",
-  path: "/quan-12-di-vinh-thuan",
+  path: "quan-12-di-vinh-thuan",
   from: "Quận 12",
   to: "Vĩnh Thuận",
   title: "Xe Quận 12 đi Vĩnh Thuận",
@@ -2425,7 +2425,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-u-minh-thuong",
-  path: "/quan-12-di-u-minh-thuong",
+  path: "quan-12-di-u-minh-thuong",
   from: "Quận 12",
   to: "U Minh Thượng",
   title: "Xe Quận 12 đi U Minh Thượng",
@@ -2437,7 +2437,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "quan-12-di-giang-thanh",
-  path: "/quan-12-di-giang-thanh",
+  path: "quan-12-di-giang-thanh",
   from: "Quận 12",
   to: "Giang Thành",
   title: "Thuê xe Quận 12 đi Giang Thành",
@@ -2449,7 +2449,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-rach-gia",
-  path: "/binh-thanh-di-rach-gia",
+  path: "binh-thanh-di-rach-gia",
   from: "Bình Thạnh",
   to: "Rạch Giá",
   title: "Xe Bình Thạnh đi Rạch Giá Kiên Giang",
@@ -2461,7 +2461,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-ha-tien",
-  path: "/binh-thanh-di-ha-tien",
+  path: "binh-thanh-di-ha-tien",
   from: "Bình Thạnh",
   to: "Hà Tiên",
   title: "Thuê xe Bình Thạnh đi Hà Tiên",
@@ -2473,7 +2473,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-kien-luong",
-  path: "/binh-thanh-di-kien-luong",
+  path: "binh-thanh-di-kien-luong",
   from: "Bình Thạnh",
   to: "Kiên Lương",
   title: "Xe Bình Thạnh đi Kiên Lương giá tốt",
@@ -2485,7 +2485,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-hon-dat",
-  path: "/binh-thanh-di-hon-dat",
+  path: "binh-thanh-di-hon-dat",
   from: "Bình Thạnh",
   to: "Hòn Đất",
   title: "Đặt xe Bình Thạnh đi Hòn Đất",
@@ -2497,7 +2497,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-chau-thanh-kien-giang",
-  path: "/binh-thanh-di-chau-thanh-kien-giang",
+  path: "binh-thanh-di-chau-thanh-kien-giang",
   from: "Bình Thạnh",
   to: "Châu Thành",
   title: "Xe Bình Thạnh đi Châu Thành Kiên Giang",
@@ -2509,7 +2509,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-giong-rieng",
-  path: "/binh-thanh-di-giong-rieng",
+  path: "binh-thanh-di-giong-rieng",
   from: "Bình Thạnh",
   to: "Giồng Riềng",
   title: "Thuê xe Bình Thạnh đi Giồng Riềng",
@@ -2521,7 +2521,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-go-quao",
-  path: "/binh-thanh-di-go-quao",
+  path: "binh-thanh-di-go-quao",
   from: "Bình Thạnh",
   to: "Gò Quao",
   title: "Xe Bình Thạnh đi Gò Quao Kiên Giang",
@@ -2533,7 +2533,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-tan-hiep-kien-giang",
-  path: "/binh-thanh-di-tan-hiep-kien-giang",
+  path: "binh-thanh-di-tan-hiep-kien-giang",
   from: "Bình Thạnh",
   to: "Tân Hiệp",
   title: "Xe Bình Thạnh đi Tân Hiệp Kiên Giang",
@@ -2545,7 +2545,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-an-bien",
-  path: "/binh-thanh-di-an-bien",
+  path: "binh-thanh-di-an-bien",
   from: "Bình Thạnh",
   to: "An Biên",
   title: "Xe Bình Thạnh đi An Biên Kiên Giang",
@@ -2557,7 +2557,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-an-minh",
-  path: "/binh-thanh-di-an-minh",
+  path: "binh-thanh-di-an-minh",
   from: "Bình Thạnh",
   to: "An Minh",
   title: "Thuê xe Bình Thạnh đi An Minh",
@@ -2569,7 +2569,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-vinh-thuan",
-  path: "/binh-thanh-di-vinh-thuan",
+  path: "binh-thanh-di-vinh-thuan",
   from: "Bình Thạnh",
   to: "Vĩnh Thuận",
   title: "Xe Bình Thạnh đi Vĩnh Thuận",
@@ -2581,7 +2581,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-u-minh-thuong",
-  path: "/binh-thanh-di-u-minh-thuong",
+  path: "binh-thanh-di-u-minh-thuong",
   from: "Bình Thạnh",
   to: "U Minh Thượng",
   title: "Xe Bình Thạnh đi U Minh Thượng",
@@ -2593,7 +2593,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-thanh-di-giang-thanh",
-  path: "/binh-thanh-di-giang-thanh",
+  path: "binh-thanh-di-giang-thanh",
   from: "Bình Thạnh",
   to: "Giang Thành",
   title: "Thuê xe Bình Thạnh đi Giang Thành",
@@ -2605,7 +2605,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-rach-gia",
-  path: "/go-vap-di-rach-gia",
+  path: "go-vap-di-rach-gia",
   from: "Gò Vấp",
   to: "Rạch Giá",
   title: "Xe Gò Vấp đi Rạch Giá Kiên Giang",
@@ -2617,7 +2617,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-ha-tien",
-  path: "/go-vap-di-ha-tien",
+  path: "go-vap-di-ha-tien",
   from: "Gò Vấp",
   to: "Hà Tiên",
   title: "Thuê xe Gò Vấp đi Hà Tiên",
@@ -2629,7 +2629,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-kien-luong",
-  path: "/go-vap-di-kien-luong",
+  path: "go-vap-di-kien-luong",
   from: "Gò Vấp",
   to: "Kiên Lương",
   title: "Xe Gò Vấp đi Kiên Lương giá tốt",
@@ -2641,7 +2641,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-hon-dat",
-  path: "/go-vap-di-hon-dat",
+  path: "go-vap-di-hon-dat",
   from: "Gò Vấp",
   to: "Hòn Đất",
   title: "Xe Gò Vấp đi Hòn Đất Kiên Giang",
@@ -2653,7 +2653,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-chau-thanh-kien-giang",
-  path: "/go-vap-di-chau-thanh-kien-giang",
+  path: "go-vap-di-chau-thanh-kien-giang",
   from: "Gò Vấp",
   to: "Châu Thành",
   title: "Xe Gò Vấp đi Châu Thành Kiên Giang",
@@ -2665,7 +2665,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-giong-rieng",
-  path: "/go-vap-di-giong-rieng",
+  path: "go-vap-di-giong-rieng",
   from: "Gò Vấp",
   to: "Giồng Riềng",
   title: "Thuê xe Gò Vấp đi Giồng Riềng",
@@ -2677,7 +2677,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-go-quao",
-  path: "/go-vap-di-go-quao",
+  path: "go-vap-di-go-quao",
   from: "Gò Vấp",
   to: "Gò Quao",
   title: "Xe Gò Vấp đi Gò Quao Kiên Giang",
@@ -2689,7 +2689,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-tan-hiep-kien-giang",
-  path: "/go-vap-di-tan-hiep-kien-giang",
+  path: "go-vap-di-tan-hiep-kien-giang",
   from: "Gò Vấp",
   to: "Tân Hiệp",
   title: "Xe Gò Vấp đi Tân Hiệp Kiên Giang",
@@ -2701,7 +2701,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-an-bien",
-  path: "/go-vap-di-an-bien",
+  path: "go-vap-di-an-bien",
   from: "Gò Vấp",
   to: "An Biên",
   title: "Xe Gò Vấp đi An Biên Kiên Giang",
@@ -2713,7 +2713,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-an-minh",
-  path: "/go-vap-di-an-minh",
+  path: "go-vap-di-an-minh",
   from: "Gò Vấp",
   to: "An Minh",
   title: "Thuê xe Gò Vấp đi An Minh",
@@ -2725,7 +2725,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-vinh-thuan",
-  path: "/go-vap-di-vinh-thuan",
+  path: "go-vap-di-vinh-thuan",
   from: "Gò Vấp",
   to: "Vĩnh Thuận",
   title: "Xe Gò Vấp đi Vĩnh Thuận",
@@ -2737,7 +2737,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-u-minh-thuong",
-  path: "/go-vap-di-u-minh-thuong",
+  path: "go-vap-di-u-minh-thuong",
   from: "Gò Vấp",
   to: "U Minh Thượng",
   title: "Xe Gò Vấp đi U Minh Thượng",
@@ -2749,7 +2749,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "go-vap-di-giang-thanh",
-  path: "/go-vap-di-giang-thanh",
+  path: "go-vap-di-giang-thanh",
   from: "Gò Vấp",
   to: "Giang Thành",
   title: "Thuê xe Gò Vấp đi Giang Thành",
@@ -2761,7 +2761,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-rach-gia",
-  path: "/phu-nhuan-di-rach-gia",
+  path: "phu-nhuan-di-rach-gia",
   from: "Phú Nhuận",
   to: "Rạch Giá",
   title: "Xe Phú Nhuận đi Rạch Giá Kiên Giang",
@@ -2773,7 +2773,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-ha-tien",
-  path: "/phu-nhuan-di-ha-tien",
+  path: "phu-nhuan-di-ha-tien",
   from: "Phú Nhuận",
   to: "Hà Tiên",
   title: "Thuê xe Phú Nhuận đi Hà Tiên",
@@ -2785,7 +2785,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-kien-luong",
-  path: "/phu-nhuan-di-kien-luong",
+  path: "phu-nhuan-di-kien-luong",
   from: "Phú Nhuận",
   to: "Kiên Lương",
   title: "Xe Phú Nhuận đi Kiên Lương giá tốt",
@@ -2797,7 +2797,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-hon-dat",
-  path: "/phu-nhuan-di-hon-dat",
+  path: "phu-nhuan-di-hon-dat",
   from: "Phú Nhuận",
   to: "Hòn Đất",
   title: "Đặt xe Phú Nhuận đi Hòn Đất",
@@ -2809,7 +2809,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-chau-thanh-kien-giang",
-  path: "/phu-nhuan-di-chau-thanh-kien-giang",
+  path: "phu-nhuan-di-chau-thanh-kien-giang",
   from: "Phú Nhuận",
   to: "Châu Thành",
   title: "Xe Phú Nhuận đi Châu Thành Kiên Giang",
@@ -2821,7 +2821,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-giong-rieng",
-  path: "/phu-nhuan-di-giong-rieng",
+  path: "phu-nhuan-di-giong-rieng",
   from: "Phú Nhuận",
   to: "Giồng Riềng",
   title: "Thuê xe Phú Nhuận đi Giồng Riềng",
@@ -2833,7 +2833,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-go-quao",
-  path: "/phu-nhuan-di-go-quao",
+  path: "phu-nhuan-di-go-quao",
   from: "Phú Nhuận",
   to: "Gò Quao",
   title: "Xe Phú Nhuận đi Gò Quao Kiên Giang",
@@ -2845,7 +2845,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-tan-hiep-kien-giang",
-  path: "/phu-nhuan-di-tan-hiep-kien-giang",
+  path: "phu-nhuan-di-tan-hiep-kien-giang",
   from: "Phú Nhuận",
   to: "Tân Hiệp",
   title: "Xe Phú Nhuận đi Tân Hiệp Kiên Giang",
@@ -2857,7 +2857,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-an-bien",
-  path: "/phu-nhuan-di-an-bien",
+  path: "phu-nhuan-di-an-bien",
   from: "Phú Nhuận",
   to: "An Biên",
   title: "Xe Phú Nhuận đi An Biên Kiên Giang",
@@ -2869,7 +2869,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-an-minh",
-  path: "/phu-nhuan-di-an-minh",
+  path: "phu-nhuan-di-an-minh",
   from: "Phú Nhuận",
   to: "An Minh",
   title: "Thuê xe Phú Nhuận đi An Minh",
@@ -2881,7 +2881,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-vinh-thuan",
-  path: "/phu-nhuan-di-vinh-thuan",
+  path: "phu-nhuan-di-vinh-thuan",
   from: "Phú Nhuận",
   to: "Vĩnh Thuận",
   title: "Xe Phú Nhuận đi Vĩnh Thuận",
@@ -2893,7 +2893,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-u-minh-thuong",
-  path: "/phu-nhuan-di-u-minh-thuong",
+  path: "phu-nhuan-di-u-minh-thuong",
   from: "Phú Nhuận",
   to: "U Minh Thượng",
   title: "Xe Phú Nhuận đi U Minh Thượng",
@@ -2905,7 +2905,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-nhuan-di-giang-thanh",
-  path: "/phu-nhuan-di-giang-thanh",
+  path: "phu-nhuan-di-giang-thanh",
   from: "Phú Nhuận",
   to: "Giang Thành",
   title: "Thuê xe Phú Nhuận đi Giang Thành",
@@ -2917,7 +2917,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-rach-gia",
-  path: "/tan-binh-di-rach-gia",
+  path: "tan-binh-di-rach-gia",
   from: "Tân Bình",
   to: "Rạch Giá",
   title: "Xe Tân Bình đi Rạch Giá Kiên Giang",
@@ -2929,7 +2929,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-ha-tien",
-  path: "/tan-binh-di-ha-tien",
+  path: "tan-binh-di-ha-tien",
   from: "Tân Bình",
   to: "Hà Tiên",
   title: "Thuê xe Tân Bình đi Hà Tiên",
@@ -2941,7 +2941,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-kien-luong",
-  path: "/tan-binh-di-kien-luong",
+  path: "tan-binh-di-kien-luong",
   from: "Tân Bình",
   to: "Kiên Lương",
   title: "Xe Tân Bình đi Kiên Lương giá tốt",
@@ -2953,7 +2953,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-hon-dat",
-  path: "/tan-binh-di-hon-dat",
+  path: "tan-binh-di-hon-dat",
   from: "Tân Bình",
   to: "Hòn Đất",
   title: "Đặt xe Tân Bình đi Hòn Đất",
@@ -2965,7 +2965,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-chau-thanh-kien-giang",
-  path: "/tan-binh-di-chau-thanh-kien-giang",
+  path: "tan-binh-di-chau-thanh-kien-giang",
   from: "Tân Bình",
   to: "Châu Thành",
   title: "Xe Tân Bình đi Châu Thành Kiên Giang",
@@ -2977,7 +2977,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-giong-rieng",
-  path: "/tan-binh-di-giong-rieng",
+  path: "tan-binh-di-giong-rieng",
   from: "Tân Bình",
   to: "Giồng Riềng",
   title: "Thuê xe Tân Bình đi Giồng Riềng",
@@ -2989,7 +2989,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-go-quao",
-  path: "/tan-binh-di-go-quao",
+  path: "tan-binh-di-go-quao",
   from: "Tân Bình",
   to: "Gò Quao",
   title: "Xe Tân Bình đi Gò Quao Kiên Giang",
@@ -3001,7 +3001,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-tan-hiep-kien-giang",
-  path: "/tan-binh-di-tan-hiep-kien-giang",
+  path: "tan-binh-di-tan-hiep-kien-giang",
   from: "Tân Bình",
   to: "Tân Hiệp",
   title: "Xe Tân Bình đi Tân Hiệp Kiên Giang",
@@ -3013,7 +3013,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-an-bien",
-  path: "/tan-binh-di-an-bien",
+  path: "tan-binh-di-an-bien",
   from: "Tân Bình",
   to: "An Biên",
   title: "Xe Tân Bình đi An Biên Kiên Giang",
@@ -3025,7 +3025,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-an-minh",
-  path: "/tan-binh-di-an-minh",
+  path: "tan-binh-di-an-minh",
   from: "Tân Bình",
   to: "An Minh",
   title: "Thuê xe Tân Bình đi An Minh",
@@ -3037,7 +3037,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-vinh-thuan",
-  path: "/tan-binh-di-vinh-thuan",
+  path: "tan-binh-di-vinh-thuan",
   from: "Tân Bình",
   to: "Vĩnh Thuận",
   title: "Xe Tân Bình đi Vĩnh Thuận",
@@ -3049,7 +3049,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-u-minh-thuong",
-  path: "/tan-binh-di-u-minh-thuong",
+  path: "tan-binh-di-u-minh-thuong",
   from: "Tân Bình",
   to: "U Minh Thượng",
   title: "Xe Tân Bình đi U Minh Thượng",
@@ -3061,7 +3061,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-binh-di-giang-thanh",
-  path: "/tan-binh-di-giang-thanh",
+  path: "tan-binh-di-giang-thanh",
   from: "Tân Bình",
   to: "Giang Thành",
   title: "Thuê xe Tân Bình đi Giang Thành",
@@ -3073,7 +3073,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-rach-gia",
-  path: "/tan-phu-di-rach-gia",
+  path: "tan-phu-di-rach-gia",
   from: "Tân Phú",
   to: "Rạch Giá",
   title: "Xe Tân Phú đi Rạch Giá Kiên Giang",
@@ -3085,7 +3085,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-ha-tien",
-  path: "/tan-phu-di-ha-tien",
+  path: "tan-phu-di-ha-tien",
   from: "Tân Phú",
   to: "Hà Tiên",
   title: "Thuê xe Tân Phú đi Hà Tiên",
@@ -3097,7 +3097,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-kien-luong",
-  path: "/tan-phu-di-kien-luong",
+  path: "tan-phu-di-kien-luong",
   from: "Tân Phú",
   to: "Kiên Lương",
   title: "Xe Tân Phú đi Kiên Lương giá tốt",
@@ -3109,7 +3109,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-hon-dat",
-  path: "/tan-phu-di-hon-dat",
+  path: "tan-phu-di-hon-dat",
   from: "Tân Phú",
   to: "Hòn Đất",
   title: "Đặt xe Tân Phú đi Hòn Đất",
@@ -3121,7 +3121,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-chau-thanh-kien-giang",
-  path: "/tan-phu-di-chau-thanh-kien-giang",
+  path: "tan-phu-di-chau-thanh-kien-giang",
   from: "Tân Phú",
   to: "Châu Thành",
   title: "Xe Tân Phú đi Châu Thành Kiên Giang",
@@ -3133,7 +3133,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-giong-rieng",
-  path: "/tan-phu-di-giong-rieng",
+  path: "tan-phu-di-giong-rieng",
   from: "Tân Phú",
   to: "Giồng Riềng",
   title: "Thuê xe Tân Phú đi Giồng Riềng",
@@ -3145,7 +3145,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-go-quao",
-  path: "/tan-phu-di-go-quao",
+  path: "tan-phu-di-go-quao",
   from: "Tân Phú",
   to: "Gò Quao",
   title: "Xe Tân Phú đi Gò Quao Kiên Giang",
@@ -3157,7 +3157,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-tan-hiep-kien-giang",
-  path: "/tan-phu-di-tan-hiep-kien-giang",
+  path: "tan-phu-di-tan-hiep-kien-giang",
   from: "Tân Phú",
   to: "Tân Hiệp",
   title: "Xe Tân Phú đi Tân Hiệp Kiên Giang",
@@ -3169,7 +3169,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-an-bien",
-  path: "/tan-phu-di-an-bien",
+  path: "tan-phu-di-an-bien",
   from: "Tân Phú",
   to: "An Biên",
   title: "Xe Tân Phú đi An Biên Kiên Giang",
@@ -3181,7 +3181,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-an-minh",
-  path: "/tan-phu-di-an-minh",
+  path: "tan-phu-di-an-minh",
   from: "Tân Phú",
   to: "An Minh",
   title: "Thuê xe Tân Phú đi An Minh",
@@ -3193,7 +3193,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-vinh-thuan",
-  path: "/tan-phu-di-vinh-thuan",
+  path: "tan-phu-di-vinh-thuan",
   from: "Tân Phú",
   to: "Vĩnh Thuận",
   title: "Xe Tân Phú đi Vĩnh Thuận",
@@ -3205,7 +3205,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-u-minh-thuong",
-  path: "/tan-phu-di-u-minh-thuong",
+  path: "tan-phu-di-u-minh-thuong",
   from: "Tân Phú",
   to: "U Minh Thượng",
   title: "Xe Tân Phú đi U Minh Thượng",
@@ -3217,7 +3217,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tan-phu-di-giang-thanh",
-  path: "/tan-phu-di-giang-thanh",
+  path: "tan-phu-di-giang-thanh",
   from: "Tân Phú",
   to: "Giang Thành",
   title: "Thuê xe Tân Phú đi Giang Thành",
@@ -3229,7 +3229,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-rach-gia",
-  path: "/binh-tan-di-rach-gia",
+  path: "binh-tan-di-rach-gia",
   from: "Bình Tân",
   to: "Rạch Giá",
   title: "Xe Bình Tân đi Rạch Giá Kiên Giang",
@@ -3241,7 +3241,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-ha-tien",
-  path: "/binh-tan-di-ha-tien",
+  path: "binh-tan-di-ha-tien",
   from: "Bình Tân",
   to: "Hà Tiên",
   title: "Thuê xe Bình Tân đi Hà Tiên",
@@ -3253,7 +3253,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-kien-luong",
-  path: "/binh-tan-di-kien-luong",
+  path: "binh-tan-di-kien-luong",
   from: "Bình Tân",
   to: "Kiên Lương",
   title: "Xe Bình Tân đi Kiên Lương giá tốt",
@@ -3265,7 +3265,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-hon-dat",
-  path: "/binh-tan-di-hon-dat",
+  path: "binh-tan-di-hon-dat",
   from: "Bình Tân",
   to: "Hòn Đất",
   title: "Đặt xe Bình Tân đi Hòn Đất",
@@ -3277,7 +3277,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-chau-thanh-kien-giang",
-  path: "/binh-tan-di-chau-thanh-kien-giang",
+  path: "binh-tan-di-chau-thanh-kien-giang",
   from: "Bình Tân",
   to: "Châu Thành",
   title: "Xe Bình Tân đi Châu Thành Kiên Giang",
@@ -3289,7 +3289,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-giong-rieng",
-  path: "/binh-tan-di-giong-rieng",
+  path: "binh-tan-di-giong-rieng",
   from: "Bình Tân",
   to: "Giồng Riềng",
   title: "Thuê xe Bình Tân đi Giồng Riềng",
@@ -3301,7 +3301,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-go-quao",
-  path: "/binh-tan-di-go-quao",
+  path: "binh-tan-di-go-quao",
   from: "Bình Tân",
   to: "Gò Quao",
   title: "Xe Bình Tân đi Gò Quao Kiên Giang",
@@ -3313,7 +3313,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-tan-hiep-kien-giang",
-  path: "/binh-tan-di-tan-hiep-kien-giang",
+  path: "binh-tan-di-tan-hiep-kien-giang",
   from: "Bình Tân",
   to: "Tân Hiệp",
   title: "Xe Bình Tân đi Tân Hiệp Kiên Giang",
@@ -3325,7 +3325,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-an-bien",
-  path: "/binh-tan-di-an-bien",
+  path: "binh-tan-di-an-bien",
   from: "Bình Tân",
   to: "An Biên",
   title: "Xe Bình Tân đi An Biên Kiên Giang",
@@ -3337,7 +3337,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-an-minh",
-  path: "/binh-tan-di-an-minh",
+  path: "binh-tan-di-an-minh",
   from: "Bình Tân",
   to: "An Minh",
   title: "Thuê xe Bình Tân đi An Minh",
@@ -3349,7 +3349,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-vinh-thuan",
-  path: "/binh-tan-di-vinh-thuan",
+  path: "binh-tan-di-vinh-thuan",
   from: "Bình Tân",
   to: "Vĩnh Thuận",
   title: "Xe Bình Tân đi Vĩnh Thuận",
@@ -3361,7 +3361,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-u-minh-thuong",
-  path: "/binh-tan-di-u-minh-thuong",
+  path: "binh-tan-di-u-minh-thuong",
   from: "Bình Tân",
   to: "U Minh Thượng",
   title: "Xe Bình Tân đi U Minh Thượng",
@@ -3373,7 +3373,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-tan-di-giang-thanh",
-  path: "/binh-tan-di-giang-thanh",
+  path: "binh-tan-di-giang-thanh",
   from: "Bình Tân",
   to: "Giang Thành",
   title: "Thuê xe Bình Tân đi Giang Thành",
@@ -3385,7 +3385,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-rach-gia",
-  path: "/tp-thu-duc-di-rach-gia",
+  path: "tp-thu-duc-di-rach-gia",
   from: "TP Thủ Đức",
   to: "Rạch Giá",
   title: "Xe TP Thủ Đức đi Rạch Giá Kiên Giang",
@@ -3397,7 +3397,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-ha-tien",
-  path: "/tp-thu-duc-di-ha-tien",
+  path: "tp-thu-duc-di-ha-tien",
   from: "TP Thủ Đức",
   to: "Hà Tiên",
   title: "Thuê xe TP Thủ Đức đi Hà Tiên",
@@ -3409,7 +3409,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-kien-luong",
-  path: "/tp-thu-duc-di-kien-luong",
+  path: "tp-thu-duc-di-kien-luong",
   from: "TP Thủ Đức",
   to: "Kiên Lương",
   title: "Xe TP Thủ Đức đi Kiên Lương giá tốt",
@@ -3421,7 +3421,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-hon-dat",
-  path: "/tp-thu-duc-di-hon-dat",
+  path: "tp-thu-duc-di-hon-dat",
   from: "TP Thủ Đức",
   to: "Hòn Đất",
   title: "Đặt xe TP Thủ Đức đi Hòn Đất",
@@ -3433,7 +3433,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-chau-thanh-kien-giang",
-  path: "/tp-thu-duc-di-chau-thanh-kien-giang",
+  path: "tp-thu-duc-di-chau-thanh-kien-giang",
   from: "TP Thủ Đức",
   to: "Châu Thành",
   title: "Xe TP Thủ Đức đi Châu Thành Kiên Giang",
@@ -3445,7 +3445,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-giong-rieng",
-  path: "/tp-thu-duc-di-giong-rieng",
+  path: "tp-thu-duc-di-giong-rieng",
   from: "TP Thủ Đức",
   to: "Giồng Riềng",
   title: "Thuê xe TP Thủ Đức đi Giồng Riềng",
@@ -3457,7 +3457,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-go-quao",
-  path: "/tp-thu-duc-di-go-quao",
+  path: "tp-thu-duc-di-go-quao",
   from: "TP Thủ Đức",
   to: "Gò Quao",
   title: "Xe TP Thủ Đức đi Gò Quao Kiên Giang",
@@ -3469,7 +3469,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-tan-hiep-kien-giang",
-  path: "/tp-thu-duc-di-tan-hiep-kien-giang",
+  path: "tp-thu-duc-di-tan-hiep-kien-giang",
   from: "TP Thủ Đức",
   to: "Tân Hiệp",
   title: "Xe TP Thủ Đức đi Tân Hiệp Kiên Giang",
@@ -3481,7 +3481,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-an-bien",
-  path: "/tp-thu-duc-di-an-bien",
+  path: "tp-thu-duc-di-an-bien",
   from: "TP Thủ Đức",
   to: "An Biên",
   title: "Xe TP Thủ Đức đi An Biên Kiên Giang",
@@ -3493,7 +3493,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-an-minh",
-  path: "/tp-thu-duc-di-an-minh",
+  path: "tp-thu-duc-di-an-minh",
   from: "TP Thủ Đức",
   to: "An Minh",
   title: "Thuê xe TP Thủ Đức đi An Minh",
@@ -3505,7 +3505,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-vinh-thuan",
-  path: "/tp-thu-duc-di-vinh-thuan",
+  path: "tp-thu-duc-di-vinh-thuan",
   from: "TP Thủ Đức",
   to: "Vĩnh Thuận",
   title: "Xe TP Thủ Đức đi Vĩnh Thuận",
@@ -3517,7 +3517,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-u-minh-thuong",
-  path: "/tp-thu-duc-di-u-minh-thuong",
+  path: "tp-thu-duc-di-u-minh-thuong",
   from: "TP Thủ Đức",
   to: "U Minh Thượng",
   title: "Xe TP Thủ Đức đi U Minh Thượng",
@@ -3529,7 +3529,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "tp-thu-duc-di-giang-thanh",
-  path: "/tp-thu-duc-di-giang-thanh",
+  path: "tp-thu-duc-di-giang-thanh",
   from: "TP Thủ Đức",
   to: "Giang Thành",
   title: "Thuê xe TP Thủ Đức đi Giang Thành",
@@ -3541,7 +3541,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-rach-gia",
-  path: "/hoc-mon-di-rach-gia",
+  path: "hoc-mon-di-rach-gia",
   from: "Hóc Môn",
   to: "Rạch Giá",
   title: "Xe Hóc Môn đi Rạch Giá Kiên Giang",
@@ -3553,7 +3553,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-ha-tien",
-  path: "/hoc-mon-di-ha-tien",
+  path: "hoc-mon-di-ha-tien",
   from: "Hóc Môn",
   to: "Hà Tiên",
   title: "Thuê xe Hóc Môn đi Hà Tiên",
@@ -3565,7 +3565,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-kien-luong",
-  path: "/hoc-mon-di-kien-luong",
+  path: "hoc-mon-di-kien-luong",
   from: "Hóc Môn",
   to: "Kiên Lương",
   title: "Xe Hóc Môn đi Kiên Lương giá tốt",
@@ -3577,7 +3577,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-hon-dat",
-  path: "/hoc-mon-di-hon-dat",
+  path: "hoc-mon-di-hon-dat",
   from: "Hóc Môn",
   to: "Hòn Đất",
   title: "Đặt xe Hóc Môn đi Hòn Đất",
@@ -3589,7 +3589,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-chau-thanh-kien-giang",
-  path: "/hoc-mon-di-chau-thanh-kien-giang",
+  path: "hoc-mon-di-chau-thanh-kien-giang",
   from: "Hóc Môn",
   to: "Châu Thành",
   title: "Xe Hóc Môn đi Châu Thành Kiên Giang",
@@ -3601,7 +3601,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-giong-rieng",
-  path: "/hoc-mon-di-giong-rieng",
+  path: "hoc-mon-di-giong-rieng",
   from: "Hóc Môn",
   to: "Giồng Riềng",
   title: "Thuê xe Hóc Môn đi Giồng Riềng",
@@ -3613,7 +3613,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-go-quao",
-  path: "/hoc-mon-di-go-quao",
+  path: "hoc-mon-di-go-quao",
   from: "Hóc Môn",
   to: "Gò Quao",
   title: "Xe Hóc Môn đi Gò Quao Kiên Giang",
@@ -3625,7 +3625,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-tan-hiep-kien-giang",
-  path: "/hoc-mon-di-tan-hiep-kien-giang",
+  path: "hoc-mon-di-tan-hiep-kien-giang",
   from: "Hóc Môn",
   to: "Tân Hiệp",
   title: "Xe Hóc Môn đi Tân Hiệp Kiên Giang",
@@ -3637,7 +3637,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-an-bien",
-  path: "/hoc-mon-di-an-bien",
+  path: "hoc-mon-di-an-bien",
   from: "Hóc Môn",
   to: "An Biên",
   title: "Xe Hóc Môn đi An Biên Kiên Giang",
@@ -3649,7 +3649,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-an-minh",
-  path: "/hoc-mon-di-an-minh",
+  path: "hoc-mon-di-an-minh",
   from: "Hóc Môn",
   to: "An Minh",
   title: "Thuê xe Hóc Môn đi An Minh",
@@ -3661,7 +3661,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-vinh-thuan",
-  path: "/hoc-mon-di-vinh-thuan",
+  path: "hoc-mon-di-vinh-thuan",
   from: "Hóc Môn",
   to: "Vĩnh Thuận",
   title: "Xe Hóc Môn đi Vĩnh Thuận",
@@ -3673,7 +3673,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-u-minh-thuong",
-  path: "/hoc-mon-di-u-minh-thuong",
+  path: "hoc-mon-di-u-minh-thuong",
   from: "Hóc Môn",
   to: "U Minh Thượng",
   title: "Xe Hóc Môn đi U Minh Thượng",
@@ -3685,7 +3685,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "hoc-mon-di-giang-thanh",
-  path: "/hoc-mon-di-giang-thanh",
+  path: "hoc-mon-di-giang-thanh",
   from: "Hóc Môn",
   to: "Giang Thành",
   title: "Thuê xe Hóc Môn đi Giang Thành",
@@ -3697,7 +3697,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-rach-gia",
-  path: "/binh-chanh-di-rach-gia",
+  path: "binh-chanh-di-rach-gia",
   from: "Bình Chánh",
   to: "Rạch Giá",
   title: "Xe Bình Chánh đi Rạch Giá Kiên Giang",
@@ -3709,7 +3709,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-ha-tien",
-  path: "/binh-chanh-di-ha-tien",
+  path: "binh-chanh-di-ha-tien",
   from: "Bình Chánh",
   to: "Hà Tiên",
   title: "Thuê xe Bình Chánh đi Hà Tiên",
@@ -3721,7 +3721,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-kien-luong",
-  path: "/binh-chanh-di-kien-luong",
+  path: "binh-chanh-di-kien-luong",
   from: "Bình Chánh",
   to: "Kiên Lương",
   title: "Xe Bình Chánh đi Kiên Lương giá tốt",
@@ -3733,7 +3733,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-hon-dat",
-  path: "/binh-chanh-di-hon-dat",
+  path: "binh-chanh-di-hon-dat",
   from: "Bình Chánh",
   to: "Hòn Đất",
   title: "Đặt xe Bình Chánh đi Hòn Đất",
@@ -3745,7 +3745,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-chau-thanh-kien-giang",
-  path: "/binh-chanh-di-chau-thanh-kien-giang",
+  path: "binh-chanh-di-chau-thanh-kien-giang",
   from: "Bình Chánh",
   to: "Châu Thành",
   title: "Xe Bình Chánh đi Châu Thành Kiên Giang",
@@ -3757,7 +3757,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-giong-rieng",
-  path: "/binh-chanh-di-giong-rieng",
+  path: "binh-chanh-di-giong-rieng",
   from: "Bình Chánh",
   to: "Giồng Riềng",
   title: "Thuê xe Bình Chánh đi Giồng Riềng",
@@ -3769,7 +3769,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-go-quao",
-  path: "/binh-chanh-di-go-quao",
+  path: "binh-chanh-di-go-quao",
   from: "Bình Chánh",
   to: "Gò Quao",
   title: "Xe Bình Chánh đi Gò Quao Kiên Giang",
@@ -3781,7 +3781,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-tan-hiep-kien-giang",
-  path: "/binh-chanh-di-tan-hiep-kien-giang",
+  path: "binh-chanh-di-tan-hiep-kien-giang",
   from: "Bình Chánh",
   to: "Tân Hiệp",
   title: "Xe Bình Chánh đi Tân Hiệp Kiên Giang",
@@ -3793,7 +3793,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-an-bien",
-  path: "/binh-chanh-di-an-bien",
+  path: "binh-chanh-di-an-bien",
   from: "Bình Chánh",
   to: "An Biên",
   title: "Xe Bình Chánh đi An Biên Kiên Giang",
@@ -3805,7 +3805,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-an-minh",
-  path: "/binh-chanh-di-an-minh",
+  path: "binh-chanh-di-an-minh",
   from: "Bình Chánh",
   to: "An Minh",
   title: "Thuê xe Bình Chánh đi An Minh",
@@ -3817,7 +3817,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-vinh-thuan",
-  path: "/binh-chanh-di-vinh-thuan",
+  path: "binh-chanh-di-vinh-thuan",
   from: "Bình Chánh",
   to: "Vĩnh Thuận",
   title: "Xe Bình Chánh đi Vĩnh Thuận",
@@ -3829,7 +3829,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-u-minh-thuong",
-  path: "/binh-chanh-di-u-minh-thuong",
+  path: "binh-chanh-di-u-minh-thuong",
   from: "Bình Chánh",
   to: "U Minh Thượng",
   title: "Xe Bình Chánh đi U Minh Thượng",
@@ -3841,7 +3841,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-chanh-di-giang-thanh",
-  path: "/binh-chanh-di-giang-thanh",
+  path: "binh-chanh-di-giang-thanh",
   from: "Bình Chánh",
   to: "Giang Thành",
   title: "Thuê xe Bình Chánh đi Giang Thành",
@@ -3853,7 +3853,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-rach-gia",
-  path: "/nha-be-di-rach-gia",
+  path: "nha-be-di-rach-gia",
   from: "Nhà Bè",
   to: "Rạch Giá",
   title: "Xe Nhà Bè đi Rạch Giá Kiên Giang",
@@ -3865,7 +3865,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-ha-tien",
-  path: "/nha-be-di-ha-tien",
+  path: "nha-be-di-ha-tien",
   from: "Nhà Bè",
   to: "Hà Tiên",
   title: "Thuê xe Nhà Bè đi Hà Tiên",
@@ -3877,7 +3877,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-kien-luong",
-  path: "/nha-be-di-kien-luong",
+  path: "nha-be-di-kien-luong",
   from: "Nhà Bè",
   to: "Kiên Lương",
   title: "Xe Nhà Bè đi Kiên Lương giá tốt",
@@ -3889,7 +3889,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-hon-dat",
-  path: "/nha-be-di-hon-dat",
+  path: "nha-be-di-hon-dat",
   from: "Nhà Bè",
   to: "Hòn Đất",
   title: "Đặt xe Nhà Bè đi Hòn Đất",
@@ -3901,7 +3901,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-chau-thanh-kien-giang",
-  path: "/nha-be-di-chau-thanh-kien-giang",
+  path: "nha-be-di-chau-thanh-kien-giang",
   from: "Nhà Bè",
   to: "Châu Thành",
   title: "Xe Nhà Bè đi Châu Thành Kiên Giang",
@@ -3913,7 +3913,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-giong-rieng",
-  path: "/nha-be-di-giong-rieng",
+  path: "nha-be-di-giong-rieng",
   from: "Nhà Bè",
   to: "Giồng Riềng",
   title: "Thuê xe Nhà Bè đi Giồng Riềng",
@@ -3925,7 +3925,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-go-quao",
-  path: "/nha-be-di-go-quao",
+  path: "nha-be-di-go-quao",
   from: "Nhà Bè",
   to: "Gò Quao",
   title: "Xe Nhà Bè đi Gò Quao Kiên Giang",
@@ -3937,7 +3937,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-tan-hiep-kien-giang",
-  path: "/nha-be-di-tan-hiep-kien-giang",
+  path: "nha-be-di-tan-hiep-kien-giang",
   from: "Nhà Bè",
   to: "Tân Hiệp",
   title: "Xe Nhà Bè đi Tân Hiệp Kiên Giang",
@@ -3949,7 +3949,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-an-bien",
-  path: "/nha-be-di-an-bien",
+  path: "nha-be-di-an-bien",
   from: "Nhà Bè",
   to: "An Biên",
   title: "Xe Nhà Bè đi An Biên Kiên Giang",
@@ -3961,7 +3961,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-an-minh",
-  path: "/nha-be-di-an-minh",
+  path: "nha-be-di-an-minh",
   from: "Nhà Bè",
   to: "An Minh",
   title: "Thuê xe Nhà Bè đi An Minh",
@@ -3973,7 +3973,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-vinh-thuan",
-  path: "/nha-be-di-vinh-thuan",
+  path: "nha-be-di-vinh-thuan",
   from: "Nhà Bè",
   to: "Vĩnh Thuận",
   title: "Xe Nhà Bè đi Vĩnh Thuận",
@@ -3985,7 +3985,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-u-minh-thuong",
-  path: "/nha-be-di-u-minh-thuong",
+  path: "nha-be-di-u-minh-thuong",
   from: "Nhà Bè",
   to: "U Minh Thượng",
   title: "Xe Nhà Bè đi U Minh Thượng",
@@ -3997,7 +3997,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "nha-be-di-giang-thanh",
-  path: "/nha-be-di-giang-thanh",
+  path: "nha-be-di-giang-thanh",
   from: "Nhà Bè",
   to: "Giang Thành",
   title: "Thuê xe Nhà Bè đi Giang Thành",
@@ -4009,7 +4009,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-rach-gia",
-  path: "/can-gio-di-rach-gia",
+  path: "can-gio-di-rach-gia",
   from: "Cần Giờ",
   to: "Rạch Giá",
   title: "Xe Cần Giờ đi Rạch Giá Kiên Giang",
@@ -4021,7 +4021,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-ha-tien",
-  path: "/can-gio-di-ha-tien",
+  path: "can-gio-di-ha-tien",
   from: "Cần Giờ",
   to: "Hà Tiên",
   title: "Thuê xe Cần Giờ đi Hà Tiên",
@@ -4033,7 +4033,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-kien-luong",
-  path: "/can-gio-di-kien-luong",
+  path: "can-gio-di-kien-luong",
   from: "Cần Giờ",
   to: "Kiên Lương",
   title: "Xe Cần Giờ đi Kiên Lương giá tốt",
@@ -4045,7 +4045,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-hon-dat",
-  path: "/can-gio-di-hon-dat",
+  path: "can-gio-di-hon-dat",
   from: "Cần Giờ",
   to: "Hòn Đất",
   title: "Đặt xe Cần Giờ đi Hòn Đất",
@@ -4057,7 +4057,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-chau-thanh-kien-giang",
-  path: "/can-gio-di-chau-thanh-kien-giang",
+  path: "can-gio-di-chau-thanh-kien-giang",
   from: "Cần Giờ",
   to: "Châu Thành",
   title: "Xe Cần Giờ đi Châu Thành Kiên Giang",
@@ -4069,7 +4069,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-giong-rieng",
-  path: "/can-gio-di-giong-rieng",
+  path: "can-gio-di-giong-rieng",
   from: "Cần Giờ",
   to: "Giồng Riềng",
   title: "Thuê xe Cần Giờ đi Giồng Riềng",
@@ -4081,7 +4081,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-go-quao",
-  path: "/can-gio-di-go-quao",
+  path: "can-gio-di-go-quao",
   from: "Cần Giờ",
   to: "Gò Quao",
   title: "Xe Cần Giờ đi Gò Quao Kiên Giang",
@@ -4093,7 +4093,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-tan-hiep-kien-giang",
-  path: "/can-gio-di-tan-hiep-kien-giang",
+  path: "can-gio-di-tan-hiep-kien-giang",
   from: "Cần Giờ",
   to: "Tân Hiệp",
   title: "Xe Cần Giờ đi Tân Hiệp Kiên Giang",
@@ -4105,7 +4105,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-an-bien",
-  path: "/can-gio-di-an-bien",
+  path: "can-gio-di-an-bien",
   from: "Cần Giờ",
   to: "An Biên",
   title: "Xe Cần Giờ đi An Biên Kiên Giang",
@@ -4117,7 +4117,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-an-minh",
-  path: "/can-gio-di-an-minh",
+  path: "can-gio-di-an-minh",
   from: "Cần Giờ",
   to: "An Minh",
   title: "Thuê xe Cần Giờ đi An Minh",
@@ -4129,7 +4129,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-vinh-thuan",
-  path: "/can-gio-di-vinh-thuan",
+  path: "can-gio-di-vinh-thuan",
   from: "Cần Giờ",
   to: "Vĩnh Thuận",
   title: "Xe Cần Giờ đi Vĩnh Thuận",
@@ -4141,7 +4141,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-u-minh-thuong",
-  path: "/can-gio-di-u-minh-thuong",
+  path: "can-gio-di-u-minh-thuong",
   from: "Cần Giờ",
   to: "U Minh Thượng",
   title: "Xe Cần Giờ đi U Minh Thượng",
@@ -4153,7 +4153,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "can-gio-di-giang-thanh",
-  path: "/can-gio-di-giang-thanh",
+  path: "can-gio-di-giang-thanh",
   from: "Cần Giờ",
   to: "Giang Thành",
   title: "Thuê xe Cần Giờ đi Giang Thành",
@@ -4165,7 +4165,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "binh-duong-di-kien-giang",
-  path: "/binh-duong-di-kien-giang",
+  path: "binh-duong-di-kien-giang",
   from: "Bình Dương",
   to: "Kiên Giang",
   title: "Thuê xe Bình Dương đi Kiên Giang",
@@ -4177,7 +4177,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-giang-di-binh-duong",
-  path: "/kien-giang-di-binh-duong",
+  path: "kien-giang-di-binh-duong",
   from: "Kiên Giang",
   to: "Bình Dương",
   title: "Xe Kiên Giang đi Bình Dương",
@@ -4189,7 +4189,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "bien-hoa-di-kien-giang",
-  path: "/bien-hoa-di-kien-giang",
+  path: "bien-hoa-di-kien-giang",
   from: "Biên Hòa",
   to: "Kiên Giang",
   title: "Thuê xe Biên Hòa đi Kiên Giang",
@@ -4201,7 +4201,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-giang-di-bien-hoa",
-  path: "/kien-giang-di-bien-hoa",
+  path: "kien-giang-di-bien-hoa",
   from: "Kiên Giang",
   to: "Biên Hòa",
   title: "Xe Kiên Giang đi Biên Hòa",
@@ -4213,7 +4213,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dong-nai-di-kien-giang",
-  path: "/dong-nai-di-kien-giang",
+  path: "dong-nai-di-kien-giang",
   from: "Đồng Nai",
   to: "Kiên Giang",
   title: "Thuê xe Đồng Nai đi Kiên Giang",
@@ -4225,7 +4225,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-giang-di-dong-nai",
-  path: "/kien-giang-di-dong-nai",
+  path: "kien-giang-di-dong-nai",
   from: "Kiên Giang",
   to: "Đồng Nai",
   title: "Xe Kiên Giang đi Đồng Nai",
@@ -4237,7 +4237,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-sai-gon-di-kien-giang",
-  path: "/thue-xe-sai-gon-di-kien-giang",
+  path: "thue-xe-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Thuê xe Sài Gòn đi Kiên Giang",
@@ -4249,7 +4249,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-hcm-di-kien-giang",
-  path: "/thue-xe-hcm-di-kien-giang",
+  path: "thue-xe-hcm-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe TP.HCM đi Kiên Giang",
@@ -4261,7 +4261,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-di-kien-giang",
-  path: "/thue-xe-di-kien-giang",
+  path: "thue-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đi Kiên Giang",
@@ -4273,7 +4273,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-di-kien-giang-don-tan-nha",
-  path: "/thue-xe-di-kien-giang-don-tan-nha",
+  path: "thue-xe-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đi Kiên Giang đón tận nhà",
@@ -4285,7 +4285,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-sai-gon-kien-giang",
-  path: "/thue-xe-sai-gon-kien-giang",
+  path: "thue-xe-sai-gon-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Thuê xe Sài Gòn Kiên Giang",
@@ -4297,7 +4297,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-kien-giang-sai-gon",
-  path: "/thue-xe-kien-giang-sai-gon",
+  path: "thue-xe-kien-giang-sai-gon",
   from: "Kiên Giang",
   to: "Sài Gòn",
   title: "Thuê xe Kiên Giang Sài Gòn",
@@ -4309,7 +4309,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-hcm-kien-giang",
-  path: "/thue-xe-hcm-kien-giang",
+  path: "thue-xe-hcm-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe HCM Kiên Giang",
@@ -4321,7 +4321,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-kien-giang-hcm",
-  path: "/thue-xe-kien-giang-hcm",
+  path: "thue-xe-kien-giang-hcm",
   from: "Kiên Giang",
   to: "TP.HCM",
   title: "Thuê xe Kiên Giang HCM",
@@ -4333,7 +4333,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-di-kien-giang",
-  path: "/xe-rieng-di-kien-giang",
+  path: "xe-rieng-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng đi Kiên Giang",
@@ -4345,7 +4345,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-di-kien-giang-don-tan-nha",
-  path: "/xe-rieng-di-kien-giang-don-tan-nha",
+  path: "xe-rieng-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng đi Kiên Giang đón tận nhà",
@@ -4357,7 +4357,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-co-tai-xe-di-kien-giang",
-  path: "/xe-rieng-co-tai-xe-di-kien-giang",
+  path: "xe-rieng-co-tai-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng có tài xế đi Kiên Giang",
@@ -4369,7 +4369,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-hop-dong-di-kien-giang",
-  path: "/thue-xe-hop-dong-di-kien-giang",
+  path: "thue-xe-hop-dong-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe hợp đồng đi Kiên Giang",
@@ -4381,7 +4381,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-du-lich-di-kien-giang",
-  path: "/thue-xe-du-lich-di-kien-giang",
+  path: "thue-xe-du-lich-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe du lịch đi Kiên Giang",
@@ -4393,7 +4393,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-tron-goi",
-  path: "/xe-di-kien-giang-tron-goi",
+  path: "xe-di-kien-giang-tron-goi",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang trọn gói",
@@ -4405,7 +4405,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dich-vu-xe-di-kien-giang",
-  path: "/dich-vu-xe-di-kien-giang",
+  path: "dich-vu-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Dịch vụ xe đi Kiên Giang",
@@ -4417,7 +4417,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-gia-dinh-di-kien-giang",
-  path: "/xe-gia-dinh-di-kien-giang",
+  path: "xe-gia-dinh-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe gia đình đi Kiên Giang",
@@ -4429,7 +4429,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-cong-tac-di-kien-giang",
-  path: "/xe-cong-tac-di-kien-giang",
+  path: "xe-cong-tac-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe công tác đi Kiên Giang",
@@ -4441,7 +4441,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-duong-dai-di-kien-giang",
-  path: "/thue-xe-duong-dai-di-kien-giang",
+  path: "thue-xe-duong-dai-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đường dài đi Kiên Giang",
@@ -4453,7 +4453,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-dua-don-tan-noi-di-kien-giang",
-  path: "/xe-dua-don-tan-noi-di-kien-giang",
+  path: "xe-dua-don-tan-noi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đưa đón tận nơi đi Kiên Giang",
@@ -4465,7 +4465,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-di-kien-giang-gia-tot",
-  path: "/thue-xe-di-kien-giang-gia-tot",
+  path: "thue-xe-di-kien-giang-gia-tot",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đi Kiên Giang giá tốt",
@@ -4477,7 +4477,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-di-kien-giang-gia-re",
-  path: "/thue-xe-di-kien-giang-gia-re",
+  path: "thue-xe-di-kien-giang-gia-re",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đi Kiên Giang giá rẻ",
@@ -4489,7 +4489,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-di-kien-giang-gia-tien-chuyen",
-  path: "/thue-xe-di-kien-giang-gia-tien-chuyen",
+  path: "thue-xe-di-kien-giang-gia-tien-chuyen",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đi Kiên Giang giá tiện chuyến",
@@ -4501,7 +4501,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-gia-tot",
-  path: "/xe-di-kien-giang-gia-tot",
+  path: "xe-di-kien-giang-gia-tot",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang giá tốt",
@@ -4513,7 +4513,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-gia-re",
-  path: "/xe-di-kien-giang-gia-re",
+  path: "xe-di-kien-giang-gia-re",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang giá rẻ",
@@ -4525,7 +4525,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-gia-tien-chuyen",
-  path: "/xe-di-kien-giang-gia-tien-chuyen",
+  path: "xe-di-kien-giang-gia-tien-chuyen",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang giá tiện chuyến",
@@ -4537,7 +4537,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-thue-xe-di-kien-giang",
-  path: "/gia-thue-xe-di-kien-giang",
+  path: "gia-thue-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá thuê xe đi Kiên Giang",
@@ -4549,7 +4549,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "bang-gia-thue-xe-di-kien-giang",
-  path: "/bang-gia-thue-xe-di-kien-giang",
+  path: "bang-gia-thue-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Bảng giá thuê xe đi Kiên Giang",
@@ -4561,7 +4561,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "bao-gia-xe-di-kien-giang",
-  path: "/bao-gia-xe-di-kien-giang",
+  path: "bao-gia-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Báo giá xe đi Kiên Giang",
@@ -4573,7 +4573,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "chi-phi-thue-xe-di-kien-giang",
-  path: "/chi-phi-thue-xe-di-kien-giang",
+  path: "chi-phi-thue-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Chi phí thuê xe đi Kiên Giang",
@@ -4585,7 +4585,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-1-chieu-di-kien-giang",
-  path: "/thue-xe-1-chieu-di-kien-giang",
+  path: "thue-xe-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe 1 chiều đi Kiên Giang",
@@ -4597,7 +4597,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-1-chieu-di-kien-giang",
-  path: "/xe-rieng-1-chieu-di-kien-giang",
+  path: "xe-rieng-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng 1 chiều đi Kiên Giang",
@@ -4609,7 +4609,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-xe-1-chieu-di-kien-giang",
-  path: "/gia-xe-1-chieu-di-kien-giang",
+  path: "gia-xe-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá xe 1 chiều đi Kiên Giang",
@@ -4621,7 +4621,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-hop-dong-1-chieu-di-kien-giang",
-  path: "/xe-hop-dong-1-chieu-di-kien-giang",
+  path: "xe-hop-dong-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe hợp đồng 1 chiều đi Kiên Giang",
@@ -4633,7 +4633,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-mot-chieu-di-kien-giang",
-  path: "/xe-mot-chieu-di-kien-giang",
+  path: "xe-mot-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe một chiều đi Kiên Giang",
@@ -4645,7 +4645,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-1-chieu-di-kien-giang",
-  path: "/dat-xe-1-chieu-di-kien-giang",
+  path: "dat-xe-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe 1 chiều đi Kiên Giang",
@@ -4657,7 +4657,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-rieng-1-chieu-di-kien-giang",
-  path: "/thue-xe-rieng-1-chieu-di-kien-giang",
+  path: "thue-xe-rieng-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe riêng 1 chiều đi Kiên Giang",
@@ -4669,7 +4669,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-1-chieu-gia-tot",
-  path: "/xe-di-kien-giang-1-chieu-gia-tot",
+  path: "xe-di-kien-giang-1-chieu-gia-tot",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang 1 chiều giá tốt",
@@ -4681,7 +4681,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-1-chieu-don-tan-noi",
-  path: "/xe-di-kien-giang-1-chieu-don-tan-noi",
+  path: "xe-di-kien-giang-1-chieu-don-tan-noi",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang 1 chiều đón tận nơi",
@@ -4693,7 +4693,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dich-vu-xe-1-chieu-di-kien-giang",
-  path: "/dich-vu-xe-1-chieu-di-kien-giang",
+  path: "dich-vu-xe-1-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Dịch vụ xe 1 chiều đi Kiên Giang",
@@ -4705,7 +4705,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-khu-hoi-di-kien-giang",
-  path: "/thue-xe-khu-hoi-di-kien-giang",
+  path: "thue-xe-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe khứ hồi đi Kiên Giang",
@@ -4717,7 +4717,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-2-chieu-di-kien-giang",
-  path: "/thue-xe-2-chieu-di-kien-giang",
+  path: "thue-xe-2-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe 2 chiều đi Kiên Giang",
@@ -4729,7 +4729,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-khu-hoi-di-kien-giang",
-  path: "/xe-rieng-khu-hoi-di-kien-giang",
+  path: "xe-rieng-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng khứ hồi đi Kiên Giang",
@@ -4741,7 +4741,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-2-chieu-di-kien-giang",
-  path: "/xe-rieng-2-chieu-di-kien-giang",
+  path: "xe-rieng-2-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng 2 chiều đi Kiên Giang",
@@ -4753,7 +4753,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-xe-khu-hoi-di-kien-giang",
-  path: "/gia-xe-khu-hoi-di-kien-giang",
+  path: "gia-xe-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá xe khứ hồi đi Kiên Giang",
@@ -4765,7 +4765,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-xe-2-chieu-di-kien-giang",
-  path: "/gia-xe-2-chieu-di-kien-giang",
+  path: "gia-xe-2-chieu-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá xe 2 chiều đi Kiên Giang",
@@ -4777,7 +4777,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-khu-hoi-di-kien-giang",
-  path: "/dat-xe-khu-hoi-di-kien-giang",
+  path: "dat-xe-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe khứ hồi đi Kiên Giang",
@@ -4789,7 +4789,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-ve-trong-ngay",
-  path: "/xe-di-kien-giang-ve-trong-ngay",
+  path: "xe-di-kien-giang-ve-trong-ngay",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang về trong ngày",
@@ -4801,7 +4801,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-2-chieu-tron-goi",
-  path: "/xe-di-kien-giang-2-chieu-tron-goi",
+  path: "xe-di-kien-giang-2-chieu-tron-goi",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang 2 chiều trọn gói",
@@ -4813,7 +4813,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dich-vu-xe-khu-hoi-di-kien-giang",
-  path: "/dich-vu-xe-khu-hoi-di-kien-giang",
+  path: "dich-vu-xe-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Dịch vụ xe khứ hồi đi Kiên Giang",
@@ -4825,7 +4825,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-5-cho-di-kien-giang",
-  path: "/thue-xe-5-cho-di-kien-giang",
+  path: "thue-xe-5-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe 5 chỗ đi Kiên Giang",
@@ -4837,7 +4837,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-xe-5-cho-di-kien-giang",
-  path: "/gia-xe-5-cho-di-kien-giang",
+  path: "gia-xe-5-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá xe 5 chỗ đi Kiên Giang",
@@ -4849,7 +4849,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-5-cho-co-tai-xe-di-kien-giang",
-  path: "/xe-5-cho-co-tai-xe-di-kien-giang",
+  path: "xe-5-cho-co-tai-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 5 chỗ có tài xế đi Kiên Giang",
@@ -4861,7 +4861,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-sedan-di-kien-giang",
-  path: "/xe-sedan-di-kien-giang",
+  path: "xe-sedan-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe sedan đi Kiên Giang",
@@ -4873,7 +4873,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-4-cho-di-kien-giang",
-  path: "/xe-4-cho-di-kien-giang",
+  path: "xe-4-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 4 chỗ đi Kiên Giang",
@@ -4885,7 +4885,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-5-cho-di-kien-giang",
-  path: "/dat-xe-5-cho-di-kien-giang",
+  path: "dat-xe-5-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe 5 chỗ đi Kiên Giang",
@@ -4897,7 +4897,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-5-cho-di-kien-giang",
-  path: "/xe-rieng-5-cho-di-kien-giang",
+  path: "xe-rieng-5-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng 5 chỗ đi Kiên Giang",
@@ -4909,7 +4909,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-gia-dinh-5-cho-di-kien-giang",
-  path: "/xe-gia-dinh-5-cho-di-kien-giang",
+  path: "xe-gia-dinh-5-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe gia đình 5 chỗ đi Kiên Giang",
@@ -4921,7 +4921,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-5-cho-khu-hoi-di-kien-giang",
-  path: "/xe-5-cho-khu-hoi-di-kien-giang",
+  path: "xe-5-cho-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 5 chỗ khứ hồi đi Kiên Giang",
@@ -4933,7 +4933,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-5-cho-tu-sai-gon-di-kien-giang",
-  path: "/thue-xe-5-cho-tu-sai-gon-di-kien-giang",
+  path: "thue-xe-5-cho-tu-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Thuê xe 5 chỗ từ Sài Gòn đi Kiên Giang",
@@ -4945,7 +4945,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-7-cho-di-kien-giang",
-  path: "/thue-xe-7-cho-di-kien-giang",
+  path: "thue-xe-7-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe 7 chỗ đi Kiên Giang",
@@ -4957,7 +4957,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-xe-7-cho-di-kien-giang",
-  path: "/gia-xe-7-cho-di-kien-giang",
+  path: "gia-xe-7-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá xe 7 chỗ đi Kiên Giang",
@@ -4969,7 +4969,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-7-cho-co-tai-xe-di-kien-giang",
-  path: "/xe-7-cho-co-tai-xe-di-kien-giang",
+  path: "xe-7-cho-co-tai-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 7 chỗ có tài xế đi Kiên Giang",
@@ -4981,7 +4981,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-suv-di-kien-giang",
-  path: "/xe-suv-di-kien-giang",
+  path: "xe-suv-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe SUV đi Kiên Giang",
@@ -4993,7 +4993,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-7-cho-di-kien-giang",
-  path: "/dat-xe-7-cho-di-kien-giang",
+  path: "dat-xe-7-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe 7 chỗ đi Kiên Giang",
@@ -5005,7 +5005,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-7-cho-di-kien-giang",
-  path: "/xe-rieng-7-cho-di-kien-giang",
+  path: "xe-rieng-7-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng 7 chỗ đi Kiên Giang",
@@ -5017,7 +5017,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-gia-dinh-7-cho-di-kien-giang",
-  path: "/xe-gia-dinh-7-cho-di-kien-giang",
+  path: "xe-gia-dinh-7-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe gia đình 7 chỗ đi Kiên Giang",
@@ -5029,7 +5029,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-7-cho-khu-hoi-di-kien-giang",
-  path: "/xe-7-cho-khu-hoi-di-kien-giang",
+  path: "xe-7-cho-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 7 chỗ khứ hồi đi Kiên Giang",
@@ -5041,7 +5041,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-7-cho-tu-sai-gon-di-kien-giang",
-  path: "/thue-xe-7-cho-tu-sai-gon-di-kien-giang",
+  path: "thue-xe-7-cho-tu-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Thuê xe 7 chỗ từ Sài Gòn đi Kiên Giang",
@@ -5053,7 +5053,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dich-vu-xe-7-cho-di-kien-giang",
-  path: "/dich-vu-xe-7-cho-di-kien-giang",
+  path: "dich-vu-xe-7-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Dịch vụ xe 7 chỗ đi Kiên Giang",
@@ -5065,7 +5065,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-16-cho-di-kien-giang",
-  path: "/thue-xe-16-cho-di-kien-giang",
+  path: "thue-xe-16-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe 16 chỗ đi Kiên Giang",
@@ -5077,7 +5077,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "gia-xe-16-cho-di-kien-giang",
-  path: "/gia-xe-16-cho-di-kien-giang",
+  path: "gia-xe-16-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Giá xe 16 chỗ đi Kiên Giang",
@@ -5089,7 +5089,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-16-cho-co-tai-xe-di-kien-giang",
-  path: "/xe-16-cho-co-tai-xe-di-kien-giang",
+  path: "xe-16-cho-co-tai-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 16 chỗ có tài xế đi Kiên Giang",
@@ -5101,7 +5101,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-du-lich-16-cho-di-kien-giang",
-  path: "/xe-du-lich-16-cho-di-kien-giang",
+  path: "xe-du-lich-16-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe du lịch 16 chỗ đi Kiên Giang",
@@ -5113,7 +5113,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-16-cho-di-kien-giang",
-  path: "/dat-xe-16-cho-di-kien-giang",
+  path: "dat-xe-16-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe 16 chỗ đi Kiên Giang",
@@ -5125,7 +5125,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-16-cho-di-kien-giang",
-  path: "/xe-rieng-16-cho-di-kien-giang",
+  path: "xe-rieng-16-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe riêng 16 chỗ đi Kiên Giang",
@@ -5137,7 +5137,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-doan-di-kien-giang",
-  path: "/xe-doan-di-kien-giang",
+  path: "xe-doan-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đoàn đi Kiên Giang",
@@ -5149,7 +5149,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-16-cho-khu-hoi-di-kien-giang",
-  path: "/xe-16-cho-khu-hoi-di-kien-giang",
+  path: "xe-16-cho-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe 16 chỗ khứ hồi đi Kiên Giang",
@@ -5161,7 +5161,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-16-cho-tu-sai-gon-di-kien-giang",
-  path: "/thue-xe-16-cho-tu-sai-gon-di-kien-giang",
+  path: "thue-xe-16-cho-tu-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Thuê xe 16 chỗ từ Sài Gòn đi Kiên Giang",
@@ -5173,7 +5173,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dich-vu-xe-16-cho-di-kien-giang",
-  path: "/dich-vu-xe-16-cho-di-kien-giang",
+  path: "dich-vu-xe-16-cho-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Dịch vụ xe 16 chỗ đi Kiên Giang",
@@ -5185,7 +5185,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "san-bay-tan-son-nhat-di-kien-giang",
-  path: "/san-bay-tan-son-nhat-di-kien-giang",
+  path: "san-bay-tan-son-nhat-di-kien-giang",
   from: "Sân bay Tân Sơn Nhất",
   to: "Kiên Giang",
   title: "Xe sân bay Tân Sơn Nhất đi Kiên Giang",
@@ -5197,7 +5197,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-giang-di-san-bay-tan-son-nhat",
-  path: "/kien-giang-di-san-bay-tan-son-nhat",
+  path: "kien-giang-di-san-bay-tan-son-nhat",
   from: "Kiên Giang",
   to: "Sân bay Tân Sơn Nhất",
   title: "Xe Kiên Giang đi sân bay Tân Sơn Nhất",
@@ -5209,7 +5209,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "san-bay-long-thanh-di-kien-giang",
-  path: "/san-bay-long-thanh-di-kien-giang",
+  path: "san-bay-long-thanh-di-kien-giang",
   from: "Sân bay Long Thành",
   to: "Kiên Giang",
   title: "Xe sân bay Long Thành đi Kiên Giang",
@@ -5221,7 +5221,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "kien-giang-di-san-bay-long-thanh",
-  path: "/kien-giang-di-san-bay-long-thanh",
+  path: "kien-giang-di-san-bay-long-thanh",
   from: "Kiên Giang",
   to: "Sân bay Long Thành",
   title: "Xe Kiên Giang đi sân bay Long Thành",
@@ -5233,7 +5233,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-san-bay-di-kien-giang",
-  path: "/xe-san-bay-di-kien-giang",
+  path: "xe-san-bay-di-kien-giang",
   from: "Sân bay",
   to: "Kiên Giang",
   title: "Xe sân bay đi Kiên Giang",
@@ -5245,7 +5245,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "don-san-bay-di-kien-giang",
-  path: "/don-san-bay-di-kien-giang",
+  path: "don-san-bay-di-kien-giang",
   from: "Sân bay",
   to: "Kiên Giang",
   title: "Đón sân bay đi Kiên Giang",
@@ -5257,7 +5257,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tu-san-bay-ve-kien-giang",
-  path: "/xe-tu-san-bay-ve-kien-giang",
+  path: "xe-tu-san-bay-ve-kien-giang",
   from: "Sân bay",
   to: "Kiên Giang",
   title: "Xe từ sân bay về Kiên Giang",
@@ -5269,7 +5269,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dua-don-san-bay-kien-giang",
-  path: "/dua-don-san-bay-kien-giang",
+  path: "dua-don-san-bay-kien-giang",
   from: "Kiên Giang",
   to: "Sân bay",
   title: "Đưa đón sân bay Kiên Giang",
@@ -5281,7 +5281,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-san-bay-di-kien-giang",
-  path: "/thue-xe-san-bay-di-kien-giang",
+  path: "thue-xe-san-bay-di-kien-giang",
   from: "Sân bay",
   to: "Kiên Giang",
   title: "Thuê xe sân bay đi Kiên Giang",
@@ -5293,7 +5293,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-rieng-san-bay-di-kien-giang",
-  path: "/xe-rieng-san-bay-di-kien-giang",
+  path: "xe-rieng-san-bay-di-kien-giang",
   from: "Sân bay",
   to: "Kiên Giang",
   title: "Xe riêng sân bay đi Kiên Giang",
@@ -5305,7 +5305,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tien-chuyen-di-kien-giang",
-  path: "/xe-tien-chuyen-di-kien-giang",
+  path: "xe-tien-chuyen-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe tiện chuyến đi Kiên Giang",
@@ -5317,7 +5317,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tien-chuyen-kien-giang",
-  path: "/xe-tien-chuyen-kien-giang",
+  path: "xe-tien-chuyen-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe tiện chuyến Kiên Giang",
@@ -5329,7 +5329,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tien-chuyen-tu-sai-gon-di-kien-giang",
-  path: "/xe-tien-chuyen-tu-sai-gon-di-kien-giang",
+  path: "xe-tien-chuyen-tu-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Xe tiện chuyến từ Sài Gòn đi Kiên Giang",
@@ -5341,7 +5341,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tien-chuyen-tu-hcm-di-kien-giang",
-  path: "/xe-tien-chuyen-tu-hcm-di-kien-giang",
+  path: "xe-tien-chuyen-tu-hcm-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe tiện chuyến từ TP.HCM đi Kiên Giang",
@@ -5353,7 +5353,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tien-chuyen-gia-re-di-kien-giang",
-  path: "/xe-tien-chuyen-gia-re-di-kien-giang",
+  path: "xe-tien-chuyen-gia-re-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe tiện chuyến giá rẻ đi Kiên Giang",
@@ -5365,7 +5365,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-tien-chuyen-ve-kien-giang",
-  path: "/xe-tien-chuyen-ve-kien-giang",
+  path: "xe-tien-chuyen-ve-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe tiện chuyến về Kiên Giang",
@@ -5377,7 +5377,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-ghep-chieu-ve-kien-giang",
-  path: "/xe-ghep-chieu-ve-kien-giang",
+  path: "xe-ghep-chieu-ve-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe ghép chiều về Kiên Giang",
@@ -5389,7 +5389,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-co-chuyen-san-di-kien-giang",
-  path: "/xe-co-chuyen-san-di-kien-giang",
+  path: "xe-co-chuyen-san-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe có chuyến sẵn đi Kiên Giang",
@@ -5401,7 +5401,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-tien-chuyen-di-kien-giang",
-  path: "/dat-xe-tien-chuyen-di-kien-giang",
+  path: "dat-xe-tien-chuyen-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe tiện chuyến đi Kiên Giang",
@@ -5413,7 +5413,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-ha-tien",
-  path: "/sai-gon-di-ha-tien",
+  path: "sai-gon-di-ha-tien",
   from: "Sài Gòn",
   to: "Hà Tiên",
   title: "Thuê xe Sài Gòn đi Hà Tiên",
@@ -5425,7 +5425,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-mui-nai-ha-tien",
-  path: "/sai-gon-di-mui-nai-ha-tien",
+  path: "sai-gon-di-mui-nai-ha-tien",
   from: "Sài Gòn",
   to: "Mũi Nai Hà Tiên",
   title: "Xe Sài Gòn đi Mũi Nai Hà Tiên",
@@ -5437,7 +5437,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-thach-dong-ha-tien",
-  path: "/sai-gon-di-thach-dong-ha-tien",
+  path: "sai-gon-di-thach-dong-ha-tien",
   from: "Sài Gòn",
   to: "Thạch Động Hà Tiên",
   title: "Thuê xe Sài Gòn đi Thạch Động Hà Tiên",
@@ -5449,7 +5449,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-hon-phu-tu-kien-luong",
-  path: "/sai-gon-di-hon-phu-tu-kien-luong",
+  path: "sai-gon-di-hon-phu-tu-kien-luong",
   from: "Sài Gòn",
   to: "Hòn Phụ Tử Kiên Lương",
   title: "Xe Sài Gòn đi Hòn Phụ Tử Kiên Lương",
@@ -5461,7 +5461,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-ben-tau-rach-gia",
-  path: "/sai-gon-di-ben-tau-rach-gia",
+  path: "sai-gon-di-ben-tau-rach-gia",
   from: "Sài Gòn",
   to: "Bến tàu Rạch Giá",
   title: "Xe Sài Gòn đi Bến tàu Rạch Giá",
@@ -5473,7 +5473,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-cang-hanh-khach-rach-gia",
-  path: "/sai-gon-di-cang-hanh-khach-rach-gia",
+  path: "sai-gon-di-cang-hanh-khach-rach-gia",
   from: "Sài Gòn",
   to: "Cảng hành khách Rạch Giá",
   title: "Xe Sài Gòn đi Cảng hành khách Rạch Giá",
@@ -5485,7 +5485,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-cang-ha-tien",
-  path: "/sai-gon-di-cang-ha-tien",
+  path: "sai-gon-di-cang-ha-tien",
   from: "Sài Gòn",
   to: "Cảng Hà Tiên",
   title: "Xe Sài Gòn đi Cảng Hà Tiên",
@@ -5497,7 +5497,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-ben-xe-rach-gia",
-  path: "/sai-gon-di-ben-xe-rach-gia",
+  path: "sai-gon-di-ben-xe-rach-gia",
   from: "Sài Gòn",
   to: "Bến xe Rạch Giá",
   title: "Xe Sài Gòn đi Bến xe Rạch Giá",
@@ -5509,7 +5509,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-benh-vien-da-khoa-kien-giang",
-  path: "/sai-gon-di-benh-vien-da-khoa-kien-giang",
+  path: "sai-gon-di-benh-vien-da-khoa-kien-giang",
   from: "Sài Gòn",
   to: "Bệnh viện Đa khoa Kiên Giang",
   title: "Xe Sài Gòn đi Bệnh viện Đa khoa Kiên Giang",
@@ -5521,7 +5521,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-kcn-thanh-loc-kien-giang",
-  path: "/sai-gon-di-kcn-thanh-loc-kien-giang",
+  path: "sai-gon-di-kcn-thanh-loc-kien-giang",
   from: "Sài Gòn",
   to: "KCN Thạnh Lộc",
   title: "Xe Sài Gòn đi KCN Thạnh Lộc Kiên Giang",
@@ -5533,7 +5533,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-kcn-thuan-yen-ha-tien",
-  path: "/sai-gon-di-kcn-thuan-yen-ha-tien",
+  path: "sai-gon-di-kcn-thuan-yen-ha-tien",
   from: "Sài Gòn",
   to: "KCN Thuận Yên Hà Tiên",
   title: "Xe Sài Gòn đi KCN Thuận Yên Hà Tiên",
@@ -5545,7 +5545,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-cho-dem-ha-tien",
-  path: "/sai-gon-di-cho-dem-ha-tien",
+  path: "sai-gon-di-cho-dem-ha-tien",
   from: "Sài Gòn",
   to: "Chợ đêm Hà Tiên",
   title: "Xe Sài Gòn đi Chợ đêm Hà Tiên",
@@ -5557,7 +5557,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-cua-khau-quoc-te-ha-tien",
-  path: "/sai-gon-di-cua-khau-quoc-te-ha-tien",
+  path: "sai-gon-di-cua-khau-quoc-te-ha-tien",
   from: "Sài Gòn",
   to: "Cửa khẩu Quốc tế Hà Tiên",
   title: "Xe Sài Gòn đi Cửa khẩu Quốc tế Hà Tiên",
@@ -5569,7 +5569,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-lang-mac-cuu-ha-tien",
-  path: "/sai-gon-di-lang-mac-cuu-ha-tien",
+  path: "sai-gon-di-lang-mac-cuu-ha-tien",
   from: "Sài Gòn",
   to: "Lăng Mạc Cửu Hà Tiên",
   title: "Xe Sài Gòn đi Lăng Mạc Cửu Hà Tiên",
@@ -5581,7 +5581,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-nui-da-dung-ha-tien",
-  path: "/sai-gon-di-nui-da-dung-ha-tien",
+  path: "sai-gon-di-nui-da-dung-ha-tien",
   from: "Sài Gòn",
   to: "Núi Đá Dựng Hà Tiên",
   title: "Xe Sài Gòn đi Núi Đá Dựng Hà Tiên",
@@ -5593,7 +5593,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-hon-chong-kien-luong",
-  path: "/sai-gon-di-hon-chong-kien-luong",
+  path: "sai-gon-di-hon-chong-kien-luong",
   from: "Sài Gòn",
   to: "Hòn Chông Kiên Lương",
   title: "Xe Sài Gòn đi Hòn Chông Kiên Lương",
@@ -5605,7 +5605,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-chua-hang-kien-luong",
-  path: "/sai-gon-di-chua-hang-kien-luong",
+  path: "sai-gon-di-chua-hang-kien-luong",
   from: "Sài Gòn",
   to: "Chùa Hang Kiên Lương",
   title: "Xe Sài Gòn đi Chùa Hang Kiên Lương",
@@ -5617,7 +5617,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-dam-dong-ho-ha-tien",
-  path: "/sai-gon-di-dam-dong-ho-ha-tien",
+  path: "sai-gon-di-dam-dong-ho-ha-tien",
   from: "Sài Gòn",
   to: "Đầm Đông Hồ Hà Tiên",
   title: "Xe Sài Gòn đi Đầm Đông Hồ Hà Tiên",
@@ -5629,7 +5629,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-khu-lan-bien-rach-gia",
-  path: "/sai-gon-di-khu-lan-bien-rach-gia",
+  path: "sai-gon-di-khu-lan-bien-rach-gia",
   from: "Sài Gòn",
   to: "Khu lấn biển Rạch Giá",
   title: "Xe Sài Gòn đi Khu lấn biển Rạch Giá",
@@ -5641,7 +5641,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sai-gon-di-quang-truong-tran-quang-khai-rach-gia",
-  path: "/sai-gon-di-quang-truong-tran-quang-khai-rach-gia",
+  path: "sai-gon-di-quang-truong-tran-quang-khai-rach-gia",
   from: "Sài Gòn",
   to: "Quảng trường Trần Quang Khải Rạch Giá",
   title: "Xe Sài Gòn đi Quảng trường Trần Quang Khải Rạch Giá",
@@ -5653,7 +5653,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "san-bay-tan-son-nhat-di-kien-giang-dac-biet",
-  path: "/san-bay-tan-son-nhat-di-kien-giang-dac-biet",
+  path: "san-bay-tan-son-nhat-di-kien-giang-dac-biet",
   from: "Sân bay Tân Sơn Nhất",
   to: "Kiên Giang",
   title: "Xe Sân bay Tân Sơn Nhất đi Kiên Giang",
@@ -5665,7 +5665,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "ben-xe-mien-dong-di-kien-giang",
-  path: "/ben-xe-mien-dong-di-kien-giang",
+  path: "ben-xe-mien-dong-di-kien-giang",
   from: "Bến xe Miền Đông",
   to: "Kiên Giang",
   title: "Xe Bến xe Miền Đông đi Kiên Giang",
@@ -5677,7 +5677,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "ben-xe-mien-tay-di-kien-giang",
-  path: "/ben-xe-mien-tay-di-kien-giang",
+  path: "ben-xe-mien-tay-di-kien-giang",
   from: "Bến xe Miền Tây",
   to: "Kiên Giang",
   title: "Xe Bến xe Miền Tây đi Kiên Giang",
@@ -5689,7 +5689,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "ga-sai-gon-di-kien-giang",
-  path: "/ga-sai-gon-di-kien-giang",
+  path: "ga-sai-gon-di-kien-giang",
   from: "Ga Sài Gòn",
   to: "Kiên Giang",
   title: "Xe Ga Sài Gòn đi Kiên Giang",
@@ -5701,7 +5701,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thao-dien-di-kien-giang",
-  path: "/thao-dien-di-kien-giang",
+  path: "thao-dien-di-kien-giang",
   from: "Thảo Điền",
   to: "Kiên Giang",
   title: "Xe Thảo Điền đi Kiên Giang",
@@ -5713,7 +5713,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "phu-my-hung-di-kien-giang",
-  path: "/phu-my-hung-di-kien-giang",
+  path: "phu-my-hung-di-kien-giang",
   from: "Phú Mỹ Hưng",
   to: "Kiên Giang",
   title: "Xe Phú Mỹ Hưng đi Kiên Giang",
@@ -5725,7 +5725,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "landmark-81-di-kien-giang",
-  path: "/landmark-81-di-kien-giang",
+  path: "landmark-81-di-kien-giang",
   from: "Landmark 81",
   to: "Kiên Giang",
   title: "Xe Landmark 81 đi Kiên Giang",
@@ -5737,7 +5737,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "sala-thu-duc-di-kien-giang",
-  path: "/sala-thu-duc-di-kien-giang",
+  path: "sala-thu-duc-di-kien-giang",
   from: "Sala Thủ Đức",
   to: "Kiên Giang",
   title: "Xe Sala Thủ Đức đi Kiên Giang",
@@ -5749,7 +5749,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "vinhomes-grand-park-di-kien-giang",
-  path: "/vinhomes-grand-park-di-kien-giang",
+  path: "vinhomes-grand-park-di-kien-giang",
   from: "Vinhomes Grand Park",
   to: "Kiên Giang",
   title: "Xe Vinhomes Grand Park đi Kiên Giang",
@@ -5761,7 +5761,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "khu-do-thi-phu-my-hung-di-kien-giang",
-  path: "/khu-do-thi-phu-my-hung-di-kien-giang",
+  path: "khu-do-thi-phu-my-hung-di-kien-giang",
   from: "Khu đô thị Phú Mỹ Hưng",
   to: "Kiên Giang",
   title: "Xe Khu đô thị Phú Mỹ Hưng đi Kiên Giang",
@@ -5773,7 +5773,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-kien-giang",
-  path: "/taxi-san-bay-tan-son-nhat-di-kien-giang",
+  path: "taxi-san-bay-tan-son-nhat-di-kien-giang",
   from: "Sân bay Tân Sơn Nhất",
   to: "Kiên Giang",
   title: "Taxi sân bay Tân Sơn Nhất đi Kiên Giang",
@@ -5785,7 +5785,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-rach-gia",
-  path: "/taxi-san-bay-tan-son-nhat-di-rach-gia",
+  path: "taxi-san-bay-tan-son-nhat-di-rach-gia",
   from: "Sân bay Tân Sơn Nhất",
   to: "Rạch Giá",
   title: "Taxi sân bay Tân Sơn Nhất đi Rạch Giá",
@@ -5797,7 +5797,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-ha-tien",
-  path: "/taxi-san-bay-tan-son-nhat-di-ha-tien",
+  path: "taxi-san-bay-tan-son-nhat-di-ha-tien",
   from: "Sân bay Tân Sơn Nhất",
   to: "Hà Tiên",
   title: "Taxi sân bay Tân Sơn Nhất đi Hà Tiên",
@@ -5809,7 +5809,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-kien-luong",
-  path: "/taxi-san-bay-tan-son-nhat-di-kien-luong",
+  path: "taxi-san-bay-tan-son-nhat-di-kien-luong",
   from: "Sân bay Tân Sơn Nhất",
   to: "Kiên Lương",
   title: "Taxi sân bay Tân Sơn Nhất đi Kiên Lương",
@@ -5821,7 +5821,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-hon-dat",
-  path: "/taxi-san-bay-tan-son-nhat-di-hon-dat",
+  path: "taxi-san-bay-tan-son-nhat-di-hon-dat",
   from: "Sân bay Tân Sơn Nhất",
   to: "Hòn Đất",
   title: "Taxi sân bay Tân Sơn Nhất đi Hòn Đất",
@@ -5833,7 +5833,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-chau-thanh-kien-giang",
-  path: "/taxi-san-bay-tan-son-nhat-di-chau-thanh-kien-giang",
+  path: "taxi-san-bay-tan-son-nhat-di-chau-thanh-kien-giang",
   from: "Sân bay Tân Sơn Nhất",
   to: "Châu Thành",
   title: "Taxi sân bay Tân Sơn Nhất đi Châu Thành Kiên Giang",
@@ -5845,7 +5845,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-giong-rieng",
-  path: "/taxi-san-bay-tan-son-nhat-di-giong-rieng",
+  path: "taxi-san-bay-tan-son-nhat-di-giong-rieng",
   from: "Sân bay Tân Sơn Nhất",
   to: "Giồng Riềng",
   title: "Taxi sân bay Tân Sơn Nhất đi Giồng Riềng",
@@ -5857,7 +5857,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-go-quao",
-  path: "/taxi-san-bay-tan-son-nhat-di-go-quao",
+  path: "taxi-san-bay-tan-son-nhat-di-go-quao",
   from: "Sân bay Tân Sơn Nhất",
   to: "Gò Quao",
   title: "Taxi sân bay Tân Sơn Nhất đi Gò Quao",
@@ -5869,7 +5869,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-tan-hiep-kien-giang",
-  path: "/taxi-san-bay-tan-son-nhat-di-tan-hiep-kien-giang",
+  path: "taxi-san-bay-tan-son-nhat-di-tan-hiep-kien-giang",
   from: "Sân bay Tân Sơn Nhất",
   to: "Tân Hiệp",
   title: "Taxi sân bay Tân Sơn Nhất đi Tân Hiệp Kiên Giang",
@@ -5881,7 +5881,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-an-bien",
-  path: "/taxi-san-bay-tan-son-nhat-di-an-bien",
+  path: "taxi-san-bay-tan-son-nhat-di-an-bien",
   from: "Sân bay Tân Sơn Nhất",
   to: "An Biên",
   title: "Taxi sân bay Tân Sơn Nhất đi An Biên",
@@ -5893,7 +5893,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-an-minh",
-  path: "/taxi-san-bay-tan-son-nhat-di-an-minh",
+  path: "taxi-san-bay-tan-son-nhat-di-an-minh",
   from: "Sân bay Tân Sơn Nhất",
   to: "An Minh",
   title: "Taxi sân bay Tân Sơn Nhất đi An Minh",
@@ -5905,7 +5905,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-vinh-thuan",
-  path: "/taxi-san-bay-tan-son-nhat-di-vinh-thuan",
+  path: "taxi-san-bay-tan-son-nhat-di-vinh-thuan",
   from: "Sân bay Tân Sơn Nhất",
   to: "Vĩnh Thuận",
   title: "Taxi sân bay Tân Sơn Nhất đi Vĩnh Thuận",
@@ -5917,7 +5917,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-u-minh-thuong",
-  path: "/taxi-san-bay-tan-son-nhat-di-u-minh-thuong",
+  path: "taxi-san-bay-tan-son-nhat-di-u-minh-thuong",
   from: "Sân bay Tân Sơn Nhất",
   to: "U Minh Thượng",
   title: "Taxi sân bay Tân Sơn Nhất đi U Minh Thượng",
@@ -5929,7 +5929,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-giang-thanh",
-  path: "/taxi-san-bay-tan-son-nhat-di-giang-thanh",
+  path: "taxi-san-bay-tan-son-nhat-di-giang-thanh",
   from: "Sân bay Tân Sơn Nhất",
   to: "Giang Thành",
   title: "Taxi sân bay Tân Sơn Nhất đi Giang Thành",
@@ -5941,7 +5941,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-ben-tau-rach-gia",
-  path: "/taxi-san-bay-tan-son-nhat-di-ben-tau-rach-gia",
+  path: "taxi-san-bay-tan-son-nhat-di-ben-tau-rach-gia",
   from: "Sân bay Tân Sơn Nhất",
   to: "Bến tàu Rạch Giá",
   title: "Taxi sân bay Tân Sơn Nhất đi Bến tàu Rạch Giá",
@@ -5953,7 +5953,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-cang-ha-tien",
-  path: "/taxi-san-bay-tan-son-nhat-di-cang-ha-tien",
+  path: "taxi-san-bay-tan-son-nhat-di-cang-ha-tien",
   from: "Sân bay Tân Sơn Nhất",
   to: "Cảng Hà Tiên",
   title: "Taxi sân bay Tân Sơn Nhất đi Cảng Hà Tiên",
@@ -5965,7 +5965,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-benh-vien-da-khoa-kien-giang",
-  path: "/taxi-san-bay-tan-son-nhat-di-benh-vien-da-khoa-kien-giang",
+  path: "taxi-san-bay-tan-son-nhat-di-benh-vien-da-khoa-kien-giang",
   from: "Sân bay Tân Sơn Nhất",
   to: "Bệnh viện Đa khoa Kiên Giang",
   title: "Taxi sân bay Tân Sơn Nhất đi Bệnh viện Đa khoa Kiên Giang",
@@ -5977,7 +5977,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-ben-xe-rach-gia",
-  path: "/taxi-san-bay-tan-son-nhat-di-ben-xe-rach-gia",
+  path: "taxi-san-bay-tan-son-nhat-di-ben-xe-rach-gia",
   from: "Sân bay Tân Sơn Nhất",
   to: "Bến xe Rạch Giá",
   title: "Taxi sân bay Tân Sơn Nhất đi Bến xe Rạch Giá",
@@ -5989,7 +5989,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-hon-phu-tu",
-  path: "/taxi-san-bay-tan-son-nhat-di-hon-phu-tu",
+  path: "taxi-san-bay-tan-son-nhat-di-hon-phu-tu",
   from: "Sân bay Tân Sơn Nhất",
   to: "Hòn Phụ Tử",
   title: "Taxi sân bay Tân Sơn Nhất đi Hòn Phụ Tử",
@@ -6001,7 +6001,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-san-bay-tan-son-nhat-di-mui-nai",
-  path: "/taxi-san-bay-tan-son-nhat-di-mui-nai",
+  path: "taxi-san-bay-tan-son-nhat-di-mui-nai",
   from: "Sân bay Tân Sơn Nhất",
   to: "Mũi Nai",
   title: "Taxi sân bay Tân Sơn Nhất đi Mũi Nai",
@@ -6013,7 +6013,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-di-kien-giang",
-  path: "/dat-xe-di-kien-giang",
+  path: "dat-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe đi Kiên Giang",
@@ -6025,7 +6025,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-rieng-di-kien-giang",
-  path: "/dat-xe-rieng-di-kien-giang",
+  path: "dat-xe-rieng-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe riêng đi Kiên Giang",
@@ -6037,7 +6037,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-tu-sai-gon-di-kien-giang",
-  path: "/dat-xe-tu-sai-gon-di-kien-giang",
+  path: "dat-xe-tu-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Đặt xe từ Sài Gòn đi Kiên Giang",
@@ -6049,7 +6049,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-tu-hcm-di-kien-giang",
-  path: "/dat-xe-tu-hcm-di-kien-giang",
+  path: "dat-xe-tu-hcm-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe từ TP.HCM đi Kiên Giang",
@@ -6061,7 +6061,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-truoc-xe-di-kien-giang",
-  path: "/dat-truoc-xe-di-kien-giang",
+  path: "dat-truoc-xe-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt trước xe đi Kiên Giang",
@@ -6073,7 +6073,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-gia-dinh-di-kien-giang",
-  path: "/dat-xe-gia-dinh-di-kien-giang",
+  path: "dat-xe-gia-dinh-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe gia đình đi Kiên Giang",
@@ -6085,7 +6085,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-cong-tac-di-kien-giang",
-  path: "/dat-xe-cong-tac-di-kien-giang",
+  path: "dat-xe-cong-tac-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe công tác đi Kiên Giang",
@@ -6097,7 +6097,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-du-lich-di-kien-giang",
-  path: "/dat-xe-du-lich-di-kien-giang",
+  path: "dat-xe-du-lich-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe du lịch đi Kiên Giang",
@@ -6109,7 +6109,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-don-tan-nha-di-kien-giang",
-  path: "/dat-xe-don-tan-nha-di-kien-giang",
+  path: "dat-xe-don-tan-nha-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe đón tận nhà đi Kiên Giang",
@@ -6121,7 +6121,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-di-kien-giang",
-  path: "/taxi-di-kien-giang",
+  path: "taxi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi đi Kiên Giang",
@@ -6133,7 +6133,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-kien-giang",
-  path: "/taxi-kien-giang",
+  path: "taxi-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi Kiên Giang",
@@ -6145,7 +6145,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-tu-sai-gon-di-kien-giang",
-  path: "/taxi-tu-sai-gon-di-kien-giang",
+  path: "taxi-tu-sai-gon-di-kien-giang",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Taxi từ Sài Gòn đi Kiên Giang",
@@ -6157,7 +6157,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-tu-hcm-di-kien-giang",
-  path: "/taxi-tu-hcm-di-kien-giang",
+  path: "taxi-tu-hcm-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi từ TP.HCM đi Kiên Giang",
@@ -6169,7 +6169,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-duong-dai-di-kien-giang",
-  path: "/taxi-duong-dai-di-kien-giang",
+  path: "taxi-duong-dai-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi đường dài đi Kiên Giang",
@@ -6181,7 +6181,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-rieng-di-kien-giang",
-  path: "/taxi-rieng-di-kien-giang",
+  path: "taxi-rieng-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi riêng đi Kiên Giang",
@@ -6193,7 +6193,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-gia-dinh-di-kien-giang",
-  path: "/taxi-gia-dinh-di-kien-giang",
+  path: "taxi-gia-dinh-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi gia đình đi Kiên Giang",
@@ -6205,7 +6205,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-cong-tac-di-kien-giang",
-  path: "/taxi-cong-tac-di-kien-giang",
+  path: "taxi-cong-tac-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi công tác đi Kiên Giang",
@@ -6217,7 +6217,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-khu-hoi-di-kien-giang",
-  path: "/taxi-khu-hoi-di-kien-giang",
+  path: "taxi-khu-hoi-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi khứ hồi đi Kiên Giang",
@@ -6229,7 +6229,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-don-tan-nha-di-kien-giang",
-  path: "/taxi-don-tan-nha-di-kien-giang",
+  path: "taxi-don-tan-nha-di-kien-giang",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi đón tận nhà đi Kiên Giang",
@@ -6241,7 +6241,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-di-kien-giang-don-tan-nha",
-  path: "/xe-di-kien-giang-don-tan-nha",
+  path: "xe-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe đi Kiên Giang đón tận nhà",
@@ -6253,7 +6253,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "thue-xe-di-kien-giang-don-tan-noi",
-  path: "/thue-xe-di-kien-giang-don-tan-noi",
+  path: "thue-xe-di-kien-giang-don-tan-noi",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Thuê xe đi Kiên Giang đón tận nơi",
@@ -6265,7 +6265,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-sai-gon-di-kien-giang-don-tan-nha",
-  path: "/xe-sai-gon-di-kien-giang-don-tan-nha",
+  path: "xe-sai-gon-di-kien-giang-don-tan-nha",
   from: "Sài Gòn",
   to: "Kiên Giang",
   title: "Xe Sài Gòn đi Kiên Giang đón tận nhà",
@@ -6277,7 +6277,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-hcm-di-kien-giang-don-tan-nha",
-  path: "/xe-hcm-di-kien-giang-don-tan-nha",
+  path: "xe-hcm-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe TP.HCM đi Kiên Giang đón tận nhà",
@@ -6289,7 +6289,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "taxi-di-kien-giang-don-tan-nha",
-  path: "/taxi-di-kien-giang-don-tan-nha",
+  path: "taxi-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Taxi đi Kiên Giang đón tận nhà",
@@ -6301,7 +6301,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "dat-xe-di-kien-giang-don-tan-nha",
-  path: "/dat-xe-di-kien-giang-don-tan-nha",
+  path: "dat-xe-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Đặt xe đi Kiên Giang đón tận nhà",
@@ -6313,7 +6313,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-gia-dinh-di-kien-giang-don-tan-nha",
-  path: "/xe-gia-dinh-di-kien-giang-don-tan-nha",
+  path: "xe-gia-dinh-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe gia đình đi Kiên Giang đón tận nhà",
@@ -6325,7 +6325,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-cong-tac-di-kien-giang-don-tan-nha",
-  path: "/xe-cong-tac-di-kien-giang-don-tan-nha",
+  path: "xe-cong-tac-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe công tác đi Kiên Giang đón tận nhà",
@@ -6337,7 +6337,7 @@ export const KIENGIANG_SEO_ROUTES = [
 
 {
   key: "xe-khu-hoi-di-kien-giang-don-tan-nha",
-  path: "/xe-khu-hoi-di-kien-giang-don-tan-nha",
+  path: "xe-khu-hoi-di-kien-giang-don-tan-nha",
   from: "TP.HCM",
   to: "Kiên Giang",
   title: "Xe khứ hồi đi Kiên Giang đón tận nhà",
