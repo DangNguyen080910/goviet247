@@ -146,6 +146,117 @@ const HUB_CONFIGS = {
       );
     },
   },
+
+    "car-5-seat": {
+    path: "/xe-5-cho",
+
+    badge: "GoViet247 • Xe 5 chỗ đi tỉnh",
+
+    title: "Xe 5 chỗ đi tỉnh, xe riêng đưa đón tận nơi",
+
+    description:
+      "Tổng hợp các tuyến xe 5 chỗ đi tỉnh dành cho cá nhân, cặp đôi, gia đình nhỏ và khách công tác. Xe riêng không ghép khách, biết giá trước khi đặt.",
+
+    heading: "Danh sách tuyến xe 5 chỗ đi tỉnh",
+
+    intro:
+      "Xe 5 chỗ phù hợp hành trình liên tỉnh cần sự riêng tư, linh hoạt và thoải mái. GoViet247 hỗ trợ đưa đón tận nơi, không đặt cọc và thanh toán sau chuyến đi.",
+
+    emptyText: "Hiện chưa tìm thấy tuyến xe 5 chỗ phù hợp.",
+
+    filter: (route) => {
+      const searchableText = [
+        route.key,
+        route.path,
+        route.title,
+        route.description,
+        route.routeText,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return (
+        searchableText.includes("5 chỗ") ||
+        searchableText.includes("5 cho") ||
+        searchableText.includes("xe-5-cho")
+      );
+    },
+  },
+
+  "car-7-seat": {
+    path: "/xe-7-cho",
+
+    badge: "GoViet247 • Xe 7 chỗ đi tỉnh",
+
+    title: "Xe 7 chỗ đi tỉnh, phù hợp gia đình và nhóm nhỏ",
+
+    description:
+      "Tổng hợp các tuyến xe 7 chỗ đi tỉnh dành cho gia đình, nhóm bạn và khách có nhiều hành lý. Xe riêng, không ghép khách và đưa đón tận nơi.",
+
+    heading: "Danh sách tuyến xe 7 chỗ đi tỉnh",
+
+    intro:
+      "Xe 7 chỗ mang lại không gian rộng rãi cho hành trình đường dài, du lịch, công tác hoặc về quê. Khách biết giá trước khi đặt và chủ động lịch trình.",
+
+    emptyText: "Hiện chưa tìm thấy tuyến xe 7 chỗ phù hợp.",
+
+    filter: (route) => {
+      const searchableText = [
+        route.key,
+        route.path,
+        route.title,
+        route.description,
+        route.routeText,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return (
+        searchableText.includes("7 chỗ") ||
+        searchableText.includes("7 cho") ||
+        searchableText.includes("xe-7-cho")
+      );
+    },
+  },
+
+  "car-16-seat": {
+    path: "/xe-16-cho",
+
+    badge: "GoViet247 • Xe 16 chỗ đi tỉnh",
+
+    title: "Xe 16 chỗ đi tỉnh, phù hợp nhóm và đoàn khách",
+
+    description:
+      "Tổng hợp các tuyến xe 16 chỗ đi tỉnh phục vụ nhóm bạn, gia đình đông người, công ty và đoàn du lịch. Xe riêng có tài xế, lịch trình linh hoạt.",
+
+    heading: "Danh sách tuyến xe 16 chỗ đi tỉnh",
+
+    intro:
+      "Xe 16 chỗ phù hợp hành trình du lịch, công tác, team building, sự kiện và đưa đón đoàn khách. GoViet247 hỗ trợ đón trả tận nơi và hoạt động 24/7.",
+
+    emptyText: "Hiện chưa tìm thấy tuyến xe 16 chỗ phù hợp.",
+
+    filter: (route) => {
+      const searchableText = [
+        route.key,
+        route.path,
+        route.title,
+        route.description,
+        route.routeText,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return (
+        searchableText.includes("16 chỗ") ||
+        searchableText.includes("16 cho") ||
+        searchableText.includes("xe-16-cho")
+      );
+    },
+  },
 };
 
 function normalizeText(value) {

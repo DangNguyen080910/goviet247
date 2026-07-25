@@ -63,6 +63,10 @@ const SEO_HUB_PATHS = new Set([
   "dong-thap",
   "an-giang",
   "kien-giang",
+
+  "xe-5-cho",
+  "xe-7-cho",
+  "xe-16-cho",
 ]);
 
 export default function App() {
@@ -101,6 +105,19 @@ export default function App() {
         <Route
           path="thue-xe-di-tinh"
           element={<SeoHubPage hubType="rental" />}
+        />
+
+        {/* ==================================================== */}
+        {/* SEO HUBS THEO LOẠI XE */}
+        {/* ==================================================== */}
+
+        <Route path="xe-5-cho" element={<SeoHubPage hubType="car-5-seat" />} />
+
+        <Route path="xe-7-cho" element={<SeoHubPage hubType="car-7-seat" />} />
+
+        <Route
+          path="xe-16-cho"
+          element={<SeoHubPage hubType="car-16-seat" />}
         />
 
         {/* ==================================================== */}
