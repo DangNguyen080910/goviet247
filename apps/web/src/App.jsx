@@ -30,6 +30,7 @@ import CustomerProfile from "./pages/customer/CustomerProfile";
 import CustomerNotifications from "./pages/customer/CustomerNotifications";
 import SeoRoutePage from "./pages/customer/SeoRoutePage";
 import SeoHubPage from "./pages/customer/SeoHubPage";
+import SeoProvinceHubPage from "./pages/customer/SeoProvinceHubPage";
 
 import { SEO_ROUTES } from "./data/seoRoutes";
 
@@ -44,6 +45,24 @@ const SEO_HUB_PATHS = new Set([
   "tp-hcm-di-cac-tinh",
   "cac-tinh-di-tp-hcm",
   "thue-xe-di-tinh",
+
+  "vung-tau",
+  "ho-tram",
+  "long-hai",
+  "binh-chau",
+  "phan-thiet",
+  "mui-ne",
+  "da-lat",
+  "nha-trang",
+  "tay-ninh",
+  "can-tho",
+  "ben-tre",
+  "long-an",
+  "tien-giang",
+  "vinh-long",
+  "dong-thap",
+  "an-giang",
+  "kien-giang",
 ]);
 
 export default function App() {
@@ -85,18 +104,107 @@ export default function App() {
         />
 
         {/* ==================================================== */}
+        {/* SEO HUBS THEO TỈNH / ĐIỂM ĐẾN */}
+        {/* ==================================================== */}
+
+        <Route
+          path="vung-tau"
+          element={<SeoProvinceHubPage provinceKey="vung-tau" />}
+        />
+
+        <Route
+          path="ho-tram"
+          element={<SeoProvinceHubPage provinceKey="ho-tram" />}
+        />
+
+        <Route
+          path="long-hai"
+          element={<SeoProvinceHubPage provinceKey="long-hai" />}
+        />
+
+        <Route
+          path="binh-chau"
+          element={<SeoProvinceHubPage provinceKey="binh-chau" />}
+        />
+
+        <Route
+          path="phan-thiet"
+          element={<SeoProvinceHubPage provinceKey="phan-thiet" />}
+        />
+
+        <Route
+          path="mui-ne"
+          element={<SeoProvinceHubPage provinceKey="mui-ne" />}
+        />
+
+        <Route
+          path="da-lat"
+          element={<SeoProvinceHubPage provinceKey="da-lat" />}
+        />
+
+        <Route
+          path="nha-trang"
+          element={<SeoProvinceHubPage provinceKey="nha-trang" />}
+        />
+
+        <Route
+          path="tay-ninh"
+          element={<SeoProvinceHubPage provinceKey="tay-ninh" />}
+        />
+
+        <Route
+          path="can-tho"
+          element={<SeoProvinceHubPage provinceKey="can-tho" />}
+        />
+
+        <Route
+          path="ben-tre"
+          element={<SeoProvinceHubPage provinceKey="ben-tre" />}
+        />
+
+        <Route
+          path="long-an"
+          element={<SeoProvinceHubPage provinceKey="long-an" />}
+        />
+
+        <Route
+          path="tien-giang"
+          element={<SeoProvinceHubPage provinceKey="tien-giang" />}
+        />
+
+        <Route
+          path="vinh-long"
+          element={<SeoProvinceHubPage provinceKey="vinh-long" />}
+        />
+
+        <Route
+          path="dong-thap"
+          element={<SeoProvinceHubPage provinceKey="dong-thap" />}
+        />
+
+        <Route
+          path="an-giang"
+          element={<SeoProvinceHubPage provinceKey="an-giang" />}
+        />
+
+        <Route
+          path="kien-giang"
+          element={<SeoProvinceHubPage provinceKey="kien-giang" />}
+        />
+
+        {/* ==================================================== */}
         {/* CÁC TRANG SEO TUYẾN XE */}
         {/* ==================================================== */}
 
-        {SEO_ROUTES.filter(
-          (route) => !SEO_HUB_PATHS.has(route.path),
-        ).map((route) => (
-          <Route
-            key={route.key}
-            path={route.path}
-            element={<SeoRoutePage routeKey={route.key} />}
-          />
-        ))}
+        {SEO_ROUTES.filter((route) => !SEO_HUB_PATHS.has(route.path)).map(
+          (route) => (
+            <Route
+              key={route.key}
+              path={route.path}
+              element={<SeoRoutePage routeKey={route.key} />}
+            />
+          ),
+        )}
 
         <Route path="dang-nhap" element={<CustomerAuth mode="login" />} />
         <Route path="dang-ky" element={<CustomerAuth mode="register" />} />
@@ -140,10 +248,7 @@ export default function App() {
         <Route path="ledger" element={<AdminLedger />} />
         <Route path="feedback" element={<AdminFeedback />} />
 
-        <Route
-          path="cash-transactions"
-          element={<AdminCashTransactions />}
-        />
+        <Route path="cash-transactions" element={<AdminCashTransactions />} />
       </Route>
 
       <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
