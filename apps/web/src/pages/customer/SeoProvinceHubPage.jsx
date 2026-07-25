@@ -353,10 +353,7 @@ function sortRoutes(routes, provinceAliases) {
       return fromCompare;
     }
 
-    return String(a.to || "").localeCompare(
-      String(b.to || ""),
-      "vi",
-    );
+    return String(a.to || "").localeCompare(String(b.to || ""), "vi");
   });
 }
 
@@ -383,10 +380,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
       routeMatchesProvince(route, config.aliases),
     );
 
-    return sortRoutes(
-      removeDuplicatePaths(routes),
-      config.aliases,
-    );
+    return sortRoutes(removeDuplicatePaths(routes), config.aliases);
   }, [config]);
 
   const requestedPage = getPageNumber(location.search);
@@ -408,14 +402,11 @@ export default function SeoProvinceHubPage({ provinceKey }) {
   useEffect(() => {
     if (!config) return;
 
-    const pageSuffix =
-      currentPage > 1 ? ` - Trang ${currentPage}` : "";
+    const pageSuffix = currentPage > 1 ? ` - Trang ${currentPage}` : "";
 
     document.title = `${config.title}${pageSuffix} | GoViet247`;
 
-    let metaDescription = document.querySelector(
-      'meta[name="description"]',
-    );
+    let metaDescription = document.querySelector('meta[name="description"]');
 
     if (!metaDescription) {
       metaDescription = document.createElement("meta");
@@ -425,9 +416,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
 
     metaDescription.setAttribute(
       "content",
-      `${config.description}${
-        currentPage > 1 ? ` Trang ${currentPage}.` : ""
-      }`,
+      `${config.description}${currentPage > 1 ? ` Trang ${currentPage}.` : ""}`,
     );
 
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -445,9 +434,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
 
     canonical.setAttribute("href", canonicalUrl);
 
-    const oldSchema = document.getElementById(
-      "seo-province-hub-schema",
-    );
+    const oldSchema = document.getElementById("seo-province-hub-schema");
 
     if (oldSchema) {
       oldSchema.remove();
@@ -464,8 +451,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
         numberOfItems: currentRoutes.length,
         itemListElement: currentRoutes.map((route, index) => ({
           "@type": "ListItem",
-          position:
-            (currentPage - 1) * ROUTES_PER_PAGE + index + 1,
+          position: (currentPage - 1) * ROUTES_PER_PAGE + index + 1,
           name: route.title || `${route.from} đi ${route.to}`,
           url: `https://goviet247.com/${route.path}`,
         })),
@@ -480,9 +466,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
     document.head.appendChild(script);
 
     return () => {
-      const currentSchema = document.getElementById(
-        "seo-province-hub-schema",
-      );
+      const currentSchema = document.getElementById("seo-province-hub-schema");
 
       if (currentSchema) {
         currentSchema.remove();
@@ -515,9 +499,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
 
         <span style={styles.breadcrumbSeparator}>›</span>
 
-        <span style={styles.breadcrumbCurrent}>
-          {config.name}
-        </span>
+        <span style={styles.breadcrumbCurrent}>{config.name}</span>
       </nav>
 
       <section style={styles.hero}>
@@ -557,22 +539,28 @@ export default function SeoProvinceHubPage({ provinceKey }) {
           Xe liên tỉnh
         </Link>
 
-        <Link
-          to="/tp-hcm-di-cac-tinh"
-          style={styles.hubNavigationLink}
-        >
+        <Link to="/tp-hcm-di-cac-tinh" style={styles.hubNavigationLink}>
           TP.HCM đi các tỉnh
         </Link>
 
-        <Link
-          to="/cac-tinh-di-tp-hcm"
-          style={styles.hubNavigationLink}
-        >
+        <Link to="/cac-tinh-di-tp-hcm" style={styles.hubNavigationLink}>
           Các tỉnh về TP.HCM
         </Link>
 
         <Link to="/thue-xe-di-tinh" style={styles.hubNavigationLink}>
           Thuê xe đi tỉnh
+        </Link>
+
+        <Link to="/xe-5-cho" style={styles.hubNavigationLink}>
+          Xe 5 chỗ
+        </Link>
+
+        <Link to="/xe-7-cho" style={styles.hubNavigationLink}>
+          Xe 7 chỗ
+        </Link>
+
+        <Link to="/xe-16-cho" style={styles.hubNavigationLink}>
+          Xe 16 chỗ
         </Link>
       </nav>
 
@@ -605,9 +593,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
                   {route.duration || "Thời gian tùy hành trình"}
                 </span>
 
-                <span style={styles.routeAction}>
-                  Xem thông tin tuyến →
-                </span>
+                <span style={styles.routeAction}>Xem thông tin tuyến →</span>
               </Link>
             ))}
           </div>
@@ -622,9 +608,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
             {currentPage > 1 ? (
               <Link
                 to={`${config.path}${
-                  currentPage - 1 > 1
-                    ? `?page=${currentPage - 1}`
-                    : ""
+                  currentPage - 1 > 1 ? `?page=${currentPage - 1}` : ""
                 }`}
                 style={styles.paginationButton}
               >
@@ -667,13 +651,11 @@ export default function SeoProvinceHubPage({ provinceKey }) {
       </section>
 
       <section style={styles.cta}>
-        <h2 style={styles.ctaTitle}>
-          Cần đặt xe đi {config.name}?
-        </h2>
+        <h2 style={styles.ctaTitle}>Cần đặt xe đi {config.name}?</h2>
 
         <p style={styles.ctaText}>
-          Nhập điểm đón, điểm đến và loại xe để hệ thống kiểm tra quãng đường
-          và báo giá trước khi bạn xác nhận đặt chuyến.
+          Nhập điểm đón, điểm đến và loại xe để hệ thống kiểm tra quãng đường và
+          báo giá trước khi bạn xác nhận đặt chuyến.
         </p>
 
         <Link to="/dat-xe" style={styles.ctaButton}>

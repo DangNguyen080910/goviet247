@@ -40,6 +40,18 @@ const SEO_HUB_LINKS = [
     label: "Thuê xe đi tỉnh",
     path: "/thue-xe-di-tinh",
   },
+  {
+    label: "Xe 5 chỗ",
+    path: "/xe-5-cho",
+  },
+  {
+    label: "Xe 7 chỗ",
+    path: "/xe-7-cho",
+  },
+  {
+    label: "Xe 16 chỗ",
+    path: "/xe-16-cho",
+  },
 ];
 
 /*
