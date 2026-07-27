@@ -151,7 +151,11 @@ export async function getRoute(points = []) {
           legCount: debugLegs.length,
           distanceKm: Number((debugDistanceMeters / 1000).toFixed(1)),
           durationMinutes: Math.round(debugDurationSeconds / 60),
-          durationText: debugLegs.map((leg) => leg?.duration?.text),
+          durationText: debugLegs.map((leg) => ({
+            text: leg?.duration?.text,
+            value: leg?.duration?.value,
+            distance: leg?.distance?.text,
+          })),
           warnings: debugRoute?.warnings || [],
         };
       })
