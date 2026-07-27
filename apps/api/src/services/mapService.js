@@ -128,67 +128,9 @@ export async function getRoute(points = []) {
       origin,
       destination,
       vehicle,
-      alternatives: true,
     },
   });
-
-  const routeDebug = Array.isArray(data?.routes)
-    ? data.routes.map((debugRoute, routeIndex) => {
-        const debugLegs = Array.isArray(debugRoute?.legs)
-          ? debugRoute.legs
-          : [];
-
-        const debugDistanceMeters = debugLegs.reduce(
-          (sum, leg) => sum + (Number(leg?.distance?.value) || 0),
-          0,
-        );
-
-        const debugDurationSeconds = debugLegs.reduce(
-          (sum, leg) => sum + (Number(leg?.duration?.value) || 0),
-          0,
-        );
-
-        return {
-          routeIndex,
-          summary: debugRoute?.summary || "",
-          legCount: debugLegs.length,
-          distanceKm: Number((debugDistanceMeters / 1000).toFixed(1)),
-          durationMinutes: Math.round(debugDurationSeconds / 60),
-          durationText: debugLegs.map((leg) => ({
-            text: leg?.duration?.text,
-            value: leg?.duration?.value,
-            distance: leg?.distance?.text,
-            startAddress: leg?.start_address,
-            endAddress: leg?.end_address,
-            steps: Array.isArray(leg?.steps)
-              ? leg.steps.map((step) => ({
-                  instruction: step?.html_instructions,
-                  distance: step?.distance?.text,
-                  duration: step?.duration?.text,
-                }))
-              : [],
-          })),
-          warnings: debugRoute?.warnings || [],
-        };
-      })
-    : [];
-
-  console.log(
-    "GOONG_ROUTE_ALTERNATIVES_DEBUG",
-    JSON.stringify(
-      {
-        url,
-        origin,
-        destination,
-        vehicle,
-        routeCount: routeDebug.length,
-        routes: routeDebug,
-      },
-      null,
-      2,
-    ),
-  );
-
+  
   const route = data?.routes?.[0];
 
   if (!route) {
