@@ -5705,4 +5705,2563 @@ export const BENTRE_SEO_ROUTES = [
   duration: "5.5 - 6 giờ",
 },
 
+{
+  key: "thanh-pho-ben-tre-di-tphcm",
+  path: "thue-xe-tu-thanh-pho-ben-tre-di-tphcm",
+  from: "TP Bến Tre, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ TP Bến Tre đi TP.HCM, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ TP Bến Tre đi TP.HCM phù hợp cho khách đi công tác, khám bệnh, đi sân bay hoặc thăm người thân. Xe đón tận địa chỉ tại TP Bến Tre, không ghép khách và đưa thẳng đến nơi yêu cầu tại TP.HCM.",
+  routeText:
+    "TP Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "chau-thanh-ben-tre-di-tphcm",
+  path: "thue-xe-tu-chau-thanh-ben-tre-di-tphcm",
+  from: "Châu Thành, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Châu Thành Bến Tre đi TP.HCM, xe riêng giá tốt",
+  description:
+    "Dịch vụ thuê xe riêng từ Châu Thành Bến Tre đi TP.HCM phục vụ 24/7. Phù hợp cho nhu cầu đi làm, công tác, khám bệnh, du lịch hoặc đưa đón sân bay. Xe đón tận nơi, không ghép khách và báo giá trước khi khởi hành.",
+  routeText:
+    "Châu Thành → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "1.5 - 2 giờ",
+},
+{
+  key: "cho-lach-ben-tre-di-tphcm",
+  path: "thue-xe-tu-cho-lach-ben-tre-di-tphcm",
+  from: "Chợ Lách, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Chợ Lách Bến Tre đi TP.HCM, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Chợ Lách đi TP.HCM nhanh chóng với tài xế nhiều kinh nghiệm. Thích hợp cho khách đi công việc, thăm người thân, khám chữa bệnh hoặc du lịch. Không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Chợ Lách → Quốc lộ 57 → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "mo-cay-bac-ben-tre-di-tphcm",
+  path: "thue-xe-tu-mo-cay-bac-ben-tre-di-tphcm",
+  from: "Mỏ Cày Bắc, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Mỏ Cày Bắc Bến Tre đi TP.HCM an toàn, tiện lợi",
+  description:
+    "Dịch vụ xe riêng từ Mỏ Cày Bắc đi TP.HCM với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ đời mới. Xe đón tận nhà, không ghép khách, phù hợp cho cá nhân, gia đình và doanh nghiệp cần di chuyển thuận tiện.",
+  routeText:
+    "Mỏ Cày Bắc → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "mo-cay-nam-ben-tre-di-tphcm",
+  path: "thue-xe-tu-mo-cay-nam-ben-tre-di-tphcm",
+  from: "Mỏ Cày Nam, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Mỏ Cày Nam Bến Tre đi TP.HCM, xe riêng 24/7",
+  description:
+    "Xe riêng từ Mỏ Cày Nam đi TP.HCM đáp ứng nhu cầu đi công tác, khám bệnh, du lịch hoặc về thành phố làm việc. Hỗ trợ đón tận nơi, biết giá trước khi đặt và phục vụ liên tục cả ngày lẫn đêm.",
+  routeText:
+    "Mỏ Cày Nam → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "giong-trom-ben-tre-di-tphcm",
+  path: "thue-xe-tu-giong-trom-ben-tre-di-tphcm",
+  from: "Giồng Trôm, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Giồng Trôm Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Giồng Trôm đi TP.HCM dành cho khách cá nhân, gia đình và doanh nghiệp. Xe đón tận địa chỉ, không ghép khách, tài xế lịch sự và luôn báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "Giồng Trôm → Quốc lộ 57C → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "binh-dai-ben-tre-di-tphcm",
+  path: "thue-xe-tu-binh-dai-ben-tre-di-tphcm",
+  from: "Bình Đại, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Bình Đại Bến Tre đi TP.HCM, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe riêng từ Bình Đại đi TP.HCM phục vụ 24/7 với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi, không ghép khách, phù hợp cho khách đi công tác, khám bệnh, sân bay hoặc du lịch.",
+  routeText:
+    "Bình Đại → Quốc lộ 57B → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "ba-tri-ben-tre-di-tphcm",
+  path: "thue-xe-tu-ba-tri-ben-tre-di-tphcm",
+  from: "Ba Tri, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Ba Tri Bến Tre đi TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Xe riêng từ Ba Tri đi TP.HCM mang đến hành trình thoải mái và chủ động thời gian. Đón tận nhà, không ghép khách, báo giá trước khi đặt, phù hợp cho gia đình, nhóm bạn hoặc khách đi làm việc tại TP.HCM.",
+  routeText:
+    "Ba Tri → Quốc lộ 57 → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "thanh-phu-ben-tre-di-tphcm",
+  path: "thue-xe-tu-thanh-phu-ben-tre-di-tphcm",
+  from: "Thạnh Phú, Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Thạnh Phú Bến Tre đi TP.HCM, xe riêng 24/7",
+  description:
+    "Đặt xe riêng từ Thạnh Phú đi TP.HCM nhanh chóng với tài xế kinh nghiệm và xe đời mới. Dịch vụ thích hợp cho khách đi công tác, khám chữa bệnh, về thành phố làm việc hoặc du lịch. Xe đưa đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Thạnh Phú → Quốc lộ 57 → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "sai-gon-di-thanh-pho-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-thanh-pho-ben-tre",
+  from: "Sài Gòn",
+  to: "TP Bến Tre, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi TP Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi TP Bến Tre phục vụ khách đi công tác, du lịch, thăm người thân hoặc về quê. Xe đón tận nơi tại TP.HCM, không ghép khách, tài xế nhiều kinh nghiệm và hoạt động 24/7.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → TP Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "sai-gon-di-chau-thanh-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-chau-thanh-ben-tre",
+  from: "Sài Gòn",
+  to: "Châu Thành, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Châu Thành Bến Tre, xe riêng giá tốt",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Châu Thành Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Châu Thành",
+  duration: "1.5 - 2 giờ",
+},
+{
+  key: "sai-gon-di-cho-lach-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-cho-lach-ben-tre",
+  from: "Sài Gòn",
+  to: "Chợ Lách, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Chợ Lách Bến Tre, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Chợ Lách phù hợp cho khách du lịch miệt vườn, công tác hoặc thăm người thân. Xe đời mới, đón tận nơi và di chuyển an toàn với tài xế chuyên tuyến.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Chợ Lách",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "sai-gon-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-mo-cay-bac-ben-tre",
+  from: "Sài Gòn",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Mỏ Cày Bắc Bến Tre, xe riêng 24/7",
+  description:
+    "Xe riêng từ Sài Gòn đi Mỏ Cày Bắc phục vụ khách đi làm việc, du lịch hoặc về quê. Đưa đón tận nơi, không ghép khách, nhiều dòng xe đời mới và báo giá minh bạch trước khi khởi hành.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Mỏ Cày Bắc",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "sai-gon-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-mo-cay-nam-ben-tre",
+  from: "Sài Gòn",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Mỏ Cày Nam Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Mỏ Cày Nam nhanh chóng, phù hợp cho gia đình, nhóm bạn hoặc khách công tác. Xe không ghép khách, hỗ trợ đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Mỏ Cày Nam",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "sai-gon-di-giong-trom-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-giong-trom-ben-tre",
+  from: "Sài Gòn",
+  to: "Giồng Trôm, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Giồng Trôm Bến Tre, xe riêng giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Giồng Trôm phù hợp cho khách về quê, công tác hoặc du lịch. Xe đón tận nơi tại TP.HCM, không ghép khách, tài xế kinh nghiệm và phục vụ liên tục 24/7.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57C → Giồng Trôm",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "sai-gon-di-binh-dai-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-binh-dai-ben-tre",
+  from: "Sài Gòn",
+  to: "Bình Đại, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Bình Đại Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Bình Đại với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đời mới, không ghép khách, đón tận nơi và báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57B → Bình Đại",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "sai-gon-di-ba-tri-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-ba-tri-ben-tre",
+  from: "Sài Gòn",
+  to: "Ba Tri, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Ba Tri Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Sài Gòn đi Ba Tri mang đến hành trình thoải mái cho khách đi công tác, du lịch hoặc thăm người thân. Đón tận nơi, không ghép khách và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Ba Tri",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "sai-gon-di-thanh-phu-ben-tre",
+  path: "thue-xe-tu-sai-gon-di-thanh-phu-ben-tre",
+  from: "Sài Gòn",
+  to: "Thạnh Phú, Bến Tre",
+  title:
+    "Thuê xe từ Sài Gòn đi Thạnh Phú Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Thạnh Phú phục vụ khách đi làm việc, về quê, khám bệnh hoặc du lịch biển. Xe đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và luôn sẵn xe cả ngày lẫn đêm.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Thạnh Phú",
+  duration: "3.5 - 4 giờ",
+},
+
+{
+  key: "nha-be-di-thanh-pho-ben-tre",
+  path: "thue-xe-tu-nha-be-di-thanh-pho-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "TP Bến Tre, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi TP Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi TP Bến Tre phù hợp cho khách công tác, du lịch, về quê hoặc thăm người thân. Xe đón tận địa chỉ tại Nhà Bè, không ghép khách, hoạt động 24/7 và báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → TP Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "nha-be-di-chau-thanh-ben-tre",
+  path: "thue-xe-tu-nha-be-di-chau-thanh-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Châu Thành Bến Tre, xe riêng giá tốt",
+  description:
+    "Đặt xe riêng từ Nhà Bè đi Châu Thành Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Châu Thành",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "nha-be-di-cho-lach-ben-tre",
+  path: "thue-xe-tu-nha-be-di-cho-lach-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Chợ Lách Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Nhà Bè đi Chợ Lách là lựa chọn thuận tiện cho khách tham quan miệt vườn, công tác hoặc về quê. Xe đời mới, đón tận nơi, không ghép khách và phục vụ liên tục 24/7.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Chợ Lách",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "nha-be-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-tu-nha-be-di-mo-cay-bac-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Mỏ Cày Bắc Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Mỏ Cày Bắc đáp ứng nhu cầu đi công tác, du lịch hoặc về quê. Xe đón tận nơi, không ghép khách, nhiều dòng xe đời mới và giá minh bạch.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Mỏ Cày Bắc",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "nha-be-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-tu-nha-be-di-mo-cay-nam-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Mỏ Cày Nam Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Nhà Bè đi Mỏ Cày Nam nhanh chóng với đội ngũ tài xế chuyên tuyến. Xe không ghép khách, đón tận nơi và phù hợp cho gia đình, nhóm bạn hoặc khách công tác.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Mỏ Cày Nam",
+  duration: "3 - 3.5 giờ",
+},
+
+{
+  key: "nha-be-di-giong-trom-ben-tre",
+  path: "thue-xe-tu-nha-be-di-giong-trom-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Giồng Trôm Bến Tre, xe riêng giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Giồng Trôm phù hợp cho khách đi công tác, về quê hoặc du lịch. Xe đón tận địa chỉ, không ghép khách, tài xế nhiều kinh nghiệm và phục vụ 24/7.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57C → Giồng Trôm",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "nha-be-di-binh-dai-ben-tre",
+  path: "thue-xe-tu-nha-be-di-binh-dai-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Bình Đại Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Nhà Bè đi Bình Đại với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ đời mới. Xe không ghép khách, đón tận nơi, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57B → Bình Đại",
+  duration: "3.5 - 4 giờ",
+},
+{
+  key: "nha-be-di-ba-tri-ben-tre",
+  path: "thue-xe-tu-nha-be-di-ba-tri-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Ba Tri Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Nhà Bè đi Ba Tri mang đến chuyến đi thuận tiện cho khách công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, tài xế chuyên tuyến và báo giá minh bạch.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Ba Tri",
+  duration: "3.5 - 4 giờ",
+},
+{
+  key: "nha-be-di-thanh-phu-ben-tre",
+  path: "thue-xe-tu-nha-be-di-thanh-phu-ben-tre",
+  from: "Nhà Bè, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title:
+    "Thuê xe từ Nhà Bè đi Thạnh Phú Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ xe riêng từ Nhà Bè đi Thạnh Phú đáp ứng nhu cầu đi công tác, du lịch biển, về quê hoặc khám bệnh. Xe đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và phục vụ cả ngày lẫn đêm.",
+  routeText:
+    "Nhà Bè → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Thạnh Phú",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-thanh-pho-ben-tre",
+  path: "thue-xe-tu-can-gio-di-thanh-pho-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "TP Bến Tre, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi TP Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi TP Bến Tre phù hợp cho khách công tác, du lịch, về quê hoặc thăm người thân. Xe đón tận địa chỉ tại Cần Giờ, không ghép khách, hoạt động 24/7 và báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → TP Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "can-gio-di-chau-thanh-ben-tre",
+  path: "thue-xe-tu-can-gio-di-chau-thanh-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Châu Thành, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Châu Thành Bến Tre, xe riêng giá tốt",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Châu Thành Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Châu Thành",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "can-gio-di-cho-lach-ben-tre",
+  path: "thue-xe-tu-can-gio-di-cho-lach-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Chợ Lách, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Chợ Lách Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Cần Giờ đi Chợ Lách là lựa chọn thuận tiện cho khách tham quan miệt vườn, công tác hoặc về quê. Xe đời mới, đón tận nơi, không ghép khách và phục vụ liên tục 24/7.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Chợ Lách",
+  duration: "3.5 - 4 giờ",
+},
+{
+  key: "can-gio-di-mo-cay-bac-ben-tre",
+  path: "thue-xe-tu-can-gio-di-mo-cay-bac-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Mỏ Cày Bắc, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Mỏ Cày Bắc Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Mỏ Cày Bắc đáp ứng nhu cầu đi công tác, du lịch hoặc về quê. Xe đón tận nơi, không ghép khách, nhiều dòng xe đời mới và giá minh bạch.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Mỏ Cày Bắc",
+  duration: "3.5 - 4 giờ",
+},
+{
+  key: "can-gio-di-mo-cay-nam-ben-tre",
+  path: "thue-xe-tu-can-gio-di-mo-cay-nam-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Mỏ Cày Nam, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Mỏ Cày Nam Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Mỏ Cày Nam nhanh chóng với đội ngũ tài xế chuyên tuyến. Xe không ghép khách, đón tận nơi và phù hợp cho gia đình, nhóm bạn hoặc khách công tác.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Mỏ Cày Nam",
+  duration: "4 - 4.5 giờ",
+},
+
+{
+  key: "can-gio-di-giong-trom-ben-tre",
+  path: "thue-xe-tu-can-gio-di-giong-trom-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Giồng Trôm, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Giồng Trôm Bến Tre, xe riêng giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Giồng Trôm phù hợp cho khách đi công tác, về quê hoặc du lịch. Xe đón tận địa chỉ, không ghép khách, tài xế nhiều kinh nghiệm và phục vụ 24/7.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57C → Giồng Trôm",
+  duration: "4 - 4.5 giờ",
+},
+{
+  key: "can-gio-di-binh-dai-ben-tre",
+  path: "thue-xe-tu-can-gio-di-binh-dai-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Bình Đại, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Bình Đại Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Cần Giờ đi Bình Đại với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ đời mới. Xe không ghép khách, đón tận nơi, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57B → Bình Đại",
+  duration: "4.5 - 5 giờ",
+},
+{
+  key: "can-gio-di-ba-tri-ben-tre",
+  path: "thue-xe-tu-can-gio-di-ba-tri-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Ba Tri, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Ba Tri Bến Tre, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Cần Giờ đi Ba Tri mang đến chuyến đi thuận tiện cho khách công tác, thăm người thân hoặc du lịch. Xe đón tận nơi, không ghép khách, tài xế chuyên tuyến và báo giá minh bạch.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Ba Tri",
+  duration: "4.5 - 5 giờ",
+},
+{
+  key: "can-gio-di-thanh-phu-ben-tre",
+  path: "thue-xe-tu-can-gio-di-thanh-phu-ben-tre",
+  from: "Cần Giờ, TP.HCM",
+  to: "Thạnh Phú, Bến Tre",
+  title:
+    "Thuê xe từ Cần Giờ đi Thạnh Phú Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ xe riêng từ Cần Giờ đi Thạnh Phú đáp ứng nhu cầu đi công tác, du lịch biển, về quê hoặc khám bệnh. Xe đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và phục vụ cả ngày lẫn đêm.",
+  routeText:
+    "Cần Giờ → Phà Bình Khánh → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Quốc lộ 57 → Thạnh Phú",
+  duration: "5 - 5.5 giờ",
+},
+
+{
+  key: "binh-duong-di-ben-tre",
+  path: "thue-xe-tu-binh-duong-di-ben-tre",
+  from: "Bình Dương",
+  to: "Bến Tre",
+  title:
+    "Thuê xe từ Bình Dương đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Bình Dương đi Bến Tre dành cho khách công tác, du lịch, về quê hoặc thăm người thân. Xe đón tận nơi trên toàn tỉnh Bình Dương, không ghép khách, hoạt động 24/7 và báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "Bình Dương → Vành đai 3 TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3.5 giờ",
+},
+{
+  key: "ben-tre-di-binh-duong",
+  path: "thue-xe-tu-ben-tre-di-binh-duong",
+  from: "Bến Tre",
+  to: "Bình Dương",
+  title:
+    "Thuê xe từ Bến Tre đi Bình Dương, xe riêng không ghép khách",
+  description:
+    "Đặt xe riêng từ Bến Tre đi Bình Dương với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi tại Bến Tre, không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → Vành đai 3 TP.HCM → Bình Dương",
+  duration: "2.5 - 3.5 giờ",
+},
+{
+  key: "bien-hoa-di-ben-tre",
+  path: "thue-xe-tu-bien-hoa-di-ben-tre",
+  from: "Biên Hòa, Đồng Nai",
+  to: "Bến Tre",
+  title:
+    "Thuê xe từ Biên Hòa đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Biên Hòa đi Bến Tre phù hợp cho khách công tác, du lịch, về quê hoặc thăm người thân. Xe đời mới, tài xế nhiều kinh nghiệm, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Biên Hòa → Vành đai 3 TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "ben-tre-di-bien-hoa",
+  path: "thue-xe-tu-ben-tre-di-bien-hoa",
+  from: "Bến Tre",
+  to: "Biên Hòa, Đồng Nai",
+  title:
+    "Thuê xe từ Bến Tre đi Biên Hòa, xe riêng giá tốt",
+  description:
+    "Xe riêng từ Bến Tre đi Biên Hòa đáp ứng nhu cầu công tác, du lịch, khám bệnh hoặc về quê. Xe đưa đón tận nơi, không ghép khách, báo giá trước và hoạt động liên tục 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → Vành đai 3 TP.HCM → Biên Hòa",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "dong-nai-di-ben-tre",
+  path: "thue-xe-tu-dong-nai-di-ben-tre",
+  from: "Đồng Nai",
+  to: "Bến Tre",
+  title:
+    "Thuê xe từ Đồng Nai đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Đặt xe riêng từ Đồng Nai đi Bến Tre với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi trên toàn tỉnh Đồng Nai, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Đồng Nai → Vành đai 3 TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "3 - 4 giờ",
+},
+{
+  key: "ben-tre-di-dong-nai",
+  path: "thue-xe-tu-ben-tre-di-dong-nai",
+  from: "Bến Tre",
+  to: "Đồng Nai",
+  title:
+    "Thuê xe từ Bến Tre đi Đồng Nai, xe riêng 24/7",
+  description:
+    "Dịch vụ xe riêng từ Bến Tre đi Đồng Nai phù hợp cho khách công tác, du lịch hoặc thăm người thân. Xe đưa đón tận nơi, không ghép khách, tài xế chuyên tuyến và giá minh bạch.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → Vành đai 3 TP.HCM → Đồng Nai",
+  duration: "3 - 4 giờ",
+},
+
+{
+  key: "xe-tp-hcm-di-ben-tre",
+  path: "xe-tp-hcm-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe TP.HCM đi Bến Tre, xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Dịch vụ xe TP.HCM đi Bến Tre bằng xe riêng 5 chỗ, 7 chỗ và 16 chỗ. Đón tận nơi tại TP.HCM, không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "thue-xe-ben-tre-di-tp-hcm",
+  path: "thue-xe-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt xe riêng từ Bến Tre đi TP.HCM với nhiều lựa chọn xe đời mới. Xe đón tận nơi, không ghép khách, hoạt động 24/7, báo giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "thue-xe-tu-ben-tre-di-tp-hcm",
+  path: "thue-xe-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe từ Bến Tre đi TP.HCM, xe riêng 24/7",
+  description:
+    "Dịch vụ thuê xe từ Bến Tre đi TP.HCM dành cho khách cá nhân, gia đình và doanh nghiệp. Xe đón tận nơi, không ghép khách, giá rõ ràng và phục vụ mọi khung giờ.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-tu-ben-tre-di-tp-hcm",
+  path: "dat-xe-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Đặt xe từ Bến Tre đi TP.HCM, xe riêng giá tốt",
+  description:
+    "Đặt xe riêng từ Bến Tre đi TP.HCM cho nhu cầu công tác, du lịch hoặc về quê. Xe đón tận nơi, không ghép khách, nhiều lựa chọn xe và tài xế chuyên nghiệp.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-hop-dong-di-ben-tre",
+  path: "xe-hop-dong-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe hợp đồng đi Bến Tre, xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Dịch vụ xe hợp đồng đi Bến Tre dành cho cá nhân, gia đình và doanh nghiệp. Xe riêng không ghép khách, đón tận nơi, báo giá trước khi khởi hành và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-hop-dong-tu-ben-tre-di-tp-hcm",
+  path: "xe-hop-dong-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe hợp đồng từ Bến Tre đi TP.HCM, xe riêng giá tốt",
+  description:
+    "Đặt xe hợp đồng từ Bến Tre đi TP.HCM với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi, không ghép khách, phục vụ 24/7 và báo giá minh bạch.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-du-lich-di-ben-tre",
+  path: "xe-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe du lịch đi Bến Tre, thuê xe riêng 5 chỗ, 7 chỗ, 16 chỗ",
+  description:
+    "Thuê xe du lịch đi Bến Tre cho gia đình, nhóm bạn hoặc đoàn khách. Xe sạch sẽ, tài xế lịch sự, đón tận nơi và không ghép khách trong suốt hành trình.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-gia-dinh-di-ben-tre",
+  path: "xe-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe gia đình đi Bến Tre, xe riêng rộng rãi, thoải mái",
+  description:
+    "Dịch vụ xe gia đình đi Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đưa đón tận nơi, không ghép khách, phù hợp cho gia đình có trẻ nhỏ hoặc người lớn tuổi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-cong-tac-di-ben-tre",
+  path: "xe-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe công tác đi Bến Tre, xe riêng chuyên phục vụ doanh nghiệp",
+  description:
+    "Xe công tác đi Bến Tre dành cho doanh nghiệp và cá nhân cần di chuyển nhanh chóng, đúng giờ. Xe đón tận nơi, không ghép khách, xuất hóa đơn khi có yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-dua-don-ben-tre",
+  path: "xe-dua-don-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe đưa đón Bến Tre, dịch vụ xe riêng tận nơi 24/7",
+  description:
+    "Dịch vụ xe đưa đón Bến Tre phục vụ mọi nhu cầu như công tác, du lịch, về quê hoặc đưa đón người thân. Xe riêng không ghép khách, giá minh bạch và hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "gia-xe-di-ben-tre",
+  path: "gia-xe-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe đi Bến Tre mới nhất, xe riêng đưa đón tận nơi",
+  description:
+    "Cập nhật giá xe đi Bến Tre mới nhất với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Báo giá rõ ràng trước khi đặt, không ghép khách, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "bang-gia-xe-di-ben-tre",
+  path: "bang-gia-xe-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Bảng giá xe đi Bến Tre chi tiết theo từng loại xe",
+  description:
+    "Xem bảng giá xe đi Bến Tre theo từng dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Giá minh bạch, xe riêng không ghép khách, đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "bao-gia-xe-di-ben-tre",
+  path: "bao-gia-xe-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Báo giá xe đi Bến Tre nhanh chóng, chính xác",
+  description:
+    "Nhận báo giá xe đi Bến Tre chỉ trong vài phút. Xe riêng đưa đón tận nơi, không ghép khách, giá trọn gói và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+
+{
+  key: "gia-xe-hop-dong-di-ben-tre",
+  path: "gia-xe-hop-dong-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe hợp đồng đi Bến Tre trọn gói, không phát sinh",
+  description:
+    "Tham khảo giá xe hợp đồng đi Bến Tre với dịch vụ xe riêng chất lượng cao. Xe đón tận nơi, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "gia-xe-gia-dinh-di-ben-tre",
+  path: "gia-xe-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe gia đình đi Bến Tre, xe riêng an toàn và tiện nghi",
+  description:
+    "Xem giá xe gia đình đi Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe sạch sẽ, đón tận nơi, không ghép khách và phù hợp cho cả gia đình.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "gia-xe-du-lich-di-ben-tre",
+  path: "gia-xe-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe du lịch đi Bến Tre trọn gói, xe riêng chất lượng",
+  description:
+    "Cập nhật giá xe du lịch đi Bến Tre cho cá nhân, gia đình và đoàn khách. Xe riêng không ghép khách, tài xế chuyên nghiệp và báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "gia-xe-cong-tac-di-ben-tre",
+  path: "gia-xe-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe công tác đi Bến Tre, xe riêng phục vụ doanh nghiệp",
+  description:
+    "Tham khảo giá xe công tác đi Bến Tre với dịch vụ xe riêng đưa đón tận nơi. Phù hợp cho doanh nghiệp, chuyên gia và khách hàng cần di chuyển đúng giờ.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-1-chieu-di-ben-tre",
+  path: "xe-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 1 chiều đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe 1 chiều đi Bến Tre bằng xe riêng 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi tại TP.HCM, không ghép khách, báo giá trước khi đặt và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-1-chieu-tu-ben-tre-di-tp-hcm",
+  path: "xe-1-chieu-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe 1 chiều từ Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt xe 1 chiều từ Bến Tre đi TP.HCM với nhiều lựa chọn xe đời mới. Xe đón tận nơi, không ghép khách, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "thue-xe-1-chieu-tu-ben-tre-di-tp-hcm",
+  path: "thue-xe-1-chieu-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Thuê xe 1 chiều từ Bến Tre đi TP.HCM, xe riêng 24/7",
+  description:
+    "Dịch vụ thuê xe 1 chiều từ Bến Tre đi TP.HCM với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đưa đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-1-chieu-di-ben-tre",
+  path: "dat-xe-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe 1 chiều đi Bến Tre nhanh chóng, xe riêng tận nơi",
+  description:
+    "Đặt xe 1 chiều đi Bến Tre online nhanh chóng. Xe riêng không ghép khách, báo giá trước khi đặt, không cần đặt cọc và phục vụ liên tục 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-1-chieu-tu-ben-tre-di-tp-hcm",
+  path: "dat-xe-1-chieu-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Đặt xe 1 chiều từ Bến Tre đi TP.HCM, xe riêng giá tốt",
+  description:
+    "Đặt xe 1 chiều từ Bến Tre đi TP.HCM dành cho cá nhân, gia đình và doanh nghiệp. Xe đón tận nơi, không ghép khách, tài xế chuyên nghiệp và giá minh bạch.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "taxi-1-chieu-di-ben-tre",
+  path: "taxi-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi 1 chiều đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Dịch vụ taxi 1 chiều đi Bến Tre bằng xe riêng đưa đón tận nơi. Biết giá trước khi đặt, không cần đặt cọc, tài xế chuyên tuyến và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-dua-don-1-chieu-di-ben-tre",
+  path: "xe-dua-don-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe đưa đón 1 chiều đi Bến Tre, xe riêng tận nơi",
+  description:
+    "Dịch vụ xe đưa đón 1 chiều đi Bến Tre phù hợp cho công tác, du lịch hoặc về quê. Xe đón tận nơi, không ghép khách, giá minh bạch và hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-1-chieu-gia-re-di-ben-tre",
+  path: "xe-1-chieu-gia-re-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 1 chiều giá rẻ đi Bến Tre, xe riêng chất lượng",
+  description:
+    "Tìm xe 1 chiều giá rẻ đi Bến Tre với dịch vụ xe riêng an toàn, không ghép khách. Báo giá rõ ràng trước khi đặt, nhiều dòng xe phù hợp mọi nhu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-1-chieu-tron-goi-di-ben-tre",
+  path: "xe-1-chieu-tron-goi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 1 chiều trọn gói đi Bến Tre, không phát sinh chi phí",
+  description:
+    "Dịch vụ xe 1 chiều trọn gói đi Bến Tre với giá minh bạch, không phát sinh chi phí ngoài báo giá. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-khu-hoi-di-ben-tre",
+  path: "xe-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe khứ hồi đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe khứ hồi đi Bến Tre bằng xe riêng 5 chỗ, 7 chỗ và 16 chỗ. Xe đón tận nơi, không ghép khách, lịch trình linh hoạt, báo giá trước và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-khu-hoi-tu-ben-tre-di-tp-hcm",
+  path: "xe-khu-hoi-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe khứ hồi từ Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt xe khứ hồi từ Bến Tre đi TP.HCM với nhiều lựa chọn xe đời mới. Xe đón tận nơi, không ghép khách, tài xế chuyên tuyến và hỗ trợ chờ theo lịch hẹn.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ/lượt",
+},
+
+{
+  key: "dat-xe-khu-hoi-di-ben-tre",
+  path: "dat-xe-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe khứ hồi đi Bến Tre nhanh chóng, xe riêng tận nơi",
+  description:
+    "Đặt xe khứ hồi đi Bến Tre online dễ dàng. Xe riêng không ghép khách, báo giá trước khi đặt, không cần đặt cọc và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-2-chieu-di-ben-tre",
+  path: "xe-2-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 2 chiều đi Bến Tre, xe riêng đưa đón linh hoạt",
+  description:
+    "Dịch vụ xe 2 chiều đi Bến Tre phù hợp cho khách cần đi và về trong ngày hoặc nhiều ngày. Xe đón tận nơi, không ghép khách và chủ động thời gian theo yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-di-ben-tre-va-quay-ve",
+  path: "xe-di-ben-tre-va-quay-ve",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe đi Bến Tre và quay về, xe riêng trọn gói",
+  description:
+    "Đặt xe đi Bến Tre và quay về với lịch trình linh hoạt theo nhu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến và báo giá trọn gói trước khi khởi hành.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+
+{
+  key: "xe-di-ve-trong-ngay-ben-tre",
+  path: "xe-di-ve-trong-ngay-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe đi về trong ngày Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe đi về trong ngày Bến Tre dành cho khách công tác, gặp đối tác hoặc giải quyết công việc. Xe riêng không ghép khách, đón tận nơi, chờ theo lịch hẹn và đưa khách trở về TP.HCM an toàn.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-khu-hoi-trong-ngay-ben-tre",
+  path: "xe-khu-hoi-trong-ngay-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe khứ hồi trong ngày Bến Tre, xe riêng linh hoạt",
+  description:
+    "Đặt xe khứ hồi trong ngày đi Bến Tre với lịch trình linh hoạt theo yêu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến, báo giá trọn gói và không phát sinh chi phí.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+
+{
+  key: "xe-cong-tac-khu-hoi-ben-tre",
+  path: "xe-cong-tac-khu-hoi-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe công tác khứ hồi Bến Tre, xe riêng cho doanh nghiệp",
+  description:
+    "Dịch vụ xe công tác khứ hồi Bến Tre dành cho doanh nghiệp và chuyên gia cần di chuyển trong ngày hoặc nhiều ngày. Xe đưa đón tận nơi, không ghép khách và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-du-lich-khu-hoi-ben-tre",
+  path: "xe-du-lich-khu-hoi-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe du lịch khứ hồi Bến Tre, xe riêng cho gia đình và đoàn",
+  description:
+    "Thuê xe du lịch khứ hồi Bến Tre với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe riêng không ghép khách, tài xế thân thiện và lịch trình linh hoạt theo yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-gia-dinh-khu-hoi-ben-tre",
+  path: "xe-gia-dinh-khu-hoi-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe gia đình khứ hồi Bến Tre, xe riêng rộng rãi và tiện nghi",
+  description:
+    "Dịch vụ xe gia đình khứ hồi Bến Tre phù hợp cho các chuyến về quê, du lịch hoặc thăm người thân. Xe sạch sẽ, rộng rãi, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+
+{
+  key: "xe-5-cho-di-ben-tre",
+  path: "xe-5-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ đi Bến Tre, xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Dịch vụ xe 5 chỗ đi Bến Tre bằng xe riêng đời mới, phù hợp cho cá nhân, cặp đôi hoặc gia đình nhỏ. Xe đón tận nơi, không ghép khách, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-5-cho-tu-ben-tre-di-tp-hcm",
+  path: "xe-5-cho-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe 5 chỗ từ Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt xe 5 chỗ từ Bến Tre đi TP.HCM với tài xế chuyên tuyến, xe sạch sẽ và đưa đón tận nơi. Không ghép khách, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "thue-xe-5-cho-di-ben-tre",
+  path: "thue-xe-5-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Thuê xe 5 chỗ đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Thuê xe 5 chỗ đi Bến Tre phục vụ công tác, du lịch, về quê hoặc thăm người thân. Xe đón tận nơi, không ghép khách, tài xế nhiều kinh nghiệm và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-5-cho-di-ben-tre",
+  path: "dat-xe-5-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe 5 chỗ đi Bến Tre nhanh chóng, xe riêng tận nơi",
+  description:
+    "Đặt xe 5 chỗ đi Bến Tre online nhanh chóng với GoViet247. Xe riêng không ghép khách, báo giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-sedan-di-ben-tre",
+  path: "xe-sedan-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe sedan đi Bến Tre, xe riêng tiện nghi và thoải mái",
+  description:
+    "Dịch vụ xe sedan đi Bến Tre phù hợp cho khách công tác hoặc gia đình nhỏ. Xe đời mới, vận hành êm ái, đón tận nơi, không ghép khách và phục vụ suốt 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-suv-5-cho-di-ben-tre",
+  path: "xe-suv-5-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe SUV 5 chỗ đi Bến Tre, rộng rãi và an toàn",
+  description:
+    "Thuê xe SUV 5 chỗ đi Bến Tre với khoang hành lý rộng, phù hợp cho gia đình hoặc khách mang nhiều hành lý. Xe riêng không ghép khách, tài xế chuyên tuyến và giá minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-5-cho-1-chieu-di-ben-tre",
+  path: "xe-5-cho-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ 1 chiều đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe 5 chỗ 1 chiều đi Bến Tre dành cho khách công tác, du lịch hoặc về quê. Xe đón tận nơi, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-5-cho-khu-hoi-di-ben-tre",
+  path: "xe-5-cho-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ khứ hồi đi Bến Tre, xe riêng linh hoạt",
+  description:
+    "Thuê xe 5 chỗ khứ hồi đi Bến Tre với lịch trình linh hoạt theo yêu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến và giá trọn gói minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-5-cho-gia-dinh-di-ben-tre",
+  path: "xe-5-cho-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ gia đình đi Bến Tre, xe riêng sạch sẽ, tiện nghi",
+  description:
+    "Xe 5 chỗ gia đình đi Bến Tre phù hợp cho gia đình nhỏ hoặc nhóm bạn. Xe đời mới, điều hòa mát, không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-5-cho-cong-tac-di-ben-tre",
+  path: "xe-5-cho-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ công tác đi Bến Tre, đúng giờ, chuyên nghiệp",
+  description:
+    "Dịch vụ xe 5 chỗ công tác đi Bến Tre dành cho doanh nghiệp và cá nhân. Xe đón tận nơi, không ghép khách, tài xế chuyên nghiệp và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-5-cho-du-lich-di-ben-tre",
+  path: "xe-5-cho-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ du lịch đi Bến Tre, xe riêng an toàn và thoải mái",
+  description:
+    "Thuê xe 5 chỗ du lịch đi Bến Tre cho chuyến tham quan, nghỉ dưỡng hoặc khám phá miền Tây. Xe riêng không ghép khách, lịch trình linh hoạt và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "gia-xe-5-cho-di-ben-tre-tron-goi",
+  path: "gia-xe-5-cho-di-ben-tre-tron-goi",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe 5 chỗ đi Bến Tre trọn gói, không phát sinh",
+  description:
+    "Tham khảo giá xe 5 chỗ đi Bến Tre trọn gói với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-7-cho-di-ben-tre",
+  path: "xe-7-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ đi Bến Tre, xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Dịch vụ xe 7 chỗ đi Bến Tre bằng xe riêng đời mới, phù hợp cho gia đình hoặc nhóm bạn. Xe đón tận nơi, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-7-cho-tu-ben-tre-di-tp-hcm",
+  path: "xe-7-cho-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe 7 chỗ từ Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt xe 7 chỗ từ Bến Tre đi TP.HCM với xe đời mới, tài xế chuyên tuyến và đưa đón tận nơi. Không ghép khách, giá minh bạch và phục vụ liên tục 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "thue-xe-7-cho-di-ben-tre",
+  path: "thue-xe-7-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Thuê xe 7 chỗ đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Thuê xe 7 chỗ đi Bến Tre phục vụ công tác, du lịch, về quê hoặc thăm người thân. Xe rộng rãi, đón tận nơi, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-7-cho-di-ben-tre",
+  path: "dat-xe-7-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe 7 chỗ đi Bến Tre nhanh chóng, xe riêng tận nơi",
+  description:
+    "Đặt xe 7 chỗ đi Bến Tre online nhanh chóng với GoViet247. Xe riêng không ghép khách, báo giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-mpv-7-cho-di-ben-tre",
+  path: "xe-mpv-7-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe MPV 7 chỗ đi Bến Tre, rộng rãi và tiện nghi",
+  description:
+    "Dịch vụ xe MPV 7 chỗ đi Bến Tre phù hợp cho gia đình và nhóm bạn. Xe đời mới, khoang hành lý rộng, không ghép khách và đưa đón tận nơi theo yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-suv-7-cho-di-ben-tre",
+  path: "xe-suv-7-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe SUV 7 chỗ đi Bến Tre, xe riêng an toàn và thoải mái",
+  description:
+    "Thuê xe SUV 7 chỗ đi Bến Tre với không gian rộng rãi, vận hành êm ái và phù hợp cho những chuyến đi gia đình hoặc công tác. Xe riêng không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-7-cho-1-chieu-di-ben-tre",
+  path: "xe-7-cho-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ 1 chiều đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe 7 chỗ 1 chiều đi Bến Tre phù hợp cho gia đình, nhóm bạn hoặc khách công tác. Xe đón tận nơi, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-7-cho-khu-hoi-di-ben-tre",
+  path: "xe-7-cho-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ khứ hồi đi Bến Tre, xe riêng linh hoạt",
+  description:
+    "Thuê xe 7 chỗ khứ hồi đi Bến Tre với lịch trình linh hoạt theo nhu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến và giá trọn gói minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-7-cho-gia-dinh-di-ben-tre",
+  path: "xe-7-cho-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ gia đình đi Bến Tre, rộng rãi và tiện nghi",
+  description:
+    "Xe 7 chỗ gia đình đi Bến Tre phù hợp cho gia đình đông người hoặc nhóm bạn. Xe đời mới, sạch sẽ, không ghép khách và đưa đón tận nơi theo yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-7-cho-cong-tac-di-ben-tre",
+  path: "xe-7-cho-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ công tác đi Bến Tre, đúng giờ và chuyên nghiệp",
+  description:
+    "Dịch vụ xe 7 chỗ công tác đi Bến Tre dành cho doanh nghiệp và cá nhân. Xe đón tận nơi, không ghép khách, tài xế chuyên nghiệp và hỗ trợ xuất hóa đơn khi có yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-7-cho-du-lich-di-ben-tre",
+  path: "xe-7-cho-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ du lịch đi Bến Tre, xe riêng an toàn và thoải mái",
+  description:
+    "Thuê xe 7 chỗ du lịch đi Bến Tre cho chuyến tham quan, nghỉ dưỡng hoặc khám phá miền Tây. Xe riêng không ghép khách, lịch trình linh hoạt và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "gia-xe-7-cho-di-ben-tre-tron-goi",
+  path: "gia-xe-7-cho-di-ben-tre-tron-goi",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe 7 chỗ đi Bến Tre trọn gói, không phát sinh",
+  description:
+    "Tham khảo giá xe 7 chỗ đi Bến Tre trọn gói với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-16-cho-di-ben-tre",
+  path: "xe-16-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ đi Bến Tre, xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Dịch vụ xe 16 chỗ đi Bến Tre bằng xe riêng đời mới, phù hợp cho đoàn du lịch, công ty, trường học hoặc gia đình đông người. Xe đón tận nơi, không ghép khách, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-16-cho-tu-ben-tre-di-tp-hcm",
+  path: "xe-16-cho-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe 16 chỗ từ Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt xe 16 chỗ từ Bến Tre đi TP.HCM với xe đời mới, rộng rãi và tài xế chuyên tuyến. Xe đón tận nơi, không ghép khách, phù hợp cho đoàn khách và doanh nghiệp.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "thue-xe-16-cho-di-ben-tre",
+  path: "thue-xe-16-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Thuê xe 16 chỗ đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Thuê xe 16 chỗ đi Bến Tre phục vụ công tác, du lịch, lễ hội hoặc về quê. Xe rộng rãi, điều hòa mát, đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-16-cho-di-ben-tre",
+  path: "dat-xe-16-cho-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe 16 chỗ đi Bến Tre nhanh chóng, xe riêng tận nơi",
+  description:
+    "Đặt xe 16 chỗ đi Bến Tre online nhanh chóng với GoViet247. Xe riêng không ghép khách, báo giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-ford-transit-di-ben-tre",
+  path: "xe-ford-transit-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe Ford Transit đi Bến Tre, xe 16 chỗ rộng rãi",
+  description:
+    "Dịch vụ xe Ford Transit đi Bến Tre phù hợp cho đoàn khách, công ty và gia đình đông người. Xe sạch sẽ, khoang hành lý rộng, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-solati-di-ben-tre",
+  path: "xe-solati-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe Solati đi Bến Tre, xe 16 chỗ cao cấp đưa đón tận nơi",
+  description:
+    "Thuê xe Hyundai Solati đi Bến Tre với không gian rộng rãi, ghế ngồi thoải mái và vận hành êm ái. Xe riêng không ghép khách, phù hợp cho đoàn du lịch hoặc công tác.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-16-cho-1-chieu-di-ben-tre",
+  path: "xe-16-cho-1-chieu-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ 1 chiều đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe 16 chỗ 1 chiều đi Bến Tre dành cho đoàn du lịch, công ty hoặc gia đình đông người. Xe đón tận nơi, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-16-cho-khu-hoi-di-ben-tre",
+  path: "xe-16-cho-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ khứ hồi đi Bến Tre, xe riêng linh hoạt",
+  description:
+    "Thuê xe 16 chỗ khứ hồi đi Bến Tre với lịch trình linh hoạt theo yêu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến và giá trọn gói minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-16-cho-du-lich-di-ben-tre",
+  path: "xe-16-cho-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ du lịch đi Bến Tre, xe riêng rộng rãi và tiện nghi",
+  description:
+    "Thuê xe 16 chỗ du lịch đi Bến Tre cho đoàn tham quan, nghỉ dưỡng hoặc khám phá miền Tây. Xe đời mới, không ghép khách, lịch trình linh hoạt và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-16-cho-cong-tac-di-ben-tre",
+  path: "xe-16-cho-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ công tác đi Bến Tre, đúng giờ và chuyên nghiệp",
+  description:
+    "Dịch vụ xe 16 chỗ công tác đi Bến Tre dành cho doanh nghiệp, cơ quan và tổ chức. Xe đón tận nơi, không ghép khách, tài xế chuyên nghiệp và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-16-cho-dua-don-doan-di-ben-tre",
+  path: "xe-16-cho-dua-don-doan-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ đưa đón đoàn đi Bến Tre, xe riêng an toàn",
+  description:
+    "Dịch vụ xe 16 chỗ đưa đón đoàn đi Bến Tre dành cho công ty, trường học, hội nhóm và đoàn du lịch. Xe rộng rãi, không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "gia-xe-16-cho-di-ben-tre-tron-goi",
+  path: "gia-xe-16-cho-di-ben-tre-tron-goi",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe 16 chỗ đi Bến Tre trọn gói, không phát sinh",
+  description:
+    "Tham khảo giá xe 16 chỗ đi Bến Tre trọn gói với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-tu-ben-tre-di-san-bay-tan-son-nhat",
+  path: "xe-tu-ben-tre-di-san-bay-tan-son-nhat",
+  from: "Bến Tre",
+  to: "Sân bay Tân Sơn Nhất",
+  title:
+    "Xe từ Bến Tre đi Sân bay Tân Sơn Nhất đúng giờ",
+  description:
+    "Dịch vụ xe riêng từ Bến Tre đi Sân bay Tân Sơn Nhất, tài xế đón tận nơi và chủ động thời gian để kịp chuyến bay. Không ghép khách, giá minh bạch và phục vụ 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM → Sân bay Tân Sơn Nhất",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "don-san-bay-tan-son-nhat-di-ben-tre",
+  path: "don-san-bay-tan-son-nhat-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Đón sân bay Tân Sơn Nhất đi Bến Tre bằng xe riêng",
+  description:
+    "Đặt dịch vụ đón sân bay Tân Sơn Nhất đi Bến Tre với xe riêng đời mới, tài xế chờ sẵn khi máy bay hạ cánh. Không ghép khách, hỗ trợ hành lý và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "dua-ra-san-bay-tu-ben-tre",
+  path: "dua-ra-san-bay-tu-ben-tre",
+  from: "Bến Tre",
+  to: "Sân bay Tân Sơn Nhất",
+  title:
+    "Đưa ra Sân bay Tân Sơn Nhất từ Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ đưa ra Sân bay Tân Sơn Nhất từ Bến Tre dành cho cá nhân, gia đình và doanh nghiệp. Xe đón tận nơi, không ghép khách và luôn ưu tiên thời gian để kịp chuyến bay.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM → Sân bay Tân Sơn Nhất",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "dat-xe-san-bay-di-ben-tre",
+  path: "dat-xe-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Đặt xe sân bay đi Bến Tre nhanh chóng, đưa đón tận nơi",
+  description:
+    "Đặt xe sân bay đi Bến Tre online chỉ trong vài phút. GoViet247 cung cấp xe riêng đời mới, tài xế theo dõi giờ bay, không ghép khách và phục vụ suốt 24/7.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "gia-xe-tu-san-bay-tan-son-nhat-di-ben-tre",
+  path: "gia-xe-tu-san-bay-tan-son-nhat-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Giá xe từ Sân bay Tân Sơn Nhất đi Bến Tre trọn gói",
+  description:
+    "Tham khảo giá xe từ Sân bay Tân Sơn Nhất đi Bến Tre với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách, không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-1-chieu-tu-san-bay-di-ben-tre",
+  path: "xe-1-chieu-tu-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe 1 chiều từ Sân bay Tân Sơn Nhất đi Bến Tre",
+  description:
+    "Dịch vụ xe 1 chiều từ Sân bay Tân Sơn Nhất đi Bến Tre dành cho khách du lịch, công tác hoặc về quê. Xe riêng không ghép khách, đón đúng giờ và thanh toán sau chuyến đi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-khu-hoi-san-bay-di-ben-tre",
+  path: "xe-khu-hoi-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe khứ hồi từ Sân bay Tân Sơn Nhất đi Bến Tre",
+  description:
+    "Thuê xe khứ hồi từ Sân bay Tân Sơn Nhất đi Bến Tre với lịch trình linh hoạt theo yêu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến và giá trọn gói minh bạch.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ/lượt",
+},
+{
+  key: "xe-gia-dinh-tu-san-bay-di-ben-tre",
+  path: "xe-gia-dinh-tu-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe gia đình từ Sân bay Tân Sơn Nhất đi Bến Tre",
+  description:
+    "Dịch vụ xe gia đình từ Sân bay Tân Sơn Nhất đi Bến Tre với nhiều lựa chọn 5 chỗ, 7 chỗ và 16 chỗ. Xe sạch sẽ, rộng rãi, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-cong-tac-tu-san-bay-di-ben-tre",
+  path: "xe-cong-tac-tu-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe công tác từ Sân bay Tân Sơn Nhất đi Bến Tre",
+  description:
+    "Dịch vụ xe công tác từ Sân bay Tân Sơn Nhất đi Bến Tre dành cho doanh nghiệp và cá nhân. Xe đón đúng giờ, không ghép khách, tài xế chuyên nghiệp và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-du-lich-tu-san-bay-di-ben-tre",
+  path: "xe-du-lich-tu-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe du lịch từ Sân bay Tân Sơn Nhất đi Bến Tre",
+  description:
+    "Thuê xe du lịch từ Sân bay Tân Sơn Nhất đi Bến Tre với xe riêng đời mới, lịch trình linh hoạt và tài xế nhiều kinh nghiệm. Không ghép khách, phù hợp cho gia đình và nhóm bạn.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-tien-chuyen-tu-ben-tre-di-tp-hcm",
+  path: "xe-tien-chuyen-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Xe tiện chuyến từ Bến Tre đi TP.HCM, xe riêng linh hoạt",
+  description:
+    "Đặt xe tiện chuyến từ Bến Tre đi TP.HCM với tài xế chuyên tuyến, đón tận nơi và không ghép khách. Giá minh bạch, lịch trình linh hoạt và phục vụ 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-tien-chuyen-di-ben-tre",
+  path: "dat-xe-tien-chuyen-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe tiện chuyến đi Bến Tre nhanh chóng",
+  description:
+    "Đặt xe tiện chuyến đi Bến Tre dễ dàng với GoViet247. Xe riêng không ghép khách, báo giá trước, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-tien-duong-di-ben-tre",
+  path: "xe-tien-duong-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện đường đi Bến Tre, đặt xe riêng dễ dàng",
+  description:
+    "Dịch vụ xe tiện đường đi Bến Tre giúp khách dễ dàng đặt xe riêng phù hợp với lịch trình. Không ghép khách, đưa đón tận nơi và báo giá minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tien-chuyen-ve-ben-tre",
+  path: "xe-tien-chuyen-ve-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện chuyến về Bến Tre, phục vụ 24/7",
+  description:
+    "Dịch vụ xe tiện chuyến về Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe riêng không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "gia-xe-tien-chuyen-di-ben-tre",
+  path: "gia-xe-tien-chuyen-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá xe tiện chuyến đi Bến Tre trọn gói, không phát sinh",
+  description:
+    "Tham khảo giá xe tiện chuyến đi Bến Tre với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách, không cần đặt cọc và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tien-chuyen-khu-hoi-di-ben-tre",
+  path: "xe-tien-chuyen-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện chuyến khứ hồi đi Bến Tre, lịch trình linh hoạt",
+  description:
+    "Dịch vụ xe tiện chuyến khứ hồi đi Bến Tre phù hợp cho công tác, du lịch hoặc về quê. Xe riêng không ghép khách, tài xế chuyên tuyến và giá trọn gói minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "xe-tien-chuyen-gia-dinh-di-ben-tre",
+  path: "xe-tien-chuyen-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện chuyến gia đình đi Bến Tre, xe riêng thoải mái",
+  description:
+    "Thuê xe tiện chuyến gia đình đi Bến Tre với các dòng xe 5 chỗ, 7 chỗ và 16 chỗ đời mới. Xe sạch sẽ, không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tien-chuyen-cong-tac-di-ben-tre",
+  path: "xe-tien-chuyen-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện chuyến công tác đi Bến Tre, đúng giờ, chuyên nghiệp",
+  description:
+    "Dịch vụ xe tiện chuyến công tác đi Bến Tre dành cho doanh nghiệp và cá nhân. Xe đón tận nơi, không ghép khách, tài xế chuyên nghiệp và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tien-chuyen-du-lich-di-ben-tre",
+  path: "xe-tien-chuyen-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện chuyến du lịch đi Bến Tre, xe riêng an toàn",
+  description:
+    "Dịch vụ xe tiện chuyến du lịch đi Bến Tre dành cho gia đình và nhóm bạn. Xe riêng đời mới, không ghép khách, lịch trình linh hoạt và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tien-chuyen-dua-don-tan-noi-di-ben-tre",
+  path: "xe-tien-chuyen-dua-don-tan-noi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe tiện chuyến đưa đón tận nơi đi Bến Tre",
+  description:
+    "Đặt xe tiện chuyến đưa đón tận nơi đi Bến Tre với GoViet247. Xe riêng không ghép khách, đón đúng địa điểm yêu cầu, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-di-con-phung-ben-tre",
+  path: "xe-di-con-phung-ben-tre",
+  from: "TP.HCM",
+  to: "Cồn Phụng, Bến Tre",
+  title:
+    "Xe đi Cồn Phụng Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng đi Cồn Phụng Bến Tre dành cho gia đình, nhóm bạn hoặc khách du lịch. Xe đời mới, không ghép khách, đón tận nơi, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Cồn Phụng",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-di-con-quy-ben-tre",
+  path: "xe-di-con-quy-ben-tre",
+  from: "TP.HCM",
+  to: "Cồn Quy, Bến Tre",
+  title:
+    "Xe đi Cồn Quy Bến Tre, xe riêng không ghép khách",
+  description:
+    "Thuê xe đi Cồn Quy Bến Tre với dịch vụ xe riêng đưa đón tận nơi. Phù hợp cho chuyến du lịch miệt vườn, không ghép khách, lịch trình linh hoạt và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Cồn Quy",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-di-lang-hoa-cai-mon-ben-tre",
+  path: "xe-di-lang-hoa-cai-mon-ben-tre",
+  from: "TP.HCM",
+  to: "Làng hoa Cái Mơn, Bến Tre",
+  title:
+    "Xe đi Làng hoa Cái Mơn Bến Tre, xe riêng giá tốt",
+  description:
+    "Dịch vụ xe riêng đi Làng hoa Cái Mơn Bến Tre dành cho khách tham quan, chụp ảnh và du lịch. Xe đón tận nơi, không ghép khách và báo giá rõ ràng trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 57 → Làng hoa Cái Mơn",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-di-khu-du-lich-lan-vuong-ben-tre",
+  path: "xe-di-khu-du-lich-lan-vuong-ben-tre",
+  from: "TP.HCM",
+  to: "Khu du lịch Lan Vương, Bến Tre",
+  title:
+    "Xe đi Khu du lịch Lan Vương Bến Tre, đưa đón tận nơi",
+  description:
+    "Đặt xe đi Khu du lịch Lan Vương Bến Tre với xe riêng đời mới, tài xế chuyên tuyến và lịch trình linh hoạt. Không ghép khách, phù hợp cho gia đình, công ty và đoàn du lịch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 60 → Khu du lịch Lan Vương",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-di-lang-du-lich-con-phung-ben-tre",
+  path: "xe-di-lang-du-lich-con-phung-ben-tre",
+  from: "TP.HCM",
+  to: "Làng du lịch Cồn Phụng, Bến Tre",
+  title:
+    "Xe đi Làng du lịch Cồn Phụng Bến Tre, xe riêng tiện lợi",
+  description:
+    "Thuê xe riêng đi Làng du lịch Cồn Phụng Bến Tre để khám phá miệt vườn, đi xuồng, thưởng thức đặc sản. Xe không ghép khách, đưa đón tận nơi và phục vụ suốt 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Cầu Rạch Miễu → Cồn Phụng",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-di-san-chim-vam-ho-ben-tre",
+  path: "xe-di-san-chim-vam-ho-ben-tre",
+  from: "TP.HCM",
+  to: "Sân chim Vàm Hồ, Bến Tre",
+  title:
+    "Xe đi Sân chim Vàm Hồ Bến Tre, xe riêng an toàn",
+  description:
+    "Dịch vụ xe riêng đi Sân chim Vàm Hồ Bến Tre dành cho khách yêu thiên nhiên và khám phá hệ sinh thái rừng ngập mặn. Xe đời mới, không ghép khách và đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 57 → Sân chim Vàm Hồ",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-di-bien-thanh-phu-ben-tre",
+  path: "xe-di-bien-thanh-phu-ben-tre",
+  from: "TP.HCM",
+  to: "Biển Thạnh Phú, Bến Tre",
+  title:
+    "Xe đi Biển Thạnh Phú Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng đi Biển Thạnh Phú Bến Tre để nghỉ dưỡng, ngắm biển và thưởng thức hải sản tươi sống. Xe đời mới, không ghép khách, đón tận nơi và báo giá trước.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 60 → Thạnh Phú → Biển Thạnh Phú",
+  duration: "3 - 3.5 giờ",
+},
+{
+  key: "xe-di-chua-van-phuoc-ben-tre",
+  path: "xe-di-chua-van-phuoc-ben-tre",
+  from: "TP.HCM",
+  to: "Chùa Vạn Phước, Bến Tre",
+  title:
+    "Xe đi Chùa Vạn Phước Bến Tre, xe riêng an toàn",
+  description:
+    "Thuê xe đi Chùa Vạn Phước Bến Tre phục vụ nhu cầu hành hương, lễ Phật và tham quan. Xe riêng không ghép khách, tài xế lịch sự và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 60 → Chùa Vạn Phước",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-di-khu-luu-niem-nguyen-dinh-chieu-ben-tre",
+  path: "xe-di-khu-luu-niem-nguyen-dinh-chieu-ben-tre",
+  from: "TP.HCM",
+  to: "Khu lưu niệm Nguyễn Đình Chiểu, Bến Tre",
+  title:
+    "Xe đi Khu lưu niệm Nguyễn Đình Chiểu Bến Tre",
+  description:
+    "Đặt xe riêng đi Khu lưu niệm Nguyễn Đình Chiểu tại Bến Tre để tham quan di tích lịch sử và tìm hiểu về cuộc đời nhà thơ yêu nước Nguyễn Đình Chiểu. Xe đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 60 → Ba Tri → Khu lưu niệm Nguyễn Đình Chiểu",
+  duration: "3 giờ",
+},
+{
+  key: "xe-di-lang-nghe-banh-trang-my-long-ben-tre",
+  path: "xe-di-lang-nghe-banh-trang-my-long-ben-tre",
+  from: "TP.HCM",
+  to: "Làng nghề bánh tráng Mỹ Lồng, Bến Tre",
+  title:
+    "Xe đi Làng nghề bánh tráng Mỹ Lồng Bến Tre",
+  description:
+    "Thuê xe đi Làng nghề bánh tráng Mỹ Lồng Bến Tre để khám phá làng nghề truyền thống nổi tiếng. Xe riêng đời mới, không ghép khách, lịch trình linh hoạt và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 60 → Mỹ Lồng",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-di-lang-nghe-banh-phong-son-doc-ben-tre",
+  path: "xe-di-lang-nghe-banh-phong-son-doc-ben-tre",
+  from: "TP.HCM",
+  to: "Làng nghề bánh phồng Sơn Đốc, Bến Tre",
+  title:
+    "Xe đi Làng nghề bánh phồng Sơn Đốc Bến Tre",
+  description:
+    "Dịch vụ xe riêng đi Làng nghề bánh phồng Sơn Đốc Bến Tre dành cho khách muốn trải nghiệm văn hóa địa phương và thưởng thức đặc sản nổi tiếng. Xe không ghép khách, đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Quốc lộ 60 → Sơn Đốc",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-tu-quan-1-di-ben-tre",
+  path: "xe-tu-quan-1-di-ben-tre",
+  from: "Quận 1, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Quận 1 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe từ Quận 1 đi Bến Tre với dịch vụ xe riêng đời mới, đón tận nơi, không ghép khách. Báo giá trước khi đặt, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 1 → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tu-quan-7-di-ben-tre",
+  path: "xe-tu-quan-7-di-ben-tre",
+  from: "Quận 7, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Quận 7 đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe từ Quận 7 đi Bến Tre phù hợp cho công tác, du lịch hoặc về quê. Xe riêng đón tận nơi, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Quận 7 → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tu-thu-duc-di-ben-tre",
+  path: "xe-tu-thu-duc-di-ben-tre",
+  from: "TP. Thủ Đức",
+  to: "Bến Tre",
+  title:
+    "Xe từ Thủ Đức đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Thuê xe từ TP. Thủ Đức đi Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đời mới, không ghép khách, đưa đón tận nơi và báo giá minh bạch.",
+  routeText:
+    "TP. Thủ Đức → Vành đai 2 → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-tu-ga-sai-gon-di-ben-tre",
+  path: "xe-tu-ga-sai-gon-di-ben-tre",
+  from: "Ga Sài Gòn, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Ga Sài Gòn đi Bến Tre, xe riêng 24/7",
+  description:
+    "Dịch vụ xe từ Ga Sài Gòn đi Bến Tre dành cho khách đi tàu hỏa. Xe đón tận nơi, không ghép khách, tài xế theo dõi giờ tàu và hỗ trợ hành lý.",
+  routeText:
+    "Ga Sài Gòn → Trung tâm TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-tu-phu-my-hung-di-ben-tre",
+  path: "xe-tu-phu-my-hung-di-ben-tre",
+  from: "Phú Mỹ Hưng, Quận 7, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Phú Mỹ Hưng đi Bến Tre, xe riêng tiện lợi",
+  description:
+    "Đặt xe từ Phú Mỹ Hưng đi Bến Tre với dịch vụ xe riêng chất lượng cao. Đón tận nơi, không ghép khách, báo giá trước khi đặt và phục vụ suốt 24/7.",
+  routeText:
+    "Phú Mỹ Hưng → Nguyễn Văn Linh → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "xe-tu-binh-thanh-di-ben-tre",
+  path: "xe-tu-binh-thanh-di-ben-tre",
+  from: "Quận Bình Thạnh, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Bình Thạnh đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe từ Bình Thạnh đi Bến Tre với dịch vụ xe riêng đời mới. Xe đón tận nơi, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "Bình Thạnh → Trung tâm TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-tu-go-vap-di-ben-tre",
+  path: "xe-tu-go-vap-di-ben-tre",
+  from: "Quận Gò Vấp, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Gò Vấp đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Thuê xe từ Gò Vấp đi Bến Tre với nhiều lựa chọn xe 5 chỗ, 7 chỗ và 16 chỗ. Xe đời mới, đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Gò Vấp → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-tu-tan-binh-di-ben-tre",
+  path: "xe-tu-tan-binh-di-ben-tre",
+  from: "Quận Tân Bình, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Tân Bình đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Dịch vụ xe từ Tân Bình đi Bến Tre phù hợp cho khách ở gần sân bay hoặc khu vực trung tâm. Xe riêng không ghép khách, báo giá minh bạch và đưa đón tận nơi.",
+  routeText:
+    "Tân Bình → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-tu-quan-10-di-ben-tre",
+  path: "xe-tu-quan-10-di-ben-tre",
+  from: "Quận 10, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Quận 10 đi Bến Tre, xe riêng phục vụ 24/7",
+  description:
+    "Đặt xe từ Quận 10 đi Bến Tre với xe riêng đời mới, tài xế chuyên tuyến và lịch trình linh hoạt. Không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 10 → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-tu-quan-5-di-ben-tre",
+  path: "xe-tu-quan-5-di-ben-tre",
+  from: "Quận 5, TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe từ Quận 5 đi Bến Tre, xe riêng đưa đón tận nơi",
+  description:
+    "Thuê xe từ Quận 5 đi Bến Tre cho nhu cầu công tác, du lịch hoặc về quê. Xe riêng không ghép khách, báo giá trước và phục vụ liên tục 24/7.",
+  routeText:
+    "Quận 5 → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-tu-sala-di-ben-tre",
+  path: "xe-tu-sala-di-ben-tre",
+  from: "Khu đô thị Sala, TP. Thủ Đức",
+  to: "Bến Tre",
+  title:
+    "Xe từ Sala đi Bến Tre, xe riêng cao cấp",
+  description:
+    "Dịch vụ xe từ Khu đô thị Sala đi Bến Tre với xe riêng chất lượng cao, phù hợp cho gia đình, doanh nhân và khách du lịch. Không ghép khách, đón tận nơi và báo giá rõ ràng.",
+  routeText:
+    "Sala → TP. Thủ Đức → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-5-cho-tu-san-bay-tan-son-nhat-di-ben-tre",
+  path: "xe-5-cho-tu-san-bay-tan-son-nhat-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe 5 chỗ từ Sân bay Tân Sơn Nhất đi Bến Tre, xe riêng tận nơi",
+  description:
+    "Đặt xe 5 chỗ từ Sân bay Tân Sơn Nhất đi Bến Tre với xe riêng đời mới, tài xế theo dõi giờ hạ cánh, đón đúng cổng và không ghép khách. Báo giá trước, thanh toán sau chuyến đi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-7-cho-tu-san-bay-tan-son-nhat-di-ben-tre",
+  path: "xe-7-cho-tu-san-bay-tan-son-nhat-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe 7 chỗ từ Sân bay Tân Sơn Nhất đi Bến Tre, rộng rãi và tiện nghi",
+  description:
+    "Thuê xe 7 chỗ từ Sân bay Tân Sơn Nhất đi Bến Tre dành cho gia đình hoặc nhóm bạn. Xe riêng không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-16-cho-tu-san-bay-tan-son-nhat-di-ben-tre",
+  path: "xe-16-cho-tu-san-bay-tan-son-nhat-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe 16 chỗ từ Sân bay Tân Sơn Nhất đi Bến Tre, xe riêng cho đoàn",
+  description:
+    "Dịch vụ xe 16 chỗ từ Sân bay Tân Sơn Nhất đi Bến Tre dành cho đoàn du lịch, công ty hoặc gia đình đông người. Xe riêng không ghép khách, tài xế chuyên tuyến và báo giá minh bạch.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-ga-quoc-noi-di-ben-tre",
+  path: "xe-don-ga-quoc-noi-di-ben-tre",
+  from: "Ga Quốc nội - Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón Ga Quốc nội đi Bến Tre, tài xế chờ sẵn",
+  description:
+    "Đặt xe đón tại Ga Quốc nội Sân bay Tân Sơn Nhất đi Bến Tre. Tài xế theo dõi giờ hạ cánh, hỗ trợ hành lý, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Ga Quốc nội → Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-ga-quoc-te-di-ben-tre",
+  path: "xe-don-ga-quoc-te-di-ben-tre",
+  from: "Ga Quốc tế - Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón Ga Quốc tế đi Bến Tre, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe đón tại Ga Quốc tế Sân bay Tân Sơn Nhất đi Bến Tre với xe riêng đời mới. Đón đúng cổng, hỗ trợ hành lý, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Ga Quốc tế → Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-chuyen-bay-dem-di-ben-tre",
+  path: "xe-don-chuyen-bay-dem-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón chuyến bay đêm đi Bến Tre, phục vụ 24/7",
+  description:
+    "Đặt xe đón chuyến bay đêm từ Sân bay Tân Sơn Nhất đi Bến Tre với tài xế trực 24/7. Xe riêng không ghép khách, theo dõi giờ bay và đưa đón tận nơi an toàn.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "xe-don-chuyen-bay-sang-di-ben-tre",
+  path: "xe-don-chuyen-bay-sang-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón chuyến bay sáng đi Bến Tre, xe riêng đúng giờ",
+  description:
+    "Dịch vụ xe đón chuyến bay sáng từ Sân bay Tân Sơn Nhất đi Bến Tre với tài xế theo dõi giờ hạ cánh, đón đúng cổng, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-chuyen-bay-khuya-di-ben-tre",
+  path: "xe-don-chuyen-bay-khuya-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón chuyến bay khuya đi Bến Tre, phục vụ 24/7",
+  description:
+    "Đặt xe đón chuyến bay khuya từ Sân bay Tân Sơn Nhất đi Bến Tre với xe riêng đời mới. Tài xế trực 24/7, theo dõi giờ bay, không ghép khách và báo giá trước.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-khach-viet-kieu-di-ben-tre",
+  path: "xe-don-khach-viet-kieu-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón khách Việt kiều đi Bến Tre, xe riêng tận nơi",
+  description:
+    "Dịch vụ xe đón khách Việt kiều từ Sân bay Tân Sơn Nhất đi Bến Tre với tài xế lịch sự, hỗ trợ hành lý và đưa đón tận nơi. Xe riêng không ghép khách, phục vụ chuyên nghiệp.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-khach-nuoc-ngoai-di-ben-tre",
+  path: "xe-don-khach-nuoc-ngoai-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón khách nước ngoài đi Bến Tre, tài xế chuyên nghiệp",
+  description:
+    "Đặt xe đón khách nước ngoài từ Sân bay Tân Sơn Nhất đi Bến Tre với xe riêng sạch sẽ, tài xế nhiều kinh nghiệm và hỗ trợ đón đúng cổng sân bay.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "xe-don-doan-tu-san-bay-di-ben-tre",
+  path: "xe-don-doan-tu-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Xe đón đoàn từ Sân bay Tân Sơn Nhất đi Bến Tre",
+  description:
+    "Dịch vụ xe đón đoàn từ Sân bay Tân Sơn Nhất đi Bến Tre dành cho công ty, đoàn du lịch và gia đình đông người. Xe 16 chỗ đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+{
+  key: "gia-xe-don-san-bay-di-ben-tre",
+  path: "gia-xe-don-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Giá xe đón Sân bay Tân Sơn Nhất đi Bến Tre trọn gói",
+  description:
+    "Tham khảo giá xe đón từ Sân bay Tân Sơn Nhất đi Bến Tre với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "dat-xe-online-di-ben-tre",
+  path: "dat-xe-online-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe online đi Bến Tre nhanh chóng, giá minh bạch",
+  description:
+    "Đặt xe online đi Bến Tre chỉ trong vài phút với GoViet247. Xe riêng đời mới, không ghép khách, báo giá rõ ràng và xác nhận chuyến nhanh chóng.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "dat-xe-hop-dong-di-ben-tre",
+  path: "dat-xe-hop-dong-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe hợp đồng đi Bến Tre, xe riêng trọn gói",
+  description:
+    "Đặt xe hợp đồng đi Bến Tre với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe riêng không ghép khách, lịch trình linh hoạt và chi phí minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-nhanh-di-ben-tre",
+  path: "dat-xe-nhanh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe nhanh đi Bến Tre, có xe 24/7",
+  description:
+    "Cần đặt xe nhanh đi Bến Tre? GoViet247 hỗ trợ đặt xe riêng 24/7, đón tận nơi, không ghép khách, báo giá trước và xác nhận chuyến nhanh chóng.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-cao-cap-di-ben-tre",
+  path: "dat-xe-cao-cap-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe cao cấp đi Bến Tre, xe riêng đời mới",
+  description:
+    "Đặt xe cao cấp đi Bến Tre với các dòng xe đời mới, sạch sẽ và tiện nghi. Xe riêng không ghép khách, tài xế chuyên nghiệp và đưa đón tận nơi theo yêu cầu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "dat-xe-gia-dinh-di-ben-tre",
+  path: "dat-xe-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe gia đình đi Bến Tre, xe riêng rộng rãi và tiện nghi",
+  description:
+    "Đặt xe gia đình đi Bến Tre với các dòng xe 5 chỗ, 7 chỗ và 16 chỗ đời mới. Xe riêng không ghép khách, đưa đón tận nơi, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-cong-tac-di-ben-tre",
+  path: "dat-xe-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe công tác đi Bến Tre, đúng giờ và chuyên nghiệp",
+  description:
+    "Dịch vụ đặt xe công tác đi Bến Tre dành cho doanh nghiệp và cá nhân. Xe riêng không ghép khách, tài xế chuyên tuyến, đưa đón tận nơi và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dat-xe-du-lich-di-ben-tre",
+  path: "dat-xe-du-lich-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe du lịch đi Bến Tre, xe riêng an toàn và thoải mái",
+  description:
+    "Đặt xe du lịch đi Bến Tre cho gia đình, nhóm bạn hoặc đoàn tham quan. Xe đời mới, không ghép khách, lịch trình linh hoạt và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "dat-xe-gia-re-di-ben-tre",
+  path: "dat-xe-gia-re-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đặt xe giá rẻ đi Bến Tre, xe riêng chất lượng",
+  description:
+    "Đặt xe giá rẻ đi Bến Tre với GoViet247 để nhận báo giá minh bạch và dịch vụ xe riêng chất lượng. Không ghép khách, đón tận nơi, không cần đặt cọc và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "taxi-di-ben-tre",
+  path: "taxi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi đi Bến Tre, xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Dịch vụ taxi đi Bến Tre bằng xe riêng đời mới, phù hợp cho cá nhân, gia đình và doanh nghiệp. Đón tận nơi, không ghép khách, báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "taxi-tu-ben-tre-di-tp-hcm",
+  path: "taxi-tu-ben-tre-di-tp-hcm",
+  from: "Bến Tre",
+  to: "TP.HCM",
+  title:
+    "Taxi từ Bến Tre đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Đặt taxi từ Bến Tre đi TP.HCM với xe riêng chất lượng cao, tài xế chuyên tuyến và đưa đón tận nơi. Không ghép khách, giá minh bạch và phục vụ 24/7.",
+  routeText:
+    "Bến Tre → Quốc lộ 60 → Mỹ Tho → Cao tốc TP.HCM - Trung Lương → TP.HCM",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "taxi-lien-tinh-di-ben-tre",
+  path: "taxi-lien-tinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi liên tỉnh đi Bến Tre, xe riêng an toàn",
+  description:
+    "Dịch vụ taxi liên tỉnh đi Bến Tre với xe riêng đời mới, đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm. Báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "taxi-duong-dai-di-ben-tre",
+  path: "taxi-duong-dai-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi đường dài đi Bến Tre, xe riêng giá tốt",
+  description:
+    "Thuê taxi đường dài đi Bến Tre phục vụ công tác, du lịch hoặc về quê. Xe riêng không ghép khách, lịch trình linh hoạt và phục vụ suốt 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "taxi-hop-dong-di-ben-tre",
+  path: "taxi-hop-dong-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi hợp đồng đi Bến Tre, xe riêng trọn gói",
+  description:
+    "Đặt taxi hợp đồng đi Bến Tre với nhiều dòng xe 5 chỗ, 7 chỗ và 16 chỗ. Xe riêng không ghép khách, đưa đón tận nơi và báo giá minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "goi-taxi-di-ben-tre",
+  path: "goi-taxi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Gọi taxi đi Bến Tre nhanh chóng, xe riêng 24/7",
+  description:
+    "Gọi taxi đi Bến Tre nhanh chóng với GoViet247. Xe riêng không ghép khách, đón tận nơi, báo giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
+{
+  key: "taxi-khu-hoi-di-ben-tre",
+  path: "taxi-khu-hoi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi khứ hồi đi Bến Tre, xe riêng trọn gói",
+  description:
+    "Thuê taxi khứ hồi đi Bến Tre với lịch trình linh hoạt theo yêu cầu. Xe riêng không ghép khách, tài xế chuyên tuyến và giá trọn gói minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ/lượt",
+},
+{
+  key: "taxi-gia-dinh-di-ben-tre",
+  path: "taxi-gia-dinh-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi gia đình đi Bến Tre, xe riêng rộng rãi và tiện nghi",
+  description:
+    "Đặt taxi gia đình đi Bến Tre với các dòng xe 5 chỗ, 7 chỗ và 16 chỗ đời mới. Xe riêng không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "taxi-cong-tac-di-ben-tre",
+  path: "taxi-cong-tac-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Taxi công tác đi Bến Tre, đúng giờ và chuyên nghiệp",
+  description:
+    "Dịch vụ taxi công tác đi Bến Tre dành cho doanh nghiệp và cá nhân. Xe riêng không ghép khách, tài xế chuyên nghiệp, đưa đón tận nơi và hỗ trợ xuất hóa đơn khi cần.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "gia-taxi-di-ben-tre",
+  path: "gia-taxi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Giá taxi đi Bến Tre trọn gói, không phát sinh",
+  description:
+    "Tham khảo giá taxi đi Bến Tre với dịch vụ xe riêng chất lượng cao. Báo giá rõ ràng trước khi đặt, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "taxi-san-bay-di-ben-tre",
+  path: "taxi-san-bay-di-ben-tre",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bến Tre",
+  title:
+    "Taxi sân bay đi Bến Tre, xe riêng đưa đón 24/7",
+  description:
+    "Đặt taxi từ Sân bay Tân Sơn Nhất đi Bến Tre với xe riêng đời mới, tài xế theo dõi giờ bay, đón đúng cổng và không ghép khách. Báo giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2.5 - 3 giờ",
+},
+
+{
+  key: "don-tan-nha-di-ben-tre",
+  path: "don-tan-nha-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đón tận nhà đi Bến Tre, xe riêng phục vụ 24/7",
+  description:
+    "Dịch vụ đón tận nhà đi Bến Tre bằng xe riêng chất lượng cao. Tài xế đến đúng địa chỉ, không ghép khách, báo giá trước khi đặt và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-don-tan-noi-di-ben-tre",
+  path: "xe-don-tan-noi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe đón tận nơi đi Bến Tre, không ghép khách",
+  description:
+    "Đặt xe đón tận nơi đi Bến Tre với dịch vụ xe riêng đời mới. Đón tại nhà, khách sạn, công ty hoặc địa điểm theo yêu cầu, phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dua-don-tan-noi-di-ben-tre",
+  path: "dua-don-tan-noi-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Đưa đón tận nơi đi Bến Tre, xe riêng an toàn",
+  description:
+    "GoViet247 cung cấp dịch vụ đưa đón tận nơi đi Bến Tre với xe riêng không ghép khách, tài xế chuyên tuyến, lịch trình linh hoạt và báo giá minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-dua-don-tai-nha-di-ben-tre",
+  path: "xe-dua-don-tai-nha-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe đưa đón tại nhà đi Bến Tre, xe riêng tiện lợi",
+  description:
+    "Đặt xe đưa đón tại nhà đi Bến Tre dành cho cá nhân, gia đình và doanh nghiệp. Xe đời mới, không ghép khách, đón đúng giờ và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "xe-door-to-door-di-ben-tre",
+  path: "xe-door-to-door-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Xe Door to Door đi Bến Tre, đón tận cửa",
+  description:
+    "Dịch vụ xe Door to Door đi Bến Tre giúp đón và trả khách tận địa chỉ yêu cầu. Xe riêng không ghép khách, phù hợp cho gia đình, khách công tác và du lịch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+{
+  key: "dich-vu-dua-don-tan-nha-di-ben-tre",
+  path: "dich-vu-dua-don-tan-nha-di-ben-tre",
+  from: "TP.HCM",
+  to: "Bến Tre",
+  title:
+    "Dịch vụ đưa đón tận nhà đi Bến Tre, xe riêng trọn gói",
+  description:
+    "Dịch vụ đưa đón tận nhà đi Bến Tre với xe riêng 5 chỗ, 7 chỗ và 16 chỗ. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Mỹ Tho → Quốc lộ 60 → Bến Tre",
+  duration: "2 - 2.5 giờ",
+},
+
 ];
