@@ -125,7 +125,7 @@ export async function getRoute(points = []) {
       api_key: GOONG_API_KEY,
       origin,
       destination,
-      vehicle: "car",
+      vehicle: "hd",
       alternatives: true,
     },
   });
