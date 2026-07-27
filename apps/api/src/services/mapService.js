@@ -120,12 +120,14 @@ export async function getRoute(points = []) {
 
   const url = `${GOONG_BASE_URL}/Direction`;
 
+  const vehicle = "taxi";
+
   const { data } = await axios.get(url, {
     params: {
       api_key: GOONG_API_KEY,
       origin,
       destination,
-      vehicle: "hd",
+      vehicle,
       alternatives: true,
     },
   });
@@ -165,7 +167,7 @@ export async function getRoute(points = []) {
     url,
     origin,
     destination,
-    vehicle: "car",
+    vehicle,
     routeCount: routeDebug.length,
     routes: routeDebug,
   });
