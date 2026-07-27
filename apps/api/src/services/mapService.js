@@ -120,7 +120,7 @@ export async function getRoute(points = []) {
 
   const url = `${GOONG_BASE_URL}/Direction`;
 
-  const vehicle = "taxi";
+  const vehicle = "car";
 
   const { data } = await axios.get(url, {
     params: {
@@ -150,6 +150,7 @@ export async function getRoute(points = []) {
 
         return {
           routeIndex,
+          summary: debugRoute?.summary || "",
           legCount: debugLegs.length,
           distanceKm: Number((debugDistanceMeters / 1000).toFixed(1)),
           durationMinutes: Math.round(debugDurationSeconds / 60),
@@ -157,20 +158,36 @@ export async function getRoute(points = []) {
             text: leg?.duration?.text,
             value: leg?.duration?.value,
             distance: leg?.distance?.text,
+            startAddress: leg?.start_address,
+            endAddress: leg?.end_address,
+            steps: Array.isArray(leg?.steps)
+              ? leg.steps.map((step) => ({
+                  instruction: step?.html_instructions,
+                  distance: step?.distance?.text,
+                  duration: step?.duration?.text,
+                }))
+              : [],
           })),
           warnings: debugRoute?.warnings || [],
         };
       })
     : [];
 
-  console.log("GOONG_ROUTE_ALTERNATIVES_DEBUG", {
-    url,
-    origin,
-    destination,
-    vehicle,
-    routeCount: routeDebug.length,
-    routes: routeDebug,
-  });
+  console.log(
+    "GOONG_ROUTE_ALTERNATIVES_DEBUG",
+    JSON.stringify(
+      {
+        url,
+        origin,
+        destination,
+        vehicle,
+        routeCount: routeDebug.length,
+        routes: routeDebug,
+      },
+      null,
+      2,
+    ),
+  );
 
   const route = data?.routes?.[0];
 
