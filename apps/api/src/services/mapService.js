@@ -126,16 +126,44 @@ export async function getRoute(points = []) {
       origin,
       destination,
       vehicle: "car",
+      alternatives: true,
     },
   });
 
-  console.log("GOONG_ROUTE_DEBUG", {
+  const routeDebug = Array.isArray(data?.routes)
+    ? data.routes.map((debugRoute, routeIndex) => {
+        const debugLegs = Array.isArray(debugRoute?.legs)
+          ? debugRoute.legs
+          : [];
+
+        const debugDistanceMeters = debugLegs.reduce(
+          (sum, leg) => sum + (Number(leg?.distance?.value) || 0),
+          0,
+        );
+
+        const debugDurationSeconds = debugLegs.reduce(
+          (sum, leg) => sum + (Number(leg?.duration?.value) || 0),
+          0,
+        );
+
+        return {
+          routeIndex,
+          legCount: debugLegs.length,
+          distanceKm: Number((debugDistanceMeters / 1000).toFixed(1)),
+          durationMinutes: Math.round(debugDurationSeconds / 60),
+          durationText: debugLegs.map((leg) => leg?.duration?.text),
+          warnings: debugRoute?.warnings || [],
+        };
+      })
+    : [];
+
+  console.log("GOONG_ROUTE_ALTERNATIVES_DEBUG", {
     url,
     origin,
     destination,
-    legCount: Array.isArray(data?.routes?.[0]?.legs)
-      ? data.routes[0].legs.length
-      : 0,
+    vehicle: "car",
+    routeCount: routeDebug.length,
+    routes: routeDebug,
   });
 
   const route = data?.routes?.[0];
