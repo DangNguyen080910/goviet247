@@ -3,6 +3,7 @@ import axios from "axios";
 
 const GOONG_API_KEY = process.env.GOONG_API_KEY;
 const GOONG_BASE_URL = "https://rsapi.goong.io";
+const GOONG_DURATION_FACTOR = 0.65;
 
 function buildMaskedAddress({ ward, district, province }) {
   if (ward && district && province) {
@@ -130,7 +131,7 @@ export async function getRoute(points = []) {
       vehicle,
     },
   });
-  
+
   const route = data?.routes?.[0];
 
   if (!route) {
@@ -168,16 +169,31 @@ export async function getRoute(points = []) {
     outboundDurationSeconds = Math.max(0, durationSeconds - lastLegSeconds);
   }
 
+  const durationMinutes = Math.max(
+    1,
+    Math.round((durationSeconds / 60) * GOONG_DURATION_FACTOR),
+  );
+
+  const outboundDurationMinutes = Math.max(
+    1,
+    Math.round((outboundDurationSeconds / 60) * GOONG_DURATION_FACTOR),
+  );
+
+  const returnDurationMinutes =
+    returnDurationSeconds > 0
+      ? Math.max(
+          1,
+          Math.round((returnDurationSeconds / 60) * GOONG_DURATION_FACTOR),
+        )
+      : 0;
+
   return {
     distanceMeters,
     durationSeconds,
     distanceKm: Number((distanceMeters / 1000).toFixed(1)),
-    durationMinutes: Math.max(1, Math.round(durationSeconds / 60)),
-    outboundDurationMinutes: Math.max(
-      1,
-      Math.round(outboundDurationSeconds / 60),
-    ),
-    returnDurationMinutes: Math.max(0, Math.round(returnDurationSeconds / 60)),
+    durationMinutes,
+    outboundDurationMinutes,
+    returnDurationMinutes,
     isRoundTripDetected,
     polyline: route.overview_polyline?.points || "",
     points: normalizedPoints,
