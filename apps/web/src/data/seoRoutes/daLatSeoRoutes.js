@@ -6132,19 +6132,6 @@ export const DALAT_SEO_ROUTES = [
 },
 
 {
-  key: "thu-dau-mot-di-da-lat",
-  path: "thue-xe-tu-thu-dau-mot-di-da-lat",
-  from: "Thủ Dầu Một, Bình Dương",
-  to: "Đà Lạt",
-  title: "Thuê xe từ Thủ Dầu Một đi Đà Lạt",
-  description:
-    "Dịch vụ xe riêng từ Thủ Dầu Một đi Đà Lạt dành cho khách du lịch, nghỉ dưỡng, công tác hoặc đưa đón sân bay Liên Khương.",
-  routeText:
-    "Thủ Dầu Một → Mỹ Phước → Dầu Giây → Đà Lạt",
-  duration: "6.5 - 8 giờ",
-},
-
-{
   key: "thu-dau-mot-di-lac-duong",
   path: "thue-xe-tu-thu-dau-mot-di-lac-duong",
   from: "Thủ Dầu Một, Bình Dương",
@@ -6236,19 +6223,6 @@ duration: "4.5 - 6 giờ",
 },
 
 {
-  key: "di-an-di-da-lat",
-  path: "thue-xe-tu-di-an-di-da-lat",
-  from: "Dĩ An, Bình Dương",
-  to: "Đà Lạt",
-  title: "Thuê xe từ Dĩ An đi Đà Lạt, xe riêng có tài xế",
-  description:
-    "Dịch vụ thuê xe từ Dĩ An đi Đà Lạt với xe riêng đưa đón tận nơi. Không ghép khách, biết giá trước khi đặt và hoạt động 24/7.",
-  routeText:
-    "Dĩ An → Dầu Giây → Đà Lạt",
-  duration: "6 - 8 giờ",
-},
-
-{
   key: "di-an-di-bao-loc",
   path: "thue-xe-tu-di-an-di-bao-loc",
   from: "Dĩ An, Bình Dương",
@@ -6301,19 +6275,6 @@ duration: "4.5 - 6 giờ",
 },
 
 {
-  key: "tan-uyen-di-da-lat",
-  path: "thue-xe-tu-tan-uyen-di-da-lat",
-  from: "Tân Uyên, Bình Dương",
-  to: "Đà Lạt",
-  title: "Thuê xe từ Tân Uyên đi Đà Lạt",
-  description:
-    "Dịch vụ xe riêng từ Tân Uyên đi Đà Lạt với tài xế chuyên nghiệp. Đưa đón tận nơi và không ghép khách.",
-  routeText:
-    "Tân Uyên → Dầu Giây → Đà Lạt",
-  duration: "6 - 8 giờ",
-},
-
-{
   key: "tan-uyen-di-bao-loc",
   path: "thue-xe-tu-tan-uyen-di-bao-loc",
   from: "Tân Uyên, Bình Dương",
@@ -6363,19 +6324,6 @@ duration: "4.5 - 6 giờ",
   routeText:
     "Tân Uyên → Dầu Giây → Tân Phú → Cát Tiên",
   duration: "4.5 - 6 giờ",
-},
-
-{
-  key: "ben-cat-di-da-lat",
-  path: "thue-xe-tu-ben-cat-di-da-lat",
-  from: "Bến Cát, Bình Dương",
-  to: "Đà Lạt",
-  title: "Thuê xe từ Bến Cát đi Đà Lạt, xe riêng có tài xế",
-  description:
-    "Dịch vụ thuê xe từ Bến Cát đi Đà Lạt với xe riêng đưa đón tận nơi. Phù hợp khách công tác, du lịch, nghỉ dưỡng hoặc về quê.",
-  routeText:
-    "Bến Cát → Mỹ Phước → Dầu Giây → Đà Lạt",
-  duration: "6.5 - 8 giờ",
 },
 
 {
@@ -6753,6 +6701,3416 @@ duration: "4.5 - 6 giờ",
   routeText:
     "Biên Hòa → Dầu Giây → Đà Lạt → Lạc Dương",
   duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "da-lat-di-tp-hcm",
+  path: "da-lat-di-tp-hcm",
+  from: "Đà Lạt",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Đà Lạt đi TP.HCM | Xe riêng đưa đón tận nơi 24/7",
+  description:
+    "Đặt xe riêng từ Đà Lạt đi TP.HCM. Biết giá trước khi đặt, không ghép khách, không cần đặt cọc, tài xế nhiều kinh nghiệm, phục vụ 24/7.",
+  routeText: "Đà Lạt → TP.HCM",
+  duration: "6-7 giờ",
+},
+{
+  key: "bao-loc-di-tp-hcm",
+  path: "bao-loc-di-tp-hcm",
+  from: "Bảo Lộc",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Bảo Lộc đi TP.HCM | Xe riêng giá trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Bảo Lộc đi TP.HCM. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt, thanh toán sau khi hoàn thành chuyến.",
+  routeText: "Bảo Lộc → TP.HCM",
+  duration: "4-5 giờ",
+},
+{
+  key: "duc-trong-di-tp-hcm",
+  path: "duc-trong-di-tp-hcm",
+  from: "Đức Trọng",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Đức Trọng đi TP.HCM | Xe riêng 24/7",
+  description:
+    "Đặt xe riêng từ Đức Trọng đi TP.HCM nhanh chóng. Không ghép khách, không cần đặt cọc, tài xế chuyên tuyến, phục vụ mọi thời điểm.",
+  routeText: "Đức Trọng → TP.HCM",
+  duration: "5-6 giờ",
+},
+{
+  key: "di-linh-di-tp-hcm",
+  path: "di-linh-di-tp-hcm",
+  from: "Di Linh",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Di Linh đi TP.HCM | Xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng Di Linh đi TP.HCM. Biết giá trước khi đặt, không ghép khách, đón tận nơi, thanh toán sau chuyến đi.",
+  routeText: "Di Linh → TP.HCM",
+  duration: "4-5 giờ",
+},
+{
+  key: "lam-ha-di-tp-hcm",
+  path: "lam-ha-di-tp-hcm",
+  from: "Lâm Hà",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Lâm Hà đi TP.HCM | Đặt xe riêng nhanh chóng",
+  description:
+    "Xe riêng từ Lâm Hà đi TP.HCM với giá minh bạch. Không ghép khách, không đặt cọc, phục vụ 24/7, đưa đón tận nơi.",
+  routeText: "Lâm Hà → TP.HCM",
+  duration: "6-7 giờ",
+},
+{
+  key: "don-duong-di-tp-hcm",
+  path: "don-duong-di-tp-hcm",
+  from: "Đơn Dương",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Đơn Dương đi TP.HCM | Xe riêng an toàn",
+  description:
+    "Đặt xe riêng từ Đơn Dương đi TP.HCM. Không ghép khách, tài xế nhiều kinh nghiệm, biết giá trước khi đặt, hoạt động 24/7.",
+  routeText: "Đơn Dương → TP.HCM",
+  duration: "6 giờ",
+},
+{
+  key: "bao-lam-di-tp-hcm",
+  path: "bao-lam-di-tp-hcm",
+  from: "Bảo Lâm",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Bảo Lâm đi TP.HCM | Xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bảo Lâm đi TP.HCM. Đưa đón tận nơi, không ghép khách, thanh toán sau chuyến đi, phục vụ cả ngày lẫn đêm.",
+  routeText: "Bảo Lâm → TP.HCM",
+  duration: "5 giờ",
+},
+{
+  key: "lac-duong-di-tp-hcm",
+  path: "lac-duong-di-tp-hcm",
+  from: "Lạc Dương",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Lạc Dương đi TP.HCM | Xe riêng giá tốt",
+  description:
+    "Dịch vụ xe riêng từ Lạc Dương đi TP.HCM. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc, phục vụ 24/7.",
+  routeText: "Lạc Dương → TP.HCM",
+  duration: "6-7 giờ",
+},
+{
+  key: "dam-rong-di-tp-hcm",
+  path: "dam-rong-di-tp-hcm",
+  from: "Đam Rông",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Đam Rông đi TP.HCM | Đặt xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Đam Rông đi TP.HCM. Xe đời mới, không ghép khách, đón tận nơi, thanh toán sau khi hoàn thành chuyến.",
+  routeText: "Đam Rông → TP.HCM",
+  duration: "7-8 giờ",
+},
+
+{
+  key: "da-huoai-di-tp-hcm",
+  path: "da-huoai-di-tp-hcm",
+  from: "Đạ Huoai",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Đạ Huoai đi TP.HCM | Xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Đạ Huoai đi TP.HCM. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText: "Đạ Huoai → TP.HCM",
+  duration: "3-4 giờ",
+},
+{
+  key: "da-teh-di-tp-hcm",
+  path: "da-teh-di-tp-hcm",
+  from: "Đạ Tẻh",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Đạ Tẻh đi TP.HCM | Xe riêng phục vụ 24/7",
+  description:
+    "Dịch vụ xe riêng từ Đạ Tẻh đi TP.HCM. Đón trả tận nơi, không ghép khách, giá minh bạch và phục vụ 24/7.",
+  routeText: "Đạ Tẻh → TP.HCM",
+  duration: "4-5 giờ",
+},
+{
+  key: "cat-tien-di-tp-hcm",
+  path: "cat-tien-di-tp-hcm",
+  from: "Cát Tiên",
+  to: "TP. Hồ Chí Minh",
+  title: "Xe Cát Tiên đi TP.HCM | Xe riêng giá trọn gói",
+  description:
+    "Đặt xe riêng từ Cát Tiên đi TP.HCM. Biết giá trước khi đặt, không ghép khách, không đặt cọc và đưa đón tận nơi.",
+  routeText: "Cát Tiên → TP.HCM",
+  duration: "4-5 giờ",
+},
+
+{
+  key: "sai-gon-di-da-lat",
+  path: "sai-gon-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Xe Sài Gòn đi Đà Lạt | Xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Đà Lạt dành cho khách du lịch, công tác hoặc nghỉ dưỡng. Xe không ghép khách, biết giá trước khi đặt, không cần đặt cọc và đón trả tận nơi.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đức Trọng → Đà Lạt",
+  duration: "6 - 7.5 giờ",
+},
+{
+  key: "sai-gon-di-bao-loc",
+  path: "sai-gon-di-bao-loc",
+  from: "Sài Gòn",
+  to: "Bảo Lộc",
+  title: "Xe Sài Gòn đi Bảo Lộc | Xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Bảo Lộc phù hợp đi công tác, nghỉ dưỡng hoặc thăm người thân. Xe đón tận nơi, không ghép khách, giá minh bạch và thanh toán sau chuyến đi.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "sai-gon-di-duc-trong",
+  path: "sai-gon-di-duc-trong",
+  from: "Sài Gòn",
+  to: "Đức Trọng",
+  title: "Xe Sài Gòn đi Đức Trọng | Xe riêng phục vụ 24/7",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Đức Trọng với lịch trình chủ động. Xe không ghép khách, đưa đón tận địa chỉ, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Sài Gòn → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Di Linh → Đức Trọng",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "sai-gon-di-di-linh",
+  path: "sai-gon-di-di-linh",
+  from: "Sài Gòn",
+  to: "Di Linh",
+  title: "Xe Sài Gòn đi Di Linh | Xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Di Linh. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Di Linh",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "sai-gon-di-lam-ha",
+  path: "sai-gon-di-lam-ha",
+  from: "Sài Gòn",
+  to: "Lâm Hà",
+  title: "Xe Sài Gòn đi Lâm Hà | Xe riêng giá trọn gói",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Lâm Hà với tài xế nhiều kinh nghiệm. Xe không ghép khách, đưa đón tận nơi, biết giá trước khi đặt và hoạt động 24/7.",
+  routeText:
+    "Sài Gòn → Dầu Giây → Quốc lộ 20 → Đức Trọng → Lâm Hà",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "sai-gon-di-don-duong",
+  path: "sai-gon-di-don-duong",
+  from: "Sài Gòn",
+  to: "Đơn Dương",
+  title: "Xe Sài Gòn đi Đơn Dương | Xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Sài Gòn đi Đơn Dương dành cho khách du lịch và công tác. Không ghép khách, không cần đặt cọc, đón trả tận nơi và phục vụ 24/7.",
+  routeText:
+    "Sài Gòn → Dầu Giây → Quốc lộ 20 → Đức Trọng → Đơn Dương",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "sai-gon-di-bao-lam",
+  path: "sai-gon-di-bao-lam",
+  from: "Sài Gòn",
+  to: "Bảo Lâm",
+  title: "Xe Sài Gòn đi Bảo Lâm | Xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Bảo Lâm. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Bảo Lộc → Bảo Lâm",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "sai-gon-di-lac-duong",
+  path: "sai-gon-di-lac-duong",
+  from: "Sài Gòn",
+  to: "Lạc Dương",
+  title: "Xe Sài Gòn đi Lạc Dương | Xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Lạc Dương. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Sài Gòn → Dầu Giây → Quốc lộ 20 → Đức Trọng → Đà Lạt → Lạc Dương",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "sai-gon-di-dam-rong",
+  path: "sai-gon-di-dam-rong",
+  from: "Sài Gòn",
+  to: "Đam Rông",
+  title: "Xe Sài Gòn đi Đam Rông | Xe riêng giá trọn gói",
+  description:
+    "Xe riêng từ Sài Gòn đi Đam Rông dành cho khách du lịch và công tác. Không ghép khách, không cần đặt cọc, đưa đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Sài Gòn → Quốc lộ 20 → Đức Trọng → Lâm Hà → Đam Rông",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "sai-gon-di-da-huoai",
+  path: "sai-gon-di-da-huoai",
+  from: "Sài Gòn",
+  to: "Đạ Huoai",
+  title: "Xe Sài Gòn đi Đạ Huoai | Xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Sài Gòn đi Đạ Huoai. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đạ Huoai",
+  duration: "3 - 4 giờ",
+},
+{
+  key: "sai-gon-di-da-teh",
+  path: "sai-gon-di-da-teh",
+  from: "Sài Gòn",
+  to: "Đạ Tẻh",
+  title: "Xe Sài Gòn đi Đạ Tẻh | Xe riêng giá trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Đạ Tẻh. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Sài Gòn → Quốc lộ 20 → Đạ Huoai → Đạ Tẻh",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "sai-gon-di-cat-tien",
+  path: "sai-gon-di-cat-tien",
+  from: "Sài Gòn",
+  to: "Cát Tiên",
+  title: "Xe Sài Gòn đi Cát Tiên | Xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Sài Gòn đi Cát Tiên dành cho khách du lịch và công tác. Không ghép khách, không cần đặt cọc, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Sài Gòn → Quốc lộ 20 → Đạ Huoai → Cát Tiên",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "da-lat-di-sai-gon",
+  path: "da-lat-di-sai-gon",
+  from: "Đà Lạt",
+  to: "Sài Gòn",
+  title: "Xe Đà Lạt đi Sài Gòn | Xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Đà Lạt đi Sài Gòn. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đức Trọng → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "6 - 7.5 giờ",
+},
+{
+  key: "bao-loc-di-sai-gon",
+  path: "bao-loc-di-sai-gon",
+  from: "Bảo Lộc",
+  to: "Sài Gòn",
+  title: "Xe Bảo Lộc đi Sài Gòn | Xe riêng giá trọn gói",
+  description:
+    "Đặt xe riêng từ Bảo Lộc đi Sài Gòn. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bảo Lộc → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "duc-trong-di-sai-gon",
+  path: "duc-trong-di-sai-gon",
+  from: "Đức Trọng",
+  to: "Sài Gòn",
+  title: "Xe Đức Trọng đi Sài Gòn | Xe riêng phục vụ 24/7",
+  description:
+    "Xe riêng từ Đức Trọng đi Sài Gòn dành cho khách công tác và du lịch. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Đức Trọng → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "di-linh-di-sai-gon",
+  path: "di-linh-di-sai-gon",
+  from: "Di Linh",
+  to: "Sài Gòn",
+  title: "Xe Di Linh đi Sài Gòn | Xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Di Linh đi Sài Gòn. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Di Linh → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "lam-ha-di-sai-gon",
+  path: "lam-ha-di-sai-gon",
+  from: "Lâm Hà",
+  to: "Sài Gòn",
+  title: "Xe Lâm Hà đi Sài Gòn | Xe riêng giá trọn gói",
+  description:
+    "Đặt xe riêng từ Lâm Hà đi Sài Gòn. Không ghép khách, đón tận nơi, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Lâm Hà → Đức Trọng → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "don-duong-di-sai-gon",
+  path: "don-duong-di-sai-gon",
+  from: "Đơn Dương",
+  to: "Sài Gòn",
+  title: "Xe Đơn Dương đi Sài Gòn | Xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Đơn Dương đi Sài Gòn với tài xế nhiều kinh nghiệm. Không ghép khách, không cần đặt cọc, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Đơn Dương → Đức Trọng → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "bao-lam-di-sai-gon",
+  path: "bao-lam-di-sai-gon",
+  from: "Bảo Lâm",
+  to: "Sài Gòn",
+  title: "Xe Bảo Lâm đi Sài Gòn | Xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Bảo Lâm đi Sài Gòn. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Bảo Lâm → Bảo Lộc → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "lac-duong-di-sai-gon",
+  path: "lac-duong-di-sai-gon",
+  from: "Lạc Dương",
+  to: "Sài Gòn",
+  title: "Xe Lạc Dương đi Sài Gòn | Xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Lạc Dương đi Sài Gòn. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Lạc Dương → Đà Lạt → Đức Trọng → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "dam-rong-di-sai-gon",
+  path: "dam-rong-di-sai-gon",
+  from: "Đam Rông",
+  to: "Sài Gòn",
+  title: "Xe Đam Rông đi Sài Gòn | Xe riêng giá trọn gói",
+  description:
+    "Xe riêng từ Đam Rông đi Sài Gòn dành cho khách du lịch và công tác. Không ghép khách, không cần đặt cọc, đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Đam Rông → Lâm Hà → Đức Trọng → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "7 - 8 giờ",
+},
+
+{
+  key: "da-huoai-di-sai-gon",
+  path: "da-huoai-di-sai-gon",
+  from: "Đạ Huoai",
+  to: "Sài Gòn",
+  title: "Xe Đạ Huoai đi Sài Gòn | Xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Đạ Huoai đi Sài Gòn. Không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Đạ Huoai → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "3 - 4 giờ",
+},
+{
+  key: "da-teh-di-sai-gon",
+  path: "da-teh-di-sai-gon",
+  from: "Đạ Tẻh",
+  to: "Sài Gòn",
+  title: "Xe Đạ Tẻh đi Sài Gòn | Xe riêng giá trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Đạ Tẻh đi Sài Gòn. Đón tận nơi, không ghép khách, biết giá trước khi đặt và phục vụ 24/7.",
+  routeText:
+    "Đạ Tẻh → Đạ Huoai → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "cat-tien-di-sai-gon",
+  path: "cat-tien-di-sai-gon",
+  from: "Cát Tiên",
+  to: "Sài Gòn",
+  title: "Xe Cát Tiên đi Sài Gòn | Xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Cát Tiên đi Sài Gòn dành cho khách du lịch và công tác. Không ghép khách, không cần đặt cọc, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Cát Tiên → Đạ Huoai → Quốc lộ 20 → Dầu Giây → Sài Gòn",
+  duration: "4 - 5 giờ",
+},
+
+{
+  key: "quan-4-di-bao-loc",
+  path: "thue-xe-tu-quan-4-di-bao-loc",
+  from: "Quận 4, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 4 đi Bảo Lộc, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bảo Lộc cho khách về quê, công tác hoặc nghỉ dưỡng. Xe không ghép khách, đón trả tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đạ Huoai → Bảo Lộc",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-4-di-di-linh",
+  path: "thue-xe-tu-quan-4-di-di-linh",
+  from: "Quận 4, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 4 đi Di Linh, xe riêng không ghép khách",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Di Linh cho khách về quê, công tác hoặc thăm người thân tại Lâm Đồng. Xe đón tận nơi, lịch trình chủ động và biết giá trước khi đặt.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+
+{
+  key: "quan-4-di-duc-trong",
+  path: "thue-xe-tu-quan-4-di-duc-trong",
+  from: "Quận 4, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 4 đi Đức Trọng, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Đức Trọng phù hợp cho khách đi sân bay Liên Khương, công tác hoặc về quê. Không ghép khách, đón tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Di Linh → Đức Trọng",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "quan-4-di-lam-ha",
+  path: "thue-xe-tu-quan-4-di-lam-ha",
+  from: "Quận 4, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 4 đi Lâm Hà nhanh chóng, an toàn",
+  description:
+    "Xe riêng từ Quận 4 đi Lâm Hà phục vụ khách đi làm việc, thăm người thân hoặc du lịch. Lộ trình linh hoạt, không ghép khách và báo giá rõ ràng trước khi khởi hành.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đức Trọng → Lâm Hà",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-4-di-don-duong",
+  path: "thue-xe-tu-quan-4-di-don-duong",
+  from: "Quận 4, TP.HCM",
+  to: "Đơn Dương",
+  title: "Thuê xe từ Quận 4 đi Đơn Dương, xe riêng 24/7",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Đơn Dương với tài xế nhiều kinh nghiệm đường đèo. Xe đưa đón tận nơi, không cần đặt cọc và biết giá trước khi đi.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đức Trọng → Đơn Dương",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-4-di-lac-duong",
+  path: "thue-xe-tu-quan-4-di-lac-duong",
+  from: "Quận 4, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 4 đi Lạc Dương, xe gia đình riêng",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Lạc Dương dành cho khách tham quan LangBiang, nghỉ dưỡng hoặc công tác. Xe sạch sẽ, không ghép khách và đón trả tận nơi.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đà Lạt → Lạc Dương",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "quan-4-di-bao-lam",
+  path: "thue-xe-tu-quan-4-di-bao-lam",
+  from: "Quận 4, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 4 đi Bảo Lâm, xe riêng theo yêu cầu",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Bảo Lâm với lịch trình linh hoạt, phù hợp đi công tác, về quê hoặc làm việc. Không ghép khách, thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Bảo Lâm",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-4-di-dam-rong",
+  path: "thue-xe-tu-quan-4-di-dam-rong",
+  from: "Quận 4, TP.HCM",
+  to: "Đam Rông",
+  title: "Thuê xe từ Quận 4 đi Đam Rông, xe riêng đường dài",
+  description:
+    "Xe riêng từ Quận 4 đi Đam Rông phục vụ khách đi công việc, thăm gia đình hoặc khảo sát. Đưa đón tận nơi, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Lâm Hà → Đam Rông",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "quan-4-di-da-huoai",
+  path: "thue-xe-tu-quan-4-di-da-huoai",
+  from: "Quận 4, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 4 đi Đạ Huoai, xe riêng giá rõ ràng",
+  description:
+    "Dịch vụ xe riêng từ Quận 4 đi Đạ Huoai phù hợp cho khách về quê hoặc công tác. Xe đời mới, không ghép khách và biết chi phí trước khi đặt.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đạ Huoai",
+  duration: "4.5 - 5.5 giờ",
+},
+{
+  key: "quan-4-di-da-teh",
+  path: "thue-xe-tu-quan-4-di-da-teh",
+  from: "Quận 4, TP.HCM",
+  to: "Đạ Tẻh",
+  title: "Thuê xe từ Quận 4 đi Đạ Tẻh, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Quận 4 đi Đạ Tẻh dành cho khách đi làm việc, thăm người thân hoặc về quê. Không ghép khách, tài xế kinh nghiệm và thanh toán sau chuyến.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đạ Huoai → Đạ Tẻh",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "quan-4-di-cat-tien",
+  path: "thue-xe-tu-quan-4-di-cat-tien",
+  from: "Quận 4, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 4 đi Cát Tiên, xe riêng không ghép",
+  description:
+    "Đặt xe riêng từ Quận 4 đi Cát Tiên để du lịch Vườn quốc gia Cát Tiên, công tác hoặc về quê. Xe đón tận nơi, không đặt cọc và phục vụ 24/7.",
+  routeText:
+    "Quận 4 → Dầu Giây → Quốc lộ 20 → Đạ Tẻh → Cát Tiên",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "quan-5-di-bao-loc",
+  path: "thue-xe-tu-quan-5-di-bao-loc",
+  from: "Quận 5, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 5 đi Bảo Lộc, xe riêng an toàn",
+  description:
+    "Xe riêng từ Quận 5 đi Bảo Lộc dành cho khách du lịch, công tác hoặc về quê. Không ghép khách, đón trả tận nơi và báo giá rõ ràng trước chuyến đi.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đạ Huoai → Bảo Lộc",
+  duration: "5 - 6.5 giờ",
+},
+{
+  key: "quan-5-di-di-linh",
+  path: "thue-xe-tu-quan-5-di-di-linh",
+  from: "Quận 5, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 5 đi Di Linh, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Di Linh với lịch trình linh hoạt, phù hợp đi công tác, về quê hoặc thăm người thân. Xe không ghép khách và thanh toán sau chuyến.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+{
+  key: "quan-5-di-duc-trong",
+  path: "thue-xe-tu-quan-5-di-duc-trong",
+  from: "Quận 5, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 5 đi Đức Trọng, xe riêng 24/7",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Đức Trọng phục vụ khách đi sân bay Liên Khương, công tác hoặc về quê. Xe đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Di Linh → Đức Trọng",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "quan-5-di-lam-ha",
+  path: "thue-xe-tu-quan-5-di-lam-ha",
+  from: "Quận 5, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 5 đi Lâm Hà, xe riêng chất lượng",
+  description:
+    "Xe riêng từ Quận 5 đi Lâm Hà dành cho khách đi làm việc, du lịch hoặc thăm người thân. Không ghép khách, tài xế nhiều kinh nghiệm và phục vụ 24/7.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đức Trọng → Lâm Hà",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-5-di-don-duong",
+  path: "thue-xe-tu-quan-5-di-don-duong",
+  from: "Quận 5, TP.HCM",
+  to: "Đơn Dương",
+  title: "Thuê xe từ Quận 5 đi Đơn Dương, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Đơn Dương với thời gian linh hoạt, xe đời mới và đón tận nơi. Không cần đặt cọc, biết giá trước khi khởi hành.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đức Trọng → Đơn Dương",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-5-di-lac-duong",
+  path: "thue-xe-tu-quan-5-di-lac-duong",
+  from: "Quận 5, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 5 đi Lạc Dương, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Lạc Dương để tham quan LangBiang, nghỉ dưỡng hoặc công tác. Xe sạch sẽ, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đà Lạt → Lạc Dương",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "quan-5-di-bao-lam",
+  path: "thue-xe-tu-quan-5-di-bao-lam",
+  from: "Quận 5, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 5 đi Bảo Lâm, xe riêng giá minh bạch",
+  description:
+    "Xe riêng từ Quận 5 đi Bảo Lâm phù hợp cho khách về quê, công tác hoặc làm việc. Không ghép khách, đón trả tận nơi và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Bảo Lâm",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-5-di-dam-rong",
+  path: "thue-xe-tu-quan-5-di-dam-rong",
+  from: "Quận 5, TP.HCM",
+  to: "Đam Rông",
+  title: "Thuê xe từ Quận 5 đi Đam Rông, xe riêng đường dài",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Đam Rông dành cho khách công tác hoặc về quê. Xe không ghép khách, tài xế kinh nghiệm và hoạt động 24/7.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Lâm Hà → Đam Rông",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "quan-5-di-da-huoai",
+  path: "thue-xe-tu-quan-5-di-da-huoai",
+  from: "Quận 5, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 5 đi Đạ Huoai, xe riêng tiện lợi",
+  description:
+    "Đặt xe riêng từ Quận 5 đi Đạ Huoai với lịch trình chủ động, xe đời mới và không ghép khách. Biết giá trước khi đặt và thanh toán sau chuyến.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đạ Huoai",
+  duration: "4.5 - 5.5 giờ",
+},
+{
+  key: "quan-5-di-da-teh",
+  path: "thue-xe-tu-quan-5-di-da-teh",
+  from: "Quận 5, TP.HCM",
+  to: "Đạ Tẻh",
+  title: "Thuê xe từ Quận 5 đi Đạ Tẻh, xe riêng phục vụ 24/7",
+  description:
+    "Xe riêng từ Quận 5 đi Đạ Tẻh dành cho khách đi công tác, về quê hoặc thăm người thân. Đưa đón tận nơi, không ghép khách và giá rõ ràng.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đạ Huoai → Đạ Tẻh",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "quan-5-di-cat-tien",
+  path: "thue-xe-tu-quan-5-di-cat-tien",
+  from: "Quận 5, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 5 đi Cát Tiên, xe riêng du lịch",
+  description:
+    "Dịch vụ xe riêng từ Quận 5 đi Cát Tiên phù hợp cho khách khám phá Vườn quốc gia Cát Tiên, công tác hoặc về quê. Xe không ghép khách và đón trả tận nơi.",
+  routeText:
+    "Quận 5 → Dầu Giây → Quốc lộ 20 → Đạ Tẻh → Cát Tiên",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "quan-6-di-bao-loc",
+  path: "thue-xe-tu-quan-6-di-bao-loc",
+  from: "Quận 6, TP.HCM",
+  to: "Bảo Lộc",
+  title: "Thuê xe từ Quận 6 đi Bảo Lộc, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Bảo Lộc phục vụ khách du lịch, công tác hoặc về quê. Đưa đón tận nơi, biết giá trước khi đặt và thanh toán sau chuyến.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đạ Huoai → Bảo Lộc",
+  duration: "5 - 6.5 giờ",
+},
+{
+  key: "quan-6-di-di-linh",
+  path: "thue-xe-tu-quan-6-di-di-linh",
+  from: "Quận 6, TP.HCM",
+  to: "Di Linh",
+  title: "Thuê xe từ Quận 6 đi Di Linh, xe riêng đưa đón tận nơi",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Di Linh với lịch trình linh hoạt. Xe không ghép khách, tài xế nhiều kinh nghiệm và báo giá minh bạch.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Di Linh",
+  duration: "5 - 6.5 giờ",
+},
+{
+  key: "quan-6-di-duc-trong",
+  path: "thue-xe-tu-quan-6-di-duc-trong",
+  from: "Quận 6, TP.HCM",
+  to: "Đức Trọng",
+  title: "Thuê xe từ Quận 6 đi Đức Trọng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Quận 6 đi Đức Trọng phù hợp cho khách đi sân bay Liên Khương, công tác hoặc thăm người thân. Không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Di Linh → Đức Trọng",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "quan-6-di-lam-ha",
+  path: "thue-xe-tu-quan-6-di-lam-ha",
+  from: "Quận 6, TP.HCM",
+  to: "Lâm Hà",
+  title: "Thuê xe từ Quận 6 đi Lâm Hà, xe riêng an toàn",
+  description:
+    "Xe riêng từ Quận 6 đi Lâm Hà dành cho khách đi làm việc, du lịch hoặc về quê. Đón tận nơi, không ghép khách và thanh toán sau chuyến đi.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đức Trọng → Lâm Hà",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-6-di-don-duong",
+  path: "thue-xe-tu-quan-6-di-don-duong",
+  from: "Quận 6, TP.HCM",
+  to: "Đơn Dương",
+  title: "Thuê xe từ Quận 6 đi Đơn Dương, xe riêng chất lượng",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Đơn Dương với xe đời mới, không ghép khách và đưa đón tận nơi. Phù hợp cho công tác, du lịch hoặc về quê.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đức Trọng → Đơn Dương",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-6-di-lac-duong",
+  path: "thue-xe-tu-quan-6-di-lac-duong",
+  from: "Quận 6, TP.HCM",
+  to: "Lạc Dương",
+  title: "Thuê xe từ Quận 6 đi Lạc Dương, xe riêng tiện nghi",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Lạc Dương để tham quan LangBiang, nghỉ dưỡng hoặc công tác. Xe sạch sẽ, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đà Lạt → Lạc Dương",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "quan-6-di-bao-lam",
+  path: "thue-xe-tu-quan-6-di-bao-lam",
+  from: "Quận 6, TP.HCM",
+  to: "Bảo Lâm",
+  title: "Thuê xe từ Quận 6 đi Bảo Lâm, xe riêng giá minh bạch",
+  description:
+    "Xe riêng từ Quận 6 đi Bảo Lâm phù hợp cho khách về quê, công tác hoặc làm việc dài ngày. Không ghép khách và đón trả tận nơi.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Bảo Lộc → Bảo Lâm",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "quan-6-di-dam-rong",
+  path: "thue-xe-tu-quan-6-di-dam-rong",
+  from: "Quận 6, TP.HCM",
+  to: "Đam Rông",
+  title: "Thuê xe từ Quận 6 đi Đam Rông, xe riêng đường dài",
+  description:
+    "Xe riêng từ Quận 6 đi Đam Rông với tài xế am hiểu cung đường Lâm Đồng. Không ghép khách, đón tận nơi và báo giá trước khi khởi hành.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Lâm Hà → Đam Rông",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "quan-6-di-da-huoai",
+  path: "thue-xe-tu-quan-6-di-da-huoai",
+  from: "Quận 6, TP.HCM",
+  to: "Đạ Huoai",
+  title: "Thuê xe từ Quận 6 đi Đạ Huoai, xe riêng phục vụ 24/7",
+  description:
+    "Dịch vụ xe riêng từ Quận 6 đi Đạ Huoai dành cho khách đi công tác hoặc về quê. Xe không ghép khách, lịch trình chủ động và thanh toán sau chuyến.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đạ Huoai",
+  duration: "4.5 - 5.5 giờ",
+},
+{
+  key: "quan-6-di-da-teh",
+  path: "thue-xe-tu-quan-6-di-da-teh",
+  from: "Quận 6, TP.HCM",
+  to: "Đạ Tẻh",
+  title: "Thuê xe từ Quận 6 đi Đạ Tẻh, xe riêng không ghép",
+  description:
+    "Đặt xe riêng từ Quận 6 đi Đạ Tẻh với xe đời mới, tài xế kinh nghiệm và đưa đón tận nơi. Biết giá trước khi đặt, không cần đặt cọc.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đạ Huoai → Đạ Tẻh",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "quan-6-di-cat-tien",
+  path: "thue-xe-tu-quan-6-di-cat-tien",
+  from: "Quận 6, TP.HCM",
+  to: "Cát Tiên",
+  title: "Thuê xe từ Quận 6 đi Cát Tiên, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Quận 6 đi Cát Tiên phục vụ khách tham quan Vườn quốc gia Cát Tiên, công tác hoặc về quê. Không ghép khách, đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Quận 6 → Dầu Giây → Quốc lộ 20 → Đạ Tẻh → Cát Tiên",
+  duration: "5.5 - 6.5 giờ",
+},
+
+{
+  key: "binh-duong-di-da-lat",
+  path: "thue-xe-tu-binh-duong-di-da-lat",
+  from: "Bình Dương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bình Dương đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Bình Dương đi Đà Lạt phục vụ khách du lịch, nghỉ dưỡng, công tác và về quê. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Bình Dương → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "da-lat-di-binh-duong",
+  path: "thue-xe-tu-da-lat-di-binh-duong",
+  from: "Đà Lạt",
+  to: "Bình Dương",
+  title: "Thuê xe từ Đà Lạt đi Bình Dương, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Bình Dương với tài xế chuyên tuyến, xe đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Bình Dương",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "binh-duong-di-lam-dong",
+  path: "thue-xe-tu-binh-duong-di-lam-dong",
+  from: "Bình Dương",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Bình Dương đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bình Dương đi Lâm Đồng dành cho khách du lịch, công tác hoặc về quê. Đưa đón tận nơi, biết giá trước khi đặt và thanh toán sau chuyến.",
+  routeText:
+    "Bình Dương → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "4.5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-binh-duong",
+  path: "thue-xe-tu-lam-dong-di-binh-duong",
+  from: "Lâm Đồng",
+  to: "Bình Dương",
+  title: "Thuê xe từ Lâm Đồng đi Bình Dương, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Lâm Đồng đi Bình Dương với xe đời mới, không ghép khách, tài xế kinh nghiệm và hoạt động 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Bình Dương",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "dong-nai-di-da-lat",
+  path: "thue-xe-tu-dong-nai-di-da-lat",
+  from: "Đồng Nai",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Đồng Nai đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Đồng Nai đi Đà Lạt phục vụ khách du lịch, công tác và nghỉ dưỡng. Không ghép khách, đón tận nơi và báo giá minh bạch.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "4 - 5.5 giờ",
+},
+{
+  key: "da-lat-di-dong-nai",
+  path: "thue-xe-tu-da-lat-di-dong-nai",
+  from: "Đà Lạt",
+  to: "Đồng Nai",
+  title: "Thuê xe từ Đà Lạt đi Đồng Nai, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Đồng Nai với xe đời mới, tài xế chuyên tuyến, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Đồng Nai",
+  duration: "4 - 5.5 giờ",
+},
+{
+  key: "dong-nai-di-lam-dong",
+  path: "thue-xe-tu-dong-nai-di-lam-dong",
+  from: "Đồng Nai",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Đồng Nai đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Đồng Nai đi Lâm Đồng phục vụ khách công tác, du lịch và về quê. Xe riêng đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Đồng Nai → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "3.5 - 5 giờ",
+},
+{
+  key: "lam-dong-di-dong-nai",
+  path: "thue-xe-tu-lam-dong-di-dong-nai",
+  from: "Lâm Đồng",
+  to: "Đồng Nai",
+  title: "Thuê xe từ Lâm Đồng đi Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Đồng Nai với lịch trình linh hoạt, xe đời mới và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Đồng Nai",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "bien-hoa-di-da-lat",
+  path: "thue-xe-tu-bien-hoa-di-da-lat",
+  from: "Biên Hòa",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Biên Hòa đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Biên Hòa đi Đà Lạt phục vụ khách du lịch, công tác và nghỉ dưỡng. Đón tận nơi, không ghép khách, giá minh bạch.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "da-lat-di-bien-hoa",
+  path: "thue-xe-tu-da-lat-di-bien-hoa",
+  from: "Đà Lạt",
+  to: "Biên Hòa",
+  title: "Thuê xe từ Đà Lạt đi Biên Hòa, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Biên Hòa với xe đời mới, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Biên Hòa",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "bien-hoa-di-lam-dong",
+  path: "thue-xe-tu-bien-hoa-di-lam-dong",
+  from: "Biên Hòa",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Biên Hòa đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Biên Hòa đi Lâm Đồng dành cho khách du lịch, công tác hoặc về quê. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Biên Hòa → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "3.5 - 5 giờ",
+},
+{
+  key: "lam-dong-di-bien-hoa",
+  path: "thue-xe-tu-lam-dong-di-bien-hoa",
+  from: "Lâm Đồng",
+  to: "Biên Hòa",
+  title: "Thuê xe từ Lâm Đồng đi Biên Hòa, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Biên Hòa với xe đời mới, tài xế kinh nghiệm và lịch trình linh hoạt.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Biên Hòa",
+  duration: "3.5 - 5 giờ",
+},
+
+{
+  key: "long-an-di-da-lat",
+  path: "thue-xe-tu-long-an-di-da-lat",
+  from: "Long An",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Long An đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Long An đi Đà Lạt phục vụ khách du lịch, nghỉ dưỡng, công tác và về quê. Đưa đón tận nơi, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "Long An → TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "da-lat-di-long-an",
+  path: "thue-xe-tu-da-lat-di-long-an",
+  from: "Đà Lạt",
+  to: "Long An",
+  title: "Thuê xe từ Đà Lạt đi Long An, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Long An với xe đời mới, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → TP.HCM → Long An",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "long-an-di-lam-dong",
+  path: "thue-xe-tu-long-an-di-lam-dong",
+  from: "Long An",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Long An đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Long An đi Lâm Đồng với xe đời mới, không ghép khách, đưa đón tận nơi và thanh toán sau chuyến.",
+  routeText:
+    "Long An → TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "5.5 - 7 giờ",
+},
+{
+  key: "lam-dong-di-long-an",
+  path: "thue-xe-tu-lam-dong-di-long-an",
+  from: "Lâm Đồng",
+  to: "Long An",
+  title: "Thuê xe từ Lâm Đồng đi Long An, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Long An với xe đời mới, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → TP.HCM → Long An",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "tay-ninh-di-da-lat",
+  path: "thue-xe-tu-tay-ninh-di-da-lat",
+  from: "Tây Ninh",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Tây Ninh đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Tây Ninh đi Đà Lạt phục vụ khách du lịch, công tác và về quê. Xe đời mới, đón tận nơi và báo giá trước khi đặt.",
+  routeText:
+    "Tây Ninh → Quốc lộ 22 → TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "7 - 8 giờ",
+},
+{
+  key: "da-lat-di-tay-ninh",
+  path: "thue-xe-tu-da-lat-di-tay-ninh",
+  from: "Đà Lạt",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Đà Lạt đi Tây Ninh, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Tây Ninh với tài xế chuyên tuyến, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → TP.HCM → Quốc lộ 22 → Tây Ninh",
+  duration: "7 - 8 giờ",
+},
+{
+  key: "tay-ninh-di-lam-dong",
+  path: "thue-xe-tu-tay-ninh-di-lam-dong",
+  from: "Tây Ninh",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Tây Ninh đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Tây Ninh đi Lâm Đồng với xe đời mới, tài xế kinh nghiệm và không ghép khách.",
+  routeText:
+    "Tây Ninh → Quốc lộ 22 → TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "6.5 - 8 giờ",
+},
+{
+  key: "lam-dong-di-tay-ninh",
+  path: "thue-xe-tu-lam-dong-di-tay-ninh",
+  from: "Lâm Đồng",
+  to: "Tây Ninh",
+  title: "Thuê xe từ Lâm Đồng đi Tây Ninh, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Tây Ninh với xe đời mới, đưa đón tận nơi và lịch trình linh hoạt.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → TP.HCM → Quốc lộ 22 → Tây Ninh",
+  duration: "6.5 - 8 giờ",
+},
+
+{
+  key: "ba-ria-vung-tau-di-da-lat",
+  path: "thue-xe-tu-ba-ria-vung-tau-di-da-lat",
+  from: "Bà Rịa - Vũng Tàu",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bà Rịa - Vũng Tàu đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bà Rịa - Vũng Tàu đi Đà Lạt phục vụ khách du lịch, công tác và nghỉ dưỡng. Đón tận nơi, không ghép khách.",
+  routeText:
+    "Bà Rịa - Vũng Tàu → Quốc lộ 51 → Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "da-lat-di-ba-ria-vung-tau",
+  path: "thue-xe-tu-da-lat-di-ba-ria-vung-tau",
+  from: "Đà Lạt",
+  to: "Bà Rịa - Vũng Tàu",
+  title: "Thuê xe từ Đà Lạt đi Bà Rịa - Vũng Tàu, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Bà Rịa - Vũng Tàu với xe đời mới, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Dầu Giây → Quốc lộ 51 → Bà Rịa - Vũng Tàu",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "ba-ria-vung-tau-di-lam-dong",
+  path: "thue-xe-tu-ba-ria-vung-tau-di-lam-dong",
+  from: "Bà Rịa - Vũng Tàu",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Bà Rịa - Vũng Tàu đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bà Rịa - Vũng Tàu đi Lâm Đồng với xe đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bà Rịa - Vũng Tàu → Quốc lộ 51 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "5.5 - 7 giờ",
+},
+{
+  key: "lam-dong-di-ba-ria-vung-tau",
+  path: "thue-xe-tu-lam-dong-di-ba-ria-vung-tau",
+  from: "Lâm Đồng",
+  to: "Bà Rịa - Vũng Tàu",
+  title: "Thuê xe từ Lâm Đồng đi Bà Rịa - Vũng Tàu, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Bà Rịa - Vũng Tàu với xe đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 51 → Bà Rịa - Vũng Tàu",
+  duration: "5.5 - 7 giờ",
+},
+
+{
+  key: "binh-phuoc-di-da-lat",
+  path: "thue-xe-tu-binh-phuoc-di-da-lat",
+  from: "Bình Phước",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bình Phước đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Bình Phước đi Đà Lạt phục vụ khách du lịch, nghỉ dưỡng, công tác và về quê. Đưa đón tận nơi, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Bình Phước → Đồng Xoài → Quốc lộ 14 → Gia Nghĩa → Quốc lộ 28 → Di Linh → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 8 giờ",
+},
+{
+  key: "da-lat-di-binh-phuoc",
+  path: "thue-xe-tu-da-lat-di-binh-phuoc",
+  from: "Đà Lạt",
+  to: "Bình Phước",
+  title: "Thuê xe từ Đà Lạt đi Bình Phước, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Bình Phước với xe đời mới, tài xế chuyên tuyến, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Di Linh → Quốc lộ 28 → Gia Nghĩa → Quốc lộ 14 → Đồng Xoài → Bình Phước",
+  duration: "6 - 8 giờ",
+},
+{
+  key: "binh-phuoc-di-lam-dong",
+  path: "thue-xe-tu-binh-phuoc-di-lam-dong",
+  from: "Bình Phước",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Bình Phước đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bình Phước đi Lâm Đồng phục vụ khách công tác, du lịch hoặc về quê. Không ghép khách, đưa đón tận nơi và báo giá rõ ràng.",
+  routeText:
+    "Bình Phước → Đồng Xoài → Quốc lộ 14 → Gia Nghĩa → Quốc lộ 28 → Lâm Đồng",
+  duration: "5.5 - 7.5 giờ",
+},
+{
+  key: "lam-dong-di-binh-phuoc",
+  path: "thue-xe-tu-lam-dong-di-binh-phuoc",
+  from: "Lâm Đồng",
+  to: "Bình Phước",
+  title: "Thuê xe từ Lâm Đồng đi Bình Phước, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Lâm Đồng đi Bình Phước với xe đời mới, tài xế kinh nghiệm, lịch trình linh hoạt và hoạt động 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 28 → Gia Nghĩa → Quốc lộ 14 → Đồng Xoài → Bình Phước",
+  duration: "5.5 - 7.5 giờ",
+},
+
+{
+  key: "da-lat-di-thu-dau-mot",
+  path: "thue-xe-tu-da-lat-di-thu-dau-mot",
+  from: "Đà Lạt",
+  to: "Thủ Dầu Một",
+  title: "Thuê xe từ Đà Lạt đi Thủ Dầu Một, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Thủ Dầu Một với tài xế chuyên tuyến, xe đời mới và không ghép khách.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Thủ Dầu Một",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "thu-dau-mot-di-lam-dong",
+  path: "thue-xe-tu-thu-dau-mot-di-lam-dong",
+  from: "Thủ Dầu Một",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Thủ Dầu Một đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Thủ Dầu Một đi Lâm Đồng phục vụ khách du lịch, công tác và về quê. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Thủ Dầu Một → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "4.5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-thu-dau-mot",
+  path: "thue-xe-tu-lam-dong-di-thu-dau-mot",
+  from: "Lâm Đồng",
+  to: "Thủ Dầu Một",
+  title: "Thuê xe từ Lâm Đồng đi Thủ Dầu Một, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Thủ Dầu Một với xe đời mới, tài xế kinh nghiệm và phục vụ 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Thủ Dầu Một",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "da-lat-di-di-an",
+  path: "thue-xe-tu-da-lat-di-di-an",
+  from: "Đà Lạt",
+  to: "Dĩ An",
+  title: "Thuê xe từ Đà Lạt đi Dĩ An, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Dĩ An với tài xế chuyên tuyến, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 1A → Dĩ An",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "di-an-di-lam-dong",
+  path: "thue-xe-tu-di-an-di-lam-dong",
+  from: "Dĩ An",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Dĩ An đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Dĩ An đi Lâm Đồng phục vụ khách du lịch, công tác và về quê. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Dĩ An → Quốc lộ 1A → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "4.5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-di-an",
+  path: "thue-xe-tu-lam-dong-di-di-an",
+  from: "Lâm Đồng",
+  to: "Dĩ An",
+  title: "Thuê xe từ Lâm Đồng đi Dĩ An, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Lâm Đồng đi Dĩ An với xe đời mới, tài xế kinh nghiệm và lịch trình linh hoạt.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 1A → Dĩ An",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "da-lat-di-thuan-an",
+  path: "thue-xe-tu-da-lat-di-thuan-an",
+  from: "Đà Lạt",
+  to: "Thuận An",
+  title: "Thuê xe từ Đà Lạt đi Thuận An, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Thuận An với xe đời mới, tài xế chuyên tuyến và không ghép khách.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Thuận An",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "thuan-an-di-lam-dong",
+  path: "thue-xe-tu-thuan-an-di-lam-dong",
+  from: "Thuận An",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Thuận An đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Thuận An đi Lâm Đồng phục vụ khách du lịch, công tác và về quê. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Thuận An → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "4.5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-thuan-an",
+  path: "thue-xe-tu-lam-dong-di-thuan-an",
+  from: "Lâm Đồng",
+  to: "Thuận An",
+  title: "Thuê xe từ Lâm Đồng đi Thuận An, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Thuận An với xe đời mới, tài xế kinh nghiệm và phục vụ 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Thuận An",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "da-lat-di-ben-cat",
+  path: "thue-xe-tu-da-lat-di-ben-cat",
+  from: "Đà Lạt",
+  to: "Bến Cát",
+  title: "Thuê xe từ Đà Lạt đi Bến Cát, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Bến Cát với tài xế chuyên tuyến, xe đời mới và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Bến Cát",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "ben-cat-di-lam-dong",
+  path: "thue-xe-tu-ben-cat-di-lam-dong",
+  from: "Bến Cát",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Bến Cát đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bến Cát đi Lâm Đồng phục vụ khách du lịch, công tác và về quê. Không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "Bến Cát → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-ben-cat",
+  path: "thue-xe-tu-lam-dong-di-ben-cat",
+  from: "Lâm Đồng",
+  to: "Bến Cát",
+  title: "Thuê xe từ Lâm Đồng đi Bến Cát, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Bến Cát với xe đời mới, tài xế kinh nghiệm, lịch trình linh hoạt và hoạt động 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Bến Cát",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "da-lat-di-tan-uyen",
+  path: "thue-xe-tu-da-lat-di-tan-uyen",
+  from: "Đà Lạt",
+  to: "Tân Uyên",
+  title: "Thuê xe từ Đà Lạt đi Tân Uyên, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Tân Uyên với tài xế chuyên tuyến, xe đời mới và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Tân Uyên",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "tan-uyen-di-lam-dong",
+  path: "thue-xe-tu-tan-uyen-di-lam-dong",
+  from: "Tân Uyên",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Tân Uyên đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Tân Uyên đi Lâm Đồng phục vụ khách du lịch, công tác và về quê. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Tân Uyên → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "4.5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-tan-uyen",
+  path: "thue-xe-tu-lam-dong-di-tan-uyen",
+  from: "Lâm Đồng",
+  to: "Tân Uyên",
+  title: "Thuê xe từ Lâm Đồng đi Tân Uyên, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Tân Uyên với xe đời mới, tài xế kinh nghiệm và hoạt động 24/7.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Tân Uyên",
+  duration: "4.5 - 6 giờ",
+},
+
+{
+  key: "da-lat-di-bau-bang",
+  path: "thue-xe-tu-da-lat-di-bau-bang",
+  from: "Đà Lạt",
+  to: "Bàu Bàng",
+  title: "Thuê xe từ Đà Lạt đi Bàu Bàng, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Bàu Bàng với xe đời mới, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Bàu Bàng",
+  duration: "5.5 - 6.5 giờ",
+},
+{
+  key: "bau-bang-di-lam-dong",
+  path: "thue-xe-tu-bau-bang-di-lam-dong",
+  from: "Bàu Bàng",
+  to: "Lâm Đồng",
+  title: "Thuê xe từ Bàu Bàng đi Lâm Đồng, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Bàu Bàng đi Lâm Đồng phục vụ khách du lịch, công tác hoặc về quê. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "Bàu Bàng → Quốc lộ 13 → Dầu Giây → Quốc lộ 20 → Lâm Đồng",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "lam-dong-di-bau-bang",
+  path: "thue-xe-tu-lam-dong-di-bau-bang",
+  from: "Lâm Đồng",
+  to: "Bàu Bàng",
+  title: "Thuê xe từ Lâm Đồng đi Bàu Bàng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Lâm Đồng đi Bàu Bàng với xe đời mới, tài xế kinh nghiệm và lịch trình linh hoạt.",
+  routeText:
+    "Lâm Đồng → Quốc lộ 20 → Dầu Giây → Quốc lộ 13 → Bàu Bàng",
+  duration: "5 - 6 giờ",
+},
+
+{
+  key: "thue-xe-sai-gon-di-da-lat",
+  path: "thue-xe-sai-gon-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Sài Gòn đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Đà Lạt đưa đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau chuyến.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-hcm-di-da-lat",
+  path: "thue-xe-hcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ TP.HCM đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ TP.HCM đi Đà Lạt phục vụ khách du lịch, công tác và về quê. Đưa đón tận nơi, không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-di-da-lat-don-tan-nha",
+  path: "thue-xe-di-da-lat-don-tan-nha",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe đi Đà Lạt đón tận nhà, xe riêng trọn gói",
+  description:
+    "Xe riêng đi Đà Lạt đón tận nhà, không ghép khách, lịch trình linh hoạt và báo giá trước khi khởi hành.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-da-lat-sai-gon",
+  path: "thue-xe-da-lat-sai-gon",
+  from: "Đà Lạt",
+  to: "Sài Gòn",
+  title: "Thuê xe từ Đà Lạt đi Sài Gòn, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Đà Lạt đi Sài Gòn với xe đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Sài Gòn",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-hcm-da-lat",
+  path: "thue-xe-hcm-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe TP.HCM Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng TP.HCM Đà Lạt với xe đời mới, không ghép khách và tài xế kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-da-lat-hcm",
+  path: "thue-xe-da-lat-hcm",
+  from: "Đà Lạt",
+  to: "TP.HCM",
+  title: "Thuê xe từ Đà Lạt đi TP.HCM, xe riêng không ghép khách",
+  description:
+    "Xe riêng từ Đà Lạt đi TP.HCM đưa đón tận nơi, xe đời mới và hoạt động 24/7.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → TP.HCM",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-rieng-di-da-lat",
+  path: "xe-rieng-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng đi Đà Lạt, không ghép khách",
+  description:
+    "Xe riêng đi Đà Lạt với tài xế chuyên tuyến, đưa đón tận nơi, biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-rieng-di-da-lat-don-tan-nha",
+  path: "xe-rieng-di-da-lat-don-tan-nha",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng đi Đà Lạt đón tận nhà",
+  description:
+    "Xe riêng đi Đà Lạt đón tận nhà, không ghép khách, xe đời mới và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "goi-xe-di-da-lat",
+  path: "goi-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Gọi xe đi Đà Lạt, xe riêng phục vụ 24/7",
+  description:
+    "Gọi xe đi Đà Lạt với xe riêng đời mới, tài xế chuyên tuyến và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dich-vu-xe-di-da-lat",
+  path: "dich-vu-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Dịch vụ xe đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe đi Đà Lạt với xe riêng không ghép khách, tài xế kinh nghiệm và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "xe-hop-dong-di-da-lat",
+  path: "xe-hop-dong-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe hợp đồng đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Xe hợp đồng đi Đà Lạt với xe riêng đời mới, tài xế chuyên nghiệp và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-du-lich-di-da-lat",
+  path: "xe-du-lich-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe du lịch đi Đà Lạt, xe riêng đưa đón tận nơi",
+  description:
+    "Xe du lịch đi Đà Lạt phục vụ gia đình, nhóm bạn và doanh nghiệp với xe đời mới, không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-co-tai-xe-di-da-lat",
+  path: "xe-co-tai-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe có tài xế đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe có tài xế đi Đà Lạt với xe riêng đời mới, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-sai-gon-di-da-lat",
+  path: "dat-xe-sai-gon-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Đặt xe từ Sài Gòn đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Đặt xe từ Sài Gòn đi Đà Lạt với xe riêng đời mới, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-hcm-di-da-lat",
+  path: "dat-xe-hcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe từ TP.HCM đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Đặt xe từ TP.HCM đi Đà Lạt với xe đời mới, tài xế chuyên tuyến và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-tu-hcm-di-da-lat",
+  path: "xe-tu-hcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe từ TP.HCM đi Đà Lạt, xe riêng đưa đón tận nơi",
+  description:
+    "Xe từ TP.HCM đi Đà Lạt bằng xe riêng không ghép khách, xe đời mới và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-tu-sai-gon-di-da-lat",
+  path: "xe-tu-sai-gon-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Xe từ Sài Gòn đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Xe từ Sài Gòn đi Đà Lạt với xe đời mới, tài xế kinh nghiệm và đưa đón tận nơi.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "xe-rieng-tu-hcm-di-da-lat",
+  path: "xe-rieng-tu-hcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng từ TP.HCM đi Đà Lạt, không ghép khách",
+  description:
+    "Xe riêng từ TP.HCM đi Đà Lạt với tài xế chuyên tuyến, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-rieng-tu-sai-gon-di-da-lat",
+  path: "xe-rieng-tu-sai-gon-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Xe riêng từ Sài Gòn đi Đà Lạt, xe đời mới",
+  description:
+    "Dịch vụ xe riêng từ Sài Gòn đi Đà Lạt không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dich-vu-thue-xe-di-da-lat",
+  path: "dich-vu-thue-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Dịch vụ thuê xe đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe đi Đà Lạt với xe riêng đời mới, tài xế kinh nghiệm và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-tu-tphcm-di-da-lat",
+  path: "thue-xe-tu-tphcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ TP.HCM đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe từ TP.HCM đi Đà Lạt với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-sg-di-da-lat",
+  path: "thue-xe-tu-sg-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Sài Gòn đi Đà Lạt, xe riêng đưa đón tận nơi",
+  description:
+    "Xe riêng từ Sài Gòn đi Đà Lạt với xe đời mới, tài xế kinh nghiệm và không ghép khách.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-di-da-lat-gia-tot",
+  path: "thue-xe-di-da-lat-gia-tot",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe đi Đà Lạt giá tốt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe đi Đà Lạt giá tốt với xe riêng đời mới, đưa đón tận nơi, báo giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-di-da-lat-gia-tien-chuyen",
+  path: "thue-xe-di-da-lat-gia-tien-chuyen",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe đi Đà Lạt giá tiện chuyến",
+  description:
+    "Dịch vụ xe riêng đi Đà Lạt giá tiện chuyến, tiết kiệm chi phí và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-di-da-lat-gia-tot",
+  path: "xe-di-da-lat-gia-tot",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe đi Đà Lạt giá tốt, xe riêng đưa đón tận nơi",
+  description:
+    "Xe đi Đà Lạt giá tốt với xe riêng đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-di-da-lat-gia-re",
+  path: "xe-di-da-lat-gia-re",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe đi Đà Lạt giá rẻ, xe riêng không ghép khách",
+  description:
+    "Xe riêng đi Đà Lạt giá rẻ với xe đời mới, tài xế chuyên tuyến và báo giá minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-di-da-lat-gia-tien-chuyen",
+  path: "xe-di-da-lat-gia-tien-chuyen",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe đi Đà Lạt giá tiện chuyến",
+  description:
+    "Xe riêng đi Đà Lạt giá tiện chuyến với lịch trình linh hoạt và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "bao-gia-xe-di-da-lat",
+  path: "bao-gia-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Báo giá xe đi Đà Lạt nhanh chóng",
+  description:
+    "Nhận báo giá xe đi Đà Lạt nhanh chóng với xe riêng đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "gia-xe-di-da-lat",
+  path: "gia-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá xe đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Tham khảo giá xe đi Đà Lạt với xe riêng, tài xế chuyên tuyến và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "xe-1-chieu-di-da-lat",
+  path: "xe-1-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 1 chiều đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Xe riêng 1 chiều đi Đà Lạt không ghép khách, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "gia-xe-1-chieu-di-da-lat",
+  path: "gia-xe-1-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá xe 1 chiều đi Đà Lạt mới nhất",
+  description:
+    "Cập nhật giá xe 1 chiều đi Đà Lạt với xe riêng, báo giá rõ ràng và không phát sinh chi phí.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "gia-thue-xe-1-chieu-di-da-lat",
+  path: "gia-thue-xe-1-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá thuê xe 1 chiều đi Đà Lạt",
+  description:
+    "Tham khảo giá thuê xe 1 chiều đi Đà Lạt với xe riêng đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-1-chieu-di-da-lat",
+  path: "dat-xe-1-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe 1 chiều đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Đặt xe 1 chiều đi Đà Lạt nhanh chóng với xe đời mới, tài xế kinh nghiệm và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-1-chieu-tu-hcm-di-da-lat",
+  path: "xe-1-chieu-tu-hcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 1 chiều từ TP.HCM đi Đà Lạt",
+  description:
+    "Xe 1 chiều từ TP.HCM đi Đà Lạt với xe riêng đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-1-chieu-tu-sai-gon-di-da-lat",
+  path: "xe-1-chieu-tu-sai-gon-di-da-lat",
+  from: "Sài Gòn",
+  to: "Đà Lạt",
+  title: "Xe 1 chiều từ Sài Gòn đi Đà Lạt",
+  description:
+    "Xe 1 chiều từ Sài Gòn đi Đà Lạt với xe riêng không ghép khách, xe đời mới và tài xế chuyên tuyến.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-rieng-1-chieu-di-da-lat",
+  path: "thue-xe-rieng-1-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe riêng 1 chiều đi Đà Lạt",
+  description:
+    "Thuê xe riêng 1 chiều đi Đà Lạt với xe đời mới, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-dua-don-1-chieu-di-da-lat",
+  path: "xe-dua-don-1-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe đưa đón 1 chiều đi Đà Lạt",
+  description:
+    "Dịch vụ xe đưa đón 1 chiều đi Đà Lạt với xe riêng không ghép khách, đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "xe-rieng-khu-hoi-di-da-lat",
+  path: "xe-rieng-khu-hoi-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng khứ hồi đi Đà Lạt",
+  description:
+    "Xe riêng khứ hồi đi Đà Lạt với lịch trình linh hoạt, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+{
+  key: "xe-2-chieu-di-da-lat",
+  path: "xe-2-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 2 chiều đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Xe riêng 2 chiều đi Đà Lạt với xe đời mới, tài xế chuyên tuyến và báo giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+{
+  key: "gia-xe-khu-hoi-di-da-lat",
+  path: "gia-xe-khu-hoi-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá xe khứ hồi đi Đà Lạt",
+  description:
+    "Tham khảo giá xe khứ hồi đi Đà Lạt với xe riêng, không ghép khách và chi phí minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+
+{
+  key: "dat-xe-khu-hoi-di-da-lat",
+  path: "dat-xe-khu-hoi-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe khứ hồi đi Đà Lạt",
+  description:
+    "Đặt xe khứ hồi đi Đà Lạt nhanh chóng với xe riêng không ghép khách và tài xế chuyên nghiệp.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+{
+  key: "dat-xe-2-chieu-di-da-lat",
+  path: "dat-xe-2-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe 2 chiều đi Đà Lạt",
+  description:
+    "Đặt xe 2 chiều đi Đà Lạt với xe riêng đời mới, đưa đón tận nơi và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+{
+  key: "bao-gia-xe-khu-hoi-di-da-lat",
+  path: "bao-gia-xe-khu-hoi-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Báo giá xe khứ hồi đi Đà Lạt",
+  description:
+    "Nhận báo giá xe khứ hồi đi Đà Lạt nhanh chóng với xe riêng đời mới và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+{
+  key: "xe-rieng-2-chieu-di-da-lat",
+  path: "xe-rieng-2-chieu-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng 2 chiều đi Đà Lạt",
+  description:
+    "Xe riêng 2 chiều đi Đà Lạt với xe đời mới, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "2 ngày 1 đêm hoặc theo yêu cầu",
+},
+
+{
+  key: "thue-xe-5-cho-di-da-lat",
+  path: "thue-xe-5-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe 5 chỗ đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe 5 chỗ đi Đà Lạt với xe riêng đời mới, đưa đón tận nơi và tài xế kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-5-cho-di-da-lat",
+  path: "xe-5-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 5 chỗ đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Xe riêng 5 chỗ đi Đà Lạt với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "gia-thue-xe-5-cho-di-da-lat",
+  path: "gia-thue-xe-5-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá thuê xe 5 chỗ đi Đà Lạt",
+  description:
+    "Cập nhật giá thuê xe 5 chỗ đi Đà Lạt với xe riêng, báo giá minh bạch và không phát sinh chi phí.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "bao-gia-xe-5-cho-di-da-lat",
+  path: "bao-gia-xe-5-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Báo giá xe 5 chỗ đi Đà Lạt",
+  description:
+    "Nhận báo giá xe 5 chỗ đi Đà Lạt nhanh chóng với xe riêng đời mới và tài xế chuyên tuyến.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-5-cho-di-da-lat",
+  path: "dat-xe-5-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe 5 chỗ đi Đà Lạt",
+  description:
+    "Đặt xe 5 chỗ đi Đà Lạt với xe riêng không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-5-cho-tu-hcm-di-da-lat",
+  path: "xe-5-cho-tu-hcm-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 5 chỗ từ TP.HCM đi Đà Lạt",
+  description:
+    "Xe riêng 5 chỗ từ TP.HCM đi Đà Lạt với xe đời mới, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-5-cho-tu-da-lat-ve-hcm",
+  path: "xe-5-cho-tu-da-lat-ve-hcm",
+  from: "Đà Lạt",
+  to: "TP.HCM",
+  title: "Xe 5 chỗ từ Đà Lạt về TP.HCM",
+  description:
+    "Xe riêng 5 chỗ từ Đà Lạt về TP.HCM với tài xế chuyên tuyến, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Đà Lạt → Đèo Bảo Lộc → Quốc lộ 20 → Cao tốc TP.HCM - Long Thành - Dầu Giây → TP.HCM",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-sedan-di-da-lat",
+  path: "xe-sedan-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe sedan đi Đà Lạt, xe riêng cao cấp",
+  description:
+    "Dịch vụ xe sedan đi Đà Lạt với xe riêng đời mới, phù hợp cho 1 đến 4 hành khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-5-cho-rieng-di-da-lat",
+  path: "xe-5-cho-rieng-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng 5 chỗ đi Đà Lạt",
+  description:
+    "Xe riêng 5 chỗ đi Đà Lạt với xe đời mới, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-sedan-di-da-lat",
+  path: "thue-xe-sedan-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe sedan đi Đà Lạt",
+  description:
+    "Thuê xe sedan đi Đà Lạt với xe đời mới, tài xế kinh nghiệm và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "xe-4-cho-di-da-lat",
+  path: "xe-4-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 4 chỗ đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe 4 chỗ đi Đà Lạt với xe riêng đời mới, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-4-cho-di-da-lat",
+  path: "thue-xe-4-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe 4 chỗ đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Thuê xe 4 chỗ đi Đà Lạt với xe đời mới, tài xế chuyên tuyến và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-vios-di-da-lat",
+  path: "xe-vios-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe Vios đi Đà Lạt, xe riêng có tài xế",
+  description:
+    "Thuê xe Vios đi Đà Lạt với tài xế kinh nghiệm, xe sạch sẽ và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-city-di-da-lat",
+  path: "xe-city-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe Honda City đi Đà Lạt",
+  description:
+    "Dịch vụ xe Honda City đi Đà Lạt với xe riêng đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-accent-di-da-lat",
+  path: "xe-accent-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe Hyundai Accent đi Đà Lạt",
+  description:
+    "Xe Hyundai Accent đi Đà Lạt với tài xế chuyên tuyến, xe đời mới và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-mazda-3-di-da-lat",
+  path: "xe-mazda-3-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe Mazda 3 đi Đà Lạt",
+  description:
+    "Thuê xe Mazda 3 đi Đà Lạt với xe riêng đời mới, tài xế kinh nghiệm và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-elantra-di-da-lat",
+  path: "xe-elantra-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe Elantra đi Đà Lạt",
+  description:
+    "Dịch vụ xe Elantra đi Đà Lạt với xe riêng không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-cerato-di-da-lat",
+  path: "xe-cerato-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe Cerato đi Đà Lạt",
+  description:
+    "Xe Kia Cerato đi Đà Lạt với xe riêng đời mới, không ghép khách và tài xế chuyên nghiệp.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-7-cho-di-da-lat",
+  path: "thue-xe-7-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe 7 chỗ đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe 7 chỗ đi Đà Lạt với xe riêng đời mới, đưa đón tận nơi và tài xế kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-7-cho-di-da-lat",
+  path: "xe-7-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 7 chỗ đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Xe riêng 7 chỗ đi Đà Lạt không ghép khách, xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "gia-thue-xe-7-cho-di-da-lat",
+  path: "gia-thue-xe-7-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá thuê xe 7 chỗ đi Đà Lạt",
+  description:
+    "Tham khảo giá thuê xe 7 chỗ đi Đà Lạt với xe riêng, báo giá minh bạch và không phát sinh chi phí.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "bao-gia-xe-7-cho-di-da-lat",
+  path: "bao-gia-xe-7-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Báo giá xe 7 chỗ đi Đà Lạt",
+  description:
+    "Nhận báo giá xe 7 chỗ đi Đà Lạt nhanh chóng với xe riêng không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-7-cho-di-da-lat",
+  path: "dat-xe-7-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe 7 chỗ đi Đà Lạt",
+  description:
+    "Đặt xe 7 chỗ đi Đà Lạt với xe riêng đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-7-cho-rieng-di-da-lat",
+  path: "xe-7-cho-rieng-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng 7 chỗ đi Đà Lạt",
+  description:
+    "Xe riêng 7 chỗ đi Đà Lạt với xe đời mới, không ghép khách và tài xế chuyên tuyến.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-16-cho-di-da-lat",
+  path: "thue-xe-16-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe 16 chỗ đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe 16 chỗ đi Đà Lạt với xe đời mới, đưa đón tận nơi, phù hợp cho đoàn du lịch và công ty.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-16-cho-di-da-lat",
+  path: "xe-16-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe 16 chỗ đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Xe riêng 16 chỗ đi Đà Lạt với tài xế kinh nghiệm, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "gia-thue-xe-16-cho-di-da-lat",
+  path: "gia-thue-xe-16-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Giá thuê xe 16 chỗ đi Đà Lạt",
+  description:
+    "Cập nhật giá thuê xe 16 chỗ đi Đà Lạt với xe riêng, báo giá minh bạch và không phát sinh chi phí.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "bao-gia-xe-16-cho-di-da-lat",
+  path: "bao-gia-xe-16-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Báo giá xe 16 chỗ đi Đà Lạt",
+  description:
+    "Nhận báo giá xe 16 chỗ đi Đà Lạt nhanh chóng với xe riêng đời mới và tài xế chuyên tuyến.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-16-cho-di-da-lat",
+  path: "dat-xe-16-cho-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe 16 chỗ đi Đà Lạt",
+  description:
+    "Đặt xe 16 chỗ đi Đà Lạt với xe riêng không ghép khách, xe đời mới và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-16-cho-rieng-di-da-lat",
+  path: "xe-16-cho-rieng-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe riêng 16 chỗ đi Đà Lạt",
+  description:
+    "Xe riêng 16 chỗ đi Đà Lạt với xe đời mới, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-di-san-bay-lien-khuong",
+  path: "thue-xe-di-san-bay-lien-khuong",
+  from: "Đà Lạt",
+  to: "Sân bay Liên Khương",
+  title: "Thuê xe đi sân bay Liên Khương, xe riêng đưa đón tận nơi",
+  description:
+    "Dịch vụ thuê xe đi sân bay Liên Khương với xe riêng đời mới, đúng giờ và không ghép khách.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Sân bay Liên Khương",
+  duration: "30 - 40 phút",
+},
+{
+  key: "thue-xe-tu-san-bay-lien-khuong-ve-da-lat",
+  path: "thue-xe-tu-san-bay-lien-khuong-ve-da-lat",
+  from: "Sân bay Liên Khương",
+  to: "Đà Lạt",
+  title: "Thuê xe từ sân bay Liên Khương về Đà Lạt",
+  description:
+    "Xe riêng đón khách từ sân bay Liên Khương về Đà Lạt, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Sân bay Liên Khương → Quốc lộ 20 → Đà Lạt",
+  duration: "30 - 40 phút",
+},
+
+{
+  key: "xe-tu-san-bay-lien-khuong-ve-da-lat",
+  path: "xe-tu-san-bay-lien-khuong-ve-da-lat",
+  from: "Sân bay Liên Khương",
+  to: "Đà Lạt",
+  title: "Xe từ sân bay Liên Khương về Đà Lạt",
+  description:
+    "Dịch vụ xe riêng từ sân bay Liên Khương về Đà Lạt với tài xế đón đúng giờ và không ghép khách.",
+  routeText:
+    "Sân bay Liên Khương → Quốc lộ 20 → Đà Lạt",
+  duration: "30 - 40 phút",
+},
+{
+  key: "don-san-bay-lien-khuong",
+  path: "don-san-bay-lien-khuong",
+  from: "Sân bay Liên Khương",
+  to: "Đà Lạt",
+  title: "Đón sân bay Liên Khương bằng xe riêng",
+  description:
+    "Dịch vụ đón sân bay Liên Khương bằng xe riêng, theo dõi giờ hạ cánh và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Liên Khương → Quốc lộ 20 → Đà Lạt",
+  duration: "30 - 40 phút",
+},
+{
+  key: "tien-san-bay-lien-khuong",
+  path: "tien-san-bay-lien-khuong",
+  from: "Đà Lạt",
+  to: "Sân bay Liên Khương",
+  title: "Tiễn sân bay Liên Khương bằng xe riêng",
+  description:
+    "Dịch vụ tiễn sân bay Liên Khương đúng giờ với xe riêng đời mới và tài xế chuyên nghiệp.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Sân bay Liên Khương",
+  duration: "30 - 40 phút",
+},
+{
+  key: "gia-xe-san-bay-lien-khuong",
+  path: "gia-xe-san-bay-lien-khuong",
+  from: "Đà Lạt",
+  to: "Sân bay Liên Khương",
+  title: "Giá xe sân bay Liên Khương",
+  description:
+    "Cập nhật giá xe sân bay Liên Khương với xe riêng, báo giá minh bạch và không phát sinh chi phí.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Sân bay Liên Khương",
+  duration: "30 - 40 phút",
+},
+{
+  key: "dat-xe-san-bay-lien-khuong",
+  path: "dat-xe-san-bay-lien-khuong",
+  from: "Đà Lạt",
+  to: "Sân bay Liên Khương",
+  title: "Đặt xe sân bay Liên Khương nhanh chóng",
+  description:
+    "Đặt xe sân bay Liên Khương với xe riêng không ghép khách, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Sân bay Liên Khương",
+  duration: "30 - 40 phút",
+},
+{
+  key: "bao-gia-xe-san-bay-lien-khuong",
+  path: "bao-gia-xe-san-bay-lien-khuong",
+  from: "Đà Lạt",
+  to: "Sân bay Liên Khương",
+  title: "Báo giá xe sân bay Liên Khương",
+  description:
+    "Nhận báo giá xe sân bay Liên Khương nhanh chóng với xe riêng đời mới và đưa đón tận nơi.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Sân bay Liên Khương",
+  duration: "30 - 40 phút",
+},
+{
+  key: "xe-rieng-san-bay-lien-khuong",
+  path: "xe-rieng-san-bay-lien-khuong",
+  from: "Đà Lạt",
+  to: "Sân bay Liên Khương",
+  title: "Xe riêng sân bay Liên Khương",
+  description:
+    "Dịch vụ xe riêng sân bay Liên Khương với xe đời mới, tài xế kinh nghiệm và đưa đón đúng giờ.",
+  routeText:
+    "Đà Lạt → Quốc lộ 20 → Sân bay Liên Khương",
+  duration: "30 - 40 phút",
+},
+
+{
+  key: "xe-gia-tot-di-da-lat",
+  path: "xe-gia-tot-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe giá tốt đi Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe giá tốt đi Đà Lạt với xe riêng đời mới, báo giá minh bạch và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-giam-gia-di-da-lat",
+  path: "xe-giam-gia-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe giảm giá đi Đà Lạt",
+  description:
+    "Xe riêng đi Đà Lạt với nhiều chuyến giá ưu đãi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-uu-dai-di-da-lat",
+  path: "xe-uu-dai-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe ưu đãi đi Đà Lạt, xe riêng trọn gói",
+  description:
+    "Xe riêng đi Đà Lạt với nhiều chương trình ưu đãi, xe đời mới và tài xế kinh nghiệm.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-khuyen-mai-di-da-lat",
+  path: "xe-khuyen-mai-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe khuyến mãi đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Đà Lạt với nhiều chương trình khuyến mãi hấp dẫn và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "san-xe-tien-chuyen-di-da-lat",
+  path: "san-xe-tien-chuyen-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Săn xe tiện chuyến đi Đà Lạt",
+  description:
+    "Tìm xe tiện chuyến đi Đà Lạt với giá tốt, xe riêng đời mới và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "xe-tiet-kiem-di-da-lat",
+  path: "xe-tiet-kiem-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Xe tiết kiệm đi Đà Lạt",
+  description:
+    "Xe riêng đi Đà Lạt với chi phí tiết kiệm, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đèo Bảo Lộc → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-di-ho-xuan-huong-da-lat",
+  path: "thue-xe-di-ho-xuan-huong-da-lat",
+  from: "TP.HCM",
+  to: "Hồ Xuân Hương, Đà Lạt",
+  title: "Thuê xe đi Hồ Xuân Hương Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe đi Hồ Xuân Hương Đà Lạt với xe riêng đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Trung tâm Đà Lạt → Hồ Xuân Hương",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-di-quang-truong-lam-vien",
+  path: "thue-xe-di-quang-truong-lam-vien",
+  from: "TP.HCM",
+  to: "Quảng trường Lâm Viên",
+  title: "Thuê xe đi Quảng trường Lâm Viên Đà Lạt",
+  description:
+    "Xe riêng đi Quảng trường Lâm Viên với tài xế kinh nghiệm, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Quảng trường Lâm Viên",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-di-cho-da-lat",
+  path: "thue-xe-di-cho-da-lat",
+  from: "TP.HCM",
+  to: "Chợ Đà Lạt",
+  title: "Thuê xe đi Chợ Đà Lạt, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng đi Chợ Đà Lạt với xe đời mới, lịch trình linh hoạt và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Trung tâm Đà Lạt → Chợ Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-di-langbiang",
+  path: "thue-xe-di-langbiang",
+  from: "TP.HCM",
+  to: "Núi LangBiang",
+  title: "Thuê xe đi LangBiang Đà Lạt",
+  description:
+    "Xe riêng đi LangBiang với tài xế chuyên tuyến, xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → LangBiang",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-thung-lung-tinh-yeu",
+  path: "thue-xe-di-thung-lung-tinh-yeu",
+  from: "TP.HCM",
+  to: "Thung Lũng Tình Yêu",
+  title: "Thuê xe đi Thung Lũng Tình Yêu Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Thung Lũng Tình Yêu với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Thung Lũng Tình Yêu",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-ho-tuyen-lam",
+  path: "thue-xe-di-ho-tuyen-lam",
+  from: "TP.HCM",
+  to: "Hồ Tuyền Lâm",
+  title: "Thuê xe đi Hồ Tuyền Lâm Đà Lạt",
+  description:
+    "Xe riêng đi Hồ Tuyền Lâm với xe đời mới, đưa đón tận nơi và tài xế kinh nghiệm.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Hồ Tuyền Lâm",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-thien-vien-truc-lam",
+  path: "thue-xe-di-thien-vien-truc-lam",
+  from: "TP.HCM",
+  to: "Thiền viện Trúc Lâm",
+  title: "Thuê xe đi Thiền viện Trúc Lâm Đà Lạt",
+  description:
+    "Xe riêng đi Thiền viện Trúc Lâm với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Thiền viện Trúc Lâm",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-ga-da-lat",
+  path: "thue-xe-di-ga-da-lat",
+  from: "TP.HCM",
+  to: "Ga Đà Lạt",
+  title: "Thuê xe đi Ga Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Ga Đà Lạt với tài xế chuyên nghiệp và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Ga Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-dinh-bao-dai",
+  path: "thue-xe-di-dinh-bao-dai",
+  from: "TP.HCM",
+  to: "Dinh Bảo Đại",
+  title: "Thuê xe đi Dinh Bảo Đại Đà Lạt",
+  description:
+    "Xe riêng đi Dinh Bảo Đại với xe đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Dinh Bảo Đại",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-fresh-garden-da-lat",
+  path: "thue-xe-di-fresh-garden-da-lat",
+  from: "TP.HCM",
+  to: "Fresh Garden Đà Lạt",
+  title: "Thuê xe đi Fresh Garden Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Fresh Garden Đà Lạt với xe đời mới, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Fresh Garden",
+  duration: "6 giờ 30 phút",
+},
+
+{
+  key: "thue-xe-di-thac-datanla",
+  path: "thue-xe-di-thac-datanla",
+  from: "TP.HCM",
+  to: "Thác Datanla",
+  title: "Thuê xe đi Thác Datanla Đà Lạt, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe đi Thác Datanla với xe riêng đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Thác Datanla",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-thac-prenn",
+  path: "thue-xe-di-thac-prenn",
+  from: "TP.HCM",
+  to: "Thác Prenn",
+  title: "Thuê xe đi Thác Prenn Đà Lạt",
+  description:
+    "Xe riêng đi Thác Prenn với xe đời mới, tài xế kinh nghiệm và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Thác Prenn",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-vuon-hoa-da-lat",
+  path: "thue-xe-di-vuon-hoa-da-lat",
+  from: "TP.HCM",
+  to: "Vườn hoa Đà Lạt",
+  title: "Thuê xe đi Vườn hoa Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Vườn hoa Đà Lạt với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Vườn hoa Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-doi-che-cau-dat",
+  path: "thue-xe-di-doi-che-cau-dat",
+  from: "TP.HCM",
+  to: "Đồi chè Cầu Đất",
+  title: "Thuê xe đi Đồi chè Cầu Đất",
+  description:
+    "Xe riêng đi Đồi chè Cầu Đất với tài xế chuyên tuyến, xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Đồi chè Cầu Đất",
+  duration: "7 giờ",
+},
+{
+  key: "thue-xe-di-crazy-house-da-lat",
+  path: "thue-xe-di-crazy-house-da-lat",
+  from: "TP.HCM",
+  to: "Crazy House Đà Lạt",
+  title: "Thuê xe đi Crazy House Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Crazy House Đà Lạt với xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Crazy House",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-chua-linh-phuoc",
+  path: "thue-xe-di-chua-linh-phuoc",
+  from: "TP.HCM",
+  to: "Chùa Linh Phước",
+  title: "Thuê xe đi Chùa Linh Phước (Chùa Ve Chai)",
+  description:
+    "Xe riêng đi Chùa Linh Phước với xe đời mới, tài xế kinh nghiệm và không ghép khách.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Chùa Linh Phước",
+  duration: "6 giờ 45 phút",
+},
+{
+  key: "thue-xe-di-cap-treo-da-lat",
+  path: "thue-xe-di-cap-treo-da-lat",
+  from: "TP.HCM",
+  to: "Cáp treo Đà Lạt",
+  title: "Thuê xe đi Cáp treo Đà Lạt",
+  description:
+    "Xe riêng đi Cáp treo Đà Lạt với xe đời mới, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Cáp treo Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-doi-robin",
+  path: "thue-xe-di-doi-robin",
+  from: "TP.HCM",
+  to: "Đồi Robin",
+  title: "Thuê xe đi Đồi Robin Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Đồi Robin với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Đồi Robin",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-puppy-farm-da-lat",
+  path: "thue-xe-di-puppy-farm-da-lat",
+  from: "TP.HCM",
+  to: "Puppy Farm Đà Lạt",
+  title: "Thuê xe đi Puppy Farm Đà Lạt",
+  description:
+    "Xe riêng đi Puppy Farm Đà Lạt với xe đời mới, đưa đón tận nơi và tài xế chuyên tuyến.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Puppy Farm",
+  duration: "6 giờ 40 phút",
+},
+{
+  key: "thue-xe-di-mongo-land-da-lat",
+  path: "thue-xe-di-mongo-land-da-lat",
+  from: "TP.HCM",
+  to: "Mongo Land Đà Lạt",
+  title: "Thuê xe đi Mongo Land Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Mongo Land Đà Lạt với xe đời mới, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Mongo Land",
+  duration: "6 giờ 40 phút",
+},
+
+{
+  key: "thue-xe-di-que-garden-da-lat",
+  path: "thue-xe-di-que-garden-da-lat",
+  from: "TP.HCM",
+  to: "Que Garden Đà Lạt",
+  title: "Thuê xe đi Que Garden Đà Lạt",
+  description:
+    "Dịch vụ thuê xe đi Que Garden Đà Lạt với xe riêng đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Que Garden",
+  duration: "6 giờ 40 phút",
+},
+{
+  key: "thue-xe-di-lumiere-da-lat",
+  path: "thue-xe-di-lumiere-da-lat",
+  from: "TP.HCM",
+  to: "Lumiere Đà Lạt",
+  title: "Thuê xe đi Lumiere Đà Lạt",
+  description:
+    "Xe riêng đi Lumiere Đà Lạt với xe đời mới, tài xế kinh nghiệm và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Lumiere",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-duong-ham-dat-set",
+  path: "thue-xe-di-duong-ham-dat-set",
+  from: "TP.HCM",
+  to: "Đường hầm Đất Sét",
+  title: "Thuê xe đi Đường hầm Đất Sét Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Đường hầm Đất Sét với xe đời mới, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Đường hầm Đất Sét",
+  duration: "6 giờ 40 phút",
+},
+{
+  key: "thue-xe-di-samten-hills",
+  path: "thue-xe-di-samten-hills",
+  from: "TP.HCM",
+  to: "Samten Hills",
+  title: "Thuê xe đi Samten Hills Đà Lạt",
+  description:
+    "Xe riêng đi Samten Hills với tài xế chuyên tuyến, xe đời mới và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đơn Dương → Samten Hills",
+  duration: "7 giờ",
+},
+{
+  key: "thue-xe-di-zoodoo-da-lat",
+  path: "thue-xe-di-zoodoo-da-lat",
+  from: "TP.HCM",
+  to: "Zoodoo Đà Lạt",
+  title: "Thuê xe đi Zoodoo Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Zoodoo Đà Lạt với xe đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Zoodoo",
+  duration: "6 giờ 50 phút",
+},
+{
+  key: "thue-xe-di-kombi-land-da-lat",
+  path: "thue-xe-di-kombi-land-da-lat",
+  from: "TP.HCM",
+  to: "Kombi Land Đà Lạt",
+  title: "Thuê xe đi Kombi Land Đà Lạt",
+  description:
+    "Xe riêng đi Kombi Land Đà Lạt với xe đời mới, đưa đón tận nơi và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Kombi Land",
+  duration: "6 giờ 40 phút",
+},
+{
+  key: "thue-xe-di-nha-tho-con-ga-da-lat",
+  path: "thue-xe-di-nha-tho-con-ga-da-lat",
+  from: "TP.HCM",
+  to: "Nhà thờ Con Gà Đà Lạt",
+  title: "Thuê xe đi Nhà thờ Con Gà Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Nhà thờ Con Gà Đà Lạt với xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Trung tâm Đà Lạt → Nhà thờ Con Gà",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-di-vuon-dau-da-lat",
+  path: "thue-xe-di-vuon-dau-da-lat",
+  from: "TP.HCM",
+  to: "Vườn Dâu Đà Lạt",
+  title: "Thuê xe đi Vườn Dâu Đà Lạt",
+  description:
+    "Xe riêng đi Vườn Dâu Đà Lạt với xe đời mới, không ghép khách và lịch trình linh hoạt.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Vườn Dâu",
+  duration: "6 giờ 35 phút",
+},
+{
+  key: "thue-xe-di-doi-thong-hai-mo",
+  path: "thue-xe-di-doi-thong-hai-mo",
+  from: "TP.HCM",
+  to: "Đồi Thông Hai Mộ",
+  title: "Thuê xe đi Đồi Thông Hai Mộ Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đi Đồi Thông Hai Mộ với xe đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Đồi Thông Hai Mộ",
+  duration: "6 giờ 35 phút",
+},
+{
+  key: "thue-xe-di-lang-hoa-van-thanh",
+  path: "thue-xe-di-lang-hoa-van-thanh",
+  from: "TP.HCM",
+  to: "Làng hoa Vạn Thành",
+  title: "Thuê xe đi Làng hoa Vạn Thành Đà Lạt",
+  description:
+    "Xe riêng đi Làng hoa Vạn Thành với xe đời mới, tài xế kinh nghiệm và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Quốc lộ 20 → Đà Lạt → Làng hoa Vạn Thành",
+  duration: "6 giờ 35 phút",
+},
+
+{
+  key: "thue-xe-tu-ben-xe-mien-dong-di-da-lat",
+  path: "thue-xe-tu-ben-xe-mien-dong-di-da-lat",
+  from: "Bến xe Miền Đông",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bến xe Miền Đông đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Bến xe Miền Đông đi Đà Lạt, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Bến xe Miền Đông → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-ben-xe-mien-tay-di-da-lat",
+  path: "thue-xe-tu-ben-xe-mien-tay-di-da-lat",
+  from: "Bến xe Miền Tây",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bến xe Miền Tây đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Bến xe Miền Tây đi Đà Lạt với tài xế chuyên tuyến và xe đời mới.",
+  routeText:
+    "Bến xe Miền Tây → Võ Văn Kiệt → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-ga-sai-gon-di-da-lat",
+  path: "thue-xe-tu-ga-sai-gon-di-da-lat",
+  from: "Ga Sài Gòn",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Ga Sài Gòn đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tận Ga Sài Gòn đi Đà Lạt, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Ga Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-ben-bach-dang-di-da-lat",
+  path: "thue-xe-tu-ben-bach-dang-di-da-lat",
+  from: "Bến Bạch Đằng",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bến Bạch Đằng đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Bến Bạch Đằng đi Đà Lạt, đưa đón tận nơi và báo giá trước khi đặt.",
+  routeText:
+    "Bến Bạch Đằng → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-tu-benh-vien-cho-ray-di-da-lat",
+  path: "thue-xe-tu-benh-vien-cho-ray-di-da-lat",
+  from: "Bệnh viện Chợ Rẫy",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bệnh viện Chợ Rẫy đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tận Bệnh viện Chợ Rẫy đi Đà Lạt, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Bệnh viện Chợ Rẫy → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-benh-vien-dai-hoc-y-duoc-di-da-lat",
+  path: "thue-xe-tu-benh-vien-dai-hoc-y-duoc-di-da-lat",
+  from: "Bệnh viện Đại học Y Dược TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bệnh viện Đại học Y Dược TP.HCM đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Bệnh viện Đại học Y Dược TP.HCM đi Đà Lạt với tài xế chuyên tuyến.",
+  routeText:
+    "Bệnh viện Đại học Y Dược → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-benh-vien-tu-du-di-da-lat",
+  path: "thue-xe-tu-benh-vien-tu-du-di-da-lat",
+  from: "Bệnh viện Từ Dũ",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bệnh viện Từ Dũ đi Đà Lạt",
+  description:
+    "Xe riêng đón tận Bệnh viện Từ Dũ đi Đà Lạt, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Bệnh viện Từ Dũ → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-dai-hoc-quoc-gia-di-da-lat",
+  path: "thue-xe-tu-dai-hoc-quoc-gia-di-da-lat",
+  from: "Đại học Quốc gia TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Đại học Quốc gia TP.HCM đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tại Đại học Quốc gia TP.HCM đi Đà Lạt với xe đời mới.",
+  routeText:
+    "Đại học Quốc gia TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-lang-dai-hoc-thu-duc-di-da-lat",
+  path: "thue-xe-tu-lang-dai-hoc-thu-duc-di-da-lat",
+  from: "Làng Đại học Thủ Đức",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Làng Đại học Thủ Đức đi Đà Lạt",
+  description:
+    "Xe riêng đón tận Làng Đại học Thủ Đức đi Đà Lạt, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Làng Đại học Thủ Đức → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-khu-cong-nghe-cao-di-da-lat",
+  path: "thue-xe-tu-khu-cong-nghe-cao-di-da-lat",
+  from: "Khu Công nghệ cao TP.HCM",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Khu Công nghệ cao TP.HCM đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Khu Công nghệ cao TP.HCM đi Đà Lạt với xe đời mới và tài xế chuyên nghiệp.",
+  routeText:
+    "Khu Công nghệ cao TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-khu-che-xuat-tan-thuan-di-da-lat",
+  path: "thue-xe-tu-khu-che-xuat-tan-thuan-di-da-lat",
+  from: "Khu chế xuất Tân Thuận",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Khu chế xuất Tân Thuận đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tại Khu chế xuất Tân Thuận đi Đà Lạt, không ghép khách.",
+  routeText:
+    "Khu chế xuất Tân Thuận → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-khu-do-thi-phu-my-hung-di-da-lat",
+  path: "thue-xe-tu-khu-do-thi-phu-my-hung-di-da-lat",
+  from: "Phú Mỹ Hưng",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Phú Mỹ Hưng đi Đà Lạt",
+  description:
+    "Xe riêng đón tận Phú Mỹ Hưng đi Đà Lạt với xe đời mới, không ghép khách và báo giá trước.",
+  routeText:
+    "Phú Mỹ Hưng → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-vincom-dong-khoi-di-da-lat",
+  path: "thue-xe-tu-vincom-dong-khoi-di-da-lat",
+  from: "Vincom Đồng Khởi",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Vincom Đồng Khởi đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tại Vincom Đồng Khởi đi Đà Lạt, xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "Vincom Đồng Khởi → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-bitexco-di-da-lat",
+  path: "thue-xe-tu-bitexco-di-da-lat",
+  from: "Bitexco Financial Tower",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Bitexco đi Đà Lạt",
+  description:
+    "Xe riêng đón tận Bitexco đi Đà Lạt với tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "Bitexco Financial Tower → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "thue-xe-tu-landmark-81-di-da-lat",
+  path: "thue-xe-tu-landmark-81-di-da-lat",
+  from: "Landmark 81",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Landmark 81 đi Đà Lạt",
+  description:
+    "Xe riêng đón tận Landmark 81 đi Đà Lạt, không ghép khách, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "Landmark 81 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-aeon-mall-tan-phu-di-da-lat",
+  path: "thue-xe-tu-aeon-mall-tan-phu-di-da-lat",
+  from: "AEON Mall Tân Phú",
+  to: "Đà Lạt",
+  title: "Thuê xe từ AEON Mall Tân Phú đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tại AEON Mall Tân Phú đi Đà Lạt với xe đời mới và tài xế chuyên tuyến.",
+  routeText:
+    "AEON Mall Tân Phú → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-aeon-mall-binh-tan-di-da-lat",
+  path: "thue-xe-tu-aeon-mall-binh-tan-di-da-lat",
+  from: "AEON Mall Bình Tân",
+  to: "Đà Lạt",
+  title: "Thuê xe từ AEON Mall Bình Tân đi Đà Lạt",
+  description:
+    "Xe riêng đón tận AEON Mall Bình Tân đi Đà Lạt, không ghép khách và báo giá trước.",
+  routeText:
+    "AEON Mall Bình Tân → Võ Văn Kiệt → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-crescent-mall-di-da-lat",
+  path: "thue-xe-tu-crescent-mall-di-da-lat",
+  from: "Crescent Mall",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Crescent Mall đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Crescent Mall đi Đà Lạt với xe đời mới, đưa đón tận nơi và không ghép khách.",
+  routeText:
+    "Crescent Mall → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-suoi-tien-di-da-lat",
+  path: "thue-xe-tu-suoi-tien-di-da-lat",
+  from: "Khu du lịch Suối Tiên",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Suối Tiên đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tại Khu du lịch Suối Tiên đi Đà Lạt với xe đời mới và phục vụ 24/7.",
+  routeText:
+    "Khu du lịch Suối Tiên → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-dam-sen-di-da-lat",
+  path: "thue-xe-tu-dam-sen-di-da-lat",
+  from: "Công viên Đầm Sen",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Đầm Sen đi Đà Lạt",
+  description:
+    "Xe riêng đón tận Công viên Đầm Sen đi Đà Lạt, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Công viên Đầm Sen → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 giờ 30 phút",
+},
+{
+  key: "thue-xe-tu-cong-vien-23-9-di-da-lat",
+  path: "thue-xe-tu-cong-vien-23-9-di-da-lat",
+  from: "Công viên 23/9",
+  to: "Đà Lạt",
+  title: "Thuê xe từ Công viên 23/9 đi Đà Lạt",
+  description:
+    "Xe riêng đón tại Công viên 23/9 đi Đà Lạt với tài xế chuyên nghiệp và xe đời mới.",
+  routeText:
+    "Công viên 23/9 → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-khach-san-rex-di-da-lat",
+  path: "thue-xe-tu-khach-san-rex-di-da-lat",
+  from: "Khách sạn Rex Sài Gòn",
+  to: "Đà Lạt",
+  title: "Thuê xe từ khách sạn Rex đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đón tận khách sạn Rex Sài Gòn đi Đà Lạt, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Khách sạn Rex Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-new-world-saigon-di-da-lat",
+  path: "thue-xe-tu-new-world-saigon-di-da-lat",
+  from: "Khách sạn New World Sài Gòn",
+  to: "Đà Lạt",
+  title: "Thuê xe từ khách sạn New World Sài Gòn đi Đà Lạt",
+  description:
+    "Xe riêng đón tận khách sạn New World Sài Gòn đi Đà Lạt với xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "Khách sạn New World Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "thue-xe-tu-caravelle-saigon-di-da-lat",
+  path: "thue-xe-tu-caravelle-saigon-di-da-lat",
+  from: "Khách sạn Caravelle Sài Gòn",
+  to: "Đà Lạt",
+  title: "Thuê xe từ khách sạn Caravelle Sài Gòn đi Đà Lạt",
+  description:
+    "Xe riêng đón tận khách sạn Caravelle Sài Gòn đi Đà Lạt, không ghép khách và báo giá trước khi đặt.",
+  routeText:
+    "Khách sạn Caravelle Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "dat-xe-online-di-da-lat",
+  path: "dat-xe-online-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe online đi Đà Lạt",
+  description:
+    "Đặt xe online đi Đà Lạt dễ dàng, xác nhận nhanh, biết giá trước và thanh toán sau chuyến đi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dat-xe-co-tai-xe-di-da-lat",
+  path: "dat-xe-co-tai-xe-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe có tài xế đi Đà Lạt",
+  description:
+    "Dịch vụ đặt xe có tài xế đi Đà Lạt với xe riêng đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "dat-xe-nhanh-di-da-lat",
+  path: "dat-xe-nhanh-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đặt xe nhanh đi Đà Lạt",
+  description:
+    "Đặt xe nhanh đi Đà Lạt với xác nhận sớm, xe riêng đời mới và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "taxi-san-bay-tan-son-nhat-di-da-lat",
+  path: "taxi-san-bay-tan-son-nhat-di-da-lat",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Đà Lạt",
+  title: "Taxi sân bay Tân Sơn Nhất đi Đà Lạt",
+  description:
+    "Dịch vụ taxi sân bay Tân Sơn Nhất đi Đà Lạt bằng xe riêng, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-bao-loc",
+  path: "taxi-san-bay-tan-son-nhat-di-bao-loc",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Bảo Lộc",
+  title: "Taxi sân bay Tân Sơn Nhất đi Bảo Lộc",
+  description:
+    "Xe riêng đón tại sân bay Tân Sơn Nhất đi Bảo Lộc, không ghép khách và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Bảo Lộc",
+  duration: "4 - 5 giờ",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-don-duong",
+  path: "taxi-san-bay-tan-son-nhat-di-don-duong",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Đơn Dương",
+  title: "Taxi sân bay Tân Sơn Nhất đi Đơn Dương",
+  description:
+    "Xe riêng từ sân bay Tân Sơn Nhất đi Đơn Dương với tài xế chuyên tuyến và báo giá minh bạch.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đơn Dương",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-duc-trong",
+  path: "taxi-san-bay-tan-son-nhat-di-duc-trong",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Đức Trọng",
+  title: "Taxi sân bay Tân Sơn Nhất đi Đức Trọng",
+  description:
+    "Dịch vụ taxi sân bay Tân Sơn Nhất đi Đức Trọng bằng xe riêng, không ghép khách.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đức Trọng",
+  duration: "5 - 6 giờ",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-di-linh",
+  path: "taxi-san-bay-tan-son-nhat-di-di-linh",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Di Linh",
+  title: "Taxi sân bay Tân Sơn Nhất đi Di Linh",
+  description:
+    "Xe riêng đón tại sân bay Tân Sơn Nhất đi Di Linh với xe đời mới và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Di Linh",
+  duration: "4 giờ 30 phút",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-lam-ha",
+  path: "taxi-san-bay-tan-son-nhat-di-lam-ha",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Lâm Hà",
+  title: "Taxi sân bay Tân Sơn Nhất đi Lâm Hà",
+  description:
+    "Xe riêng từ sân bay Tân Sơn Nhất đi Lâm Hà, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Quốc lộ 20 → Lâm Hà",
+  duration: "6 giờ",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-da-huoai",
+  path: "taxi-san-bay-tan-son-nhat-di-da-huoai",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Đạ Huoai",
+  title: "Taxi sân bay Tân Sơn Nhất đi Đạ Huoai",
+  description:
+    "Xe riêng đón tại sân bay Tân Sơn Nhất đi Đạ Huoai với tài xế chuyên tuyến và đưa đón tận nơi.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Quốc lộ 20 → Đạ Huoai",
+  duration: "3 giờ 30 phút",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-da-teh",
+  path: "taxi-san-bay-tan-son-nhat-di-da-teh",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Đạ Tẻh",
+  title: "Taxi sân bay Tân Sơn Nhất đi Đạ Tẻh",
+  description:
+    "Dịch vụ xe riêng từ sân bay Tân Sơn Nhất đi Đạ Tẻh với báo giá trước khi đặt.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Quốc lộ 20 → Đạ Tẻh",
+  duration: "4 giờ",
+},
+{
+  key: "taxi-san-bay-tan-son-nhat-di-cat-tien",
+  path: "taxi-san-bay-tan-son-nhat-di-cat-tien",
+  from: "Sân bay Tân Sơn Nhất",
+  to: "Cát Tiên",
+  title: "Taxi sân bay Tân Sơn Nhất đi Cát Tiên",
+  description:
+    "Xe riêng từ sân bay Tân Sơn Nhất đi Cát Tiên, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "Sân bay Tân Sơn Nhất → Quốc lộ 20 → Cát Tiên",
+  duration: "4 giờ 30 phút",
+},
+
+{
+  key: "taxi-lien-tinh-di-da-lat",
+  path: "taxi-lien-tinh-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Taxi liên tỉnh đi Đà Lạt",
+  description:
+    "Dịch vụ taxi liên tỉnh đi Đà Lạt bằng xe riêng, không ghép khách, biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "taxi-duong-dai-di-da-lat",
+  path: "taxi-duong-dai-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Taxi đường dài đi Đà Lạt",
+  description:
+    "Taxi đường dài đi Đà Lạt với xe riêng đời mới, tài xế chuyên tuyến và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "taxi-rieng-di-da-lat",
+  path: "taxi-rieng-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Taxi riêng đi Đà Lạt",
+  description:
+    "Taxi riêng đi Đà Lạt, không ghép khách, xe đời mới và báo giá minh bạch.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "taxi-hop-dong-di-da-lat",
+  path: "taxi-hop-dong-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Taxi hợp đồng đi Đà Lạt",
+  description:
+    "Taxi hợp đồng đi Đà Lạt với xe riêng, đưa đón tận nơi và hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "taxi-gia-re-di-da-lat",
+  path: "taxi-gia-re-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Taxi giá rẻ đi Đà Lạt",
+  description:
+    "Taxi giá rẻ đi Đà Lạt với xe riêng, không ghép khách và biết giá trước khi đặt.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+
+{
+  key: "dua-don-tan-noi-di-da-lat",
+  path: "dua-don-tan-noi-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đưa đón tận nơi đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đưa đón tận nơi đi Đà Lạt, không ghép khách và hoạt động 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dua-don-tan-nha-di-da-lat",
+  path: "dua-don-tan-nha-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đưa đón tận nhà đi Đà Lạt",
+  description:
+    "Xe riêng đưa đón tận nhà đi Đà Lạt với tài xế chuyên tuyến và xe đời mới.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dua-don-tan-khach-san-di-da-lat",
+  path: "dua-don-tan-khach-san-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đưa đón tận khách sạn đi Đà Lạt",
+  description:
+    "Dịch vụ xe riêng đưa đón tận khách sạn đi Đà Lạt, không ghép khách và báo giá trước.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "dua-don-cua-den-cua-di-da-lat",
+  path: "dua-don-cua-den-cua-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đưa đón cửa đến cửa đi Đà Lạt",
+  description:
+    "Xe riêng cửa đến cửa đi Đà Lạt, không ghép khách, biết giá trước khi đặt và đưa đón tận nơi.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
+},
+{
+  key: "don-tra-tan-noi-di-da-lat",
+  path: "don-tra-tan-noi-di-da-lat",
+  from: "TP.HCM",
+  to: "Đà Lạt",
+  title: "Đón trả tận nơi đi Đà Lạt",
+  description:
+    "Dịch vụ đón trả tận nơi đi Đà Lạt bằng xe riêng, tài xế chuyên tuyến và phục vụ 24/7.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Đà Lạt",
+  duration: "6 - 7 giờ",
 },
 
 ];
