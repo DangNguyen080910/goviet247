@@ -271,22 +271,40 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
   };
 
   if (scope === "available") {
+    const customerNote = String(trip?.note || "")
+      .trim()
+      .slice(0, 500);
+
+    const maskedPickupAddress = maskAddress(trip.pickupAddress);
+    const maskedDropoffAddress = maskAddress(trip.dropoffAddress);
+
+    const dropoffDisplay = customerNote
+      ? `${maskedDropoffAddress}\n📝 Ghi chú khách: ${customerNote}`
+      : maskedDropoffAddress;
+
     return {
       ...base,
-      pickupAddress: maskAddress(trip.pickupAddress),
-      pickupAddressMasked: maskAddress(trip.pickupAddress),
-      dropoffAddress: maskAddress(trip.dropoffAddress),
-      dropoffAddressMasked: maskAddress(trip.dropoffAddress),
+
+      pickupAddress: maskedPickupAddress,
+      pickupAddressMasked: maskedPickupAddress,
+
+      // Vá BE để app cũ vẫn nhìn thấy ghi chú
+      dropoffAddress: dropoffDisplay,
+      dropoffAddressMasked: dropoffDisplay,
+
       stops: stops.map((stop) => ({
         ...stop,
         address: maskAddress(stop.address),
         addressMasked: maskAddress(stop.address),
       })),
+
       riderName: "",
       riderPhone: "",
       riderNameMasked: maskRiderName(),
       riderPhoneMasked: maskRiderPhone(),
-      note: null,
+
+      // Đồng thời vẫn trả field note để FE dùng sau này
+      note: customerNote || null,
     };
   }
 
