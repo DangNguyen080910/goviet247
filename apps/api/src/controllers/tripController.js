@@ -278,9 +278,29 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
     const maskedPickupAddress = maskAddress(trip.pickupAddress);
     const maskedDropoffAddress = maskAddress(trip.dropoffAddress);
 
-    const dropoffDisplay = customerNote
-      ? `${maskedDropoffAddress}\n📝 Ghi chú khách: ${customerNote}`
-      : maskedDropoffAddress;
+    const buildAddressWithNote = (address) => {
+      if (!customerNote) {
+        return address;
+      }
+
+      return `${address}\n📝 Ghi chú khách: ${customerNote}`;
+    };
+
+    const mappedStops = stops.map((stop, index) => {
+      const maskedAddress = maskAddress(stop.address);
+      const isLastStop = index === stops.length - 1;
+
+      const displayAddress =
+        isLastStop && customerNote
+          ? buildAddressWithNote(maskedAddress)
+          : maskedAddress;
+
+      return {
+        ...stop,
+        address: displayAddress,
+        addressMasked: displayAddress,
+      };
+    });
 
     return {
       ...base,
@@ -288,22 +308,17 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
       pickupAddress: maskedPickupAddress,
       pickupAddressMasked: maskedPickupAddress,
 
-      // Vá BE để app cũ vẫn nhìn thấy ghi chú
-      dropoffAddress: dropoffDisplay,
-      dropoffAddressMasked: dropoffDisplay,
+      dropoffAddress: buildAddressWithNote(maskedDropoffAddress),
+      dropoffAddressMasked: buildAddressWithNote(maskedDropoffAddress),
 
-      stops: stops.map((stop) => ({
-        ...stop,
-        address: maskAddress(stop.address),
-        addressMasked: maskAddress(stop.address),
-      })),
+      // App hiện tại có thể đang lấy điểm đến từ stops
+      stops: mappedStops,
 
       riderName: "",
       riderPhone: "",
       riderNameMasked: maskRiderName(),
       riderPhoneMasked: maskRiderPhone(),
 
-      // Đồng thời vẫn trả field note để FE dùng sau này
       note: customerNote || null,
     };
   }
