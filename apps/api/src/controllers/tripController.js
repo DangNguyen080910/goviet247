@@ -2699,6 +2699,148 @@ export async function adminListUnverifiedTrips(req, res) {
   }
 }
 
+// POST /api/trips/admin/trips/:id/resend
+// Admin đẩy lại một chuyến PENDING cho toàn bộ tài xế
+export async function adminResendPendingTrip(req, res) {
+  try {
+    const tripId = String(req.params?.id || "").trim();
+
+    if (!tripId) {
+      return res.status(400).json({
+        success: false,
+        message: "Thiếu mã chuyến.",
+      });
+    }
+
+    const currentTrip = await prisma.trip.findUnique({
+      where: { id: tripId },
+    });
+
+    if (!currentTrip) {
+      return res.status(404).json({
+        success: false,
+        message: "Không tìm thấy chuyến.",
+      });
+    }
+
+    if (currentTrip.status !== "PENDING") {
+      return res.status(400).json({
+        success: false,
+        message: "Chỉ có thể đẩy lại chuyến đang PENDING.",
+      });
+    }
+
+    if (!currentTrip.isVerified) {
+      return res.status(400).json({
+        success: false,
+        message: "Chuyến chưa được duyệt.",
+      });
+    }
+
+    if (currentTrip.driverId) {
+      return res.status(400).json({
+        success: false,
+        message: "Chuyến đã có tài xế nhận.",
+      });
+    }
+
+    if (currentTrip.cancelledAt) {
+      return res.status(400).json({
+        success: false,
+        message: "Chuyến đã bị huỷ.",
+      });
+    }
+
+    const now = new Date();
+
+    // Đưa chuyến lên đầu danh sách và cho phép nhận ngay
+    const updated = await prisma.trip.update({
+      where: { id: tripId },
+      data: {
+        verifiedAt: now,
+        driverAcceptOpenAt: now,
+      },
+      include: {
+        stops: {
+          orderBy: { seq: "asc" },
+          select: {
+            id: true,
+            seq: true,
+            address: true,
+          },
+        },
+      },
+    });
+
+    const io = req.app?.get?.("io");
+
+    if (io) {
+      // Báo app tài xế đang mở tải lại danh sách
+      io.to("drivers").emit("trip:new", {
+        id: updated.id,
+        pickupAddressMasked: maskAddress(updated.pickupAddress),
+        dropoffAddressMasked: maskAddress(updated.dropoffAddress),
+        pickupTime: updated.pickupTime,
+        returnTime: updated.returnTime || null,
+        carType: updated.carType,
+        direction: updated.direction,
+        totalPrice: updated.totalPrice,
+        distanceKm: updated.distanceKm,
+        driverAcceptOpenAt: updated.driverAcceptOpenAt,
+        createdAt: updated.createdAt,
+        updatedAt: updated.updatedAt,
+        reason: "admin_resend_pending_trip",
+      });
+
+      emitTripChangedToDrivers(io, {
+        tripId: updated.id,
+        fromStatus: updated.status,
+        toStatus: updated.status,
+        driverId: null,
+        previousDriverId: null,
+        updatedAt: updated.updatedAt,
+        reason: "admin_resend_pending_trip",
+        refreshAvailable: true,
+      });
+
+      emitAdminDashboardChanged(io, {
+        source: "admin_resend_pending_trip",
+        tripId: updated.id,
+        status: updated.status,
+        fromStatus: updated.status,
+        toStatus: updated.status,
+        updatedAt: updated.updatedAt,
+      });
+    }
+
+    // Gửi push notification lại tới điện thoại tài xế
+    try {
+      await sendNewTripToDrivers(updated);
+    } catch (pushError) {
+      console.error("[adminResendPendingTrip] push driver error:", pushError);
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Đã đẩy chuyến lên đầu danh sách nhưng gửi thông báo tài xế thất bại.",
+      });
+    }
+
+    return res.json({
+      success: true,
+      trip: updated,
+      message: "Đã đẩy lại chuyến cho tài xế.",
+    });
+  } catch (error) {
+    console.error("[adminResendPendingTrip] error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message || "Không thể đẩy lại chuyến.",
+    });
+  }
+}
+
 // POST /api/trips/admin/trips/:id/verify
 export async function adminVerifyTrip(req, res) {
   try {

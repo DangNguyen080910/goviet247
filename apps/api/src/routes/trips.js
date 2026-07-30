@@ -16,6 +16,7 @@ import {
   adminChangeTripStatus,
   adminListUnverifiedTrips,
   adminVerifyTrip,
+  adminResendPendingTrip,
   getDriverWallet,
   getMyDriverWalletTransactions,
   createWithdrawRequest,
@@ -673,6 +674,12 @@ router.get(
 );
 
 router.post("/admin/trips/:id/verify", requireAdminOrStaff, adminVerifyTrip);
+
+router.post(
+  "/admin/trips/:id/resend",
+  requireAdminOrStaff,
+  adminResendPendingTrip,
+);
 
 router.get("/:id", getTripById);
 

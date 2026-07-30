@@ -208,6 +208,42 @@ export default function PendingTripsTable({
     }
   }
 
+  async function resendTrip(id) {
+    try {
+      const confirmed = window.confirm(
+        "Gửi lại chuyến này cho toàn bộ tài xế?",
+      );
+
+      if (!confirmed) return;
+
+      const token = getAdminToken();
+
+      if (!token) {
+        throw new Error("Thiếu token admin.");
+      }
+
+      const res = await fetch(`/api/trips/admin/trips/${id}/resend`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data?.message || `HTTP ${res.status}`);
+      }
+
+      window.alert(data?.message || "Đã đẩy lại chuyến.");
+
+      await taiDuLieu();
+    } catch (error) {
+      window.alert(error?.message || "Không thể đẩy lại chuyến.");
+    }
+  }
+
   useEffect(() => {
     let conSong = true;
     (async () => {
@@ -401,18 +437,31 @@ export default function PendingTripsTable({
                       <td style={td}>{t.status || "-"}</td>
 
                       <td style={td}>
-                        <Button
-                          size="small"
-                          variant="outlined"
-                          color="error"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedTrip(t);
-                            setOpenCancel(true);
-                          }}
-                        >
-                          Huỷ
-                        </Button>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          <Button
+                            size="small"
+                            variant="contained"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              resendTrip(tripId);
+                            }}
+                          >
+                            Gửi lại
+                          </Button>
+
+                          <Button
+                            size="small"
+                            variant="outlined"
+                            color="error"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedTrip(t);
+                              setOpenCancel(true);
+                            }}
+                          >
+                            Huỷ
+                          </Button>
+                        </div>
                       </td>
                     </>
                   )}
