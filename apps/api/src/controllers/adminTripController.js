@@ -166,8 +166,16 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
 
     const pickupAddress = String(req.body?.pickupAddress || "").trim();
     const dropoffAddress = String(req.body?.dropoffAddress || "").trim();
-    const verifiedNote = String(req.body?.verifiedNote || "").trim();
 
+    // Ghi chú khách hàng
+    const note = String(req.body?.note || "")
+      .trim()
+      .slice(0, 2000);
+
+    // Ghi chú xác nhận nội bộ của admin
+    const verifiedNote = String(req.body?.verifiedNote || "")
+      .trim()
+      .slice(0, 500);
     const carType = String(req.body?.carType || "").trim();
     const direction = String(req.body?.direction || "").trim();
 
@@ -318,6 +326,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           cancelledAt: true,
           pickupAddress: true,
           dropoffAddress: true,
+          note: true,
           carType: true,
           direction: true,
           pickupTime: true,
@@ -383,6 +392,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         data: {
           pickupAddress,
           dropoffAddress: finalDropoffAddress,
+          note: note || null,
           carType,
           direction,
           pickupTime,
@@ -402,6 +412,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           status: true,
           pickupAddress: true,
           dropoffAddress: true,
+          note: true,
           carType: true,
           direction: true,
           pickupTime: true,
@@ -442,6 +453,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         "Admin điều chỉnh thông tin chuyến.",
         `Điểm đón: ${trip.pickupAddress} -> ${pickupAddress}`,
         `Điểm đến: ${oldStopsText || trip.dropoffAddress} -> ${newStopsText}`,
+        `Ghi chú khách: ${trip.note || "-"} -> ${note || "-"}`,
         `Loại xe: ${trip.carType} -> ${carType}`,
         `Loại chuyến: ${trip.direction} -> ${direction}`,
         `Giờ đón: ${trip.pickupTime?.toISOString?.() || "-"} -> ${pickupTime.toISOString()}`,
@@ -452,7 +464,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         }`,
         `KM: ${trip.distanceKm} -> ${distanceKm}`,
         `Giá cuối: ${trip.totalPrice} -> ${Math.round(totalPrice)}`,
-        `Ghi chú: ${verifiedNote}`,
+        `Ghi chú xác nhận nội bộ: ${verifiedNote}`,
       ]
         .join("\n")
         .slice(0, 500);

@@ -167,6 +167,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
   const [adjustForm, setAdjustForm] = useState({
     pickupAddress: "",
     dropoffAddress: "",
+    note: "",
     carType: "CAR_5",
     direction: "ONE_WAY",
     pickupTime: "",
@@ -245,6 +246,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     setAdjustForm({
       pickupAddress: detail?.pickupAddress || "",
       dropoffAddress: detail?.dropoffAddress || stops?.[stops.length - 1] || "",
+      note: detail?.note || "",
       carType: detail?.carType || "CAR_5",
       direction: currentDirection,
       pickupTime: detail?.pickupTime || "",
@@ -373,6 +375,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
           cleanStops[cleanStops.length - 1]?.address ||
           adjustForm.dropoffAddress,
         stops: cleanStops,
+        note: String(adjustForm.note || "").trim(),
         carType: adjustForm.carType,
         direction: adjustForm.direction,
         pickupTime: adjustForm.pickupTime,
@@ -528,6 +531,13 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                       </button>
                     </div>
                   </div>
+
+                  <FormInput
+                    label="Ghi chú của khách hàng"
+                    value={adjustForm.note}
+                    onChange={(v) => updateAdjustField("note", v)}
+                    multiline
+                  />
 
                   <FormInput
                     label="Số km"
