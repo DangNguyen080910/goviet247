@@ -1,4 +1,4 @@
-export const BENTRE_SEO_ROUTES = [
+export const BACLIEU_SEO_ROUTES = [
 
 {
   key: "quan-1-di-bac-lieu",
@@ -2947,18 +2947,6 @@ export const BENTRE_SEO_ROUTES = [
 },
 
 {
-  key: "xe-san-bay-tan-son-nhat-di-bac-lieu",
-  path: "xe-san-bay-tan-son-nhat-di-bac-lieu",
-  from: "Sân bay Tân Sơn Nhất",
-  to: "Bạc Liêu",
-  title: "Xe từ sân bay Tân Sơn Nhất đi Bạc Liêu, xe riêng đón tận ga",
-  description:
-    "Dịch vụ xe riêng đón khách tại sân bay Tân Sơn Nhất đi Bạc Liêu. Tài xế theo dõi giờ hạ cánh, đón tận ga quốc nội hoặc quốc tế, không ghép khách, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
-  routeText:
-    "Sân bay Tân Sơn Nhất → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → TP Cần Thơ → Sóc Trăng → TP Bạc Liêu",
-  duration: "5.5 - 6.5 giờ",
-},
-{
   key: "xe-ben-xe-mien-dong-di-bac-lieu",
   path: "xe-ben-xe-mien-dong-di-bac-lieu",
   from: "Bến xe Miền Đông",
@@ -3128,18 +3116,6 @@ export const BENTRE_SEO_ROUTES = [
   duration: "6.0 - 7.0 giờ",
 },
 
-{
-  key: "dat-xe-di-bac-lieu",
-  path: "dat-xe-di-bac-lieu",
-  from: "TP.HCM",
-  to: "Bạc Liêu",
-  title: "Đặt xe đi Bạc Liêu, xe riêng giá trọn gói",
-  description:
-    "Đặt xe đi Bạc Liêu nhanh chóng với GoViet247. Xe riêng 5 chỗ, 7 chỗ và 16 chỗ, không ghép khách, biết giá trước khi đặt, không cần đặt cọc và thanh toán sau khi hoàn thành chuyến.",
-  routeText:
-    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → TP Cần Thơ → Hậu Giang → Sóc Trăng → TP Bạc Liêu",
-  duration: "5.5 - 6.5 giờ",
-},
 {
   key: "dat-xe-rieng-di-bac-lieu",
   path: "dat-xe-rieng-di-bac-lieu",
