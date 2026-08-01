@@ -3395,4 +3395,82 @@ export const BACLIEU_SEO_ROUTES = [
   duration: "5.5 - 6.5 giờ",
 },
 
+{
+  key: "tp-hcm-di-nha-tho-tac-say",
+  path: "thue-xe-tp-hcm-di-nha-tho-tac-say",
+  from: "TP.HCM",
+  to: "Nhà thờ Tắc Sậy (Cha Diệp)",
+  title: "Thuê xe TP.HCM đi Nhà thờ Tắc Sậy (Cha Diệp), xe riêng trọn gói",
+  description:
+    "Thuê xe TP.HCM đi Nhà thờ Tắc Sậy (Cha Diệp) bằng xe riêng, phù hợp cho khách hành hương, gia đình và các đoàn về viếng mộ Cha Phanxicô Trương Bửu Diệp. Xe đón tận nơi tại TP.HCM, không ghép khách, không cần đổi xe giữa đường và chủ động thời gian khởi hành. Hỗ trợ chuyến một chiều, khứ hồi hoặc kết hợp tham quan Bạc Liêu, Cà Mau và các tỉnh miền Tây.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Sóc Trăng → Quốc lộ 1A → Nhà thờ Tắc Sậy (Cha Diệp), Bạc Liêu",
+  duration: "5.8 - 6.5 giờ",
+},
+
+{
+  key: "sai-gon-di-nha-tho-tac-say",
+  path: "thue-xe-sai-gon-di-nha-tho-tac-say",
+  from: "Sài Gòn",
+  to: "Nhà thờ Tắc Sậy",
+  title: "Thuê xe Sài Gòn đi Nhà thờ Tắc Sậy, xe riêng giá trọn gói",
+  description:
+    "Dịch vụ thuê xe Sài Gòn đi Nhà thờ Tắc Sậy dành cho khách hành hương và du lịch. Xe riêng đón tận nơi, không ghép khách, biết giá trước khi đặt và linh hoạt lịch trình.",
+  routeText:
+    "Sài Gòn → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Sóc Trăng → Nhà thờ Tắc Sậy",
+  duration: "5.8 - 6.5 giờ",
+},
+
+{
+  key: "tp-hcm-di-cha-diep",
+  path: "thue-xe-tp-hcm-di-cha-diep",
+  from: "TP.HCM",
+  to: "Cha Diệp",
+  title: "Thuê xe TP.HCM đi Cha Diệp, xe riêng hành hương",
+  description:
+    "Thuê xe TP.HCM đi Cha Diệp bằng xe riêng, phù hợp cho khách đến viếng mộ Cha Phanxicô Trương Bửu Diệp tại Nhà thờ Tắc Sậy. Xe đón tận nơi, không ghép khách và có thể kết hợp tham quan các địa điểm nổi tiếng của Bạc Liêu.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Sóc Trăng → Nhà thờ Tắc Sậy (Cha Diệp)",
+  duration: "5.8 - 6.5 giờ",
+},
+
+{
+  key: "sai-gon-di-cha-diep",
+  path: "thue-xe-sai-gon-di-cha-diep",
+  from: "Sài Gòn",
+  to: "Cha Diệp",
+  title: "Thuê xe Sài Gòn đi Cha Diệp, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe Sài Gòn đi Cha Diệp dành cho khách hành hương, gia đình và đoàn nhỏ. Xe riêng, không ghép khách, đón tận nơi và hỗ trợ đi về trong ngày hoặc nhiều ngày.",
+  routeText:
+    "Sài Gòn → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Sóc Trăng → Nhà thờ Tắc Sậy (Cha Diệp)",
+  duration: "5.8 - 6.5 giờ",
+},
+
+{
+  key: "tp-hcm-di-mo-cha-diep",
+  path: "thue-xe-tp-hcm-di-mo-cha-diep",
+  from: "TP.HCM",
+  to: "Mộ Cha Diệp",
+  title: "Thuê xe TP.HCM đi Mộ Cha Diệp, xe riêng đón tận nơi",
+  description:
+    "Thuê xe TP.HCM đi Mộ Cha Diệp tại Nhà thờ Tắc Sậy bằng xe riêng, phù hợp cho khách hành hương và gia đình. Xe đón tận nơi, không ghép khách, biết giá trước khi đặt và thanh toán sau khi hoàn thành chuyến.",
+  routeText:
+    "TP.HCM → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Sóc Trăng → Mộ Cha Diệp, Nhà thờ Tắc Sậy",
+  duration: "5.8 - 6.5 giờ",
+},
+
+{
+  key: "sai-gon-di-mo-cha-diep",
+  path: "thue-xe-sai-gon-di-mo-cha-diep",
+  from: "Sài Gòn",
+  to: "Mộ Cha Diệp",
+  title: "Thuê xe Sài Gòn đi Mộ Cha Diệp, xe riêng không ghép khách",
+  description:
+    "Dịch vụ thuê xe Sài Gòn đi Mộ Cha Diệp bằng xe riêng, thích hợp cho khách hành hương, đi lễ hoặc về Bạc Liêu. Xe đón tận nơi, chủ động thời gian và không phải đổi xe giữa đường.",
+  routeText:
+    "Sài Gòn → Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Sóc Trăng → Mộ Cha Diệp",
+  duration: "5.8 - 6.5 giờ",
+},
+
 ];
