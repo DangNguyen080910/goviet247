@@ -26,11 +26,28 @@ function buildCustomerUserWhere({ q, phoneVerified, status }) {
   if (q) {
     and.push({
       OR: [
-        { displayName: { contains: q, mode: "insensitive" } },
+        {
+          displayName: {
+            contains: q,
+            mode: "insensitive",
+          },
+        },
+        {
+          riderProfile: {
+            is: {
+              fullName: {
+                contains: q,
+                mode: "insensitive",
+              },
+            },
+          },
+        },
         {
           phones: {
             some: {
-              e164: { contains: q },
+              e164: {
+                contains: q,
+              },
             },
           },
         },

@@ -2806,9 +2806,37 @@ export function makeAdminController(prisma) {
 
         if (q) {
           where.OR = [
-            { plateNumber: { contains: q, mode: "insensitive" } },
-            { user: { displayName: { contains: q, mode: "insensitive" } } },
-            { user: { phones: { some: { e164: { contains: q } } } } },
+            {
+              fullName: {
+                contains: q,
+                mode: "insensitive",
+              },
+            },
+            {
+              plateNumber: {
+                contains: q,
+                mode: "insensitive",
+              },
+            },
+            {
+              user: {
+                displayName: {
+                  contains: q,
+                  mode: "insensitive",
+                },
+              },
+            },
+            {
+              user: {
+                phones: {
+                  some: {
+                    e164: {
+                      contains: q,
+                    },
+                  },
+                },
+              },
+            },
           ];
         }
 

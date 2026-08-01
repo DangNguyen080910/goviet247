@@ -72,6 +72,18 @@ function getDriverDisplayName(driver) {
   );
 }
 
+function vehicleTypeLabel(value) {
+  const normalized = String(value || "")
+    .trim()
+    .toUpperCase();
+
+  if (normalized === "CAR_5") return "Xe 5 chỗ";
+  if (normalized === "CAR_7") return "Xe 7 chỗ";
+  if (normalized === "CAR_16") return "Xe 16 chỗ";
+
+  return value || "-";
+}
+
 export default function AdminDrivers() {
   const [drivers, setDrivers] = useState([]);
   const [loading, setLoading] = useState(true); // list loading
@@ -566,6 +578,7 @@ export default function AdminDrivers() {
             <TableRow>
               <TableCell>Họ tên</TableCell>
               <TableCell>SĐT</TableCell>
+              <TableCell>Loại xe</TableCell>
               <TableCell>Hãng xe</TableCell>
               <TableCell>Model xe</TableCell>
               <TableCell>Đời xe</TableCell>
@@ -594,7 +607,7 @@ export default function AdminDrivers() {
                     return p.isVerified ? p.e164 : `${p.e164} (chưa xác thực)`;
                   })()}
                 </TableCell>
-
+                <TableCell>{vehicleTypeLabel(d.vehicleType)}</TableCell>
                 <TableCell>{d.vehicleBrand || "-"}</TableCell>
                 <TableCell>{d.vehicleModel || "-"}</TableCell>
                 <TableCell>{d.vehicleYear || "-"}</TableCell>
@@ -616,7 +629,7 @@ export default function AdminDrivers() {
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={10}>
+                <TableCell colSpan={11}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>
@@ -741,6 +754,9 @@ export default function AdminDrivers() {
 
                   <Typography>Biển số: {detail.plateNumber || "-"}</Typography>
                   <Typography>
+                    Loại xe: {vehicleTypeLabel(detail.vehicleType)}
+                  </Typography>
+                  <Typography>
                     Xe: {detail.vehicleBrand || "-"} {detail.vehicleModel || ""}
                   </Typography>
                   <Typography>Đời xe: {detail.vehicleYear || "-"}</Typography>
@@ -819,18 +835,54 @@ export default function AdminDrivers() {
                           </Typography>
                         )}
 
-                        <Box mt={1}>
-                          <Button
-                            size="small"
-                            variant="outlined"
-                            disabled={!doc.viewUrl && !doc.fileUrl}
-                            onClick={() =>
-                              window.open(doc.viewUrl || doc.fileUrl, "_blank")
-                            }
+                        {doc.viewUrl || doc.fileUrl ? (
+                          <>
+                            <Box
+                              component="img"
+                              src={doc.viewUrl || doc.fileUrl}
+                              alt={docTypeLabel(doc.type)}
+                              sx={{
+                                mt: 1.5,
+                                width: "100%",
+                                maxHeight: 320,
+                                objectFit: "contain",
+                                borderRadius: 1.5,
+                                border: "1px solid #eee",
+                                bgcolor: "#fafafa",
+                                cursor: "pointer",
+                              }}
+                              onClick={() =>
+                                window.open(
+                                  doc.viewUrl || doc.fileUrl,
+                                  "_blank",
+                                )
+                              }
+                            />
+
+                            <Box mt={1}>
+                              <Button
+                                size="small"
+                                variant="outlined"
+                                onClick={() =>
+                                  window.open(
+                                    doc.viewUrl || doc.fileUrl,
+                                    "_blank",
+                                  )
+                                }
+                              >
+                                Mở ảnh lớn
+                              </Button>
+                            </Box>
+                          </>
+                        ) : (
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            mt={1}
                           >
-                            Xem ảnh
-                          </Button>
-                        </Box>
+                            Không có ảnh để hiển thị.
+                          </Typography>
+                        )}
                       </Box>
                     ))
                   )}
