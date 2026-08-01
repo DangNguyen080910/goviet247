@@ -1006,6 +1006,31 @@ export async function createMyDriverWithdrawRequest(req, res) {
         status: created.withdrawRequest.status,
         updatedAt: created.withdrawRequest.createdAt,
       });
+
+      try {
+        const driverName =
+          result.profile?.fullName || result.user?.displayName || "Tài xế";
+
+        await sendAdminPushNotification({
+          title: "💳 Có yêu cầu rút tiền mới",
+          body: `${driverName} vừa yêu cầu rút ${Number(
+            created.withdrawRequest.amount || 0,
+          ).toLocaleString("vi-VN")}đ.`,
+          data: {
+            type: "DRIVER_WITHDRAW_REQUEST_CREATED",
+            withdrawRequestId: created.withdrawRequest.id,
+            driverId: uid,
+            driverProfileId: created.driverProfileId,
+            amount: Number(created.withdrawRequest.amount || 0),
+            status: created.withdrawRequest.status,
+          },
+        });
+      } catch (notifyError) {
+        console.error(
+          "[DriverProfile] send admin push withdraw request error:",
+          notifyError,
+        );
+      }
     }
 
     return res.json({
@@ -1229,7 +1254,7 @@ export async function createDriverProfile(req, res) {
       });
     });
 
-        if (profile) {
+    if (profile) {
       try {
         const driverName =
           profile.fullName ||
