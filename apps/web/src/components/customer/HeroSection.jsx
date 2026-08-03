@@ -242,7 +242,7 @@ export default function HeroSection() {
             },
 
             pb: {
-              xs: 4,
+              xs: "160px",
               md: 5,
             },
           }}
@@ -533,24 +533,26 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   aria-label="Tải ứng dụng GoViet247 cho iPhone trên App Store"
                   sx={{
-                    minHeight: 50,
-                    minWidth: {
-                      xs: "100%",
-                      sm: 185,
-                    },
+                    flex: 1,
+                    minWidth: 0,
+                    minHeight: 46,
 
-                    px: 2.5,
+                    px: {
+                      xs: 1.2,
+                      sm: 2.2,
+                    },
                     py: 1,
 
-                    justifyContent: {
-                      xs: "flex-start",
-                      sm: "center",
-                    },
+                    justifyContent: "center",
 
                     textTransform: "none",
                     borderRadius: 2.5,
                     fontWeight: 900,
-                    fontSize: 15,
+                    fontSize: {
+                      xs: 12.5,
+                      sm: 15,
+                    },
+                    whiteSpace: "nowrap",
 
                     color: "white",
                     borderColor: "rgba(255,255,255,0.72)",
@@ -579,7 +581,7 @@ export default function HeroSection() {
                     },
                   }}
                 >
-                  iPhone · App Store
+                  App Store
                 </Button>
 
                 <Button
@@ -590,24 +592,26 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   aria-label="Tải ứng dụng GoViet247 cho Android trên Google Play"
                   sx={{
-                    minHeight: 50,
-                    minWidth: {
-                      xs: "100%",
-                      sm: 200,
-                    },
+                    flex: 1,
+                    minWidth: 0,
+                    minHeight: 46,
 
-                    px: 2.5,
+                    px: {
+                      xs: 1.2,
+                      sm: 2.2,
+                    },
                     py: 1,
 
-                    justifyContent: {
-                      xs: "flex-start",
-                      sm: "center",
-                    },
+                    justifyContent: "center",
 
                     textTransform: "none",
                     borderRadius: 2.5,
                     fontWeight: 900,
-                    fontSize: 15,
+                    fontSize: {
+                      xs: 12.5,
+                      sm: 15,
+                    },
+                    whiteSpace: "nowrap",
 
                     color: "white",
                     borderColor: "rgba(255,255,255,0.72)",
@@ -636,7 +640,7 @@ export default function HeroSection() {
                     },
                   }}
                 >
-                  Android · Google Play
+                  Google Play
                 </Button>
               </Stack>
             </Box>
