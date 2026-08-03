@@ -555,7 +555,7 @@ export default function HeroSection() {
                     whiteSpace: "nowrap",
 
                     color: "white",
-                    borderColor: "rgba(255,255,255,0.72)",
+                    borderColor: "#22C55E",
                     bgcolor: "rgba(255,255,255,0.16)",
 
                     boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
@@ -575,7 +575,7 @@ export default function HeroSection() {
                     },
 
                     "&:hover": {
-                      borderColor: "rgba(255,255,255,0.95)",
+                      borderColor: "#4ADE80",
                       bgcolor: "rgba(255,255,255,0.25)",
                       transform: "translateY(-1px)",
                     },
@@ -614,7 +614,7 @@ export default function HeroSection() {
                     whiteSpace: "nowrap",
 
                     color: "white",
-                    borderColor: "rgba(255,255,255,0.72)",
+                    borderColor: "#22C55E",
                     bgcolor: "rgba(255,255,255,0.16)",
 
                     boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
@@ -634,7 +634,7 @@ export default function HeroSection() {
                     },
 
                     "&:hover": {
-                      borderColor: "rgba(255,255,255,0.95)",
+                      borderColor: "#4ADE80",
                       bgcolor: "rgba(255,255,255,0.25)",
                       transform: "translateY(-1px)",
                     },
