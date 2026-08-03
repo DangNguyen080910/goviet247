@@ -246,6 +246,15 @@ export default function BookingCard() {
   const location = useLocation();
   const { user, login } = useCustomerAuth();
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "ViewContent", {
+        content_name: "Đặt xe",
+        content_category: "Booking",
+      });
+    }
+  }, []);
+
   const ZALO_BTN_HEIGHT = 64; // chiều cao button Zalo
   const ZALO_BTN_MARGIN = 20; // khoảng cách giữa 2 button
 
@@ -1663,6 +1672,13 @@ export default function BookingCard() {
 
       trackGoogleAdsConversion();
 
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "Lead", {
+          value: quote.totalPrice,
+          currency: "VND",
+        });
+      }
+
       setShouldRedirectAfterSuccess(true);
       setSuccessDialog({ open: true, tripId });
 
@@ -1734,6 +1750,13 @@ export default function BookingCard() {
         "";
 
       trackGoogleAdsConversion();
+
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "Lead", {
+          value: quote.totalPrice,
+          currency: "VND",
+        });
+      }
 
       setShouldRedirectAfterSuccess(true);
       setSuccessDialog({ open: true, tripId });
