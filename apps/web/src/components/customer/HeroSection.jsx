@@ -275,7 +275,7 @@ export default function HeroSection() {
           >
             <Typography
               sx={{
-                mb: 1.3,
+                mb: 0.4,
 
                 fontSize: {
                   xs: 17,
@@ -290,7 +290,6 @@ export default function HeroSection() {
             >
               Bạn muốn đi đâu?
             </Typography>
-
             <Stack
               direction={{
                 xs: "column",
@@ -400,21 +399,6 @@ export default function HeroSection() {
                 Xem giá chuyến đi
               </Button>
             </Stack>
-
-            <Typography
-              sx={{
-                mt: 1.1,
-                fontSize: {
-                  xs: 12,
-                  sm: 13,
-                },
-                fontWeight: 600,
-                opacity: 0.88,
-              }}
-            >
-              Nhập hành trình để xem quãng đường và nhận báo giá trước khi đặt
-              xe.
-            </Typography>
           </Box>
 
           {/* ===================================================== */}
@@ -512,7 +496,6 @@ export default function HeroSection() {
             </Stack>
 
             {/* Nút tải ứng dụng */}
-            {/* Nút tải ứng dụng */}
             <Box
               sx={{
                 mt: 0.6,
@@ -534,17 +517,12 @@ export default function HeroSection() {
               </Typography>
 
               <Stack
-                direction={{
-                  xs: "column",
-                  sm: "row",
-                }}
+                direction="row"
                 sx={{
-                  gap: 1.1,
-                  width: {
-                    xs: "100%",
-                    sm: "auto",
-                  },
-                  maxWidth: "100%",
+                  gap: 1,
+                  width: "100%",
+                  maxWidth: 430,
+                  flexWrap: "nowrap",
                 }}
               >
                 <Button
