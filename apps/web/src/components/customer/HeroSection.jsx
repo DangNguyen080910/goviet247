@@ -106,6 +106,103 @@ export default function HeroSection() {
     });
   };
 
+  const appDownloadButtonSx = {
+    flex: 1,
+    minWidth: 0,
+    minHeight: 46,
+
+    px: {
+      xs: 1.2,
+      sm: 2.2,
+    },
+    py: 1,
+
+    justifyContent: "center",
+
+    textTransform: "none",
+    borderRadius: 2.5,
+    fontWeight: 900,
+    fontSize: {
+      xs: 12.5,
+      sm: 15,
+    },
+    whiteSpace: "nowrap",
+
+    color: "white",
+    borderColor: "#22C55E",
+    bgcolor: "rgba(255,255,255,0.16)",
+
+    boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
+
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
+
+    position: "relative",
+    overflow: "hidden",
+    isolation: "isolate",
+
+    transition:
+      "transform 160ms ease, background-color 160ms ease, border-color 160ms ease",
+
+    "& .MuiButton-startIcon": {
+      mr: 1.1,
+      position: "relative",
+      zIndex: 2,
+    },
+
+    "& .MuiSvgIcon-root": {
+      fontSize: 25,
+    },
+
+    "& .MuiButton-endIcon, & > span, & .MuiButton-icon": {
+      position: "relative",
+      zIndex: 2,
+    },
+
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      top: "-20%",
+      left: "-75%",
+      width: "42%",
+      height: "140%",
+
+      background:
+        "linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.12) 70%, transparent 100%)",
+
+      transform: "skewX(-22deg)",
+      pointerEvents: "none",
+      zIndex: 1,
+
+      animation: "appButtonShine 5.5s ease-in-out infinite",
+    },
+
+    "@keyframes appButtonShine": {
+      "0%": {
+        left: "-75%",
+      },
+      "14%": {
+        left: "135%",
+      },
+      "100%": {
+        left: "135%",
+      },
+    },
+
+    "&:hover": {
+      borderColor: "#4ADE80",
+      bgcolor: "rgba(255,255,255,0.25)",
+      transform: "translateY(-1px)",
+    },
+
+    "@media (prefers-reduced-motion: reduce)": {
+      "&::after": {
+        animation: "none",
+        display: "none",
+      },
+    },
+  };
+
   const fakeInputSx = {
     flex: 1,
     minWidth: {
@@ -532,54 +629,7 @@ export default function HeroSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Tải ứng dụng GoViet247 cho iPhone trên App Store"
-                  sx={{
-                    flex: 1,
-                    minWidth: 0,
-                    minHeight: 46,
-
-                    px: {
-                      xs: 1.2,
-                      sm: 2.2,
-                    },
-                    py: 1,
-
-                    justifyContent: "center",
-
-                    textTransform: "none",
-                    borderRadius: 2.5,
-                    fontWeight: 900,
-                    fontSize: {
-                      xs: 12.5,
-                      sm: 15,
-                    },
-                    whiteSpace: "nowrap",
-
-                    color: "white",
-                    borderColor: "#22C55E",
-                    bgcolor: "rgba(255,255,255,0.16)",
-
-                    boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
-
-                    backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-
-                    transition:
-                      "transform 160ms ease, background-color 160ms ease, border-color 160ms ease",
-
-                    "& .MuiButton-startIcon": {
-                      mr: 1.1,
-                    },
-
-                    "& .MuiSvgIcon-root": {
-                      fontSize: 25,
-                    },
-
-                    "&:hover": {
-                      borderColor: "#4ADE80",
-                      bgcolor: "rgba(255,255,255,0.25)",
-                      transform: "translateY(-1px)",
-                    },
-                  }}
+                  sx={appDownloadButtonSx}
                 >
                   App Store
                 </Button>
@@ -591,54 +641,7 @@ export default function HeroSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Tải ứng dụng GoViet247 cho Android trên Google Play"
-                  sx={{
-                    flex: 1,
-                    minWidth: 0,
-                    minHeight: 46,
-
-                    px: {
-                      xs: 1.2,
-                      sm: 2.2,
-                    },
-                    py: 1,
-
-                    justifyContent: "center",
-
-                    textTransform: "none",
-                    borderRadius: 2.5,
-                    fontWeight: 900,
-                    fontSize: {
-                      xs: 12.5,
-                      sm: 15,
-                    },
-                    whiteSpace: "nowrap",
-
-                    color: "white",
-                    borderColor: "#22C55E",
-                    bgcolor: "rgba(255,255,255,0.16)",
-
-                    boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
-
-                    backdropFilter: "blur(10px)",
-                    WebkitBackdropFilter: "blur(10px)",
-
-                    transition:
-                      "transform 160ms ease, background-color 160ms ease, border-color 160ms ease",
-
-                    "& .MuiButton-startIcon": {
-                      mr: 1.1,
-                    },
-
-                    "& .MuiSvgIcon-root": {
-                      fontSize: 25,
-                    },
-
-                    "&:hover": {
-                      borderColor: "#4ADE80",
-                      bgcolor: "rgba(255,255,255,0.25)",
-                      transform: "translateY(-1px)",
-                    },
-                  }}
+                  sx={appDownloadButtonSx}
                 >
                   Google Play
                 </Button>
