@@ -512,25 +512,38 @@ export default function HeroSection() {
             </Stack>
 
             {/* Nút tải ứng dụng */}
-            <Box>
+            {/* Nút tải ứng dụng */}
+            <Box
+              sx={{
+                mt: 0.6,
+              }}
+            >
               <Typography
                 sx={{
-                  mb: 1,
-                  fontWeight: 700,
-                  fontSize: 13,
-                  px: 1.8,
-                  py: 0.7,
-                  opacity: 0.82,
+                  mb: 1.1,
+                  fontWeight: 900,
+                  fontSize: {
+                    xs: 15,
+                    sm: 16,
+                  },
+                  opacity: 1,
+                  textShadow: "0 3px 12px rgba(0,0,0,0.35)",
                 }}
               >
                 📱 Tải ứng dụng GoViet247
               </Typography>
 
               <Stack
-                direction="row"
+                direction={{
+                  xs: "column",
+                  sm: "row",
+                }}
                 sx={{
-                  flexWrap: "wrap",
-                  gap: 1,
+                  gap: 1.1,
+                  width: {
+                    xs: "100%",
+                    sm: "auto",
+                  },
                   maxWidth: "100%",
                 }}
               >
@@ -540,24 +553,55 @@ export default function HeroSection() {
                   href={appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Tải ứng dụng GoViet247 cho iPhone trên App Store"
                   sx={{
+                    minHeight: 50,
+                    minWidth: {
+                      xs: "100%",
+                      sm: 185,
+                    },
+
+                    px: 2.5,
+                    py: 1,
+
+                    justifyContent: {
+                      xs: "flex-start",
+                      sm: "center",
+                    },
+
                     textTransform: "none",
-                    borderRadius: 999,
-                    fontWeight: 800,
+                    borderRadius: 2.5,
+                    fontWeight: 900,
+                    fontSize: 15,
 
                     color: "white",
-                    borderColor: "rgba(255,255,255,0.35)",
-                    bgcolor: "rgba(255,255,255,0.06)",
+                    borderColor: "rgba(255,255,255,0.72)",
+                    bgcolor: "rgba(255,255,255,0.16)",
 
-                    backdropFilter: "blur(8px)",
+                    boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
+
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
+
+                    transition:
+                      "transform 160ms ease, background-color 160ms ease, border-color 160ms ease",
+
+                    "& .MuiButton-startIcon": {
+                      mr: 1.1,
+                    },
+
+                    "& .MuiSvgIcon-root": {
+                      fontSize: 25,
+                    },
 
                     "&:hover": {
-                      borderColor: "rgba(255,255,255,0.7)",
-                      bgcolor: "rgba(255,255,255,0.12)",
+                      borderColor: "rgba(255,255,255,0.95)",
+                      bgcolor: "rgba(255,255,255,0.25)",
+                      transform: "translateY(-1px)",
                     },
                   }}
                 >
-                  App Store
+                  iPhone · App Store
                 </Button>
 
                 <Button
@@ -566,24 +610,55 @@ export default function HeroSection() {
                   href={playStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Tải ứng dụng GoViet247 cho Android trên Google Play"
                   sx={{
+                    minHeight: 50,
+                    minWidth: {
+                      xs: "100%",
+                      sm: 200,
+                    },
+
+                    px: 2.5,
+                    py: 1,
+
+                    justifyContent: {
+                      xs: "flex-start",
+                      sm: "center",
+                    },
+
                     textTransform: "none",
-                    borderRadius: 999,
-                    fontWeight: 800,
+                    borderRadius: 2.5,
+                    fontWeight: 900,
+                    fontSize: 15,
 
                     color: "white",
-                    borderColor: "rgba(255,255,255,0.35)",
-                    bgcolor: "rgba(255,255,255,0.06)",
+                    borderColor: "rgba(255,255,255,0.72)",
+                    bgcolor: "rgba(255,255,255,0.16)",
 
-                    backdropFilter: "blur(8px)",
+                    boxShadow: "0 8px 22px rgba(0,0,0,0.18)",
+
+                    backdropFilter: "blur(10px)",
+                    WebkitBackdropFilter: "blur(10px)",
+
+                    transition:
+                      "transform 160ms ease, background-color 160ms ease, border-color 160ms ease",
+
+                    "& .MuiButton-startIcon": {
+                      mr: 1.1,
+                    },
+
+                    "& .MuiSvgIcon-root": {
+                      fontSize: 25,
+                    },
 
                     "&:hover": {
-                      borderColor: "rgba(255,255,255,0.7)",
-                      bgcolor: "rgba(255,255,255,0.12)",
+                      borderColor: "rgba(255,255,255,0.95)",
+                      bgcolor: "rgba(255,255,255,0.25)",
+                      transform: "translateY(-1px)",
                     },
                   }}
                 >
-                  Google Play
+                  Android · Google Play
                 </Button>
               </Stack>
             </Box>
