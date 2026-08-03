@@ -1451,6 +1451,7 @@ export default function BookingCard() {
       setQuote(nextQuote);
 
       if (typeof window !== "undefined" && window.fbq) {
+        console.log("Meta Search fired");
         window.fbq("track", "Search", {
           content_category: "Trip Quote",
           content_type: "service",
