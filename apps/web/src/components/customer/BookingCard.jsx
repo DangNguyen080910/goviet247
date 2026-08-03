@@ -1450,6 +1450,18 @@ export default function BookingCard() {
 
       setQuote(nextQuote);
 
+      if (typeof window !== "undefined" && window.fbq) {
+        window.fbq("track", "Search", {
+          content_category: "Trip Quote",
+          content_type: "service",
+          car_type: carType,
+          trip_direction: direction,
+          distance_km: Number(distanceKm),
+          value: Number(data.finalPrice || 0),
+          currency: "VND",
+        });
+      }
+
       setToast({
         open: true,
         severity: "success",
