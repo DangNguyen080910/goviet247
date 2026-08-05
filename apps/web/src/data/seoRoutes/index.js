@@ -49,6 +49,7 @@ import { BINHTHUAN_SEO_ROUTES } from "./binhThuanSeoRoutes.js";
 import { V2HCM_SEO_ROUTES } from "./V2HCMSeoRoutes.js";
 import { V2DONGNAI_SEO_ROUTES } from "./V2DongNaiSeoRoutes.js";
 import { V2TAYNINH_SEO_ROUTES } from "./V2TayNinhSeoRoutes.js";
+import { V2CANTHO_SEO_ROUTES } from "./V2CanThoSeoRoutes.js";
 
 
 const assertUniqueSeoRoutes = (items) => {
@@ -149,4 +150,5 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...V2HCM_SEO_ROUTES,
   ...V2DONGNAI_SEO_ROUTES,
   ...V2TAYNINH_SEO_ROUTES,
+  ...V2CANTHO_SEO_ROUTES,
 ]);
