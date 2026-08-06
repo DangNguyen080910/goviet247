@@ -33788,5 +33788,5271 @@ export const V2HCM_SEO_ROUTES = [
     "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
   duration: "2.2 - 2.7 giờ",
 },
+{
+  key: "phuong-vung-tau-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách về nhà, công tác, khám chữa bệnh hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi tại phường Vũng Tàu TP.HCM, không ghép khách, không phải đổi xe và hỗ trợ lịch trình linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, về thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực trung tâm quận Tân Phú cũ. Xe riêng đón tận nơi, không ghép khách và linh hoạt thời gian khởi hành.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đưa đón tận nơi, không ghép khách và không cần đổi xe giữa đường.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, tham dự sự kiện hoặc về khu vực trung tâm Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình và khu vực lân cận. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → Tây Thạnh → phường Tây Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi tại phường Vũng Tàu TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc về khu vực trung tâm quận Tân Phú cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú cũ. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, về nhà, học tập hoặc di chuyển đến khu vực trung tâm quận Gò Vấp cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không cần đổi xe giữa đường.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại cửa ngõ phía Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.3 - 2.8 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-vung-tau-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, thăm người thân hoặc về khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+{
+  key: "phuong-vung-tau-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách, không phải đổi xe giữa đường và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Tây Bắc TP.HCM. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-binh-my-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-binh-my-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến đi theo yêu cầu.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.5 - 3.0 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-nha-be-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-nha-be-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại khu công nghiệp Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-vung-tau-hcm-di-xa-can-gio-hcm",
+  path: "phuong-vung-tau-hcm-di-xa-can-gio-hcm",
+  from: "Phường Vũng Tàu TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Vũng Tàu TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Vũng Tàu TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt đến trung tâm Cần Giờ.",
+  routeText:
+    "phường Vũng Tàu TP.HCM → đường 3 Tháng 2 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.2 - 3.8 giờ",
+},
+{
+  key: "phuong-tam-thang-hcm-di-phuong-sai-gon-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-sai-gon-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Sài Gòn TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Sài Gòn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Sài Gòn TP.HCM phù hợp cho khách công tác, gặp đối tác, du lịch hoặc về trung tâm TP.HCM. Xe riêng đón tận nơi tại nhà, khách sạn hay văn phòng trong khu vực phường Tam Thắng TP.HCM, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → phường Sài Gòn TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-dinh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-dinh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Định TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Định TP.HCM phù hợp cho khách công tác, khám chữa bệnh, mua sắm hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hai Bà Trưng → phường Tân Định TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-ben-thanh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-ben-thanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bến Thành TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bến Thành TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bến Thành TP.HCM phù hợp cho khách du lịch, công tác, tham quan khu trung tâm hoặc gặp đối tác. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → phường Bến Thành TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-cau-ong-lanh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-cau-ong-lanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Cầu Ông Lãnh TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Cầu Ông Lãnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Cầu Ông Lãnh TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cô Bắc → phường Cầu Ông Lãnh TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-ban-co-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-ban-co-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bàn Cờ TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bàn Cờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bàn Cờ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, học tập hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Thị Minh Khai → phường Bàn Cờ TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-xuan-hoa-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-xuan-hoa-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Xuân Hòa TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Xuân Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Xuân Hòa TP.HCM phù hợp cho khách đến bệnh viện, trường học, văn phòng hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Xuân Hòa TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-nhieu-loc-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-nhieu-loc-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Nhiêu Lộc TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Nhiêu Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Nhiêu Lộc TP.HCM phù hợp cho khách công tác, khám chữa bệnh, lưu trú hoặc làm việc tại trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hai Bà Trưng → phường Nhiêu Lộc TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-phu-nhuan-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-phu-nhuan-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Phú Nhuận TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Nhuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Nhuận TP.HCM phù hợp cho khách đi sân bay, công tác, thăm người thân hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Văn Trỗi → phường Phú Nhuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-gia-dinh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-gia-dinh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Gia Định TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Gia Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Gia Định TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực Bình Thạnh cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Gia Định TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-binh-thanh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-binh-thanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bình Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Bình Thạnh. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Bình Thạnh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+{
+  key: "phuong-tam-thang-hcm-di-phuong-thanh-my-tay-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-thanh-my-tay-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Thạnh Mỹ Tây TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Thạnh Mỹ Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Thạnh Mỹ Tây TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc thăm người thân. Xe riêng đón tận nơi tại phường Tam Thắng TP.HCM, không ghép khách, không đổi xe và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Thạnh Mỹ Tây TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-xom-chieu-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-xom-chieu-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Xóm Chiếu TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Xóm Chiếu TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Xóm Chiếu TP.HCM phù hợp cho khách công tác, lưu trú, về nhà hoặc làm việc tại khu vực Quận 4 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Calmette → phường Xóm Chiếu TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-khanh-hoi-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-khanh-hoi-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Khánh Hội TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Khánh Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Khánh Hội TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Khánh Hội → phường Khánh Hội TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-thuan-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-thuan-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Thuận TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Thuận TP.HCM phù hợp cho khách đến khu chế xuất, công tác hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-my-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-my-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Mỹ TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực Quận 7 cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Lương Bằng → phường Tân Mỹ TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-phu-thuan-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-phu-thuan-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Phú Thuận TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thuận TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Huỳnh Tấn Phát → phường Phú Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-hung-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-hung-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Hưng TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Hưng TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu đô thị phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-cho-lon-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-cho-lon-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Chợ Lớn TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Chợ Lớn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Chợ Lớn TP.HCM phù hợp cho khách mua sắm, công tác, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Trần Hưng Đạo → phường Chợ Lớn TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-an-dong-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-an-dong-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường An Đông TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường An Đông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường An Đông TP.HCM phù hợp cho khách công tác, mua sắm, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe giữa đường.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hồng Bàng → phường An Đông TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-binh-tay-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-binh-tay-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bình Tây TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Tây TP.HCM phù hợp cho khách công tác, giao thương, mua bán hoặc về khu vực Chợ Bình Tây. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-tam-thang-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, tham dự sự kiện, khám chữa bệnh hoặc về khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình. Xe riêng đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → Tây Thạnh → phường Tây Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc làm việc tại khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi tại phường Tam Thắng TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.3 - 2.8 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-tam-thang-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, thăm người thân hoặc về khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+{
+  key: "phuong-tam-thang-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi tại phường Tam Thắng TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-binh-my-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-binh-my-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.5 - 3.0 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-nha-be-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-nha-be-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại KCN Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-tam-thang-hcm-di-xa-can-gio-hcm",
+  path: "phuong-tam-thang-hcm-di-xa-can-gio-hcm",
+  from: "Phường Tam Thắng TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Tam Thắng TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Tam Thắng TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt đến trung tâm Cần Giờ.",
+  routeText:
+    "phường Tam Thắng TP.HCM → đường 30 Tháng 4 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.2 - 3.8 giờ",
+},
+{
+  key: "phuong-rach-dua-hcm-di-phuong-sai-gon-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-sai-gon-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Sài Gòn TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Sài Gòn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Sài Gòn TP.HCM phù hợp cho khách công tác, gặp đối tác, du lịch hoặc về trung tâm TP.HCM. Xe riêng đón tận nơi tại nhà, khách sạn hay văn phòng trong khu vực phường Rạch Dừa TP.HCM, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → phường Sài Gòn TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-dinh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-dinh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Định TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Định TP.HCM phù hợp cho khách công tác, khám chữa bệnh, mua sắm hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hai Bà Trưng → phường Tân Định TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-ben-thanh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-ben-thanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bến Thành TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bến Thành TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bến Thành TP.HCM phù hợp cho khách du lịch, công tác, tham quan khu trung tâm hoặc gặp đối tác. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → phường Bến Thành TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-cau-ong-lanh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-cau-ong-lanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Cầu Ông Lãnh TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Cầu Ông Lãnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Cầu Ông Lãnh TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cô Bắc → phường Cầu Ông Lãnh TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-ban-co-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-ban-co-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bàn Cờ TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bàn Cờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bàn Cờ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, học tập hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Thị Minh Khai → phường Bàn Cờ TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-xuan-hoa-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-xuan-hoa-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Xuân Hòa TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Xuân Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Xuân Hòa TP.HCM phù hợp cho khách đến bệnh viện, trường học, văn phòng hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Xuân Hòa TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-nhieu-loc-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-nhieu-loc-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Nhiêu Lộc TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Nhiêu Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Nhiêu Lộc TP.HCM phù hợp cho khách công tác, khám chữa bệnh, lưu trú hoặc làm việc tại trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hai Bà Trưng → phường Nhiêu Lộc TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-phu-nhuan-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-phu-nhuan-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Phú Nhuận TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Nhuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Nhuận TP.HCM phù hợp cho khách đi sân bay, công tác, thăm người thân hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Văn Trỗi → phường Phú Nhuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-gia-dinh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-gia-dinh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Gia Định TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Gia Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Gia Định TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực Bình Thạnh cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Gia Định TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-binh-thanh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-binh-thanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bình Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Bình Thạnh. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Bình Thạnh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+{
+  key: "phuong-rach-dua-hcm-di-phuong-thanh-my-tay-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-thanh-my-tay-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Thạnh Mỹ Tây TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Thạnh Mỹ Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Thạnh Mỹ Tây TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc thăm người thân. Xe riêng đón tận nơi tại phường Rạch Dừa TP.HCM, không ghép khách, không đổi xe và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Thạnh Mỹ Tây TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-xom-chieu-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-xom-chieu-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Xóm Chiếu TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Xóm Chiếu TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Xóm Chiếu TP.HCM phù hợp cho khách công tác, lưu trú, về nhà hoặc làm việc tại khu vực Quận 4 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Calmette → phường Xóm Chiếu TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-khanh-hoi-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-khanh-hoi-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Khánh Hội TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Khánh Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Khánh Hội TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Khánh Hội → phường Khánh Hội TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-thuan-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-thuan-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Thuận TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Thuận TP.HCM phù hợp cho khách đến khu chế xuất, công tác hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-my-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-my-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Mỹ TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực Quận 7 cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Lương Bằng → phường Tân Mỹ TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-phu-thuan-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-phu-thuan-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Phú Thuận TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thuận TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phường Phú Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-hung-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-hung-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Hưng TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Hưng TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu đô thị phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-cho-lon-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-cho-lon-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Chợ Lớn TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Chợ Lớn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Chợ Lớn TP.HCM phù hợp cho khách mua sắm, công tác, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Trần Hưng Đạo → phường Chợ Lớn TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-an-dong-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-an-dong-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường An Đông TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường An Đông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường An Đông TP.HCM phù hợp cho khách công tác, mua sắm, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe giữa đường.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hồng Bàng → phường An Đông TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-binh-tay-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-binh-tay-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bình Tây TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Tây TP.HCM phù hợp cho khách công tác, giao thương, mua bán hoặc về khu vực Chợ Bình Tây. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-rach-dua-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, tham dự sự kiện, khám chữa bệnh hoặc về khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình. Xe riêng đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → Tây Thạnh → phường Tây Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc làm việc tại khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+ duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi tại phường Rạch Dừa TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.3 - 2.8 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-rach-dua-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, thăm người thân hoặc về khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+{
+  key: "phuong-rach-dua-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi tại phường Rạch Dừa TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-binh-my-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-binh-my-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.5 - 3.0 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-nha-be-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-nha-be-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại KCN Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-rach-dua-hcm-di-xa-can-gio-hcm",
+  path: "phuong-rach-dua-hcm-di-xa-can-gio-hcm",
+  from: "Phường Rạch Dừa TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Rạch Dừa TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Rạch Dừa TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt đến trung tâm Cần Giờ.",
+  routeText:
+    "phường Rạch Dừa TP.HCM → đường 2 Tháng 9 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.2 - 3.8 giờ",
+},
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-sai-gon-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-sai-gon-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Sài Gòn TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Sài Gòn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Sài Gòn TP.HCM phù hợp cho khách công tác, gặp đối tác, du lịch hoặc về trung tâm TP.HCM. Xe riêng đón tận nơi tại nhà, khách sạn hay văn phòng trong khu vực phường Phước Thắng TP.HCM, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → phường Sài Gòn TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-dinh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-dinh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Định TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Định TP.HCM phù hợp cho khách công tác, khám chữa bệnh, mua sắm hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hai Bà Trưng → phường Tân Định TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-ben-thanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-ben-thanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bến Thành TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bến Thành TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bến Thành TP.HCM phù hợp cho khách du lịch, công tác, tham quan khu trung tâm hoặc gặp đối tác. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → phường Bến Thành TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-cau-ong-lanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-cau-ong-lanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Cầu Ông Lãnh TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Cầu Ông Lãnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Cầu Ông Lãnh TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cô Bắc → phường Cầu Ông Lãnh TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-ban-co-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-ban-co-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bàn Cờ TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bàn Cờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bàn Cờ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, học tập hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Thị Minh Khai → phường Bàn Cờ TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-xuan-hoa-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-xuan-hoa-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Xuân Hòa TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Xuân Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Xuân Hòa TP.HCM phù hợp cho khách đến bệnh viện, trường học, văn phòng hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Xuân Hòa TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-nhieu-loc-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-nhieu-loc-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Nhiêu Lộc TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Nhiêu Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Nhiêu Lộc TP.HCM phù hợp cho khách công tác, khám chữa bệnh, lưu trú hoặc làm việc tại trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hai Bà Trưng → phường Nhiêu Lộc TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-phu-nhuan-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-phu-nhuan-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Phú Nhuận TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Nhuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Nhuận TP.HCM phù hợp cho khách đi sân bay, công tác, thăm người thân hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Văn Trỗi → phường Phú Nhuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-gia-dinh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-gia-dinh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Gia Định TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Gia Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Gia Định TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực Bình Thạnh cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Gia Định TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-binh-thanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-binh-thanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bình Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Bình Thạnh. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Bình Thạnh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-thanh-my-tay-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-thanh-my-tay-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Thạnh Mỹ Tây TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Thạnh Mỹ Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Thạnh Mỹ Tây TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc thăm người thân. Xe riêng đón tận nơi tại phường Phước Thắng TP.HCM, không ghép khách, không đổi xe và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Thạnh Mỹ Tây TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-xom-chieu-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-xom-chieu-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Xóm Chiếu TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Xóm Chiếu TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Xóm Chiếu TP.HCM phù hợp cho khách công tác, lưu trú, về nhà hoặc làm việc tại khu vực Quận 4 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Calmette → phường Xóm Chiếu TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-khanh-hoi-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-khanh-hoi-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Khánh Hội TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Khánh Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Khánh Hội TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Khánh Hội → phường Khánh Hội TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-thuan-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-thuan-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Thuận TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Thuận TP.HCM phù hợp cho khách đến khu chế xuất, công tác hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-my-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-my-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Mỹ TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực Quận 7 cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Lương Bằng → phường Tân Mỹ TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-phu-thuan-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-phu-thuan-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Phú Thuận TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thuận TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phường Phú Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-hung-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-hung-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Hưng TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Hưng TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu đô thị phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-cho-lon-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-cho-lon-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Chợ Lớn TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Chợ Lớn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Chợ Lớn TP.HCM phù hợp cho khách mua sắm, công tác, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Trần Hưng Đạo → phường Chợ Lớn TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-an-dong-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-an-dong-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường An Đông TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường An Đông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường An Đông TP.HCM phù hợp cho khách công tác, mua sắm, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe giữa đường.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hồng Bàng → phường An Đông TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-binh-tay-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-binh-tay-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bình Tây TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Tây TP.HCM phù hợp cho khách công tác, giao thương, mua bán hoặc về khu vực Chợ Bình Tây. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, tham dự sự kiện, khám chữa bệnh hoặc về khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình. Xe riêng đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → Tây Thạnh → phường Tây Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc làm việc tại khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi tại phường Phước Thắng TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế giàu kinh nghiệm.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.3 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc làm việc tại thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, thăm người thân hoặc về khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi tại phường Phước Thắng TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-binh-my-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-binh-my-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.5 - 3.0 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-nha-be-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-nha-be-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại KCN Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-phuoc-thang-hcm-di-xa-can-gio-hcm",
+  path: "phuong-phuoc-thang-hcm-di-xa-can-gio-hcm",
+  from: "Phường Phước Thắng TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phước Thắng TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Phước Thắng TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt đến trung tâm Cần Giờ.",
+  routeText:
+    "phường Phước Thắng TP.HCM → đường Võ Nguyên Giáp → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.2 - 3.8 giờ",
+},
+{
+  key: "phuong-ba-ria-hcm-di-phuong-sai-gon-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-sai-gon-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Sài Gòn TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Sài Gòn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Sài Gòn TP.HCM phù hợp cho khách công tác, gặp đối tác, du lịch hoặc về trung tâm TP.HCM. Xe riêng đón tận nơi tại nhà, khách sạn hay văn phòng trong khu vực phường Bà Rịa TP.HCM, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → phường Sài Gòn TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-dinh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-dinh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Định TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Định TP.HCM phù hợp cho khách công tác, khám chữa bệnh, mua sắm hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hai Bà Trưng → phường Tân Định TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-ben-thanh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-ben-thanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bến Thành TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bến Thành TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bến Thành TP.HCM phù hợp cho khách du lịch, công tác, tham quan khu trung tâm hoặc gặp đối tác. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → phường Bến Thành TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-cau-ong-lanh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-cau-ong-lanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Cầu Ông Lãnh TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Cầu Ông Lãnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Cầu Ông Lãnh TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cô Bắc → phường Cầu Ông Lãnh TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-ban-co-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-ban-co-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bàn Cờ TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bàn Cờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bàn Cờ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, học tập hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Thị Minh Khai → phường Bàn Cờ TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-xuan-hoa-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-xuan-hoa-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Xuân Hòa TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Xuân Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Xuân Hòa TP.HCM phù hợp cho khách đến bệnh viện, trường học, văn phòng hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Xuân Hòa TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-nhieu-loc-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-nhieu-loc-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Nhiêu Lộc TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Nhiêu Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Nhiêu Lộc TP.HCM phù hợp cho khách công tác, khám chữa bệnh, lưu trú hoặc làm việc tại trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hai Bà Trưng → phường Nhiêu Lộc TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-phu-nhuan-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-phu-nhuan-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Phú Nhuận TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Nhuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Nhuận TP.HCM phù hợp cho khách đi sân bay, công tác, thăm người thân hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Văn Trỗi → phường Phú Nhuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-gia-dinh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-gia-dinh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Gia Định TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Gia Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Gia Định TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực Bình Thạnh cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Gia Định TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-binh-thanh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-binh-thanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bình Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Bình Thạnh. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Bình Thạnh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+{
+  key: "phuong-ba-ria-hcm-di-phuong-thanh-my-tay-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-thanh-my-tay-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Thạnh Mỹ Tây TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Thạnh Mỹ Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Thạnh Mỹ Tây TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc thăm người thân. Xe riêng đón tận nơi tại phường Bà Rịa TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Thạnh Mỹ Tây TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-xom-chieu-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-xom-chieu-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Xóm Chiếu TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Xóm Chiếu TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Xóm Chiếu TP.HCM phù hợp cho khách công tác, lưu trú, về nhà hoặc làm việc tại khu vực Quận 4 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Calmette → phường Xóm Chiếu TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-khanh-hoi-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-khanh-hoi-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Khánh Hội TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Khánh Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Khánh Hội TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Khánh Hội → phường Khánh Hội TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-thuan-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-thuan-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Thuận TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Thuận TP.HCM phù hợp cho khách đến khu chế xuất, công tác hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-my-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-my-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Mỹ TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực Quận 7 cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Lương Bằng → phường Tân Mỹ TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-phu-thuan-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-phu-thuan-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Phú Thuận TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thuận TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phường Phú Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-hung-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-hung-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Hưng TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Hưng TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu đô thị phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-cho-lon-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-cho-lon-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Chợ Lớn TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Chợ Lớn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Chợ Lớn TP.HCM phù hợp cho khách mua sắm, công tác, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Trần Hưng Đạo → phường Chợ Lớn TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-an-dong-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-an-dong-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường An Đông TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường An Đông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường An Đông TP.HCM phù hợp cho khách công tác, mua sắm, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe giữa đường.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hồng Bàng → phường An Đông TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-binh-tay-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-binh-tay-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bình Tây TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Tây TP.HCM phù hợp cho khách công tác, giao thương, mua bán hoặc về khu vực Chợ Bình Tây. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-ba-ria-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, tham dự sự kiện, khám chữa bệnh hoặc về khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình. Xe riêng đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tây Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc làm việc tại khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi tại phường Bà Rịa TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế giàu kinh nghiệm.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.3 - 2.8 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc làm việc tại thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-ba-ria-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, thăm người thân hoặc về khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+{
+  key: "phuong-ba-ria-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi tại phường Bà Rịa TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-binh-my-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-binh-my-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.5 - 3.0 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-nha-be-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-nha-be-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại KCN Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-ba-ria-hcm-di-xa-can-gio-hcm",
+  path: "phuong-ba-ria-hcm-di-xa-can-gio-hcm",
+  from: "Phường Bà Rịa TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Bà Rịa TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Bà Rịa TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt đến trung tâm Cần Giờ.",
+  routeText:
+    "phường Bà Rịa TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.2 - 3.8 giờ",
+},
+{
+  key: "phuong-long-huong-hcm-di-phuong-sai-gon-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-sai-gon-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Sài Gòn TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Sài Gòn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Sài Gòn TP.HCM phù hợp cho khách công tác, gặp đối tác, du lịch hoặc về trung tâm TP.HCM. Xe riêng đón tận nơi tại nhà, khách sạn hay văn phòng trong khu vực phường Long Hương TP.HCM, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → phường Sài Gòn TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-dinh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-dinh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Định TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Định TP.HCM phù hợp cho khách công tác, khám chữa bệnh, mua sắm hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hai Bà Trưng → phường Tân Định TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-ben-thanh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-ben-thanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bến Thành TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bến Thành TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bến Thành TP.HCM phù hợp cho khách du lịch, công tác, tham quan khu trung tâm hoặc gặp đối tác. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → phường Bến Thành TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-cau-ong-lanh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-cau-ong-lanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Cầu Ông Lãnh TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Cầu Ông Lãnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Cầu Ông Lãnh TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cô Bắc → phường Cầu Ông Lãnh TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-ban-co-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-ban-co-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bàn Cờ TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bàn Cờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bàn Cờ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, học tập hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Thị Minh Khai → phường Bàn Cờ TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-xuan-hoa-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-xuan-hoa-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Xuân Hòa TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Xuân Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Xuân Hòa TP.HCM phù hợp cho khách đến bệnh viện, trường học, văn phòng hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Xuân Hòa TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-nhieu-loc-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-nhieu-loc-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Nhiêu Lộc TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Nhiêu Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Nhiêu Lộc TP.HCM phù hợp cho khách công tác, khám chữa bệnh, lưu trú hoặc làm việc tại trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hai Bà Trưng → phường Nhiêu Lộc TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-phu-nhuan-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-phu-nhuan-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Phú Nhuận TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Nhuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Nhuận TP.HCM phù hợp cho khách đi sân bay, công tác, thăm người thân hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Văn Trỗi → phường Phú Nhuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-gia-dinh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-gia-dinh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Gia Định TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Gia Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Gia Định TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực Bình Thạnh cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Gia Định TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+{
+  key: "phuong-long-huong-hcm-di-phuong-binh-thanh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-binh-thanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bình Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Bình Thạnh. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Bình Thạnh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-thanh-my-tay-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-thanh-my-tay-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Thạnh Mỹ Tây TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Thạnh Mỹ Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Thạnh Mỹ Tây TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc thăm người thân. Xe riêng đón tận nơi tại phường Long Hương TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Thạnh Mỹ Tây TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-xom-chieu-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-xom-chieu-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Xóm Chiếu TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Xóm Chiếu TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Xóm Chiếu TP.HCM phù hợp cho khách công tác, lưu trú, về nhà hoặc làm việc tại khu vực Quận 4 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Calmette → phường Xóm Chiếu TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-khanh-hoi-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-khanh-hoi-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Khánh Hội TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Khánh Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Khánh Hội TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Khánh Hội → phường Khánh Hội TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-thuan-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-thuan-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Thuận TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Thuận TP.HCM phù hợp cho khách đến khu chế xuất, công tác hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-my-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-my-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Mỹ TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực Quận 7 cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Lương Bằng → phường Tân Mỹ TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-phu-thuan-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-phu-thuan-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Phú Thuận TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thuận TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phường Phú Thuận TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-hung-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-hung-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Hưng TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Hưng TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu đô thị phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-cho-lon-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-cho-lon-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Chợ Lớn TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Chợ Lớn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Chợ Lớn TP.HCM phù hợp cho khách mua sắm, công tác, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Trần Hưng Đạo → phường Chợ Lớn TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-an-dong-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-an-dong-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường An Đông TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường An Đông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường An Đông TP.HCM phù hợp cho khách công tác, mua sắm, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe giữa đường.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hồng Bàng → phường An Đông TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+{
+  key: "phuong-long-huong-hcm-di-phuong-binh-tay-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-binh-tay-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bình Tây TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Tây TP.HCM phù hợp cho khách công tác, giao thương, mua bán hoặc về khu vực Chợ Bình Tây. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, tham dự sự kiện, khám chữa bệnh hoặc về khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+{
+  key: "phuong-long-huong-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình. Xe riêng đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tây Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc làm việc tại khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+{
+  key: "phuong-long-huong-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế giàu kinh nghiệm.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.3 - 2.8 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, thăm người thân hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc làm việc tại thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "2.2 - 2.7 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-long-huong-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-long-huong-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-long-huong-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, thăm người thân hoặc về khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo thời gian mong muốn.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+{
+  key: "phuong-long-huong-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-long-huong-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-long-huong-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc làm việc tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-long-huong-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-long-huong-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.5 - 3.1 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-binh-my-hcm",
+  path: "phuong-long-huong-hcm-di-xa-binh-my-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách về nhà, công tác, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.5 - 3.0 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-nha-be-hcm",
+  path: "phuong-long-huong-hcm-di-xa-nha-be-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-long-huong-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại KCN Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.4 - 3.0 giờ",
+},
+
+{
+  key: "phuong-long-huong-hcm-di-xa-can-gio-hcm",
+  path: "phuong-long-huong-hcm-di-xa-can-gio-hcm",
+  from: "Phường Long Hương TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Long Hương TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Long Hương TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Long Hương TP.HCM, không ghép khách, không đổi xe giữa đường và hỗ trợ lịch trình linh hoạt đến trung tâm Cần Giờ.",
+  routeText:
+    "phường Long Hương TP.HCM → Quốc lộ 56 → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.2 - 3.8 giờ",
+},
+{
+  key: "phuong-phu-my-hcm-di-phuong-sai-gon-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-sai-gon-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Sài Gòn TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Sài Gòn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Sài Gòn TP.HCM phù hợp cho khách công tác, gặp đối tác, du lịch hoặc về trung tâm TP.HCM. Xe riêng đón tận nơi tại nhà, khách sạn hay văn phòng trong khu vực phường Phú Mỹ TP.HCM, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → phường Sài Gòn TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-dinh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-dinh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Định TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Định TP.HCM phù hợp cho khách công tác, khám chữa bệnh, mua sắm hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hai Bà Trưng → phường Tân Định TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-ben-thanh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-ben-thanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bến Thành TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bến Thành TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bến Thành TP.HCM phù hợp cho khách du lịch, công tác, tham quan khu trung tâm hoặc gặp đối tác. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → phường Bến Thành TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-cau-ong-lanh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-cau-ong-lanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Cầu Ông Lãnh TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Cầu Ông Lãnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Cầu Ông Lãnh TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cô Bắc → phường Cầu Ông Lãnh TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-ban-co-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-ban-co-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bàn Cờ TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bàn Cờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bàn Cờ TP.HCM phù hợp cho khách công tác, khám chữa bệnh, học tập hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Thị Minh Khai → phường Bàn Cờ TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-xuan-hoa-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-xuan-hoa-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Xuân Hòa TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Xuân Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Xuân Hòa TP.HCM phù hợp cho khách đến bệnh viện, trường học, văn phòng hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Xuân Hòa TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-nhieu-loc-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-nhieu-loc-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Nhiêu Lộc TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Nhiêu Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Nhiêu Lộc TP.HCM phù hợp cho khách công tác, khám chữa bệnh, lưu trú hoặc làm việc tại trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hai Bà Trưng → phường Nhiêu Lộc TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-phu-nhuan-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-phu-nhuan-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Phú Nhuận TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Nhuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Nhuận TP.HCM phù hợp cho khách đi sân bay, công tác, thăm người thân hoặc về khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và tài xế nhiều kinh nghiệm.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Văn Trỗi → phường Phú Nhuận TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-gia-dinh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-gia-dinh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Gia Định TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Gia Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Gia Định TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực Bình Thạnh cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Gia Định TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+{
+  key: "phuong-phu-my-hcm-di-phuong-binh-thanh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-binh-thanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bình Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Bình Thạnh. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Bình Thạnh TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-thanh-my-tay-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-thanh-my-tay-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Thạnh Mỹ Tây TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Thạnh Mỹ Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Thạnh Mỹ Tây TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc thăm người thân. Xe riêng đón tận nơi tại phường Phú Mỹ TP.HCM, không ghép khách, không đổi xe và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Xa lộ Hà Nội → Điện Biên Phủ → phường Thạnh Mỹ Tây TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-xom-chieu-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-xom-chieu-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Xóm Chiếu TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Xóm Chiếu TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Xóm Chiếu TP.HCM phù hợp cho khách công tác, lưu trú, về nhà hoặc làm việc tại khu vực Quận 4 cũ. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian khởi hành.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Calmette → phường Xóm Chiếu TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-khanh-hoi-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-khanh-hoi-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Khánh Hội TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Khánh Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Khánh Hội TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc thăm người thân. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → cầu Khánh Hội → phường Khánh Hội TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-thuan-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-thuan-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Thuận TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Thuận TP.HCM phù hợp cho khách đến khu chế xuất, công tác hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Thuận TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-my-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-my-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Mỹ TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu vực Quận 7 cũ. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Lương Bằng → phường Tân Mỹ TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-phu-thuan-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-phu-thuan-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Phú Thuận TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thuận TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thuận TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phường Phú Thuận TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-hung-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-hung-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Hưng TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Hưng TP.HCM phù hợp cho khách công tác, lưu trú, thăm người thân hoặc làm việc tại khu đô thị phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → phường Tân Hưng TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-cho-lon-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-cho-lon-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Chợ Lớn TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Chợ Lớn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Chợ Lớn TP.HCM phù hợp cho khách mua sắm, công tác, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Trần Hưng Đạo → phường Chợ Lớn TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-an-dong-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-an-dong-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường An Đông TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường An Đông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường An Đông TP.HCM phù hợp cho khách công tác, mua sắm, khám chữa bệnh hoặc về khu vực trung tâm Quận 5 cũ. Xe riêng đưa đón tận nơi, không ghép khách và không đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hồng Bàng → phường An Đông TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+{
+  key: "phuong-phu-my-hcm-di-phuong-binh-tay-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-binh-tay-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bình Tây TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Tây TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Tây TP.HCM phù hợp cho khách công tác, giao thương, mua bán hoặc về khu vực Chợ Bình Tây. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Hậu Giang → phường Bình Tây TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-binh-tien-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-binh-tien-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bình Tiên TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Tiên TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Tiên TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Võ Văn Kiệt nối dài → phường Bình Tiên TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-binh-phu-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-binh-phu-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bình Phú TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Phú TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → phường Bình Phú TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-phu-dinh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-phu-dinh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Phú Định TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Định TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Định TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → phường Phú Định TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-vuon-lai-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-vuon-lai-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Vườn Lài TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Vườn Lài TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Vườn Lài TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc về khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Vườn Lài TP.HCM",
+  duration: "2.1 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-hoa-hung-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-hoa-hung-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Hòa Hưng TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Hòa Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Hòa Hưng TP.HCM phù hợp cho khách công tác, khám chữa bệnh, thăm người thân hoặc làm việc tại khu vực trung tâm TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Cách Mạng Tháng Tám → phường Hòa Hưng TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-minh-phung-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-minh-phung-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Minh Phụng TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Minh Phụng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Minh Phụng TP.HCM phù hợp cho khách công tác, về nhà, mua sắm hoặc làm việc tại khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và phục vụ cả chuyến một chiều lẫn khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Ba Tháng Hai → phường Minh Phụng TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-phu-tho-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-phu-tho-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Phú Thọ TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thọ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thọ TP.HCM phù hợp cho khách công tác, tham dự sự kiện, khám chữa bệnh hoặc về khu vực Quận 11 cũ. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lý Thường Kiệt → phường Phú Thọ TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-son-nhat-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-son-nhat-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Sơn Nhất TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Sơn Nhất TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Sơn Nhất TP.HCM phù hợp cho khách ra sân bay, công tác hoặc về khu vực cửa ngõ phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ đón tiễn sân bay.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Sơn → phường Tân Sơn Nhất TP.HCM",
+  duration: "2.0 - 2.6 giờ",
+},
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-binh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-binh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Bình TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Bình TP.HCM phù hợp cho khách công tác, về nhà, đi sân bay hoặc làm việc tại khu vực trung tâm quận Tân Bình cũ. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Cộng Hòa → phường Tân Bình TP.HCM",
+  duration: "2.0 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tay-thanh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tay-thanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tây Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tây Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tây Thạnh TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu công nghiệp Tân Bình. Xe riêng đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tây Thạnh TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-son-nhi-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-son-nhi-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Sơn Nhì TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Sơn Nhì TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Sơn Nhì TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Trường Chinh → phường Tân Sơn Nhì TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-phu-tho-hoa-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-phu-tho-hoa-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Phú Thọ Hòa TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thọ Hòa TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thọ Hòa TP.HCM phù hợp cho khách công tác, học tập, thăm người thân hoặc làm việc tại khu vực Tân Phú. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Lũy Bán Bích → phường Phú Thọ Hòa TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tan-phu-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tan-phu-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tân Phú TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tân Phú TP.HCM phù hợp cho khách công tác, về nhà, khám chữa bệnh hoặc làm việc tại khu vực phía Tây TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Âu Cơ → phường Tân Phú TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-phu-thanh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-phu-thanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Phú Thạnh TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thạnh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Phú Thạnh TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Tân Phú. Xe riêng đưa đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Thoại Ngọc Hầu → phường Phú Thạnh TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-go-vap-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-go-vap-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Gò Vấp TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Gò Vấp TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Gò Vấp TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và phục vụ mọi khung giờ.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Kiệm → Quang Trung → phường Gò Vấp TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-hanh-thong-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-hanh-thong-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Hạnh Thông TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Hạnh Thông TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Hạnh Thông TP.HCM phù hợp cho khách công tác, mua sắm, thăm người thân hoặc làm việc tại khu vực Gò Vấp. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Hạnh Thông TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-an-nhon-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-an-nhon-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường An Nhơn TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường An Nhơn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường An Nhơn TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực phía Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Nguyễn Oanh → phường An Nhơn TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-thong-tay-hoi-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-thong-tay-hoi-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Thông Tây Hội TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Thông Tây Hội TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Thông Tây Hội TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc làm việc tại khu vực Gò Vấp. Xe riêng đưa đón tận nơi, không ghép khách và phục vụ linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Phạm Văn Đồng → Quang Trung → phường Thông Tây Hội TP.HCM",
+ duration: "2.1 - 2.7 giờ",
+},
+{
+  key: "phuong-phu-my-hcm-di-phuong-thu-duc-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-thu-duc-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Thủ Đức TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Thủ Đức TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Thủ Đức TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực cửa ngõ phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Võ Văn Ngân → phường Thủ Đức TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-hiep-binh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-hiep-binh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Hiệp Bình TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Hiệp Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Hiệp Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và phục vụ 24/7.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → phường Hiệp Bình TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tam-binh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tam-binh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tam Bình TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tam Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tam Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Phạm Văn Đồng → Tô Ngọc Vân → phường Tam Bình TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-linh-xuan-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-linh-xuan-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Linh Xuân TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Linh Xuân TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Linh Xuân TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại cửa ngõ Đông Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ đúng giờ.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Quốc lộ 1 → phường Linh Xuân TP.HCM",
+  duration: "2.0 - 2.5 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-long-binh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-long-binh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Long Bình TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Long Bình TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Long Bình TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → Vành đai 3 → Nguyễn Xiển → phường Long Bình TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-tang-nhon-phu-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-tang-nhon-phu-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Tăng Nhơn Phú TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tăng Nhơn Phú TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Tăng Nhơn Phú TP.HCM phù hợp cho khách công tác, học tập, khám chữa bệnh hoặc làm việc tại thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Xa lộ Hà Nội → Lê Văn Việt → phường Tăng Nhơn Phú TP.HCM",
+  duration: "1.9 - 2.4 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-cat-lai-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-cat-lai-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Cát Lái TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Cát Lái TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Cát Lái TP.HCM phù hợp cho khách làm việc tại cảng, công tác, về nhà hoặc di chuyển trong khu vực thành phố Thủ Đức. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → phường Cát Lái TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-binh-trung-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-binh-trung-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường Bình Trưng TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Trưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường Bình Trưng TP.HCM phù hợp cho khách công tác, thăm người thân, học tập hoặc về khu vực phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ theo lịch trình yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Thị Định → phường Bình Trưng TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-phuong-an-khanh-hcm",
+  path: "phuong-phu-my-hcm-di-phuong-an-khanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Phường An Khánh TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường An Khánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi phường An Khánh TP.HCM phù hợp cho khách công tác, gặp đối tác, lưu trú hoặc làm việc tại khu đô thị mới phía Đông TP.HCM. Xe riêng đón tận nơi, không ghép khách và chủ động thời gian.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → phường An Khánh TP.HCM",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-binh-chanh-hcm",
+  path: "phuong-phu-my-hcm-di-xa-binh-chanh-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Bình Chánh TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bình Chánh TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bình Chánh TP.HCM phù hợp cho khách về nhà, công tác hoặc làm việc tại khu vực cửa ngõ phía Tây Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và phục vụ một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Võ Văn Kiệt → Quốc lộ 1 → xã Bình Chánh TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+{
+  key: "phuong-phu-my-hcm-di-xa-binh-hung-hcm",
+  path: "phuong-phu-my-hcm-di-xa-binh-hung-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Bình Hưng TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bình Hưng TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bình Hưng TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ lịch trình linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Văn Linh → xã Bình Hưng TP.HCM",
+  duration: "2.1 - 2.7 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-vinh-loc-hcm",
+  path: "phuong-phu-my-hcm-di-xa-vinh-loc-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà, làm việc hoặc thăm người thân tại khu vực phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và không phải đổi xe giữa đường.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Vĩnh Lộc TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-tan-vinh-loc-hcm",
+  path: "phuong-phu-my-hcm-di-xa-tan-vinh-loc-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Tân Vĩnh Lộc TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Tân Vĩnh Lộc TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Tân Vĩnh Lộc TP.HCM phù hợp cho khách công tác, về nhà hoặc làm việc tại khu vực cửa ngõ phía Tây Bắc TP.HCM. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến đi linh hoạt.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Nguyễn Thị Tú → xã Tân Vĩnh Lộc TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-ba-diem-hcm",
+  path: "phuong-phu-my-hcm-di-xa-ba-diem-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Bà Điểm TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bà Điểm TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bà Điểm TP.HCM phù hợp cho khách công tác, học tập, về nhà hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và phục vụ đúng lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Phan Văn Hớn → xã Bà Điểm TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-hoc-mon-hcm",
+  path: "phuong-phu-my-hcm-di-xa-hoc-mon-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Hóc Môn TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Hóc Môn TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Hóc Môn TP.HCM phù hợp cho khách công tác, thăm người thân, về nhà hoặc làm việc tại khu vực Hóc Môn. Xe riêng đón tận nơi, không ghép khách và không phát sinh chi phí ngoài báo giá.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 1 → Đặng Thúc Vịnh → xã Hóc Môn TP.HCM",
+  duration: "2.3 - 2.9 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-binh-my-hcm",
+  path: "phuong-phu-my-hcm-di-xa-binh-my-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Bình Mỹ TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bình Mỹ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Bình Mỹ TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc di chuyển đến khu vực ven sông Sài Gòn. Xe riêng đón tận nơi, không ghép khách và phục vụ theo yêu cầu.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → Vành đai 3 → Tỉnh lộ 9 → xã Bình Mỹ TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-nha-be-hcm",
+  path: "phuong-phu-my-hcm-di-xa-nha-be-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Nhà Bè TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Nhà Bè TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Nhà Bè TP.HCM phù hợp cho khách công tác, về nhà, thăm người thân hoặc làm việc tại khu vực phía Nam TP.HCM. Xe riêng đón tận nơi, không ghép khách và linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → xã Nhà Bè TP.HCM",
+  duration: "2.0 - 2.6 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-hiep-phuoc-hcm",
+  path: "phuong-phu-my-hcm-di-xa-hiep-phuoc-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Hiệp Phước TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Hiệp Phước TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Hiệp Phước TP.HCM phù hợp cho khách công tác, làm việc tại KCN Hiệp Phước hoặc về nhà. Xe riêng đón tận nơi, không ghép khách và hỗ trợ chuyến đi một chiều hoặc khứ hồi.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Nguyễn Hữu Thọ → Nguyễn Văn Tạo → xã Hiệp Phước TP.HCM",
+  duration: "2.2 - 2.8 giờ",
+},
+
+{
+  key: "phuong-phu-my-hcm-di-xa-can-gio-hcm",
+  path: "phuong-phu-my-hcm-di-xa-can-gio-hcm",
+  from: "Phường Phú Mỹ TP.HCM",
+  to: "Xã Cần Giờ TP.HCM",
+  title:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Cần Giờ TP.HCM, xe riêng giá trọn gói",
+  description:
+    "Thuê xe phường Phú Mỹ TP.HCM đi xã Cần Giờ TP.HCM phù hợp cho khách du lịch, nghỉ dưỡng, công tác hoặc về thăm người thân. Xe riêng đón tận nơi tại phường Phú Mỹ TP.HCM, không ghép khách, không đổi xe giữa đường và phục vụ linh hoạt theo lịch trình.",
+  routeText:
+    "phường Phú Mỹ TP.HCM → Quốc lộ 51 → cao tốc Biên Hòa - Vũng Tàu → cao tốc TP.HCM - Long Thành - Dầu Giây → cầu Phú Mỹ → Huỳnh Tấn Phát → phà Bình Khánh → đường Rừng Sác → xã Cần Giờ TP.HCM",
+  duration: "3.0 - 3.6 giờ",
+},
 
 ];
