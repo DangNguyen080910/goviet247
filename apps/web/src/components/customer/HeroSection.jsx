@@ -555,6 +555,62 @@ export default function HeroSection() {
             Báo giá trước · Không cần đặt cọc · Thanh toán sau chuyến đi
           </Typography>
 
+          {/* Nút tải ứng dụng */}
+          <Box
+            sx={{
+              mt: 0.6,
+            }}
+          >
+            <Typography
+              sx={{
+                mb: 1.1,
+                fontWeight: 900,
+                fontSize: {
+                  xs: 15,
+                  sm: 16,
+                },
+                opacity: 1,
+                textShadow: "0 3px 12px rgba(0,0,0,0.35)",
+              }}
+            >
+              📱 Tải ứng dụng GoViet247
+            </Typography>
+
+            <Stack
+              direction="row"
+              sx={{
+                gap: 1,
+                width: "100%",
+                maxWidth: 430,
+                flexWrap: "nowrap",
+              }}
+            >
+              <Button
+                variant="outlined"
+                startIcon={<AppleIcon />}
+                href={appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Tải ứng dụng GoViet247 cho iPhone trên App Store"
+                sx={appDownloadButtonSx}
+              >
+                App Store
+              </Button>
+
+              <Button
+                variant="outlined"
+                startIcon={<AndroidIcon />}
+                href={playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Tải ứng dụng GoViet247 cho Android trên Google Play"
+                sx={appDownloadButtonSx}
+              >
+                Google Play
+              </Button>
+            </Stack>
+          </Box>
+
           <Stack spacing={1.4} sx={{ pt: 0.5 }}>
             {/* Chỉ giữ lại Chat Zalo vì nút đặt xe đã nằm phía trên */}
             <Stack
@@ -591,62 +647,6 @@ export default function HeroSection() {
                 Cần tư vấn? Chat Zalo
               </Button>
             </Stack>
-
-            {/* Nút tải ứng dụng */}
-            <Box
-              sx={{
-                mt: 0.6,
-              }}
-            >
-              <Typography
-                sx={{
-                  mb: 1.1,
-                  fontWeight: 900,
-                  fontSize: {
-                    xs: 15,
-                    sm: 16,
-                  },
-                  opacity: 1,
-                  textShadow: "0 3px 12px rgba(0,0,0,0.35)",
-                }}
-              >
-                📱 Tải ứng dụng GoViet247
-              </Typography>
-
-              <Stack
-                direction="row"
-                sx={{
-                  gap: 1,
-                  width: "100%",
-                  maxWidth: 430,
-                  flexWrap: "nowrap",
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  startIcon={<AppleIcon />}
-                  href={appStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Tải ứng dụng GoViet247 cho iPhone trên App Store"
-                  sx={appDownloadButtonSx}
-                >
-                  App Store
-                </Button>
-
-                <Button
-                  variant="outlined"
-                  startIcon={<AndroidIcon />}
-                  href={playStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Tải ứng dụng GoViet247 cho Android trên Google Play"
-                  sx={appDownloadButtonSx}
-                >
-                  Google Play
-                </Button>
-              </Stack>
-            </Box>
           </Stack>
 
           {/* ===================================================== */}
