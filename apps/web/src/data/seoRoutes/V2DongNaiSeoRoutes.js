@@ -20471,4 +20471,3488 @@ export const V2DONGNAI_SEO_ROUTES = [
     "Phường Hiệp Bình → Phạm Văn Đồng → Quốc lộ 13 → Chơn Thành → Bình Long → Lộc Ninh → Quốc lộ 13 → Cửa khẩu quốc tế Hoa Lư",
   duration: "Khoảng 3 giờ 55 phút",
 },
+{
+  key: "phuong-tam-binh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-tam-binh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tam Bình TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn vui chơi trong ngày. Xe đón tận nơi, chủ động giờ xuất phát và thuận tiện mang theo hành lý, đồ dùng dã ngoại.",
+  routeText:
+    "Từ phường Tam Bình đi theo hướng Quốc lộ 1K qua Dĩ An, cầu Hóa An, sau đó theo đường Huỳnh Văn Nghệ đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 45 phút - 1 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-tam-binh-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tam Bình TP.HCM đi Văn Miếu Trấn Biên Đồng Nai giúp hành trình tham quan di tích văn hóa tại Biên Hòa thoải mái và chủ động hơn. Phù hợp cho gia đình, người lớn tuổi, nhóm tham quan hoặc khách muốn kết hợp nhiều điểm trong ngày.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 1K về hướng Biên Hòa, qua cầu Hóa An rồi tiếp tục theo tuyến đường khu vực Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 45 phút - 1 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-tam-binh-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho chuyến tham quan vùng đất lâu đời bên sông Đồng Nai, ghé các đình chùa và công trình văn hóa tại khu vực. Lịch trình linh hoạt, xe đón trả tận nơi và không cần ghép khách.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 1K hướng Biên Hòa, qua khu vực cầu Hóa An rồi di chuyển vào trung tâm Biên Hòa và theo đường kết nối sang khu vực Cù lao Phố.",
+  duration: "Khoảng 45 phút - 1 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-tam-binh-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Tam Bình TP.HCM đi The Amazing Bay Đồng Nai là lựa chọn tiện lợi cho gia đình có trẻ nhỏ hoặc nhóm bạn muốn dành trọn ngày vui chơi tại công viên nước. Đi xe riêng giúp chủ động giờ về, mang đồ bơi và hành lý thoải mái hơn.",
+  routeText:
+    "Từ phường Tam Bình di chuyển theo Quốc lộ 1A hướng Đồng Nai, tiếp tục qua khu vực ngã ba Vũng Tàu rồi đi Quốc lộ 51 đến The Amazing Bay.",
+  duration: "Khoảng 1 giờ - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-tam-binh-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, ngắm hoàng hôn, câu cá hoặc nghỉ cuối tuần bên hồ. Khách có thể chủ động điểm đón, giờ xuất phát và mang theo nhiều đồ dã ngoại mà không phụ thuộc xe tuyến.",
+  routeText:
+    "Từ phường Tam Bình đi hướng Biên Hòa, tiếp tục theo tuyến qua Vĩnh Cửu và đường tỉnh ĐT768 để vào khu vực ven Hồ Trị An Đồng Nai.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-tam-binh-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tam Bình TP.HCM đi Đập Trị An Đồng Nai thuận tiện cho khách muốn tham quan công trình thủy điện, ngắm cảnh hồ hoặc kết hợp lịch trình khám phá Trị An trong ngày. Xe riêng giúp linh hoạt thời gian dừng nghỉ và quay về TP.HCM.",
+  routeText:
+    "Từ phường Tam Bình đi qua hướng Biên Hòa, theo tuyến Vĩnh Cửu và ĐT768 về thị trấn Trị An, sau đó tiếp tục theo đường địa phương đến khu vực Đập Trị An.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-tam-binh-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tam Bình TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai phù hợp cho chuyến nghỉ ngắn ngày giữa không gian hồ Trị An yên tĩnh. Xe đưa khách đến khu vực bến tàu, thuận tiện mang theo hành lý, đồ ăn và dụng cụ cắm trại trước khi sang đảo.",
+  routeText:
+    "Từ phường Tam Bình đi hướng Biên Hòa, tiếp tục qua Vĩnh Cửu theo ĐT768 đến khu vực Trị An và di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-tam-binh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho hành trình khám phá rừng, xem động vật hoang dã hoặc nghỉ dưỡng gần thiên nhiên. Quãng đường khá dài nên đi xe riêng giúp gia đình và nhóm khách có không gian nghỉ ngơi thoải mái hơn.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 1A hướng Đồng Nai, qua Dầu Giây rồi rẽ vào Quốc lộ 20, tiếp tục qua khu vực Tân Phú và theo đường vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-bau-sau-dong-nai",
+  path: "phuong-tam-binh-hcm-di-bau-sau-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Tam Bình TP.HCM đi Bàu Sấu Đồng Nai thích hợp cho khách yêu thiên nhiên và muốn khám phá khu đất ngập nước nổi tiếng nằm sâu trong Vườn quốc gia Cát Tiên. Xe riêng đưa khách đến khu vực Vườn quốc gia Cát Tiên, sau đó tiếp tục hành trình vào Bàu Sấu theo quy định của khu bảo tồn.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 1A đến Dầu Giây, theo Quốc lộ 20 qua Tân Phú rồi vào Vườn quốc gia Cát Tiên; từ khu vực trung tâm vườn tiếp tục sử dụng phương tiện chuyên dụng và đi bộ theo tuyến tham quan Bàu Sấu.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-thac-mai-dong-nai",
+  path: "phuong-tam-binh-hcm-di-thac-mai-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Tam Bình TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại giữa rừng, tắm suối hoặc nghỉ cuối tuần tại khu vực Định Quán. Chủ động xe riêng đặc biệt tiện khi mang theo đồ ăn, lều trại và hành lý cho hành trình xa trung tâm.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 1A đến Dầu Giây, rẽ vào Quốc lộ 20 theo hướng Định Quán, sau đó đi theo tuyến đường địa phương xuyên khu vực rừng để đến Thác Mai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+{
+  key: "phuong-tam-binh-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-tam-binh-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tam Bình TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho chuyến tham quan Định Quán trong ngày hoặc kết hợp các điểm thiên nhiên dọc Quốc lộ 20. Xe đón tận nơi, lịch trình chủ động và thuận tiện cho gia đình hoặc nhóm bạn đi xa.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 1A hướng Đồng Nai, qua khu vực Dầu Giây rồi rẽ vào Quốc lộ 20, tiếp tục theo hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-tam-binh-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tam Bình TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho khách leo núi, đi cáp treo hoặc dành một ngày khám phá cảnh quan Gia Lào. Đi xe riêng giúp chủ động giờ xuất phát sớm và thoải mái nghỉ ngơi sau hành trình tham quan.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 1A qua Biên Hòa và Long Khánh, tiếp tục theo hướng Xuân Lộc rồi di chuyển vào tuyến đường dẫn đến khu vực Núi Chứa Chan.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-tam-binh-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Chùa Gia Lào Đồng Nai thích hợp cho khách hành hương, tham quan Núi Chứa Chan hoặc đi lễ cùng gia đình. Chủ động phương tiện giúp khách dễ sắp xếp giờ đi về và kết hợp thêm các điểm tại khu vực Xuân Lộc.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 1A qua Biên Hòa, Long Khánh đến khu vực Xuân Lộc, sau đó theo đường vào chân Núi Chứa Chan để tiếp tục hành trình đến Chùa Gia Lào.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-tam-binh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Tam Bình TP.HCM đi Khu du lịch Suối Mơ Đồng Nai là lựa chọn phù hợp cho gia đình và nhóm bạn muốn vui chơi giữa không gian hồ, suối và cây xanh. Xe riêng giúp chuyến đi trong ngày linh hoạt hơn, đặc biệt khi mang theo đồ ăn, đồ bơi hoặc hành lý cho trẻ nhỏ.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 1A đến Dầu Giây, rẽ vào Quốc lộ 20 theo hướng Tân Phú rồi tiếp tục theo tuyến đường địa phương dẫn vào Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-tam-binh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho nhóm bạn, gia đình hoặc đoàn nhỏ tổ chức vui chơi và dã ngoại cuối tuần. Khoảng cách không quá xa nên có thể dễ dàng sắp xếp chuyến đi về trong ngày.",
+  routeText:
+    "Từ phường Tam Bình di chuyển theo hướng Vành đai 2 và khu vực TP Thủ Đức cũ, qua tuyến kết nối về Nhơn Trạch rồi tiếp tục theo đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 1 giờ 15 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-tam-binh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tam Bình TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai thuận tiện cho chuyến nghỉ ngơi, vui chơi ven sông cùng gia đình hoặc bạn bè. Xe riêng đón tận nơi giúp khách chủ động giờ đi về và không phải chuyển nhiều phương tiện.",
+  routeText:
+    "Từ phường Tam Bình đi theo hướng khu Đông TP.HCM, kết nối về Nhơn Trạch rồi theo các tuyến đường địa phương đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-tam-binh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tam Bình TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần phương tiện đưa đón tận nơi và chủ động thời gian. Xe riêng đặc biệt thuận tiện khi đi cùng gia đình, có nhiều hành lý hoặc cần xuất phát theo lịch trình cá nhân.",
+  routeText:
+    "Từ phường Tam Bình đi theo hướng khu Đông TP.HCM, kết nối cao tốc TP.HCM - Long Thành - Dầu Giây rồi di chuyển theo tuyến đường dẫn vào khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-tam-binh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Thiền viện Thường Chiếu Đồng Nai phù hợp cho chuyến hành hương, lễ Phật hoặc tham quan trong ngày. Dịch vụ đón tận nơi giúp gia đình có người lớn tuổi di chuyển thuận tiện và chủ động thời gian nghỉ dọc đường.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 1A hướng Biên Hòa, tiếp tục qua khu vực ngã ba Vũng Tàu rồi theo Quốc lộ 51 về Long Thành để đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 1 giờ 15 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-tam-binh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Tam Bình TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu di tích khảo cổ đặc biệt tại khu vực Long Khánh. Hành trình có thể kết hợp tham quan vườn trái cây và các điểm nổi bật lân cận để tạo thành chuyến đi trong ngày.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 1A qua Biên Hòa về hướng Long Khánh, sau đó di chuyển theo tuyến đường kết nối khu vực Hàng Gòn để đến di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-tam-binh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Tam Bình TP.HCM đi Vườn trái cây Long Khánh Đồng Nai thích hợp cho chuyến thưởng thức chôm chôm, sầu riêng, măng cụt và trải nghiệm không gian miệt vườn vào mùa trái cây. Gia đình hoặc nhóm bạn có thể chủ động chọn vườn, thời gian tham quan và lịch trình quay về.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 1A hướng Đồng Nai, tiếp tục về Long Khánh rồi theo các tuyến đường địa phương đến khu vực tập trung các vườn trái cây.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+{
+  key: "phuong-tam-binh-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-tam-binh-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tam Bình TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho hành trình tìm hiểu văn hóa S'tiêng, tham quan không gian truyền thống và khám phá vùng đất Bình Phước cũ. Quãng đường dài nên xe riêng giúp gia đình hoặc nhóm khách chủ động thời gian nghỉ và lịch trình tham quan.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 13 về hướng Bình Dương, tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 và các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-tam-binh-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tam Bình TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho khách muốn tham quan thắng cảnh nổi tiếng của khu vực Phước Long, Bình Phước cũ. Xe riêng phù hợp với chuyến đi gia đình, hành hương hoặc kết hợp khám phá Hồ Thác Mơ trong cùng lịch trình.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 13 qua Bình Dương và Chơn Thành, tiếp tục theo hướng Đồng Xoài, ĐT741 về Phước Long rồi di chuyển đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-tam-binh-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho chuyến ngắm cảnh, nghỉ ngơi hoặc kết hợp khám phá Núi Bà Rá và khu vực Phước Long. Hành trình xa trung tâm sẽ thoải mái hơn khi khách có thể tự chọn giờ xuất phát và các điểm dừng nghỉ.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 13 về Chơn Thành, tiếp tục qua Đồng Xoài theo ĐT741 đến Phước Long rồi theo đường địa phương về khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-thac-dung-dong-nai",
+  path: "phuong-tam-binh-hcm-di-thac-dung-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Tam Bình TP.HCM đi Thác Đứng Đồng Nai phù hợp cho nhóm bạn và gia đình muốn khám phá cảnh quan thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Xe riêng giúp hành trình dài linh hoạt hơn và thuận tiện khi mang theo đồ dùng cho chuyến dã ngoại.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 13 về Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến khu vực Thác Đứng.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-tam-binh-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Tam Bình TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai thích hợp cho chuyến cắm trại, chụp ảnh và khám phá không gian đồng cỏ rộng lớn của vùng Bù Đăng. Đi xe riêng giúp nhóm khách dễ mang theo lều, đồ ăn và dụng cụ dã ngoại cho hành trình trong ngày hoặc qua đêm.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 13 qua Chơn Thành, đến Đồng Xoài rồi tiếp tục Quốc lộ 14 hướng Bù Đăng, sau đó theo các tuyến đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-tam-binh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách yêu thiên nhiên, trekking và muốn khám phá hệ sinh thái rừng của vùng Bình Phước cũ. Do quãng đường khá xa, phương án xe riêng giúp chủ động điểm dừng và thuận tiện mang theo hành lý cho chuyến dài ngày.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 13 qua Chơn Thành, tiếp tục hướng Đồng Xoài và Phước Long, sau đó theo ĐT741 và các tuyến đường kết nối về Bù Gia Mập để đến khu vực vườn quốc gia.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-tam-binh-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Tam Bình TP.HCM đi Hồ Suối Giai Đồng Nai phù hợp cho chuyến dã ngoại, câu cá hoặc nghỉ ngơi bên hồ tại khu vực Bình Phước cũ. Đi xe riêng giúp gia đình và nhóm bạn linh hoạt giờ khởi hành, điểm dừng và dễ dàng mang theo đồ dùng cho chuyến picnic.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 13 về Chơn Thành, sau đó tiếp tục theo hướng Đồng Xoài và các tuyến đường kết nối về khu vực Đồng Phú để đến Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-tam-binh-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tam Bình TP.HCM đi Di tích Tà Thiết Đồng Nai thuận tiện cho chuyến tham quan địa chỉ lịch sử quan trọng tại vùng Lộc Ninh, Bình Phước cũ. Xe riêng phù hợp cho gia đình, đoàn nhỏ hoặc khách muốn kết hợp thêm các điểm lịch sử trên cùng tuyến đường.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 13 qua Bình Dương, Chơn Thành và Bình Long, tiếp tục hướng Lộc Ninh rồi theo tuyến đường địa phương đến khu Di tích Tà Thiết.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-tam-binh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tam Bình TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thích hợp cho khách muốn tìm hiểu lịch sử và tham quan các di tích nổi bật của vùng Lộc Ninh, Bình Phước cũ. Lịch trình riêng giúp dễ dàng kết hợp Nhà giao tế với Tà Thiết hoặc những điểm lân cận trong cùng chuyến đi.",
+  routeText:
+    "Từ phường Tam Bình đi Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục chạy về hướng Lộc Ninh rồi di chuyển theo đường nội thị đến khu vực Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-binh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-tam-binh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường Tam Bình TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường Tam Bình TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tam Bình TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần di chuyển đến khu vực biên giới Việt Nam - Campuchia tại Lộc Ninh, Bình Phước cũ. Hành trình đường dài thuận tiện hơn khi có xe đón tận nơi và chủ động thời gian dừng nghỉ.",
+  routeText:
+    "Từ phường Tam Bình đi theo Quốc lộ 13 qua Chơn Thành, Bình Long và Lộc Ninh, sau đó tiếp tục theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+{
+  key: "phuong-linh-xuan-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Linh Xuân TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình, nhóm bạn muốn tham quan hồ, vui chơi và nghỉ ngơi trong ngày. Từ khu vực Linh Xuân sang Biên Hòa khá thuận tiện, giúp khách chủ động lịch trình mà không cần đổi nhiều phương tiện.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 1K qua khu vực Dĩ An, tiếp tục qua cầu Hóa An rồi theo đường Huỳnh Văn Nghệ đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 35 phút - 50 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Linh Xuân TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tham quan công trình văn hóa nổi tiếng của Biên Hòa. Xe riêng phù hợp với gia đình có người lớn tuổi, nhóm nhỏ hoặc khách muốn kết hợp Văn Miếu với Bửu Long trong cùng ngày.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1K hướng Biên Hòa, qua cầu Hóa An rồi tiếp tục theo tuyến đường khu vực Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 35 phút - 50 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và các công trình văn hóa tại Biên Hòa. Khoảng cách tương đối gần nên dễ sắp xếp chuyến tham quan đi về trong ngày.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 1K về Biên Hòa, qua cầu Hóa An rồi di chuyển qua các tuyến đường trung tâm Biên Hòa để đến khu vực Cù lao Phố.",
+  duration: "Khoảng 35 phút - 55 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Linh Xuân TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ hoặc nhóm bạn dành một ngày vui chơi tại công viên nước. Đi xe riêng giúp khách mang theo đồ bơi, hành lý thoải mái và tự chọn thời gian quay về.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 1A hướng Biên Hòa, tiếp tục qua khu vực ngã ba Vũng Tàu rồi theo Quốc lộ 51 đến The Amazing Bay Đồng Nai.",
+  duration: "Khoảng 50 phút - 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Hồ Trị An Đồng Nai là lựa chọn tiện lợi cho chuyến cắm trại, câu cá hoặc ngắm hoàng hôn bên hồ. Khách có thể mang theo nhiều đồ dã ngoại và chủ động chọn khu vực ven hồ phù hợp với kế hoạch vui chơi.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1K về Biên Hòa, tiếp tục theo hướng Vĩnh Cửu và ĐT768 để di chuyển đến khu vực ven Hồ Trị An Đồng Nai.",
+  duration: "Khoảng 1 giờ 20 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Linh Xuân TP.HCM đi Đập Trị An Đồng Nai thích hợp cho khách muốn ngắm cảnh hồ, tham quan khu vực công trình thủy điện hoặc kết hợp khám phá Trị An trong ngày. Xe riêng giúp lịch trình linh hoạt hơn khi muốn dừng ăn uống hay ghé thêm điểm trên đường.",
+  routeText:
+    "Từ phường Linh Xuân đi hướng Biên Hòa, tiếp tục qua Vĩnh Cửu theo ĐT768 về khu vực Trị An rồi theo tuyến đường địa phương đến Đập Trị An.",
+  duration: "Khoảng 1 giờ 20 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Linh Xuân TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai phù hợp cho chuyến nghỉ cuối tuần giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện khi mang hành lý, đồ ăn hoặc dụng cụ cắm trại trước khi tiếp tục hành trình sang đảo.",
+  routeText:
+    "Từ phường Linh Xuân đi hướng Biên Hòa, theo tuyến Vĩnh Cửu và ĐT768 đến khu vực Trị An, sau đó di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho hành trình khám phá rừng, quan sát thiên nhiên hoặc nghỉ dưỡng cuối tuần. Với tuyến đường dài, xe riêng giúp gia đình và nhóm khách chủ động điểm nghỉ cũng như thời gian xuất phát.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A hướng Đồng Nai, tiếp tục đến Dầu Giây rồi rẽ vào Quốc lộ 20, đi qua khu vực Tân Phú và theo tuyến đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-bau-sau-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-bau-sau-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Linh Xuân TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách muốn trải nghiệm một trong những khu vực sinh thái đặc sắc nằm sâu trong Vườn quốc gia Cát Tiên. Xe riêng đưa khách đến khu vực vườn quốc gia, từ đây hành trình vào Bàu Sấu tiếp tục theo tuyến tham quan được quản lý.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A đến Dầu Giây, theo Quốc lộ 20 qua Tân Phú rồi vào Vườn quốc gia Cát Tiên; từ trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến tham quan Bàu Sấu.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-thac-mai-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-thac-mai-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Linh Xuân TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá rừng và thư giãn giữa thiên nhiên tại khu vực Định Quán. Xe riêng đặc biệt tiện cho nhóm khách mang theo đồ ăn, lều trại và hành lý cho chuyến đi cuối tuần.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A đến Dầu Giây, rẽ vào Quốc lộ 20 theo hướng Định Quán rồi tiếp tục theo tuyến đường địa phương vào khu vực Thác Mai.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+{
+  key: "phuong-linh-xuan-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Linh Xuân TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho chuyến tham quan thắng cảnh đặc trưng tại khu vực Định Quán. Khách có thể chủ động giờ khởi hành, dừng nghỉ trên đường và kết hợp thêm các điểm thiên nhiên dọc tuyến Quốc lộ 20.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 1A hướng Đồng Nai, tiếp tục đến Dầu Giây rồi rẽ vào Quốc lộ 20, đi thẳng theo hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Linh Xuân TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho khách leo núi, hành hương hoặc trải nghiệm cảnh quan vùng Gia Lào. Xe riêng giúp gia đình và nhóm bạn dễ xuất phát từ sáng sớm, mang theo hành lý và chủ động thời gian quay về.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A qua Biên Hòa về hướng Long Khánh, tiếp tục đến khu vực Xuân Lộc rồi theo tuyến đường dẫn vào chân Núi Chứa Chan.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Chùa Gia Lào Đồng Nai phù hợp cho chuyến hành hương tại Núi Chứa Chan cùng gia đình hoặc nhóm Phật tử. Phương tiện riêng giúp chủ động lịch trình, đặc biệt thuận tiện khi đi cùng người lớn tuổi hoặc muốn ghé thêm các điểm tại Xuân Lộc.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 1A qua Biên Hòa và Long Khánh đến khu vực Xuân Lộc, sau đó di chuyển theo đường vào chân Núi Chứa Chan để tiếp tục hành trình đến Chùa Gia Lào.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Linh Xuân TP.HCM đi Khu du lịch Suối Mơ Đồng Nai thích hợp cho gia đình hoặc nhóm bạn muốn dành một ngày vui chơi giữa hồ nước và không gian xanh. Xe đón tận nơi giúp khách thoải mái mang theo đồ bơi, đồ dùng cho trẻ nhỏ và chủ động giờ trở về.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A hướng Đồng Nai đến Dầu Giây, rẽ vào Quốc lộ 20 theo hướng Tân Phú rồi tiếp tục theo đường địa phương đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến vui chơi, dã ngoại hoặc tổ chức hoạt động nhóm cuối tuần. Đi xe riêng giúp khách linh hoạt thời gian xuất phát và thuận tiện mang theo đồ ăn, hành lý hay dụng cụ vui chơi.",
+  routeText:
+    "Từ phường Linh Xuân di chuyển theo hướng khu Đông TP.HCM, kết nối sang tuyến đường về Nhơn Trạch rồi tiếp tục theo các tuyến đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Linh Xuân TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi, nghỉ ngơi bên sông trong ngày. Lịch trình xe riêng giúp khách tự chọn giờ đón, giờ về và thuận tiện khi mang nhiều đồ dùng cá nhân.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng khu Đông TP.HCM, kết nối về Nhơn Trạch rồi tiếp tục theo tuyến đường địa phương để đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Linh Xuân TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai thuận tiện cho hành khách cần xe đón tận nơi, có nhiều hành lý hoặc đi cùng gia đình. Lịch trình riêng giúp chủ động thời gian xuất phát và hạn chế phụ thuộc vào các chặng trung chuyển.",
+  routeText:
+    "Từ phường Linh Xuân di chuyển theo hướng khu Đông TP.HCM, kết nối vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi theo tuyến đường dẫn đến khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Thiền viện Thường Chiếu Đồng Nai phù hợp cho chuyến lễ Phật, tham quan hoặc tìm một không gian thanh tịnh trong ngày. Hình thức đón tận nơi đặc biệt thuận tiện cho gia đình có người lớn tuổi và khách muốn chủ động giờ trở về.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A hướng Biên Hòa, qua khu vực ngã ba Vũng Tàu rồi tiếp tục theo Quốc lộ 51 về Long Thành để đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Linh Xuân TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách yêu thích lịch sử và muốn tìm hiểu công trình khảo cổ độc đáo tại vùng Long Khánh. Có xe riêng cũng thuận tiện để kết hợp di tích với các vườn trái cây hoặc điểm tham quan lân cận.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 1A qua Biên Hòa về hướng Long Khánh, sau đó tiếp tục theo tuyến đường kết nối đến khu vực Hàng Gòn và di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Linh Xuân TP.HCM đi Vườn trái cây Long Khánh Đồng Nai là lựa chọn thú vị vào mùa chôm chôm, sầu riêng và măng cụt. Gia đình hoặc nhóm bạn có thể chủ động chọn khu vườn muốn ghé, dành thời gian thưởng thức trái cây và trở về TP.HCM theo lịch riêng.",
+  routeText:
+    "Từ phường Linh Xuân đi Quốc lộ 1A qua Biên Hòa theo hướng Long Khánh, sau đó theo các tuyến đường địa phương đến khu vực các vườn trái cây tại Long Khánh.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+{
+  key: "phuong-linh-xuan-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Linh Xuân TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho chuyến tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Hành trình khá dài nên xe riêng giúp gia đình hoặc nhóm khách chủ động thời gian xuất phát, nghỉ dọc đường và lịch trình tham quan.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Linh Xuân TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến tham quan thắng cảnh nổi tiếng tại khu vực Phước Long, Bình Phước cũ. Khách có thể kết hợp Núi Bà Rá với Hồ Thác Mơ và chủ động sắp xếp hành trình đi về trong ngày hoặc nghỉ lại.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục về Đồng Xoài rồi theo ĐT741 hướng Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho khách muốn ngắm cảnh hồ, nghỉ ngơi và khám phá khu vực Phước Long. Lịch trình riêng giúp dễ kết hợp thêm Núi Bà Rá hoặc các điểm lân cận mà không phụ thuộc thời gian của phương tiện tuyến cố định.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo ĐT741 về Phước Long và đường địa phương dẫn đến Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-thac-dung-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-thac-dung-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Linh Xuân TP.HCM đi Thác Đứng Đồng Nai phù hợp cho nhóm bạn hoặc gia đình muốn khám phá cảnh quan thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Xe riêng giúp chuyến dã ngoại thoải mái hơn khi cần mang theo đồ ăn, hành lý và chủ động các điểm nghỉ trên đường.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó rẽ vào đường địa phương đến khu vực Thác Đứng.",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Linh Xuân TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai phù hợp cho chuyến chụp ảnh, cắm trại hoặc tận hưởng không gian đồng cỏ của vùng Bù Đăng. Đi theo nhóm bằng xe riêng cũng thuận tiện hơn khi mang lều, thức ăn và nhiều dụng cụ dã ngoại.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13 qua Chơn Thành, đến Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó tiếp tục theo đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho hành trình trekking, khám phá rừng và trải nghiệm thiên nhiên tại vùng Bình Phước cũ. Với tuyến đường dài, phương tiện riêng giúp khách linh hoạt điểm nghỉ và thuận tiện mang hành lý cho chuyến một hoặc nhiều ngày.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục về Đồng Xoài và Phước Long, sau đó theo ĐT741 cùng các tuyến đường kết nối đến khu vực Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Linh Xuân TP.HCM đi Hồ Suối Giai Đồng Nai thích hợp cho chuyến picnic, câu cá hoặc thư giãn bên hồ tại vùng Bình Phước cũ. Xe riêng giúp nhóm khách chủ động giờ đi về và dễ mang theo đồ ăn, bàn ghế hoặc dụng cụ phục vụ chuyến dã ngoại.",
+  routeText:
+    "Từ phường Linh Xuân đi theo hướng Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến kết nối hướng Đồng Xoài và Đồng Phú rồi theo đường địa phương đến Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 15 phút - 3 giờ",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Linh Xuân TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho chuyến tìm hiểu lịch sử tại căn cứ quan trọng thuộc vùng Lộc Ninh, Bình Phước cũ. Khách đi xe riêng có thể linh hoạt kết hợp thêm Nhà giao tế Lộc Ninh và những địa điểm lịch sử trên cùng tuyến.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục về hướng Lộc Ninh rồi theo tuyến đường địa phương đến khu Di tích Tà Thiết.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Linh Xuân TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách tham quan và tìm hiểu những dấu ấn lịch sử của vùng Lộc Ninh, Bình Phước cũ. Chuyến đi có thể kết hợp Tà Thiết hoặc các di tích lân cận để tận dụng lịch trình đường dài.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục chạy thẳng về Lộc Ninh rồi theo đường nội thị đến khu vực Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-linh-xuan-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-linh-xuan-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường Linh Xuân TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường Linh Xuân TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Linh Xuân TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc di chuyển đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp hành trình đường dài chủ động hơn về giờ xuất phát, điểm nghỉ và lượng hành lý mang theo.",
+  routeText:
+    "Từ phường Linh Xuân đi theo Quốc lộ 13 qua Chơn Thành, Bình Long và Lộc Ninh, sau đó tiếp tục theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ",
+},
+{
+  key: "phuong-long-binh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-long-binh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Long Bình TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi, ngắm cảnh hồ hoặc nghỉ ngơi trong ngày. Vị trí Long Bình gần cửa ngõ Đồng Nai giúp hành trình sang Biên Hòa thuận tiện và dễ chủ động thời gian.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 1A vào Biên Hòa, sau đó di chuyển qua các tuyến đường nội đô và đường Huỳnh Văn Nghệ để đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 30 phút - 50 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-long-binh-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Long Bình TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tham quan không gian văn hóa và lịch sử tại Biên Hòa. Xe riêng phù hợp với gia đình có người lớn tuổi hoặc khách muốn kết hợp Văn Miếu với Bửu Long và các điểm lân cận.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A hướng Biên Hòa, tiếp tục qua các tuyến đường trung tâm rồi theo hướng Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 30 phút - 50 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-long-binh-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và những địa điểm văn hóa tại Biên Hòa. Quãng đường tương đối gần nên dễ bố trí chuyến tham quan ngắn hoặc kết hợp nhiều điểm trong ngày.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A về hướng Biên Hòa, sau đó theo các tuyến đường trung tâm thành phố và đường kết nối sang khu vực Cù lao Phố.",
+  duration: "Khoảng 30 phút - 50 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-long-binh-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Long Bình TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ và nhóm bạn muốn dành trọn ngày vui chơi tại công viên nước. Xe riêng giúp khách thoải mái mang đồ bơi, hành lý và chủ động thời gian trở về sau khi vui chơi.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A hướng Biên Hòa, qua khu vực ngã ba Vũng Tàu rồi tiếp tục theo Quốc lộ 51 đến The Amazing Bay Đồng Nai.",
+  duration: "Khoảng 40 phút - 1 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-long-binh-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, câu cá, ngắm hoàng hôn hoặc nghỉ cuối tuần bên hồ. Khách đi theo nhóm có thể mang nhiều đồ dã ngoại và tự chọn khu vực ven hồ phù hợp với kế hoạch của mình.",
+  routeText:
+    "Từ phường Long Bình đi hướng Biên Hòa, tiếp tục theo tuyến đường qua Vĩnh Cửu và ĐT768 để di chuyển đến khu vực ven Hồ Trị An Đồng Nai.",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-long-binh-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Long Bình TP.HCM đi Đập Trị An Đồng Nai thuận tiện cho khách muốn tham quan khu vực hồ, ngắm cảnh hoặc kết hợp khám phá các điểm quanh Trị An. Xe riêng giúp hành trình linh hoạt khi cần dừng ăn uống, nghỉ ngơi hoặc ghé thêm địa điểm trên đường.",
+  routeText:
+    "Từ phường Long Bình đi về hướng Biên Hòa, tiếp tục qua Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi theo tuyến đường địa phương dẫn đến Đập Trị An.",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-long-binh-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Long Bình TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai thích hợp cho chuyến nghỉ ngơi hoặc cắm trại giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện mang theo hành lý và đồ dã ngoại trước khi tiếp tục hành trình sang đảo.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Biên Hòa, tiếp tục qua Vĩnh Cửu và ĐT768 đến khu vực Trị An, sau đó di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 1 giờ 20 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-long-binh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho khách muốn khám phá rừng, quan sát thiên nhiên hoặc dành cuối tuần nghỉ ngơi xa đô thị. Chủ động phương tiện giúp chuyến đường dài thoải mái hơn và dễ sắp xếp các điểm nghỉ.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A hướng Đồng Nai, đến Dầu Giây rồi rẽ vào Quốc lộ 20, tiếp tục qua khu vực Tân Phú và theo đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-bau-sau-dong-nai",
+  path: "phuong-long-binh-hcm-di-bau-sau-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Long Bình TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách yêu thiên nhiên và muốn khám phá vùng đất ngập nước đặc sắc nằm sâu trong Vườn quốc gia Cát Tiên. Xe riêng đưa khách đến khu vực vườn quốc gia trước khi tiếp tục chặng tham quan chuyên biệt vào Bàu Sấu.",
+  routeText:
+    "Từ phường Long Bình đi Quốc lộ 1A đến Dầu Giây, rẽ vào Quốc lộ 20 qua Tân Phú rồi đến Vườn quốc gia Cát Tiên; từ khu vực trung tâm vườn tiếp tục theo phương tiện và tuyến đi bộ được bố trí để vào Bàu Sấu.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-thac-mai-dong-nai",
+  path: "phuong-long-binh-hcm-di-thac-mai-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Long Bình TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá rừng và nghỉ ngơi giữa thiên nhiên tại khu vực Định Quán. Xe riêng thuận tiện cho nhóm bạn hoặc gia đình mang theo đồ ăn, lều trại và hành lý cho chuyến cuối tuần.",
+  routeText:
+    "Từ phường Long Bình đi Quốc lộ 1A đến Dầu Giây, rẽ vào Quốc lộ 20 theo hướng Định Quán rồi tiếp tục theo tuyến đường địa phương dẫn vào khu vực Thác Mai.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+{
+  key: "phuong-long-binh-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-long-binh-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Long Bình TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn khám phá thắng cảnh đặc trưng tại khu vực Định Quán. Xe đón tận nơi giúp gia đình hoặc nhóm bạn chủ động giờ xuất phát và dễ kết hợp thêm các điểm thiên nhiên trên tuyến Quốc lộ 20.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A hướng Đồng Nai, đến Dầu Giây rồi rẽ vào Quốc lộ 20, tiếp tục theo hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-long-binh-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Long Bình TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Khách có thể xuất phát sớm, mang theo hành lý thoải mái và tự sắp xếp thời gian trở về sau chuyến tham quan.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A qua khu vực Long Khánh, tiếp tục về hướng Xuân Lộc rồi theo tuyến đường địa phương dẫn đến chân Núi Chứa Chan.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-long-binh-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Chùa Gia Lào Đồng Nai phù hợp cho gia đình và khách hành hương đến khu vực Núi Chứa Chan. Chủ động phương tiện giúp chuyến đi thoải mái hơn khi có người lớn tuổi và thuận tiện kết hợp thêm các địa điểm tại Xuân Lộc.",
+  routeText:
+    "Từ phường Long Bình đi Quốc lộ 1A về hướng Long Khánh và Xuân Lộc, sau đó theo đường vào khu vực chân Núi Chứa Chan để tiếp tục hành trình đến Chùa Gia Lào.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-long-binh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Long Bình TP.HCM đi Khu du lịch Suối Mơ Đồng Nai thích hợp cho chuyến vui chơi cuối tuần của gia đình hoặc nhóm bạn. Không gian hồ và suối tự nhiên phù hợp cho chuyến đi trong ngày, còn xe riêng giúp khách thuận tiện mang đồ bơi và các vật dụng cá nhân.",
+  routeText:
+    "Từ phường Long Bình đi Quốc lộ 1A đến Dầu Giây, rẽ vào Quốc lộ 20 theo hướng Tân Phú rồi tiếp tục theo tuyến đường địa phương dẫn đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-long-binh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho nhóm bạn, gia đình hoặc đoàn nhỏ muốn vui chơi và dã ngoại trong ngày. Có phương tiện riêng giúp khách chủ động lịch trình và thoải mái mang theo đồ ăn hay dụng cụ phục vụ hoạt động ngoài trời.",
+  routeText:
+    "Từ phường Long Bình di chuyển theo hướng Long Thành, sau đó kết nối các tuyến đường về Nhơn Trạch và tiếp tục theo đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-long-binh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Long Bình TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai thuận tiện cho chuyến nghỉ ngơi và vui chơi ven sông cùng gia đình hoặc bạn bè. Xe riêng giúp khách linh hoạt giờ đi về và dễ kết hợp thêm các địa điểm tại khu vực Nhơn Trạch.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Long Thành, kết nối sang các tuyến đường về Nhơn Trạch rồi tiếp tục theo đường địa phương để đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-long-binh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Long Bình TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần xe đón tận nơi, mang nhiều hành lý hoặc đi theo gia đình. Từ cửa ngõ phía đông TP.HCM, hành trình đến khu vực sân bay khá thuận tiện và có thể chủ động thời gian xuất phát.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 1A và khu vực Long Thành, sau đó kết nối vào các tuyến đường dẫn đến Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 40 phút - 1 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-long-binh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Thiền viện Thường Chiếu Đồng Nai phù hợp cho khách lễ Phật, tham quan hoặc dành thời gian trong không gian thanh tịnh. Hành trình riêng đặc biệt tiện cho gia đình có người lớn tuổi vì có thể chủ động điểm đón và giờ trở về.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A đến khu vực ngã ba Vũng Tàu, sau đó theo Quốc lộ 51 về hướng Long Thành để đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 45 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-long-binh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Long Bình TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai thích hợp cho khách muốn tìm hiểu dấu tích khảo cổ độc đáo của vùng Long Khánh. Đi xe riêng cũng thuận tiện để kết hợp di tích với các vườn trái cây và những điểm tham quan gần đó.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A về hướng Long Khánh, sau đó theo tuyến đường kết nối khu vực Hàng Gòn để đến di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 20 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-long-binh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Long Bình TP.HCM đi Vườn trái cây Long Khánh Đồng Nai phù hợp cho chuyến thưởng thức trái cây tại vườn vào mùa chôm chôm, sầu riêng hay măng cụt. Gia đình và nhóm bạn có thể tự chọn khu vườn muốn ghé, thời gian tham quan và lịch trở về.",
+  routeText:
+    "Từ phường Long Bình đi theo Quốc lộ 1A hướng Long Khánh, sau đó di chuyển theo các tuyến đường địa phương đến khu vực tập trung các vườn trái cây.",
+  duration: "Khoảng 1 giờ 15 phút - 1 giờ 45 phút",
+},
+{
+  key: "phuong-long-binh-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-long-binh-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Long Bình TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho chuyến tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Xe đón tận nơi giúp gia đình hoặc nhóm khách chủ động giờ xuất phát, các điểm nghỉ và lịch trình cho hành trình đường dài.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-long-binh-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Long Bình TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến tham quan, hành hương và khám phá cảnh quan tại khu vực Phước Long, Bình Phước cũ. Khách có thể kết hợp Hồ Thác Mơ trong cùng hành trình và tự sắp xếp thời gian đi về.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo ĐT741 về Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-long-binh-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho chuyến ngắm cảnh, nghỉ ngơi và khám phá vùng hồ rộng lớn tại khu vực Phước Long. Lịch trình riêng giúp khách dễ kết hợp Núi Bà Rá hoặc những điểm lân cận mà không phụ thuộc phương tiện tuyến cố định.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành và Đồng Xoài, tiếp tục theo ĐT741 về Phước Long rồi theo đường địa phương đến khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-thac-dung-dong-nai",
+  path: "phuong-long-binh-hcm-di-thac-dung-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Long Bình TP.HCM đi Thác Đứng Đồng Nai phù hợp cho khách muốn khám phá cảnh quan thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Đi xe riêng thuận tiện cho chuyến dã ngoại xa thành phố khi cần mang đồ ăn, hành lý và chủ động dừng nghỉ trên đường.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến Thác Đứng.",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-long-binh-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Long Bình TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai thích hợp cho chuyến chụp ảnh, cắm trại hoặc tận hưởng không gian thiên nhiên tại vùng Bù Đăng. Xe riêng giúp nhóm khách thoải mái mang theo lều, đồ ăn và các dụng cụ cần thiết cho chuyến dã ngoại.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó đi đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-long-binh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách trekking, khám phá rừng và trải nghiệm hệ sinh thái tự nhiên của vùng Bình Phước cũ. Với quãng đường xa, phương tiện riêng giúp chuyến đi linh hoạt hơn về điểm nghỉ và lượng hành lý mang theo.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục về Đồng Xoài và Phước Long, sau đó theo ĐT741 cùng các tuyến đường kết nối đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-long-binh-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Long Bình TP.HCM đi Hồ Suối Giai Đồng Nai phù hợp cho chuyến picnic, câu cá hoặc thư giãn bên hồ tại vùng Bình Phước cũ. Gia đình và nhóm bạn đi xe riêng có thể tự chọn giờ xuất phát, thời gian quay về và mang theo đầy đủ đồ dùng dã ngoại.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến kết nối hướng Đồng Xoài và Đồng Phú rồi đi đường địa phương đến Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 15 phút - 3 giờ",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-long-binh-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Long Bình TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho hành trình tìm hiểu lịch sử tại vùng Lộc Ninh, Bình Phước cũ. Xe riêng giúp khách chủ động thời gian tham quan và thuận tiện kết hợp Nhà giao tế Lộc Ninh hoặc các địa điểm lịch sử trên cùng tuyến.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục về Lộc Ninh rồi theo tuyến đường địa phương dẫn đến khu Di tích Tà Thiết.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-long-binh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Long Bình TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tìm hiểu những dấu ấn lịch sử tại vùng Lộc Ninh, Bình Phước cũ. Chuyến đi có thể kết hợp thêm Tà Thiết và các di tích lân cận để tận dụng lịch trình đường dài.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục chạy về Lộc Ninh rồi theo đường nội thị đến khu vực Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-long-binh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-long-binh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường Long Bình TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường Long Bình TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Long Bình TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần di chuyển đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp hành trình dài chủ động về giờ khởi hành, điểm nghỉ và hành lý.",
+  routeText:
+    "Từ phường Long Bình đi theo hướng Quốc lộ 13 qua Chơn Thành, Bình Long và Lộc Ninh, sau đó tiếp tục theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ",
+},
+{
+  key: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi, ngắm cảnh hồ hoặc nghỉ ngơi trong ngày. Xe đón tận nơi giúp chuyến sang Biên Hòa thuận tiện và chủ động hơn về thời gian.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Võ Nguyên Giáp và Quốc lộ 1, tiếp tục về Biên Hòa rồi theo các tuyến đường nội đô hướng Bửu Long để đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 45 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tăng Nhơn Phú TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tham quan công trình văn hóa, lịch sử nổi bật tại Biên Hòa. Khách đi gia đình có thể kết hợp thêm Bửu Long và những điểm gần đó trong cùng một lịch trình.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Võ Nguyên Giáp và Quốc lộ 1 về Biên Hòa, sau đó di chuyển qua các tuyến đường trung tâm hướng Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 45 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn tìm hiểu vùng đất lâu đời bên sông Đồng Nai và các công trình văn hóa tại Biên Hòa. Tuyến đi không quá xa nên thuận tiện cho chuyến tham quan trong ngày.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Võ Nguyên Giáp và Quốc lộ 1 đến Biên Hòa, sau đó theo các tuyến đường trung tâm và đường kết nối vào khu vực Cù lao Phố.",
+  duration: "Khoảng 40 phút - 1 giờ",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Tăng Nhơn Phú TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ hoặc nhóm bạn muốn dành một ngày vui chơi tại công viên nước. Xe riêng giúp khách thoải mái mang đồ bơi, hành lý và tự chọn thời gian trở về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Võ Nguyên Giáp, kết nối Quốc lộ 1 về Đồng Nai, qua khu vực ngã ba Vũng Tàu rồi tiếp tục theo Quốc lộ 51 đến The Amazing Bay.",
+  duration: "Khoảng 45 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, câu cá, ngắm hoàng hôn hoặc nghỉ cuối tuần. Đi xe riêng đặc biệt tiện cho nhóm khách mang nhiều đồ dã ngoại và muốn chủ động lựa chọn khu vực ven hồ.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi về hướng Biên Hòa, tiếp tục theo tuyến qua Vĩnh Cửu và ĐT768 để di chuyển đến khu vực ven Hồ Trị An Đồng Nai.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tăng Nhơn Phú TP.HCM đi Đập Trị An Đồng Nai thuận tiện cho khách muốn ngắm cảnh hồ, tham quan khu vực công trình thủy điện hoặc khám phá Trị An trong ngày. Lịch trình riêng giúp dễ dàng dừng nghỉ và ghé thêm các điểm lân cận.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi hướng Biên Hòa, tiếp tục qua khu vực Vĩnh Cửu theo ĐT768 về Trị An rồi theo tuyến đường địa phương đến Đập Trị An.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai thích hợp cho chuyến cắm trại hoặc nghỉ ngơi giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện mang theo hành lý và đồ dùng trước khi tiếp tục hành trình sang đảo.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi hướng Biên Hòa, tiếp tục qua Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho hành trình khám phá rừng, quan sát thiên nhiên hoặc nghỉ cuối tuần. Với quãng đường dài, khách có thể chủ động giờ xuất phát, điểm dừng nghỉ và mang theo hành lý thoải mái hơn.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 1 về Đồng Nai, đến Dầu Giây rồi rẽ vào Quốc lộ 20, tiếp tục qua Tân Phú và theo tuyến đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-bau-sau-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-bau-sau-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Tăng Nhơn Phú TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách muốn khám phá hệ sinh thái đất ngập nước nằm sâu trong Vườn quốc gia Cát Tiên. Xe riêng phục vụ chặng đường đến khu vực vườn quốc gia, sau đó khách tiếp tục tuyến tham quan Bàu Sấu theo quy định tại điểm đến.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 1 đến Dầu Giây, rẽ vào Quốc lộ 20 qua Tân Phú rồi đến Vườn quốc gia Cát Tiên; từ trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến vào Bàu Sấu.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-thac-mai-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-thac-mai-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá rừng hoặc nghỉ cuối tuần tại khu vực Định Quán. Xe riêng thuận tiện cho nhóm khách mang theo đồ ăn, lều trại và nhiều vật dụng cho hành trình ngoài trời.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 1 đến Dầu Giây, rẽ vào Quốc lộ 20 về Định Quán rồi tiếp tục theo tuyến đường địa phương dẫn vào khu vực Thác Mai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+{
+  key: "phuong-tang-nhon-phu-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn khám phá thắng cảnh đặc trưng tại khu vực Định Quán. Hành trình bằng xe riêng giúp gia đình và nhóm bạn chủ động thời gian, dễ dừng nghỉ và kết hợp thêm các điểm trên tuyến Quốc lộ 20.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 1 về Đồng Nai, đến Dầu Giây rồi rẽ vào Quốc lộ 20, tiếp tục theo hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tăng Nhơn Phú TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Xe đón tận nơi giúp khách có thể xuất phát sớm, mang theo hành lý thoải mái và chủ động giờ quay về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo Quốc lộ 1 về hướng Đồng Nai, tiếp tục qua Long Khánh đến Xuân Lộc rồi theo tuyến đường địa phương dẫn vào khu vực Núi Chứa Chan.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Chùa Gia Lào Đồng Nai thích hợp cho gia đình và khách hành hương đến Núi Chứa Chan. Phương tiện riêng đặc biệt thuận tiện khi đi cùng người lớn tuổi hoặc muốn kết hợp lễ chùa với tham quan các địa điểm tại Xuân Lộc.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi Quốc lộ 1 về Long Khánh và Xuân Lộc, sau đó theo tuyến đường vào chân Núi Chứa Chan để tiếp tục hành trình đến Chùa Gia Lào.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Khu du lịch Suối Mơ Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi giữa không gian hồ, suối và cây xanh. Đi xe riêng giúp khách thoải mái mang đồ bơi, đồ dùng cho trẻ nhỏ và tự sắp xếp thời gian trở về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 1 đến Dầu Giây, rẽ vào Quốc lộ 20 hướng Tân Phú rồi tiếp tục theo tuyến đường địa phương dẫn đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến dã ngoại, vui chơi dưới nước hoặc tổ chức hoạt động nhóm cuối tuần. Khách có thể chủ động giờ đón và thuận tiện mang theo đồ ăn cùng các vật dụng phục vụ chuyến đi.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú di chuyển theo hướng khu Đông TP.HCM, kết nối tuyến đường về Nhơn Trạch rồi tiếp tục theo các đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tăng Nhơn Phú TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai thích hợp cho gia đình và nhóm bạn muốn nghỉ ngơi, vui chơi ven sông trong ngày. Xe riêng giúp hành trình linh hoạt và thuận tiện khi muốn kết hợp thêm các điểm tại khu vực Nhơn Trạch.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng khu Đông TP.HCM, kết nối về Nhơn Trạch rồi tiếp tục theo tuyến đường địa phương đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần phương tiện đón tận nơi, đi theo gia đình hoặc mang nhiều hành lý. Xe riêng giúp chủ động thời gian xuất phát và hạn chế phải chuyển phương tiện giữa đường.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng khu Đông TP.HCM, kết nối vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi theo tuyến đường dẫn đến khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 45 phút - 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Thiền viện Thường Chiếu Đồng Nai phù hợp cho chuyến lễ Phật, tham quan hoặc tìm không gian thanh tịnh trong ngày. Hình thức đón tận nơi thuận tiện cho gia đình có người lớn tuổi và giúp khách chủ động giờ trở về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 1 về Đồng Nai, qua khu vực ngã ba Vũng Tàu rồi tiếp tục theo Quốc lộ 51 hướng Long Thành để đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 55 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Tăng Nhơn Phú TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu một di tích khảo cổ đặc biệt tại vùng Long Khánh. Có xe riêng cũng dễ kết hợp điểm đến này với vườn trái cây hoặc các địa danh khác trong khu vực.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo Quốc lộ 1 hướng Đồng Nai và Long Khánh, sau đó theo tuyến đường kết nối về khu vực Hàng Gòn để đến di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Vườn trái cây Long Khánh Đồng Nai phù hợp cho chuyến trải nghiệm miệt vườn vào mùa chôm chôm, sầu riêng và măng cụt. Gia đình hoặc nhóm bạn có thể tự chọn khu vườn muốn ghé và dành thời gian thưởng thức trái cây theo lịch riêng.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo Quốc lộ 1 hướng Đồng Nai và Long Khánh, sau đó di chuyển theo các tuyến đường địa phương đến khu vực tập trung các vườn trái cây.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+{
+  key: "phuong-tang-nhon-phu-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho hành trình tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Với tuyến đường dài, xe riêng giúp gia đình hoặc nhóm khách chủ động giờ khởi hành, điểm nghỉ và thời gian tham quan.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tăng Nhơn Phú TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến tham quan, hành hương hoặc khám phá cảnh quan tại khu vực Phước Long, Bình Phước cũ. Khách có thể kết hợp thêm Hồ Thác Mơ và chủ động sắp xếp lịch trình đi về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo ĐT741 về Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho chuyến ngắm cảnh, nghỉ ngơi và khám phá vùng Phước Long. Đi theo lịch trình riêng giúp khách dễ kết hợp Hồ Thác Mơ với Núi Bà Rá hoặc những điểm tham quan lân cận.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành và Đồng Xoài, tiếp tục theo ĐT741 về Phước Long rồi theo đường địa phương đến khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-thac-dung-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-thac-dung-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Tăng Nhơn Phú TP.HCM đi Thác Đứng Đồng Nai phù hợp cho nhóm bạn và gia đình muốn khám phá thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Xe riêng thuận tiện cho chuyến dã ngoại xa thành phố khi cần mang theo đồ ăn, hành lý và nhiều vật dụng cá nhân.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến Thác Đứng.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai phù hợp cho chuyến cắm trại, chụp ảnh và tận hưởng không gian thiên nhiên tại vùng Bù Đăng. Nhóm khách có thể mang theo lều, đồ ăn và dụng cụ dã ngoại mà vẫn chủ động thời gian đi về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó đi đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách muốn trekking, khám phá rừng và trải nghiệm thiên nhiên tại vùng Bình Phước cũ. Hành trình xa sẽ thuận tiện hơn khi có phương tiện riêng để chủ động điểm nghỉ và mang theo hành lý.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục về Đồng Xoài và Phước Long, sau đó theo ĐT741 cùng các tuyến đường kết nối đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Hồ Suối Giai Đồng Nai thích hợp cho chuyến picnic, câu cá hoặc nghỉ ngơi bên hồ tại vùng Bình Phước cũ. Xe riêng giúp gia đình và nhóm bạn dễ mang đồ dã ngoại, đồng thời linh hoạt giờ khởi hành và quay về.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến kết nối hướng Đồng Xoài và Đồng Phú rồi theo đường địa phương đến Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Tăng Nhơn Phú TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho chuyến tìm hiểu lịch sử tại khu vực Lộc Ninh, Bình Phước cũ. Xe riêng giúp khách chủ động thời gian tham quan và thuận tiện kết hợp Nhà giao tế Lộc Ninh hoặc các điểm lịch sử trên cùng tuyến.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục về Lộc Ninh rồi theo tuyến đường địa phương dẫn đến khu Di tích Tà Thiết.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tham quan và tìm hiểu những dấu ấn lịch sử của vùng Lộc Ninh, Bình Phước cũ. Lịch trình có thể kết hợp thêm Tà Thiết hoặc những địa điểm lân cận trong cùng chuyến đi.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục về Lộc Ninh rồi theo các tuyến đường nội thị đến Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-tang-nhon-phu-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-tang-nhon-phu-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường Tăng Nhơn Phú TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường Tăng Nhơn Phú TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Tăng Nhơn Phú TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp hành trình dài chủ động hơn về giờ xuất phát, điểm dừng và lượng hành lý.",
+  routeText:
+    "Từ phường Tăng Nhơn Phú đi theo hướng Quốc lộ 13 qua Chơn Thành, Bình Long và Lộc Ninh, sau đó tiếp tục theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+{
+  key: "phuong-cat-lai-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-cat-lai-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Cát Lái TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn tham quan hồ, vui chơi hoặc nghỉ ngơi trong ngày. Xe đón tận nơi giúp khách chủ động giờ xuất phát và thuận tiện kết hợp thêm Văn Miếu Trấn Biên hoặc các điểm tại Biên Hòa.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng Võ Chí Công, kết nối tuyến đường về Biên Hòa qua khu Đông TP.HCM, sau đó tiếp tục theo các tuyến đường nội đô hướng Bửu Long để đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-cat-lai-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Cát Lái TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tìm hiểu văn hóa và lịch sử tại Biên Hòa. Đi xe riêng phù hợp với gia đình có người lớn tuổi và giúp khách dễ kết hợp Văn Miếu với Bửu Long trong cùng một ngày.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng khu Đông TP.HCM về Biên Hòa, sau đó di chuyển qua các tuyến đường trung tâm và tiếp tục theo hướng Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-cat-lai-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và những địa điểm văn hóa tại Biên Hòa. Lịch trình riêng giúp khách linh hoạt thời gian tham quan và dễ dàng ghé thêm các điểm lân cận.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng khu Đông TP.HCM về Biên Hòa, sau đó theo các tuyến đường trung tâm và đường kết nối sang khu vực Cù lao Phố.",
+  duration: "Khoảng 55 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-cat-lai-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Cát Lái TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ hoặc nhóm bạn muốn dành trọn ngày vui chơi tại công viên nước. Từ khu vực Cát Lái có thể đi về hướng Long Thành khá thuận tiện, đồng thời xe riêng giúp khách thoải mái mang đồ bơi và hành lý.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng đường Võ Chí Công, kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, sau đó theo tuyến về Quốc lộ 51 để đến The Amazing Bay Đồng Nai.",
+  duration: "Khoảng 45 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-cat-lai-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, câu cá hoặc ngắm hoàng hôn cuối tuần. Khách có thể mang theo nhiều đồ dã ngoại, lựa chọn khu vực ven hồ muốn đến và chủ động hoàn toàn thời gian quay về.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng khu Đông TP.HCM về Đồng Nai, tiếp tục qua khu vực Biên Hòa và Vĩnh Cửu rồi theo ĐT768 để đến khu vực ven Hồ Trị An.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-cat-lai-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Cát Lái TP.HCM đi Đập Trị An Đồng Nai phù hợp cho khách muốn ngắm cảnh hồ, tham quan khu vực công trình thủy điện hoặc kết hợp khám phá Trị An trong ngày. Xe riêng giúp chuyến đi linh hoạt hơn khi cần dừng ăn uống hoặc ghé thêm điểm dọc đường.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An, sau đó theo tuyến đường địa phương dẫn đến Đập Trị An.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-cat-lai-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Cát Lái TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai thích hợp cho chuyến nghỉ cuối tuần hoặc cắm trại giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện mang theo đồ ăn, hành lý và dụng cụ dã ngoại trước khi sang đảo.",
+  routeText:
+    "Từ phường Cát Lái đi hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-cat-lai-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho hành trình khám phá rừng, quan sát thiên nhiên hoặc nghỉ cuối tuần xa thành phố. Với tuyến đường dài, khách có thể chủ động các điểm nghỉ và mang theo hành lý thoải mái hơn.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến khu vực Dầu Giây rồi theo Quốc lộ 20 qua Tân Phú và đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-bau-sau-dong-nai",
+  path: "phuong-cat-lai-hcm-di-bau-sau-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Cát Lái TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách yêu thiên nhiên và muốn khám phá vùng đất ngập nước đặc sắc nằm sâu trong Vườn quốc gia Cát Tiên. Xe riêng phục vụ chặng đến vườn quốc gia, sau đó khách tiếp tục hành trình vào Bàu Sấu theo tuyến tham quan tại điểm đến.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục theo Quốc lộ 20 qua Tân Phú đến Vườn quốc gia Cát Tiên; từ khu vực trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến vào Bàu Sấu.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-thac-mai-dong-nai",
+  path: "phuong-cat-lai-hcm-di-thac-mai-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Cát Lái TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá rừng hoặc nghỉ cuối tuần tại khu vực Định Quán. Xe riêng thuận tiện cho gia đình và nhóm bạn mang theo đồ ăn, lều trại cùng các vật dụng cần thiết cho chuyến đi ngoài trời.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục theo Quốc lộ 20 hướng Định Quán rồi rẽ vào tuyến đường địa phương dẫn đến khu vực Thác Mai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+{
+  key: "phuong-cat-lai-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-cat-lai-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Cát Lái TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn khám phá thắng cảnh đặc trưng tại khu vực Định Quán. Xe đón tận nơi giúp gia đình và nhóm bạn chủ động giờ xuất phát, nghỉ dọc đường và kết hợp thêm các điểm trên tuyến Quốc lộ 20.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-cat-lai-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Cát Lái TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Đi xe riêng giúp khách dễ xuất phát sớm, mang theo đồ dùng cá nhân và chủ động thời gian quay về sau chuyến tham quan.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục về hướng Long Khánh và Xuân Lộc rồi theo tuyến đường địa phương dẫn vào khu vực Núi Chứa Chan.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-cat-lai-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Chùa Gia Lào Đồng Nai phù hợp cho gia đình và khách hành hương đến khu vực Núi Chứa Chan. Phương tiện riêng thuận tiện khi đi cùng người lớn tuổi và giúp khách linh hoạt kết hợp lễ chùa với các điểm tham quan tại Xuân Lộc.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục qua Long Khánh đến Xuân Lộc rồi theo đường vào chân Núi Chứa Chan để đến khu vực Chùa Gia Lào.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-cat-lai-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Cát Lái TP.HCM đi Khu du lịch Suối Mơ Đồng Nai thích hợp cho gia đình và nhóm bạn muốn dành một ngày vui chơi giữa hồ nước, suối và không gian xanh. Xe riêng giúp khách thoải mái mang đồ bơi, hành lý và chủ động thời gian trở về TP.HCM.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây đến Dầu Giây, tiếp tục theo Quốc lộ 20 hướng Tân Phú rồi theo đường địa phương đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-cat-lai-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến dã ngoại, vui chơi dưới nước hoặc tổ chức hoạt động nhóm cuối tuần. Từ khu vực Cát Lái, hành trình về Nhơn Trạch khá thuận tiện và xe riêng giúp khách chủ động toàn bộ lịch trình.",
+  routeText:
+    "Từ phường Cát Lái di chuyển về hướng phà Cát Lái, qua sông Đồng Nai sang Nhơn Trạch rồi tiếp tục theo các tuyến đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 45 phút - 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-cat-lai-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Cát Lái TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai thuận tiện cho chuyến vui chơi và nghỉ ngơi ven sông cùng gia đình hoặc bạn bè. Tuyến qua Nhơn Trạch tương đối gần, phù hợp cho lịch trình đi về trong ngày mà vẫn chủ động giờ đón.",
+  routeText:
+    "Từ phường Cát Lái đi đến phà Cát Lái, qua sông Đồng Nai sang khu vực Nhơn Trạch rồi tiếp tục theo các tuyến đường địa phương đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 40 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-cat-lai-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Cát Lái TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần xe đón tận nơi, đi cùng gia đình hoặc mang nhiều hành lý. Từ khu Đông TP.HCM có nhiều hướng kết nối về Long Thành, giúp hành trình linh hoạt theo tình hình giao thông.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng Võ Chí Công, kết nối cao tốc TP.HCM - Long Thành - Dầu Giây rồi tiếp tục theo tuyến đường dẫn vào khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 40 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-cat-lai-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Thiền viện Thường Chiếu Đồng Nai thích hợp cho chuyến lễ Phật, tham quan hoặc dành thời gian trong không gian thanh tịnh tại Long Thành. Xe đón tận nơi thuận tiện cho gia đình có người lớn tuổi và giúp khách tự chọn giờ quay về.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng cao tốc TP.HCM - Long Thành - Dầu Giây hoặc tuyến kết nối phù hợp về Long Thành, sau đó tiếp tục theo Quốc lộ 51 và đường địa phương đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-cat-lai-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Cát Lái TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu di tích khảo cổ đặc biệt tại khu vực Long Khánh. Có phương tiện riêng giúp chuyến đi linh hoạt hơn và dễ kết hợp tham quan vườn trái cây hoặc các địa điểm gần Hàng Gòn.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến khu vực Long Khánh rồi theo tuyến đường địa phương về Hàng Gòn để đến di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-cat-lai-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Cát Lái TP.HCM đi Vườn trái cây Long Khánh Đồng Nai phù hợp cho chuyến thưởng thức trái cây tại vườn vào mùa chôm chôm, sầu riêng hoặc măng cụt. Gia đình và nhóm bạn có thể tự chọn khu vườn muốn ghé, thời gian vui chơi và lịch trở về.",
+  routeText:
+    "Từ phường Cát Lái đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến Long Khánh rồi theo các tuyến đường địa phương đến khu vực các vườn trái cây.",
+  duration: "Khoảng 1 giờ 25 phút - 1 giờ 55 phút",
+},
+{
+  key: "phuong-cat-lai-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-cat-lai-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Cát Lái TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho hành trình tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Tuyến đường dài nên xe riêng giúp gia đình hoặc nhóm khách chủ động giờ khởi hành, các điểm nghỉ và thời gian tham quan.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng khu Đông TP.HCM, kết nối về Quốc lộ 13 rồi tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-cat-lai-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Cát Lái TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến tham quan, hành hương hoặc khám phá cảnh quan tại khu vực Phước Long, Bình Phước cũ. Khách có thể kết hợp Hồ Thác Mơ trong cùng chuyến và tự sắp xếp thời gian đi về.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 đến Phước Long, sau đó di chuyển đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-cat-lai-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho chuyến ngắm cảnh, nghỉ ngơi và khám phá khu vực Phước Long. Lịch trình riêng giúp khách dễ kết hợp hồ với Núi Bà Rá hoặc các điểm lân cận mà không phụ thuộc phương tiện tuyến cố định.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng Quốc lộ 13 qua Chơn Thành và Đồng Xoài, tiếp tục theo ĐT741 về Phước Long rồi theo tuyến đường địa phương đến Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-thac-dung-dong-nai",
+  path: "phuong-cat-lai-hcm-di-thac-dung-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Cát Lái TP.HCM đi Thác Đứng Đồng Nai phù hợp cho gia đình và nhóm bạn muốn khám phá cảnh quan thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Xe riêng giúp chuyến dã ngoại xa thành phố thuận tiện hơn khi cần mang đồ ăn, hành lý và nhiều vật dụng cá nhân.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến khu vực Thác Đứng.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-cat-lai-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Cát Lái TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai thích hợp cho chuyến cắm trại, chụp ảnh và tận hưởng không gian đồng cỏ tại vùng Bù Đăng. Đi theo nhóm bằng xe riêng cũng thuận tiện khi mang lều, đồ ăn và các dụng cụ dã ngoại cho chuyến cuối tuần.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó theo các tuyến đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-cat-lai-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách muốn trekking, khám phá rừng và trải nghiệm thiên nhiên tại vùng Bình Phước cũ. Quãng đường xa khiến phương tiện riêng trở nên thuận tiện khi cần chủ động điểm nghỉ và mang nhiều hành lý.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài và Phước Long rồi theo ĐT741 cùng các tuyến đường kết nối đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-cat-lai-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Cát Lái TP.HCM đi Hồ Suối Giai Đồng Nai phù hợp cho chuyến picnic, câu cá hoặc nghỉ ngơi bên hồ tại vùng Bình Phước cũ. Gia đình và nhóm bạn có thể chủ động giờ đi về, lựa chọn điểm dừng và mang theo đầy đủ đồ dùng cho chuyến dã ngoại.",
+  routeText:
+    "Từ phường Cát Lái đi theo hướng Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến kết nối hướng Đồng Xoài và Đồng Phú rồi theo đường địa phương đến khu vực Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-cat-lai-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Cát Lái TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho chuyến tìm hiểu lịch sử tại khu vực Lộc Ninh, Bình Phước cũ. Xe riêng giúp khách chủ động thời gian tham quan và thuận tiện kết hợp thêm Nhà giao tế Lộc Ninh hoặc các địa điểm lịch sử cùng tuyến.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Bình Long đến Lộc Ninh rồi theo tuyến đường địa phương dẫn vào khu Di tích Tà Thiết.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-cat-lai-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Cát Lái TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tìm hiểu những dấu ấn lịch sử tại vùng Lộc Ninh, Bình Phước cũ. Khách có thể kết hợp Tà Thiết và các điểm lân cận để tạo thành lịch trình tham quan đường dài trong ngày.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Quốc lộ 13, qua Chơn Thành và Bình Long rồi tiếp tục đến Lộc Ninh, sau đó theo các tuyến đường nội thị đến Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-cat-lai-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-cat-lai-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường Cát Lái TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường Cát Lái TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Cát Lái TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp hành trình dài linh hoạt hơn về giờ xuất phát, điểm nghỉ và lượng hành lý mang theo.",
+  routeText:
+    "Từ phường Cát Lái đi về hướng Quốc lộ 13, tiếp tục qua Chơn Thành, Bình Long và Lộc Ninh rồi chạy theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+{
+  key: "phuong-binh-trung-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-binh-trung-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Bình Trưng TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn tham quan hồ, vui chơi hoặc nghỉ ngơi trong ngày. Xe đón tận nơi giúp khách chủ động lịch trình và thuận tiện kết hợp thêm Văn Miếu Trấn Biên cùng các điểm tại Biên Hòa.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Võ Chí Công và các tuyến kết nối khu Đông TP.HCM về Biên Hòa, sau đó tiếp tục theo đường nội đô hướng Bửu Long để đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-binh-trung-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Bình Trưng TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tham quan một địa điểm văn hóa, lịch sử tiêu biểu của Biên Hòa. Gia đình có thể đi riêng thoải mái và kết hợp Văn Miếu với Bửu Long trong cùng lịch trình.",
+  routeText:
+    "Từ phường Bình Trưng di chuyển qua khu Đông TP.HCM theo hướng Biên Hòa, sau đó theo các tuyến đường trung tâm thành phố và tiếp tục về khu vực Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-binh-trung-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và tìm hiểu các dấu ấn văn hóa tại Biên Hòa. Lịch trình riêng giúp khách linh hoạt thời gian và dễ ghé thêm những địa điểm gần trung tâm.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng khu Đông TP.HCM về Biên Hòa, sau đó di chuyển qua các tuyến đường trung tâm và đường kết nối vào khu vực Cù lao Phố.",
+  duration: "Khoảng 55 phút - 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-binh-trung-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Bình Trưng TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ hoặc nhóm bạn muốn dành một ngày vui chơi tại công viên nước. Từ khu Đông TP.HCM có hướng kết nối thuận tiện về Long Thành, còn xe riêng giúp khách thoải mái mang đồ bơi và hành lý.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Mai Chí Thọ và đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục về Đồng Nai rồi kết nối Quốc lộ 51 để đến The Amazing Bay.",
+  duration: "Khoảng 45 phút - 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-binh-trung-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, câu cá, picnic hoặc ngắm hoàng hôn bên hồ. Đi theo phương tiện riêng giúp nhóm khách mang nhiều đồ dã ngoại và tự lựa chọn khu vực ven hồ phù hợp với kế hoạch.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng khu Đông TP.HCM về Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu rồi theo ĐT768 để đến khu vực ven Hồ Trị An.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-binh-trung-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Bình Trưng TP.HCM đi Đập Trị An Đồng Nai phù hợp cho khách muốn tham quan khu vực hồ, ngắm cảnh hoặc khám phá những điểm quanh Trị An. Xe riêng giúp hành trình linh hoạt khi cần dừng ăn uống, nghỉ ngơi hoặc kết hợp thêm điểm tham quan.",
+  routeText:
+    "Từ phường Bình Trưng đi về hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi theo tuyến đường địa phương dẫn đến Đập Trị An.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-binh-trung-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Bình Trưng TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai thích hợp cho chuyến cắm trại hoặc nghỉ cuối tuần giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện khi mang theo hành lý, đồ ăn và các vật dụng dã ngoại trước khi sang đảo.",
+  routeText:
+    "Từ phường Bình Trưng đi hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-binh-trung-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho chuyến khám phá rừng, quan sát thiên nhiên hoặc nghỉ cuối tuần xa thành phố. Với hành trình dài, phương tiện riêng giúp khách chủ động điểm dừng nghỉ và thoải mái mang theo hành lý.",
+  routeText:
+    "Từ phường Bình Trưng đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 qua Tân Phú và tuyến đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-bau-sau-dong-nai",
+  path: "phuong-binh-trung-hcm-di-bau-sau-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Bình Trưng TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách yêu thiên nhiên và muốn khám phá vùng đất ngập nước nổi tiếng trong Vườn quốc gia Cát Tiên. Xe riêng phục vụ chặng đến vườn quốc gia, sau đó khách tiếp tục hành trình chuyên biệt vào Bàu Sấu theo quy định tại điểm đến.",
+  routeText:
+    "Từ phường Bình Trưng đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục theo Quốc lộ 20 qua Tân Phú đến Vườn quốc gia Cát Tiên; từ trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến vào Bàu Sấu.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-thac-mai-dong-nai",
+  path: "phuong-binh-trung-hcm-di-thac-mai-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Bình Trưng TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá thiên nhiên hoặc nghỉ cuối tuần tại khu vực Định Quán. Gia đình và nhóm bạn đi xe riêng có thể mang theo lều trại, đồ ăn và nhiều vật dụng cho chuyến đi ngoài trời.",
+  routeText:
+    "Từ phường Bình Trưng đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán và đường địa phương dẫn vào khu vực Thác Mai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+{
+  key: "phuong-binh-trung-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-binh-trung-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Bình Trưng TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn khám phá thắng cảnh đặc trưng tại khu vực Định Quán. Gia đình hoặc nhóm bạn có thể chủ động giờ xuất phát, dừng nghỉ dọc đường và kết hợp thêm những điểm tham quan trên tuyến Quốc lộ 20.",
+  routeText:
+    "Từ phường Bình Trưng đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-binh-trung-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Bình Trưng TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Xe riêng giúp khách dễ xuất phát từ sáng sớm, mang theo đồ dùng cần thiết và chủ động thời gian trở về sau chuyến đi.",
+  routeText:
+    "Từ phường Bình Trưng đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục qua Long Khánh đến Xuân Lộc rồi theo đường địa phương dẫn vào khu vực Núi Chứa Chan.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-binh-trung-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Chùa Gia Lào Đồng Nai phù hợp cho khách hành hương và gia đình muốn viếng chùa tại Núi Chứa Chan. Đi riêng thuận tiện khi có người lớn tuổi, đồng thời dễ kết hợp thêm các địa điểm tại khu vực Xuân Lộc trong cùng chuyến.",
+  routeText:
+    "Từ phường Bình Trưng đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục qua Long Khánh đến Xuân Lộc rồi theo tuyến đường vào chân Núi Chứa Chan để đến khu vực Chùa Gia Lào.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-binh-trung-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Bình Trưng TP.HCM đi Khu du lịch Suối Mơ Đồng Nai thích hợp cho gia đình và nhóm bạn muốn vui chơi giữa hồ nước, suối tự nhiên và không gian xanh. Xe riêng giúp khách thoải mái mang đồ bơi, đồ dùng cho trẻ nhỏ và chủ động giờ quay lại TP.HCM.",
+  routeText:
+    "Từ phường Bình Trưng đi theo cao tốc TP.HCM - Long Thành - Dầu Giây đến Dầu Giây, sau đó theo Quốc lộ 20 hướng Tân Phú rồi tiếp tục theo đường địa phương đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-binh-trung-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến dã ngoại, vui chơi dưới nước hoặc hoạt động nhóm cuối tuần. Khách có thể mang theo đồ ăn và vật dụng cá nhân thoải mái, đồng thời tự sắp xếp giờ đi và giờ về.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Võ Chí Công về Cát Lái, qua khu vực Nhơn Trạch rồi tiếp tục theo các tuyến đường địa phương để đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-binh-trung-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Bình Trưng TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai phù hợp cho chuyến vui chơi, nghỉ ngơi ven sông cùng gia đình hoặc bạn bè. Vị trí tại Nhơn Trạch khá thuận tiện từ khu Đông TP.HCM, thích hợp cho lịch trình đi về trong ngày.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Võ Chí Công về Cát Lái, tiếp tục sang khu vực Nhơn Trạch rồi theo các tuyến đường địa phương để đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 45 phút - 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-binh-trung-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Bình Trưng TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần đón tận nơi, đi cùng gia đình hoặc mang nhiều hành lý. Từ khu Đông TP.HCM có hướng kết nối thuận tiện về Long Thành, giúp khách chủ động thời gian cho hành trình.",
+  routeText:
+    "Từ phường Bình Trưng đi theo Mai Chí Thọ và đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, sau đó tiếp tục theo tuyến kết nối vào khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 40 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-binh-trung-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Thiền viện Thường Chiếu Đồng Nai thích hợp cho khách lễ Phật, tham quan hoặc tìm một không gian thanh tịnh tại Long Thành. Hình thức đón tận nơi thuận tiện cho gia đình có người lớn tuổi và giúp chủ động giờ trở về.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng cao tốc TP.HCM - Long Thành - Dầu Giây, sau đó kết nối về Long Thành và tiếp tục theo Quốc lộ 51 cùng đường địa phương để đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-binh-trung-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Bình Trưng TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu di tích khảo cổ đặc biệt tại vùng Long Khánh. Đi xe riêng cũng thuận tiện để kết hợp di tích với vườn trái cây và những địa điểm khác trong khu vực.",
+  routeText:
+    "Từ phường Bình Trưng đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến Long Khánh rồi theo tuyến đường địa phương về Hàng Gòn để đến di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-binh-trung-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Bình Trưng TP.HCM đi Vườn trái cây Long Khánh Đồng Nai thích hợp cho chuyến trải nghiệm miệt vườn vào mùa chôm chôm, sầu riêng hoặc măng cụt. Gia đình và nhóm bạn có thể tự chọn khu vườn muốn ghé, thời gian thưởng thức trái cây và lịch quay về.",
+  routeText:
+    "Từ phường Bình Trưng đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến Long Khánh rồi theo các tuyến đường địa phương đến khu vực các vườn trái cây.",
+  duration: "Khoảng 1 giờ 25 phút - 1 giờ 55 phút",
+},
+{
+  key: "phuong-binh-trung-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-binh-trung-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Bình Trưng TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho hành trình tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Với quãng đường dài, gia đình hoặc nhóm khách có thể chủ động giờ xuất phát, điểm dừng nghỉ và thời gian tham quan.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng khu Đông TP.HCM, kết nối về Quốc lộ 13 rồi tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-binh-trung-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Bình Trưng TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến hành hương, tham quan và ngắm cảnh tại khu vực Phước Long, Bình Phước cũ. Đi xe riêng giúp khách dễ kết hợp Núi Bà Rá với Hồ Thác Mơ và tự sắp xếp thời gian trở về.",
+  routeText:
+    "Từ phường Bình Trưng đi về hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 về Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-binh-trung-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho chuyến ngắm cảnh và khám phá vùng hồ rộng lớn tại khu vực Phước Long. Khách đi theo lịch trình riêng có thể dành nhiều thời gian bên hồ hoặc kết hợp tham quan Núi Bà Rá trong cùng chuyến.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13 qua Chơn Thành và Đồng Xoài, tiếp tục theo ĐT741 về Phước Long rồi theo đường địa phương đến khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-thac-dung-dong-nai",
+  path: "phuong-binh-trung-hcm-di-thac-dung-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường Bình Trưng TP.HCM đi Thác Đứng Đồng Nai phù hợp cho khách muốn khám phá cảnh quan thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Xe riêng thuận tiện cho chuyến dã ngoại đường dài khi nhóm khách cần mang theo đồ ăn, hành lý và nhiều vật dụng cá nhân.",
+  routeText:
+    "Từ phường Bình Trưng đi về hướng Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến Thác Đứng.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-binh-trung-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường Bình Trưng TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai phù hợp cho chuyến chụp ảnh, picnic hoặc cắm trại giữa không gian thiên nhiên tại vùng Bù Đăng. Nhóm bạn có thể thoải mái mang lều, đồ ăn và dụng cụ dã ngoại khi di chuyển bằng xe riêng.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó đi theo đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-binh-trung-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách muốn trekking, khám phá rừng và trải nghiệm thiên nhiên của vùng Bình Phước cũ. Phương tiện riêng giúp hành trình xa linh hoạt hơn về điểm nghỉ, giờ xuất phát và lượng hành lý mang theo.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài và Phước Long rồi theo ĐT741 cùng các tuyến đường kết nối đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-binh-trung-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường Bình Trưng TP.HCM đi Hồ Suối Giai Đồng Nai thích hợp cho gia đình hoặc nhóm bạn muốn picnic, câu cá và nghỉ ngơi bên hồ tại vùng Bình Phước cũ. Đi xe riêng giúp khách tự chọn giờ khởi hành và thuận tiện mang theo đầy đủ đồ dùng cho chuyến dã ngoại.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến kết nối hướng Đồng Xoài và Đồng Phú rồi theo các tuyến đường địa phương đến Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-binh-trung-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường Bình Trưng TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho chuyến tìm hiểu lịch sử tại khu vực Lộc Ninh, Bình Phước cũ. Khách đi xe riêng có thể chủ động thời gian tham quan và kết hợp thêm Nhà giao tế Lộc Ninh hoặc những di tích cùng tuyến.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục đến Lộc Ninh rồi theo tuyến đường địa phương dẫn vào khu Di tích Tà Thiết.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-binh-trung-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường Bình Trưng TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tìm hiểu những dấu ấn lịch sử tại vùng Lộc Ninh, Bình Phước cũ. Hành trình có thể kết hợp Tà Thiết và các địa điểm lân cận để tận dụng chuyến đi đường dài.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục về Lộc Ninh rồi theo các tuyến đường nội thị để đến Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-binh-trung-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-binh-trung-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường Bình Trưng TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường Bình Trưng TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường Bình Trưng TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần di chuyển đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp khách chủ động giờ xuất phát, các điểm nghỉ và hành lý trên hành trình dài.",
+  routeText:
+    "Từ phường Bình Trưng đi theo hướng Quốc lộ 13, tiếp tục qua Chơn Thành, Bình Long và Lộc Ninh rồi theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+{
+  key: "phuong-an-khanh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "phuong-an-khanh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường An Khánh TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi, ngắm cảnh hồ hoặc nghỉ ngơi trong ngày. Xe đón tận nơi giúp khách chủ động lịch trình và dễ kết hợp thêm Văn Miếu Trấn Biên cùng các điểm tham quan tại Biên Hòa.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Mai Chí Thọ và các tuyến kết nối khu Đông TP.HCM về Biên Hòa, sau đó tiếp tục theo đường nội đô hướng Bửu Long để đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "phuong-an-khanh-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường An Khánh TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tìm hiểu văn hóa, lịch sử tại Biên Hòa. Gia đình có thể chủ động thời gian tham quan, đồng thời kết hợp thêm Khu du lịch Bửu Long hoặc những địa điểm gần đó trong cùng ngày.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng khu Đông TP.HCM về Biên Hòa, sau đó di chuyển qua các tuyến đường trung tâm và tiếp tục theo hướng Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 1 giờ - 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-cu-lao-pho-dong-nai",
+  path: "phuong-an-khanh-hcm-di-cu-lao-pho-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và những dấu ấn văn hóa của Biên Hòa. Chuyến đi trong ngày khá linh hoạt khi khách có thể tự chọn thời gian tham quan và các điểm muốn ghé.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng khu Đông TP.HCM về Biên Hòa, sau đó theo các tuyến đường trung tâm và đường kết nối vào khu vực Cù lao Phố.",
+  duration: "Khoảng 55 phút - 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-the-amazing-bay-dong-nai",
+  path: "phuong-an-khanh-hcm-di-the-amazing-bay-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường An Khánh TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ và nhóm bạn muốn dành một ngày vui chơi tại công viên nước. Xe riêng giúp khách thoải mái mang đồ bơi, hành lý và chủ động thời gian trở về sau khi vui chơi.",
+  routeText:
+    "Từ phường An Khánh đi theo Mai Chí Thọ và đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục về Đồng Nai rồi kết nối Quốc lộ 51 để đến The Amazing Bay.",
+  duration: "Khoảng 45 phút - 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-ho-tri-an-dong-nai",
+  path: "phuong-an-khanh-hcm-di-ho-tri-an-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, câu cá, picnic hoặc ngắm hoàng hôn bên hồ. Khách đi theo nhóm có thể mang nhiều đồ dã ngoại và tự lựa chọn khu vực ven hồ phù hợp với kế hoạch nghỉ cuối tuần.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng khu Đông TP.HCM về Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu rồi theo ĐT768 để đến khu vực ven Hồ Trị An.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-dap-tri-an-dong-nai",
+  path: "phuong-an-khanh-hcm-di-dap-tri-an-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường An Khánh TP.HCM đi Đập Trị An Đồng Nai phù hợp cho khách muốn ngắm cảnh hồ, tham quan khu vực công trình thủy điện hoặc khám phá Trị An trong ngày. Đi xe riêng giúp hành trình thoải mái hơn khi cần dừng nghỉ và ghé thêm các địa điểm lân cận.",
+  routeText:
+    "Từ phường An Khánh đi về hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi theo tuyến đường địa phương dẫn đến Đập Trị An.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "phuong-an-khanh-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường An Khánh TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai thích hợp cho chuyến nghỉ cuối tuần hoặc cắm trại giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện mang theo hành lý, đồ ăn và dụng cụ dã ngoại trước khi tiếp tục sang đảo.",
+  routeText:
+    "Từ phường An Khánh đi hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "phuong-an-khanh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho chuyến khám phá rừng, quan sát thiên nhiên hoặc nghỉ cuối tuần xa thành phố. Với hành trình dài, phương tiện riêng giúp khách chủ động điểm dừng nghỉ và mang theo hành lý thoải mái hơn.",
+  routeText:
+    "Từ phường An Khánh đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 qua Tân Phú và tuyến đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-bau-sau-dong-nai",
+  path: "phuong-an-khanh-hcm-di-bau-sau-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường An Khánh TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách muốn khám phá hệ sinh thái đất ngập nước đặc sắc trong Vườn quốc gia Cát Tiên. Xe riêng phục vụ chặng đến vườn quốc gia, sau đó khách tiếp tục hành trình vào Bàu Sấu theo phương án tham quan tại điểm đến.",
+  routeText:
+    "Từ phường An Khánh đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục theo Quốc lộ 20 qua Tân Phú đến Vườn quốc gia Cát Tiên; từ trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến vào Bàu Sấu.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-thac-mai-dong-nai",
+  path: "phuong-an-khanh-hcm-di-thac-mai-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường An Khánh TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá thiên nhiên và nghỉ cuối tuần tại khu vực Định Quán. Xe riêng thuận tiện cho nhóm bạn hoặc gia đình mang theo đồ ăn, lều trại và các vật dụng cần thiết cho chuyến đi.",
+  routeText:
+    "Từ phường An Khánh đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán và đường địa phương dẫn vào khu vực Thác Mai.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+{
+  key: "phuong-an-khanh-hcm-di-da-ba-chong-dong-nai",
+  path: "phuong-an-khanh-hcm-di-da-ba-chong-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường An Khánh TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn khám phá thắng cảnh nổi bật tại khu vực Định Quán. Hành trình bằng xe riêng giúp gia đình và nhóm bạn chủ động thời gian, dễ dừng nghỉ và kết hợp thêm các điểm trên tuyến Quốc lộ 20.",
+  routeText:
+    "Từ phường An Khánh đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-nui-chua-chan-dong-nai",
+  path: "phuong-an-khanh-hcm-di-nui-chua-chan-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường An Khánh TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Xe riêng phù hợp với khách muốn xuất phát sớm, mang theo nhiều đồ dùng và tự sắp xếp thời gian trở về.",
+  routeText:
+    "Từ phường An Khánh đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến Long Khánh và Xuân Lộc rồi theo đường địa phương dẫn vào khu vực Núi Chứa Chan.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-chua-gia-lao-dong-nai",
+  path: "phuong-an-khanh-hcm-di-chua-gia-lao-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Chùa Gia Lào Đồng Nai thích hợp cho gia đình và khách hành hương muốn viếng chùa tại Núi Chứa Chan. Hình thức đón tận nơi thuận tiện khi có người lớn tuổi, đồng thời giúp khách linh hoạt kết hợp thêm các địa điểm ở Xuân Lộc.",
+  routeText:
+    "Từ phường An Khánh đi theo cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục qua Long Khánh đến Xuân Lộc rồi theo tuyến đường vào chân Núi Chứa Chan để đến khu vực Chùa Gia Lào.",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "phuong-an-khanh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường An Khánh TP.HCM đi Khu du lịch Suối Mơ Đồng Nai phù hợp cho gia đình và nhóm bạn muốn dành một ngày vui chơi giữa hồ nước, suối và không gian xanh. Xe riêng giúp khách thoải mái mang đồ bơi, đồ dùng cá nhân và chủ động giờ quay lại TP.HCM.",
+  routeText:
+    "Từ phường An Khánh đi theo cao tốc TP.HCM - Long Thành - Dầu Giây đến Dầu Giây, tiếp tục theo Quốc lộ 20 hướng Tân Phú rồi theo đường địa phương đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "phuong-an-khanh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến dã ngoại, vui chơi dưới nước hoặc hoạt động nhóm cuối tuần. Khách có thể mang theo đồ ăn và vật dụng cá nhân thoải mái, đồng thời chủ động giờ xuất phát và quay về.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Mai Chí Thọ và Võ Chí Công về Cát Lái, tiếp tục sang khu vực Nhơn Trạch rồi theo các tuyến đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 55 phút - 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "phuong-an-khanh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường An Khánh TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai thích hợp cho gia đình và nhóm bạn muốn vui chơi, nghỉ ngơi trong không gian ven sông tại Nhơn Trạch. Đi xe riêng giúp lịch trình trong ngày linh hoạt và thuận tiện khi mang theo nhiều đồ dùng.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Mai Chí Thọ và Võ Chí Công về Cát Lái, tiếp tục sang Nhơn Trạch rồi theo các tuyến đường địa phương để đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "phuong-an-khanh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường An Khánh TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần phương tiện đón tận nơi, đi cùng gia đình hoặc mang nhiều hành lý. Tuyến từ khu Đông TP.HCM có kết nối thuận tiện về Long Thành, giúp khách chủ động thời gian di chuyển.",
+  routeText:
+    "Từ phường An Khánh đi theo Mai Chí Thọ và đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, sau đó tiếp tục theo tuyến kết nối vào khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 40 phút - 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "phuong-an-khanh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Thiền viện Thường Chiếu Đồng Nai phù hợp cho chuyến lễ Phật, tham quan hoặc tìm không gian thanh tịnh tại Long Thành. Xe đón tận nơi đặc biệt thuận tiện cho gia đình có người lớn tuổi và giúp khách tự chọn giờ trở về.",
+  routeText:
+    "Từ phường An Khánh đi theo đường dẫn cao tốc TP.HCM - Long Thành - Dầu Giây, kết nối về Long Thành rồi tiếp tục theo Quốc lộ 51 và đường địa phương đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 50 phút - 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "phuong-an-khanh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường An Khánh TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu một di tích khảo cổ đặc biệt tại khu vực Long Khánh. Xe riêng giúp khách dễ kết hợp điểm đến này với vườn trái cây và những địa danh lân cận trong cùng hành trình.",
+  routeText:
+    "Từ phường An Khánh đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến Long Khánh rồi theo tuyến đường địa phương về Hàng Gòn để đến di tích Mộ Cự Thạch.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "phuong-an-khanh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường An Khánh TP.HCM đi Vườn trái cây Long Khánh Đồng Nai phù hợp cho chuyến trải nghiệm miệt vườn vào mùa chôm chôm, sầu riêng và măng cụt. Gia đình hoặc nhóm bạn có thể chủ động chọn khu vườn muốn ghé, thời gian thưởng thức trái cây và lịch quay về.",
+  routeText:
+    "Từ phường An Khánh đi theo cao tốc TP.HCM - Long Thành - Dầu Giây về hướng Đồng Nai, tiếp tục đến Long Khánh rồi theo các tuyến đường địa phương đến khu vực các vườn trái cây.",
+  duration: "Khoảng 1 giờ 25 phút - 1 giờ 55 phút",
+},
+{
+  key: "phuong-an-khanh-hcm-di-soc-bom-bo-dong-nai",
+  path: "phuong-an-khanh-hcm-di-soc-bom-bo-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường An Khánh TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho hành trình tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Với quãng đường dài, xe riêng giúp gia đình hoặc nhóm khách chủ động giờ khởi hành, các điểm nghỉ và thời gian tham quan.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng khu Đông TP.HCM, kết nối về Quốc lộ 13 rồi tiếp tục qua Chơn Thành và Đồng Xoài, sau đó theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-nui-ba-ra-dong-nai",
+  path: "phuong-an-khanh-hcm-di-nui-ba-ra-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường An Khánh TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến tham quan, hành hương hoặc ngắm cảnh tại khu vực Phước Long, Bình Phước cũ. Khách có thể kết hợp thêm Hồ Thác Mơ trong cùng hành trình và chủ động thời gian trở về.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 về Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-ho-thac-mo-dong-nai",
+  path: "phuong-an-khanh-hcm-di-ho-thac-mo-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho khách muốn ngắm cảnh và khám phá không gian hồ tại vùng Phước Long. Lịch trình riêng giúp nhóm khách linh hoạt thời gian nghỉ ngơi, chụp ảnh và kết hợp Núi Bà Rá nếu muốn.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 qua Chơn Thành và Đồng Xoài, tiếp tục theo ĐT741 về Phước Long rồi theo tuyến đường địa phương đến khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-thac-dung-dong-nai",
+  path: "phuong-an-khanh-hcm-di-thac-dung-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ phường An Khánh TP.HCM đi Thác Đứng Đồng Nai phù hợp cho gia đình và nhóm bạn muốn khám phá thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Đi xe riêng thuận tiện cho chuyến dã ngoại xa thành phố khi cần mang theo đồ ăn, hành lý và vật dụng cá nhân.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến khu vực Thác Đứng.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "phuong-an-khanh-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ phường An Khánh TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai thích hợp cho chuyến picnic, chụp ảnh hoặc cắm trại tại vùng Bù Đăng. Nhóm khách có thể thoải mái mang lều, đồ ăn và dụng cụ dã ngoại, đồng thời tự quyết định thời gian xuất phát và quay về.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó theo đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "phuong-an-khanh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách muốn trekking, khám phá rừng và trải nghiệm thiên nhiên tại vùng Bình Phước cũ. Tuyến đường dài sẽ thuận tiện hơn khi có phương tiện riêng để chủ động điểm nghỉ và mang theo hành lý.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài và Phước Long rồi theo ĐT741 cùng các tuyến đường kết nối đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-ho-suoi-giai-dong-nai",
+  path: "phuong-an-khanh-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe phường An Khánh TP.HCM đi Hồ Suối Giai Đồng Nai phù hợp cho chuyến picnic, câu cá hoặc nghỉ ngơi bên hồ tại vùng Bình Phước cũ. Gia đình và nhóm bạn đi xe riêng có thể mang theo đầy đủ đồ dã ngoại, đồng thời linh hoạt giờ khởi hành và trở về.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến kết nối hướng Đồng Xoài và Đồng Phú rồi theo các tuyến đường địa phương đến Hồ Suối Giai.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "phuong-an-khanh-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ phường An Khánh TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho khách muốn tìm hiểu lịch sử tại khu vực Lộc Ninh, Bình Phước cũ. Xe riêng giúp chủ động thời gian tham quan và thuận tiện kết hợp thêm Nhà giao tế Lộc Ninh hoặc các điểm lịch sử cùng tuyến.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục đến Lộc Ninh rồi theo tuyến đường địa phương dẫn vào khu Di tích Tà Thiết.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "phuong-an-khanh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ phường An Khánh TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tìm hiểu những dấu ấn lịch sử tại vùng Lộc Ninh, Bình Phước cũ. Chuyến đi có thể kết hợp thêm Tà Thiết và những địa điểm lân cận để tận dụng hành trình đường dài.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục về Lộc Ninh rồi theo các tuyến đường nội thị đến Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "phuong-an-khanh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "phuong-an-khanh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Phường An Khánh TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe phường An Khánh TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ phường An Khánh TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp hành trình dài chủ động hơn về thời gian, điểm nghỉ và lượng hành lý.",
+  routeText:
+    "Từ phường An Khánh đi theo hướng Quốc lộ 13, tiếp tục qua Chơn Thành, Bình Long và Lộc Ninh rồi theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+{
+  key: "xa-binh-chanh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "xa-binh-chanh-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Chánh TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi, ngắm cảnh hồ hoặc nghỉ ngơi trong ngày. Xe đón tận nơi giúp khách chủ động giờ khởi hành và thuận tiện kết hợp thêm Văn Miếu Trấn Biên cùng các điểm tại Biên Hòa.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng Võ Văn Kiệt qua khu vực trung tâm TP.HCM, tiếp tục kết nối về khu Đông và Biên Hòa, sau đó theo các tuyến đường nội đô hướng Bửu Long để đến Khu du lịch Bửu Long Đồng Nai.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "xa-binh-chanh-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Chánh TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tham quan và tìm hiểu một địa điểm văn hóa, lịch sử tiêu biểu của Biên Hòa. Gia đình có thể đi theo lịch riêng, dành thời gian tham quan thoải mái và kết hợp thêm Bửu Long trong cùng ngày.",
+  routeText:
+    "Từ xã Bình Chánh di chuyển theo hướng Võ Văn Kiệt qua TP.HCM, tiếp tục về khu Đông và Biên Hòa rồi theo các tuyến đường trung tâm hướng Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-cu-lao-pho-dong-nai",
+  path: "xa-binh-chanh-hcm-di-cu-lao-pho-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và những dấu ấn văn hóa tại Biên Hòa. Đi xe riêng giúp hành trình xuyên thành phố thoải mái hơn và khách có thể chủ động các điểm muốn ghé.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng Võ Văn Kiệt qua trung tâm TP.HCM, tiếp tục về khu Đông và Biên Hòa rồi theo các tuyến đường kết nối vào khu vực Cù lao Phố.",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-the-amazing-bay-dong-nai",
+  path: "xa-binh-chanh-hcm-di-the-amazing-bay-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe xã Bình Chánh TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ hoặc nhóm bạn muốn dành trọn ngày vui chơi tại công viên nước. Xe riêng giúp khách thoải mái mang đồ bơi, hành lý và chủ động thời gian trở về sau một ngày vui chơi.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng Nguyễn Văn Linh hoặc Võ Văn Kiệt để kết nối qua khu Đông TP.HCM, vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi theo hướng Quốc lộ 51 đến The Amazing Bay Đồng Nai.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-ho-tri-an-dong-nai",
+  path: "xa-binh-chanh-hcm-di-ho-tri-an-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến cắm trại, câu cá, picnic hoặc ngắm cảnh cuối tuần. Với hành trình khá xa từ phía tây TP.HCM, phương tiện riêng giúp nhóm khách mang đồ dã ngoại thoải mái và tự chọn khu vực ven hồ muốn đến.",
+  routeText:
+    "Từ xã Bình Chánh đi qua khu vực TP.HCM theo hướng về Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu rồi theo ĐT768 để đến khu vực ven Hồ Trị An.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-dap-tri-an-dong-nai",
+  path: "xa-binh-chanh-hcm-di-dap-tri-an-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Chánh TP.HCM đi Đập Trị An Đồng Nai phù hợp cho khách muốn ngắm cảnh hồ và khám phá khu vực Trị An trong ngày. Xe riêng giúp hành trình đường dài linh hoạt hơn khi cần dừng ăn uống, nghỉ ngơi hoặc ghé thêm các địa điểm quanh hồ.",
+  routeText:
+    "Từ xã Bình Chánh di chuyển xuyên TP.HCM theo hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến Trị An rồi theo tuyến đường địa phương dẫn đến khu vực Đập Trị An.",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "xa-binh-chanh-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Chánh TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai thích hợp cho chuyến nghỉ cuối tuần hoặc cắm trại giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện khi cần mang theo hành lý, đồ ăn và dụng cụ dã ngoại trước khi sang đảo.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng qua TP.HCM về Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 5 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "xa-binh-chanh-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho chuyến khám phá rừng, quan sát thiên nhiên hoặc nghỉ cuối tuần. Quãng đường dài từ phía tây TP.HCM khiến xe riêng thuận tiện hơn khi khách muốn xuất phát sớm, dừng nghỉ linh hoạt và mang theo nhiều hành lý.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 qua Tân Phú và tuyến đường dẫn vào Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-bau-sau-dong-nai",
+  path: "xa-binh-chanh-hcm-di-bau-sau-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ xã Bình Chánh TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách muốn trải nghiệm hệ sinh thái đất ngập nước đặc sắc nằm sâu trong Vườn quốc gia Cát Tiên. Xe riêng phục vụ chặng đường đến vườn quốc gia, sau đó khách tiếp tục hành trình chuyên biệt vào Bàu Sấu theo tuyến tham quan.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để vào cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục theo Quốc lộ 20 đến Vườn quốc gia Cát Tiên; từ trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến vào Bàu Sấu.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 15 phút đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-thac-mai-dong-nai",
+  path: "xa-binh-chanh-hcm-di-thac-mai-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ xã Bình Chánh TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, khám phá thiên nhiên hoặc cắm trại tại khu vực Định Quán. Gia đình và nhóm bạn có thể mang theo đồ ăn, lều trại cùng các vật dụng cần thiết mà vẫn chủ động lịch trình đi về.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán và đường địa phương dẫn vào khu vực Thác Mai.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+{
+  key: "xa-binh-chanh-hcm-di-da-ba-chong-dong-nai",
+  path: "xa-binh-chanh-hcm-di-da-ba-chong-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Chánh TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn khám phá thắng cảnh đặc trưng tại khu vực Định Quán. Với hành trình từ phía tây TP.HCM, xe riêng giúp gia đình và nhóm bạn chủ động giờ xuất phát, dừng nghỉ và kết hợp thêm các điểm trên Quốc lộ 20.",
+  routeText:
+    "Từ xã Bình Chánh đi qua khu vực TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán để đến khu vực Đá Ba Chồng.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-nui-chua-chan-dong-nai",
+  path: "xa-binh-chanh-hcm-di-nui-chua-chan-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Chánh TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Khách có thể xuất phát sớm bằng xe riêng, mang theo đồ dùng thoải mái và tự sắp xếp thời gian trở về sau chuyến tham quan.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục về Long Khánh và Xuân Lộc rồi theo đường địa phương dẫn vào khu vực Núi Chứa Chan.",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-chua-gia-lao-dong-nai",
+  path: "xa-binh-chanh-hcm-di-chua-gia-lao-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Chùa Gia Lào Đồng Nai phù hợp cho gia đình và khách hành hương muốn viếng chùa tại Núi Chứa Chan. Hình thức đón tận nơi thuận tiện khi đi cùng người lớn tuổi, đồng thời giúp khách dễ kết hợp thêm các địa điểm tại Xuân Lộc.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để vào cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục qua Long Khánh đến Xuân Lộc rồi theo tuyến đường vào chân Núi Chứa Chan để đến khu vực Chùa Gia Lào.",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "xa-binh-chanh-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe xã Bình Chánh TP.HCM đi Khu du lịch Suối Mơ Đồng Nai thích hợp cho gia đình và nhóm bạn muốn vui chơi giữa hồ nước, suối và không gian xanh. Xe riêng giúp khách mang đồ bơi, đồ dùng cho trẻ nhỏ thoải mái và chủ động lịch trình cho chuyến đi trong ngày.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, đến Dầu Giây rồi theo Quốc lộ 20 hướng Tân Phú và đường địa phương đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "xa-binh-chanh-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến dã ngoại, vui chơi dưới nước hoặc hoạt động nhóm cuối tuần. Đi theo phương tiện riêng giúp khách dễ mang theo đồ ăn, vật dụng cá nhân và tự quyết định thời gian trở về.",
+  routeText:
+    "Từ xã Bình Chánh đi theo Nguyễn Văn Linh qua khu vực phía nam TP.HCM, tiếp tục theo hướng Võ Chí Công và Cát Lái để sang Nhơn Trạch rồi theo đường địa phương đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "xa-binh-chanh-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Chánh TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai phù hợp cho gia đình và nhóm bạn muốn nghỉ ngơi, vui chơi trong không gian ven sông tại Nhơn Trạch. Xe riêng giúp hành trình xuyên thành phố thuận tiện hơn và khách không bị phụ thuộc vào giờ xe tuyến.",
+  routeText:
+    "Từ xã Bình Chánh đi theo Nguyễn Văn Linh qua khu vực phía nam TP.HCM, tiếp tục về hướng Võ Chí Công và Cát Lái để sang Nhơn Trạch rồi theo đường địa phương đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "xa-binh-chanh-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Chánh TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần đón tận nơi, đi cùng gia đình hoặc mang nhiều hành lý. Xe riêng giúp khách chủ động giờ khởi hành từ phía tây TP.HCM và hạn chế phải đổi phương tiện trên đường.",
+  routeText:
+    "Từ xã Bình Chánh đi theo Nguyễn Văn Linh hoặc Võ Văn Kiệt để kết nối về khu Đông TP.HCM, vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi tiếp tục theo tuyến dẫn đến khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "xa-binh-chanh-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Thiền viện Thường Chiếu Đồng Nai thích hợp cho chuyến lễ Phật, tham quan hoặc tìm không gian thanh tịnh tại Long Thành. Gia đình có người lớn tuổi có thể đi thoải mái hơn với hình thức đón tận nơi và lịch trình chủ động.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM theo hướng khu Đông, kết nối cao tốc TP.HCM - Long Thành - Dầu Giây rồi về Long Thành, sau đó tiếp tục theo Quốc lộ 51 và đường địa phương đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "xa-binh-chanh-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ xã Bình Chánh TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu di tích khảo cổ đặc biệt tại vùng Long Khánh. Có xe riêng giúp khách dễ kết hợp điểm đến này với vườn trái cây hoặc những địa danh khác trong khu vực.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục về Long Khánh rồi theo tuyến đường địa phương đến khu vực Hàng Gòn và di tích Mộ Cự Thạch.",
+  duration: "Khoảng 2 giờ 20 phút - 2 giờ 50 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "xa-binh-chanh-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ xã Bình Chánh TP.HCM đi Vườn trái cây Long Khánh Đồng Nai thích hợp cho chuyến trải nghiệm miệt vườn vào mùa chôm chôm, sầu riêng hoặc măng cụt. Gia đình và nhóm bạn có thể tự chọn khu vườn muốn ghé, thời gian thưởng thức trái cây và lịch quay về TP.HCM.",
+  routeText:
+    "Từ xã Bình Chánh đi qua TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Long Khánh rồi theo các tuyến đường địa phương đến khu vực các vườn trái cây.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+{
+  key: "xa-binh-chanh-hcm-di-soc-bom-bo-dong-nai",
+  path: "xa-binh-chanh-hcm-di-soc-bom-bo-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Chánh TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho khách muốn tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Hành trình khá dài từ phía tây TP.HCM nên xe riêng giúp gia đình hoặc nhóm khách chủ động giờ xuất phát, điểm nghỉ và thời gian tham quan.",
+  routeText:
+    "Từ xã Bình Chánh đi theo các tuyến kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 cùng các tuyến đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-nui-ba-ra-dong-nai",
+  path: "xa-binh-chanh-hcm-di-nui-ba-ra-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Chánh TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến hành hương, tham quan hoặc ngắm cảnh tại khu vực Phước Long, Bình Phước cũ. Xe riêng giúp khách có thể xuất phát sớm và kết hợp thêm Hồ Thác Mơ trong cùng một lịch trình.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 về Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-ho-thac-mo-dong-nai",
+  path: "xa-binh-chanh-hcm-di-ho-thac-mo-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho khách muốn ngắm cảnh hồ và khám phá khu vực Phước Long, Bình Phước cũ. Đi theo lịch trình riêng giúp gia đình hoặc nhóm bạn linh hoạt thời gian nghỉ ngơi và dễ kết hợp thêm Núi Bà Rá.",
+  routeText:
+    "Từ xã Bình Chánh đi theo tuyến kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 đến Phước Long, sau đó theo đường địa phương đến khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-thac-dung-dong-nai",
+  path: "xa-binh-chanh-hcm-di-thac-dung-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ xã Bình Chánh TP.HCM đi Thác Đứng Đồng Nai phù hợp cho nhóm bạn và gia đình muốn khám phá thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Với chuyến đi xa, xe riêng thuận tiện khi cần mang theo đồ ăn, hành lý và các vật dụng phục vụ dã ngoại.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng kết nối Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó rẽ vào tuyến đường địa phương dẫn đến Thác Đứng.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "xa-binh-chanh-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ xã Bình Chánh TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai thích hợp cho chuyến picnic, chụp ảnh hoặc cắm trại tại vùng Bù Đăng. Nhóm khách có thể thoải mái mang theo lều, đồ ăn và dụng cụ dã ngoại, đồng thời chủ động thời gian đi về.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó theo các tuyến đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 4 giờ 45 phút - 5 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "xa-binh-chanh-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách muốn trekking, khám phá rừng và trải nghiệm thiên nhiên tại vùng Bình Phước cũ. Quãng đường xa khiến phương tiện riêng thuận tiện hơn khi cần chủ động điểm nghỉ, hành lý và giờ xuất phát.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng kết nối về Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài và Phước Long rồi theo ĐT741 cùng các tuyến đường dẫn đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 5 giờ - 5 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-ho-suoi-giai-dong-nai",
+  path: "xa-binh-chanh-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe xã Bình Chánh TP.HCM đi Hồ Suối Giai Đồng Nai phù hợp cho chuyến picnic, câu cá hoặc nghỉ ngơi bên hồ tại vùng Bình Phước cũ. Gia đình và nhóm bạn đi xe riêng có thể mang theo đầy đủ đồ dã ngoại, đồng thời linh hoạt thời gian dừng nghỉ trên đường.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng kết nối Quốc lộ 13 về Chơn Thành, tiếp tục theo tuyến đường hướng Đồng Xoài và Đồng Phú rồi theo đường địa phương đến khu vực Hồ Suối Giai.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "xa-binh-chanh-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Chánh TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho khách muốn tìm hiểu lịch sử tại khu vực Lộc Ninh, Bình Phước cũ. Xe riêng giúp hành trình dài chủ động hơn và thuận tiện kết hợp Nhà giao tế Lộc Ninh cùng các địa điểm lịch sử trên tuyến.",
+  routeText:
+    "Từ xã Bình Chánh đi theo tuyến kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành và Bình Long đến Lộc Ninh rồi theo đường địa phương dẫn vào khu Di tích Tà Thiết.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "xa-binh-chanh-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Chánh TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tìm hiểu những dấu ấn lịch sử của vùng Lộc Ninh, Bình Phước cũ. Khách có thể kết hợp thêm Tà Thiết và những điểm lân cận để tận dụng hành trình đường dài.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng kết nối Quốc lộ 13, tiếp tục qua Chơn Thành và Bình Long rồi đến Lộc Ninh, sau đó theo các tuyến đường nội thị để đến Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-chanh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "xa-binh-chanh-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Xã Bình Chánh TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe xã Bình Chánh TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Chánh TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp khách chủ động giờ xuất phát, điểm nghỉ và lượng hành lý trong suốt chuyến đi.",
+  routeText:
+    "Từ xã Bình Chánh đi theo hướng kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành, Bình Long và Lộc Ninh rồi theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 4 giờ 45 phút - 5 giờ 15 phút",
+},
+{
+  key: "xa-binh-hung-hcm-di-khu-du-lich-buu-long-dong-nai",
+  path: "xa-binh-hung-hcm-di-khu-du-lich-buu-long-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Khu du lịch Bửu Long Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Khu du lịch Bửu Long Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Hưng TP.HCM đi Khu du lịch Bửu Long Đồng Nai phù hợp cho gia đình và nhóm bạn muốn tham quan hồ, vui chơi hoặc nghỉ ngơi trong ngày. Xe đón tận nơi giúp khách chủ động giờ đi về và thuận tiện kết hợp thêm Văn Miếu Trấn Biên cùng các điểm tại Biên Hòa.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh và các tuyến kết nối qua khu vực trung tâm TP.HCM về phía đông, tiếp tục hướng Biên Hòa rồi theo đường nội đô đến khu vực Bửu Long.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-van-mieu-tran-bien-dong-nai",
+  path: "xa-binh-hung-hcm-di-van-mieu-tran-bien-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Văn Miếu Trấn Biên Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Văn Miếu Trấn Biên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Hưng TP.HCM đi Văn Miếu Trấn Biên Đồng Nai thuận tiện cho chuyến tìm hiểu văn hóa và lịch sử tại Biên Hòa. Gia đình có thể dành thời gian tham quan thoải mái, sau đó kết hợp Bửu Long hoặc những địa điểm gần trung tâm thành phố.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh và các tuyến đường kết nối về khu Đông TP.HCM, tiếp tục đến Biên Hòa rồi di chuyển theo hướng Bửu Long để đến Văn Miếu Trấn Biên.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-cu-lao-pho-dong-nai",
+  path: "xa-binh-hung-hcm-di-cu-lao-pho-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Cù lao Phố Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Cù lao Phố Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Cù lao Phố Đồng Nai thích hợp cho khách muốn khám phá vùng đất lâu đời bên sông Đồng Nai và những dấu ấn văn hóa đặc trưng của Biên Hòa. Lịch trình riêng giúp khách linh hoạt thời gian và dễ ghé thêm các điểm lân cận.",
+  routeText:
+    "Từ xã Bình Hưng di chuyển theo hướng Nguyễn Văn Linh qua TP.HCM, tiếp tục về phía Biên Hòa rồi theo các tuyến đường trung tâm và đường kết nối vào khu vực Cù lao Phố.",
+  duration: "Khoảng 1 giờ 25 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-the-amazing-bay-dong-nai",
+  path: "xa-binh-hung-hcm-di-the-amazing-bay-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "The Amazing Bay Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi The Amazing Bay Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe xã Bình Hưng TP.HCM đi The Amazing Bay Đồng Nai phù hợp cho gia đình có trẻ nhỏ hoặc nhóm bạn muốn dành một ngày vui chơi tại công viên nước. Đi xe riêng thuận tiện khi mang đồ bơi, đồ dùng cá nhân và giúp cả nhóm tự quyết định thời gian quay về.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về hướng khu Đông TP.HCM, kết nối vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi tiếp tục theo hướng Quốc lộ 51 để đến The Amazing Bay.",
+  duration: "Khoảng 1 giờ 15 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-ho-tri-an-dong-nai",
+  path: "xa-binh-hung-hcm-di-ho-tri-an-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Hồ Trị An Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Hồ Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Hồ Trị An Đồng Nai phù hợp cho chuyến picnic, cắm trại, câu cá hoặc ngắm hoàng hôn cuối tuần. Gia đình và nhóm bạn có thể mang theo nhiều đồ dã ngoại, đồng thời chủ động lựa chọn khu vực ven hồ phù hợp với kế hoạch.",
+  routeText:
+    "Từ xã Bình Hưng đi qua TP.HCM theo hướng Đồng Nai, tiếp tục về Biên Hòa và Vĩnh Cửu rồi theo ĐT768 cùng các tuyến đường địa phương để đến khu vực ven Hồ Trị An.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-dap-tri-an-dong-nai",
+  path: "xa-binh-hung-hcm-di-dap-tri-an-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Đập Trị An Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Đập Trị An Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Hưng TP.HCM đi Đập Trị An Đồng Nai thích hợp cho khách muốn tham quan khu vực hồ, ngắm cảnh và khám phá Trị An trong ngày. Xe riêng giúp chuyến đi linh hoạt hơn khi cần dừng ăn uống, nghỉ ngơi hoặc kết hợp thêm những điểm quanh hồ.",
+  routeText:
+    "Từ xã Bình Hưng di chuyển qua TP.HCM về hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến Trị An rồi theo tuyến đường địa phương dẫn đến khu vực Đập Trị An.",
+  duration: "Khoảng 2 giờ 15 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-dao-o-dong-truong-dong-nai",
+  path: "xa-binh-hung-hcm-di-dao-o-dong-truong-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Đảo Ó - Đồng Trường Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Hưng TP.HCM đi Đảo Ó - Đồng Trường Đồng Nai phù hợp cho chuyến cắm trại hoặc nghỉ cuối tuần giữa không gian Hồ Trị An. Xe đưa khách đến khu vực bến tàu, thuận tiện khi mang theo hành lý, đồ ăn và dụng cụ dã ngoại trước khi tiếp tục sang đảo.",
+  routeText:
+    "Từ xã Bình Hưng đi qua TP.HCM về hướng Đồng Nai, tiếp tục qua Biên Hòa và Vĩnh Cửu theo ĐT768 đến khu vực Trị An rồi di chuyển đến bến tàu phục vụ hành trình sang Đảo Ó - Đồng Trường.",
+  duration: "Khoảng 2 giờ 20 phút - 2 giờ 50 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  path: "xa-binh-hung-hcm-di-vuon-quoc-gia-cat-tien-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Vườn quốc gia Cát Tiên Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Vườn quốc gia Cát Tiên Đồng Nai phù hợp cho khách muốn khám phá rừng, quan sát thiên nhiên hoặc nghỉ cuối tuần xa thành phố. Hành trình dài sẽ thoải mái hơn khi khách chủ động điểm dừng nghỉ, giờ xuất phát và lượng hành lý mang theo.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh để kết nối về khu Đông TP.HCM và cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 qua Tân Phú đến Vườn quốc gia Cát Tiên.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-bau-sau-dong-nai",
+  path: "xa-binh-hung-hcm-di-bau-sau-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Bàu Sấu Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Bàu Sấu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ xã Bình Hưng TP.HCM đi Bàu Sấu Đồng Nai phù hợp cho khách yêu thiên nhiên và muốn khám phá vùng đất ngập nước nổi tiếng trong Vườn quốc gia Cát Tiên. Xe riêng phục vụ chặng đến vườn quốc gia, sau đó khách tiếp tục vào Bàu Sấu theo tuyến và phương tiện tham quan tại điểm đến.",
+  routeText:
+    "Từ xã Bình Hưng đi về khu Đông TP.HCM để vào cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục theo Quốc lộ 20 đến Vườn quốc gia Cát Tiên; từ trung tâm vườn tiếp tục bằng phương tiện được bố trí và đi bộ theo tuyến vào Bàu Sấu.",
+  duration: "Khoảng 3 giờ 30 phút - 4 giờ đến Vườn quốc gia Cát Tiên, chưa gồm thời gian vào Bàu Sấu",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-thac-mai-dong-nai",
+  path: "xa-binh-hung-hcm-di-thac-mai-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Thác Mai Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Thác Mai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ xã Bình Hưng TP.HCM đi Thác Mai Đồng Nai phù hợp cho chuyến dã ngoại, cắm trại hoặc khám phá thiên nhiên tại khu vực Định Quán. Xe riêng giúp gia đình và nhóm bạn thoải mái mang đồ ăn, lều trại cùng vật dụng cần thiết cho chuyến đi ngoài trời.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng khu Đông TP.HCM để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Định Quán và đường địa phương dẫn vào Thác Mai.",
+  duration: "Khoảng 3 giờ - 3 giờ 30 phút",
+},
+{
+  key: "xa-binh-hung-hcm-di-da-ba-chong-dong-nai",
+  path: "xa-binh-hung-hcm-di-da-ba-chong-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Đá Ba Chồng Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Đá Ba Chồng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Hưng TP.HCM đi Đá Ba Chồng Đồng Nai phù hợp cho khách muốn tham quan thắng cảnh đặc trưng tại khu vực Định Quán. Gia đình hoặc nhóm bạn có thể chủ động giờ xuất phát, dừng nghỉ dọc đường và kết hợp thêm các địa điểm trên tuyến Quốc lộ 20.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh để kết nối về khu Đông TP.HCM, vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi tiếp tục từ Dầu Giây theo Quốc lộ 20 hướng Định Quán để đến Đá Ba Chồng.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-nui-chua-chan-dong-nai",
+  path: "xa-binh-hung-hcm-di-nui-chua-chan-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Núi Chứa Chan Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Núi Chứa Chan Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Hưng TP.HCM đi Núi Chứa Chan Đồng Nai thuận tiện cho chuyến leo núi, hành hương hoặc ngắm cảnh tại vùng Gia Lào. Đi xe riêng giúp khách dễ xuất phát từ sáng sớm, mang theo đồ dùng cần thiết và linh hoạt thời gian trở về.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về hướng khu Đông TP.HCM, kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Long Khánh và Xuân Lộc rồi theo đường địa phương vào khu vực Núi Chứa Chan.",
+  duration: "Khoảng 2 giờ 25 phút - 2 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-chua-gia-lao-dong-nai",
+  path: "xa-binh-hung-hcm-di-chua-gia-lao-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Chùa Gia Lào Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Chùa Gia Lào Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Chùa Gia Lào Đồng Nai phù hợp cho gia đình và khách hành hương muốn viếng chùa tại Núi Chứa Chan. Hình thức đón tận nơi thuận tiện khi có người lớn tuổi và giúp khách chủ động kết hợp thêm các địa điểm tại Xuân Lộc.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về khu Đông TP.HCM, vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi tiếp tục qua Long Khánh đến Xuân Lộc, sau đó theo tuyến đường vào chân Núi Chứa Chan để đến khu vực Chùa Gia Lào.",
+  duration: "Khoảng 2 giờ 25 phút - 2 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  path: "xa-binh-hung-hcm-di-khu-du-lich-suoi-mo-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Khu du lịch Suối Mơ Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Khu du lịch Suối Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe xã Bình Hưng TP.HCM đi Khu du lịch Suối Mơ Đồng Nai thích hợp cho gia đình và nhóm bạn muốn dành một ngày vui chơi giữa hồ nước, suối tự nhiên và không gian xanh. Xe riêng thuận tiện khi mang đồ bơi, đồ dùng cho trẻ nhỏ và giúp cả nhóm chủ động lịch trình.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh để kết nối về khu Đông TP.HCM và cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Dầu Giây rồi theo Quốc lộ 20 hướng Tân Phú và đường địa phương đến Khu du lịch Suối Mơ.",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  path: "xa-binh-hung-hcm-di-khu-du-lich-bo-cap-vang-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Khu du lịch Bò Cạp Vàng Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Khu du lịch Bò Cạp Vàng Đồng Nai phù hợp cho chuyến dã ngoại, vui chơi dưới nước hoặc sinh hoạt nhóm cuối tuần. Khách có thể thoải mái mang theo đồ dùng cá nhân và tự sắp xếp giờ đi về mà không phụ thuộc phương tiện công cộng.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về hướng Võ Chí Công và Cát Lái, tiếp tục sang khu vực Nhơn Trạch rồi theo các tuyến đường địa phương để đến Khu du lịch Bò Cạp Vàng.",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  path: "xa-binh-hung-hcm-di-khu-du-lich-sinh-thai-tre-viet-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Khu du lịch sinh thái Tre Việt Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Hưng TP.HCM đi Khu du lịch sinh thái Tre Việt Đồng Nai phù hợp cho gia đình và nhóm bạn muốn vui chơi, nghỉ ngơi trong không gian ven sông tại Nhơn Trạch. Hành trình đi về trong ngày thuận tiện hơn khi khách có xe riêng đón tận nơi.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về hướng Võ Chí Công và Cát Lái, tiếp tục sang Nhơn Trạch rồi theo các tuyến đường địa phương để đến Khu du lịch sinh thái Tre Việt.",
+  duration: "Khoảng 1 giờ 25 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  path: "xa-binh-hung-hcm-di-san-bay-quoc-te-long-thanh-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Sân bay quốc tế Long Thành Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Hưng TP.HCM đi Sân bay quốc tế Long Thành Đồng Nai phù hợp cho hành khách cần đón tận nơi, đi cùng gia đình hoặc mang nhiều hành lý. Tuyến xe riêng giúp khách chủ động giờ khởi hành và di chuyển thẳng đến khu vực sân bay mà không phải đổi phương tiện.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về khu Đông TP.HCM, kết nối vào cao tốc TP.HCM - Long Thành - Dầu Giây rồi tiếp tục theo tuyến đường dẫn đến khu vực Sân bay quốc tế Long Thành.",
+  duration: "Khoảng 1 giờ 15 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  path: "xa-binh-hung-hcm-di-thien-vien-thuong-chieu-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Thiền viện Thường Chiếu Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Thiền viện Thường Chiếu Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Thiền viện Thường Chiếu Đồng Nai thích hợp cho chuyến lễ Phật, tham quan hoặc tìm không gian thanh tịnh tại Long Thành. Gia đình có người lớn tuổi có thể đi thoải mái hơn nhờ hình thức đón tận nơi và thời gian di chuyển linh hoạt.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh về khu Đông TP.HCM, kết nối cao tốc TP.HCM - Long Thành - Dầu Giây rồi về Long Thành, sau đó theo Quốc lộ 51 và đường địa phương đến Thiền viện Thường Chiếu.",
+  duration: "Khoảng 1 giờ 25 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  path: "xa-binh-hung-hcm-di-mo-cu-thach-hang-gon-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Mộ Cự Thạch Hàng Gòn Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ xã Bình Hưng TP.HCM đi Mộ Cự Thạch Hàng Gòn Đồng Nai phù hợp cho khách muốn tìm hiểu di tích khảo cổ đặc biệt tại vùng Long Khánh. Khách đi xe riêng có thể kết hợp điểm đến với các vườn trái cây và tự điều chỉnh thời gian tham quan theo kế hoạch.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh để kết nối cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục về Long Khánh rồi theo tuyến đường địa phương đến Hàng Gòn và khu vực di tích Mộ Cự Thạch.",
+  duration: "Khoảng 2 giờ 5 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  path: "xa-binh-hung-hcm-di-vuon-trai-cay-long-khanh-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Vườn trái cây Long Khánh Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Vườn trái cây Long Khánh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ xã Bình Hưng TP.HCM đi Vườn trái cây Long Khánh Đồng Nai phù hợp cho chuyến trải nghiệm miệt vườn vào mùa chôm chôm, sầu riêng hoặc măng cụt. Gia đình và nhóm bạn có thể tự chọn khu vườn muốn ghé, thưởng thức trái cây và chủ động giờ quay lại TP.HCM.",
+  routeText:
+    "Từ xã Bình Hưng đi theo Nguyễn Văn Linh để kết nối về khu Đông TP.HCM và cao tốc TP.HCM - Long Thành - Dầu Giây, tiếp tục đến Long Khánh rồi theo các tuyến đường địa phương đến khu vực các vườn trái cây.",
+  duration: "Khoảng 2 giờ - 2 giờ 30 phút",
+},
+{
+  key: "xa-binh-hung-hcm-di-soc-bom-bo-dong-nai",
+  path: "xa-binh-hung-hcm-di-soc-bom-bo-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Sóc Bom Bo Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Sóc Bom Bo Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Hưng TP.HCM đi Sóc Bom Bo Đồng Nai phù hợp cho khách muốn tìm hiểu văn hóa S'tiêng và khám phá vùng Bình Phước cũ. Hành trình đường dài bằng xe riêng giúp gia đình hoặc nhóm bạn chủ động giờ xuất phát, các điểm dừng nghỉ và thời gian tham quan.",
+  routeText:
+    "Từ xã Bình Hưng đi theo các tuyến kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 cùng đường địa phương về khu vực Bom Bo.",
+  duration: "Khoảng 3 giờ 45 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-nui-ba-ra-dong-nai",
+  path: "xa-binh-hung-hcm-di-nui-ba-ra-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Núi Bà Rá Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Núi Bà Rá Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Hưng TP.HCM đi Núi Bà Rá Đồng Nai thuận tiện cho chuyến hành hương, tham quan và ngắm cảnh tại khu vực Phước Long, Bình Phước cũ. Khách có thể xuất phát sớm, dành nhiều thời gian tại điểm đến và kết hợp thêm Hồ Thác Mơ trong cùng hành trình.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng kết nối Quốc lộ 13, tiếp tục qua Chơn Thành và Đồng Xoài rồi theo ĐT741 về Phước Long để đến khu vực Núi Bà Rá.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-ho-thac-mo-dong-nai",
+  path: "xa-binh-hung-hcm-di-ho-thac-mo-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Hồ Thác Mơ Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Hồ Thác Mơ Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Hồ Thác Mơ Đồng Nai thích hợp cho khách muốn ngắm cảnh và khám phá không gian hồ tại vùng Phước Long. Lịch trình riêng giúp nhóm khách linh hoạt thời gian nghỉ ngơi, chụp ảnh và thuận tiện ghé thêm Núi Bà Rá nếu có nhu cầu.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng Quốc lộ 13 qua Chơn Thành và Đồng Xoài, tiếp tục theo ĐT741 về Phước Long rồi theo tuyến đường địa phương đến khu vực Hồ Thác Mơ.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-thac-dung-dong-nai",
+  path: "xa-binh-hung-hcm-di-thac-dung-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Thác Đứng Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Thác Đứng Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe từ xã Bình Hưng TP.HCM đi Thác Đứng Đồng Nai phù hợp cho khách muốn khám phá cảnh quan thiên nhiên tại vùng Bù Đăng, Bình Phước cũ. Xe riêng thuận tiện cho chuyến dã ngoại xa thành phố khi nhóm khách cần mang theo đồ ăn, hành lý và các vật dụng cá nhân.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng kết nối Quốc lộ 13 đến Chơn Thành, tiếp tục qua Đồng Xoài rồi theo Quốc lộ 14 về Bù Đăng, sau đó theo đường địa phương dẫn đến khu vực Thác Đứng.",
+  duration: "Khoảng 4 giờ 15 phút - 4 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-trang-co-bu-lach-dong-nai",
+  path: "xa-binh-hung-hcm-di-trang-co-bu-lach-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Trảng cỏ Bù Lạch Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ xã Bình Hưng TP.HCM đi Trảng cỏ Bù Lạch Đồng Nai thích hợp cho chuyến picnic, chụp ảnh hoặc cắm trại tại vùng Bù Đăng. Nhóm bạn có thể thoải mái mang lều, đồ ăn và dụng cụ dã ngoại, đồng thời chủ động lịch trình cho chuyến đi xa.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài rồi theo Quốc lộ 14 hướng Bù Đăng, sau đó theo các tuyến đường địa phương vào khu vực Trảng cỏ Bù Lạch.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  path: "xa-binh-hung-hcm-di-vuon-quoc-gia-bu-gia-map-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Vườn quốc gia Bù Gia Mập Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Vườn quốc gia Bù Gia Mập Đồng Nai phù hợp cho khách muốn trekking, khám phá rừng và trải nghiệm thiên nhiên tại vùng Bình Phước cũ. Phương tiện riêng giúp hành trình dài linh hoạt hơn về giờ xuất phát, điểm dừng nghỉ và lượng hành lý mang theo.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng kết nối Quốc lộ 13 qua Chơn Thành, tiếp tục đến Đồng Xoài và Phước Long rồi theo ĐT741 cùng các tuyến đường dẫn đến Vườn quốc gia Bù Gia Mập.",
+  duration: "Khoảng 4 giờ 45 phút - 5 giờ 15 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-ho-suoi-giai-dong-nai",
+  path: "xa-binh-hung-hcm-di-ho-suoi-giai-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Hồ Suối Giai Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Hồ Suối Giai Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe xã Bình Hưng TP.HCM đi Hồ Suối Giai Đồng Nai phù hợp cho chuyến picnic, câu cá hoặc nghỉ ngơi bên hồ tại vùng Bình Phước cũ. Gia đình và nhóm bạn có thể mang theo đầy đủ đồ dã ngoại, chủ động thời gian dừng nghỉ và không phụ thuộc vào lịch trình xe tuyến.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng kết nối về Quốc lộ 13 đến Chơn Thành, tiếp tục theo tuyến hướng Đồng Xoài và Đồng Phú rồi theo đường địa phương đến khu vực Hồ Suối Giai.",
+  duration: "Khoảng 3 giờ 15 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-di-tich-ta-thiet-dong-nai",
+  path: "xa-binh-hung-hcm-di-di-tich-ta-thiet-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Di tích Tà Thiết Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Di tích Tà Thiết Đồng Nai, xe riêng trọn gói",
+  description:
+    "Đặt xe từ xã Bình Hưng TP.HCM đi Di tích Tà Thiết Đồng Nai phù hợp cho khách muốn tìm hiểu lịch sử tại khu vực Lộc Ninh, Bình Phước cũ. Xe riêng giúp khách chủ động thời gian tham quan và thuận tiện kết hợp Nhà giao tế Lộc Ninh cùng những địa điểm lịch sử trên cùng tuyến.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng kết nối về Quốc lộ 13, tiếp tục qua Chơn Thành và Bình Long đến Lộc Ninh rồi theo tuyến đường địa phương dẫn vào khu Di tích Tà Thiết.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  path: "xa-binh-hung-hcm-di-nha-giao-te-loc-ninh-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Nhà giao tế Lộc Ninh Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai, xe riêng trọn gói",
+  description:
+    "Xe riêng từ xã Bình Hưng TP.HCM đi Nhà giao tế Lộc Ninh Đồng Nai thuận tiện cho khách muốn tìm hiểu những dấu ấn lịch sử tại vùng Lộc Ninh, Bình Phước cũ. Hành trình có thể kết hợp thêm Tà Thiết và các điểm lân cận để tận dụng chuyến đi đường dài.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng Quốc lộ 13 qua Chơn Thành và Bình Long, tiếp tục đến Lộc Ninh rồi theo các tuyến đường nội thị để đến Nhà giao tế Lộc Ninh.",
+  duration: "Khoảng 4 giờ - 4 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-hung-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  path: "xa-binh-hung-hcm-di-cua-khau-quoc-te-hoa-lu-dong-nai",
+  from: "Xã Bình Hưng TP.HCM",
+  to: "Cửa khẩu quốc tế Hoa Lư Đồng Nai",
+  title: "Thuê xe xã Bình Hưng TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ xã Bình Hưng TP.HCM đi Cửa khẩu quốc tế Hoa Lư Đồng Nai phù hợp cho khách đi công tác, làm việc hoặc cần di chuyển đến khu vực biên giới tại Lộc Ninh, Bình Phước cũ. Xe đón tận nơi giúp hành trình thuận tiện hơn khi khách có nhiều hành lý hoặc cần chủ động giờ đến.",
+  routeText:
+    "Từ xã Bình Hưng đi theo hướng kết nối Quốc lộ 13, tiếp tục qua Chơn Thành, Bình Long và Lộc Ninh rồi theo Quốc lộ 13 về phía biên giới để đến Cửa khẩu quốc tế Hoa Lư.",
+  duration: "Khoảng 4 giờ 30 phút - 5 giờ",
+},
+
 ];
