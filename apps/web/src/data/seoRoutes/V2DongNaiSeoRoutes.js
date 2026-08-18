@@ -27050,5 +27050,13162 @@ export const V2DONGNAI_SEO_ROUTES = [
     "Xã Cần Giờ → đường Rừng Sác → phà Bình Khánh → Nguyễn Văn Linh → Quốc lộ 1A → Quốc lộ 13 → Chơn Thành → Bình Long → Lộc Ninh → Quốc lộ 13 → Cửa khẩu quốc tế Hoa Lư",
   duration: "Khoảng 6 giờ 30 phút - 7 giờ 30 phút",
 },
+{
+  key: "phuong-bien-hoa-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-bien-hoa-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Biên Hòa Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách đi công tác, du lịch hoặc cần đón chuyến bay tại TP.HCM. Xe đón tận nơi tại Biên Hòa, đi thẳng đến nhà ga sân bay, chủ động giờ xuất phát và thuận tiện mang theo hành lý.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
 
+{
+  key: "phuong-bien-hoa-dong-nai-di-ga-sai-gon",
+  path: "phuong-bien-hoa-dong-nai-di-ga-sai-gon",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Biên Hòa Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đón người thân tại trung tâm TP.HCM. Xe đón tại địa chỉ yêu cầu ở Biên Hòa và đưa thẳng đến khu vực Ga Sài Gòn, hạn chế phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-bien-hoa-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Biên Hòa Đồng Nai đi Bến xe Miền Đông mới là lựa chọn thuận tiện cho khách cần nối chuyến xe khách tại khu vực cửa ngõ phía Đông TP.HCM. Quãng đường tương đối gần, xe riêng giúp chủ động thời gian và đưa khách trực tiếp đến khu vực bến.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Quốc lộ 1A → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 45 phút – 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-bien-hoa-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Biên Hòa Đồng Nai đi Bến xe Miền Tây phù hợp khách tiếp tục hành trình về các tỉnh miền Tây hoặc cần đón người thân tại bến. Tuyến đi xuyên qua TP.HCM khá dài nên việc đặt xe riêng giúp hành khách thoải mái hơn và kiểm soát tốt thời gian nối chuyến.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-bien-hoa-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe Phường Biên Hòa Đồng Nai đi Bến xe An Sương phù hợp khách cần di chuyển sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Tây Ninh, Long An. Xe đón tận nơi tại Biên Hòa và đưa thẳng đến bến, thuận tiện khi có nhiều hành lý.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh, người nhà hoặc khách có lịch khám và điều trị tại TP.HCM. Xe có thể đón trực tiếp tại nhà ở Biên Hòa và đưa đến khu vực bệnh viện, giúp hành trình thuận tiện hơn khi cần mang theo đồ dùng hoặc hồ sơ y tế.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám chuyên khoa, tái khám hoặc đưa người thân đến bệnh viện. Hành khách được đón tận nơi tại Biên Hòa và di chuyển thẳng đến khu vực bệnh viện trên đường Hồng Bàng.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh và người nhà cần đến khu vực TP Thủ Đức khám, điều trị hoặc tái khám. Tuyến từ Biên Hòa đến cơ sở bệnh viện ở cửa ngõ phía Đông TP.HCM khá thuận tiện, giúp giảm thời gian phải di chuyển sâu vào khu vực trung tâm.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 50 phút – 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Đi xe riêng giúp gia đình chủ động giờ khởi hành, có không gian cho trẻ nghỉ trên đường và được đưa trực tiếp đến khu vực bệnh viện.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám hoặc điều trị tại khu vực trung tâm TP.HCM. Xe đón tận địa chỉ tại Biên Hòa, không ghép khách và đưa thẳng đến bệnh viện, giúp hạn chế việc phải chuyển phương tiện giữa hành trình.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ, gia đình có lịch khám, tái khám hoặc cần đến bệnh viện tại trung tâm TP.HCM. Xe đón tận nơi ở Biên Hòa và đưa thẳng đến bệnh viện, giúp hành khách chủ động thời gian và hạn chế phải đổi phương tiện.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh và người nhà cần khám, điều trị hoặc tái khám tại TP.HCM. Hành trình đi thẳng từ Biên Hòa đến khu vực Quận 10 cũ giúp khách mang theo hồ sơ, hành lý và đồ dùng cá nhân thuận tiện hơn.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Biên Hòa Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần đến khu vực Tân Bình để khám bệnh, điều trị hoặc chăm sóc người thân. Xe riêng đón theo địa chỉ yêu cầu tại Biên Hòa và đưa trực tiếp đến bệnh viện, phù hợp cả những chuyến cần khởi hành sớm.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-bien-hoa-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Biên Hòa Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh gặp vấn đề về xương khớp, chấn thương hoặc cần tái khám chuyên khoa. Việc đi xe riêng giúp hành khách hạn chế di chuyển nhiều chặng và thuận tiện hơn khi khả năng đi lại còn hạn chế.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-cho-ben-thanh",
+  path: "phuong-bien-hoa-dong-nai-di-cho-ben-thanh",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Biên Hòa Đồng Nai đi Chợ Bến Thành thuận tiện cho khách muốn tham quan, mua sắm hoặc kết hợp vui chơi tại khu vực trung tâm Sài Gòn. Xe đón tận nơi tại Biên Hòa và đưa khách đến gần khu vực chợ, phù hợp chuyến đi gia đình, nhóm bạn hoặc khách du lịch.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-bien-hoa-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Biên Hòa Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn vui chơi, tham quan hoặc dự sự kiện. Từ Nguyễn Huệ có thể thuận tiện kết hợp nhiều địa điểm nổi tiếng lân cận như Bến Bạch Đằng, Nhà hát Thành phố và khu Đồng Khởi.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Tôn Đức Thắng → Lê Thánh Tôn → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-dinh-doc-lap",
+  path: "phuong-bien-hoa-dong-nai-di-dinh-doc-lap",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Biên Hòa Đồng Nai đi Dinh Độc Lập phù hợp chuyến tham quan trung tâm TP.HCM trong ngày. Khách có thể chủ động giờ xuất phát từ Biên Hòa và kết hợp Dinh Độc Lập với nhiều địa danh lịch sử, văn hóa nằm gần nhau tại trung tâm Sài Gòn.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-bien-hoa-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Biên Hòa Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách tham quan khu trung tâm lịch sử của TP.HCM. Điểm đến nằm gần Bưu điện Trung tâm Sài Gòn, đường sách và Dinh Độc Lập nên thuận tiện sắp xếp thành một hành trình tham quan trong ngày.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-bien-hoa-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Biên Hòa Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn khám phá cụm điểm tham quan nổi tiếng quanh Công xã Paris. Xe đưa khách từ Biên Hòa vào thẳng khu trung tâm, từ đây có thể đi bộ sang Nhà thờ Đức Bà và nhiều địa điểm lân cận.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-landmark-81",
+  path: "phuong-bien-hoa-dong-nai-di-landmark-81",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Biên Hòa Đồng Nai đi Landmark 81 phù hợp khách vui chơi, mua sắm, ăn uống hoặc đến khu đô thị Vinhomes Central Park. Điểm đến nằm ở cửa ngõ phía Đông trung tâm TP.HCM nên hành trình từ Biên Hòa khá thuận tiện, đặc biệt khi đi cùng gia đình hoặc nhóm bạn.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 40 phút",
+},
+{
+  key: "phuong-bien-hoa-dong-nai-di-ben-bach-dang",
+  path: "phuong-bien-hoa-dong-nai-di-ben-bach-dang",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Biên Hòa Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn tham quan khu vực ven sông Sài Gòn, đi chơi cuối tuần hoặc kết hợp khám phá trung tâm TP.HCM. Xe đón tận nơi tại Biên Hòa và đưa đến khu vực bến, thuận tiện cho gia đình và nhóm bạn chủ động lịch trình.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-bien-hoa-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Biên Hòa Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn dành một ngày vui chơi tại trung tâm thành phố. Đi xe riêng giúp chủ động giờ khởi hành từ Biên Hòa và thuận tiện mang theo đồ dùng cho chuyến đi.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-bien-hoa-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Biên Hòa Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách tham quan, tìm hiểu lịch sử hoặc kết hợp một ngày khám phá khu vực trung tâm Sài Gòn. Từ bảo tàng, hành khách cũng dễ dàng tiếp tục đến Dinh Độc Lập và các điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-bien-hoa-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Biên Hòa Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống trung tâm Sài Gòn ăn uống, vui chơi buổi tối hoặc gặp gỡ bạn bè. Chủ động xe riêng giúp hành khách linh hoạt giờ xuất phát và thuận tiện hơn khi chuyến đi kết thúc muộn.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-phu-my-hung",
+  path: "phuong-bien-hoa-dong-nai-di-phu-my-hung",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Biên Hòa Đồng Nai đi Phú Mỹ Hưng phù hợp khách đi công việc, gặp đối tác, thăm người thân hoặc vui chơi tại khu Nam Sài Gòn. Do điểm đến nằm khá xa Biên Hòa, xe riêng giúp hành trình liền mạch và tránh phải đổi nhiều phương tiện khi đi xuyên thành phố.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-bien-hoa-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Biên Hòa Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc sự kiện tại khu đô thị Phú Mỹ Hưng. Xe đón theo địa chỉ tại Biên Hòa và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, thuận tiện cho lịch trình công tác trong ngày.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-bien-hoa-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng Phường Biên Hòa Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách mua sắm, ăn uống, gặp gỡ bạn bè hoặc giải quyết công việc tại trung tâm TP.HCM. Vị trí gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ cũng giúp hành khách dễ kết hợp nhiều điểm trong cùng chuyến đi.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-bien-hoa-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Biên Hòa Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc tham quan khu Đồng Khởi. Điểm đến nằm gần Nhà hát Thành phố và phố đi bộ Nguyễn Huệ nên có thể thuận tiện kết hợp nhiều hoạt động trong một lịch trình.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-bien-hoa-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Biên Hòa Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình và nhóm bạn muốn mua sắm, ăn uống hoặc vui chơi tại khu vực phía Tây TP.HCM. Tuyến đường từ Biên Hòa khá dài nên đi xe riêng giúp hành khách thoải mái và chủ động hơn về thời gian.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-bien-hoa-dong-nai-di-dam-sen",
+  path: "phuong-bien-hoa-dong-nai-di-dam-sen",
+  from: "Phường Biên Hòa Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Biên Hòa Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Biên Hòa Đồng Nai đi Đầm Sen phù hợp gia đình, nhóm bạn hoặc đoàn nhỏ lên TP.HCM vui chơi trong ngày. Xe đón tận nơi tại Biên Hòa, giúp hành khách chủ động giờ đi và về, đặc biệt thuận tiện với gia đình có trẻ nhỏ hoặc mang theo nhiều đồ dùng.",
+  routeText:
+    "Phường Biên Hòa → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+{
+  key: "phuong-tran-bien-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-tran-bien-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Trấn Biên Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách đi công tác, du lịch hoặc cần đón người thân tại sân bay. Xe đón theo địa chỉ tại Trấn Biên và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ khởi hành và thuận tiện khi mang nhiều hành lý.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-ga-sai-gon",
+  path: "phuong-tran-bien-dong-nai-di-ga-sai-gon",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Trấn Biên Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách có chuyến tàu đường dài hoặc cần đưa đón người thân tại ga. Đi xe riêng giúp khách xuất phát trực tiếp từ Trấn Biên, không phải trung chuyển nhiều chặng và dễ sắp xếp thời gian đến ga trước giờ tàu chạy.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-tran-bien-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trấn Biên Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần nối chuyến xe khách tại cửa ngõ phía Đông TP.HCM. Khoảng cách từ khu vực Trấn Biên đến bến không quá xa, thuận tiện cho hành khách đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Quốc lộ 1A → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 45 phút – 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-tran-bien-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trấn Biên Đồng Nai đi Bến xe Miền Tây phù hợp khách tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Tuyến đường đi qua phần lớn khu vực nội đô TP.HCM nên việc chủ động xe riêng giúp hành khách dễ căn thời gian nối chuyến hơn.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-tran-bien-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Trấn Biên Đồng Nai đi Bến xe An Sương thuận tiện cho khách cần sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón tận nơi tại Trấn Biên và đi thẳng đến bến, phù hợp với chuyến có hành lý hoặc cần khởi hành theo giờ cố định.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng Phường Trấn Biên Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và gia đình có lịch khám, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp từ địa chỉ yêu cầu ở Trấn Biên đến khu vực bệnh viện, thuận tiện khi cần mang theo hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Trấn Biên Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách cần khám chuyên khoa, làm xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Hành trình bằng xe riêng giúp người bệnh giảm việc phải chuyển phương tiện giữa Đồng Nai và khu vực trung tâm TP.HCM.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Trấn Biên Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở thuộc khu vực phía Đông thành phố. Từ Trấn Biên đi bệnh viện không cần vào sâu trung tâm Sài Gòn, phù hợp những chuyến đi về trong ngày.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 50 phút – 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trấn Biên Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Không gian riêng giúp trẻ nghỉ ngơi trong hành trình, đồng thời gia đình có thể chủ động giờ xuất phát theo lịch khám và mang theo các vật dụng cần thiết.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Trấn Biên Đồng Nai đi Bệnh viện Nhi Đồng 2 giúp gia đình có trẻ nhỏ di chuyển thẳng đến khu vực trung tâm TP.HCM mà không phải đổi nhiều chặng. Dịch vụ phù hợp cho lịch khám trong ngày, tái khám định kỳ hoặc những chuyến cần mang theo nhiều đồ dùng chăm sóc trẻ.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Trấn Biên Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình cần đến TP.HCM khám thai, tái khám, làm xét nghiệm hoặc chăm sóc người thân. Xe đón tại địa chỉ yêu cầu ở Trấn Biên và đưa thẳng đến bệnh viện, giúp hành trình chủ động và hạn chế phải đổi phương tiện.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Trấn Biên Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng từ Trấn Biên giúp người bệnh và người nhà có không gian thoải mái hơn, đồng thời dễ sắp xếp thời gian theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Trấn Biên Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám bệnh, tái khám hoặc đưa người thân đến khu vực Tân Bình. Xe có thể đón tận nơi tại Trấn Biên và đưa trực tiếp đến bệnh viện, thuận tiện cho những chuyến cần xuất phát từ sáng sớm.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-tran-bien-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trấn Biên Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám và điều trị các vấn đề về xương khớp hoặc chấn thương. Việc được đón tận nơi giúp giảm những chặng di chuyển không cần thiết, đặc biệt hữu ích với hành khách đang gặp khó khăn khi đi lại.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-cho-ben-thanh",
+  path: "phuong-tran-bien-dong-nai-di-cho-ben-thanh",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Trấn Biên Đồng Nai đi Chợ Bến Thành phù hợp chuyến tham quan, mua sắm hoặc vui chơi tại trung tâm Sài Gòn. Khách có thể xuất phát trực tiếp từ Trấn Biên, đến khu vực chợ rồi kết hợp phố đi bộ Nguyễn Huệ và nhiều địa danh nổi tiếng trong cùng một ngày.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-tran-bien-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Trấn Biên Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách xuống trung tâm Sài Gòn vui chơi, dạo phố hoặc tham dự sự kiện. Chủ động xe từ Trấn Biên giúp hành khách linh hoạt thời gian, nhất là những chuyến đi vào chiều tối và trở về Đồng Nai sau khi vui chơi.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Tôn Đức Thắng → Lê Thánh Tôn → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-dinh-doc-lap",
+  path: "phuong-tran-bien-dong-nai-di-dinh-doc-lap",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Trấn Biên Đồng Nai đi Dinh Độc Lập phù hợp khách muốn dành một ngày tham quan các địa danh lịch sử và văn hóa nổi bật tại trung tâm TP.HCM. Từ Dinh Độc Lập có thể thuận tiện kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm Sài Gòn và khu vực Nguyễn Huệ.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-tran-bien-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trấn Biên Đồng Nai đi Nhà thờ Đức Bà Sài Gòn thuận tiện cho khách tham quan khu vực Công xã Paris và những công trình kiến trúc nổi tiếng ở trung tâm thành phố. Tuyến phù hợp chuyến đi trong ngày từ Đồng Nai, đặc biệt khi muốn ghé nhiều địa điểm gần nhau.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-tran-bien-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Trấn Biên Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn khám phá công trình kiến trúc nổi tiếng và khu vực trung tâm TP.HCM. Bưu điện nằm ngay cạnh Nhà thờ Đức Bà nên hành khách có thể kết hợp hai điểm cùng nhiều địa danh lân cận trong một lịch trình.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-landmark-81",
+  path: "phuong-tran-bien-dong-nai-di-landmark-81",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trấn Biên Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park vui chơi, mua sắm, ăn uống hoặc gặp gỡ bạn bè. Landmark 81 nằm ở phía Đông khu vực trung tâm nên đây là một trong những điểm đến thuận tiện khi di chuyển từ Trấn Biên vào TP.HCM.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 40 phút",
+},
+{
+  key: "phuong-tran-bien-dong-nai-di-ben-bach-dang",
+  path: "phuong-tran-bien-dong-nai-di-ben-bach-dang",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Trấn Biên Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo khu vực ven sông, tham quan trung tâm Sài Gòn hoặc kết hợp vui chơi vào buổi chiều tối. Xe đón tận nơi tại Trấn Biên và đưa đến khu vực bến, giúp gia đình hoặc nhóm bạn chủ động lịch trình trong ngày.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-tran-bien-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Trấn Biên Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ hoặc nhóm khách muốn vui chơi tại trung tâm TP.HCM trong ngày. Đi xe riêng giúp hành khách chủ động giờ xuất phát, thuận tiện mang theo đồ dùng và nghỉ ngơi thoải mái trên hành trình từ Đồng Nai.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-tran-bien-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Trấn Biên Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm TP.HCM. Sau khi đến bảo tàng, hành khách có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà và nhiều điểm nổi tiếng gần đó.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-tran-bien-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trấn Biên Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm không khí sôi động về đêm. Chủ động phương tiện riêng giúp hành khách linh hoạt thời gian xuất phát và thuận tiện hơn khi trở về Đồng Nai vào buổi tối.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-phu-my-hung",
+  path: "phuong-tran-bien-dong-nai-di-phu-my-hung",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Trấn Biên Đồng Nai đi Phú Mỹ Hưng phù hợp khách đi công việc, gặp đối tác, thăm người thân hoặc vui chơi tại khu Nam TP.HCM. Do hành trình từ Trấn Biên đến Phú Mỹ Hưng đi qua nhiều khu vực của thành phố, xe riêng giúp chuyến đi liền mạch và dễ chủ động thời gian.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-tran-bien-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trấn Biên Đồng Nai đi SECC phù hợp khách tham gia hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đưa khách trực tiếp từ Trấn Biên đến Trung tâm Hội chợ và Triển lãm Sài Gòn, thuận tiện cho lịch công tác và những chuyến đi về trong ngày.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-tran-bien-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Trấn Biên Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách mua sắm, ăn uống hoặc gặp gỡ tại khu vực trung tâm Sài Gòn. Từ điểm đến có thể dễ dàng kết hợp Chợ Bến Thành, phố đi bộ Nguyễn Huệ và các địa điểm nổi tiếng quanh đường Lê Lợi.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-tran-bien-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng Phường Trấn Biên Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách cần đến trung tâm TP.HCM để mua sắm, dùng bữa hoặc vui chơi cùng gia đình. Vị trí trên trục Đồng Khởi thuận tiện kết hợp Nhà hát Thành phố, Nguyễn Huệ và khu vực Bến Bạch Đằng trong cùng chuyến đi.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-tran-bien-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Trấn Biên Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp khách muốn dành thời gian mua sắm, ăn uống và vui chơi tại khu vực phía Tây TP.HCM. Với hành trình khá dài từ Đồng Nai, xe riêng giúp gia đình hoặc nhóm bạn thoải mái hơn và không phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tran-bien-dong-nai-di-dam-sen",
+  path: "phuong-tran-bien-dong-nai-di-dam-sen",
+  from: "Phường Trấn Biên Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Trấn Biên Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trấn Biên Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn vui chơi tại TP.HCM trong ngày. Xe đón theo địa chỉ tại Trấn Biên, giúp khách chủ động giờ đi và giờ về, đồng thời thuận tiện mang theo đồ dùng cho cả ngày vui chơi.",
+  routeText:
+    "Phường Trấn Biên → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+{
+  key: "phuong-tam-hiep-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-tam-hiep-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Tam Hiệp Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đón người thân tại sân bay. Xe đón theo địa chỉ tại Tam Hiệp và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-ga-sai-gon",
+  path: "phuong-tam-hiep-dong-nai-di-ga-sai-gon",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tam Hiệp Đồng Nai đi Ga Sài Gòn thuận tiện cho khách cần bắt tàu đường dài hoặc đưa đón người thân tại ga. Đi xe riêng giúp hành khách xuất phát tận nơi ở Tam Hiệp, hạn chế trung chuyển và dễ căn thời gian đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-tam-hiep-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Hiệp Đồng Nai đi Bến xe Miền Đông mới phù hợp hành khách cần nối chuyến xe khách tại cửa ngõ phía Đông TP.HCM. Tuyến đi tương đối thuận tiện từ khu vực Tam Hiệp, đặc biệt hữu ích khi khách có vali, nhiều hành lý hoặc đi cùng gia đình.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Quốc lộ 1A → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 45 phút – 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-tam-hiep-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Hiệp Đồng Nai đi Bến xe Miền Tây phù hợp khách cần tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Quãng đường đi xuyên TP.HCM tương đối dài nên chủ động xe riêng giúp hành khách thoải mái hơn và dễ sắp xếp thời gian nối chuyến.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-tam-hiep-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tam Hiệp Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc nối chuyến theo hướng Quốc lộ 22. Xe đón tận địa chỉ tại Tam Hiệp và đưa thẳng đến bến, thuận tiện cho khách đi sớm, mang nhiều hành lý hoặc cần chủ động giờ đến.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần đến TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Xe đi thẳng từ Tam Hiệp đến khu vực bệnh viện giúp giảm số lần lên xuống phương tiện và thuận tiện mang theo hồ sơ cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Xe riêng giúp người bệnh di chuyển liền mạch từ Đồng Nai đến bệnh viện và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Điểm đến thuận hướng từ Đồng Nai nên khách từ Tam Hiệp có thể di chuyển mà không cần vào sâu khu vực trung tâm Sài Gòn.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 50 phút – 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, điều trị hoặc tái khám. Không gian xe riêng giúp trẻ có thể nghỉ trên đường, đồng thời gia đình dễ mang theo hồ sơ, thuốc và những vật dụng cần thiết cho buổi khám.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Nhi Đồng 2 giúp gia đình có trẻ nhỏ di chuyển trực tiếp đến khu vực trung tâm TP.HCM mà không phải trung chuyển nhiều chặng. Tuyến phù hợp cho lịch khám trong ngày, tái khám định kỳ hoặc đưa trẻ đến bệnh viện theo lịch hẹn.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện tại trung tâm TP.HCM. Xe đón tận nơi tại Tam Hiệp và đưa thẳng đến bệnh viện, giúp hành khách chủ động thời gian và hạn chế phải đổi phương tiện.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Hành trình bằng xe riêng giúp khách đi trực tiếp từ Tam Hiệp đến bệnh viện, có không gian nghỉ ngơi và dễ sắp xếp giờ khởi hành theo lịch hẹn.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám bệnh, tái khám hoặc chăm sóc người thân tại khu vực Tân Bình. Xe đón theo địa chỉ yêu cầu ở Tam Hiệp và đưa trực tiếp đến bệnh viện, thuận tiện với những lịch khám sớm hoặc chuyến đi về trong ngày.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-tam-hiep-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Hiệp Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Việc đón tận nơi và đi thẳng đến bệnh viện giúp giảm các chặng trung chuyển, đặc biệt thuận tiện với người đang hạn chế khả năng đi lại.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-cho-ben-thanh",
+  path: "phuong-tam-hiep-dong-nai-di-cho-ben-thanh",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tam Hiệp Đồng Nai đi Chợ Bến Thành phù hợp khách muốn mua sắm, tham quan hoặc dành một ngày khám phá trung tâm Sài Gòn. Từ khu vực chợ, hành khách có thể kết hợp thêm phố đi bộ Nguyễn Huệ, Dinh Độc Lập và nhiều điểm nổi tiếng mà không phải di chuyển quá xa.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-tam-hiep-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Hiệp Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách xuống trung tâm Sài Gòn vui chơi, dạo phố hoặc tham dự các hoạt động vào buổi tối. Chủ động xe giúp hành khách linh hoạt giờ về Đồng Nai và thuận tiện khi đi cùng gia đình hoặc nhóm bạn.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Tôn Đức Thắng → Lê Thánh Tôn → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-dinh-doc-lap",
+  path: "phuong-tam-hiep-dong-nai-di-dinh-doc-lap",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tam Hiệp Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một trong những địa danh lịch sử nổi bật tại trung tâm TP.HCM. Hành trình có thể kết hợp thêm Nhà thờ Đức Bà, Bưu điện Trung tâm Sài Gòn và Bảo tàng Chứng tích Chiến tranh trong cùng ngày.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-tam-hiep-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Hiệp Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu vực Công xã Paris và cụm địa danh nổi tiếng giữa trung tâm thành phố. Đi từ Tam Hiệp bằng xe riêng giúp gia đình hoặc nhóm bạn dễ chủ động lịch trình tham quan trong ngày.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-tam-hiep-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tam Hiệp Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách tham quan công trình kiến trúc nổi tiếng tại khu vực trung tâm TP.HCM. Bưu điện nằm cạnh Nhà thờ Đức Bà và gần nhiều điểm du lịch khác, thuận tiện xây dựng lịch trình khám phá Sài Gòn trong một ngày.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-landmark-81",
+  path: "phuong-tam-hiep-dong-nai-di-landmark-81",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Tam Hiệp Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm gần cửa ngõ phía Đông trung tâm TP.HCM nên đây là điểm đến khá thuận tiện cho hành trình xuất phát từ Tam Hiệp.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 40 phút",
+},
+{
+  key: "phuong-tam-hiep-dong-nai-di-ben-bach-dang",
+  path: "phuong-tam-hiep-dong-nai-di-ben-bach-dang",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tam Hiệp Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo khu vực ven sông Sài Gòn, tham quan trung tâm thành phố hoặc vui chơi vào buổi chiều tối. Xe đón tận nơi tại Tam Hiệp và đưa khách đến khu vực bến, thuận tiện kết hợp phố đi bộ Nguyễn Huệ cùng các điểm gần trung tâm.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-tam-hiep-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Tam Hiệp Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn vui chơi tại trung tâm TP.HCM trong ngày. Đi xe riêng giúp chủ động thời gian khởi hành từ Tam Hiệp và thuận tiện mang theo đồ ăn, xe đẩy hoặc vật dụng cho trẻ.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-tam-hiep-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Tam Hiệp Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá các địa danh văn hóa tại trung tâm TP.HCM. Từ bảo tàng có thể tiếp tục tham quan Dinh Độc Lập, Nhà thờ Đức Bà và nhiều điểm gần nhau trong cùng lịch trình.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-tam-hiep-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Hiệp Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống trung tâm Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện riêng giúp hành khách linh hoạt thời gian trở về Đồng Nai sau khi kết thúc lịch vui chơi.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-phu-my-hung",
+  path: "phuong-tam-hiep-dong-nai-di-phu-my-hung",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tam Hiệp Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do hành trình từ Tam Hiệp đến Phú Mỹ Hưng đi qua khu vực trung tâm thành phố, xe riêng giúp khách di chuyển liền mạch và chủ động thời gian hơn.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-tam-hiep-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Hiệp Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Tam Hiệp và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, thuận tiện cho lịch trình công tác trong ngày.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-tam-hiep-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Tam Hiệp Đồng Nai đi Takashimaya Saigon Centre phù hợp khách xuống trung tâm TP.HCM mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Vị trí trên đường Lê Lợi cũng thuận tiện để kết hợp Chợ Bến Thành, phố đi bộ Nguyễn Huệ và khu Đồng Khởi trong cùng chuyến đi.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-tam-hiep-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng Phường Tam Hiệp Đồng Nai đi Vincom Center Đồng Khởi thuận tiện cho khách muốn mua sắm, ăn uống hoặc dành thời gian tại khu vực trung tâm Sài Gòn. Từ đây có thể dễ dàng đi bộ đến Nhà hát Thành phố, phố Nguyễn Huệ và nhiều địa điểm nổi tiếng quanh Đồng Khởi.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-tam-hiep-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tam Hiệp Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực phía Tây TP.HCM. Quãng đường từ Đồng Nai tương đối dài nên xe riêng giúp chuyến đi thoải mái và hạn chế việc phải chuyển nhiều phương tiện.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-hiep-dong-nai-di-dam-sen",
+  path: "phuong-tam-hiep-dong-nai-di-dam-sen",
+  from: "Phường Tam Hiệp Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Tam Hiệp Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Hiệp Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Tam Hiệp, giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo đồ dùng cho cả ngày tham quan.",
+  routeText:
+    "Phường Tam Hiệp → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+{
+  key: "phuong-long-binh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-long-binh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Long Bình Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân tại sân bay. Xe đón theo địa chỉ tại Long Bình và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ khởi hành và thuận tiện khi mang theo hành lý.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-ga-sai-gon",
+  path: "phuong-long-binh-dong-nai-di-ga-sai-gon",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Bình Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Xe riêng giúp khách xuất phát tận nơi ở Long Bình, hạn chế phải trung chuyển và dễ căn thời gian đến ga trước giờ tàu chạy.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-long-binh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Bình Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần nối chuyến xe khách tại cửa ngõ phía Đông TP.HCM. Tuyến đi khá thuận hướng từ Long Bình, giúp hành khách chủ động thời gian đến bến và thuận tiện hơn khi có nhiều hành lý.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Quốc lộ 1A → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 45 phút – 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-long-binh-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Bình Đồng Nai đi Bến xe Miền Tây phù hợp khách cần tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Do quãng đường đi qua nhiều khu vực của TP.HCM, việc chủ động xe riêng giúp hành khách thoải mái hơn và dễ sắp xếp giờ nối chuyến.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-long-binh-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Long Bình Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón tận nơi tại Long Bình và đưa thẳng đến bến, thuận tiện cho chuyến có nhiều hành lý hoặc cần đến đúng giờ.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Bình Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp từ Long Bình đến khu vực bệnh viện, giảm các chặng trung chuyển và thuận tiện khi cần mang theo hồ sơ y tế cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Long Bình Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách cần khám chuyên khoa, làm xét nghiệm hoặc tái khám tại bệnh viện. Đi xe riêng từ Long Bình giúp người bệnh có hành trình liền mạch và dễ chủ động giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Bình Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Từ Long Bình đi bệnh viện khá thuận hướng, không cần di chuyển sâu vào trung tâm Sài Gòn nên phù hợp cả những chuyến đi về trong ngày.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 45 phút – 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Bình Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, điều trị hoặc tái khám. Không gian riêng giúp trẻ có thể nghỉ ngơi trên đường, đồng thời gia đình thuận tiện mang theo hồ sơ, thuốc và các vật dụng cần thiết cho buổi khám.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Bình Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần đến trung tâm TP.HCM khám hoặc tái khám. Xe đón tận nơi tại Long Bình và đưa thẳng đến bệnh viện, giúp hạn chế việc đổi phương tiện và dễ sắp xếp hành trình theo giờ khám.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Bình Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện tại trung tâm TP.HCM. Xe đón theo địa chỉ tại Long Bình và đưa thẳng đến bệnh viện, giúp hành khách chủ động giờ đi và hạn chế phải chuyển nhiều phương tiện.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Long Bình Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Hành khách được đón tận nơi ở Long Bình, có không gian nghỉ ngơi trên đường và dễ sắp xếp thời gian xuất phát theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Long Bình Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám bệnh, điều trị hoặc chăm sóc người thân tại khu vực Tân Bình. Xe riêng giúp hành khách đi trực tiếp từ Long Bình đến bệnh viện, thuận tiện cho lịch khám buổi sáng và những chuyến cần trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-long-binh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Bình Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Việc đón tận địa chỉ và đi thẳng đến bệnh viện giúp giảm các chặng đi bộ, lên xuống xe không cần thiết đối với người hạn chế vận động.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-cho-ben-thanh",
+  path: "phuong-long-binh-dong-nai-di-cho-ben-thanh",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Bình Đồng Nai đi Chợ Bến Thành phù hợp khách muốn mua sắm, tham quan hoặc khám phá khu vực trung tâm Sài Gòn trong ngày. Sau khi đến chợ, hành khách có thể kết hợp phố đi bộ Nguyễn Huệ, Takashimaya và nhiều điểm nổi tiếng lân cận trong cùng lịch trình.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-long-binh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Bình Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, vui chơi hoặc tham dự các hoạt động vào buổi tối. Chủ động xe riêng giúp nhóm bạn và gia đình linh hoạt thời gian trở về Đồng Nai sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Tôn Đức Thắng → Lê Thánh Tôn → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-dinh-doc-lap",
+  path: "phuong-long-binh-dong-nai-di-dinh-doc-lap",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Bình Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật tại trung tâm TP.HCM. Từ đây có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và Bưu điện Trung tâm Sài Gòn để tạo thành lịch trình tham quan trong ngày.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-long-binh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Bình Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu vực Công xã Paris và những công trình kiến trúc nổi tiếng giữa trung tâm thành phố. Đi xe riêng từ Long Bình giúp gia đình hoặc nhóm bạn chủ động hơn khi kết hợp nhiều điểm tham quan trong một ngày.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-long-binh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Bình Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc đặc trưng và khám phá khu trung tâm TP.HCM. Bưu điện nằm cạnh Nhà thờ Đức Bà, thuận tiện để hành khách ghé thêm đường sách và các địa danh nổi tiếng xung quanh.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-landmark-81",
+  path: "phuong-long-binh-dong-nai-di-landmark-81",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Long Bình Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để vui chơi, mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Landmark 81 nằm về phía Đông khu trung tâm TP.HCM nên hành trình từ Long Bình thuận tiện hơn nhiều điểm nằm sâu về phía Tây thành phố.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 45 phút",
+},
+{
+  key: "phuong-long-binh-dong-nai-di-ben-bach-dang",
+  path: "phuong-long-binh-dong-nai-di-ben-bach-dang",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Bình Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo ven sông Sài Gòn, tham quan trung tâm thành phố hoặc kết hợp vui chơi vào buổi chiều tối. Xe đón tận nơi tại Long Bình và đưa đến khu vực bến, thuận tiện để tiếp tục khám phá phố đi bộ Nguyễn Huệ cùng các điểm lân cận.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-long-binh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Long Bình Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại trung tâm TP.HCM. Xe riêng giúp chủ động giờ khởi hành từ Long Bình và thuận tiện mang theo xe đẩy, đồ ăn cùng vật dụng cần thiết cho trẻ.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-long-binh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Bình Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm TP.HCM. Vị trí bảo tàng gần Dinh Độc Lập và nhiều địa danh nổi tiếng nên phù hợp để kết hợp thành một lịch trình tham quan trong ngày từ Đồng Nai.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-long-binh-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Bình Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống trung tâm Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố về đêm. Chủ động xe giúp hành khách linh hoạt giờ vui chơi và thuận tiện trở về Long Bình sau khi kết thúc lịch trình muộn.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-phu-my-hung",
+  path: "phuong-long-binh-dong-nai-di-phu-my-hung",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Bình Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Tuyến đường từ Long Bình đến Phú Mỹ Hưng đi qua nhiều khu vực của thành phố nên xe riêng giúp hành trình liền mạch và dễ chủ động thời gian.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-long-binh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Long Bình Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Bình Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón tận địa chỉ ở Long Bình và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, phù hợp cho lịch công tác đi về trong ngày.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-long-binh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng Phường Long Bình Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách mua sắm, ăn uống hoặc gặp gỡ tại trung tâm TP.HCM. Từ trung tâm thương mại có thể dễ dàng kết hợp Chợ Bến Thành, phố đi bộ Nguyễn Huệ và khu Đồng Khởi mà không phải di chuyển xa.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-long-binh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Bình Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu trung tâm Sài Gòn. Điểm đến nằm gần Nhà hát Thành phố và phố đi bộ Nguyễn Huệ, thuận tiện để khách từ Đồng Nai kết hợp nhiều hoạt động trong một chuyến.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-long-binh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Long Bình Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Bình Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình và nhóm bạn muốn mua sắm, ăn uống hoặc vui chơi tại khu vực phía Tây TP.HCM. Do khoảng cách khá xa, xe riêng giúp khách có hành trình thoải mái hơn và không phải đổi nhiều phương tiện giữa đường.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-binh-dong-nai-di-dam-sen",
+  path: "phuong-long-binh-dong-nai-di-dam-sen",
+  from: "Phường Long Bình Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Long Bình Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Bình Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Long Bình, giúp khách chủ động giờ khởi hành và giờ về, đồng thời thuận tiện mang theo đồ dùng cho chuyến đi.",
+  routeText:
+    "Phường Long Bình → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+{
+  key: "phuong-trang-dai-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-trang-dai-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Trảng Dài Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân tại sân bay. Xe đón theo địa chỉ tại Trảng Dài và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang nhiều hành lý.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-ga-sai-gon",
+  path: "phuong-trang-dai-dong-nai-di-ga-sai-gon",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Trảng Dài Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Xe riêng giúp khách xuất phát trực tiếp từ Trảng Dài, hạn chế trung chuyển và dễ căn thời gian đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-trang-dai-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trảng Dài Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần nối chuyến xe khách tại cửa ngõ phía Đông TP.HCM. Xe đón tận nơi ở Trảng Dài và đưa trực tiếp đến bến, thuận tiện khi hành khách có vali, nhiều hành lý hoặc đi cùng gia đình.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Quốc lộ 1A → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 55 phút – 1 giờ 20 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-trang-dai-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trảng Dài Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Do hành trình đi qua nhiều khu vực của TP.HCM, chủ động xe riêng giúp khách thoải mái hơn và dễ sắp xếp thời gian đến bến.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-trang-dai-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Trảng Dài Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đưa khách trực tiếp từ Trảng Dài đến bến, giúp hạn chế đổi phương tiện và thuận tiện hơn khi có nhiều hành lý.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Trảng Dài Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần đến TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Xe đón tận địa chỉ ở Trảng Dài và đưa thẳng đến bệnh viện, thuận tiện khi cần mang theo hồ sơ y tế và đồ dùng cho thời gian khám chữa bệnh.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Trảng Dài Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám. Đi xe riêng giúp người bệnh di chuyển liền mạch từ Trảng Dài đến khu vực bệnh viện và chủ động giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Trảng Dài Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Tuyến đi từ Trảng Dài thuận hướng về khu vực TP Thủ Đức, giúp hành khách không phải di chuyển sâu qua trung tâm Sài Gòn.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 55 phút – 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trảng Dài Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, điều trị hoặc tái khám. Không gian riêng giúp trẻ nghỉ ngơi trong hành trình, còn gia đình có thể thuận tiện mang theo hồ sơ, thuốc và những vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Trảng Dài Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón trực tiếp tại Trảng Dài và đưa đến bệnh viện, giúp hạn chế việc chuyển nhiều phương tiện trong hành trình.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Trảng Dài Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình cần khám thai, tái khám hoặc đến bệnh viện chăm sóc người thân. Xe đón theo địa chỉ tại Trảng Dài và đưa thẳng đến khu vực bệnh viện, giúp hành khách chủ động giờ khởi hành cho lịch khám tại trung tâm TP.HCM.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Trảng Dài Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, điều trị hoặc tái khám. Đi xe riêng giúp khách di chuyển trực tiếp từ Trảng Dài đến bệnh viện, có không gian nghỉ ngơi và dễ sắp xếp thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Trảng Dài Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám bệnh, tái khám hoặc đưa người thân đến khu vực Tân Bình. Xe riêng đón tận nơi ở Trảng Dài và đưa trực tiếp đến bệnh viện, thuận tiện cho những lịch khám buổi sáng hoặc chuyến đi về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-trang-dai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trảng Dài Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Hình thức đón tận nơi giúp giảm những chặng trung chuyển không cần thiết, đặc biệt thuận tiện với người đang hạn chế khả năng vận động.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-cho-ben-thanh",
+  path: "phuong-trang-dai-dong-nai-di-cho-ben-thanh",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Trảng Dài Đồng Nai đi Chợ Bến Thành phù hợp khách muốn tham quan, mua sắm hoặc dành một ngày khám phá khu trung tâm Sài Gòn. Từ Chợ Bến Thành có thể thuận tiện kết hợp Takashimaya, phố đi bộ Nguyễn Huệ và nhiều địa điểm nổi tiếng khác trong cùng chuyến đi.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-trang-dai-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trảng Dài Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, gặp gỡ bạn bè hoặc tham gia các hoạt động vào buổi tối. Chủ động xe riêng giúp hành khách linh hoạt thời gian vui chơi và thuận tiện trở về Đồng Nai sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Tôn Đức Thắng → Lê Thánh Tôn → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-dinh-doc-lap",
+  path: "phuong-trang-dai-dong-nai-di-dinh-doc-lap",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Trảng Dài Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật giữa trung tâm TP.HCM. Hành khách có thể kết hợp Dinh Độc Lập với Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và Bưu điện Trung tâm Sài Gòn trong một lịch trình.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-trang-dai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trảng Dài Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu vực Công xã Paris và cụm công trình kiến trúc nổi tiếng tại trung tâm thành phố. Đi xe riêng giúp gia đình hoặc nhóm bạn từ Trảng Dài chủ động lịch trình và dễ kết hợp nhiều điểm tham quan gần nhau.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-trang-dai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Trảng Dài Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc đặc trưng tại trung tâm TP.HCM. Vị trí ngay cạnh Nhà thờ Đức Bà giúp hành khách dễ dàng kết hợp nhiều điểm nổi tiếng trong một chuyến đi từ Đồng Nai.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-landmark-81",
+  path: "phuong-trang-dai-dong-nai-di-landmark-81",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Trảng Dài Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Điểm đến nằm ở phía Đông khu trung tâm TP.HCM nên khá thuận hướng cho hành trình từ Trảng Dài xuống Sài Gòn.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 50 phút",
+},
+{
+  key: "phuong-trang-dai-dong-nai-di-ben-bach-dang",
+  path: "phuong-trang-dai-dong-nai-di-ben-bach-dang",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Trảng Dài Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn tham quan khu vực ven sông Sài Gòn, dạo trung tâm thành phố hoặc vui chơi vào buổi chiều tối. Xe đón tận nơi tại Trảng Dài và đưa đến khu vực bến, thuận tiện kết hợp phố đi bộ Nguyễn Huệ cùng nhiều điểm gần trung tâm.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-trang-dai-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Trảng Dài Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp chủ động thời gian xuất phát từ Trảng Dài và thuận tiện mang theo xe đẩy, đồ ăn cùng các vật dụng cần thiết cho trẻ.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-trang-dai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Trảng Dài Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật tại trung tâm TP.HCM. Từ bảo tàng có thể tiếp tục đến Dinh Độc Lập và khu Nhà thờ Đức Bà để hoàn thiện lịch trình khám phá trong ngày.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-trang-dai-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trảng Dài Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm không khí sôi động về đêm. Chủ động phương tiện giúp hành khách linh hoạt thời gian vui chơi và thuận tiện trở về Trảng Dài sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-phu-my-hung",
+  path: "phuong-trang-dai-dong-nai-di-phu-my-hung",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Trảng Dài Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do hành trình từ Trảng Dài đến Phú Mỹ Hưng khá dài, xe riêng giúp khách di chuyển liền mạch và chủ động hơn về thời gian.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-trang-dai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trảng Dài Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc các sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Trảng Dài và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, phù hợp cho lịch công tác đi về trong ngày.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-trang-dai-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng Phường Trảng Dài Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc gặp gỡ bạn bè. Điểm đến nằm gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ nên dễ kết hợp nhiều hoạt động trong cùng một chuyến.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-trang-dai-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Trảng Dài Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu vực trung tâm TP.HCM. Từ đây hành khách có thể dễ dàng kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng trong cùng lịch trình.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-trang-dai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Trảng Dài Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình và nhóm bạn muốn mua sắm, ăn uống hoặc vui chơi tại khu vực phía Tây TP.HCM. Với quãng đường khá dài từ Trảng Dài, xe riêng giúp chuyến đi thoải mái hơn và hạn chế phải chuyển nhiều phương tiện.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-trang-dai-dong-nai-di-dam-sen",
+  path: "phuong-trang-dai-dong-nai-di-dam-sen",
+  from: "Phường Trảng Dài Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Trảng Dài Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Trảng Dài Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn vui chơi tại TP.HCM trong ngày. Xe đón tận nơi ở Trảng Dài, giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo đồ dùng cho cả ngày vui chơi.",
+  routeText:
+    "Phường Trảng Dài → Quốc lộ 1A → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+{
+  key: "phuong-ho-nai-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-ho-nai-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Hố Nai Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân tại sân bay. Xe đón theo địa chỉ tại Hố Nai và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-ga-sai-gon",
+  path: "phuong-ho-nai-dong-nai-di-ga-sai-gon",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Hố Nai Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Xe riêng đón tận nơi tại Hố Nai giúp khách hạn chế các chặng trung chuyển, đồng thời dễ sắp xếp thời gian để đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-ho-nai-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hố Nai Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần nối chuyến xe khách tại cửa ngõ phía Đông TP.HCM. Hành trình từ Hố Nai khá thuận hướng theo Quốc lộ 1A, giúp khách chủ động giờ đến bến và thuận tiện hơn khi mang nhiều hành lý.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Quốc lộ 1A → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 55 phút – 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-ho-nai-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hố Nai Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Do phải di chuyển từ phía Đông sang phía Tây TP.HCM, chủ động xe riêng giúp hành khách thoải mái hơn và dễ căn thời gian cho chuyến xe tiếp theo.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-ho-nai-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Hố Nai Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đưa khách trực tiếp từ Hố Nai đến bến, hạn chế đổi phương tiện và thuận tiện cho những chuyến có nhiều hành lý.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Hố Nai Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần đến TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Xe đi thẳng từ Hố Nai đến khu vực bệnh viện giúp giảm số lần lên xuống phương tiện, thuận tiện khi mang hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Hố Nai Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Xe riêng giúp người bệnh đi trực tiếp từ Hố Nai đến bệnh viện và chủ động giờ khởi hành theo lịch hẹn.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Hố Nai Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Tuyến từ Hố Nai đến khu vực bệnh viện thuận hướng từ Đồng Nai vào TP.HCM, phù hợp cho cả những chuyến khám và trở về trong ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 55 phút – 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hố Nai Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, điều trị hoặc tái khám. Hành trình riêng giúp trẻ có không gian nghỉ ngơi trên đường, đồng thời gia đình thuận tiện mang theo hồ sơ, thuốc và các vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Hố Nai Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón trực tiếp tại Hố Nai và đưa đến bệnh viện, giúp hạn chế việc đổi nhiều phương tiện trong hành trình cùng trẻ.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Hố Nai Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón theo địa chỉ tại Hố Nai và đưa thẳng đến khu vực bệnh viện, giúp hành khách chủ động thời gian cho hành trình vào trung tâm TP.HCM.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Hố Nai Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Đi xe riêng giúp khách xuất phát tận nơi ở Hố Nai, có không gian nghỉ ngơi trên đường và dễ sắp xếp giờ đi theo lịch hẹn.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Hố Nai Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám bệnh, tái khám hoặc đưa người thân đến khu vực Tân Bình. Xe riêng đưa khách trực tiếp từ Hố Nai đến bệnh viện, thuận tiện cho lịch khám sớm và những chuyến cần trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-ho-nai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hố Nai Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Việc đón tận nơi giúp hạn chế đi bộ và đổi phương tiện, đặc biệt thuận tiện với người lớn tuổi hoặc người đang khó vận động.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-cho-ben-thanh",
+  path: "phuong-ho-nai-dong-nai-di-cho-ben-thanh",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Hố Nai Đồng Nai đi Chợ Bến Thành phù hợp khách muốn mua sắm, tham quan và dành thời gian khám phá khu vực trung tâm Sài Gòn. Từ chợ, hành khách có thể kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa điểm nổi tiếng lân cận trong cùng ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-ho-nai-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hố Nai Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, vui chơi hoặc gặp gỡ bạn bè vào buổi tối. Chủ động xe riêng giúp hành khách linh hoạt thời gian tham quan và thuận tiện trở về Hố Nai sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Tôn Đức Thắng → Lê Thánh Tôn → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-dinh-doc-lap",
+  path: "phuong-ho-nai-dong-nai-di-dinh-doc-lap",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Hố Nai Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một trong những địa danh lịch sử nổi bật của TP.HCM. Từ đây có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và Bưu điện Trung tâm Sài Gòn thành lịch trình tham quan gọn trong ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-ho-nai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hố Nai Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu vực Công xã Paris và các công trình kiến trúc nổi tiếng giữa trung tâm thành phố. Gia đình hoặc nhóm bạn có thể chủ động lịch trình từ Hố Nai và kết hợp thêm nhiều điểm gần nhau sau khi đến nơi.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-ho-nai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Hố Nai Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc đặc trưng tại khu vực trung tâm TP.HCM. Bưu điện nằm ngay cạnh Nhà thờ Đức Bà và gần nhiều điểm tham quan khác, thuận tiện cho chuyến đi Sài Gòn trong ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-landmark-81",
+  path: "phuong-ho-nai-dong-nai-di-landmark-81",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Hố Nai Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm về phía Đông khu trung tâm TP.HCM nên khá thuận hướng cho hành trình xuất phát từ Hố Nai xuống Sài Gòn.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+{
+  key: "phuong-ho-nai-dong-nai-di-ben-bach-dang",
+  path: "phuong-ho-nai-dong-nai-di-ben-bach-dang",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Hố Nai Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo ven sông, tham quan trung tâm Sài Gòn hoặc vui chơi vào buổi chiều tối. Xe đón tận nơi tại Hố Nai và đưa đến khu vực bến, thuận tiện để kết hợp phố đi bộ Nguyễn Huệ và các địa điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-ho-nai-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Hố Nai Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại trung tâm TP.HCM. Đi xe riêng giúp chủ động giờ khởi hành từ Hố Nai và thuận tiện mang theo xe đẩy, đồ ăn cùng vật dụng cần thiết cho chuyến tham quan.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-ho-nai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Hố Nai Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu trung tâm TP.HCM. Điểm đến nằm gần Dinh Độc Lập, giúp hành khách dễ kết hợp thêm các công trình lịch sử và kiến trúc nổi tiếng trong cùng một ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-ho-nai-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hố Nai Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện riêng giúp khách linh hoạt thời gian vui chơi và thuận tiện trở về Đồng Nai sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-phu-my-hung",
+  path: "phuong-ho-nai-dong-nai-di-phu-my-hung",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Hố Nai Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do hành trình từ Hố Nai sang phía Nam thành phố khá dài, xe riêng giúp khách di chuyển liền mạch và chủ động thời gian hơn trong ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-ho-nai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hố Nai Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Hố Nai và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, thuận tiện cho khách có lịch làm việc theo khung giờ cụ thể.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-ho-nai-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Hố Nai Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc gặp gỡ. Vị trí trên đường Lê Lợi giúp hành khách dễ kết hợp Chợ Bến Thành, phố đi bộ Nguyễn Huệ và nhiều địa điểm trung tâm trong cùng chuyến đi.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-ho-nai-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hố Nai Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu trung tâm TP.HCM. Điểm đến nằm gần phố đi bộ Nguyễn Huệ, Nhà hát Thành phố và Bến Bạch Đằng, thuận tiện để kết hợp nhiều hoạt động sau khi đến Sài Gòn.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-ho-nai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Hố Nai Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực phía Tây TP.HCM. Hành trình từ Hố Nai khá xa nên xe riêng giúp khách thoải mái hơn, chủ động giờ về và không phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Quốc lộ 1A → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-ho-nai-dong-nai-di-dam-sen",
+  path: "phuong-ho-nai-dong-nai-di-dam-sen",
+  from: "Phường Hố Nai Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Hố Nai Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hố Nai Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Hố Nai, giúp khách chủ động giờ khởi hành và giờ trở về, đồng thời thuận tiện mang theo đồ dùng cho cả ngày.",
+  routeText:
+    "Phường Hố Nai → Quốc lộ 1A → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 30 phút",
+},
+{
+  key: "phuong-long-hung-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-long-hung-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Long Hưng Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Long Hưng và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát, đặc biệt thuận tiện khi đi sớm hoặc mang nhiều hành lý.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-ga-sai-gon",
+  path: "phuong-long-hung-dong-nai-di-ga-sai-gon",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Hưng Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Đi xe riêng giúp khách xuất phát trực tiếp từ Long Hưng, hạn chế trung chuyển và dễ căn thời gian đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-long-hung-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Hưng Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần nối chuyến xe khách tại cửa ngõ phía Đông TP.HCM. Từ Long Hưng có thể đi về hướng bến mà không cần vào sâu khu vực trung tâm, thuận tiện cho khách có hành lý hoặc cần đến bến theo giờ cố định.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 40 phút – 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-long-hung-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Hưng Đồng Nai đi Bến xe Miền Tây phù hợp khách cần tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Do tuyến đi từ phía Đông sang phía Tây TP.HCM khá dài, chủ động xe riêng giúp hành khách thoải mái hơn và dễ sắp xếp thời gian nối chuyến.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-long-hung-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Long Hưng Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc nối chuyến theo hướng Quốc lộ 22. Xe đón tận nơi tại Long Hưng và đưa trực tiếp đến bến, giúp khách hạn chế đổi phương tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Phạm Văn Đồng → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Hưng Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đón tận địa chỉ ở Long Hưng và đưa thẳng đến bệnh viện, thuận tiện khi cần mang hồ sơ y tế, thuốc cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Long Hưng Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Hành trình bằng xe riêng giúp người bệnh đi trực tiếp từ Long Hưng đến bệnh viện và chủ động giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Hưng Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Điểm đến nằm thuận hướng từ Đồng Nai vào TP.HCM nên khách từ Long Hưng không cần di chuyển sâu qua khu vực trung tâm, phù hợp cho chuyến đi về trong ngày.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 40 phút – 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Hưng Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, điều trị hoặc tái khám. Không gian riêng giúp trẻ nghỉ ngơi trên đường, đồng thời gia đình thuận tiện mang theo hồ sơ, thuốc và những vật dụng chăm sóc cần thiết cho buổi khám.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Hưng Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón trực tiếp tại Long Hưng và đưa đến bệnh viện, giúp gia đình hạn chế đổi phương tiện và chủ động hơn theo giờ khám của trẻ.",
+  routeText:
+    "Phường Long Hưng → đường Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Hưng Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón tận nơi tại Long Hưng và đưa thẳng đến bệnh viện, giúp hành khách hạn chế đổi phương tiện và chủ động thời gian theo lịch khám.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Long Hưng Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Hành trình bằng xe riêng giúp khách có không gian nghỉ ngơi, mang theo hồ sơ y tế thuận tiện và dễ sắp xếp giờ xuất phát từ Long Hưng.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Hưng Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Xe riêng đón theo địa chỉ tại Long Hưng và đưa trực tiếp đến bệnh viện, thuận tiện cho những chuyến khám buổi sáng hoặc đi về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-long-hung-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Hưng Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám các vấn đề về xương khớp và chấn thương. Đón tận nơi giúp giảm những chặng đi bộ và chuyển xe không cần thiết, đặc biệt thuận tiện với người đang hạn chế vận động.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-cho-ben-thanh",
+  path: "phuong-long-hung-dong-nai-di-cho-ben-thanh",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Hưng Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc thưởng thức ẩm thực. Từ Chợ Bến Thành, hành khách có thể kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa điểm trung tâm trong cùng chuyến đi.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-long-hung-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Hưng Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, vui chơi hoặc gặp gỡ bạn bè. Chủ động xe giúp hành khách linh hoạt thời gian, đặc biệt với lịch trình buổi tối cần trở về Long Hưng sau khi kết thúc chuyến đi.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-dinh-doc-lap",
+  path: "phuong-long-hung-dong-nai-di-dinh-doc-lap",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Hưng Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Khu vực này nằm gần Bảo tàng Chứng tích Chiến tranh và Nhà thờ Đức Bà, phù hợp để khách từ Đồng Nai kết hợp nhiều điểm trong một ngày.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-long-hung-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Hưng Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp gia đình và nhóm khách muốn tham quan khu vực Công xã Paris cùng các công trình kiến trúc nổi tiếng của thành phố. Chủ động phương tiện giúp khách dễ kết hợp thêm Bưu điện Trung tâm Sài Gòn và các điểm gần đó.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-long-hung-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Hưng Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc đặc trưng giữa trung tâm thành phố. Bưu điện nằm cạnh Nhà thờ Đức Bà và gần đường sách, giúp hành khách từ Long Hưng dễ xây dựng lịch trình tham quan nhiều điểm liền nhau.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-landmark-81",
+  path: "phuong-long-hung-dong-nai-di-landmark-81",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Long Hưng Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm ở cửa ngõ phía Đông khu trung tâm nên hành trình từ Long Hưng thuận tiện hơn nhiều điểm nằm sâu về phía Tây TP.HCM.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 5 phút – 1 giờ 40 phút",
+},
+{
+  key: "phuong-long-hung-dong-nai-di-ben-bach-dang",
+  path: "phuong-long-hung-dong-nai-di-ben-bach-dang",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Hưng Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo ven sông Sài Gòn, tham quan khu trung tâm hoặc kết hợp vui chơi vào buổi chiều tối. Xe đón tận nơi tại Long Hưng và đưa đến khu vực bến, giúp hành khách chủ động lịch trình mà không cần đổi nhiều phương tiện.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-long-hung-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Long Hưng Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại trung tâm TP.HCM. Đi xe riêng giúp chủ động giờ xuất phát từ Long Hưng và thuận tiện mang theo xe đẩy, đồ ăn cùng vật dụng cần thiết cho trẻ.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-long-hung-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Long Hưng Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên hành khách có thể kết hợp thêm nhiều địa danh lịch sử nổi bật trong cùng chuyến đi.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-long-hung-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Hưng Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện giúp khách linh hoạt giờ vui chơi và thuận tiện trở về Long Hưng khi kết thúc lịch trình muộn.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-phu-my-hung",
+  path: "phuong-long-hung-dong-nai-di-phu-my-hung",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Hưng Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Xe riêng giúp hành trình từ Long Hưng đến khu đô thị Phú Mỹ Hưng liền mạch, thuận tiện cho cả chuyến một chiều lẫn lịch trình đi về trong ngày.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-long-hung-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Hưng Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu Nam TP.HCM. Xe đón theo địa chỉ ở Long Hưng và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, giúp khách chủ động thời gian theo lịch sự kiện.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-long-hung-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Long Hưng Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, ăn uống hoặc gặp gỡ tại trung tâm Sài Gòn. Điểm đến nằm gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ, phù hợp để kết hợp nhiều hoạt động trong cùng một chuyến từ Đồng Nai.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-long-hung-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Hưng Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu trung tâm TP.HCM. Từ đây hành khách có thể đi bộ đến Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và nhiều điểm nổi tiếng quanh khu Đồng Khởi.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-long-hung-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Hưng Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình và nhóm bạn muốn mua sắm, ăn uống hoặc vui chơi tại khu vực phía Tây TP.HCM. Do quãng đường từ Long Hưng khá dài, xe riêng giúp hành khách thoải mái hơn và không phải chuyển nhiều phương tiện giữa đường.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-hung-dong-nai-di-dam-sen",
+  path: "phuong-long-hung-dong-nai-di-dam-sen",
+  from: "Phường Long Hưng Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Long Hưng Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Hưng Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi tại Long Hưng, giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo đồ dùng cho cả ngày tham quan.",
+  routeText:
+    "Phường Long Hưng → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+{
+  key: "phuong-phuoc-tan-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-phuoc-tan-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Tân Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Phước Tân và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ khởi hành và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-ga-sai-gon",
+  path: "phuong-phuoc-tan-dong-nai-di-ga-sai-gon",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Phước Tân Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Đi xe riêng từ Phước Tân giúp hạn chế các chặng trung chuyển, đồng thời khách dễ căn thời gian đến ga trước giờ tàu chạy.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-phuoc-tan-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Tân Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía Đông TP.HCM. Tuyến đi không cần vào sâu trung tâm thành phố, thuận tiện cho hành khách có nhiều hành lý hoặc cần đến bến theo giờ cố định.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 40 phút – 1 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-phuoc-tan-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Tân Đồng Nai đi Bến xe Miền Tây phù hợp khách cần tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Do phải di chuyển từ phía Đông sang phía Tây TP.HCM, xe riêng giúp hành khách thoải mái hơn và chủ động thời gian cho chuyến xe tiếp theo.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-phuoc-tan-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Tân Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc nối chuyến theo hướng Quốc lộ 22. Xe đón tận nơi tại Phước Tân và đưa trực tiếp đến bến, giúp khách không phải chuyển nhiều phương tiện khi mang theo vali hoặc hành lý.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Phạm Văn Đồng → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Tân Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp từ Phước Tân đến bệnh viện, giúp giảm việc đổi phương tiện và thuận tiện khi mang theo hồ sơ y tế cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Phước Tân Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách cần khám chuyên khoa, làm xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Xe riêng giúp người bệnh có hành trình liền mạch từ Phước Tân và dễ sắp xếp giờ xuất phát theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Phước Tân Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Từ Phước Tân đi bệnh viện khá thuận hướng về cửa ngõ TP.HCM, phù hợp cho những chuyến khám rồi trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 40 phút – 1 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Tân Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, điều trị hoặc tái khám. Không gian riêng giúp trẻ có thể nghỉ ngơi trên đường, đồng thời gia đình thuận tiện mang theo hồ sơ, thuốc và các vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Tân Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón theo địa chỉ tại Phước Tân và đưa thẳng đến bệnh viện, giúp gia đình chủ động giờ đi và hạn chế chuyển phương tiện cùng trẻ.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Tân Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón tận nơi tại Phước Tân và đưa thẳng đến bệnh viện, giúp hành khách chủ động thời gian và hạn chế phải chuyển nhiều phương tiện.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Phước Tân Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp khách có không gian nghỉ ngơi trên đường và dễ sắp xếp giờ xuất phát từ Phước Tân theo lịch hẹn.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Phước Tân Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám bệnh, tái khám hoặc đưa người thân đến khu vực Tân Bình. Xe riêng đưa khách trực tiếp từ Phước Tân đến bệnh viện, thuận tiện cho lịch khám buổi sáng và những chuyến cần trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-phuoc-tan-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Tân Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Hình thức đón tận nơi giúp giảm các chặng đi bộ và đổi xe, đặc biệt thuận tiện với người lớn tuổi hoặc người hạn chế vận động.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-cho-ben-thanh",
+  path: "phuong-phuoc-tan-dong-nai-di-cho-ben-thanh",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Phước Tân Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc thưởng thức ẩm thực. Từ khu vực chợ, hành khách có thể kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều điểm nổi tiếng khác trong cùng ngày.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-phuoc-tan-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Tân Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, vui chơi hoặc gặp gỡ bạn bè vào buổi tối. Chủ động xe giúp hành khách linh hoạt giờ tham quan và thuận tiện trở về Phước Tân sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-dinh-doc-lap",
+  path: "phuong-phuoc-tan-dong-nai-di-dinh-doc-lap",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Phước Tân Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật tại trung tâm TP.HCM. Khu vực này gần Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và nhiều điểm tham quan khác, phù hợp cho chuyến khám phá Sài Gòn trong ngày.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-phuoc-tan-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Tân Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp gia đình và nhóm khách muốn tham quan khu vực Công xã Paris cùng các công trình kiến trúc nổi tiếng ở trung tâm thành phố. Từ đây có thể kết hợp Bưu điện Trung tâm Sài Gòn và đường sách trong cùng lịch trình.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-phuoc-tan-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Tân Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc đặc trưng giữa trung tâm TP.HCM. Bưu điện nằm cạnh Nhà thờ Đức Bà nên hành khách có thể kết hợp nhiều điểm gần nhau mà không mất thêm nhiều thời gian di chuyển.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-landmark-81",
+  path: "phuong-phuoc-tan-dong-nai-di-landmark-81",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Phước Tân Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Điểm đến nằm ở phía Đông khu trung tâm TP.HCM nên hành trình từ Phước Tân khá thuận hướng so với nhiều địa điểm phía Tây thành phố.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 45 phút",
+},
+{
+  key: "phuong-phuoc-tan-dong-nai-di-ben-bach-dang",
+  path: "phuong-phuoc-tan-dong-nai-di-ben-bach-dang",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Tân Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo ven sông Sài Gòn, tham quan khu trung tâm hoặc kết hợp vui chơi vào buổi chiều tối. Xe đón tận nơi tại Phước Tân và đưa đến khu vực bến, thuận tiện để tiếp tục khám phá phố đi bộ Nguyễn Huệ cùng các địa điểm lân cận.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-phuoc-tan-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Phước Tân Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ muốn dành một ngày tham quan và vui chơi tại TP.HCM. Đi xe riêng giúp chủ động giờ xuất phát từ Phước Tân, đồng thời thuận tiện mang theo xe đẩy, đồ ăn và các vật dụng cần thiết cho trẻ.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 1 giờ 50 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-phuoc-tan-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Tân Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá khu trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập, giúp hành khách dễ kết hợp thêm nhiều địa danh nổi tiếng trong một chuyến tham quan từ Đồng Nai.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-phuoc-tan-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Tân Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống trung tâm Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm không khí về đêm. Chủ động phương tiện giúp khách linh hoạt giờ vui chơi và thuận tiện trở về Phước Tân sau khi kết thúc lịch trình muộn.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-phu-my-hung",
+  path: "phuong-phuoc-tan-dong-nai-di-phu-my-hung",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Phước Tân Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Xe riêng giúp hành trình từ Phước Tân đến Phú Mỹ Hưng liền mạch hơn, phù hợp cả chuyến một chiều lẫn lịch trình đi và về trong ngày.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-phuoc-tan-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Tân Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Phước Tân và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, giúp khách chủ động thời gian theo lịch sự kiện.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-phuoc-tan-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Tân Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Vị trí gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ giúp hành khách dễ kết hợp nhiều hoạt động trong cùng một chuyến.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-phuoc-tan-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Tân Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc vui chơi tại trung tâm TP.HCM. Sau khi đến nơi, khách có thể dễ dàng kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng trong cùng lịch trình.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-phuoc-tan-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Tân Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình và nhóm bạn muốn mua sắm, ăn uống hoặc vui chơi tại khu vực phía Tây TP.HCM. Do điểm đến nằm khá xa Phước Tân, xe riêng giúp hành khách thoải mái hơn và không phải đổi nhiều phương tiện trên đường.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-phuoc-tan-dong-nai-di-dam-sen",
+  path: "phuong-phuoc-tan-dong-nai-di-dam-sen",
+  from: "Phường Phước Tân Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Phước Tân Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Tân Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Phước Tân, giúp khách chủ động giờ khởi hành và giờ về, đồng thời thuận tiện mang theo đồ dùng cho cả ngày.",
+  routeText:
+    "Phường Phước Tân → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+{
+  key: "phuong-tam-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-tam-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Tam Phước Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Tam Phước và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-ga-sai-gon",
+  path: "phuong-tam-phuoc-dong-nai-di-ga-sai-gon",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tam Phước Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Đi xe riêng từ Tam Phước giúp hạn chế trung chuyển giữa nhiều phương tiện và dễ căn thời gian đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-tam-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Phước Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía Đông TP.HCM. Xe đón tận nơi giúp hành khách mang hành lý thuận tiện hơn, đồng thời chủ động thời gian đến bến theo giờ xe dự kiến khởi hành.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 50 phút – 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-tam-phuoc-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Phước Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Do hành trình phải đi từ khu vực Đồng Nai sang phía Tây TP.HCM, xe riêng giúp khách di chuyển liền mạch và chủ động hơn khi có giờ xe cố định.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-tam-phuoc-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Tam Phước Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón tại Tam Phước và đưa trực tiếp đến bến, giúp hành khách hạn chế đổi xe khi mang theo vali, hành lý hoặc đi cùng gia đình.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Quốc lộ 1 → Phạm Văn Đồng → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tam Phước Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp từ Tam Phước đến bệnh viện, thuận tiện khi cần mang theo hồ sơ y tế, thuốc và đồ dùng cho quá trình khám chữa bệnh.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Tam Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Đi xe riêng giúp người bệnh có không gian nghỉ ngơi trên hành trình và dễ sắp xếp giờ xuất phát theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tam Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. So với các bệnh viện nằm sâu trong trung tâm, điểm đến này thuận hướng hơn từ Tam Phước, phù hợp cho lịch trình khám và trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Quốc lộ 1 → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 50 phút – 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Phước Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Không gian riêng giúp trẻ có thể nghỉ ngơi trên quãng đường từ Đồng Nai, đồng thời gia đình thuận tiện mang theo thuốc, hồ sơ và vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tam Phước Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón theo địa chỉ tại Tam Phước và đưa thẳng đến bệnh viện, giúp gia đình hạn chế chuyển phương tiện và chủ động hơn theo giờ khám của trẻ.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tam Phước Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón tận nơi tại Tam Phước và đưa thẳng đến bệnh viện, giúp hành khách giảm các chặng trung chuyển và chủ động giờ đi theo lịch hẹn.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Tam Phước Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Hành trình bằng xe riêng giúp khách có không gian nghỉ ngơi trên đường, đồng thời thuận tiện mang theo hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tam Phước Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Xe riêng đón theo địa chỉ tại Tam Phước, giúp khách chủ động xuất phát sớm và thuận tiện cho lịch trình trở về Đồng Nai sau khi khám xong.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-tam-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị về xương khớp và chấn thương. Việc đón tận nơi đặc biệt thuận tiện với người hạn chế vận động, giúp giảm đi bộ và tránh phải đổi nhiều phương tiện khi vào thành phố.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-cho-ben-thanh",
+  path: "phuong-tam-phuoc-dong-nai-di-cho-ben-thanh",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tam Phước Đồng Nai đi Chợ Bến Thành phù hợp khách muốn dành một ngày mua sắm, thưởng thức ẩm thực và khám phá khu trung tâm Sài Gòn. Từ chợ, hành khách dễ kết hợp thêm Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ cùng nhiều địa điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-tam-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống Sài Gòn dạo phố, ăn uống hoặc gặp gỡ bạn bè tại khu vực trung tâm. Chủ động phương tiện riêng giúp khách linh hoạt giờ vui chơi, nhất là những chuyến buổi tối cần trở về Tam Phước sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-dinh-doc-lap",
+  path: "phuong-tam-phuoc-dong-nai-di-dinh-doc-lap",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tam Phước Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn tham quan một địa danh lịch sử tiêu biểu của TP.HCM. Vị trí giữa trung tâm giúp khách dễ kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm nổi tiếng khác trong cùng ngày.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-tam-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và khám phá những công trình kiến trúc nổi tiếng giữa trung tâm thành phố. Sau khi đến nơi, khách có thể kết hợp Bưu điện Trung tâm Sài Gòn và đường sách ngay gần đó.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-tam-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tam Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời tại khu vực Công xã Paris. Điểm đến nằm cạnh Nhà thờ Đức Bà và gần nhiều địa danh trung tâm, thuận tiện để xây dựng lịch trình tham quan Sài Gòn trong ngày.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-landmark-81",
+  path: "phuong-tam-phuoc-dong-nai-di-landmark-81",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Tam Phước Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm về phía Đông khu trung tâm TP.HCM nên khá thuận hướng cho khách xuất phát từ Tam Phước, Đồng Nai.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+{
+  key: "phuong-tam-phuoc-dong-nai-di-ben-bach-dang",
+  path: "phuong-tam-phuoc-dong-nai-di-ben-bach-dang",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tam Phước Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn dạo ven sông, ngắm cảnh trung tâm Sài Gòn hoặc kết hợp vui chơi vào buổi chiều tối. Xe đón tận nơi tại Tam Phước và đưa đến khu vực bến, thuận tiện để khách tiếp tục tham quan phố đi bộ Nguyễn Huệ cùng các điểm lân cận.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-tam-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Tam Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ muốn dành một ngày tham quan động vật, vui chơi và khám phá không gian xanh giữa thành phố. Xe riêng giúp gia đình chủ động giờ xuất phát từ Tam Phước và thuận tiện mang theo đồ dùng cho trẻ.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-tam-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Tam Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và dành thời gian tham quan khu trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên có thể kết hợp hai địa danh cùng nhiều điểm nổi tiếng khác trong một chuyến đi.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-tam-phuoc-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Phước Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện giúp khách linh hoạt giờ vui chơi và thuận tiện trở về Tam Phước sau khi kết thúc lịch trình muộn.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-phu-my-hung",
+  path: "phuong-tam-phuoc-dong-nai-di-phu-my-hung",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tam Phước Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Quãng đường từ Tam Phước sang khu vực này khá dài nên xe riêng giúp hành trình liền mạch hơn, phù hợp cả chuyến một chiều lẫn đi về trong ngày.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-tam-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Phước Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Tam Phước và đưa thẳng đến Trung tâm Hội chợ và Triển lãm Sài Gòn, thuận tiện cho lịch làm việc có giờ bắt đầu cụ thể.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-tam-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Tam Phước Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc gặp gỡ. Vị trí trên đường Lê Lợi gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ, phù hợp để kết hợp nhiều hoạt động trong cùng một chuyến.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-tam-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tam Phước Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu vực trung tâm TP.HCM. Sau khi đến nơi, hành khách có thể kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng mà không phải di chuyển xa.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-tam-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tam Phước Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực phía Tây TP.HCM. Do điểm đến nằm khá xa Tam Phước, đi xe riêng giúp khách thoải mái hơn và tránh phải chuyển nhiều phương tiện trong hành trình.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-tam-phuoc-dong-nai-di-dam-sen",
+  path: "phuong-tam-phuoc-dong-nai-di-dam-sen",
+  from: "Phường Tam Phước Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Tam Phước Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tam Phước Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Tam Phước giúp khách chủ động giờ đi và giờ về, đồng thời thuận tiện mang theo đồ dùng cần thiết cho cả ngày.",
+  routeText:
+    "Phường Tam Phước → Quốc lộ 51 → Võ Nguyên Giáp → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+{
+  key: "phuong-binh-loc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-binh-loc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Lộc Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Bình Lộc và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ khởi hành và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-ga-sai-gon",
+  path: "phuong-binh-loc-dong-nai-di-ga-sai-gon",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bình Lộc Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Hành trình bằng xe riêng giúp khách đi trực tiếp từ Bình Lộc, hạn chế các chặng trung chuyển và dễ sắp xếp thời gian đến ga trước giờ tàu chạy.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-binh-loc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Lộc Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía Đông TP.HCM. Xe đón tận nơi tại Bình Lộc giúp hành khách thuận tiện mang hành lý và chủ động thời gian đến bến theo lịch khởi hành của chuyến tiếp theo.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 20 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-binh-loc-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Lộc Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Do điểm đến nằm ở phía Tây TP.HCM, đi xe riêng từ Bình Lộc giúp hành khách có hành trình liền mạch và dễ căn thời gian cho chuyến xe tiếp theo.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-binh-loc-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Lộc Đồng Nai đi Bến xe An Sương phù hợp khách cần sang khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón trực tiếp tại Bình Lộc giúp khách hạn chế đổi phương tiện, đặc biệt thuận tiện khi đi cùng gia đình hoặc mang nhiều hành lý.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Lộc Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách từ Bình Lộc đến thẳng bệnh viện, thuận tiện khi cần mang hồ sơ y tế, thuốc và đồ dùng cá nhân cho chuyến khám xa.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Bình Lộc Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Quãng đường từ Bình Lộc khá dài nên xe riêng giúp người bệnh có không gian nghỉ ngơi và chủ động giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bình Lộc Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. So với các bệnh viện nằm sâu trong nội đô, điểm đến này thuận hướng hơn từ Đồng Nai, phù hợp cho lịch trình đi khám và trở về Bình Lộc trong ngày.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Lộc Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Hành trình riêng giúp trẻ có không gian nghỉ ngơi trên quãng đường dài, đồng thời gia đình thuận tiện mang theo thuốc, hồ sơ và vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Lộc Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón tận nơi ở Bình Lộc và đưa thẳng đến bệnh viện, giúp gia đình hạn chế đổi phương tiện trong hành trình dài cùng trẻ.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Lộc Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Quãng đường từ Bình Lộc vào trung tâm TP.HCM khá dài nên xe riêng giúp hành khách có không gian nghỉ ngơi và chủ động giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bình Lộc Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Xe đón theo địa chỉ tại Bình Lộc và đưa trực tiếp đến bệnh viện, giúp khách hạn chế trung chuyển khi mang hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bình Lộc Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Xe riêng giúp hành khách xuất phát trực tiếp từ Bình Lộc, phù hợp với lịch khám buổi sáng và những chuyến cần trở về Đồng Nai sau khi hoàn tất.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-binh-loc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Lộc Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị về xương khớp và chấn thương. Hình thức đón tận nơi giúp giảm việc đi bộ và đổi phương tiện, đặc biệt hữu ích với người lớn tuổi hoặc người đang gặp khó khăn khi vận động.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-cho-ben-thanh",
+  path: "phuong-binh-loc-dong-nai-di-cho-ben-thanh",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bình Lộc Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực hoặc dành một ngày tham quan thành phố. Từ khu vực chợ, khách có thể kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều điểm nổi tiếng gần nhau.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-binh-loc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Lộc Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống Sài Gòn dạo phố, ăn uống, tham quan hoặc gặp gỡ bạn bè. Với hành trình khá xa từ Bình Lộc, chủ động xe riêng giúp khách linh hoạt giờ vui chơi và thuận tiện sắp xếp chuyến trở về Đồng Nai.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-dinh-doc-lap",
+  path: "phuong-binh-loc-dong-nai-di-dinh-doc-lap",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bình Lộc Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn tham quan một địa danh lịch sử tiêu biểu giữa trung tâm TP.HCM. Từ đây có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và nhiều điểm tham quan lân cận trong cùng ngày.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-binh-loc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Lộc Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu vực Công xã Paris và khám phá các công trình kiến trúc nổi tiếng ở trung tâm thành phố. Sau khi đến nơi, hành khách có thể kết hợp Bưu điện Trung tâm Sài Gòn và các điểm gần đó.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-binh-loc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Lộc Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời và khám phá khu vực trung tâm TP.HCM. Bưu điện nằm ngay cạnh Nhà thờ Đức Bà, thuận tiện để khách từ Bình Lộc kết hợp nhiều điểm trong một lịch trình.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-landmark-81",
+  path: "phuong-binh-loc-dong-nai-di-landmark-81",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Bình Lộc Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm ở phía Đông khu trung tâm TP.HCM nên hành trình từ Bình Lộc thuận hướng hơn so với nhiều điểm nằm sâu về phía Tây thành phố.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 20 phút",
+},
+{
+  key: "phuong-binh-loc-dong-nai-di-ben-bach-dang",
+  path: "phuong-binh-loc-dong-nai-di-ben-bach-dang",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Lộc Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Xe đón theo địa chỉ tại Bình Lộc và đưa đến khu vực bến, thuận tiện để kết hợp phố đi bộ Nguyễn Huệ cùng các điểm tham quan gần đó.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-binh-loc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Bình Lộc Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ muốn dành một ngày tham quan, vui chơi và khám phá không gian xanh giữa TP.HCM. Đi xe riêng từ Bình Lộc giúp gia đình chủ động giờ khởi hành và thuận tiện mang theo xe đẩy cùng đồ dùng cho trẻ.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-binh-loc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Lộc Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu trung tâm TP.HCM. Do bảo tàng nằm gần Dinh Độc Lập, khách có thể kết hợp nhiều địa danh lịch sử trong cùng chuyến đi từ Bình Lộc.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-binh-loc-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Lộc Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Với quãng đường khá xa, chủ động xe giúp khách linh hoạt thời gian vui chơi và thuận tiện trở về Bình Lộc khi kết thúc lịch trình.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-phu-my-hung",
+  path: "phuong-binh-loc-dong-nai-di-phu-my-hung",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bình Lộc Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Hành trình từ Bình Lộc sang phía Nam thành phố tương đối dài nên xe riêng giúp khách di chuyển liền mạch và chủ động lịch trình đi về trong ngày.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-binh-loc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Lộc Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón tại Bình Lộc và đưa thẳng đến trung tâm triển lãm, giúp khách dễ căn giờ đến nơi theo lịch khai mạc, hội nghị hoặc chương trình đã đăng ký.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-binh-loc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Lộc Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Trung tâm thương mại nằm gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ, phù hợp để kết hợp nhiều hoạt động trong cùng chuyến đi.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-binh-loc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Lộc Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc vui chơi tại trung tâm TP.HCM. Vị trí trên trục Đồng Khởi giúp hành khách thuận tiện kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng trong cùng lịch trình.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-binh-loc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Lộc Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn dành thời gian mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Đây là hành trình dài từ Đồng Nai, vì vậy xe riêng giúp khách thoải mái hơn và không phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-binh-loc-dong-nai-di-dam-sen",
+  path: "phuong-binh-loc-dong-nai-di-dam-sen",
+  from: "Phường Bình Lộc Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Bình Lộc Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Lộc Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành trọn một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Bình Lộc giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo đồ ăn, hành lý và vật dụng cho trẻ.",
+  routeText:
+    "Phường Bình Lộc → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 50 phút",
+},
+{
+  key: "phuong-bao-vinh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-bao-vinh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bảo Vinh Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Bảo Vinh và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-ga-sai-gon",
+  path: "phuong-bao-vinh-dong-nai-di-ga-sai-gon",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bảo Vinh Đồng Nai đi Ga Sài Gòn thuận tiện cho khách cần bắt tàu đường dài hoặc đến ga đón người thân. Đi xe riêng giúp hành khách di chuyển trực tiếp từ Bảo Vinh, hạn chế trung chuyển và dễ căn thời gian đến ga sớm trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-bao-vinh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bảo Vinh Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc tiếp tục hành trình từ cửa ngõ phía Đông TP.HCM. Xe đón tận nơi tại Bảo Vinh giúp khách thuận tiện mang hành lý và chủ động thời gian đến bến theo lịch xe.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-bao-vinh-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bảo Vinh Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Đây là hành trình xuyên từ Đồng Nai sang phía Tây TP.HCM, vì vậy xe riêng giúp khách di chuyển liền mạch và chủ động hơn với giờ khởi hành của chuyến tiếp theo.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-bao-vinh-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bảo Vinh Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón trực tiếp tại Bảo Vinh giúp hành khách hạn chế đổi phương tiện, đặc biệt thuận tiện khi đi cùng gia đình hoặc có nhiều hành lý.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bảo Vinh Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp từ Bảo Vinh đến bệnh viện, thuận tiện khi cần mang hồ sơ y tế, thuốc và đồ dùng cho một chuyến khám xa.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Quãng đường tương đối dài nên đi xe riêng giúp người bệnh có không gian nghỉ ngơi và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Điểm đến nằm gần cửa ngõ TP.HCM hơn nhiều bệnh viện trung tâm, thuận tiện cho khách từ Bảo Vinh muốn đi khám và trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bảo Vinh Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Hành trình riêng giúp trẻ có thể nghỉ ngơi trên quãng đường dài, đồng thời gia đình thuận tiện mang theo thuốc, hồ sơ và vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bảo Vinh Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón tận nơi tại Bảo Vinh và đưa thẳng đến bệnh viện, giúp gia đình hạn chế đổi phương tiện và dễ sắp xếp giờ đi theo lịch khám của trẻ.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bảo Vinh Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Với quãng đường từ Bảo Vinh vào trung tâm TP.HCM, xe riêng giúp hành khách có không gian nghỉ ngơi và chủ động giờ đi theo lịch hẹn.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bảo Vinh Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Xe đón theo địa chỉ tại Bảo Vinh và đưa trực tiếp đến bệnh viện, giúp khách hạn chế đổi phương tiện khi mang hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Đi xe riêng giúp khách chủ động xuất phát sớm từ Bảo Vinh và thuận tiện sắp xếp hành trình trở về Đồng Nai sau khi hoàn tất việc khám.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-bao-vinh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bảo Vinh Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Đón tận nơi giúp giảm việc đi bộ và trung chuyển, đặc biệt thuận tiện với người lớn tuổi hoặc người đang hạn chế vận động.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-cho-ben-thanh",
+  path: "phuong-bao-vinh-dong-nai-di-cho-ben-thanh",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bảo Vinh Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực hoặc dành một ngày tham quan thành phố. Từ khu vực chợ, khách dễ kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-bao-vinh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bảo Vinh Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống Sài Gòn dạo phố, ăn uống hoặc gặp gỡ bạn bè tại khu trung tâm. Chủ động phương tiện riêng giúp khách linh hoạt giờ vui chơi, nhất là khi muốn trở về Bảo Vinh sau một lịch trình buổi tối.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-dinh-doc-lap",
+  path: "phuong-bao-vinh-dong-nai-di-dinh-doc-lap",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bảo Vinh Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn khám phá một địa danh lịch sử tiêu biểu tại trung tâm TP.HCM. Khu vực này gần Bảo tàng Chứng tích Chiến tranh và Nhà thờ Đức Bà, phù hợp để kết hợp thành lịch trình tham quan trong ngày.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-bao-vinh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bảo Vinh Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và những công trình kiến trúc nổi bật giữa trung tâm thành phố. Sau khi đến nơi, khách có thể đi bộ sang Bưu điện Trung tâm Sài Gòn và kết hợp thêm nhiều điểm gần đó.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-bao-vinh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bảo Vinh Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời và khám phá khu trung tâm TP.HCM. Bưu điện nằm cạnh Nhà thờ Đức Bà nên khách từ Bảo Vinh có thể kết hợp hai địa điểm cùng nhiều điểm tham quan khác trong ngày.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-landmark-81",
+  path: "phuong-bao-vinh-dong-nai-di-landmark-81",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Bảo Vinh Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm ở phía Đông khu trung tâm TP.HCM nên thuận hướng hơn cho khách từ Bảo Vinh so với nhiều điểm nằm sâu về phía Tây thành phố.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 35 phút",
+},
+{
+  key: "phuong-bao-vinh-dong-nai-di-ben-bach-dang",
+  path: "phuong-bao-vinh-dong-nai-di-ben-bach-dang",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bảo Vinh Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Xe đón theo địa chỉ tại Bảo Vinh và đưa đến khu vực bến, thuận tiện để kết hợp phố đi bộ Nguyễn Huệ cùng các địa điểm trung tâm gần đó.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-bao-vinh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Bảo Vinh Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ muốn dành một ngày tham quan động vật và vui chơi giữa không gian xanh của thành phố. Đi xe riêng từ Bảo Vinh giúp gia đình chủ động giờ khởi hành và thuận tiện mang theo xe đẩy, đồ ăn cùng vật dụng cho trẻ.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → cầu Sài Gòn → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-bao-vinh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bảo Vinh Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá các địa danh nổi bật ở trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập, phù hợp để khách từ Bảo Vinh kết hợp hai điểm trong cùng một lịch trình tham quan.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-bao-vinh-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bảo Vinh Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Với quãng đường tương đối xa, chủ động xe giúp khách linh hoạt thời gian vui chơi và thuận tiện trở về Bảo Vinh sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-phu-my-hung",
+  path: "phuong-bao-vinh-dong-nai-di-phu-my-hung",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bảo Vinh Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Hành trình từ Bảo Vinh sang phía Nam thành phố khá dài nên xe riêng giúp khách di chuyển liền mạch, thuận tiện cả chuyến một chiều lẫn đi về trong ngày.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-bao-vinh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bảo Vinh Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón tận nơi tại Bảo Vinh và đưa thẳng đến trung tâm triển lãm, giúp khách dễ chủ động thời gian theo lịch khai mạc hoặc chương trình đã đăng ký.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-bao-vinh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bảo Vinh Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc gặp gỡ. Điểm đến nằm gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ nên khách có thể kết hợp nhiều hoạt động mà không cần di chuyển xa giữa các điểm.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-bao-vinh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bảo Vinh Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu trung tâm TP.HCM. Từ đây hành khách có thể thuận tiện kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng trong cùng một chuyến xuống Sài Gòn.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-bao-vinh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bảo Vinh Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Do phải di chuyển một quãng đường dài từ Bảo Vinh, xe riêng giúp khách thoải mái hơn và tránh phải đổi nhiều phương tiện giữa đường.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-bao-vinh-dong-nai-di-dam-sen",
+  path: "phuong-bao-vinh-dong-nai-di-dam-sen",
+  from: "Phường Bảo Vinh Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Bảo Vinh Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bảo Vinh Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành trọn một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Bảo Vinh giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo đồ ăn, hành lý cùng vật dụng cần thiết cho cả ngày.",
+  routeText:
+    "Phường Bảo Vinh → Quốc lộ 1 → Dầu Giây → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+{
+  key: "phuong-xuan-lap-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-xuan-lap-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Xuân Lập Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Xuân Lập và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-ga-sai-gon",
+  path: "phuong-xuan-lap-dong-nai-di-ga-sai-gon",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Xuân Lập Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Đi xe riêng giúp khách di chuyển trực tiếp từ Xuân Lập, hạn chế đổi phương tiện và dễ căn thời gian đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-xuan-lap-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Xuân Lập Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc tiếp tục hành trình từ cửa ngõ phía Đông TP.HCM. Xe đón tận nơi tại Xuân Lập giúp hành khách thuận tiện mang hành lý và chủ động thời gian đến bến theo lịch chuyến tiếp theo.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-xuan-lap-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Xuân Lập Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Hành trình đi từ khu vực Long Khánh sang phía Tây TP.HCM khá dài, vì vậy xe riêng giúp khách di chuyển liền mạch và dễ chủ động theo giờ xe.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-xuan-lap-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Xuân Lập Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón trực tiếp tại Xuân Lập giúp khách hạn chế trung chuyển, đặc biệt thuận tiện khi đi cùng gia đình hoặc có nhiều hành lý.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Xuân Lập Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đón tận nơi tại Xuân Lập và đưa thẳng đến bệnh viện, thuận tiện khi cần mang hồ sơ y tế, thuốc cùng đồ dùng cho chuyến khám trong ngày.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Xuân Lập Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Với quãng đường từ Xuân Lập vào thành phố, xe riêng giúp người bệnh có không gian nghỉ ngơi và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Xuân Lập Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Điểm đến nằm ở cửa ngõ TP.HCM nên thuận tiện hơn cho khách từ Xuân Lập muốn đi khám, chờ người thân và trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Xuân Lập Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Không gian riêng giúp trẻ có thể nghỉ ngơi trên hành trình, đồng thời gia đình thuận tiện mang theo hồ sơ, thuốc và các vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Xuân Lập Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón theo địa chỉ tại Xuân Lập và đưa trực tiếp đến bệnh viện, giúp gia đình hạn chế đổi phương tiện trên quãng đường dài cùng trẻ.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Xuân Lập Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón tại Xuân Lập và đưa thẳng vào khu vực bệnh viện, giúp hành khách giảm trung chuyển và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Xuân Lập Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Hành trình bằng xe riêng giúp khách có không gian nghỉ ngơi trên đường và thuận tiện mang theo hồ sơ y tế, thuốc cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Xuân Lập Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Xe riêng giúp khách chủ động xuất phát từ Xuân Lập vào buổi sáng và thuận tiện sắp xếp chuyến trở về Đồng Nai sau khi hoàn tất việc khám.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-xuan-lap-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Xuân Lập Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị về xương khớp và chấn thương. Đón tận nơi giúp hạn chế việc đi bộ và đổi nhiều phương tiện, đặc biệt thuận tiện với người lớn tuổi hoặc người đang khó vận động.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-cho-ben-thanh",
+  path: "phuong-xuan-lap-dong-nai-di-cho-ben-thanh",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Xuân Lập Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực hoặc tham quan trong ngày. Vị trí của chợ thuận tiện để kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa điểm nổi tiếng ở khu vực trung tâm.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-xuan-lap-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Xuân Lập Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống Sài Gòn dạo phố, ăn uống hoặc gặp gỡ bạn bè tại khu trung tâm. Chủ động xe riêng giúp khách linh hoạt thời gian vui chơi, đặc biệt với chuyến buổi tối cần trở về Xuân Lập sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-dinh-doc-lap",
+  path: "phuong-xuan-lap-dong-nai-di-dinh-doc-lap",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Xuân Lập Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn khám phá một địa danh lịch sử tiêu biểu tại trung tâm TP.HCM. Từ đây có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm tham quan lân cận trong cùng ngày.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-xuan-lap-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Xuân Lập Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và những công trình kiến trúc nổi bật giữa trung tâm thành phố. Bưu điện Trung tâm Sài Gòn nằm ngay bên cạnh, thuận tiện để kết hợp hai điểm trong cùng chuyến đi.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-xuan-lap-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Xuân Lập Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời tại khu vực Công xã Paris. Từ điểm này, khách dễ đi bộ sang Nhà thờ Đức Bà và kết hợp thêm nhiều địa danh trung tâm trong lịch trình khám phá Sài Gòn.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-landmark-81",
+  path: "phuong-xuan-lap-dong-nai-di-landmark-81",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Xuân Lập Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm ở phía Đông khu trung tâm nên khá thuận hướng với khách từ Xuân Lập khi vào TP.HCM theo tuyến cao tốc.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 30 phút",
+},
+{
+  key: "phuong-xuan-lap-dong-nai-di-ben-bach-dang",
+  path: "phuong-xuan-lap-dong-nai-di-ben-bach-dang",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Xuân Lập Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Xe đưa khách trực tiếp đến khu vực bến, thuận tiện kết hợp phố đi bộ Nguyễn Huệ và các địa điểm nổi tiếng quanh trung tâm.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-xuan-lap-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Xuân Lập Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình có trẻ nhỏ muốn dành một ngày tham quan động vật, vui chơi và khám phá không gian xanh giữa thành phố. Xe riêng giúp gia đình chủ động giờ xuất phát từ Xuân Lập và thuận tiện mang theo đồ dùng cho trẻ.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-xuan-lap-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Xuân Lập Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá khu trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên hành khách có thể kết hợp nhiều địa danh lịch sử trong cùng chuyến tham quan từ Đồng Nai.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-xuan-lap-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Xuân Lập Đồng Nai đi Phố Tây Bùi Viện phù hợp khách xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm không khí nhộn nhịp về đêm. Chủ động phương tiện giúp khách linh hoạt thời gian vui chơi và thuận tiện sắp xếp chuyến trở về Xuân Lập sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-phu-my-hung",
+  path: "phuong-xuan-lap-dong-nai-di-phu-my-hung",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Xuân Lập Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Hành trình từ Xuân Lập sang phía Nam thành phố khá dài nên xe riêng giúp khách di chuyển liền mạch và dễ sắp xếp chuyến đi về trong ngày.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-xuan-lap-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Xuân Lập Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Xuân Lập và đưa thẳng đến trung tâm triển lãm, giúp khách chủ động thời gian theo lịch chương trình.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-xuan-lap-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Xuân Lập Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc gặp gỡ. Vị trí trên đường Lê Lợi gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ, phù hợp để kết hợp nhiều hoạt động trong cùng chuyến đi.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-xuan-lap-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Xuân Lập Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại trung tâm TP.HCM. Điểm đến nằm gần Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng, thuận tiện cho một lịch trình kết hợp nhiều địa điểm.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-xuan-lap-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Xuân Lập Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực phía Tây TP.HCM. Do điểm đến nằm khá xa Xuân Lập, đi xe riêng giúp hành trình thoải mái hơn và tránh phải chuyển nhiều phương tiện.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-xuan-lap-dong-nai-di-dam-sen",
+  path: "phuong-xuan-lap-dong-nai-di-dam-sen",
+  from: "Phường Xuân Lập Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Xuân Lập Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Xuân Lập Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành trọn một ngày vui chơi tại TP.HCM. Xe đón tận nơi ở Xuân Lập giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo hành lý và vật dụng cần thiết cho cả ngày.",
+  routeText:
+    "Phường Xuân Lập → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+{
+  key: "phuong-long-khanh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-long-khanh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Long Khánh Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Long Khánh và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-ga-sai-gon",
+  path: "phuong-long-khanh-dong-nai-di-ga-sai-gon",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Khánh Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Đi xe riêng giúp khách di chuyển trực tiếp từ Long Khánh, hạn chế đổi phương tiện và dễ căn thời gian đến ga trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-long-khanh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Khánh Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía Đông TP.HCM. Xe đón tận nơi tại Long Khánh giúp hành khách thuận tiện mang hành lý và chủ động thời gian đến bến theo lịch chuyến tiếp theo.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-long-khanh-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Khánh Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Đây là hành trình từ phía Đông Đồng Nai sang phía Tây TP.HCM nên xe riêng giúp khách đi liền mạch, thuận tiện hơn khi có hành lý và giờ xe cố định.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-long-khanh-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Long Khánh Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe đón trực tiếp tại Long Khánh giúp hành khách hạn chế trung chuyển, đặc biệt thuận tiện khi đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Khánh Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đón tại Long Khánh và đưa thẳng đến bệnh viện, thuận tiện khi cần mang theo hồ sơ y tế, thuốc cùng đồ dùng cho chuyến khám trong ngày.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Long Khánh Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Xe riêng giúp người bệnh có không gian nghỉ ngơi trên quãng đường từ Long Khánh và dễ chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Khánh Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Điểm đến thuận hướng từ Đồng Nai hơn các bệnh viện nằm sâu trong trung tâm, phù hợp với khách muốn đi khám và trở về Long Khánh trong ngày.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Khánh Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Không gian riêng giúp trẻ có thể nghỉ ngơi trên hành trình, đồng thời gia đình thuận tiện mang theo thuốc, hồ sơ và những vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Khánh Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón tận nơi tại Long Khánh và đưa trực tiếp đến bệnh viện, giúp gia đình hạn chế đổi phương tiện trên quãng đường dài cùng trẻ.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Khánh Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón tại Long Khánh và đưa thẳng đến bệnh viện, giúp hành khách hạn chế trung chuyển và chủ động thời gian xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Long Khánh Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Với hành trình tương đối dài, xe riêng giúp khách có không gian nghỉ ngơi và thuận tiện mang theo hồ sơ y tế, thuốc cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Khánh Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Xe riêng giúp khách chủ động khởi hành sớm từ Long Khánh, đặc biệt thuận tiện với lịch khám buổi sáng hoặc chuyến đi về trong ngày.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-long-khanh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Khánh Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Đón tận nơi giúp giảm việc đi bộ và đổi phương tiện, hữu ích với người lớn tuổi hoặc người đang gặp khó khăn khi vận động.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-cho-ben-thanh",
+  path: "phuong-long-khanh-dong-nai-di-cho-ben-thanh",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Khánh Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực hoặc tham quan trong ngày. Từ khu vực chợ, khách dễ kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-long-khanh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Khánh Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc gặp gỡ bạn bè. Chủ động xe giúp khách linh hoạt giờ vui chơi tại trung tâm, nhất là những chuyến buổi tối cần trở về Long Khánh sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-dinh-doc-lap",
+  path: "phuong-long-khanh-dong-nai-di-dinh-doc-lap",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Long Khánh Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn tham quan một địa danh lịch sử tiêu biểu của TP.HCM. Vị trí ngay khu trung tâm giúp khách dễ kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm tham quan gần đó.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-long-khanh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Khánh Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn khám phá khu Công xã Paris và những công trình kiến trúc nổi tiếng giữa trung tâm thành phố. Bưu điện Trung tâm Sài Gòn nằm ngay bên cạnh, thuận tiện để kết hợp hai điểm trong cùng chuyến tham quan.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-long-khanh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Khánh Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời tại khu vực Công xã Paris. Từ đây, hành khách dễ đi bộ sang Nhà thờ Đức Bà và kết hợp thêm các điểm nổi tiếng khác trong lịch trình khám phá trung tâm Sài Gòn.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-landmark-81",
+  path: "phuong-long-khanh-dong-nai-di-landmark-81",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Long Khánh Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Điểm đến nằm về phía Đông khu trung tâm TP.HCM nên khá thuận hướng cho khách từ Long Khánh khi di chuyển vào thành phố.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 30 phút",
+},
+{
+  key: "phuong-long-khanh-dong-nai-di-ben-bach-dang",
+  path: "phuong-long-khanh-dong-nai-di-ben-bach-dang",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Long Khánh Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Từ khu vực bến, khách có thể kết hợp phố đi bộ Nguyễn Huệ và nhiều địa điểm trung tâm mà không phải di chuyển xa.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-long-khanh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Long Khánh Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ tham quan động vật và dành thời gian vui chơi giữa không gian xanh của thành phố. Xe riêng giúp gia đình chủ động giờ xuất phát từ Long Khánh, đồng thời thuận tiện mang theo xe đẩy và đồ dùng cho trẻ.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-long-khanh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Long Khánh Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên phù hợp để kết hợp hai địa danh cùng một số điểm nổi tiếng lân cận trong chuyến đi trong ngày.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-long-khanh-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Khánh Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện riêng giúp khách linh hoạt thời gian vui chơi và thuận tiện sắp xếp chuyến trở về Long Khánh sau buổi tối.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 5 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-phu-my-hung",
+  path: "phuong-long-khanh-dong-nai-di-phu-my-hung",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Long Khánh Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do phải di chuyển từ phía Đông Đồng Nai sang phía Nam thành phố, xe riêng giúp hành trình liền mạch và thuận tiện cho lịch trình đi về trong ngày.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-long-khanh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Khánh Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Long Khánh và đưa thẳng đến trung tâm triển lãm, giúp khách chủ động giờ đến theo lịch khai mạc hoặc chương trình đã đăng ký.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-long-khanh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Long Khánh Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Trung tâm thương mại nằm trên đường Lê Lợi, gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ nên dễ kết hợp thành một lịch trình tham quan.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-long-khanh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Long Khánh Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc vui chơi tại khu trung tâm TP.HCM. Từ điểm đến, khách thuận tiện kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng trong cùng chuyến xuống Sài Gòn.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-long-khanh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Long Khánh Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn dành thời gian mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Đây là một trong những điểm đến xa hơn từ Long Khánh, vì vậy xe riêng giúp khách thoải mái và hạn chế phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-long-khanh-dong-nai-di-dam-sen",
+  path: "phuong-long-khanh-dong-nai-di-dam-sen",
+  from: "Phường Long Khánh Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Long Khánh Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Long Khánh Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi tại Long Khánh giúp khách chủ động giờ khởi hành và giờ về, đồng thời thuận tiện mang theo hành lý cùng vật dụng cho cả ngày.",
+  routeText:
+    "Phường Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 10 phút",
+},
+{
+  key: "phuong-hang-gon-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-hang-gon-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Hàng Gòn Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Hàng Gòn và đưa thẳng đến khu vực nhà ga, giúp hành khách chủ động giờ xuất phát, đặc biệt thuận tiện khi đi sớm hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-ga-sai-gon",
+  path: "phuong-hang-gon-dong-nai-di-ga-sai-gon",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Hàng Gòn Đồng Nai đi Ga Sài Gòn thuận tiện cho khách cần bắt tàu đường dài hoặc đến ga đón người thân. Hành trình bằng xe riêng giúp khách đi trực tiếp từ Hàng Gòn đến ga, hạn chế trung chuyển và dễ sắp xếp thời gian để có mặt trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-hang-gon-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hàng Gòn Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía Đông TP.HCM. Xe đón tận nơi giúp hành khách chủ động giờ đến bến và thuận tiện hơn khi mang theo vali, hành lý hoặc đi cùng gia đình.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 30 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-hang-gon-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hàng Gòn Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Do hành trình kéo dài từ phía Đông Đồng Nai sang phía Tây TP.HCM, đi xe riêng giúp khách giảm việc đổi phương tiện và dễ chủ động theo giờ xe tiếp theo.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-hang-gon-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Hàng Gòn Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe riêng đón tại Hàng Gòn giúp hành khách đi liền mạch đến bến, thuận tiện với chuyến có nhiều hành lý hoặc cần căn giờ nối xe.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Hàng Gòn Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp từ Hàng Gòn đến bệnh viện, thuận tiện khi mang hồ sơ y tế, thuốc và đồ dùng cần thiết cho một chuyến khám xa.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Với quãng đường khá dài từ Hàng Gòn, xe riêng giúp người bệnh có không gian nghỉ ngơi và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → An Dương Vương → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. So với nhiều bệnh viện nằm sâu trong nội đô, điểm đến này thuận hướng hơn cho khách từ Hàng Gòn muốn đi khám và trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hàng Gòn Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Không gian riêng giúp trẻ có thể nghỉ ngơi trên hành trình dài, đồng thời gia đình thuận tiện mang theo hồ sơ, thuốc và vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Hàng Gòn Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón tận nơi tại Hàng Gòn và đưa thẳng đến bệnh viện, giúp gia đình hạn chế đổi phương tiện và dễ sắp xếp chuyến đi theo lịch khám của trẻ.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Hàng Gòn Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Quãng đường từ Hàng Gòn vào trung tâm TP.HCM khá dài nên xe riêng giúp hành khách có không gian nghỉ ngơi và chủ động giờ đi theo lịch hẹn.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Hàng Gòn Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Xe đón theo địa chỉ tại Hàng Gòn giúp khách hạn chế đổi phương tiện, đồng thời thuận tiện mang hồ sơ y tế và đồ dùng cần thiết cho chuyến khám.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Chủ động xe riêng giúp khách có thể xuất phát sớm từ Hàng Gòn và linh hoạt sắp xếp chuyến trở về Đồng Nai sau khi hoàn tất việc khám.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-hang-gon-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hàng Gòn Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị về xương khớp và chấn thương. Hình thức đón tận nơi đặc biệt thuận tiện với người lớn tuổi, người đang hạn chế vận động hoặc cần người thân đi cùng.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-cho-ben-thanh",
+  path: "phuong-hang-gon-dong-nai-di-cho-ben-thanh",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Hàng Gòn Đồng Nai đi Chợ Bến Thành phù hợp khách muốn dành một ngày xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực và tham quan. Khu vực chợ nằm gần nhiều điểm nổi tiếng nên khách có thể kết hợp thêm Takashimaya Saigon Centre hoặc phố đi bộ Nguyễn Huệ.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-hang-gon-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hàng Gòn Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc gặp gỡ bạn bè. Chủ động phương tiện giúp khách linh hoạt giờ vui chơi, nhất là với lịch trình buổi tối cần trở về Hàng Gòn sau khi kết thúc.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-dinh-doc-lap",
+  path: "phuong-hang-gon-dong-nai-di-dinh-doc-lap",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Hàng Gòn Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn tham quan một địa danh lịch sử nổi bật của TP.HCM. Từ Dinh Độc Lập, khách dễ kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm trung tâm trong cùng chuyến đi.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-hang-gon-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hàng Gòn Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và khám phá kiến trúc đặc trưng giữa trung tâm thành phố. Bưu điện Trung tâm Sài Gòn nằm ngay bên cạnh, thuận tiện để khách kết hợp hai địa điểm trong một lịch trình.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-hang-gon-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Hàng Gòn Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời và khám phá khu trung tâm TP.HCM. Vị trí ngay cạnh Nhà thờ Đức Bà giúp khách dễ kết hợp nhiều điểm tham quan mà không phải di chuyển xa sau khi đến nơi.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-landmark-81",
+  path: "phuong-hang-gon-dong-nai-di-landmark-81",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Hàng Gòn Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Điểm đến nằm ở phía Đông khu trung tâm TP.HCM nên khá thuận hướng khi khách từ Hàng Gòn vào thành phố qua khu vực Dầu Giây.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 2 giờ – 2 giờ 45 phút",
+},
+{
+  key: "phuong-hang-gon-dong-nai-di-ben-bach-dang",
+  path: "phuong-hang-gon-dong-nai-di-ben-bach-dang",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Hàng Gòn Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc dành buổi tối vui chơi cùng gia đình, bạn bè. Từ khu vực bến, khách có thể kết hợp phố đi bộ Nguyễn Huệ và nhiều địa điểm trung tâm trong cùng lịch trình.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-hang-gon-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Hàng Gòn Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ tham quan động vật và vui chơi trong không gian xanh giữa thành phố. Xe riêng giúp gia đình chủ động giờ xuất phát từ Hàng Gòn, đồng thời thuận tiện mang theo xe đẩy, đồ ăn và vật dụng chăm sóc trẻ.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 10 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-hang-gon-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Hàng Gòn Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá các địa danh nổi bật ở trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên phù hợp để kết hợp thành lịch trình tham quan nhiều điểm trong ngày.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-hang-gon-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hàng Gòn Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện riêng giúp khách linh hoạt thời gian vui chơi và thuận tiện sắp xếp chuyến trở về Hàng Gòn khi kết thúc buổi tối.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → Đề Thám → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-phu-my-hung",
+  path: "phuong-hang-gon-dong-nai-di-phu-my-hung",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Hàng Gòn Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do phải di chuyển từ khu vực Hàng Gòn sang phía Nam thành phố, xe riêng giúp hành trình liền mạch và thuận tiện hơn cho chuyến đi về trong ngày.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-hang-gon-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hàng Gòn Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón tại Hàng Gòn và đưa trực tiếp đến trung tâm triển lãm, giúp khách chủ động thời gian theo lịch khai mạc, check-in hoặc chương trình đã đăng ký.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-hang-gon-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Hàng Gòn Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Vị trí gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ giúp khách dễ kết hợp nhiều hoạt động trong một chuyến đi từ Đồng Nai.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Ký Con → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-hang-gon-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Hàng Gòn Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc vui chơi tại trung tâm TP.HCM. Điểm đến nằm gần Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng, thuận tiện để kết hợp thành lịch trình tham quan trung tâm.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-hang-gon-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Hàng Gòn Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực phía Tây TP.HCM. Vì đây là hành trình dài từ Hàng Gòn, xe riêng giúp khách thoải mái hơn và hạn chế phải đổi nhiều phương tiện trên đường.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-hang-gon-dong-nai-di-dam-sen",
+  path: "phuong-hang-gon-dong-nai-di-dam-sen",
+  from: "Phường Hàng Gòn Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Hàng Gòn Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Hàng Gòn Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi tại Hàng Gòn giúp khách chủ động giờ khởi hành và giờ về, đồng thời thuận tiện mang theo hành lý cùng vật dụng cần thiết cho cả ngày.",
+  routeText:
+    "Phường Hàng Gòn → Quốc lộ 56 → khu vực Long Khánh → Quốc lộ 1 → Dầu Giây → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 25 phút",
+},
+{
+  key: "phuong-tan-trieu-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-tan-trieu-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Tân Triều Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Từ khu vực Tân Triều gần Biên Hòa, xe có thể đi theo hướng cửa ngõ phía Đông TP.HCM, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang nhiều hành lý.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 15 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-ga-sai-gon",
+  path: "phuong-tan-trieu-dong-nai-di-ga-sai-gon",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tân Triều Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc đến ga đón người thân. Xe đón theo địa chỉ tại Tân Triều và đưa trực tiếp đến ga, giúp khách hạn chế đổi phương tiện và dễ căn thời gian có mặt trước giờ tàu khởi hành.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-tan-trieu-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tân Triều Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách hoặc tiếp tục hành trình từ cửa ngõ phía Đông TP.HCM. Điểm đến tương đối thuận hướng từ Tân Triều, giúp hành khách chủ động lịch nối chuyến và thoải mái hơn khi có nhiều hành lý.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 50 phút – 1 giờ 25 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-tan-trieu-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tân Triều Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Do phải di chuyển xuyên qua nhiều khu vực của TP.HCM, đi xe riêng giúp khách giảm trung chuyển và dễ chủ động theo giờ xe tiếp theo.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-tan-trieu-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Tân Triều Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe riêng đón tận nơi giúp hành khách đi liền mạch từ Tân Triều đến bến, thuận tiện khi có hành lý hoặc cần căn giờ nối chuyến.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tân Triều Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe đưa khách trực tiếp đến khu vực bệnh viện, thuận tiện cho người lớn tuổi và những chuyến cần mang theo hồ sơ y tế, thuốc hoặc đồ dùng cá nhân.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Tân Triều Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Đi xe riêng giúp người bệnh chủ động thời gian xuất phát từ Tân Triều và thuận tiện hơn khi cần người thân đi cùng.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tân Triều Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Từ Tân Triều, điểm đến này thuận hướng hơn nhiều bệnh viện nằm sâu trong nội đô, phù hợp cho chuyến khám và trở về Đồng Nai trong ngày.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Hoàng Hữu Nam → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 50 phút – 1 giờ 30 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tân Triều Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ đến TP.HCM khám bệnh, tái khám hoặc điều trị. Không phải đổi nhiều phương tiện giúp trẻ đỡ mệt hơn trên đường, đồng thời gia đình thuận tiện mang theo thuốc, hồ sơ và các vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tân Triều Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón theo địa chỉ tại Tân Triều và đưa thẳng đến bệnh viện, giúp gia đình chủ động lịch trình và có không gian riêng cho trẻ trên đường.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ 5 phút",
+},
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tân Triều Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình có lịch khám thai, tái khám hoặc cần đến bệnh viện chăm sóc người thân. Xe đón theo địa chỉ tại Tân Triều và đưa trực tiếp đến bệnh viện, giúp hành khách hạn chế đổi phương tiện và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Tân Triều Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp khách chủ động giờ xuất phát, có không gian nghỉ ngơi và thuận tiện mang theo hồ sơ y tế cùng đồ dùng cần thiết.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút – 2 giờ 20 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tân Triều Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách có lịch khám, tái khám hoặc cần đưa người thân đến khu vực Tân Bình. Từ Tân Triều, xe riêng giúp hành khách đi thẳng đến bệnh viện và dễ sắp xếp chuyến trở về Đồng Nai sau khi hoàn tất việc khám.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 30 phút – 2 giờ 15 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-tan-trieu-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tân Triều Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và chấn thương. Đón tận nơi giúp giảm việc đi bộ và trung chuyển, đặc biệt thuận tiện cho người lớn tuổi hoặc người đang hạn chế vận động.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 25 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-cho-ben-thanh",
+  path: "phuong-tan-trieu-dong-nai-di-cho-ben-thanh",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tân Triều Đồng Nai đi Chợ Bến Thành phù hợp khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực hoặc tham quan trong ngày. Từ khu vực chợ, khách dễ kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa điểm nổi tiếng ở khu trung tâm.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-tan-trieu-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tân Triều Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách xuống trung tâm Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc gặp gỡ bạn bè. Khoảng cách từ Tân Triều không quá xa nên khách có thể linh hoạt chọn chuyến đi trong ngày hoặc vui chơi buổi tối rồi trở về Đồng Nai.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 15 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-dinh-doc-lap",
+  path: "phuong-tan-trieu-dong-nai-di-dinh-doc-lap",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Tân Triều Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn tham quan một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Từ đây, khách có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và nhiều điểm tham quan gần nhau.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-tan-trieu-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tân Triều Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và khám phá những công trình kiến trúc tiêu biểu giữa trung tâm thành phố. Bưu điện Trung tâm Sài Gòn nằm ngay bên cạnh, thuận tiện để kết hợp hai điểm trong cùng chuyến đi.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-tan-trieu-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tân Triều Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời tại khu vực Công xã Paris. Vị trí ngay cạnh Nhà thờ Đức Bà giúp hành khách dễ xây dựng lịch trình khám phá nhiều điểm trung tâm mà không cần di chuyển xa.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-landmark-81",
+  path: "phuong-tan-trieu-dong-nai-di-landmark-81",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Tân Triều Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Landmark 81 nằm về phía Đông khu trung tâm nên khá thuận hướng từ Tân Triều, phù hợp cả chuyến đi chơi trong ngày lẫn lịch hẹn tại TP.HCM.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 5 phút – 1 giờ 50 phút",
+},
+{
+  key: "phuong-tan-trieu-dong-nai-di-ben-bach-dang",
+  path: "phuong-tan-trieu-dong-nai-di-ben-bach-dang",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Tân Triều Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Khoảng cách từ Tân Triều khá thuận tiện cho chuyến đi trong ngày, đồng thời dễ kết hợp phố đi bộ Nguyễn Huệ và các điểm trung tâm lân cận.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-tan-trieu-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Tân Triều Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ tham quan động vật, vui chơi và tận hưởng không gian xanh giữa thành phố. Xe riêng giúp gia đình chủ động giờ đi về, đồng thời thuận tiện mang theo xe đẩy và những vật dụng cần thiết cho trẻ.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút – 1 giờ 55 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-tan-trieu-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Tân Triều Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật ở trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập, phù hợp để kết hợp hai điểm cùng nhiều công trình lịch sử trong một ngày.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-tan-trieu-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tân Triều Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm không khí nhộn nhịp về đêm. Chủ động xe giúp khách linh hoạt giờ vui chơi và thuận tiện trở về Tân Triều mà không phải phụ thuộc vào phương tiện trung chuyển.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Võ Thị Sáu → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút – 2 giờ 10 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-phu-my-hung",
+  path: "phuong-tan-trieu-dong-nai-di-phu-my-hung",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Tân Triều Đồng Nai đi Phú Mỹ Hưng phù hợp khách đến khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Hành trình từ phía Đồng Nai sang khu Nam thành phố đi qua nhiều khu vực đông xe, vì vậy xe riêng giúp khách thoải mái và chủ động hơn về lịch trình.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-tan-trieu-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tân Triều Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón tận nơi tại Tân Triều và đưa thẳng đến trung tâm triển lãm, thuận tiện cho khách cần có mặt đúng giờ check-in hoặc lịch chương trình.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 45 phút – 2 giờ 35 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-tan-trieu-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Tân Triều Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, ăn uống hoặc gặp gỡ bạn bè. Vị trí trên đường Lê Lợi gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ giúp khách dễ kết hợp nhiều hoạt động trong cùng chuyến đi.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 20 phút – 2 giờ 5 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-tan-trieu-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Tân Triều Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, dùng bữa hoặc vui chơi tại khu vực trung tâm TP.HCM. Từ đây, khách thuận tiện đi bộ hoặc di chuyển quãng ngắn đến Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 15 phút – 2 giờ",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-tan-trieu-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Tân Triều Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Vì điểm đến nằm ở phía đối diện thành phố so với Tân Triều, xe riêng giúp hành trình liền mạch và giảm việc phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 40 phút",
+},
+
+{
+  key: "phuong-tan-trieu-dong-nai-di-dam-sen",
+  path: "phuong-tan-trieu-dong-nai-di-dam-sen",
+  from: "Phường Tân Triều Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Tân Triều Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Tân Triều Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi giúp khách chủ động giờ đi và về, đồng thời thuận tiện mang theo hành lý, đồ ăn và vật dụng cần thiết cho chuyến vui chơi.",
+  routeText:
+    "Phường Tân Triều → đường tỉnh 768 → Quốc lộ 1 → cầu Đồng Nai → Xa lộ Hà Nội → Điện Biên Phủ → 3 Tháng 2 → Lê Đại Hành → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút – 2 giờ 30 phút",
+},
+{
+  key: "phuong-minh-hung-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-minh-hung-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Minh Hưng Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Với quãng đường dài từ khu vực Minh Hưng về TP.HCM, xe đón tận nơi giúp hành khách chủ động giờ khởi hành, hạn chế trung chuyển và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-ga-sai-gon",
+  path: "phuong-minh-hung-dong-nai-di-ga-sai-gon",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Minh Hưng Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc xuống thành phố đón người thân tại ga. Xe riêng giúp khách đi thẳng từ Minh Hưng đến khu vực Nguyễn Thông, dễ căn thời gian đến trước giờ tàu và thoải mái hơn khi có vali hoặc hành lý cồng kềnh.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Phan Đăng Lưu → Hoàng Văn Thụ → Cách Mạng Tháng Tám → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-minh-hung-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Minh Hưng Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách, đón người thân hoặc tiếp tục hành trình từ cửa ngõ phía Đông TP.HCM. Đi xe riêng giúp khách chủ động theo giờ chuyến, đặc biệt thuận tiện khi đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-minh-hung-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Minh Hưng Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Đây là hành trình đi qua nhiều khu vực của TP.HCM nên phương án đón tận nơi giúp khách giảm số lần đổi xe và dễ chủ động theo lịch chuyến tiếp theo.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-minh-hung-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Minh Hưng Đồng Nai đi Bến xe An Sương phù hợp khách cần đến khu vực Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe riêng giúp hành khách đi trực tiếp từ Minh Hưng đến bến, thuận tiện cho chuyến có giờ khởi hành cố định và hành lý mang theo.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → nút giao An Sương → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Minh Hưng Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần xuống TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Với chuyến đi tương đối xa, xe riêng giúp người bệnh có không gian nghỉ ngơi, đồng thời thuận tiện mang hồ sơ y tế, thuốc và đồ dùng cá nhân.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Minh Hưng Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm hoặc tái khám tại khu vực Hồng Bàng. Xe đón tận nơi tại Minh Hưng giúp người bệnh chủ động giờ xuất phát và tránh phải chuyển nhiều chặng trên đường xuống thành phố.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Minh Hưng Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị tại cơ sở phía Đông thành phố. Xe riêng đưa khách trực tiếp đến bệnh viện giúp chuyến đi bớt phức tạp, nhất là khi người bệnh cần người thân đi cùng hoặc phải mang nhiều hồ sơ và vật dụng.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Minh Hưng Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ xuống TP.HCM khám bệnh, tái khám hoặc điều trị. Hành trình đón tận nơi giúp trẻ hạn chế phải đổi nhiều phương tiện, đồng thời gia đình có thể mang theo thuốc, hồ sơ và vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Minh Hưng Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe riêng tạo không gian thoải mái hơn cho trẻ trên quãng đường dài và giúp gia đình chủ động thời gian theo lịch khám tại bệnh viện.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Minh Hưng Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ, sản phụ và gia đình cần xuống TP.HCM khám thai, tái khám hoặc chăm sóc người thân. Xe đón tận nơi giúp hành khách tránh nhiều chặng trung chuyển, có không gian nghỉ ngơi và chủ động khởi hành sớm theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Minh Hưng Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Hành trình bằng xe riêng phù hợp với chuyến đi xa cần mang theo hồ sơ y tế, thuốc và đồ dùng cá nhân, đồng thời giúp người nhà chủ động thời gian đi về.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Minh Hưng Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám, tái khám hoặc đưa người thân đến bệnh viện tại khu vực Tân Bình. Xe riêng giúp khách xuất phát trực tiếp từ Minh Hưng, thuận tiện với lịch khám buổi sáng và có thể sắp xếp chuyến trở về Đồng Nai ngay sau khi hoàn tất.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-minh-hung-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Minh Hưng Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám hoặc điều trị các vấn đề về xương khớp, vận động và chấn thương. Hình thức đón tận nơi đặc biệt hữu ích với người đang khó đi lại, giúp giảm việc lên xuống nhiều phương tiện trong hành trình dài.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-cho-ben-thanh",
+  path: "phuong-minh-hung-dong-nai-di-cho-ben-thanh",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Minh Hưng Đồng Nai đi Chợ Bến Thành phù hợp gia đình hoặc nhóm khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực và tham quan trong ngày. Từ khu vực chợ, khách dễ kết hợp phố đi bộ Nguyễn Huệ, Takashimaya Saigon Centre cùng nhiều điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-minh-hung-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Minh Hưng Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách muốn xuống trung tâm Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc tham gia các hoạt động vào buổi tối. Chủ động xe giúp nhóm khách linh hoạt giờ vui chơi và thuận tiện trở về Minh Hưng sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-dinh-doc-lap",
+  path: "phuong-minh-hung-dong-nai-di-dinh-doc-lap",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Minh Hưng Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn thực hiện chuyến tham quan lịch sử tại trung tâm TP.HCM. Vị trí của Dinh Độc Lập giúp gia đình hoặc nhóm bạn dễ kết hợp thêm Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm tham quan trung tâm trong ngày.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-minh-hung-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Minh Hưng Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và khám phá các công trình kiến trúc nổi bật của trung tâm thành phố. Sau khi đến nơi, khách có thể kết hợp Bưu điện Trung tâm Sài Gòn và nhiều địa danh quanh khu vực bằng quãng di chuyển ngắn.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-minh-hung-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Minh Hưng Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn khám phá công trình kiến trúc lâu đời tại khu vực Công xã Paris. Điểm đến nằm cạnh Nhà thờ Đức Bà nên thuận tiện cho chuyến tham quan nhiều địa danh trung tâm, đặc biệt với gia đình hoặc nhóm khách đi về trong ngày.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-landmark-81",
+  path: "phuong-minh-hung-dong-nai-di-landmark-81",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Minh Hưng Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Xe đón trực tiếp tại Minh Hưng giúp hành trình xuống TP.HCM liền mạch, đồng thời khách có thể chủ động giờ trở về sau khi hoàn thành lịch trình.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+{
+  key: "phuong-minh-hung-dong-nai-di-ben-bach-dang",
+  path: "phuong-minh-hung-dong-nai-di-ben-bach-dang",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Minh Hưng Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Xe đón tận nơi giúp nhóm khách chủ động thời gian, đồng thời dễ kết hợp phố đi bộ Nguyễn Huệ và các địa điểm trung tâm trong cùng chuyến đi.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-minh-hung-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Minh Hưng Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ xuống thành phố tham quan động vật và vui chơi trong ngày. Với hành trình khá dài, xe riêng giúp trẻ có không gian nghỉ ngơi trên đường và gia đình thuận tiện mang theo xe đẩy cùng đồ dùng cần thiết.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-minh-hung-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Minh Hưng Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật tại trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên khách có thể kết hợp nhiều điểm lịch sử trong một lịch trình đi về trong ngày.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-minh-hung-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Minh Hưng Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện giúp khách linh hoạt giờ vui chơi và thuận tiện sắp xếp chuyến trở về Minh Hưng sau khi kết thúc buổi tối.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-phu-my-hung",
+  path: "phuong-minh-hung-dong-nai-di-phu-my-hung",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Minh Hưng Đồng Nai đi Phú Mỹ Hưng phù hợp khách xuống khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do hành trình đi từ phía Bắc xuống phía Nam thành phố, xe riêng giúp khách hạn chế trung chuyển và thuận tiện hơn khi cần hoàn thành nhiều công việc trong ngày.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-minh-hung-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Minh Hưng Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ tại Minh Hưng và đưa thẳng đến trung tâm triển lãm, giúp khách chủ động giờ đến theo lịch check-in hoặc chương trình đã đăng ký.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-minh-hung-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Minh Hưng Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Trung tâm thương mại nằm gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ, phù hợp để kết hợp nhiều hoạt động trong một chuyến xuống thành phố.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-minh-hung-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Minh Hưng Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc vui chơi tại khu trung tâm TP.HCM. Từ điểm đến, khách dễ kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng mà không cần di chuyển xa.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-minh-hung-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Minh Hưng Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn dành thời gian mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Tuyến này có lợi thế không cần đi sâu vào khu trung tâm, phù hợp cho chuyến đi trong ngày bằng xe riêng từ Minh Hưng.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-minh-hung-dong-nai-di-dam-sen",
+  path: "phuong-minh-hung-dong-nai-di-dam-sen",
+  from: "Phường Minh Hưng Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Minh Hưng Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Minh Hưng Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi giúp khách chủ động giờ xuất phát và giờ về, đồng thời thuận tiện mang theo đồ ăn, hành lý và vật dụng cho cả ngày.",
+  routeText:
+    "Phường Minh Hưng → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Âu Cơ → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 25 phút",
+},
+{
+  key: "phuong-chon-thanh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-chon-thanh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Chơn Thành Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Xe đón theo địa chỉ tại Chơn Thành giúp hành khách chủ động giờ khởi hành, hạn chế trung chuyển và thuận tiện hơn khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-ga-sai-gon",
+  path: "phuong-chon-thanh-dong-nai-di-ga-sai-gon",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Chơn Thành Đồng Nai đi Ga Sài Gòn thuận tiện cho khách cần bắt tàu đường dài hoặc xuống thành phố đón người thân. Hành trình bằng xe riêng giúp khách đi trực tiếp từ Chơn Thành đến khu vực nhà ga, dễ căn giờ tàu và thoải mái hơn khi có nhiều hành lý đi cùng.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Phan Đăng Lưu → Hoàng Văn Thụ → Cách Mạng Tháng Tám → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-chon-thanh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Chơn Thành Đồng Nai đi Bến xe Miền Đông mới phù hợp hành khách cần bắt xe khách, nối chuyến hoặc đến bến đón người thân. Xe đón tận nơi tại Chơn Thành giúp khách chủ động theo giờ xe xuất bến và thuận tiện khi đi cùng gia đình hoặc mang theo hành lý.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-chon-thanh-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Chơn Thành Đồng Nai đi Bến xe Miền Tây phù hợp khách cần tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Do điểm đến nằm về phía Tây TP.HCM, phương án xe riêng giúp khách giảm nhiều chặng trung chuyển và chủ động hơn khi cần nối chuyến theo giờ cố định.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-chon-thanh-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Chơn Thành Đồng Nai đi Bến xe An Sương phù hợp khách cần đến cửa ngõ Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe riêng giúp hành khách đi liền mạch từ Chơn Thành đến bến, đặc biệt tiện lợi khi có nhiều hành lý hoặc cần căn thời gian nối chuyến.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → nút giao An Sương → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 50 phút – 2 giờ 50 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Chơn Thành Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần xuống TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Xe đón trực tiếp tại Chơn Thành giúp người bệnh có không gian nghỉ ngơi trên đường và thuận tiện mang theo hồ sơ y tế, thuốc cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Chơn Thành Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm, điều trị hoặc tái khám tại khu vực Hồng Bàng. Đi xe riêng giúp người bệnh chủ động xuất phát sớm từ Chơn Thành và thuận tiện hơn khi cần người thân đi cùng trong chuyến khám.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Chơn Thành Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị tại cơ sở phía Đông thành phố. Hành trình bằng xe riêng giúp khách tránh phải đổi nhiều phương tiện, đồng thời thuận tiện với những chuyến cần mang theo hồ sơ điều trị hoặc có người nhà đi cùng.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Chơn Thành Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ xuống TP.HCM khám bệnh, tái khám hoặc điều trị. Không phải chuyển nhiều chặng giúp trẻ đỡ mệt hơn trên đường, đồng thời phụ huynh thuận tiện mang theo hồ sơ, thuốc, đồ ăn và các vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Chơn Thành Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe đón tận nơi giúp gia đình chủ động lịch trình theo giờ khám, đồng thời tạo không gian riêng để trẻ nghỉ ngơi trong suốt hành trình.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Chơn Thành Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình cần xuống TP.HCM khám thai, tái khám hoặc chăm sóc người thân. Xe đón tận nơi tại Chơn Thành giúp hành khách chủ động khởi hành theo lịch hẹn, hạn chế đổi phương tiện và có không gian nghỉ ngơi trên hành trình.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Chơn Thành Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Đi xe riêng giúp khách mang theo hồ sơ y tế và đồ dùng cá nhân dễ dàng hơn, đồng thời chủ động sắp xếp chuyến về sau khi hoàn tất việc khám.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Chơn Thành Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám, tái khám hoặc đưa người thân đến bệnh viện tại khu vực Tân Bình. Tuyến xe riêng giúp khách xuất phát trực tiếp từ Chơn Thành, phù hợp với lịch khám buổi sáng và những chuyến cần đi về trong ngày.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-chon-thanh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Chơn Thành Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và vận động. Hình thức đón tận nơi giúp giảm việc lên xuống nhiều phương tiện, đặc biệt thuận tiện cho người lớn tuổi hoặc người đang khó đi lại.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-cho-ben-thanh",
+  path: "phuong-chon-thanh-dong-nai-di-cho-ben-thanh",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Chơn Thành Đồng Nai đi Chợ Bến Thành phù hợp gia đình hoặc nhóm khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực và tham quan. Từ khu vực chợ, khách có thể kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều điểm nổi tiếng trong cùng ngày.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-chon-thanh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Chơn Thành Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách muốn xuống Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc vui chơi vào buổi tối. Chủ động phương tiện giúp khách linh hoạt thời gian tại trung tâm và thuận tiện sắp xếp chuyến trở về Chơn Thành sau lịch trình.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-dinh-doc-lap",
+  path: "phuong-chon-thanh-dong-nai-di-dinh-doc-lap",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Chơn Thành Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn thực hiện chuyến tham quan lịch sử tại trung tâm TP.HCM. Điểm đến nằm gần Bảo tàng Chứng tích Chiến tranh và Nhà thờ Đức Bà, giúp khách dễ xây dựng lịch trình nhiều điểm trong ngày.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-chon-thanh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Chơn Thành Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn khám phá khu Công xã Paris và các công trình kiến trúc nổi bật giữa trung tâm thành phố. Sau khi đến nơi, khách có thể tham quan Bưu điện Trung tâm Sài Gòn ngay bên cạnh và kết hợp thêm các điểm lân cận.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-chon-thanh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Chơn Thành Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời và khám phá khu vực trung tâm TP.HCM. Vị trí cạnh Nhà thờ Đức Bà giúp khách dễ kết hợp hai địa danh cùng nhiều điểm tham quan khác trong một chuyến đi.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-landmark-81",
+  path: "phuong-chon-thanh-dong-nai-di-landmark-81",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Chơn Thành Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Điểm đến nằm ở phía Đông khu trung tâm nên hành khách có thể đến Landmark 81 trước khi tiếp tục lịch trình sang các khu vực khác của Sài Gòn.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 55 phút",
+},
+{
+  key: "phuong-chon-thanh-dong-nai-di-ben-bach-dang",
+  path: "phuong-chon-thanh-dong-nai-di-ben-bach-dang",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Chơn Thành Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Xe đón tận nơi giúp khách chủ động thời gian đi về, đồng thời thuận tiện kết hợp phố đi bộ Nguyễn Huệ và các điểm nổi tiếng gần khu vực bờ sông.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ – 3 giờ",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-chon-thanh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Chơn Thành Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ xuống thành phố tham quan động vật và vui chơi trong ngày. Đi xe riêng giúp trẻ có không gian nghỉ ngơi trên quãng đường từ Chơn Thành, đồng thời gia đình thuận tiện mang theo xe đẩy và đồ dùng cá nhân.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 55 phút – 2 giờ 55 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-chon-thanh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Chơn Thành Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật tại trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập nên gia đình hoặc nhóm khách có thể kết hợp nhiều điểm lịch sử trong cùng chuyến đi.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-chon-thanh-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Chơn Thành Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện giúp khách linh hoạt thời gian vui chơi và thuận tiện trở về Chơn Thành sau khi kết thúc lịch trình buổi tối.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-phu-my-hung",
+  path: "phuong-chon-thanh-dong-nai-di-phu-my-hung",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Chơn Thành Đồng Nai đi Phú Mỹ Hưng phù hợp khách xuống khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do hành trình kéo dài từ phía Bắc xuống phía Nam thành phố, xe riêng giúp khách hạn chế đổi phương tiện và linh hoạt hơn với lịch trình đi về trong ngày.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-chon-thanh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Chơn Thành Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón trực tiếp tại Chơn Thành và đưa đến trung tâm triển lãm, giúp khách chủ động giờ có mặt theo lịch check-in, khai mạc hoặc chương trình đã đăng ký.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-chon-thanh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Chơn Thành Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Vị trí gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ giúp khách dễ kết hợp nhiều hoạt động mà không phải di chuyển xa sau khi đến nơi.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-chon-thanh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Chơn Thành Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc vui chơi tại khu trung tâm TP.HCM. Điểm đến nằm gần Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng, thuận tiện để kết hợp thành một lịch trình khám phá trung tâm Sài Gòn.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 5 phút – 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-chon-thanh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Chơn Thành Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Tuyến đi có thể tiếp cận khu Tân Phú mà không cần vào sâu trung tâm, phù hợp với chuyến đi trong ngày bằng xe riêng từ Chơn Thành.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 10 phút – 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-chon-thanh-dong-nai-di-dam-sen",
+  path: "phuong-chon-thanh-dong-nai-di-dam-sen",
+  from: "Phường Chơn Thành Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Chơn Thành Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Chơn Thành Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi giúp khách chủ động giờ xuất phát và giờ trở về, đồng thời thuận tiện mang theo hành lý, đồ ăn và vật dụng cần thiết cho cả ngày.",
+  routeText:
+    "Phường Chơn Thành → Quốc lộ 13 → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Âu Cơ → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 15 phút – 3 giờ 15 phút",
+},
+{
+  key: "phuong-binh-long-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-binh-long-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Long Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Quãng đường từ Bình Long về TP.HCM khá dài nên xe đón tận nơi giúp hành khách chủ động giờ xuất phát, hạn chế trung chuyển và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-ga-sai-gon",
+  path: "phuong-binh-long-dong-nai-di-ga-sai-gon",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bình Long Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc xuống thành phố đón người thân. Xe riêng đưa khách trực tiếp từ Bình Long đến khu vực nhà ga, giúp dễ căn thời gian trước giờ tàu và thoải mái hơn khi đi cùng gia đình hoặc có nhiều vali.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Phan Đăng Lưu → Hoàng Văn Thụ → Cách Mạng Tháng Tám → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-binh-long-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Long Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách, nối chuyến hoặc đến bến đón người thân. Với hành trình từ Bình Long xuống cửa ngõ phía Đông TP.HCM, xe riêng giúp khách giảm việc đổi phương tiện và chủ động hơn theo giờ xe xuất bến.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-binh-long-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Long Đồng Nai đi Bến xe Miền Tây phù hợp khách cần nối chuyến về các tỉnh miền Tây hoặc đến bến đón người thân. Đây là tuyến đường dài và phải đi qua nhiều khu vực của TP.HCM, vì vậy xe đón tận nơi giúp hành trình liền mạch và thuận tiện hơn khi mang nhiều hành lý.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 50 phút – 4 giờ",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-binh-long-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Long Đồng Nai đi Bến xe An Sương phù hợp khách cần đến cửa ngõ Tây Bắc TP.HCM hoặc tiếp tục hành trình theo hướng Quốc lộ 22. Xe riêng giúp hành khách xuất phát trực tiếp từ Bình Long, dễ chủ động thời gian nối chuyến và không phải mang hành lý qua nhiều phương tiện.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → nút giao An Sương → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Long Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần xuống TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Trên hành trình dài từ Bình Long, không gian xe riêng giúp người bệnh nghỉ ngơi tốt hơn và thuận tiện mang theo hồ sơ y tế, thuốc cùng đồ dùng cá nhân.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Bình Long Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm, tái khám hoặc điều trị. Xe đón tận nơi tại Bình Long giúp người bệnh chủ động khởi hành sớm theo lịch hẹn và tránh phải chuyển nhiều chặng khi xuống khu vực Hồng Bàng.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bình Long Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị tại cơ sở phía Đông thành phố. Xe riêng giúp khách đi trực tiếp từ Bình Long đến bệnh viện, thuận tiện cho những chuyến cần người thân đi cùng hoặc mang theo nhiều hồ sơ và vật dụng điều trị.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Long Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ xuống TP.HCM khám bệnh, tái khám hoặc điều trị. Với quãng đường khá dài, đi thẳng bằng một xe giúp trẻ đỡ mệt vì phải trung chuyển, đồng thời phụ huynh thuận tiện mang thuốc, hồ sơ và vật dụng chăm sóc.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Long Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe riêng tạo không gian nghỉ ngơi cho trẻ trên hành trình dài, đồng thời giúp gia đình chủ động giờ đến bệnh viện theo lịch khám đã hẹn.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Long Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình cần xuống TP.HCM khám thai, tái khám hoặc chăm sóc người thân. Với hành trình khá dài, xe đón tận nơi giúp hành khách hạn chế trung chuyển, có không gian nghỉ ngơi và chủ động khởi hành theo giờ hẹn tại bệnh viện.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bình Long Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Xe riêng phù hợp với chuyến đi cần xuất phát sớm, giúp khách mang theo hồ sơ y tế và đồ dùng cá nhân dễ dàng hơn trong suốt hành trình.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 55 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bình Long Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám, tái khám hoặc đưa người thân đến khu vực Tân Bình. Xe đón trực tiếp tại Bình Long giúp hành khách chủ động thời gian, đặc biệt thuận tiện với lịch khám buổi sáng hoặc chuyến cần trở về trong ngày.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-binh-long-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Long Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám, tái khám hoặc điều trị các vấn đề về xương khớp và vận động. Đón tận nơi giúp giảm việc lên xuống nhiều phương tiện, đặc biệt hữu ích với người lớn tuổi hoặc người đang gặp khó khăn khi đi lại.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 50 phút – 4 giờ",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-cho-ben-thanh",
+  path: "phuong-binh-long-dong-nai-di-cho-ben-thanh",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bình Long Đồng Nai đi Chợ Bến Thành phù hợp gia đình hoặc nhóm khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực và tham quan. Sau khi đến chợ, khách dễ kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ cùng nhiều địa điểm trung tâm trong một lịch trình.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-binh-long-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Long Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách muốn xuống trung tâm Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc tham gia các hoạt động buổi tối. Có xe riêng giúp nhóm khách linh hoạt giờ vui chơi và chủ động chuyến trở về Bình Long sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-dinh-doc-lap",
+  path: "phuong-binh-long-dong-nai-di-dinh-doc-lap",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường Bình Long Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình hoặc nhóm khách muốn tham quan một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Từ Dinh Độc Lập, khách có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm lân cận trong cùng ngày.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-binh-long-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Long Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và khám phá các công trình kiến trúc tiêu biểu giữa trung tâm thành phố. Bưu điện Trung tâm Sài Gòn nằm ngay bên cạnh, thuận tiện để kết hợp hai địa danh trong cùng chuyến đi.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-binh-long-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Long Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời tại trung tâm TP.HCM. Điểm đến nằm ngay khu Công xã Paris, giúp khách dễ kết hợp Nhà thờ Đức Bà và những địa danh nổi tiếng khác mà không phải di chuyển xa.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-landmark-81",
+  path: "phuong-binh-long-dong-nai-di-landmark-81",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường Bình Long Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, dùng bữa, vui chơi hoặc gặp gỡ bạn bè. Đi xe riêng từ Bình Long giúp hành trình xuống thành phố liền mạch, đồng thời khách có thể linh hoạt kết hợp thêm các điểm vui chơi ở trung tâm Sài Gòn.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 35 phút",
+},
+{
+  key: "phuong-binh-long-dong-nai-di-ben-bach-dang",
+  path: "phuong-binh-long-dong-nai-di-ben-bach-dang",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Long Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Với quãng đường khá xa, xe đón tận nơi giúp khách chủ động giờ đi về và thuận tiện kết hợp phố đi bộ Nguyễn Huệ cùng các địa điểm trung tâm lân cận.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-binh-long-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường Bình Long Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ xuống thành phố tham quan động vật, vui chơi và khám phá không gian xanh. Đi xe riêng giúp trẻ có chỗ nghỉ ngơi trên hành trình dài, đồng thời gia đình thuận tiện mang theo xe đẩy, đồ ăn và vật dụng cần thiết.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-binh-long-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Long Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan những địa danh tiêu biểu tại trung tâm TP.HCM. Bảo tàng nằm gần Dinh Độc Lập, phù hợp để gia đình hoặc nhóm khách kết hợp nhiều điểm tham quan trong một ngày.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-binh-long-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Long Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm không khí nhộn nhịp về đêm. Chủ động xe riêng đặc biệt thuận tiện cho tuyến đường xa, giúp khách linh hoạt giờ vui chơi và sắp xếp chuyến trở về Bình Long sau buổi tối.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 55 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-phu-my-hung",
+  path: "phuong-binh-long-dong-nai-di-phu-my-hung",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường Bình Long Đồng Nai đi Phú Mỹ Hưng phù hợp khách xuống khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Đây là hành trình dài từ Bình Long xuống phía Nam thành phố, vì vậy xe riêng giúp khách giảm trung chuyển và chủ động hơn với lịch trình công việc hoặc đi về trong ngày.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 3 giờ – 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-binh-long-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Bình Long Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Long Đồng Nai đi SECC phù hợp khách tham dự hội chợ, triển lãm, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón trực tiếp tại Bình Long giúp khách chủ động khởi hành sớm và đến trung tâm triển lãm theo lịch check-in hoặc thời gian chương trình đã định.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 3 giờ – 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-binh-long-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Long Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Vị trí trên đường Lê Lợi gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ giúp khách dễ kết hợp nhiều hoạt động trong cùng một chuyến xuống thành phố.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-binh-long-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Long Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc dành thời gian vui chơi tại khu trung tâm TP.HCM. Từ trung tâm thương mại, khách dễ kết hợp Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng trong cùng lịch trình.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-binh-long-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Bình Long Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Long Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Tuyến đi có thể tiếp cận khu Tân Phú mà không cần vào sâu khu trung tâm, giúp hành trình từ Bình Long thuận tiện hơn cho chuyến đi trong ngày.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-long-dong-nai-di-dam-sen",
+  path: "phuong-binh-long-dong-nai-di-dam-sen",
+  from: "Phường Bình Long Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Bình Long Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Long Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi giúp khách chủ động khởi hành sớm, thuận tiện mang theo đồ dùng cho cả ngày và linh hoạt thời gian trở về Bình Long.",
+  routeText:
+    "Phường Bình Long → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Âu Cơ → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 55 phút",
+},
+{
+  key: "phuong-an-loc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-an-loc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường An Lộc Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp khách có chuyến bay, đi công tác hoặc cần đưa đón người thân. Với quãng đường dài từ khu vực An Lộc về TP.HCM, xe đón tận nơi giúp hành khách chủ động giờ xuất phát, hạn chế trung chuyển và thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Nguyễn Kiệm → Trường Sơn → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-ga-sai-gon",
+  path: "phuong-an-loc-dong-nai-di-ga-sai-gon",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường An Lộc Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần bắt tàu đường dài hoặc xuống thành phố đón người thân. Xe riêng đưa khách trực tiếp từ An Lộc đến nhà ga, giúp dễ căn thời gian trước giờ tàu và thoải mái hơn khi đi cùng gia đình hoặc mang theo vali, hành lý.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Phan Đăng Lưu → Hoàng Văn Thụ → Cách Mạng Tháng Tám → Nguyễn Thông → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-an-loc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường An Lộc Đồng Nai đi Bến xe Miền Đông mới phù hợp khách cần bắt xe khách, nối chuyến hoặc đến bến đón người thân. Đi thẳng bằng xe riêng giúp hành khách giảm số lần đổi phương tiện trên hành trình dài và dễ chủ động thời gian theo lịch xe xuất bến.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-an-loc-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường An Lộc Đồng Nai đi Bến xe Miền Tây phù hợp khách cần tiếp tục hành trình về các tỉnh miền Tây hoặc đến bến đón người thân. Do phải di chuyển từ An Lộc qua nhiều khu vực của TP.HCM, xe đón tận nơi giúp khách hạn chế trung chuyển và thuận tiện hơn khi có nhiều hành lý.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 50 phút – 4 giờ",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-an-loc-dong-nai-di-ben-xe-an-suong",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường An Lộc Đồng Nai đi Bến xe An Sương phù hợp khách cần đến cửa ngõ Tây Bắc TP.HCM hoặc nối chuyến theo hướng Quốc lộ 22. Xe riêng giúp hành khách xuất phát trực tiếp từ An Lộc, chủ động thời gian đến bến và tránh phải mang hành lý qua nhiều chặng phương tiện.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → nút giao An Sương → Quốc lộ 22 → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 20 phút – 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường An Lộc Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp người bệnh và người nhà cần xuống TP.HCM khám chuyên khoa, tái khám hoặc điều trị. Xe đón tận nơi giúp người bệnh có không gian nghỉ ngơi trên đường, đồng thời thuận tiện mang theo hồ sơ y tế, thuốc và các vật dụng cá nhân cần thiết.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường An Lộc Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp khách có lịch khám chuyên khoa, xét nghiệm, tái khám hoặc điều trị tại khu vực Hồng Bàng. Với lịch khám từ sáng, xe riêng giúp người bệnh chủ động xuất phát từ An Lộc và đi thẳng đến bệnh viện mà không cần đổi nhiều phương tiện.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → Nguyễn Tri Phương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường An Lộc Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía Đông thành phố. Đi xe riêng giúp khách có hành trình liền mạch từ An Lộc đến bệnh viện, đặc biệt thuận tiện khi cần người thân đi cùng hoặc mang theo hồ sơ điều trị.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Xa lộ Hà Nội → Hoàng Hữu Nam → đường 400 → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường An Lộc Đồng Nai đi Bệnh viện Nhi Đồng 1 phù hợp gia đình đưa trẻ xuống TP.HCM khám bệnh, tái khám hoặc điều trị. Quãng đường dài khiến việc đi thẳng bằng một xe thuận tiện hơn cho trẻ, đồng thời phụ huynh dễ mang theo thuốc, hồ sơ và các vật dụng chăm sóc cần thiết.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Sư Vạn Hạnh → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường An Lộc Đồng Nai đi Bệnh viện Nhi Đồng 2 thuận tiện cho gia đình có trẻ nhỏ cần khám, tái khám hoặc điều trị tại trung tâm TP.HCM. Xe riêng giúp trẻ có không gian nghỉ ngơi trong hành trình, còn gia đình có thể chủ động giờ xuất phát để phù hợp với lịch khám đã đặt.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Nguyễn Du → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-tu-du",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường An Lộc Đồng Nai đi Bệnh viện Từ Dũ phù hợp thai phụ và gia đình cần xuống TP.HCM khám thai, tái khám hoặc chăm sóc người thân. Với hành trình đường dài, xe đón tận nơi giúp hạn chế đổi phương tiện, có không gian nghỉ ngơi và chủ động khởi hành theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Thị Minh Khai → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường An Lộc Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh có lịch khám chuyên khoa, kiểm tra sức khỏe, tái khám hoặc điều trị. Xe riêng giúp khách xuất phát sớm từ An Lộc, mang theo hồ sơ và đồ dùng cá nhân thuận tiện hơn, đồng thời linh hoạt sắp xếp chuyến trở về.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lý Thái Tổ → 3 Tháng 2 → Thành Thái → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 55 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường An Lộc Đồng Nai đi Bệnh viện Thống Nhất phù hợp khách cần khám, tái khám hoặc đưa người thân đến bệnh viện tại khu vực Tân Bình. Đi thẳng bằng xe riêng giúp người bệnh giảm mệt do trung chuyển, đồng thời thuận tiện với những lịch khám sớm hoặc chuyến cần trở về An Lộc trong ngày.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Hoàng Minh Giám → Hoàng Văn Thụ → Cộng Hòa → Lý Thường Kiệt → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-an-loc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường An Lộc Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp người bệnh cần khám hoặc điều trị các vấn đề về xương khớp, chấn thương và vận động. Hình thức đón tận nơi đặc biệt thuận tiện với người đang khó đi lại, giúp giảm số lần lên xuống phương tiện trên quãng đường dài.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 50 phút – 4 giờ",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-cho-ben-thanh",
+  path: "phuong-an-loc-dong-nai-di-cho-ben-thanh",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường An Lộc Đồng Nai đi Chợ Bến Thành phù hợp gia đình hoặc nhóm khách muốn xuống trung tâm Sài Gòn mua sắm, thưởng thức ẩm thực và tham quan trong ngày. Từ khu vực chợ, khách dễ kết hợp Takashimaya Saigon Centre, phố đi bộ Nguyễn Huệ và nhiều địa danh nổi tiếng lân cận.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-an-loc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường An Lộc Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp khách muốn xuống trung tâm Sài Gòn dạo phố, ăn uống, chụp ảnh hoặc vui chơi vào buổi tối. Có xe riêng giúp nhóm khách chủ động thời gian ở trung tâm và linh hoạt sắp xếp chuyến trở về An Lộc sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Tôn Đức Thắng → khu vực Phố đi bộ Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-dinh-doc-lap",
+  path: "phuong-an-loc-dong-nai-di-dinh-doc-lap",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe Phường An Lộc Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn khám phá một địa danh lịch sử nổi bật giữa trung tâm TP.HCM. Gia đình hoặc nhóm khách có thể kết hợp Dinh Độc Lập với Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm tham quan gần đó trong cùng chuyến đi.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-an-loc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường An Lộc Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp khách muốn tham quan khu Công xã Paris và khám phá kiến trúc đặc trưng của trung tâm thành phố. Bưu điện Trung tâm Sài Gòn nằm ngay bên cạnh nên khách dễ kết hợp hai điểm cùng các địa danh nổi tiếng quanh khu vực.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-an-loc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường An Lộc Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp khách muốn tham quan công trình kiến trúc lâu đời tại khu Công xã Paris. Điểm đến nằm cạnh Nhà thờ Đức Bà, thuận tiện để khách kết hợp nhiều địa danh trung tâm mà không mất nhiều thời gian di chuyển giữa các điểm.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Đinh Tiên Hoàng → Lê Duẩn → Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-landmark-81",
+  path: "phuong-an-loc-dong-nai-di-landmark-81",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng Phường An Lộc Đồng Nai đi Landmark 81 phù hợp khách đến Vinhomes Central Park để mua sắm, ăn uống, vui chơi hoặc gặp gỡ bạn bè. Xe đón tận nơi tại An Lộc giúp hành trình xuống TP.HCM liền mạch, đồng thời khách có thể chủ động kết hợp thêm các điểm vui chơi ở trung tâm thành phố.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Landmark 81",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 35 phút",
+},
+{
+  key: "phuong-an-loc-dong-nai-di-ben-bach-dang",
+  path: "phuong-an-loc-dong-nai-di-ben-bach-dang",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường An Lộc Đồng Nai đi Bến Bạch Đằng phù hợp khách muốn xuống trung tâm Sài Gòn dạo ven sông, ngắm cảnh hoặc vui chơi vào buổi chiều tối. Xe đón tận nơi giúp hành trình đường dài thoải mái hơn, đồng thời khách dễ kết hợp phố đi bộ Nguyễn Huệ và các địa điểm nổi tiếng quanh khu trung tâm.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Hữu Cảnh → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 30 phút – 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-an-loc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe Phường An Lộc Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp gia đình muốn đưa trẻ nhỏ xuống TP.HCM tham quan động vật và dành một ngày vui chơi. Đi thẳng bằng xe riêng giúp trẻ có không gian nghỉ ngơi trên đường, còn gia đình thuận tiện mang theo xe đẩy, đồ ăn và các vật dụng cần thiết.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 25 phút – 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-an-loc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường An Lộc Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan những địa danh tiêu biểu của Sài Gòn. Từ bảo tàng, khách có thể kết hợp Dinh Độc Lập và các công trình nổi tiếng quanh khu trung tâm để tối ưu lịch trình đi về trong ngày.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-an-loc-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường An Lộc Đồng Nai đi Phố Tây Bùi Viện phù hợp khách muốn xuống Sài Gòn ăn uống, gặp gỡ bạn bè hoặc trải nghiệm khu phố sôi động về đêm. Chủ động phương tiện giúp khách linh hoạt thời gian vui chơi và thuận tiện sắp xếp chuyến trở về An Lộc sau khi kết thúc buổi tối.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Thị Sáu → Cách Mạng Tháng Tám → Nguyễn Thị Minh Khai → Cống Quỳnh → khu vực Phố Tây Bùi Viện",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 55 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-phu-my-hung",
+  path: "phuong-an-loc-dong-nai-di-phu-my-hung",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Thuê xe Phường An Lộc Đồng Nai đi Phú Mỹ Hưng phù hợp khách xuống khu Nam TP.HCM làm việc, gặp đối tác, thăm người thân hoặc vui chơi. Do phải di chuyển từ An Lộc xuống phía Nam thành phố, xe riêng giúp khách giảm nhiều chặng trung chuyển và linh hoạt hơn khi có lịch trình kéo dài cả ngày.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 3 giờ – 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-an-loc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường An Lộc Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường An Lộc Đồng Nai đi SECC phù hợp khách tham dự triển lãm, hội chợ, hội nghị hoặc sự kiện tại khu vực Phú Mỹ Hưng. Xe đón trực tiếp tại An Lộc giúp khách chủ động khởi hành sớm, mang theo tài liệu hoặc hành lý thuận tiện và đến SECC theo thời gian chương trình.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Kiệt → Nguyễn Văn Cừ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 3 giờ – 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-an-loc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường An Lộc Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn xuống trung tâm Sài Gòn mua sắm, dùng bữa hoặc gặp gỡ bạn bè. Vị trí gần Chợ Bến Thành và phố đi bộ Nguyễn Huệ giúp khách dễ sắp xếp nhiều hoạt động trong một chuyến thay vì phải di chuyển nhiều lần.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-an-loc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường An Lộc Đồng Nai đi Vincom Center Đồng Khởi phù hợp khách muốn mua sắm, ăn uống hoặc dành thời gian vui chơi tại trung tâm TP.HCM. Từ đây, khách có thể đi bộ hoặc di chuyển quãng ngắn đến Nhà hát Thành phố, phố đi bộ Nguyễn Huệ và Bến Bạch Đằng.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Hai Bà Trưng → Lê Thánh Tôn → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 35 phút – 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-an-loc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường An Lộc Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường An Lộc Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại phía Tây TP.HCM. Đi xe riêng giúp khách chủ động thời gian dành cho cả ngày tại trung tâm thương mại và thuận tiện mang theo đồ mua sắm khi trở về An Lộc.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Tân Kỳ Tân Quý → Bờ Bao Tân Thắng → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 40 phút – 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-an-loc-dong-nai-di-dam-sen",
+  path: "phuong-an-loc-dong-nai-di-dam-sen",
+  from: "Phường An Lộc Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường An Lộc Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường An Lộc Đồng Nai đi Đầm Sen phù hợp gia đình có trẻ nhỏ, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi giúp khách có thể khởi hành sớm, mang theo đồ dùng cho cả ngày và chủ động giờ trở về sau khi kết thúc lịch vui chơi.",
+  routeText:
+    "Phường An Lộc → Quốc lộ 13 → Chơn Thành → Bến Cát → Thủ Dầu Một → Quốc lộ 13 → Quốc lộ 1 → Trường Chinh → Âu Cơ → Lạc Long Quân → khu vực Đầm Sen",
+  duration: "Khoảng 2 giờ 45 phút – 3 giờ 55 phút",
+},
+{
+  key: "phuong-phuoc-binh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-phuoc-binh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần chủ động giờ khởi hành, mang theo hành lý và di chuyển thẳng đến nhà ga. Lộ trình liên tỉnh thuận tiện, thích hợp cho chuyến đón tiễn sân bay từ khu vực Phước Bình.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → khu vực Bình Dương → TP.HCM → Phạm Văn Đồng → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-ga-sai-gon",
+  path: "phuong-phuoc-binh-dong-nai-di-ga-sai-gon",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Bình Đồng Nai đi Ga Sài Gòn giúp hành khách thuận tiện sắp xếp thời gian theo lịch tàu, đặc biệt khi có nhiều hành lý hoặc đi cùng gia đình. Xe đón tận nơi tại Phước Bình và đưa thẳng đến khu vực nhà ga.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-phuoc-binh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Bình Đồng Nai đi Bến xe Miền Đông mới phù hợp cho hành khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Hình thức xe riêng giúp chủ động thời gian xuất phát và hạn chế việc phải đổi nhiều phương tiện trên đường.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → Vành đai 3/khu vực Bình Dương → TP Thủ Đức → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-phuoc-binh-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách tiếp tục hành trình về các tỉnh miền Tây mà không cần trung chuyển nhiều chặng. Xe đưa trực tiếp từ khu vực Phước Bình đến bến xe, phù hợp cả khách cá nhân và gia đình.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → trục Phạm Văn Đồng → nội đô → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-phuoc-binh-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Bình Đồng Nai đi Bến xe An Sương là lựa chọn thuận tiện cho hành khách cần đến khu vực cửa ngõ Tây Bắc TP.HCM. Chuyến đi có thể sắp xếp giờ đón theo nhu cầu, giúp khách chủ động hơn khi cần kịp giờ xe hoặc lịch trình tiếp theo.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → khu vực Bình Dương → QL1A → nút giao An Sương → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe từ Phường Phước Bình Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh, người nhà cần di chuyển thẳng đến bệnh viện tại TP.HCM. Xe riêng giúp hạn chế đổi phương tiện, thuận tiện mang theo hành lý và chủ động thời gian cho lịch khám hoặc tái khám.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM giúp người bệnh và thân nhân có hành trình liền mạch từ nơi ở đến bệnh viện. Dịch vụ phù hợp với các chuyến khám chuyên khoa, tái khám hoặc cần đến TP.HCM từ sáng sớm.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Bình Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp cho người bệnh và gia đình muốn có không gian di chuyển riêng, hạn chế trung chuyển trên hành trình dài. Có thể chủ động giờ đón để phù hợp lịch khám, điều trị hoặc tái khám tại bệnh viện.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → khu vực Bình Dương → TP Thủ Đức → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Bình Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình có trẻ nhỏ di chuyển thuận tiện hơn trên chặng đường đến TP.HCM. Xe riêng đón tận nơi, có không gian cho người thân và hành lý, đồng thời dễ sắp xếp giờ xuất phát theo lịch khám của bé.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Bệnh viện Nhi Đồng 2 thích hợp cho gia đình đưa trẻ đến TP.HCM khám, điều trị hoặc tái khám. Hành trình đón tận nơi và đưa thẳng đến bệnh viện giúp giảm việc chuyển xe, thuận tiện hơn khi đi cùng trẻ nhỏ.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 40 phút",
+},
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người nhà và khách có lịch khám tại TP.HCM. Xe đón tận nơi, đi thẳng đến bệnh viện và chủ động giờ xuất phát, thuận tiện cho những chuyến cần đi sớm hoặc mang theo nhiều đồ dùng.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Bình Đồng Nai đi Bệnh viện Nhân dân 115 giúp người bệnh và thân nhân thuận tiện di chuyển từ Đồng Nai đến khu vực trung tâm TP.HCM. Hành khách có thể sắp xếp giờ đón theo lịch khám, tái khám hoặc điều trị mà không phải đổi nhiều phương tiện.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → Lý Thường Kiệt → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Bình Đồng Nai đi Bệnh viện Thống Nhất phù hợp với khách cần đến TP.HCM khám bệnh, chăm sóc người thân hoặc tái khám định kỳ. Xe riêng giúp hành trình thoải mái hơn, đón theo địa chỉ yêu cầu và đưa trực tiếp đến khu vực bệnh viện.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-phuoc-binh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Bình Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM thuận tiện cho người cần khám, điều trị hoặc tái khám các vấn đề cơ xương khớp và chấn thương. Việc đi thẳng từ điểm đón đến bệnh viện giúp hạn chế di chuyển nhiều chặng, đặc biệt hữu ích với người lớn tuổi hoặc người khó đi lại.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 3 giờ 5 phút - 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-cho-ben-thanh",
+  path: "phuong-phuoc-binh-dong-nai-di-cho-ben-thanh",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Bình Đồng Nai đi Chợ Bến Thành phù hợp cho chuyến tham quan, mua sắm hoặc kết hợp công việc tại khu vực trung tâm TP.HCM. Xe riêng đưa khách trực tiếp từ Phước Bình đến khu vực chợ, giúp chủ động lịch trình và thuận tiện khi đi theo gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → trung tâm Quận 1 cũ → Chợ Bến Thành",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-phuoc-binh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Bình Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách muốn vui chơi, tham quan trung tâm Sài Gòn hoặc tham dự các sự kiện tại khu vực Nguyễn Huệ. Chủ động xe riêng giúp dễ sắp xếp giờ đi và giờ về mà không phụ thuộc phương tiện trung chuyển.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → khu vực Nguyễn Huệ",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-dinh-doc-lap",
+  path: "phuong-phuoc-binh-dong-nai-di-dinh-doc-lap",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Bình Đồng Nai đi Dinh Độc Lập thuận tiện cho chuyến tham quan một trong những địa danh lịch sử nổi bật của TP.HCM. Khách có thể khởi hành theo thời gian mong muốn, đi thẳng đến khu vực trung tâm và kết hợp tham quan nhiều địa điểm lân cận trong ngày.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-phuoc-binh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Bình Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho khách tham quan trung tâm thành phố, chụp ảnh hoặc kết hợp khám phá các công trình kiến trúc nổi tiếng gần Công trường Công xã Paris. Xe riêng giúp chuyến đi từ Đồng Nai đến trung tâm TP.HCM linh hoạt và thoải mái hơn.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-phuoc-binh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Bình Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp cho khách muốn khám phá cụm điểm tham quan nổi tiếng ngay trung tâm TP.HCM. Từ đây có thể thuận tiện kết hợp Nhà thờ Đức Bà, đường sách và nhiều địa điểm lân cận mà không phải mất thêm một chặng di chuyển dài.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-landmark-81",
+  path: "phuong-phuoc-binh-dong-nai-di-landmark-81",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Landmark 81 phù hợp cho chuyến vui chơi, mua sắm, ăn uống hoặc gặp gỡ tại khu vực Vinhomes Central Park. Xe đón tận nơi tại Phước Bình và đưa thẳng đến Landmark 81, thuận tiện cho khách đi gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 35 phút",
+},
+{
+  key: "phuong-phuoc-binh-dong-nai-di-ben-bach-dang",
+  path: "phuong-phuoc-binh-dong-nai-di-ben-bach-dang",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Bến Bạch Đằng thuận tiện cho khách muốn tham quan khu vực ven sông Sài Gòn, vui chơi tại trung tâm hoặc kết hợp lịch hẹn trong thành phố. Xe đón theo địa chỉ tại Phước Bình và đưa thẳng đến khu vực bến, giúp hành trình chủ động hơn về thời gian.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-phuoc-binh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Phước Bình Đồng Nai đi Thảo Cầm Viên Sài Gòn phù hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn dành một ngày tham quan tại TP.HCM. Đi xe riêng giúp dễ sắp xếp giờ khởi hành, mang theo đồ dùng cần thiết và di chuyển trực tiếp đến điểm vui chơi.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-phuoc-binh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Bình Đồng Nai đi Bảo tàng Chứng tích Chiến tranh là lựa chọn thuận tiện cho khách tham quan, tìm hiểu lịch sử hoặc kết hợp khám phá các địa danh nổi bật ở trung tâm TP.HCM. Hành trình đi thẳng giúp tiết kiệm công sức trung chuyển trên chặng đường liên tỉnh.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-phuoc-binh-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Bình Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách có kế hoạch vui chơi, ăn uống hoặc lưu trú tại khu vực trung tâm Sài Gòn. Xe riêng giúp chủ động lịch trình, đặc biệt với chuyến đi buổi chiều tối hoặc khi cần mang theo hành lý đến khách sạn.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Cách Mạng Tháng Tám → khu vực Bùi Viện",
+  duration: "Khoảng 3 giờ 5 phút - 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-phu-my-hung",
+  path: "phuong-phuoc-binh-dong-nai-di-phu-my-hung",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Bình Đồng Nai đi Phú Mỹ Hưng đáp ứng nhu cầu đi công việc, thăm người thân, khám bệnh, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Khách được đón tận nơi và có thể chủ động thời gian xuất phát thay vì phải ghép nhiều chặng phương tiện.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-phuoc-binh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi SECC thuận tiện cho khách tham dự triển lãm, hội chợ, hội nghị hoặc các sự kiện tổ chức tại khu đô thị Phú Mỹ Hưng. Hình thức xe riêng giúp chủ động giờ đến sự kiện và phù hợp cả khách cá nhân lẫn nhóm đi công tác.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-phuoc-binh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Bình Đồng Nai đi Takashimaya Saigon Centre phù hợp cho chuyến mua sắm, ăn uống, gặp gỡ hoặc tham quan khu vực trung tâm TP.HCM. Xe đưa khách trực tiếp đến khu vực Lê Lợi, thuận tiện khi đi gia đình và không phải tự sắp xếp nhiều phương tiện nối chuyến.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-phuoc-binh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Bình Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, giải trí, ăn uống hoặc có lịch hẹn tại khu vực trung tâm Sài Gòn. Chuyến xe đi thẳng từ Phước Bình giúp khách linh hoạt thời gian và thuận tiện kết hợp nhiều điểm đến gần Đồng Khởi.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-phuoc-binh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Bình Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm khách muốn mua sắm, ăn uống và vui chơi tại khu vực phía tây TP.HCM. Xe riêng tạo sự chủ động cho chuyến đi trong ngày và thuận tiện hơn khi có nhiều đồ mua sắm mang về.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → khu vực Bình Dương → QL1A → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-phuoc-binh-dong-nai-di-dam-sen",
+  path: "phuong-phuoc-binh-dong-nai-di-dam-sen",
+  from: "Phường Phước Bình Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Phước Bình Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Bình Đồng Nai đi Đầm Sen là lựa chọn phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn dành một ngày vui chơi tại TP.HCM. Xe đón tận nơi giúp hành khách chủ động giờ khởi hành, thuận tiện mang theo đồ dùng và trở về sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Phước Bình → QL13 → cao tốc TP.HCM - Thủ Dầu Một - Chơn Thành → TP.HCM → QL1A → khu vực Tân Phú → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+{
+  key: "phuong-phuoc-long-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-phuoc-long-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần di chuyển thẳng đến nhà ga, chủ động giờ khởi hành và mang theo hành lý. Xe đón tận nơi tại Phước Long, thuận tiện cho chuyến bay sáng sớm, ban ngày hoặc buổi tối tại TP.HCM.",
+  routeText:
+    "Phường Phước Long → ĐT741 → khu vực Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Phạm Văn Đồng → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-ga-sai-gon",
+  path: "phuong-phuoc-long-dong-nai-di-ga-sai-gon",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Phước Long Đồng Nai đi Ga Sài Gòn giúp hành khách thuận tiện sắp xếp chuyến đi theo giờ tàu và hạn chế việc đổi phương tiện khi mang nhiều hành lý. Xe riêng đón tại địa chỉ yêu cầu ở Phước Long và đưa trực tiếp đến khu vực nhà ga.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Phạm Văn Đồng → Hoàng Văn Thụ → Ga Sài Gòn",
+  duration: "Khoảng 3 giờ 10 phút - 3 giờ 55 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-phuoc-long-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Long Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Hành trình đón tận nơi giúp khách chủ động thời gian và thuận tiện hơn khi đi cùng gia đình hoặc có nhiều hành lý.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Vành đai 3 → TP Thủ Đức → Bến xe Miền Đông mới",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-phuoc-long-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Long Đồng Nai đi Bến xe Miền Tây thuận tiện cho hành khách tiếp tục hành trình về các tỉnh miền Tây mà không phải tự nối nhiều chặng xe. Dịch vụ xe riêng phù hợp với khách có hành lý, người lớn tuổi hoặc gia đình cần chủ động lịch trình.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 3 giờ 35 phút - 4 giờ 25 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-phuoc-long-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Long Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để đón xe, gặp người thân hoặc tiếp tục một hành trình khác. Khách có thể lựa chọn giờ xuất phát phù hợp thay vì phụ thuộc vào lịch trình của phương tiện trung chuyển.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → nút giao An Sương → Bến xe An Sương",
+  duration: "Khoảng 3 giờ - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe từ Phường Phước Long Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần đến TP.HCM khám, điều trị hoặc tái khám. Đi xe riêng giúp giảm số lần lên xuống phương tiện trên hành trình dài và có thể sắp xếp giờ đón phù hợp với lịch bệnh viện.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM giúp khách có lịch khám hoặc tái khám chủ động hơn về thời gian. Xe đưa trực tiếp từ khu vực Phước Long đến bệnh viện, phù hợp với người bệnh đi cùng thân nhân và cần mang theo đồ dùng cá nhân.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực Chợ Lớn → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Long Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thích hợp cho người bệnh cần một hành trình trực tiếp và hạn chế trung chuyển. Dịch vụ có thể sắp xếp giờ khởi hành theo lịch khám hoặc điều trị, đồng thời thuận tiện khi có người thân đi cùng.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Vành đai 3 → TP Thủ Đức → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 3 giờ - 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Long Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám hoặc điều trị thuận tiện hơn trên chặng đường dài. Xe riêng tạo không gian thoải mái cho trẻ và người thân, đồng thời có thể xuất phát sớm để phù hợp giờ khám tại bệnh viện.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Hoàng Văn Thụ → Lý Thường Kiệt → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc chuyển phương tiện giữa đường và thuận tiện sắp xếp thời gian theo lịch hẹn của bé.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón tận nơi tại Phước Long, giúp chủ động giờ xuất phát và hạn chế phải đổi phương tiện trên hành trình dài.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Phước Long Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh và gia đình cần đến TP.HCM khám chuyên khoa, điều trị hoặc tái khám. Hình thức xe riêng giúp khách sắp xếp giờ đi theo lịch hẹn và có không gian thoải mái hơn trong suốt chuyến đi.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Hoàng Văn Thụ → Lý Thường Kiệt → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Long Đồng Nai đi Bệnh viện Thống Nhất giúp khách từ khu vực Phước Long di chuyển trực tiếp đến bệnh viện mà không phải tự nối nhiều chặng. Lựa chọn này phù hợp với người lớn tuổi, người đi tái khám hoặc gia đình cần mang theo hành lý và đồ dùng cá nhân.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 3 giờ 10 phút - 4 giờ",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-phuoc-long-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Long Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp với người cần khám hoặc điều trị chấn thương, xương khớp và vận động khó khăn. Việc được đón tận nơi và đưa thẳng đến bệnh viện giúp giảm những lần lên xuống xe không cần thiết trong hành trình.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực Chợ Lớn → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 3 giờ 25 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-cho-ben-thanh",
+  path: "phuong-phuoc-long-dong-nai-di-cho-ben-thanh",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Long Đồng Nai đi Chợ Bến Thành phù hợp cho khách muốn tham quan, mua sắm hoặc có lịch làm việc tại khu vực trung tâm Sài Gòn. Xe riêng giúp chủ động thời gian khởi hành và thuận tiện kết hợp thêm các điểm nổi tiếng quanh khu vực Bến Thành trong cùng chuyến đi.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Điện Biên Phủ → khu vực trung tâm → Chợ Bến Thành",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-phuoc-long-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Long Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho chuyến vui chơi, tham quan hoặc dự sự kiện tại trung tâm TP.HCM. Khách có thể linh hoạt chọn giờ đi, thuận tiện hơn cho lịch trình trong ngày hoặc chuyến xuống Sài Gòn vào buổi chiều tối.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Điện Biên Phủ → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-dinh-doc-lap",
+  path: "phuong-phuoc-long-dong-nai-di-dinh-doc-lap",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Long Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan công trình lịch sử nổi tiếng và khám phá khu vực trung tâm TP.HCM. Với xe riêng, hành khách có thể sắp xếp giờ xuất phát phù hợp và kết hợp thêm nhiều địa danh lân cận trong cùng ngày.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-phuoc-long-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho chuyến tham quan trung tâm thành phố cùng gia đình hoặc bạn bè. Điểm đến nằm gần nhiều công trình nổi tiếng, giúp khách dễ kết hợp Bưu điện Trung tâm, đường sách và khu Đồng Khởi trong một lịch trình.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-phuoc-long-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Long Đồng Nai đi Bưu điện Trung tâm Sài Gòn giúp khách di chuyển thuận tiện đến cụm tham quan nổi bật tại trung tâm TP.HCM. Hành trình phù hợp cho chuyến đi trong ngày, tham quan kiến trúc, chụp ảnh và kết hợp các địa điểm quanh Công trường Công xã Paris.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Điện Biên Phủ → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-landmark-81",
+  path: "phuong-phuoc-long-dong-nai-di-landmark-81",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Long Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park vui chơi, mua sắm, ăn uống, lưu trú hoặc gặp gỡ đối tác. Xe riêng đưa khách trực tiếp từ Phước Long đến khu vực Landmark 81, giúp hành trình liên tỉnh gọn gàng và chủ động hơn.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 3 giờ 10 phút - 4 giờ",
+},
+{
+  key: "phuong-phuoc-long-dong-nai-di-ben-bach-dang",
+  path: "phuong-phuoc-long-dong-nai-di-ben-bach-dang",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan không gian ven sông, vui chơi tại trung tâm Sài Gòn hoặc kết hợp nhiều điểm đến trong ngày. Xe đón tận nơi tại Phước Long và đưa thẳng đến khu vực bến, giúp khách chủ động lịch trình.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-phuoc-long-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Phước Long Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại TP.HCM. Đi xe riêng giúp dễ mang theo đồ dùng, lựa chọn giờ khởi hành phù hợp và di chuyển trực tiếp đến điểm tham quan.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 3 giờ 10 phút - 4 giờ",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-phuoc-long-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Phước Long Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm TP.HCM. Từ bảo tàng, hành khách cũng dễ kết hợp Dinh Độc Lập cùng nhiều địa danh nổi tiếng khác trong cùng chuyến đi.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-phuoc-long-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Long Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách có lịch vui chơi, ăn uống, gặp bạn bè hoặc lưu trú tại khu vực trung tâm Sài Gòn. Xe riêng đặc biệt thuận tiện với chuyến đi chiều tối vì khách có thể chủ động giờ khởi hành và mang theo hành lý.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Điện Biên Phủ → Cách Mạng Tháng Tám → khu vực Bùi Viện",
+  duration: "Khoảng 3 giờ 25 phút - 4 giờ 15 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-phu-my-hung",
+  path: "phuong-phuoc-long-dong-nai-di-phu-my-hung",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Phước Long Đồng Nai đi Phú Mỹ Hưng đáp ứng nhu cầu đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Với hành trình dài từ Phước Long, việc đi thẳng bằng xe riêng giúp khách hạn chế trung chuyển và dễ sắp xếp thời gian hơn.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 3 giờ 40 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-phuoc-long-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Phước Long Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi SECC phù hợp cho khách tham dự triển lãm, hội chợ, hội nghị hoặc gặp gỡ đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách chủ động giờ đến sự kiện và thuận tiện khi mang theo hành lý hoặc vật dụng công việc.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 3 giờ 40 phút - 4 giờ 30 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-phuoc-long-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Phước Long Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho chuyến mua sắm, ăn uống hoặc gặp gỡ tại khu vực trung tâm TP.HCM. Khách được đưa trực tiếp đến khu vực Lê Lợi và có thể dễ dàng kết hợp tham quan Chợ Bến Thành, Nguyễn Huệ cùng các điểm lân cận.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Điện Biên Phủ → khu vực trung tâm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-phuoc-long-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Phước Long Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, giải trí, dùng bữa hoặc có lịch hẹn tại trung tâm Sài Gòn. Hành trình đón tận nơi giúp chuyến đi liên tỉnh thoải mái hơn và dễ kết hợp thêm các địa điểm quanh Đồng Khởi.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-phuoc-long-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Phước Long Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Phước Long Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách thoải mái mang theo đồ đạc, chủ động giờ về và không phải tìm phương tiện nối chuyến trên đường.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 3 giờ 15 phút - 4 giờ 5 phút",
+},
+
+{
+  key: "phuong-phuoc-long-dong-nai-di-dam-sen",
+  path: "phuong-phuoc-long-dong-nai-di-dam-sen",
+  from: "Phường Phước Long Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Phước Long Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Phước Long Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp hành khách mang theo đồ dùng thuận tiện, chủ động thời gian vui chơi và sắp xếp chuyến trở về Phước Long.",
+  routeText:
+    "Phường Phước Long → ĐT741 → Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → khu vực Tân Phú → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 3 giờ 20 phút - 4 giờ 10 phút",
+},
+{
+  key: "phuong-dong-xoai-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-dong-xoai-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần chủ động giờ khởi hành, mang theo hành lý và di chuyển thẳng đến nhà ga. Xe đón tận nơi tại Đồng Xoài, thuận tiện cho chuyến bay sáng sớm, ban ngày hoặc buổi tối tại TP.HCM.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-ga-sai-gon",
+  path: "phuong-dong-xoai-dong-nai-di-ga-sai-gon",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Đồng Xoài Đồng Nai đi Ga Sài Gòn giúp hành khách thuận tiện sắp xếp thời gian theo lịch tàu và hạn chế việc phải đổi phương tiện dọc đường. Hình thức xe riêng đặc biệt phù hợp khi đi cùng gia đình, người lớn tuổi hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → khu vực trung tâm → Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-dong-xoai-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Đồng Xoài Đồng Nai đi Bến xe Miền Đông mới thuận tiện cho khách cần tiếp tục hành trình bằng xe khách từ cửa ngõ phía đông TP.HCM. Xe đưa trực tiếp đến bến giúp giảm thời gian trung chuyển và dễ chủ động giờ đến theo lịch xe tiếp theo.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Vành đai 3 → TP Thủ Đức → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-dong-xoai-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Đồng Xoài Đồng Nai đi Bến xe Miền Tây phù hợp cho hành khách cần nối chuyến về các tỉnh miền Tây từ TP.HCM. Xe riêng đón theo địa chỉ yêu cầu tại Đồng Xoài và đưa thẳng đến bến, thuận tiện khi có hành lý hoặc cần đảm bảo thời gian cho chuyến xe tiếp theo.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 3 giờ 5 phút - 3 giờ 55 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-dong-xoai-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Đồng Xoài Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến khu vực cửa ngõ Tây Bắc TP.HCM để đón xe, gặp người thân hoặc tiếp tục một chặng đường khác. Khách có thể tự chọn giờ khởi hành và không phải phụ thuộc vào nhiều phương tiện trung chuyển.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → nút giao An Sương → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Dịch vụ thuê xe từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần đến TP.HCM khám, điều trị hoặc tái khám. Đi xe riêng giúp hành trình liền mạch hơn, hạn chế lên xuống nhiều lần và có thể xuất phát theo giờ hẹn tại bệnh viện.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho người có lịch khám chuyên khoa, tái khám hoặc điều trị tại thành phố. Xe đón tận nơi giúp người bệnh và người thân chủ động thời gian, đồng thời dễ mang theo hồ sơ và đồ dùng cần thiết.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực Chợ Lớn → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp cho người bệnh cần đến cơ sở tại TP Thủ Đức khám, điều trị hoặc tái khám. Hành trình đi thẳng giúp hạn chế trung chuyển, thuận tiện cho người cần nghỉ ngơi và có thân nhân đi cùng.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → Vành đai 3 → TP Thủ Đức → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian thoải mái cho bé và người thân, đồng thời có thể khởi hành sớm để phù hợp với lịch khám trong ngày.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Hoàng Văn Thụ → Lý Thường Kiệt → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tại địa chỉ yêu cầu, giúp giảm việc đổi phương tiện giữa đường và dễ sắp xếp chuyến đi theo giờ hẹn của bé.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân và khách có lịch khám hoặc tái khám tại TP.HCM. Xe đón tận nơi giúp hành khách chủ động giờ khởi hành, hạn chế đổi phương tiện và thuận tiện mang theo đồ dùng cần thiết.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Hình thức xe riêng giúp gia đình dễ sắp xếp thời gian theo lịch hẹn và có không gian thoải mái hơn trong suốt hành trình.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Hoàng Văn Thụ → Lý Thường Kiệt → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, người có lịch tái khám hoặc gia đình cần đến bệnh viện tại TP.HCM. Xe đưa thẳng từ điểm đón đến bệnh viện, giúp giảm việc lên xuống nhiều phương tiện trên đường.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-dong-xoai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Đồng Xoài Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho khách gặp vấn đề về xương khớp, chấn thương hoặc khó khăn khi đi lại. Hành trình đón tận nơi và đưa trực tiếp đến bệnh viện giúp người bệnh hạn chế những lần trung chuyển không cần thiết.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực Chợ Lớn → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-cho-ben-thanh",
+  path: "phuong-dong-xoai-dong-nai-di-cho-ben-thanh",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Đồng Xoài Đồng Nai đi Chợ Bến Thành thích hợp cho khách xuống Sài Gòn tham quan, mua sắm hoặc có lịch làm việc tại khu vực trung tâm. Đi xe riêng giúp chủ động thời gian và thuận tiện kết hợp thêm phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm lân cận.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-dong-xoai-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Đồng Xoài Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp cho chuyến vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Khách có thể linh hoạt giờ khởi hành và dễ kết hợp lịch trình với Bến Bạch Đằng, Chợ Bến Thành hoặc khu Đồng Khởi.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-dinh-doc-lap",
+  path: "phuong-dong-xoai-dong-nai-di-dinh-doc-lap",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Đồng Xoài Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Xe riêng cho phép chủ động thời gian xuất phát và dễ xây dựng lịch trình kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm cùng các điểm gần đó.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-dong-xoai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá khu trung tâm thành phố. Điểm đến nằm gần nhiều công trình nổi tiếng nên hành khách có thể thuận tiện kết hợp một lịch trình tham quan trong ngày.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-dong-xoai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Đồng Xoài Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc, chụp ảnh và khám phá cụm địa danh quanh Công trường Công xã Paris. Hành trình đi thẳng giúp khách có thêm thời gian trải nghiệm khu vực trung tâm TP.HCM trong ngày.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-landmark-81",
+  path: "phuong-dong-xoai-dong-nai-di-landmark-81",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Đồng Xoài Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, ăn uống, vui chơi, lưu trú hoặc gặp gỡ đối tác. Xe đón tận nơi tại Đồng Xoài và đưa thẳng đến Landmark 81, giúp chuyến đi liên tỉnh gọn gàng và linh hoạt hơn.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+{
+  key: "phuong-dong-xoai-dong-nai-di-ben-bach-dang",
+  path: "phuong-dong-xoai-dong-nai-di-ben-bach-dang",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, vui chơi tại trung tâm hoặc kết hợp lịch hẹn trong thành phố. Xe đón tận nơi tại Đồng Xoài và đưa thẳng đến khu vực bến, giúp hành trình chủ động và thuận tiện hơn.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-dong-xoai-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Đồng Xoài Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn tổ chức chuyến vui chơi trong ngày. Đi xe riêng giúp dễ mang theo đồ dùng, chủ động giờ khởi hành và di chuyển trực tiếp đến điểm tham quan.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-dong-xoai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Đồng Xoài Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật tại trung tâm TP.HCM. Xe đưa thẳng đến bảo tàng, giúp hành khách tiết kiệm công sức trung chuyển trên chặng đường liên tỉnh.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-dong-xoai-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Đồng Xoài Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp chủ động giờ xuất phát, đặc biệt thuận tiện với chuyến đi chiều tối hoặc khách có hành lý.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Cách Mạng Tháng Tám → khu vực Bùi Viện",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-phu-my-hung",
+  path: "phuong-dong-xoai-dong-nai-di-phu-my-hung",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Đồng Xoài Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Hành trình đón tận nơi giúp khách hạn chế đổi phương tiện và dễ sắp xếp lịch trình riêng khi cần di chuyển quãng đường dài.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 3 giờ 10 phút - 4 giờ",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-dong-xoai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi SECC thuận tiện cho khách tham dự triển lãm, hội chợ, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Khách có thể chọn giờ xuất phát phù hợp với lịch sự kiện và mang theo hành lý hoặc vật dụng công việc trên xe.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 3 giờ 10 phút - 4 giờ",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-dong-xoai-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Đồng Xoài Đồng Nai đi Takashimaya Saigon Centre phù hợp cho chuyến mua sắm, ăn uống, gặp gỡ hoặc tham quan trung tâm Sài Gòn. Từ điểm đến trên đường Lê Lợi, khách có thể thuận tiện kết hợp Chợ Bến Thành, phố Nguyễn Huệ và nhiều địa điểm gần đó.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-dong-xoai-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Đồng Xoài Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, dùng bữa, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa trực tiếp đến khu Đồng Khởi, giúp hành khách dễ kết hợp nhiều hoạt động trong cùng chuyến xuống Sài Gòn.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-dong-xoai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Đồng Xoài Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm khách muốn mua sắm, ăn uống và vui chơi tại khu vực phía tây TP.HCM. Xe riêng giúp chủ động giờ đi về và thuận tiện hơn khi cần mang theo nhiều đồ sau chuyến mua sắm.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-dong-xoai-dong-nai-di-dam-sen",
+  path: "phuong-dong-xoai-dong-nai-di-dam-sen",
+  from: "Phường Đồng Xoài Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Đồng Xoài Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Đồng Xoài Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp khách thuận tiện mang theo đồ dùng, chủ động thời gian tham quan và sắp xếp chuyến trở về Đồng Xoài.",
+  routeText:
+    "Phường Đồng Xoài → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → khu vực Tân Phú → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 2 giờ 50 phút - 3 giờ 40 phút",
+},
+{
+  key: "phuong-binh-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "phuong-binh-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần chủ động giờ khởi hành và di chuyển thẳng đến nhà ga. Xe đón theo địa chỉ yêu cầu, thuận tiện khi mang nhiều hành lý, đi cùng gia đình hoặc cần xuất phát sớm để kịp chuyến bay.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 2 giờ 20 phút - 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-ga-sai-gon",
+  path: "phuong-binh-phuoc-dong-nai-di-ga-sai-gon",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bình Phước Đồng Nai đi Ga Sài Gòn giúp hành khách chủ động thời gian theo lịch tàu và không phải tự nối nhiều phương tiện trên đường. Hình thức xe riêng phù hợp với khách có hành lý, người lớn tuổi hoặc gia đình cần đến thẳng khu vực nhà ga.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → khu vực Ga Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 15 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "phuong-binh-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Phước Đồng Nai đi Bến xe Miền Đông mới thuận tiện cho khách cần nối chuyến xe khách tại khu vực TP Thủ Đức. Xe đưa trực tiếp đến bến giúp hành khách dễ căn thời gian cho chuyến tiếp theo và hạn chế việc phải mang hành lý qua nhiều chặng.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → Vành đai 3 → TP Thủ Đức → Bến xe Miền Đông mới",
+  duration: "Khoảng 2 giờ 20 phút - 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-ben-xe-mien-tay",
+  path: "phuong-binh-phuoc-dong-nai-di-ben-xe-mien-tay",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Phước Đồng Nai đi Bến xe Miền Tây phù hợp cho hành khách cần tiếp tục hành trình về các tỉnh miền Tây từ TP.HCM. Xe riêng đón tận nơi và đưa thẳng đến bến, giúp khách chủ động lịch trình hơn khi có hành lý hoặc cần kịp giờ xe đường dài.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 2 giờ 55 phút - 3 giờ 45 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-ben-xe-an-suong",
+  path: "phuong-binh-phuoc-dong-nai-di-ben-xe-an-suong",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Phước Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để đón xe, gặp người thân hoặc tiếp tục một hành trình khác. Khách có thể lựa chọn giờ xuất phát phù hợp và di chuyển trực tiếp đến khu vực bến.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → nút giao An Sương → Bến xe An Sương",
+  duration: "Khoảng 2 giờ 20 phút - 3 giờ 5 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-cho-ray",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-cho-ray",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Việc đi thẳng bằng xe riêng giúp giảm số lần trung chuyển, thuận tiện mang hồ sơ y tế và chủ động giờ đến bệnh viện.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bình Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám chuyên khoa, tái khám hoặc điều trị. Xe đón tận nơi giúp người bệnh đi cùng thân nhân có hành trình liền mạch và dễ sắp xếp giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực Chợ Lớn → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thích hợp cho người bệnh cần đến cơ sở tại TP Thủ Đức khám, điều trị hoặc tái khám. Hành trình trực tiếp giúp hạn chế việc đổi xe giữa đường và thuận tiện hơn khi có người thân đi cùng chăm sóc.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → Vành đai 3 → TP Thủ Đức → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 2 giờ 20 phút - 3 giờ 10 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Phước Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian phù hợp cho bé nghỉ ngơi trên đường, đồng thời giúp người thân chủ động khởi hành theo giờ khám đã sắp xếp.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Hoàng Văn Thụ → Lý Thường Kiệt → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đưa trực tiếp đến bệnh viện, hạn chế đổi phương tiện và giúp phụ huynh dễ chuẩn bị đồ dùng cần thiết cho bé.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-tu-du",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-tu-du",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón theo địa chỉ yêu cầu, giúp chủ động giờ xuất phát và hạn chế việc phải đổi nhiều phương tiện trên hành trình.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → khu vực trung tâm → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bình Phước Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình dễ sắp xếp thời gian theo lịch hẹn và có không gian thoải mái hơn trong suốt chuyến đi.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Hoàng Văn Thụ → Lý Thường Kiệt → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Phước Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách tái khám hoặc gia đình cần đến bệnh viện tại TP.HCM. Xe đưa thẳng từ điểm đón đến bệnh viện, thuận tiện mang theo hồ sơ y tế, hành lý và đồ dùng cá nhân.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "phuong-binh-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám các vấn đề về xương khớp và chấn thương. Việc đón tận nơi và đi thẳng đến bệnh viện giúp người khó vận động hạn chế những lần lên xuống xe không cần thiết.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực Chợ Lớn → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-cho-ben-thanh",
+  path: "phuong-binh-phuoc-dong-nai-di-cho-ben-thanh",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Phước Đồng Nai đi Chợ Bến Thành thích hợp cho khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Xe riêng giúp chủ động lịch trình và thuận tiện ghé thêm phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng gần khu vực Bến Thành.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Chợ Bến Thành",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "phuong-binh-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp cho chuyến vui chơi, tham quan hoặc dự sự kiện tại trung tâm TP.HCM. Khách có thể chọn giờ đi phù hợp và kết hợp Bến Bạch Đằng, khu Đồng Khởi hoặc các điểm ăn uống trong cùng lịch trình.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-dinh-doc-lap",
+  path: "phuong-binh-phuoc-dong-nai-di-dinh-doc-lap",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Phước Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật tại TP.HCM. Hành trình bằng xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm cùng các điểm tham quan gần khu vực trung tâm.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "phuong-binh-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá cụm điểm nổi tiếng ở trung tâm thành phố. Xe đưa trực tiếp đến khu vực Công trường Công xã Paris, thuận tiện tiếp tục tham quan những địa danh lân cận.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "phuong-binh-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc, chụp ảnh và khám phá khu trung tâm TP.HCM trong ngày. Điểm đến nằm cạnh Nhà thờ Đức Bà và gần đường sách, giúp hành khách dễ xây dựng lịch trình nhiều điểm.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-landmark-81",
+  path: "phuong-binh-phuoc-dong-nai-di-landmark-81",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Phước Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park vui chơi, mua sắm, dùng bữa, lưu trú hoặc gặp gỡ đối tác. Xe riêng đón tận nơi và đưa thẳng đến Landmark 81, giúp hành trình xuống TP.HCM linh hoạt và thuận tiện hơn.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 20 phút",
+},
+{
+  key: "phuong-binh-phuoc-dong-nai-di-ben-bach-dang",
+  path: "phuong-binh-phuoc-dong-nai-di-ben-bach-dang",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, dạo chơi trung tâm hoặc kết hợp lịch hẹn trong thành phố. Xe đón tận nơi và đưa thẳng đến khu vực bến, giúp khách chủ động thời gian cho chuyến đi trong ngày.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "phuong-binh-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Phường Bình Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn vui chơi tại TP.HCM. Đi xe riêng giúp thuận tiện mang theo đồ dùng, chủ động giờ khởi hành và có thể kết hợp thêm các địa điểm ở trung tâm thành phố.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 2 giờ 30 phút - 3 giờ 20 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "phuong-binh-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Phường Bình Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá các địa danh nổi bật ở trung tâm TP.HCM. Xe đưa trực tiếp đến bảo tàng, phù hợp cho chuyến tham quan trong ngày cùng gia đình hoặc nhóm bạn.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-pho-tay-bui-vien",
+  path: "phuong-binh-phuoc-dong-nai-di-pho-tay-bui-vien",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Phước Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp linh hoạt giờ xuất phát và thuận tiện hơn với khách mang hành lý hoặc có kế hoạch đi vào buổi chiều tối.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Cách Mạng Tháng Tám → khu vực Bùi Viện",
+  duration: "Khoảng 2 giờ 45 phút - 3 giờ 35 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-phu-my-hung",
+  path: "phuong-binh-phuoc-dong-nai-di-phu-my-hung",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Phường Bình Phước Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách có lịch công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Hành trình đón tận nơi giúp hạn chế trung chuyển và thuận tiện hơn khi khách cần di chuyển cùng gia đình hoặc mang theo hành lý.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → khu vực trung tâm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 3 giờ - 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "phuong-binh-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu và có thể sắp xếp giờ khởi hành phù hợp với thời gian diễn ra sự kiện.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 3 giờ - 3 giờ 50 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  path: "phuong-binh-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Phường Bình Phước Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, dùng bữa, gặp gỡ hoặc tham quan khu vực trung tâm Sài Gòn. Điểm đến nằm gần Chợ Bến Thành và phố Nguyễn Huệ nên dễ kết hợp nhiều hoạt động trong cùng một chuyến.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → khu vực trung tâm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  path: "phuong-binh-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Phường Bình Phước Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa trực tiếp đến khu Đồng Khởi, thuận tiện kết hợp Nhà thờ Đức Bà, Nguyễn Huệ và các điểm nổi tiếng lân cận.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → TP.HCM → Phạm Văn Đồng → Điện Biên Phủ → Lê Duẩn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "phuong-binh-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Phường Bình Phước Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình và nhóm bạn muốn dành thời gian mua sắm, ăn uống hoặc vui chơi tại khu vực Tân Phú. Xe riêng giúp khách chủ động giờ về và thuận tiện mang theo nhiều đồ sau chuyến mua sắm.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ 35 phút - 3 giờ 25 phút",
+},
+
+{
+  key: "phuong-binh-phuoc-dong-nai-di-dam-sen",
+  path: "phuong-binh-phuoc-dong-nai-di-dam-sen",
+  from: "Phường Bình Phước Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Phường Bình Phước Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Phường Bình Phước Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và sắp xếp chuyến trở về sau khi kết thúc lịch trình.",
+  routeText:
+    "Phường Bình Phước → QL14 → Chơn Thành → QL13 → Bình Dương → QL1A → khu vực Tân Phú → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 2 giờ 40 phút - 3 giờ 30 phút",
+},
+{
+  key: "xa-dai-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-dai-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần đón tận nơi và di chuyển thẳng đến nhà ga. Dịch vụ thuận tiện khi có hành lý, đi cùng gia đình hoặc cần chủ động giờ xuất phát để phù hợp với lịch bay tại TP.HCM.",
+  routeText:
+    "Xã Đại Phước → đường Lý Thái Tổ → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-ga-sai-gon",
+  path: "xa-dai-phuoc-dong-nai-di-ga-sai-gon",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Đại Phước Đồng Nai đi Ga Sài Gòn giúp hành khách thuận tiện sắp xếp giờ khởi hành theo lịch tàu và hạn chế phải đổi phương tiện trên đường. Xe riêng đặc biệt phù hợp với gia đình, người lớn tuổi hoặc khách mang theo nhiều hành lý đến nhà ga.",
+  routeText:
+    "Xã Đại Phước → đường Lý Thái Tổ → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-dai-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Đại Phước Đồng Nai đi Bến xe Miền Đông mới thuận tiện cho khách cần tiếp tục hành trình bằng xe khách tại khu vực phía đông TP.HCM. Xe đón tận nơi tại Đại Phước và đưa thẳng đến bến, giúp hành khách dễ chủ động thời gian cho chuyến tiếp theo.",
+  routeText:
+    "Xã Đại Phước → đường Lý Thái Tổ → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-dai-phuoc-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Đại Phước Đồng Nai đi Bến xe Miền Tây phù hợp cho hành khách cần nối chuyến về các tỉnh miền Tây từ TP.HCM. Hình thức xe riêng giúp khách đi thẳng từ điểm đón đến bến xe, thuận tiện khi có nhiều hành lý hoặc cần đến đúng giờ cho chuyến xe đường dài.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-ben-xe-an-suong",
+  path: "xa-dai-phuoc-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Đại Phước Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến khu vực cửa ngõ Tây Bắc TP.HCM để đón xe hoặc tiếp tục một hành trình khác. Việc đón tận nơi giúp khách chủ động giờ đi và tránh phải tự kết nối nhiều chặng phương tiện qua thành phố.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần đến TP.HCM khám, điều trị hoặc tái khám. Xe đưa trực tiếp đến bệnh viện giúp giảm việc trung chuyển, đồng thời thuận tiện mang theo hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Đại Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám chuyên khoa, điều trị hoặc tái khám. Xe riêng đón theo địa chỉ yêu cầu, giúp người bệnh và người thân dễ sắp xếp thời gian và di chuyển liền mạch đến bệnh viện.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Đại Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp cho người bệnh cần khám, tái khám hoặc điều trị tại cơ sở ở TP Thủ Đức. Tuyến đi từ khu vực Nhơn Trạch đến phía đông TP.HCM giúp hành khách thuận tiện hơn khi lựa chọn chuyến xe đón tận nơi.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Đại Phước Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian thoải mái cho bé và người thân, đồng thời có thể chủ động xuất phát sớm để phù hợp với lịch khám trong ngày.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc đổi phương tiện và thuận tiện chuẩn bị hành lý, thuốc men cùng đồ dùng cần thiết cho bé.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-tu-du",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón tận nơi tại Đại Phước, giúp chủ động giờ xuất phát và hạn chế phải đổi phương tiện khi cần mang theo nhiều đồ dùng cá nhân.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Đại Phước Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Hình thức xe riêng giúp gia đình dễ sắp xếp giờ đi theo lịch hẹn và có hành trình liền mạch từ điểm đón đến bệnh viện.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Đại Phước Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách có lịch tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, thuận tiện khi mang theo hồ sơ y tế, hành lý và các vật dụng cần thiết.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-dai-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Đại Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám các vấn đề về chấn thương và xương khớp. Việc đón tận nơi giúp người khó vận động hạn chế những lần lên xuống xe không cần thiết trên đường.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-cho-ben-thanh",
+  path: "xa-dai-phuoc-dong-nai-di-cho-ben-thanh",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Đại Phước Đồng Nai đi Chợ Bến Thành thuận tiện cho khách muốn tham quan, mua sắm hoặc có lịch làm việc tại trung tâm TP.HCM. Từ khu vực Bến Thành, hành khách có thể dễ dàng kết hợp phố Nguyễn Huệ, Takashimaya và nhiều điểm nổi tiếng khác trong cùng ngày.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-dai-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Đại Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp cho chuyến vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm Sài Gòn. Xe đón theo địa chỉ yêu cầu giúp khách chủ động thời gian và thuận tiện kết hợp Bến Bạch Đằng cùng khu Đồng Khởi.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-dinh-doc-lap",
+  path: "xa-dai-phuoc-dong-nai-di-dinh-doc-lap",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Đại Phước Đồng Nai đi Dinh Độc Lập phù hợp cho khách muốn tham quan một địa danh lịch sử nổi bật giữa trung tâm TP.HCM. Xe riêng giúp chủ động lịch trình và thuận tiện kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm cùng Bảo tàng Chứng tích Chiến tranh.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-dai-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn thích hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá khu trung tâm TP.HCM. Điểm đến nằm trong cụm tham quan nổi tiếng nên dễ kết hợp Bưu điện Trung tâm, đường sách và khu Đồng Khởi.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-dai-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Đại Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc và khám phá cụm địa danh quanh Công trường Công xã Paris. Hành trình đón tận nơi giúp khách tiết kiệm công sức trung chuyển và có thêm thời gian tham quan trung tâm thành phố.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-landmark-81",
+  path: "xa-dai-phuoc-dong-nai-di-landmark-81",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Đại Phước Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, ăn uống, vui chơi, lưu trú hoặc gặp gỡ đối tác. Tuyến từ khu vực Nhơn Trạch đến phía đông trung tâm TP.HCM thuận tiện cho chuyến xe riêng đi trong ngày.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+{
+  key: "xa-dai-phuoc-dong-nai-di-ben-bach-dang",
+  path: "xa-dai-phuoc-dong-nai-di-ben-bach-dang",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn dạo chơi ven sông, tham quan trung tâm Sài Gòn hoặc kết hợp lịch hẹn trong thành phố. Từ khu vực Nhơn Trạch, xe đón tận nơi và đưa thẳng đến Bến Bạch Đằng, giúp chuyến đi linh hoạt hơn về thời gian.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-dai-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Đại Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng, chủ động giờ xuất phát và có thể kết hợp thêm các điểm tham quan ở khu vực trung tâm.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-dai-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Đại Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá các địa danh nổi bật tại trung tâm TP.HCM. Hành trình phù hợp cho chuyến tham quan trong ngày và dễ kết hợp thêm Dinh Độc Lập cùng các điểm gần đó.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-dai-phuoc-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Đại Phước Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách muốn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại trung tâm Sài Gòn. Xe riêng giúp chủ động giờ khởi hành và thuận tiện hơn với chuyến đi chiều tối, đặc biệt khi khách có hành lý đi cùng.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-phu-my-hung",
+  path: "xa-dai-phuoc-dong-nai-di-phu-my-hung",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Đại Phước Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Khách được đón tận nơi tại Đại Phước và có thể linh hoạt thời gian, thuận tiện cho cả chuyến đi một chiều lẫn lịch trình trong ngày.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → nút giao An Phú → Mai Chí Thọ → khu vực Thủ Thiêm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-dai-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi SECC phù hợp cho khách tham dự triển lãm, hội chợ, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách chủ động giờ đến sự kiện và thuận tiện khi mang theo hành lý hoặc vật dụng công việc.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → nút giao An Phú → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-dai-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Đại Phước Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, ăn uống, gặp gỡ hoặc tham quan khu vực trung tâm TP.HCM. Từ điểm đến trên đường Lê Lợi, khách dễ dàng kết hợp Chợ Bến Thành và phố Nguyễn Huệ trong cùng lịch trình.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-dai-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Đại Phước Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, dùng bữa, giải trí hoặc có lịch hẹn tại trung tâm Sài Gòn. Xe đưa thẳng đến khu Đồng Khởi, thuận tiện kết hợp Nhà thờ Đức Bà, Nguyễn Huệ và các địa điểm lân cận.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-dai-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Đại Phước Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp hành khách chủ động giờ đi về và thuận tiện mang theo nhiều đồ sau khi kết thúc chuyến mua sắm.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-dai-phuoc-dong-nai-di-dam-sen",
+  path: "xa-dai-phuoc-dong-nai-di-dam-sen",
+  from: "Xã Đại Phước Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Đại Phước Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Đại Phước Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thuận tiện mang theo đồ dùng, chủ động thời gian tham quan và sắp xếp chuyến trở về Đại Phước.",
+  routeText:
+    "Xã Đại Phước → Nhơn Trạch → đường 25B → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 25 phút",
+},
+{
+  key: "xa-nhon-trach-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-nhon-trach-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần đón tận nơi và chủ động thời gian theo lịch bay. Xe đi thẳng đến khu vực nhà ga, thuận tiện cho gia đình, khách công tác hoặc hành khách mang theo nhiều vali và hành lý.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-ga-sai-gon",
+  path: "xa-nhon-trach-dong-nai-di-ga-sai-gon",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Nhơn Trạch Đồng Nai đi Ga Sài Gòn giúp hành khách dễ căn thời gian xuất phát theo giờ tàu và hạn chế phải chuyển nhiều phương tiện. Xe riêng đón theo địa chỉ yêu cầu tại Nhơn Trạch, phù hợp khi đi cùng người lớn tuổi, trẻ nhỏ hoặc có nhiều hành lý.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-nhon-trach-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bến xe Miền Đông mới thuận tiện cho khách cần tiếp tục hành trình bằng xe khách từ cửa ngõ phía đông TP.HCM. Xe đưa trực tiếp đến bến giúp hành khách chủ động giờ nối chuyến và đỡ vất vả khi mang theo hành lý.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ - 1 giờ 40 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-nhon-trach-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Nhơn Trạch Đồng Nai đi Bến xe Miền Tây phù hợp cho hành khách cần nối chuyến về các tỉnh miền Tây. Xe riêng giúp đi liền mạch từ điểm đón tại Nhơn Trạch đến bến xe, thuận tiện khi cần mang nhiều hành lý hoặc phải đến đúng giờ cho chuyến tiếp theo.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-ben-xe-an-suong",
+  path: "xa-nhon-trach-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để đón xe, gặp người thân hoặc tiếp tục hành trình. Dịch vụ đón tận nơi giúp khách chủ động giờ đi và tránh phải tự kết nối nhiều chặng phương tiện qua thành phố.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Xe đưa trực tiếp đến bệnh viện giúp hạn chế việc lên xuống nhiều lần, đồng thời thuận tiện mang theo hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám chuyên khoa, tái khám hoặc điều trị. Xe riêng giúp người bệnh và thân nhân chủ động giờ xuất phát, mang theo hồ sơ cần thiết và di chuyển thẳng đến khu vực bệnh viện.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở ở TP Thủ Đức. Đi thẳng bằng xe riêng giúp hạn chế trung chuyển, tạo sự thuận tiện cho người cần nghỉ ngơi hoặc có thân nhân đi cùng chăm sóc.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ - 1 giờ 40 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian thoải mái cho bé trên chặng đường liên tỉnh và giúp phụ huynh chủ động thời gian theo lịch khám đã sắp xếp.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc đổi phương tiện và thuận tiện chuẩn bị thuốc men, hành lý cùng đồ dùng cần thiết cho bé.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-tu-du",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón theo địa chỉ yêu cầu tại Nhơn Trạch, giúp chủ động giờ xuất phát và thuận tiện mang theo hồ sơ, hành lý cùng đồ dùng cần thiết.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình dễ căn thời gian theo lịch hẹn và hạn chế phải chuyển phương tiện trong hành trình.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách có lịch tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, thuận tiện khi hành khách cần mang theo hồ sơ y tế và đồ dùng cá nhân.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-nhon-trach-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám các vấn đề về xương khớp và chấn thương. Hình thức đón tận nơi giúp người khó vận động hạn chế lên xuống nhiều lần và có chuyến đi thoải mái hơn.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-cho-ben-thanh",
+  path: "xa-nhon-trach-dong-nai-di-cho-ben-thanh",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Nhơn Trạch Đồng Nai đi Chợ Bến Thành phù hợp cho khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Xe riêng giúp chủ động lịch trình và thuận tiện tiếp tục khám phá phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm gần khu vực Bến Thành.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-nhon-trach-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Nhơn Trạch Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho chuyến vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Khách có thể linh hoạt giờ khởi hành và kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng các địa điểm ăn uống lân cận.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-dinh-doc-lap",
+  path: "xa-nhon-trach-dong-nai-di-dinh-doc-lap",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Nhơn Trạch Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Đi xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm hoặc Bảo tàng Chứng tích Chiến tranh.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-nhon-trach-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn tham quan khu trung tâm thành phố. Điểm đến nằm gần nhiều công trình nổi tiếng, thuận tiện xây dựng lịch trình khám phá Sài Gòn trong ngày.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-nhon-trach-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc, chụp ảnh và khám phá cụm địa danh quanh Công trường Công xã Paris. Khách có thể kết hợp Nhà thờ Đức Bà, đường sách và khu Đồng Khởi trong cùng chuyến đi.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-landmark-81",
+  path: "xa-nhon-trach-dong-nai-di-landmark-81",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Nhơn Trạch Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, ăn uống, vui chơi, lưu trú hoặc gặp gỡ đối tác. Xe đón tận nơi tại Nhơn Trạch và đưa thẳng đến khu vực Landmark 81, giúp hành trình xuống TP.HCM gọn gàng và linh hoạt.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+{
+  key: "xa-nhon-trach-dong-nai-di-ben-bach-dang",
+  path: "xa-nhon-trach-dong-nai-di-ben-bach-dang",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn dạo chơi ven sông Sài Gòn, tham quan khu trung tâm hoặc kết hợp lịch hẹn trong thành phố. Xe đón tận nơi tại Nhơn Trạch và đưa thẳng đến khu vực bến, giúp khách linh hoạt sắp xếp chuyến đi trong ngày.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-nhon-trach-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Nhơn Trạch Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn tổ chức chuyến vui chơi tại TP.HCM. Đi xe riêng giúp thuận tiện mang theo đồ dùng và chủ động thời gian tham quan mà không phụ thuộc vào nhiều chặng phương tiện.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-nhon-trach-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Nhơn Trạch Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật ở trung tâm TP.HCM. Từ bảo tàng, hành khách có thể dễ dàng kết hợp Dinh Độc Lập và nhiều điểm tham quan lân cận.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-nhon-trach-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Nhơn Trạch Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp chủ động giờ khởi hành, đặc biệt thuận tiện với chuyến đi chiều tối hoặc khách mang theo hành lý.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-phu-my-hung",
+  path: "xa-nhon-trach-dong-nai-di-phu-my-hung",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Nhơn Trạch Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Xe đón theo địa chỉ yêu cầu giúp hành khách chủ động lịch trình và thuận tiện khi đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → nút giao An Phú → Mai Chí Thọ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-nhon-trach-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Hành khách có thể chọn giờ xuất phát phù hợp với lịch sự kiện và thuận tiện mang theo hành lý hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → nút giao An Phú → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-nhon-trach-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Nhơn Trạch Đồng Nai đi Takashimaya Saigon Centre phù hợp cho khách muốn mua sắm, ăn uống, gặp gỡ hoặc dành thời gian tại trung tâm Sài Gòn. Vị trí trên đường Lê Lợi thuận tiện để kết hợp Chợ Bến Thành, phố Nguyễn Huệ và nhiều điểm vui chơi trong cùng chuyến.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-nhon-trach-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Nhơn Trạch Đồng Nai đi Vincom Center Đồng Khởi thuận tiện cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại khu vực trung tâm TP.HCM. Từ Đồng Khởi, khách dễ dàng tiếp tục đến Nguyễn Huệ, Nhà thờ Đức Bà và các địa điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-nhon-trach-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Nhơn Trạch Đồng Nai đi AEON Mall Tân Phú Celadon thích hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách linh hoạt giờ đi về và thuận tiện mang theo nhiều đồ sau khi kết thúc chuyến mua sắm.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-nhon-trach-dong-nai-di-dam-sen",
+  path: "xa-nhon-trach-dong-nai-di-dam-sen",
+  from: "Xã Nhơn Trạch Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Nhơn Trạch Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Nhơn Trạch Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và sắp xếp hành trình trở về Nhơn Trạch.",
+  routeText:
+    "Xã Nhơn Trạch → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+{
+  key: "xa-phuoc-an-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-phuoc-an-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Phước An Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần chủ động giờ xuất phát theo lịch bay và mang theo hành lý. Xe đón tận nơi tại Phước An, di chuyển thẳng đến khu vực nhà ga, thuận tiện cho khách công tác, gia đình hoặc nhóm nhỏ.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-ga-sai-gon",
+  path: "xa-phuoc-an-dong-nai-di-ga-sai-gon",
+  from: "Xã Phước An Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước An Đồng Nai đi Ga Sài Gòn giúp hành khách thuận tiện căn giờ khởi hành theo lịch tàu và hạn chế phải đổi phương tiện giữa đường. Xe riêng phù hợp với người lớn tuổi, gia đình có trẻ nhỏ hoặc khách mang nhiều vali khi đến nhà ga.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-phuoc-an-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Phước An Đồng Nai đi Bến xe Miền Đông mới thuận tiện cho khách cần nối chuyến xe khách tại khu vực phía đông TP.HCM. Xe đón theo địa chỉ yêu cầu và đưa thẳng đến bến, giúp hành khách chủ động thời gian cũng như đỡ vất vả khi mang nhiều hành lý.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-phuoc-an-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước An Đồng Nai đi Bến xe Miền Tây phù hợp cho hành khách cần tiếp tục hành trình về các tỉnh miền Tây. Đi xe riêng giúp khách di chuyển liền mạch từ Phước An đến bến xe, thuận tiện khi có hành lý và cần đến đúng giờ cho chuyến xe đường dài.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-ben-xe-an-suong",
+  path: "xa-phuoc-an-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước An Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để đón xe, gặp người thân hoặc nối tiếp hành trình. Dịch vụ đón tận nơi giúp khách chủ động giờ khởi hành và không phải tự chuyển qua nhiều phương tiện trong thành phố.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần đến TP.HCM khám, điều trị hoặc tái khám. Xe đưa thẳng đến bệnh viện giúp hạn chế trung chuyển, thuận tiện mang theo hồ sơ y tế và sắp xếp giờ đi theo lịch khám.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước An Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM thuận tiện cho khách có lịch khám chuyên khoa, điều trị hoặc tái khám. Hình thức xe riêng giúp người bệnh và thân nhân chủ động thời gian, mang theo hồ sơ cần thiết và đi trực tiếp đến khu vực bệnh viện.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước An Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở ở TP Thủ Đức. Tuyến đi về phía đông TP.HCM giúp hành khách thuận tiện di chuyển thẳng đến bệnh viện, đặc biệt khi có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Phước An Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian thoải mái cho bé trên đường, đồng thời giúp phụ huynh chủ động giờ xuất phát theo lịch khám và mang theo đầy đủ đồ dùng cần thiết.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp hạn chế đổi phương tiện, thuận tiện chuẩn bị thuốc men, hồ sơ và đồ dùng cần thiết cho bé.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-tu-du",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón theo địa chỉ yêu cầu tại Phước An, giúp chủ động giờ xuất phát và thuận tiện mang theo hồ sơ, hành lý cùng các vật dụng cần thiết.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước An Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình dễ sắp xếp thời gian theo lịch hẹn và hạn chế phải chuyển nhiều phương tiện trên hành trình.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Phước An Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, thuận tiện khi hành khách cần mang theo hồ sơ y tế, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-phuoc-an-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước An Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám các vấn đề về xương khớp và chấn thương. Hình thức đón tận nơi giúp người khó vận động hạn chế lên xuống xe nhiều lần và có hành trình thuận tiện hơn.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-cho-ben-thanh",
+  path: "xa-phuoc-an-dong-nai-di-cho-ben-thanh",
+  from: "Xã Phước An Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước An Đồng Nai đi Chợ Bến Thành thích hợp cho khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Xe riêng giúp chủ động lịch trình và dễ tiếp tục đến phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng quanh khu vực Bến Thành.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-phuoc-an-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Phước An Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Phước An Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp cho chuyến vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Khách có thể linh hoạt giờ khởi hành và kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng các điểm ăn uống trong cùng lịch trình.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-dinh-doc-lap",
+  path: "xa-phuoc-an-dong-nai-di-dinh-doc-lap",
+  from: "Xã Phước An Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Phước An Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật tại trung tâm TP.HCM. Đi xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm hoặc Bảo tàng Chứng tích Chiến tranh trong chuyến đi.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-phuoc-an-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Phước An Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá cụm điểm nổi tiếng tại trung tâm thành phố. Xe đưa thẳng đến khu vực Công trường Công xã Paris, thuận tiện tiếp tục tham quan các địa danh lân cận.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-phuoc-an-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước An Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc, chụp ảnh và khám phá khu trung tâm TP.HCM. Điểm đến nằm cạnh Nhà thờ Đức Bà và gần đường sách, phù hợp để kết hợp nhiều điểm trong một chuyến tham quan.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-landmark-81",
+  path: "xa-phuoc-an-dong-nai-di-landmark-81",
+  from: "Xã Phước An Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước An Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park vui chơi, mua sắm, dùng bữa, lưu trú hoặc gặp gỡ đối tác. Xe riêng đón tận nơi tại Phước An và đưa thẳng đến Landmark 81, giúp chuyến đi vào TP.HCM thuận tiện và linh hoạt hơn.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+{
+  key: "xa-phuoc-an-dong-nai-di-ben-bach-dang",
+  path: "xa-phuoc-an-dong-nai-di-ben-bach-dang",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn dạo chơi ven sông Sài Gòn, tham quan trung tâm hoặc kết hợp lịch hẹn tại TP.HCM. Xe đón tận nơi tại Phước An và đưa thẳng đến khu vực bến, giúp hành khách chủ động thời gian cho chuyến đi trong ngày.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-phuoc-an-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Phước An Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước An Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn tổ chức chuyến vui chơi tại TP.HCM. Đi xe riêng giúp thuận tiện mang theo đồ dùng và linh hoạt sắp xếp thời gian tham quan các địa điểm gần trung tâm.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-phuoc-an-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Phước An Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Phước An Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm TP.HCM. Từ bảo tàng, hành khách có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà cùng nhiều địa điểm nổi tiếng trong cùng lịch trình.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-phuoc-an-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Phước An Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước An Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng đặc biệt thuận tiện với chuyến đi chiều tối khi khách muốn chủ động giờ xuất phát và mang theo hành lý.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-phu-my-hung",
+  path: "xa-phuoc-an-dong-nai-di-phu-my-hung",
+  from: "Xã Phước An Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước An Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Hình thức đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện hơn khi đi cùng gia đình hoặc mang nhiều hành lý.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → khu vực Thủ Thiêm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-phuoc-an-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Phước An Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Phước An Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp gỡ đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách dễ căn giờ đến sự kiện và thuận tiện mang theo hành lý hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-phuoc-an-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Phước An Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Phước An Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, dùng bữa, gặp gỡ hoặc tham quan trung tâm Sài Gòn. Vị trí trên đường Lê Lợi giúp khách dễ kết hợp Chợ Bến Thành, phố Nguyễn Huệ và các điểm vui chơi lân cận.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-phuoc-an-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Phước An Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Phước An Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa trực tiếp đến khu Đồng Khởi, thuận tiện tiếp tục tham quan Nguyễn Huệ, Nhà thờ Đức Bà và các địa điểm gần đó.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-phuoc-an-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Phước An Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Phước An Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước An Đồng Nai đi AEON Mall Tân Phú Celadon thích hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách linh hoạt giờ đi về và thuận tiện mang theo đồ mua sắm trên hành trình trở lại Đồng Nai.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-phuoc-an-dong-nai-di-dam-sen",
+  path: "xa-phuoc-an-dong-nai-di-dam-sen",
+  from: "Xã Phước An Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Phước An Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước An Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và dễ sắp xếp chuyến trở về Phước An sau khi kết thúc lịch trình.",
+  routeText:
+    "Xã Phước An → đường 25B → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 25 phút",
+},
+{
+  key: "xa-phuoc-thai-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-phuoc-thai-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần đón tận nơi và chủ động giờ xuất phát theo lịch bay. Từ khu vực Phước Thái gần QL51, hành khách có thể đi thẳng về TP.HCM, thuận tiện khi mang hành lý hoặc đi cùng gia đình.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-ga-sai-gon",
+  path: "xa-phuoc-thai-dong-nai-di-ga-sai-gon",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước Thái Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần đến nhà ga theo giờ tàu đã đặt. Xe riêng giúp giảm việc đổi phương tiện trên đường, phù hợp cho người lớn tuổi, gia đình có trẻ nhỏ hoặc khách mang theo nhiều vali.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-phuoc-thai-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Phước Thái Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Xe đón tận nơi và đưa thẳng đến bến giúp hành khách dễ căn giờ xuất phát, đặc biệt khi có hành lý đi cùng.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-phuoc-thai-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước Thái Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần tiếp tục hành trình về các tỉnh miền Tây. Đi xe riêng giúp hành khách di chuyển liền mạch từ điểm đón đến bến xe, dễ chủ động thời gian và thoải mái hơn khi mang theo nhiều hành lý.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-ben-xe-an-suong",
+  path: "xa-phuoc-thai-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước Thái Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến khu vực cửa ngõ Tây Bắc TP.HCM để đón xe hoặc tiếp tục hành trình. Dịch vụ đón tận nơi giúp giảm các chặng trung chuyển và thuận tiện hơn cho khách có nhiều hành lý.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần đến TP.HCM khám, tái khám hoặc điều trị. Xe đưa trực tiếp đến bệnh viện giúp hạn chế trung chuyển, thuận tiện mang hồ sơ y tế và chủ động giờ đi theo lịch hẹn.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước Thái Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, điều trị hoặc tái khám. Xe riêng đón theo địa chỉ yêu cầu, giúp người bệnh và thân nhân có hành trình thuận tiện hơn khi cần xuống TP.HCM trong ngày.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước Thái Đồng Nai đi Bệnh viện Ung Bướu TP.HCM phù hợp cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở ở khu vực phía đông thành phố. Đi thẳng bằng xe riêng giúp hạn chế việc đổi phương tiện và thuận tiện khi có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 45 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Phước Thái Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ đến TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Không gian xe riêng phù hợp khi bé cần nghỉ trên đường, đồng thời giúp phụ huynh chủ động mang theo thuốc men, hồ sơ và đồ dùng cần thiết.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc đổi phương tiện và thuận tiện chuẩn bị hành lý, thuốc men cùng đồ dùng cho bé.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-tu-du",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón tận nơi tại Phước Thái, giúp chủ động giờ xuất phát và thuận tiện mang theo hồ sơ, hành lý cùng các vật dụng cần thiết.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước Thái Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình dễ căn thời gian theo lịch hẹn và hạn chế phải đổi nhiều phương tiện trong suốt hành trình.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Phước Thái Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách có lịch tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, thuận tiện khi cần mang hồ sơ y tế, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-phuoc-thai-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước Thái Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám về xương khớp và chấn thương. Đón tận nơi giúp người khó vận động giảm số lần lên xuống xe và thuận tiện hơn khi có người thân đi cùng.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-cho-ben-thanh",
+  path: "xa-phuoc-thai-dong-nai-di-cho-ben-thanh",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước Thái Đồng Nai đi Chợ Bến Thành phù hợp cho khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Xe riêng giúp chủ động lịch trình và thuận tiện khám phá thêm phố Nguyễn Huệ, Takashimaya cùng các điểm nổi tiếng quanh khu vực Bến Thành.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-phuoc-thai-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Phước Thái Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách xuống trung tâm TP.HCM vui chơi, tham quan hoặc dự sự kiện. Hành khách có thể linh hoạt giờ khởi hành và kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng nhiều điểm ăn uống trong cùng chuyến.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-dinh-doc-lap",
+  path: "xa-phuoc-thai-dong-nai-di-dinh-doc-lap",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Phước Thái Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật tại trung tâm TP.HCM. Xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm hoặc Bảo tàng Chứng tích Chiến tranh trong cùng ngày.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-phuoc-thai-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá cụm điểm nổi tiếng tại trung tâm thành phố. Điểm đến thuận tiện để kết hợp Bưu điện Trung tâm, đường sách và khu Đồng Khởi trong một lịch trình.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-phuoc-thai-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước Thái Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc và khám phá cụm địa danh quanh Công trường Công xã Paris. Xe đưa thẳng đến khu trung tâm, giúp khách dễ kết hợp Nhà thờ Đức Bà và các điểm tham quan lân cận.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-landmark-81",
+  path: "xa-phuoc-thai-dong-nai-di-landmark-81",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước Thái Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, dùng bữa, vui chơi, lưu trú hoặc gặp gỡ đối tác. Xe đón tận nơi tại Phước Thái và đưa thẳng đến Landmark 81, thuận tiện cho chuyến đi TP.HCM trong ngày.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+{
+  key: "xa-phuoc-thai-dong-nai-di-ben-bach-dang",
+  path: "xa-phuoc-thai-dong-nai-di-ben-bach-dang",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, dạo trung tâm hoặc kết hợp lịch hẹn tại TP.HCM. Xe đón tận nơi tại Phước Thái và đưa thẳng đến khu vực bến, giúp hành khách chủ động thời gian cho chuyến đi.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-phuoc-thai-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Phước Thái Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng, linh hoạt giờ đi về và dễ kết hợp thêm các điểm tham quan ở trung tâm.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-phuoc-thai-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Phước Thái Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan các địa danh nổi bật tại trung tâm TP.HCM. Hành trình có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà và nhiều điểm gần đó trong cùng ngày.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-phuoc-thai-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước Thái Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Đi xe riêng giúp chủ động giờ xuất phát và thuận tiện hơn với khách có hành lý hoặc dự định trở về muộn.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-phu-my-hung",
+  path: "xa-phuoc-thai-dong-nai-di-phu-my-hung",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Phước Thái Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách có lịch công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện khi đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → khu vực Thủ Thiêm → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-phuoc-thai-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách dễ căn thời gian đến sự kiện và thuận tiện mang theo hành lý hoặc vật dụng công việc.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-phuoc-thai-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Phước Thái Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, dùng bữa, gặp gỡ hoặc tham quan trung tâm Sài Gòn. Từ điểm đến trên đường Lê Lợi, khách dễ kết hợp Chợ Bến Thành, phố Nguyễn Huệ và các địa điểm lân cận.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-phuoc-thai-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Phước Thái Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa thẳng đến khu Đồng Khởi, thuận tiện tiếp tục đến Nguyễn Huệ, Nhà thờ Đức Bà và nhiều địa điểm nổi tiếng.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-phuoc-thai-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Phước Thái Đồng Nai đi AEON Mall Tân Phú Celadon thích hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách linh hoạt giờ đi về và thuận tiện mang theo đồ mua sắm trên hành trình trở lại Đồng Nai.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 40 phút",
+},
+
+{
+  key: "xa-phuoc-thai-dong-nai-di-dam-sen",
+  path: "xa-phuoc-thai-dong-nai-di-dam-sen",
+  from: "Xã Phước Thái Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Phước Thái Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Phước Thái Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và dễ sắp xếp chuyến trở về Phước Thái.",
+  routeText:
+    "Xã Phước Thái → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+{
+  key: "xa-long-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-long-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần đón tận nơi và chủ động giờ xuất phát theo lịch bay. Từ Long Phước, xe kết nối về khu vực Long Thành rồi đi cao tốc vào TP.HCM, thuận tiện cho gia đình, khách công tác và người mang nhiều hành lý.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-ga-sai-gon",
+  path: "xa-long-phuoc-dong-nai-di-ga-sai-gon",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Phước Đồng Nai đi Ga Sài Gòn giúp hành khách chủ động thời gian theo giờ tàu và di chuyển liền mạch từ điểm đón đến nhà ga. Xe riêng đặc biệt thuận tiện cho người lớn tuổi, gia đình có trẻ nhỏ hoặc khách cần mang theo nhiều vali trong chuyến đi.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-long-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Long Phước Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Xe đón theo địa chỉ yêu cầu tại Long Phước và đưa thẳng đến bến, giúp hành khách dễ căn giờ khởi hành và thuận tiện khi có hành lý.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-long-phuoc-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Phước Đồng Nai đi Bến xe Miền Tây thuận tiện cho hành khách cần tiếp tục hành trình về các tỉnh miền Tây. Đi xe riêng giúp khách tránh phải trung chuyển nhiều chặng qua TP.HCM, đồng thời dễ sắp xếp giờ đến bến theo chuyến xe đã đặt.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-ben-xe-an-suong",
+  path: "xa-long-phuoc-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Phước Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để đón xe hoặc tiếp tục hành trình sang các tuyến khác. Dịch vụ đón tận nơi giúp giảm việc đổi phương tiện và thuận tiện hơn khi khách đi cùng gia đình hoặc mang nhiều hành lý.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Xe đưa trực tiếp đến bệnh viện giúp hạn chế lên xuống nhiều lần, thuận tiện mang theo hồ sơ y tế và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, tái khám hoặc điều trị. Xe riêng giúp người bệnh và thân nhân chủ động giờ xuất phát từ Long Phước, đồng thời thuận tiện mang theo hồ sơ, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Tuyến đi không cần vào sâu khu trung tâm TP.HCM, giúp hành khách có hành trình gọn hơn và phù hợp khi có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Long Phước Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian thoải mái cho bé nghỉ trên đường và giúp phụ huynh chủ động mang theo thuốc men, hồ sơ cùng các vật dụng cần thiết.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc đổi phương tiện, đồng thời thuận tiện chuẩn bị hành lý và đồ dùng cần thiết cho bé.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-tu-du",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón tận nơi tại Long Phước, giúp chủ động giờ xuất phát và thuận tiện mang theo hồ sơ, hành lý cùng những vật dụng cần thiết cho chuyến đi.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Phước Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình dễ sắp xếp giờ khởi hành theo lịch hẹn và hạn chế phải chuyển nhiều phương tiện trên đường.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Long Phước Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách có lịch tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, giúp hành khách thuận tiện mang theo hồ sơ y tế, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-long-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám về xương khớp và chấn thương. Đón tận nơi giúp người khó vận động giảm việc lên xuống nhiều lần, đồng thời thuận tiện khi có người thân đi cùng hỗ trợ.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-cho-ben-thanh",
+  path: "xa-long-phuoc-dong-nai-di-cho-ben-thanh",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Phước Đồng Nai đi Chợ Bến Thành phù hợp cho khách muốn xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Đi xe riêng giúp chủ động lịch trình và thuận tiện nối tiếp chuyến tham quan phố Nguyễn Huệ, Takashimaya cùng các địa điểm gần Bến Thành.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-long-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Long Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách xuống trung tâm TP.HCM vui chơi, tham quan hoặc tham dự sự kiện. Hành khách có thể linh hoạt thời gian và kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng nhiều địa điểm ăn uống trong cùng chuyến.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-dinh-doc-lap",
+  path: "xa-long-phuoc-dong-nai-di-dinh-doc-lap",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Long Phước Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm cùng Bảo tàng Chứng tích Chiến tranh trong lịch trình.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-long-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá cụm điểm nổi tiếng ở trung tâm thành phố. Từ đây, khách có thể thuận tiện tham quan Bưu điện Trung tâm, đường sách và khu Đồng Khởi trong cùng chuyến.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-long-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan kiến trúc và khám phá khu vực Công trường Công xã Paris. Điểm đến nằm gần Nhà thờ Đức Bà và đường sách, giúp khách dễ sắp xếp nhiều điểm tham quan trong một ngày.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-landmark-81",
+  path: "xa-long-phuoc-dong-nai-di-landmark-81",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Phước Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, dùng bữa, vui chơi, lưu trú hoặc gặp đối tác. Xe đón tận nơi tại Long Phước và đưa thẳng đến khu Landmark 81, giúp chuyến đi vào TP.HCM thuận tiện và linh hoạt hơn.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+{
+  key: "xa-long-phuoc-dong-nai-di-ben-bach-dang",
+  path: "xa-long-phuoc-dong-nai-di-ben-bach-dang",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn dạo khu vực ven sông Sài Gòn, tham quan trung tâm hoặc kết hợp lịch hẹn tại TP.HCM. Xe đón tận nơi tại Long Phước và đưa thẳng đến khu vực bến, giúp hành khách chủ động thời gian cho chuyến đi trong ngày.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-long-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng và linh hoạt giờ đi về, đồng thời dễ kết hợp thêm các điểm tham quan ở trung tâm.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-long-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Long Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá khu vực trung tâm TP.HCM. Từ bảo tàng, khách có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà cùng nhiều địa điểm nổi tiếng khác trong cùng lịch trình.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-long-phuoc-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Phước Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp chủ động giờ khởi hành, thuận tiện cho chuyến đi chiều tối và khách có mang theo hành lý.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-phu-my-hung",
+  path: "xa-long-phuoc-dong-nai-di-phu-my-hung",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Phước Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình, đặc biệt thuận tiện khi đi cùng gia đình hoặc cần mang nhiều hành lý.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-long-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Long Phước Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách chủ động giờ đến sự kiện và thuận tiện mang theo hành lý hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-long-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Long Phước Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, dùng bữa, gặp gỡ hoặc tham quan trung tâm Sài Gòn. Điểm đến nằm trên đường Lê Lợi, giúp khách dễ kết hợp Chợ Bến Thành, phố Nguyễn Huệ và nhiều địa điểm lân cận.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-long-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Long Phước Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa trực tiếp đến khu Đồng Khởi, thuận tiện để tiếp tục đến phố Nguyễn Huệ, Nhà thờ Đức Bà và các điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-long-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Long Phước Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Phước Đồng Nai đi AEON Mall Tân Phú Celadon thích hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách linh hoạt giờ đi về và thuận tiện mang theo đồ mua sắm khi trở lại Long Phước.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 40 phút",
+},
+
+{
+  key: "xa-long-phuoc-dong-nai-di-dam-sen",
+  path: "xa-long-phuoc-dong-nai-di-dam-sen",
+  from: "Xã Long Phước Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Long Phước Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Phước Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và dễ sắp xếp hành trình trở về Đồng Nai sau chuyến đi.",
+  routeText:
+    "Xã Long Phước → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+{
+  key: "xa-long-thanh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-long-thanh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần di chuyển theo lịch bay, đi công tác hoặc đưa đón người thân. Xe đón tận nơi tại Long Thành và đi thẳng về sân bay, giúp hành khách chủ động thời gian cũng như thuận tiện khi mang theo nhiều hành lý.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-ga-sai-gon",
+  path: "xa-long-thanh-dong-nai-di-ga-sai-gon",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Thành Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần đến nhà ga theo giờ tàu đã đặt. Đi xe riêng giúp giảm các chặng trung chuyển, phù hợp cho gia đình có trẻ nhỏ, người lớn tuổi hoặc khách cần mang vali và hành lý đường dài.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-long-thanh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Long Thành Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Tuyến đi từ Long Thành có kết nối thuận tiện về khu vực bến, giúp hành khách dễ căn giờ và hạn chế phải đổi nhiều phương tiện.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 55 phút - 1 giờ 35 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-long-thanh-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Thành Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần nối chuyến về các tỉnh miền Tây. Xe riêng đưa hành khách trực tiếp từ Long Thành đến bến, phù hợp khi có nhiều hành lý hoặc cần chủ động thời gian để kịp chuyến xe đường dài.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-ben-xe-an-suong",
+  path: "xa-long-thanh-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Thành Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để đón xe hoặc tiếp tục hành trình sang tuyến khác. Đón tận nơi giúp khách không phải tự kết nối nhiều chặng qua thành phố và thuận tiện hơn khi mang hành lý.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Xe đón tận nơi giúp hạn chế việc lên xuống nhiều lần, thuận tiện mang theo hồ sơ y tế và chủ động giờ đi theo lịch hẹn.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Thành Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, điều trị hoặc tái khám. Xe riêng giúp người bệnh và thân nhân chủ động giờ khởi hành, đồng thời thuận tiện mang theo hồ sơ, thuốc men và các vật dụng cá nhân.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Thành Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Hành trình không cần đi sâu vào trung tâm TP.HCM, phù hợp cho khách muốn di chuyển trực tiếp và có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 55 phút - 1 giờ 35 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Long Thành Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian thoải mái cho bé nghỉ trên đường và giúp phụ huynh dễ mang theo thuốc men, hồ sơ cùng đồ dùng cần thiết.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc đổi phương tiện, thuận tiện chuẩn bị hành lý, thuốc men và những đồ dùng cần thiết cho bé.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-tu-du",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón tận nơi tại Long Thành, giúp chủ động giờ xuất phát và thuận tiện mang theo hồ sơ, hành lý cùng các vật dụng cần thiết.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Thành Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình chủ động giờ khởi hành theo lịch hẹn và hạn chế phải đổi nhiều phương tiện trong hành trình.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Long Thành Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, thuận tiện khi hành khách cần mang hồ sơ y tế, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-long-thanh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Thành Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám các vấn đề về xương khớp và chấn thương. Đón tận nơi giúp người khó vận động hạn chế việc lên xuống nhiều lần và thuận tiện khi có người thân đi cùng.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-cho-ben-thanh",
+  path: "xa-long-thanh-dong-nai-di-cho-ben-thanh",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Thành Đồng Nai đi Chợ Bến Thành phù hợp cho khách xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Xe riêng giúp chủ động lịch trình và thuận tiện nối tiếp đến phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng quanh trung tâm.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 10 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-long-thanh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Long Thành Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách xuống trung tâm TP.HCM vui chơi, tham quan hoặc tham dự sự kiện. Khách có thể linh hoạt giờ đi về và kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng nhiều điểm ăn uống trong một chuyến.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-dinh-doc-lap",
+  path: "xa-long-thanh-dong-nai-di-dinh-doc-lap",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Long Thành Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan một trong những địa danh lịch sử nổi bật tại trung tâm TP.HCM. Đi xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm hoặc Bảo tàng Chứng tích Chiến tranh.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-long-thanh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá cụm địa danh nổi tiếng ở trung tâm thành phố. Từ điểm đến, khách dễ kết hợp Bưu điện Trung tâm, đường sách và khu Đồng Khởi trong cùng lịch trình.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-long-thanh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Thành Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan công trình kiến trúc nổi tiếng tại khu vực Công trường Công xã Paris. Vị trí gần Nhà thờ Đức Bà và đường sách giúp hành khách dễ kết hợp nhiều điểm trung tâm trong một ngày.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-landmark-81",
+  path: "xa-long-thanh-dong-nai-di-landmark-81",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Thành Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, dùng bữa, vui chơi, lưu trú hoặc gặp gỡ đối tác. Xe đón tận nơi tại Long Thành và đưa thẳng đến khu Landmark 81, thuận tiện cho cả chuyến đi trong ngày lẫn lịch trình công việc.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+{
+  key: "xa-long-thanh-dong-nai-di-ben-bach-dang",
+  path: "xa-long-thanh-dong-nai-di-ben-bach-dang",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn dạo khu vực ven sông Sài Gòn, tham quan trung tâm hoặc kết hợp lịch hẹn tại TP.HCM. Xe đón tận nơi tại Long Thành và đưa thẳng đến khu vực bến, giúp hành khách chủ động thời gian cho chuyến đi.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-long-thanh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Long Thành Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng, linh hoạt giờ đi về và dễ kết hợp thêm các địa điểm nổi tiếng ở trung tâm.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-long-thanh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Long Thành Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm TP.HCM. Từ bảo tàng, hành khách có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà và các điểm nổi tiếng lân cận trong cùng lịch trình.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-long-thanh-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Thành Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu trung tâm. Xe riêng giúp chủ động giờ khởi hành và đặc biệt thuận tiện cho chuyến đi chiều tối hoặc khách có mang theo hành lý.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-phu-my-hung",
+  path: "xa-long-thanh-dong-nai-di-phu-my-hung",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Long Thành Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện hơn khi đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-long-thanh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Long Thành Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách chủ động giờ đến sự kiện và thuận tiện mang theo hành lý, tài liệu hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-long-thanh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Long Thành Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, dùng bữa, gặp gỡ hoặc tham quan trung tâm Sài Gòn. Vị trí trên đường Lê Lợi giúp hành khách dễ kết hợp Chợ Bến Thành, phố Nguyễn Huệ và nhiều điểm vui chơi gần đó.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-long-thanh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Long Thành Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa trực tiếp đến khu Đồng Khởi, thuận tiện tiếp tục đến phố Nguyễn Huệ, Nhà thờ Đức Bà và các địa điểm lân cận.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-long-thanh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Long Thành Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Long Thành Đồng Nai đi AEON Mall Tân Phú Celadon thích hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách linh hoạt giờ đi về và thuận tiện mang theo đồ mua sắm khi trở lại Long Thành.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-long-thanh-dong-nai-di-dam-sen",
+  path: "xa-long-thanh-dong-nai-di-dam-sen",
+  from: "Xã Long Thành Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Long Thành Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Long Thành Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và dễ sắp xếp hành trình trở về Long Thành sau chuyến đi.",
+  routeText:
+    "Xã Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+{
+  key: "xa-binh-an-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-binh-an-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Bình An Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách đi công tác, du lịch hoặc cần đón tiễn người thân theo lịch bay. Xe đón tận nơi tại Bình An, giúp hành khách chủ động giờ xuất phát và thuận tiện mang theo vali, hành lý trong suốt hành trình về TP.HCM.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-ga-sai-gon",
+  path: "xa-binh-an-dong-nai-di-ga-sai-gon",
+  from: "Xã Bình An Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình An Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần đến nhà ga đúng giờ để bắt chuyến tàu đường dài. Đi xe riêng giúp hạn chế trung chuyển, phù hợp cho gia đình có trẻ nhỏ, người lớn tuổi hoặc khách mang theo nhiều hành lý.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-binh-an-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Bình An Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Xe đưa trực tiếp từ Bình An đến khu vực bến, giúp hành khách dễ căn giờ khởi hành và thoải mái hơn khi mang theo hành lý.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 55 phút - 1 giờ 40 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-binh-an-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình An Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần tiếp tục hành trình từ TP.HCM về các tỉnh miền Tây. Xe riêng giúp di chuyển liền mạch từ điểm đón đến bến xe, giảm việc đổi phương tiện và dễ chủ động thời gian theo chuyến đã đặt.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-ben-xe-an-suong",
+  path: "xa-binh-an-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình An Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để bắt xe hoặc tiếp tục hành trình sang tuyến khác. Đón tận nơi giúp khách giảm các chặng trung chuyển qua thành phố và thuận tiện hơn khi đi cùng gia đình hoặc có nhiều hành lý.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-binh-an-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, tái khám hoặc điều trị. Xe đưa trực tiếp đến bệnh viện giúp hạn chế phải đổi phương tiện, thuận tiện mang hồ sơ y tế và chủ động thời gian theo lịch hẹn.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-binh-an-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình An Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, điều trị hoặc tái khám. Xe đón tận nơi giúp người bệnh và thân nhân chủ động giờ khởi hành, đồng thời thuận tiện mang theo hồ sơ, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-binh-an-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình An Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Tuyến đi không cần vào sâu khu trung tâm, phù hợp cho khách muốn di chuyển trực tiếp và có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 55 phút - 1 giờ 40 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-binh-an-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Bình An Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Không gian xe riêng giúp bé có thể nghỉ trên đường, đồng thời phụ huynh dễ mang theo hồ sơ, thuốc men và những vật dụng cần thiết.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-binh-an-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp giảm việc đổi phương tiện và thuận tiện chuẩn bị hành lý, thuốc men cùng đồ dùng cho bé.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-tu-du",
+  path: "xa-binh-an-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám và tái khám tại TP.HCM. Xe đón tận nơi tại Bình An, giúp chủ động giờ xuất phát và thuận tiện mang theo hồ sơ, hành lý cùng các vật dụng cần thiết.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-binh-an-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình An Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình chủ động thời gian theo lịch hẹn và giảm việc phải chuyển nhiều phương tiện trong hành trình.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-binh-an-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Bình An Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách có lịch tái khám hoặc gia đình cần đến khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện, thuận tiện khi cần mang theo hồ sơ y tế, thuốc men và đồ dùng cá nhân.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-binh-an-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình An Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho người cần khám, điều trị hoặc tái khám về xương khớp và chấn thương. Đón tận nơi giúp người khó vận động hạn chế lên xuống xe nhiều lần và thuận tiện hơn khi có người thân đi cùng hỗ trợ.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-cho-ben-thanh",
+  path: "xa-binh-an-dong-nai-di-cho-ben-thanh",
+  from: "Xã Bình An Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình An Đồng Nai đi Chợ Bến Thành phù hợp cho khách xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp công việc. Xe riêng giúp chủ động lịch trình và thuận tiện tiếp tục đến phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng quanh khu vực trung tâm.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 10 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-binh-an-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Bình An Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Bình An Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách muốn xuống trung tâm TP.HCM vui chơi, tham quan hoặc tham dự sự kiện. Hành khách có thể chủ động giờ đi về và kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng các điểm ăn uống trong một chuyến.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-dinh-doc-lap",
+  path: "xa-binh-an-dong-nai-di-dinh-doc-lap",
+  from: "Xã Bình An Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Bình An Đồng Nai đi Dinh Độc Lập thuận tiện cho khách muốn tham quan địa danh lịch sử nổi bật tại trung tâm TP.HCM. Đi xe riêng giúp chủ động thời gian và dễ kết hợp Nhà thờ Đức Bà, Bưu điện Trung tâm cùng Bảo tàng Chứng tích Chiến tranh trong lịch trình.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-binh-an-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Bình An Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho gia đình, nhóm bạn hoặc khách muốn khám phá cụm địa danh nổi tiếng tại trung tâm thành phố. Từ đây, khách thuận tiện kết hợp Bưu điện Trung tâm, đường sách và khu Đồng Khởi trong cùng chuyến đi.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-binh-an-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình An Đồng Nai đi Bưu điện Trung tâm Sài Gòn thuận tiện cho khách muốn tham quan công trình kiến trúc nổi tiếng và khám phá khu vực trung tâm TP.HCM. Điểm đến nằm cạnh Nhà thờ Đức Bà, phù hợp để kết hợp đường sách và nhiều địa danh lân cận.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-landmark-81",
+  path: "xa-binh-an-dong-nai-di-landmark-81",
+  from: "Xã Bình An Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình An Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, dùng bữa, vui chơi, lưu trú hoặc gặp gỡ đối tác. Xe đón tận nơi tại Bình An và đưa thẳng đến Landmark 81, giúp hành trình vào TP.HCM thuận tiện và linh hoạt hơn.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+{
+  key: "xa-binh-an-dong-nai-di-ben-bach-dang",
+  path: "xa-binh-an-dong-nai-di-ben-bach-dang",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn dạo khu vực ven sông Sài Gòn, tham quan trung tâm hoặc kết hợp lịch hẹn tại TP.HCM. Xe đón tận nơi tại Bình An và đưa thẳng đến khu vực bến, giúp hành khách chủ động thời gian cho chuyến đi.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-binh-an-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Bình An Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình An Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ, nhóm bạn hoặc khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng, linh hoạt giờ đi về và dễ kết hợp thêm các địa điểm tham quan ở trung tâm.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-binh-an-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Bình An Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Bình An Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và khám phá khu vực trung tâm TP.HCM. Từ bảo tàng, khách có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà cùng nhiều địa điểm nổi tiếng lân cận trong một ngày.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-binh-an-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Bình An Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình An Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn vui chơi, ăn uống, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Đi xe riêng giúp chủ động giờ xuất phát, thuận tiện cho lịch trình chiều tối và khách cần mang theo hành lý.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-phu-my-hung",
+  path: "xa-binh-an-dong-nai-di-phu-my-hung",
+  from: "Xã Bình An Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình An Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách có lịch công tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện hơn khi đi cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-binh-an-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Bình An Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Bình An Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi SECC phù hợp cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp gỡ đối tác tại khu vực Phú Mỹ Hưng. Xe đón theo địa chỉ yêu cầu giúp khách chủ động thời gian đến sự kiện và thuận tiện mang theo tài liệu, hành lý hoặc vật dụng công việc.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-binh-an-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Bình An Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Bình An Đồng Nai đi Takashimaya Saigon Centre thuận tiện cho khách muốn mua sắm, dùng bữa, gặp gỡ hoặc tham quan trung tâm Sài Gòn. Vị trí trên đường Lê Lợi giúp khách dễ kết hợp Chợ Bến Thành, phố Nguyễn Huệ và nhiều điểm vui chơi trong cùng khu vực.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-binh-an-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Bình An Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Bình An Đồng Nai đi Vincom Center Đồng Khởi phù hợp cho khách mua sắm, ăn uống, giải trí hoặc có lịch hẹn tại trung tâm TP.HCM. Xe đưa trực tiếp đến khu Đồng Khởi, thuận tiện để tiếp tục tham quan phố Nguyễn Huệ, Nhà thờ Đức Bà và các điểm lân cận.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-binh-an-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Bình An Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Bình An Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình An Đồng Nai đi AEON Mall Tân Phú Celadon thích hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách linh hoạt thời gian đi về và thuận tiện mang theo đồ mua sắm trên hành trình trở lại Đồng Nai.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-an-dong-nai-di-dam-sen",
+  path: "xa-binh-an-dong-nai-di-dam-sen",
+  from: "Xã Bình An Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Bình An Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình An Đồng Nai đi Đầm Sen phù hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và dễ sắp xếp hành trình trở về Bình An sau chuyến đi.",
+  routeText:
+    "Xã Bình An → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+{
+  key: "xa-an-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-an-phuoc-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã An Phước Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần di chuyển theo lịch bay, đi công tác hoặc đón tiễn người thân. Từ An Phước có thể kết nối nhanh với QL51 và cao tốc về TP.HCM, giúp hành khách chủ động giờ xuất phát và thuận tiện khi mang theo hành lý.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-ga-sai-gon",
+  path: "xa-an-phuoc-dong-nai-di-ga-sai-gon",
+  from: "Xã An Phước Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Phước Đồng Nai đi Ga Sài Gòn thuận tiện cho khách cần đến nhà ga theo giờ tàu đã đặt. Xe riêng đón tận nơi giúp hạn chế phải trung chuyển qua nhiều phương tiện, phù hợp với gia đình, người lớn tuổi và hành khách mang theo vali hoặc hành lý đường dài.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-an-phuoc-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã An Phước Đồng Nai đi Bến xe Miền Đông mới phù hợp cho hành khách cần nối chuyến xe khách tại cửa ngõ phía đông TP.HCM. Vị trí An Phước thuận tiện kết nối về hướng cao tốc, giúp chuyến đi đến bến gọn hơn và dễ căn thời gian theo giờ xe khởi hành.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 50 phút - 1 giờ 30 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-an-phuoc-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Phước Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần tiếp tục hành trình từ TP.HCM về các tỉnh miền Tây. Xe đón theo địa chỉ tại An Phước và đưa thẳng đến bến, giúp giảm các chặng đổi phương tiện và phù hợp khi khách mang nhiều hành lý.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-ben-xe-an-suong",
+  path: "xa-an-phuoc-dong-nai-di-ben-xe-an-suong",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Phước Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để bắt xe hoặc nối tiếp hành trình. Đi thẳng từ điểm đón đến bến giúp hành khách bớt phải chuyển phương tiện trong nội đô và chủ động hơn với giờ khởi hành.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Hành trình tận nơi giúp giảm việc lên xuống nhiều lần, thuận tiện mang hồ sơ y tế và chủ động xuất phát theo lịch hẹn tại bệnh viện.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Phước Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, tái khám hoặc điều trị. Xe riêng giúp người bệnh và thân nhân chủ động thời gian, đồng thời thuận tiện mang theo kết quả xét nghiệm, hồ sơ và các vật dụng cần thiết.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Phước Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh có lịch khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Tuyến từ An Phước có lợi thế đi về hướng cao tốc và khu vực TP Thủ Đức cũ, hạn chế phải xuyên sâu qua trung tâm TP.HCM.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 50 phút - 1 giờ 30 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã An Phước Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Không gian xe riêng giúp bé nghỉ ngơi trên đường, còn phụ huynh có thể mang theo hồ sơ, thuốc men và đồ dùng mà không phải đổi nhiều chặng.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp hành trình thoải mái hơn cho bé và thuận tiện khi gia đình cần chuẩn bị nhiều đồ dùng cho chuyến khám.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 10 phút - 2 giờ",
+},
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-tu-du",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-tu-du",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám thai, tái khám và điều trị tại TP.HCM. Xe đón tận nơi tại An Phước giúp chủ động giờ xuất phát, hạn chế trung chuyển và thuận tiện mang theo hồ sơ cùng đồ dùng cá nhân.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Phước Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần xuống TP.HCM khám chuyên khoa, điều trị hoặc tái khám. Hành trình bằng xe riêng giúp gia đình dễ sắp xếp thời gian theo lịch hẹn và thoải mái hơn khi có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã An Phước Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách cần tái khám hoặc gia đình có lịch khám tại khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện giúp giảm việc đổi phương tiện và thuận tiện mang theo thuốc men, hồ sơ y tế.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-an-phuoc-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Phước Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho khách cần khám hoặc điều trị các vấn đề về xương khớp, vận động và chấn thương. Đón tận nơi giúp người bệnh hạn chế đi lại nhiều chặng, đặc biệt hữu ích khi cần người thân đi cùng hỗ trợ.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-cho-ben-thanh",
+  path: "xa-an-phuoc-dong-nai-di-cho-ben-thanh",
+  from: "Xã An Phước Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Phước Đồng Nai đi Chợ Bến Thành thích hợp cho khách muốn xuống trung tâm Sài Gòn mua sắm, tham quan hoặc kết hợp giải quyết công việc. Từ Chợ Bến Thành có thể dễ dàng nối lịch trình đến phố Nguyễn Huệ, Takashimaya và nhiều địa điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-an-phuoc-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã An Phước Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã An Phước Đồng Nai đi Phố đi bộ Nguyễn Huệ phù hợp cho khách muốn vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Chủ động xe riêng cũng giúp hành khách linh hoạt giờ trở về Đồng Nai sau khi kết hợp ăn uống và khám phá khu vực ven sông.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-dinh-doc-lap",
+  path: "xa-an-phuoc-dong-nai-di-dinh-doc-lap",
+  from: "Xã An Phước Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã An Phước Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình và nhóm khách muốn khám phá một địa danh lịch sử nổi bật của Sài Gòn. Đi xe riêng giúp dễ sắp xếp lịch trình kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm trung tâm khác.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-an-phuoc-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã An Phước Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho khách muốn tham quan cụm địa danh đặc trưng tại trung tâm thành phố. Vị trí điểm đến thuận tiện để tiếp tục khám phá Bưu điện Trung tâm, đường sách, Dinh Độc Lập và khu Đồng Khởi.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-an-phuoc-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Phước Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp cho khách muốn tham quan công trình kiến trúc nổi tiếng tại trung tâm TP.HCM. Do nằm ngay cạnh Nhà thờ Đức Bà và đường sách, hành khách có thể thuận tiện bố trí nhiều điểm tham quan trong cùng một chuyến.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-landmark-81",
+  path: "xa-an-phuoc-dong-nai-di-landmark-81",
+  from: "Xã An Phước Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Phước Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, ăn uống, vui chơi, lưu trú hoặc gặp đối tác. Tuyến từ An Phước vào khu vực Bình Thạnh cũ khá thuận tiện qua cao tốc, giúp khách chủ động lịch trình mà không cần tự trung chuyển.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 50 phút",
+},
+{
+  key: "xa-an-phuoc-dong-nai-di-ben-bach-dang",
+  path: "xa-an-phuoc-dong-nai-di-ben-bach-dang",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, vui chơi tại trung tâm hoặc kết hợp lịch hẹn trong thành phố. Xe đón tận nơi tại An Phước giúp hành khách chủ động giờ đi về và không cần tự trung chuyển nhiều chặng.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-an-phuoc-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã An Phước Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Phước Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn tổ chức chuyến vui chơi trong ngày. Đi xe riêng giúp thuận tiện mang theo đồ dùng cho trẻ, linh hoạt giờ trở về và dễ kết hợp thêm các địa điểm ở trung tâm TP.HCM.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 5 phút - 1 giờ 50 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-an-phuoc-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã An Phước Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã An Phước Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu trung tâm Sài Gòn. Điểm đến nằm gần Dinh Độc Lập, giúp gia đình hoặc nhóm khách dễ xây dựng lịch trình tham quan nhiều địa danh trong cùng ngày.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-an-phuoc-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã An Phước Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Phước Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn ăn uống, vui chơi, gặp bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp linh hoạt thời gian xuất phát và trở về Đồng Nai, đặc biệt thuận tiện cho lịch trình diễn ra vào chiều tối.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 10 phút - 2 giờ",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-phu-my-hung",
+  path: "xa-an-phuoc-dong-nai-di-phu-my-hung",
+  from: "Xã An Phước Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Phước Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, gặp đối tác, thăm người thân hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện khi cần di chuyển cùng gia đình hoặc mang theo nhiều hành lý.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-an-phuoc-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã An Phước Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã An Phước Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi SECC thuận tiện cho khách tham dự triển lãm, hội chợ, hội nghị hoặc chương trình thương mại tại khu Phú Mỹ Hưng. Xe đưa thẳng đến trung tâm triển lãm giúp khách dễ căn giờ sự kiện và thuận tiện mang theo tài liệu, hành lý hoặc vật dụng công việc.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-an-phuoc-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã An Phước Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã An Phước Đồng Nai đi Takashimaya Saigon Centre phù hợp cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa, gặp gỡ hoặc giải trí. Từ trung tâm thương mại trên đường Lê Lợi, khách có thể thuận tiện đi bộ hoặc di chuyển tiếp đến Chợ Bến Thành và phố Nguyễn Huệ.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-an-phuoc-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã An Phước Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã An Phước Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, ăn uống, gặp đối tác hoặc dành thời gian vui chơi tại trung tâm TP.HCM. Vị trí điểm đến thuận tiện để kết hợp phố Nguyễn Huệ, Nhà thờ Đức Bà và khu vực Bến Bạch Đằng.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-an-phuoc-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã An Phước Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã An Phước Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Phước Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm bạn muốn dành thời gian mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp chủ động giờ đi về và thuận tiện mang theo nhiều đồ sau khi mua sắm.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-an-phuoc-dong-nai-di-dam-sen",
+  path: "xa-an-phuoc-dong-nai-di-dam-sen",
+  from: "Xã An Phước Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã An Phước Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Phước Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, linh hoạt thời gian tham quan và chủ động hành trình trở về Đồng Nai.",
+  routeText:
+    "Xã An Phước → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 20 phút",
+},
+{
+  key: "xa-an-vien-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-an-vien-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách cần di chuyển theo lịch bay, đi công tác hoặc đón tiễn người thân. Xe đón tận nơi tại An Viễn, kết nối về hướng Long Thành và cao tốc vào TP.HCM, giúp hành khách chủ động thời gian và thuận tiện khi mang theo hành lý.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-ga-sai-gon",
+  path: "xa-an-vien-dong-nai-di-ga-sai-gon",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Viễn Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần xuống TP.HCM theo giờ tàu đã đặt. Xe riêng giúp giảm việc phải đổi phương tiện dọc đường, phù hợp với người lớn tuổi, gia đình có trẻ nhỏ và khách mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-an-vien-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã An Viễn Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía đông TP.HCM. Xe đón theo địa chỉ tại An Viễn và đưa trực tiếp đến bến, giúp hành khách dễ căn thời gian khởi hành và thuận tiện mang theo hành lý.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ - 1 giờ 40 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-an-vien-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Viễn Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần tiếp tục hành trình từ TP.HCM về các tỉnh miền Tây. Đi xe riêng giúp hành khách di chuyển liền mạch từ điểm đón đến bến, giảm các chặng trung chuyển và dễ chủ động theo giờ xe đường dài.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-ben-xe-an-suong",
+  path: "xa-an-vien-dong-nai-di-ben-xe-an-suong",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Viễn Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để bắt xe hoặc tiếp tục hành trình sang tuyến khác. Dịch vụ đón tận nơi giúp giảm việc phải tự trung chuyển qua nội đô, đặc biệt thuận tiện khi khách đi cùng gia đình hoặc có nhiều hành lý.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → QL22 → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-an-vien-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Xe đưa trực tiếp đến bệnh viện giúp hạn chế lên xuống nhiều lần, thuận tiện mang theo hồ sơ y tế và chủ động giờ xuất phát theo lịch hẹn.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-an-vien-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Viễn Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho người có lịch khám chuyên khoa, điều trị hoặc tái khám. Xe riêng giúp gia đình chủ động giờ đi từ An Viễn và thuận tiện mang theo kết quả xét nghiệm, hồ sơ y tế, thuốc men cùng đồ dùng cá nhân.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-an-vien-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Viễn Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh cần khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Hành trình kết nối về hướng Long Thành rồi đến khu vực TP Thủ Đức cũ, giúp khách không phải đi sâu qua trung tâm TP.HCM.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Vành đai 2 → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ - 1 giờ 40 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-an-vien-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã An Viễn Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Xe riêng tạo không gian để bé nghỉ trên đường, đồng thời giúp phụ huynh dễ mang theo hồ sơ, thuốc men và những vật dụng cần thiết.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-an-vien-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, điều trị hoặc tái khám. Xe đón tận nơi giúp hạn chế việc đổi phương tiện và thuận tiện chuẩn bị đồ dùng cho bé trong hành trình từ Đồng Nai.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-tu-du",
+  path: "xa-an-vien-dong-nai-di-benh-vien-tu-du",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám thai, tái khám và điều trị tại TP.HCM. Xe đón tận nơi tại An Viễn giúp chủ động giờ xuất phát, hạn chế trung chuyển và thuận tiện mang theo hồ sơ cùng các vật dụng cần thiết.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-an-vien-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Viễn Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, tái khám hoặc điều trị tại TP.HCM. Đi xe riêng giúp gia đình sắp xếp giờ khởi hành theo lịch hẹn, đồng thời thoải mái hơn khi có người thân đi cùng chăm sóc.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-an-vien-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã An Viễn Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách tái khám hoặc gia đình có lịch khám tại khu vực Tân Bình. Xe đưa trực tiếp từ An Viễn đến bệnh viện giúp giảm việc đổi phương tiện và thuận tiện mang theo thuốc men, hồ sơ y tế.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-an-vien-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Viễn Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho khách cần khám, điều trị hoặc tái khám các vấn đề về xương khớp và vận động. Đón tận nơi giúp người bệnh hạn chế đi lại qua nhiều chặng, đặc biệt thuận tiện khi cần người thân đi cùng hỗ trợ.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-cho-ben-thanh",
+  path: "xa-an-vien-dong-nai-di-cho-ben-thanh",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Viễn Đồng Nai đi Chợ Bến Thành phù hợp cho khách xuống trung tâm Sài Gòn mua sắm, tham quan hoặc kết hợp giải quyết công việc. Xe riêng giúp chủ động lịch trình và thuận tiện tiếp tục đến phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng trong khu vực.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-an-vien-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã An Viễn Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách muốn vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Hành khách có thể chủ động giờ trở về Đồng Nai và dễ kết hợp Bến Bạch Đằng, khu Đồng Khởi cùng các điểm ăn uống gần đó.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-dinh-doc-lap",
+  path: "xa-an-vien-dong-nai-di-dinh-doc-lap",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã An Viễn Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình và nhóm khách muốn khám phá địa danh lịch sử nổi bật tại trung tâm TP.HCM. Đi xe riêng giúp dễ sắp xếp lịch trình kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và nhiều điểm tham quan lân cận.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-an-vien-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho khách muốn tham quan cụm địa danh đặc trưng tại trung tâm thành phố. Từ đây, hành khách thuận tiện kết hợp Bưu điện Trung tâm Sài Gòn, đường sách, Dinh Độc Lập và khu Đồng Khởi.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-an-vien-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Viễn Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp cho khách muốn tham quan công trình kiến trúc nổi tiếng và khám phá khu trung tâm thành phố. Điểm đến nằm cạnh Nhà thờ Đức Bà và đường sách, thuận tiện để bố trí nhiều địa danh trong cùng chuyến đi.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-landmark-81",
+  path: "xa-an-vien-dong-nai-di-landmark-81",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Viễn Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, ăn uống, vui chơi, lưu trú hoặc gặp đối tác. Tuyến xe kết nối từ An Viễn về hướng Long Thành và cao tốc giúp hành khách đi thẳng đến khu Landmark 81 mà không cần tự trung chuyển.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+{
+  key: "xa-an-vien-dong-nai-di-ben-bach-dang",
+  path: "xa-an-vien-dong-nai-di-ben-bach-dang",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, vui chơi tại trung tâm hoặc kết hợp lịch hẹn trong thành phố. Xe đón tận nơi tại An Viễn giúp hành khách chủ động giờ đi về và hạn chế phải trung chuyển nhiều chặng.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-an-vien-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã An Viễn Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng, linh hoạt thời gian tham quan và dễ kết hợp các địa điểm trung tâm lân cận.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 5 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-an-vien-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã An Viễn Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu trung tâm TP.HCM. Từ bảo tàng, khách dễ kết hợp Dinh Độc Lập, Nhà thờ Đức Bà cùng nhiều điểm nổi tiếng khác trong cùng một ngày.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-an-vien-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Viễn Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn ăn uống, vui chơi, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp linh hoạt thời gian xuất phát và trở về Đồng Nai, đặc biệt phù hợp với lịch trình chiều tối.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 25 phút - 2 giờ 15 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-phu-my-hung",
+  path: "xa-an-vien-dong-nai-di-phu-my-hung",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã An Viễn Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, gặp đối tác, thăm người thân, mua sắm hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện khi cần mang theo hành lý.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-an-vien-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã An Viễn Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi SECC thuận tiện cho khách tham dự triển lãm, hội chợ, hội nghị hoặc gặp đối tác tại khu Phú Mỹ Hưng. Xe đưa thẳng đến trung tâm triển lãm giúp khách dễ căn giờ sự kiện và thuận tiện mang theo tài liệu, hành lý hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 30 phút - 2 giờ 20 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-an-vien-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã An Viễn Đồng Nai đi Takashimaya Saigon Centre phù hợp cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa, gặp gỡ hoặc giải trí. Vị trí trên đường Lê Lợi thuận tiện để kết hợp Chợ Bến Thành, phố Nguyễn Huệ và nhiều điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-an-vien-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã An Viễn Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, ăn uống, gặp đối tác hoặc dành thời gian vui chơi tại trung tâm TP.HCM. Từ Đồng Khởi, khách dễ kết hợp phố Nguyễn Huệ, Nhà thờ Đức Bà và khu Bến Bạch Đằng.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 20 phút - 2 giờ 10 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-an-vien-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã An Viễn Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã An Viễn Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách chủ động giờ đi về và thuận tiện mang theo nhiều đồ sau khi mua sắm.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 40 phút",
+},
+
+{
+  key: "xa-an-vien-dong-nai-di-dam-sen",
+  path: "xa-an-vien-dong-nai-di-dam-sen",
+  from: "Xã An Viễn Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã An Viễn Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã An Viễn Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, linh hoạt thời gian tham quan và chủ động hành trình trở về Đồng Nai.",
+  routeText:
+    "Xã An Viễn → khu vực Long Thành → QL51 → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+{
+  key: "xa-binh-minh-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-binh-minh-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách đi công tác, du lịch hoặc cần đón tiễn người thân theo lịch bay. Xe đón tận nơi tại Bình Minh, giúp hành khách chủ động giờ khởi hành, hạn chế trung chuyển và thuận tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-ga-sai-gon",
+  path: "xa-binh-minh-dong-nai-di-ga-sai-gon",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình Minh Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần đến nhà ga theo giờ tàu đã đặt. Đi xe riêng từ Bình Minh giúp giảm các chặng đổi phương tiện, phù hợp cho gia đình, người lớn tuổi hoặc khách mang theo nhiều hành lý cho chuyến đi đường dài.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-binh-minh-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Bình Minh Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần bắt xe khách hoặc nối chuyến tại cửa ngõ phía đông TP.HCM. Xe đưa trực tiếp đến bến giúp hành khách dễ căn thời gian theo giờ khởi hành và thoải mái hơn khi mang theo hành lý.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → khu vực Biên Hòa → QL1A → Võ Nguyên Giáp TP.HCM → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-binh-minh-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình Minh Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần tiếp tục hành trình từ TP.HCM về các tỉnh miền Tây. Xe đón tận nơi và đưa thẳng đến bến giúp giảm việc chuyển phương tiện qua thành phố, đồng thời dễ chủ động thời gian theo chuyến xe tiếp theo.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 55 phút - 2 giờ 50 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-ben-xe-an-suong",
+  path: "xa-binh-minh-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình Minh Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến khu vực cửa ngõ Tây Bắc TP.HCM để bắt xe hoặc nối tiếp hành trình. Dịch vụ đón tận nơi giúp hành khách hạn chế phải đổi nhiều phương tiện, nhất là khi đi cùng gia đình hoặc mang theo hành lý.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → khu vực Biên Hòa → TP.HCM → QL1A → khu vực An Sương → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 40 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, tái khám hoặc điều trị. Xe đưa trực tiếp từ Bình Minh đến bệnh viện giúp hạn chế việc lên xuống nhiều chặng và thuận tiện mang theo hồ sơ y tế, thuốc men.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình Minh Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, tái khám hoặc điều trị. Xe riêng giúp người bệnh và thân nhân chủ động thời gian xuất phát, đồng thời thuận tiện mang theo kết quả xét nghiệm, hồ sơ và đồ dùng cá nhân.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình Minh Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh có lịch khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Đi thẳng từ Bình Minh giúp gia đình chủ động thời gian và tránh phải tự chuyển nhiều phương tiện khi người bệnh cần có người thân đi cùng.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → khu vực Biên Hòa → TP.HCM → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 15 phút - 2 giờ",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Bình Minh Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Không gian xe riêng giúp bé có thể nghỉ trên đường, trong khi phụ huynh dễ mang theo hồ sơ, thuốc men và các vật dụng cần thiết cho trẻ.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, tái khám hoặc điều trị. Xe đón tận nơi giúp hành trình đỡ vất vả cho bé, đồng thời thuận tiện khi phụ huynh cần chuẩn bị nhiều đồ dùng cho chuyến khám.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-tu-du",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám thai, tái khám và điều trị tại TP.HCM. Xe đón tận nơi tại Bình Minh giúp chủ động giờ xuất phát, giảm việc đổi phương tiện và thuận tiện mang theo hồ sơ cùng đồ dùng cá nhân.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình Minh Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần khám chuyên khoa, điều trị hoặc tái khám tại TP.HCM. Đi xe riêng giúp gia đình sắp xếp thời gian theo lịch hẹn và thoải mái hơn khi cần có người thân đi cùng hỗ trợ trong chuyến đi.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Bình Minh Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách cần tái khám hoặc gia đình có lịch khám tại khu vực Tân Bình. Xe đưa trực tiếp đến bệnh viện giúp hạn chế trung chuyển và thuận tiện mang theo thuốc men, giấy tờ cùng hồ sơ y tế.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-binh-minh-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình Minh Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho khách cần khám, điều trị hoặc tái khám về xương khớp và chấn thương. Dịch vụ đón tận nơi giúp người khó vận động hạn chế phải lên xuống nhiều phương tiện, nhất là khi có người thân đi cùng.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-cho-ben-thanh",
+  path: "xa-binh-minh-dong-nai-di-cho-ben-thanh",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình Minh Đồng Nai đi Chợ Bến Thành phù hợp cho khách xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp giải quyết công việc. Xe riêng giúp chủ động lịch trình và thuận tiện nối chuyến đến phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-binh-minh-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Bình Minh Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách muốn vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Chủ động xe riêng giúp khách linh hoạt giờ trở về Đồng Nai và dễ kết hợp Bến Bạch Đằng cùng khu Đồng Khởi trong một chuyến.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-dinh-doc-lap",
+  path: "xa-binh-minh-dong-nai-di-dinh-doc-lap",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Bình Minh Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình và nhóm khách muốn khám phá một địa danh lịch sử nổi bật của TP.HCM. Từ đây có thể kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và Bưu điện Trung tâm trong cùng lịch trình tham quan.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-binh-minh-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho khách muốn khám phá cụm địa danh nổi tiếng tại trung tâm thành phố. Điểm đến nằm gần Bưu điện Trung tâm, đường sách và Dinh Độc Lập, thuận tiện để sắp xếp nhiều nơi tham quan trong ngày.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-binh-minh-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình Minh Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp cho khách muốn tham quan công trình kiến trúc đặc trưng và khám phá khu vực trung tâm TP.HCM. Vị trí ngay cạnh Nhà thờ Đức Bà giúp khách thuận tiện kết hợp nhiều điểm tham quan mà không phải di chuyển xa.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-landmark-81",
+  path: "xa-binh-minh-dong-nai-di-landmark-81",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình Minh Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, dùng bữa, vui chơi, lưu trú hoặc gặp gỡ đối tác. Xe đón tại Bình Minh và đưa thẳng đến khu Landmark 81, giúp hành khách chủ động lịch trình khi di chuyển từ Đồng Nai vào TP.HCM.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+{
+  key: "xa-binh-minh-dong-nai-di-ben-bach-dang",
+  path: "xa-binh-minh-dong-nai-di-ben-bach-dang",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, gặp gỡ bạn bè hoặc kết hợp công việc tại trung tâm TP.HCM. Xe đón tận nơi tại Bình Minh giúp hành khách chủ động thời gian và thuận tiện sắp xếp lịch trình trong ngày.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-binh-minh-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Bình Minh Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn dành một ngày vui chơi tại TP.HCM. Xe riêng giúp thuận tiện mang theo đồ dùng, linh hoạt giờ đi về và dễ kết hợp thêm các địa điểm nổi tiếng ở khu trung tâm.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-binh-minh-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Bình Minh Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và tham quan khu vực trung tâm Sài Gòn. Từ bảo tàng, khách có thể kết hợp Dinh Độc Lập, Nhà thờ Đức Bà và nhiều địa danh lân cận trong cùng lịch trình.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-binh-minh-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình Minh Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn ăn uống, vui chơi, gặp gỡ bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp linh hoạt thời gian xuất phát và trở về Đồng Nai, đặc biệt thuận tiện cho những lịch trình diễn ra vào chiều tối.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-phu-my-hung",
+  path: "xa-binh-minh-dong-nai-di-phu-my-hung",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Bình Minh Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, gặp đối tác, thăm người thân hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình, đồng thời thuận tiện khi đi cùng gia đình hoặc cần mang theo nhiều hành lý.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-binh-minh-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi SECC thuận tiện cho khách tham dự hội chợ, triển lãm, hội nghị hoặc gặp gỡ đối tác tại khu Phú Mỹ Hưng. Xe đưa trực tiếp đến trung tâm triển lãm giúp khách dễ căn giờ sự kiện và thuận tiện mang theo tài liệu, hành lý hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-binh-minh-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Bình Minh Đồng Nai đi Takashimaya Saigon Centre phù hợp cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa, gặp gỡ hoặc giải trí. Điểm đến nằm trên đường Lê Lợi, thuận tiện để khách kết hợp Chợ Bến Thành, phố Nguyễn Huệ và các địa điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-binh-minh-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Bình Minh Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, ăn uống, gặp đối tác hoặc vui chơi tại trung tâm TP.HCM. Vị trí trên trục Đồng Khởi giúp hành khách dễ kết hợp phố Nguyễn Huệ, Nhà thờ Đức Bà và Bến Bạch Đằng trong cùng chuyến.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-binh-minh-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Bình Minh Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách chủ động thời gian đi về và thuận tiện mang theo nhiều đồ sau khi mua sắm trước khi trở lại Đồng Nai.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → khu vực Biên Hòa → TP.HCM → QL1A → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ - 2 giờ 55 phút",
+},
+
+{
+  key: "xa-binh-minh-dong-nai-di-dam-sen",
+  path: "xa-binh-minh-dong-nai-di-dam-sen",
+  from: "Xã Bình Minh Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Bình Minh Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Bình Minh Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, chủ động thời gian tham quan và dễ sắp xếp hành trình trở về Bình Minh.",
+  routeText:
+    "Xã Bình Minh → khu vực Trảng Bom → QL1A → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 55 phút - 2 giờ 45 phút",
+},
+{
+  key: "xa-trang-bom-dong-nai-di-san-bay-tan-son-nhat",
+  path: "xa-trang-bom-dong-nai-di-san-bay-tan-son-nhat",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Sân bay Tân Sơn Nhất",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Sân bay Tân Sơn Nhất, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Sân bay Tân Sơn Nhất phù hợp cho khách đi công tác, du lịch hoặc cần đón tiễn người thân theo lịch bay. Xe đón tận nơi tại Trảng Bom giúp hành khách chủ động giờ xuất phát, hạn chế trung chuyển và thuận tiện khi mang theo vali hoặc nhiều hành lý.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → khu vực Tân Bình → Sân bay Tân Sơn Nhất",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-ga-sai-gon",
+  path: "xa-trang-bom-dong-nai-di-ga-sai-gon",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Ga Sài Gòn",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Ga Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Trảng Bom Đồng Nai đi Ga Sài Gòn thuận tiện cho hành khách cần đến nhà ga theo giờ tàu đã đặt. Đi xe riêng giúp giảm các chặng đổi phương tiện từ Đồng Nai vào trung tâm TP.HCM, phù hợp cho gia đình, người lớn tuổi và khách mang theo nhiều hành lý.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Cách Mạng Tháng Tám → Ga Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-ben-xe-mien-dong-moi",
+  path: "xa-trang-bom-dong-nai-di-ben-xe-mien-dong-moi",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bến xe Miền Đông mới",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bến xe Miền Đông mới, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Trảng Bom Đồng Nai đi Bến xe Miền Đông mới phù hợp cho khách cần bắt xe đường dài hoặc nối chuyến tại cửa ngõ phía đông TP.HCM. Tuyến đi từ Trảng Bom qua Biên Hòa thuận tiện để tiếp cận khu vực bến, giúp hành khách chủ động hơn theo giờ xe khởi hành.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → cầu Đồng Nai → Võ Nguyên Giáp → Hoàng Hữu Nam → Bến xe Miền Đông mới",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-ben-xe-mien-tay",
+  path: "xa-trang-bom-dong-nai-di-ben-xe-mien-tay",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bến xe Miền Tây",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bến xe Miền Tây, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Trảng Bom Đồng Nai đi Bến xe Miền Tây thuận tiện cho khách cần nối chuyến từ TP.HCM về các tỉnh miền Tây. Xe đón trực tiếp tại Trảng Bom và đưa đến bến giúp giảm việc chuyển phương tiện qua nội đô, đặc biệt hữu ích khi khách mang nhiều hành lý.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Kinh Dương Vương → Bến xe Miền Tây",
+  duration: "Khoảng 1 giờ 55 phút - 2 giờ 50 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-ben-xe-an-suong",
+  path: "xa-trang-bom-dong-nai-di-ben-xe-an-suong",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bến xe An Sương",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bến xe An Sương, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Trảng Bom Đồng Nai đi Bến xe An Sương phù hợp cho khách cần đến cửa ngõ Tây Bắc TP.HCM để bắt xe hoặc tiếp tục hành trình theo hướng khác. Đi thẳng từ Trảng Bom giúp hạn chế đổi phương tiện, thuận tiện cho gia đình và hành khách có hành lý cồng kềnh.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → cầu Đồng Nai → QL1A → khu vực Thủ Đức → QL1A → nút giao An Sương → Bến xe An Sương",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-cho-ray",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-cho-ray",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Chợ Rẫy",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Chợ Rẫy, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Bệnh viện Chợ Rẫy phù hợp cho người bệnh và thân nhân cần xuống TP.HCM khám, điều trị hoặc tái khám. Xe đưa trực tiếp đến bệnh viện giúp giảm việc lên xuống nhiều chặng và thuận tiện mang theo hồ sơ y tế, thuốc men cùng đồ dùng cần thiết.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Nguyễn Chí Thanh → Bệnh viện Chợ Rẫy",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-dai-hoc-y-duoc-tphcm",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Đại học Y Dược TP.HCM",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Trảng Bom Đồng Nai đi Bệnh viện Đại học Y Dược TP.HCM phù hợp cho khách có lịch khám chuyên khoa, điều trị hoặc tái khám. Xe riêng giúp người bệnh chủ động thời gian rời Trảng Bom và thuận tiện mang theo kết quả xét nghiệm, giấy tờ cùng hồ sơ y tế.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → An Dương Vương → Hồng Bàng → Bệnh viện Đại học Y Dược TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-ung-buou-tphcm",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-ung-buou-tphcm",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Ung Bướu TP.HCM",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Ung Bướu TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Trảng Bom Đồng Nai đi Bệnh viện Ung Bướu TP.HCM thuận tiện cho người bệnh có lịch khám, điều trị hoặc tái khám tại cơ sở phía đông thành phố. Từ Trảng Bom có thể đi qua Biên Hòa về khu vực bệnh viện mà không cần xuyên sâu vào trung tâm TP.HCM, giúp hành trình gọn hơn.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → cầu Đồng Nai → Võ Nguyên Giáp → Hoàng Hữu Nam → Bệnh viện Ung Bướu TP.HCM",
+  duration: "Khoảng 1 giờ 10 phút - 1 giờ 55 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-nhi-dong-1",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-nhi-dong-1",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 1",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Nhi Đồng 1, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Trảng Bom Đồng Nai đi Bệnh viện Nhi Đồng 1 giúp gia đình đưa trẻ xuống TP.HCM khám, tái khám hoặc điều trị thuận tiện hơn. Không gian xe riêng giúp bé nghỉ ngơi trên đường, đồng thời phụ huynh dễ mang theo hồ sơ, thuốc men và đồ dùng cần thiết cho chuyến khám.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Lý Thái Tổ → Bệnh viện Nhi Đồng 1",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-nhi-dong-2",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-nhi-dong-2",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Nhi Đồng 2",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Nhi Đồng 2, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Bệnh viện Nhi Đồng 2 phù hợp cho gia đình cần đưa trẻ đến trung tâm TP.HCM khám bệnh, điều trị hoặc tái khám. Xe đón tận nơi giúp bé bớt mệt vì không phải đổi nhiều phương tiện và thuận tiện cho phụ huynh chuẩn bị đồ dùng đi cùng.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Bệnh viện Nhi Đồng 2",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-tu-du",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-tu-du",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Từ Dũ",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Từ Dũ, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Bệnh viện Từ Dũ phù hợp cho sản phụ, người thân hoặc khách có lịch khám thai, tái khám và điều trị tại TP.HCM. Xe đón tận nơi tại Trảng Bom giúp chủ động giờ xuất phát, hạn chế đổi phương tiện và thuận tiện mang theo hồ sơ cùng đồ dùng cần thiết.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Văn Cừ → Cống Quỳnh → Bệnh viện Từ Dũ",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-nhan-dan-115",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-nhan-dan-115",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Nhân dân 115",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Nhân dân 115, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Trảng Bom Đồng Nai đi Bệnh viện Nhân dân 115 thuận tiện cho người bệnh cần xuống TP.HCM khám chuyên khoa, điều trị hoặc tái khám. Đi xe riêng giúp gia đình chủ động thời gian theo lịch hẹn và thoải mái hơn khi cần có người thân đi cùng hỗ trợ.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Lý Thái Tổ → Sư Vạn Hạnh → Bệnh viện Nhân dân 115",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-thong-nhat",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-thong-nhat",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Thống Nhất",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Thống Nhất, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Trảng Bom Đồng Nai đi Bệnh viện Thống Nhất phù hợp cho người lớn tuổi, khách cần tái khám hoặc gia đình có lịch khám tại khu vực Tân Bình. Hành trình tận nơi giúp giảm các chặng trung chuyển và thuận tiện mang theo thuốc men, giấy tờ cùng hồ sơ y tế.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Hoàng Văn Thụ → Cộng Hòa → Bệnh viện Thống Nhất",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  path: "xa-trang-bom-dong-nai-di-benh-vien-chan-thuong-chinh-hinh-tphcm",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Trảng Bom Đồng Nai đi Bệnh viện Chấn thương Chỉnh hình TP.HCM phù hợp cho khách cần khám, điều trị hoặc tái khám về xương khớp và vận động. Đón tận nơi giúp người bệnh hạn chế phải lên xuống nhiều phương tiện, đặc biệt thuận tiện khi việc đi lại khó khăn hoặc cần người thân hỗ trợ.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → Nguyễn Tri Phương → Trần Hưng Đạo → Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+  duration: "Khoảng 1 giờ 50 phút - 2 giờ 45 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-cho-ben-thanh",
+  path: "xa-trang-bom-dong-nai-di-cho-ben-thanh",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Chợ Bến Thành",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Chợ Bến Thành, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Trảng Bom Đồng Nai đi Chợ Bến Thành phù hợp cho khách xuống trung tâm Sài Gòn tham quan, mua sắm hoặc kết hợp giải quyết công việc. Xe riêng giúp chủ động lịch trình từ Trảng Bom và thuận tiện kết hợp phố Nguyễn Huệ, Takashimaya cùng nhiều địa điểm nổi tiếng gần chợ.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → khu vực Chợ Bến Thành",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-pho-di-bo-nguyen-hue",
+  path: "xa-trang-bom-dong-nai-di-pho-di-bo-nguyen-hue",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Phố đi bộ Nguyễn Huệ",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Phố đi bộ Nguyễn Huệ, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Trảng Bom Đồng Nai đi Phố đi bộ Nguyễn Huệ thích hợp cho khách muốn vui chơi, tham quan hoặc tham dự sự kiện tại trung tâm TP.HCM. Chủ động xe riêng giúp khách linh hoạt giờ trở về Đồng Nai và dễ kết hợp khu Bến Bạch Đằng, Đồng Khởi trong cùng chuyến đi.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Nguyễn Huệ",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-dinh-doc-lap",
+  path: "xa-trang-bom-dong-nai-di-dinh-doc-lap",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Dinh Độc Lập",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Dinh Độc Lập, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Trảng Bom Đồng Nai đi Dinh Độc Lập thuận tiện cho gia đình và nhóm khách muốn khám phá một địa danh lịch sử nổi bật tại trung tâm TP.HCM. Đi xe riêng giúp dễ bố trí lịch trình kết hợp Bảo tàng Chứng tích Chiến tranh, Nhà thờ Đức Bà và các điểm tham quan lân cận.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Dinh Độc Lập",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  path: "xa-trang-bom-dong-nai-di-nha-tho-duc-ba-sai-gon",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Nhà thờ Đức Bà Sài Gòn",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Nhà thờ Đức Bà Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Nhà thờ Đức Bà Sài Gòn phù hợp cho khách muốn khám phá cụm địa danh đặc trưng của trung tâm thành phố. Từ đây có thể thuận tiện tham quan Bưu điện Trung tâm, đường sách và Dinh Độc Lập mà không phải di chuyển xa.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Nhà thờ Đức Bà Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  path: "xa-trang-bom-dong-nai-di-buu-dien-trung-tam-sai-gon",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bưu điện Trung tâm Sài Gòn",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bưu điện Trung tâm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Trảng Bom Đồng Nai đi Bưu điện Trung tâm Sài Gòn phù hợp cho khách muốn tham quan công trình kiến trúc nổi tiếng và khám phá khu trung tâm TP.HCM. Điểm đến nằm cạnh Nhà thờ Đức Bà, thuận tiện để gia đình hoặc nhóm khách bố trí nhiều địa danh trong cùng ngày.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Duẩn → Công trường Công xã Paris → Bưu điện Trung tâm Sài Gòn",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-landmark-81",
+  path: "xa-trang-bom-dong-nai-di-landmark-81",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Landmark 81",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Landmark 81, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Trảng Bom Đồng Nai đi Landmark 81 phù hợp cho khách đến Vinhomes Central Park mua sắm, ăn uống, vui chơi, lưu trú hoặc gặp đối tác. Xe riêng đón tại Trảng Bom và đưa thẳng đến khu Landmark 81 giúp hành khách chủ động lịch trình khi di chuyển vào TP.HCM.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Hữu Cảnh → Vinhomes Central Park → Landmark 81",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+{
+  key: "xa-trang-bom-dong-nai-di-ben-bach-dang",
+  path: "xa-trang-bom-dong-nai-di-ben-bach-dang",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bến Bạch Đằng",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bến Bạch Đằng, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Bến Bạch Đằng phù hợp cho khách muốn tham quan khu vực ven sông Sài Gòn, gặp gỡ bạn bè hoặc kết hợp công việc tại trung tâm TP.HCM. Xe đón tận nơi tại Trảng Bom giúp hành khách chủ động giờ đi về và dễ sắp xếp thêm các điểm vui chơi lân cận.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Bến Bạch Đằng",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-thao-cam-vien-sai-gon",
+  path: "xa-trang-bom-dong-nai-di-thao-cam-vien-sai-gon",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Thảo Cầm Viên Sài Gòn",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Thảo Cầm Viên Sài Gòn, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe từ Xã Trảng Bom Đồng Nai đi Thảo Cầm Viên Sài Gòn thích hợp cho gia đình có trẻ nhỏ hoặc nhóm khách muốn tổ chức chuyến vui chơi trong ngày. Đi xe riêng giúp thuận tiện mang theo đồ dùng cho trẻ, linh hoạt giờ trở về và dễ kết hợp thêm những địa điểm ở trung tâm TP.HCM.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Điện Biên Phủ → Nguyễn Bỉnh Khiêm → Thảo Cầm Viên Sài Gòn",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 25 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  path: "xa-trang-bom-dong-nai-di-bao-tang-chung-tich-chien-tranh",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Bảo tàng Chứng tích Chiến tranh",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Bảo tàng Chứng tích Chiến tranh, xe riêng trọn gói",
+  description:
+    "Đặt xe riêng từ Xã Trảng Bom Đồng Nai đi Bảo tàng Chứng tích Chiến tranh thuận tiện cho khách muốn tìm hiểu lịch sử và dành thời gian tham quan trung tâm Sài Gòn. Vị trí bảo tàng gần Dinh Độc Lập giúp gia đình hoặc nhóm khách dễ xây dựng lịch trình nhiều điểm trong cùng ngày.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Nam Kỳ Khởi Nghĩa → Võ Văn Tần → Bảo tàng Chứng tích Chiến tranh",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-pho-tay-bui-vien",
+  path: "xa-trang-bom-dong-nai-di-pho-tay-bui-vien",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Phố Tây Bùi Viện",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Phố Tây Bùi Viện, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Trảng Bom Đồng Nai đi Phố Tây Bùi Viện phù hợp cho khách xuống Sài Gòn ăn uống, vui chơi, gặp bạn bè hoặc lưu trú tại khu vực trung tâm. Xe riêng giúp linh hoạt thời gian xuất phát và trở về Trảng Bom, đặc biệt thuận tiện với những lịch trình diễn ra vào chiều tối.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Võ Văn Kiệt → Trần Hưng Đạo → khu vực Bùi Viện",
+  duration: "Khoảng 1 giờ 40 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-phu-my-hung",
+  path: "xa-trang-bom-dong-nai-di-phu-my-hung",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Phú Mỹ Hưng",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Phú Mỹ Hưng, xe riêng trọn gói",
+  description:
+    "Xe riêng từ Xã Trảng Bom Đồng Nai đi Phú Mỹ Hưng phù hợp cho khách đi công tác, gặp đối tác, thăm người thân hoặc vui chơi tại khu Nam TP.HCM. Dịch vụ đón tận nơi giúp hành khách chủ động lịch trình và thuận tiện khi đi cùng gia đình hoặc cần mang theo nhiều hành lý.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Phú Mỹ Hưng",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  path: "xa-trang-bom-dong-nai-di-secc-trung-tam-hoi-cho-va-trien-lam-sai-gon",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi SECC - Trung tâm Hội chợ và Triển lãm Sài Gòn, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi SECC thuận tiện cho khách tham dự triển lãm, hội chợ, hội nghị hoặc chương trình thương mại tại khu Phú Mỹ Hưng. Xe đưa thẳng đến trung tâm triển lãm giúp khách dễ căn giờ sự kiện và thuận tiện mang theo tài liệu, hành lý hoặc vật dụng phục vụ công việc.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Đồng Văn Cống → cầu Phú Mỹ → Nguyễn Văn Linh → Nguyễn Lương Bằng → SECC",
+  duration: "Khoảng 1 giờ 45 phút - 2 giờ 35 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-takashimaya-saigon-centre",
+  path: "xa-trang-bom-dong-nai-di-takashimaya-saigon-centre",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Takashimaya Saigon Centre",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Takashimaya Saigon Centre, xe riêng trọn gói",
+  description:
+    "Đặt xe từ Xã Trảng Bom Đồng Nai đi Takashimaya Saigon Centre phù hợp cho khách xuống trung tâm Sài Gòn mua sắm, dùng bữa, gặp gỡ hoặc giải trí. Từ trung tâm thương mại trên đường Lê Lợi, khách thuận tiện kết hợp Chợ Bến Thành, phố Nguyễn Huệ và các địa điểm nổi tiếng gần đó.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Lê Lợi → Takashimaya Saigon Centre",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-vincom-center-dong-khoi",
+  path: "xa-trang-bom-dong-nai-di-vincom-center-dong-khoi",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Vincom Center Đồng Khởi",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Vincom Center Đồng Khởi, xe riêng trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Xã Trảng Bom Đồng Nai đi Vincom Center Đồng Khởi thích hợp cho khách mua sắm, ăn uống, gặp đối tác hoặc vui chơi tại trung tâm TP.HCM. Điểm đến nằm giữa khu trung tâm, thuận tiện để kết hợp phố Nguyễn Huệ, Nhà thờ Đức Bà và Bến Bạch Đằng.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → hầm Thủ Thiêm → Tôn Đức Thắng → Lê Thánh Tôn → Đồng Khởi → Vincom Center Đồng Khởi",
+  duration: "Khoảng 1 giờ 35 phút - 2 giờ 30 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-aeon-mall-tan-phu-celadon",
+  path: "xa-trang-bom-dong-nai-di-aeon-mall-tan-phu-celadon",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "AEON Mall Tân Phú Celadon",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi AEON Mall Tân Phú Celadon, xe riêng trọn gói",
+  description:
+    "Thuê xe từ Xã Trảng Bom Đồng Nai đi AEON Mall Tân Phú Celadon phù hợp cho gia đình hoặc nhóm bạn muốn mua sắm, ăn uống và vui chơi tại khu vực Tân Phú. Xe riêng giúp khách chủ động giờ đi về và thuận tiện mang theo nhiều đồ sau khi mua sắm trước khi trở lại Đồng Nai.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → cầu Đồng Nai → QL1A → Trường Chinh → Tân Kỳ Tân Quý → AEON Mall Tân Phú Celadon",
+  duration: "Khoảng 2 giờ - 2 giờ 55 phút",
+},
+
+{
+  key: "xa-trang-bom-dong-nai-di-dam-sen",
+  path: "xa-trang-bom-dong-nai-di-dam-sen",
+  from: "Xã Trảng Bom Đồng Nai",
+  to: "Đầm Sen",
+  title: "Thuê xe Xã Trảng Bom Đồng Nai đi Đầm Sen, xe riêng trọn gói",
+  description:
+    "Thuê xe riêng từ Xã Trảng Bom Đồng Nai đi Đầm Sen thích hợp cho gia đình, nhóm bạn hoặc đoàn nhỏ muốn tổ chức chuyến vui chơi trong ngày tại TP.HCM. Xe đón tận nơi giúp khách thoải mái mang theo đồ dùng, linh hoạt thời gian tham quan và chủ động hành trình trở về Trảng Bom.",
+  routeText:
+    "Xã Trảng Bom → QL1A → khu vực Biên Hòa → Võ Nguyên Giáp → cao tốc TP.HCM - Long Thành - Dầu Giây → Mai Chí Thọ → Võ Văn Kiệt → khu vực Quận 5 cũ → Lạc Long Quân → Đầm Sen",
+  duration: "Khoảng 1 giờ 55 phút - 2 giờ 45 phút",
+},
 ];
