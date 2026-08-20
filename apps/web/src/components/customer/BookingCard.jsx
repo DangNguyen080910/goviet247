@@ -1935,7 +1935,7 @@ export default function BookingCard() {
                       fullWidth
                       size="small"
                       inputRef={pickupInputRef}
-                      placeholder="Ví dụ: 12 Nguyễn Huệ, Bến Nghé, Quận 1, TP.HCM"
+                      placeholder="Ví dụ: 12 Nguyễn Huệ, Phường Sài Gòn, Thành phố Hồ Chí Minh"
                     />
                   )}
                 />
@@ -2038,8 +2038,8 @@ export default function BookingCard() {
                               size="small"
                               placeholder={
                                 idx === 0
-                                  ? "Ví dụ: Khách sạn Dalat Palace, 02 Trần Phú, Phường 3, Đà Lạt"
-                                  : "Ví dụ: Thung Lũng Tình Yêu, 05-07 Mai Anh Đào, Phường 8, Đà Lạt"
+                                  ? "Ví dụ: Khách Sạn Dalat Palace, Phường Xuân Hương-Đà Lạt, Tỉnh Lâm Đồng"
+                                  : "Ví dụ: Thung Lũng Tình Yêu, Đà Lạt, Lâm Đồng, Việt Nam"
                               }
                               inputProps={{
                                 ...params.inputProps,
