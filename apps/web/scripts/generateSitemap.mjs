@@ -5,6 +5,8 @@ import { SEO_ROUTES } from "../src/data/seoRoutes/index.js";
 
 const SITE_URL = "https://goviet247.com";
 const today = new Date().toISOString().slice(0, 10);
+const MAX_URLS_PER_SITEMAP = 45_000;
+const PUBLIC_DIR = path.resolve("public");
 
 const staticRoutes = [
   { path: "", priority: "1.0" },
@@ -15,6 +17,7 @@ const staticRoutes = [
 const seoRoutes = SEO_ROUTES.map((route) => ({
   path: route.path,
   priority: route.path.includes("tp-hcm") ? "0.92" : "0.85",
+  lastmod: route.lastmod,
 }));
 
 const allRoutes = [...staticRoutes, ...seoRoutes];
@@ -37,15 +40,82 @@ for (const route of allRoutes) {
 
 const uniqueRoutes = allRoutes;
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${uniqueRoutes
-  .map((route) => {
-    const loc = route.path ? `${SITE_URL}/${route.path}` : `${SITE_URL}/`;
+const unescapeXml = (value) =>
+  value
+    .replaceAll("&amp;", "&")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&apos;", "'");
 
+const escapeXml = (value) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+
+const getSitemapFileName = (index) =>
+  index === 0 ? "sitemap.xml" : `sitemap${index}.xml`;
+
+const existingLastmodByUrl = new Map();
+const existingSitemapFiles = fs.existsSync(PUBLIC_DIR)
+  ? fs
+      .readdirSync(PUBLIC_DIR)
+      .filter((fileName) => /^sitemap(?:\d+)?\.xml$/.test(fileName))
+  : [];
+
+for (const fileName of existingSitemapFiles) {
+  const filePath = path.join(PUBLIC_DIR, fileName);
+  const existingXml = fs.readFileSync(filePath, "utf8");
+  const urlPattern = /<url>\s*<loc>([\s\S]*?)<\/loc>[\s\S]*?<lastmod>([\s\S]*?)<\/lastmod>[\s\S]*?<\/url>/g;
+
+  for (const match of existingXml.matchAll(urlPattern)) {
+    const loc = unescapeXml(match[1].trim());
+    const lastmod = match[2].trim();
+
+    if (!existingLastmodByUrl.has(loc)) {
+      existingLastmodByUrl.set(loc, lastmod);
+    }
+  }
+}
+
+const routesWithMetadata = uniqueRoutes.map((route) => {
+  const loc = route.path ? `${SITE_URL}/${route.path}` : `${SITE_URL}/`;
+
+  return {
+    ...route,
+    loc,
+    lastmod: route.lastmod ?? existingLastmodByUrl.get(loc) ?? today,
+  };
+});
+
+const sitemapChunks = [];
+
+for (
+  let start = 0;
+  start < routesWithMetadata.length;
+  start += MAX_URLS_PER_SITEMAP
+) {
+  sitemapChunks.push(
+    routesWithMetadata.slice(start, start + MAX_URLS_PER_SITEMAP),
+  );
+}
+
+const createdSitemapFiles = [];
+
+for (const [index, routes] of sitemapChunks.entries()) {
+  const fileName = getSitemapFileName(index);
+  const outputPath = path.join(PUBLIC_DIR, fileName);
+  const isNewFile = !fs.existsSync(outputPath);
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes
+  .map((route) => {
     return `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
+    <loc>${escapeXml(route.loc)}</loc>
+    <lastmod>${route.lastmod}</lastmod>
     <priority>${route.priority}</priority>
   </url>`;
   })
@@ -53,9 +123,39 @@ ${uniqueRoutes
 </urlset>
 `;
 
-const outputPath = path.resolve("public/sitemap.xml");
+  fs.writeFileSync(outputPath, xml, "utf8");
 
-fs.writeFileSync(outputPath, xml, "utf8");
+  if (isNewFile) {
+    createdSitemapFiles.push(fileName);
+  }
 
-console.log(`✅ Sitemap generated: ${outputPath}`);
-console.log(`✅ Total URLs: ${uniqueRoutes.length}`);
+  console.log(`✅ ${fileName}: ${routes.length.toLocaleString("en-US")} URLs`);
+}
+
+const generatedFileNames = new Set(
+  sitemapChunks.map((_, index) => getSitemapFileName(index)),
+);
+const staleSitemapFiles = existingSitemapFiles.filter(
+  (fileName) => !generatedFileNames.has(fileName),
+);
+
+console.log(`✅ Total URLs: ${routesWithMetadata.length.toLocaleString("en-US")}`);
+console.log(`✅ Maximum per sitemap: ${MAX_URLS_PER_SITEMAP.toLocaleString("en-US")}`);
+
+if (createdSitemapFiles.length > 0) {
+  console.log("\n🆕 New sitemap files created:");
+
+  for (const fileName of createdSitemapFiles) {
+    console.log(`   ${SITE_URL}/${fileName}`);
+  }
+
+  console.log("⚠️ Deploy and submit each new sitemap in Google Search Console.");
+}
+
+if (staleSitemapFiles.length > 0) {
+  console.warn("\n⚠️ Sitemap files no longer needed (not deleted automatically):");
+
+  for (const fileName of staleSitemapFiles) {
+    console.warn(`   ${path.join(PUBLIC_DIR, fileName)}`);
+  }
+}
