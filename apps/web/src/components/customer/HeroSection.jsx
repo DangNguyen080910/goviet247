@@ -30,6 +30,7 @@ export default function HeroSection() {
 
   const [zaloPhone, setZaloPhone] = useState("1900-0000");
   const [heroImageUrl, setHeroImageUrl] = useState("");
+  const [mobileHeroImageUrl, setMobileHeroImageUrl] = useState("");
 
   const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
 
@@ -83,6 +84,7 @@ export default function HeroSection() {
 
         setZaloPhone(phone);
         setHeroImageUrl(cfg?.riderWebBackgroundImageUrl || "");
+        setMobileHeroImageUrl(cfg?.riderMobileBackgroundImageUrl || "");
       } catch (err) {
         console.error("Load hero system config failed:", err);
       }
@@ -284,9 +286,15 @@ export default function HeroSection() {
           md: "hidden",
         },
 
-        backgroundImage: `url(${heroImageUrl || heroImage})`,
+        backgroundImage: {
+          xs: `url(${mobileHeroImageUrl || heroImageUrl || heroImage})`,
+          md: `url(${heroImageUrl || heroImage})`,
+        },
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: {
+          xs: "center top",
+          md: "center",
+        },
         color: "white",
       }}
     >
