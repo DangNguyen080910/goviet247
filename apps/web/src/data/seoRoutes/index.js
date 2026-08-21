@@ -53,7 +53,7 @@ import { V2KHANHHOA_SEO_ROUTES } from "./V2KhanhHoaSeoRoutes.js";
 import { V2TAYNINH_SEO_ROUTES } from "./V2TayNinhSeoRoutes.js";
 import { V2CANTHO_SEO_ROUTES } from "./V2CanThoSeoRoutes.js";
 import { V2DONGTHAP_SEO_ROUTES } from "./V2DongThapSeoRoutes.js";
-
+import { V2ANGIANG_SEO_ROUTES } from "./V2AnGiangSeoRoutes.js";
 
 const assertUniqueSeoRoutes = (items) => {
   const pathMap = new Map();
@@ -157,4 +157,5 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...V2TAYNINH_SEO_ROUTES,
   ...V2CANTHO_SEO_ROUTES,
   ...V2DONGTHAP_SEO_ROUTES,
+  ...V2ANGIANG_SEO_ROUTES,
 ]);
