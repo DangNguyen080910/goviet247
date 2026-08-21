@@ -2086,6 +2086,19 @@ duration: "2.5 - 3 giờ",
 },
 
 {
+key: "thue-xe-phuong-phu-nhuan-di-vung-tau",
+path: "thue-xe-phuong-phu-nhuan-di-vung-tau",
+from: "Phường Phú Nhuận TP.HCM",
+to: "Vũng Tàu",
+title: "Thuê xe phường Phú Nhuận TP.HCM đi Vũng Tàu, xe riêng giá trọn gói",
+description:
+"Thuê xe phường Phú Nhuận TP.HCM đi Vũng Tàu phù hợp cho gia đình, nhóm bạn, khách công tác và khách du lịch biển. Xe đón tận nhà, khách sạn hoặc văn phòng trong khu vực phường Phú Nhuận TP.HCM, không ghép khách và không phải đổi xe giữa đường. Dịch vụ hỗ trợ chuyến một chiều, khứ hồi hoặc lịch trình riêng đến khách sạn, resort, bãi biển và các địa điểm tại Vũng Tàu.",
+routeText:
+"Phường Phú Nhuận TP.HCM → Nguyễn Văn Trỗi → Nam Kỳ Khởi Nghĩa → Mai Chí Thọ → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 51 → Vũng Tàu",
+duration: "2 - 2.5 giờ",
+},
+
+{
 key: "xe-tu-phu-nhuan-di-vung-tau",
 path: "thue-xe-tu-phu-nhuan-di-vung-tau",
 from: "Phú Nhuận",

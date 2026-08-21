@@ -1672,6 +1672,19 @@ export const LONGHAI_SEO_ROUTES = [
 },
 
 {
+  key: "thue-xe-phuong-an-phu-di-xa-long-hai",
+  path: "thue-xe-phuong-an-phu-di-xa-long-hai",
+  from: "Phường An Phú",
+  to: "Xã Long Hải",
+  title: "Thuê xe phường An Phú đi xã Long Hải, xe riêng đón tận nơi",
+  description:
+    "Dịch vụ thuê xe từ phường An Phú đi xã Long Hải giúp khách chủ động lịch trình với xe riêng, không ghép khách và đón tận nơi. Xe có thể đón tại nhà, căn hộ, khách sạn hoặc văn phòng trong phường An Phú, hỗ trợ nhiều điểm trả tại Long Hải theo yêu cầu.",
+  routeText:
+    "Phường An Phú → Mai Chí Thọ → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 51 → Tỉnh lộ 44A → Xã Long Hải",
+  duration: "1.8 - 2.3 giờ",
+},
+
+{
   key: "binh-thanh-di-long-hai",
   path: "thue-xe-tu-binh-thanh-di-long-hai",
   from: "Bình Thạnh, TP.HCM",
