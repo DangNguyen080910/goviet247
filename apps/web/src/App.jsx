@@ -31,6 +31,7 @@ import CustomerNotifications from "./pages/customer/CustomerNotifications";
 import SeoRoutePage from "./pages/customer/SeoRoutePage";
 import SeoHubPage from "./pages/customer/SeoHubPage";
 import SeoProvinceHubPage from "./pages/customer/SeoProvinceHubPage";
+import NotFoundPage from "./pages/customer/NotFoundPage";
 
 import { SEO_ROUTES } from "./data/seoRoutes";
 
@@ -299,7 +300,7 @@ export default function App() {
 
       <Route path="/admin/*" element={<Navigate to="/admin" replace />} />
 
-      <Route path="*" element={<div>Không tìm thấy trang</div>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
