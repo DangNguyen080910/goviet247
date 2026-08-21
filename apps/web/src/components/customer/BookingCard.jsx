@@ -39,6 +39,8 @@ import "dayjs/locale/vi";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import AppleIcon from "@mui/icons-material/Apple";
+import AndroidIcon from "@mui/icons-material/Android";
 
 dayjs.extend(updateLocale);
 dayjs.extend(localeData);
@@ -245,6 +247,10 @@ export default function BookingCard() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, login } = useCustomerAuth();
+
+  const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
+  const playStoreUrl =
+    "https://play.google.com/store/apps/details?id=com.goviet247.rider";
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.fbq) {
@@ -2643,6 +2649,108 @@ export default function BookingCard() {
             </Stack>
           </Box>
         )}
+
+        {/* Tải ứng dụng: đặt sau luồng booking để không cạnh tranh với CTA chính */}
+        <Box
+          component="section"
+          aria-labelledby="booking-app-download-title"
+          sx={{
+            mt: 2,
+            p: { xs: 2, sm: 2.5 },
+            borderRadius: 3,
+            color: "white",
+            background:
+              "linear-gradient(135deg, #18263a 0%, #243b55 55%, #ff6b00 145%)",
+            border: "1px solid rgba(255,255,255,0.10)",
+            boxShadow: "0 12px 32px rgba(24,38,58,0.18)",
+          }}
+        >
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={{ xs: 1.75, sm: 2.5 }}
+            alignItems={{ xs: "stretch", sm: "center" }}
+            justifyContent="space-between"
+          >
+            <Box sx={{ minWidth: 0 }}>
+              <Typography
+                id="booking-app-download-title"
+                sx={{ fontWeight: 900, fontSize: { xs: 18, sm: 20 } }}
+              >
+                Đặt xe nhanh hơn trên ứng dụng
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ mt: 0.5, color: "rgba(255,255,255,0.78)" }}
+              >
+                Theo dõi chuyến đi, nhận thông báo và quản lý lịch sử đặt xe.
+              </Typography>
+            </Box>
+
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{ flexShrink: 0, width: { xs: "100%", sm: "auto" } }}
+            >
+              <Button
+                component="a"
+                href={appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                startIcon={<AppleIcon />}
+                aria-label="Tải GoViet247 trên App Store"
+                sx={{
+                  flex: { xs: 1, sm: "initial" },
+                  minWidth: 0,
+                  minHeight: 46,
+                  px: { xs: 1, sm: 2 },
+                  color: "white",
+                  borderColor: "#22c55e",
+                  bgcolor: "rgba(255,255,255,0.10)",
+                  textTransform: "none",
+                  whiteSpace: "nowrap",
+                  borderRadius: 2.5,
+                  fontWeight: 900,
+                  "&:hover": {
+                    borderColor: "#4ade80",
+                    bgcolor: "rgba(255,255,255,0.18)",
+                  },
+                }}
+              >
+                App Store
+              </Button>
+
+              <Button
+                component="a"
+                href={playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                startIcon={<AndroidIcon />}
+                aria-label="Tải GoViet247 trên Google Play"
+                sx={{
+                  flex: { xs: 1, sm: "initial" },
+                  minWidth: 0,
+                  minHeight: 46,
+                  px: { xs: 1, sm: 2 },
+                  color: "white",
+                  borderColor: "#22c55e",
+                  bgcolor: "rgba(255,255,255,0.10)",
+                  textTransform: "none",
+                  whiteSpace: "nowrap",
+                  borderRadius: 2.5,
+                  fontWeight: 900,
+                  "&:hover": {
+                    borderColor: "#4ade80",
+                    bgcolor: "rgba(255,255,255,0.18)",
+                  },
+                }}
+              >
+                Google Play
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
       </Box>
 
       {/* Back to top button */}
