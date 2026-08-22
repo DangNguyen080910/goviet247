@@ -1,5 +1,5 @@
 // Path: goviet247/apps/admin-mobile/app/
-import { router, useFocusEffect } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
 import {
   ActivityIndicator,
@@ -190,7 +190,14 @@ async function copyToClipboard(value: string | null | undefined) {
 }
 
 export default function WalletsScreen() {
-  const [activeTab, setActiveTab] = useState<WalletTabKey>("WALLETS");
+  const params = useLocalSearchParams<{ tab?: string }>();
+  const requestedTab = String(params.tab || "").toUpperCase();
+  const initialTab: WalletTabKey = TAB_ITEMS.some(
+    (item) => item.key === requestedTab,
+  )
+    ? (requestedTab as WalletTabKey)
+    : "WALLETS";
+  const [activeTab, setActiveTab] = useState<WalletTabKey>(initialTab);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 

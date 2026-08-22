@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/controllers/feedbackController.js
 import { prisma } from "../utils/db.js";
+import { sendAdminPushNotification } from "../services/notificationService.js";
 
 const FEEDBACK_SOURCES = [
   "RIDER_PROFILE",
@@ -150,6 +151,32 @@ export async function createFeedback(req, res) {
         senderPhone: senderPhoneInput || verifiedPhone || anyPhone || null,
       },
     });
+
+    const adminEvent = {
+      source: "feedback_created",
+      type: "FEEDBACK_CREATED",
+      feedbackId: feedback.id,
+      actorRole: feedback.actorRole,
+      tripId: feedback.tripId || null,
+      status: feedback.status,
+      updatedAt: feedback.updatedAt || feedback.createdAt,
+    };
+
+    const io = req.app?.get?.("io");
+    if (io) {
+      io.to("admins").emit("admin:dashboard_changed", adminEvent);
+    }
+
+    try {
+      const senderName = feedback.senderName || user?.displayName || "Người dùng";
+      await sendAdminPushNotification({
+        title: "💬 Có thư góp ý mới",
+        body: `${senderName} vừa gửi một thư góp ý mới.`,
+        data: adminEvent,
+      });
+    } catch (pushError) {
+      console.error("[Feedback] send admin push error:", pushError);
+    }
 
     return res.status(201).json({
       success: true,

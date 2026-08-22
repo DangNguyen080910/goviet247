@@ -469,6 +469,32 @@ function buildRiderTripNotificationContent(trip, reason = "") {
   };
 }
 
+function buildAdminTripStatusPushContent(trip, fromStatus, source) {
+  const status = String(trip?.status || "").toUpperCase();
+  const shortTripId = String(trip?.id || "").slice(-8).toUpperCase();
+  const labels = {
+    ACCEPTED: "Chưa liên hệ khách",
+    CONTACTED: "Chưa đón khách",
+    IN_PROGRESS: "Đang trên hành trình",
+    COMPLETED: "Đã hoàn thành",
+    CANCELLED: "Đã huỷ",
+  };
+  const label = labels[status] || status || "trạng thái mới";
+
+  return {
+    title: "🚘 Trạng thái chuyến thay đổi",
+    body: `Chuyến #${shortTripId} đã chuyển sang ${label}.`,
+    data: {
+      type: "ADMIN_TRIP_STATUS_CHANGED",
+      source,
+      tripId: trip?.id || null,
+      fromStatus: fromStatus || null,
+      toStatus: status || null,
+      status: status || null,
+    },
+  };
+}
+
 async function createRiderTripNotification(tx, trip, options = {}) {
   const riderId = String(trip?.riderId || "").trim();
 
@@ -2074,6 +2100,18 @@ export async function changeTripStatus(req, res) {
     }
 
     try {
+      await sendAdminPushNotification(
+        buildAdminTripStatusPushContent(
+          trip,
+          currentTrip.status,
+          "driver_change_trip_status",
+        ),
+      );
+    } catch (pushError) {
+      console.error("[changeTripStatus] push admin error:", pushError);
+    }
+
+    try {
       await sendTripStatusChangedToRider(trip, {
         reason: "driver_change_status",
       });
@@ -2615,6 +2653,18 @@ export async function adminChangeTripStatus(req, res) {
       console.log(
         `[Socket] Emit admin:trip_status_changed -> admins (${result.updated.id})`,
       );
+    }
+
+    try {
+      await sendAdminPushNotification(
+        buildAdminTripStatusPushContent(
+          result.updated,
+          result.fromStatus,
+          "admin_change_trip_status",
+        ),
+      );
+    } catch (pushError) {
+      console.error("[adminChangeTripStatus] push admin error:", pushError);
     }
 
     try {

@@ -537,6 +537,25 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       );
     }
 
+    try {
+      await sendAdminPushNotification({
+        title: "⚠️ Khách vừa huỷ chuyến",
+        body: `Chuyến #${String(updated.id || "")
+          .slice(-8)
+          .toUpperCase()} đã bị khách huỷ.`,
+        data: {
+          type: "ADMIN_TRIP_STATUS_CHANGED",
+          source: "rider_cancel_trip",
+          tripId: updated.id,
+          fromStatus: trip.status,
+          toStatus: updated.status,
+          status: updated.status,
+        },
+      });
+    } catch (pushError) {
+      console.error("[AdminPush] rider cancel trip error:", pushError);
+    }
+
     return res.json({
       success: true,
       trip: updated,

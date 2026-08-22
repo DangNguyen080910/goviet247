@@ -1,6 +1,6 @@
 // Path: goviet247/apps/admin-mobile/app/_layout.tsx
 import { useEffect } from "react";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as Notifications from "expo-notifications";
 import {
@@ -23,6 +23,7 @@ import {
   onAdminRealtimeEvent,
 } from "../services/adminSocket";
 import AppUpdatePrompt from "../components/AppUpdatePrompt";
+import { getAdminNotificationResponseRoute } from "../services/adminNotificationNavigation";
 
 Notifications.setNotificationHandler({
   handleNotification: async () =>
@@ -158,8 +159,10 @@ function RootLayoutContent() {
     });
 
     const responseSub = Notifications.addNotificationResponseReceivedListener(
-      () => {
+      (response) => {
         Notifications.setBadgeCountAsync(0).catch(() => {});
+        Notifications.clearLastNotificationResponseAsync().catch(() => {});
+        router.push(getAdminNotificationResponseRoute(response) as any);
       },
     );
 

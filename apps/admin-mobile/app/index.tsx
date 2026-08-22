@@ -9,6 +9,8 @@ import {
   View,
 } from "react-native";
 import { getAdminToken } from "../services/storage";
+import * as Notifications from "expo-notifications";
+import { getAdminNotificationResponseRoute } from "../services/adminNotificationNavigation";
 
 export default function IndexScreen() {
   useEffect(() => {
@@ -21,7 +23,14 @@ export default function IndexScreen() {
         if (!active) return;
 
         if (token) {
-          router.replace("/home");
+          const response = await Notifications.getLastNotificationResponseAsync();
+          const route = response
+            ? getAdminNotificationResponseRoute(response)
+            : "/home";
+          if (response) {
+            await Notifications.clearLastNotificationResponseAsync();
+          }
+          router.replace(route as any);
           return;
         }
 

@@ -1,6 +1,6 @@
 // Path: goviet247/apps/admin-mobile/app/assigned-trips.tsx
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
@@ -255,7 +255,12 @@ async function copyPhoneToClipboard(phone?: string | null) {
 }
 
 export default function AssignedTripsScreen() {
-  const [tab, setTab] = useState<AssignedTripsTabStatus>("ACCEPTED");
+  const params = useLocalSearchParams<{ tab?: string }>();
+  const requestedTab = String(params.tab || "").toUpperCase();
+  const initialTab = TABS.some((item) => item.key === requestedTab)
+    ? (requestedTab as AssignedTripsTabStatus)
+    : "ACCEPTED";
+  const [tab, setTab] = useState<AssignedTripsTabStatus>(initialTab);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -305,6 +310,12 @@ export default function AssignedTripsScreen() {
   useEffect(() => {
     loadData(tab);
   }, [tab, loadData]);
+
+  useEffect(() => {
+    if (TABS.some((item) => item.key === requestedTab)) {
+      setTab(requestedTab as AssignedTripsTabStatus);
+    }
+  }, [requestedTab]);
 
   async function openTripDetail(tripId: string) {
     try {

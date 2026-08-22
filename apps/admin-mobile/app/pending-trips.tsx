@@ -1,6 +1,6 @@
 // Path: goviet247/apps/admin-mobile/app/pending-trips.tsx
 import { useCallback, useMemo, useState } from "react";
-import { router, useFocusEffect } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import {
   ActivityIndicator,
   Alert,
@@ -199,7 +199,12 @@ function DetailRow({
 }
 
 export default function PendingTripsScreen() {
-  const [tab, setTab] = useState<TabKey>("PENDING");
+  const params = useLocalSearchParams<{ tab?: string }>();
+  const initialTab: TabKey =
+    String(params.tab || "").toUpperCase() === "CANCELLED"
+      ? "CANCELLED"
+      : "PENDING";
+  const [tab, setTab] = useState<TabKey>(initialTab);
   const [searchText, setSearchText] = useState("");
   const [items, setItems] = useState<PendingTripItem[]>([]);
   const [loading, setLoading] = useState(true);
