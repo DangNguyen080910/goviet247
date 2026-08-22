@@ -25,10 +25,43 @@ const DEFAULT_SYSTEM_CONFIG = {
   riderWebBackgroundImageUrl: "",
   riderMobileBackgroundImageUrl: "",
   footerCopyright: "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
+
+  riderLatestVersion: "1.0.6",
+  riderMinimumVersion: "1.0.6",
+  riderIosStoreUrl: "https://apps.apple.com/vn/app/goviet247/id6767422059",
+  riderAndroidStoreUrl:
+    "https://play.google.com/store/apps/details?id=com.goviet247.rider",
+  riderUpdateMessage:
+    "GoViet247 đã có phiên bản mới với các cải tiến và sửa lỗi.",
+  driverLatestVersion: "1.0.2",
+  driverMinimumVersion: "1.0.2",
+  driverIosStoreUrl: "",
+  driverAndroidStoreUrl:
+    "https://play.google.com/store/apps/details?id=com.goviet247.driver",
+  driverUpdateMessage:
+    "GoViet247 Driver đã có phiên bản mới với các cải tiến và sửa lỗi.",
+  adminLatestVersion: "1.0.2",
+  adminMinimumVersion: "1.0.2",
+  adminIosStoreUrl: "",
+  adminAndroidStoreUrl:
+    "https://play.google.com/store/apps/details?id=com.goviet247.admin",
+  adminUpdateMessage:
+    "GoViet247 Admin đã có phiên bản mới với các cải tiến và sửa lỗi.",
 };
 
 // Việt: Regex email cơ bản
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const VERSION_REGEX = /^\d+\.\d+\.\d+$/;
+
+function compareVersions(left, right) {
+  const a = String(left || "0.0.0").split(".").map(Number);
+  const b = String(right || "0.0.0").split(".").map(Number);
+  for (let index = 0; index < Math.max(a.length, b.length); index += 1) {
+    const diff = (a[index] || 0) - (b[index] || 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
 
 // Việt: Lấy record config duy nhất, nếu chưa có thì tự tạo
 async function getOrCreateSystemConfig() {
@@ -216,6 +249,58 @@ export async function updateSystemConfig(req, res) {
 
     if (body.footerCopyright != null) {
       updateData.footerCopyright = String(body.footerCopyright).trim();
+    }
+
+    const versionFields = [
+      "riderLatestVersion",
+      "riderMinimumVersion",
+      "driverLatestVersion",
+      "driverMinimumVersion",
+      "adminLatestVersion",
+      "adminMinimumVersion",
+    ];
+
+    for (const field of versionFields) {
+      if (body[field] == null) continue;
+      const value = String(body[field]).trim();
+      if (!VERSION_REGEX.test(value)) {
+        return res.status(400).json({
+          success: false,
+          message: `${field} phải có dạng x.y.z, ví dụ 1.0.7.`,
+        });
+      }
+      updateData[field] = value;
+    }
+
+    const textFields = [
+      "riderIosStoreUrl",
+      "riderAndroidStoreUrl",
+      "riderUpdateMessage",
+      "driverIosStoreUrl",
+      "driverAndroidStoreUrl",
+      "driverUpdateMessage",
+      "adminIosStoreUrl",
+      "adminAndroidStoreUrl",
+      "adminUpdateMessage",
+    ];
+
+    for (const field of textFields) {
+      if (body[field] != null) {
+        updateData[field] = String(body[field]).trim().slice(0, 1000);
+      }
+    }
+
+    for (const app of ["rider", "driver", "admin"]) {
+      const latestField = `${app}LatestVersion`;
+      const minimumField = `${app}MinimumVersion`;
+      const latest = updateData[latestField] ?? current[latestField];
+      const minimum = updateData[minimumField] ?? current[minimumField];
+      if (compareVersions(minimum, latest) > 0) {
+        return res.status(400).json({
+          success: false,
+          message: `Phiên bản tối thiểu của ${app} không được lớn hơn phiên bản mới nhất.`,
+        });
+      }
     }
 
     const nextSupportPhoneDriver =

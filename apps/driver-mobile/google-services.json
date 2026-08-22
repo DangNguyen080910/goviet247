@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "721778133975",
+    "project_id": "goviet247-driver-5709b",
+    "storage_bucket": "goviet247-driver-5709b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721778133975:android:d65f89a7f987133b449992",
+        "android_client_info": {
+          "package_name": "com.dangnguyen080910.drivermobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzhCC8pYssb_KwDYiAtTeXpU0NocbWDi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721778133975:android:caac85efbc31a134449992",
+        "android_client_info": {
+          "package_name": "com.dangnguyen080910.ridermobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzhCC8pYssb_KwDYiAtTeXpU0NocbWDi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721778133975:android:dc305995a858bf95449992",
+        "android_client_info": {
+          "package_name": "com.goviet247.driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzhCC8pYssb_KwDYiAtTeXpU0NocbWDi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

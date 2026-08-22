@@ -7,9 +7,11 @@ const prisma = new PrismaClient();
 // Việt: Default config cho tab Chuyến đi
 const DEFAULT_TRIP_CONFIG = {
   maxStops: 10,
-  minDistanceKm: 5,
+  minDistanceKm: 10,
   maxDistanceKm: 2000,
   quoteExpireSeconds: 120,
+  riderBookingNotePlaceholder:
+    "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
 };
 
 // Việt: Lấy record config duy nhất, nếu chưa có thì tự tạo
@@ -64,6 +66,17 @@ export async function updateTripConfig(req, res) {
     const current = await getOrCreateTripConfig();
 
     const updateData = {};
+
+    if (body.riderBookingNotePlaceholder != null) {
+      const value = String(body.riderBookingNotePlaceholder).trim();
+      if (!value || value.length > 500) {
+        return res.status(400).json({
+          success: false,
+          message: "Gợi ý ghi chú phải có nội dung và không vượt quá 500 ký tự.",
+        });
+      }
+      updateData.riderBookingNotePlaceholder = value;
+    }
 
     const integerFields = [
       "maxStops",

@@ -695,9 +695,11 @@ export default function AdminConfig() {
   const [form, setForm] = React.useState({
     // Trips
     maxStops: "10",
-    minDistanceKm: "5",
+    minDistanceKm: "10",
     maxDistanceKm: "2000",
     quoteExpireSeconds: "120",
+    riderBookingNotePlaceholder:
+      "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
 
     // Drivers
     commissionPercent: "10",
@@ -742,6 +744,24 @@ export default function AdminConfig() {
     riderMobileBackgroundImageUrl: "",
     footerCopyright:
       "© 2023 GoViet247 - Công ty TNHH Công nghệ ViNa LightHouse",
+    riderLatestVersion: "1.0.6",
+    riderMinimumVersion: "1.0.6",
+    riderIosStoreUrl: "https://apps.apple.com/vn/app/goviet247/id6767422059",
+    riderAndroidStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.goviet247.rider",
+    riderUpdateMessage: "",
+    driverLatestVersion: "1.0.2",
+    driverMinimumVersion: "1.0.2",
+    driverIosStoreUrl: "",
+    driverAndroidStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.goviet247.driver",
+    driverUpdateMessage: "",
+    adminLatestVersion: "1.0.2",
+    adminMinimumVersion: "1.0.2",
+    adminIosStoreUrl: "",
+    adminAndroidStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.goviet247.admin",
+    adminUpdateMessage: "",
   });
 
   const [alertPhoneInputs, setAlertPhoneInputs] = React.useState({
@@ -802,6 +822,9 @@ export default function AdminConfig() {
         minDistanceKm: toFormValue(item?.minDistanceKm),
         maxDistanceKm: toFormValue(item?.maxDistanceKm),
         quoteExpireSeconds: toFormValue(item?.quoteExpireSeconds),
+        riderBookingNotePlaceholder: toFormValue(
+          item?.riderBookingNotePlaceholder,
+        ),
       }));
     } catch (err) {
       setTripConfigError(err.message || "Không thể tải cấu hình chuyến đi.");
@@ -907,6 +930,21 @@ export default function AdminConfig() {
           item?.riderMobileBackgroundImageUrl,
         ),
         footerCopyright: toFormValue(item?.footerCopyright),
+        riderLatestVersion: toFormValue(item?.riderLatestVersion || "1.0.6"),
+        riderMinimumVersion: toFormValue(item?.riderMinimumVersion || "1.0.6"),
+        riderIosStoreUrl: toFormValue(item?.riderIosStoreUrl),
+        riderAndroidStoreUrl: toFormValue(item?.riderAndroidStoreUrl),
+        riderUpdateMessage: toFormValue(item?.riderUpdateMessage),
+        driverLatestVersion: toFormValue(item?.driverLatestVersion || "1.0.2"),
+        driverMinimumVersion: toFormValue(item?.driverMinimumVersion || "1.0.2"),
+        driverIosStoreUrl: toFormValue(item?.driverIosStoreUrl),
+        driverAndroidStoreUrl: toFormValue(item?.driverAndroidStoreUrl),
+        driverUpdateMessage: toFormValue(item?.driverUpdateMessage),
+        adminLatestVersion: toFormValue(item?.adminLatestVersion || "1.0.2"),
+        adminMinimumVersion: toFormValue(item?.adminMinimumVersion || "1.0.2"),
+        adminIosStoreUrl: toFormValue(item?.adminIosStoreUrl),
+        adminAndroidStoreUrl: toFormValue(item?.adminAndroidStoreUrl),
+        adminUpdateMessage: toFormValue(item?.adminUpdateMessage),
       }));
     } catch (err) {
       setSystemConfigError(err.message || "Không thể tải cấu hình hệ thống.");
@@ -1063,6 +1101,13 @@ export default function AdminConfig() {
       return "Thời gian hiệu lực báo giá phải lớn hơn 0 giây.";
     }
 
+    const notePlaceholder = String(
+      form.riderBookingNotePlaceholder || "",
+    ).trim();
+    if (!notePlaceholder || notePlaceholder.length > 500) {
+      return "Gợi ý ghi chú phải có nội dung và không vượt quá 500 ký tự.";
+    }
+
     return "";
   };
 
@@ -1216,6 +1261,21 @@ export default function AdminConfig() {
       return "Tên thương hiệu không được để trống.";
     }
 
+    const versionRegex = /^\d+\.\d+\.\d+$/;
+    const versionPairs = [
+      ["Rider", form.riderLatestVersion, form.riderMinimumVersion],
+      ["Driver", form.driverLatestVersion, form.driverMinimumVersion],
+      ["Admin", form.adminLatestVersion, form.adminMinimumVersion],
+    ];
+    for (const [label, latest, minimum] of versionPairs) {
+      if (!versionRegex.test(String(latest || "").trim())) {
+        return `Phiên bản mới nhất của ${label} phải có dạng x.y.z.`;
+      }
+      if (!versionRegex.test(String(minimum || "").trim())) {
+        return `Phiên bản tối thiểu của ${label} phải có dạng x.y.z.`;
+      }
+    }
+
     return "";
   };
 
@@ -1319,6 +1379,9 @@ export default function AdminConfig() {
         minDistanceKm: Number(form.minDistanceKm),
         maxDistanceKm: Number(form.maxDistanceKm),
         quoteExpireSeconds: Number(form.quoteExpireSeconds),
+        riderBookingNotePlaceholder: String(
+          form.riderBookingNotePlaceholder || "",
+        ).trim(),
       });
 
       setForm((prev) => ({
@@ -1327,6 +1390,9 @@ export default function AdminConfig() {
         minDistanceKm: toFormValue(updated?.minDistanceKm),
         maxDistanceKm: toFormValue(updated?.maxDistanceKm),
         quoteExpireSeconds: toFormValue(updated?.quoteExpireSeconds),
+        riderBookingNotePlaceholder: toFormValue(
+          updated?.riderBookingNotePlaceholder,
+        ),
       }));
 
       showSnackbar("success", "Đã lưu cấu hình chuyến đi thành công.");
@@ -1568,6 +1634,21 @@ export default function AdminConfig() {
           form.riderMobileBackgroundImageUrl || "",
         ).trim(),
         footerCopyright: String(form.footerCopyright || "").trim(),
+        riderLatestVersion: String(form.riderLatestVersion || "").trim(),
+        riderMinimumVersion: String(form.riderMinimumVersion || "").trim(),
+        riderIosStoreUrl: String(form.riderIosStoreUrl || "").trim(),
+        riderAndroidStoreUrl: String(form.riderAndroidStoreUrl || "").trim(),
+        riderUpdateMessage: String(form.riderUpdateMessage || "").trim(),
+        driverLatestVersion: String(form.driverLatestVersion || "").trim(),
+        driverMinimumVersion: String(form.driverMinimumVersion || "").trim(),
+        driverIosStoreUrl: String(form.driverIosStoreUrl || "").trim(),
+        driverAndroidStoreUrl: String(form.driverAndroidStoreUrl || "").trim(),
+        driverUpdateMessage: String(form.driverUpdateMessage || "").trim(),
+        adminLatestVersion: String(form.adminLatestVersion || "").trim(),
+        adminMinimumVersion: String(form.adminMinimumVersion || "").trim(),
+        adminIosStoreUrl: String(form.adminIosStoreUrl || "").trim(),
+        adminAndroidStoreUrl: String(form.adminAndroidStoreUrl || "").trim(),
+        adminUpdateMessage: String(form.adminUpdateMessage || "").trim(),
       });
 
       setForm((prev) => ({
@@ -1587,6 +1668,21 @@ export default function AdminConfig() {
           updated?.riderMobileBackgroundImageUrl,
         ),
         footerCopyright: toFormValue(updated?.footerCopyright),
+        riderLatestVersion: toFormValue(updated?.riderLatestVersion),
+        riderMinimumVersion: toFormValue(updated?.riderMinimumVersion),
+        riderIosStoreUrl: toFormValue(updated?.riderIosStoreUrl),
+        riderAndroidStoreUrl: toFormValue(updated?.riderAndroidStoreUrl),
+        riderUpdateMessage: toFormValue(updated?.riderUpdateMessage),
+        driverLatestVersion: toFormValue(updated?.driverLatestVersion),
+        driverMinimumVersion: toFormValue(updated?.driverMinimumVersion),
+        driverIosStoreUrl: toFormValue(updated?.driverIosStoreUrl),
+        driverAndroidStoreUrl: toFormValue(updated?.driverAndroidStoreUrl),
+        driverUpdateMessage: toFormValue(updated?.driverUpdateMessage),
+        adminLatestVersion: toFormValue(updated?.adminLatestVersion),
+        adminMinimumVersion: toFormValue(updated?.adminMinimumVersion),
+        adminIosStoreUrl: toFormValue(updated?.adminIosStoreUrl),
+        adminAndroidStoreUrl: toFormValue(updated?.adminAndroidStoreUrl),
+        adminUpdateMessage: toFormValue(updated?.adminUpdateMessage),
       }));
 
       showSnackbar("success", "Đã lưu cấu hình hệ thống thành công.");
@@ -1852,6 +1948,24 @@ export default function AdminConfig() {
                             fullWidth
                             type="number"
                             inputProps={{ min: 1 }}
+                          />
+                        </SectionCard>
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <SectionCard
+                          title="Gợi ý ghi chú đặt xe"
+                          description="Nội dung placeholder dùng chung cho Rider Web và Rider Mobile."
+                        >
+                          <TextField
+                            label="Gợi ý hiển thị trong ô ghi chú"
+                            value={form.riderBookingNotePlaceholder}
+                            onChange={setField("riderBookingNotePlaceholder")}
+                            fullWidth
+                            multiline
+                            minRows={3}
+                            inputProps={{ maxLength: 500 }}
+                            helperText={`${String(form.riderBookingNotePlaceholder || "").length}/500 ký tự`}
                           />
                         </SectionCard>
                       </Grid>
@@ -2648,6 +2762,67 @@ export default function AdminConfig() {
                               onUpload={handleUploadSystemMedia}
                             />
                           </Stack>
+                        </SectionCard>
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <SectionCard
+                          title="Phiên bản ứng dụng mobile"
+                          description="Latest dùng để nhắc cập nhật; Minimum dùng để bắt buộc cập nhật. Chỉ tăng sau khi phiên bản mới đã tải được trên store."
+                        >
+                          <Grid container spacing={2.5}>
+                            {[
+                              { key: "rider", label: "Rider" },
+                              { key: "driver", label: "Driver" },
+                              { key: "admin", label: "Admin" },
+                            ].map(({ key, label }) => (
+                              <Grid item xs={12} lg={4} key={key}>
+                                <Paper variant="outlined" sx={{ p: 2, borderRadius: 2 }}>
+                                  <Stack spacing={2}>
+                                    <Typography variant="subtitle1" fontWeight={800}>
+                                      {label} Mobile
+                                    </Typography>
+                                    <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
+                                      <TextField
+                                        label="Latest version"
+                                        value={form[`${key}LatestVersion`]}
+                                        onChange={setField(`${key}LatestVersion`)}
+                                        fullWidth
+                                        placeholder="1.0.7"
+                                      />
+                                      <TextField
+                                        label="Minimum version"
+                                        value={form[`${key}MinimumVersion`]}
+                                        onChange={setField(`${key}MinimumVersion`)}
+                                        fullWidth
+                                        placeholder="1.0.6"
+                                      />
+                                    </Stack>
+                                    <TextField
+                                      label="App Store URL"
+                                      value={form[`${key}IosStoreUrl`]}
+                                      onChange={setField(`${key}IosStoreUrl`)}
+                                      fullWidth
+                                    />
+                                    <TextField
+                                      label="Google Play URL"
+                                      value={form[`${key}AndroidStoreUrl`]}
+                                      onChange={setField(`${key}AndroidStoreUrl`)}
+                                      fullWidth
+                                    />
+                                    <TextField
+                                      label="Nội dung thông báo cập nhật"
+                                      value={form[`${key}UpdateMessage`]}
+                                      onChange={setField(`${key}UpdateMessage`)}
+                                      fullWidth
+                                      multiline
+                                      minRows={2}
+                                    />
+                                  </Stack>
+                                </Paper>
+                              </Grid>
+                            ))}
+                          </Grid>
                         </SectionCard>
                       </Grid>
                     </Grid>

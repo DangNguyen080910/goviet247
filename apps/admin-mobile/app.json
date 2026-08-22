@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "GoViet247 Admin",
+    "slug": "admin-mobile",
+    "version": "1.0.3",
+    "orientation": "portrait",
+    "icon": "./assets/images/GoViet247_admin_icon.png",
+    "scheme": "adminmobile",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.goviet247.admin",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/GoViet247_admin_icon.png",
+        "backgroundImage": "./assets/images/GoViet247_admin_icon.png",
+        "monochromeImage": "./assets/images/GoViet247_admin_icon.png"
+      },
+      "icon": "./assets/images/GoViet247_admin_icon.png",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.goviet247.admin",
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/GoViet247_admin_icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/GoViet247_admin_icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ],
+      "expo-secure-store",
+      "expo-notifications"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "442c7d13-ec25-45c8-8c44-02c68463f3f4"
+      }
+    }
+  }
+}

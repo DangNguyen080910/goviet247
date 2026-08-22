@@ -30,6 +30,10 @@ import {
 } from "../services/notificationService.js";
 import { calculateTripPrice } from "../services/pricingService.js";
 import {
+  getEffectiveTripConfig,
+  validateTripDistance,
+} from "../services/tripConfigService.js";
+import {
   requireAdminOrStaff,
   verifyToken,
 } from "../middleware/authMiddleware.js";
@@ -181,6 +185,25 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         success: false,
         error: "VALIDATION_ERROR",
         message: "distanceKm không hợp lệ.",
+      });
+    }
+
+
+    const distanceValidation = await validateTripDistance(distanceKm);
+    if (!distanceValidation.ok) {
+      return res.status(400).json({
+        success: false,
+        error: "DISTANCE_OUT_OF_RANGE",
+        message: distanceValidation.message,
+      });
+    }
+
+    const tripConfig = await getEffectiveTripConfig();
+    if (stops.length > Number(tripConfig.maxStops)) {
+      return res.status(400).json({
+        success: false,
+        error: "TOO_MANY_STOPS",
+        message: `Chuyến đi chỉ được có tối đa ${tripConfig.maxStops} điểm đến.`,
       });
     }
 

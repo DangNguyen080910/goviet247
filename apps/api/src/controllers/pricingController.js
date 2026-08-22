@@ -2,6 +2,7 @@
 
 import pkg from "@prisma/client";
 import { quotePrice } from "../services/pricingService.js";
+import { validateTripDistance } from "../services/tripConfigService.js";
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
@@ -44,6 +45,14 @@ export async function quote(req, res) {
       return res
         .status(400)
         .json({ success: false, message: "Thiếu distanceKm." });
+    }
+
+    const distanceValidation = await validateTripDistance(distanceKm);
+    if (!distanceValidation.ok) {
+      return res.status(400).json({
+        success: false,
+        message: distanceValidation.message,
+      });
     }
 
     const result = await quotePrice({

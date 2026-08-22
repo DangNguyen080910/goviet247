@@ -6,13 +6,16 @@ import {
   verifyTripOtp,
 } from "../services/otpService.js";
 import { sendAdminPushNotification } from "../services/notificationService.js";
+import { validateTripDistance } from "../services/tripConfigService.js";
 
 // Việt: Default config public cho customer page
 const DEFAULT_TRIP_CONFIG = {
   maxStops: 10,
-  minDistanceKm: 5,
+  minDistanceKm: 10,
   maxDistanceKm: 2000,
   quoteExpireSeconds: 120,
+  riderBookingNotePlaceholder:
+    "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
 };
 
 const DEFAULT_SYSTEM_CONFIG = {
@@ -136,6 +139,8 @@ export async function getPublicTripConfig(req, res) {
           minDistanceKm: tripConfig.minDistanceKm,
           maxDistanceKm: tripConfig.maxDistanceKm,
           quoteExpireSeconds: tripConfig.quoteExpireSeconds,
+          riderBookingNotePlaceholder:
+            tripConfig.riderBookingNotePlaceholder,
         },
         systemConfig: {
           supportPhone: systemConfig.supportPhone,
@@ -183,6 +188,14 @@ export async function quoteTrip(req, res) {
 
     const pickupDate = toDate(pickupTime);
     assertPickupTimeNotInPast(pickupDate);
+
+    const distanceValidation = await validateTripDistance(distanceKm);
+    if (!distanceValidation.ok) {
+      return res.status(400).json({
+        success: false,
+        message: distanceValidation.message,
+      });
+    }
 
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
@@ -244,6 +257,14 @@ export async function requestTripOtp(req, res) {
       return res
         .status(400)
         .json({ success: false, message: "Thiếu dữ liệu bắt buộc." });
+    }
+
+    const distanceValidation = await validateTripDistance(distanceKm);
+    if (!distanceValidation.ok) {
+      return res.status(400).json({
+        success: false,
+        message: distanceValidation.message,
+      });
     }
 
     const pickupDate = toDate(pickupTime);
@@ -346,6 +367,14 @@ export async function confirmTrip(req, res) {
       directionFactor,
       totalPrice,
     } = payload;
+
+    const distanceValidation = await validateTripDistance(distanceKm);
+    if (!distanceValidation.ok) {
+      return res.status(400).json({
+        success: false,
+        message: distanceValidation.message,
+      });
+    }
 
     const trip = await prisma.trip.create({
       data: {
