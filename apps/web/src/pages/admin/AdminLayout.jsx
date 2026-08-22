@@ -315,7 +315,20 @@ export default function AdminLayout() {
 
     const timer = window.setInterval(loadDashboard, 60000);
 
-    return () => window.clearInterval(timer);
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") {
+        loadDashboard();
+      }
+    };
+
+    window.addEventListener("focus", loadDashboard);
+    document.addEventListener("visibilitychange", refreshWhenVisible);
+
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("focus", loadDashboard);
+      document.removeEventListener("visibilitychange", refreshWhenVisible);
+    };
   }, [loadDashboard]);
 
   React.useEffect(() => {
@@ -455,7 +468,7 @@ export default function AdminLayout() {
         `🚕 Có chuyến vừa được tài xế nhận${
           tripId ? ` • ${String(tripId).slice(0, 8)}…` : ""
         }`,
-        "/admin/pending",
+        "/admin/trips/assigned",
       );
 
       loadDashboard();
@@ -467,7 +480,7 @@ export default function AdminLayout() {
       await playAdminUpdateSound();
 
       const tripId = payload?.tripId || "";
-      const status = String(payload?.status || "")
+      const status = String(payload?.status || payload?.toStatus || "")
         .trim()
         .toUpperCase();
 
@@ -600,7 +613,6 @@ export default function AdminLayout() {
         {menu.map((m) => {
           const active = activeKey === m.to;
           const badgeCount = badgeMap[m.to] || 0;
-          const hasAlert = badgeCount > 0;
           const pulse = pulseMap[m.to];
           const alertUi = getAlertUiByRoute(m.to);
 
@@ -616,10 +628,6 @@ export default function AdminLayout() {
                 mx: 1,
                 my: 0.5,
                 borderRadius: 2,
-                ...(hasAlert &&
-                  !active && {
-                    bgcolor: alertUi.bgColor,
-                  }),
                 "&.Mui-selected": {
                   bgcolor: "action.selected",
                 },
@@ -627,11 +635,7 @@ export default function AdminLayout() {
             >
               <ListItemIcon
                 sx={{
-                  color: hasAlert
-                    ? alertUi.iconColor
-                    : active
-                      ? "primary.main"
-                      : "inherit",
+                  color: active ? "primary.main" : "inherit",
                   minWidth: 40,
                 }}
               >
@@ -642,7 +646,7 @@ export default function AdminLayout() {
                 primary={m.label}
                 primaryTypographyProps={{
                   sx: {
-                    fontWeight: hasAlert || active ? 700 : 500,
+                    fontWeight: active ? 700 : 500,
                   },
                 }}
               />

@@ -476,6 +476,20 @@ export default function UnassignedTripsScreen() {
 
           <View style={styles.metaRow}>
             <View style={styles.metaItem}>
+              <Text style={styles.label}>Giờ đón</Text>
+              <Text style={styles.value}>{formatDateTime(item.pickupTime)}</Text>
+            </View>
+
+            <View style={styles.metaItemRight}>
+              <Text style={styles.label}>Giá</Text>
+              <Text style={styles.priceValue}>
+                {formatMoney(getTripPrice(item))}đ
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.metaRow}>
+            <View style={styles.metaItem}>
               <Text style={styles.label}>Tạo lúc</Text>
               <Text style={styles.value}>{formatDateTime(item.createdAt)}</Text>
             </View>
@@ -499,13 +513,6 @@ export default function UnassignedTripsScreen() {
             <View style={styles.metaItem}>
               <Text style={styles.label}>Cảnh báo</Text>
               <Text style={styles.value}>{item.alertCount} lần</Text>
-            </View>
-
-            <View style={styles.metaItemRight}>
-              <Text style={styles.label}>Giá</Text>
-              <Text style={styles.priceValue}>
-                {formatMoney(getTripPrice(item))}đ
-              </Text>
             </View>
           </View>
 

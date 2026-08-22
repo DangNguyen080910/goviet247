@@ -38,7 +38,7 @@ import {
 } from "../services/adminWalletsApi";
 import {
   formatVietnamesePhone,
-  normalizeVietnamesePhoneSearch,
+  normalizeSmartSearch,
 } from "../utils/phone";
 
 type WalletTabKey = "WALLETS" | "WITHDRAWS" | "PENALTIES" | "LEDGER";
@@ -255,7 +255,8 @@ export default function WalletsScreen() {
   ).length;
 
   const filteredWalletItems = useMemo(() => {
-    const q = normalizeVietnamesePhoneSearch(walletSearchText).toLowerCase();
+    const q = normalizeSmartSearch(walletSearchText);
+    const searchTokens = q.split(/\s+/).filter(Boolean);
 
     return walletItems.filter((item) => {
       const statusOk =
@@ -263,16 +264,22 @@ export default function WalletsScreen() {
           ? true
           : String(item.status || "").toUpperCase() === walletStatus;
 
-      const searchOk = q
-        ? [
-            getDriverDisplayName(item),
-            normalizeVietnamesePhoneSearch(item.phone || ""),
-            item.licensePlate || "",
-          ]
-            .join(" ")
-            .toLowerCase()
-            .includes(q)
-        : true;
+      const rawPhone = String(item.phone || "");
+      const localPhone = rawPhone.startsWith("+84")
+        ? `0${rawPhone.slice(3)}`
+        : rawPhone;
+      const haystack = normalizeSmartSearch(
+        [
+          getDriverDisplayName(item),
+          rawPhone,
+          localPhone,
+          item.licensePlate || "",
+        ].join(" "),
+      );
+      const compactHaystack = haystack.replace(/\s+/g, "");
+      const searchOk = searchTokens.every(
+        (token) => haystack.includes(token) || compactHaystack.includes(token),
+      );
 
       return statusOk && searchOk;
     });

@@ -2358,9 +2358,10 @@ export async function getAssignedTrips(req, res) {
         estimatedDurationMinutes: true,
 
         pickupAddress: true,
-        pickupAddress: true,
         dropoffAddress: true,
+        pickupTime: true,
         returnTime: true,
+        totalPrice: true,
         updatedAt: true,
         cancelReason: true,
         cancelledAt: true,

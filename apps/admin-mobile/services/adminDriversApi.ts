@@ -8,6 +8,7 @@ export type DriverListItem = {
   phone: string | null;
   isPhoneVerified: boolean;
   status: string | null;
+  vehicleType: string | null;
   brand: string | null;
   model: string | null;
   vehicleYear: number | null;
@@ -86,6 +87,8 @@ function mapDriverItem(raw: any): DriverListItem {
     phone: pickPhone(raw),
     isPhoneVerified: Boolean(raw?.isPhoneVerified ?? raw?.user?.isVerified),
     status: typeof raw?.status === "string" ? raw.status : null,
+    vehicleType:
+      typeof raw?.vehicleType === "string" ? raw.vehicleType : null,
     brand:
       typeof raw?.brand === "string"
         ? raw.brand
@@ -153,6 +156,8 @@ export async function fetchDriverDetail(id: string) {
       raw?.isPhoneVerified ?? raw?.user?.isVerified ?? raw?.user?.phoneVerified,
     ),
     status: typeof raw?.status === "string" ? raw.status : null,
+    vehicleType:
+      typeof raw?.vehicleType === "string" ? raw.vehicleType : null,
     brand:
       typeof raw?.brand === "string"
         ? raw.brand

@@ -57,6 +57,48 @@ export function makeAdminController(prisma) {
     return n;
   }
 
+  function normalizeSmartSearch(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
+      .toLowerCase()
+      .replace(/[^a-z0-9+]+/g, " ")
+      .trim();
+  }
+
+  function matchesDriverSmartSearch(driver, keyword) {
+    const normalizedKeyword = normalizeSmartSearch(keyword);
+    if (!normalizedKeyword) return true;
+
+    const phones = (driver?.user?.phones || []).flatMap((item) => {
+      const phone = String(item?.e164 || "").trim();
+      const localPhone = phone.startsWith("+84") ? `0${phone.slice(3)}` : phone;
+      return [phone, localPhone];
+    });
+
+    const haystack = normalizeSmartSearch(
+      [
+        driver?.fullName,
+        driver?.user?.displayName,
+        driver?.plateNumber,
+        driver?.vehicleType,
+        driver?.vehicleBrand,
+        driver?.vehicleModel,
+        ...phones,
+      ]
+        .filter(Boolean)
+        .join(" "),
+    );
+    const compactHaystack = haystack.replace(/\s+/g, "");
+
+    return normalizedKeyword.split(/\s+/).every((token) => {
+      const compactToken = token.replace(/\s+/g, "");
+      return haystack.includes(token) || compactHaystack.includes(compactToken);
+    });
+  }
+
   function getQuarterDateRange(year, quarter) {
     const safeYear = Number.isFinite(Number(year))
       ? Number(year)
@@ -2804,42 +2846,6 @@ export function makeAdminController(prisma) {
           where.status = status;
         }
 
-        if (q) {
-          where.OR = [
-            {
-              fullName: {
-                contains: q,
-                mode: "insensitive",
-              },
-            },
-            {
-              plateNumber: {
-                contains: q,
-                mode: "insensitive",
-              },
-            },
-            {
-              user: {
-                displayName: {
-                  contains: q,
-                  mode: "insensitive",
-                },
-              },
-            },
-            {
-              user: {
-                phones: {
-                  some: {
-                    e164: {
-                      contains: q,
-                    },
-                  },
-                },
-              },
-            },
-          ];
-        }
-
         if (phoneVerified === "true") {
           where.user = {
             ...(where.user || {}),
@@ -2861,28 +2867,45 @@ export function makeAdminController(prisma) {
         const skip = (page - 1) * pageSize;
         const take = pageSize;
 
-        const [items, total] = await Promise.all([
-          prisma.driverProfile.findMany({
-            where,
-            orderBy,
-            skip,
-            take,
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
+        const include = {
+          user: {
+            select: {
+              id: true,
+              displayName: true,
+              phones: {
+                select: { e164: true, isVerified: true, createdAt: true },
+                orderBy: { createdAt: "desc" },
               },
             },
-          }),
-          prisma.driverProfile.count({ where }),
-        ]);
+          },
+        };
+
+        let items;
+        let total;
+
+        if (q) {
+          const candidates = await prisma.driverProfile.findMany({
+            where,
+            orderBy,
+            include,
+          });
+          const matched = candidates.filter((item) =>
+            matchesDriverSmartSearch(item, q),
+          );
+          total = matched.length;
+          items = matched.slice(skip, skip + take);
+        } else {
+          [items, total] = await Promise.all([
+            prisma.driverProfile.findMany({
+              where,
+              orderBy,
+              skip,
+              take,
+              include,
+            }),
+            prisma.driverProfile.count({ where }),
+          ]);
+        }
 
         const driverUserIds = items.map((item) => item.userId).filter(Boolean);
         const driverProfileIds = items.map((item) => item.id).filter(Boolean);
@@ -3130,6 +3153,16 @@ export function makeAdminController(prisma) {
           console.error("updateDriverKyc notify error:", notifyError);
         }
 
+        emitAdminDashboardChanged(req, {
+          source: "driver_kyc_updated",
+          driverProfileId: updated.id,
+          driverId: updated.user?.id || null,
+          fromStatus: profile.status,
+          toStatus: updated.status,
+          status: updated.status,
+          updatedAt: updated.updatedAt || now,
+        });
+
         return res.json({
           message:
             action === "APPROVE"
@@ -3268,6 +3301,16 @@ export function makeAdminController(prisma) {
         } catch (notifyError) {
           console.error("updateDriverAccount notify error:", notifyError);
         }
+
+        emitAdminDashboardChanged(req, {
+          source: "driver_account_updated",
+          driverProfileId: updated.id,
+          driverId: updated.user?.id || null,
+          fromStatus: profile.status,
+          toStatus: updated.status,
+          status: updated.status,
+          updatedAt: updated.updatedAt || new Date().toISOString(),
+        });
 
         return res.json({
           message:

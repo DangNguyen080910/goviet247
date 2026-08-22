@@ -8,6 +8,42 @@ function toInt(v, fallback) {
   return Number.isFinite(n) ? n : fallback;
 }
 
+function normalizeSmartSearch(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .replace(/[^a-z0-9+]+/g, " ")
+    .trim();
+}
+
+function matchesCustomerSmartSearch(customer, keyword) {
+  const normalizedKeyword = normalizeSmartSearch(keyword);
+  if (!normalizedKeyword) return true;
+
+  const phones = (customer?.phones || []).flatMap((item) => {
+    const phone = String(item?.e164 || "").trim();
+    const localPhone = phone.startsWith("+84") ? `0${phone.slice(3)}` : phone;
+    return [phone, localPhone];
+  });
+  const haystack = normalizeSmartSearch(
+    [
+      customer?.displayName,
+      customer?.riderProfile?.fullName,
+      ...phones,
+    ]
+      .filter(Boolean)
+      .join(" "),
+  );
+  const compactHaystack = haystack.replace(/\s+/g, "");
+
+  return normalizedKeyword.split(/\s+/).every((token) => {
+    return haystack.includes(token) || compactHaystack.includes(token);
+  });
+}
+
 function buildCustomerUserWhere({ q, phoneVerified, status }) {
   const and = [];
 
@@ -148,7 +184,7 @@ export async function getCustomers(req, res) {
     const take = pageSize;
 
     const whereUser = buildCustomerUserWhere({
-      q,
+      q: "",
       phoneVerified,
       status,
     });
@@ -156,16 +192,7 @@ export async function getCustomers(req, res) {
     const orderBy =
       sort === "oldest" ? { createdAt: "asc" } : { createdAt: "desc" };
 
-    const total = await prisma.user.count({
-      where: whereUser,
-    });
-
-    const items = await prisma.user.findMany({
-      where: whereUser,
-      orderBy,
-      skip,
-      take,
-      select: {
+    const select = {
         id: true,
         displayName: true,
         createdAt: true,
@@ -174,7 +201,6 @@ export async function getCustomers(req, res) {
         phones: {
           select: { e164: true, isVerified: true },
           orderBy: { createdAt: "desc" },
-          take: 1,
         },
         riderProfile: {
           select: {
@@ -197,8 +223,34 @@ export async function getCustomers(req, res) {
             riderTrips: true,
           },
         },
-      },
-    });
+      };
+
+    let items;
+    let total;
+
+    if (q) {
+      const candidates = await prisma.user.findMany({
+        where: whereUser,
+        orderBy,
+        select,
+      });
+      const matched = candidates.filter((item) =>
+        matchesCustomerSmartSearch(item, q),
+      );
+      total = matched.length;
+      items = matched.slice(skip, skip + take);
+    } else {
+      [total, items] = await Promise.all([
+        prisma.user.count({ where: whereUser }),
+        prisma.user.findMany({
+          where: whereUser,
+          orderBy,
+          skip,
+          take,
+          select,
+        }),
+      ]);
+    }
 
     return res.json({
       success: true,

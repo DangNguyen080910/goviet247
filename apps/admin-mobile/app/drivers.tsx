@@ -21,10 +21,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
 import { API_BASE_URL } from "../constants/api";
-import {
-  formatVietnamesePhone,
-  normalizeVietnamesePhoneSearch,
-} from "../utils/phone";
+import { formatVietnamesePhone } from "../utils/phone";
 import {
   DriverListItem,
   fetchDriverDetail,
@@ -120,6 +117,17 @@ function getStatusTone(status?: string | null) {
 
 function getPhoneVerifiedText(value: boolean) {
   return value ? "Đã xác thực" : "Chưa xác thực";
+}
+
+function getVehicleTypeLabel(value?: string | null) {
+  const normalized = String(value || "").trim().toUpperCase();
+
+  if (["CAR_4", "4", "4_SEATS"].includes(normalized)) return "Xe 4 chỗ";
+  if (["CAR_5", "5", "5_SEATS"].includes(normalized)) return "Xe 5 chỗ";
+  if (["CAR_7", "7", "7_SEATS"].includes(normalized)) return "Xe 7 chỗ";
+  if (["CAR_16", "16", "16_SEATS"].includes(normalized)) return "Xe 16 chỗ";
+
+  return value || "--";
 }
 
 function getDocumentTypeLabel(type?: string | null) {
@@ -291,6 +299,10 @@ function DriverCard({
 
       <View style={styles.infoGrid}>
         <InfoRow
+          label="Loại xe"
+          value={getVehicleTypeLabel(item.vehicleType)}
+        />
+        <InfoRow
           label="SĐT xác thực"
           value={getPhoneVerifiedText(item.isPhoneVerified)}
         />
@@ -423,9 +435,7 @@ export default function DriversScreen() {
   function handleApplySearch() {
     setPage(1);
 
-    const normalizedKeyword = normalizeVietnamesePhoneSearch(keywordInput);
-
-    setKeyword(normalizedKeyword);
+    setKeyword(keywordInput.trim());
   }
 
   function handleClearSearch() {
@@ -1009,6 +1019,10 @@ export default function DriversScreen() {
                       value={getPhoneVerifiedText(
                         Boolean(driverDetail?.isPhoneVerified),
                       )}
+                    />
+                    <InfoRow
+                      label="Loại xe"
+                      value={getVehicleTypeLabel(driverDetail?.vehicleType)}
                     />
                     <InfoRow label="Hãng xe" value={driverDetail?.brand} />
                     <InfoRow label="Model xe" value={driverDetail?.model} />

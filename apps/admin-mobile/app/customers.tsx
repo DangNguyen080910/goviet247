@@ -26,10 +26,7 @@ import {
   patchCustomerAccount,
 } from "../services/adminCustomersApi";
 import { getAdminUser } from "../services/storage";
-import {
-  formatVietnamesePhone,
-  normalizeVietnamesePhoneSearch,
-} from "../utils/phone";
+import { formatVietnamesePhone } from "../utils/phone";
 
 const PAGE_SIZE = 10;
 
@@ -295,7 +292,7 @@ export default function CustomersScreen() {
 
   useEffect(() => {
     const t = setTimeout(() => {
-      setQDebounced(normalizeVietnamesePhoneSearch(q));
+      setQDebounced(q.trim());
     }, 350);
 
     return () => clearTimeout(t);

@@ -19,6 +19,7 @@ export type AssignedTripItem = {
 
   pickupAddress: string;
   dropoffAddress: string;
+  pickupTime: string | null;
   updatedAt: string | null;
   returnTime: string | null;
   cancelReason: string | null;
@@ -27,6 +28,7 @@ export type AssignedTripItem = {
   riderPhone: string | null;
   driverName: string | null;
   driverPhone: string | null;
+  totalPrice: number | null;
 
   stops: Array<{
     id?: string;
@@ -119,6 +121,8 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
 
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
+    pickupTime?: unknown;
+    totalPrice?: unknown;
     updatedAt?: unknown;
     returnTime?: unknown;
     cancelReason?: unknown;
@@ -163,6 +167,10 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
       typeof item?.pickupAddress === "string" ? item.pickupAddress : "",
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
+    pickupTime:
+      typeof item?.pickupTime === "string" ? item.pickupTime : null,
+    totalPrice:
+      item?.totalPrice == null ? null : toNumber(item.totalPrice, 0),
     updatedAt: typeof item?.updatedAt === "string" ? item.updatedAt : null,
     returnTime: typeof item?.returnTime === "string" ? item.returnTime : null,
     cancelReason:

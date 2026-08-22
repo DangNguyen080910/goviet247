@@ -693,6 +693,24 @@ export default function AssignedTripsScreen() {
 
                 <View style={styles.infoRow}>
                   <View style={styles.infoColumn}>
+                    <Text style={styles.label}>Giờ đón</Text>
+                    <Text style={styles.value}>
+                      {formatDateTime(item.pickupTime)}
+                    </Text>
+                  </View>
+
+                  <View style={styles.infoColumn}>
+                    <Text style={styles.label}>Giá chuyến</Text>
+                    <Text style={styles.value}>
+                      {item.totalPrice != null
+                        ? `${Number(item.totalPrice).toLocaleString("vi-VN")}đ`
+                        : "--"}
+                    </Text>
+                  </View>
+                </View>
+
+                <View style={styles.infoRow}>
+                  <View style={styles.infoColumn}>
                     <Text style={styles.label}>Giờ về</Text>
 
                     <Text style={styles.value}>
