@@ -171,7 +171,9 @@ function maskAddress(address) {
   let districtPart = "";
   let provincePart = parts[parts.length - 1] || "";
 
-  for (let i = parts.length - 1; i >= 0; i -= 1) {
+  // Phần cuối là tỉnh/thành, không xét lại như quận/huyện để tránh
+  // "Thành phố Hồ Chí Minh" bị nhận nhầm thành districtPart.
+  for (let i = parts.length - 2; i >= 0; i -= 1) {
     const part = parts[i];
 
     if (!districtPart && districtRegex.test(part)) {
@@ -207,13 +209,6 @@ function maskAddress(address) {
     }
   }
 
-  if (districtPart && provincePart) {
-    if (districtPart.toLowerCase() === provincePart.toLowerCase()) {
-      return districtPart;
-    }
-    return `${districtPart}, ${provincePart}`;
-  }
-
   if (wardPart && provincePart) {
     if (wardPart.toLowerCase() === provincePart.toLowerCase()) {
       return wardPart;
@@ -221,12 +216,21 @@ function maskAddress(address) {
     return `${wardPart}, ${provincePart}`;
   }
 
-  if (districtPart) {
-    return districtPart;
+  // Địa chỉ hành chính mới không còn quận/huyện ở nhiều khu vực.
+  // Chỉ dùng quận/huyện làm fallback cho dữ liệu địa chỉ cũ không có phường/xã.
+  if (districtPart && provincePart) {
+    if (districtPart.toLowerCase() === provincePart.toLowerCase()) {
+      return districtPart;
+    }
+    return `${districtPart}, ${provincePart}`;
   }
 
   if (wardPart) {
     return wardPart;
+  }
+
+  if (districtPart) {
+    return districtPart;
   }
 
   if (provincePart) {

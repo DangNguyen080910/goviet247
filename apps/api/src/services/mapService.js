@@ -11,7 +11,9 @@ const MAP_PROVIDER = String(
 const PREFIX = { goong: "goong|", vietmap: "vietmap|" };
 
 function buildMaskedAddress({ ward, district, province }) {
-  return [ward, district, province].filter(Boolean).join(", ");
+  // Dữ liệu hành chính mới ưu tiên phường/xã + tỉnh/thành.
+  // Giữ quận/huyện làm fallback để tương thích kết quả bản đồ cũ.
+  return [ward || district, province].filter(Boolean).join(", ");
 }
 
 function requireApiKey(provider) {
