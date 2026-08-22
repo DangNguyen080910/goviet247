@@ -56,14 +56,14 @@ const escapeXml = (value) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&apos;");
 
-const getSitemapFileName = (index) =>
-  index === 0 ? "sitemap.xml" : `sitemap${index}.xml`;
+const SITEMAP_INDEX_FILE_NAME = "sitemap.xml";
+const getSitemapFileName = (index) => `sitemap-${index + 1}.xml`;
 
 const existingLastmodByUrl = new Map();
 const existingSitemapFiles = fs.existsSync(PUBLIC_DIR)
   ? fs
       .readdirSync(PUBLIC_DIR)
-      .filter((fileName) => /^sitemap(?:\d+)?\.xml$/.test(fileName))
+      .filter((fileName) => /^sitemap(?:-?\d+)?\.xml$/.test(fileName))
   : [];
 
 for (const fileName of existingSitemapFiles) {
@@ -104,6 +104,7 @@ for (
 }
 
 const createdSitemapFiles = [];
+const sitemapIndexEntries = [];
 
 for (const [index, routes] of sitemapChunks.entries()) {
   const fileName = getSitemapFileName(index);
@@ -129,12 +130,44 @@ ${routes
     createdSitemapFiles.push(fileName);
   }
 
+  sitemapIndexEntries.push({
+    fileName,
+    lastmod: routes.reduce(
+      (latest, route) => (route.lastmod > latest ? route.lastmod : latest),
+      routes[0]?.lastmod ?? today,
+    ),
+  });
+
   console.log(`✅ ${fileName}: ${routes.length.toLocaleString("en-US")} URLs`);
 }
+
+const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapIndexEntries
+  .map(({ fileName, lastmod }) => {
+    return `  <sitemap>
+    <loc>${escapeXml(`${SITE_URL}/${fileName}`)}</loc>
+    <lastmod>${lastmod}</lastmod>
+  </sitemap>`;
+  })
+  .join("\n\n")}
+</sitemapindex>
+`;
+
+fs.writeFileSync(
+  path.join(PUBLIC_DIR, SITEMAP_INDEX_FILE_NAME),
+  sitemapIndexXml,
+  "utf8",
+);
+
+console.log(
+  `✅ ${SITEMAP_INDEX_FILE_NAME}: ${sitemapIndexEntries.length.toLocaleString("en-US")} sitemap files`,
+);
 
 const generatedFileNames = new Set(
   sitemapChunks.map((_, index) => getSitemapFileName(index)),
 );
+generatedFileNames.add(SITEMAP_INDEX_FILE_NAME);
 const staleSitemapFiles = existingSitemapFiles.filter(
   (fileName) => !generatedFileNames.has(fileName),
 );
@@ -149,7 +182,9 @@ if (createdSitemapFiles.length > 0) {
     console.log(`   ${SITE_URL}/${fileName}`);
   }
 
-  console.log("⚠️ Deploy and submit each new sitemap in Google Search Console.");
+  console.log(
+    `⚠️ Deploy and submit only ${SITE_URL}/${SITEMAP_INDEX_FILE_NAME} in Google Search Console.`,
+  );
 }
 
 if (staleSitemapFiles.length > 0) {
