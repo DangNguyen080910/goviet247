@@ -144900,4 +144900,244 @@ export const V2DAKLAK_SEO_ROUTES = [
     "Xã Đồng Xuân Đắk Lắk → đường tỉnh đi Đồng Xuân → Sơn Hòa → Quốc lộ 29 → Buôn Ma Thuột → Gia Nghĩa → Quốc lộ 14 → Đồng Xoài → ĐT741 → Chơn Thành → Quốc lộ 13 → Phạm Văn Đồng → Trường Chinh → Lạc Long Quân → Hòa Bình → Đầm Sen TP.HCM",
   duration: "10.2 - 11.6 giờ",
 },
+{
+  key: "sai-gon-di-dong-nai",
+  path: "sai-gon-di-dong-nai",
+  from: "Sài Gòn",
+  to: "Đồng Nai",
+  title: "Thuê xe Sài Gòn đi Đồng Nai, xe riêng giá trọn gói",
+  description:
+    "Thuê xe Sài Gòn đi Đồng Nai phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Biên Hòa, Long Thành, Nhơn Trạch, Đồng Xoài, Phước Long và khu vực Bình Phước cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Xa lộ Hà Nội → Quốc lộ 1 → Biên Hòa → Đồng Nai",
+  duration: "1.2 - 1.8 giờ",
+},
+{
+  key: "sai-gon-di-lam-dong",
+  path: "sai-gon-di-lam-dong",
+  from: "Sài Gòn",
+  to: "Lâm Đồng",
+  title: "Thuê xe Sài Gòn đi Lâm Đồng, đưa đón tận nơi",
+  description:
+    "Thuê xe Sài Gòn đi Lâm Đồng phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Đà Lạt, Bảo Lộc, Gia Nghĩa, Phan Thiết cùng địa bàn Đắk Nông và Bình Thuận cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đức Trọng → Đà Lạt → Lâm Đồng",
+  duration: "6.0 - 7.0 giờ",
+},
+{
+  key: "sai-gon-di-khanh-hoa",
+  path: "sai-gon-di-khanh-hoa",
+  from: "Sài Gòn",
+  to: "Khánh Hòa",
+  title: "Thuê xe Sài Gòn đi Khánh Hòa, xe riêng không ghép khách",
+  description:
+    "Thuê xe Sài Gòn đi Khánh Hòa phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Nha Trang, Cam Ranh, Phan Rang và các địa phương thuộc Ninh Thuận cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Cao tốc TP.HCM - Long Thành - Dầu Giây → Cao tốc Dầu Giây - Phan Thiết → Cao tốc Vĩnh Hảo - Phan Thiết → Cao tốc Cam Lâm - Vĩnh Hảo → Quốc lộ 1A → Nha Trang → Khánh Hòa",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "sai-gon-di-tay-ninh",
+  path: "sai-gon-di-tay-ninh",
+  from: "Sài Gòn",
+  to: "Tây Ninh",
+  title: "Thuê xe Sài Gòn đi Tây Ninh, chủ động lịch trình",
+  description:
+    "Thuê xe Sài Gòn đi Tây Ninh phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Trảng Bàng, Gò Dầu, khu vực trung tâm Tây Ninh, Tân An và địa bàn Long An cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Quốc lộ 22 → Trảng Bàng → Gò Dầu → Quốc lộ 22B → Tây Ninh",
+  duration: "2.0 - 2.7 giờ",
+},
+{
+  key: "sai-gon-di-can-tho",
+  path: "sai-gon-di-can-tho",
+  from: "Sài Gòn",
+  to: "Cần Thơ",
+  title: "Thuê xe Sài Gòn đi Cần Thơ, phục vụ một chiều và khứ hồi",
+  description:
+    "Thuê xe Sài Gòn đi Cần Thơ phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Ninh Kiều, Cái Răng, Vị Thanh, Sóc Trăng cùng địa bàn Hậu Giang và Sóc Trăng cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Quốc lộ 1A → cầu Cần Thơ → Cần Thơ",
+  duration: "2.5 - 3.3 giờ",
+},
+{
+  key: "sai-gon-di-dong-thap",
+  path: "sai-gon-di-dong-thap",
+  from: "Sài Gòn",
+  to: "Đồng Tháp",
+  title: "Thuê xe Sài Gòn đi Đồng Tháp, xe riêng giá trọn gói",
+  description:
+    "Thuê xe Sài Gòn đi Đồng Tháp phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Mỹ Tho, Sa Đéc, Cao Lãnh cùng các địa phương thuộc Tiền Giang cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Quốc lộ 1A → Quốc lộ 30 → Cao Lãnh → Đồng Tháp",
+  duration: "2.5 - 3.2 giờ",
+},
+{
+  key: "sai-gon-di-an-giang",
+  path: "sai-gon-di-an-giang",
+  from: "Sài Gòn",
+  to: "An Giang",
+  title: "Thuê xe Sài Gòn đi An Giang, đưa đón tận nơi",
+  description:
+    "Thuê xe Sài Gòn đi An Giang phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Long Xuyên, Châu Đốc, Rạch Giá, Hà Tiên cùng địa bàn Kiên Giang cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Quốc lộ 80 → Long Xuyên → An Giang",
+  duration: "4.0 - 4.8 giờ",
+},
+{
+  key: "sai-gon-di-vinh-long",
+  path: "sai-gon-di-vinh-long",
+  from: "Sài Gòn",
+  to: "Vĩnh Long",
+  title: "Thuê xe Sài Gòn đi Vĩnh Long, xe riêng không ghép khách",
+  description:
+    "Thuê xe Sài Gòn đi Vĩnh Long phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến khu vực Vĩnh Long, Bến Tre, Trà Vinh cũ và các điểm đến ven sông. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Quốc lộ 1A → Vĩnh Long",
+  duration: "2.2 - 2.9 giờ",
+},
+{
+  key: "sai-gon-di-ca-mau",
+  path: "sai-gon-di-ca-mau",
+  from: "Sài Gòn",
+  to: "Cà Mau",
+  title: "Thuê xe Sài Gòn đi Cà Mau, chủ động lịch trình",
+  description:
+    "Thuê xe Sài Gòn đi Cà Mau phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Bạc Liêu, Cà Mau, Năm Căn, Đất Mũi và các địa phương cực Nam. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Bạc Liêu → Cà Mau",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "sai-gon-di-dak-lak",
+  path: "sai-gon-di-dak-lak",
+  from: "Sài Gòn",
+  to: "Đắk Lắk",
+  title: "Thuê xe Sài Gòn đi Đắk Lắk, phục vụ một chiều và khứ hồi",
+  description:
+    "Thuê xe Sài Gòn đi Đắk Lắk phù hợp cho gia đình, nhóm bạn và khách công tác cần di chuyển đến Buôn Ma Thuột, Buôn Đôn, Hồ Lắk cùng vùng Tuy Hòa và ven biển Phú Yên cũ. Xe riêng đón theo địa chỉ đã hẹn, không ghép khách và không phải đổi xe giữa đường. Hành khách có thể lựa chọn chuyến một chiều, khứ hồi hoặc lịch trình nhiều ngày theo nhu cầu thực tế.",
+  routeText:
+    "Sài Gòn → Quốc lộ 13 → Chơn Thành → ĐT741 → Đồng Xoài → Quốc lộ 14 → Gia Nghĩa → Buôn Ma Thuột → Đắk Lắk",
+  duration: "7.2 - 8.1 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-dong-nai",
+  path: "thanh-pho-ho-chi-minh-di-dong-nai",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Đồng Nai",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Đồng Nai, xe riêng giá trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Đồng Nai hỗ trợ hành khách đến Biên Hòa, Long Thành, Nhơn Trạch, Đồng Xoài, Phước Long và khu vực Bình Phước cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Xa lộ Hà Nội → Quốc lộ 1 → Biên Hòa → Đồng Nai",
+  duration: "1.2 - 1.8 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-lam-dong",
+  path: "thanh-pho-ho-chi-minh-di-lam-dong",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Lâm Đồng",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Lâm Đồng, đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Lâm Đồng hỗ trợ hành khách đến Đà Lạt, Bảo Lộc, Gia Nghĩa, Phan Thiết cùng địa bàn Đắk Nông và Bình Thuận cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Quốc lộ 20 → Bảo Lộc → Đức Trọng → Đà Lạt → Lâm Đồng",
+  duration: "6.0 - 7.0 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-khanh-hoa",
+  path: "thanh-pho-ho-chi-minh-di-khanh-hoa",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Khánh Hòa",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Khánh Hòa, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Khánh Hòa hỗ trợ hành khách đến Nha Trang, Cam Ranh, Phan Rang và các địa phương thuộc Ninh Thuận cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Cao tốc TP.HCM - Long Thành - Dầu Giây → Cao tốc Dầu Giây - Phan Thiết → Cao tốc Vĩnh Hảo - Phan Thiết → Cao tốc Cam Lâm - Vĩnh Hảo → Quốc lộ 1A → Nha Trang → Khánh Hòa",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-tay-ninh",
+  path: "thanh-pho-ho-chi-minh-di-tay-ninh",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Tây Ninh",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Tây Ninh, chủ động lịch trình",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Tây Ninh hỗ trợ hành khách đến Trảng Bàng, Gò Dầu, khu vực trung tâm Tây Ninh, Tân An và địa bàn Long An cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Quốc lộ 22 → Trảng Bàng → Gò Dầu → Quốc lộ 22B → Tây Ninh",
+  duration: "2.0 - 2.7 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-can-tho",
+  path: "thanh-pho-ho-chi-minh-di-can-tho",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Cần Thơ",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Cần Thơ, phục vụ một chiều và khứ hồi",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Cần Thơ hỗ trợ hành khách đến Ninh Kiều, Cái Răng, Vị Thanh, Sóc Trăng cùng địa bàn Hậu Giang và Sóc Trăng cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Quốc lộ 1A → cầu Cần Thơ → Cần Thơ",
+  duration: "2.5 - 3.3 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-dong-thap",
+  path: "thanh-pho-ho-chi-minh-di-dong-thap",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Đồng Tháp",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Đồng Tháp, xe riêng giá trọn gói",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Đồng Tháp hỗ trợ hành khách đến Mỹ Tho, Sa Đéc, Cao Lãnh cùng các địa phương thuộc Tiền Giang cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Quốc lộ 1A → Quốc lộ 30 → Cao Lãnh → Đồng Tháp",
+  duration: "2.5 - 3.2 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-an-giang",
+  path: "thanh-pho-ho-chi-minh-di-an-giang",
+  from: "Thành phố Hồ Chí Minh",
+  to: "An Giang",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi An Giang, đưa đón tận nơi",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi An Giang hỗ trợ hành khách đến Long Xuyên, Châu Đốc, Rạch Giá, Hà Tiên cùng địa bàn Kiên Giang cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Quốc lộ 80 → Long Xuyên → An Giang",
+  duration: "4.0 - 4.8 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-vinh-long",
+  path: "thanh-pho-ho-chi-minh-di-vinh-long",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Vĩnh Long",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Vĩnh Long, xe riêng không ghép khách",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Vĩnh Long hỗ trợ hành khách đến khu vực Vĩnh Long, Bến Tre, Trà Vinh cũ và các điểm đến ven sông với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Quốc lộ 1A → Vĩnh Long",
+  duration: "2.2 - 2.9 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-ca-mau",
+  path: "thanh-pho-ho-chi-minh-di-ca-mau",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Cà Mau",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Cà Mau, chủ động lịch trình",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Cà Mau hỗ trợ hành khách đến Bạc Liêu, Cà Mau, Năm Căn, Đất Mũi và các địa phương cực Nam với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Đại lộ Võ Văn Kiệt → Cao tốc TP.HCM - Trung Lương → Cao tốc Trung Lương - Mỹ Thuận → Cần Thơ → Hậu Giang → Bạc Liêu → Cà Mau",
+  duration: "6.5 - 7.5 giờ",
+},
+{
+  key: "thanh-pho-ho-chi-minh-di-dak-lak",
+  path: "thanh-pho-ho-chi-minh-di-dak-lak",
+  from: "Thành phố Hồ Chí Minh",
+  to: "Đắk Lắk",
+  title: "Thuê xe Thành phố Hồ Chí Minh đi Đắk Lắk, phục vụ một chiều và khứ hồi",
+  description:
+    "Dịch vụ xe riêng từ Thành phố Hồ Chí Minh đi Đắk Lắk hỗ trợ hành khách đến Buôn Ma Thuột, Buôn Đôn, Hồ Lắk cùng vùng Tuy Hòa và ven biển Phú Yên cũ với điểm đón linh hoạt trong thành phố. Loại xe được sắp xếp theo số người và lượng hành lý, tài xế chạy thẳng theo lịch trình đã thống nhất. Thời gian thực tế có thể thay đổi theo vị trí đón trả, điều kiện giao thông và các điểm dừng trên đường.",
+  routeText:
+    "Thành phố Hồ Chí Minh → Quốc lộ 13 → Chơn Thành → ĐT741 → Đồng Xoài → Quốc lộ 14 → Gia Nghĩa → Buôn Ma Thuột → Đắk Lắk",
+  duration: "7.2 - 8.1 giờ",
+},
 ];
