@@ -1201,6 +1201,59 @@ export default function CustomerProfile() {
                                 textTransform: "uppercase",
                               }}
                             >
+                              Giờ đón
+                            </Typography>
+                            <Typography sx={{ fontWeight: 800 }}>
+                              {formatDateTime(trip.pickupTime)}
+                            </Typography>
+                          </Paper>
+
+                          {String(trip.direction || "").toUpperCase() ===
+                          "ROUND_TRIP" ? (
+                            <Paper
+                              variant="outlined"
+                              sx={{
+                                p: 1.5,
+                                borderRadius: 2.5,
+                                bgcolor: "#fafafa",
+                                minWidth: 0,
+                              }}
+                            >
+                              <Typography
+                                sx={{
+                                  color: "#6b7280",
+                                  fontSize: 12,
+                                  mb: 0.4,
+                                  fontWeight: 700,
+                                  textTransform: "uppercase",
+                                }}
+                              >
+                                Giờ về
+                              </Typography>
+                              <Typography sx={{ fontWeight: 800 }}>
+                                {formatDateTime(trip.returnTime)}
+                              </Typography>
+                            </Paper>
+                          ) : null}
+
+                          <Paper
+                            variant="outlined"
+                            sx={{
+                              p: 1.5,
+                              borderRadius: 2.5,
+                              bgcolor: "#fafafa",
+                              minWidth: 0,
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                color: "#6b7280",
+                                fontSize: 12,
+                                mb: 0.4,
+                                fontWeight: 700,
+                                textTransform: "uppercase",
+                              }}
+                            >
                               Loại xe
                             </Typography>
                             <Typography sx={{ fontWeight: 800 }}>

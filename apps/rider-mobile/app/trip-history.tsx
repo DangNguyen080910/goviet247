@@ -147,6 +147,27 @@ function getDirectionLabel(directionRaw: string | null | undefined) {
   return "Một chiều";
 }
 
+function getCarTypeLabel(carTypeRaw: string | null | undefined) {
+  const carType = String(carTypeRaw || "").trim().toUpperCase();
+
+  if (carType === "CAR_5") return "Xe 5 chỗ";
+  if (carType === "CAR_7") return "Xe 7 chỗ";
+  if (carType === "CAR_16") return "Xe 16 chỗ";
+
+  return carTypeRaw || "Chưa xác định";
+}
+
+function normalizeAddress(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function getShortTripId(id: string | null | undefined) {
   const raw = String(id || "").trim();
 
@@ -166,11 +187,16 @@ function getRouteText(item: TripItem) {
         .filter(Boolean)
     : [];
 
-  if (stops.length > 0) {
-    return [pickup, ...stops, dropoff].filter(Boolean).join(" → ");
-  }
+  const parts: string[] = [];
 
-  return [pickup, dropoff].filter(Boolean).join(" → ");
+  [pickup, ...stops, dropoff].filter(Boolean).forEach((address) => {
+    const previous = parts[parts.length - 1];
+    if (!previous || normalizeAddress(previous) !== normalizeAddress(address)) {
+      parts.push(address);
+    }
+  });
+
+  return parts.join(" → ");
 }
 
 export default function RiderTripHistoryScreen() {
@@ -460,11 +486,28 @@ export default function RiderTripHistoryScreen() {
                     </View>
 
                     <View style={styles.metaRow}>
-                      <Text style={styles.metaLabel}>Thời gian đón</Text>
+                      <Text style={styles.metaLabel}>Loại xe</Text>
+                      <Text style={styles.metaValue}>
+                        {getCarTypeLabel(item?.carType)}
+                      </Text>
+                    </View>
+
+                    <View style={styles.metaRow}>
+                      <Text style={styles.metaLabel}>Giờ đón</Text>
                       <Text style={styles.metaValue}>
                         {formatDateTime(item?.pickupTime)}
                       </Text>
                     </View>
+
+                    {String(item?.direction || "").toUpperCase() ===
+                    "ROUND_TRIP" ? (
+                      <View style={styles.metaRow}>
+                        <Text style={styles.metaLabel}>Giờ về</Text>
+                        <Text style={styles.metaValue}>
+                          {formatDateTime(item?.returnTime)}
+                        </Text>
+                      </View>
+                    ) : null}
 
                     <View style={styles.metaRow}>
                       <Text style={styles.metaLabel}>Giá chuyến</Text>
