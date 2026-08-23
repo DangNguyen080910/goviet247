@@ -631,10 +631,11 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
             <Section title="Thông tin chuyến">
               <KV k="Trạng thái" v={formatTripStatus(detail?.status)} />
               <KV k="Thời gian tạo" v={formatNgayGio(detail?.createdAt)} />
-              <KV k="Giờ đón" v={formatNgayGio(detail?.pickupTime)} />
+              <KV k="Giờ đón" v={formatNgayGio(detail?.pickupTime)} highlight />
               <KV
                 k="Giờ về (Khứ hồi)"
                 v={detail?.returnTime ? formatNgayGio(detail.returnTime) : "-"}
+                highlight
               />
               <KV k="Tên khách" v={getRiderDisplayName(detail)} />
               <KV
@@ -651,6 +652,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               <KV
                 k="Điểm đón"
                 v={normalizeDisplayAddress(detail?.pickupAddress)}
+                highlight
               />
               <KV
                 k="Quãng đường dự kiến"
@@ -674,7 +676,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               />
             </Section>
 
-            <Section title="Các điểm đến">
+            <Section title="Các điểm đến" highlight>
               {stops?.length ? (
                 <div style={{ display: "grid", gap: 8 }}>
                   {stops.map((addr, idx) => (
@@ -691,7 +693,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               )}
             </Section>
 
-            <Section title="Ghi chú">
+            <Section title="Ghi chú" highlight>
               <div style={{ opacity: 0.9 }}>{detail?.note || "-"}</div>
             </Section>
 
@@ -788,11 +790,11 @@ function AlertsBlock({ detail }) {
   );
 }
 
-function Section({ title, children }) {
+function Section({ title, children, highlight = false }) {
   return (
     <div style={{ marginTop: 14 }}>
       <div style={sectionTitle}>{title}</div>
-      <div style={card}>{children}</div>
+      <div style={highlight ? { ...card, ...highlightCard } : card}>{children}</div>
     </div>
   );
 }
@@ -851,11 +853,11 @@ function FormSelect({ label, value, onChange, options = [] }) {
   );
 }
 
-function KV({ k, v }) {
+function KV({ k, v, highlight = false }) {
   return (
-    <div style={row}>
-      <div style={{ opacity: 0.75, width: 130 }}>{k}</div>
-      <div style={{ flex: 1 }}>{v || "-"}</div>
+    <div style={highlight ? { ...row, ...highlightRow } : row}>
+      <div style={{ opacity: 0.82, width: 130, fontWeight: highlight ? 800 : 400 }}>{k}</div>
+      <div style={{ flex: 1, fontWeight: highlight ? 700 : 400 }}>{v || "-"}</div>
     </div>
   );
 }
@@ -932,11 +934,26 @@ const card = {
   background: "rgba(255,255,255,0.03)",
 };
 
+const highlightCard = {
+  border: "1px solid #f3c969",
+  background: "rgba(255, 224, 130, 0.14)",
+  boxShadow: "inset 3px 0 0 #f2b632",
+};
+
 const row = {
   display: "flex",
   gap: 12,
   padding: "8px 0",
   borderBottom: "1px dashed rgba(255,255,255,0.12)",
+};
+
+const highlightRow = {
+  margin: "4px 0",
+  padding: "10px 12px",
+  border: "1px solid #f3c969",
+  borderRadius: 10,
+  background: "rgba(255, 224, 130, 0.14)",
+  boxShadow: "inset 3px 0 0 #f2b632",
 };
 
 const stopRow = {

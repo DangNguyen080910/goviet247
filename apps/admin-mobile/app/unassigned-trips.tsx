@@ -198,16 +198,18 @@ function DetailRow({
   value,
   valueStyle,
   copyValue,
+  highlight = false,
 }: {
   label: string;
   value: string;
   valueStyle?: any;
   copyValue?: string | null;
+  highlight?: boolean;
 }) {
   const canCopy = Boolean(String(copyValue || "").trim());
 
   return (
-    <View style={styles.detailRow}>
+    <View style={[styles.detailRow, highlight && styles.highlightDetailRow]}>
       <Text style={styles.detailLabel}>{label}</Text>
 
       <View style={styles.detailValueRow}>
@@ -723,9 +725,10 @@ export default function UnassignedTripsScreen() {
                   <DetailRow
                     label="Điểm đón"
                     value={detail.pickupAddress || "-"}
+                    highlight
                   />
 
-                  <View style={styles.stopsBox}>
+                  <View style={[styles.stopsBox, styles.highlightDetailRow]}>
                     <Text style={styles.stopsTitle}>Điểm đến</Text>
 
                     {buildDestinationList(detail.dropoffAddress, detail.stops)
@@ -749,10 +752,12 @@ export default function UnassignedTripsScreen() {
                   <DetailRow
                     label="Giờ đón"
                     value={formatDateTime(detail.pickupTime)}
+                    highlight
                   />
                   <DetailRow
                     label="Giờ về"
                     value={formatDateTime(detail.returnTime)}
+                    highlight
                   />
                   <DetailRow
                     label="Tạo lúc"
@@ -800,7 +805,7 @@ export default function UnassignedTripsScreen() {
                     label="Lần cuối cảnh báo"
                     value={formatDateTime(detail.lastAlertAt)}
                   />
-                  <DetailRow label="Ghi chú" value={detail.note || "-"} />
+                  <DetailRow label="Ghi chú" value={detail.note || "-"} highlight />
 
                   {Array.isArray(detail.alertLogs) &&
                   detail.alertLogs.length > 0 ? (
@@ -1246,6 +1251,15 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     padding: 12,
     gap: 6,
+  },
+  highlightDetailRow: {
+    backgroundColor: "#fff8df",
+    borderColor: "#f3c969",
+    borderLeftColor: "#e6a700",
+    borderWidth: 1,
+    borderLeftWidth: 4,
+    borderRadius: 12,
+    padding: 12,
   },
   detailLabel: {
     fontSize: 12,

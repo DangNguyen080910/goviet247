@@ -877,14 +877,14 @@ export default function AssignedTripsScreen() {
                   </View>
                 </View>
 
-                <View style={styles.modalInfoBlock}>
+                <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
                   <Text style={styles.label}>Điểm đón</Text>
                   <Text style={styles.value}>
                     {selectedTripDetail?.pickupAddress || "--"}
                   </Text>
                 </View>
 
-                <View style={styles.modalInfoBlock}>
+                <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
                   <Text style={styles.label}>Điểm đến</Text>
 
                   {buildDestinationList(
@@ -962,15 +962,15 @@ export default function AssignedTripsScreen() {
                   </Text>
                 </View>
 
-                <View style={styles.modalInfoBlock}>
-                  <Text style={styles.label}>Thời gian đón</Text>
+                <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
+                  <Text style={styles.label}>Giờ đón</Text>
                   <Text style={styles.value}>
                     {formatDateTime(selectedTripDetail?.pickupTime)}
                   </Text>
                 </View>
 
-                <View style={styles.modalInfoBlock}>
-                  <Text style={styles.label}>Giờ về dự kiến</Text>
+                <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
+                  <Text style={styles.label}>Giờ về</Text>
 
                   <Text style={styles.value}>
                     {formatDateTime(selectedTripDetail?.returnTime)}
@@ -999,7 +999,7 @@ export default function AssignedTripsScreen() {
                   </Text>
                 </View>
 
-                <View style={styles.modalInfoBlock}>
+                <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
                   <Text style={styles.label}>Ghi chú</Text>
                   <Text style={styles.value}>
                     {selectedTripDetail?.note || "--"}
@@ -1442,6 +1442,15 @@ const styles = StyleSheet.create({
 
   modalInfoBlock: {
     gap: 4,
+  },
+  highlightInfoBlock: {
+    backgroundColor: "#fff8df",
+    borderColor: "#f3c969",
+    borderLeftColor: "#e6a700",
+    borderWidth: 1,
+    borderLeftWidth: 4,
+    borderRadius: 12,
+    padding: 12,
   },
 
   phoneValueRow: {
