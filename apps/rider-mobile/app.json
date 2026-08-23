@@ -3,7 +3,6 @@
     "name": "GoViet247",
     "slug": "rider-mobile",
     "version": "1.0.7",
-    "orientation": "portrait",
     "icon": "./assets/GoViet247_icon.png",
     "scheme": "ridermobile",
     "userInterfaceStyle": "automatic",
@@ -60,7 +59,8 @@
       ],
 
       "expo-secure-store",
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "./plugins/withAndroid16Compatibility"
     ],
 
     "experiments": {

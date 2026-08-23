@@ -419,8 +419,6 @@ export default function RootLayout() {
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <StatusBar
         barStyle="dark-content"
-        backgroundColor="#F4F7FB"
-        translucent={false}
       />
 
       <RootLayoutInner />

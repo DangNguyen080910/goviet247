@@ -3,7 +3,6 @@
     "name": "GoViet247 Admin",
     "slug": "admin-mobile",
     "version": "1.0.3",
-    "orientation": "portrait",
     "icon": "./assets/images/GoViet247_admin_icon.png",
     "scheme": "adminmobile",
     "userInterfaceStyle": "automatic",
@@ -47,7 +46,8 @@
         }
       ],
       "expo-secure-store",
-      "expo-notifications"
+      "expo-notifications",
+      "./plugins/withAndroid16Compatibility"
     ],
     "experiments": {
       "typedRoutes": true,
