@@ -8,7 +8,7 @@ import { prisma } from "../src/utils/db.js";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const routesDir = process.env.SEO_ROUTES_DIR
   ? path.resolve(process.env.SEO_ROUTES_DIR)
-  : path.resolve(scriptDir, "../seo-route-import");
+  : path.resolve(scriptDir, "../../../seo-import");
 const batchSize = 2_000;
 
 const routeFiles = fs

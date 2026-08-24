@@ -9,3 +9,5 @@ coverage
 logs
 *.log
 .DS_Store
+seo-import/*.js
+!seo-import/*.example.js
