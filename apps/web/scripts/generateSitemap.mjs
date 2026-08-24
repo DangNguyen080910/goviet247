@@ -16,28 +16,37 @@ const staticRoutes = [
 
 const seoRoutes = [];
 
-let cursorId;
+let cursorPath;
 
 try {
   while (true) {
     const batch = await prisma.seoRoute.findMany({
-      orderBy: { id: "asc" },
+      // Keep sitemap chunks stable even if the database is recreated and IDs
+      // are assigned in a different order.
+      orderBy: { path: "asc" },
       take: 10_000,
-      ...(cursorId ? { cursor: { id: cursorId }, skip: 1 } : {}),
-      select: { id: true, path: true, updatedAt: true },
+      ...(cursorPath ? { cursor: { path: cursorPath }, skip: 1 } : {}),
+      select: { path: true, createdAt: true, updatedAt: true },
     });
 
     if (!batch.length) break;
 
     for (const route of batch) {
+      const createdDate = route.createdAt.toISOString().slice(0, 10);
+      const updatedDate = route.updatedAt.toISOString().slice(0, 10);
+
       seoRoutes.push({
         path: route.path,
         priority: route.path.includes("tp-hcm") ? "0.92" : "0.85",
-        lastmod: route.updatedAt.toISOString().slice(0, 10),
+        databaseLastmod: updatedDate,
+        // A later calendar date is a reliable signal that the existing page
+        // content changed. Freshly re-imported rows usually have identical
+        // created/updated dates, so their previous sitemap date is preserved.
+        lastmod: updatedDate > createdDate ? updatedDate : undefined,
       });
     }
 
-    cursorId = batch.at(-1).id;
+    cursorPath = batch.at(-1).path;
   }
 } finally {
   await prisma.$disconnect();
@@ -104,7 +113,11 @@ const routesWithMetadata = uniqueRoutes.map((route) => {
   return {
     ...route,
     loc,
-    lastmod: route.lastmod ?? existingLastmodByUrl.get(loc) ?? today,
+    lastmod:
+      route.lastmod ??
+      existingLastmodByUrl.get(loc) ??
+      route.databaseLastmod ??
+      today,
   };
 });
 
