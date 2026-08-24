@@ -1,7 +1,6 @@
 // apps/web/scripts/generateSitemap.mjs
 import fs from "fs";
 import path from "path";
-import { SEO_ROUTES } from "../src/data/seoRoutes/index.js";
 import { prisma } from "../../api/src/utils/db.js";
 
 const SITE_URL = "https://goviet247.com";
@@ -15,11 +14,7 @@ const staticRoutes = [
   { path: "privacy-policy", priority: "0.4" },
 ];
 
-const seoRoutes = SEO_ROUTES.map((route) => ({
-  path: route.path,
-  priority: route.path.includes("tp-hcm") ? "0.92" : "0.85",
-  lastmod: route.lastmod,
-}));
+const seoRoutes = [];
 
 let cursorId;
 

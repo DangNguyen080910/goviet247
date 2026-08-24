@@ -1,5 +1,5 @@
 // Path: goviet247/apps/web/src/pages/customer/SeoRoutePage.jsx
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   Box,
@@ -12,7 +12,6 @@ import {
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import { SEO_ROUTES } from "../../data/seoRoutes";
 import { getPublicSystemConfig } from "../../api/systemConfig";
 import { getSeoRouteByPath } from "../../api/seoRoutes";
 
@@ -320,17 +319,10 @@ export default function SeoRoutePage({ routeKey }) {
     "https://play.google.com/store/apps/details?id=com.goviet247.rider";
 
   const requestedPath = routeKey || seoPath;
-  const localRoute = useMemo(
-    () =>
-      SEO_ROUTES.find(
-        (item) => item.key === requestedPath || item.path === requestedPath,
-      ),
-    [requestedPath],
-  );
-  const route = localRoute || remoteRoute;
+  const route = remoteRoute;
 
   useEffect(() => {
-    if (!requestedPath || localRoute) {
+    if (!requestedPath) {
       setRemoteRoute(null);
       setRemoteRelatedRoutes([]);
       setRouteLoading(false);
@@ -359,7 +351,7 @@ export default function SeoRoutePage({ routeKey }) {
       });
 
     return () => controller.abort();
-  }, [localRoute, requestedPath]);
+  }, [requestedPath]);
 
   /*
    * Chuyển khách sang trang đặt xe và yêu cầu trang /dat-xe
@@ -511,7 +503,7 @@ export default function SeoRoutePage({ routeKey }) {
   const provinceHubLinks = getProvinceHubLinks(route);
   const smartHubLinks = getSmartHubLinks(route);
 
-  const relatedRoutes = (localRoute ? SEO_ROUTES : remoteRelatedRoutes)
+  const relatedRoutes = remoteRelatedRoutes
     .filter((item) => item.key !== route.key)
     .filter((item) => item.path !== route.path)
     .filter((item) => {

@@ -15,3 +15,18 @@ export async function getSeoRouteByPath(path, { signal } = {}) {
 
   return data.data;
 }
+
+export async function getLegacySeoRoutes({ signal, limit = 25000, keys = [] } = {}) {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (keys.length) params.set("keys", keys.join(","));
+  const res = await fetch(`${API_BASE}/api/public/seo-routes?${params}`, {
+    signal,
+  });
+  const data = await res.json();
+
+  if (!res.ok || !data?.success) {
+    throw new Error(data?.message || "Không tải được danh sách tuyến xe");
+  }
+
+  return data.data?.routes || [];
+}

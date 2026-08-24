@@ -6,15 +6,14 @@ import { fileURLToPath } from "node:url";
 import { prisma } from "../src/utils/db.js";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-const routesDir = path.resolve(
-  scriptDir,
-  "../../web/src/data/seoRoutes",
-);
+const routesDir = process.env.SEO_ROUTES_DIR
+  ? path.resolve(process.env.SEO_ROUTES_DIR)
+  : path.resolve(scriptDir, "../seo-route-import");
 const batchSize = 2_000;
 
 const routeFiles = fs
   .readdirSync(routesDir)
-  .filter((name) => /^V2.+SeoRoutes(?:\d+)?\.js$/.test(name))
+  .filter((name) => name !== "index.js" && /SeoRoutes(?:\d+)?\.js$/.test(name))
   .sort((a, b) => {
     const aIsHot = a.startsWith("V2HOTSeoRoutes");
     const bIsHot = b.startsWith("V2HOTSeoRoutes");
@@ -27,7 +26,7 @@ const routeFiles = fs
   });
 
 if (!routeFiles.length) {
-  throw new Error(`Không tìm thấy V2HOTSeoRoutes*.js trong ${routesDir}`);
+  throw new Error(`Không tìm thấy file SEO route trong ${routesDir}`);
 }
 
 let batch = [];

@@ -1,7 +1,7 @@
 // Path: goviet247/apps/web/src/pages/customer/CustomerHome.jsx
 import { Link } from "react-router-dom";
 import HeroSection from "../../components/customer/HeroSection";
-import { SEO_ROUTES } from "../../data/seoRoutes";
+import { useSeoRouteCatalog } from "../../hooks/useSeoRouteCatalog";
 
 const PINNED_ROUTE_CARDS = [
   {
@@ -45,6 +45,7 @@ const HIDDEN_ROUTE_KEYS = new Set([
 ]);
 
 export default function CustomerHome() {
+  const SEO_ROUTES = useSeoRouteCatalog({ limit: 40 });
   const visibleRoutes = SEO_ROUTES.filter(
     (route) => !HIDDEN_ROUTE_KEYS.has(route.key),
   );

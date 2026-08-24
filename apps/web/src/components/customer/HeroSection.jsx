@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 import heroImage from "../../assets/xe.png";
 import { HEADER_H, FOOTER_H } from "./CustomerLayout";
 import { getPublicSystemConfig } from "../../api/systemConfig";
-import { SEO_ROUTES } from "../../data/seoRoutes";
+import { useSeoRouteCatalog } from "../../hooks/useSeoRouteCatalog";
 
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -51,6 +51,8 @@ export default function HeroSection() {
     "cam-ranh",
     "can-tho",
   ];
+
+  const SEO_ROUTES = useSeoRouteCatalog({ keys: FEATURED_HERO_ROUTE_KEYS });
 
   const featuredRoutes = FEATURED_HERO_ROUTE_KEYS.map((key) =>
     SEO_ROUTES.find((route) => route.key === key),

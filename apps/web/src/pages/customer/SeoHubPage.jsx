@@ -15,7 +15,7 @@ import {
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import { SEO_ROUTES } from "../../data/seoRoutes";
+import { useSeoRouteCatalog } from "../../hooks/useSeoRouteCatalog";
 import { getPublicSystemConfig } from "../../api/systemConfig";
 
 /*
@@ -507,6 +507,7 @@ function getPageNumber(search) {
 }
 
 export default function SeoHubPage({ hubType }) {
+  const SEO_ROUTES = useSeoRouteCatalog();
   const location = useLocation();
   const navigate = useNavigate();
 

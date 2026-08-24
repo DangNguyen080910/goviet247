@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { SEO_ROUTES } from "../../data/seoRoutes";
+import { useSeoRouteCatalog } from "../../hooks/useSeoRouteCatalog";
 
 /*
  * Hub SEO theo từng tỉnh hoặc điểm đến.
@@ -369,6 +369,7 @@ function getPageNumber(search) {
 }
 
 export default function SeoProvinceHubPage({ provinceKey }) {
+  const SEO_ROUTES = useSeoRouteCatalog();
   const location = useLocation();
 
   const config = PROVINCE_HUB_CONFIGS[provinceKey];

@@ -1,1 +1,0 @@
-export { SEO_ROUTES } from "./seoRoutes/index";
