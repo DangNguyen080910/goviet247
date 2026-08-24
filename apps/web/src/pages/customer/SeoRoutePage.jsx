@@ -1,6 +1,6 @@
 // Path: goviet247/apps/web/src/pages/customer/SeoRoutePage.jsx
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   Box,
   Button,
@@ -14,6 +14,7 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import { SEO_ROUTES } from "../../data/seoRoutes";
 import { getPublicSystemConfig } from "../../api/systemConfig";
+import { getSeoRouteByPath } from "../../api/seoRoutes";
 
 /*
  * Các Hub SEO chính.
@@ -308,15 +309,57 @@ function getSmartHubLinks(route) {
 
 export default function SeoRoutePage({ routeKey }) {
   const navigate = useNavigate();
+  const { seoPath } = useParams();
   const [zaloPhone, setZaloPhone] = useState("0326184628");
+  const [remoteRoute, setRemoteRoute] = useState(null);
+  const [remoteRelatedRoutes, setRemoteRelatedRoutes] = useState([]);
+  const [routeLoading, setRouteLoading] = useState(false);
+  const [routeNotFound, setRouteNotFound] = useState(false);
   const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
   const playStoreUrl =
     "https://play.google.com/store/apps/details?id=com.goviet247.rider";
 
-  const route = useMemo(
-    () => SEO_ROUTES.find((item) => item.key === routeKey),
-    [routeKey],
+  const requestedPath = routeKey || seoPath;
+  const localRoute = useMemo(
+    () =>
+      SEO_ROUTES.find(
+        (item) => item.key === requestedPath || item.path === requestedPath,
+      ),
+    [requestedPath],
   );
+  const route = localRoute || remoteRoute;
+
+  useEffect(() => {
+    if (!requestedPath || localRoute) {
+      setRemoteRoute(null);
+      setRemoteRelatedRoutes([]);
+      setRouteLoading(false);
+      setRouteNotFound(false);
+      return undefined;
+    }
+
+    const controller = new AbortController();
+    setRouteLoading(true);
+    setRouteNotFound(false);
+
+    getSeoRouteByPath(requestedPath, { signal: controller.signal })
+      .then((data) => {
+        setRemoteRoute(data.route);
+        setRemoteRelatedRoutes(data.relatedRoutes || []);
+      })
+      .catch((error) => {
+        if (error.name === "AbortError") return;
+        setRemoteRoute(null);
+        setRemoteRelatedRoutes([]);
+        setRouteNotFound(error.status === 404);
+        console.error("Load SEO route failed:", error);
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) setRouteLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [localRoute, requestedPath]);
 
   /*
    * Chuyển khách sang trang đặt xe và yêu cầu trang /dat-xe
@@ -457,14 +500,19 @@ export default function SeoRoutePage({ routeKey }) {
     };
   }, [route]);
 
-  if (!route) {
+  if (routeLoading) {
+    return <main style={styles.page}>Đang tải thông tin tuyến xe...</main>;
+  }
+
+  if (!route || routeNotFound) {
     return <main style={styles.page}>Không tìm thấy tuyến xe.</main>;
   }
 
   const provinceHubLinks = getProvinceHubLinks(route);
   const smartHubLinks = getSmartHubLinks(route);
 
-  const relatedRoutes = SEO_ROUTES.filter((item) => item.key !== route.key)
+  const relatedRoutes = (localRoute ? SEO_ROUTES : remoteRelatedRoutes)
+    .filter((item) => item.key !== route.key)
     .filter((item) => item.path !== route.path)
     .filter((item) => {
       const sameFrom = item.from === route.from;

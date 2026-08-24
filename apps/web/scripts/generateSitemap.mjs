@@ -2,6 +2,7 @@
 import fs from "fs";
 import path from "path";
 import { SEO_ROUTES } from "../src/data/seoRoutes/index.js";
+import { prisma } from "../../api/src/utils/db.js";
 
 const SITE_URL = "https://goviet247.com";
 const today = new Date().toISOString().slice(0, 10);
@@ -20,25 +21,46 @@ const seoRoutes = SEO_ROUTES.map((route) => ({
   lastmod: route.lastmod,
 }));
 
+let cursorId;
+
+try {
+  while (true) {
+    const batch = await prisma.seoRoute.findMany({
+      orderBy: { id: "asc" },
+      take: 10_000,
+      ...(cursorId ? { cursor: { id: cursorId }, skip: 1 } : {}),
+      select: { id: true, path: true, updatedAt: true },
+    });
+
+    if (!batch.length) break;
+
+    for (const route of batch) {
+      seoRoutes.push({
+        path: route.path,
+        priority: route.path.includes("tp-hcm") ? "0.92" : "0.85",
+        lastmod: route.updatedAt.toISOString().slice(0, 10),
+      });
+    }
+
+    cursorId = batch.at(-1).id;
+  }
+} finally {
+  await prisma.$disconnect();
+}
+
 const allRoutes = [...staticRoutes, ...seoRoutes];
 
 const pathMap = new Map();
 
 for (const route of allRoutes) {
   if (pathMap.has(route.path)) {
-    const first = pathMap.get(route.path);
-
-    throw new Error(
-      `❌ Duplicate sitemap path: "${route.path}"\n\n` +
-        `First priority: ${first.priority}\n` +
-        `Second priority: ${route.priority}\n`,
-    );
+    continue;
   }
 
   pathMap.set(route.path, route);
 }
 
-const uniqueRoutes = allRoutes;
+const uniqueRoutes = [...pathMap.values()];
 
 const unescapeXml = (value) =>
   value

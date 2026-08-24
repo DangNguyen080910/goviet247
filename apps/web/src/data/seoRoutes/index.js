@@ -46,17 +46,6 @@ import { DONGNAI_SEO_ROUTES } from "./dongNaiSeoRoutes.js";
 import { BINHDUONG_SEO_ROUTES } from "./binhDuongSeoRoutes.js";
 import { NINHTHUAN_SEO_ROUTES } from "./ninhThuanSeoRoutes.js";
 import { BINHTHUAN_SEO_ROUTES } from "./binhThuanSeoRoutes.js";
-import { V2HCM_SEO_ROUTES } from "./V2HCMSeoRoutes.js";
-import { V2DONGNAI_SEO_ROUTES } from "./V2DongNaiSeoRoutes.js";
-import { V2LAMDONG_SEO_ROUTES } from "./V2LamDongSeoRoutes.js";
-import { V2KHANHHOA_SEO_ROUTES } from "./V2KhanhHoaSeoRoutes.js";
-import { V2TAYNINH_SEO_ROUTES } from "./V2TayNinhSeoRoutes.js";
-import { V2CANTHO_SEO_ROUTES } from "./V2CanThoSeoRoutes.js";
-import { V2DONGTHAP_SEO_ROUTES } from "./V2DongThapSeoRoutes.js";
-import { V2ANGIANG_SEO_ROUTES } from "./V2AnGiangSeoRoutes.js";
-import { V2VINHLONG_SEO_ROUTES } from "./V2VinhLongSeoRoutes.js";
-import { V2CAMAU_SEO_ROUTES } from "./V2CaMauSeoRoutes.js"; 
-import { V2DAKLAK_SEO_ROUTES } from "./V2DakLakSeoRoutes.js";
 
 const assertUniqueSeoRoutes = (items) => {
   const pathMap = new Map();
@@ -105,7 +94,24 @@ const assertUniqueSeoRoutes = (items) => {
   return items;
 };
 
-export const SEO_ROUTES = assertUniqueSeoRoutes([
+const removeDuplicateSeoRoutes = (items) => {
+  const seenPaths = new Set();
+  const seenKeys = new Set();
+
+  return items.filter((item) => {
+    if (!item?.path || !item?.key) return true;
+
+    if (seenPaths.has(item.path) || seenKeys.has(item.key)) {
+      return false;
+    }
+
+    seenPaths.add(item.path);
+    seenKeys.add(item.key);
+    return true;
+  });
+};
+
+export const SEO_ROUTES = assertUniqueSeoRoutes(removeDuplicateSeoRoutes([
   ...GENERIC_SEO_ROUTES,
   ...SOUTH_SEO_ROUTES,
   ...MEKONG_SEO_ROUTES,
@@ -153,15 +159,4 @@ export const SEO_ROUTES = assertUniqueSeoRoutes([
   ...BINHDUONG_SEO_ROUTES,
   ...NINHTHUAN_SEO_ROUTES,
   ...BINHTHUAN_SEO_ROUTES,
-  ...V2HCM_SEO_ROUTES,
-  ...V2DONGNAI_SEO_ROUTES,
-  ...V2LAMDONG_SEO_ROUTES,
-  ...V2KHANHHOA_SEO_ROUTES,
-  ...V2TAYNINH_SEO_ROUTES,
-  ...V2CANTHO_SEO_ROUTES,
-  ...V2DONGTHAP_SEO_ROUTES,
-  ...V2ANGIANG_SEO_ROUTES,
-  ...V2VINHLONG_SEO_ROUTES,
-  ...V2CAMAU_SEO_ROUTES,
-  ...V2DAKLAK_SEO_ROUTES,
-]);
+]));

@@ -33,48 +33,6 @@ import SeoHubPage from "./pages/customer/SeoHubPage";
 import SeoProvinceHubPage from "./pages/customer/SeoProvinceHubPage";
 import NotFoundPage from "./pages/customer/NotFoundPage";
 
-import { SEO_ROUTES } from "./data/seoRoutes";
-
-/*
- * Các URL Hub SEO.
- *
- * Những path này có dữ liệu trong SEO_ROUTES nhưng không được render bằng
- * SeoRoutePage vì chúng là trang danh mục, không phải một tuyến xe cụ thể.
- */
-const SEO_HUB_PATHS = new Set([
-  "xe-lien-tinh",
-  "tp-hcm-di-cac-tinh",
-  "cac-tinh-di-tp-hcm",
-  "thue-xe-di-tinh",
-
-  "vung-tau",
-  "ho-tram",
-  "long-hai",
-  "binh-chau",
-  "phan-thiet",
-  "mui-ne",
-  "da-lat",
-  "nha-trang",
-  "tay-ninh",
-  "can-tho",
-  "ben-tre",
-  "long-an",
-  "tien-giang",
-  "vinh-long",
-  "dong-thap",
-  "an-giang",
-  "kien-giang",
-
-  "xe-5-cho",
-  "xe-7-cho",
-  "xe-16-cho",
-
-  "xe-di-du-lich",
-  "xe-di-cong-tac",
-  "xe-dua-don-san-bay",
-  "xe-dua-don-resort",
-]);
-
 export default function App() {
   return (
     <Routes>
@@ -243,15 +201,7 @@ export default function App() {
         {/* CÁC TRANG SEO TUYẾN XE */}
         {/* ==================================================== */}
 
-        {SEO_ROUTES.filter((route) => !SEO_HUB_PATHS.has(route.path)).map(
-          (route) => (
-            <Route
-              key={route.key}
-              path={route.path}
-              element={<SeoRoutePage routeKey={route.key} />}
-            />
-          ),
-        )}
+        <Route path=":seoPath" element={<SeoRoutePage />} />
 
         <Route path="dang-nhap" element={<CustomerAuth mode="login" />} />
         <Route path="dang-ky" element={<CustomerAuth mode="register" />} />
