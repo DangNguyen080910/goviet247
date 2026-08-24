@@ -740,33 +740,33 @@ function buildRiderTripStatusPushContent(trip, options = {}) {
   switch (status) {
     case "ACCEPTED":
       return {
-        title: "Tài xế đã nhận chuyến",
-        body: "Chuyến của bạn đã có tài xế nhận. Vui lòng để ý điện thoại.",
+        title: "Đã có tài xế nhận chuyến",
+        body: "Tài xế đã nhận chuyến và sẽ sớm liên hệ với bạn. Vui lòng để ý điện thoại.",
       };
     case "CONTACTED":
       return {
         title: "Tài xế đã liên hệ",
-        body: "Tài xế đã liên hệ với bạn. Chúc bạn có chuyến đi an toàn và vui vẻ cùng GoViet247.",
+        body: "Tài xế đã liên hệ với bạn. Chúc bạn có chuyến đi an toàn và thoải mái cùng GoViet247.",
       };
     case "IN_PROGRESS":
       return {
-        title: "Chuyến đi đang diễn ra",
-        body: "Tài xế đã bắt đầu hành trình với chuyến của bạn.",
+        title: "Chuyến đi đã bắt đầu",
+        body: "Tài xế đã đón bạn và chuyến đi đã bắt đầu. Chúc bạn có hành trình an toàn và thoải mái.",
       };
     case "COMPLETED":
       return {
         title: "Chuyến đi đã hoàn thành",
-        body: "Cảm ơn bạn đã sử dụng GoViet247.",
+        body: "Cảm ơn bạn đã đồng hành cùng GoViet247.",
       };
     case "CANCELLED":
       return {
         title: "Chuyến đi đã bị huỷ",
-        body: "Chuyến của bạn đã bị huỷ. Vui lòng kiểm tra lại trong ứng dụng.",
+        body: "Chuyến đi của bạn đã bị hủy. Vui lòng mở ứng dụng để xem chi tiết.",
       };
     default:
       return {
         title: "Cập nhật chuyến đi",
-        body: "Chuyến của bạn vừa có thay đổi mới.",
+        body: "Chuyến đi của bạn vừa có cập nhật mới.",
       };
   }
 }
