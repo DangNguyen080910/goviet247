@@ -746,7 +746,7 @@ function buildRiderTripStatusPushContent(trip, options = {}) {
     case "CONTACTED":
       return {
         title: "Tài xế đã liên hệ",
-        body: "Tài xế đang liên hệ với bạn. Vui lòng kiểm tra điện thoại.",
+        body: "Tài xế đã liên hệ với bạn. Chúc bạn có chuyến đi an toàn và vui vẻ cùng GoViet247.",
       };
     case "IN_PROGRESS":
       return {
