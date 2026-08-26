@@ -335,9 +335,11 @@ export default function UnassignedTripsScreen() {
       setActionLoading("CANCEL");
       await cancelUnassignedTrip(selectedTripId, reason);
 
-      Alert.alert("Thành công", "Đã huỷ chuyến.");
+      const completedTripId = selectedTripId;
+      setItems((current) => current.filter((item) => item.id !== completedTripId));
       closeDetail();
-      await loadData(false);
+      Alert.alert("Thành công", "Đã huỷ chuyến.");
+      void loadData(false);
     } catch (error: any) {
       console.error("cancel unassigned trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể huỷ chuyến.");

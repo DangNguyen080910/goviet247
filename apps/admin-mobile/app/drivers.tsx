@@ -509,10 +509,11 @@ export default function DriversScreen() {
         action: "APPROVE",
       });
 
-      await reloadCurrentDriverDetail();
-      await loadDrivers(false);
-
       Alert.alert("Thành công", "Đã duyệt tài xế.");
+      void Promise.allSettled([
+        reloadCurrentDriverDetail(),
+        loadDrivers(false),
+      ]);
     } catch (error: any) {
       console.error("approve driver error:", error);
 
@@ -570,10 +571,11 @@ export default function DriversScreen() {
       }
 
       closeActionModal();
-      await reloadCurrentDriverDetail();
-      await loadDrivers(false);
-
       Alert.alert("Thành công", "Đã cập nhật trạng thái tài xế.");
+      void Promise.allSettled([
+        reloadCurrentDriverDetail(),
+        loadDrivers(false),
+      ]);
     } catch (error: any) {
       console.error("submit driver action error:", error);
       Alert.alert(

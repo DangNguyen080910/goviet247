@@ -25,6 +25,7 @@ import {
   changeAssignedTripStatus,
   fetchAssignedTripDetail,
   fetchAssignedTrips,
+  updateAssignedTripSchedule,
 } from "../services/assignedTripsApi";
 
 type TabItem = {
@@ -47,6 +48,26 @@ function formatDateTime(value?: string | null) {
   if (Number.isNaN(date.getTime())) return "--";
 
   return date.toLocaleString("vi-VN");
+}
+
+function formatScheduleInput(value?: string | null) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  const pad = (number: number) => String(number).padStart(2, "0");
+  return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function parseScheduleInput(value: string) {
+  const match = value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2})$/);
+  if (!match) return null;
+  const [, day, month, year, hour, minute] = match.map(Number);
+  const date = new Date(year, month - 1, day, hour, minute);
+  if (
+    date.getFullYear() !== year || date.getMonth() !== month - 1 ||
+    date.getDate() !== day || date.getHours() !== hour || date.getMinutes() !== minute
+  ) return null;
+  return date.toISOString();
 }
 
 function formatCarType(value?: string | null) {
@@ -278,6 +299,10 @@ export default function AssignedTripsScreen() {
 
   const [cancelSubmitting, setCancelSubmitting] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
+  const [scheduleEditing, setScheduleEditing] = useState(false);
+  const [scheduleSubmitting, setScheduleSubmitting] = useState(false);
+  const [pickupTimeInput, setPickupTimeInput] = useState("");
+  const [returnTimeInput, setReturnTimeInput] = useState("");
 
   const loadData = useCallback(
     async (status: AssignedTripsTabStatus, isRefresh = false) => {
@@ -326,6 +351,9 @@ export default function AssignedTripsScreen() {
 
       const detail = await fetchAssignedTripDetail(tripId);
       setSelectedTripDetail(detail);
+      setScheduleEditing(false);
+      setPickupTimeInput(formatScheduleInput(detail.pickupTime));
+      setReturnTimeInput(formatScheduleInput(detail.returnTime));
     } catch (error) {
       console.error("fetchAssignedTripDetail error:", error);
 
@@ -341,6 +369,50 @@ export default function AssignedTripsScreen() {
       }
     } finally {
       setDetailLoading(false);
+    }
+  }
+
+  async function submitScheduleUpdate() {
+    const pickupTime = parseScheduleInput(pickupTimeInput);
+    const isRoundTrip = getTripTypeLabel(
+      selectedTripDetail?.tripType,
+      selectedTripDetail?.returnTime,
+    ) === "Khứ hồi";
+    const returnTime = returnTimeInput.trim()
+      ? parseScheduleInput(returnTimeInput)
+      : null;
+
+    if (!pickupTime) {
+      Alert.alert("Giờ đón không hợp lệ", "Nhập theo định dạng DD/MM/YYYY HH:mm.");
+      return;
+    }
+    if (isRoundTrip && !returnTime) {
+      Alert.alert("Giờ về không hợp lệ", "Chuyến khứ hồi cần giờ về theo định dạng DD/MM/YYYY HH:mm.");
+      return;
+    }
+    if (returnTime && new Date(returnTime) <= new Date(pickupTime)) {
+      Alert.alert("Giờ về không hợp lệ", "Giờ về phải sau giờ đón.");
+      return;
+    }
+
+    try {
+      setScheduleSubmitting(true);
+      await updateAssignedTripSchedule(selectedTripId, pickupTime, returnTime);
+      setSelectedTripDetail((current) =>
+        current
+          ? { ...current, pickupTime, returnTime, updatedAt: new Date().toISOString() }
+          : current,
+      );
+      setScheduleEditing(false);
+      Alert.alert("Thành công", "Đã cập nhật giờ đón, giờ về.");
+      void loadData(tab, true);
+    } catch (error) {
+      Alert.alert(
+        "Lỗi",
+        error instanceof Error ? error.message : "Không thể cập nhật giờ chuyến.",
+      );
+    } finally {
+      setScheduleSubmitting(false);
     }
   }
 
@@ -953,6 +1025,66 @@ export default function AssignedTripsScreen() {
                   </Text>
                 </View>
 
+                {["ACCEPTED", "CONTACTED"].includes(
+                  String(selectedTripDetail?.status || ""),
+                ) ? (
+                  <View style={styles.actionInlineCard}>
+                    <Text style={styles.inlineCardTitle}>Cập nhật giờ đón, giờ về</Text>
+                    {scheduleEditing ? (
+                      <>
+                        <Text style={styles.scheduleHint}>Định dạng: DD/MM/YYYY HH:mm</Text>
+                        <Text style={styles.label}>Giờ đón</Text>
+                        <TextInput
+                          value={pickupTimeInput}
+                          onChangeText={setPickupTimeInput}
+                          placeholder="29/08/2026 08:00"
+                          placeholderTextColor="#94a3b8"
+                          style={styles.scheduleInput}
+                          editable={!scheduleSubmitting}
+                        />
+                        {getTripTypeLabel(
+                          selectedTripDetail?.tripType,
+                          selectedTripDetail?.returnTime,
+                        ) === "Khứ hồi" ? (
+                          <>
+                            <Text style={styles.label}>Giờ về</Text>
+                            <TextInput
+                              value={returnTimeInput}
+                              onChangeText={setReturnTimeInput}
+                              placeholder="30/08/2026 17:00"
+                              placeholderTextColor="#94a3b8"
+                              style={styles.scheduleInput}
+                              editable={!scheduleSubmitting}
+                            />
+                          </>
+                        ) : null}
+                        <View style={styles.confirmActions}>
+                          <Pressable
+                            style={styles.cancelButton}
+                            onPress={() => setScheduleEditing(false)}
+                            disabled={scheduleSubmitting}
+                          >
+                            <Text style={styles.cancelButtonText}>Huỷ</Text>
+                          </Pressable>
+                          <Pressable
+                            style={[styles.submitButton, scheduleSubmitting && styles.submitButtonDisabled]}
+                            onPress={submitScheduleUpdate}
+                            disabled={scheduleSubmitting}
+                          >
+                            <Text style={styles.submitButtonText}>
+                              {scheduleSubmitting ? "Đang lưu..." : "Lưu giờ mới"}
+                            </Text>
+                          </Pressable>
+                        </View>
+                      </>
+                    ) : (
+                      <Pressable style={styles.submitButton} onPress={() => setScheduleEditing(true)}>
+                        <Text style={styles.submitButtonText}>Sửa giờ chuyến</Text>
+                      </Pressable>
+                    )}
+                  </View>
+                ) : null}
+
                 <View style={styles.modalInfoBlock}>
                   <Text style={styles.label}>Loại</Text>
                   <Text style={styles.value}>
@@ -1562,6 +1694,20 @@ const styles = StyleSheet.create({
   inlineCardTitle: {
     fontSize: 15,
     fontWeight: "800",
+    color: "#0f172a",
+  },
+  scheduleHint: {
+    fontSize: 12,
+    color: "#64748b",
+  },
+  scheduleInput: {
+    minHeight: 46,
+    borderRadius: 12,
+    backgroundColor: "#ffffff",
+    borderWidth: 1,
+    borderColor: "#cbd5e1",
+    paddingHorizontal: 12,
+    fontSize: 15,
     color: "#0f172a",
   },
 });

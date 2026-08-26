@@ -421,15 +421,17 @@ export default function FeedbackScreen() {
         adminNote: editAdminNote.trim(),
       });
 
-      const refreshed = await fetchAdminFeedbackDetail(selectedFeedback.id);
-
-      if (!refreshed) {
-        throw new Error("Không lấy được dữ liệu sau khi cập nhật.");
-      }
-
-      patchListAfterSave(refreshed);
-
+      patchListAfterSave({
+        ...selectedFeedback,
+        status: editStatus,
+        adminNote: editAdminNote.trim(),
+      });
       showMessage("Thành công", "Đã cập nhật góp ý.");
+      void fetchAdminFeedbackDetail(selectedFeedback.id)
+        .then((refreshed) => {
+          if (refreshed) patchListAfterSave(refreshed);
+        })
+        .catch((error) => console.error("refresh feedback after save error:", error));
     } catch (error: any) {
       console.error("save feedback error:", error);
       showMessage("Lỗi", error?.message || "Không thể cập nhật góp ý.");

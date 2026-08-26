@@ -4,6 +4,7 @@ import { getAdminToken } from "../../utils/adminAuth";
 import {
   manualAdjustTrip,
   normalizeDisplayAddress,
+  updateAssignedTripSchedule,
 } from "../../api/adminTrips";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
@@ -182,6 +183,9 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     verifiedNote: "",
     stops: [],
   });
+  const [isEditingSchedule, setIsEditingSchedule] = useState(false);
+  const [scheduleForm, setScheduleForm] = useState({ pickupTime: "", returnTime: "" });
+  const [savingSchedule, setSavingSchedule] = useState(false);
 
   const token = useMemo(() => getAdminToken(), []);
 
@@ -217,6 +221,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     if (!open || !tripId) return;
 
     setIsEditing(false);
+    setIsEditingSchedule(false);
     setAdjustError("");
     taiChiTietChuyen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -238,6 +243,34 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
     !detail?.driver &&
     !detail?.acceptedAt &&
     !detail?.cancelledAt;
+  const canEditSchedule = ["ACCEPTED", "CONTACTED"].includes(detail?.status);
+
+  function openScheduleForm() {
+    setAdjustError("");
+    setScheduleForm({
+      pickupTime: detail?.pickupTime || "",
+      returnTime: detail?.returnTime || "",
+    });
+    setIsEditingSchedule(true);
+  }
+
+  async function submitSchedule() {
+    try {
+      setSavingSchedule(true);
+      setAdjustError("");
+      await updateAssignedTripSchedule(tripId, {
+        pickupTime: scheduleForm.pickupTime,
+        returnTime: scheduleForm.returnTime || null,
+      });
+      setIsEditingSchedule(false);
+      await taiChiTietChuyen();
+      onAdjusted?.();
+    } catch (e) {
+      setAdjustError(e?.message || "Cập nhật giờ đón, giờ về thất bại");
+    } finally {
+      setSavingSchedule(false);
+    }
+  }
 
   function openAdjustForm() {
     setAdjustError("");
@@ -418,6 +451,11 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                 Cập nhật thông tin chuyến
               </button>
             )}
+            {canEditSchedule && !isEditingSchedule && (
+              <button style={btnPrimary} onClick={openScheduleForm}>
+                Cập nhật giờ đón, giờ về
+              </button>
+            )}
 
             <button style={btn} onClick={onClose}>
               Đóng
@@ -427,6 +465,49 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
 
         {dangTai && <div>Đang tải…</div>}
         {loi && <div style={{ color: "crimson" }}>Lỗi: {loi}</div>}
+        {adjustError && <div style={{ color: "crimson", marginBottom: 10 }}>{adjustError}</div>}
+
+        {isEditingSchedule && (
+          <div style={{ ...card, marginBottom: 14 }}>
+            <div style={{ fontWeight: 700, marginBottom: 12 }}>Cập nhật lịch chuyến</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
+              <label>
+                Giờ đón
+                <input
+                  type="datetime-local"
+                  style={{ ...inputStyle, marginTop: 6 }}
+                  value={toDateTimeLocalValue(scheduleForm.pickupTime)}
+                  onChange={(e) => setScheduleForm((prev) => ({
+                    ...prev,
+                    pickupTime: fromDateTimeLocalValue(e.target.value),
+                  }))}
+                />
+              </label>
+              {detail?.direction === "ROUND_TRIP" && (
+                <label>
+                  Giờ về
+                  <input
+                    type="datetime-local"
+                    style={{ ...inputStyle, marginTop: 6 }}
+                    value={toDateTimeLocalValue(scheduleForm.returnTime)}
+                    onChange={(e) => setScheduleForm((prev) => ({
+                      ...prev,
+                      returnTime: fromDateTimeLocalValue(e.target.value),
+                    }))}
+                  />
+                </label>
+              )}
+            </div>
+            <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+              <button style={btnPrimary} onClick={submitSchedule} disabled={savingSchedule}>
+                {savingSchedule ? "Đang lưu…" : "Lưu giờ mới"}
+              </button>
+              <button style={btn} onClick={() => setIsEditingSchedule(false)} disabled={savingSchedule}>
+                Huỷ
+              </button>
+            </div>
+          </div>
+        )}
 
         {!dangTai && !loi && (
           <>

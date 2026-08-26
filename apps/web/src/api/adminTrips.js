@@ -113,3 +113,10 @@ export async function manualAdjustTrip(tripId, payload) {
 
   return data;
 }
+
+export async function updateAssignedTripSchedule(tripId, payload) {
+  return request(`/api/admin/trips/${tripId}/schedule`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+}

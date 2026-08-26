@@ -64,6 +64,11 @@ export function initializeAdminSocketBridge() {
     banSuKienLenWindow("admin:trip_cancelled", payload);
   });
 
+  adminSocket.on("admin:trip_schedule_updated", (payload) => {
+    console.log("[Admin Socket] Nhận admin:trip_schedule_updated", payload);
+    banSuKienLenWindow("admin:trip_schedule_updated", payload);
+  });
+
   adminSocket.on("admin:dashboard_changed", (payload) => {
     console.log("[Admin Socket] Nhận admin:dashboard_changed", payload);
     banSuKienLenWindow("admin:dashboard_changed", payload);

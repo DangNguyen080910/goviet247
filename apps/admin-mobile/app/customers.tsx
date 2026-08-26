@@ -533,28 +533,19 @@ export default function CustomersScreen() {
         reason: actionReason.trim(),
       });
 
-      const [detailData, logData] = await Promise.all([
-        fetchCustomerDetail(selectedId),
-        fetchCustomerLogs(selectedId),
-      ]);
-
-      setDetail(detailData || null);
-      setLogs(logData?.logs || []);
       setActionExpanded(false);
       setActionReason("");
-
-      if (page === 1) {
-        await loadCustomers();
-      } else {
-        setPage(1);
-      }
-
       Alert.alert(
         "Thành công",
         actionType === "SUSPEND"
           ? "Đã khoá khách hàng."
           : "Đã mở khoá khách hàng.",
       );
+      void Promise.allSettled([
+        fetchCustomerDetail(selectedId).then((detailData) => setDetail(detailData || null)),
+        fetchCustomerLogs(selectedId).then((logData) => setLogs(logData?.logs || [])),
+        page === 1 ? loadCustomers() : Promise.resolve(setPage(1)),
+      ]);
     } catch (error: any) {
       console.error("customer action error:", error);
       Alert.alert("Lỗi", error?.message || "Thao tác thất bại.");

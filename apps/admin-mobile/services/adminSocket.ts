@@ -8,7 +8,8 @@ type AdminRealtimeEvent =
   | "admin:dashboard_changed"
   | "admin:trip_accepted"
   | "admin:trip_status_changed"
-  | "admin:trip_cancelled";
+  | "admin:trip_cancelled"
+  | "admin:trip_schedule_updated";
 
 let socket: Socket | null = null;
 

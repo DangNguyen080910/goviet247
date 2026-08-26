@@ -88,6 +88,12 @@ function normalizeText(value) {
     .trim();
 }
 
+function formatNgayGio(value) {
+  if (!value) return "-";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "-" : date.toLocaleString("vi-VN");
+}
+
 function getAssignedTripRiderName(trip) {
   return (
     trip?.riderName ||
@@ -179,11 +185,13 @@ export default function AdminTripsAssigned() {
     window.addEventListener("admin:trip_accepted", handleRealtime);
     window.addEventListener("admin:trip_status_changed", handleRealtime);
     window.addEventListener("admin:trip_cancelled", handleRealtime);
+    window.addEventListener("admin:trip_schedule_updated", handleRealtime);
 
     return () => {
       window.removeEventListener("admin:trip_accepted", handleRealtime);
       window.removeEventListener("admin:trip_status_changed", handleRealtime);
       window.removeEventListener("admin:trip_cancelled", handleRealtime);
+      window.removeEventListener("admin:trip_schedule_updated", handleRealtime);
     };
   }, []);
 
@@ -354,6 +362,8 @@ export default function AdminTripsAssigned() {
                   <TableCell sx={{ fontWeight: 700 }}>
                     Điểm đón → Điểm đến
                   </TableCell>
+                  <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ đón</TableCell>
+                  <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ về</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Cập nhật</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Trạng thái</TableCell>
                   <TableCell sx={{ fontWeight: 700, width: 320 }}>
@@ -388,6 +398,9 @@ export default function AdminTripsAssigned() {
                       >
                         {t.id || "-"}
                       </TableCell>
+
+                      <TableCell>{formatNgayGio(t.pickupTime)}</TableCell>
+                      <TableCell>{formatNgayGio(t.returnTime)}</TableCell>
 
                       <TableCell>
                         <Typography sx={{ fontWeight: 600 }}>
@@ -533,6 +546,7 @@ export default function AdminTripsAssigned() {
         open={!!selectedTripId}
         tripId={selectedTripId}
         onClose={() => setSelectedTripId("")}
+        onAdjusted={reload}
       />
 
       <ChangeTripStatusDialog

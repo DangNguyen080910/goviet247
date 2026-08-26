@@ -465,12 +465,13 @@ export default function PendingTripsScreen() {
         verifiedNote: adjustForm.verifiedNote.trim(),
       });
 
-      const updatedDetail = await fetchPendingTripDetail(selectedTripId);
-      setDetail(updatedDetail);
       setIsAdjusting(false);
 
       Alert.alert("Thành công", "Đã cập nhật thông tin chuyến.");
-      await loadData(false);
+      void Promise.allSettled([
+        fetchPendingTripDetail(selectedTripId).then(setDetail),
+        loadData(false),
+      ]);
     } catch (error: any) {
       console.error("manual adjust trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể cập nhật chuyến.");
@@ -486,9 +487,11 @@ export default function PendingTripsScreen() {
       setActionLoading("VERIFY");
       await verifyPendingTrip(selectedTripId);
 
-      Alert.alert("Thành công", "Đã duyệt chuyến.");
+      const completedTripId = selectedTripId;
+      setItems((current) => current.filter((item) => item.id !== completedTripId));
       closeDetailModal();
-      await loadData(false);
+      Alert.alert("Thành công", "Đã duyệt chuyến.");
+      void loadData(false);
     } catch (error: any) {
       console.error("verify trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể duyệt chuyến.");
@@ -510,9 +513,11 @@ export default function PendingTripsScreen() {
       setActionLoading("CANCEL");
       await cancelPendingTrip(selectedTripId, reason);
 
-      Alert.alert("Thành công", "Đã huỷ chuyến.");
+      const completedTripId = selectedTripId;
+      setItems((current) => current.filter((item) => item.id !== completedTripId));
       closeDetailModal();
-      await loadData(false);
+      Alert.alert("Thành công", "Đã huỷ chuyến.");
+      void loadData(false);
     } catch (error: any) {
       console.error("cancel trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể huỷ chuyến.");

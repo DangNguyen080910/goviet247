@@ -291,7 +291,7 @@ export default function WalletsScreen() {
     }, []),
   );
 
-  async function loadAll(showRefreshSpinner = false) {
+  async function loadAll(showRefreshSpinner = false, silentError = false) {
     try {
       if (showRefreshSpinner) {
         setRefreshing(true);
@@ -314,7 +314,9 @@ export default function WalletsScreen() {
       setLedgerItems(ledgerRes.items || []);
     } catch (error: any) {
       console.error("load wallets screen error:", error);
-      Alert.alert("Lỗi", error?.message || "Không thể tải dữ liệu ví tài xế.");
+      if (!silentError) {
+        Alert.alert("Lỗi", error?.message || "Không thể tải dữ liệu ví tài xế.");
+      }
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -386,9 +388,21 @@ export default function WalletsScreen() {
         await subtractDriverWallet(actionDriver.id, payload);
       }
 
-      closeActionModal();
-      await loadAll(false);
+      const driverId = actionDriver.id;
+      const balanceDelta = actionMode === "SUBTRACT" ? -amountNumber : amountNumber;
+      setWalletItems((current) =>
+        current.map((item) =>
+          item.id === driverId
+            ? { ...item, balance: Number(item.balance || 0) + balanceDelta }
+            : item,
+        ),
+      );
+      setActionExpandedId(null);
+      setActionDriver(null);
+      setActionAmount("");
+      setActionNote("");
       Alert.alert("Thành công", "Đã cập nhật ví tài xế.");
+      void loadAll(false, true);
     } catch (error: any) {
       console.error("submit wallet action error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể cập nhật ví tài xế.");
@@ -400,8 +414,9 @@ export default function WalletsScreen() {
   async function handleApproveWithdraw(item: DriverWithdrawRequestItem) {
     try {
       await approveWithdrawRequest(item.id);
-      await loadAll(false);
+      setWithdrawItems((current) => current.filter((entry) => entry.id !== item.id));
       Alert.alert("Thành công", "Đã duyệt yêu cầu rút tiền.");
+      void loadAll(false, true);
     } catch (error: any) {
       console.error("approve withdraw error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể duyệt yêu cầu rút tiền.");
@@ -411,8 +426,9 @@ export default function WalletsScreen() {
   async function handleMarkWithdrawPaid(item: DriverWithdrawRequestItem) {
     try {
       await markWithdrawRequestPaid(item.id);
-      await loadAll(false);
+      setWithdrawItems((current) => current.filter((entry) => entry.id !== item.id));
       Alert.alert("Thành công", "Đã đánh dấu chuyển khoản thành công.");
+      void loadAll(false, true);
     } catch (error: any) {
       console.error("mark paid withdraw error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể cập nhật trạng thái.");
@@ -430,8 +446,9 @@ export default function WalletsScreen() {
 
     try {
       await rejectWithdrawRequest(item.id, { reason });
-      await loadAll(false);
+      setWithdrawItems((current) => current.filter((entry) => entry.id !== item.id));
       Alert.alert("Thành công", "Đã từ chối yêu cầu rút tiền.");
+      void loadAll(false, true);
     } catch (error: any) {
       console.error("reject withdraw error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể từ chối yêu cầu rút.");

@@ -5,6 +5,7 @@ import { makeAdminController } from "../controllers/adminController.js";
 import {
   adminHuyChuyen,
   adminDieuChinhThongTinChuyen,
+  adminCapNhatThoiGianChuyen,
 } from "../controllers/adminTripController.js";
 import {
   requireAdmin,
@@ -99,6 +100,12 @@ router.patch(
   "/trips/:id/manual-adjust",
   requireAdmin,
   adminDieuChinhThongTinChuyen,
+);
+
+router.patch(
+  "/trips/:id/schedule",
+  requireAdmin,
+  adminCapNhatThoiGianChuyen,
 );
 
 router.post("/trips/:id/cancel", requireAdmin, adminHuyChuyen);

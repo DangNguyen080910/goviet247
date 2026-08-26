@@ -367,3 +367,14 @@ export async function cancelAssignedTrip(tripId: string, reason: string) {
     }),
   });
 }
+
+export async function updateAssignedTripSchedule(
+  tripId: string,
+  pickupTime: string,
+  returnTime: string | null,
+) {
+  return adminRequest(`/api/admin/trips/${tripId}/schedule`, {
+    method: "PATCH",
+    body: JSON.stringify({ pickupTime, returnTime }),
+  });
+}

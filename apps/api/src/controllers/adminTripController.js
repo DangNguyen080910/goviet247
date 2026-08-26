@@ -2,6 +2,128 @@
 import { prisma } from "../utils/db.js";
 import { sendAdminPushNotification } from "../services/notificationService.js";
 
+// PATCH /api/admin/trips/:id/schedule
+export async function adminCapNhatThoiGianChuyen(req, res) {
+  try {
+    const tripId = String(req.params.id || "").trim();
+    const pickupTime = req.body?.pickupTime ? new Date(req.body.pickupTime) : null;
+    const returnTime = req.body?.returnTime ? new Date(req.body.returnTime) : null;
+
+    if (!tripId) {
+      return res.status(400).json({ success: false, message: "Thiếu mã chuyến" });
+    }
+    if (!pickupTime || Number.isNaN(pickupTime.getTime())) {
+      return res.status(400).json({ success: false, message: "Giờ đón không hợp lệ" });
+    }
+    if (req.body?.returnTime && Number.isNaN(returnTime?.getTime())) {
+      return res.status(400).json({ success: false, message: "Giờ về không hợp lệ" });
+    }
+    if (returnTime && returnTime <= pickupTime) {
+      return res.status(400).json({ success: false, message: "Giờ về phải sau giờ đón" });
+    }
+
+    const actor = req.admin;
+    const result = await prisma.$transaction(async (tx) => {
+      const trip = await tx.trip.findUnique({
+        where: { id: tripId },
+        select: {
+          id: true,
+          status: true,
+          direction: true,
+          pickupTime: true,
+          returnTime: true,
+          riderId: true,
+          driverId: true,
+        },
+      });
+
+      if (!trip) {
+        const err = new Error("Không tìm thấy chuyến");
+        err.statusCode = 404;
+        throw err;
+      }
+      if (!["ACCEPTED", "CONTACTED"].includes(trip.status)) {
+        const err = new Error(
+          'Chỉ được cập nhật giờ khi chuyến đang ở trạng thái "Chưa liên hệ khách" hoặc "Chưa đón khách"',
+        );
+        err.statusCode = 400;
+        throw err;
+      }
+
+      const nextReturnTime = trip.direction === "ROUND_TRIP" ? returnTime : null;
+      if (trip.direction === "ROUND_TRIP" && !nextReturnTime) {
+        const err = new Error("Vui lòng nhập giờ về cho chuyến khứ hồi");
+        err.statusCode = 400;
+        throw err;
+      }
+
+      const updated = await tx.trip.update({
+        where: { id: tripId },
+        data: { pickupTime, returnTime: nextReturnTime, updatedAt: new Date() },
+        select: {
+          id: true,
+          status: true,
+          direction: true,
+          pickupTime: true,
+          returnTime: true,
+          riderId: true,
+          driverId: true,
+          updatedAt: true,
+        },
+      });
+
+      const log = await tx.adminTripActionLog.create({
+        data: {
+          tripId,
+          fromStatus: trip.status,
+          toStatus: trip.status,
+          actorRole: actor?.role || "ADMIN",
+          actorId: actor?.id ?? null,
+          actorUsername: actor?.username || "admin",
+          note: [
+            "Admin cập nhật lịch đón/trả khách.",
+            `Giờ đón: ${trip.pickupTime?.toISOString?.() || "-"} -> ${pickupTime.toISOString()}`,
+            `Giờ về: ${trip.returnTime?.toISOString?.() || "-"} -> ${nextReturnTime?.toISOString?.() || "-"}`,
+          ].join("\n"),
+        },
+      });
+      return { updated, log };
+    });
+
+    const io = req.app?.get?.("io");
+    if (io) {
+      const event = {
+        tripId: result.updated.id,
+        status: result.updated.status,
+        pickupTime: result.updated.pickupTime,
+        returnTime: result.updated.returnTime,
+        updatedAt: result.updated.updatedAt,
+        reason: "trip_schedule_updated",
+      };
+      io.to("admins").emit("admin:trip_schedule_updated", event);
+      io.to("admins").emit("admin:dashboard_changed", event);
+      if (result.updated.driverId) {
+        io.to(`driver:${result.updated.driverId}`).emit("trip:changed", event);
+      }
+      if (result.updated.riderId) {
+        io.to(`rider:${result.updated.riderId}`).emit("rider:trip_changed", event);
+      }
+    }
+
+    return res.json({
+      success: true,
+      message: "Cập nhật giờ đón, giờ về thành công.",
+      trip: result.updated,
+      actionLog: result.log,
+    });
+  } catch (e) {
+    return res.status(e.statusCode || 500).json({
+      success: false,
+      message: e?.message || "Cập nhật giờ đón, giờ về thất bại",
+    });
+  }
+}
+
 // POST /api/admin/trips/:id/cancel
 // Body: { cancel_reason: "..." }
 export async function adminHuyChuyen(req, res) {
