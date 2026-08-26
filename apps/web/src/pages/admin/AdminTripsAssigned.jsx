@@ -399,9 +399,6 @@ export default function AdminTripsAssigned() {
                         {t.id || "-"}
                       </TableCell>
 
-                      <TableCell>{formatNgayGio(t.pickupTime)}</TableCell>
-                      <TableCell>{formatNgayGio(t.returnTime)}</TableCell>
-
                       <TableCell>
                         <Typography sx={{ fontWeight: 600 }}>
                           {riderName}
@@ -444,6 +441,9 @@ export default function AdminTripsAssigned() {
                           </Typography>
                         )}
                       </TableCell>
+
+                      <TableCell>{formatNgayGio(t.pickupTime)}</TableCell>
+                      <TableCell>{formatNgayGio(t.returnTime)}</TableCell>
 
                       <TableCell>
                         <Typography variant="body2">
