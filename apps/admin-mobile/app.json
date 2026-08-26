@@ -2,7 +2,7 @@
   "expo": {
     "name": "GoViet247 Admin",
     "slug": "admin-mobile",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "icon": "./assets/images/GoViet247_admin_icon.png",
     "scheme": "adminmobile",
     "userInterfaceStyle": "automatic",
