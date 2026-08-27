@@ -2,7 +2,7 @@
   "expo": {
     "name": "GoViet247",
     "slug": "rider-mobile",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "icon": "./assets/GoViet247_icon.png",
     "scheme": "ridermobile",
     "userInterfaceStyle": "automatic",
