@@ -98,6 +98,11 @@ type RiderTripItem = {
   riderName?: string | null;
   riderPhone?: string | null;
   note?: string | null;
+  driverVehicle?: {
+    vehicleBrand?: string | null;
+    vehicleModel?: string | null;
+    plateNumber?: string | null;
+  } | null;
   stops?: Array<{
     id: string;
     seq: number;

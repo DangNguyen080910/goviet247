@@ -1,6 +1,6 @@
 // Path: goviet247/apps/admin-mobile/app/
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -290,6 +290,25 @@ export default function WalletsScreen() {
       loadAll(false);
     }, []),
   );
+
+  useEffect(() => {
+    if (activeTab !== "WALLETS") return;
+
+    const timer = setTimeout(() => {
+      fetchDriverWallets({
+        page: 1,
+        pageSize: 100,
+        q: walletSearchText.trim(),
+        status: walletStatus,
+      })
+        .then((result) => setWalletItems(result.items || []))
+        .catch((error) =>
+          console.error("search driver wallets error:", error),
+        );
+    }, 350);
+
+    return () => clearTimeout(timer);
+  }, [activeTab, walletSearchText, walletStatus]);
 
   async function loadAll(showRefreshSpinner = false, silentError = false) {
     try {

@@ -99,6 +99,10 @@ export default function HomeScreen() {
     String(adminRole || "")
       .trim()
       .toUpperCase() === "STAFF";
+  const isAdmin =
+    String(adminRole || "")
+      .trim()
+      .toUpperCase() === "ADMIN";
 
   const menuItems = useMemo<MenuCardItem[]>(() => {
     return [
@@ -165,6 +169,14 @@ export default function HomeScreen() {
         iconBg: "#0d9488",
       },
       {
+        key: "LEDGER",
+        title: "Sổ Sách",
+        badge: 0,
+        subtitle: "Xem nhanh thu chi và lợi nhuận theo quý",
+        icon: "📖",
+        iconBg: "#0284c7",
+      },
+      {
         key: "FEEDBACK",
         title: "Thư Góp Ý",
         badge: Number(stats?.feedbackNewCount || 0),
@@ -176,13 +188,15 @@ export default function HomeScreen() {
         iconBg: "#ef4444",
       },
     ].filter((item) => {
-      if (isStaff && ["WALLETS", "FEEDBACK"].includes(item.key)) {
+      if (isStaff && ["WALLETS", "LEDGER", "FEEDBACK"].includes(item.key)) {
         return false;
       }
 
+      if (item.key === "LEDGER" && !isAdmin) return false;
+
       return true;
     });
-  }, [isStaff, risks, stats, walletBadge]);
+  }, [isAdmin, isStaff, risks, stats, walletBadge]);
 
   const loadDashboard = useCallback(async (showRefreshSpinner = false) => {
     try {
@@ -352,6 +366,11 @@ export default function HomeScreen() {
 
     if (item.key === "FEEDBACK") {
       router.push("/feedback");
+      return;
+    }
+
+    if (item.key === "LEDGER") {
+      router.push("/ledger" as any);
       return;
     }
 

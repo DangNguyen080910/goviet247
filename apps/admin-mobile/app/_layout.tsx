@@ -199,6 +199,7 @@ function RootLayoutContent() {
         <Stack.Screen name="drivers" />
         <Stack.Screen name="customers" />
         <Stack.Screen name="wallets" />
+        <Stack.Screen name="ledger" />
         <Stack.Screen name="feedback" />
       </Stack>
 

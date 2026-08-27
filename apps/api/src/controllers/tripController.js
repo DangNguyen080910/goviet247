@@ -748,6 +748,17 @@ export async function listMyCustomerTrips(req, res) {
       where: { riderId },
       orderBy: { createdAt: "desc" },
       include: {
+        driver: {
+          select: {
+            driverProfile: {
+              select: {
+                vehicleBrand: true,
+                vehicleModel: true,
+                plateNumber: true,
+              },
+            },
+          },
+        },
         stops: {
           orderBy: { seq: "asc" },
           select: {
@@ -762,7 +773,16 @@ export async function listMyCustomerTrips(req, res) {
 
     return res.json({
       success: true,
-      items: trips,
+      items: trips.map(({ driver, ...trip }) => ({
+        ...trip,
+        driverVehicle: driver?.driverProfile
+          ? {
+              vehicleBrand: driver.driverProfile.vehicleBrand,
+              vehicleModel: driver.driverProfile.vehicleModel,
+              plateNumber: driver.driverProfile.plateNumber,
+            }
+          : null,
+      })),
     });
   } catch (e) {
     console.error("[Trip] listMyCustomerTrips error:", e);

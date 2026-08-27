@@ -38,6 +38,11 @@ type TripItem = {
   riderName?: string | null;
   riderPhone?: string | null;
   note?: string | null;
+  driverVehicle?: {
+    vehicleBrand?: string | null;
+    vehicleModel?: string | null;
+    plateNumber?: string | null;
+  } | null;
   stops?: Array<{
     id: string;
     seq: number;
@@ -491,6 +496,29 @@ export default function RiderTripHistoryScreen() {
                         {getCarTypeLabel(item?.carType)}
                       </Text>
                     </View>
+
+                    {item?.driverVehicle ? (
+                      <>
+                        <View style={styles.metaRow}>
+                          <Text style={styles.metaLabel}>Hãng xe</Text>
+                          <Text style={styles.metaValue}>
+                            {item.driverVehicle.vehicleBrand || "Chưa cập nhật"}
+                          </Text>
+                        </View>
+                        <View style={styles.metaRow}>
+                          <Text style={styles.metaLabel}>Dòng xe</Text>
+                          <Text style={styles.metaValue}>
+                            {item.driverVehicle.vehicleModel || "Chưa cập nhật"}
+                          </Text>
+                        </View>
+                        <View style={styles.metaRow}>
+                          <Text style={styles.metaLabel}>Biển số xe</Text>
+                          <Text style={styles.metaValue}>
+                            {item.driverVehicle.plateNumber || "Chưa cập nhật"}
+                          </Text>
+                        </View>
+                      </>
+                    ) : null}
 
                     <View style={styles.metaRow}>
                       <Text style={styles.metaLabel}>Giờ đón</Text>

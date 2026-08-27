@@ -1289,6 +1289,31 @@ export default function CustomerProfile() {
                           </Paper>
                         </Box>
 
+                        {trip.driverVehicle ? (
+                          <Paper
+                            variant="outlined"
+                            sx={{ p: 1.5, borderRadius: 2.5, bgcolor: "#f8fafc" }}
+                          >
+                            <Typography sx={{ fontWeight: 900, mb: 1 }}>
+                              Xe đón bạn
+                            </Typography>
+                            <Box
+                              sx={{
+                                display: "grid",
+                                gridTemplateColumns: {
+                                  xs: "1fr",
+                                  sm: "repeat(3, minmax(0, 1fr))",
+                                },
+                                gap: 1,
+                              }}
+                            >
+                              <Typography><b>Hãng xe:</b> {trip.driverVehicle.vehicleBrand || "Chưa cập nhật"}</Typography>
+                              <Typography><b>Dòng xe:</b> {trip.driverVehicle.vehicleModel || "Chưa cập nhật"}</Typography>
+                              <Typography><b>Biển số xe:</b> {trip.driverVehicle.plateNumber || "Chưa cập nhật"}</Typography>
+                            </Box>
+                          </Paper>
+                        ) : null}
+
                         <Stack
                           direction={{ xs: "column", sm: "row" }}
                           spacing={1}
