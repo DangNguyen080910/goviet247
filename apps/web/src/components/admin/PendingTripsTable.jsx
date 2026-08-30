@@ -32,6 +32,16 @@ function formatGia(v) {
   return num.toLocaleString("vi-VN");
 }
 
+function formatFuelPreference(value) {
+  const map = {
+    ANY: "Không yêu cầu",
+    ELECTRIC: "Xe điện",
+    GASOLINE: "Xe xăng",
+  };
+
+  return map[value] || value || "Không yêu cầu";
+}
+
 // Tính phút chờ từ createdAt (fallback khi BE chưa trả pendingMinutes)
 function tinhPhutChoFallback(createdAt) {
   const d = parseDate(createdAt);
@@ -306,6 +316,7 @@ export default function PendingTripsTable({
 
               <th style={th}>Điểm đón</th>
               <th style={th}>Điểm đến</th>
+              <th style={th}>Loại nhiên liệu</th>
 
               {isCancelledTab ? (
                 <>
@@ -387,6 +398,9 @@ export default function PendingTripsTable({
                     {normalizeDisplayAddress(t.pickupAddress) || "-"}
                   </td>
                   <td style={td}>{renderStopsCell(t)}</td>
+                  <td style={{ ...td, fontWeight: 700 }}>
+                    {formatFuelPreference(t.fuelPreference)}
+                  </td>
 
                   {isCancelledTab ? (
                     <>

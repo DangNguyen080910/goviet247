@@ -6,6 +6,7 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import {
   Alert,
+  Linking,
   KeyboardAvoidingView,
   Modal,
   Platform,
@@ -25,7 +26,11 @@ import {
 import AppBrandHeader from "../components/AppBrandHeader";
 import { getMe, updateMe } from "../services/authApi";
 import { quotePrice } from "../services/pricingApi";
-import { createTrip, getRiderPublicTripConfig } from "../services/tripApi";
+import {
+  createTrip,
+  getRiderPublicTripConfig,
+  getRiderSupportConfig,
+} from "../services/tripApi";
 import { getRiderToken } from "../services/storage";
 import { searchPlaces, getPlaceDetail, getRoute } from "../services/mapApi";
 import {
@@ -38,7 +43,7 @@ const DEFAULT_TRIP_CONFIG = {
   maxDistanceKm: 2000,
   quoteExpireSeconds: 120,
   riderBookingNotePlaceholder:
-    "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
+    "Ví dụ: Yêu cầu xe đời 2023+, xe biển trắng, có nhiều hành lý, có thú cưng, có em bé hoặc cần hỗ trợ đặc biệt.",
 };
 
 const CAR_TYPE_OPTIONS = [
@@ -46,6 +51,12 @@ const CAR_TYPE_OPTIONS = [
   { value: "CAR_7", label: "Xe 7 chỗ" },
   { value: "CAR_16", label: "Xe 16 chỗ" },
 ];
+
+const FUEL_PREFERENCE_OPTIONS = [
+  { value: "ANY", label: "Không yêu cầu" },
+  { value: "ELECTRIC", label: "Xe điện" },
+  { value: "GASOLINE", label: "Xe xăng" },
+] as const;
 
 function toMsFromDatetimeLocal(v: string) {
   if (!v) return NaN;
@@ -379,6 +390,7 @@ export default function RiderBookingScreen() {
   const minDistanceKm = Number(tripConfig.minDistanceKm || 10);
   const maxDistanceKm = Number(tripConfig.maxDistanceKm || 2000);
   const quoteExpireSeconds = Number(tripConfig.quoteExpireSeconds || 120);
+  const [supportPhone, setSupportPhone] = useState("0977100917");
 
   useEffect(() => {
     let active = true;
@@ -396,6 +408,24 @@ export default function RiderBookingScreen() {
       })
       .catch((error) => {
         console.warn("[Booking] load trip config error:", error);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    getRiderSupportConfig()
+      .then((config) => {
+        if (!active) return;
+        const phone = String(config?.supportPhoneRider || "").trim();
+        if (phone) setSupportPhone(phone);
+      })
+      .catch((error) => {
+        console.warn("[Booking] load support config error:", error);
       });
 
     return () => {
@@ -433,6 +463,9 @@ export default function RiderBookingScreen() {
     "ONE_WAY",
   );
   const [carType, setCarType] = useState("CAR_5");
+  const [fuelPreference, setFuelPreference] = useState<
+    "ANY" | "ELECTRIC" | "GASOLINE"
+  >("ANY");
 
   const [riderName, setRiderName] = useState("");
   const [riderPhone, setRiderPhone] = useState("");
@@ -971,6 +1004,7 @@ export default function RiderBookingScreen() {
     returnTime,
     direction,
     carType,
+    fuelPreference,
     distanceKm,
     driveMinutes,
   ]);
@@ -1440,6 +1474,7 @@ export default function RiderBookingScreen() {
         direction === "ROUND_TRIP" ? toIsoFromDatetimeLocal(returnTime) : null,
       direction,
       carType,
+      fuelPreference,
       distanceKm: Number(distanceKm),
 
       totalDriveMinutes: safeTotalDriveMinutes,
@@ -1483,6 +1518,7 @@ export default function RiderBookingScreen() {
     setReturnTime("");
     setDirection("ONE_WAY");
     setCarType("CAR_5");
+    setFuelPreference("ANY");
     setNote("");
 
     resetRouteState();
@@ -1569,6 +1605,7 @@ export default function RiderBookingScreen() {
     try {
       const payload = {
         carType,
+        fuelPreference,
         direction,
         pickupTime: toIsoFromDatetimeLocal(pickupTime),
         returnTime:
@@ -1702,8 +1739,8 @@ export default function RiderBookingScreen() {
         Alert.alert(
           "Đặt chuyến thành công ✅",
           tripId
-            ? `Mã chuyến: ${shortTripId(tripId)}`
-            : "GoViet247 đã ghi nhận chuyến của bạn.",
+            ? `Mã chuyến: ${shortTripId(tripId)}\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`
+            : `GoViet247 đã ghi nhận chuyến của bạn.\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`,
         );
 
         setTimeout(() => {
@@ -1716,8 +1753,8 @@ export default function RiderBookingScreen() {
       Alert.alert(
         "Đặt chuyến thành công ✅",
         tripId
-          ? `Mã chuyến: ${shortTripId(tripId)}`
-          : "GoViet247 đã ghi nhận chuyến của bạn.",
+          ? `Mã chuyến: ${shortTripId(tripId)}\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`
+          : `GoViet247 đã ghi nhận chuyến của bạn.\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`,
         [
           {
             text: "OK",
@@ -1770,7 +1807,7 @@ export default function RiderBookingScreen() {
                   setPickupPlace(null);
                   setShowPickupOptions(true);
                 }}
-                placeholder="Ví dụ: 12 Nguyễn Huệ, Phường Sài Gòn"
+                placeholder="Nhập địa chỉ đón chính xác"
                 placeholderTextColor="#9CA3AF"
                 style={[styles.input, { paddingRight: 40 }]}
               />
@@ -1866,7 +1903,7 @@ export default function RiderBookingScreen() {
                         suppressStopSearchMapRef.current[index] = false;
                         handleChangeStop(index, value);
                       }}
-                      placeholder={`Điểm đến ${index + 1}`}
+                      placeholder="Nhập địa chỉ đến chính xác"
                       placeholderTextColor="#9CA3AF"
                       style={[styles.input, { paddingRight: 40 }]}
                     />
@@ -1977,12 +2014,10 @@ export default function RiderBookingScreen() {
             ))}
 
             <Text style={styles.helperText}>
-              Vui lòng chọn địa chỉ từ danh sách gợi ý để hệ thống tính giá
-              chính xác.
+              Chọn địa chỉ từ danh sách gợi ý để hệ thống tính giá chính xác.
             </Text>
             <Text style={styles.helperText}>
-              Bạn có thể nhập thêm số nhà, tên khách sạn, nhà hàng hoặc địa điểm
-              cụ thể để dễ tìm đúng vị trí hơn.
+              Có thể nhập số nhà, tên đường, tòa nhà hoặc tên địa điểm.
             </Text>
 
             <View style={styles.divider} />
@@ -2139,6 +2174,38 @@ export default function RiderBookingScreen() {
                 );
               })}
             </View>
+
+            <Text style={[styles.sectionTitle, { marginTop: 18 }]}>Loại nhiên liệu</Text>
+
+            <View style={styles.carTypeList}>
+              {FUEL_PREFERENCE_OPTIONS.map((item) => {
+                const active = item.value === fuelPreference;
+
+                return (
+                  <Pressable
+                    key={item.value}
+                    style={[
+                      styles.carTypeButton,
+                      active ? styles.carTypeButtonActive : null,
+                    ]}
+                    onPress={() => setFuelPreference(item.value)}
+                  >
+                    <Text
+                      style={[
+                        styles.carTypeText,
+                        active ? styles.carTypeTextActive : null,
+                      ]}
+                    >
+                      {item.label}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            <Text style={styles.helperText}>
+              Chọn “Không yêu cầu” để có nhiều tài xế phù hợp hơn.
+            </Text>
 
             <View style={styles.divider} />
 
@@ -2337,6 +2404,12 @@ export default function RiderBookingScreen() {
                 {formatVND(quote.totalPrice)}
               </Text>
 
+              {Number(quote.raw?.fuelSurchargeAmount || 0) > 0 ? (
+                <Text style={styles.helperText}>
+                  Đã gồm phụ thu xe xăng {quote.raw?.fuelSurchargePercent}%: {formatVND(quote.raw?.fuelSurchargeAmount)}
+                </Text>
+              ) : null}
+
               <View style={styles.quoteBenefits}>
                 <Text style={styles.quoteBenefitText}>
                   ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và
@@ -2348,6 +2421,15 @@ export default function RiderBookingScreen() {
                   🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến
                   đi
                 </Text>
+
+                <Pressable
+                  onPress={() => void Linking.openURL(`tel:${supportPhone}`)}
+                >
+                  <Text style={styles.quoteBenefitText}>
+                    🧾 Cần xuất hóa đơn VAT? Vui lòng liên hệ hỗ trợ qua số{" "}
+                    <Text style={styles.supportPhoneText}>{supportPhone}</Text>.
+                  </Text>
+                </Pressable>
 
                 <Text style={styles.quoteBenefitHint}>
                   💡 Đi càng xa, giá mỗi km càng rẻ
@@ -2759,6 +2841,11 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: "#4B5563",
     fontWeight: "700",
+  },
+  supportPhoneText: {
+    color: "#EA580C",
+    fontWeight: "900",
+    textDecorationLine: "underline",
   },
   quoteBenefitHint: {
     fontSize: 14,

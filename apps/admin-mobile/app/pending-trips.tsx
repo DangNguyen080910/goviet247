@@ -101,6 +101,18 @@ function formatCarType(carType?: string | null) {
   return carType || "-";
 }
 
+function formatFuelPreference(value?: string | null) {
+  switch (String(value || "ANY").toUpperCase()) {
+    case "ELECTRIC":
+      return "Xe điện";
+    case "GASOLINE":
+      return "Xe xăng";
+    case "ANY":
+    default:
+      return "Không yêu cầu";
+  }
+}
+
 function formatDistanceKm(distanceKm?: number | null) {
   const value = Number(distanceKm || 0);
 
@@ -490,15 +502,15 @@ export default function PendingTripsScreen() {
       const completedTripId = selectedTripId;
       setItems((current) => current.filter((item) => item.id !== completedTripId));
       closeDetailModal();
-      Alert.alert("Thành công", "Đã duyệt chuyến.");
-      void loadData(false);
+      router.replace("/home");
+      Alert.alert("Thành công", "Đã duyệt chuyến và gửi tới tài xế.");
     } catch (error: any) {
       console.error("verify trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể duyệt chuyến.");
     } finally {
       setActionLoading("");
     }
-  }, [closeDetailModal, loadData, selectedTripId]);
+  }, [closeDetailModal, selectedTripId]);
 
   const handleCancelTrip = useCallback(async () => {
     if (!selectedTripId) return;
@@ -639,6 +651,10 @@ export default function PendingTripsScreen() {
             </Text>
 
             <Text style={styles.operationalLine}>
+              ⛽ {formatFuelPreference(item.fuelPreference)}
+            </Text>
+
+            <Text style={styles.operationalLine}>
               🚘 {formatMinutes(item.totalDriveMinutes)}
             </Text>
 
@@ -695,7 +711,10 @@ export default function PendingTripsScreen() {
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
       <View style={styles.content}>
-        <Pressable style={styles.backButton} onPress={() => router.back()}>
+        <Pressable
+          style={styles.backButton}
+          onPress={() => router.replace("/home")}
+        >
           <Text style={styles.backButtonText}>← Quay lại</Text>
         </Pressable>
 
@@ -866,6 +885,11 @@ export default function PendingTripsScreen() {
                   <DetailRow
                     label="Loại xe"
                     value={formatCarType(detail.carType)}
+                  />
+                  <DetailRow
+                    label="Loại nhiên liệu"
+                    value={formatFuelPreference(detail.fuelPreference)}
+                    highlight
                   />
 
                   <DetailRow

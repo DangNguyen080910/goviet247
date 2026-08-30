@@ -2683,6 +2683,7 @@ export function makeAdminController(prisma) {
             tripId: t.id,
             id: t.id,
             carType: t.carType,
+            fuelPreference: t.fuelPreference,
 
             distanceKm: Number(t.distanceKm || 0),
 
@@ -4508,6 +4509,8 @@ export function makeAdminController(prisma) {
           riderPhone: t.riderPhone,
           pickupAddress: t.pickupAddress,
           dropoffAddress: t.dropoffAddress,
+          carType: t.carType,
+          fuelPreference: t.fuelPreference,
           stops: normalizeStops(t.stops),
           pickupTime: t.pickupTime,
           totalPrice: t.totalPrice,
@@ -4544,6 +4547,8 @@ export function makeAdminController(prisma) {
           riderPhone: t.riderPhone,
           pickupAddress: t.pickupAddress,
           dropoffAddress: t.dropoffAddress,
+          carType: t.carType,
+          fuelPreference: t.fuelPreference,
           stops: normalizeStops(t.stops),
           pickupTime: t.pickupTime,
           totalPrice: t.totalPrice,

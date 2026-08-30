@@ -67,6 +67,12 @@ enum CarType {
   CAR_16
 }
 
+enum FuelPreference {
+  ANY
+  ELECTRIC
+  GASOLINE
+}
+
 enum DriverKycStatus {
   PENDING
   VERIFIED
@@ -292,9 +298,10 @@ model Trip {
 
   basePricePerKm  Int
   carType         CarType
+  fuelPreference  FuelPreference @default(ANY)
   direction       TripDirection
-  directionFactor Float         @default(1)
-  holidayFactor   Float         @default(1)
+  directionFactor Float          @default(1)
+  holidayFactor   Float          @default(1)
   note            String?
 
   pendingTripAlertAt    DateTime? @db.Timestamptz(6)
@@ -390,11 +397,12 @@ model PricingConfig {
   id      Int     @id @default(autoincrement())
   carType CarType @unique
 
-  baseFare     Int
-  pricePerKm   Int
-  pricePerHour Int
-  minFare      Int
-  overnightFee Int
+  baseFare                 Int
+  pricePerKm               Int
+  pricePerHour             Int
+  minFare                  Int
+  overnightFee             Int
+  gasolineSurchargePercent Decimal @default(0) @db.Decimal(5, 2)
 
   kmTiers Json?
 
@@ -413,7 +421,7 @@ model TripConfig {
   minDistanceKm               Int      @default(10)
   maxDistanceKm               Int      @default(2000)
   quoteExpireSeconds          Int      @default(120)
-  riderBookingNotePlaceholder String   @default("Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào")
+  riderBookingNotePlaceholder String   @default("Ví dụ: Yêu cầu xe đời 2023+, xe biển trắng, có nhiều hành lý, có thú cưng, có em bé hoặc cần hỗ trợ đặc biệt.")
   createdAt                   DateTime @default(now()) @db.Timestamptz(6)
   updatedAt                   DateTime @updatedAt @db.Timestamptz(6)
 }

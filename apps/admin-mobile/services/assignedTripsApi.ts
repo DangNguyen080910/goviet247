@@ -13,6 +13,7 @@ export type AssignedTripItem = {
   status: AssignedTripsTabStatus | string;
 
   carType?: string | null;
+  fuelPreference?: string | null;
   distanceKm?: number | null;
   totalDriveMinutes?: number | null;
   estimatedDurationMinutes?: number | null;
@@ -42,6 +43,7 @@ export type AssignedTripDetail = {
   status: string | null;
 
   carType?: string | null;
+  fuelPreference?: string | null;
   distanceKm?: number | null;
   totalDriveMinutes?: number | null;
   estimatedDurationMinutes?: number | null;
@@ -115,6 +117,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
     status?: unknown;
 
     carType?: unknown;
+    fuelPreference?: unknown;
     distanceKm?: unknown;
     totalDriveMinutes?: unknown;
     estimatedDurationMinutes?: unknown;
@@ -151,6 +154,8 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
     id: typeof item?.id === "string" ? item.id : "",
     status: typeof item?.status === "string" ? item.status : "",
     carType: typeof item?.carType === "string" ? item.carType : null,
+    fuelPreference:
+      typeof item?.fuelPreference === "string" ? item.fuelPreference : "ANY",
 
     distanceKm: item?.distanceKm == null ? null : toNumber(item.distanceKm, 0),
 
@@ -207,6 +212,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
     status?: unknown;
 
     carType?: unknown;
+    fuelPreference?: unknown;
     distanceKm?: unknown;
     totalDriveMinutes?: unknown;
     estimatedDurationMinutes?: unknown;
@@ -264,6 +270,8 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
     id: typeof item?.id === "string" ? item.id : "",
     status: typeof item?.status === "string" ? item.status : null,
     carType: typeof item?.carType === "string" ? item.carType : null,
+    fuelPreference:
+      typeof item?.fuelPreference === "string" ? item.fuelPreference : "ANY",
 
     distanceKm: item?.distanceKm == null ? null : toNumber(item.distanceKm, 0),
 

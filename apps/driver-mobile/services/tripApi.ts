@@ -4,6 +4,7 @@ import { getDriverToken } from "./storage";
 
 export type DriverTripDirection = "ONE_WAY" | "ROUND_TRIP";
 export type DriverCarType = "CAR_5" | "CAR_7" | "CAR_16";
+export type DriverFuelPreference = "ANY" | "ELECTRIC" | "GASOLINE";
 export type DriverTripStatus =
   | "PENDING"
   | "ACCEPTED"
@@ -46,6 +47,7 @@ export type AvailableTripItem = {
   returnTime?: string | null;
   totalPrice: number;
   carType: DriverCarType;
+  fuelPreference: DriverFuelPreference;
   direction: DriverTripDirection;
   note?: string | null;
   riderName: string;
@@ -74,6 +76,7 @@ export type MyTripItem = {
   returnTime?: string | null;
   totalPrice: number;
   carType: DriverCarType;
+  fuelPreference: DriverFuelPreference;
   direction: DriverTripDirection;
   note?: string | null;
   riderName: string;

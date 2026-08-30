@@ -42,6 +42,16 @@ function formatGia(v) {
   return num.toLocaleString("vi-VN");
 }
 
+function formatFuelPreference(value) {
+  const map = {
+    ANY: "Không yêu cầu",
+    ELECTRIC: "Xe điện",
+    GASOLINE: "Xe xăng",
+  };
+
+  return map[value] || value || "Không yêu cầu";
+}
+
 /**
  * Lấy stops đúng thứ tự order
  */
@@ -246,6 +256,7 @@ export default function AdminTrips() {
               <TableCell sx={{ fontWeight: 700 }}>Giờ đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ về (Khứ hồi)</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giá</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Loại</TableCell>
 
               {tab === 1 && (
@@ -265,7 +276,7 @@ export default function AdminTrips() {
             {rows.length === 0 ? (
               <TableRow>
                 <TableCell
-                  colSpan={tab === 0 ? 8 : 10}
+                  colSpan={tab === 0 ? 11 : 13}
                   sx={{ py: 4, color: "text.secondary" }}
                 >
                   {searchText.trim()
@@ -348,6 +359,10 @@ export default function AdminTrips() {
                     </TableCell>
 
                     <TableCell>{formatGia(t.totalPrice)}</TableCell>
+
+                    <TableCell sx={{ fontWeight: 700 }}>
+                      {formatFuelPreference(t.fuelPreference)}
+                    </TableCell>
 
                     <TableCell>
                       {isDriverCancelled ? (

@@ -15,7 +15,7 @@ const DEFAULT_TRIP_CONFIG = {
   maxDistanceKm: 2000,
   quoteExpireSeconds: 120,
   riderBookingNotePlaceholder:
-    "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
+    "Ví dụ: Yêu cầu xe đời 2023+, xe biển trắng, có nhiều hành lý, có thú cưng, có em bé hoặc cần hỗ trợ đặc biệt.",
 };
 
 const DEFAULT_SYSTEM_CONFIG = {
@@ -143,8 +143,8 @@ export async function getPublicTripConfig(req, res) {
             tripConfig.riderBookingNotePlaceholder,
         },
         systemConfig: {
-          supportPhone: systemConfig.supportPhone,
-          supportEmail: systemConfig.supportEmail,
+          supportPhone: systemConfig.supportPhoneRider,
+          supportEmail: systemConfig.supportEmailRider,
           timezone: systemConfig.timezone,
         },
         carTypes,
@@ -171,6 +171,7 @@ export async function quoteTrip(req, res) {
       carType, // "CAR_5" | "CAR_7" | "CAR_16"
       direction, // "ONE_WAY" | "ROUND_TRIP"
       distanceKm, // number
+      fuelPreference = "ANY",
     } = req.body;
 
     if (
@@ -206,6 +207,7 @@ export async function quoteTrip(req, res) {
       pickupTime: pickupDate,
       returnTime: returnDate,
       driveMinutes: driveMinutes == null ? undefined : Number(driveMinutes),
+      fuelPreference,
     });
 
     return res.json({
@@ -240,6 +242,7 @@ export async function requestTripOtp(req, res) {
       driveMinutes, // optional/required tùy trường hợp
       carType,
       direction,
+      fuelPreference = "ANY",
       distanceKm,
       note,
     } = req.body;
@@ -279,6 +282,7 @@ export async function requestTripOtp(req, res) {
       pickupTime: pickupDate,
       returnTime: returnDate,
       driveMinutes: driveMinutes == null ? undefined : Number(driveMinutes),
+      fuelPreference,
     });
 
     // Payload lưu tạm trong OTP session (không tạo Trip ngay)
@@ -291,6 +295,7 @@ export async function requestTripOtp(req, res) {
       returnTime: returnTime || null,
       driveMinutes: driveMinutes == null ? null : Number(driveMinutes),
       carType,
+      fuelPreference,
       direction,
       distanceKm: Number(distanceKm),
       note: note || "",
@@ -359,6 +364,7 @@ export async function confirmTrip(req, res) {
       dropoffAddress,
       pickupTime,
       carType,
+      fuelPreference = "ANY",
       direction,
       distanceKm,
       note,
@@ -384,6 +390,7 @@ export async function confirmTrip(req, res) {
         dropoffAddress,
         pickupTime: new Date(pickupTime),
         carType,
+        fuelPreference,
         direction,
         distanceKm: Number(distanceKm),
         note: note || "",

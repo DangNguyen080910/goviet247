@@ -212,6 +212,18 @@ export default function DashboardScreen() {
     }
   }, []);
 
+  const getFuelPreferenceLabel = useCallback((fuelPreference?: string) => {
+    switch (fuelPreference) {
+      case "ELECTRIC":
+        return "Xe điện";
+      case "GASOLINE":
+        return "Xe xăng";
+      case "ANY":
+      default:
+        return "Không yêu cầu";
+    }
+  }, []);
+
   const getTripTitle = useCallback(
     (trip: AvailableTripItem | MyTripItem) => {
       return `Bao chuyến ${getCarTypeLabel(trip.carType)} (${getDirectionLabel(
@@ -947,11 +959,31 @@ export default function DashboardScreen() {
   );
 
   const handleAcceptTrip = useCallback(
-    async (tripId: string) => {
+    async (tripId: string, fuelConfirmed = false) => {
       const trip = availableTrips.find((t) => t.id === tripId);
       const remainingSeconds = trip ? getAcceptLockRemainingSeconds(trip) : 0;
 
       if (remainingSeconds > 0) {
+        return;
+      }
+
+      if (
+        trip &&
+        trip.fuelPreference !== "ANY" &&
+        !fuelConfirmed
+      ) {
+        const fuelLabel = getFuelPreferenceLabel(trip.fuelPreference);
+        Alert.alert(
+          "Xác nhận loại nhiên liệu",
+          `Khách yêu cầu ${fuelLabel.toLowerCase()}. Bạn xác nhận xe của mình phù hợp?`,
+          [
+            { text: "Quay lại", style: "cancel" },
+            {
+              text: "Xác nhận và nhận chuyến",
+              onPress: () => void handleAcceptTrip(tripId, true),
+            },
+          ],
+        );
         return;
       }
 
@@ -975,6 +1007,7 @@ export default function DashboardScreen() {
     [
       availableTrips,
       getAcceptLockRemainingSeconds,
+      getFuelPreferenceLabel,
       loadAvailableTrips,
       loadMyTrips,
     ],
@@ -1187,6 +1220,12 @@ export default function DashboardScreen() {
 
           <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
 
+          <View style={styles.fuelBadge}>
+            <Text style={styles.fuelBadgeText}>
+              Nhiên liệu: {getFuelPreferenceLabel(trip.fuelPreference)}
+            </Text>
+          </View>
+
           <View style={styles.priceRow}>
             <View style={styles.priceBlock}>
               <Text style={styles.priceLabel}>Giá chuyến</Text>
@@ -1359,6 +1398,12 @@ export default function DashboardScreen() {
           </View>
 
           <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
+
+          <View style={styles.fuelBadge}>
+            <Text style={styles.fuelBadgeText}>
+              Nhiên liệu: {getFuelPreferenceLabel(trip.fuelPreference)}
+            </Text>
+          </View>
 
           {renderStatusNotice(trip)}
 
@@ -2170,6 +2215,22 @@ const styles = StyleSheet.create({
     color: "#111827",
     marginBottom: 14,
     lineHeight: 26,
+  },
+  fuelBadge: {
+    alignSelf: "flex-start",
+    backgroundColor: "#FFF7ED",
+    borderColor: "#F97316",
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    marginTop: -6,
+    marginBottom: 14,
+  },
+  fuelBadgeText: {
+    color: "#C2410C",
+    fontSize: 13,
+    fontWeight: "800",
   },
   noticeBox: {
     borderRadius: 12,

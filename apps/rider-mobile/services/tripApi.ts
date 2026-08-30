@@ -10,6 +10,7 @@ type CreateTripPayload = {
   returnTime: string | null;
   direction: "ONE_WAY" | "ROUND_TRIP";
   carType: string;
+  fuelPreference: "ANY" | "ELECTRIC" | "GASOLINE";
   distanceKm: number;
   fareEstimate: number;
   riderName: string;
@@ -95,6 +96,7 @@ type RiderTripItem = {
   status: string;
   direction?: "ONE_WAY" | "ROUND_TRIP" | string | null;
   carType?: string | null;
+  fuelPreference?: "ANY" | "ELECTRIC" | "GASOLINE" | string | null;
   riderName?: string | null;
   riderPhone?: string | null;
   note?: string | null;

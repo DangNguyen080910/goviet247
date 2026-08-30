@@ -90,6 +90,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       returnTime: returnTimeRaw,
       direction: directionRaw,
       carType: carTypeRaw,
+      fuelPreference: fuelPreferenceRaw,
       riderName,
       riderPhone,
       stops: stopsRaw,
@@ -141,6 +142,16 @@ router.post("/", optionalVerifyToken, async (req, res) => {
 
     const direction = directionRaw || "ONE_WAY";
     const carType = carTypeRaw || "CAR_5";
+    const fuelPreference = fuelPreferenceRaw || "ANY";
+    const allowedFuelPreferences = ["ANY", "ELECTRIC", "GASOLINE"];
+
+    if (!allowedFuelPreferences.includes(fuelPreference)) {
+      return res.status(400).json({
+        success: false,
+        error: "VALIDATION_ERROR",
+        message: "Loại nhiên liệu không hợp lệ.",
+      });
+    }
 
     function haversineKm(aLat, aLng, bLat, bLng) {
       const R = 6371;
@@ -316,6 +327,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       returnTime: returnTimeRaw ? returnTime : undefined,
       driveMinutes,
       outboundDriveMinutes,
+      fuelPreference,
     });
 
     const totalPrice = Number(pricing.totalPrice);
@@ -347,6 +359,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         returnTime: returnTimeRaw ? returnTime : null,
         direction,
         carType,
+        fuelPreference,
         basePricePerKm,
         holidayFactor,
         directionFactor,
@@ -632,6 +645,7 @@ router.patch(
           distanceKm: updated.distanceKm,
           totalPrice: updated.totalPrice,
           carType: updated.carType,
+          fuelPreference: updated.fuelPreference,
           direction: updated.direction,
           pickupTime: updated.pickupTime,
           status: updated.status,

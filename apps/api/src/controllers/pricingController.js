@@ -24,7 +24,16 @@ export async function quote(req, res) {
       distanceKm,
       driveMinutes,
       outboundDriveMinutes,
+      fuelPreference = "ANY",
     } = req.body || {};
+
+    const allowedFuelPreferences = ["ANY", "ELECTRIC", "GASOLINE"];
+    if (!allowedFuelPreferences.includes(fuelPreference)) {
+      return res.status(400).json({
+        success: false,
+        message: "Loại nhiên liệu không hợp lệ.",
+      });
+    }
 
     if (!carType) {
       return res
@@ -63,6 +72,7 @@ export async function quote(req, res) {
       distanceKm,
       driveMinutes,
       outboundDriveMinutes,
+      fuelPreference,
     });
 
     if (!result.ok) {
@@ -138,6 +148,7 @@ export async function updatePricingConfig(req, res) {
       "overnightFee",
       "overnightTriggerKm",
       "overnightTriggerHours",
+      "gasolineSurchargePercent",
     ];
 
     for (const field of numberFields) {
@@ -149,7 +160,14 @@ export async function updatePricingConfig(req, res) {
             message: `${field} không hợp lệ.`,
           });
         }
-        updateData[field] = Math.round(v);
+        if (field === "gasolineSurchargePercent" && v > 100) {
+          return res.status(400).json({
+            success: false,
+            message: "Phụ thu xe xăng không được vượt quá 100%.",
+          });
+        }
+        updateData[field] =
+          field === "gasolineSurchargePercent" ? v : Math.round(v);
       }
     }
 

@@ -132,6 +132,7 @@ export async function quotePrice(input) {
     distanceKm,
     driveMinutes,
     outboundDriveMinutes,
+    fuelPreference = "ANY",
   } = input;
 
   const config = await prisma.pricingConfig.findFirst({
@@ -160,6 +161,9 @@ export async function quotePrice(input) {
   const pricePerHour = Number(config.pricePerHour);
   const minFare = Number(config.minFare);
   const overnightFee = Number(config.overnightFee);
+  const gasolineSurchargePercent = Number(
+    config.gasolineSurchargePercent || 0,
+  );
   const triggerKm = Number(config.overnightTriggerKm);
   const triggerHours = Number(config.overnightTriggerHours);
 
@@ -254,6 +258,14 @@ export async function quotePrice(input) {
     minApplied = true;
   }
 
+  const priceBeforeFuelSurcharge = rawTotal;
+  const fuelSurchargePercent =
+    fuelPreference === "GASOLINE" ? gasolineSurchargePercent : 0;
+  const fuelSurchargeAmount = Math.round(
+    priceBeforeFuelSurcharge * (fuelSurchargePercent / 100),
+  );
+  rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount;
+
   const roundedTotal = roundTo10k(rawTotal);
 
   return {
@@ -261,6 +273,7 @@ export async function quotePrice(input) {
     message: "Tính giá thành công.",
     data: {
       carType,
+      fuelPreference,
       direction,
       distanceKm: km,
 
@@ -284,6 +297,10 @@ export async function quotePrice(input) {
       usedTierPricing,
       waitCost,
       overnightCost,
+      priceBeforeFuelSurcharge,
+      gasolineSurchargePercent,
+      fuelSurchargePercent,
+      fuelSurchargeAmount,
 
       minApplied,
       roundingApplied: roundedTotal !== rawTotal,
@@ -312,6 +329,7 @@ export async function calculateTripPrice({
   returnTime,
   driveMinutes,
   outboundDriveMinutes,
+  fuelPreference = "ANY",
 }) {
   const pickupIso =
     pickupTime instanceof Date ? pickupTime.toISOString() : pickupTime;
@@ -327,6 +345,7 @@ export async function calculateTripPrice({
     distanceKm,
     driveMinutes,
     outboundDriveMinutes,
+    fuelPreference,
   });
 
   if (!result.ok) {

@@ -12,6 +12,7 @@ export type PendingTripItem = {
   dropoffAddress: string;
 
   carType?: string | null;
+  fuelPreference?: string | null;
 
   direction?: string | null;
   returnTime?: string | null;
@@ -49,6 +50,7 @@ function mapTripItem(raw: any): PendingTripItem {
     pickupAddress: String(raw?.pickupAddress || ""),
     dropoffAddress: String(raw?.dropoffAddress || ""),
     carType: raw?.carType || null,
+    fuelPreference: raw?.fuelPreference || "ANY",
     direction: raw?.direction || raw?.tripType || null,
     returnTime: raw?.returnTime || null,
 
@@ -111,6 +113,7 @@ export type PendingTripDetail = {
   dropoffAddress: string;
 
   carType?: string | null;
+  fuelPreference?: string | null;
 
   direction?: string | null;
 
@@ -198,6 +201,7 @@ function mapTripDetail(raw: any): PendingTripDetail {
     pickupAddress: String(raw?.pickupAddress || ""),
     dropoffAddress: String(raw?.dropoffAddress || ""),
     carType: raw?.carType || null,
+    fuelPreference: raw?.fuelPreference || "ANY",
     direction: raw?.direction || raw?.tripType || null,
 
     distanceKm:

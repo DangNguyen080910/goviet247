@@ -282,6 +282,7 @@ function normalizePricingRows(rows) {
       pricePerHour: toFormValue(row.pricePerHour),
       minFare: toFormValue(row.minFare),
       overnightFee: toFormValue(row.overnightFee),
+      gasolineSurchargePercent: toFormValue(row.gasolineSurchargePercent),
       overnightTriggerKm: toFormValue(row.overnightTriggerKm),
       overnightTriggerHours: toFormValue(row.overnightTriggerHours),
       kmTiers: normalizeKmTiersForForm(row.kmTiers),
@@ -300,6 +301,7 @@ function buildPayloadFromForm(item) {
     pricePerHour: Number(item.pricePerHour || 0),
     minFare: Number(item.minFare || 0),
     overnightFee: Number(item.overnightFee || 0),
+    gasolineSurchargePercent: Number(item.gasolineSurchargePercent || 0),
     overnightTriggerKm: Number(item.overnightTriggerKm || 0),
     overnightTriggerHours: Number(item.overnightTriggerHours || 0),
     kmTiers: buildKmTiersPayload(item.kmTiers),
@@ -513,6 +515,16 @@ function PricingCard({
           fullWidth
           type="number"
           inputProps={{ min: 0 }}
+        />
+
+        <TextField
+          label="Phụ thu xe xăng (%)"
+          value={item?.gasolineSurchargePercent || ""}
+          onChange={onFieldChange(carType, "gasolineSurchargePercent")}
+          fullWidth
+          type="number"
+          inputProps={{ min: 0, max: 100, step: 0.1 }}
+          helperText="Chỉ cộng khi khách chọn Xe xăng. Không yêu cầu và Xe điện dùng giá mặc định."
         />
 
         <TextField
@@ -1051,6 +1063,7 @@ export default function AdminConfig() {
       { key: "pricePerHour", label: "Giá chờ mỗi giờ" },
       { key: "minFare", label: "Giá tối thiểu" },
       { key: "overnightFee", label: "Phụ phí qua đêm" },
+      { key: "gasolineSurchargePercent", label: "Phụ thu xe xăng" },
       { key: "overnightTriggerKm", label: "Số km kích hoạt qua đêm" },
       { key: "overnightTriggerHours", label: "Số giờ kích hoạt qua đêm" },
     ];
@@ -1065,6 +1078,10 @@ export default function AdminConfig() {
       if (!Number.isFinite(num) || num < 0) {
         return `${field.label} không hợp lệ.`;
       }
+    }
+
+    if (Number(item?.gasolineSurchargePercent) > 100) {
+      return "Phụ thu xe xăng không được vượt quá 100%.";
     }
 
     const kmTiersError = validateKmTiers(item?.kmTiers || []);
@@ -1347,6 +1364,9 @@ export default function AdminConfig() {
           pricePerHour: toFormValue(updated.pricePerHour),
           minFare: toFormValue(updated.minFare),
           overnightFee: toFormValue(updated.overnightFee),
+          gasolineSurchargePercent: toFormValue(
+            updated.gasolineSurchargePercent,
+          ),
           overnightTriggerKm: toFormValue(updated.overnightTriggerKm),
           overnightTriggerHours: toFormValue(updated.overnightTriggerHours),
           kmTiers: normalizeKmTiersForForm(updated.kmTiers),

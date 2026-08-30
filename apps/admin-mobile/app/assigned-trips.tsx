@@ -91,6 +91,18 @@ function formatCarType(value?: string | null) {
   }
 }
 
+function formatFuelPreference(value?: string | null) {
+  switch (String(value || "ANY").toUpperCase()) {
+    case "ELECTRIC":
+      return "Xe điện";
+    case "GASOLINE":
+      return "Xe xăng";
+    case "ANY":
+    default:
+      return "Không yêu cầu";
+  }
+}
+
 function formatDistanceKm(value?: number | null) {
   if (value == null) return "--";
 
@@ -739,6 +751,13 @@ export default function AssignedTripsScreen() {
                   </View>
 
                   <View style={styles.tripMetaCard}>
+                    <Text style={styles.tripMetaLabel}>Loại nhiên liệu</Text>
+                    <Text style={styles.tripMetaValue}>
+                      {formatFuelPreference(item.fuelPreference)}
+                    </Text>
+                  </View>
+
+                  <View style={styles.tripMetaCard}>
                     <Text style={styles.tripMetaLabel}>Quãng đường</Text>
 
                     <Text style={styles.tripMetaValue}>
@@ -984,6 +1003,13 @@ export default function AssignedTripsScreen() {
 
                     <Text style={styles.tripMetaValue}>
                       {formatCarType(selectedTripDetail?.carType)}
+                    </Text>
+                  </View>
+
+                  <View style={styles.tripMetaCard}>
+                    <Text style={styles.tripMetaLabel}>Loại nhiên liệu</Text>
+                    <Text style={styles.tripMetaValue}>
+                      {formatFuelPreference(selectedTripDetail?.fuelPreference)}
                     </Text>
                   </View>
 

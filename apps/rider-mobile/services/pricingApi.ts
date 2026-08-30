@@ -8,6 +8,7 @@ type QuotePricePayload = {
   returnTime: string | null;
   distanceKm: number;
   driveMinutes: number;
+  fuelPreference: "ANY" | "ELECTRIC" | "GASOLINE";
 };
 
 type QuotePriceResponse = {

@@ -130,6 +130,18 @@ function formatCarType(carType?: string | null) {
   return carType || "-";
 }
 
+function formatFuelPreference(value?: string | null) {
+  switch (String(value || "ANY").toUpperCase()) {
+    case "ELECTRIC":
+      return "Xe điện";
+    case "GASOLINE":
+      return "Xe xăng";
+    case "ANY":
+    default:
+      return "Không yêu cầu";
+  }
+}
+
 function formatDistanceKm(distanceKm?: number | null) {
   const value = Number(distanceKm || 0);
 
@@ -470,6 +482,10 @@ export default function UnassignedTripsScreen() {
             </Text>
 
             <Text style={styles.operationalLine}>
+              ⛽ {formatFuelPreference(item.fuelPreference)}
+            </Text>
+
+            <Text style={styles.operationalLine}>
               🚘 {formatMinutes(item.totalDriveMinutes)}
             </Text>
 
@@ -773,6 +789,11 @@ export default function UnassignedTripsScreen() {
                   <DetailRow
                     label="Loại xe"
                     value={formatCarType(detail.carType)}
+                  />
+                  <DetailRow
+                    label="Loại nhiên liệu"
+                    value={formatFuelPreference(detail.fuelPreference)}
+                    highlight
                   />
 
                   <DetailRow

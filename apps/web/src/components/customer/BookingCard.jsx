@@ -74,7 +74,7 @@ const DEFAULT_PUBLIC_CONFIG = {
     maxDistanceKm: 2000,
     quoteExpireSeconds: 120,
     riderBookingNotePlaceholder:
-      "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
+      "Ví dụ: Yêu cầu xe đời 2023+, xe biển trắng, có nhiều hành lý, có thú cưng, có em bé hoặc cần hỗ trợ đặc biệt.",
   },
   systemConfig: {
     supportPhone: "0900000000",
@@ -87,6 +87,12 @@ const DEFAULT_PUBLIC_CONFIG = {
     { value: "CAR_16", label: "Xe 16 chỗ" },
   ],
 };
+
+const FUEL_PREFERENCE_OPTIONS = [
+  { value: "ANY", label: "Không yêu cầu" },
+  { value: "ELECTRIC", label: "Xe điện" },
+  { value: "GASOLINE", label: "Xe xăng" },
+];
 
 function formatVND(n) {
   const val = Number(n || 0);
@@ -283,6 +289,7 @@ export default function BookingCard() {
   const [returnTimeOnly, setReturnTimeOnly] = useState(null);
   const [direction, setDirection] = useState("ONE_WAY");
   const [carType, setCarType] = useState("CAR_5");
+  const [fuelPreference, setFuelPreference] = useState("ANY");
 
   const [riderName, setRiderName] = useState("");
   const [riderPhone, setRiderPhone] = useState("");
@@ -980,6 +987,7 @@ export default function BookingCard() {
     returnTimeOnly,
     direction,
     carType,
+    fuelPreference,
     distanceKm,
     driveMinutes,
     outboundDriveMinutes,
@@ -1291,6 +1299,7 @@ export default function BookingCard() {
     setReturnTimeOnly(null);
     setDirection("ONE_WAY");
     setCarType(carTypeOptions[0]?.value || "CAR_5");
+    setFuelPreference("ANY");
 
     // Reset về rỗng để effect auto fill nạp lại từ session nếu user đã login
     setRiderName("");
@@ -1432,6 +1441,7 @@ export default function BookingCard() {
     try {
       const payload = {
         carType,
+        fuelPreference,
         direction,
         pickupTime: combineDateTime(pickupDate, pickupTimeOnly),
         returnTime:
@@ -1581,6 +1591,7 @@ export default function BookingCard() {
           : null,
       direction,
       carType,
+      fuelPreference,
       distanceKm: Number(distanceKm),
 
       totalDriveMinutes: safeTotalDriveMinutes,
@@ -1943,7 +1954,7 @@ export default function BookingCard() {
                       fullWidth
                       size="small"
                       inputRef={pickupInputRef}
-                      placeholder="Ví dụ: 12 Nguyễn Huệ, Phường Sài Gòn, Thành phố Hồ Chí Minh"
+                      placeholder="Nhập địa chỉ đón chính xác"
                     />
                   )}
                 />
@@ -2044,11 +2055,7 @@ export default function BookingCard() {
                               label={`Điểm đến ${idx + 1}`}
                               fullWidth
                               size="small"
-                              placeholder={
-                                idx === 0
-                                  ? "Ví dụ: Khách Sạn Dalat Palace, Phường Xuân Hương-Đà Lạt, Tỉnh Lâm Đồng"
-                                  : "Ví dụ: Thung Lũng Tình Yêu, Đà Lạt, Lâm Đồng, Việt Nam"
-                              }
+                              placeholder="Nhập địa chỉ đến chính xác"
                               inputProps={{
                                 ...params.inputProps,
                                 autoComplete: "new-password",
@@ -2085,13 +2092,12 @@ export default function BookingCard() {
 
                 <Stack spacing={0.6}>
                   <Typography variant="body2" sx={{ opacity: 0.78 }}>
-                    Vui lòng chọn địa chỉ từ danh sách gợi ý để hệ thống tính
-                    giá chính xác.
+                    Chọn địa chỉ từ danh sách gợi ý để hệ thống tính giá chính
+                    xác.
                   </Typography>
 
                   <Typography variant="body2" sx={{ opacity: 0.68 }}>
-                    Bạn có thể nhập thêm số nhà, tên khách sạn, nhà hàng hoặc
-                    địa điểm cụ thể để dễ tìm đúng vị trí hơn.
+                    Có thể nhập số nhà, tên đường, tòa nhà hoặc tên địa điểm.
                   </Typography>
 
                   {showAddressSelectionWarning && (
@@ -2353,6 +2359,25 @@ export default function BookingCard() {
                     ))}
                   </Select>
                 </FormControl>
+
+                <FormControl fullWidth size="small">
+                  <InputLabel>Loại nhiên liệu</InputLabel>
+                  <Select
+                    label="Loại nhiên liệu"
+                    value={fuelPreference}
+                    onChange={(e) => setFuelPreference(e.target.value)}
+                  >
+                    {FUEL_PREFERENCE_OPTIONS.map((item) => (
+                      <MenuItem key={item.value} value={item.value}>
+                        {item.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <Typography variant="caption" sx={{ opacity: 0.7 }}>
+                  Chọn “Không yêu cầu” để có nhiều tài xế phù hợp hơn.
+                </Typography>
               </Stack>
 
               <Divider />
@@ -2554,6 +2579,12 @@ export default function BookingCard() {
                 {formatVND(quote.totalPrice)}
               </Typography>
 
+              {Number(quote.raw?.fuelSurchargeAmount || 0) > 0 && (
+                <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                  Đã gồm phụ thu xe xăng {quote.raw?.fuelSurchargePercent}%: {formatVND(quote.raw?.fuelSurchargeAmount)}
+                </Typography>
+              )}
+
               <Box sx={{ mt: 0.5, mb: 1.5 }}>
                 <Typography
                   variant="body2"
@@ -2570,6 +2601,21 @@ export default function BookingCard() {
                 >
                   🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến
                   đi
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{ opacity: 0.85, fontWeight: 700 }}
+                >
+                  🧾 Cần xuất hóa đơn VAT? Vui lòng liên hệ hỗ trợ qua số{" "}
+                  <Box
+                    component="a"
+                    href={`tel:${publicConfig.systemConfig.supportPhone}`}
+                    sx={{ color: "primary.main", fontWeight: 900 }}
+                  >
+                    {publicConfig.systemConfig.supportPhone}
+                  </Box>
+                  .
                 </Typography>
 
                 <Typography
@@ -2828,6 +2874,18 @@ export default function BookingCard() {
 
             <Typography sx={{ opacity: 0.85 }}>
               Cảm ơn bạn đã sử dụng dịch vụ GoViet247.
+            </Typography>
+
+            <Typography sx={{ opacity: 0.85, fontWeight: 700 }}>
+              🧾 Nếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ:{" "}
+              <Box
+                component="a"
+                href={`tel:${publicConfig.systemConfig.supportPhone}`}
+                sx={{ color: "primary.main", fontWeight: 900 }}
+              >
+                {publicConfig.systemConfig.supportPhone}
+              </Box>
+              .
             </Typography>
           </Stack>
         </DialogContent>

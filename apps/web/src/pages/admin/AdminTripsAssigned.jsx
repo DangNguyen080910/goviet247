@@ -58,6 +58,16 @@ function statusChip(status) {
   return <Chip label="COMPLETED" size="small" />;
 }
 
+function formatFuelPreference(value) {
+  const map = {
+    ANY: "Không yêu cầu",
+    ELECTRIC: "Xe điện",
+    GASOLINE: "Xe xăng",
+  };
+
+  return map[value] || value || "Không yêu cầu";
+}
+
 function pickPhone(user) {
   const p = user?.phones?.[0]?.e164;
   return p || "";
@@ -359,6 +369,7 @@ export default function AdminTripsAssigned() {
                   <TableCell sx={{ fontWeight: 700 }}>Mã chuyến</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Khách hàng</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Tài xế</TableCell>
+                  <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>
                     Điểm đón → Điểm đến
                   </TableCell>
@@ -415,6 +426,10 @@ export default function AdminTripsAssigned() {
                         <Typography variant="body2" color="text.secondary">
                           {driverPhone || "-"}
                         </Typography>
+                      </TableCell>
+
+                      <TableCell sx={{ fontWeight: 700 }}>
+                        {formatFuelPreference(t.fuelPreference)}
                       </TableCell>
 
                       <TableCell>

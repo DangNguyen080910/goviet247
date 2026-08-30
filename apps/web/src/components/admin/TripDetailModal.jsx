@@ -102,6 +102,16 @@ function formatVehicleType(value) {
   return map[value] || value || "-";
 }
 
+function formatFuelPreference(value) {
+  const map = {
+    ANY: "Không yêu cầu",
+    ELECTRIC: "Xe điện",
+    GASOLINE: "Xe xăng",
+  };
+
+  return map[value] || value || "Không yêu cầu";
+}
+
 function getStops(detail) {
   const stops = Array.isArray(detail?.stops) ? detail.stops : [];
   const list = stops
@@ -726,6 +736,10 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                 }
               />
               <KV k="Loại xe" v={formatVehicleType(detail?.carType)} />
+              <KV
+                k="Loại nhiên liệu"
+                v={formatFuelPreference(detail?.fuelPreference)}
+              />
               <KV
                 k="Loại chuyến"
                 v={detail?.direction === "ROUND_TRIP" ? "Khứ hồi" : "Một chiều"}

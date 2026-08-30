@@ -11,7 +11,7 @@ const DEFAULT_TRIP_CONFIG = {
   maxDistanceKm: 2000,
   quoteExpireSeconds: 120,
   riderBookingNotePlaceholder:
-    "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
+    "Ví dụ: Yêu cầu xe đời 2023+, xe biển trắng, có nhiều hành lý, có thú cưng, có em bé hoặc cần hỗ trợ đặc biệt.",
 };
 
 // Việt: Lấy record config duy nhất, nếu chưa có thì tự tạo

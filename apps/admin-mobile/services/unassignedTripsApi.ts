@@ -10,6 +10,7 @@ export type UnassignedTripItem = {
   pickupAddress: string;
   dropoffAddress: string;
   carType?: string | null;
+  fuelPreference?: string | null;
 
   distanceKm?: number | null;
 
@@ -50,6 +51,7 @@ export type UnassignedTripDetail = {
   pickupAddress: string;
   dropoffAddress: string;
   carType?: string | null;
+  fuelPreference?: string | null;
 
   distanceKm?: number | null;
 
@@ -142,6 +144,7 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
     carType?: unknown;
+    fuelPreference?: unknown;
     distanceKm?: unknown;
     totalDriveMinutes?: unknown;
     estimatedDurationMinutes?: unknown;
@@ -173,6 +176,8 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     carType: typeof item?.carType === "string" ? item.carType : null,
+    fuelPreference:
+      typeof item?.fuelPreference === "string" ? item.fuelPreference : "ANY",
 
     distanceKm: toNumber(item?.distanceKm, 0),
 
@@ -236,6 +241,7 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
     carType?: unknown;
+    fuelPreference?: unknown;
     distanceKm?: unknown;
     totalDriveMinutes?: unknown;
     estimatedDurationMinutes?: unknown;
@@ -297,6 +303,8 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     carType: typeof item?.carType === "string" ? item.carType : null,
+    fuelPreference:
+      typeof item?.fuelPreference === "string" ? item.fuelPreference : "ANY",
 
     distanceKm: toNumber(item?.distanceKm, 0),
 
