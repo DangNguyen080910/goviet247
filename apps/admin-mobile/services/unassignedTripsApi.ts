@@ -400,3 +400,9 @@ export async function cancelUnassignedTrip(tripId: string, reason: string) {
     }),
   });
 }
+
+export async function returnUnassignedTripToReview(tripId: string) {
+  return adminRequest(`/api/admin/trips/${tripId}/return-to-review`, {
+    method: "POST",
+  });
+}

@@ -2,6 +2,133 @@
 import { prisma } from "../utils/db.js";
 import { sendAdminPushNotification } from "../services/notificationService.js";
 
+// POST /api/admin/trips/:id/return-to-review
+export async function adminChuyenVeChoDuyet(req, res) {
+  try {
+    const tripId = String(req.params.id || "").trim();
+    if (!tripId) {
+      return res.status(400).json({ success: false, message: "Thiếu mã chuyến" });
+    }
+
+    const actor = req.admin;
+    const result = await prisma.$transaction(async (tx) => {
+      const trip = await tx.trip.findUnique({
+        where: { id: tripId },
+        select: {
+          id: true,
+          status: true,
+          isVerified: true,
+          driverId: true,
+          acceptedAt: true,
+          cancelledAt: true,
+        },
+      });
+
+      if (!trip) {
+        const error = new Error("Không tìm thấy chuyến");
+        error.statusCode = 404;
+        throw error;
+      }
+
+      if (
+        trip.status !== "PENDING" ||
+        !trip.isVerified ||
+        trip.driverId ||
+        trip.acceptedAt ||
+        trip.cancelledAt
+      ) {
+        const error = new Error(
+          "Chỉ có thể chuyển chuyến đã duyệt và chưa có tài xế về Chờ duyệt.",
+        );
+        error.statusCode = 409;
+        throw error;
+      }
+
+      // updateMany giúp chặn trường hợp tài xế nhận chuyến đúng lúc Admin thao tác.
+      const changed = await tx.trip.updateMany({
+        where: {
+          id: tripId,
+          status: "PENDING",
+          isVerified: true,
+          driverId: null,
+          acceptedAt: null,
+          cancelledAt: null,
+        },
+        data: {
+          isVerified: false,
+          verifiedAt: null,
+          verifiedById: null,
+          verifiedNote: null,
+          driverAcceptOpenAt: null,
+        },
+      });
+
+      if (changed.count !== 1) {
+        const error = new Error(
+          "Chuyến vừa được tài xế nhận hoặc trạng thái đã thay đổi. Vui lòng tải lại danh sách.",
+        );
+        error.statusCode = 409;
+        throw error;
+      }
+
+      const updated = await tx.trip.findUnique({
+        where: { id: tripId },
+        select: {
+          id: true,
+          status: true,
+          isVerified: true,
+          driverId: true,
+          updatedAt: true,
+        },
+      });
+
+      const log = await tx.adminTripActionLog.create({
+        data: {
+          tripId,
+          fromStatus: "PENDING",
+          toStatus: "PENDING",
+          actorRole: actor?.role || "ADMIN",
+          actorId: actor?.id ?? null,
+          actorUsername: actor?.username || "admin",
+          note: "Admin chuyển chuyến chưa có tài xế về Chờ duyệt để thương lượng và điều chỉnh giá.",
+        },
+      });
+
+      return { updated, log };
+    });
+
+    const event = {
+      tripId: result.updated.id,
+      status: result.updated.status,
+      fromStatus: "PENDING",
+      toStatus: "PENDING",
+      isVerified: false,
+      driverId: null,
+      updatedAt: result.updated.updatedAt,
+      reason: "admin_return_trip_to_review",
+    };
+    const io = req.app?.get?.("io");
+    if (io) {
+      io.to("drivers").emit("trip:changed", event);
+      io.to("admins").emit("admin:trip_status_changed", event);
+      io.to("admins").emit("admin:dashboard_changed", event);
+    }
+
+    return res.json({
+      success: true,
+      message:
+        "Đã chuyển chuyến về Chờ duyệt và ngừng hiển thị chuyến cho tài xế.",
+      trip: result.updated,
+      actionLog: result.log,
+    });
+  } catch (error) {
+    return res.status(error.statusCode || 500).json({
+      success: false,
+      message: error?.message || "Không thể chuyển chuyến về Chờ duyệt",
+    });
+  }
+}
+
 // PATCH /api/admin/trips/:id/schedule
 export async function adminCapNhatThoiGianChuyen(req, res) {
   try {

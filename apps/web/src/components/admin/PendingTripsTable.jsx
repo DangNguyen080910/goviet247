@@ -254,6 +254,33 @@ export default function PendingTripsTable({
     }
   }
 
+  async function returnTripToReview(id) {
+    try {
+      const confirmed = window.confirm(
+        "Chuyển chuyến này về Chờ duyệt? Chuyến sẽ ngừng hiển thị cho tài xế. Sau đó Admin có thể cập nhật giá và duyệt lại.",
+      );
+      if (!confirmed) return;
+
+      const token = getAdminToken();
+      if (!token) throw new Error("Thiếu token admin.");
+
+      const res = await fetch(`/api/admin/trips/${id}/return-to-review`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.message || `HTTP ${res.status}`);
+
+      window.alert(data?.message || "Đã chuyển chuyến về Chờ duyệt.");
+      await taiDuLieu();
+    } catch (error) {
+      window.alert(error?.message || "Không thể chuyển chuyến về Chờ duyệt.");
+    }
+  }
+
   useEffect(() => {
     let conSong = true;
     (async () => {
@@ -461,6 +488,18 @@ export default function PendingTripsTable({
                             }}
                           >
                             Gửi lại
+                          </Button>
+
+                          <Button
+                            size="small"
+                            variant="outlined"
+                            color="warning"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              returnTripToReview(tripId);
+                            }}
+                          >
+                            Về Chờ duyệt
                           </Button>
 
                           <Button

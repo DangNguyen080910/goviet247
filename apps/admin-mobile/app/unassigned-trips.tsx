@@ -23,6 +23,7 @@ import {
   fetchUnassignedCancelledTrips,
   fetchUnassignedTripDetail,
   fetchUnassignedTrips,
+  returnUnassignedTripToReview,
   UnassignedTripDetail,
   UnassignedTripItem,
 } from "../services/unassignedTripsApi";
@@ -254,7 +255,9 @@ export default function UnassignedTripsScreen() {
   const [detailVisible, setDetailVisible] = useState(false);
   const [detailLoading, setDetailLoading] = useState(false);
   const [detail, setDetail] = useState<UnassignedTripDetail | null>(null);
-  const [actionLoading, setActionLoading] = useState<"" | "CANCEL">("");
+  const [actionLoading, setActionLoading] = useState<
+    "" | "CANCEL" | "RETURN_TO_REVIEW"
+  >("");
   const [cancelReason, setCancelReason] = useState("");
 
   const filteredItems = useMemo(() => {
@@ -359,6 +362,47 @@ export default function UnassignedTripsScreen() {
       setActionLoading("");
     }
   }, [cancelReason, closeDetail, loadData, selectedTripId]);
+
+  const handleReturnToReview = useCallback(() => {
+    if (!selectedTripId || actionLoading !== "") return;
+
+    Alert.alert(
+      "Chuyển về Chờ duyệt?",
+      "Chuyến sẽ ngừng hiển thị cho tài xế. Sau đó Admin có thể cập nhật giá và duyệt lại.",
+      [
+        { text: "Không", style: "cancel" },
+        {
+          text: "Chuyển về",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              setActionLoading("RETURN_TO_REVIEW");
+              await returnUnassignedTripToReview(selectedTripId);
+
+              const completedTripId = selectedTripId;
+              setItems((current) =>
+                current.filter((item) => item.id !== completedTripId),
+              );
+              closeDetail();
+              Alert.alert(
+                "Thành công",
+                "Đã chuyển chuyến về Chờ duyệt để cập nhật và duyệt lại.",
+              );
+              void loadData(false);
+            } catch (error: any) {
+              console.error("return unassigned trip to review error:", error);
+              Alert.alert(
+                "Lỗi",
+                error?.message || "Không thể chuyển chuyến về Chờ duyệt.",
+              );
+            } finally {
+              setActionLoading("");
+            }
+          },
+        },
+      ],
+    );
+  }, [actionLoading, closeDetail, loadData, selectedTripId]);
 
   const renderItem = useCallback(
     ({ item }: { item: UnassignedTripItem }) => {
@@ -877,6 +921,23 @@ export default function UnassignedTripsScreen() {
                   <View style={styles.actionCard}>
                     <Text style={styles.detailCardTitle}>Xử lý chuyến</Text>
 
+                    <Pressable
+                      style={[
+                        styles.returnToReviewButton,
+                        actionLoading !== "" && styles.buttonDisabled,
+                      ]}
+                      onPress={handleReturnToReview}
+                      disabled={actionLoading !== ""}
+                    >
+                      <Text style={styles.returnToReviewButtonText}>
+                        {actionLoading === "RETURN_TO_REVIEW"
+                          ? "Đang chuyển..."
+                          : "Chuyển về Chờ duyệt"}
+                      </Text>
+                    </Pressable>
+
+                    <Text style={styles.cancelSectionLabel}>Hoặc huỷ chuyến</Text>
+
                     <TextInput
                       value={cancelReason}
                       onChangeText={setCancelReason}
@@ -1379,6 +1440,26 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: "#0f172a",
     textAlignVertical: "top",
+  },
+  returnToReviewButton: {
+    minHeight: 50,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f59e0b",
+    paddingHorizontal: 12,
+  },
+  returnToReviewButtonText: {
+    fontSize: 15,
+    fontWeight: "800",
+    color: "#ffffff",
+    textAlign: "center",
+  },
+  cancelSectionLabel: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#991b1b",
+    marginTop: 2,
   },
   cancelButton: {
     height: 48,

@@ -6,6 +6,7 @@ import {
   adminHuyChuyen,
   adminDieuChinhThongTinChuyen,
   adminCapNhatThoiGianChuyen,
+  adminChuyenVeChoDuyet,
 } from "../controllers/adminTripController.js";
 import {
   requireAdmin,
@@ -109,6 +110,12 @@ router.patch(
 );
 
 router.post("/trips/:id/cancel", requireAdmin, adminHuyChuyen);
+
+router.post(
+  "/trips/:id/return-to-review",
+  requireAdmin,
+  adminChuyenVeChoDuyet,
+);
 
 // ================= DRIVERS =================
 
