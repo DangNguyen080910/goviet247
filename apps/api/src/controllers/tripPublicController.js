@@ -7,6 +7,7 @@ import {
 } from "../services/otpService.js";
 import { sendAdminPushNotification } from "../services/notificationService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
+import { getOtpProviderUnavailablePayload } from "../utils/otpProviderMessage.js";
 
 // Việt: Default config public cho customer page
 const DEFAULT_TRIP_CONFIG = {
@@ -322,9 +323,9 @@ export async function requestTripOtp(req, res) {
     const message = String(err?.message || "").trim();
 
     if (message === "GUI_OTP_THAT_BAI") {
-      return res.status(500).json({
+      return res.status(503).json({
         success: false,
-        message: "Không gửi được mã OTP. Vui lòng thử lại sau ít phút.",
+        ...getOtpProviderUnavailablePayload(),
       });
     }
 

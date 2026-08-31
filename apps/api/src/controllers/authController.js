@@ -2,6 +2,7 @@
 import { prisma } from "../utils/db.js";
 import { requestOtp, verifyOtp } from "../services/otpService.js";
 import { signToken } from "../utils/jwt.js";
+import { getOtpProviderUnavailablePayload } from "../utils/otpProviderMessage.js";
 
 function normalizeAppRole(input) {
   const value = String(input || "")
@@ -134,9 +135,9 @@ export async function requestOtpHandler(req, res) {
     const message = String(error?.message || "").trim();
 
     if (message === "GUI_OTP_THAT_BAI") {
-      return res.status(500).json({
+      return res.status(503).json({
         success: false,
-        message: "Không gửi được mã OTP. Vui lòng thử lại sau ít phút.",
+        ...getOtpProviderUnavailablePayload(),
       });
     }
 
