@@ -959,31 +959,11 @@ export default function DashboardScreen() {
   );
 
   const handleAcceptTrip = useCallback(
-    async (tripId: string, fuelConfirmed = false) => {
+    async (tripId: string) => {
       const trip = availableTrips.find((t) => t.id === tripId);
       const remainingSeconds = trip ? getAcceptLockRemainingSeconds(trip) : 0;
 
       if (remainingSeconds > 0) {
-        return;
-      }
-
-      if (
-        trip &&
-        trip.fuelPreference !== "ANY" &&
-        !fuelConfirmed
-      ) {
-        const fuelLabel = getFuelPreferenceLabel(trip.fuelPreference);
-        Alert.alert(
-          "Xác nhận loại nhiên liệu",
-          `Khách yêu cầu ${fuelLabel.toLowerCase()}. Bạn xác nhận xe của mình phù hợp?`,
-          [
-            { text: "Quay lại", style: "cancel" },
-            {
-              text: "Xác nhận và nhận chuyến",
-              onPress: () => void handleAcceptTrip(tripId, true),
-            },
-          ],
-        );
         return;
       }
 
@@ -1007,7 +987,6 @@ export default function DashboardScreen() {
     [
       availableTrips,
       getAcceptLockRemainingSeconds,
-      getFuelPreferenceLabel,
       loadAvailableTrips,
       loadMyTrips,
     ],
