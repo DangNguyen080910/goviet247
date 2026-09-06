@@ -2,7 +2,7 @@
   "expo": {
     "name": "GoViet247 Driver",
     "slug": "driver-mobile",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "icon": "./assets/images/GoViet247_driver_icon.png",
     "scheme": "drivermobile",
     "userInterfaceStyle": "automatic",
