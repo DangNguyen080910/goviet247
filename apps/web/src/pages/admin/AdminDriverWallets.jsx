@@ -47,6 +47,7 @@ import PaidIcon from "@mui/icons-material/Paid";
 import { getAdminUser } from "../../utils/adminAuth";
 import {
   fetchDrivers,
+  fetchDriverWalletSummary,
   fetchDriverWalletTransactions,
   topupDriverWallet,
   adjustAddDriverWallet,
@@ -402,6 +403,11 @@ export default function AdminDriverWallets() {
   const [loading, setLoading] = React.useState(true);
   const [submitting, setSubmitting] = React.useState(false);
   const [items, setItems] = React.useState([]);
+  const [walletSummary, setWalletSummary] = React.useState({
+    totalDrivers: 0,
+    verifiedDrivers: 0,
+    totalWalletBalance: 0,
+  });
 
   const [actionState, setActionState] = React.useState({
     open: false,
@@ -480,15 +486,19 @@ export default function AdminDriverWallets() {
     try {
       setLoading(true);
 
-      const data = await fetchDrivers({
-        q: filters.q,
-        status: filters.status,
-        page: 1,
-        pageSize: 100,
-        sort: "createdAt_desc",
-      });
+      const [data, summary] = await Promise.all([
+        fetchDrivers({
+          q: filters.q,
+          status: filters.status,
+          page: 1,
+          pageSize: 100,
+          sort: "createdAt_desc",
+        }),
+        fetchDriverWalletSummary(),
+      ]);
 
       setItems(data.items || []);
+      setWalletSummary(summary);
     } catch (err) {
       showSnackbar("error", err.message || "Không tải được danh sách tài xế.");
     } finally {
@@ -715,10 +725,7 @@ export default function AdminDriverWallets() {
     return <Navigate to="/admin" replace />;
   }
 
-  const totalBalance = items.reduce(
-    (sum, item) => sum + Number(item.balance || 0),
-    0,
-  );
+  const totalBalance = walletSummary.totalWalletBalance;
 
   const walletWithdrawBadgeCount =
     pendingWithdraws.length + approvedWithdraws.length;
@@ -1512,7 +1519,7 @@ export default function AdminDriverWallets() {
                       Tổng tài xế
                     </Typography>
                     <Typography variant="h4" sx={{ fontWeight: 800 }}>
-                      {items.length}
+                      {walletSummary.totalDrivers}
                     </Typography>
                   </Paper>
                 </Grid>
@@ -1536,10 +1543,7 @@ export default function AdminDriverWallets() {
                       Tài xế đã duyệt
                     </Typography>
                     <Typography variant="h4" sx={{ fontWeight: 800 }}>
-                      {
-                        items.filter((item) => item.status === "VERIFIED")
-                          .length
-                      }
+                      {walletSummary.verifiedDrivers}
                     </Typography>
                   </Paper>
                 </Grid>

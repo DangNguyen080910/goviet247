@@ -111,6 +111,12 @@ type DriverWalletListResponse = {
   meta: ListMeta;
 };
 
+export type DriverWalletSummary = {
+  totalDrivers: number;
+  verifiedDrivers: number;
+  totalWalletBalance: number;
+};
+
 type WalletTransactionsResponse = {
   items: DriverWalletTransactionItem[];
 };
@@ -337,6 +343,18 @@ export async function fetchDriverWallets(
         ? data.drivers.map(mapDriverWalletItem)
         : [],
     meta: data?.meta || null,
+  };
+}
+
+export async function fetchDriverWalletSummary(): Promise<DriverWalletSummary> {
+  const data = await adminRequest("/api/admin/drivers/wallet-summary", {
+    method: "GET",
+  });
+
+  return {
+    totalDrivers: toNumber(data?.summary?.totalDrivers),
+    verifiedDrivers: toNumber(data?.summary?.verifiedDrivers),
+    totalWalletBalance: toNumber(data?.summary?.totalWalletBalance),
   };
 }
 

@@ -53,6 +53,24 @@ export async function fetchDrivers(params = {}) {
   };
 }
 
+export async function fetchDriverWalletSummary() {
+  const res = await fetch(`${BASE_URL}/drivers/wallet-summary`, {
+    headers: getHeaders(),
+  });
+
+  const data = await safeJson(res);
+
+  if (!res.ok || data?.success === false) {
+    throw new Error(data?.message || "Không tải được thống kê ví tài xế.");
+  }
+
+  return {
+    totalDrivers: Number(data?.summary?.totalDrivers || 0),
+    verifiedDrivers: Number(data?.summary?.verifiedDrivers || 0),
+    totalWalletBalance: Number(data?.summary?.totalWalletBalance || 0),
+  };
+}
+
 export async function fetchDriverDetail(id) {
   const res = await fetch(`${BASE_URL}/drivers/${id}`, {
     headers: getHeaders(),

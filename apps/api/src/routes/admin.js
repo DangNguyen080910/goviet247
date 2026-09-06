@@ -120,6 +120,11 @@ router.post(
 // ================= DRIVERS =================
 
 router.get("/drivers", requireAdminOrStaff, ctrl.getDrivers);
+router.get(
+  "/drivers/wallet-summary",
+  requireAdmin,
+  ctrl.getDriverWalletSummary,
+);
 router.get("/drivers/:id", requireAdminOrStaff, ctrl.getDriverDetail);
 router.get("/drivers/:id/logs", requireAdminOrStaff, ctrl.getDriverLogs);
 router.get(

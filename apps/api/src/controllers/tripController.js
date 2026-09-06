@@ -5,7 +5,6 @@
 
 import { prisma } from "../utils/db.js";
 import { estimateFareFromCoordinates } from "../services/fareService.js";
-import { updateTripStatus } from "../services/tripStateService.js";
 import {
   sendSms,
   sendNewTripToDrivers,
@@ -2014,55 +2013,103 @@ export async function createWithdrawRequest(req, res) {
 export async function changeTripStatus(req, res) {
   try {
     const { tripId, newStatus } = req.body;
+    const driverUserId = req.user?.id || req.user?.uid || null;
+
     if (!tripId || !newStatus) {
       return res
         .status(400)
         .json({ message: "tripId & newStatus are required" });
     }
 
-    const currentTrip = await prisma.trip.findUnique({
-      where: { id: tripId },
-      select: {
-        id: true,
-        status: true,
-        driverId: true,
-      },
-    });
-
-    if (!currentTrip) {
-      return res.status(404).json({
+    if (!driverUserId) {
+      return res.status(401).json({
         success: false,
-        message: "Không tìm thấy chuyến.",
+        message: "Bạn cần đăng nhập lại để tiếp tục.",
       });
     }
 
-    const trip = await updateTripStatus(tripId, newStatus);
+    const allowedTransitions = {
+      ACCEPTED: "CONTACTED",
+      CONTACTED: "IN_PROGRESS",
+      IN_PROGRESS: "COMPLETED",
+    };
 
-    let riderNotification = null;
-
-    try {
-      riderNotification = await createRiderTripNotification(prisma, trip, {
-        reason: "driver_change_status",
-      });
-    } catch (notificationError) {
-      console.error(
-        "[changeTripStatus] create rider notification error:",
-        notificationError,
-      );
-    }
-
-    if (trip?.status === "PENDING" && !trip.driverId && !trip.cancelledAt) {
-      const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
-
-      await prisma.trip.update({
+    const result = await prisma.$transaction(async (tx) => {
+      const currentTrip = await tx.trip.findUnique({
         where: { id: tripId },
+      });
+
+      if (!currentTrip) {
+        const error = new Error("Không tìm thấy chuyến.");
+        error.statusCode = 404;
+        throw error;
+      }
+
+      if (!currentTrip.driverId || currentTrip.driverId !== driverUserId) {
+        const error = new Error(
+          "Bạn không phải tài xế đang thực hiện chuyến này.",
+        );
+        error.statusCode = 403;
+        throw error;
+      }
+
+      if (allowedTransitions[currentTrip.status] !== newStatus) {
+        const error = new Error(
+          `Không cho phép chuyển ${currentTrip.status} → ${newStatus}`,
+        );
+        error.statusCode = 400;
+        throw error;
+      }
+
+      const trip = await tx.trip.update({
+        where: {
+          id: tripId,
+          status: currentTrip.status,
+          driverId: driverUserId,
+        },
         data: {
-          driverAcceptOpenAt,
+          status: newStatus,
+          version: { increment: 1 },
         },
       });
 
-      trip.driverAcceptOpenAt = driverAcceptOpenAt;
-    }
+      const statusNotes = {
+        CONTACTED: "Tài xế xác nhận đã liên hệ khách.",
+        IN_PROGRESS:
+          "Tài xế xác nhận đã đón khách và đã gửi ảnh, định vị điểm đón cho Admin qua Zalo.",
+        COMPLETED:
+          "Tài xế xác nhận đã trả khách và đã gửi ảnh, định vị điểm trả cho Admin qua Zalo.",
+      };
+
+      await tx.adminTripActionLog.create({
+        data: {
+          tripId,
+          fromStatus: currentTrip.status,
+          toStatus: newStatus,
+          actorRole: "DRIVER",
+          actorId: null,
+          actorUsername: driverUserId,
+          note: statusNotes[newStatus] || "Tài xế cập nhật trạng thái chuyến.",
+        },
+      });
+
+      let riderNotification = null;
+
+      try {
+        riderNotification = await createRiderTripNotification(tx, trip, {
+          reason: "driver_change_status",
+        });
+      } catch (notificationError) {
+        console.error(
+          "[changeTripStatus] create rider notification error:",
+          notificationError,
+        );
+      }
+
+      return { trip, currentTrip, riderNotification };
+    });
+
+    const { trip, currentTrip, riderNotification } = result;
 
     const io = req.app?.get?.("io");
     if (io && trip) {
@@ -2143,7 +2190,10 @@ export async function changeTripStatus(req, res) {
     res.json({ success: true, trip });
   } catch (e) {
     console.error("[Trip] changeTripStatus error:", e);
-    res.status(400).json({ message: e.message });
+    res.status(e.statusCode || 400).json({
+      success: false,
+      message: e.message,
+    });
   }
 }
 

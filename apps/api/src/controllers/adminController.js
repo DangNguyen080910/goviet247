@@ -2971,6 +2971,32 @@ export function makeAdminController(prisma) {
       }
     },
 
+    async getDriverWalletSummary(req, res) {
+      try {
+        const [totalDrivers, verifiedDrivers, walletBalanceAgg] =
+          await Promise.all([
+            prisma.driverProfile.count(),
+            prisma.driverProfile.count({ where: { status: "VERIFIED" } }),
+            prisma.driverProfile.aggregate({ _sum: { balance: true } }),
+          ]);
+
+        return res.json({
+          success: true,
+          summary: {
+            totalDrivers: Number(totalDrivers || 0),
+            verifiedDrivers: Number(verifiedDrivers || 0),
+            totalWalletBalance: Number(walletBalanceAgg._sum.balance || 0),
+          },
+        });
+      } catch (e) {
+        console.error("getDriverWalletSummary error:", e);
+        return res.status(500).json({
+          success: false,
+          message: "Lỗi server khi lấy thống kê ví tài xế.",
+        });
+      }
+    },
+
     async getDriverDetail(req, res) {
       try {
         const { id } = req.params;

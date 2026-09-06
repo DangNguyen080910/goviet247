@@ -95,6 +95,9 @@ export default function DashboardScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [acceptingTripId, setAcceptingTripId] = useState<string | null>(null);
   const [changingTripId, setChangingTripId] = useState<string | null>(null);
+  const [statusConfirmTripId, setStatusConfirmTripId] = useState<string | null>(
+    null,
+  );
   const [cancelingTripId, setCancelingTripId] = useState<string | null>(null);
   const [cancelTripId, setCancelTripId] = useState<string | null>(null);
   const [inProgressBlockedTripId, setInProgressBlockedTripId] = useState<
@@ -156,6 +159,12 @@ export default function DashboardScreen() {
   const cancelTrip = useMemo(() => {
     return visibleMyTrips.find((trip) => trip.id === cancelTripId) ?? null;
   }, [cancelTripId, visibleMyTrips]);
+
+  const statusConfirmTrip = useMemo(() => {
+    return (
+      visibleMyTrips.find((trip) => trip.id === statusConfirmTripId) ?? null
+    );
+  }, [statusConfirmTripId, visibleMyTrips]);
 
   const cancelPenaltyPreview = useMemo(() => {
     if (!cancelTrip) {
@@ -992,15 +1001,41 @@ export default function DashboardScreen() {
     ],
   );
 
-  const handleMarkContacted = useCallback(
-    async (tripId: string) => {
+  const handleConfirmStatusChange = useCallback(
+    async () => {
+      if (!statusConfirmTrip) {
+        return;
+      }
+
+      const nextStatus =
+        statusConfirmTrip.status === "ACCEPTED"
+          ? "CONTACTED"
+          : statusConfirmTrip.status === "CONTACTED"
+            ? "IN_PROGRESS"
+            : statusConfirmTrip.status === "IN_PROGRESS"
+              ? "COMPLETED"
+              : null;
+
+      if (!nextStatus) {
+        setStatusConfirmTripId(null);
+        return;
+      }
+
       try {
-        setChangingTripId(tripId);
-        await changeDriverTripStatus(tripId, "CONTACTED");
+        setChangingTripId(statusConfirmTrip.id);
+        await changeDriverTripStatus(statusConfirmTrip.id, nextStatus);
+
+        setStatusConfirmTripId(null);
 
         await Promise.all([loadAvailableTrips(), loadMyTrips()]);
 
-        showSuccess("Đã cập nhật trạng thái: Đã liên hệ khách.");
+        const successMessages = {
+          CONTACTED: "Đã xác nhận liên hệ khách.",
+          IN_PROGRESS: "Đã xác nhận đón khách.",
+          COMPLETED: "Đã hoàn thành chuyến.",
+        };
+
+        showSuccess(successMessages[nextStatus]);
       } catch (error) {
         const message =
           error instanceof Error
@@ -1012,8 +1047,45 @@ export default function DashboardScreen() {
         setChangingTripId(null);
       }
     },
-    [loadAvailableTrips, loadMyTrips],
+    [loadAvailableTrips, loadMyTrips, statusConfirmTrip],
   );
+
+  const getStatusActionLabel = (status: MyTripItem["status"]) => {
+    if (status === "ACCEPTED") return "Đã liên hệ khách";
+    if (status === "CONTACTED") return "Xác nhận đã đón khách";
+    if (status === "IN_PROGRESS") return "Hoàn thành chuyến";
+    return "Cập nhật trạng thái";
+  };
+
+  const getStatusConfirmationContent = (trip: MyTripItem | null) => {
+    const formattedSupportPhone = formatVietnamesePhone(supportPhone);
+
+    if (trip?.status === "ACCEPTED") {
+      return {
+        title: "Xác nhận đã liên hệ khách",
+        message:
+          "Bạn xác nhận đã gọi điện và trao đổi thông tin chuyến đi với khách hàng?",
+        note: "",
+        confirmLabel: "Xác nhận đã liên hệ",
+      };
+    }
+
+    if (trip?.status === "CONTACTED") {
+      return {
+        title: "Xác nhận đã đón khách",
+        message: `Bạn xác nhận khách đã lên xe và bạn đã gửi hình ảnh kèm định vị điểm đón cho Admin qua Zalo số ${formattedSupportPhone}?`,
+        note: "Chuyến đi sẽ được chuyển sang trạng thái Đang trên hành trình.",
+        confirmLabel: "Xác nhận đã đón",
+      };
+    }
+
+    return {
+      title: "Xác nhận hoàn thành chuyến",
+      message: `Bạn xác nhận đã trả khách an toàn và đã gửi hình ảnh kèm định vị điểm trả cho Admin qua Zalo số ${formattedSupportPhone}?`,
+      note: "Vui lòng kiểm tra kỹ trước khi hoàn thành chuyến.",
+      confirmLabel: "Xác nhận hoàn thành",
+    };
+  };
 
   const handlePressCancel = useCallback((trip: MyTripItem) => {
     if (trip.status === "IN_PROGRESS") {
@@ -1567,29 +1639,24 @@ export default function DashboardScreen() {
             )}
           </View>
 
-          <View
-            style={[
-              styles.cardFooterRow,
-              trip.status !== "ACCEPTED" && styles.cardFooterRowRightOnly,
-            ]}
-          >
-            {trip.status === "ACCEPTED" ? (
-              <TouchableOpacity
-                style={[
-                  styles.leftActionButton,
-                  (isChanging || isCanceling) && styles.acceptButtonDisabled,
-                ]}
-                onPress={() => handleMarkContacted(trip.id)}
-                activeOpacity={0.85}
-                disabled={isChanging || isCanceling}
-              >
-                <Text style={styles.acceptButtonText}>
-                  {isChanging ? "Đang cập nhật..." : "Đã liên hệ khách"}
-                </Text>
-              </TouchableOpacity>
-            ) : (
-              <View />
-            )}
+          <View style={styles.cardFooterRow}>
+            <TouchableOpacity
+              style={[
+                styles.leftActionButton,
+                trip.status === "IN_PROGRESS" &&
+                  styles.completeTripActionButton,
+                (isChanging || isCanceling) && styles.acceptButtonDisabled,
+              ]}
+              onPress={() => setStatusConfirmTripId(trip.id)}
+              activeOpacity={0.85}
+              disabled={isChanging || isCanceling}
+            >
+              <Text style={styles.acceptButtonText}>
+                {isChanging
+                  ? "Đang cập nhật..."
+                  : getStatusActionLabel(trip.status)}
+              </Text>
+            </TouchableOpacity>
 
             <TouchableOpacity
               style={[
@@ -1958,6 +2025,63 @@ export default function DashboardScreen() {
                   onPress={handleCloseNotifications}
                 >
                   <Text style={styles.modalPrimaryButtonText}>Đóng</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          transparent
+          visible={!!statusConfirmTrip}
+          animationType="fade"
+          onRequestClose={() => {
+            if (!changingTripId) {
+              setStatusConfirmTripId(null);
+            }
+          }}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalCard}>
+              <Text style={styles.confirmationModalTitle}>
+                {getStatusConfirmationContent(statusConfirmTrip).title}
+              </Text>
+
+              <Text style={styles.modalText}>
+                {getStatusConfirmationContent(statusConfirmTrip).message}
+              </Text>
+
+              {!!getStatusConfirmationContent(statusConfirmTrip).note && (
+                <Text style={styles.modalTextBold}>
+                  {getStatusConfirmationContent(statusConfirmTrip).note}
+                </Text>
+              )}
+
+              <View style={styles.modalActionRow}>
+                <TouchableOpacity
+                  style={styles.modalSecondaryButton}
+                  activeOpacity={0.85}
+                  disabled={!!changingTripId}
+                  onPress={() => setStatusConfirmTripId(null)}
+                >
+                  <Text style={styles.modalSecondaryButtonText}>Quay lại</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[
+                    styles.modalConfirmButton,
+                    !!changingTripId && styles.modalDangerButtonDisabled,
+                  ]}
+                  activeOpacity={0.85}
+                  disabled={!!changingTripId}
+                  onPress={handleConfirmStatusChange}
+                >
+                  <Text style={styles.modalDangerButtonText}>
+                    {!!changingTripId
+                      ? "Đang xử lý..."
+                      : getStatusConfirmationContent(statusConfirmTrip)
+                          .confirmLabel}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -2456,6 +2580,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 18,
   },
+  completeTripActionButton: {
+    backgroundColor: "#15803D",
+  },
   acceptButton: {
     minWidth: 160,
     height: 48,
@@ -2790,6 +2917,11 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     color: "#DC2626",
   },
+  confirmationModalTitle: {
+    fontSize: 18,
+    fontWeight: "800",
+    color: "#111827",
+  },
   modalText: {
     marginTop: 12,
     fontSize: 15,
@@ -2831,6 +2963,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#DC2626",
     alignItems: "center",
     justifyContent: "center",
+  },
+  modalConfirmButton: {
+    flex: 1,
+    minHeight: 44,
+    borderRadius: 12,
+    backgroundColor: "#F97316",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 10,
   },
   modalDangerButtonDisabled: {
     opacity: 0.7,

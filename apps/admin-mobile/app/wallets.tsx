@@ -27,6 +27,7 @@ import {
   DriverWithdrawRequestItem,
   fetchDriverTripPenalties,
   fetchDriverWallets,
+  fetchDriverWalletSummary,
   fetchDriverWalletTransactions,
   fetchLedgerTransactions,
   fetchWithdrawRequests,
@@ -205,6 +206,11 @@ export default function WalletsScreen() {
   const [walletStatus, setWalletStatus] = useState("ALL");
 
   const [walletItems, setWalletItems] = useState<DriverWalletListItem[]>([]);
+  const [walletSummary, setWalletSummary] = useState({
+    totalDrivers: 0,
+    verifiedDrivers: 0,
+    totalWalletBalance: 0,
+  });
   const [withdrawItems, setWithdrawItems] = useState<
     DriverWithdrawRequestItem[]
   >([]);
@@ -239,14 +245,7 @@ export default function WalletsScreen() {
 
   const [withdrawRejectReason, setWithdrawRejectReason] = useState("");
 
-  const totalDrivers = walletItems.length;
-  const verifiedDrivers = walletItems.filter(
-    (item) => String(item.status || "").toUpperCase() === "VERIFIED",
-  ).length;
-  const totalWalletBalance = walletItems.reduce(
-    (sum, item) => sum + Number(item.balance || 0),
-    0,
-  );
+  const { totalDrivers, verifiedDrivers, totalWalletBalance } = walletSummary;
   const withdrawPendingCount = withdrawItems.filter((item) =>
     isPendingStatus(item.status),
   ).length;
@@ -318,16 +317,17 @@ export default function WalletsScreen() {
         setLoading(true);
       }
 
-      const [walletRes, withdrawRes, penaltyRes, ledgerRes] = await Promise.all(
-        [
+      const [walletRes, walletSummaryRes, withdrawRes, penaltyRes, ledgerRes] =
+        await Promise.all([
           fetchDriverWallets({ page: 1, pageSize: 100 }),
+          fetchDriverWalletSummary(),
           fetchWithdrawRequests({ page: 1, pageSize: 50 }),
           fetchDriverTripPenalties({ page: 1, pageSize: 50 }),
           fetchLedgerTransactions({ page: 1, pageSize: 50 }),
-        ],
-      );
+        ]);
 
       setWalletItems(walletRes.items || []);
+      setWalletSummary(walletSummaryRes);
       setWithdrawItems(withdrawRes.items || []);
       setPenaltyItems(penaltyRes.items || []);
       setLedgerItems(ledgerRes.items || []);
