@@ -1,3 +1,4 @@
+import { submitWalletOperation } from "./walletOperations";
 // Path: goviet247/apps/admin-mobile/services/adminWalletsApi.ts
 import { adminRequest } from "./adminRequest";
 
@@ -43,6 +44,7 @@ export type DriverWithdrawRequestItem = {
   } | null;
   driverProfile: {
     id: string;
+    fullName: string | null;
     balance: number;
     user: {
       id: string;
@@ -68,6 +70,7 @@ export type DriverTripPenaltyItem = {
   } | null;
   driverProfile: {
     id: string;
+    fullName: string | null;
     user: {
       id: string;
       displayName: string | null;
@@ -90,6 +93,7 @@ export type LedgerTransactionItem = {
   tripId: string | null;
   driverProfile: {
     id: string;
+    fullName: string | null;
     user: {
       id: string;
       displayName: string | null;
@@ -262,6 +266,7 @@ function mapWithdrawRequestItem(raw: any): DriverWithdrawRequestItem {
     driverProfile: raw?.driverProfile
       ? {
           id: String(raw.driverProfile?.id || ""),
+          fullName: typeof raw.driverProfile?.fullName === "string" ? raw.driverProfile.fullName : null,
           balance: toNumber(raw.driverProfile?.balance),
           user: raw.driverProfile?.user
             ? mapDriverUser(raw.driverProfile.user)
@@ -296,6 +301,7 @@ function mapDriverTripPenaltyItem(raw: any): DriverTripPenaltyItem {
     driverProfile: raw?.driverProfile
       ? {
           id: String(raw.driverProfile?.id || ""),
+          fullName: typeof raw.driverProfile?.fullName === "string" ? raw.driverProfile.fullName : null,
           user: raw.driverProfile?.user
             ? mapDriverUser(raw.driverProfile.user)
             : null,
@@ -321,6 +327,7 @@ function mapLedgerTransactionItem(raw: any): LedgerTransactionItem {
     driverProfile: raw?.driverProfile
       ? {
           id: String(raw.driverProfile?.id || ""),
+          fullName: typeof raw.driverProfile?.fullName === "string" ? raw.driverProfile.fullName : null,
           user: raw.driverProfile?.user
             ? mapDriverUser(raw.driverProfile.user)
             : null,
@@ -380,30 +387,21 @@ export async function topupDriverWallet(
   driverId: string,
   payload: { amount: number | string; note?: string },
 ) {
-  return adminRequest(`/api/admin/drivers/${driverId}/wallet/topup`, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
+  return submitWalletOperation(driverId, "topup", payload);
 }
 
 export async function adjustAddDriverWallet(
   driverId: string,
   payload: { amount: number | string; note?: string },
 ) {
-  return adminRequest(`/api/admin/drivers/${driverId}/wallet/adjust-add`, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
+  return submitWalletOperation(driverId, "adjust-add", payload);
 }
 
 export async function subtractDriverWallet(
   driverId: string,
   payload: { amount: number | string; note?: string },
 ) {
-  return adminRequest(`/api/admin/drivers/${driverId}/wallet/adjust-subtract`, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
+  return submitWalletOperation(driverId, "adjust-subtract", payload);
 }
 
 export async function fetchWithdrawRequests(

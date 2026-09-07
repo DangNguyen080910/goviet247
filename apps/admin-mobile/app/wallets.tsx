@@ -1,11 +1,12 @@
+import { useWalletRecordSearch } from "../hooks/useWalletRecordSearch";
+import { readPendingWalletOperation, submitWalletOperation, PendingWalletOperation } from "../services/walletOperations";
 // Path: goviet247/apps/admin-mobile/app/
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
-  Modal,
   Platform,
   Pressable,
   RefreshControl,
@@ -19,19 +20,15 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
 import {
   adjustAddDriverWallet,
-  approveDriverTripPenalty,
   approveWithdrawRequest,
-  DriverTripPenaltyItem,
   DriverWalletListItem,
   DriverWalletTransactionItem,
   DriverWithdrawRequestItem,
-  fetchDriverTripPenalties,
   fetchDriverWallets,
   fetchDriverWalletSummary,
   fetchDriverWalletTransactions,
   fetchLedgerTransactions,
   fetchWithdrawRequests,
-  LedgerTransactionItem,
   markWithdrawRequestPaid,
   rejectWithdrawRequest,
   subtractDriverWallet,
@@ -110,13 +107,6 @@ function getWithdrawStatusLabel(status: string | null | undefined) {
   if (key === "APPROVED") return "Đã duyệt";
   if (key === "REJECTED") return "Từ chối";
   if (key === "PAID") return "Đã chuyển khoản";
-  return key || "N/A";
-}
-
-function getPenaltyStatusLabel(status: string | null | undefined) {
-  const key = String(status || "").toUpperCase();
-  if (key === "PENDING") return "Chờ duyệt";
-  if (key === "APPROVED") return "Đã duyệt";
   return key || "N/A";
 }
 
@@ -211,11 +201,10 @@ export default function WalletsScreen() {
     verifiedDrivers: 0,
     totalWalletBalance: 0,
   });
-  const [withdrawItems, setWithdrawItems] = useState<
-    DriverWithdrawRequestItem[]
-  >([]);
-  const [penaltyItems, setPenaltyItems] = useState<DriverTripPenaltyItem[]>([]);
-  const [ledgerItems, setLedgerItems] = useState<LedgerTransactionItem[]>([]);
+  const withdrawSearch = useWalletRecordSearch(fetchWithdrawRequests);
+  const ledgerSearch = useWalletRecordSearch(fetchLedgerTransactions);
+  const { items: withdrawItems, setItems: setWithdrawItems } = withdrawSearch;
+  const { items: ledgerItems } = ledgerSearch;
 
   const [walletHistoryExpandedId, setWalletHistoryExpandedId] = useState<
     string | null
@@ -238,6 +227,45 @@ export default function WalletsScreen() {
 
   const [actionAmount, setActionAmount] = useState("");
   const [actionNote, setActionNote] = useState("");
+  const actionLock = useRef(false);
+  const walletLoadVersion = useRef(0);
+  const allLoadVersion = useRef(0);
+  const walletFilters = useRef({ q: walletSearchText, status: walletStatus });
+  walletFilters.current = { q: walletSearchText, status: walletStatus };
+  const [pendingOperation, setPendingOperation] = useState<PendingWalletOperation | null>(null);
+  const [loadWarning, setLoadWarning] = useState("");
+
+  async function refreshPendingOperation() {
+    try { setPendingOperation(await readPendingWalletOperation()); }
+    catch (error) { console.error("read pending wallet error:", error); }
+  }
+
+  async function checkPendingOperation() {
+    if (!pendingOperation || actionLock.current) return;
+    actionLock.current = true;
+    setActionSubmitting(true);
+    try {
+      const result = await submitWalletOperation(pendingOperation.driverId, pendingOperation.type, pendingOperation);
+      applyWalletReceipt(result);
+      setActionExpandedId(null);
+      Alert.alert("Đã xác nhận", "Giao dịch đã được ghi nhận một lần. Số dư đang được cập nhật.");
+      void loadAll(false, true);
+    } catch (error: any) {
+      Alert.alert("Kiểm tra giao dịch", error?.message || "Chưa xác nhận được giao dịch.");
+    } finally {
+      await refreshPendingOperation();
+      actionLock.current = false;
+      setActionSubmitting(false);
+    }
+  }
+
+  function applyWalletReceipt(result: any) {
+    const profile = result?.item?.profile;
+    if (!profile?.id || !Number.isFinite(Number(profile.balance))) return;
+    walletLoadVersion.current += 1;
+    setWalletItems((current) => current.map((item) => item.id === profile.id ? { ...item, balance: Number(profile.balance) } : item));
+  }
+
 
   const [withdrawRejectExpandedId, setWithdrawRejectExpandedId] = useState<
     string | null
@@ -249,10 +277,6 @@ export default function WalletsScreen() {
   const withdrawPendingCount = withdrawItems.filter((item) =>
     isPendingStatus(item.status),
   ).length;
-  const penaltyPendingCount = penaltyItems.filter((item) =>
-    isPendingStatus(item.status),
-  ).length;
-
   const filteredWalletItems = useMemo(() => {
     const q = normalizeSmartSearch(walletSearchText);
     const searchTokens = q.split(/\s+/).filter(Boolean);
@@ -284,15 +308,19 @@ export default function WalletsScreen() {
     });
   }, [walletItems, walletSearchText, walletStatus]);
 
+  const loadOnFocus = useRef(loadAll);
+  loadOnFocus.current = loadAll;
   useFocusEffect(
     useCallback(() => {
-      loadAll(false);
+      void loadOnFocus.current(false);
     }, []),
   );
 
   useEffect(() => {
     if (activeTab !== "WALLETS") return;
 
+    const version = ++walletLoadVersion.current;
+    let active = true;
     const timer = setTimeout(() => {
       fetchDriverWallets({
         page: 1,
@@ -300,52 +328,53 @@ export default function WalletsScreen() {
         q: walletSearchText.trim(),
         status: walletStatus,
       })
-        .then((result) => setWalletItems(result.items || []))
+        .then((result) => { if (active && version === walletLoadVersion.current) setWalletItems(result.items || []); })
         .catch((error) =>
           console.error("search driver wallets error:", error),
         );
     }, 350);
 
-    return () => clearTimeout(timer);
+    return () => { active = false; clearTimeout(timer); };
   }, [activeTab, walletSearchText, walletStatus]);
 
+  useEffect(() => {
+    if (!walletHistoryExpandedId) return;
+    let active = true;
+    setWalletHistoryLoading(true);
+    setWalletHistoryItems([]);
+    fetchDriverWalletTransactions(walletHistoryExpandedId, { page: 1, pageSize: 50 })
+      .then((data) => { if (active) setWalletHistoryItems(data.items); })
+      .catch((error) => { if (active) Alert.alert("Chưa tải được lịch sử ví", error.message); })
+      .finally(() => { if (active) setWalletHistoryLoading(false); });
+    return () => { active = false; };
+  }, [walletHistoryExpandedId]);
+
   async function loadAll(showRefreshSpinner = false, silentError = false) {
-    try {
-      if (showRefreshSpinner) {
-        setRefreshing(true);
-      } else {
-        setLoading(true);
-      }
-
-      const [walletRes, walletSummaryRes, withdrawRes, penaltyRes, ledgerRes] =
-        await Promise.all([
-          fetchDriverWallets({ page: 1, pageSize: 100 }),
-          fetchDriverWalletSummary(),
-          fetchWithdrawRequests({ page: 1, pageSize: 50 }),
-          fetchDriverTripPenalties({ page: 1, pageSize: 50 }),
-          fetchLedgerTransactions({ page: 1, pageSize: 50 }),
-        ]);
-
-      setWalletItems(walletRes.items || []);
-      setWalletSummary(walletSummaryRes);
-      setWithdrawItems(withdrawRes.items || []);
-      setPenaltyItems(penaltyRes.items || []);
-      setLedgerItems(ledgerRes.items || []);
-    } catch (error: any) {
-      console.error("load wallets screen error:", error);
-      if (!silentError) {
-        Alert.alert("Lỗi", error?.message || "Không thể tải dữ liệu ví tài xế.");
-      }
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
+    const version = ++walletLoadVersion.current;
+    const allVersion = ++allLoadVersion.current;
+    if (showRefreshSpinner) setRefreshing(true);
+    else if (!silentError) setLoading(true);
+    void refreshPendingOperation();
+    const results = await Promise.allSettled([
+      fetchDriverWallets({ page: 1, pageSize: 100, q: walletFilters.current.q.trim(), status: walletFilters.current.status }).then((data) => {
+        if (version === walletLoadVersion.current) setWalletItems(data.items || []);
+      }),
+      fetchDriverWalletSummary().then((data) => { if (allVersion === allLoadVersion.current) setWalletSummary(data); }),
+      withdrawSearch.refresh(),
+      ledgerSearch.refresh(),
+    ]);
+    if (allVersion !== allLoadVersion.current) return;
+    const failed = results.some((result) => result.status === "rejected");
+    setLoadWarning(failed ? "Một phần dữ liệu chưa tải được và có thể chưa mới nhất. Kéo xuống để tải lại; không tạo lại giao dịch đã gửi." : "");
+    setLoading(false);
+    setRefreshing(false);
   }
 
   function openActionModal(
     mode: WalletActionMode,
     driver: DriverWalletListItem,
   ) {
+    if (actionLock.current) return;
     const nextId = actionExpandedId === driver.id ? null : driver.id;
 
     setActionExpandedId(nextId);
@@ -378,6 +407,7 @@ export default function WalletsScreen() {
   }
 
   async function handleSubmitAction() {
+    if (actionLock.current) return;
     if (!actionDriver?.id) {
       Alert.alert("Thiếu dữ liệu", "Không tìm thấy tài xế để thao tác.");
       return;
@@ -391,6 +421,11 @@ export default function WalletsScreen() {
       return;
     }
 
+    if (!actionNote.trim()) {
+      Alert.alert("Thiếu ghi chú", "Vui lòng nhập ghi chú cho giao dịch.");
+      return;
+    }
+    actionLock.current = true;
     try {
       setActionSubmitting(true);
 
@@ -399,23 +434,16 @@ export default function WalletsScreen() {
         note: actionNote.trim(),
       };
 
+      let result;
       if (actionMode === "TOPUP") {
-        await topupDriverWallet(actionDriver.id, payload);
+        result = await topupDriverWallet(actionDriver.id, payload);
       } else if (actionMode === "ADJUST_ADD") {
-        await adjustAddDriverWallet(actionDriver.id, payload);
+        result = await adjustAddDriverWallet(actionDriver.id, payload);
       } else {
-        await subtractDriverWallet(actionDriver.id, payload);
+        result = await subtractDriverWallet(actionDriver.id, payload);
       }
 
-      const driverId = actionDriver.id;
-      const balanceDelta = actionMode === "SUBTRACT" ? -amountNumber : amountNumber;
-      setWalletItems((current) =>
-        current.map((item) =>
-          item.id === driverId
-            ? { ...item, balance: Number(item.balance || 0) + balanceDelta }
-            : item,
-        ),
-      );
+      applyWalletReceipt(result);
       setActionExpandedId(null);
       setActionDriver(null);
       setActionAmount("");
@@ -426,6 +454,8 @@ export default function WalletsScreen() {
       console.error("submit wallet action error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể cập nhật ví tài xế.");
     } finally {
+      await refreshPendingOperation();
+      actionLock.current = false;
       setActionSubmitting(false);
     }
   }
@@ -455,16 +485,13 @@ export default function WalletsScreen() {
   }
 
   async function handleRejectWithdraw(item: DriverWithdrawRequestItem) {
-    const reason = await askForText(
-      "Từ chối yêu cầu rút",
-      "Nhập lý do từ chối yêu cầu rút tiền:",
-      "Ví dụ: Sai thông tin tài khoản / cần kiểm tra lại",
-    );
-
-    if (!reason) return;
+    const reason = withdrawRejectReason.trim();
+    if (!reason) { Alert.alert("Thiếu lý do", "Vui lòng nhập lý do từ chối."); return; }
 
     try {
       await rejectWithdrawRequest(item.id, { reason });
+      setWithdrawRejectExpandedId(null);
+      setWithdrawRejectReason("");
       setWithdrawItems((current) => current.filter((entry) => entry.id !== item.id));
       Alert.alert("Thành công", "Đã từ chối yêu cầu rút tiền.");
       void loadAll(false, true);
@@ -484,38 +511,6 @@ export default function WalletsScreen() {
   //     Alert.alert("Lỗi", error?.message || "Không thể duyệt phạt huỷ chuyến.");
   //   }
   // }
-
-  async function askForText(
-    title: string,
-    message: string,
-    placeholder = "",
-  ): Promise<string | null> {
-    if (Platform.OS === "web" && typeof window !== "undefined") {
-      const value = window.prompt(`${message}\n\n${placeholder}`, "");
-      const trimmed = String(value || "").trim();
-      return trimmed || null;
-    }
-
-    return new Promise((resolve) => {
-      Alert.prompt(
-        title,
-        message,
-        [
-          { text: "Huỷ", style: "cancel", onPress: () => resolve(null) },
-          {
-            text: "Xác nhận",
-            onPress: (value?: string) => {
-              const trimmed = String(value || "").trim();
-              resolve(trimmed || null);
-            },
-          },
-        ],
-        "plain-text",
-        "",
-        "default",
-      );
-    });
-  }
 
   function renderSummaryCards() {
     return (
@@ -552,9 +547,7 @@ export default function WalletsScreen() {
           const badge =
             tab.key === "WITHDRAWS"
               ? withdrawPendingCount
-              : tab.key === "PENALTIES"
-                ? penaltyPendingCount
-                : 0;
+              : 0;
 
           return (
             <Pressable
@@ -718,11 +711,24 @@ export default function WalletsScreen() {
                 </Pressable>
               </View>
 
+              {walletHistoryExpandedId === item.id ? (
+                <View style={styles.noteBox}>
+                  <Text style={styles.noteLabel}>Lịch sử ví gần đây</Text>
+                  {walletHistoryLoading ? <ActivityIndicator /> : walletHistoryItems.length ? walletHistoryItems.map((txn) => (
+                    <View key={txn.id} style={styles.historyCard}>
+                      <Text style={styles.historyTitle}>{getTxnTypeLabel(txn.type)}: {formatMoney(txn.amount)} đ</Text>
+                      <Text style={styles.noteText}>{formatDateTimeVN(txn.createdAt)} — Số dư sau: {formatMoney(txn.balanceAfter)} đ</Text>
+                      <Text style={styles.noteText}>{txn.note || ""}</Text>
+                    </View>
+                  )) : <Text style={styles.noteText}>Chưa có giao dịch.</Text>}
+                </View>
+              ) : null}
               {actionExpandedId === item.id ? (
                 <View style={styles.inlineActionCard}>
                   <Text style={styles.inlineActionTitle}>{actionTitle}</Text>
 
                   <TextInput
+                    editable={!actionSubmitting}
                     value={formatInputMoney(actionAmount)}
                     onChangeText={(value) =>
                       setActionAmount(normalizeDigits(value))
@@ -734,6 +740,7 @@ export default function WalletsScreen() {
                   />
 
                   <TextInput
+                    editable={!actionSubmitting}
                     value={actionNote}
                     onChangeText={setActionNote}
                     placeholder="Ghi chú"
@@ -771,14 +778,46 @@ export default function WalletsScreen() {
     );
   }
 
+  function renderRecordSearch(search: typeof withdrawSearch | typeof ledgerSearch) {
+    return (
+      <View style={styles.filtersBox}>
+        <TextInput
+          value={search.query}
+          onChangeText={search.setQuery}
+          placeholder="Tìm tên tài xế hoặc số điện thoại"
+          placeholderTextColor="#9ca3af"
+          autoCapitalize="none"
+          autoCorrect={false}
+          style={styles.searchInput}
+          accessibilityLabel="Tìm tên tài xế hoặc số điện thoại"
+        />
+        <Text style={styles.noteText}>Tìm có dấu hoặc không dấu, số 0 hoặc +84.</Text>
+        {search.loading ? <ActivityIndicator /> : search.error ? (
+          <Pressable onPress={() => { void search.refresh().catch(() => {}); }}>
+            <Text style={styles.noteText}>{search.error} Chạm để thử lại.</Text>
+          </Pressable>
+        ) : <Text style={styles.noteText}>{search.total} kết quả</Text>}
+      </View>
+    );
+  }
+
+  function renderMoreRecords(search: typeof withdrawSearch | typeof ledgerSearch) {
+    return search.hasMore ? (
+      <Pressable disabled={search.loading} onPress={search.loadMore} style={[styles.modalButton, styles.modalButtonGhost]}>
+        <Text style={styles.modalButtonGhostText}>{search.loading ? "Đang tải..." : "Xem thêm"}</Text>
+      </Pressable>
+    ) : null;
+  }
+
   function renderWithdrawList() {
     return (
       <View style={styles.sectionBox}>
         <Text style={styles.sectionTitle}>Yêu cầu rút tiền</Text>
+        {renderRecordSearch(withdrawSearch)}
 
         {withdrawItems.length === 0 ? (
           <View style={styles.emptyBox}>
-            <Text style={styles.emptyText}>Chưa có yêu cầu rút tiền.</Text>
+            <Text style={styles.emptyText}>{withdrawSearch.loading ? "Đang tìm kiếm..." : withdrawSearch.error ? "Chưa xác nhận được kết quả tìm kiếm." : withdrawSearch.query.trim() ? "Không tìm thấy kết quả phù hợp." : "Chưa có yêu cầu rút tiền."}</Text>
           </View>
         ) : (
           withdrawItems.map((item) => (
@@ -874,13 +913,21 @@ export default function WalletsScreen() {
 
                   <Pressable
                     style={[styles.actionButton, styles.orangeButton]}
-                    onPress={() => handleRejectWithdraw(item)}
+                    onPress={() => { setWithdrawRejectExpandedId(item.id); setWithdrawRejectReason(""); }}
                   >
                     <Text style={styles.actionButtonText}>Từ chối</Text>
                   </Pressable>
                 </View>
               ) : null}
 
+              {withdrawRejectExpandedId === item.id && isPendingStatus(item.status) ? (
+                <View style={styles.noteBox}>
+                  <TextInput value={withdrawRejectReason} onChangeText={setWithdrawRejectReason} placeholder="Lý do từ chối rút tiền" style={styles.modalInput} />
+                  <Pressable onPress={() => handleRejectWithdraw(item)} style={[styles.modalButton, styles.orangeButton]}>
+                    <Text style={styles.modalButtonPrimaryText}>Xác nhận từ chối</Text>
+                  </Pressable>
+                </View>
+              ) : null}
               {isApprovedStatus(item.status) ? (
                 <View style={styles.actionGrid}>
                   <Pressable
@@ -894,6 +941,7 @@ export default function WalletsScreen() {
             </View>
           ))
         )}
+        {renderMoreRecords(withdrawSearch)}
       </View>
     );
   }
@@ -902,10 +950,11 @@ export default function WalletsScreen() {
     return (
       <View style={styles.sectionBox}>
         <Text style={styles.sectionTitle}>Lịch sử ví</Text>
+        {renderRecordSearch(ledgerSearch)}
 
         {ledgerItems.length === 0 ? (
           <View style={styles.emptyBox}>
-            <Text style={styles.emptyText}>Chưa có giao dịch ví.</Text>
+            <Text style={styles.emptyText}>{ledgerSearch.loading ? "Đang tìm kiếm..." : ledgerSearch.error ? "Chưa xác nhận được kết quả tìm kiếm." : ledgerSearch.query.trim() ? "Không tìm thấy kết quả phù hợp." : "Chưa có giao dịch ví."}</Text>
           </View>
         ) : (
           ledgerItems.map((item) => (
@@ -916,6 +965,9 @@ export default function WalletsScreen() {
                     {getDriverDisplayName(item)}
                   </Text>
                   <Text style={styles.cardSubtitle}>
+                    {getDriverPhone(item)}
+                  </Text>
+                  <Text style={styles.cardSubtitle}>
                     {getTxnTypeLabel(item.type)}
                   </Text>
                 </View>
@@ -923,11 +975,6 @@ export default function WalletsScreen() {
                 <Text style={styles.amountHighlight}>
                   {formatMoney(item.amount)} đ
                 </Text>
-              </View>
-
-              <View style={styles.infoRow}>
-                <Text style={styles.infoLabel}>SĐT:</Text>
-                <Text style={styles.infoValue}>{getDriverPhone(item)}</Text>
               </View>
 
               <View style={styles.infoRow}>
@@ -960,6 +1007,7 @@ export default function WalletsScreen() {
             </View>
           ))
         )}
+        {renderMoreRecords(ledgerSearch)}
       </View>
     );
   }
@@ -1009,6 +1057,15 @@ export default function WalletsScreen() {
             </View>
           </View>
 
+          {loadWarning ? <Text style={styles.noteText}>{loadWarning}</Text> : null}
+          {pendingOperation ? (
+            <View style={styles.noteBox}>
+              <Text style={styles.noteText}>Có giao dịch ví {formatMoney(pendingOperation.amount)} đ cần xác nhận. Ghi chú: {pendingOperation.note}</Text>
+              <Pressable disabled={actionSubmitting} onPress={checkPendingOperation} style={[styles.modalButton, styles.modalButtonPrimary]}>
+                <Text style={styles.modalButtonPrimaryText}>{actionSubmitting ? "Đang kiểm tra..." : "Kiểm tra giao dịch đang chờ"}</Text>
+              </Pressable>
+            </View>
+          ) : null}
           {loading ? (
             <View style={styles.loadingBox}>
               <ActivityIndicator size="large" />

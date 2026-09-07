@@ -1,3 +1,4 @@
+import { mutateAdminWallet } from "../services/adminWalletMutation.js";
 // Path: goviet247/apps/api/src/controllers/adminController.js
 // Controller admin cho alert log / pending trips / trip detail / driver wallet / settlement
 import {
@@ -97,6 +98,16 @@ export function makeAdminController(prisma) {
       const compactToken = token.replace(/\s+/g, "");
       return haystack.includes(token) || compactHaystack.includes(compactToken);
     });
+  }
+
+  async function findSmartDriverIds(keyword) {
+    const drivers = await prisma.driverProfile.findMany({
+      select: {
+        id: true, fullName: true,
+        user: { select: { displayName: true, phones: { select: { e164: true } } } },
+      },
+    });
+    return drivers.filter((driver) => matchesDriverSmartSearch(driver, keyword)).map((driver) => driver.id);
   }
 
   function getQuarterDateRange(year, quarter) {
@@ -315,6 +326,12 @@ export function makeAdminController(prisma) {
     return new Date(Date.now() - 24 * 60 * 60 * 1000);
   }
 
+  function queueDriverWalletNotification(params) {
+    void createDriverWalletNotification(params).catch((error) => {
+      console.error("[wallet] Post-commit notification failed", error);
+    });
+  }
+
   async function createDriverWalletNotification({
     req,
     userId,
@@ -354,6 +371,7 @@ export function makeAdminController(prisma) {
   }
 
   function emitAdminDashboardChanged(req, payload = {}) {
+    try {
     const io = req.app?.get?.("io");
 
     if (!io) return;
@@ -372,6 +390,9 @@ export function makeAdminController(prisma) {
       "[Socket] Emit admin:dashboard_changed -> admins",
       JSON.stringify(eventPayload),
     );
+    } catch (error) {
+      console.error("[admin] Post-commit dashboard event failed", error);
+    }
   }
 
   function emitDriverNotificationChanged(req, payload = {}) {
@@ -3430,370 +3451,64 @@ export function makeAdminController(prisma) {
 
     async topupDriverWallet(req, res) {
       try {
-        const { id } = req.params;
-        const amount = parseMoneyAmount(req.body?.amount);
-        const note = String(req.body?.note || "").trim();
-
-        if (!amount) {
-          return res.status(400).json({
-            success: false,
-            message: "Số tiền nạp không hợp lệ.",
+        const result = await mutateAdminWallet(prisma, {
+          driverId: req.params.id, type: "TOPUP", amount: Number(req.body?.amount),
+          note: String(req.body?.note || "").trim(), actorId: req.admin?.id ?? null,
+          actorUsername: req.admin?.username || "admin", key: req.get("Idempotency-Key") || null,
+        });
+        if (!result.replayed) {
+          emitAdminDashboardChanged(req, { source: "driver_wallet_topup", driverProfileId: req.params.id, status: "TOPUP" });
+          queueDriverWalletNotification({
+            req, userId: result.driverUserId, title: "💰 Ví được cộng tiền",
+            message: `Ví của bạn đã được cộng ${result.amount.toLocaleString("vi-VN")}đ. Số dư sau giao dịch: ${result.balanceAfter.toLocaleString("vi-VN")}đ.`,
           });
         }
-
-        if (!note) {
-          return res.status(400).json({
-            success: false,
-            message: "Vui lòng nhập ghi chú.",
-          });
-        }
-
-        const actorId = req.admin?.id ?? null;
-        const actorUsername = req.admin?.username || "admin";
-
-        const result = await prisma.$transaction(async (tx) => {
-          const profile = await tx.driverProfile.findUnique({
-            where: { id },
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
-              },
-            },
-          });
-
-          if (!profile) {
-            const err = new Error("Không tìm thấy hồ sơ tài xế.");
-            err.statusCode = 404;
-            throw err;
-          }
-
-          const balanceBefore = Number(profile.balance || 0);
-          const balanceAfter = balanceBefore + amount;
-          const now = new Date();
-
-          const updatedProfile = await tx.driverProfile.update({
-            where: { id },
-            data: { balance: balanceAfter },
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
-              },
-            },
-          });
-
-          const transaction = await tx.driverWalletTransaction.create({
-            data: {
-              driverProfileId: id,
-              type: "TOPUP",
-              amount,
-              balanceBefore,
-              balanceAfter,
-              note: `[ADMIN ${actorUsername}] ${note}`,
-            },
-          });
-
-          const driverName = getDriverDisplayName(profile) || "Tài xế";
-
-          const cashTxn = await tx.companyCashTransaction.create({
-            data: {
-              txnDate: now,
-              type: "IN",
-              category: "DRIVER_TOPUP",
-              amount,
-              note: `Tài xế ${driverName} nạp ví. ${note}`,
-              source: "DRIVER_WALLET_TOPUP",
-              referenceCode: transaction.id,
-              createdByAdminId: actorId,
-              createdByUsername: actorUsername,
-            },
-          });
-
-          return {
-            profile: updatedProfile,
-            transaction,
-            cashTransaction: cashTxn,
-            driverUserId: profile.user?.id || null,
-            balanceAfter,
-            amount,
-          };
-        });
-
-        emitAdminDashboardChanged(req, {
-          source: "driver_wallet_topup",
-          driverProfileId: result.profile?.id || id,
-          updatedAt: new Date().toISOString(),
-          status: "TOPUP",
-        });
-
-        await createDriverWalletNotification({
-          req,
-          userId: result.driverUserId,
-          title: "💰 Ví được cộng tiền",
-          message: `Ví của bạn đã được cộng ${Number(
-            result.amount || 0,
-          ).toLocaleString("vi-VN")}đ. Số dư hiện tại: ${Number(
-            result.balanceAfter || 0,
-          ).toLocaleString("vi-VN")}đ.`,
-        });
-
-        return res.json({
-          success: true,
-          message: "Đã nạp tiền vào ví tài xế và ghi nhận vào thu chi công ty.",
-          item: result,
-        });
-      } catch (e) {
-        console.error("topupDriverWallet error:", e);
-        return res.status(e.statusCode || 500).json({
-          success: false,
-          message: e.message || "Lỗi server khi nạp tiền ví tài xế.",
-        });
+        return res.json({ success: true, message: "Đã nạp tiền vào ví tài xế và ghi nhận vào thu chi công ty.", item: result, walletOperationVersion: 1 });
+      } catch (error) {
+        console.error("topupDriverWallet error:", error);
+        return res.status(error.statusCode || 500).json({ success: false, message: error.statusCode ? error.message : "Chưa xác định được kết quả giao dịch. Hãy kiểm tra lại cùng mã giao dịch." });
       }
     },
 
     async adjustAddDriverWallet(req, res) {
       try {
-        const { id } = req.params;
-        const amount = parseMoneyAmount(req.body?.amount);
-        const note = String(req.body?.note || "").trim();
-
-        if (!amount) {
-          return res.status(400).json({
-            success: false,
-            message: "Số tiền cộng không hợp lệ.",
+        const result = await mutateAdminWallet(prisma, {
+          driverId: req.params.id, type: "ADJUST_ADD", amount: Number(req.body?.amount),
+          note: String(req.body?.note || "").trim(), actorId: req.admin?.id ?? null,
+          actorUsername: req.admin?.username || "admin", key: req.get("Idempotency-Key") || null,
+        });
+        if (!result.replayed) {
+          emitAdminDashboardChanged(req, { source: "driver_wallet_adjust_add", driverProfileId: req.params.id, status: "ADJUST_ADD" });
+          queueDriverWalletNotification({
+            req, userId: result.driverUserId, title: "➕ Ví được điều chỉnh cộng",
+            message: `Ví của bạn đã được cộng ${result.amount.toLocaleString("vi-VN")}đ. Số dư sau giao dịch: ${result.balanceAfter.toLocaleString("vi-VN")}đ.`,
           });
         }
-
-        if (!note) {
-          return res.status(400).json({
-            success: false,
-            message: "Vui lòng nhập ghi chú.",
-          });
-        }
-
-        const actorUsername = req.admin?.username || "admin";
-
-        const result = await prisma.$transaction(async (tx) => {
-          const profile = await tx.driverProfile.findUnique({
-            where: { id },
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
-              },
-            },
-          });
-
-          if (!profile) {
-            const err = new Error("Không tìm thấy hồ sơ tài xế.");
-            err.statusCode = 404;
-            throw err;
-          }
-
-          const balanceBefore = Number(profile.balance || 0);
-          const balanceAfter = balanceBefore + amount;
-
-          const updatedProfile = await tx.driverProfile.update({
-            where: { id },
-            data: { balance: balanceAfter },
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
-              },
-            },
-          });
-
-          const transaction = await tx.driverWalletTransaction.create({
-            data: {
-              driverProfileId: id,
-              type: "ADJUST_ADD",
-              amount,
-              balanceBefore,
-              balanceAfter,
-              note: `[ADMIN ${actorUsername}] ${note}`,
-            },
-          });
-
-          return {
-            profile: updatedProfile,
-            transaction,
-            driverUserId: profile.user?.id || null,
-            balanceAfter,
-            amount,
-          };
-        });
-
-        await createDriverWalletNotification({
-          req,
-          userId: result.driverUserId,
-          title: "➕ Ví được điều chỉnh cộng",
-          message: `Ví của bạn đã được cộng thêm ${Number(
-            result.amount || 0,
-          ).toLocaleString("vi-VN")}đ. Số dư hiện tại: ${Number(
-            result.balanceAfter || 0,
-          ).toLocaleString("vi-VN")}đ.`,
-        });
-
-        return res.json({
-          success: true,
-          message: "Đã điều chỉnh cộng ví tài xế.",
-          item: result,
-        });
-      } catch (e) {
-        console.error("adjustAddDriverWallet error:", e);
-        return res.status(e.statusCode || 500).json({
-          success: false,
-          message: e.message || "Lỗi server khi điều chỉnh cộng ví tài xế.",
-        });
+        return res.json({ success: true, message: "Đã điều chỉnh cộng ví tài xế.", item: result, walletOperationVersion: 1 });
+      } catch (error) {
+        console.error("adjustAddDriverWallet error:", error);
+        return res.status(error.statusCode || 500).json({ success: false, message: error.statusCode ? error.message : "Chưa xác định được kết quả giao dịch. Hãy kiểm tra lại cùng mã giao dịch." });
       }
     },
 
     async subtractDriverWallet(req, res) {
       try {
-        const { id } = req.params;
-        const amount = parseMoneyAmount(req.body?.amount);
-        const note = String(req.body?.note || "").trim();
-
-        if (!amount) {
-          return res.status(400).json({
-            success: false,
-            message: "Số tiền trừ không hợp lệ.",
+        const result = await mutateAdminWallet(prisma, {
+          driverId: req.params.id, type: "ADJUST_SUBTRACT", amount: Number(req.body?.amount),
+          note: String(req.body?.note || "").trim(), actorId: req.admin?.id ?? null,
+          actorUsername: req.admin?.username || "admin", key: req.get("Idempotency-Key") || null,
+        });
+        if (!result.replayed) {
+          emitAdminDashboardChanged(req, { source: "driver_wallet_adjust_subtract", driverProfileId: req.params.id, status: "ADJUST_SUBTRACT" });
+          queueDriverWalletNotification({
+            req, userId: result.driverUserId, title: "➖ Ví bị điều chỉnh trừ",
+            message: `Ví của bạn đã được trừ ${result.amount.toLocaleString("vi-VN")}đ. Số dư sau giao dịch: ${result.balanceAfter.toLocaleString("vi-VN")}đ.`,
           });
         }
-
-        if (!note) {
-          return res.status(400).json({
-            success: false,
-            message: "Vui lòng nhập ghi chú.",
-          });
-        }
-
-        const actorUsername = req.admin?.username || "admin";
-
-        const result = await prisma.$transaction(async (tx) => {
-          const profile = await tx.driverProfile.findUnique({
-            where: { id },
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
-              },
-            },
-          });
-
-          if (!profile) {
-            const err = new Error("Không tìm thấy hồ sơ tài xế.");
-            err.statusCode = 404;
-            throw err;
-          }
-
-          const balanceBefore = Number(profile.balance || 0);
-
-          if (balanceBefore < amount) {
-            const err = new Error("Số dư ví không đủ để trừ.");
-            err.statusCode = 400;
-            throw err;
-          }
-
-          const balanceAfter = balanceBefore - amount;
-
-          const updatedProfile = await tx.driverProfile.update({
-            where: { id },
-            data: { balance: balanceAfter },
-            include: {
-              user: {
-                select: {
-                  id: true,
-                  displayName: true,
-                  phones: {
-                    select: { e164: true, isVerified: true, createdAt: true },
-                    orderBy: { createdAt: "desc" },
-                    take: 1,
-                  },
-                },
-              },
-            },
-          });
-
-          const transaction = await tx.driverWalletTransaction.create({
-            data: {
-              driverProfileId: id,
-              type: "ADJUST_SUBTRACT",
-              amount,
-              balanceBefore,
-              balanceAfter,
-              note: `[ADMIN ${actorUsername}] ${note}`,
-            },
-          });
-
-          return {
-            profile: updatedProfile,
-            transaction,
-            driverUserId: profile.user?.id || null,
-            balanceAfter,
-            amount,
-          };
-        });
-
-        await createDriverWalletNotification({
-          req,
-          userId: result.driverUserId,
-          title: "➖ Ví bị điều chỉnh trừ",
-          message: `Ví của bạn đã bị trừ ${Number(
-            result.amount || 0,
-          ).toLocaleString("vi-VN")}đ. Số dư hiện tại: ${Number(
-            result.balanceAfter || 0,
-          ).toLocaleString("vi-VN")}đ.`,
-        });
-
-        return res.json({
-          success: true,
-          message: "Đã điều chỉnh trừ ví tài xế.",
-          item: result,
-        });
-      } catch (e) {
-        console.error("subtractDriverWallet error:", e);
-        return res.status(e.statusCode || 500).json({
-          success: false,
-          message: e.message || "Lỗi server khi điều chỉnh trừ ví tài xế.",
-        });
+        return res.json({ success: true, message: "Đã điều chỉnh trừ ví tài xế.", item: result, walletOperationVersion: 1 });
+      } catch (error) {
+        console.error("subtractDriverWallet error:", error);
+        return res.status(error.statusCode || 500).json({ success: false, message: error.statusCode ? error.message : "Chưa xác định được kết quả giao dịch. Hãy kiểm tra lại cùng mã giao dịch." });
       }
     },
 
@@ -3838,7 +3553,9 @@ export function makeAdminController(prisma) {
         }
 
         if (q) {
+          const driverIds = await findSmartDriverIds(q);
           where.OR = [
+            { driverProfileId: { in: driverIds } },
             { id: { equals: q } },
             {
               bankAccount: {
@@ -3897,6 +3614,7 @@ export function makeAdminController(prisma) {
                 select: {
                   id: true,
                   fullName: true,
+                  balance: true,
                   user: {
                     select: {
                       id: true,
@@ -3959,6 +3677,9 @@ export function makeAdminController(prisma) {
           });
         }
 
+        if (request.status === "APPROVED" || request.status === "PAID") {
+          return res.json({ success: true, item: request, message: "Yêu cầu đã được duyệt trước đó." });
+        }
         if (request.status !== "PENDING") {
           return res.status(400).json({
             success: false,
@@ -3967,7 +3688,7 @@ export function makeAdminController(prisma) {
         }
 
         const updated = await prisma.driverWithdrawRequest.update({
-          where: { id },
+          where: { id, status: "PENDING" },
           data: {
             status: "APPROVED",
             approvedAt: new Date(),
@@ -4051,6 +3772,9 @@ export function makeAdminController(prisma) {
           });
         }
 
+        if (request.status === "REJECTED") {
+          return res.json({ success: true, item: request, message: "Yêu cầu đã được từ chối và hoàn ví trước đó." });
+        }
         if (request.status !== "PENDING") {
           return res.status(400).json({
             success: false,
@@ -4059,8 +3783,13 @@ export function makeAdminController(prisma) {
         }
 
         const result = await prisma.$transaction(async (tx) => {
-          const latestProfile = await tx.driverProfile.findUnique({
+          const claimed = await tx.driverWithdrawRequest.updateMany({
+            where: { id, status: "PENDING" }, data: { status: "REJECTED", rejectReason },
+          });
+          if (!claimed.count) throw Object.assign(new Error("Yêu cầu đã được xử lý. Vui lòng tải lại."), { statusCode: 409 });
+          const latestProfile = await tx.driverProfile.update({
             where: { id: request.driverProfileId },
+            data: { balance: { increment: request.amount } },
             select: {
               id: true,
               balance: true,
@@ -4073,13 +3802,8 @@ export function makeAdminController(prisma) {
             throw err;
           }
 
-          const balanceBefore = latestProfile.balance;
-          const balanceAfter = balanceBefore + request.amount;
-
-          await tx.driverProfile.update({
-            where: { id: latestProfile.id },
-            data: { balance: balanceAfter },
-          });
+          const balanceAfter = latestProfile.balance;
+          const balanceBefore = balanceAfter - request.amount;
 
           const updatedRequest = await tx.driverWithdrawRequest.update({
             where: { id },
@@ -4165,6 +3889,9 @@ export function makeAdminController(prisma) {
           });
         }
 
+        if (request.status === "PAID") {
+          return res.json({ success: true, item: request, message: "Yêu cầu đã được ghi nhận chuyển khoản trước đó." });
+        }
         if (request.status !== "APPROVED") {
           return res.status(400).json({
             success: false,
@@ -4173,6 +3900,10 @@ export function makeAdminController(prisma) {
         }
 
         const updated = await prisma.$transaction(async (tx) => {
+          const claimed = await tx.driverWithdrawRequest.updateMany({
+            where: { id, status: "APPROVED" }, data: { status: "PAID" },
+          });
+          if (!claimed.count) throw Object.assign(new Error("Yêu cầu đã được xử lý. Vui lòng tải lại."), { statusCode: 409 });
           const latestProfile = await tx.driverProfile.findUnique({
             where: { id: request.driverProfileId },
             select: {
@@ -4266,7 +3997,7 @@ export function makeAdminController(prisma) {
           updatedAt: updated.updatedRequest.paidAt || new Date().toISOString(),
         });
 
-        await createDriverWalletNotification({
+        queueDriverWalletNotification({
           req,
           userId: updated.driverUserId,
           title: "🏦 Đã chuyển tiền rút ví",
@@ -4760,7 +4491,7 @@ export function makeAdminController(prisma) {
         });
 
         if (result.driverUserId) {
-          await createDriverWalletNotification({
+          queueDriverWalletNotification({
             req,
             userId: result.driverUserId,
             title: "Phạt huỷ chuyến đã được duyệt",
@@ -4824,7 +4555,9 @@ export function makeAdminController(prisma) {
         }
 
         if (q) {
+          const driverIds = await findSmartDriverIds(q);
           where.OR = [
+            { driverProfileId: { in: driverIds } },
             {
               driverProfile: {
                 fullName: {

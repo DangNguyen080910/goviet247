@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { router } from "expo-router";
+import { useCallback, useMemo, useRef, useState } from "react";
+import { router, useFocusEffect } from "expo-router";
 import {
   ActivityIndicator,
+  Alert,
   Pressable,
   RefreshControl,
   ScrollView,
@@ -38,9 +39,13 @@ export default function LedgerScreen() {
   const [report, setReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [loadError, setLoadError] = useState("");
+  const loadVersion = useRef(0);
 
   const load = useCallback(async (refresh = false) => {
-    refresh ? setRefreshing(true) : setLoading(true);
+    const version = ++loadVersion.current;
+    if (refresh) setRefreshing(true);
+    else setLoading(true);
     try {
       const token = await getAdminToken();
       const user = await getAdminUser();
@@ -53,15 +58,23 @@ export default function LedgerScreen() {
         fetchCashSummary(range.fromDate, range.toDate),
         fetchRevenueReport(quarter, year),
       ]);
+      if (version !== loadVersion.current) return;
+      setLoadError("");
       setCash(cashData);
       setReport(reportData);
+    } catch (error: any) {
+      if (version !== loadVersion.current) return;
+      setLoadError("Chưa tải được sổ sách. Kéo xuống để thử lại; chưa thể xác nhận số liệu.");
+      Alert.alert("Chưa tải được sổ sách", error?.message || "Dữ liệu có thể chưa mới nhất. Vui lòng tải lại.");
     } finally {
-      setLoading(false);
-      setRefreshing(false);
+      if (version === loadVersion.current) {
+        setLoading(false);
+        setRefreshing(false);
+      }
     }
   }, [quarter, year]);
 
-  useEffect(() => { void load(); }, [load]);
+  useFocusEffect(useCallback(() => { void load(); }, [load]));
 
   const rows = useMemo(() => [
     { label: "Phí môi giới", value: report?.revenue?.commission },
@@ -85,7 +98,7 @@ export default function LedgerScreen() {
           <View style={styles.filterGroup}><Text style={styles.filterLabel}>Quý</Text><View style={styles.pills}>{[1,2,3,4].map((q) => <Pressable key={q} style={[styles.pill, q === quarter && styles.pillActive]} onPress={() => setQuarter(q)}><Text style={[styles.pillText, q === quarter && styles.pillTextActive]}>Q{q}</Text></Pressable>)}</View></View>
           <View style={styles.yearRow}><Pressable style={styles.yearButton} onPress={() => setYear((v) => v - 1)}><Text>−</Text></Pressable><Text style={styles.year}>{year}</Text><Pressable style={styles.yearButton} onPress={() => setYear((v) => v + 1)}><Text>+</Text></Pressable></View>
         </View>
-        {loading ? <ActivityIndicator size="large" style={{ marginTop: 60 }} /> : <>
+        {loading ? <ActivityIndicator size="large" style={{ marginTop: 60 }} /> : loadError ? <Text style={styles.empty}>{loadError}</Text> : <>
           <View style={styles.grid}>{cards.map(([label, value, color]) => <View key={label} style={styles.card}><Text style={styles.cardLabel}>{label}</Text><Text style={[styles.cardValue, { color }]}>{money(value)}</Text></View>)}</View>
           <Text style={styles.sectionTitle}>Danh sách doanh thu / chi phí</Text>
           <View style={styles.list}>{rows.length ? rows.map((row) => <View key={row.label} style={styles.row}><Text style={styles.rowLabel}>{row.label}</Text><Text style={[styles.rowValue, { color: Number(row.value || 0) < 0 ? "#dc2626" : "#15803d" }]}>{money(row.value)}</Text></View>) : <Text style={styles.empty}>Chưa có dữ liệu trong quý này.</Text>}</View>

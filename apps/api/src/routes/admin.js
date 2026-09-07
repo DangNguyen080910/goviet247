@@ -50,6 +50,11 @@ import { uploadAccountingDocument } from "../middleware/uploadMiddleware.js";
 const router = Router();
 const ctrl = makeAdminController(prisma);
 
+// New mobile clients verify support before sending a durable wallet operation.
+router.get("/wallet-operations/capabilities", requireAdmin, (req, res) => {
+  res.json({ success: true, walletOperationVersion: 1 });
+});
+
 // ================= DASHBOARD =================
 
 router.get("/dashboard", requireAdminOrStaff, ctrl.getDashboard);

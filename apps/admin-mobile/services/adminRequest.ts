@@ -6,17 +6,8 @@ import { disconnectAdminSocket } from "./adminSocket";
 
 let isHandlingAuthExpired = false;
 
-function isAuthExpiredResponse(status: number, data: any) {
-  const message = String(data?.message || data?.error || "").toLowerCase();
-
-  return (
-    status === 401 ||
-    message.includes("token") ||
-    message.includes("jwt") ||
-    message.includes("hết hạn") ||
-    message.includes("expired") ||
-    message.includes("unauthorized")
-  );
+function isAuthExpiredResponse(status: number, _data: any) {
+  return status === 401;
 }
 
 async function handleAuthExpired() {
@@ -40,17 +31,39 @@ async function handleAuthExpired() {
     }, 1000);
   }
 }
+const inFlightMutations = new Map<string, Promise<any>>();
 export async function adminRequest(path: string, options: RequestInit = {}) {
   const token = await getAdminToken();
+  const method = String(options.method || "GET").toUpperCase();
+  const isMutation = method !== "GET" && method !== "HEAD";
+  if (!isMutation) return performRequest(path, options, token);
+  const key = JSON.stringify([token, method, path, options.body || null, options.headers || null]);
+  const existing = inFlightMutations.get(key);
+  if (existing) return existing;
+  const pending = performRequest(path, options, token);
+  inFlightMutations.set(key, pending);
+  try { return await pending; }
+  finally { if (inFlightMutations.get(key) === pending) inFlightMutations.delete(key); }
+}
 
-  const res = await fetch(`${API_BASE_URL}${path}`, {
+async function performRequest(path: string, options: RequestInit, token: string) {
+
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
       ...(options.headers || {}),
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
-  });
+    });
+  } catch {
+    const mutation = !["GET", "HEAD"].includes(String(options.method || "GET").toUpperCase());
+    throw new Error(mutation
+      ? "Chưa nhận được phản hồi từ máy chủ. Thao tác có thể đã được lưu; hãy kiểm tra trạng thái trước khi thực hiện lại."
+      : "Không tải được dữ liệu. Vui lòng kiểm tra kết nối và tải lại.");
+  }
 
   let data: any = null;
 
@@ -65,8 +78,11 @@ export async function adminRequest(path: string, options: RequestInit = {}) {
       await handleAuthExpired();
     }
 
-    throw new Error(data?.message || data?.error || `HTTP ${res.status}`);
+    throw Object.assign(new Error(data?.message || data?.error || `HTTP ${res.status}`), { status: res.status });
   }
 
+  if (data === null && res.status !== 204) {
+    throw new Error("Máy chủ chưa trả về kết quả hợp lệ. Vui lòng kiểm tra lại trước khi thao tác tiếp.");
+  }
   return data;
 }
