@@ -282,7 +282,7 @@ export default function GlobalSupportButton() {
     >
       {showTooltip ? (
         <View style={styles.tooltip}>
-          <Text style={styles.tooltipText}>Cần hỗ trợ?</Text>
+          <Text style={styles.tooltipText}>Bạn cần hỗ trợ?</Text>
         </View>
       ) : null}
 

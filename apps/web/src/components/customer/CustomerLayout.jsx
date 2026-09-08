@@ -18,6 +18,7 @@ import {
 import { keyframes } from "@mui/system";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import ChatIcon from "@mui/icons-material/Chat";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -257,6 +258,18 @@ export default function CustomerLayout() {
               alignItems="center"
               sx={{ flexShrink: 0 }}
             >
+              <Tooltip title="Facebook GoViet247">
+                <Button
+                  component="a"
+                  href="https://www.facebook.com/goviet247"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook GoViet247 (mở tab mới)"
+                  sx={{ minWidth: 40, width: 40, height: 40, p: 0, color: "#1877F2", borderRadius: 2 }}
+                >
+                  <FacebookIcon sx={{ fontSize: 26 }} />
+                </Button>
+              </Tooltip>
               <Button
                 variant="text"
                 startIcon={<ChatIcon />}
