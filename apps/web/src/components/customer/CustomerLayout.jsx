@@ -258,18 +258,6 @@ export default function CustomerLayout() {
               alignItems="center"
               sx={{ flexShrink: 0 }}
             >
-              <Tooltip title="Facebook GoViet247">
-                <Button
-                  component="a"
-                  href="https://www.facebook.com/goviet247"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook GoViet247 (mở tab mới)"
-                  sx={{ minWidth: 40, width: 40, height: 40, p: 0, color: "#1877F2", borderRadius: 2 }}
-                >
-                  <FacebookIcon sx={{ fontSize: 26 }} />
-                </Button>
-              </Tooltip>
               <Button
                 variant="text"
                 startIcon={<ChatIcon />}
@@ -284,6 +272,19 @@ export default function CustomerLayout() {
               >
                 Chat Zalo
               </Button>
+
+              <Tooltip title="Facebook GoViet247">
+                <Button
+                  component="a"
+                  href="https://www.facebook.com/goviet247"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook GoViet247 (mở tab mới)"
+                  sx={{ minWidth: 40, width: 40, height: 40, p: 0, color: "#1877F2", borderRadius: 2 }}
+                >
+                  <FacebookIcon sx={{ fontSize: 26 }} />
+                </Button>
+              </Tooltip>
 
               <Button
                 variant={isBookingPage ? "contained" : "outlined"}

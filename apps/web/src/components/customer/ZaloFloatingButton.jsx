@@ -25,6 +25,8 @@ function constrain(position, snap = false) {
 export default function ZaloFloatingButton() {
   const [phone, setPhone] = useState("");
   const [position, setPosition] = useState(() => {
+    // Desktop starts on the right, even if a mobile position was saved.
+    if (window.innerWidth >= 900) return constrain();
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (Number.isFinite(saved?.x) && Number.isFinite(saved?.y)) return constrain(saved, true);
@@ -46,7 +48,13 @@ export default function ZaloFloatingButton() {
         setShowHint(Boolean(digits));
       }
     }).catch((error) => console.error("Load Zalo config failed:", error));
-    const resize = () => setPosition((current) => constrain(current, true));
+    let wasDesktop = window.innerWidth >= 900;
+    const resize = () => {
+      const isDesktop = window.innerWidth >= 900;
+      const enteredDesktop = isDesktop && !wasDesktop;
+      wasDesktop = isDesktop;
+      setPosition((current) => enteredDesktop ? constrain() : constrain(current, true));
+    };
     window.addEventListener("resize", resize);
     window.visualViewport?.addEventListener("resize", resize);
     window.visualViewport?.addEventListener("scroll", resize);
