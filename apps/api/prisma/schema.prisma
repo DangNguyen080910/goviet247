@@ -257,10 +257,13 @@ model OtpAttempt {
 model Session {
   id               String   @id @default(cuid())
   userId           String
+  // SHA-256 of the bearer token for persistent sessions. Never store the raw token.
   refreshTokenHash String
-  expiresAt        DateTime @db.Timestamptz(6)
+  expiresAt        DateTime? @db.Timestamptz(6)
   createdAt        DateTime @default(now()) @db.Timestamptz(6)
   user             User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
 
 model Trip {
@@ -302,6 +305,7 @@ model Trip {
   direction       TripDirection
   directionFactor Float          @default(1)
   holidayFactor   Float          @default(1)
+  holidaySurcharge Json? // Snapshot of the applied holiday surcharge at booking time
   note            String?
 
   pendingTripAlertAt    DateTime? @db.Timestamptz(6)
@@ -403,6 +407,11 @@ model PricingConfig {
   minFare                  Int
   overnightFee             Int
   gasolineSurchargePercent Decimal @default(0) @db.Decimal(5, 2)
+  holidaySurchargePercent  Decimal @default(0) @db.Decimal(5, 2)
+  holidayStartDate         String? @db.VarChar(10)
+  holidayEndDate           String? @db.VarChar(10)
+  holidayName              String  @default("") @db.VarChar(100)
+  holidayNote              String  @default("") @db.VarChar(500)
 
   kmTiers Json?
 

@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { getMe } from "../api/auth";
+import { getMe, logoutSession } from "../api/auth";
 import { getPublicSystemNotifications } from "../api/systemNotificationsPublic";
 
 const CustomerAuthContext = createContext(null);
@@ -87,34 +87,54 @@ export function CustomerAuthProvider({ children }) {
   const [notifications, setNotifications] = useState([]);
   const [notificationsLoading, setNotificationsLoading] = useState(false);
 
+  const logoutInProgress = useRef(false);
   const lastNotificationIdsRef = useRef(new Set());
   const daKhoiTaoThongBaoRef = useRef(false);
 
   useEffect(() => {
+    let active = true;
+    let restoring = false;
     async function restore() {
+      if (restoring) return;
       if (!token) {
         setLoading(false);
         return;
       }
 
+      restoring = true;
       try {
-        const u = normalizeCustomerUser(await getMe(token));
+        const u = normalizeCustomerUser(await getMe(token, replacement => {
+          if (active && !logoutInProgress.current && localStorage.getItem(TOKEN_KEY) === token) {
+            localStorage.setItem(TOKEN_KEY, replacement);
+            setToken(replacement);
+          }
+        }));
+        if (!active) return;
         setUser(u);
         localStorage.setItem(USER_KEY, JSON.stringify(u));
       } catch (err) {
         console.error("restore session failed", err);
 
-        localStorage.removeItem(TOKEN_KEY);
-        localStorage.removeItem(USER_KEY);
-
-        setToken("");
-        setUser(null);
+        if (active && err?.status === 401) {
+          localStorage.removeItem(TOKEN_KEY);
+          localStorage.removeItem(USER_KEY);
+          setToken("");
+          setUser(null);
+        }
       }
 
-      setLoading(false);
+      restoring = false;
+      if (active) setLoading(false);
     }
 
-    restore();
+    void restore();
+    window.addEventListener("online", restore);
+    window.addEventListener("focus", restore);
+    return () => {
+      active = false;
+      window.removeEventListener("online", restore);
+      window.removeEventListener("focus", restore);
+    };
   }, [token]);
 
   useEffect(() => {
@@ -216,7 +236,13 @@ export function CustomerAuthProvider({ children }) {
     localStorage.setItem(USER_KEY, JSON.stringify(normalizedUser));
   }, []);
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
+    const current = localStorage.getItem(TOKEN_KEY);
+    logoutInProgress.current = true;
+    try { await logoutSession(current); } finally { logoutInProgress.current = false; }
+    // Do not clear a different login that completed while this request was in flight.
+    const latest = localStorage.getItem(TOKEN_KEY);
+    if (latest && latest !== current) return;
     setToken("");
     setUser(null);
     setNotifications([]);

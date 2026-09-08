@@ -30,6 +30,7 @@ export async function verifyOtp(sessionId, code) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-Session-Mode": "persistent-v1",
     },
     body: JSON.stringify({
       session_id: sessionId,
@@ -48,19 +49,23 @@ export async function verifyOtp(sessionId, code) {
 }
 
 // Lấy thông tin user
-export async function getMe(token) {
+export async function getMe(token, onReplacement) {
   const res = await fetch(`${API}/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
+      "X-Session-Mode": "persistent-v1",
     },
   });
 
-  const data = await res.json();
-
+  const data = await res.json().catch(() => null);
   if (!res.ok) {
-    throw new Error(data?.message || "Không lấy được user");
+    throw Object.assign(new Error(data?.message || "Không lấy được user"), { status: res.status });
+  }
+  if (!data?.success || !data?.user?.id) {
+    throw new Error("Phản hồi tài khoản chưa hợp lệ. Vui lòng thử lại.");
   }
 
+  if (data.access_token) onReplacement?.(data.access_token);
   return data.user;
 }
 
@@ -82,4 +87,14 @@ export async function updateMe(token, payload) {
   }
 
   return data.user;
+}
+export async function logoutSession(token) {
+  if (!token) return;
+  const res = await fetch(`${API}/logout`, {
+    method: "POST", headers: { Authorization: `Bearer ${token}` },
+  });
+  const data = await res.json().catch(() => null);
+  if (res.status !== 401 && (!res.ok || !data?.success)) {
+    throw new Error("Chưa thể đăng xuất. Vui lòng kiểm tra kết nối và thử lại.");
+  }
 }

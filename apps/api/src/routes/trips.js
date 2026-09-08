@@ -362,6 +362,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         fuelPreference,
         basePricePerKm,
         holidayFactor,
+        holidaySurcharge: pricing.holidaySurcharge,
         directionFactor,
         totalPrice,
         riderName: riderName || "",

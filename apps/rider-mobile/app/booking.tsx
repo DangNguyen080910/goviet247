@@ -2410,6 +2410,15 @@ export default function RiderBookingScreen() {
                 </Text>
               ) : null}
 
+              {Number(quote.raw?.holidaySurchargePercent || 0) > 0 ? (
+                <View>
+                  <Text style={styles.helperText}>
+                    Đã gồm phụ thu lễ, Tết {quote.raw.holidaySurchargePercent}%: {formatVND(quote.raw.holidaySurchargeAmount)}
+                  </Text>
+                  <Text style={styles.helperText}>{quote.raw.holidaySurchargeDescription}</Text>
+                </View>
+              ) : null}
+
               <View style={styles.quoteBenefits}>
                 <Text style={styles.quoteBenefitText}>
                   ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và

@@ -17,16 +17,9 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import { getMe, requestOtp, verifyOtp } from "../services/authApi";
-import { removeDriverToken, setDriverToken } from "../services/storage";
+import { requestOtp, verifyOtp, logoutSession } from "../services/authApi";
+import { setDriverToken } from "../services/storage";
 import { API_BASE_URL } from "../constants/api";
-
-function isDriverRole(role: string | null | undefined) {
-  const normalized = String(role || "")
-    .trim()
-    .toUpperCase();
-  return normalized === "DRIVER";
-}
 
 function formatMmSs(totalSeconds: number) {
   const safe = Math.max(0, totalSeconds);
@@ -128,14 +121,14 @@ export default function OtpScreen() {
 
   const goBackToPhoneInput = async () => {
     try {
+      await logoutSession();
       setCode("");
       setErrorText("");
       setSessionId("");
-      await removeDriverToken();
+      router.replace("/");
     } catch (error) {
       console.warn("goBackToPhoneInput error:", error);
-    } finally {
-      router.replace("/");
+      setErrorText("Chưa thể đăng xuất. Vui lòng kiểm tra kết nối và thử lại.");
     }
   };
 
@@ -170,23 +163,12 @@ export default function OtpScreen() {
 
       await setDriverToken(token);
 
-      const meData = await getMe(token);
-      const user = meData.user;
-
-      if (!isDriverRole(user?.role)) {
-        await removeDriverToken();
-        setErrorText("Tài khoản này không phải tài xế.");
-        return;
-      }
-
       router.replace("/bootstrap");
     } catch (error: any) {
       console.error("Verify OTP error:", error);
 
       const code = String(error?.code || "").toUpperCase();
       const rawMessage = error?.message || "Xác minh OTP thất bại.";
-
-      await removeDriverToken();
 
       if (code === "DRIVER_REJECTED" || code === "DRIVER_SUSPENDED") {
         const supportPhone = await getDriverSupportPhoneForBlockedAlert();

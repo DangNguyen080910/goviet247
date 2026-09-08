@@ -1,4 +1,5 @@
 // Path: goviet247/apps/driver-mobile/services/driverProfileApi.ts
+import { ApiError as AuthApiError } from "./authApi";
 import { Platform } from "react-native";
 import type { ImagePickerAsset } from "expo-image-picker";
 import { API_BASE_URL } from "../constants/api";
@@ -416,11 +417,17 @@ export async function getMyDriverProfile(token: string) {
     | null;
 
   if (!response.ok) {
-    throw new Error(
-      getErrorMessage(payload as ApiError, "Không thể tải hồ sơ tài xế.")
+    throw new AuthApiError(
+      getErrorMessage(payload as ApiError, "Không thể tải hồ sơ tài xế."),
+      "API_ERROR", response.status
     );
   }
 
+  if (!payload?.success || !("hasDriverProfile" in payload) ||
+      typeof payload.hasDriverProfile !== "boolean" ||
+      (payload.hasDriverProfile && !payload.profile?.status)) {
+    throw new Error("Phản hồi hồ sơ chưa hợp lệ. Vui lòng thử lại.");
+  }
   return payload as GetMyDriverProfileResponse;
 }
 

@@ -24,7 +24,7 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import { API_BASE_URL } from "../constants/api";
-import { getMe } from "../services/authApi";
+import { ApiError, getMe, logoutSession } from "../services/authApi";
 import { getDriverToken, removeDriverToken } from "../services/storage";
 import {
   acceptDriverTrip,
@@ -468,7 +468,6 @@ export default function DashboardScreen() {
       const data = await getMyDriverProfile(token);
 
       if (!data?.hasDriverProfile) {
-        await removeDriverToken();
         router.replace("/driver-profile/create");
         return false;
       }
@@ -495,22 +494,18 @@ export default function DashboardScreen() {
 
       return true;
     } catch (error: any) {
-      const message = String(error?.message || "").toLowerCase();
-
-      // Token hỏng / hết hạn / 401 / 403 thì đá ra luôn
-      if (
-        message.includes("token") ||
-        message.includes("401") ||
-        message.includes("403") ||
-        message.includes("không xác định") ||
-        message.includes("không lấy được")
-      ) {
+      // A profile/network error is not proof that authentication expired.
+      if (error instanceof ApiError && error.status === 401) {
         await removeDriverToken();
         router.replace("/");
         return false;
       }
 
-      throw error;
+      setAvailableError("Chưa thể kiểm tra tài khoản. Vui lòng kéo xuống để thử lại.");
+      setMyTripsError("Chưa thể tải dữ liệu. Vui lòng thử lại.");
+      setLoadingAvailable(false);
+      setLoadingMyTrips(false);
+      return false;
     }
   }, [forceLogoutWithBlockedStatus]);
 
@@ -835,6 +830,10 @@ export default function DashboardScreen() {
   }, []);
 
   const handleLogout = async () => {
+    try { await logoutSession(); } catch {
+      Alert.alert("Chưa thể đăng xuất", "Vui lòng kiểm tra kết nối và thử lại.");
+      return;
+    }
     handleCloseMenu();
 
     if (socketRef.current) {

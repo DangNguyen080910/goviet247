@@ -1,7 +1,8 @@
 // Path: goviet247/apps/api/src/routes/devices.js
 import { Router } from "express";
 import pkg from "@prisma/client";
-import { verifyAdminJwtToken, verifyJwtToken } from "../utils/jwt.js";
+import { userSessions } from "../services/userSessions.js";
+import { verifyAdminJwtToken } from "../utils/jwt.js";
 
 const { PrismaClient } = pkg;
 
@@ -22,7 +23,7 @@ async function resolveDeviceOwner(req) {
   }
 
   try {
-    const payload = verifyJwtToken(token);
+    const payload = await userSessions.verify(token);
     const userId = payload?.id || payload?.uid;
 
     if (!userId) return null;
@@ -32,7 +33,7 @@ async function resolveDeviceOwner(req) {
       roleFallback: "user",
       displayName: "User",
     };
-  } catch {}
+  } catch (error) { if (error.status !== 401) throw error; }
 
   try {
     const payload = verifyAdminJwtToken(token);

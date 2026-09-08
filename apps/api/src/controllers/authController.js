@@ -1,7 +1,7 @@
 // Path: goviet247/apps/api/src/controllers/authController.js
 import { prisma } from "../utils/db.js";
 import { requestOtp, verifyOtp } from "../services/otpService.js";
-import { signToken } from "../utils/jwt.js";
+import { issueUserToken, userSessions, persistentEnabled, supportsPersistent } from "../services/userSessions.js";
 import { getOtpProviderUnavailablePayload } from "../utils/otpProviderMessage.js";
 
 function normalizeAppRole(input) {
@@ -175,13 +175,13 @@ export async function verifyOtpHandler(req, res) {
       });
     }
 
-    const token = signToken({
+    const token = await issueUserToken({
       uid: user.id,
       id: user.id,
       role: result.appRole,
       appRole: result.appRole,
       phone: resolvePhone(user),
-    });
+    }, req);
 
     return res.json({
       success: true,
@@ -271,8 +271,11 @@ export async function getMe(req, res) {
         "RIDER",
     );
 
+    const access_token = persistentEnabled() && supportsPersistent(req) && !req.user.sid
+      ? await userSessions.issue(req.user, req.authToken) : undefined;
     return res.json({
       success: true,
+      access_token,
       user: buildAuthUserPayload(user, appRole),
     });
   } catch (error) {

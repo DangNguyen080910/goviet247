@@ -270,11 +270,30 @@ function validateKmTiers(kmTiers) {
   return "";
 }
 
+function holidayFormFields(row) {
+  return {
+    holidaySurchargePercent: toFormValue(row.holidaySurchargePercent ?? 0),
+    holidayStartDate: row.holidayStartDate || "",
+    holidayEndDate: row.holidayEndDate || "",
+    holidayName: row.holidayName || "",
+    holidayNote: row.holidayNote || "",
+  };
+}
+
+function holidayPreview(item) {
+  if (!item?.holidayStartDate || !item?.holidayEndDate) return "Chọn khoảng ngày để xem trước nội dung hiển thị cho khách.";
+  const showDate = value => value.split("-").reverse().join("/");
+  const name = (item.holidayName || "").trim();
+  const note = (item.holidayNote || "").trim();
+  return `Áp dụng cho chuyến khởi hành từ ${showDate(item.holidayStartDate)} đến hết ${showDate(item.holidayEndDate)}${name ? ` nhân dịp ${name}` : ""}.${note ? ` ${note}` : ""}`;
+}
+
 function normalizePricingRows(rows) {
   const mapped = {};
 
   for (const row of rows || []) {
     mapped[row.carType] = {
+      ...holidayFormFields(row),
       id: row.id,
       carType: row.carType,
       baseFare: toFormValue(row.baseFare),
@@ -296,6 +315,11 @@ function normalizePricingRows(rows) {
 
 function buildPayloadFromForm(item) {
   return {
+    holidaySurchargePercent: Number(item.holidaySurchargePercent || 0),
+    holidayStartDate: item.holidayStartDate || null,
+    holidayEndDate: item.holidayEndDate || null,
+    holidayName: (item.holidayName || "").trim(),
+    holidayNote: (item.holidayNote || "").trim(),
     baseFare: Number(item.baseFare || 0),
     pricePerKm: Number(item.pricePerKm || 0),
     pricePerHour: Number(item.pricePerHour || 0),
@@ -526,6 +550,55 @@ function PricingCard({
           inputProps={{ min: 0, max: 100, step: 0.1 }}
           helperText="Chỉ cộng khi khách chọn Xe xăng. Không yêu cầu và Xe điện dùng giá mặc định."
         />
+
+        <Box sx={{ p: 2, border: "1px solid", borderColor: "divider", borderRadius: 2 }}>
+          <Stack spacing={2}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>Phụ thu lễ, Tết</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Áp dụng theo ngày khởi hành, giờ Việt Nam, gồm cả ngày bắt đầu và kết thúc.
+              Chuyến khứ hồi xét ngày khởi hành ban đầu. Mức 0% sẽ tắt phụ thu và ẩn dòng giải thích.
+            </Typography>
+            <TextField
+              label="Phụ thu lễ, Tết (%)"
+              value={item?.holidaySurchargePercent ?? "0"}
+              onChange={onFieldChange(carType, "holidaySurchargePercent")}
+              fullWidth type="number" inputProps={{ min: 0, max: 100, step: 0.01 }}
+              helperText="Tính trên cùng giá gốc với phụ thu xe xăng, không cộng chồng phụ thu."
+            />
+            <TextField
+              label="Tên dịp lễ" placeholder="Quốc khánh"
+              value={item?.holidayName || ""}
+              onChange={onFieldChange(carType, "holidayName")}
+              fullWidth inputProps={{ maxLength: 100 }}
+            />
+            <TextField
+              label="Ngày bắt đầu" type="date"
+              value={item?.holidayStartDate || ""}
+              onChange={onFieldChange(carType, "holidayStartDate")}
+              fullWidth InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+              label="Ngày kết thúc (bao gồm cả ngày này)" type="date"
+              value={item?.holidayEndDate || ""}
+              onChange={onFieldChange(carType, "holidayEndDate")}
+              fullWidth InputLabelProps={{ shrink: true }}
+              inputProps={{ min: item?.holidayStartDate || undefined }}
+            />
+            <TextField
+              label="Ghi chú thêm cho khách (không bắt buộc)"
+              value={item?.holidayNote || ""}
+              onChange={onFieldChange(carType, "holidayNote")}
+              fullWidth multiline minRows={2} inputProps={{ maxLength: 500 }}
+              helperText="Ngày áp dụng được tự thêm vào nội dung. Không cần nhập lại ngày ở đây."
+            />
+            <Alert severity="info">
+              <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                Xem trước: Đã gồm phụ thu lễ, Tết {item?.holidaySurchargePercent || 0}%: [số tiền theo chuyến]
+              </Typography>
+              {holidayPreview(item)}
+            </Alert>
+          </Stack>
+        </Box>
 
         <TextField
           label="Số km kích hoạt qua đêm"
@@ -1064,6 +1137,7 @@ export default function AdminConfig() {
       { key: "minFare", label: "Giá tối thiểu" },
       { key: "overnightFee", label: "Phụ phí qua đêm" },
       { key: "gasolineSurchargePercent", label: "Phụ thu xe xăng" },
+      { key: "holidaySurchargePercent", label: "Phụ thu lễ, Tết" },
       { key: "overnightTriggerKm", label: "Số km kích hoạt qua đêm" },
       { key: "overnightTriggerHours", label: "Số giờ kích hoạt qua đêm" },
     ];
@@ -1083,6 +1157,24 @@ export default function AdminConfig() {
     if (Number(item?.gasolineSurchargePercent) > 100) {
       return "Phụ thu xe xăng không được vượt quá 100%.";
     }
+
+    const holidayPercent = Number(item.holidaySurchargePercent);
+    if (holidayPercent > 100 || Math.abs(holidayPercent * 100 - Math.round(holidayPercent * 100)) > 0.000001) {
+      return "Phụ thu lễ, Tết tối đa 100%, tối đa 2 chữ số thập phân.";
+    }
+    const start = item.holidayStartDate;
+    const end = item.holidayEndDate;
+    if ((start && !end) || (!start && end) || (holidayPercent > 0 && (!start || !end))) {
+      return "Vui lòng chọn đủ ngày bắt đầu và ngày kết thúc phụ thu lễ, Tết.";
+    }
+    for (const value of [start, end]) {
+      if (!value) continue;
+      const date = new Date(`${value}T00:00:00.000Z`);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
+        return "Ngày áp dụng phụ thu lễ, Tết không hợp lệ.";
+      }
+    }
+    if (start && end && start > end) return "Ngày kết thúc phải từ ngày bắt đầu trở đi.";
 
     const kmTiersError = validateKmTiers(item?.kmTiers || []);
     if (kmTiersError) {
@@ -1357,6 +1449,7 @@ export default function AdminConfig() {
       setPricingMap((prev) => ({
         ...prev,
         [carType]: {
+          ...holidayFormFields(updated),
           id: updated.id,
           carType: updated.carType,
           baseFare: toFormValue(updated.baseFare),

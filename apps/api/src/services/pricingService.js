@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/services/pricingService.js
 import pkg from "@prisma/client";
+import { calculateHolidaySurcharge } from "./holidaySurcharge.js";
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
@@ -123,7 +124,7 @@ function calculateTieredDistanceCost(distanceKm, rawKmTiers) {
  *   - nếu KHÔNG qua đêm: base + km*perKm + wait*perHour
  *   - nếu CÓ qua đêm: base + km*perKm + overnightFee (KHÔNG tính waitCost)
  */
-export async function quotePrice(input) {
+export async function quotePrice(input, db = prisma) {
   const {
     carType,
     direction,
@@ -135,7 +136,7 @@ export async function quotePrice(input) {
     fuelPreference = "ANY",
   } = input;
 
-  const config = await prisma.pricingConfig.findFirst({
+  const config = await db.pricingConfig.findFirst({
     where: { carType, isActive: true },
   });
 
@@ -264,7 +265,11 @@ export async function quotePrice(input) {
   const fuelSurchargeAmount = Math.round(
     priceBeforeFuelSurcharge * (fuelSurchargePercent / 100),
   );
-  rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount;
+  // Both surcharges use the same fare base; never compound one surcharge on another.
+  const holidaySurcharge = calculateHolidaySurcharge(config, pickup, priceBeforeFuelSurcharge);
+  const holidaySurchargePercent = holidaySurcharge?.percent || 0;
+  const holidaySurchargeAmount = holidaySurcharge?.amount || 0;
+  rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount + holidaySurchargeAmount;
 
   const roundedTotal = roundTo10k(rawTotal);
 
@@ -301,6 +306,10 @@ export async function quotePrice(input) {
       gasolineSurchargePercent,
       fuelSurchargePercent,
       fuelSurchargeAmount,
+      holidaySurcharge,
+      holidaySurchargePercent,
+      holidaySurchargeAmount,
+      holidaySurchargeDescription: holidaySurcharge?.description || "",
 
       minApplied,
       roundingApplied: roundedTotal !== rawTotal,
@@ -357,7 +366,8 @@ export async function calculateTripPrice({
   return {
     distanceKm: d.distanceKm,
     basePricePerKm: d.pricePerKm,
-    holidayFactor: 1,
+    holidayFactor: 1 + d.holidaySurchargePercent / 100,
+    holidaySurcharge: d.holidaySurcharge || undefined,
     directionFactor: 1,
     totalPrice: d.finalPrice,
   };

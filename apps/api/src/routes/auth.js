@@ -6,6 +6,7 @@ import {
   verifyOtpHandler,
   getMe,
 } from "../controllers/authController.js";
+import { userSessions } from "../services/userSessions.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 
 const OTP_RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5 phút
@@ -202,6 +203,14 @@ router.post("/verify-otp", verifyOtpHandler);
 // 3) LẤY THÔNG TIN USER TỪ TOKEN
 // =====================================================
 router.get("/me", verifyToken, getMe);
+router.post("/logout", verifyToken, async (req, res) => {
+  try {
+    await userSessions.revoke(req.authToken, req.user);
+    return res.json({ success: true });
+  } catch {
+    return res.status(503).json({ success: false, message: "Chưa thể đăng xuất. Vui lòng thử lại." });
+  }
+});
 
 // =====================================================
 // 4) CẬP NHẬT HỒ SƠ USER ĐANG ĐĂNG NHẬP
@@ -368,6 +377,8 @@ router.delete("/me", verifyToken, async (req, res) => {
           e164: currentPhone
         },
       });
+
+      await tx.session.updateMany({ where: { userId: uid }, data: { expiresAt: new Date(0) } });
 
       await tx.device.deleteMany({
         where: {

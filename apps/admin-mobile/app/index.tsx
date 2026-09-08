@@ -1,8 +1,9 @@
 // Path: goviet247/apps/admin-mobile/app/index.tsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { router } from "expo-router";
 import {
   ActivityIndicator,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -13,6 +14,8 @@ import * as Notifications from "expo-notifications";
 import { getAdminNotificationResponseRoute } from "../services/adminNotificationNavigation";
 
 export default function IndexScreen() {
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
     let active = true;
 
@@ -23,12 +26,12 @@ export default function IndexScreen() {
         if (!active) return;
 
         if (token) {
-          const response = await Notifications.getLastNotificationResponseAsync();
+          const response = await Notifications.getLastNotificationResponseAsync().catch(() => null);
           const route = response
             ? getAdminNotificationResponseRoute(response)
             : "/home";
           if (response) {
-            await Notifications.clearLastNotificationResponseAsync();
+            await Notifications.clearLastNotificationResponseAsync().catch(() => {});
           }
           router.replace(route as any);
           return;
@@ -37,7 +40,7 @@ export default function IndexScreen() {
         router.replace("/login");
       } catch {
         if (!active) return;
-        router.replace("/login");
+        setFailed(true);
       }
     }
 
@@ -46,14 +49,19 @@ export default function IndexScreen() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [attempt]);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>GoViet247 Admin</Text>
-        <ActivityIndicator size="large" />
-        <Text style={styles.subtitle}>Đang khởi động...</Text>
+        {failed ? <Pressable accessibilityRole="button" style={{ padding: 16 }}
+          onPress={() => { setFailed(false); setAttempt(value => value + 1); }}>
+          <Text>Chưa thể khôi phục phiên. Nhấn để thử lại.</Text>
+        </Pressable> : <>
+          <ActivityIndicator size="large" />
+          <Text style={styles.subtitle}>Đang khởi động...</Text>
+        </>}
       </View>
     </SafeAreaView>
   );

@@ -280,7 +280,7 @@ export default function HomeScreen() {
           setAdminUsername(user?.username || "");
           setAdminRole(user?.role || "");
 
-          await warmupAdminNotify();
+          await warmupAdminNotify().catch(error => console.warn("Notification warmup failed", error));
           await loadDashboard(false);
           await connectAdminSocket();
 
@@ -296,8 +296,9 @@ export default function HomeScreen() {
         } catch (error) {
           console.error("home bootstrap error:", error);
 
+          // adminRequest handles verified 401 responses; transient errors keep the session.
           if (!active) return;
-          router.replace("/login");
+          setLoading(false);
         }
       }
 

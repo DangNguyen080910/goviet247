@@ -2585,6 +2585,17 @@ export default function BookingCard() {
                 </Typography>
               )}
 
+              {Number(quote.raw?.holidaySurchargePercent || 0) > 0 && (
+                <Box>
+                  <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                    Đã gồm phụ thu lễ, Tết {quote.raw.holidaySurchargePercent}%: {formatVND(quote.raw.holidaySurchargeAmount)}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {quote.raw.holidaySurchargeDescription}
+                  </Typography>
+                </Box>
+              )}
+
               <Box sx={{ mt: 0.5, mb: 1.5 }}>
                 <Typography
                   variant="body2"

@@ -17,7 +17,7 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import AppBrandHeader from "../components/AppBrandHeader";
-import { deleteMe, getMe, updateMe } from "../services/authApi";
+import { deleteMe, getMe, updateMe, logoutSession } from "../services/authApi";
 import { getRiderSupportConfig } from "../services/tripApi";
 import { getRiderToken, removeRiderToken } from "../services/storage";
 
@@ -311,7 +311,7 @@ export default function RiderProfileScreen() {
 
   async function handleLogout() {
     try {
-      await removeRiderToken();
+      await logoutSession();
       router.replace("/");
     } catch (error) {
       console.error("logout error:", error);

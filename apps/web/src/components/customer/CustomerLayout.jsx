@@ -157,10 +157,14 @@ export default function CustomerLayout() {
     navigate("/dat-xe");
   };
 
-  const handleLogout = () => {
-    handleCloseUserMenu();
-    logout();
-    navigate("/", { replace: true });
+  const handleLogout = async () => {
+    try {
+      await logout();
+      handleCloseUserMenu();
+      navigate("/", { replace: true });
+    } catch (error) {
+      window.alert(error.message || "Chưa thể đăng xuất. Vui lòng thử lại.");
+    }
   };
 
   return (

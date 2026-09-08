@@ -16,8 +16,13 @@ function mustHaveAdminSecret() {
 export function signToken(payload) {
   mustHaveSecret();
   return jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES || "30d",
+    expiresIn: process.env.JWT_EXPIRES === "never" ? "30d" : (process.env.JWT_EXPIRES || "30d"),
   });
+}
+
+export function signPersistentToken(payload) {
+  mustHaveSecret();
+  return jwt.sign(payload, process.env.JWT_SECRET, { algorithm: "HS256" });
 }
 
 export function verifyJwtToken(token) {

@@ -21,7 +21,8 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import { getDriverToken, removeDriverToken } from "../../services/storage";
+import { logoutSession } from "../../services/authApi";
+import { getDriverToken } from "../../services/storage";
 import {
   createDriverProfile,
   type DriverDocumentType,
@@ -233,11 +234,11 @@ export default function DriverProfileCreateScreen() {
   const handleBackToLogin = async () => {
     try {
       setErrorText("");
-      await removeDriverToken();
-    } catch (error) {
-      console.warn("handleBackToLogin remove token error:", error);
-    } finally {
+      await logoutSession();
       router.replace("/");
+    } catch (error) {
+      console.warn("handleBackToLogin logout error:", error);
+      setErrorText("Chưa thể đăng xuất. Vui lòng kiểm tra kết nối và thử lại.");
     }
   };
 

@@ -67,6 +67,7 @@ const corsOptions = {
     "X-App-Version",
     "x-app-version",
     "Accept",
+    "X-Session-Mode",
   ],
 };
 

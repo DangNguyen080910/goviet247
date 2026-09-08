@@ -1,6 +1,7 @@
 // Path: goviet247/apps/api/src/controllers/pricingController.js
 
 import pkg from "@prisma/client";
+import { validateHolidayConfig } from "../services/holidaySurcharge.js";
 import { quotePrice } from "../services/pricingService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
 
@@ -249,6 +250,28 @@ export async function updatePricingConfig(req, res) {
         success: false,
         message: "Không tìm thấy cấu hình cho loại xe này.",
       });
+    }
+
+    const holidayFields = ["holidaySurchargePercent", "holidayStartDate", "holidayEndDate", "holidayName", "holidayNote"];
+    for (const field of holidayFields) {
+      if (!Object.prototype.hasOwnProperty.call(body, field)) continue;
+      const value = body[field];
+      if (field === "holidaySurchargePercent") {
+        if (value === null || value === "" || !["number", "string"].includes(typeof value)) {
+          return res.status(400).json({ success: false, message: "Phần trăm phụ thu lễ, Tết không hợp lệ." });
+        }
+        updateData[field] = Number(value);
+      } else if (field === "holidayStartDate" || field === "holidayEndDate") {
+        updateData[field] = value === "" || value === null ? null : value;
+      } else {
+        updateData[field] = typeof value === "string" ? value.trim() : value;
+      }
+    }
+    const holidayError = validateHolidayConfig({ ...existing, ...updateData });
+    if (holidayError) return res.status(400).json({ success: false, message: holidayError });
+    // Prisma strings are non-null; preserve empty optional content consistently.
+    for (const field of ["holidayName", "holidayNote"]) {
+      if (updateData[field] === null) updateData[field] = "";
     }
 
     const updated = await prisma.pricingConfig.update({

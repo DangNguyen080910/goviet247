@@ -1,4 +1,5 @@
 // Path: goviet247/apps/driver-mobile/services/authApi.ts
+import { getDriverToken, setDriverToken, removeDriverToken } from "./storage";
 import { API_BASE_URL } from "../constants/api";
 
 type RequestOtpResponse = {
@@ -24,6 +25,7 @@ type VerifyOtpResponse = {
 };
 
 type MeResponse = {
+  access_token?: string;
   success: boolean;
   user: {
     id: string;
@@ -103,6 +105,7 @@ export async function verifyOtp(sessionId: string, code: string) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-Session-Mode": "persistent-v1",
     },
     body: JSON.stringify({
       session_id: sessionId,
@@ -129,6 +132,7 @@ export async function getMe(token: string) {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
+      "X-Session-Mode": "persistent-v1",
     },
   });
 
@@ -142,5 +146,32 @@ export async function getMe(token: string) {
     );
   }
 
+  if ("access_token" in data && data.access_token) {
+    const replacement = data.access_token;
+    await mutateSession(async () => {
+      if (await getDriverToken() === token) await setDriverToken(replacement);
+    });
+  }
   return data;
+}
+// Serialize token replacement and logout so a late response cannot restore a logged-out session.
+let sessionMutation: Promise<unknown> = Promise.resolve();
+function mutateSession<T>(action: () => Promise<T>): Promise<T> {
+  const result = sessionMutation.then(action, action);
+  sessionMutation = result.catch(() => undefined);
+  return result;
+}
+export async function logoutSession() {
+  return mutateSession(async () => {
+    const token = await getDriverToken();
+    if (!token) return;
+    const res = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+      method: "POST", headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await parseJson(res);
+    if (res.status !== 401 && (!res.ok || !data?.success)) {
+      throw new Error("Chưa thể đăng xuất. Vui lòng kiểm tra kết nối và thử lại.");
+    }
+    if (await getDriverToken() === token) await removeDriverToken();
+  });
 }

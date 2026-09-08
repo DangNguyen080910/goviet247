@@ -1,15 +1,17 @@
 // Path: goviet247/apps/driver-mobile/app/bootstrap.tsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { router } from "expo-router";
 import * as Notifications from "expo-notifications";
 import {
   ActivityIndicator,
+  Pressable,
+  Text,
   SafeAreaView,
   StyleSheet,
   View,
 } from "react-native";
 import { getDriverToken, removeDriverToken } from "../services/storage";
-import { getMe } from "../services/authApi";
+import { ApiError, getMe } from "../services/authApi";
 import { getMyDriverProfile } from "../services/driverProfileApi";
 import { registerPushToken } from "../services/pushRegister";
 import { prepareNotificationUx } from "../services/notify";
@@ -23,7 +25,10 @@ function isDriverRole(role: string | null | undefined) {
 }
 
 export default function BootstrapScreen() {
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
+    let active = true;
     async function run() {
       try {
         const token = await getDriverToken();
@@ -69,7 +74,9 @@ export default function BootstrapScreen() {
         }
 
         const meData = await getMe(token);
+        if (!active) return;
         const user = meData?.user;
+        if (!user?.id || !user?.role) throw new Error("Invalid account response");
 
         if (!isDriverRole(user?.role)) {
           await removeDriverToken();
@@ -78,6 +85,7 @@ export default function BootstrapScreen() {
         }
 
         const data = await getMyDriverProfile(token);
+        if (!active) return;
 
         if (!data?.hasDriverProfile) {
           router.replace("/driver-profile/create");
@@ -109,18 +117,33 @@ export default function BootstrapScreen() {
         router.replace("/dashboard");
       } catch (error) {
         console.error("Bootstrap error:", error);
-        await removeDriverToken();
-        router.replace("/");
+        if (!active) return;
+        if (error instanceof ApiError && error.status === 401) {
+          await removeDriverToken();
+          if (active) router.replace("/");
+        } else {
+          setFailed(true);
+        }
       }
     }
 
-    run();
-  }, []);
+    void run();
+    return () => { active = false; };
+  }, [attempt]);
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.center}>
-        <ActivityIndicator size="large" color="#2563EB" />
+        {failed ? <>
+          <Text style={{ textAlign: "center", padding: 24 }}>
+            Chưa thể khôi phục đăng nhập. Vui lòng kiểm tra kết nối và thử lại.
+          </Text>
+          <Pressable accessibilityRole="button"
+            style={{ padding: 16, backgroundColor: "#2563EB", borderRadius: 10 }}
+            onPress={() => { setFailed(false); setAttempt(value => value + 1); }}>
+            <Text style={{ color: "white" }}>Thử lại</Text>
+          </Pressable>
+        </> : <ActivityIndicator size="large" color="#2563EB" />}
       </View>
     </SafeAreaView>
   );

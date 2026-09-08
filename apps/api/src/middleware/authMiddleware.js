@@ -1,8 +1,9 @@
 // Path: goviet247/apps/api/src/middleware/authMiddleware.js
-import { verifyAdminJwtToken, verifyJwtToken } from "../utils/jwt.js";
+import { userSessions } from "../services/userSessions.js";
+import { verifyAdminJwtToken } from "../utils/jwt.js";
 
 // Xác thực token (user / admin đều dùng)
-export function verifyToken(req, res, next) {
+export async function verifyToken(req, res, next) {
   try {
     const auth = req.headers.authorization || "";
     const [, token] = auth.split(" ");
@@ -10,9 +11,11 @@ export function verifyToken(req, res, next) {
       return res.status(401).json({ success: false, message: "Thiếu token" });
     }
 
-    req.user = verifyJwtToken(token);
+    req.user = await userSessions.verify(token);
+    req.authToken = token;
     next();
-  } catch {
+  } catch (error) {
+    if (error.status !== 401) return res.status(503).json({ success: false, message: "Chưa thể kiểm tra phiên. Vui lòng thử lại." });
     return res.status(401).json({
       success: false,
       message: "Token không hợp lệ hoặc đã hết hạn",

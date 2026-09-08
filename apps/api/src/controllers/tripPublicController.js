@@ -397,6 +397,7 @@ export async function confirmTrip(req, res) {
         note: note || "",
         basePricePerKm: Number(basePricePerKm),
         holidayFactor: Number(holidayFactor || 1),
+        holidaySurcharge: payload.holidaySurcharge || undefined,
         directionFactor: Number(directionFactor || 1),
         totalPrice: Number(totalPrice),
         status: "PENDING",

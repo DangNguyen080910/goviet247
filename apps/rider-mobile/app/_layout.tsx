@@ -9,7 +9,7 @@ import {
   initialWindowMetrics,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import { getMe } from "../services/authApi";
+import { ApiError, getMe } from "../services/authApi";
 import { getRiderToken } from "../services/storage";
 import {
   connectRiderSocket,
@@ -369,14 +369,16 @@ function RootLayoutInner() {
       } catch (error) {
         console.warn("[RiderSocket] sync auth state error:", error);
 
-        if (connectedUserIdRef.current) {
-          disconnectRiderSocket();
-          connectedUserIdRef.current = "";
-        }
-
         if (!isMounted) return;
-        setIsAuthenticated(false);
-        setRiderUserId("");
+        if (error instanceof ApiError && error.status === 401) {
+          if (connectedUserIdRef.current) {
+            disconnectRiderSocket();
+            connectedUserIdRef.current = "";
+          }
+          setIsAuthenticated(false);
+          setRiderUserId("");
+        }
+        // Keep previously verified UI state during a temporary outage.
         setReady(true);
       }
     }
