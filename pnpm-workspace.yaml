@@ -12,3 +12,6 @@ onlyBuiltDependencies:
   - '@prisma/client'
   - '@prisma/engines'
   - prisma
+
+patchedDependencies:
+  react-native-screens@4.16.0: patches/react-native-screens@4.16.0.patch

@@ -1,0 +1,16 @@
+diff --git a/android/src/main/java/com/swmansion/rnscreens/Screen.kt b/android/src/main/java/com/swmansion/rnscreens/Screen.kt
+index 2b7dcff55f7c7cc3129a9b548181c78b6a4d3e74..05b0771179939eafff49cbf9f08dedad7b8e2129 100644
+--- a/android/src/main/java/com/swmansion/rnscreens/Screen.kt
++++ b/android/src/main/java/com/swmansion/rnscreens/Screen.kt
+@@ -498,7 +498,10 @@ class Screen(
+                     // wrong index if we called `startViewTransition` on the views on new arch.
+                     // We add a simple View to bump the number of children to make it work.
+                     // TODO: find a better way to handle this scenario
+-                    it.addView(View(context), i)
++                    // Append the filler so SwipeRefreshLayout's cached circle drawing
++                    // index is not shifted past the child list during transitions.
++                    // Upstream: software-mansion/react-native-screens#4519.
++                    it.addView(View(context))
+                 } else {
+                     child?.let { view -> it.startViewTransition(view) }
+                 }
