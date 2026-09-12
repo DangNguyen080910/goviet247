@@ -139,7 +139,7 @@ function shortTripId(id = "", n = 10) {
 function trackGoogleAdsConversion() {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("event", "conversion", {
-      send_to: "AW-18265368618/9-a8CP2n1cocEKrQzVVE",
+      send_to: "AW-18265368618/9-a8CP2n1cocEKrQzYVE",
     });
   }
 }
