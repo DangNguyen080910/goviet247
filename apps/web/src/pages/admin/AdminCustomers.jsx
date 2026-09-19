@@ -59,6 +59,8 @@ export default function AdminCustomers() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [meta, setMeta] = useState(null);
+  const [appUsageSummary, setAppUsageSummary] = useState(null);
+  const [appPlatform, setAppPlatform] = useState("all");
 
   // Filters
   const [q, setQ] = useState("");
@@ -79,6 +81,7 @@ export default function AdminCustomers() {
 
   const listParams = useMemo(() => {
     return {
+      appPlatform,
       q: qDebounced,
       status,
       phoneVerified,
@@ -86,7 +89,7 @@ export default function AdminCustomers() {
       page,
       pageSize,
     };
-  }, [qDebounced, status, phoneVerified, sort, page, pageSize]);
+  }, [qDebounced, status, phoneVerified, sort, page, pageSize, appPlatform]);
 
   const [selectedId, setSelectedId] = useState(null);
   const [detail, setDetail] = useState(null);
@@ -195,6 +198,7 @@ export default function AdminCustomers() {
       const data = await fetchCustomers(params);
       setCustomers(data.items || []);
       setMeta(data.meta || null);
+      setAppUsageSummary(data.appUsageSummary || null);
     } catch (err) {
       console.error(err);
       setToast({
@@ -342,6 +346,19 @@ export default function AdminCustomers() {
         Quản lý khách hàng
       </Typography>
 
+      {appUsageSummary && <Box mb={2}>
+        <Stack direction="row" gap={1} flexWrap="wrap">
+          <Chip label={`Đã dùng app: ${appUsageSummary.recorded}`} color="success" variant="outlined" />
+          <Chip label={`Chưa ghi nhận: ${appUsageSummary.unrecorded}`} variant="outlined" />
+          <Chip label={`Android: ${appUsageSummary.android}`} variant="outlined" />
+          <Chip label={`iOS: ${appUsageSummary.ios}`} variant="outlined" />
+          <Chip label={`Cả hai: ${appUsageSummary.both}`} variant="outlined" />
+        </Stack>
+        <Typography variant="body2" color="text.secondary" mt={1}>
+          Thống kê theo tìm kiếm, trạng thái và SĐT, trên toàn bộ các trang. Ghi nhận khách đã dùng Rider app; không xác định được việc gỡ app.
+          Chưa ghi nhận không đồng nghĩa chưa cài. Một khách có thể dùng cả Android và iOS.
+        </Typography>
+      </Box>}
       {/* Filter bar */}
       <Box
         sx={{
@@ -411,6 +428,16 @@ export default function AdminCustomers() {
           </Select>
         </FormControl>
 
+        <FormControl size="small" sx={{ minWidth: 190 }}>
+          <InputLabel>Rider app</InputLabel>
+          <Select label="Rider app" value={appPlatform} onChange={e => { setPage(1); setAppPlatform(e.target.value); }}>
+            <MenuItem value="all">Tất cả</MenuItem>
+            <MenuItem value="recorded">Đã dùng app</MenuItem>
+            <MenuItem value="unrecorded">Chưa ghi nhận</MenuItem>
+            <MenuItem value="android">Android</MenuItem>
+            <MenuItem value="ios">iOS</MenuItem>
+          </Select>
+        </FormControl>
         {meta?.total !== undefined && (
           <Typography
             variant="body2"
@@ -432,6 +459,7 @@ export default function AdminCustomers() {
             <TableRow>
               <TableCell>Họ tên</TableCell>
               <TableCell>SĐT</TableCell>
+              <TableCell>Rider app</TableCell>
               <TableCell>Tổng chuyến</TableCell>
               <TableCell>Trạng thái</TableCell>
             </TableRow>
@@ -455,6 +483,12 @@ export default function AdminCustomers() {
                   })()}
                 </TableCell>
 
+                <TableCell>
+                  {c.riderAppUsages?.length ? c.riderAppUsages.map(usage => (
+                    <Chip key={usage.platform} size="small" color="success" variant="outlined" sx={{ mr: 0.5 }}
+                      label={usage.platform === "ios" ? "iOS" : "Android"} />
+                  )) : <Chip size="small" label="Chưa ghi nhận" />}
+                </TableCell>
                 <TableCell>{c._count?.riderTrips ?? 0}</TableCell>
 
                 <TableCell>
@@ -468,7 +502,7 @@ export default function AdminCustomers() {
 
             {customers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4}>
+                <TableCell colSpan={5}>
                   <Typography color="text.secondary">
                     Không có khách hàng phù hợp.
                   </Typography>

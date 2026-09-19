@@ -141,6 +141,7 @@ for (const [app, role] of [['rider-mobile','Rider'],['driver-mobile','Driver']])
     storage[`remove${role}Token`]=async()=>{token=null;};
     const mod=load(`apps/${app}/services/authApi.ts`,{
       './storage':storage,'../constants/api':{API_BASE_URL:'https://test.invalid'},
+      'react-native': { Platform: { OS: 'web' } },
     },{fetch:(...args)=>request(...args)});
     return {mod,get token(){return token;},set request(value){request=value;}};
   }

@@ -984,6 +984,7 @@ export default function DashboardScreen() {
 
         showSuccess("Nhận chuyến thành công.");
       } catch (error: any) {
+        if (error?.code === "TRIP_ACCEPT_UNAVAILABLE") return;
         const message =
           error instanceof Error ? error.message : "Không thể nhận chuyến.";
 

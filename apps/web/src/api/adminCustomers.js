@@ -28,7 +28,7 @@ export async function fetchCustomers(params = {}) {
   if (!res.ok || !data?.success) {
     throw new Error(data?.message || "Không tải được danh sách khách hàng.");
   }
-  return { items: data.items || data.customers || [], meta: data.meta || null };
+  return { items: data.items || data.customers || [], meta: data.meta || null, appUsageSummary: data.appUsageSummary || null };
 }
 
 export async function fetchCustomerDetail(userId) {

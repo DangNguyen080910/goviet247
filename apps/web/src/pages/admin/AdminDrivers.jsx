@@ -31,9 +31,11 @@ import {
   fetchDriverLogs,
   patchDriverKyc,
   patchDriverAccount,
+  patchDriverTripAcceptance,
 } from "../../api/adminDrivers";
 import { initializeAdminSocketBridge } from "../../services/adminSocket";
 
+import { getAdminUser } from "../../utils/adminAuth";
 import DriverActionDialog from "../../components/admin/DriverActionDialog";
 import {
   docTypeLabel,
@@ -327,6 +329,11 @@ export default function AdminDrivers() {
     try {
       setActionLoading(true);
       setDialogError("");
+
+      if (["BLOCK_TRIP_ACCEPT", "UNBLOCK_TRIP_ACCEPT"].includes(dialog.type)) {
+        await patchDriverTripAcceptance(selectedId, { blocked: dialog.type === "BLOCK_TRIP_ACCEPT", reason });
+        setToast({ open: true, type: "success", message: "Đã cập nhật quyền nhận chuyến." });
+      }
 
       if (dialog.type === "REJECT") {
         const res = await patchDriverKyc(selectedId, {
@@ -623,6 +630,7 @@ export default function AdminDrivers() {
 
                 <TableCell>
                   <Chip label={d.status} color={statusColor(d.status)} />
+                  {d.tripAcceptBlocked && <Chip size="small" color="warning" label="Khoá nhận chuyến" sx={{ mt: 0.5 }} />}
                 </TableCell>
               </TableRow>
             ))}
@@ -712,6 +720,15 @@ export default function AdminDrivers() {
                   color={statusColor(detail.status)}
                 />
               </Box>
+
+              <Stack spacing={1} mt={2}>
+                <Typography>Nhận chuyến mới: {detail.tripAcceptBlocked ? "Đang khoá" : "Đang cho phép"}</Typography>
+                {getAdminUser()?.role === "ADMIN" && <Button variant="outlined" disabled={actionLoading}
+                  onClick={() => openDialog(detail.tripAcceptBlocked ? "UNBLOCK_TRIP_ACCEPT" : "BLOCK_TRIP_ACCEPT")}>
+                  {detail.tripAcceptBlocked ? "Mở nhận chuyến" : "Khoá nhận chuyến"}
+                </Button>}
+                <Typography variant="body2" color="text.secondary">Không gửi thông báo cho tài xế. Chuyến đã nhận vẫn tiếp tục xử lý.</Typography>
+              </Stack>
 
               <Tabs
                 value={tab}
@@ -900,7 +917,7 @@ export default function AdminDrivers() {
                     logs.map((x) => (
                       <Box key={x.id} mb={1.5}>
                         <Typography fontWeight={600}>
-                          {x.action} ({x.fromStatus} → {x.toStatus})
+                          {x.action === "BLOCK_TRIP_ACCEPT" ? "Khoá nhận chuyến" : x.action === "UNBLOCK_TRIP_ACCEPT" ? "Mở nhận chuyến" : `${x.action} (${x.fromStatus} → ${x.toStatus})`}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {x.actorUsername} ·{" "}
@@ -934,6 +951,7 @@ export default function AdminDrivers() {
         onClose={closeDialog}
         requireReason={true}
         title={
+          dialog.type === "BLOCK_TRIP_ACCEPT" ? "Khoá nhận chuyến" : dialog.type === "UNBLOCK_TRIP_ACCEPT" ? "Mở nhận chuyến" :
           dialog.type === "REJECT"
             ? "Từ chối tài xế"
             : dialog.type === "SUSPEND"
@@ -941,6 +959,7 @@ export default function AdminDrivers() {
               : "Mở khoá tài xế"
         }
         description={
+          ["BLOCK_TRIP_ACCEPT", "UNBLOCK_TRIP_ACCEPT"].includes(dialog.type) ? "Nhập lý do nội bộ. Không gửi thông báo cho tài xế." :
           dialog.type === "REJECT"
             ? "Vui lòng nhập lý do từ chối hồ sơ."
             : dialog.type === "SUSPEND"

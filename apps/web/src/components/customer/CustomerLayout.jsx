@@ -93,10 +93,6 @@ export default function CustomerLayout() {
     ).length;
   }, [notifications]);
 
-  const recentNotifications = useMemo(() => {
-    return (Array.isArray(notifications) ? notifications : []).slice(0, 5);
-  }, [notifications]);
-
   const greetingLabel = useMemo(() => {
     const displayName = String(user?.displayName || "").trim();
 
@@ -419,7 +415,7 @@ export default function CustomerLayout() {
                   <Tooltip title="Mở menu tài khoản" arrow>
                     <Badge
                       color="error"
-                      badgeContent={unreadNotificationCount}
+                      variant="dot"
                       invisible={unreadNotificationCount <= 0}
                       overlap="rectangular"
                       sx={{
@@ -540,31 +536,12 @@ export default function CustomerLayout() {
                       />
                       <ListItemText
                         primary="Thông báo"
-                        secondary={
-                          recentNotifications.length > 0
-                            ? recentNotifications
-                                .map((item) => item?.message)
-                                .filter(Boolean)
-                                .slice(0, 2)
-                                .join(" • ")
-                            : "Xem thông báo hệ thống mới nhất"
-                        }
                         primaryTypographyProps={{ fontWeight: 700 }}
-                        secondaryTypographyProps={{
-                          sx: {
-                            mt: 0.25,
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            whiteSpace: "normal",
-                          },
-                        }}
                       />
                       {unreadNotificationCount > 0 && (
                         <Badge
                           color="error"
-                          badgeContent={unreadNotificationCount}
+                          variant="dot"
                           sx={{ ml: 1, mt: 0.5 }}
                         />
                       )}

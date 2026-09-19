@@ -1,4 +1,5 @@
 // Path: goviet247/apps/api/src/controllers/driverProfileController.js
+import { lockDriverProfile } from "../services/tripAcceptancePolicy.js";
 import { z } from "zod";
 import { prisma } from "../utils/db.js";
 import {
@@ -905,6 +906,7 @@ export async function createMyDriverWithdrawRequest(req, res) {
     const note = `Driver gửi yêu cầu rút ${amount.toLocaleString("vi-VN")}đ.`;
 
     const created = await prisma.$transaction(async (tx) => {
+      await lockDriverProfile(tx, uid);
       const freshProfile = await tx.driverProfile.findUnique({
         where: { id: profile.id },
         include: {

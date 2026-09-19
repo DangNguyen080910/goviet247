@@ -197,3 +197,12 @@ export async function patchDriverAccount(id, payload) {
 
   return data;
 }
+
+export async function patchDriverTripAcceptance(id, payload) {
+  const res = await fetch(`${BASE_URL}/drivers/${id}/trip-acceptance`, {
+    method: "PATCH", headers: getHeaders(), body: JSON.stringify(payload),
+  });
+  const data = await safeJson(res);
+  if (!res.ok || data?.success === false) throw new Error(data?.message || "Không cập nhật được quyền nhận chuyến.");
+  return data;
+}

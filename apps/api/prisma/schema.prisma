@@ -131,6 +131,8 @@ enum AdminDriverActionType {
   REJECT_KYC
   SUSPEND
   UNSUSPEND
+  BLOCK_TRIP_ACCEPT
+  UNBLOCK_TRIP_ACCEPT
 }
 
 enum RiderStatus {
@@ -191,6 +193,7 @@ model User {
   primaryRole           UserPrimaryRole          @default(RIDER)
   createdAt             DateTime                 @default(now()) @db.Timestamptz(6)
   updatedAt             DateTime                 @updatedAt @db.Timestamptz(6)
+  riderAppUsages        RiderAppUsage[]
   devices               Device[]
   phones                Phone[]
   sessions              Session[]
@@ -546,6 +549,16 @@ model SystemNotificationRead {
   @@index([notificationId])
 }
 
+model RiderAppUsage {
+  userId String
+  platform String
+  firstSeenAt DateTime @default(now()) @db.Timestamptz(6)
+  lastSeenAt DateTime @default(now()) @db.Timestamptz(6)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, platform])
+}
+
 model Device {
   id        String   @id @default(cuid())
   userId    String
@@ -614,6 +627,7 @@ model DriverProfile {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   status   DriverKycStatus @default(PENDING)
+  tripAcceptBlocked Boolean @default(false)
   balance  Int             @default(0)
   fullName String?
 

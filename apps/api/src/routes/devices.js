@@ -1,4 +1,6 @@
 // Path: goviet247/apps/api/src/routes/devices.js
+import { recordRiderAppUsage, normalizeRiderPlatform } from "../services/riderAppUsage.js";
+import { verifyToken } from "../middleware/authMiddleware.js";
 import { Router } from "express";
 import pkg from "@prisma/client";
 import { userSessions } from "../services/userSessions.js";
@@ -53,6 +55,19 @@ async function resolveDeviceOwner(req) {
   return null;
 }
 
+router.post("/rider-app", verifyToken, async (req, res) => {
+  try {
+    const platform = normalizeRiderPlatform(req.body?.platform);
+    if (!platform) return res.status(400).json({ success: false, message: "Nền tảng không hợp lệ." });
+    if (req.user?.appRole && req.user.appRole !== "RIDER") return res.status(403).json({ success: false });
+    await recordRiderAppUsage(prisma, req.user.id || req.user.uid, platform);
+    return res.json({ success: true });
+  } catch (error) {
+    console.error("[Device] rider app usage error:", error);
+    return res.status(500).json({ success: false });
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const owner = await resolveDeviceOwner(req);
@@ -76,9 +91,7 @@ router.post("/", async (req, res) => {
 
     await prisma.user.upsert({
       where: { id: owner.ownerId },
-      update: {
-        displayName: owner.displayName,
-      },
+      update: {},
       create: {
         id: owner.ownerId,
         displayName: owner.displayName,
@@ -100,6 +113,10 @@ router.post("/", async (req, res) => {
         role,
       },
     });
+
+    if (String(role).toUpperCase() === "RIDER" && !owner.ownerId.startsWith("admin-")) {
+      await recordRiderAppUsage(prisma, owner.ownerId, platform);
+    }
 
     return res.json({
       success: true,

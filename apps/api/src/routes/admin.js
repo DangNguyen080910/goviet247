@@ -153,6 +153,7 @@ router.post(
 );
 
 router.patch("/drivers/:id/kyc", requireAdmin, ctrl.updateDriverKyc);
+router.patch("/drivers/:id/trip-acceptance", requireAdmin, ctrl.updateDriverTripAcceptance);
 router.patch("/drivers/:id/account", requireAdmin, ctrl.updateDriverAccount);
 
 // ================= DRIVER WITHDRAW / SETTLEMENT =================

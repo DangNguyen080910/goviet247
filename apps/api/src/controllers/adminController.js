@@ -3226,6 +3226,34 @@ export function makeAdminController(prisma) {
       }
     },
 
+    async updateDriverTripAcceptance(req, res) {
+      try {
+        const { blocked, reason } = req.body || {};
+        if (typeof blocked !== "boolean" || typeof reason !== "string" || !reason.trim() || reason.length > 500) {
+          return res.status(400).json({ success: false, message: "Cần trạng thái khoá và lý do từ 1 đến 500 ký tự." });
+        }
+        const result = await prisma.$transaction(async (tx) => {
+          const id = req.params.id;
+          await tx.$queryRaw`SELECT "id" FROM "DriverProfile" WHERE "id" = ${id} FOR UPDATE`;
+          const profile = await tx.driverProfile.findUnique({ where: { id } });
+          if (!profile) throw Object.assign(new Error("Không tìm thấy tài xế."), { statusCode: 404 });
+          if (profile.tripAcceptBlocked === blocked) return profile;
+          const updated = await tx.driverProfile.update({ where: { id }, data: { tripAcceptBlocked: blocked } });
+          await tx.adminDriverActionLog.create({ data: {
+            driverProfileId: id, actorId: req.admin?.id ?? null,
+            actorUsername: req.admin?.username || "ADMIN",
+            action: blocked ? "BLOCK_TRIP_ACCEPT" : "UNBLOCK_TRIP_ACCEPT",
+            fromStatus: profile.status, toStatus: profile.status, note: reason.trim(),
+          } });
+          return updated;
+        });
+        emitAdminDashboardChanged(req, { source: "driver_trip_acceptance_updated", driverProfileId: result.id });
+        return res.json({ success: true, driver: { id: result.id, tripAcceptBlocked: result.tripAcceptBlocked } });
+      } catch (error) {
+        return res.status(error.statusCode || 500).json({ success: false, message: error.message || "Không cập nhật được quyền nhận chuyến." });
+      }
+    },
+
     async updateDriverAccount(req, res) {
       try {
         const { id } = req.params;

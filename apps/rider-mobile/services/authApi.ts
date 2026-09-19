@@ -1,5 +1,6 @@
 // Path: goviet247/apps/rider-mobile/services/authApi.ts
 import { getRiderToken, setRiderToken, removeRiderToken } from "./storage";
+import { Platform } from "react-native";
 import { API_BASE_URL } from "../constants/api";
 
 type RequestOtpResponse = {
@@ -79,6 +80,16 @@ function buildApiError(
   return new ApiError(rawMessage, code, res.status);
 }
 
+function recordAppUsage(token: string) {
+  if (Platform.OS !== "android" && Platform.OS !== "ios") return;
+  // Best effort: analytics must never prevent login or session refresh.
+  void fetch(`${API_BASE_URL}/api/devices/rider-app`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ platform: Platform.OS }),
+  }).catch(() => undefined);
+}
+
 export async function requestOtp(phone: string) {
   const res = await fetch(`${API_BASE_URL}/api/auth/request-otp`, {
     method: "POST",
@@ -124,6 +135,7 @@ export async function verifyOtp(sessionId: string, code: string) {
     );
   }
 
+  if ("access_token" in data && data.access_token) recordAppUsage(data.access_token);
   return data;
 }
 
@@ -152,6 +164,7 @@ export async function getMe(token: string) {
       if (await getRiderToken() === token) await setRiderToken(replacement);
     });
   }
+  recordAppUsage(("access_token" in data && data.access_token) || token);
   return data;
 }
 

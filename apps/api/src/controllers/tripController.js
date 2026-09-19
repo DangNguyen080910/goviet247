@@ -3,6 +3,8 @@
 // Controller xử lý toàn bộ logic Trip cho cả Rider và Driver
 // ======================================================
 
+import { lockDriverProfile, lockTrip, assertTripAcceptanceAllowed, availableTripWhere } from "../services/tripAcceptancePolicy.js";
+import { createMyDriverWithdrawRequest } from "./driverProfileController.js";
 import { prisma } from "../utils/db.js";
 import { estimateFareFromCoordinates } from "../services/fareService.js";
 import {
@@ -944,6 +946,29 @@ export async function acceptTrip(req, res) {
     const config = await getDriverConfigSnapshot();
 
     const result = await prisma.$transaction(async (tx) => {
+      await lockDriverProfile(tx, driverId);
+      const driverProfile = await tx.driverProfile.findUnique({
+        where: { userId: driverId },
+        select: {
+          id: true,
+          userId: true,
+          status: true,
+          balance: true,
+          tripAcceptBlocked: true,
+        },
+      });
+
+      if (!driverProfile) {
+        throw new Error("Không tìm thấy hồ sơ tài xế");
+      }
+
+      assertTripAcceptanceAllowed(driverProfile);
+
+      if (driverProfile.status !== "VERIFIED") {
+        throw new Error("Tài xế chưa được duyệt");
+      }
+
+      await lockTrip(tx, tripId);
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
       });
@@ -992,24 +1017,6 @@ export async function acceptTrip(req, res) {
         driverVatBaseMode: config.driverVatBaseMode,
         driverPitBaseMode: config.driverPitBaseMode,
       });
-
-      const driverProfile = await tx.driverProfile.findUnique({
-        where: { userId: driverId },
-        select: {
-          id: true,
-          userId: true,
-          status: true,
-          balance: true,
-        },
-      });
-
-      if (!driverProfile) {
-        throw new Error("Không tìm thấy hồ sơ tài xế");
-      }
-
-      if (driverProfile.status !== "VERIFIED") {
-        throw new Error("Tài xế chưa được duyệt");
-      }
 
       if (driverProfile.balance < finance.requiredWalletAmount) {
         const currentBalance = Number(driverProfile.balance || 0);
@@ -1103,8 +1110,9 @@ export async function acceptTrip(req, res) {
       const acceptedAt = new Date();
 
       const updated = await tx.trip.update({
-        where: { id: tripId },
+        where: availableTripWhere(tripId, acceptedAt),
         data: {
+          version: { increment: 1 },
           status: "ACCEPTED",
           driverId,
           acceptedAt,
@@ -1152,65 +1160,70 @@ export async function acceptTrip(req, res) {
       };
     });
 
-    const io = req.app?.get?.("io");
-    if (io) {
-      io.to("admins").emit("admin:trip_accepted", {
-        tripId: result.realtime.tripId,
-        driverId: result.realtime.driverId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-      });
+    try {
+      const io = req.app?.get?.("io");
+      if (io) {
+        io.to("admins").emit("admin:trip_accepted", {
+          tripId: result.realtime.tripId,
+          driverId: result.realtime.driverId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+        });
 
-      emitAdminDashboardChanged(io, {
-        source: "driver_accept_trip",
-        tripId: result.realtime.tripId,
-        driverId: result.realtime.driverId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        status: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-      });
+        emitAdminDashboardChanged(io, {
+          source: "driver_accept_trip",
+          tripId: result.realtime.tripId,
+          driverId: result.realtime.driverId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          status: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+        });
 
-      emitTripChangedToDrivers(io, {
-        tripId: result.realtime.tripId,
-        driverId: result.realtime.driverId,
-        previousDriverId: null,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-        reason: "driver_accept_trip",
-        refreshAvailable: true,
-      });
+        emitTripChangedToDrivers(io, {
+          tripId: result.realtime.tripId,
+          driverId: result.realtime.driverId,
+          previousDriverId: null,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+          reason: "driver_accept_trip",
+          refreshAvailable: true,
+        });
 
-      emitTripChangedToRider(io, {
-        riderId: result.trip?.riderId || null,
-        tripId: result.realtime.tripId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-        reason: "driver_accept_trip",
-      });
+        emitTripChangedToRider(io, {
+          riderId: result.trip?.riderId || null,
+          tripId: result.realtime.tripId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+          reason: "driver_accept_trip",
+        });
 
-      if (result.riderNotification && result.trip?.riderId) {
-        io.to(`rider:${result.trip.riderId}`).emit(
-          "rider:notification_changed",
-          {
-            source: "driver_accept_trip",
-            audience: "RIDER",
-            targetUserId: result.trip.riderId,
-            notificationId: result.riderNotification.id,
-            tripId: result.trip.id,
-            updatedAt:
-              result.riderNotification.updatedAt ||
-              result.riderNotification.createdAt,
-          },
+        if (result.riderNotification && result.trip?.riderId) {
+          io.to(`rider:${result.trip.riderId}`).emit(
+            "rider:notification_changed",
+            {
+              source: "driver_accept_trip",
+              audience: "RIDER",
+              targetUserId: result.trip.riderId,
+              notificationId: result.riderNotification.id,
+              tripId: result.trip.id,
+              updatedAt:
+                result.riderNotification.updatedAt ||
+                result.riderNotification.createdAt,
+            },
+          );
+        }
+
+        console.log(
+          `[Socket] Emit admin:trip_accepted + admin:dashboard_changed + trip:changed (${result.realtime.tripId})`,
         );
       }
 
-      console.log(
-        `[Socket] Emit admin:trip_accepted + admin:dashboard_changed + trip:changed (${result.realtime.tripId})`,
-      );
+    } catch (socketError) {
+      console.error("[acceptTrip] post-commit socket error:", socketError);
     }
 
     try {
@@ -1247,7 +1260,8 @@ export async function acceptTrip(req, res) {
     console.error("acceptTrip error:", err);
     return res.status(err.statusCode || 400).json({
       success: false,
-      message: err.message || "Nhận chuyến thất bại",
+      code: err.code === "TRIP_ACCEPT_UNAVAILABLE" ? err.code : undefined,
+      message: err.code === "P2025" ? "Chuyến vừa thay đổi. Vui lòng tải lại." : err.message || "Nhận chuyến thất bại",
       data: err.data || null,
     });
   }
@@ -1280,6 +1294,8 @@ export async function cancelDriverTrip(req, res) {
     const config = await getDriverConfigSnapshot();
 
     const result = await prisma.$transaction(async (tx) => {
+      await lockDriverProfile(tx, driverUserId);
+      await lockTrip(tx, tripId);
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         include: {
@@ -1388,8 +1404,9 @@ export async function cancelDriverTrip(req, res) {
       }
 
       const updatedTrip = await tx.trip.update({
-        where: { id: trip.id },
+        where: { id: trip.id, driverId: driverUserId, status: trip.status },
         data: {
+          version: { increment: 1 },
           status: "PENDING",
           driverId: null,
           acceptedAt: null,
@@ -1908,100 +1925,22 @@ export async function getMyDriverWalletTransactions(req, res) {
  * -> Driver gửi yêu cầu rút tiền
  */
 export async function createWithdrawRequest(req, res) {
+  // Keep the old endpoint response alias while applying bank checks and wallet hold.
+  req.user = { ...req.user, uid: req.user?.uid || req.user?.id };
+  const response = {
+    status(code) { res.status(code); return response; },
+    json(payload) { return res.json(payload.success ? { ...payload, request: payload.item } : payload); },
+  };
   try {
-    const driverUserId = req.user?.uid || req.user?.id;
-    const { amount } = req.body || {};
-
-    if (!driverUserId) {
-      return res.status(401).json({
-        success: false,
-        message: "Unauthorized",
-      });
-    }
-
-    const withdrawAmount = Number(amount);
-
-    if (
-      !Number.isFinite(withdrawAmount) ||
-      !Number.isInteger(withdrawAmount) ||
-      withdrawAmount <= 0
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Số tiền rút không hợp lệ.",
-      });
-    }
-
-    const driverProfile = await prisma.driverProfile.findUnique({
-      where: { userId: driverUserId },
-      select: {
-        id: true,
-        userId: true,
-        status: true,
-        balance: true,
-      },
-    });
-
-    if (!driverProfile) {
-      return res.status(404).json({
-        success: false,
-        message: "Không tìm thấy hồ sơ tài xế.",
-      });
-    }
-
-    if (driverProfile.status !== "VERIFIED") {
-      return res.status(403).json({
-        success: false,
-        message: "Tài khoản tài xế của bạn chưa đủ điều kiện rút tiền.",
-      });
-    }
-
-    if (driverProfile.balance < withdrawAmount) {
-      return res.status(400).json({
-        success: false,
-        message: "Số dư không đủ để rút.",
-        data: {
-          balance: driverProfile.balance,
-          requested: withdrawAmount,
-        },
-      });
-    }
-
-    const request = await prisma.driverWithdrawRequest.create({
-      data: {
-        driverProfileId: driverProfile.id,
-        amount: withdrawAmount,
-        status: "PENDING",
-      },
-      select: {
-        id: true,
-        amount: true,
-        status: true,
-        createdAt: true,
-      },
-    });
-
-    const io = req.app?.get?.("io");
-    if (io) {
-      emitAdminDashboardChanged(io, {
-        source: "withdraw_request_created",
-        driverId: driverUserId,
-        status: request.status,
-        updatedAt: request.createdAt,
-      });
-    }
-
-    return res.json({
-      success: true,
-      request,
-      message: "Yêu cầu rút tiền đã được tạo.",
-    });
-  } catch (e) {
-    console.error("[DriverWithdraw] createWithdrawRequest error:", e);
-    return res.status(500).json({
-      success: false,
-      message: "Lỗi server khi tạo yêu cầu rút tiền.",
-    });
+    const userId = req.user.uid;
+    if (!userId) return res.status(401).json({ success: false, message: "Unauthorized" });
+    const profile = await prisma.driverProfile.findUnique({ where: { userId }, select: { status: true } });
+    if (!profile) return res.status(404).json({ success: false, message: "Không tìm thấy hồ sơ tài xế." });
+    if (profile.status !== "VERIFIED") return res.status(403).json({ success: false, message: "Tài khoản tài xế của bạn chưa đủ điều kiện rút tiền." });
+    return await createMyDriverWithdrawRequest(req, response);
+  } catch (error) {
+    console.error("[DriverWithdraw] createWithdrawRequest error:", error);
+    return res.status(500).json({ success: false, message: "Không thể tạo yêu cầu rút tiền." });
   }
 }
 
@@ -2547,8 +2486,8 @@ export async function adminChangeTripStatus(req, res) {
       }
 
       const updated = await tx.trip.update({
-        where: { id },
-        data: { status: toStatus },
+        where: { id, status: fromStatus, driverId: trip.driverId },
+        data: { status: toStatus, version: { increment: 1 } },
       });
 
       const log = await tx.adminTripActionLog.create({
@@ -2880,9 +2819,9 @@ export async function adminResendPendingTrip(req, res) {
 
     const now = new Date();
 
-    // Đưa chuyến lên đầu danh sách và cho phép nhận ngay
+    // Claim only a still-available trip; do not resend a concurrently accepted trip.
     const updated = await prisma.trip.update({
-      where: { id: tripId },
+      where: { id: tripId, status: "PENDING", driverId: null, isVerified: true, cancelledAt: null },
       data: {
         verifiedAt: now,
         driverAcceptOpenAt: now,
@@ -3003,7 +2942,7 @@ export async function adminVerifyTrip(req, res) {
     const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
 
     const updated = await prisma.trip.update({
-      where: { id },
+      where: { id, status: "PENDING", driverId: null, isVerified: false, cancelledAt: null },
       data: {
         isVerified: true,
         verifiedAt: new Date(),

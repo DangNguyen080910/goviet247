@@ -1,4 +1,5 @@
 // Path: goviet247/apps/api/src/controllers/adminTripController.js
+import { lockTrip } from "../services/tripAcceptancePolicy.js";
 import { prisma } from "../utils/db.js";
 import { sendAdminPushNotification } from "../services/notificationService.js";
 
@@ -12,6 +13,7 @@ export async function adminChuyenVeChoDuyet(req, res) {
 
     const actor = req.admin;
     const result = await prisma.$transaction(async (tx) => {
+      await lockTrip(tx, tripId);
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         select: {
@@ -151,6 +153,7 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
 
     const actor = req.admin;
     const result = await prisma.$transaction(async (tx) => {
+      await lockTrip(tx, tripId);
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         select: {
@@ -275,6 +278,7 @@ export async function adminHuyChuyen(req, res) {
     const actorUsername = actor?.username || "admin";
 
     const result = await prisma.$transaction(async (tx) => {
+      await lockTrip(tx, tripId);
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         select: { id: true, status: true, cancelledAt: true },
@@ -565,6 +569,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
     const actorUsername = actor?.username || "admin";
 
     const result = await prisma.$transaction(async (tx) => {
+      await lockTrip(tx, tripId);
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         select: {

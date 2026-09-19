@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/controllers/adminCustomerController.js
 
+import { summarizeRiderAppUsage } from "../services/riderAppUsage.js";
 import { prisma } from "../utils/db.js";
 
 // Helper parse int an toàn
@@ -193,6 +194,7 @@ export async function getCustomers(req, res) {
       sort === "oldest" ? { createdAt: "asc" } : { createdAt: "desc" };
 
     const select = {
+        riderAppUsages: { select: { platform: true, firstSeenAt: true, lastSeenAt: true } },
         id: true,
         displayName: true,
         createdAt: true,
@@ -225,37 +227,43 @@ export async function getCustomers(req, res) {
         },
       };
 
-    let items;
-    let total;
-
+    const appPlatform = String(req.query.appPlatform || "all");
+    const appWhere = appPlatform === "recorded" ? { riderAppUsages: { some: {} } }
+      : appPlatform === "unrecorded" ? { riderAppUsages: { none: {} } }
+      : ["android", "ios"].includes(appPlatform) ? { riderAppUsages: { some: { platform: appPlatform } } } : {};
+    let items, total, appUsageSummary;
     if (q) {
-      const candidates = await prisma.user.findMany({
-        where: whereUser,
-        orderBy,
-        select,
+      const candidates = await prisma.user.findMany({ where: whereUser, orderBy, select });
+      const matched = candidates.filter(item => matchesCustomerSmartSearch(item, q));
+      appUsageSummary = summarizeRiderAppUsage(matched);
+      const filtered = matched.filter(item => {
+        const platforms = item.riderAppUsages.map(usage => usage.platform);
+        if (appPlatform === "recorded") return platforms.length > 0;
+        if (appPlatform === "unrecorded") return platforms.length === 0;
+        return !["android", "ios"].includes(appPlatform) || platforms.includes(appPlatform);
       });
-      const matched = candidates.filter((item) =>
-        matchesCustomerSmartSearch(item, q),
-      );
-      total = matched.length;
-      items = matched.slice(skip, skip + take);
+      total = filtered.length;
+      items = filtered.slice(skip, skip + take);
     } else {
-      [total, items] = await Promise.all([
-        prisma.user.count({ where: whereUser }),
-        prisma.user.findMany({
-          where: whereUser,
-          orderBy,
-          skip,
-          take,
-          select,
-        }),
+      const where = { AND: [whereUser, appWhere] };
+      const count = extra => prisma.user.count({ where: { AND: [whereUser, extra] } });
+      const [all, recorded, android, ios, both, filteredTotal, pageItems] = await Promise.all([
+        count({}), count({ riderAppUsages: { some: {} } }),
+        count({ riderAppUsages: { some: { platform: "android" } } }),
+        count({ riderAppUsages: { some: { platform: "ios" } } }),
+        count({ AND: [{ riderAppUsages: { some: { platform: "android" } } }, { riderAppUsages: { some: { platform: "ios" } } }] }),
+        prisma.user.count({ where }), prisma.user.findMany({ where, orderBy, select, skip, take }),
       ]);
+      appUsageSummary = { total: all, recorded, unrecorded: all - recorded, android, ios, both };
+      total = filteredTotal;
+      items = pageItems;
     }
 
     return res.json({
       success: true,
       items,
       customers: items,
+      appUsageSummary,
       meta: {
         page,
         pageSize,
