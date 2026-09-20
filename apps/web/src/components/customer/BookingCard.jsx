@@ -255,6 +255,16 @@ export default function BookingCard() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, login } = useCustomerAuth();
+  const suggestedFrom =
+    location.state?.source === "seo-route" &&
+    !/^(các tỉnh|theo nhu cầu)$/i.test(String(location.state.routeFrom || ""))
+      ? String(location.state.routeFrom || "")
+      : "";
+  const suggestedTo =
+    location.state?.source === "seo-route" &&
+    !/^(các tỉnh|theo nhu cầu)$/i.test(String(location.state.routeTo || ""))
+      ? String(location.state.routeTo || "")
+      : "";
 
   const appStoreUrl = "https://apps.apple.com/vn/app/goviet247/id6767422059";
   const playStoreUrl =
@@ -272,13 +282,13 @@ export default function BookingCard() {
   const ZALO_BTN_HEIGHT = 64; // chiều cao button Zalo
   const ZALO_BTN_MARGIN = 20; // khoảng cách giữa 2 button
 
-  const [pickupAddress, setPickupAddress] = useState("");
+  const [pickupAddress, setPickupAddress] = useState(suggestedFrom);
   const [pickupPlace, setPickupPlace] = useState(null);
   const [pickupOptions, setPickupOptions] = useState([]);
   const [pickupLoading, setPickupLoading] = useState(false);
   const [gpsLocation, setGpsLocation] = useState(null);
 
-  const [stops, setStops] = useState([""]);
+  const [stops, setStops] = useState([suggestedTo]);
   const [stopPlaces, setStopPlaces] = useState([null]);
   const [stopOptions, setStopOptions] = useState([[]]);
   const [stopLoadingMap, setStopLoadingMap] = useState({});
@@ -1878,6 +1888,16 @@ export default function BookingCard() {
                   </Stack>
                 )}
               </Box>
+
+              {location.state?.source === "seo-route" &&
+                location.state?.routeFrom &&
+                location.state?.routeTo && (
+                  <Alert severity="info">
+                    Bạn đang xem tuyến {location.state.routeFrom} →{" "}
+                    {location.state.routeTo}. Hãy chọn địa chỉ đón và trả cụ thể
+                    từ danh sách gợi ý để hệ thống tính giá chính xác.
+                  </Alert>
+                )}
 
               {/* 1) Lộ trình */}
               <Stack spacing={1.2}>

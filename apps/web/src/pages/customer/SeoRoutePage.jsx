@@ -362,6 +362,8 @@ export default function SeoRoutePage({ routeKey }) {
       state: {
         focusField: "pickup",
         source: "seo-route",
+        routeFrom: route?.from,
+        routeTo: route?.to,
       },
     });
   };
@@ -462,49 +464,7 @@ export default function SeoRoutePage({ routeKey }) {
 
     meta.setAttribute("content", description);
 
-    const oldSchema = document.getElementById("seo-route-faq-schema");
-    if (oldSchema) oldSchema.remove();
-
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Giá xe có hiển thị trước khi đặt không?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Có. Bạn nhập điểm đón, điểm đến, loại xe và thời gian khởi hành để xem giá trước khi xác nhận đặt chuyến.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Có thể đặt xe một chiều hoặc khứ hồi không?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Có. GoViet247 hỗ trợ đặt xe một chiều hoặc khứ hồi tùy nhu cầu.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "GoViet247 có hỗ trợ xe liên tỉnh không?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Có. GoViet247 hỗ trợ xe từ TP.HCM đi tỉnh, từ tỉnh về TP.HCM và các tuyến liên tỉnh theo nhu cầu.",
-          },
-        },
-      ],
-    };
-
-    const script = document.createElement("script");
-    script.id = "seo-route-faq-schema";
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(schema);
-    document.head.appendChild(script);
-
     return () => {
-      const currentSchema = document.getElementById("seo-route-faq-schema");
-      if (currentSchema) currentSchema.remove();
       if (canonical.isConnected) canonical.remove();
       if (robots.isConnected) robots.remove();
     };
@@ -587,25 +547,10 @@ export default function SeoRoutePage({ routeKey }) {
         <p style={styles.description}>{route.description}</p>
 
         <p style={styles.description}>
-          GoViet247 hỗ trợ đặt xe riêng không ghép khách, bao gồm:
-          {` `}
-          <strong>
-            {route.from} đi {route.to}
-          </strong>
-          ,{` `}
-          chiều ngược lại{" "}
-          <strong>
-            {route.to} về {route.from}
-          </strong>
-          , và cả các tuyến liên tỉnh như Đà Lạt đi Phan Thiết, Vũng Tàu đi Cần
-          Thơ…
-        </p>
-
-        <p style={styles.description}>
-          Ngoài các tuyến phổ biến, GoViet247 còn hỗ trợ đặt xe từ TP.HCM đi các
-          tỉnh, từ các tỉnh về TP.HCM và các tuyến tỉnh đi tỉnh theo nhu cầu.
-          Tùy khu vực và thời điểm, hệ thống sẽ kiểm tra tài xế phù hợp để xác
-          nhận chuyến.
+          Hành trình tham khảo từ <strong>{route.from}</strong> đến{" "}
+          <strong>{route.to}</strong>. Để xem giá cho chuyến đi của bạn, hãy chọn
+          địa chỉ đón và trả cụ thể, thời gian khởi hành cùng loại xe. Hệ thống
+          tính giá theo thông tin bạn nhập trước khi xác nhận đặt chuyến.
         </p>
 
         {/* ===================================================== */}
@@ -627,7 +572,7 @@ export default function SeoRoutePage({ routeKey }) {
           >
             <TextField
               fullWidth
-              placeholder="Nhập điểm đón"
+              placeholder={`Chọn địa chỉ đón tại ${route.from}`}
               value=""
               onClick={goToBookingPage}
               onFocus={goToBookingPage}
@@ -649,7 +594,7 @@ export default function SeoRoutePage({ routeKey }) {
 
             <TextField
               fullWidth
-              placeholder="Nhập điểm đến"
+              placeholder={`Chọn địa chỉ trả tại ${route.to}`}
               value=""
               onClick={goToBookingPage}
               onFocus={goToBookingPage}
@@ -722,88 +667,38 @@ export default function SeoRoutePage({ routeKey }) {
 
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
-          Giá thuê xe {route.from} đi {route.to} được tính như thế nào?
+          Xem giá xe {route.from} đi {route.to}
         </h2>
-
-        <div style={styles.priceGrid}>
-          <div style={styles.priceBox}>
-            <strong>Xe 5 chỗ</strong>
-            <span>Phù hợp cá nhân, cặp đôi, gia đình nhỏ</span>
-          </div>
-
-          <div style={styles.priceBox}>
-            <strong>Xe 7 chỗ</strong>
-            <span>Phù hợp gia đình, nhóm bạn, hành lý nhiều</span>
-          </div>
-
-          <div style={styles.priceBox}>
-            <strong>Xe 16 chỗ</strong>
-            <span>Phù hợp nhóm đông, công ty, du lịch</span>
-          </div>
-        </div>
-
         <p style={styles.note}>
-          Giá được tính theo điểm đón, điểm đến, loại xe và thời gian di chuyển.
-          Bạn có thể nhập điểm đón và điểm đến phía trên để xem quãng đường,
-          nhận báo giá và đặt xe. Giá rõ ràng, trọn gói theo chuyến và không
-          phát sinh thêm.
+          Trang này không có một mức giá cố định cho cả tuyến. Giá thực tế cần
+          địa chỉ đón trả cụ thể, thời gian đi, loại xe, số điểm dừng và lựa chọn
+          một chiều hoặc khứ hồi. Nhập các thông tin đó để xem giá trước khi
+          quyết định đặt chuyến.
         </p>
-      </section>
-      <section style={styles.card}>
-        <h2 style={styles.sectionTitle}>Tại sao nên chọn GoViet247?</h2>
-
-        <ul style={styles.list}>
-          <li>Xe riêng, không ghép khách</li>
-          <li>Đón tận nơi tại TP.HCM và khu vực hỗ trợ</li>
-          <li>Tính giá trước khi đặt, dễ kiểm tra chi phí</li>
-          <li>Hỗ trợ xe 5 chỗ, 7 chỗ và 16 chỗ</li>
-          <li>Phù hợp du lịch, công tác, gia đình và đi tỉnh đường dài</li>
-          <li>Hỗ trợ nhanh qua hotline hoặc Zalo</li>
-        </ul>
       </section>
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
-          Lộ trình {route.from} đi {route.to}
+          Thông tin tuyến {route.from} → {route.to}
         </h2>
 
         <p style={styles.text}>
-          Lộ trình tham khảo: <strong>{route.routeText}</strong>.
+          <strong>Lộ trình tham khảo:</strong> {route.routeText}.
         </p>
 
         <p style={styles.text}>
-          Thời gian di chuyển thường {route.duration}. Thời gian thực tế có thể
-          thay đổi theo thời điểm khởi hành, tình trạng giao thông và điểm đón
-          cụ thể.
+          <strong>Thời gian tham khảo:</strong> {route.duration}. Thời gian và
+          đường đi thực tế phụ thuộc địa chỉ đón trả, thời điểm và tình trạng
+          giao thông.
         </p>
       </section>
       <section style={styles.card}>
-        <h2 style={styles.sectionTitle}>Câu hỏi thường gặp</h2>
-
-        <div style={styles.faqItem}>
-          <h3>Giá xe có hiển thị trước khi đặt không?</h3>
-          <p>
-            Có. Bạn nhập điểm đón, điểm đến, loại xe và thời gian khởi hành để
-            xem giá trước khi xác nhận đặt chuyến.
-          </p>
-        </div>
-
-        <div style={styles.faqItem}>
-          <h3>Có thể đặt xe một chiều hoặc khứ hồi không?</h3>
-          <p>Có. GoViet247 hỗ trợ đặt xe một chiều hoặc khứ hồi tùy nhu cầu.</p>
-        </div>
-
-        <div style={styles.faqItem}>
-          <h3>Có xe 5 chỗ, 7 chỗ và 16 chỗ không?</h3>
-          <p>Có. Bạn có thể chọn loại xe phù hợp khi tính giá và đặt chuyến.</p>
-        </div>
-
-        <div style={styles.faqItem}>
-          <h3>Có nên đặt xe trước không?</h3>
-          <p>
-            Nên đặt trước để GoViet247 sắp xếp tài xế và loại xe phù hợp cho
-            chuyến đi.
-          </p>
-        </div>
+        <h2 style={styles.sectionTitle}>Chuẩn bị thông tin trước khi xem giá</h2>
+        <ul style={styles.list}>
+          <li>Chọn địa chỉ đón cụ thể, không chỉ tên tỉnh hoặc khu vực.</li>
+          <li>Chọn địa chỉ trả cụ thể; thêm điểm dừng nếu cần.</li>
+          <li>Chọn ngày giờ, loại xe và một chiều hoặc khứ hồi.</li>
+          <li>Kiểm tra quãng đường và giá hệ thống tính trước khi xác nhận.</li>
+        </ul>
       </section>
 
       {/* ===================================================== */}
@@ -889,8 +784,17 @@ export default function SeoRoutePage({ routeKey }) {
           Nhập thông tin chuyến đi để nhận giá nhanh và đặt xe riêng cùng
           GoViet247.
         </p>
-        <Link to="/dat-xe" style={styles.ctaButton}>
-          Tính giá & đặt chuyến
+        <Link
+          to="/dat-xe"
+          state={{
+            focusField: "pickup",
+            source: "seo-route",
+            routeFrom: route.from,
+            routeTo: route.to,
+          }}
+          style={styles.ctaButton}
+        >
+          Nhập địa chỉ để xem giá
         </Link>
       </section>
     </main>
@@ -1197,22 +1101,6 @@ const styles = {
     fontSize: 24,
     fontWeight: 800,
   },
-  priceGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-    gap: 12,
-    marginBottom: 14,
-  },
-  priceBox: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    padding: 16,
-    borderRadius: 16,
-    background: "#fff7ed",
-    border: "1px solid #fed7aa",
-    fontSize: 16,
-  },
   note: {
     margin: 0,
     lineHeight: 1.7,
@@ -1230,11 +1118,6 @@ const styles = {
     lineHeight: 1.8,
     color: "#475569",
     fontSize: 16,
-  },
-  faqItem: {
-    borderTop: "1px solid #e2e8f0",
-    paddingTop: 14,
-    marginTop: 14,
   },
   popularRoutes: {
     background: "#ffffff",
