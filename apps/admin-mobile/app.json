@@ -49,7 +49,7 @@
       [
         "expo-notifications",
         {
-          "sounds": ["./assets/sounds/duyetChuyen-notification.wav"]
+          "sounds": ["./assets/sounds/duyetchuyen-notification.wav"]
         }
       ],
       "./plugins/withAndroid16Compatibility"

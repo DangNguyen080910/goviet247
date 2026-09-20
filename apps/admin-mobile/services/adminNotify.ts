@@ -73,7 +73,7 @@ export async function warmupAdminNotify() {
       await Notifications.setNotificationChannelAsync("admin_new_trip_v1", {
         name: "Chuyến mới chờ duyệt",
         importance: Notifications.AndroidImportance.MAX,
-        sound: "duyetChuyen-notification.wav",
+        sound: "duyetchuyen-notification.wav",
         enableVibrate: true,
         vibrationPattern: [0, 300, 180, 300],
         lockscreenVisibility: Notifications.AndroidNotificationVisibility.PUBLIC,

@@ -592,7 +592,7 @@ export async function sendAdminPushNotification({ title, body, data = {} }) {
     const isNewTrip = data?.type === "ADMIN_NEW_TRIP" || data?.source === "create_trip";
     const messages = validDevices.map((device) => ({
       to: device.pushToken,
-      sound: isNewTrip ? "duyetChuyen-notification.wav" : "default",
+      sound: isNewTrip ? "duyetchuyen-notification.wav" : "default",
       title: shortText(title || "GoViet247 Admin", 60),
       body: shortText(body || "Có cập nhật mới trong hệ thống.", 140),
       priority: "high",
