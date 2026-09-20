@@ -1,4 +1,6 @@
-import { mutateAdminWallet } from "../services/adminWalletMutation.js";
+import { getPenaltyRefundQuote, mutateAdminWallet } from "../services/adminWalletMutation.js";
+import { normalizeDriverWalletItemsForAccounting } from "../services/walletAccounting.js";
+import { getQuarterDateRange } from "../services/accountingQuarter.js";
 // Path: goviet247/apps/api/src/controllers/adminController.js
 // Controller admin cho alert log / pending trips / trip detail / driver wallet / settlement
 import {
@@ -108,27 +110,6 @@ export function makeAdminController(prisma) {
       },
     });
     return drivers.filter((driver) => matchesDriverSmartSearch(driver, keyword)).map((driver) => driver.id);
-  }
-
-  function getQuarterDateRange(year, quarter) {
-    const safeYear = Number.isFinite(Number(year))
-      ? Number(year)
-      : new Date().getFullYear();
-
-    const safeQuarter = [1, 2, 3, 4].includes(Number(quarter))
-      ? Number(quarter)
-      : 1;
-
-    const startMonth = (safeQuarter - 1) * 3;
-    const start = new Date(safeYear, startMonth, 1, 0, 0, 0, 0);
-    const end = new Date(safeYear, startMonth + 3, 0, 23, 59, 59, 999);
-
-    return {
-      year: safeYear,
-      quarter: safeQuarter,
-      start,
-      end,
-    };
   }
 
   function mapTripAccountingCarType(value) {
@@ -1047,7 +1028,7 @@ export function makeAdminController(prisma) {
       return "";
     }
 
-    return date.toISOString().slice(0, 10);
+    return new Date(date.getTime() + 7 * 60 * 60 * 1000).toISOString().slice(0, 10);
   }
 
   async function getAccountingExportPreviewGroups({ quarter, year }) {
@@ -1437,7 +1418,7 @@ export function makeAdminController(prisma) {
 
     const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
     const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
-    const penaltyNet = Math.max(0, penaltyGross - penaltyRefund);
+    const penaltyNet = penaltyGross - penaltyRefund;
 
     const cashItems = await prisma.companyCashTransaction.findMany({
       where: {
@@ -1724,7 +1705,8 @@ export function makeAdminController(prisma) {
     return COMPANY_CASH_SOURCE_LABELS[source] || source || "";
   }
 
-  function getDriverWalletTypeLabel(type) {
+  function getDriverWalletTypeLabel(type, note = "") {
+    if (type === "ADJUST_ADD" && /hoàn.*phạt.*huỷ/i.test(note || "")) return "Hoàn tiền phạt chuyến";
     return DRIVER_WALLET_EXPORT_TYPE_LABELS[type] || type || "";
   }
 
@@ -1802,7 +1784,7 @@ export function makeAdminController(prisma) {
     const commission = Number(completedAgg._sum.commissionAmountSnapshot || 0);
     const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
     const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
-    const penaltyNet = Math.max(0, penaltyGross - penaltyRefund);
+    const penaltyNet = penaltyGross - penaltyRefund;
     const totalIncome = commission + penaltyNet;
 
     let expenseTotal = 0;
@@ -1934,79 +1916,6 @@ export function makeAdminController(prisma) {
     return Number(value || 0).toLocaleString("vi-VN");
   }
 
-  function normalizeDriverWalletItemsForAccounting(items = []) {
-    const list = Array.isArray(items) ? items : [];
-
-    const cancelledTripIds = new Set(
-      list
-        .filter((item) => item?.type === "TRIP_CANCEL_PENALTY" && item?.tripId)
-        .map((item) => String(item.tripId)),
-    );
-
-    const withdrawRequestMap = new Map(
-      list
-        .filter(
-          (item) =>
-            item?.type === "WITHDRAW_REQUEST" && item?.withdrawRequestId,
-        )
-        .map((item) => [String(item.withdrawRequestId), item]),
-    );
-
-    return list
-      .filter((item) => {
-        const type = String(item?.type || "");
-        const tripId = item?.tripId ? String(item.tripId) : "";
-
-        if (type === "WITHDRAW_REQUEST") {
-          return false;
-        }
-
-        if (
-          tripId &&
-          cancelledTripIds.has(tripId) &&
-          ["COMMISSION_HOLD", "DRIVER_VAT_HOLD", "DRIVER_PIT_HOLD"].includes(
-            type,
-          )
-        ) {
-          return false;
-        }
-
-        return true;
-      })
-      .map((item) => {
-        const type = String(item?.type || "");
-
-        if (type !== "WITHDRAW_PAID" || !item?.withdrawRequestId) {
-          if (type === "WITHDRAW_PAID") {
-            return {
-              ...item,
-              amount: -Math.abs(Number(item.amount || 0)),
-            };
-          }
-
-          return item;
-        }
-
-        const requestRow = withdrawRequestMap.get(
-          String(item.withdrawRequestId),
-        );
-
-        if (!requestRow) {
-          return {
-            ...item,
-            amount: -Math.abs(Number(item.amount || 0)),
-          };
-        }
-
-        return {
-          ...item,
-          amount: -Math.abs(Number(requestRow.amount || 0)),
-          balanceBefore: requestRow.balanceBefore,
-          balanceAfter: requestRow.balanceAfter,
-        };
-      });
-  }
-
   async function buildDriverWalletCsvForQuarter({ start, end }) {
     const rawItems = await prisma.driverWalletTransaction.findMany({
       where: {
@@ -2038,7 +1947,17 @@ export function makeAdminController(prisma) {
       orderBy: { createdAt: "asc" },
     });
 
-    const items = normalizeDriverWalletItemsForAccounting(rawItems);
+    const penaltyTripIds = [...new Set(rawItems.filter((item) => item.type === "TRIP_CANCEL_PENALTY" && item.tripId)
+      .map((item) => item.tripId))];
+    const holdReferences = penaltyTripIds.length ? await prisma.driverWalletTransaction.findMany({
+      where: {
+        tripId: { in: penaltyTripIds },
+        type: { in: ["COMMISSION_HOLD", "DRIVER_VAT_HOLD", "DRIVER_PIT_HOLD"] },
+        createdAt: { lte: end },
+      },
+      select: { id: true, driverProfileId: true, tripId: true, type: true, amount: true, createdAt: true },
+    }) : [];
+    const items = normalizeDriverWalletItemsForAccounting(rawItems, holdReferences);
 
     const rows = [
       [
@@ -2068,7 +1987,7 @@ export function makeAdminController(prisma) {
           item.id,
           getDriverDisplayName(item.driverProfile),
           getPhoneValue(item.driverProfile?.user),
-          getDriverWalletTypeLabel(item.type),
+          getDriverWalletTypeLabel(item.type, item.note),
           item.type || "",
           formatMoneyExport(item.amount || 0),
           formatMoneyExport(item.balanceBefore || 0),
@@ -3516,6 +3435,19 @@ export function makeAdminController(prisma) {
       } catch (error) {
         console.error("adjustAddDriverWallet error:", error);
         return res.status(error.statusCode || 500).json({ success: false, message: error.statusCode ? error.message : "Chưa xác định được kết quả giao dịch. Hãy kiểm tra lại cùng mã giao dịch." });
+      }
+    },
+
+    async getDriverPenaltyRefundQuote(req, res) {
+      try {
+        const driverId = String(req.params.id || "").trim();
+        const tripId = String(req.query.tripId || "").trim();
+        if (!driverId || !tripId) return res.status(400).json({ success: false, message: "Cần tài xế và TripID." });
+        const quote = await getPenaltyRefundQuote(prisma, driverId, tripId);
+        return res.json({ success: true, ...quote });
+      } catch (error) {
+        return res.status(error.statusCode || 500).json({ success: false,
+          message: error.statusCode ? error.message : "Không kiểm tra được khoản phạt chuyến." });
       }
     },
 
@@ -4991,7 +4923,7 @@ export function makeAdminController(prisma) {
 
         const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
         const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
-        const penaltyNet = Math.max(0, penaltyGross - penaltyRefund);
+        const penaltyNet = penaltyGross - penaltyRefund;
 
         // ===============================
         // 3. COMPANY CASH
@@ -5917,7 +5849,7 @@ export function makeAdminController(prisma) {
 
         const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
         const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
-        const penalty = Math.max(0, penaltyGross - penaltyRefund);
+        const penalty = penaltyGross - penaltyRefund;
 
         const revenueTotal = commission + penalty;
 

@@ -27,6 +27,8 @@ import {
   fetchDriverWallets,
   fetchDriverWalletSummary,
   fetchDriverWalletTransactions,
+  fetchPenaltyRefundQuote,
+  PenaltyRefundQuote,
   fetchLedgerTransactions,
   fetchWithdrawRequests,
   markWithdrawRequestPaid,
@@ -40,7 +42,7 @@ import {
 } from "../utils/phone";
 
 type WalletTabKey = "WALLETS" | "WITHDRAWS" | "PENALTIES" | "LEDGER";
-type WalletActionMode = "TOPUP" | "ADJUST_ADD" | "SUBTRACT";
+type WalletActionMode = "TOPUP" | "REFUND_PENALTY" | "SUBTRACT";
 
 const TAB_ITEMS: { key: WalletTabKey; label: string }[] = [
   { key: "WALLETS", label: "Danh sách ví" },
@@ -85,8 +87,9 @@ function getKycLabel(status: string | null | undefined) {
   return key || "N/A";
 }
 
-function getTxnTypeLabel(type: string | null | undefined) {
+function getTxnTypeLabel(type: string | null | undefined, note = "") {
   const key = String(type || "").toUpperCase();
+  if (key === "ADJUST_ADD" && /hoàn.*phạt.*huỷ/i.test(note || "")) return "Hoàn tiền phạt chuyến";
 
   if (key === "TOPUP") return "Nạp tiền";
   if (key === "ADJUST_ADD") return "Điều chỉnh cộng";
@@ -227,6 +230,31 @@ export default function WalletsScreen() {
 
   const [actionAmount, setActionAmount] = useState("");
   const [actionNote, setActionNote] = useState("");
+  const [refundTripId, setRefundTripId] = useState("");
+  const [refundQuote, setRefundQuote] = useState<PenaltyRefundQuote | null>(null);
+  const [refundQuoteLoading, setRefundQuoteLoading] = useState(false);
+  const [refundQuoteError, setRefundQuoteError] = useState("");
+
+  useEffect(() => {
+    if (actionMode !== "REFUND_PENALTY" || !actionDriver?.id || !actionExpandedId) return;
+    const tripId = refundTripId.trim();
+    setRefundQuote(null);
+    setRefundQuoteError("");
+    if (!tripId) { setRefundQuoteLoading(false); return; }
+    let cancelled = false;
+    const timer = setTimeout(async () => {
+      setRefundQuoteLoading(true);
+      try {
+        const quote = await fetchPenaltyRefundQuote(actionDriver.id, tripId);
+        if (!cancelled) setRefundQuote(quote);
+      } catch (error: any) {
+        if (!cancelled) setRefundQuoteError(error?.message || "TripID không có phạt của tài xế này.");
+      } finally {
+        if (!cancelled) setRefundQuoteLoading(false);
+      }
+    }, 400);
+    return () => { cancelled = true; clearTimeout(timer); };
+  }, [actionMode, actionDriver?.id, actionExpandedId, refundTripId]);
   const actionLock = useRef(false);
   const walletLoadVersion = useRef(0);
   const allLoadVersion = useRef(0);
@@ -390,11 +418,10 @@ export default function WalletsScreen() {
     setActionDriver(driver);
     setActionAmount("");
 
-    if (mode === "ADJUST_ADD") {
-      setActionNote("Hoàn tiền phạt huỷ chuyến - TripID: ");
-    } else {
-      setActionNote("");
-    }
+    setActionNote("");
+    setRefundTripId("");
+    setRefundQuote(null);
+    setRefundQuoteError("");
   }
 
   function closeActionModal() {
@@ -413,15 +440,20 @@ export default function WalletsScreen() {
       return;
     }
 
+    const isRefund = actionMode === "REFUND_PENALTY";
     const amountDigits = normalizeDigits(actionAmount);
-    const amountNumber = Number(amountDigits || 0);
+    const amountNumber = isRefund ? Number(refundQuote?.refundableAmount || 0) : Number(amountDigits || 0);
 
     if (!amountNumber || amountNumber <= 0) {
       Alert.alert("Thiếu số tiền", "Vui lòng nhập số tiền hợp lệ.");
       return;
     }
 
-    if (!actionNote.trim()) {
+    if (isRefund && (!refundQuote || refundQuote.tripId !== refundTripId.trim())) {
+      Alert.alert("TripID chưa hợp lệ", "Vui lòng kiểm tra TripID và số tiền hoàn trước khi xác nhận.");
+      return;
+    }
+    if (!isRefund && !actionNote.trim()) {
       Alert.alert("Thiếu ghi chú", "Vui lòng nhập ghi chú cho giao dịch.");
       return;
     }
@@ -431,13 +463,13 @@ export default function WalletsScreen() {
 
       const payload = {
         amount: amountNumber,
-        note: actionNote.trim(),
+        note: isRefund ? `Hoàn tiền phạt huỷ chuyến - TripID: ${refundTripId.trim()}` : actionNote.trim(),
       };
 
       let result;
       if (actionMode === "TOPUP") {
         result = await topupDriverWallet(actionDriver.id, payload);
-      } else if (actionMode === "ADJUST_ADD") {
+      } else if (isRefund) {
         result = await adjustAddDriverWallet(actionDriver.id, payload);
       } else {
         result = await subtractDriverWallet(actionDriver.id, payload);
@@ -683,9 +715,9 @@ export default function WalletsScreen() {
 
                 <Pressable
                   style={[styles.actionButton, styles.greenButton]}
-                  onPress={() => openActionModal("ADJUST_ADD", item)}
+                  onPress={() => openActionModal("REFUND_PENALTY", item)}
                 >
-                  <Text style={styles.actionButtonText}>Điều chỉnh cộng</Text>
+                  <Text style={styles.actionButtonText}>Hoàn tiền phạt chuyến</Text>
                 </Pressable>
 
                 <Pressable
@@ -716,7 +748,7 @@ export default function WalletsScreen() {
                   <Text style={styles.noteLabel}>Lịch sử ví gần đây</Text>
                   {walletHistoryLoading ? <ActivityIndicator /> : walletHistoryItems.length ? walletHistoryItems.map((txn) => (
                     <View key={txn.id} style={styles.historyCard}>
-                      <Text style={styles.historyTitle}>{getTxnTypeLabel(txn.type)}: {formatMoney(txn.amount)} đ</Text>
+                      <Text style={styles.historyTitle}>{getTxnTypeLabel(txn.type, txn.note || "")}: {formatMoney(txn.amount)} đ</Text>
                       <Text style={styles.noteText}>{formatDateTimeVN(txn.createdAt)} — Số dư sau: {formatMoney(txn.balanceAfter)} đ</Text>
                       <Text style={styles.noteText}>{txn.note || ""}</Text>
                     </View>
@@ -727,6 +759,25 @@ export default function WalletsScreen() {
                 <View style={styles.inlineActionCard}>
                   <Text style={styles.inlineActionTitle}>{actionTitle}</Text>
 
+                  {actionMode === "REFUND_PENALTY" ? (
+                    <>
+                      <TextInput
+                        editable={!actionSubmitting}
+                        value={refundTripId}
+                        onChangeText={setRefundTripId}
+                        placeholder="Nhập TripID của chuyến bị phạt"
+                        placeholderTextColor="#9ca3af"
+                        autoCapitalize="none"
+                        style={styles.modalInput}
+                      />
+                      {refundQuoteLoading ? <ActivityIndicator /> : null}
+                      {refundQuoteError ? <Text style={styles.noteText}>{refundQuoteError}</Text> : null}
+                      {refundQuote ? <Text style={styles.noteText}>
+                        Phạt: {formatMoney(refundQuote.penaltyAmount)} đ · Đã hoàn: {formatMoney(refundQuote.refundedAmount)} đ · Còn hoàn: {formatMoney(refundQuote.refundableAmount)} đ
+                      </Text> : null}
+                    </>
+                  ) : (
+                  <>
                   <TextInput
                     editable={!actionSubmitting}
                     value={formatInputMoney(actionAmount)}
@@ -749,6 +800,8 @@ export default function WalletsScreen() {
                     textAlignVertical="top"
                     style={[styles.modalInput, styles.modalTextarea]}
                   />
+                  </>
+                  )}
 
                   <View style={styles.modalActions}>
                     <Pressable
@@ -968,7 +1021,7 @@ export default function WalletsScreen() {
                     {getDriverPhone(item)}
                   </Text>
                   <Text style={styles.cardSubtitle}>
-                    {getTxnTypeLabel(item.type)}
+                    {getTxnTypeLabel(item.type, item.note || "")}
                   </Text>
                 </View>
 
@@ -1021,7 +1074,7 @@ export default function WalletsScreen() {
 
   const actionTitle = useMemo(() => {
     if (actionMode === "TOPUP") return "Nạp tiền ví tài xế";
-    if (actionMode === "ADJUST_ADD") return "Điều chỉnh cộng ví tài xế";
+    if (actionMode === "REFUND_PENALTY") return "Hoàn tiền phạt chuyến";
     return "Điều chỉnh trừ ví tài xế";
   }, [actionMode]);
 

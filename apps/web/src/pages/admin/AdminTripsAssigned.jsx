@@ -19,11 +19,16 @@ import {
   Alert,
   Snackbar,
   TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 
 import {
   fetchAssignedTrips,
   changeAssignedTripStatus,
+  returnAssignedTripToReview,
   normalizeDisplayAddress,
 } from "../../api/adminTrips";
 import ChangeTripStatusDialog from "../../components/admin/ChangeTripStatusDialog";
@@ -143,6 +148,10 @@ export default function AdminTripsAssigned() {
   // Dialog cancel
   const [cancelOpen, setCancelOpen] = useState(false);
   const [cancelTrip, setCancelTrip] = useState(null);
+  const [returnTrip, setReturnTrip] = useState(null);
+  const [returnReason, setReturnReason] = useState("");
+  const [returnLoading, setReturnLoading] = useState(false);
+  const [returnError, setReturnError] = useState("");
 
   // Modal chi tiết
   const [selectedTripId, setSelectedTripId] = useState("");
@@ -255,6 +264,27 @@ export default function AdminTripsAssigned() {
     setToastMsg("Đã huỷ chuyến");
     setToastOpen(true);
     await reload();
+  };
+
+  const submitReturnToReview = async () => {
+    if (!returnTrip || !returnReason.trim()) {
+      setReturnError("Vui lòng nhập lý do tài xế nhận nhầm.");
+      return;
+    }
+    try {
+      setReturnLoading(true);
+      setReturnError("");
+      await returnAssignedTripToReview(returnTrip.id, returnReason.trim());
+      setReturnTrip(null);
+      setReturnReason("");
+      setToastMsg("Đã chuyển chuyến về Chờ duyệt và ghi nhận phạt từ khoản đã giữ; ví không bị trừ thêm.");
+      setToastOpen(true);
+      await reload();
+    } catch (e) {
+      setReturnError(e?.message || "Không thể chuyển chuyến về Chờ duyệt.");
+    } finally {
+      setReturnLoading(false);
+    }
   };
 
   const rows = useMemo(() => {
@@ -535,6 +565,21 @@ export default function AdminTripsAssigned() {
                               </Typography>
                             )}
 
+                            {["ACCEPTED", "CONTACTED"].includes(t.status) && (
+                              <Button
+                                variant="outlined"
+                                color="warning"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setReturnTrip(t);
+                                  setReturnReason("");
+                                  setReturnError("");
+                                }}
+                              >
+                                Về Chờ duyệt
+                              </Button>
+                            )}
+
                             <Button
                               variant="outlined"
                               color="error"
@@ -582,6 +627,30 @@ export default function AdminTripsAssigned() {
         onCancelled={onCancelled}
         onSuccess={onCancelled}
       />
+
+      <Dialog open={!!returnTrip} onClose={() => !returnLoading && setReturnTrip(null)} fullWidth maxWidth="sm">
+        <DialogTitle>Chuyển chuyến về Chờ duyệt</DialogTitle>
+        <DialogContent>
+          <Typography variant="body2" sx={{ mb: 2 }}>
+            Gỡ tài xế khỏi chuyến #{String(returnTrip?.id || "").slice(-8).toUpperCase()} để admin duyệt lại.
+            Khoản đã khấu trừ khi nhận chuyến được ghi nhận là phạt; ví không bị trừ thêm. Dùng Hoàn tiền phạt chuyến nếu cần hoàn.
+          </Typography>
+          <TextField
+            label="Lý do tài xế nhận nhầm"
+            value={returnReason}
+            onChange={(e) => setReturnReason(e.target.value)}
+            fullWidth multiline minRows={2} required
+            inputProps={{ maxLength: 400 }}
+          />
+          {returnError && <Alert severity="error" sx={{ mt: 2 }}>{returnError}</Alert>}
+        </DialogContent>
+        <DialogActions>
+          <Button disabled={returnLoading} onClick={() => setReturnTrip(null)}>Đóng</Button>
+          <Button disabled={returnLoading} variant="contained" color="warning" onClick={submitReturnToReview}>
+            {returnLoading ? "Đang xử lý..." : "Xác nhận chuyển"}
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       <Snackbar
         open={toastOpen}

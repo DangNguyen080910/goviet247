@@ -304,7 +304,9 @@ function normalizeWalletRow(row) {
 
   const phone = row?.driverProfile?.user?.phones?.[0]?.e164 || "-";
   const type = String(row?.type || "");
-  const typeLabel = DRIVER_WALLET_TYPE_LABELS[type] || type || "-";
+  const typeLabel = type === "ADJUST_ADD" && /hoàn.*phạt.*huỷ/i.test(row?.note || "")
+    ? "Hoàn tiền phạt chuyến"
+    : DRIVER_WALLET_TYPE_LABELS[type] || type || "-";
 
   const relatedRef = row?.tripId
     ? `Chuyến: ${row.tripId}`

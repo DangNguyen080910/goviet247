@@ -7,6 +7,7 @@ import {
   adminDieuChinhThongTinChuyen,
   adminCapNhatThoiGianChuyen,
   adminChuyenVeChoDuyet,
+  adminDriverCancelToReview,
 } from "../controllers/adminTripController.js";
 import {
   requireAdmin,
@@ -117,6 +118,12 @@ router.patch(
 router.post("/trips/:id/cancel", requireAdmin, adminHuyChuyen);
 
 router.post(
+  "/trips/:id/driver-cancel-to-review",
+  requireAdmin,
+  adminDriverCancelToReview,
+);
+
+router.post(
   "/trips/:id/return-to-review",
   requireAdmin,
   adminChuyenVeChoDuyet,
@@ -139,6 +146,12 @@ router.get(
 );
 
 router.post("/drivers/:id/wallet/topup", requireAdmin, ctrl.topupDriverWallet);
+
+router.get(
+  "/drivers/:id/wallet/penalty-refund-quote",
+  requireAdmin,
+  ctrl.getDriverPenaltyRefundQuote,
+);
 
 router.post(
   "/drivers/:id/wallet/adjust-add",

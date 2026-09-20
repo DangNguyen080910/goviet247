@@ -257,10 +257,9 @@ export default function HomeScreen() {
     useCallback(() => {
       let active = true;
 
-      const urgentEvents = ["admin:new_trip"] as const;
+      const urgentEvents = ["admin:trip_accepted"] as const;
       const normalEvents = [
         "admin:dashboard_changed",
-        "admin:trip_accepted",
         "admin:trip_status_changed",
         "admin:trip_cancelled",
       ] as const;
@@ -293,6 +292,8 @@ export default function HomeScreen() {
           normalEvents.forEach((eventName) => {
             onAdminRealtimeEvent(eventName, handleNormalRealtime);
           });
+
+          onAdminRealtimeEvent("admin:new_trip", loadDashboard);
         } catch (error) {
           console.error("home bootstrap error:", error);
 
@@ -314,6 +315,8 @@ export default function HomeScreen() {
         normalEvents.forEach((eventName) => {
           offAdminRealtimeEvent(eventName, handleNormalRealtime);
         });
+
+        offAdminRealtimeEvent("admin:new_trip", loadDashboard);
 
         // Không disconnect socket ở Home.
         // Socket là kết nối toàn app, đang được quản lý ở app/_layout.tsx.

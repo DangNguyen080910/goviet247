@@ -11,6 +11,7 @@ import { AdminRealtimeBadgeProvider } from "../context/AdminRealtimeBadgeContext
 import "react-native-reanimated";
 import {
   playAdminNormalNotify,
+  playAdminNewTripNotify,
   playAdminUrgentNotify,
   showAdminLocalNotification,
   unloadAdminNotify,
@@ -66,13 +67,14 @@ function RootLayoutContent() {
         console.log("[RootLayout] Admin socket setup done.");
 
         const handleNewTrip = () => {
-          playAdminUrgentNotify();
+          playAdminNewTripNotify();
 
           Notifications.setBadgeCountAsync(1).catch(() => {});
 
           showAdminLocalNotification({
             title: "Có chuyến mới",
             body: "Có chuyến mới đang chờ admin xử lý.",
+            silent: true,
           });
         };
 

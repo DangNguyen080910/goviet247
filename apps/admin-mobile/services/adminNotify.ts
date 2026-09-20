@@ -1,9 +1,12 @@
 // Path: goviet247/apps/admin-mobile/services/adminNotify.ts
 import * as Haptics from "expo-haptics";
 import * as Notifications from "expo-notifications";
+import { Audio } from "expo-av";
 import { Platform, Vibration } from "react-native";
 
 let lastPlayAt = 0;
+let lastNewTripPlayAt = 0;
+let newTripSound: Audio.Sound | null = null;
 const DEFAULT_COOLDOWN_MS = 1800;
 
 function shouldSkipByCooldown(cooldownMs = DEFAULT_COOLDOWN_MS) {
@@ -67,6 +70,14 @@ export async function warmupAdminNotify() {
     });
 
     if (Platform.OS === "android") {
+      await Notifications.setNotificationChannelAsync("admin_new_trip_v1", {
+        name: "Chuyến mới chờ duyệt",
+        importance: Notifications.AndroidImportance.MAX,
+        sound: "duyetChuyen-notification.wav",
+        enableVibrate: true,
+        vibrationPattern: [0, 300, 180, 300],
+        lockscreenVisibility: Notifications.AndroidNotificationVisibility.PUBLIC,
+      });
       await Notifications.setNotificationChannelAsync("admin_default_alerts", {
         name: "Thông báo Admin",
         importance: Notifications.AndroidImportance.MAX,
@@ -79,6 +90,22 @@ export async function warmupAdminNotify() {
     }
   } catch (error) {
     console.warn("[adminNotify] warmup error:", error);
+  }
+}
+
+export async function playAdminNewTripNotify() {
+  const now = Date.now();
+  if (now - lastNewTripPlayAt < 1800) return;
+  lastNewTripPlayAt = now;
+  await vibrateStrong();
+  try {
+    await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+    if (newTripSound) await newTripSound.unloadAsync();
+    const loaded = await Audio.Sound.createAsync(require("../assets/sounds/duyetChuyen.mp3"));
+    newTripSound = loaded.sound;
+    await loaded.sound.playAsync();
+  } catch (error) {
+    console.warn("[adminNotify] new trip sound error:", error);
   }
 }
 
@@ -101,9 +128,11 @@ export async function playAdminNormalNotify() {
 export async function showAdminLocalNotification({
   title,
   body,
+  silent = false,
 }: {
   title: string;
   body: string;
+  silent?: boolean;
 }) {
   try {
     if (Platform.OS === "web") return;
@@ -112,7 +141,7 @@ export async function showAdminLocalNotification({
       content: {
         title,
         body,
-        sound: "default",
+        sound: silent ? false : "default",
       },
       trigger: null,
     });
@@ -122,5 +151,8 @@ export async function showAdminLocalNotification({
 }
 
 export async function unloadAdminNotify() {
-  return;
+  if (newTripSound) {
+    await newTripSound.unloadAsync().catch(() => {});
+    newTripSound = null;
+  }
 }

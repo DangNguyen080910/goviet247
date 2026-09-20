@@ -18,6 +18,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
+import CopyTripIdButton from "../components/CopyTripIdButton";
 import {
   cancelPendingTrip,
   fetchPendingTripDetail,
@@ -554,6 +555,7 @@ export default function PendingTripsScreen() {
             <Text style={styles.tripId} numberOfLines={1}>
               {item.id}
             </Text>
+            <CopyTripIdButton tripId={item.id} />
 
             {tab === "PENDING" ? (
               <View style={styles.pendingBadge}>
@@ -833,6 +835,7 @@ export default function PendingTripsScreen() {
                   <Text style={styles.detailCardTitle}>Thông tin chuyến</Text>
 
                   <DetailRow label="Mã chuyến" value={detail.id || "-"} />
+                  <CopyTripIdButton tripId={detail.id} />
                   <DetailRow
                     label="👤 Người đặt"
                     value={detail.creatorName || "Chưa có người đặt"}

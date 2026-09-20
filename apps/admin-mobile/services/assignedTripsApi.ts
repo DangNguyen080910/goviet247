@@ -376,6 +376,13 @@ export async function cancelAssignedTrip(tripId: string, reason: string) {
   });
 }
 
+export async function returnAssignedTripToReview(tripId: string, reason: string) {
+  return adminRequest(`/api/admin/trips/${tripId}/driver-cancel-to-review`, {
+    method: "POST",
+    body: JSON.stringify({ reason }),
+  });
+}
+
 export async function updateAssignedTripSchedule(
   tripId: string,
   pickupTime: string,

@@ -51,6 +51,7 @@ import {
   fetchDriverWalletTransactions,
   topupDriverWallet,
   adjustAddDriverWallet,
+  fetchPenaltyRefundQuote,
   subtractDriverWallet,
 } from "../../api/adminDrivers";
 import {
@@ -117,8 +118,9 @@ function getKycColor(status) {
   return "default";
 }
 
-function getTxnTypeLabel(type) {
+function getTxnTypeLabel(type, note = "") {
   const key = String(type || "").toUpperCase();
+  if (key === "ADJUST_ADD" && /hoàn.*phạt.*huỷ/i.test(note || "")) return "Hoàn tiền phạt chuyến";
 
   if (key === "TOPUP") return "Nạp tiền";
   if (key === "ADJUST_ADD") return "Điều chỉnh cộng";
@@ -154,26 +156,29 @@ function WalletActionDialog({
   driver,
   loading,
   form,
+  refundQuote,
+  refundQuoteLoading,
+  refundQuoteError,
   onClose,
   onChange,
   onSubmit,
 }) {
   const isTopup = mode === "TOPUP";
-  const isAdjustAdd = mode === "ADJUST_ADD";
+  const isRefund = mode === "REFUND_PENALTY";
   const isSubtract = mode === "SUBTRACT";
 
   const title = isTopup
     ? "Nạp tiền ví tài xế"
-    : isAdjustAdd
-      ? "Điều chỉnh cộng ví tài xế"
+    : isRefund
+      ? "Hoàn tiền phạt chuyến"
       : "Điều chỉnh trừ ví tài xế";
 
   const alertSeverity = isSubtract ? "warning" : "success";
 
   const alertText = isTopup
     ? "Admin sẽ cộng tiền vào ví tài xế sau khi xác nhận đã nhận tiền thật từ ngân hàng."
-    : isAdjustAdd
-      ? "Chỉ dùng cho hoàn tiền (ví dụ: hoàn phạt huỷ chuyến). Luôn ghi rõ TripID để đảm bảo sổ sách chính xác."
+    : isRefund
+      ? "Nhập TripID của chuyến bị phạt. Hệ thống kiểm tra đúng tài xế và tự tính số tiền còn được hoàn."
       : "Admin sẽ trừ tiền trực tiếp khỏi ví tài xế. Hệ thống không cho số dư âm.";
 
   const buttonColor = isSubtract ? "warning" : "success";
@@ -182,14 +187,14 @@ function WalletActionDialog({
     ? "Đang xử lý..."
     : isTopup
       ? "Xác nhận nạp tiền"
-      : isAdjustAdd
-        ? "Xác nhận điều chỉnh cộng"
+      : isRefund
+        ? "Xác nhận hoàn tiền"
         : "Xác nhận trừ tiền";
 
   const placeholder = isTopup
     ? "Ví dụ: Đã nhận 500.000đ từ ngân hàng BIDV, admin cộng ví."
-    : isAdjustAdd
-      ? "Hoàn tiền phạt huỷ chuyến - TripID: XXXXX (copy từ sổ sách)"
+    : isRefund
+      ? "Nhập TripID để kiểm tra khoản phạt"
       : "Ví dụ: Điều chỉnh trừ do sai lệch đối soát.";
 
   return (
@@ -230,6 +235,20 @@ function WalletActionDialog({
             </Stack>
           </Paper>
 
+          {isRefund ? (
+            <>
+              <TextField label="TripID" value={form.tripId || ""}
+                onChange={onChange("tripId")} fullWidth placeholder={placeholder} />
+              {refundQuoteLoading ? <Typography variant="body2">Đang kiểm tra khoản phạt...</Typography> : null}
+              {refundQuoteError ? <Alert severity="warning">{refundQuoteError}</Alert> : null}
+              {refundQuote ? (
+                <Alert severity={refundQuote.refundableAmount > 0 ? "success" : "info"}>
+                  Phạt đã ghi nhận: {formatMoney(refundQuote.penaltyAmount)} đ · Đã hoàn: {formatMoney(refundQuote.refundedAmount)} đ · Còn hoàn: <strong>{formatMoney(refundQuote.refundableAmount)} đ</strong>
+                </Alert>
+              ) : null}
+            </>
+          ) : (
+          <>
           <TextField
             label="Số tiền"
             type="text"
@@ -259,6 +278,8 @@ function WalletActionDialog({
             minRows={3}
             placeholder={placeholder}
           />
+          </>
+          )}
         </Stack>
       </DialogContent>
 
@@ -270,7 +291,7 @@ function WalletActionDialog({
           variant="contained"
           color={buttonColor}
           onClick={onSubmit}
-          disabled={loading}
+          disabled={loading || (isRefund && (!refundQuote || refundQuote.refundableAmount <= 0 || refundQuoteLoading))}
           startIcon={
             loading ? <CircularProgress size={16} color="inherit" /> : null
           }
@@ -360,7 +381,7 @@ function WalletHistoryDialog({ open, driver, loading, items, onClose }) {
                   {items.map((row) => (
                     <TableRow key={row.id} hover>
                       <TableCell>{formatDateTimeVN(row.createdAt)}</TableCell>
-                      <TableCell>{getTxnTypeLabel(row.type)}</TableCell>
+                      <TableCell>{getTxnTypeLabel(row.type, row.note)}</TableCell>
                       <TableCell align="right">
                         {formatMoney(row.amount)} đ
                       </TableCell>
@@ -425,7 +446,33 @@ export default function AdminDriverWallets() {
   const [form, setForm] = React.useState({
     amount: "",
     note: "",
+    tripId: "",
   });
+  const [refundQuote, setRefundQuote] = React.useState(null);
+  const [refundQuoteLoading, setRefundQuoteLoading] = React.useState(false);
+  const [refundQuoteError, setRefundQuoteError] = React.useState("");
+  const refundKeyRef = React.useRef("");
+
+  React.useEffect(() => {
+    if (!actionState.open || actionState.mode !== "REFUND_PENALTY") return;
+    const tripId = String(form.tripId || "").trim();
+    setRefundQuote(null);
+    setRefundQuoteError("");
+    if (!tripId) { setRefundQuoteLoading(false); return; }
+    let cancelled = false;
+    const timer = window.setTimeout(async () => {
+      setRefundQuoteLoading(true);
+      try {
+        const quote = await fetchPenaltyRefundQuote(actionState.driver.id, tripId);
+        if (!cancelled) setRefundQuote(quote);
+      } catch (error) {
+        if (!cancelled) setRefundQuoteError(error.message || "TripID không có phạt của tài xế này.");
+      } finally {
+        if (!cancelled) setRefundQuoteLoading(false);
+      }
+    }, 400);
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, [actionState.open, actionState.mode, actionState.driver?.id, form.tripId]);
 
   const [ledgerFilters, setLedgerFilters] = React.useState({
     q: "",
@@ -761,14 +808,14 @@ export default function AdminDriverWallets() {
   };
 
   const openAdjustAddDialog = (driver) => {
-    setForm({
-      amount: "",
-      note: "Hoàn tiền phạt huỷ chuyến - TripID: ",
-    });
+    setForm({ amount: "", note: "", tripId: "" });
+    setRefundQuote(null);
+    setRefundQuoteError("");
+    refundKeyRef.current = window.crypto?.randomUUID?.() || `refund_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 
     setActionState({
       open: true,
-      mode: "ADJUST_ADD",
+      mode: "REFUND_PENALTY",
       driver,
     });
   };
@@ -800,8 +847,9 @@ export default function AdminDriverWallets() {
 
   const handleSubmitAction = async () => {
     const driver = actionState.driver;
-    const amount = Number(form.amount);
-    const note = String(form.note || "").trim();
+    const isRefund = actionState.mode === "REFUND_PENALTY";
+    const amount = isRefund ? Number(refundQuote?.refundableAmount || 0) : Number(form.amount);
+    const note = isRefund ? `Hoàn tiền phạt huỷ chuyến - TripID: ${String(form.tripId || "").trim()}` : String(form.note || "").trim();
 
     if (!driver?.id) {
       showSnackbar("error", "Không tìm thấy tài xế để thao tác.");
@@ -824,9 +872,10 @@ export default function AdminDriverWallets() {
       if (actionState.mode === "TOPUP") {
         await topupDriverWallet(driver.id, { amount, note });
         showSnackbar("success", "Đã nạp tiền vào ví tài xế.");
-      } else if (actionState.mode === "ADJUST_ADD") {
-        await adjustAddDriverWallet(driver.id, { amount, note });
-        showSnackbar("success", "Đã điều chỉnh cộng ví tài xế.");
+      } else if (isRefund) {
+        if (!refundQuote || refundQuote.tripId !== String(form.tripId || "").trim()) throw new Error("Vui lòng kiểm tra lại TripID.");
+        await adjustAddDriverWallet(driver.id, { amount, note }, refundKeyRef.current);
+        showSnackbar("success", `Đã hoàn ${formatMoney(amount)} đ tiền phạt chuyến.`);
       } else {
         await subtractDriverWallet(driver.id, { amount, note });
         showSnackbar("success", "Đã điều chỉnh trừ ví tài xế.");
@@ -1740,7 +1789,7 @@ export default function AdminDriverWallets() {
                                   startIcon={<AddCircleOutlineIcon />}
                                   onClick={() => openAdjustAddDialog(item)}
                                 >
-                                  Điều chỉnh cộng
+                                  Hoàn tiền phạt chuyến
                                 </Button>
 
                                 <Button
@@ -2020,7 +2069,7 @@ export default function AdminDriverWallets() {
                               <TableCell>
                                 <Chip
                                   size="small"
-                                  label={getTxnTypeLabel(item.type)}
+                                  label={getTxnTypeLabel(item.type, item.note)}
                                   color={getTxnChipColor(item.type)}
                                   variant="outlined"
                                 />
@@ -2112,6 +2161,9 @@ export default function AdminDriverWallets() {
         driver={actionState.driver}
         loading={submitting}
         form={form}
+        refundQuote={refundQuote}
+        refundQuoteLoading={refundQuoteLoading}
+        refundQuoteError={refundQuoteError}
         onClose={closeActionDialog}
         onChange={handleFormChange}
         onSubmit={handleSubmitAction}

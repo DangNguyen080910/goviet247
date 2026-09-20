@@ -134,10 +134,10 @@ export async function topupDriverWallet(id, payload) {
   return data;
 }
 
-export async function adjustAddDriverWallet(id, payload) {
+export async function adjustAddDriverWallet(id, payload, idempotencyKey) {
   const res = await fetch(`${BASE_URL}/drivers/${id}/wallet/adjust-add`, {
     method: "POST",
-    headers: getHeaders(),
+    headers: { ...getHeaders(), ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}) },
     body: JSON.stringify(payload),
   });
 
@@ -147,6 +147,15 @@ export async function adjustAddDriverWallet(id, payload) {
     throw new Error(data?.message || "Không điều chỉnh cộng được ví tài xế.");
   }
 
+  return data;
+}
+
+export async function fetchPenaltyRefundQuote(id, tripId) {
+  const res = await fetch(`${BASE_URL}/drivers/${id}/wallet/penalty-refund-quote?${new URLSearchParams({ tripId })}`, {
+    headers: getHeaders(),
+  });
+  const data = await safeJson(res);
+  if (!res.ok || data?.success === false) throw new Error(data?.message || "Không kiểm tra được khoản phạt chuyến.");
   return data;
 }
 

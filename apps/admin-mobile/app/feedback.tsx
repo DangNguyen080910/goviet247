@@ -17,6 +17,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CopyTripIdButton from "../components/CopyTripIdButton";
 import {
   FeedbackActorRole,
   FeedbackItem,
@@ -248,7 +249,10 @@ function FeedbackCard({
       <Text style={styles.metaSubText}>{getSourceLabel(item.source)}</Text>
 
       {item.tripId ? (
-        <Text style={styles.tripText}>Trip: {item.tripId}</Text>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+          <Text style={styles.tripText}>Trip: {item.tripId}</Text>
+          <CopyTripIdButton tripId={item.tripId} />
+        </View>
       ) : null}
 
       <View style={styles.cardFooter}>
@@ -870,6 +874,7 @@ export default function FeedbackScreen() {
                       label="Mã chuyến"
                       value={selectedFeedback.trip.id}
                     />
+                    <CopyTripIdButton tripId={selectedFeedback.trip.id} />
                     <InfoRow
                       label="Trạng thái chuyến"
                       value={selectedFeedback.trip.status || "--"}

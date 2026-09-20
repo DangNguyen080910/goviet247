@@ -4,6 +4,28 @@ function fail(statusCode, message) {
   return Object.assign(new Error(message), { statusCode });
 }
 
+export async function getPenaltyRefundQuote(db, driverId, tripId) {
+  const safeTripId = String(tripId || "").trim();
+  if (!safeTripId || !/^[A-Za-z0-9_-]+$/.test(safeTripId)) throw fail(400, "TripID không hợp lệ.");
+  const penalties = await db.driverTripPenaltyLog.findMany({
+    where: { tripId: safeTripId, driverProfileId: driverId, status: "APPROVED" },
+    select: { penaltyAmount: true },
+  });
+  const penaltyAmount = penalties.reduce((sum, item) => sum + Number(item.penaltyAmount || 0), 0);
+  if (penaltyAmount <= 0) throw fail(404, "Không tìm thấy phạt huỷ đã duyệt cho tài xế và TripID này.");
+  const refunds = await db.driverWalletTransaction.findMany({
+    where: { driverProfileId: driverId, type: "ADJUST_ADD",
+      OR: [{ tripId: safeTripId }, { note: { contains: safeTripId } }] },
+    select: { amount: true, note: true, tripId: true },
+  });
+  const refundedAmount = refunds
+    .filter((item) => /hoàn.*phạt.*huỷ/i.test(item.note || "") &&
+      (item.tripId === safeTripId || item.note?.match(/TripID\s*:\s*([A-Za-z0-9_-]+)/i)?.[1] === safeTripId))
+    .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+  return { tripId: safeTripId, penaltyAmount, refundedAmount,
+    refundableAmount: Math.max(0, penaltyAmount - refundedAmount) };
+}
+
 // Reuse the wallet transaction primary key: no separate, expiring dedup cache.
 export async function mutateAdminWallet(prisma, { driverId, type, amount, note, actorId, actorUsername, key }) {
   if (!["TOPUP", "ADJUST_ADD", "ADJUST_SUBTRACT"].includes(type)) throw fail(400, "Loại giao dịch không hợp lệ.");
@@ -37,10 +59,20 @@ export async function mutateAdminWallet(prisma, { driverId, type, amount, note, 
           data: { balance: { increment: delta } },
         });
         if (!changed.count) throw fail(400, "Không tìm thấy tài xế hoặc số dư ví không đủ để trừ.");
+        let penaltyRefundTripId = null;
+        if (type === "ADJUST_ADD" && /hoàn.*phạt.*huỷ/i.test(note)) {
+          const tripId = note.match(/TripID\s*:\s*([A-Za-z0-9_-]+)/i)?.[1];
+          if (!tripId) throw fail(400, "Hoàn phạt huỷ cần ghi TripID hợp lệ trong ghi chú.");
+          const quote = await getPenaltyRefundQuote(tx, driverId, tripId);
+          if (amount > quote.refundableAmount) throw fail(400,
+            `Số hoàn vượt khoản phạt còn lại (${quote.refundableAmount}đ).`);
+          penaltyRefundTripId = tripId;
+        }
         const profile = await tx.driverProfile.findUnique({ where: { id: driverId }, include });
         const balanceAfter = profile.balance;
         const transaction = await tx.driverWalletTransaction.create({ data: {
           ...(transactionId ? { id: transactionId } : {}), driverProfileId: driverId, type, amount,
+          ...(penaltyRefundTripId ? { tripId: penaltyRefundTripId } : {}),
           balanceBefore: balanceAfter - delta, balanceAfter, note: storedNote,
         } });
         let cashTransaction;

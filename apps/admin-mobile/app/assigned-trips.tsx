@@ -17,6 +17,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
+import CopyTripIdButton from "../components/CopyTripIdButton";
 import {
   AssignedTripDetail,
   AssignedTripItem,
@@ -25,6 +26,7 @@ import {
   changeAssignedTripStatus,
   fetchAssignedTripDetail,
   fetchAssignedTrips,
+  returnAssignedTripToReview,
   updateAssignedTripSchedule,
 } from "../services/assignedTripsApi";
 
@@ -268,6 +270,10 @@ function canCancelTrip(tab: AssignedTripsTabStatus) {
   return tab === "ACCEPTED" || tab === "CONTACTED" || tab === "IN_PROGRESS";
 }
 
+function canReturnToReview(tab: AssignedTripsTabStatus) {
+  return tab === "ACCEPTED" || tab === "CONTACTED";
+}
+
 function removeTripFromList(
   list: AssignedTripItem[],
   tripId: string,
@@ -311,6 +317,8 @@ export default function AssignedTripsScreen() {
 
   const [cancelSubmitting, setCancelSubmitting] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
+  const [returnReason, setReturnReason] = useState("");
+  const [returnSubmitting, setReturnSubmitting] = useState(false);
   const [scheduleEditing, setScheduleEditing] = useState(false);
   const [scheduleSubmitting, setScheduleSubmitting] = useState(false);
   const [pickupTimeInput, setPickupTimeInput] = useState("");
@@ -556,6 +564,28 @@ export default function AssignedTripsScreen() {
     }
   }
 
+  async function submitReturnToReview() {
+    const reason = returnReason.trim();
+    if (!reason) {
+      Alert.alert("Thiếu lý do", "Vui lòng nhập lý do tài xế nhận nhầm.");
+      return;
+    }
+    try {
+      setReturnSubmitting(true);
+      const tripId = selectedTripId;
+      await returnAssignedTripToReview(tripId, reason);
+      setItems((prev) => removeTripFromList(prev, tripId));
+      setReturnReason("");
+      closeTripDetail();
+      void loadData(tab, true);
+      Alert.alert("Thành công", "Đã chuyển chuyến về Chờ duyệt và ghi nhận phạt từ khoản đã giữ. Ví không bị trừ thêm; dùng Hoàn tiền phạt chuyến nếu cần hoàn.");
+    } catch (error) {
+      Alert.alert("Lỗi", error instanceof Error ? error.message : "Không thể chuyển chuyến về Chờ duyệt.");
+    } finally {
+      setReturnSubmitting(false);
+    }
+  }
+
   const actionConfig = useMemo(() => getNextActionConfig(tab), [tab]);
 
   const filteredItems = useMemo(() => {
@@ -671,6 +701,7 @@ export default function AssignedTripsScreen() {
               <View key={item.id} style={styles.card}>
                 <View style={styles.cardHeader}>
                   <Text style={styles.tripId}>{item.id}</Text>
+                  <CopyTripIdButton tripId={item.id} />
                   <View style={styles.statusChip}>
                     <Text style={styles.statusChipText}>
                       {getStatusLabel(item.status)}
@@ -871,6 +902,14 @@ export default function AssignedTripsScreen() {
                       </Text>
                     </Pressable>
                   ) : null}
+                  {canReturnToReview(tab) ? (
+                    <Pressable
+                      style={styles.dangerActionButton}
+                      onPress={() => void openTripDetail(item.id)}
+                    >
+                      <Text style={styles.dangerActionButtonText}>Về Chờ duyệt</Text>
+                    </Pressable>
+                  ) : null}
                 </View>
               </View>
             ))}
@@ -913,6 +952,7 @@ export default function AssignedTripsScreen() {
                   <Text style={styles.value}>
                     {selectedTripDetail?.id || selectedTripId || "--"}
                   </Text>
+                  <CopyTripIdButton tripId={selectedTripDetail?.id || selectedTripId} />
                 </View>
 
                 <View style={styles.modalInfoBlock}>
@@ -1222,6 +1262,34 @@ export default function AssignedTripsScreen() {
                     >
                       <Text style={styles.submitButtonText}>
                         {cancelSubmitting ? "Đang xử lý..." : "Xác nhận huỷ"}
+                      </Text>
+                    </Pressable>
+                  </View>
+                ) : null}
+                {canReturnToReview(tab) ? (
+                  <View style={styles.actionInlineCard}>
+                    <Text style={styles.inlineCardTitle}>Tài xế nhận nhầm — về Chờ duyệt</Text>
+                    <Text style={styles.value}>
+                      Gỡ tài xế để admin duyệt lại. Khoản đã khấu trừ khi nhận chuyến được ghi nhận là phạt; ví không bị trừ thêm. Dùng Hoàn tiền phạt chuyến nếu cần hoàn.
+                    </Text>
+                    <TextInput
+                      value={returnReason}
+                      onChangeText={setReturnReason}
+                      placeholder="Nhập lý do tài xế nhận nhầm..."
+                      placeholderTextColor="#94a3b8"
+                      multiline
+                      textAlignVertical="top"
+                      style={styles.noteInput}
+                      editable={!returnSubmitting}
+                      maxLength={400}
+                    />
+                    <Pressable
+                      style={[styles.dangerSubmitButton, returnSubmitting && styles.submitButtonDisabled]}
+                      onPress={submitReturnToReview}
+                      disabled={returnSubmitting}
+                    >
+                      <Text style={styles.submitButtonText}>
+                        {returnSubmitting ? "Đang xử lý..." : "Xác nhận về Chờ duyệt"}
                       </Text>
                     </Pressable>
                   </View>

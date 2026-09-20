@@ -164,18 +164,30 @@ function getAlertUiByRoute(route) {
 }
 
 const ADMIN_SOUND_FILE = "/sounds/ding.mp3";
+const ADMIN_NEW_TRIP_SOUND_FILE = "/sounds/duyetChuyen.mp3";
 const ADMIN_SOUND_COOLDOWN_MS = 1600;
 
 let __adminUrgentAudio = null;
 let __adminUpdateAudio = null;
+let __adminNewTripAudio = null;
 
 const __adminLastPlayedAt = {
   urgent: 0,
   update: 0,
+  newTrip: 0,
 };
 
 function getOrCreateAdminAudio(kind = "urgent") {
   if (typeof window === "undefined") return null;
+
+  if (kind === "newTrip") {
+    if (!__adminNewTripAudio) {
+      __adminNewTripAudio = new Audio(ADMIN_NEW_TRIP_SOUND_FILE);
+      __adminNewTripAudio.preload = "auto";
+      __adminNewTripAudio.volume = 1;
+    }
+    return __adminNewTripAudio;
+  }
 
   if (kind === "urgent") {
     if (!__adminUrgentAudio) {
@@ -193,6 +205,20 @@ function getOrCreateAdminAudio(kind = "urgent") {
   }
 
   return __adminUpdateAudio;
+}
+
+async function playAdminNewTripSound() {
+  try {
+    const now = Date.now();
+    if (now - __adminLastPlayedAt.newTrip < ADMIN_SOUND_COOLDOWN_MS) return;
+    __adminLastPlayedAt.newTrip = now;
+    const audio = getOrCreateAdminAudio("newTrip");
+    if (!audio) return;
+    audio.currentTime = 0;
+    await audio.play().catch(() => {});
+  } catch (err) {
+    console.log("[AdminLayout] new trip sound error:", err?.message || err);
+  }
 }
 
 async function playAdminUrgentSound() {
@@ -279,6 +305,7 @@ export default function AdminLayout() {
   const [snackText, setSnackText] = React.useState("");
   const [snackTarget, setSnackTarget] = React.useState("/admin/trips");
   const [dashboard, setDashboard] = React.useState(null);
+  const [soundEnabled, setSoundEnabled] = React.useState(false);
 
   const prevBadgeRef = React.useRef({});
   const [pulseMap, setPulseMap] = React.useState({});
@@ -445,7 +472,7 @@ export default function AdminLayout() {
     const handleNewTrip = async (payload) => {
       if (shouldSkipRealtimeEvent("admin:new_trip", payload)) return;
 
-      await playAdminUrgentSound();
+      await playAdminNewTripSound();
 
       const tripId = payload?.tripId || "";
       showSnack(
@@ -717,6 +744,27 @@ export default function AdminLayout() {
           </Box>
 
           <Box sx={{ flex: 1 }} />
+
+          <Button
+            color="inherit"
+            size="small"
+            startIcon={<NotificationsActiveIcon />}
+            onClick={async () => {
+              const audio = getOrCreateAdminAudio("newTrip");
+              if (!audio) return;
+              try {
+                audio.currentTime = 0;
+                await audio.play();
+                setSoundEnabled(true);
+                window.setTimeout(() => audio.pause(), 900);
+              } catch {
+                setSoundEnabled(false);
+                showSnack("Trình duyệt đang chặn âm thanh. Hãy cho phép âm thanh cho trang Admin.");
+              }
+            }}
+          >
+            {soundEnabled ? "Chuông đã bật" : "Bật chuông"}
+          </Button>
 
           <Typography variant="body2" sx={{ opacity: 0.9 }}>
             {user?.username || "admin"}

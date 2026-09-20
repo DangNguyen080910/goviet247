@@ -397,6 +397,26 @@ export async function adjustAddDriverWallet(
   return submitWalletOperation(driverId, "adjust-add", payload);
 }
 
+export type PenaltyRefundQuote = {
+  tripId: string;
+  penaltyAmount: number;
+  refundedAmount: number;
+  refundableAmount: number;
+};
+
+export async function fetchPenaltyRefundQuote(driverId: string, tripId: string): Promise<PenaltyRefundQuote> {
+  const data = await adminRequest(
+    `/api/admin/drivers/${driverId}/wallet/penalty-refund-quote?tripId=${encodeURIComponent(tripId)}`,
+    { method: "GET" },
+  );
+  return {
+    tripId: String(data.tripId || ""),
+    penaltyAmount: Number(data.penaltyAmount || 0),
+    refundedAmount: Number(data.refundedAmount || 0),
+    refundableAmount: Number(data.refundableAmount || 0),
+  };
+}
+
 export async function subtractDriverWallet(
   driverId: string,
   payload: { amount: number | string; note?: string },

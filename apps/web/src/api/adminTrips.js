@@ -69,6 +69,13 @@ export async function changeAssignedTripStatus(tripId, toStatus, note) {
   return data;
 }
 
+export async function returnAssignedTripToReview(tripId, reason) {
+  return request(`/api/admin/trips/${tripId}/driver-cancel-to-review`, {
+    method: "POST",
+    body: JSON.stringify({ reason }),
+  });
+}
+
 export function normalizeDisplayAddress(address) {
   if (!address || typeof address !== "string") {
     return "";
