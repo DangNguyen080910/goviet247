@@ -435,6 +435,22 @@ export default function SeoRoutePage({ routeKey }) {
 
     document.title = `${route.title} | GoViet247`;
 
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `https://goviet247.com/${encodeURI(route.path)}`;
+
+    let robots = document.querySelector('meta[name="robots"]');
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.name = "robots";
+      document.head.appendChild(robots);
+    }
+    robots.content = route.indexable ? "index,follow" : "noindex,follow";
+
     const description = route.description;
     let meta = document.querySelector('meta[name="description"]');
 
@@ -489,6 +505,8 @@ export default function SeoRoutePage({ routeKey }) {
     return () => {
       const currentSchema = document.getElementById("seo-route-faq-schema");
       if (currentSchema) currentSchema.remove();
+      if (canonical.isConnected) canonical.remove();
+      if (robots.isConnected) robots.remove();
     };
   }, [route]);
 

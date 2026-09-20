@@ -58,6 +58,7 @@ router.get("/seo-routes/:path", async (req, res) => {
     const relatedRoutes = await prisma.seoRoute.findMany({
       where: {
         NOT: { id: route.id },
+        source: { not: { startsWith: "V2" } },
         OR: [
           { from: route.from },
           { to: route.to },
@@ -79,6 +80,7 @@ router.get("/seo-routes/:path", async (req, res) => {
     });
 
     const { id, createdAt, updatedAt, source, ...publicRoute } = route;
+    publicRoute.indexable = !source.startsWith("V2");
 
     return res.json({
       success: true,

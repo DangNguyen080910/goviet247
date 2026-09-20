@@ -26,6 +26,7 @@ try {
       orderBy: { path: "asc" },
       take: 10_000,
       ...(cursorPath ? { cursor: { path: cursorPath }, skip: 1 } : {}),
+      where: { source: { not: { startsWith: "V2" } } },
       select: { path: true, createdAt: true, updatedAt: true },
     });
 
@@ -202,6 +203,10 @@ const staleSitemapFiles = existingSitemapFiles.filter(
   (fileName) => !generatedFileNames.has(fileName),
 );
 
+for (const fileName of staleSitemapFiles) {
+  fs.unlinkSync(path.join(PUBLIC_DIR, fileName));
+}
+
 console.log(`✅ Total URLs: ${routesWithMetadata.length.toLocaleString("en-US")}`);
 console.log(`✅ Maximum per sitemap: ${MAX_URLS_PER_SITEMAP.toLocaleString("en-US")}`);
 
@@ -218,9 +223,9 @@ if (createdSitemapFiles.length > 0) {
 }
 
 if (staleSitemapFiles.length > 0) {
-  console.warn("\n⚠️ Sitemap files no longer needed (not deleted automatically):");
+  console.log("\nRemoved stale generated sitemap files:");
 
   for (const fileName of staleSitemapFiles) {
-    console.warn(`   ${path.join(PUBLIC_DIR, fileName)}`);
+    console.log(`   ${fileName}`);
   }
 }

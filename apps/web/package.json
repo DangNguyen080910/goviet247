@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:sitemap": "node scripts/generateSitemap.mjs"
+    "generate:sitemap": "node --env-file=../api/.env scripts/generateSitemap.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
