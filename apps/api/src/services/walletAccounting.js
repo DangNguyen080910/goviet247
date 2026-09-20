@@ -46,6 +46,9 @@ export function normalizeDriverWalletItemsForAccounting(items = [], holdReferenc
 
   return list.filter((item) => item.type !== "WITHDRAW_REQUEST" && !shadowIds.has(item.id))
     .map((item) => {
+      // Admin debit rows store a positive requested amount; the wallet balance
+      // still decreases. Export the signed movement so the CSV reconciles.
+      if (item.type === "ADJUST_SUBTRACT") return { ...item, amount: -Math.abs(Number(item.amount || 0)) };
       if (item.type !== "WITHDRAW_PAID") return item;
       const requestRow = item.withdrawRequestId ? withdrawRequestMap.get(String(item.withdrawRequestId)) : null;
       return {

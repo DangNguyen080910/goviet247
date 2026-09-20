@@ -34,3 +34,11 @@ test("the same driver accepting again keeps the later hold", () => {
   assert.deepEqual(normalizeDriverWalletItemsForAccounting([firstHold, penalty, secondHold])
     .map((item) => item.id), ["hold-1", "hold-2"]);
 });
+
+test("admin wallet subtraction exports a negative movement matching the balance change", () => {
+  const debit = { ...row("debit", "A", null, "ADJUST_SUBTRACT", 500000, 4), balanceBefore: 1000000, balanceAfter: 500000 };
+  const [exported] = normalizeDriverWalletItemsForAccounting([debit]);
+  assert.equal(exported.amount, -500000);
+  assert.equal(exported.balanceBefore + exported.amount, exported.balanceAfter);
+  assert.equal(debit.amount, 500000);
+});
