@@ -367,11 +367,12 @@ export async function changeAssignedTripStatus(
   });
 }
 
-export async function cancelAssignedTrip(tripId: string, reason: string) {
+export async function cancelAssignedTrip(tripId: string, reason: string, origin: "CUSTOMER" | "DRIVER") {
   return adminRequest(`/api/admin/trips/${tripId}/cancel`, {
     method: "POST",
     body: JSON.stringify({
       cancel_reason: reason,
+      cancel_origin: origin,
     }),
   });
 }

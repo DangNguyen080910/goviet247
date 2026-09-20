@@ -26,7 +26,6 @@ import {
   changeAssignedTripStatus,
   fetchAssignedTripDetail,
   fetchAssignedTrips,
-  returnAssignedTripToReview,
   updateAssignedTripSchedule,
 } from "../services/assignedTripsApi";
 
@@ -267,10 +266,6 @@ function getNextActionConfig(tab: AssignedTripsTabStatus) {
 }
 
 function canCancelTrip(tab: AssignedTripsTabStatus) {
-  return tab === "ACCEPTED" || tab === "CONTACTED" || tab === "IN_PROGRESS";
-}
-
-function canReturnToReview(tab: AssignedTripsTabStatus) {
   return tab === "ACCEPTED" || tab === "CONTACTED";
 }
 
@@ -317,8 +312,7 @@ export default function AssignedTripsScreen() {
 
   const [cancelSubmitting, setCancelSubmitting] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
-  const [returnReason, setReturnReason] = useState("");
-  const [returnSubmitting, setReturnSubmitting] = useState(false);
+  const [cancelOrigin, setCancelOrigin] = useState<"CUSTOMER" | "DRIVER" | "">("");
   const [scheduleEditing, setScheduleEditing] = useState(false);
   const [scheduleSubmitting, setScheduleSubmitting] = useState(false);
   const [pickupTimeInput, setPickupTimeInput] = useState("");
@@ -364,6 +358,8 @@ export default function AssignedTripsScreen() {
 
   async function openTripDetail(tripId: string) {
     try {
+      setCancelOrigin("");
+      setCancelReason("");
       setSelectedTripId(tripId);
       setDetailOpen(true);
       setDetailLoading(true);
@@ -437,6 +433,8 @@ export default function AssignedTripsScreen() {
   }
 
   function closeTripDetail() {
+    setCancelOrigin("");
+    setCancelReason("");
     setDetailOpen(false);
     setDetailLoading(false);
     setSelectedTripId("");
@@ -512,6 +510,11 @@ export default function AssignedTripsScreen() {
   async function submitCancelTrip() {
     const trimmedReason = cancelReason.trim();
 
+    if (!cancelOrigin) {
+      Alert.alert("Thiếu thông tin", "Chọn khách huỷ hay tài xế huỷ để Sổ Sách ghi đúng.");
+      return;
+    }
+
     if (!trimmedReason) {
       if (Platform.OS === "web" && typeof window !== "undefined") {
         window.alert("Vui lòng nhập lý do huỷ chuyến.");
@@ -525,13 +528,15 @@ export default function AssignedTripsScreen() {
       setCancelSubmitting(true);
 
       const currentTripId = selectedTripId;
+      const currentCancelOrigin = cancelOrigin;
 
-      await cancelAssignedTrip(currentTripId, trimmedReason);
+      const result = await cancelAssignedTrip(currentTripId, trimmedReason, currentCancelOrigin);
 
       setItems((prev) => removeTripFromList(prev, currentTripId));
 
       setSelectedTripId("");
       setCancelReason("");
+      setCancelOrigin("");
 
       if (detailOpen && currentTripId) {
         closeTripDetail();
@@ -541,7 +546,9 @@ export default function AssignedTripsScreen() {
         console.error("reload assigned trips after cancel trip error:", error);
       });
 
-      const successMessage = "Huỷ chuyến thành công.";
+      const successMessage = currentCancelOrigin === "CUSTOMER"
+        ? result?.message || "Đã huỷ chuyến theo yêu cầu khách và hoàn khoản giữ vào ví tài xế."
+        : "Đã gỡ tài xế, ghi nhận phạt từ khoản đã giữ và đưa chuyến về Chờ duyệt tìm tài xế khác. Ví không bị trừ thêm.";
 
       if (Platform.OS === "web" && typeof window !== "undefined") {
         window.alert(successMessage);
@@ -561,28 +568,6 @@ export default function AssignedTripsScreen() {
       }
     } finally {
       setCancelSubmitting(false);
-    }
-  }
-
-  async function submitReturnToReview() {
-    const reason = returnReason.trim();
-    if (!reason) {
-      Alert.alert("Thiếu lý do", "Vui lòng nhập lý do tài xế nhận nhầm.");
-      return;
-    }
-    try {
-      setReturnSubmitting(true);
-      const tripId = selectedTripId;
-      await returnAssignedTripToReview(tripId, reason);
-      setItems((prev) => removeTripFromList(prev, tripId));
-      setReturnReason("");
-      closeTripDetail();
-      void loadData(tab, true);
-      Alert.alert("Thành công", "Đã chuyển chuyến về Chờ duyệt và ghi nhận phạt từ khoản đã giữ. Ví không bị trừ thêm; dùng Hoàn tiền phạt chuyến nếu cần hoàn.");
-    } catch (error) {
-      Alert.alert("Lỗi", error instanceof Error ? error.message : "Không thể chuyển chuyến về Chờ duyệt.");
-    } finally {
-      setReturnSubmitting(false);
     }
   }
 
@@ -900,14 +885,6 @@ export default function AssignedTripsScreen() {
                       <Text style={styles.dangerActionButtonText}>
                         Huỷ chuyến
                       </Text>
-                    </Pressable>
-                  ) : null}
-                  {canReturnToReview(tab) ? (
-                    <Pressable
-                      style={styles.dangerActionButton}
-                      onPress={() => void openTripDetail(item.id)}
-                    >
-                      <Text style={styles.dangerActionButtonText}>Về Chờ duyệt</Text>
                     </Pressable>
                   ) : null}
                 </View>
@@ -1240,7 +1217,15 @@ export default function AssignedTripsScreen() {
                 {canCancelTrip(tab) ? (
                   <View style={styles.actionInlineCard}>
                     <Text style={styles.inlineCardTitle}>Huỷ chuyến</Text>
-
+                    <Text style={styles.inlineCardTitle}>Ai là bên huỷ?</Text>
+                    <Pressable onPress={() => setCancelOrigin("CUSTOMER")} disabled={cancelSubmitting}>
+                        <Text style={styles.inlineCardTitle}>{cancelOrigin === "CUSTOMER" ? "●" : "○"} Khách huỷ — tự hoàn khoản giữ vào ví</Text>
+                    </Pressable>
+                    {canCancelTrip(tab) ? (
+                      <Pressable onPress={() => setCancelOrigin("DRIVER")} disabled={cancelSubmitting}>
+                        <Text style={styles.inlineCardTitle}>{cancelOrigin === "DRIVER" ? "●" : "○"} Tài xế huỷ — ghi phạt và tìm tài xế khác</Text>
+                      </Pressable>
+                    ) : null}
                     <TextInput
                       value={cancelReason}
                       onChangeText={setCancelReason}
@@ -1261,35 +1246,7 @@ export default function AssignedTripsScreen() {
                       disabled={cancelSubmitting}
                     >
                       <Text style={styles.submitButtonText}>
-                        {cancelSubmitting ? "Đang xử lý..." : "Xác nhận huỷ"}
-                      </Text>
-                    </Pressable>
-                  </View>
-                ) : null}
-                {canReturnToReview(tab) ? (
-                  <View style={styles.actionInlineCard}>
-                    <Text style={styles.inlineCardTitle}>Tài xế nhận nhầm — về Chờ duyệt</Text>
-                    <Text style={styles.value}>
-                      Gỡ tài xế để admin duyệt lại. Khoản đã khấu trừ khi nhận chuyến được ghi nhận là phạt; ví không bị trừ thêm. Dùng Hoàn tiền phạt chuyến nếu cần hoàn.
-                    </Text>
-                    <TextInput
-                      value={returnReason}
-                      onChangeText={setReturnReason}
-                      placeholder="Nhập lý do tài xế nhận nhầm..."
-                      placeholderTextColor="#94a3b8"
-                      multiline
-                      textAlignVertical="top"
-                      style={styles.noteInput}
-                      editable={!returnSubmitting}
-                      maxLength={400}
-                    />
-                    <Pressable
-                      style={[styles.dangerSubmitButton, returnSubmitting && styles.submitButtonDisabled]}
-                      onPress={submitReturnToReview}
-                      disabled={returnSubmitting}
-                    >
-                      <Text style={styles.submitButtonText}>
-                        {returnSubmitting ? "Đang xử lý..." : "Xác nhận về Chờ duyệt"}
+                        {cancelSubmitting ? "Đang xử lý..." : cancelOrigin === "DRIVER" ? "Gỡ tài xế, tìm người khác" : "Xác nhận huỷ chuyến"}
                       </Text>
                     </Pressable>
                   </View>

@@ -96,6 +96,8 @@ function getTxnTypeLabel(type: string | null | undefined, note = "") {
   if (key === "ADJUST_SUBTRACT") return "Điều chỉnh trừ";
   if (key === "COMMISSION_HOLD") return "Giữ phí môi giới";
   if (key === "COMMISSION_REFUND") return "Hoàn phí môi giới";
+  if (key === "DRIVER_VAT_REFUND") return "Hoàn VAT tài xế";
+  if (key === "DRIVER_PIT_REFUND") return "Hoàn PIT tài xế";
   // if (key === "TRIP_CANCEL_PENALTY") return "Phạt huỷ chuyến";
   if (key === "WITHDRAW_REQUEST") return "Yêu cầu rút";
   if (key === "WITHDRAW_REJECT_REFUND") return "Hoàn do từ chối rút";
