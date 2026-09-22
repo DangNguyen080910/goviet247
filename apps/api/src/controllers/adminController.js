@@ -2962,7 +2962,20 @@ export function makeAdminController(prisma) {
         }));
 
         const sortMatch = sort.match(/^(.*)_(asc|desc)$/);
-        const sortColumn = sortMatch?.[1] || "createdAt";
+        const driverSortColumns = {
+          name: "name",
+          phone: "phone",
+          vehicletype: "vehicleType",
+          vehiclebrand: "vehicleBrand",
+          vehiclemodel: "vehicleModel",
+          vehicleyear: "vehicleYear",
+          platenumber: "plateNumber",
+          completedtripcount: "completedTripCount",
+          cancelledtripcount: "cancelledTripCount",
+          status: "status",
+          createdat: "createdAt",
+        };
+        const sortColumn = driverSortColumns[String(sortMatch?.[1] || "createdAt").toLowerCase()] || "createdAt";
         const sortDirection = sortMatch?.[2] === "asc" ? 1 : -1;
         const collator = new Intl.Collator("vi", { numeric: true, sensitivity: "base" });
         const sortValue = (item) => {

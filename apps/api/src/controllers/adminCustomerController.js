@@ -177,7 +177,7 @@ export async function getCustomers(req, res) {
     const q = (req.query.q || "").trim();
     const status = (req.query.status || "all").toUpperCase();
     const phoneVerified = (req.query.phoneVerified || "all").toLowerCase();
-    const sort = (req.query.sort || "newest").toLowerCase();
+    const sort = String(req.query.sort || "newest");
 
     const page = Math.max(1, toInt(req.query.page, 1));
     const pageSize = Math.min(100, Math.max(1, toInt(req.query.pageSize, 20)));
@@ -239,9 +239,21 @@ export async function getCustomers(req, res) {
       return !["android", "ios"].includes(appPlatform) || platforms.includes(appPlatform);
     });
 
-    const normalizedSort = sort === "newest" ? "createdAt_desc" : sort === "oldest" ? "createdAt_asc" : sort;
+    const normalizedSort = sort.toLowerCase() === "newest"
+      ? "createdAt_desc"
+      : sort.toLowerCase() === "oldest"
+        ? "createdAt_asc"
+        : sort;
     const sortMatch = normalizedSort.match(/^(.*)_(asc|desc)$/);
-    const sortColumn = sortMatch?.[1] || "createdAt";
+    const customerSortColumns = {
+      name: "name",
+      phone: "phone",
+      appplatform: "appPlatform",
+      tripcount: "tripCount",
+      status: "status",
+      createdat: "createdAt",
+    };
+    const sortColumn = customerSortColumns[String(sortMatch?.[1] || "createdAt").toLowerCase()] || "createdAt";
     const sortDirection = sortMatch?.[2] === "asc" ? 1 : -1;
     const collator = new Intl.Collator("vi", { numeric: true, sensitivity: "base" });
     const sortValue = (item) => {
