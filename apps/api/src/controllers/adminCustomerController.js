@@ -230,7 +230,7 @@ export async function getCustomers(req, res) {
       ? candidates.filter((item) => matchesCustomerSmartSearch(item, q))
       : candidates;
 
-    appUsageSummary = summarizeRiderAppUsage(matched);
+    const appUsageSummary = summarizeRiderAppUsage(matched);
 
     const filtered = matched.filter((item) => {
       const platforms = item.riderAppUsages.map((usage) => usage.platform);
