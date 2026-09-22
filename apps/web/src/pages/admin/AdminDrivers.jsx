@@ -9,6 +9,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  TableSortLabel,
   Chip,
   Drawer,
   Divider,
@@ -86,6 +87,20 @@ function vehicleTypeLabel(value) {
   return value || "-";
 }
 
+const DRIVER_SORT_COLUMNS = {
+  name: "Họ tên",
+  phone: "SĐT",
+  vehicleType: "Loại xe",
+  vehicleBrand: "Hãng xe",
+  vehicleModel: "Model xe",
+  vehicleYear: "Đời xe",
+  plateNumber: "Biển số",
+  createdAt: "Ngày tạo",
+  completedTripCount: "Hoàn thành",
+  cancelledTripCount: "Đã huỷ",
+  status: "Trạng thái",
+};
+
 export default function AdminDrivers() {
   const [drivers, setDrivers] = useState([]);
   const [loading, setLoading] = useState(true); // list loading
@@ -96,6 +111,27 @@ export default function AdminDrivers() {
   const [status, setStatus] = useState("ALL"); // ALL | PENDING | VERIFIED | REJECTED | SUSPENDED
   const [phoneVerified, setPhoneVerified] = useState("all"); // all | true | false
   const [sort, setSort] = useState("createdAt_desc"); // createdAt_desc | createdAt_asc | status_asc | status_desc
+
+  const [sortColumn, sortDirection] = sort.match(/^(.*)_(asc|desc)$/)?.slice(1) || ["createdAt", "desc"];
+
+  function handleSort(column) {
+    setPage(1);
+    setSort(`${column}_${sortColumn === column && sortDirection === "asc" ? "desc" : "asc"}`);
+  }
+
+  function sortableHeader(column, align = "left") {
+    return (
+      <TableCell align={align} sortDirection={sortColumn === column ? sortDirection : false}>
+        <TableSortLabel
+          active={sortColumn === column}
+          direction={sortColumn === column ? sortDirection : "asc"}
+          onClick={() => handleSort(column)}
+        >
+          {DRIVER_SORT_COLUMNS[column]}
+        </TableSortLabel>
+      </TableCell>
+    );
+  }
 
   // Pagination
   const [page, setPage] = useState(1);
@@ -557,6 +593,9 @@ export default function AdminDrivers() {
               setSort(e.target.value);
             }}
           >
+            {!['createdAt_desc', 'createdAt_asc', 'status_asc', 'status_desc'].includes(sort) ? (
+              <MenuItem value={sort}>{DRIVER_SORT_COLUMNS[sortColumn]} {sortDirection === 'asc' ? 'tăng dần' : 'giảm dần'}</MenuItem>
+            ) : null}
             <MenuItem value="createdAt_desc">Mới nhất</MenuItem>
             <MenuItem value="createdAt_asc">Cũ nhất</MenuItem>
             <MenuItem value="status_asc">Trạng thái A→Z</MenuItem>
@@ -583,17 +622,17 @@ export default function AdminDrivers() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Họ tên</TableCell>
-              <TableCell>SĐT</TableCell>
-              <TableCell>Loại xe</TableCell>
-              <TableCell>Hãng xe</TableCell>
-              <TableCell>Model xe</TableCell>
-              <TableCell>Đời xe</TableCell>
-              <TableCell>Biển số</TableCell>
-              <TableCell>Ngày tạo</TableCell>
-              <TableCell align="right">Hoàn thành</TableCell>
-              <TableCell align="right">Đã huỷ</TableCell>
-              <TableCell>Trạng thái</TableCell>
+              {sortableHeader("name")}
+              {sortableHeader("phone")}
+              {sortableHeader("vehicleType")}
+              {sortableHeader("vehicleBrand")}
+              {sortableHeader("vehicleModel")}
+              {sortableHeader("vehicleYear")}
+              {sortableHeader("plateNumber")}
+              {sortableHeader("createdAt")}
+              {sortableHeader("completedTripCount", "right")}
+              {sortableHeader("cancelledTripCount", "right")}
+              {sortableHeader("status")}
             </TableRow>
           </TableHead>
 

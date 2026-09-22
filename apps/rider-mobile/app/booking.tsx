@@ -6,7 +6,6 @@ import DateTimePicker, {
 } from "@react-native-community/datetimepicker";
 import {
   Alert,
-  Linking,
   KeyboardAvoidingView,
   Modal,
   Platform,
@@ -29,7 +28,6 @@ import { quotePrice } from "../services/pricingApi";
 import {
   createTrip,
   getRiderPublicTripConfig,
-  getRiderSupportConfig,
 } from "../services/tripApi";
 import { getRiderToken } from "../services/storage";
 import { searchPlaces, getPlaceDetail, getRoute } from "../services/mapApi";
@@ -390,7 +388,6 @@ export default function RiderBookingScreen() {
   const minDistanceKm = Number(tripConfig.minDistanceKm || 10);
   const maxDistanceKm = Number(tripConfig.maxDistanceKm || 2000);
   const quoteExpireSeconds = Number(tripConfig.quoteExpireSeconds || 120);
-  const [supportPhone, setSupportPhone] = useState("0977100917");
 
   useEffect(() => {
     let active = true;
@@ -408,24 +405,6 @@ export default function RiderBookingScreen() {
       })
       .catch((error) => {
         console.warn("[Booking] load trip config error:", error);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    let active = true;
-
-    getRiderSupportConfig()
-      .then((config) => {
-        if (!active) return;
-        const phone = String(config?.supportPhoneRider || "").trim();
-        if (phone) setSupportPhone(phone);
-      })
-      .catch((error) => {
-        console.warn("[Booking] load support config error:", error);
       });
 
     return () => {
@@ -1739,8 +1718,8 @@ export default function RiderBookingScreen() {
         Alert.alert(
           "Đặt chuyến thành công ✅",
           tripId
-            ? `Mã chuyến: ${shortTripId(tripId)}\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`
-            : `GoViet247 đã ghi nhận chuyến của bạn.\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`,
+            ? `Mã chuyến: ${shortTripId(tripId)}`
+            : "GoViet247 đã ghi nhận chuyến của bạn.",
         );
 
         setTimeout(() => {
@@ -1753,8 +1732,8 @@ export default function RiderBookingScreen() {
       Alert.alert(
         "Đặt chuyến thành công ✅",
         tripId
-          ? `Mã chuyến: ${shortTripId(tripId)}\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`
-          : `GoViet247 đã ghi nhận chuyến của bạn.\n\nNếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ: ${supportPhone}.`,
+          ? `Mã chuyến: ${shortTripId(tripId)}`
+          : "GoViet247 đã ghi nhận chuyến của bạn.",
         [
           {
             text: "OK",
@@ -2431,15 +2410,6 @@ export default function RiderBookingScreen() {
                   đi
                 </Text>
 
-                <Pressable
-                  onPress={() => void Linking.openURL(`tel:${supportPhone}`)}
-                >
-                  <Text style={styles.quoteBenefitText}>
-                    🧾 Cần xuất hóa đơn VAT? Vui lòng liên hệ hỗ trợ qua số{" "}
-                    <Text style={styles.supportPhoneText}>{supportPhone}</Text>.
-                  </Text>
-                </Pressable>
-
                 <Text style={styles.quoteBenefitHint}>
                   💡 Đi càng xa, giá mỗi km càng rẻ
                 </Text>
@@ -2850,11 +2820,6 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: "#4B5563",
     fontWeight: "700",
-  },
-  supportPhoneText: {
-    color: "#EA580C",
-    fontWeight: "900",
-    textDecorationLine: "underline",
   },
   quoteBenefitHint: {
     fontSize: 14,

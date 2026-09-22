@@ -132,6 +132,14 @@ export function makeAdminController(prisma) {
     return normalized || "";
   }
 
+  const COMMISSION_OUTPUT_VAT_RATE = 8;
+
+  function splitVatIncludedAmount(grossAmount, vatRate = COMMISSION_OUTPUT_VAT_RATE) {
+    const gross = Math.max(0, Number(grossAmount || 0));
+    const net = Math.round(gross / (1 + Number(vatRate || 0) / 100));
+    return { gross, net, vat: gross - net, vatRate: Number(vatRate || 0) };
+  }
+
   function buildCompletedTripAccountingRow(trip) {
     const driverName =
       trip?.driver?.driverProfile?.fullName ||
@@ -147,6 +155,8 @@ export function makeAdminController(prisma) {
       trip?.rider?.displayName ||
       trip?.riderPhone ||
       "";
+
+    const commission = splitVatIncludedAmount(trip.commissionAmountSnapshot);
 
     return {
       rowType: "COMPLETED_TRIP",
@@ -164,7 +174,10 @@ export function makeAdminController(prisma) {
       direction: trip.direction || "",
 
       totalPrice: Number(trip.totalPrice || 0),
-      commissionAmount: Number(trip.commissionAmountSnapshot || 0),
+      commissionAmount: commission.gross,
+      commissionNetAmount: commission.net,
+      commissionOutputVatAmount: commission.vat,
+      commissionOutputVatRate: commission.vatRate,
       driverVatAmount: Number(trip.driverVatAmountSnapshot || 0),
       driverPitAmount: Number(trip.driverPitAmountSnapshot || 0),
 
@@ -1458,6 +1471,10 @@ export function makeAdminController(prisma) {
       if (i.category === "DRIVER_WITHDRAW") driverWithdrawPaidTotal += amount;
     });
 
+    const commission = splitVatIncludedAmount(
+      completedAgg._sum.commissionAmountSnapshot,
+    );
+
     const summaryItems = [
       {
         code: "COMPLETED_TRIP_TOTAL",
@@ -1466,8 +1483,18 @@ export function makeAdminController(prisma) {
       },
       {
         code: "COMMISSION_TOTAL",
-        label: "Doanh thu chính - phí môi giới công ty thu được",
-        value: Number(completedAgg._sum.commissionAmountSnapshot || 0),
+        label: "Tổng phí môi giới đã thu (đã gồm VAT)",
+        value: commission.gross,
+      },
+      {
+        code: "COMMISSION_REVENUE_BEFORE_VAT",
+        label: "Doanh thu phí môi giới chưa VAT",
+        value: commission.net,
+      },
+      {
+        code: "COMMISSION_OUTPUT_VAT_TOTAL",
+        label: `VAT đầu ra phí môi giới (${COMMISSION_OUTPUT_VAT_RATE}%)`,
+        value: commission.vat,
       },
       {
         code: "DRIVER_VAT_TOTAL",
@@ -1799,11 +1826,13 @@ export function makeAdminController(prisma) {
     });
     const awsRefund = await getAwsExpenseRefundTotal({ start, end });
 
-    const commission = Number(completedAgg._sum.commissionAmountSnapshot || 0);
+    const commission = splitVatIncludedAmount(
+      completedAgg._sum.commissionAmountSnapshot,
+    );
     const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
     const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
     const penaltyNet = penaltyGross - penaltyRefund;
-    const totalIncome = commission + penaltyNet;
+    const totalIncome = commission.net + penaltyNet;
 
     let expenseTotal = 0;
     const expenseByCategory = {};
@@ -1841,8 +1870,18 @@ export function makeAdminController(prisma) {
 
       [
         "DOANH_THU_CHINH",
-        "Doanh thu chính - phí môi giới",
-        formatMoneyExport(commission),
+        "Doanh thu phí môi giới chưa VAT",
+        formatMoneyExport(commission.net),
+      ],
+      [
+        "THUE_GTGT_DAU_RA",
+        `VAT đầu ra nằm trong phí môi giới (${COMMISSION_OUTPUT_VAT_RATE}%)`,
+        formatMoneyExport(commission.vat),
+      ],
+      [
+        "THAM_CHIEU",
+        "Tổng phí môi giới đã thu (đã gồm VAT)",
+        formatMoneyExport(commission.gross),
       ],
 
       ["", "", ""],
@@ -2237,7 +2276,10 @@ export function makeAdminController(prisma) {
         "Chiều chuyến",
         "Mã chiều chuyến",
         "Giá chuyến",
-        "Phí môi giới",
+        "Phí môi giới đã thu (đã gồm VAT)",
+        "Doanh thu phí chưa VAT",
+        "VAT đầu ra phí môi giới",
+        "Thuế suất VAT phí môi giới",
         "VAT tài xế",
         "PIT tài xế",
         "Tổng khấu trừ",
@@ -2275,6 +2317,15 @@ export function makeAdminController(prisma) {
           item.commissionAmount == null
             ? ""
             : formatMoneyExport(item.commissionAmount || 0),
+          item.commissionNetAmount == null
+            ? ""
+            : formatMoneyExport(item.commissionNetAmount || 0),
+          item.commissionOutputVatAmount == null
+            ? ""
+            : formatMoneyExport(item.commissionOutputVatAmount || 0),
+          item.commissionOutputVatRate == null
+            ? ""
+            : `${item.commissionOutputVatRate}%`,
           item.driverVatAmount == null
             ? ""
             : formatMoneyExport(item.driverVatAmount || 0),
@@ -2842,11 +2893,6 @@ export function makeAdminController(prisma) {
           };
         }
 
-        let orderBy = { createdAt: "desc" };
-        if (sort === "createdAt_asc") orderBy = { createdAt: "asc" };
-        if (sort === "status_asc") orderBy = { status: "asc" };
-        if (sort === "status_desc") orderBy = { status: "desc" };
-
         const skip = (page - 1) * pageSize;
         const take = pageSize;
 
@@ -2863,35 +2909,14 @@ export function makeAdminController(prisma) {
           },
         };
 
-        let items;
-        let total;
+        const candidates = await prisma.driverProfile.findMany({ where, include });
+        const matched = q
+          ? candidates.filter((item) => matchesDriverSmartSearch(item, q))
+          : candidates;
+        const total = matched.length;
 
-        if (q) {
-          const candidates = await prisma.driverProfile.findMany({
-            where,
-            orderBy,
-            include,
-          });
-          const matched = candidates.filter((item) =>
-            matchesDriverSmartSearch(item, q),
-          );
-          total = matched.length;
-          items = matched.slice(skip, skip + take);
-        } else {
-          [items, total] = await Promise.all([
-            prisma.driverProfile.findMany({
-              where,
-              orderBy,
-              skip,
-              take,
-              include,
-            }),
-            prisma.driverProfile.count({ where }),
-          ]);
-        }
-
-        const driverUserIds = items.map((item) => item.userId).filter(Boolean);
-        const driverProfileIds = items.map((item) => item.id).filter(Boolean);
+        const driverUserIds = matched.map((item) => item.userId).filter(Boolean);
+        const driverProfileIds = matched.map((item) => item.id).filter(Boolean);
 
         const [completedTripGroups, cancelledTripGroups] = await Promise.all([
           prisma.trip.groupBy({
@@ -2930,18 +2955,47 @@ export function makeAdminController(prisma) {
           ]),
         );
 
-        const mappedItems = items.map((item) => ({
+        const mappedItems = matched.map((item) => ({
           ...item,
           completedTripCount: completedTripCountMap.get(item.userId) || 0,
           cancelledTripCount: cancelledTripCountMap.get(item.id) || 0,
         }));
 
+        const sortMatch = sort.match(/^(.*)_(asc|desc)$/);
+        const sortColumn = sortMatch?.[1] || "createdAt";
+        const sortDirection = sortMatch?.[2] === "asc" ? 1 : -1;
+        const collator = new Intl.Collator("vi", { numeric: true, sensitivity: "base" });
+        const sortValue = (item) => {
+          if (sortColumn === "name") return getDriverDisplayName(item);
+          if (sortColumn === "phone") return item.user?.phones?.[0]?.e164 || "";
+          if (sortColumn === "vehicleType") return item.vehicleType || "";
+          if (sortColumn === "vehicleBrand") return item.vehicleBrand || "";
+          if (sortColumn === "vehicleModel") return item.vehicleModel || "";
+          if (sortColumn === "vehicleYear") return Number(item.vehicleYear || 0);
+          if (sortColumn === "plateNumber") return item.plateNumber || "";
+          if (sortColumn === "completedTripCount") return Number(item.completedTripCount || 0);
+          if (sortColumn === "cancelledTripCount") return Number(item.cancelledTripCount || 0);
+          if (sortColumn === "status") return item.status || "";
+          return new Date(item.createdAt || 0).getTime();
+        };
+
+        mappedItems.sort((a, b) => {
+          const valueA = sortValue(a);
+          const valueB = sortValue(b);
+          const compared = typeof valueA === "number" && typeof valueB === "number"
+            ? valueA - valueB
+            : collator.compare(String(valueA), String(valueB));
+          return (compared || collator.compare(String(a.id), String(b.id))) * sortDirection;
+        });
+
+        const items = mappedItems.slice(skip, skip + take);
+
         const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
         return res.json({
           success: true,
-          items: mappedItems,
-          drivers: mappedItems,
+          items,
+          drivers: items,
           meta: { page, pageSize, total, totalPages },
         });
       } catch (e) {
@@ -5003,6 +5057,10 @@ export function makeAdminController(prisma) {
           }
         });
 
+        const commission = splitVatIncludedAmount(
+          completedAgg._sum.commissionAmountSnapshot,
+        );
+
         // ===============================
         // FINAL SUMMARY
         // ===============================
@@ -5017,8 +5075,18 @@ export function makeAdminController(prisma) {
             },
             {
               code: "COMMISSION_TOTAL",
-              label: "Doanh thu chính - phí môi giới công ty thu được",
-              value: Number(completedAgg._sum.commissionAmountSnapshot || 0),
+              label: "Tổng phí môi giới đã thu (đã gồm VAT)",
+              value: commission.gross,
+            },
+            {
+              key: "commission_revenue_before_vat",
+              label: "Doanh thu phí môi giới chưa VAT",
+              value: commission.net,
+            },
+            {
+              key: "commission_output_vat_total",
+              label: `VAT đầu ra phí môi giới (${COMMISSION_OUTPUT_VAT_RATE}%)`,
+              value: commission.vat,
             },
             {
               key: "driver_vat_total",
@@ -5884,15 +5952,15 @@ export function makeAdminController(prisma) {
           end,
         });
 
-        const commission = Number(
-          completedAgg._sum.commissionAmountSnapshot || 0,
+        const commission = splitVatIncludedAmount(
+          completedAgg._sum.commissionAmountSnapshot,
         );
 
         const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
         const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
         const penalty = penaltyGross - penaltyRefund;
 
-        const revenueTotal = commission + penalty;
+        const revenueTotal = commission.net + penalty;
         const awsRefund = await getAwsExpenseRefundTotal({ start, end });
 
         const EXPENSE_CATEGORIES = [
@@ -5944,7 +6012,10 @@ export function makeAdminController(prisma) {
           success: true,
           data: {
             revenue: {
-              commission,
+              commission: commission.net,
+              commissionGross: commission.gross,
+              commissionOutputVat: commission.vat,
+              commissionOutputVatRate: commission.vatRate,
               penalty,
               penaltyGross,
               penaltyRefund,

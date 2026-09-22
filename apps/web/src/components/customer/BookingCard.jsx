@@ -2636,21 +2636,6 @@ export default function BookingCard() {
 
                 <Typography
                   variant="body2"
-                  sx={{ opacity: 0.85, fontWeight: 700 }}
-                >
-                  🧾 Cần xuất hóa đơn VAT? Vui lòng liên hệ hỗ trợ qua số{" "}
-                  <Box
-                    component="a"
-                    href={`tel:${publicConfig.systemConfig.supportPhone}`}
-                    sx={{ color: "primary.main", fontWeight: 900 }}
-                  >
-                    {publicConfig.systemConfig.supportPhone}
-                  </Box>
-                  .
-                </Typography>
-
-                <Typography
-                  variant="body2"
                   sx={{ opacity: 0.75, fontWeight: 600 }}
                 >
                   💡 Đi càng xa, giá mỗi km càng rẻ
@@ -2907,17 +2892,6 @@ export default function BookingCard() {
               Cảm ơn bạn đã sử dụng dịch vụ GoViet247.
             </Typography>
 
-            <Typography sx={{ opacity: 0.85, fontWeight: 700 }}>
-              🧾 Nếu cần xuất hóa đơn VAT, vui lòng liên hệ hỗ trợ:{" "}
-              <Box
-                component="a"
-                href={`tel:${publicConfig.systemConfig.supportPhone}`}
-                sx={{ color: "primary.main", fontWeight: 900 }}
-              >
-                {publicConfig.systemConfig.supportPhone}
-              </Box>
-              .
-            </Typography>
           </Stack>
         </DialogContent>
         <DialogActions sx={{ px: 2.5, pb: 2 }}>

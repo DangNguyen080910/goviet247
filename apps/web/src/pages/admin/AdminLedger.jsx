@@ -1216,9 +1216,11 @@ export default function AdminLedger() {
       "Loại xe",
       "Chiều",
       "Giá chuyến",
-      "Phí môi giới",
-      "VAT",
-      "PIT",
+      "Phí môi giới đã thu (đã gồm VAT)",
+      "Doanh thu phí chưa VAT",
+      "VAT đầu ra phí môi giới",
+      "VAT tài xế",
+      "PIT tài xế",
       "Tổng khấu trừ",
       "Tài xế nhận",
       "Phạt huỷ",
@@ -1236,6 +1238,8 @@ export default function AdminLedger() {
 
       row.totalPrice != null ? row.totalPrice : "",
       row.commissionAmount != null ? row.commissionAmount : "",
+      row.commissionNetAmount != null ? row.commissionNetAmount : "",
+      row.commissionOutputVatAmount != null ? row.commissionOutputVatAmount : "",
       row.driverVatAmount != null ? row.driverVatAmount : "",
       row.driverPitAmount != null ? row.driverPitAmount : "",
       row.totalDeduction != null ? row.totalDeduction : "",
@@ -1345,8 +1349,18 @@ export default function AdminLedger() {
 
       [
         "DOANH_THU",
-        "Doanh thu phí môi giới",
+        "Doanh thu phí môi giới chưa VAT",
         revenueReport?.revenue?.commission || 0,
+      ],
+      [
+        "VAT_DAU_RA",
+        "VAT đầu ra nằm trong phí môi giới",
+        revenueReport?.revenue?.commissionOutputVat || 0,
+      ],
+      [
+        "THAM_CHIEU",
+        "Tổng phí môi giới đã thu (đã gồm VAT)",
+        revenueReport?.revenue?.commissionGross || 0,
       ],
       [
         "DOANH_THU",
@@ -1855,9 +1869,23 @@ export default function AdminLedger() {
 
                         <TableBody>
                           <TableRow>
-                            <TableCell>Doanh thu phí môi giới</TableCell>
+                            <TableCell>Doanh thu phí môi giới chưa VAT</TableCell>
                             <TableCell align="right">
                               {formatNumber(revenueReport.revenue.commission)}
+                            </TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>VAT đầu ra nằm trong phí môi giới</TableCell>
+                            <TableCell align="right">
+                              {formatNumber(revenueReport.revenue.commissionOutputVat)}
+                            </TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Tổng phí môi giới đã thu (đã gồm VAT)</TableCell>
+                            <TableCell align="right">
+                              {formatNumber(revenueReport.revenue.commissionGross)}
                             </TableCell>
                           </TableRow>
 
@@ -2668,9 +2696,11 @@ export default function AdminLedger() {
                           <TableCell>Loại xe</TableCell>
                           <TableCell>Chiều</TableCell>
                           <TableCell align="right">Giá chuyến</TableCell>
-                          <TableCell align="right">Phí môi giới</TableCell>
-                          <TableCell align="right">VAT</TableCell>
-                          <TableCell align="right">PIT</TableCell>
+                          <TableCell align="right">Phí môi giới đã gồm VAT</TableCell>
+                          <TableCell align="right">Phí chưa VAT</TableCell>
+                          <TableCell align="right">VAT đầu ra phí</TableCell>
+                          <TableCell align="right">VAT tài xế</TableCell>
+                          <TableCell align="right">PIT tài xế</TableCell>
                           <TableCell align="right">Tổng khấu trừ</TableCell>
                           <TableCell align="right">Tài xế nhận</TableCell>
                           <TableCell align="right">Phạt huỷ</TableCell>
@@ -2700,6 +2730,16 @@ export default function AdminLedger() {
                             <TableCell align="right">
                               {row.commissionAmount != null
                                 ? formatNumber(row.commissionAmount)
+                                : ""}
+                            </TableCell>
+                            <TableCell align="right">
+                              {row.commissionNetAmount != null
+                                ? formatNumber(row.commissionNetAmount)
+                                : ""}
+                            </TableCell>
+                            <TableCell align="right">
+                              {row.commissionOutputVatAmount != null
+                                ? formatNumber(row.commissionOutputVatAmount)
                                 : ""}
                             </TableCell>
                             <TableCell align="right">

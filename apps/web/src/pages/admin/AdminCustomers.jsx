@@ -9,6 +9,7 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  TableSortLabel,
   Chip,
   Drawer,
   Divider,
@@ -55,6 +56,14 @@ function getCustomerDisplayName(customer) {
   );
 }
 
+const CUSTOMER_SORT_COLUMNS = {
+  name: "Họ tên",
+  phone: "SĐT",
+  appPlatform: "Rider app",
+  tripCount: "Tổng chuyến",
+  status: "Trạng thái",
+};
+
 export default function AdminCustomers() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -67,6 +76,28 @@ export default function AdminCustomers() {
   const [status, setStatus] = useState("all"); // all | ACTIVE | SUSPENDED
   const [phoneVerified, setPhoneVerified] = useState("all"); // all | true | false
   const [sort, setSort] = useState("newest"); // newest | oldest
+
+  const normalizedSort = sort === "newest" ? "createdAt_desc" : sort === "oldest" ? "createdAt_asc" : sort;
+  const [sortColumn, sortDirection] = normalizedSort.match(/^(.*)_(asc|desc)$/)?.slice(1) || ["createdAt", "desc"];
+
+  function handleSort(column) {
+    setPage(1);
+    setSort(`${column}_${sortColumn === column && sortDirection === "asc" ? "desc" : "asc"}`);
+  }
+
+  function sortableHeader(column) {
+    return (
+      <TableCell sortDirection={sortColumn === column ? sortDirection : false}>
+        <TableSortLabel
+          active={sortColumn === column}
+          direction={sortColumn === column ? sortDirection : "asc"}
+          onClick={() => handleSort(column)}
+        >
+          {CUSTOMER_SORT_COLUMNS[column]}
+        </TableSortLabel>
+      </TableCell>
+    );
+  }
 
   // Pagination
   const [page, setPage] = useState(1);
@@ -423,6 +454,9 @@ export default function AdminCustomers() {
               setSort(e.target.value);
             }}
           >
+            {!['newest', 'oldest'].includes(sort) ? (
+              <MenuItem value={sort}>{CUSTOMER_SORT_COLUMNS[sortColumn]} {sortDirection === 'asc' ? 'tăng dần' : 'giảm dần'}</MenuItem>
+            ) : null}
             <MenuItem value="newest">Mới nhất</MenuItem>
             <MenuItem value="oldest">Cũ nhất</MenuItem>
           </Select>
@@ -457,11 +491,11 @@ export default function AdminCustomers() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Họ tên</TableCell>
-              <TableCell>SĐT</TableCell>
-              <TableCell>Rider app</TableCell>
-              <TableCell>Tổng chuyến</TableCell>
-              <TableCell>Trạng thái</TableCell>
+              {sortableHeader("name")}
+              {sortableHeader("phone")}
+              {sortableHeader("appPlatform")}
+              {sortableHeader("tripCount")}
+              {sortableHeader("status")}
             </TableRow>
           </TableHead>
 

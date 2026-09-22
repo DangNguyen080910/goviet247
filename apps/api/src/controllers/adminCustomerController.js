@@ -190,9 +190,6 @@ export async function getCustomers(req, res) {
       status,
     });
 
-    const orderBy =
-      sort === "oldest" ? { createdAt: "asc" } : { createdAt: "desc" };
-
     const select = {
         riderAppUsages: { select: { platform: true, firstSeenAt: true, lastSeenAt: true } },
         id: true,
@@ -228,36 +225,45 @@ export async function getCustomers(req, res) {
       };
 
     const appPlatform = String(req.query.appPlatform || "all");
-    const appWhere = appPlatform === "recorded" ? { riderAppUsages: { some: {} } }
-      : appPlatform === "unrecorded" ? { riderAppUsages: { none: {} } }
-      : ["android", "ios"].includes(appPlatform) ? { riderAppUsages: { some: { platform: appPlatform } } } : {};
-    let items, total, appUsageSummary;
-    if (q) {
-      const candidates = await prisma.user.findMany({ where: whereUser, orderBy, select });
-      const matched = candidates.filter(item => matchesCustomerSmartSearch(item, q));
-      appUsageSummary = summarizeRiderAppUsage(matched);
-      const filtered = matched.filter(item => {
-        const platforms = item.riderAppUsages.map(usage => usage.platform);
-        if (appPlatform === "recorded") return platforms.length > 0;
-        if (appPlatform === "unrecorded") return platforms.length === 0;
-        return !["android", "ios"].includes(appPlatform) || platforms.includes(appPlatform);
-      });
-      total = filtered.length;
-      items = filtered.slice(skip, skip + take);
-    } else {
-      const where = { AND: [whereUser, appWhere] };
-      const count = extra => prisma.user.count({ where: { AND: [whereUser, extra] } });
-      const [all, recorded, android, ios, both, filteredTotal, pageItems] = await Promise.all([
-        count({}), count({ riderAppUsages: { some: {} } }),
-        count({ riderAppUsages: { some: { platform: "android" } } }),
-        count({ riderAppUsages: { some: { platform: "ios" } } }),
-        count({ AND: [{ riderAppUsages: { some: { platform: "android" } } }, { riderAppUsages: { some: { platform: "ios" } } }] }),
-        prisma.user.count({ where }), prisma.user.findMany({ where, orderBy, select, skip, take }),
-      ]);
-      appUsageSummary = { total: all, recorded, unrecorded: all - recorded, android, ios, both };
-      total = filteredTotal;
-      items = pageItems;
-    }
+    const candidates = await prisma.user.findMany({ where: whereUser, select });
+    const matched = q
+      ? candidates.filter((item) => matchesCustomerSmartSearch(item, q))
+      : candidates;
+
+    appUsageSummary = summarizeRiderAppUsage(matched);
+
+    const filtered = matched.filter((item) => {
+      const platforms = item.riderAppUsages.map((usage) => usage.platform);
+      if (appPlatform === "recorded") return platforms.length > 0;
+      if (appPlatform === "unrecorded") return platforms.length === 0;
+      return !["android", "ios"].includes(appPlatform) || platforms.includes(appPlatform);
+    });
+
+    const normalizedSort = sort === "newest" ? "createdAt_desc" : sort === "oldest" ? "createdAt_asc" : sort;
+    const sortMatch = normalizedSort.match(/^(.*)_(asc|desc)$/);
+    const sortColumn = sortMatch?.[1] || "createdAt";
+    const sortDirection = sortMatch?.[2] === "asc" ? 1 : -1;
+    const collator = new Intl.Collator("vi", { numeric: true, sensitivity: "base" });
+    const sortValue = (item) => {
+      if (sortColumn === "name") return item.riderProfile?.fullName || item.displayName || item.phones?.[0]?.e164 || "";
+      if (sortColumn === "phone") return item.phones?.[0]?.e164 || "";
+      if (sortColumn === "appPlatform") return item.riderAppUsages.map((usage) => usage.platform).sort().join(",");
+      if (sortColumn === "tripCount") return Number(item._count?.riderTrips || 0);
+      if (sortColumn === "status") return item.riderProfile?.status || "ACTIVE";
+      return new Date(item.createdAt || 0).getTime();
+    };
+
+    filtered.sort((a, b) => {
+      const valueA = sortValue(a);
+      const valueB = sortValue(b);
+      const compared = typeof valueA === "number" && typeof valueB === "number"
+        ? valueA - valueB
+        : collator.compare(String(valueA), String(valueB));
+      return (compared || collator.compare(String(a.id), String(b.id))) * sortDirection;
+    });
+
+    const total = filtered.length;
+    const items = filtered.slice(skip, skip + take);
 
     return res.json({
       success: true,
