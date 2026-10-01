@@ -14,7 +14,9 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
   const [submitting, setSubmitting] = useState(false);
 
   const id = useMemo(() => trip?.id || trip?.tripId || tripId || "", [trip, tripId]);
-  const canReplaceDriver = ["ACCEPTED", "CONTACTED"].includes(trip?.status);
+  const status = String(trip?.status || "").toUpperCase();
+  const needsDriverSettlement = ["ACCEPTED", "CONTACTED"].includes(status);
+  const canCancel = Boolean(id) && (!status || ["PENDING", "ACCEPTED", "CONTACTED"].includes(status));
   const handleClose = () => {
     setReason("");
     setOrigin("");
@@ -31,12 +33,12 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
         setErr("Vui lòng nhập lý do huỷ");
         return;
       }
-      if (!origin) {
+      if (needsDriverSettlement && !origin) {
         setErr("Vui lòng chọn bên huỷ chuyến để Sổ Sách ghi đúng.");
         return;
       }
 
-      if (!resolution) {
+      if (needsDriverSettlement && !resolution) {
         setErr("Vui lòng chọn cách xử lý huỷ chuyến.");
         return;
       }
@@ -57,8 +59,8 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
         },
         body: JSON.stringify({
           cancel_reason: r,
-          cancel_origin: origin,
-          ...(resolution === "PENALTY_AND_CANCEL"
+          ...(needsDriverSettlement ? { cancel_origin: origin } : {}),
+          ...(needsDriverSettlement && resolution === "PENALTY_AND_CANCEL"
             ? { cancel_resolution: resolution }
             : {}),
         }),
@@ -86,46 +88,45 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
         <Typography variant="body2" sx={{ mb: 1, color: "text.secondary" }}>
           Mã chuyến: <b>{id ? String(id).slice(0, 8) + "..." : "-"}</b>
         </Typography>
-        <FormControl sx={{ mt: 1 }}>
-          <FormLabel>Cách xử lý huỷ chuyến</FormLabel>
-          <RadioGroup
-            value={`${origin}:${resolution}`}
-            onChange={(event) => {
-              const [nextOrigin, nextResolution] = event.target.value.split(":");
-              setOrigin(nextOrigin);
-              setResolution(nextResolution);
-            }}
-          >
-            {canReplaceDriver && (
+        {needsDriverSettlement ? (
+          <FormControl sx={{ mt: 1 }}>
+            <FormLabel>Cách xử lý huỷ chuyến</FormLabel>
+            <RadioGroup
+              value={`${origin}:${resolution}`}
+              onChange={(event) => {
+                const [nextOrigin, nextResolution] = event.target.value.split(":");
+                setOrigin(nextOrigin);
+                setResolution(nextResolution);
+              }}
+            >
               <FormControlLabel
                 value="CUSTOMER:REFUND_AND_CANCEL"
                 control={<Radio />}
                 label="Khách huỷ — tự hoàn khoản giữ vào ví tài xế"
               />
-            )}
-            {canReplaceDriver && (
               <FormControlLabel
                 value="CUSTOMER:PENALTY_AND_CANCEL"
                 control={<Radio />}
                 label="Khách huỷ — ghi phạt và huỷ chuyến"
               />
-            )}
-            {canReplaceDriver && (
               <FormControlLabel
                 value="DRIVER:PENALTY_AND_REVIEW"
                 control={<Radio />}
                 label="Tài xế huỷ — ghi phạt và đưa chuyến về Chờ duyệt tìm tài xế khác"
               />
-            )}
-            {canReplaceDriver && (
               <FormControlLabel
                 value="DRIVER:PENALTY_AND_CANCEL"
                 control={<Radio />}
                 label="Tài xế huỷ — ghi phạt và huỷ chuyến"
               />
-            )}
-          </RadioGroup>
-        </FormControl>
+            </RadioGroup>
+          </FormControl>
+        ) : null}
+        {status === "PENDING" ? (
+          <Typography variant="body2" sx={{ mt: 1, color: "text.secondary" }}>
+            Chuyến đang chờ duyệt, chưa có tài xế nhận. Chỉ cần nhập lý do để huỷ chuyến.
+          </Typography>
+        ) : null}
         {trip?.status === "IN_PROGRESS" && (
           <Typography variant="body2" color="error" sx={{ mt: 1 }}>
             Chuyến đã bắt đầu: cần đối soát phần dịch vụ đã thực hiện, hệ thống chưa tự huỷ hoặc hoàn toàn bộ khoản giữ.
@@ -155,7 +156,7 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
           variant="contained"
           color="error"
           onClick={handleSubmit}
-          disabled={submitting || !canReplaceDriver}
+          disabled={submitting || !canCancel}
         >
           {resolution === "PENALTY_AND_REVIEW"
             ? "GỠ TÀI XẾ, TÌM NGƯỜI KHÁC"
