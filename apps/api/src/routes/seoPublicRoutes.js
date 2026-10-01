@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { prisma } from "../utils/db.js";
+import { applySeoRouteEditorial } from "../content/seoRouteEditorial.js";
 
 const router = Router();
 
@@ -32,7 +33,7 @@ router.get("/seo-routes", async (req, res) => {
       take: limit,
     });
 
-    return res.json({ success: true, data: { routes } });
+    return res.json({ success: true, data: { routes: routes.map(applySeoRouteEditorial) } });
   } catch (error) {
     console.error("[SEO] Load route catalog failed:", error);
     return res.status(500).json({ success: false, message: "Không tải được danh sách tuyến xe" });
@@ -84,7 +85,10 @@ router.get("/seo-routes/:path", async (req, res) => {
 
     return res.json({
       success: true,
-      data: { route: publicRoute, relatedRoutes },
+      data: {
+        route: applySeoRouteEditorial(publicRoute),
+        relatedRoutes: relatedRoutes.map(applySeoRouteEditorial),
+      },
     });
   } catch (error) {
     console.error("[SEO] Load route failed:", error);

@@ -1,9 +1,12 @@
+import { listTripAudienceCandidates } from '../controllers/tripAudienceController.js';
+import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/routes/trips.js
 // ======================================================
 // Routes cho Trip (bao gồm cả Rider và Driver)
 // ======================================================
 
 import { Router } from "express";
+import { parseTripTime } from "../utils/tripTime.js";
 import {
   estimateTrip,
   getTripById,
@@ -121,8 +124,8 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       });
     }
 
-    const pickupTime = pickupTimeRaw ? new Date(pickupTimeRaw) : null;
-    const returnTime = returnTimeRaw ? new Date(returnTimeRaw) : null;
+    const pickupTime = parseTripTime(pickupTimeRaw);
+    const returnTime = parseTripTime(returnTimeRaw);
 
     if (!pickupTime || Number.isNaN(pickupTime.getTime())) {
       return res.status(400).json({
@@ -520,7 +523,7 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       };
 
       // Báo toàn bộ app tài xế reload danh sách chuyến đang chờ
-      io.to("drivers").emit("trip:changed", realtimePayload);
+      emitDriverTripEvent(io, "trip:changed", realtimePayload);
 
       // Báo admin reload dashboard / badge
       io.to("admins").emit("admin:trip_status_changed", realtimePayload);
@@ -588,112 +591,7 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
 // ADMIN VERIFY
 // ======================================================
 
-router.patch(
-  "/admin/trips/:id/verify",
-  requireAdminOrStaff,
-  async (req, res) => {
-    try {
-      const { id } = req.params;
-      const { note } = req.body || {};
-
-      const trip = await prisma.trip.findUnique({
-        where: { id },
-      });
-
-      if (!trip) {
-        return res
-          .status(404)
-          .json({ success: false, message: "Không tìm thấy chuyến." });
-      }
-
-      if (trip.status === "CANCELLED" || trip.cancelledAt) {
-        return res
-          .status(400)
-          .json({ success: false, message: "Chuyến đã huỷ." });
-      }
-
-      if (trip.status !== "PENDING") {
-        return res.status(400).json({
-          success: false,
-          message: "Chỉ có thể duyệt chuyến PENDING.",
-        });
-      }
-
-      if (trip.isVerified) {
-        return res.status(400).json({
-          success: false,
-          message: "Chuyến đã được duyệt trước đó.",
-        });
-      }
-
-      const updated = await prisma.trip.update({
-        where: { id },
-        data: {
-          isVerified: true,
-          verifiedAt: new Date(),
-          verifiedById: req.admin?.id || null,
-          verifiedNote: note || null,
-        },
-      });
-
-      const io = req.app.get("io");
-
-      if (io) {
-        io.to("drivers").emit("trip:new", {
-          id: updated.id,
-          pickupAddress: updated.pickupAddress,
-          dropoffAddress: updated.dropoffAddress,
-          distanceKm: updated.distanceKm,
-          totalPrice: updated.totalPrice,
-          carType: updated.carType,
-          fuelPreference: updated.fuelPreference,
-          direction: updated.direction,
-          pickupTime: updated.pickupTime,
-          status: updated.status,
-          createdAt: updated.createdAt,
-        });
-
-        if (updated.riderId) {
-          io.to(`rider:${updated.riderId}`).emit("rider:trip_changed", {
-            tripId: updated.id,
-            riderId: updated.riderId,
-            fromStatus: "PENDING",
-            toStatus: "PENDING",
-            updatedAt: updated.updatedAt,
-            reason: "admin_verified_trip",
-          });
-
-          console.log(
-            `[Socket] Emit rider:trip_changed -> rider:${updated.riderId} (${updated.id})`,
-          );
-        }
-
-        console.log(
-          `[Socket] Emit trip:new -> drivers (${updated.id}) (verified)`,
-        );
-      }
-
-      try {
-        await sendNewTripToDrivers(updated);
-      } catch (err) {
-        console.error("[Push] Lỗi khi gửi thông báo:", err);
-      }
-
-      return res.json({
-        success: true,
-        trip: updated,
-        message: "Đã duyệt chuyến và gửi tới tài xế.",
-      });
-    } catch (err) {
-      console.error("[Trip] verify error:", err);
-
-      return res.status(500).json({
-        success: false,
-        message: "Không thể duyệt chuyến.",
-      });
-    }
-  },
-);
+router.patch("/admin/trips/:id/verify", requireAdminOrStaff, adminVerifyTrip);
 
 // ======================================================
 // DRIVER ROUTES
@@ -730,6 +628,8 @@ router.get(
   adminListUnverifiedTrips,
 );
 
+router.get("/admin/trips/:id/audience-candidates", requireAdminOrStaff, listTripAudienceCandidates);
+
 router.post("/admin/trips/:id/verify", requireAdminOrStaff, adminVerifyTrip);
 
 router.post(
@@ -738,6 +638,6 @@ router.post(
   adminResendPendingTrip,
 );
 
-router.get("/:id", getTripById);
+router.get("/:id", verifyToken, getTripById);
 
 export default router;

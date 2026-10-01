@@ -110,6 +110,7 @@ export default function AdminDrivers() {
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("ALL"); // ALL | PENDING | VERIFIED | REJECTED | SUSPENDED
   const [phoneVerified, setPhoneVerified] = useState("all"); // all | true | false
+  const [tripAcceptBlocked, setTripAcceptBlocked] = useState("all");
   const [sort, setSort] = useState("createdAt_desc"); // createdAt_desc | createdAt_asc | status_asc | status_desc
 
   const [sortColumn, sortDirection] = sort.match(/^(.*)_(asc|desc)$/)?.slice(1) || ["createdAt", "desc"];
@@ -149,11 +150,12 @@ export default function AdminDrivers() {
       q: qDebounced,
       status,
       phoneVerified,
+      tripAcceptBlocked,
       sort,
       page,
       pageSize,
     };
-  }, [qDebounced, status, phoneVerified, sort, page, pageSize]);
+  }, [qDebounced, status, phoneVerified, tripAcceptBlocked, sort, page, pageSize]);
 
   const [selectedId, setSelectedId] = useState(null);
   const [detail, setDetail] = useState(null);
@@ -564,6 +566,16 @@ export default function AdminDrivers() {
             <MenuItem value="VERIFIED">VERIFIED</MenuItem>
             <MenuItem value="REJECTED">REJECTED</MenuItem>
             <MenuItem value="SUSPENDED">SUSPENDED</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl size="small" sx={{ minWidth: 210 }}>
+          <InputLabel>Nhận chuyến</InputLabel>
+          <Select label="Nhận chuyến" value={tripAcceptBlocked}
+            onChange={(e) => { setPage(1); setTripAcceptBlocked(e.target.value); }}>
+            <MenuItem value="all">Tất cả</MenuItem>
+            <MenuItem value="false">Đang nhận chuyến</MenuItem>
+            <MenuItem value="true">Đã khoá nhận chuyến</MenuItem>
           </Select>
         </FormControl>
 

@@ -270,6 +270,9 @@ model Session {
 }
 
 model Trip {
+  // Empty means public; retained across cancellation, resend and reapproval.
+  audienceDriverIds String[] @default([])
+  @@index([audienceDriverIds], type: Gin)
   id       String  @id @default(cuid())
   riderId  String?
   driverId String?
@@ -428,6 +431,8 @@ model PricingConfig {
 }
 
 model TripConfig {
+  returnSuggestionRadiusKm Int @default(20)
+  returnSuggestionDays Int @default(2)
   id                          Int      @id @default(autoincrement())
   maxStops                    Int      @default(10)
   minDistanceKm               Int      @default(10)

@@ -1,6 +1,7 @@
 // Path: goviet247/apps/web/src/components/admin/TripDetailModal.jsx
 import { useEffect, useMemo, useState } from "react";
 import { getAdminToken } from "../../utils/adminAuth";
+import { toDateTimeLocalValue, scheduleLocalToIso } from "../../utils/tripTime";
 import {
   manualAdjustTrip,
   normalizeDisplayAddress,
@@ -13,29 +14,7 @@ function formatNgayGio(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleString("vi-VN");
-}
-
-function toDateTimeLocalValue(value) {
-  if (!value) return "";
-
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "";
-
-  const pad = (n) => String(n).padStart(2, "0");
-
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(
-    d.getDate(),
-  )}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-}
-
-function fromDateTimeLocalValue(value) {
-  if (!value) return "";
-
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "";
-
-  return d.toISOString();
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
 }
 
 function formatGia(v) {
@@ -482,27 +461,27 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
             <div style={{ fontWeight: 700, marginBottom: 12 }}>Cập nhật lịch chuyến</div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
               <label>
-                Giờ đón
+                Giờ đón (Việt Nam)
                 <input
                   type="datetime-local"
                   style={{ ...inputStyle, marginTop: 6 }}
                   value={toDateTimeLocalValue(scheduleForm.pickupTime)}
                   onChange={(e) => setScheduleForm((prev) => ({
                     ...prev,
-                    pickupTime: fromDateTimeLocalValue(e.target.value),
+                    pickupTime: scheduleLocalToIso(e.target.value, detail?.pickupTime),
                   }))}
                 />
               </label>
               {detail?.direction === "ROUND_TRIP" && (
                 <label>
-                  Giờ về
+                  Giờ về (Việt Nam)
                   <input
                     type="datetime-local"
                     style={{ ...inputStyle, marginTop: 6 }}
                     value={toDateTimeLocalValue(scheduleForm.returnTime)}
                     onChange={(e) => setScheduleForm((prev) => ({
                       ...prev,
-                      returnTime: fromDateTimeLocalValue(e.target.value),
+                      returnTime: scheduleLocalToIso(e.target.value, detail?.returnTime),
                     }))}
                   />
                 </label>
@@ -550,23 +529,23 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                   />
 
                   <FormInput
-                    label="Giờ đón"
+                    label="Giờ đón (Việt Nam)"
                     type="datetime-local"
                     value={toDateTimeLocalValue(adjustForm.pickupTime)}
                     onChange={(v) =>
-                      updateAdjustField("pickupTime", fromDateTimeLocalValue(v))
+                      updateAdjustField("pickupTime", scheduleLocalToIso(v, detail?.pickupTime))
                     }
                   />
 
                   {adjustForm.direction === "ROUND_TRIP" && (
                     <FormInput
-                      label="Giờ về"
+                      label="Giờ về (Việt Nam)"
                       type="datetime-local"
                       value={toDateTimeLocalValue(adjustForm.returnTime)}
                       onChange={(v) =>
                         updateAdjustField(
                           "returnTime",
-                          fromDateTimeLocalValue(v),
+                          scheduleLocalToIso(v, detail?.returnTime),
                         )
                       }
                     />

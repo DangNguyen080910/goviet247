@@ -1,3 +1,4 @@
+import { getRiderToken } from './storage';
 // Path: goviet247/apps/rider-mobile/services/riderSocket.ts
 import { io, Socket } from "socket.io-client";
 import { API_BASE_URL } from "../constants/api";
@@ -30,6 +31,7 @@ export function connectRiderSocket(userId: string) {
 
   if (!riderSocket) {
     riderSocket = io(API_BASE_URL, {
+      auth: async (cb) => cb({ token: await getRiderToken() }),
       transports: ["websocket", "polling"],
       autoConnect: true,
     });

@@ -30,8 +30,8 @@ import {
 } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import BookingTimeSelect from "./BookingTimeSelect";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
 import updateLocale from "dayjs/plugin/updateLocale";
 import localeData from "dayjs/plugin/localeData";
@@ -110,14 +110,8 @@ function combineDateTime(dateObj, timeObj) {
     return "";
   }
 
-  const combined = d.hour(t.hour()).minute(t.minute()).second(0).millisecond(0);
-
-  // ✅ Double-check combined result
-  if (!combined.isValid()) {
-    return "";
-  }
-
-  return combined.format("YYYY-MM-DDTHH:mm:ss");
+  // Combine wall-clock fields without applying the browser's DST rules.
+  return `${d.format("YYYY-MM-DD")}T${t.format("HH:mm")}:00+07:00`;
 }
 
 function isDateTimeInPast(dateObj, timeObj) {
@@ -187,38 +181,7 @@ function isValidVietnamPhone(phone = "") {
   return /^(0[3|5|7|8|9])[0-9]{8}$/.test(cleaned);
 }
 
-function buildHourOptions() {
-  return Array.from({ length: 24 }, (_, hour) => String(hour).padStart(2, "0"));
-}
 
-function buildMinuteOptions(stepMinutes = 5) {
-  return Array.from({ length: Math.floor(60 / stepMinutes) }, (_, idx) =>
-    String(idx * stepMinutes).padStart(2, "0"),
-  );
-}
-
-function updateTimePart(currentValue, part, value) {
-  const base = currentValue
-    ? dayjs(currentValue)
-    : dayjs().second(0).millisecond(0);
-
-  // ✅ Prevent invalid base object
-  if (!base.isValid()) {
-    return dayjs().second(0).millisecond(0);
-  }
-
-  const numericValue = Number(value);
-
-  if (!Number.isFinite(numericValue)) {
-    return base;
-  }
-
-  if (part === "hour") {
-    return base.hour(numericValue).second(0).millisecond(0);
-  }
-
-  return base.minute(numericValue).second(0).millisecond(0);
-}
 
 function formatWeekdayHeader(day) {
   const dayIndex =
@@ -292,6 +255,8 @@ export default function BookingCard() {
   const [stopPlaces, setStopPlaces] = useState([null]);
   const [stopOptions, setStopOptions] = useState([[]]);
   const [stopLoadingMap, setStopLoadingMap] = useState({});
+  const [pickupPeriod, setPickupPeriod] = useState("");
+  const [returnPeriod, setReturnPeriod] = useState("");
   const [pickupDate, setPickupDate] = useState(null);
   const [pickupTimeOnly, setPickupTimeOnly] = useState(null);
 
@@ -374,8 +339,6 @@ export default function BookingCard() {
   const minDistanceKm = Number(tripConfig?.minDistanceKm || 0);
   const maxDistanceKm = Number(tripConfig?.maxDistanceKm || 2000);
   const maxStops = Number(tripConfig?.maxStops || 10);
-  const hourOptions = useMemo(() => buildHourOptions(), []);
-  const minuteOptions = useMemo(() => buildMinuteOptions(5), []);
 
   // ✅ Lấy scroll container thật
   const getScrollEl = () => {
@@ -788,6 +751,7 @@ export default function BookingCard() {
     if (direction === "ONE_WAY") {
       setReturnDate(null);
       setReturnTimeOnly(null);
+      setReturnPeriod("");
     }
   }, [direction]);
 
@@ -896,19 +860,19 @@ export default function BookingCard() {
   }, [stops, gpsLocation?.lat, gpsLocation?.lng]);
 
   const pickupMs = useMemo(() => {
-    const iso = combineDateTime(pickupDate, pickupTimeOnly);
+    const iso = pickupPeriod ? combineDateTime(pickupDate, pickupTimeOnly) : "";
     return iso ? new Date(iso).getTime() : NaN;
-  }, [pickupDate, pickupTimeOnly]);
+  }, [pickupDate, pickupTimeOnly, pickupPeriod]);
 
   const isPickupTimeInPast = useMemo(() => {
-    if (!pickupDate || !pickupTimeOnly) return false;
+    if (!pickupDate || !pickupTimeOnly || !pickupPeriod) return false;
     return isDateTimeInPast(pickupDate, pickupTimeOnly);
-  }, [pickupDate, pickupTimeOnly]);
+  }, [pickupDate, pickupTimeOnly, pickupPeriod]);
 
   const returnMs = useMemo(() => {
-    const iso = combineDateTime(returnDate, returnTimeOnly);
+    const iso = returnPeriod ? combineDateTime(returnDate, returnTimeOnly) : "";
     return iso ? new Date(iso).getTime() : NaN;
-  }, [returnDate, returnTimeOnly]);
+  }, [returnDate, returnTimeOnly, returnPeriod]);
 
   const numericDriveMinutes = Number(driveMinutes);
   const numericOutboundDriveMinutes = Number(outboundDriveMinutes);
@@ -1082,12 +1046,13 @@ export default function BookingCard() {
     hasValidStopSelections &&
     pickupDate &&
     pickupTimeOnly &&
+    pickupPeriod &&
     !isPickupTimeInPast &&
     direction &&
     carType &&
     (direction === "ONE_WAY"
       ? true
-      : returnDate && returnTimeOnly && isReturnTimeValid) &&
+      : returnDate && returnTimeOnly && returnPeriod && isReturnTimeValid) &&
     isNameValid &&
     isPhoneValid &&
     isDistanceValid &&
@@ -1305,6 +1270,8 @@ export default function BookingCard() {
     setStopLoadingMap({});
     setPickupDate(null);
     setPickupTimeOnly(null);
+    setPickupPeriod("");
+    setReturnPeriod("");
     setReturnDate(null);
     setReturnTimeOnly(null);
     setDirection("ONE_WAY");
@@ -1420,6 +1387,10 @@ export default function BookingCard() {
   };
 
   const handleEstimate = async () => {
+    if (!pickupPeriod || (direction === "ROUND_TRIP" && !returnPeriod)) {
+      setToast({ open: true, severity: "warning", message: "Vui lòng chọn buổi sáng hoặc chiều/tối cho giờ đón và giờ về." });
+      return;
+    }
     if (!hasValidPickupSelection) {
       setToast({
         open: true,
@@ -1453,10 +1424,10 @@ export default function BookingCard() {
         carType,
         fuelPreference,
         direction,
-        pickupTime: combineDateTime(pickupDate, pickupTimeOnly),
+        pickupTime: pickupPeriod ? combineDateTime(pickupDate, pickupTimeOnly) : "",
         returnTime:
           direction === "ROUND_TRIP"
-            ? combineDateTime(returnDate, returnTimeOnly)
+            ? (returnPeriod ? combineDateTime(returnDate, returnTimeOnly) : "")
             : null,
         distanceKm: Number(distanceKm),
         driveMinutes: Number(driveMinutes),
@@ -1526,6 +1497,9 @@ export default function BookingCard() {
   };
 
   const buildTripPayload = () => {
+    if (!pickupPeriod || (direction === "ROUND_TRIP" && !returnPeriod)) {
+      throw new Error("Vui lòng chọn buổi sáng hoặc chiều/tối cho giờ đón và giờ về.");
+    }
     if (!hasValidPickupSelection) {
       throw new Error("Vui lòng chọn điểm đón từ danh sách gợi ý.");
     }
@@ -1594,10 +1568,10 @@ export default function BookingCard() {
       pickupAddress: pickupFullAddress,
       dropoffAddress,
       stops: cleanedStops,
-      pickupTime: combineDateTime(pickupDate, pickupTimeOnly),
+      pickupTime: pickupPeriod ? combineDateTime(pickupDate, pickupTimeOnly) : "",
       returnTime:
         direction === "ROUND_TRIP"
-          ? combineDateTime(returnDate, returnTimeOnly)
+          ? (returnPeriod ? combineDateTime(returnDate, returnTimeOnly) : "")
           : null,
       direction,
       carType,
@@ -2185,59 +2159,9 @@ export default function BookingCard() {
                         textField: { fullWidth: true, size: "small" },
                       }}
                     />
-                    <Stack direction="row" spacing={1.2} sx={{ width: "100%" }}>
-                      <FormControl fullWidth size="small">
-                        <InputLabel>Giờ</InputLabel>
-                        <Select
-                          label="Giờ"
-                          value={
-                            pickupTimeOnly
-                              ? dayjs(pickupTimeOnly).format("HH")
-                              : ""
-                          }
-                          onChange={(e) => {
-                            setPickupTimeOnly((prev) =>
-                              updateTimePart(prev, "hour", e.target.value),
-                            );
-                          }}
-                          MenuProps={{
-                            PaperProps: { sx: { maxHeight: 280 } },
-                          }}
-                        >
-                          {hourOptions.map((hour) => (
-                            <MenuItem key={hour} value={hour}>
-                              {hour}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-
-                      <FormControl fullWidth size="small">
-                        <InputLabel>Phút</InputLabel>
-                        <Select
-                          label="Phút"
-                          value={
-                            pickupTimeOnly
-                              ? dayjs(pickupTimeOnly).format("mm")
-                              : ""
-                          }
-                          onChange={(e) => {
-                            setPickupTimeOnly((prev) =>
-                              updateTimePart(prev, "minute", e.target.value),
-                            );
-                          }}
-                          MenuProps={{
-                            PaperProps: { sx: { maxHeight: 280 } },
-                          }}
-                        >
-                          {minuteOptions.map((minute) => (
-                            <MenuItem key={minute} value={minute}>
-                              {minute}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Stack>
+                    <BookingTimeSelect label="Giờ đón"
+                      value={pickupTimeOnly} onChange={setPickupTimeOnly}
+                      period={pickupPeriod} onPeriodChange={setPickupPeriod} />
                   </Stack>
                   {pickupDate && pickupTimeOnly && isPickupTimeInPast && (
                     <Typography
@@ -2268,63 +2192,9 @@ export default function BookingCard() {
                           textField: { fullWidth: true, size: "small" },
                         }}
                       />
-                      <Stack
-                        direction="row"
-                        spacing={1.2}
-                        sx={{ width: "100%" }}
-                      >
-                        <FormControl fullWidth size="small">
-                          <InputLabel>Giờ về</InputLabel>
-                          <Select
-                            label="Giờ về"
-                            value={
-                              returnTimeOnly
-                                ? dayjs(returnTimeOnly).format("HH")
-                                : ""
-                            }
-                            onChange={(e) => {
-                              setReturnTimeOnly((prev) =>
-                                updateTimePart(prev, "hour", e.target.value),
-                              );
-                            }}
-                            MenuProps={{
-                              PaperProps: { sx: { maxHeight: 280 } },
-                            }}
-                          >
-                            {hourOptions.map((hour) => (
-                              <MenuItem key={hour} value={hour}>
-                                {hour}
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-
-                        <FormControl fullWidth size="small">
-                          <InputLabel>Phút về</InputLabel>
-                          <Select
-                            label="Phút về"
-                            value={
-                              returnTimeOnly
-                                ? dayjs(returnTimeOnly).format("mm")
-                                : ""
-                            }
-                            onChange={(e) => {
-                              setReturnTimeOnly((prev) =>
-                                updateTimePart(prev, "minute", e.target.value),
-                              );
-                            }}
-                            MenuProps={{
-                              PaperProps: { sx: { maxHeight: 280 } },
-                            }}
-                          >
-                            {minuteOptions.map((minute) => (
-                              <MenuItem key={minute} value={minute}>
-                                {minute}
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Stack>
+                    <BookingTimeSelect label="Giờ về"
+                      value={returnTimeOnly} onChange={setReturnTimeOnly}
+                      period={returnPeriod} onPeriodChange={setReturnPeriod} />
                     </Stack>
                   </LocalizationProvider>
                 )}
@@ -2538,10 +2408,10 @@ export default function BookingCard() {
                     {[
                       showAddressSelectionWarning &&
                         "Vui lòng chọn địa chỉ từ danh sách gợi ý.",
-                      (!pickupDate || !pickupTimeOnly) &&
+                      (!pickupDate || !pickupTimeOnly || !pickupPeriod) &&
                         "Vui lòng chọn thời gian đón khách.",
                       direction === "ROUND_TRIP" &&
-                        (!returnDate || !returnTimeOnly) &&
+                        (!returnDate || !returnTimeOnly || !returnPeriod) &&
                         "Vui lòng chọn thời gian quay về.",
                       isPickupTimeInPast &&
                         "Không được chọn thời gian trong quá khứ.",

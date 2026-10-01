@@ -1,3 +1,5 @@
+import { userSessions } from './services/userSessions.js';
+import { verifyAdminJwtToken } from './utils/jwt.js';
 // Path: goviet247/apps/api/src/server.js
 import "dotenv/config";
 import express from "express";
@@ -147,60 +149,44 @@ app.set("io", io);
 const driverSockets = new Map(); // socket.id -> { userId }
 const riderSockets = new Map(); // socket.id -> { userId }
 
+// Never trust registration payload IDs or roles.
+io.use(async (socket, next) => {
+  const token = socket.handshake.auth?.token || String(socket.handshake.headers.authorization || '').replace(/^Bearer /, '');
+  if (!token) return next(new Error('AUTH_REQUIRED'));
+  try {
+    try {
+      const admin = verifyAdminJwtToken(token);
+      if (['ADMIN', 'STAFF'].includes(admin.role)) { socket.data.admin = admin; return next(); }
+    } catch { /* user token uses a different signing key */ }
+    const user = await userSessions.verify(token);
+    const userId = user.id || user.uid;
+    socket.data.userId = userId;
+    const driver = await prisma.driverProfile.findUnique({ where: { userId } });
+    if (driver) socket.data.driverId = userId;
+    return next();
+  } catch { return next(new Error('AUTH_INVALID')); }
+});
+
 // Lắng nghe kết nối Socket.IO
 io.on("connection", (socket) => {
   console.log("[Socket] Client connected:", socket.id);
 
-  // --- ADMIN: join room "admins"
-  socket.on("registerAdmin", (payload) => {
-    console.log(
-      "[Socket] registerAdmin:",
-      payload?.username || "(no-username)",
-    );
-    socket.join("admins");
-    console.log(`[Socket] Socket ${socket.id} joined room "admins"`);
+  socket.on('registerAdmin', () => {
+    if (socket.data.admin) socket.join('admins');
   });
-
-  // --- DRIVER: join room "drivers" + room riêng theo userId
-  socket.on("registerDriver", (payload) => {
-    console.log("[Socket] registerDriver:", payload);
-
-    const userId =
-      payload?.userId && String(payload.userId).trim()
-        ? String(payload.userId).trim()
-        : null;
-
+  socket.on('registerDriver', () => {
+    if (!socket.data.driverId) return;
+    const userId = socket.data.driverId;
     driverSockets.set(socket.id, { userId });
-
-    socket.join("drivers");
-    console.log(`[Socket] Socket ${socket.id} joined room "drivers"`);
-
-    if (userId) {
-      const privateRoom = `driver:${userId}`;
-      socket.join(privateRoom);
-      console.log(`[Socket] Socket ${socket.id} joined room "${privateRoom}"`);
-    }
+    socket.join('drivers');
+    socket.join(`driver:${userId}`);
   });
-
-  // --- RIDER: join room riêng theo userId
-  socket.on("registerRider", (payload) => {
-    console.log("[Socket] registerRider:", payload);
-
-    const userId =
-      payload?.userId && String(payload.userId).trim()
-        ? String(payload.userId).trim()
-        : null;
-
+  socket.on('registerRider', () => {
+    if (!socket.data.userId) return;
+    const userId = socket.data.userId;
     riderSockets.set(socket.id, { userId });
-
-    socket.join("riders");
-    console.log(`[Socket] Socket ${socket.id} joined room "riders"`);
-
-    if (userId) {
-      const privateRoom = `rider:${userId}`;
-      socket.join(privateRoom);
-      console.log(`[Socket] Socket ${socket.id} joined room "${privateRoom}"`);
-    }
+    socket.join('riders');
+    socket.join(`rider:${userId}`);
   });
 
   socket.on("disconnect", () => {

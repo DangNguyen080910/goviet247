@@ -567,7 +567,7 @@ export default function SeoHubPage({ hubType }) {
     const routes = SEO_ROUTES.filter(isUsefulRoute).filter(config.filter);
 
     return sortRoutes(removeDuplicatePaths(routes));
-  }, [config]);
+  }, [SEO_ROUTES, config]);
 
   const requestedPage = getPageNumber(location.search);
 

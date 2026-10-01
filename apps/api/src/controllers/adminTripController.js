@@ -1,7 +1,9 @@
+import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/controllers/adminTripController.js
 import { lockDriverProfile, lockTrip } from "../services/tripAcceptancePolicy.js";
 import { refundCustomerCancellationHold } from "../services/customerCancellationRefund.js";
 import { prisma } from "../utils/db.js";
+import { parseTripTime } from "../utils/tripTime.js";
 import {
   sendAdminPushNotification,
   sendSystemNotificationToDriver,
@@ -140,7 +142,7 @@ export async function adminDriverCancelToReview(req, res) {
     if (io) {
       io.to("admins").emit("admin:trip_status_changed", event);
       io.to("admins").emit("admin:dashboard_changed", { ...event, source: event.reason });
-      io.to("drivers").emit("trip:changed", event);
+      emitDriverTripEvent(io, "trip:changed", event);
       io.to(`driver:${result.previousDriverId}`).emit("trip:changed", event);
       if (result.trip.riderId) {
         io.to(`rider:${result.trip.riderId}`).emit("rider:trip_changed", event);
@@ -274,7 +276,7 @@ export async function adminChuyenVeChoDuyet(req, res) {
     };
     const io = req.app?.get?.("io");
     if (io) {
-      io.to("drivers").emit("trip:changed", event);
+      emitDriverTripEvent(io, "trip:changed", event);
       io.to("admins").emit("admin:trip_status_changed", event);
       io.to("admins").emit("admin:dashboard_changed", event);
     }
@@ -298,8 +300,8 @@ export async function adminChuyenVeChoDuyet(req, res) {
 export async function adminCapNhatThoiGianChuyen(req, res) {
   try {
     const tripId = String(req.params.id || "").trim();
-    const pickupTime = req.body?.pickupTime ? new Date(req.body.pickupTime) : null;
-    const returnTime = req.body?.returnTime ? new Date(req.body.returnTime) : null;
+    const pickupTime = parseTripTime(req.body?.pickupTime);
+    const returnTime = parseTripTime(req.body?.returnTime);
 
     if (!tripId) {
       return res.status(400).json({ success: false, message: "Thiếu mã chuyến" });
@@ -418,12 +420,16 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
 }
 
 // POST /api/admin/trips/:id/cancel
-// Body: { cancel_reason: "...", cancel_origin?: "CUSTOMER" | "DRIVER" }
+// Body: { cancel_reason: "...", cancel_origin?: "CUSTOMER" | "DRIVER",
+//   cancel_resolution?: "PENALTY_AND_CANCEL" }
 export async function adminHuyChuyen(req, res) {
   try {
     const tripId = String(req.params.id || "");
     const cancelReason = String(req.body?.cancel_reason || "").trim();
     const cancelOrigin = String(req.body?.cancel_origin || "").trim().toUpperCase();
+    const cancelResolution = String(
+      req.body?.cancel_resolution || "",
+    ).trim().toUpperCase();
 
     if (!tripId) {
       return res
@@ -438,6 +444,18 @@ export async function adminHuyChuyen(req, res) {
     if (cancelOrigin && !["CUSTOMER", "DRIVER"].includes(cancelOrigin)) {
       return res.status(400).json({ success: false, message: "Bên huỷ chuyến không hợp lệ." });
     }
+    if (cancelResolution && cancelResolution !== "PENALTY_AND_CANCEL") {
+      return res.status(400).json({
+        success: false,
+        message: "Cách xử lý huỷ chuyến không hợp lệ.",
+      });
+    }
+    if (cancelResolution === "PENALTY_AND_CANCEL" && !cancelOrigin) {
+      return res.status(400).json({
+        success: false,
+        message: "Cần xác định khách hay tài xế huỷ để ghi phạt đúng.",
+      });
+    }
 
     const actor = req.admin; // requireAdmin set
     const actorRole = actor?.role || "ADMIN";
@@ -448,7 +466,10 @@ export async function adminHuyChuyen(req, res) {
       where: { id: tripId }, select: { driverId: true, status: true },
     });
 
-    if (cancelOrigin === "DRIVER") {
+    if (
+      cancelOrigin === "DRIVER" &&
+      cancelResolution !== "PENALTY_AND_CANCEL"
+    ) {
       if (!["ACCEPTED", "CONTACTED"].includes(snapshot?.status)) {
         return res.status(409).json({
           success: false,
@@ -505,9 +526,30 @@ export async function adminHuyChuyen(req, res) {
         throw err;
       }
 
-      const refund = cancelOrigin === "CUSTOMER" && ["ACCEPTED", "CONTACTED"].includes(trip.status)
+      const shouldRecordPenalty =
+        cancelResolution === "PENALTY_AND_CANCEL";
+
+      if (
+        shouldRecordPenalty &&
+        (!trip.driverId || !["ACCEPTED", "CONTACTED"].includes(trip.status))
+      ) {
+        const err = new Error(
+          "Chỉ chuyến chưa đón khách và còn tài xế giữ mới có thể ghi phạt rồi huỷ.",
+        );
+        err.statusCode = 409;
+        throw err;
+      }
+
+      const refund =
+        !shouldRecordPenalty &&
+        cancelOrigin === "CUSTOMER" &&
+        ["ACCEPTED", "CONTACTED"].includes(trip.status)
         ? await refundCustomerCancellationHold(tx, trip)
         : { amount: 0, transactions: [] };
+
+      const penaltyLog = shouldRecordPenalty
+        ? await recordAdminCancellationPenalty(tx, trip, actorId)
+        : null;
 
       const updated = await tx.trip.update({
         where: { id: tripId },
@@ -536,24 +578,32 @@ export async function adminHuyChuyen(req, res) {
           actorRole,
           actorId,
           actorUsername,
-          note: `[${cancelOrigin || "UNSPECIFIED"}] ${cancelReason.slice(0, 325)}${refund.amount ? `. Hoàn khoản giữ ${refund.amount}đ vào ví tài xế; TripID: ${tripId}.` : ""}`,
+          note: `[${cancelOrigin || "UNSPECIFIED"}${shouldRecordPenalty ? ":PENALTY_AND_CANCEL" : ""}] ${cancelReason.slice(0, 325)}${refund.amount ? `. Hoàn khoản giữ ${refund.amount}đ vào ví tài xế; TripID: ${tripId}.` : ""}${penaltyLog ? `. Ghi nhận phạt huỷ ${penaltyLog.penaltyAmount}đ từ khoản đã khấu trừ; không trừ ví thêm.` : ""}`,
         },
       });
 
-      const driverNotification = refund.amount && trip.driverId ? await tx.systemNotification.create({
+      const driverNotification =
+        (refund.amount || penaltyLog) && trip.driverId
+          ? await tx.systemNotification.create({
         data: {
           audience: "DRIVER", targetType: "USER", targetUserId: trip.driverId,
-          title: "Đã hoàn khoản giữ chuyến khách huỷ",
-          message: `Chuyến #${tripId.slice(-8).toUpperCase()} đã được khách huỷ. ${refund.amount.toLocaleString("vi-VN")}đ đã được hoàn vào ví của bạn. [tripId:${tripId}]`,
+          title: penaltyLog
+            ? "Chuyến đã huỷ và đã ghi nhận phạt"
+            : "Đã hoàn khoản giữ chuyến khách huỷ",
+          message: penaltyLog
+            ? `Chuyến #${tripId.slice(-8).toUpperCase()} đã bị huỷ. ${Number(penaltyLog.penaltyAmount || 0).toLocaleString("vi-VN")}đ đã được ghi nhận là phạt từ khoản đã khấu trừ khi nhận chuyến; không trừ ví thêm. Lý do: ${cancelReason.slice(0, 200)}. [tripId:${tripId}]`
+            : `Chuyến #${tripId.slice(-8).toUpperCase()} đã được khách huỷ. ${refund.amount.toLocaleString("vi-VN")}đ đã được hoàn vào ví của bạn. [tripId:${tripId}]`,
           isActive: true, createdByAdminId: actorId,
         },
-      }) : null;
+      })
+          : null;
 
       return {
         updated,
         log,
         fromStatus: trip.status,
         refund,
+        penaltyLog,
         driverNotification,
       };
     });
@@ -609,7 +659,10 @@ export async function adminHuyChuyen(req, res) {
       trip: result.updated,
       actionLog: result.log,
       refundAmount: result.refund.amount,
-      message: result.refund.amount
+      penaltyAmount: Number(result.penaltyLog?.penaltyAmount || 0),
+      message: result.penaltyLog
+        ? `Đã huỷ chuyến và ghi nhận ${Number(result.penaltyLog.penaltyAmount || 0).toLocaleString("vi-VN")}đ phạt từ khoản đã khấu trừ; không trừ ví thêm.`
+        : result.refund.amount
         ? `Đã huỷ chuyến và hoàn ${result.refund.amount.toLocaleString("vi-VN")}đ khoản giữ vào ví tài xế.`
         : cancelOrigin ? "Đã hủy chuyến" : "Đã hủy chuyến; chưa ghi nhận phạt hay hoàn ví vì chưa xác định bên hủy.",
     });
@@ -657,12 +710,8 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
     const carType = String(req.body?.carType || "").trim();
     const direction = String(req.body?.direction || "").trim();
 
-    const pickupTime = req.body?.pickupTime
-      ? new Date(req.body.pickupTime)
-      : null;
-    const returnTime = req.body?.returnTime
-      ? new Date(req.body.returnTime)
-      : null;
+    const pickupTime = parseTripTime(req.body?.pickupTime);
+    const returnTime = parseTripTime(req.body?.returnTime);
 
     const rawStops = Array.isArray(req.body?.stops) ? req.body.stops : [];
 
@@ -930,19 +979,19 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
 
       const logNote = [
         "Admin điều chỉnh thông tin chuyến.",
-        `Điểm đón: ${trip.pickupAddress} -> ${pickupAddress}`,
-        `Điểm đến: ${oldStopsText || trip.dropoffAddress} -> ${newStopsText}`,
-        `Ghi chú khách: ${trip.note || "-"} -> ${note || "-"}`,
-        `Loại xe: ${trip.carType} -> ${carType}`,
-        `Loại chuyến: ${trip.direction} -> ${direction}`,
         `Giờ đón: ${trip.pickupTime?.toISOString?.() || "-"} -> ${pickupTime.toISOString()}`,
         `Giờ về: ${trip.returnTime?.toISOString?.() || "-"} -> ${
           direction === "ROUND_TRIP" && returnTime
             ? returnTime.toISOString()
             : "-"
         }`,
+        `Loại xe: ${trip.carType} -> ${carType}`,
+        `Loại chuyến: ${trip.direction} -> ${direction}`,
         `KM: ${trip.distanceKm} -> ${distanceKm}`,
         `Giá cuối: ${trip.totalPrice} -> ${Math.round(totalPrice)}`,
+        `Điểm đón: ${trip.pickupAddress} -> ${pickupAddress}`,
+        `Điểm đến: ${oldStopsText || trip.dropoffAddress} -> ${newStopsText}`,
+        `Ghi chú khách: ${trip.note || "-"} -> ${note || "-"}`,
         `Ghi chú xác nhận nội bộ: ${verifiedNote}`,
       ]
         .join("\n")

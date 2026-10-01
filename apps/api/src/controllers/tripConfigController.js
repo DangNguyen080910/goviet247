@@ -66,6 +66,12 @@ export async function updateTripConfig(req, res) {
     const current = await getOrCreateTripConfig();
 
     const updateData = {};
+    for (const [field, max] of [['returnSuggestionRadiusKm', 500], ['returnSuggestionDays', 30]]) {
+      if (body[field] === undefined) continue;
+      const value = Number(body[field]);
+      if (!Number.isInteger(value) || value < 1 || value > max) return res.status(400).json({ message: `${field}: 1–${max}` });
+      updateData[field] = value;
+    }
 
     if (body.riderBookingNotePlaceholder != null) {
       const value = String(body.riderBookingNotePlaceholder).trim();

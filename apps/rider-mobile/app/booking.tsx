@@ -22,6 +22,8 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+import BookingTimePicker from "../components/BookingTimePicker";
+import { bookingTimeToIso, formatBookingTime, vietnamNow } from "../utils/bookingTime";
 import AppBrandHeader from "../components/AppBrandHeader";
 import { getMe, updateMe } from "../services/authApi";
 import { quotePrice } from "../services/pricingApi";
@@ -58,10 +60,10 @@ const FUEL_PREFERENCE_OPTIONS = [
 
 function toMsFromDatetimeLocal(v: string) {
   if (!v) return NaN;
-  return new Date(v).getTime();
+  return new Date(bookingTimeToIso(v)).getTime();
 }
 
-function toDatetimeLocalInputValue(date = new Date()) {
+function toDatetimeLocalInputValue(date: Date) {
   const pad = (n: number) => String(n).padStart(2, "0");
 
   const yyyy = date.getFullYear();
@@ -74,48 +76,17 @@ function toDatetimeLocalInputValue(date = new Date()) {
 }
 
 function mergeDatePartIntoDatetimeLocal(currentValue: string, nextDate: Date) {
-  const baseDate = currentValue ? new Date(currentValue) : new Date();
-  const safeBaseDate = Number.isNaN(baseDate.getTime()) ? new Date() : baseDate;
-
-  safeBaseDate.setFullYear(
-    nextDate.getFullYear(),
-    nextDate.getMonth(),
-    nextDate.getDate(),
-  );
-
-  return toDatetimeLocalInputValue(safeBaseDate);
+  const day = toDatetimeLocalInputValue(nextDate).slice(0, 10);
+  return `${day}T${(currentValue || vietnamNow()).slice(11, 16)}`;
 }
 
-function mergeTimePartIntoDatetimeLocal(currentValue: string, nextTime: Date) {
-  const baseDate = currentValue ? new Date(currentValue) : new Date();
-  const safeBaseDate = Number.isNaN(baseDate.getTime()) ? new Date() : baseDate;
-
-  safeBaseDate.setHours(nextTime.getHours(), nextTime.getMinutes(), 0, 0);
-
-  return toDatetimeLocalInputValue(safeBaseDate);
-}
 
 function formatDateOnlyDisplay(v: string) {
   if (!v) return "Chọn ngày";
-
-  const date = new Date(v);
-  if (Number.isNaN(date.getTime())) return "Chọn ngày";
-
-  const pad = (n: number) => String(n).padStart(2, "0");
-
-  return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+  return `${v.slice(8, 10)}/${v.slice(5, 7)}/${v.slice(0, 4)}`;
 }
 
-function formatTimeOnlyDisplay(v: string) {
-  if (!v) return "Chọn giờ";
-
-  const date = new Date(v);
-  if (Number.isNaN(date.getTime())) return "Chọn giờ";
-
-  const pad = (n: number) => String(n).padStart(2, "0");
-
-  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
+const formatTimeOnlyDisplay = formatBookingTime;
 
 function formatDurationMinutes(totalMinutes: number | string) {
   const safeMinutes = Math.max(0, Math.round(Number(totalMinutes || 0)));
@@ -134,12 +105,7 @@ function formatDurationMinutes(totalMinutes: number | string) {
   return `${hours} giờ ${String(minutes).padStart(2, "0")} phút`;
 }
 
-function toIsoFromDatetimeLocal(v: string) {
-  if (!v) return "";
-  const d = new Date(v);
-  if (Number.isNaN(d.getTime())) return "";
-  return d.toISOString();
-}
+const toIsoFromDatetimeLocal = bookingTimeToIso;
 
 function formatVND(n: number) {
   return Number(n || 0).toLocaleString("vi-VN") + " đ";
@@ -436,7 +402,9 @@ export default function RiderBookingScreen() {
     Record<number, boolean>
   >({});
   const [activeStopIndex, setActiveStopIndex] = useState<number | null>(0);
-  const [pickupTime, setPickupTime] = useState(toDatetimeLocalInputValue());
+  const [pickupTimeConfirmed, setPickupTimeConfirmed] = useState(false);
+  const [returnTimeConfirmed, setReturnTimeConfirmed] = useState(false);
+  const [pickupTime, setPickupTime] = useState(vietnamNow);
   const [returnTime, setReturnTime] = useState("");
   const [direction, setDirection] = useState<"ONE_WAY" | "ROUND_TRIP">(
     "ONE_WAY",
@@ -470,7 +438,7 @@ export default function RiderBookingScreen() {
   const [pickerValue, setPickerValue] = useState(new Date());
 
   const todayStartDate = useMemo(() => {
-    const nextDate = new Date();
+    const nextDate = new Date(vietnamNow());
     nextDate.setHours(0, 0, 0, 0);
     return nextDate;
   }, []);
@@ -555,7 +523,7 @@ export default function RiderBookingScreen() {
   const isReturnTimeValid = useMemo(() => {
     if (direction !== "ROUND_TRIP") return true;
 
-    if (!pickupTime || !returnTime) {
+    if (!pickupTime || !returnTime || !pickupTimeConfirmed || !returnTimeConfirmed) {
       return false;
     }
 
@@ -570,6 +538,8 @@ export default function RiderBookingScreen() {
     direction,
     pickupTime,
     returnTime,
+    pickupTimeConfirmed,
+    returnTimeConfirmed,
     pickupMs,
     returnMs,
     numericOutboundDriveMinutes,
@@ -676,6 +646,7 @@ export default function RiderBookingScreen() {
     hasAtLeastOneSelectedStop &&
     hasValidStopSelections &&
     pickupTime &&
+    pickupTimeConfirmed &&
     isPickupTimeValid &&
     direction &&
     carType &&
@@ -1325,8 +1296,8 @@ export default function RiderBookingScreen() {
     mode: "date" | "time",
   ) {
     const rawValue = target === "pickup" ? pickupTime : returnTime;
-    const baseDate = rawValue ? new Date(rawValue) : new Date();
-    const safeDate = Number.isNaN(baseDate.getTime()) ? new Date() : baseDate;
+    const baseDate = new Date(rawValue || vietnamNow());
+    const safeDate = Number.isNaN(baseDate.getTime()) ? new Date(vietnamNow()) : baseDate;
 
     setPickerTarget(target);
     setPickerMode(mode);
@@ -1361,13 +1332,6 @@ export default function RiderBookingScreen() {
         currentRawValue,
         selectedValue,
       );
-    } else {
-      const currentRawValue =
-        pickerTarget === "pickup" ? pickupTime : returnTime;
-      nextValue = mergeTimePartIntoDatetimeLocal(
-        currentRawValue,
-        selectedValue,
-      );
     }
 
     if (pickerTarget === "pickup") {
@@ -1382,6 +1346,9 @@ export default function RiderBookingScreen() {
   }
 
   function buildTripPayload() {
+    if (!pickupTimeConfirmed || (direction === "ROUND_TRIP" && !returnTimeConfirmed)) {
+      throw new Error("Vui lòng chọn giờ và buổi đón/trả khách.");
+    }
     const cleanedStops = stops
       .map((item, index) => {
         const detail = stopPlaces[index];
@@ -1493,7 +1460,9 @@ export default function RiderBookingScreen() {
     setShowStopOptionsMap({});
     setActiveStopIndex(0);
 
-    setPickupTime(toDatetimeLocalInputValue());
+    setPickupTime(vietnamNow());
+    setPickupTimeConfirmed(false);
+    setReturnTimeConfirmed(false);
     setReturnTime("");
     setDirection("ONE_WAY");
     setCarType("CAR_5");
@@ -1526,7 +1495,7 @@ export default function RiderBookingScreen() {
       return;
     }
 
-    if (!pickupTime) {
+    if (!pickupTime || !pickupTimeConfirmed) {
       Alert.alert("Thiếu dữ liệu", "Vui lòng chọn ngày giờ đón khách.");
       return;
     }
@@ -1539,7 +1508,7 @@ export default function RiderBookingScreen() {
       return;
     }
 
-    if (direction === "ROUND_TRIP" && !returnTime) {
+    if (direction === "ROUND_TRIP" && (!returnTime || !returnTimeConfirmed)) {
       Alert.alert("Thiếu dữ liệu", "Vui lòng chọn ngày giờ quay về.");
       return;
     }
@@ -2072,7 +2041,7 @@ export default function RiderBookingScreen() {
                   pickupTime ? styles.dateTimeText : styles.dateTimePlaceholder
                 }
               >
-                {formatTimeOnlyDisplay(pickupTime)}
+                {pickupTimeConfirmed ? formatTimeOnlyDisplay(pickupTime) : "Chọn giờ và buổi"}
               </Text>
             </Pressable>
 
@@ -2106,7 +2075,7 @@ export default function RiderBookingScreen() {
                         : styles.dateTimePlaceholder
                     }
                   >
-                    {formatTimeOnlyDisplay(returnTime)}
+                    {returnTimeConfirmed ? formatTimeOnlyDisplay(returnTime) : "Chọn giờ và buổi"}
                   </Text>
                 </Pressable>
 
@@ -2444,7 +2413,17 @@ export default function RiderBookingScreen() {
         </ScrollView>
       </SafeAreaView>
 
-      {pickerTarget && Platform.OS === "ios" ? (
+      {pickerTarget && pickerMode === "time" ? (
+        <BookingTimePicker
+          value={pickerTarget === "pickup" ? pickupTime : returnTime}
+          onClose={closeDateTimePicker}
+          onChange={(value) => {
+            if (pickerTarget === "pickup") { setPickupTime(value); setPickupTimeConfirmed(true); }
+            else { setReturnTime(value); setReturnTimeConfirmed(true); }
+          }}
+        />
+      ) : null}
+      {pickerTarget && pickerMode === "date" && Platform.OS === "ios" ? (
         <Modal
           transparent
           animationType="fade"
@@ -2507,7 +2486,7 @@ export default function RiderBookingScreen() {
         </Modal>
       ) : null}
 
-      {pickerTarget && Platform.OS === "android" ? (
+      {pickerTarget && pickerMode === "date" && Platform.OS === "android" ? (
         <DateTimePicker
           value={pickerValue}
           mode={pickerMode}
@@ -2516,7 +2495,7 @@ export default function RiderBookingScreen() {
           minuteInterval={5}
           minimumDate={
             pickerMode === "date"
-              ? new Date(new Date().setHours(0, 0, 0, 0))
+              ? todayStartDate
               : undefined
           }
           onChange={handleDateTimeChange}

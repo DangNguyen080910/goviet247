@@ -302,8 +302,11 @@ async function sendExpoPushMessages(messages) {
  */
 export async function sendNewTripToDrivers(trip) {
   try {
+    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true } });
+    if (!audience || !Array.isArray(audience.audienceDriverIds)) return;
     const devices = await prisma.device.findMany({
       where: {
+        ...(audience.audienceDriverIds.length ? { userId: { in: audience.audienceDriverIds } } : {}),
         role: {
           in: ["driver", "DRIVER"],
         },

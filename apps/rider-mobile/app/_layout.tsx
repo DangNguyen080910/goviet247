@@ -1,3 +1,4 @@
+import { startMetaAds } from '../services/metaAds';
 // Path: goviet247/apps/rider-mobile/app/_layout.tsx
 import { useEffect, useRef, useState } from "react";
 import { Tabs, router, usePathname } from "expo-router";
@@ -417,6 +418,7 @@ function RootLayoutInner() {
 }
 
 export default function RootLayout() {
+  useEffect(() => startMetaAds(), []);
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <StatusBar

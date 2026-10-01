@@ -2,6 +2,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { router } from "expo-router";
 import { io, type Socket } from "socket.io-client";
+import * as Clipboard from "expo-clipboard";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   View,
   Text,
@@ -189,11 +191,12 @@ export default function DashboardScreen() {
       return "--";
     }
 
-    const hh = String(date.getHours()).padStart(2, "0");
-    const mm = String(date.getMinutes()).padStart(2, "0");
-    const dd = String(date.getDate()).padStart(2, "0");
-    const mmMonth = String(date.getMonth() + 1).padStart(2, "0");
-    const yy = String(date.getFullYear()).slice(-2);
+    const vn = new Date(date.getTime() + 7 * 60 * 60 * 1000);
+    const hh = String(vn.getUTCHours()).padStart(2, "0");
+    const mm = String(vn.getUTCMinutes()).padStart(2, "0");
+    const dd = String(vn.getUTCDate()).padStart(2, "0");
+    const mmMonth = String(vn.getUTCMonth() + 1).padStart(2, "0");
+    const yy = String(vn.getUTCFullYear()).slice(-2);
 
     return `${hh}:${mm} ${dd}/${mmMonth}/${yy}`;
   }, []);
@@ -675,6 +678,7 @@ export default function DashboardScreen() {
         console.log("[DriverSocket] setup with userId =", userId);
 
         socket = io(API_BASE_URL, {
+          auth: async (cb) => cb({ token: await getDriverToken() }),
           reconnection: true,
           reconnectionAttempts: Infinity,
           reconnectionDelay: 1000,
@@ -1120,6 +1124,44 @@ export default function DashboardScreen() {
     }
   }, [cancelTripId, loadAvailableTrips, loadMyTrips]);
 
+  const copyTripValue = useCallback(async (value: string, label: string) => {
+    const text = String(value || "").trim();
+
+    if (!text) {
+      showError(`Không có ${label.toLowerCase()} để sao chép.`);
+      return;
+    }
+
+    try {
+      await Clipboard.setStringAsync(text);
+      showSuccess(`Đã sao chép ${label.toLowerCase()}.`);
+    } catch {
+      showError("Không thể sao chép. Vui lòng thử lại.");
+    }
+  }, []);
+
+  const renderCopyableTripRow = useCallback(
+    (icon: string, label: string, value: string) => (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoIcon}>{icon}</Text>
+        <Text style={styles.infoText}>
+          {label}: {value}
+        </Text>
+        <TouchableOpacity
+          accessibilityRole="button"
+          accessibilityLabel={`Sao chép ${label}`}
+          accessibilityHint="Sao chép nội dung để dán vào ứng dụng khác"
+          style={styles.copyButton}
+          activeOpacity={0.75}
+          onPress={() => void copyTripValue(value, label)}
+        >
+          <Ionicons name="copy-outline" size={20} color="#1D4ED8" />
+        </TouchableOpacity>
+      </View>
+    ),
+    [copyTripValue],
+  );
+
   const renderTripStops = useCallback(
     (
       trip: AvailableTripItem | MyTripItem,
@@ -1555,25 +1597,18 @@ export default function DashboardScreen() {
           )}
 
           {!!trip.riderPhone && (
-            <View style={styles.infoRow}>
-              <Text style={styles.infoIcon}>📞</Text>
-              <Text style={styles.infoText}>
-                {formatVietnamesePhone(trip.riderPhone)}
-              </Text>
-            </View>
+            renderCopyableTripRow(
+              "📞",
+              "SĐT khách",
+              formatVietnamesePhone(trip.riderPhone),
+            )
           )}
 
-          <View style={styles.infoRow}>
-            <Text style={styles.infoIcon}>📍</Text>
-            <Text style={styles.infoText}>Điểm đón: {trip.pickupAddress}</Text>
-          </View>
+          {renderCopyableTripRow("📍", "Điểm đón", trip.pickupAddress)}
 
           {routeDisplay.destinations.map((destination) => (
-            <View key={destination.key} style={styles.infoRow}>
-              <Text style={styles.infoIcon}>▸</Text>
-              <Text style={styles.infoText}>
-                {destination.label}: {destination.address}
-              </Text>
+            <View key={destination.key}>
+              {renderCopyableTripRow("▸", destination.label, destination.address)}
             </View>
           ))}
 
@@ -2486,6 +2521,17 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 22,
     color: "#6B7280",
+  },
+  copyButton: {
+    width: 34,
+    minHeight: 34,
+    marginLeft: 8,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#EFF6FF",
+    borderWidth: 1,
+    borderColor: "#BFDBFE",
   },
   metaGroup: {
     marginTop: 2,

@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/controllers/tripPublicController.js
 import { prisma } from "../utils/db.js";
+import { parseTripTime } from "../utils/tripTime.js";
 import { calculateTripPrice } from "../services/pricingService.js";
 import {
   requestTripOtp as requestTripOtpService,
@@ -50,8 +51,8 @@ function getCarTypeLabel(carType) {
 
 // Việt: Hàm parse ISO date từ client
 function toDate(value) {
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) {
+  const d = parseTripTime(value);
+  if (!d || Number.isNaN(d.getTime())) {
     throw new Error("Invalid date");
   }
   return d;
@@ -364,6 +365,7 @@ export async function confirmTrip(req, res) {
       pickupAddress,
       dropoffAddress,
       pickupTime,
+      returnTime,
       carType,
       fuelPreference = "ANY",
       direction,
@@ -389,7 +391,8 @@ export async function confirmTrip(req, res) {
         riderPhone,
         pickupAddress,
         dropoffAddress,
-        pickupTime: new Date(pickupTime),
+        pickupTime: confirmedPickupDate,
+        returnTime: returnTime ? toDate(returnTime) : null,
         carType,
         fuelPreference,
         direction,

@@ -382,7 +382,7 @@ export default function SeoProvinceHubPage({ provinceKey }) {
     );
 
     return sortRoutes(removeDuplicatePaths(routes), config.aliases);
-  }, [config]);
+  }, [SEO_ROUTES, config]);
 
   const requestedPage = getPageNumber(location.search);
 

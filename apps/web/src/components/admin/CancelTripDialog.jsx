@@ -9,6 +9,7 @@ import { getAdminToken } from "../../utils/adminAuth";
 export default function CancelTripDialog({ open, trip, tripId, onClose, onSuccess, onCancelled }) {
   const [reason, setReason] = useState("");
   const [origin, setOrigin] = useState("");
+  const [resolution, setResolution] = useState("");
   const [err, setErr] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -17,6 +18,7 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
   const handleClose = () => {
     setReason("");
     setOrigin("");
+    setResolution("");
     setErr("");
     onClose?.();
   };
@@ -34,6 +36,11 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
         return;
       }
 
+      if (!resolution) {
+        setErr("Vui lòng chọn cách xử lý huỷ chuyến.");
+        return;
+      }
+
       const token = getAdminToken();
       if (!token) {
         setErr("Thiếu token admin");
@@ -48,7 +55,13 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ cancel_reason: r, cancel_origin: origin }),
+        body: JSON.stringify({
+          cancel_reason: r,
+          cancel_origin: origin,
+          ...(resolution === "PENALTY_AND_CANCEL"
+            ? { cancel_resolution: resolution }
+            : {}),
+        }),
       });
 
       const data = await res.json().catch(() => ({}));
@@ -74,10 +87,43 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
           Mã chuyến: <b>{id ? String(id).slice(0, 8) + "..." : "-"}</b>
         </Typography>
         <FormControl sx={{ mt: 1 }}>
-          <FormLabel>Ai là bên huỷ chuyến?</FormLabel>
-          <RadioGroup value={origin} onChange={(event) => setOrigin(event.target.value)}>
-            {canReplaceDriver && <FormControlLabel value="CUSTOMER" control={<Radio />} label="Khách huỷ — tự hoàn khoản giữ vào ví tài xế" />}
-            {canReplaceDriver && <FormControlLabel value="DRIVER" control={<Radio />} label="Tài xế huỷ — ghi phạt và đưa chuyến về Chờ duyệt tìm tài xế khác" />}
+          <FormLabel>Cách xử lý huỷ chuyến</FormLabel>
+          <RadioGroup
+            value={`${origin}:${resolution}`}
+            onChange={(event) => {
+              const [nextOrigin, nextResolution] = event.target.value.split(":");
+              setOrigin(nextOrigin);
+              setResolution(nextResolution);
+            }}
+          >
+            {canReplaceDriver && (
+              <FormControlLabel
+                value="CUSTOMER:REFUND_AND_CANCEL"
+                control={<Radio />}
+                label="Khách huỷ — tự hoàn khoản giữ vào ví tài xế"
+              />
+            )}
+            {canReplaceDriver && (
+              <FormControlLabel
+                value="CUSTOMER:PENALTY_AND_CANCEL"
+                control={<Radio />}
+                label="Khách huỷ — ghi phạt và huỷ chuyến"
+              />
+            )}
+            {canReplaceDriver && (
+              <FormControlLabel
+                value="DRIVER:PENALTY_AND_REVIEW"
+                control={<Radio />}
+                label="Tài xế huỷ — ghi phạt và đưa chuyến về Chờ duyệt tìm tài xế khác"
+              />
+            )}
+            {canReplaceDriver && (
+              <FormControlLabel
+                value="DRIVER:PENALTY_AND_CANCEL"
+                control={<Radio />}
+                label="Tài xế huỷ — ghi phạt và huỷ chuyến"
+              />
+            )}
           </RadioGroup>
         </FormControl>
         {trip?.status === "IN_PROGRESS" && (
@@ -111,7 +157,9 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
           onClick={handleSubmit}
           disabled={submitting || !canReplaceDriver}
         >
-          {origin === "DRIVER" ? "GỠ TÀI XẾ, TÌM NGƯỜI KHÁC" : "XÁC NHẬN HUỶ CHUYẾN"}
+          {resolution === "PENALTY_AND_REVIEW"
+            ? "GỠ TÀI XẾ, TÌM NGƯỜI KHÁC"
+            : "XÁC NHẬN HUỶ CHUYẾN"}
         </Button>
       </DialogActions>
     </Dialog>

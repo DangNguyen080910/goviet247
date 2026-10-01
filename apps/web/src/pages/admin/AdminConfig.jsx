@@ -783,6 +783,8 @@ export default function AdminConfig() {
     minDistanceKm: "10",
     maxDistanceKm: "2000",
     quoteExpireSeconds: "120",
+    returnSuggestionRadiusKm: "20",
+    returnSuggestionDays: "2",
     riderBookingNotePlaceholder:
       "Ví dụ: Yêu cầu xe Fortuner đời 2023+, xe xăng, xe điện, xe biển trắng, có thú cưng, có em bé,... bạn có thể ghi thêm bất kỳ yêu cầu riêng nào",
 
@@ -907,6 +909,8 @@ export default function AdminConfig() {
         minDistanceKm: toFormValue(item?.minDistanceKm),
         maxDistanceKm: toFormValue(item?.maxDistanceKm),
         quoteExpireSeconds: toFormValue(item?.quoteExpireSeconds),
+        returnSuggestionRadiusKm: toFormValue(item?.returnSuggestionRadiusKm ?? 20),
+        returnSuggestionDays: toFormValue(item?.returnSuggestionDays ?? 2),
         riderBookingNotePlaceholder: toFormValue(
           item?.riderBookingNotePlaceholder,
         ),
@@ -1492,6 +1496,8 @@ export default function AdminConfig() {
         minDistanceKm: Number(form.minDistanceKm),
         maxDistanceKm: Number(form.maxDistanceKm),
         quoteExpireSeconds: Number(form.quoteExpireSeconds),
+        returnSuggestionRadiusKm: Number(form.returnSuggestionRadiusKm),
+        returnSuggestionDays: Number(form.returnSuggestionDays),
         riderBookingNotePlaceholder: String(
           form.riderBookingNotePlaceholder || "",
         ).trim(),
@@ -1503,6 +1509,8 @@ export default function AdminConfig() {
         minDistanceKm: toFormValue(updated?.minDistanceKm),
         maxDistanceKm: toFormValue(updated?.maxDistanceKm),
         quoteExpireSeconds: toFormValue(updated?.quoteExpireSeconds),
+        returnSuggestionRadiusKm: toFormValue(updated?.returnSuggestionRadiusKm ?? 20),
+        returnSuggestionDays: toFormValue(updated?.returnSuggestionDays ?? 2),
         riderBookingNotePlaceholder: toFormValue(
           updated?.riderBookingNotePlaceholder,
         ),
@@ -2049,7 +2057,9 @@ export default function AdminConfig() {
                         </SectionCard>
                       </Grid>
 
-                      <Grid item xs={12} md={3}>
+                      <Grid item xs={12} md={6}><TextField fullWidth type="number" label="Gợi ý chuyến về: bán kính (1–500 km)" value={form.returnSuggestionRadiusKm} onChange={setField('returnSuggestionRadiusKm')} /></Grid>
+                        <Grid item xs={12} md={6}><TextField fullWidth type="number" label="Gợi ý chuyến về: số ngày (1–30)" value={form.returnSuggestionDays} onChange={setField('returnSuggestionDays')} /></Grid>
+                        <Grid item xs={12} md={3}>
                         <SectionCard
                           title="Hết hạn báo giá"
                           description="Số giây giữ giá trước khi khách phải tính lại."

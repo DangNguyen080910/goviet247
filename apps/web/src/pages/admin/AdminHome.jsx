@@ -335,8 +335,7 @@ export default function AdminHome() {
         if (!mounted) return;
         setError(err.message || "Không thể tải dữ liệu trang chủ.");
       } finally {
-        if (!mounted) return;
-        setLoading(false);
+        if (mounted) setLoading(false);
       }
     }
 

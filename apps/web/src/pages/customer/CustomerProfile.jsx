@@ -529,9 +529,7 @@ export default function CustomerProfile() {
           });
         }
       } finally {
-        if (!mounted) return;
-
-        if (!silent) {
+        if (mounted && !silent) {
           setTripLoading(false);
         }
       }
@@ -576,6 +574,7 @@ export default function CustomerProfile() {
     }
 
     const socket = io(getSocketBaseUrl(), {
+      auth: { token },
       transports: ["websocket", "polling"],
       withCredentials: true,
       autoConnect: true,

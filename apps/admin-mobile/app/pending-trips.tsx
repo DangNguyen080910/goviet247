@@ -1,3 +1,4 @@
+import TripAudiencePicker from '../components/TripAudiencePicker';
 // Path: goviet247/apps/admin-mobile/app/pending-trips.tsx
 import { useCallback, useMemo, useState } from "react";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
@@ -19,6 +20,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
 import CopyTripIdButton from "../components/CopyTripIdButton";
+import { formatScheduleInput, scheduleInputToIso } from "../utils/tripTime";
 import {
   cancelPendingTrip,
   fetchPendingTripDetail,
@@ -42,7 +44,7 @@ function formatDateTime(value: string | null | undefined) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "-";
 
-  return date.toLocaleString("vi-VN");
+  return date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
 }
 
 function buildSearchText(item: PendingTripItem) {
@@ -347,9 +349,9 @@ export default function PendingTripsScreen() {
       stops: currentStops.length > 0 ? currentStops : [{ address: "" }],
       carType: detail.carType || "CAR_5",
       direction: currentDirection,
-      pickupTime: detail.pickupTime || "",
+      pickupTime: formatScheduleInput(detail.pickupTime),
       returnTime:
-        currentDirection === "ROUND_TRIP" ? detail.returnTime || "" : "",
+        currentDirection === "ROUND_TRIP" ? formatScheduleInput(detail.returnTime) : "",
       distanceKm: String(detail.distanceKm ?? ""),
       fareEstimate: String(detail.totalPrice ?? ""),
       totalPrice: String(detail.totalPrice ?? ""),
@@ -436,20 +438,23 @@ export default function PendingTripsScreen() {
       return;
     }
 
-    if (!adjustForm.pickupTime) {
-      Alert.alert("Thiếu giờ đón", "Vui lòng nhập giờ đón.");
+    const pickupTime = scheduleInputToIso(adjustForm.pickupTime, detail?.pickupTime);
+    const returnTime = adjustForm.direction === "ROUND_TRIP"
+      ? scheduleInputToIso(adjustForm.returnTime, detail?.returnTime)
+      : null;
+    if (!pickupTime) {
+      Alert.alert("Giờ đón không hợp lệ", "Nhập giờ Việt Nam theo DD/MM/YYYY HH:mm (24 giờ).");
       return;
     }
 
-    if (adjustForm.direction === "ROUND_TRIP" && !adjustForm.returnTime) {
-      Alert.alert("Thiếu giờ về", "Vui lòng nhập giờ về cho chuyến khứ hồi.");
+    if (adjustForm.direction === "ROUND_TRIP" && !returnTime) {
+      Alert.alert("Giờ về không hợp lệ", "Nhập giờ Việt Nam theo DD/MM/YYYY HH:mm (24 giờ).");
       return;
     }
 
     if (
       adjustForm.direction === "ROUND_TRIP" &&
-      new Date(adjustForm.returnTime).getTime() <=
-        new Date(adjustForm.pickupTime).getTime()
+      returnTime && new Date(returnTime).getTime() <= new Date(pickupTime).getTime()
     ) {
       Alert.alert("Giờ về không hợp lệ", "Giờ về phải sau giờ đón.");
       return;
@@ -465,9 +470,8 @@ export default function PendingTripsScreen() {
         stops: cleanStops,
         carType: adjustForm.carType,
         direction: adjustForm.direction,
-        pickupTime: adjustForm.pickupTime,
-        returnTime:
-          adjustForm.direction === "ROUND_TRIP" ? adjustForm.returnTime : null,
+        pickupTime,
+        returnTime,
         distanceKm: Number(adjustForm.distanceKm),
         fareEstimate: Number(adjustForm.fareEstimate),
         totalPrice: Number(adjustForm.totalPrice),
@@ -1013,27 +1017,27 @@ export default function PendingTripsScreen() {
                       ))}
                     </View>
 
-                    <Text style={styles.inputLabel}>Giờ đón</Text>
+                    <Text style={styles.inputLabel}>Giờ đón (Việt Nam, 24 giờ)</Text>
                     <TextInput
                       value={adjustForm.pickupTime}
                       onChangeText={(text) =>
                         updateAdjustField("pickupTime", text)
                       }
                       style={styles.adjustInput}
-                      placeholder="VD: 2026-05-25T07:00:00.000+07:00"
+                      placeholder="DD/MM/YYYY HH:mm"
                       placeholderTextColor="#98a2b3"
                     />
 
                     {adjustForm.direction === "ROUND_TRIP" ? (
                       <>
-                        <Text style={styles.inputLabel}>Giờ về</Text>
+                        <Text style={styles.inputLabel}>Giờ về (Việt Nam, 24 giờ)</Text>
                         <TextInput
                           value={adjustForm.returnTime}
                           onChangeText={(text) =>
                             updateAdjustField("returnTime", text)
                           }
                           style={styles.adjustInput}
-                          placeholder="VD: 2026-05-26T18:00:00.000+07:00"
+                          placeholder="DD/MM/YYYY HH:mm"
                           placeholderTextColor="#98a2b3"
                         />
                       </>
@@ -1246,6 +1250,7 @@ export default function PendingTripsScreen() {
                       </Text>
                     </Pressable>
 
+                    <TripAudiencePicker disabled={actionLoading !== ""} onBusy={(busy) => setActionLoading(busy ? "VERIFY" : "")} key={selectedTripId} tripId={selectedTripId} onDone={() => { closeDetailModal(); void loadData(false); Alert.alert('Thành công', 'Đã duyệt cho tài xế chỉ định.'); }} />
                     <TextInput
                       value={cancelReason}
                       onChangeText={setCancelReason}
@@ -1618,7 +1623,8 @@ const styles = StyleSheet.create({
   modalScrollContent: {
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 34,
+    // Leaves room to scroll the confirmation buttons above the software keyboard.
+    paddingBottom: 220,
     gap: 14,
   },
   detailCard: {

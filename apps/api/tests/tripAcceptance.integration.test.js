@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 import * as policy from '../src/services/tripAcceptancePolicy.js';
+import * as audiencePolicy from '../src/services/tripAudiencePolicy.js';
 import { calculateDriverFinanceSnapshot } from '../src/services/driverFinanceService.js';
 import { recordRiderAppUsage, summarizeRiderAppUsage } from '../src/services/riderAppUsage.js';
 
@@ -24,7 +25,7 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, ...policy, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, ...policy, ...audiencePolicy, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });
@@ -209,4 +210,20 @@ integration('legacy withdrawal retains the verified-driver restriction', async (
   const response = await call(trips().createWithdrawRequest, request({ amount: 50000 }));
   assert.equal(response.statusCode, 403);
   assert.equal(await db.driverWithdrawRequest.count(), 0);
+});
+
+integration('targeted trip rejects outsider without debit while invited driver accepts', async () => {
+  await trip('private', { audienceDriverIds: ['a'] });
+  const api = trips();
+  const denied = await call(api.acceptTrip, request({ tripId: 'private' }, 'b'));
+  assert.equal(denied.body.success, false);
+  assert.equal(await db.driverWalletTransaction.count(), 0);
+  assert.equal((await db.driverProfile.findUnique({ where: { userId: 'b' } })).balance, 100000);
+  assert.equal((await call(api.acceptTrip, request({ tripId: 'private' }, 'a'))).body.success, true);
+});
+integration('two invited drivers race: exactly one winner and one hold', async () => {
+  await trip('private', { audienceDriverIds: ['a', 'b'] });
+  const results = await Promise.all(['a','b'].map(id => call(trips().acceptTrip, request({ tripId: 'private' }, id))));
+  assert.equal(results.filter(r => r.body.success).length, 1);
+  assert.equal(await db.driverWalletTransaction.count(), 1);
 });

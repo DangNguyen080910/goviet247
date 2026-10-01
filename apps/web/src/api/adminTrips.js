@@ -44,10 +44,10 @@ export async function fetchUnverifiedTrips() {
 }
 
 // ✅ Duyệt chuyến (set isVerified=true)
-export async function verifyTrip(tripId, note) {
+export async function verifyTrip(tripId, note, driverIds) {
   const data = await request(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
-    body: JSON.stringify({ note }),
+    body: JSON.stringify({ note, ...(driverIds ? { driverIds } : {}) }),
   });
   return data?.trip;
 }
@@ -127,3 +127,5 @@ export async function updateAssignedTripSchedule(tripId, payload) {
     body: JSON.stringify(payload),
   });
 }
+
+export function fetchAudienceCandidates(tripId) { return request(`/api/trips/admin/trips/${tripId}/audience-candidates`); }

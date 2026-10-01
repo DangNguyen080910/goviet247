@@ -22,7 +22,7 @@ function parseDate(input) {
 function formatNgayGio(input) {
   const d = parseDate(input);
   if (!d) return input ? String(input) : "-";
-  return d.toLocaleString("vi-VN");
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
 }
 
 function formatGia(v) {

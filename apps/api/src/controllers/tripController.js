@@ -1,3 +1,5 @@
+import { audienceWhere, canDriverSeeTrip, parseAudience } from '../services/tripAudiencePolicy.js';
+import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/controllers/tripController.js
 /// ======================================================
 // Controller xử lý toàn bộ logic Trip cho cả Rider và Driver
@@ -397,7 +399,7 @@ function emitTripChangedToDrivers(io, payload = {}) {
   };
 
   if (refreshAvailable) {
-    io.to("drivers").emit("trip:changed", eventPayload);
+    emitDriverTripEvent(io, "trip:changed", eventPayload);
   }
 
   if (driverId) {
@@ -803,7 +805,7 @@ export async function getTripById(req, res) {
     const { id } = req.params;
     const trip = await prisma.trip.findUnique({ where: { id } });
 
-    if (!trip) return res.status(404).json({ error: "Trip not found" });
+    if (!trip || (trip.riderId !== (req.user?.id || req.user?.uid) && trip.driverId !== (req.user?.id || req.user?.uid))) return res.status(404).json({ error: "Trip not found" });
     return res.json({ success: true, data: trip });
   } catch (err) {
     console.error("[Trip] getTripById error:", err);
@@ -829,6 +831,7 @@ export async function listAvailableTrips(req, res) {
         status: "PENDING",
         isVerified: true,
         verifiedAt: { not: null },
+        ...audienceWhere(req.user.id || req.user.uid),
         driverId: null,
         cancelledAt: null,
       },
@@ -977,6 +980,7 @@ export async function acceptTrip(req, res) {
         throw new Error("Không tìm thấy chuyến");
       }
 
+      if (!canDriverSeeTrip(trip, driverId)) throw new Error("Chuyến không khả dụng.");
       if (trip.status !== "PENDING") {
         throw new Error("Chuyến không ở trạng thái có thể nhận");
       }
@@ -2842,7 +2846,7 @@ export async function adminResendPendingTrip(req, res) {
 
     if (io) {
       // Báo app tài xế đang mở tải lại danh sách
-      io.to("drivers").emit("trip:new", {
+      emitDriverTripEvent(io, "trip:new", {
         id: updated.id,
         pickupAddressMasked: maskAddress(updated.pickupAddress),
         dropoffAddressMasked: maskAddress(updated.dropoffAddress),
@@ -2926,6 +2930,9 @@ export async function adminVerifyTrip(req, res) {
         .status(400)
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
+    if (trip.isVerified && req.body?.driverIds !== undefined) {
+      return res.status(409).json({ success: false, message: 'Chuyến đã được duyệt. Tải lại danh sách để kiểm tra đối tượng nhận chuyến.' });
+    }
     if (trip.isVerified) {
       return res.status(200).json({
         success: true,
@@ -2939,11 +2946,19 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chuyến đã bị hủy" });
     }
 
+    let audienceDriverIds = trip.audienceDriverIds;
+    if (req.body?.driverIds !== undefined) {
+      try { audienceDriverIds = parseAudience(req.body.driverIds); }
+      catch (error) { return res.status(400).json({ success: false, message: error.message }); }
+      const count = await prisma.driverProfile.count({ where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false } });
+      if (count !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến.' });
+    }
     const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
 
     const updated = await prisma.trip.update({
       where: { id, status: "PENDING", driverId: null, isVerified: false, cancelledAt: null },
       data: {
+        audienceDriverIds,
         isVerified: true,
         verifiedAt: new Date(),
         verifiedById: actor.id,
@@ -2968,7 +2983,7 @@ export async function adminVerifyTrip(req, res) {
 
     const io = req.app.get("io");
     if (io) {
-      io.to("drivers").emit("trip:new", {
+      emitDriverTripEvent(io, "trip:new", {
         id: updated.id,
         pickupAddressMasked: maskAddress(updated.pickupAddress),
         dropoffAddressMasked: maskAddress(updated.dropoffAddress),
@@ -3027,6 +3042,7 @@ export async function adminVerifyTrip(req, res) {
 
     return res.json({ success: true, trip: updated });
   } catch (e) {
+    if (e.code === 'P2025') return res.status(409).json({ success: false, message: 'Chuyến đã thay đổi. Vui lòng tải lại.' });
     console.error("[adminVerifyTrip] error:", e);
     return res.status(500).json({ success: false, message: "Lỗi server" });
   }

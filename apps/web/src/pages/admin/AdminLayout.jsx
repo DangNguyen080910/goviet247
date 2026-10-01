@@ -62,6 +62,7 @@ function getAdminSocket(baseUrl) {
   if (__adminSocket) return __adminSocket;
 
   __adminSocket = io(baseUrl, {
+    auth: cb => cb({ token: getAdminToken() }),
     transports: ["websocket", "polling"],
     withCredentials: true,
     reconnection: true,

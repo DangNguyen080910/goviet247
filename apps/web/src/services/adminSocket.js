@@ -1,3 +1,4 @@
+import { getAdminToken } from '../utils/adminAuth';
 // Path: goviet247/apps/web/src/services/adminSocket.js
 import { io } from "socket.io-client";
 
@@ -23,6 +24,7 @@ export function initializeAdminSocketBridge() {
   daKhoiTao = true;
 
   adminSocket = io(API_BASE, {
+    auth: cb => cb({ token: getAdminToken() }),
     transports: ["websocket", "polling"],
     withCredentials: true,
     autoConnect: true,

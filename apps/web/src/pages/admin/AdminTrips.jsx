@@ -1,3 +1,4 @@
+import TripAudienceDialog from '../../components/admin/TripAudienceDialog';
 // Path: goviet247/apps/web/src/pages/admin/AdminTrips.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -32,7 +33,7 @@ function formatNgayGio(input) {
   if (!input) return "-";
   const d = new Date(input);
   if (Number.isNaN(d.getTime())) return String(input);
-  return d.toLocaleString("vi-VN");
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
 }
 
 function formatGia(v) {
@@ -103,6 +104,7 @@ function normalizeText(value) {
 }
 
 export default function AdminTrips() {
+  const [audienceTripId, setAudienceTripId] = useState("");
   const [tab, setTab] = useState(0);
 
   const [loading, setLoading] = useState(true);
@@ -214,6 +216,7 @@ export default function AdminTrips() {
 
   return (
     <Box>
+      {audienceTripId && <TripAudienceDialog tripId={audienceTripId} onClose={() => setAudienceTripId("")} onDone={() => { setAudienceTripId(""); load(); }} />}
       <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
         Chuyến (Chờ Duyệt)
       </Typography>
@@ -429,6 +432,7 @@ export default function AdminTrips() {
                           >
                             Duyệt
                           </Button>
+                          <Button size="small" variant="outlined" onClick={e => { e.stopPropagation(); setAudienceTripId(t.id); }}>Duyệt cho tài xế chỉ định</Button>
 
                           <Button
                             size="small"

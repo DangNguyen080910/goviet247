@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/services/pricingService.js
 import pkg from "@prisma/client";
+import { parseTripTime } from "../utils/tripTime.js";
 import { calculateHolidaySurcharge } from "./holidaySurcharge.js";
 const { PrismaClient } = pkg;
 
@@ -147,7 +148,7 @@ export async function quotePrice(input, db = prisma) {
     };
   }
 
-  const pickup = pickupTime ? new Date(pickupTime) : null;
+  const pickup = parseTripTime(pickupTime);
   if (!pickup || Number.isNaN(pickup.getTime())) {
     return { ok: false, message: "pickupTime không hợp lệ." };
   }
@@ -185,7 +186,7 @@ export async function quotePrice(input, db = prisma) {
   let waitCost = 0;
 
   if (direction === "ROUND_TRIP") {
-    const rt = returnTime ? new Date(returnTime) : null;
+    const rt = parseTripTime(returnTime);
     if (!rt || Number.isNaN(rt.getTime())) {
       return {
         ok: false,

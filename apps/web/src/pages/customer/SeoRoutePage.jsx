@@ -320,6 +320,7 @@ export default function SeoRoutePage({ routeKey }) {
 
   const requestedPath = routeKey || seoPath;
   const route = remoteRoute;
+  const editorial = route?.editorial;
 
   useEffect(() => {
     if (!requestedPath) {
@@ -542,8 +543,14 @@ export default function SeoRoutePage({ routeKey }) {
       <section style={styles.hero}>
         <p style={styles.badge}>GoViet247 • Xe riêng đi tỉnh</p>
 
-        <h1 style={styles.title}>{route.title}</h1>
+        <h1 style={styles.title}>{editorial?.h1 || route.title}</h1>
 
+        {editorial ? (
+          editorial.intro.map((paragraph) => (
+            <p key={paragraph} style={styles.description}>{paragraph}</p>
+          ))
+        ) : (
+          <>
         <p style={styles.description}>{route.description}</p>
 
         <p style={styles.description}>
@@ -552,6 +559,8 @@ export default function SeoRoutePage({ routeKey }) {
           địa chỉ đón và trả cụ thể, thời gian khởi hành cùng loại xe. Hệ thống
           tính giá theo thông tin bạn nhập trước khi xác nhận đặt chuyến.
         </p>
+          </>
+        )}
 
         {/* ===================================================== */}
         {/* KHỐI NHẬP HÀNH TRÌNH */}
@@ -665,6 +674,41 @@ export default function SeoRoutePage({ routeKey }) {
         </div>
       </section>
 
+      {editorial ? (
+        <>
+          {editorial.sections.map((section) => (
+            <section key={section.heading} style={styles.card}>
+              <h2 style={styles.sectionTitle}>{section.heading}</h2>
+              {section.paragraphs?.map((paragraph) => (
+                <p key={paragraph} style={styles.text}>{paragraph}</p>
+              ))}
+              {section.items && (
+                <ul style={styles.list}>
+                  {section.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))}
+          <section style={styles.card}>
+            <h2 style={styles.sectionTitle}>Câu hỏi về chuyến {route.from} đi {route.to}</h2>
+            {editorial.faqs.map((faq) => (
+              <div key={faq.question}>
+                <h3>{faq.question}</h3>
+                <p style={styles.text}>{faq.answer}</p>
+              </div>
+            ))}
+          </section>
+          <nav style={styles.card} aria-label="Thông tin liên quan đến chuyến đi">
+            <h2 style={styles.sectionTitle}>Tham khảo trước khi đặt chuyến</h2>
+            <ul style={styles.list}>
+              {editorial.links.map((link) => (
+                <li key={link.path}><Link to={link.path}>{link.label}</Link></li>
+              ))}
+            </ul>
+          </nav>
+        </>
+      ) : (
+        <>
       <section style={styles.card}>
         <h2 style={styles.sectionTitle}>
           Xem giá xe {route.from} đi {route.to}
@@ -777,12 +821,13 @@ export default function SeoRoutePage({ routeKey }) {
           </div>
         </section>
       )}
+        </>
+      )}
 
       <section style={styles.cta}>
         Đặt xe {route.from} → {route.to} ngay hôm nay
         <p>
-          Nhập thông tin chuyến đi để nhận giá nhanh và đặt xe riêng cùng
-          GoViet247.
+          {editorial?.cta || "Nhập thông tin chuyến đi để nhận giá nhanh và đặt xe riêng cùng GoViet247."}
         </p>
         <Link
           to="/dat-xe"

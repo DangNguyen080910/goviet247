@@ -10,6 +10,8 @@ const source = readFileSync(new URL("../src/controllers/adminTripController.js",
 function fixture(status = "ACCEPTED") {
   let trip = {
     id: "trip-1", status, driverId: "driver-A", riderId: null,
+    pickupTime: new Date("2026-09-23T11:30:00.000Z"),
+    returnTime: new Date("2026-09-24T00:30:00.000Z"),
     cancelledAt: null, requiredWalletAmountSnapshot: 120,
     commissionAmountSnapshot: 100, driverVatAmountSnapshot: 10,
     driverPitAmountSnapshot: 10, verifiedById: 1, verifiedAt: new Date(),
@@ -29,8 +31,16 @@ function fixture(status = "ACCEPTED") {
       const tx = {
         trip: {
           findUnique: async () => structuredClone(draft),
-          updateMany: async ({ data }) => { Object.assign(draft, data); return { count: 1 }; },
-          update: async ({ data }) => { Object.assign(draft, data); return structuredClone(draft); },
+          updateMany: async ({ data }) => {
+            assert.equal("pickupTime" in data, false, "status changes must not write pickupTime");
+            assert.equal("returnTime" in data, false, "status changes must not write returnTime");
+            Object.assign(draft, data); return { count: 1 };
+          },
+          update: async ({ data }) => {
+            assert.equal("pickupTime" in data, false, "cancellation must not write pickupTime");
+            assert.equal("returnTime" in data, false, "cancellation must not write returnTime");
+            Object.assign(draft, data); return structuredClone(draft);
+          },
         },
         driverTripPenaltyLog: {
           create: async ({ data }) => { const row = { id: `penalty-${penalties.length}`, ...data }; penalties.push(row); return row; },
@@ -72,6 +82,8 @@ test("return to review records one penalty from the held amount without a new de
   assert.equal(response.statusCode, 200);
   assert.equal(f.trip.status, "PENDING");
   assert.equal(f.trip.driverId, null);
+  assert.equal(f.trip.pickupTime.toISOString(), "2026-09-23T11:30:00.000Z");
+  assert.equal(f.trip.returnTime.toISOString(), "2026-09-24T00:30:00.000Z");
   assert.equal(f.penalties.length, 1);
   assert.equal(f.penalties[0].penaltyAmount, 120);
   assert.equal(f.penalties[0].driverProfileId, "profile-A");
@@ -116,6 +128,61 @@ test("customer cancellation refunds the held amount once and creates no driver p
   assert.deepEqual(f.walletWrites.map((item) => item.type), ["COMMISSION_REFUND", "DRIVER_VAT_REFUND", "DRIVER_PIT_REFUND"]);
   assert.equal(response.body.refundAmount, 120);
   assert.match(f.actionLogs[0].note, /\[CUSTOMER\]/);
+});
+
+for (const cancelOrigin of ["CUSTOMER", "DRIVER"]) {
+  test(`${cancelOrigin.toLowerCase()} cancellation can record the held amount as a penalty and cancel`, async () => {
+    const f = fixture("CONTACTED");
+    const response = f.res();
+
+    await f.actions.adminHuyChuyen(
+      f.req({
+        cancel_reason: "Tài xế đến trễ, khách không tiếp tục chuyến",
+        cancel_origin: cancelOrigin,
+        cancel_resolution: "PENALTY_AND_CANCEL",
+      }),
+      response,
+    );
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(f.trip.status, "CANCELLED");
+    assert.equal(f.penalties.length, 1);
+    assert.equal(f.penalties[0].penaltyAmount, 120);
+    assert.equal(f.walletWrites.length, 0, "do not debit or refund the hold again");
+    assert.equal(f.trip.driver.driverProfile.balance, 880);
+    assert.equal(response.body.penaltyAmount, 120);
+    assert.match(f.actionLogs[0].note, /PENALTY_AND_CANCEL/);
+
+    const retry = f.res();
+    await f.actions.adminHuyChuyen(
+      f.req({
+        cancel_reason: "Lặp lại",
+        cancel_origin: cancelOrigin,
+        cancel_resolution: "PENALTY_AND_CANCEL",
+      }),
+      retry,
+    );
+    assert.equal(retry.statusCode, 400);
+    assert.equal(f.penalties.length, 1);
+  });
+}
+
+test("penalty-and-cancel refuses a trip already in progress", async () => {
+  const f = fixture("IN_PROGRESS");
+  const response = f.res();
+
+  await f.actions.adminHuyChuyen(
+    f.req({
+      cancel_reason: "Không tiếp tục chuyến",
+      cancel_origin: "DRIVER",
+      cancel_resolution: "PENALTY_AND_CANCEL",
+    }),
+    response,
+  );
+
+  assert.equal(response.statusCode, 409);
+  assert.equal(f.trip.status, "IN_PROGRESS");
+  assert.equal(f.penalties.length, 0);
 });
 
 test("older admin client can cancel without silently creating a driver penalty", async () => {

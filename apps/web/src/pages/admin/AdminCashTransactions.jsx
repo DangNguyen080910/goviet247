@@ -71,14 +71,11 @@ export default function AdminCashTransactions() {
     toDate: "",
   });
 
-  const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState(null);
 
   // ================= LOAD DATA =================
   const loadData = useCallback(async () => {
     try {
-      setLoading(true);
-
       const [listRes, summaryRes] = await Promise.all([
         fetchCompanyCashTransactions(filters),
         fetchCompanyCashSummary(filters),
@@ -89,8 +86,6 @@ export default function AdminCashTransactions() {
     } catch (err) {
       console.error(err);
       setSnackbar({ type: "error", message: err.message });
-    } finally {
-      setLoading(false);
     }
   }, [filters]);
 

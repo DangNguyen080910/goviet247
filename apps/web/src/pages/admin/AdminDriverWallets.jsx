@@ -32,6 +32,7 @@ import {
   InputLabel,
   Select,
   TablePagination,
+  TableSortLabel,
 } from "@mui/material";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import SearchIcon from "@mui/icons-material/Search";
@@ -531,6 +532,10 @@ export default function AdminDriverWallets() {
     setSnackbar((prev) => ({ ...prev, open: false }));
   };
 
+  const [walletSort, setWalletSort] = React.useState({ field: 'createdAt', direction: 'desc' });
+  const sortWallet = field => setWalletSort(s => ({ field, direction: s.field === field && s.direction === 'asc' ? 'desc' : 'asc' }));
+  const walletSortLabel = (field, label) => <TableSortLabel active={walletSort.field === field} direction={walletSort.field === field ? walletSort.direction : 'asc'} onClick={() => sortWallet(field)}>{label}</TableSortLabel>;
+
   const loadDrivers = React.useCallback(async () => {
     try {
       setLoading(true);
@@ -541,7 +546,7 @@ export default function AdminDriverWallets() {
           status: filters.status,
           page: 1,
           pageSize: 100,
-          sort: "createdAt_desc",
+          sort: `${walletSort.field}_${walletSort.direction}`,
         }),
         fetchDriverWalletSummary(),
       ]);
@@ -553,7 +558,7 @@ export default function AdminDriverWallets() {
     } finally {
       setLoading(false);
     }
-  }, [filters.q, filters.status, showSnackbar]);
+  }, [filters.q, filters.status, showSnackbar, walletSort]);
 
   const loadLedgerTransactions = React.useCallback(async () => {
     try {
@@ -1715,16 +1720,16 @@ export default function AdminDriverWallets() {
                     <Table>
                       <TableHead>
                         <TableRow>
-                          <TableCell sx={{ fontWeight: 700 }}>Tài xế</TableCell>
+                          <TableCell sx={{ fontWeight: 700 }}>{walletSortLabel("name", "Tài xế")}</TableCell>
                           <TableCell sx={{ fontWeight: 700 }}>
-                            Số điện thoại
+                            {walletSortLabel("phone", "Số điện thoại")}
                           </TableCell>
-                          <TableCell sx={{ fontWeight: 700 }}>KYC</TableCell>
+                          <TableCell sx={{ fontWeight: 700 }}>{walletSortLabel("status", "KYC")}</TableCell>
                           <TableCell sx={{ fontWeight: 700 }} align="right">
-                            Số dư ví
+                            {walletSortLabel("balance", "Số dư ví")}
                           </TableCell>
                           <TableCell sx={{ fontWeight: 700 }}>
-                            Biển số
+                            {walletSortLabel("plateNumber", "Biển số")}
                           </TableCell>
                           <TableCell sx={{ fontWeight: 700 }} align="center">
                             Hành động
