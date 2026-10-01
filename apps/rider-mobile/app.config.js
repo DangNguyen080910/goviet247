@@ -3,7 +3,6 @@ module.exports = ({ config }) => {
   const appID = process.env.META_APP_ID;
   const clientToken = process.env.META_CLIENT_TOKEN;
   const enabled = Boolean(appID && clientToken);
-  if (process.env.EAS_BUILD === 'true' && !enabled) throw new Error('Set META_APP_ID and META_CLIENT_TOKEN in the EAS build environment before building Rider.');
   if ((appID || clientToken) && !enabled) throw new Error('META_APP_ID and META_CLIENT_TOKEN must be configured together.');
   return {
     ...config,
