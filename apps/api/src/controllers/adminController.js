@@ -1035,6 +1035,11 @@ export function makeAdminController(prisma) {
       label: "Ghi chú kế toán",
       kind: "accounting_note",
     },
+    {
+      key: "WALLET_TRIP_RECONCILIATION_EXPORT",
+      label: "Đối chiếu ví và chuyến đi",
+      kind: "wallet_trip_reconciliation",
+    },
   ];
 
   function formatDateOnly(date) {
@@ -1062,6 +1067,7 @@ export function makeAdminController(prisma) {
       accountingNoteCount,
       companyCashCount,
       driverWalletCount,
+      walletTripReconciliationCount,
       driverWithdrawCount,
       completedTripCount,
       approvedPenaltyCount,
@@ -1115,14 +1121,12 @@ export function makeAdminController(prisma) {
           },
         },
       }),
-      prisma.driverWalletTransaction.count({
-        where: {
-          createdAt: {
-            gte: start,
-            lte: end,
-          },
-        },
-      }),
+      getDriverWalletExportItemsForQuarter({ start, end }).then(
+        (items) => items.length,
+      ),
+      getWalletTripReconciliationItemsForQuarter({ start, end }).then(
+        (items) => items.length,
+      ),
       prisma.driverWithdrawRequest.count({
         where: {
           createdAt: {
@@ -1157,6 +1161,7 @@ export function makeAdminController(prisma) {
       OUTPUT_INVOICE: outputInvoiceCount,
       COMPANY_CASH_EXPORT: companyCashCount,
       DRIVER_WALLET_EXPORT: driverWalletCount,
+      WALLET_TRIP_RECONCILIATION_EXPORT: walletTripReconciliationCount,
       TRIP_EXPORT: completedTripCount + approvedPenaltyCount,
       DRIVER_WITHDRAW_EXPORT: driverWithdrawCount,
       PAYROLL_HR: payrollHrCount,
@@ -1228,6 +1233,14 @@ export function makeAdminController(prisma) {
             type: "csv",
             folderName: "05-vi-tai-xe",
             fileName: `vi_tai_xe_Q${quarter}_${year}.csv`,
+          };
+
+        case "WALLET_TRIP_RECONCILIATION_EXPORT":
+          return {
+            ...group,
+            type: "csv",
+            folderName: "12-doi-chieu-vi-va-chuyen-di",
+            fileName: `doi_chieu_vi_va_chuyen_di_Q${quarter}_${year}.csv`,
           };
 
         case "TRIP_EXPORT":
@@ -1378,6 +1391,8 @@ export function makeAdminController(prisma) {
       "- Cac file CSV dung dinh dang UTF-8 BOM de mo Excel de hon.",
       "- Cac folder chung tu se chua file upload thuc te neu file ton tai tren server.",
       "- Cac nhom khong co du lieu co the khong xuat file CSV ben trong ZIP.",
+      "- File Vi tai xe chi giu mot dong cho moi bien dong so du. Yeu cau rut tien da co o file Tai xe rut vi, va dong phat cu da duoc quy ve khoan giu goc se khong xuat lap.",
+      "- File Doi chieu vi va chuyen di liet ke cac khoan giu trong vi chua nam trong file Chuyen di; day la du lieu doi chieu, khong phai doanh thu bo sung.",
       "",
     ];
 
@@ -1430,6 +1445,21 @@ export function makeAdminController(prisma) {
       end,
     });
     const awsRefund = await getAwsExpenseRefundTotal({ start, end });
+    const [walletRawCount, walletExportItems] = await Promise.all([
+      prisma.driverWalletTransaction.count({
+        where: { createdAt: { gte: start, lte: end } },
+      }),
+      getDriverWalletExportItemsForQuarter({ start, end }),
+    ]);
+    const mistakenTopupReversals = walletExportItems.filter(
+      (item) =>
+        item.type === "ADJUST_SUBTRACT" &&
+        /cộng lộn|nap nham|nạp nhầm/i.test(String(item.note || "")),
+    );
+    const mistakenTopupReversalTotal = mistakenTopupReversals.reduce(
+      (sum, item) => sum + Math.abs(Number(item.amount || 0)),
+      0,
+    );
 
     const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
     const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
@@ -1550,6 +1580,31 @@ export function makeAdminController(prisma) {
         code: "LEGACY_HELD_AMOUNT_REFUND_COUNT",
         label: "Số lượt hoàn khoản giữ được phân loại lại",
         value: Number(penaltyRefundSummary.otherHoldRefundCount || 0),
+      },
+      {
+        code: "WALLET_RAW_EVENT_COUNT",
+        label: "Số giao dịch ví gốc trong kỳ",
+        value: walletRawCount,
+      },
+      {
+        code: "WALLET_EXPORT_ROW_COUNT",
+        label: "Số dòng ví thực xuất sau khi loại dòng trùng vòng đời",
+        value: walletExportItems.length,
+      },
+      {
+        code: "WALLET_OMITTED_DUPLICATE_COUNT",
+        label: "Dòng ví không xuất riêng vì đã được gộp/đối chiếu ở file khác",
+        value: walletRawCount - walletExportItems.length,
+      },
+      {
+        code: "MISTAKEN_TOPUP_REVERSAL_TOTAL",
+        label: "Khoản cộng nhầm vào ví đã điều chỉnh trừ trong kỳ",
+        value: mistakenTopupReversalTotal,
+      },
+      {
+        code: "MISTAKEN_TOPUP_REVERSAL_COUNT",
+        label: "Số lượt cộng nhầm đã điều chỉnh trừ",
+        value: mistakenTopupReversals.length,
       },
       {
         code: "AWS_EXPENSE_REFUND_TOTAL",
@@ -1997,7 +2052,7 @@ export function makeAdminController(prisma) {
     return Number(value || 0).toLocaleString("vi-VN");
   }
 
-  async function buildDriverWalletCsvForQuarter({ start, end }) {
+  async function getDriverWalletExportItemsForQuarter({ start, end }) {
     const rawItems = await prisma.driverWalletTransaction.findMany({
       where: {
         createdAt: {
@@ -2038,7 +2093,11 @@ export function makeAdminController(prisma) {
       },
       select: { id: true, driverProfileId: true, tripId: true, type: true, amount: true, createdAt: true },
     }) : [];
-    const items = normalizeDriverWalletItemsForAccounting(rawItems, holdReferences);
+    return normalizeDriverWalletItemsForAccounting(rawItems, holdReferences);
+  }
+
+  async function buildDriverWalletCsvForQuarter({ start, end }) {
+    const items = await getDriverWalletExportItemsForQuarter({ start, end });
 
     const rows = [
       [
@@ -2079,6 +2138,117 @@ export function makeAdminController(prisma) {
           item.note || "",
         ];
       }),
+    ];
+
+    return buildCsvString(rows);
+  }
+
+  const WALLET_TRIP_HOLD_TYPES = new Set([
+    "COMMISSION_HOLD",
+    "DRIVER_VAT_HOLD",
+    "DRIVER_PIT_HOLD",
+  ]);
+
+  async function getWalletTripReconciliationItemsForQuarter({ start, end }) {
+    const walletItems = await getDriverWalletExportItemsForQuarter({ start, end });
+    const [completedTrips, penaltyLogs] = await Promise.all([
+      prisma.trip.findMany({
+        where: { status: "COMPLETED", updatedAt: { gte: start, lte: end } },
+        select: { id: true },
+      }),
+      prisma.driverTripPenaltyLog.findMany({
+        where: { status: "APPROVED", approvedAt: { gte: start, lte: end } },
+        select: { tripId: true },
+      }),
+    ]);
+
+    const reportedTripIds = new Set([
+      ...completedTrips.map((item) => item.id),
+      ...penaltyLogs.map((item) => item.tripId),
+    ]);
+    const unmatchedWalletItems = walletItems.filter(
+      (item) =>
+        WALLET_TRIP_HOLD_TYPES.has(item.type) &&
+        item.tripId &&
+        !reportedTripIds.has(item.tripId),
+    );
+    const tripIds = [...new Set(unmatchedWalletItems.map((item) => item.tripId))];
+
+    const trips = tripIds.length
+      ? await prisma.trip.findMany({
+          where: { id: { in: tripIds } },
+          select: {
+            id: true,
+            status: true,
+            updatedAt: true,
+            totalPrice: true,
+            cancelReason: true,
+          },
+        })
+      : [];
+    const tripById = new Map(trips.map((trip) => [trip.id, trip]));
+    const reconciliationByTripId = new Map();
+
+    for (const item of unmatchedWalletItems) {
+      const current = reconciliationByTripId.get(item.tripId) || {
+        tripId: item.tripId,
+        driverProfile: item.driverProfile,
+        commissionHold: 0,
+        driverVatHold: 0,
+        driverPitHold: 0,
+      };
+      const amount = Math.abs(Number(item.amount || 0));
+
+      if (item.type === "COMMISSION_HOLD") current.commissionHold += amount;
+      if (item.type === "DRIVER_VAT_HOLD") current.driverVatHold += amount;
+      if (item.type === "DRIVER_PIT_HOLD") current.driverPitHold += amount;
+
+      reconciliationByTripId.set(item.tripId, current);
+    }
+
+    return [...reconciliationByTripId.values()]
+      .map((item) => {
+        const trip = tripById.get(item.tripId);
+        return {
+          ...item,
+          trip,
+          totalHold: item.commissionHold + item.driverVatHold + item.driverPitHold,
+        };
+      })
+      .sort((a, b) => String(a.tripId).localeCompare(String(b.tripId)));
+  }
+
+  async function buildWalletTripReconciliationCsvForQuarter({ start, end }) {
+    const items = await getWalletTripReconciliationItemsForQuarter({ start, end });
+    const rows = [
+      [
+        "Mã chuyến",
+        "Trạng thái hiện tại",
+        "Ngày cập nhật",
+        "Giá chuyến",
+        "Tài xế",
+        "SĐT",
+        "Phí môi giới đã giữ",
+        "VAT tài xế đã giữ",
+        "PIT tài xế đã giữ",
+        "Tổng đã giữ",
+        "Lý do / giải trình",
+      ],
+      ...items.map((item) => [
+        item.tripId,
+        item.trip?.status || "Không tìm thấy chuyến",
+        formatDateTimeExport(item.trip?.updatedAt),
+        item.trip?.totalPrice == null ? "" : formatMoneyExport(item.trip.totalPrice),
+        getDriverDisplayName(item.driverProfile),
+        getPhoneValue(item.driverProfile?.user),
+        formatMoneyExport(item.commissionHold),
+        formatMoneyExport(item.driverVatHold),
+        formatMoneyExport(item.driverPitHold),
+        formatMoneyExport(item.totalHold),
+        item.trip?.cancelReason
+          ? `Chuyến chưa nằm trong file Chuyến đi: ${item.trip.cancelReason}`
+          : "Chuyến chưa nằm trong file Chuyến đi; dùng file này để đối chiếu khoản giữ trong ví.",
+      ]),
     ];
 
     return buildCsvString(rows);
@@ -5319,6 +5489,9 @@ export function makeAdminController(prisma) {
           end,
         });
 
+        const walletTripReconciliationCsv =
+          await buildWalletTripReconciliationCsvForQuarter({ start, end });
+
         const tripAccountingCsv = await buildTripAccountingCsvForQuarter({
           start,
           end,
@@ -5447,6 +5620,10 @@ export function makeAdminController(prisma) {
 
         archive.append(accountingNotesCsv, {
           name: `11-ghi-chu-ke-toan/ghi_chu_ke_toan_Q${safeQuarter}_${safeYear}.csv`,
+        });
+
+        archive.append(walletTripReconciliationCsv, {
+          name: `12-doi-chieu-vi-va-chuyen-di/doi_chieu_vi_va_chuyen_di_Q${safeQuarter}_${safeYear}.csv`,
         });
 
         await archive.finalize();
