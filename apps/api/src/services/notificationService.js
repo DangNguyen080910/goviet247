@@ -345,11 +345,11 @@ export async function sendNewTripToDrivers(trip) {
 
     const messages = validDevices.map((device) => ({
       to: device.pushToken,
-      sound: "default",
+      sound: "new-trip.wav",
       title,
       body,
       priority: "high",
-      channelId: "new_trip",
+      channelId: "new_trip_v2",
       badge: 1,
       data: {
         type: "NEW_TRIP",

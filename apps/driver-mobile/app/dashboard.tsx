@@ -38,11 +38,7 @@ import {
   type AvailableTripItem,
   type MyTripItem,
 } from "../services/tripApi";
-import {
-  playTripChangedNotify,
-  startNewTripRingtone,
-  stopNewTripRingtone,
-} from "../services/notify";
+import { playTripChangedNotify } from "../services/notify";
 import { getMyDriverProfile } from "../services/driverProfileApi";
 import { useNotifications } from "../context/NotificationContext";
 import { showSuccess, showError } from "../services/toast";
@@ -94,7 +90,6 @@ export default function DashboardScreen() {
   const [activeTab, setActiveTab] = useState<DashboardTab>("AVAILABLE");
 
   const [availableTrips, setAvailableTrips] = useState<AvailableTripItem[]>([]);
-  const [pendingNewTripIds, setPendingNewTripIds] = useState<string[]>([]);
   const [myTrips, setMyTrips] = useState<MyTripItem[]>([]);
 
   const [loadingAvailable, setLoadingAvailable] = useState(true);
@@ -137,8 +132,6 @@ export default function DashboardScreen() {
   const runtimeBlockHandledRef = useRef(false);
 
   const appStateRef = useRef<AppStateStatus>(AppState.currentState);
-  const lastNewTripNotifyAtRef = useRef(0);
-  const lastNewTripIdRef = useRef<string | null>(null);
   const prevUnreadCountRef = useRef(0);
 
   const {
@@ -522,10 +515,6 @@ export default function DashboardScreen() {
       setAvailableError("");
       const items = await getAvailableTrips();
       setAvailableTrips(items);
-      setPendingNewTripIds((current) => {
-        const availableIds = new Set(items.map((trip) => trip.id));
-        return current.filter((tripId) => availableIds.has(tripId));
-      });
     } catch (error) {
       const message =
         error instanceof Error
@@ -535,18 +524,6 @@ export default function DashboardScreen() {
     } finally {
       setLoadingAvailable(false);
     }
-  }, []);
-
-  useEffect(() => {
-    if (pendingNewTripIds.length > 0) {
-      void startNewTripRingtone();
-    } else {
-      void stopNewTripRingtone();
-    }
-  }, [pendingNewTripIds]);
-
-  useEffect(() => () => {
-    void stopNewTripRingtone();
   }, []);
 
   const loadMyTrips = useCallback(async () => {
@@ -619,11 +596,6 @@ export default function DashboardScreen() {
         appStateRef.current = nextState;
 
         console.log("[DriverAppState] change:", prevState, "->", nextState);
-
-        if (nextState !== "active") {
-          setPendingNewTripIds([]);
-          void stopNewTripRingtone();
-        }
 
         if (nextState === "active") {
           console.log(
@@ -758,29 +730,6 @@ export default function DashboardScreen() {
 
         socket.on("trip:new", async (payload) => {
           console.log("[DriverSocket] trip:new", payload);
-
-          const incomingTripId = String(
-            payload?.tripId || payload?.id || payload?.data?.tripId || "",
-          ).trim();
-          const now = Date.now();
-
-          const isDuplicateById =
-            !!incomingTripId && lastNewTripIdRef.current === incomingTripId;
-
-          const isDuplicateByTime = now - lastNewTripNotifyAtRef.current < 2500;
-
-          if (!isDuplicateById && !isDuplicateByTime) {
-            lastNewTripIdRef.current = incomingTripId || null;
-            lastNewTripNotifyAtRef.current = now;
-
-            if (appStateRef.current === "active" && incomingTripId) {
-              setPendingNewTripIds((current) =>
-                current.includes(incomingTripId)
-                  ? current
-                  : [...current, incomingTripId],
-              );
-            }
-          }
 
           await reloadTripsFromRealtime();
         });
@@ -1012,7 +961,6 @@ export default function DashboardScreen() {
       try {
         setAcceptingTripId(tripId);
         await acceptDriverTrip(tripId);
-        setPendingNewTripIds((current) => current.filter((id) => id !== tripId));
 
         await Promise.all([loadAvailableTrips(), loadMyTrips()]);
         setActiveTab("MY_TRIPS");

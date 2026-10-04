@@ -38,7 +38,10 @@
         {
           "icon": "./assets/images/GoViet247_driver_icon.png",
           "color": "#F97316",
-          "defaultChannel": "default"
+          "defaultChannel": "default",
+          "sounds": [
+            "./assets/sounds/new-trip.wav"
+          ]
         }
       ],
       [
