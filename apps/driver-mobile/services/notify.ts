@@ -129,7 +129,7 @@ export async function prepareNotificationUx() {
       await Notifications.setNotificationChannelAsync("new_trip_v2", {
         name: "Có chuyến mới",
         importance: Notifications.AndroidImportance.MAX,
-        sound: "new-trip.wav",
+        sound: "new_trip.wav",
         enableVibrate: true,
         vibrationPattern: [0, 400, 200, 400],
         lockscreenVisibility:

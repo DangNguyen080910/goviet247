@@ -345,7 +345,7 @@ export async function sendNewTripToDrivers(trip) {
 
     const messages = validDevices.map((device) => ({
       to: device.pushToken,
-      sound: "new-trip.wav",
+      sound: "new_trip.wav",
       title,
       body,
       priority: "high",

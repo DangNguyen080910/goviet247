@@ -40,7 +40,7 @@
           "color": "#F97316",
           "defaultChannel": "default",
           "sounds": [
-            "./assets/sounds/new-trip.wav"
+            "./assets/sounds/new_trip.wav"
           ]
         }
       ],
