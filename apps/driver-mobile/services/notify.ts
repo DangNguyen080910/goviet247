@@ -13,6 +13,9 @@ import { Platform } from "react-native";
  */
 
 let audioModePrepared = false;
+let newTripRingtone: Audio.Sound | null = null;
+let newTripRingtonePromise: Promise<void> | null = null;
+let newTripRingtoneGeneration = 0;
 
 async function ensureAudioMode() {
   if (audioModePrepared) {
@@ -102,12 +105,51 @@ async function pulseTripChangedHaptics() {
   }
 }
 
-export async function playNewTripNotify() {
+export async function startNewTripRingtone() {
+  if (newTripRingtone || newTripRingtonePromise) return;
+
+  const generation = newTripRingtoneGeneration;
+  const startPromise = (async () => {
+    let sound: Audio.Sound | null = null;
+    try {
+      await ensureAudioMode();
+      const result = await Audio.Sound.createAsync(
+        require("../assets/sounds/new-trip.mp3"),
+        { shouldPlay: true, isLooping: true, volume: 1 },
+      );
+      sound = result.sound;
+
+      if (generation !== newTripRingtoneGeneration) {
+        await sound.unloadAsync().catch(() => {});
+        return;
+      }
+
+      newTripRingtone = sound;
+      await pulseNewTripHaptics();
+    } catch (err) {
+      if (sound) await sound.unloadAsync().catch(() => {});
+      console.warn("[notify] new trip ringtone error:", err);
+    }
+  })();
+
+  newTripRingtonePromise = startPromise;
   try {
-    await playSoundOnce(require("../assets/sounds/new-trip.mp3"));
-    await pulseNewTripHaptics();
-  } catch (err) {
-    console.warn("[notify] new trip sound error:", err);
+    await startPromise;
+  } finally {
+    if (newTripRingtonePromise === startPromise) {
+      newTripRingtonePromise = null;
+    }
+  }
+}
+
+export async function stopNewTripRingtone() {
+  newTripRingtoneGeneration += 1;
+  newTripRingtonePromise = null;
+  const sound = newTripRingtone;
+  newTripRingtone = null;
+  if (sound) {
+    await sound.stopAsync().catch(() => {});
+    await sound.unloadAsync().catch(() => {});
   }
 }
 
