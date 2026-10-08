@@ -2402,6 +2402,7 @@ export default function AdminLedger() {
                       <TextField
                         label="Nguồn"
                         value={cashForm.source}
+                        helperText="Hoàn quảng cáo: GOOGLE_ADS_REFUND hoặc TIKTOK_ADS_REFUND. Ghi Credit Memo/phiếu hoàn và khoản chi gốc ở Ghi chú."
                         onChange={(e) =>
                           setCashForm((prev) => ({
                             ...prev,
@@ -2413,6 +2414,7 @@ export default function AdminLedger() {
                       <TextField
                         label="Ghi chú"
                         value={cashForm.note}
+                        helperText="Với hoàn quảng cáo: ghi mã giao dịch hoàn/Credit Memo và ngày hoặc mã tham chiếu khoản chi gốc."
                         onChange={(e) =>
                           setCashForm((prev) => ({
                             ...prev,

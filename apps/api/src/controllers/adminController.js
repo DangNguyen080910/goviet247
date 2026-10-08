@@ -1386,6 +1386,7 @@ export function makeAdminController(prisma) {
       "- Bao cao doanh thu loi nhuan KHONG tinh tong gia tri chuyen la doanh thu cong ty.",
       "- Tai xe nap vi va tai xe rut vi la dong tien giu ho / hoan tra, khong phai doanh thu cong ty.",
       "- Chi phi cong ty chi tinh cac khoan chi thuc te nhu Marketing, AWS, Server, Luong, Van hanh, Chu so huu rut tien, Chi khac, va cac khoan Refund neu duoc ghi nhan la chi phi.",
+      "- Hoan phi Google Ads/TikTok Ads nhap Thu > Thu khac, voi Nguon GOOGLE_ADS_REFUND/TIKTOK_ADS_REFUND; ghi Credit Memo/ma hoan va giao dich chi goc trong Ghi chu. Bao cao tru khoan nay khoi chi phi Marketing trong ky nhan hoan, khong tinh la doanh thu moi.",
       "",
       "GHI CHU:",
       "- Cac file CSV dung dinh dang UTF-8 BOM de mo Excel de hon.",
@@ -1445,6 +1446,7 @@ export function makeAdminController(prisma) {
       end,
     });
     const awsRefund = await getAwsExpenseRefundTotal({ start, end });
+    const marketingRefund = await getMarketingExpenseRefundTotal({ start, end });
     const [walletRawCount, walletExportItems] = await Promise.all([
       prisma.driverWalletTransaction.count({
         where: { createdAt: { gte: start, lte: end } },
@@ -1610,6 +1612,11 @@ export function makeAdminController(prisma) {
         code: "AWS_EXPENSE_REFUND_TOTAL",
         label: "AWS hoàn chi phí (giảm chi phí AWS, đã nằm trong dòng tiền vào)",
         value: awsRefund,
+      },
+      {
+        code: "MARKETING_EXPENSE_REFUND_TOTAL",
+        label: "Google Ads/TikTok Ads hoàn phí (giảm chi phí Marketing, đã nằm trong dòng tiền vào)",
+        value: marketingRefund,
       },
       {
         code: "DRIVER_TOPUP_TOTAL",
@@ -1880,6 +1887,7 @@ export function makeAdminController(prisma) {
       },
     });
     const awsRefund = await getAwsExpenseRefundTotal({ start, end });
+    const marketingRefund = await getMarketingExpenseRefundTotal({ start, end });
 
     const commission = splitVatIncludedAmount(
       completedAgg._sum.commissionAmountSnapshot,
@@ -1907,6 +1915,11 @@ export function makeAdminController(prisma) {
     if (awsRefund) {
       expenseTotal -= awsRefund;
       expenseByCategory.AWS = (expenseByCategory.AWS || 0) - awsRefund;
+    }
+    if (marketingRefund) {
+      expenseTotal -= marketingRefund;
+      expenseByCategory.MARKETING =
+        (expenseByCategory.MARKETING || 0) - marketingRefund;
     }
 
     const profitAmount = totalIncome - expenseTotal;
@@ -1998,6 +2011,11 @@ export function makeAdminController(prisma) {
         formatMoneyExport(Number(penaltyRefundSummary.otherHoldRefundAmount || 0)),
       ],
       ["THAM_CHIEU", "AWS hoàn phí đã trừ chi phí AWS", formatMoneyExport(awsRefund)],
+      [
+        "THAM_CHIEU",
+        "Google Ads/TikTok Ads hoàn phí đã trừ chi phí Marketing",
+        formatMoneyExport(marketingRefund),
+      ],
     ];
 
     return buildCsvString(rows);
@@ -2041,6 +2059,18 @@ export function makeAdminController(prisma) {
       where: {
         type: "IN",
         source: "AWS_REFUND",
+        txnDate: { gte: start, lte: end },
+      },
+      _sum: { amount: true },
+    });
+    return Number(result._sum.amount || 0);
+  }
+
+  async function getMarketingExpenseRefundTotal({ start, end }) {
+    const result = await prisma.companyCashTransaction.aggregate({
+      where: {
+        type: "IN",
+        source: { in: ["GOOGLE_ADS_REFUND", "TIKTOK_ADS_REFUND"] },
         txnDate: { gte: start, lte: end },
       },
       _sum: { amount: true },
@@ -5967,6 +5997,28 @@ export function makeAdminController(prisma) {
           });
         }
 
+        const normalizedSource = String(source || "").trim();
+        const refundSource = normalizedSource.toUpperCase();
+        const marketingRefundSources = [
+          "GOOGLE_ADS_REFUND",
+          "TIKTOK_ADS_REFUND",
+        ];
+        const isMarketingRefund = marketingRefundSources.includes(refundSource);
+        if (isMarketingRefund && (type !== "IN" || category !== "OTHER_IN")) {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Hoàn phí Google Ads/TikTok Ads phải nhập Loại Thu, Nhóm Thu khác.",
+          });
+        }
+        if (isMarketingRefund && !String(note || "").trim()) {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Vui lòng ghi mã giao dịch hoàn/Credit Memo và ngày hoặc mã tham chiếu khoản quảng cáo gốc.",
+          });
+        }
+
         const admin = req.admin || {};
 
         const item = await prisma.companyCashTransaction.create({
@@ -5976,7 +6028,9 @@ export function makeAdminController(prisma) {
             category,
             amount: Number(amount),
             note: note || null,
-            source: source || null,
+            source: marketingRefundSources.includes(refundSource)
+              ? refundSource
+              : normalizedSource || null,
             referenceCode: referenceCode || null,
             createdByAdminId: admin.id || null,
             createdByUsername: admin.username || null,
@@ -6157,6 +6211,7 @@ export function makeAdminController(prisma) {
 
         const revenueTotal = commission.net + penalty;
         const awsRefund = await getAwsExpenseRefundTotal({ start, end });
+        const marketingRefund = await getMarketingExpenseRefundTotal({ start, end });
 
         const EXPENSE_CATEGORIES = [
           "MARKETING",
@@ -6199,6 +6254,10 @@ export function makeAdminController(prisma) {
         if (awsRefund) {
           expenseTotal -= awsRefund;
           byCategory.AWS = (byCategory.AWS || 0) - awsRefund;
+        }
+        if (marketingRefund) {
+          expenseTotal -= marketingRefund;
+          byCategory.MARKETING = (byCategory.MARKETING || 0) - marketingRefund;
         }
 
         const profit = revenueTotal - expenseTotal;
