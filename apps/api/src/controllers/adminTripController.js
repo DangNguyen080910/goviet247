@@ -3,6 +3,7 @@ import { emitDriverTripEvent } from '../services/tripAudience.js';
 import { lockDriverProfile, lockTrip } from "../services/tripAcceptancePolicy.js";
 import { refundCustomerCancellationHold } from "../services/customerCancellationRefund.js";
 import { prisma } from "../utils/db.js";
+import { emitRiderTripUpdate } from "../services/riderTripAccess.js";
 import { parseTripTime } from "../utils/tripTime.js";
 import {
   sendAdminPushNotification,
@@ -120,14 +121,14 @@ export async function adminDriverCancelToReview(req, res) {
           isActive: true, createdByAdminId: actor?.id ?? null,
         },
       });
-      const riderNotification = trip.riderId ? await tx.systemNotification.create({
+      const riderNotification = await tx.systemNotification.create({
         data: {
-          audience: "RIDER", targetType: "USER", targetUserId: trip.riderId,
+          audience: "RIDER", targetType: "USER", targetUserId: trip.riderId || null,
           title: "Chuyến đang được tìm tài xế khác",
           message: `Tài xế trước không thể tiếp tục chuyến #${tripId.slice(-8).toUpperCase()}. Admin đang kiểm tra để tìm tài xế khác. [tripId:${tripId}]`,
           isActive: true, createdByAdminId: actor?.id ?? null,
         },
-      }) : null;
+      });
       return { trip: updated, previousDriverId: trip.driverId, previousStatus: trip.status,
         heldAmount, actionLog, driverNotification, riderNotification };
     });
@@ -144,6 +145,7 @@ export async function adminDriverCancelToReview(req, res) {
       io.to("admins").emit("admin:dashboard_changed", { ...event, source: event.reason });
       emitDriverTripEvent(io, "trip:changed", event);
       io.to(`driver:${result.previousDriverId}`).emit("trip:changed", event);
+      await emitRiderTripUpdate(io, prisma, result.trip, event);
       if (result.trip.riderId) {
         io.to(`rider:${result.trip.riderId}`).emit("rider:trip_changed", event);
         io.to(`rider:${result.trip.riderId}`).emit("rider:notification_changed", {
@@ -156,7 +158,7 @@ export async function adminDriverCancelToReview(req, res) {
     }
     await Promise.allSettled([
       sendSystemNotificationToDriver(result.previousDriverId, result.driverNotification),
-      result.trip.riderId ? sendTripStatusChangedToRider(result.trip, { reason: event.reason }) : Promise.resolve(),
+      sendTripStatusChangedToRider(result.trip, { reason: event.reason }),
     ]);
     return res.json({ success: true, message: "Đã gỡ tài xế và chuyển chuyến về Chờ duyệt.",
       trip: result.trip, heldAmount: result.heldAmount,
@@ -328,6 +330,7 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
           pickupTime: true,
           returnTime: true,
           riderId: true,
+          riderPhone: true,
           driverId: true,
         },
       });
@@ -362,6 +365,7 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
           pickupTime: true,
           returnTime: true,
           riderId: true,
+          riderPhone: true,
           driverId: true,
           updatedAt: true,
         },
@@ -400,9 +404,7 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
       if (result.updated.driverId) {
         io.to(`driver:${result.updated.driverId}`).emit("trip:changed", event);
       }
-      if (result.updated.riderId) {
-        io.to(`rider:${result.updated.riderId}`).emit("rider:trip_changed", event);
-      }
+      await emitRiderTripUpdate(io, prisma, result.updated, event);
     }
 
     return res.json({
@@ -565,6 +567,7 @@ export async function adminHuyChuyen(req, res) {
           cancelledAt: true,
           driverId: true,
           riderId: true,
+          riderPhone: true,
           updatedAt: true,
         },
       });
@@ -598,6 +601,14 @@ export async function adminHuyChuyen(req, res) {
       })
           : null;
 
+      await tx.systemNotification.create({
+        data: {
+          audience: "RIDER", targetType: "USER", targetUserId: updated.riderId || null,
+          title: "Chuyến đã huỷ",
+          message: `Chuyến #${tripId.slice(-8).toUpperCase()} đã được huỷ. Vui lòng kiểm tra lại hoạt động chuyến đi. [tripId:${tripId}]`,
+          isActive: true, createdByAdminId: actorId,
+        },
+      });
       return {
         updated,
         log,
@@ -623,21 +634,12 @@ export async function adminHuyChuyen(req, res) {
       console.log(
         `[Socket] Emit admin:trip_cancelled -> admins (${result.updated.id})`,
       );
-      if (result.updated.riderId) {
-        io.to(`rider:${result.updated.riderId}`).emit("rider:trip_changed", {
-          tripId: result.updated.id,
-          riderId: result.updated.riderId,
-          fromStatus: result.fromStatus,
-          toStatus: "CANCELLED",
-          updatedAt: result.updated.updatedAt,
-          reason: "admin_cancel_trip",
-        });
-
-        console.log(
-          `[Socket] Emit rider:trip_changed -> rider:${result.updated.riderId} (${result.updated.id})`,
-        );
-      }
+      await emitRiderTripUpdate(io, prisma, result.updated, {
+        fromStatus: result.fromStatus, toStatus: "CANCELLED", reason: "admin_cancel_trip",
+      });
     }
+    sendTripStatusChangedToRider(result.updated, { reason: "admin_cancel_trip" })
+      .catch((error) => console.error("[RiderPush] admin cancellation error:", error));
     sendAdminPushNotification({
       title: "Chuyến đã bị huỷ",
       body: `Chuyến ${result.updated.id} vừa bị huỷ bởi ${actorUsername}.`,
@@ -954,6 +956,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           totalDriveMinutes: true,
           verifiedNote: true,
           riderId: true,
+          riderPhone: true,
           driverId: true,
           updatedAt: true,
           stops: {
@@ -1027,15 +1030,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         updatedAt: result.updated.updatedAt,
       });
 
-      if (result.updated.riderId) {
-        io.to(`rider:${result.updated.riderId}`).emit("rider:trip_changed", {
-          tripId: result.updated.id,
-          riderId: result.updated.riderId,
-          status: result.updated.status,
-          updatedAt: result.updated.updatedAt,
-          reason: "trip_manual_adjusted",
-        });
-      }
+      await emitRiderTripUpdate(io, prisma, result.updated, { reason: "trip_manual_adjusted" });
     }
 
     return res.json({

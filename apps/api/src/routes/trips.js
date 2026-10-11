@@ -7,7 +7,9 @@ import { emitDriverTripEvent } from '../services/tripAudience.js';
 
 import { Router } from "express";
 import { parseTripTime } from "../utils/tripTime.js";
+import { emitRiderTripUpdate } from "../services/riderTripAccess.js";
 import {
+  createRiderTripNotification,
   estimateTrip,
   getTripById,
   listAvailableTrips,
@@ -28,6 +30,7 @@ import {
 } from "../controllers/tripController.js";
 
 import {
+  sendTripStatusChangedToRider,
   sendNewTripToDrivers,
   sendAdminPushNotification,
 } from "../services/notificationService.js";
@@ -395,6 +398,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         updatedAt: trip.updatedAt || trip.createdAt,
       };
 
+      await emitRiderTripUpdate(io, prisma, trip, { reason: "create_trip" });
       io.to("admins").emit("admin:new_trip", adminPayload);
       io.to("admins").emit("admin:dashboard_changed", adminPayload);
 
@@ -500,13 +504,17 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       });
     }
 
-    const updated = await prisma.trip.update({
-      where: { id: tripId },
-      data: {
-        status: "CANCELLED",
-        cancelledAt: new Date(),
-        cancelReason: cancelReason || "Rider tự huỷ khi còn chờ duyệt",
-      },
+    const updated = await prisma.$transaction(async (tx) => {
+      const changed = await tx.trip.update({
+        where: { id: tripId, riderId, status: "PENDING", cancelledAt: null },
+        data: {
+          status: "CANCELLED",
+          cancelledAt: new Date(),
+          cancelReason: cancelReason || "Rider tự huỷ khi còn chờ duyệt",
+        },
+      });
+      await createRiderTripNotification(tx, changed, { reason: "rider_cancel_trip" });
+      return changed;
     });
 
     const io = req.app?.get?.("io");
@@ -538,20 +546,19 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       });
 
       // Báo cho Rider app cập nhật chính chuyến vừa huỷ
-      if (riderId) {
-        io.to(`rider:${riderId}`).emit("rider:trip_changed", {
-          tripId: updated.id,
-          riderId,
-          fromStatus: trip.status,
-          toStatus: updated.status,
-          updatedAt: updated.updatedAt,
-          reason: "rider_cancel_trip",
-        });
-      }
+      await emitRiderTripUpdate(io, prisma, updated, {
+        fromStatus: trip.status, toStatus: updated.status, reason: "rider_cancel_trip",
+      });
 
       console.log(
         `[Socket] Rider cancelled trip ${updated.id} → emitted trip:changed`,
       );
+    }
+
+    try {
+      await sendTripStatusChangedToRider(updated, { reason: "rider_cancel_trip" });
+    } catch (error) {
+      console.error("[RiderPush] rider cancellation error:", error);
     }
 
     try {
@@ -580,6 +587,9 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
     });
   } catch (error) {
     console.error("[Trip] cancel-by-rider error:", error);
+    if (error.code === "P2025") {
+      return res.status(409).json({ success: false, message: "Chuyến vừa thay đổi. Vui lòng tải lại." });
+    }
     return res.status(500).json({
       success: false,
       message: "Không thể huỷ chuyến lúc này.",

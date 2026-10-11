@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 import * as policy from '../src/services/tripAcceptancePolicy.js';
 import * as audiencePolicy from '../src/services/tripAudiencePolicy.js';
+import * as riderAccess from '../src/services/riderTripAccess.js';
 import { calculateDriverFinanceSnapshot } from '../src/services/driverFinanceService.js';
 import { recordRiderAppUsage, summarizeRiderAppUsage } from '../src/services/riderAppUsage.js';
 
@@ -25,7 +26,7 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, ...policy, ...audiencePolicy, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, ...policy, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });

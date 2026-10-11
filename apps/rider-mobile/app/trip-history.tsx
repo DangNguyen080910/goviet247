@@ -37,6 +37,7 @@ type TripItem = {
   carType?: string | null;
   riderName?: string | null;
   riderPhone?: string | null;
+  canManage?: boolean;
   note?: string | null;
   driverVehicle?: {
     vehicleBrand?: string | null;
@@ -274,6 +275,7 @@ export default function RiderTripHistoryScreen() {
   }
 
   function handleCancelTrip(item: TripItem) {
+    if (item.canManage === false) return;
     const message =
       "Bạn chỉ có thể tự huỷ chuyến khi chuyến đang ở trạng thái Chờ duyệt.";
 
@@ -554,7 +556,7 @@ export default function RiderTripHistoryScreen() {
                     </View>
                   ) : null}
 
-                  {String(item?.status || "")
+                  {item.canManage !== false && String(item?.status || "")
                     .trim()
                     .toUpperCase() === "PENDING" ? (
                     <Pressable
@@ -578,7 +580,7 @@ export default function RiderTripHistoryScreen() {
                     </Pressable>
                   ) : null}
 
-                  {String(item?.status || "")
+                  {item.canManage !== false && String(item?.status || "")
                     .trim()
                     .toUpperCase() === "COMPLETED" ? (
                     <Pressable

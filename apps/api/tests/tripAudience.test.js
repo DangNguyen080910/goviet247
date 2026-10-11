@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as policy from '../src/services/tripAudiencePolicy.js';
+import * as riderAccess from '../src/services/riderTripAccess.js';
 function load(path, names, deps) {
  const source = readFileSync(new URL(path, import.meta.url), 'utf8').replace(/^import[\s\S]*?;\n/gm, '').replace(/export /g, '').replace('const { PrismaClient } = pkg;', '').replace('const prisma = new PrismaClient();', '');
  return new Function(...Object.keys(deps), `${source}; return {${names}};`)(...Object.values(deps));
@@ -46,9 +47,9 @@ test('push recipient query filters by stored user IDs, not caller trip data', as
  const {sendNewTripToDrivers}=load('../src/services/notificationService.js','sendNewTripToDrivers',{prisma,console:{error(){},log(){}}});
  await sendNewTripToDrivers({id:'trip',audienceDriverIds:[]});assert.deepEqual(where.userId,{in:['a']});
 });
-test('driver list restricts at DB query before limiting results; detail only permits owner', async () => {
- let where;const prisma={driverConfig:{findFirst:async()=>null},trip:{findMany:async(args)=>{where=args.where;return [];},findUnique:async()=>({riderId:'rider',driverId:null,audienceDriverIds:['a']})}};
- const api=load('../src/controllers/tripController.js','listAvailableTrips,getTripById',{prisma,...policy,console:{error(){},log(){}}});
+test('driver list restricts at DB query before limiting results; detail rejects unrelated drivers', async () => {
+ let where;const prisma={phone:{findMany:async()=>[]},driverConfig:{findFirst:async()=>null},trip:{findMany:async(args)=>{where=args.where;return [];},findUnique:async()=>({riderId:'rider',driverId:null,audienceDriverIds:['a']})}};
+ const api=load('../src/controllers/tripController.js','listAvailableTrips,getTripById',{prisma,...policy,...riderAccess,console:{error(){},log(){}}});
  await call(api.listAvailableTrips,{}, {user:{id:'b'}});assert.deepEqual(where.OR,policy.audienceWhere('b').OR);
  assert.equal((await call(api.getTripById,{}, {user:{id:'b'}})).statusCode,404);
  assert.equal((await call(api.getTripById,{}, {user:{id:'rider'}})).statusCode,200);

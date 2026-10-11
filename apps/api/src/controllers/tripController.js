@@ -17,6 +17,12 @@ import {
   sendAdminPushNotification,
 } from "../services/notificationService.js";
 import { calculateDriverFinanceSnapshot } from "../services/driverFinanceService.js";
+import {
+  emitRiderTripUpdate,
+  getVerifiedRiderPhoneVariants,
+  phoneVariants,
+  riderTripAccessWhere,
+} from "../services/riderTripAccess.js";
 
 // ======================================================
 // Helpers
@@ -498,12 +504,8 @@ function buildAdminTripStatusPushContent(trip, fromStatus, source) {
   };
 }
 
-async function createRiderTripNotification(tx, trip, options = {}) {
-  const riderId = String(trip?.riderId || "").trim();
-
-  if (!riderId) {
-    return null;
-  }
+export async function createRiderTripNotification(tx, trip, options = {}) {
+  const riderId = String(trip?.riderId || "").trim() || null;
 
   const reason = String(options?.reason || "").trim();
   const actorAdminId = options?.createdByAdminId || null;
@@ -522,39 +524,17 @@ async function createRiderTripNotification(tx, trip, options = {}) {
   });
 }
 
-function emitTripChangedToRider(io, payload = {}) {
-  if (!io) {
-    return;
+async function emitTripChangedToRider(io, payload = {}) {
+  if (!io || !payload.tripId) return;
+  try {
+    const trip = await prisma.trip.findUnique({
+      where: { id: payload.tripId },
+      select: { id: true, riderId: true, riderPhone: true, status: true, updatedAt: true },
+    });
+    await emitRiderTripUpdate(io, prisma, trip, payload);
+  } catch (error) {
+    console.error("[RiderSocket] trip update error:", error);
   }
-
-  const {
-    riderId = null,
-    tripId = null,
-    fromStatus = null,
-    toStatus = null,
-    updatedAt = null,
-    reason = null,
-  } = payload;
-
-  if (!riderId) {
-    return;
-  }
-
-  const eventPayload = {
-    tripId,
-    riderId,
-    fromStatus,
-    toStatus,
-    updatedAt,
-    reason,
-  };
-
-  io.to(`rider:${riderId}`).emit("rider:trip_changed", eventPayload);
-
-  console.log(
-    "[Socket] Emit rider:trip_changed -> rider",
-    JSON.stringify(eventPayload),
-  );
 }
 
 /**
@@ -710,7 +690,7 @@ export async function createTrip(req, res) {
         updatedAt: trip.createdAt,
       });
 
-      emitTripChangedToRider(io, {
+      await emitTripChangedToRider(io, {
         riderId: trip.riderId || null,
         tripId: trip.id,
         fromStatus: null,
@@ -747,8 +727,9 @@ export async function listMyCustomerTrips(req, res) {
       });
     }
 
+    const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, riderId);
     const trips = await prisma.trip.findMany({
-      where: { riderId },
+      where: riderTripAccessWhere(riderId, phoneNumbers),
       orderBy: { createdAt: "desc" },
       include: {
         driver: {
@@ -776,8 +757,9 @@ export async function listMyCustomerTrips(req, res) {
 
     return res.json({
       success: true,
-      items: trips.map(({ driver, ...trip }) => ({
+    items: trips.map(({ driver, ...trip }) => ({
         ...trip,
+        canManage: trip.riderId === riderId,
         driverVehicle: driver?.driverProfile
           ? {
               vehicleBrand: driver.driverProfile.vehicleBrand,
@@ -804,8 +786,12 @@ export async function getTripById(req, res) {
   try {
     const { id } = req.params;
     const trip = await prisma.trip.findUnique({ where: { id } });
+    const userId = req.user?.id || req.user?.uid;
+    const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, userId);
+    const tripPhoneNumbers = phoneVariants(trip?.riderPhone);
+    const canViewAsPassenger = tripPhoneNumbers.some((phone) => phoneNumbers.includes(phone));
 
-    if (!trip || (trip.riderId !== (req.user?.id || req.user?.uid) && trip.driverId !== (req.user?.id || req.user?.uid))) return res.status(404).json({ error: "Trip not found" });
+    if (!trip || (trip.riderId !== userId && !canViewAsPassenger && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
     return res.json({ success: true, data: trip });
   } catch (err) {
     console.error("[Trip] getTripById error:", err);
@@ -1196,7 +1182,7 @@ export async function acceptTrip(req, res) {
           refreshAvailable: true,
         });
 
-        emitTripChangedToRider(io, {
+        await emitTripChangedToRider(io, {
           riderId: result.trip?.riderId || null,
           tripId: result.realtime.tripId,
           fromStatus: result.realtime.fromStatus,
@@ -1519,7 +1505,7 @@ export async function cancelDriverTrip(req, res) {
         refreshAvailable: true,
       });
 
-      emitTripChangedToRider(io, {
+      await emitTripChangedToRider(io, {
         riderId: result.trip?.riderId || null,
         tripId: result.realtime.tripId,
         fromStatus: result.realtime.fromStatus,
@@ -2085,7 +2071,7 @@ export async function changeTripStatus(req, res) {
         refreshAvailable: true,
       });
 
-      emitTripChangedToRider(io, {
+      await emitTripChangedToRider(io, {
         riderId: trip.riderId || null,
         tripId: trip.id,
         fromStatus: currentTrip.status,
@@ -2622,7 +2608,7 @@ export async function adminChangeTripStatus(req, res) {
         refreshAvailable: true,
       });
 
-      emitTripChangedToRider(io, {
+      await emitTripChangedToRider(io, {
         riderId: result.updated?.riderId || null,
         tripId: result.updated.id,
         fromStatus: result.fromStatus,
@@ -3003,7 +2989,7 @@ export async function adminVerifyTrip(req, res) {
         updatedAt: updated.updatedAt || updated.verifiedAt || new Date(),
       });
 
-      emitTripChangedToRider(io, {
+      await emitTripChangedToRider(io, {
         riderId: updated.riderId || null,
         tripId: updated.id,
         fromStatus: "PENDING",

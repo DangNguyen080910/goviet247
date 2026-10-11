@@ -5,6 +5,7 @@
 // ======================================================
 
 import pkg from "@prisma/client";
+import { getTripRiderRecipientUserIds } from "./riderTripAccess.js";
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
@@ -777,21 +778,18 @@ function buildRiderTripStatusPushContent(trip, options = {}) {
 
 export async function sendTripStatusChangedToRider(trip, options = {}) {
   try {
-    const riderId = String(trip?.riderId || "").trim();
-
-    if (!riderId) {
-      console.log("[Push] Bỏ qua push rider trip status vì thiếu riderId.");
-      return;
-    }
+    const recipientIds = await getTripRiderRecipientUserIds(prisma, trip);
+    if (!recipientIds.length) return;
 
     const devices = await prisma.device.findMany({
       where: {
         role: {
           in: ["rider", "RIDER"],
         },
-        userId: riderId,
+        userId: { in: recipientIds },
       },
       select: {
+        userId: true,
         pushToken: true,
         platform: true,
         role: true,
@@ -799,7 +797,7 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
     });
 
     if (!devices.length) {
-      console.log(`[Push] Không có device rider cho userId=${riderId}`);
+      console.log(`[Push] Không có device rider cho tripId=${trip?.id}`);
       return;
     }
 
@@ -809,7 +807,7 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
 
     if (!validDevices.length) {
       console.log(
-        `[Push] Không có Expo push token hợp lệ cho rider userId=${riderId}`,
+        `[Push] Không có Expo push token hợp lệ cho rider tripId=${trip?.id}`,
       );
       return;
     }
@@ -827,7 +825,7 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
       data: {
         type: "TRIP_STATUS_CHANGED",
         tripId: trip.id,
-        riderId,
+        riderId: device.userId,
         status: trip.status,
         reason: options?.reason || null,
         isVerified: Boolean(trip?.isVerified),
@@ -846,7 +844,7 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
     }
 
     console.log(
-      `[Push] Đã gửi push cập nhật chuyến cho rider userId=${riderId}, tripId=${trip?.id}`,
+      `[Push] Đã gửi push cập nhật chuyến cho ${recipientIds.length} rider account(s), tripId=${trip?.id}`,
     );
   } catch (err) {
     console.error("[Push] sendTripStatusChangedToRider error:", err);

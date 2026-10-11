@@ -76,7 +76,7 @@ export function NotificationProvider({
         setLoading(true);
       }
 
-      const nextItems = await getSystemNotifications("RIDER", normalizedUserId);
+      const nextItems = await getSystemNotifications("RIDER");
       setItems(Array.isArray(nextItems) ? nextItems : []);
     } catch (error) {
       console.error("refresh rider notifications error:", error);

@@ -99,6 +99,7 @@ type RiderTripItem = {
   fuelPreference?: "ANY" | "ELECTRIC" | "GASOLINE" | string | null;
   riderName?: string | null;
   riderPhone?: string | null;
+  canManage?: boolean;
   note?: string | null;
   driverVehicle?: {
     vehicleBrand?: string | null;

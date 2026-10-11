@@ -1,5 +1,6 @@
 // Path: goviet247/apps/rider-mobile/services/notificationApi.ts
 import { API_BASE_URL } from "../constants/api";
+import { getRiderToken } from "./storage";
 
 type NotificationAudience = "RIDER" | "DRIVER";
 
@@ -25,21 +26,16 @@ type ListSystemNotificationsResponse = {
 
 export async function getSystemNotifications(
   audience: NotificationAudience = "RIDER",
-  userId?: string,
 ) {
-  const url = new URL(`${API_BASE_URL}/api/public/system-notifications`);
+  const url = new URL(`${API_BASE_URL}/api/public/rider-notifications`);
   url.searchParams.set("audience", audience);
-
-  const normalizedUserId = String(userId || "").trim();
-  if (normalizedUserId) {
-    url.searchParams.set("userId", normalizedUserId);
-  }
+  const token = await getRiderToken();
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (token) headers.Authorization = `Bearer ${token}`;
 
   const res = await fetch(url.toString(), {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
   });
 
   const data = (await res
