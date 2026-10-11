@@ -286,7 +286,7 @@ export default function AdminCashTransactions() {
             <TextField
               label="Nguồn"
               value={form.source}
-              helperText="Hoàn quảng cáo: GOOGLE_ADS_REFUND hoặc TIKTOK_ADS_REFUND. Ghi Credit Memo/phiếu hoàn và khoản chi gốc ở Ghi chú."
+              helperText="Hoàn quảng cáo: AWS_REFUND hoặc GOOGLE_ADS_REFUND hoặc TIKTOK_ADS_REFUND."
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, source: e.target.value }))
               }
