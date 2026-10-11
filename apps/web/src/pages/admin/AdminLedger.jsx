@@ -2402,7 +2402,7 @@ export default function AdminLedger() {
                       <TextField
                         label="Nguồn"
                         value={cashForm.source}
-                        helperText="Hoàn quảng cáo: GOOGLE_ADS_REFUND hoặc TIKTOK_ADS_REFUND. Ghi Credit Memo/phiếu hoàn và khoản chi gốc ở Ghi chú."
+                        helperText="Hoàn quảng cáo: AWS_REFUND hoặc GOOGLE_ADS_REFUND hoặc TIKTOK_ADS_REFUND."
                         onChange={(e) =>
                           setCashForm((prev) => ({
                             ...prev,
