@@ -1,11 +1,12 @@
 // Path: goviet247/apps/rider-mobile/app/booking.tsx
-import { useEffect, useMemo, useRef, useState } from "react";
-import { router } from "expo-router";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { router, useFocusEffect } from "expo-router";
 import DateTimePicker, {
   DateTimePickerEvent,
 } from "@react-native-community/datetimepicker";
 import {
   Alert,
+  AppState,
   KeyboardAvoidingView,
   Modal,
   Platform,
@@ -45,12 +46,6 @@ const DEFAULT_TRIP_CONFIG = {
   riderBookingNotePlaceholder:
     "Ví dụ: Yêu cầu xe đời 2023+, xe biển trắng, có nhiều hành lý, có thú cưng, có em bé hoặc cần hỗ trợ đặc biệt.",
 };
-
-const CAR_TYPE_OPTIONS = [
-  { value: "CAR_5", label: "Xe 5 chỗ" },
-  { value: "CAR_7", label: "Xe 7 chỗ" },
-  { value: "CAR_16", label: "Xe 16 chỗ" },
-];
 
 const FUEL_PREFERENCE_OPTIONS = [
   { value: "ANY", label: "Không yêu cầu" },
@@ -350,33 +345,36 @@ function mergeVietnamLocationOptions(
 export default function RiderBookingScreen() {
   const insets = useSafeAreaInsets();
   const [tripConfig, setTripConfig] = useState(DEFAULT_TRIP_CONFIG);
+  const [carTypeOptions, setCarTypeOptions] = useState<{ value: string; label: string }[]>([]);
+  const [configLoading, setConfigLoading] = useState(true);
+  const [configError, setConfigError] = useState("");
   const maxStops = Number(tripConfig.maxStops || 10);
   const minDistanceKm = Number(tripConfig.minDistanceKm || 10);
   const maxDistanceKm = Number(tripConfig.maxDistanceKm || 2000);
   const quoteExpireSeconds = Number(tripConfig.quoteExpireSeconds || 120);
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     let active = true;
-
-    getRiderPublicTripConfig()
-      .then((config) => {
-        if (!active) return;
-        setTripConfig({
-          ...DEFAULT_TRIP_CONFIG,
-          ...config,
-          riderBookingNotePlaceholder:
-            String(config?.riderBookingNotePlaceholder || "").trim() ||
-            DEFAULT_TRIP_CONFIG.riderBookingNotePlaceholder,
-        });
-      })
-      .catch((error) => {
-        console.warn("[Booking] load trip config error:", error);
-      });
-
-    return () => {
-      active = false;
+    let requestId = 0;
+    const load = async () => {
+      const id = ++requestId;
+      setConfigLoading(true);
+      try {
+        const config = await getRiderPublicTripConfig();
+        if (!active || id !== requestId) return;
+        setTripConfig({ ...DEFAULT_TRIP_CONFIG, ...config, riderBookingNotePlaceholder: String(config.riderBookingNotePlaceholder || "").trim() || DEFAULT_TRIP_CONFIG.riderBookingNotePlaceholder });
+        setCarTypeOptions(config.carTypes);
+        setConfigError("");
+      } catch (error: any) {
+        if (!active || id !== requestId) return;
+        setCarTypeOptions([]);
+        setConfigError(error.message || "Không tải được loại xe nhận đặt.");
+      } finally { if (active && id === requestId) setConfigLoading(false); }
     };
-  }, []);
+    void load();
+    const subscription = AppState.addEventListener("change", state => { if (state === "active") void load(); });
+    return () => { active = false; subscription.remove(); };
+  }, []));
 
   const [pickupAddress, setPickupAddress] = useState("");
   const [pickupPlace, setPickupPlace] = useState<PlaceDetail | null>(null);
@@ -409,7 +407,10 @@ export default function RiderBookingScreen() {
   const [direction, setDirection] = useState<"ONE_WAY" | "ROUND_TRIP">(
     "ONE_WAY",
   );
-  const [carType, setCarType] = useState("CAR_5");
+  const [carType, setCarType] = useState("");
+  useEffect(() => {
+    if (!carTypeOptions.some(item => item.value === carType)) setCarType(carTypeOptions[0]?.value || "");
+  }, [carTypeOptions, carType]);
   const [fuelPreference, setFuelPreference] = useState<
     "ANY" | "ELECTRIC" | "GASOLINE"
   >("ANY");
@@ -641,6 +642,7 @@ export default function RiderBookingScreen() {
   }, [numericDistanceKm, minDistanceKm, maxDistanceKm]);
 
   const canEstimate =
+    !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !isRouteLoading &&
     hasValidPickupSelection &&
     hasAtLeastOneSelectedStop &&
@@ -671,6 +673,7 @@ export default function RiderBookingScreen() {
   }, [quoteRemainingMs]);
 
   const canCreateTrip =
+    !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !!quote &&
     !isQuoteExpired &&
     isNameValid &&
@@ -2096,9 +2099,10 @@ export default function RiderBookingScreen() {
             <View style={styles.divider} />
 
             <Text style={styles.sectionTitle}>3. Loại xe</Text>
+            {configLoading ? <Text>Đang tải loại xe nhận đặt…</Text> : configError ? <Text style={styles.errorText}>{configError} Vui lòng mở lại màn hình đặt xe để thử lại.</Text> : !carTypeOptions.length ? <Text>Hiện chưa có loại xe nhận đặt. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.</Text> : null}
 
             <View style={styles.carTypeList}>
-              {CAR_TYPE_OPTIONS.map((item) => {
+              {carTypeOptions.map((item) => {
                 const active = item.value === carType;
 
                 return (

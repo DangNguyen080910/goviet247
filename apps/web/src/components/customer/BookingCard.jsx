@@ -280,7 +280,7 @@ export default function BookingCard() {
   const [isEstimating, setIsEstimating] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
 
-  const [publicConfig, setPublicConfig] = useState(DEFAULT_PUBLIC_CONFIG);
+  const [publicConfig, setPublicConfig] = useState({ ...DEFAULT_PUBLIC_CONFIG, carTypes: [] });
   const [isLoadingConfig, setIsLoadingConfig] = useState(true);
 
   const [toast, setToast] = useState({
@@ -331,9 +331,9 @@ export default function BookingCard() {
     publicConfig?.tripConfig || DEFAULT_PUBLIC_CONFIG.tripConfig;
 
   const carTypeOptions =
-    publicConfig?.carTypes?.length > 0
+    Array.isArray(publicConfig?.carTypes)
       ? publicConfig.carTypes
-      : DEFAULT_PUBLIC_CONFIG.carTypes;
+      : [];
 
   const quoteExpireSeconds = Number(tripConfig?.quoteExpireSeconds || 120);
   const minDistanceKm = Number(tripConfig?.minDistanceKm || 0);
@@ -534,45 +534,51 @@ export default function BookingCard() {
   // ✅ Load config public cho customer page
   useEffect(() => {
     let active = true;
+    let configRequestId = 0;
 
     async function loadConfig() {
+      const requestId = ++configRequestId;
       try {
         setIsLoadingConfig(true);
         const data = await getPublicTripConfig();
 
-        if (!active) return;
+        if (!active || requestId !== configRequestId) return;
 
         setPublicConfig({
           tripConfig: data?.tripConfig || DEFAULT_PUBLIC_CONFIG.tripConfig,
           systemConfig:
             data?.systemConfig || DEFAULT_PUBLIC_CONFIG.systemConfig,
           carTypes:
-            data?.carTypes?.length > 0
+            Array.isArray(data?.carTypes)
               ? data.carTypes
-              : DEFAULT_PUBLIC_CONFIG.carTypes,
+              : [],
         });
       } catch (e) {
-        if (!active) return;
+        if (!active || requestId !== configRequestId) return;
 
-        setPublicConfig(DEFAULT_PUBLIC_CONFIG);
+        setPublicConfig({ ...DEFAULT_PUBLIC_CONFIG, carTypes: [] });
         setToast({
           open: true,
           severity: "warning",
           message:
             e?.message ||
-            "Không tải được cấu hình mới nhất. Hệ thống đang dùng cấu hình mặc định.",
+            "Không tải được loại xe nhận đặt. Vui lòng tải lại trang để thử lại.",
         });
       } finally {
-        if (active) {
+        if (active && requestId === configRequestId) {
           setIsLoadingConfig(false);
         }
       }
     }
 
     loadConfig();
-
+    const onVisible = () => { if (document.visibilityState === "visible") void loadConfig(); };
+    window.addEventListener("focus", loadConfig);
+    document.addEventListener("visibilitychange", onVisible);
     return () => {
       active = false;
+      window.removeEventListener("focus", loadConfig);
+      document.removeEventListener("visibilitychange", onVisible);
     };
   }, []);
 
@@ -609,7 +615,7 @@ export default function BookingCard() {
 
   // ✅ Nếu carType hiện tại không còn hợp lệ thì tự về option đầu tiên
   useEffect(() => {
-    if (!carTypeOptions.length) return;
+    if (!carTypeOptions.length) { setCarType(""); return; }
 
     const exists = carTypeOptions.some((item) => item.value === carType);
     if (!exists) {
@@ -1041,6 +1047,7 @@ export default function BookingCard() {
 
   const canEstimate =
     !isLoadingConfig &&
+    carTypeOptions.some(item => item.value === carType) &&
     hasValidPickupSelection &&
     hasAtLeastOneSelectedStop &&
     hasValidStopSelections &&
@@ -1062,7 +1069,7 @@ export default function BookingCard() {
   const showPhoneError = submitTouched && !isPhoneValid;
 
   const canCreateTrip =
-    !!quote && !isQuoteExpired && isNameValid && isPhoneValid && !isCreating;
+    !isLoadingConfig && carTypeOptions.some(item => item.value === carType) && !!quote && !isQuoteExpired && isNameValid && isPhoneValid && !isCreating;
 
   const missingCreateTripHint = useMemo(() => {
     if (!quote || isQuoteExpired) return "";
@@ -1275,7 +1282,7 @@ export default function BookingCard() {
     setReturnDate(null);
     setReturnTimeOnly(null);
     setDirection("ONE_WAY");
-    setCarType(carTypeOptions[0]?.value || "CAR_5");
+    setCarType(carTypeOptions[0]?.value || "");
     setFuelPreference("ANY");
 
     // Reset về rỗng để effect auto fill nạp lại từ session nếu user đã login
@@ -2238,6 +2245,7 @@ export default function BookingCard() {
                 <FormControl fullWidth size="small">
                   <InputLabel>Chọn loại xe</InputLabel>
                   <Select
+                    disabled={isLoadingConfig || !carTypeOptions.length}
                     label="Chọn loại xe"
                     value={carType}
                     onChange={(e) => setCarType(e.target.value)}
@@ -2250,6 +2258,7 @@ export default function BookingCard() {
                   </Select>
                 </FormControl>
 
+                {!isLoadingConfig && !carTypeOptions.length && <Alert severity="info">Hiện chưa có loại xe nhận đặt. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.</Alert>}
                 <FormControl fullWidth size="small">
                   <InputLabel>Loại nhiên liệu</InputLabel>
                   <Select

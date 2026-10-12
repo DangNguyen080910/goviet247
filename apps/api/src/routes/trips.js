@@ -1,3 +1,4 @@
+import { createBookableTrip } from "../services/carAvailability.js";
 import { listTripAudienceCandidates } from '../controllers/tripAudienceController.js';
 import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/routes/trips.js
@@ -341,40 +342,38 @@ router.post("/", optionalVerifyToken, async (req, res) => {
     const holidayFactor = Number(pricing.holidayFactor || 1);
     const directionFactor = Number(pricing.directionFactor || 1);
 
-    const trip = await prisma.trip.create({
-      data: {
-        riderId,
-        pickupAddress,
-        pickupLat: pickupLat != null ? Number(pickupLat) : null,
-        pickupLng: pickupLng != null ? Number(pickupLng) : null,
-        dropoffAddress,
-        dropoffLat: dropoffLat != null ? Number(dropoffLat) : null,
-        dropoffLng: dropoffLng != null ? Number(dropoffLng) : null,
-        distanceKm,
-        totalDriveMinutes,
-        outboundDriveMinutes,
-        returnDriveMinutes,
-        estimatedDurationMinutes,
-        fareEstimate:
-          fareEstimate != null && fareEstimate !== ""
-            ? Number(fareEstimate)
-            : totalPrice,
-        note: note || null,
-        status: "PENDING",
-        pickupTime,
-        returnTime: returnTimeRaw ? returnTime : null,
-        direction,
-        carType,
-        fuelPreference,
-        basePricePerKm,
-        holidayFactor,
-        holidaySurcharge: pricing.holidaySurcharge,
-        directionFactor,
-        totalPrice,
-        riderName: riderName || "",
-        riderPhone: riderPhone || "",
-        isVerified: false,
-      },
+    const trip = await createBookableTrip(prisma, {
+      riderId,
+      pickupAddress,
+      pickupLat: pickupLat != null ? Number(pickupLat) : null,
+      pickupLng: pickupLng != null ? Number(pickupLng) : null,
+      dropoffAddress,
+      dropoffLat: dropoffLat != null ? Number(dropoffLat) : null,
+      dropoffLng: dropoffLng != null ? Number(dropoffLng) : null,
+      distanceKm,
+      totalDriveMinutes,
+      outboundDriveMinutes,
+      returnDriveMinutes,
+      estimatedDurationMinutes,
+      fareEstimate:
+        fareEstimate != null && fareEstimate !== ""
+          ? Number(fareEstimate)
+          : totalPrice,
+      note: note || null,
+      status: "PENDING",
+      pickupTime,
+      returnTime: returnTimeRaw ? returnTime : null,
+      direction,
+      carType,
+      fuelPreference,
+      basePricePerKm,
+      holidayFactor,
+      holidaySurcharge: pricing.holidaySurcharge,
+      directionFactor,
+      totalPrice,
+      riderName: riderName || "",
+      riderPhone: riderPhone || "",
+      isVerified: false,
     });
 
     await prisma.tripStop.createMany({
@@ -431,6 +430,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         "Đã ghi nhận chuyến. Nhân viên sẽ xác nhận trước khi gửi tới tài xế.",
     });
   } catch (err) {
+    if (err.status === 409) return res.status(409).json({ success: false, message: err.message });
     console.error("[Trip] create error:", err);
 
     return res.status(500).json({

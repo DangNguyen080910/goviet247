@@ -1,3 +1,4 @@
+import { CAR_TYPE_UNAVAILABLE_MESSAGE } from "./carAvailability.js";
 // Path: goviet247/apps/api/src/services/pricingService.js
 import pkg from "@prisma/client";
 import { parseTripTime } from "../utils/tripTime.js";
@@ -144,7 +145,8 @@ export async function quotePrice(input, db = prisma) {
   if (!config) {
     return {
       ok: false,
-      message: "Không tìm thấy cấu hình giá cho loại xe này.",
+      message: CAR_TYPE_UNAVAILABLE_MESSAGE,
+      status: 409,
     };
   }
 
@@ -359,7 +361,7 @@ export async function calculateTripPrice({
   });
 
   if (!result.ok) {
-    throw new Error(result.message);
+    throw Object.assign(new Error(result.message), { status: result.status || 400 });
   }
 
   const d = result.data;

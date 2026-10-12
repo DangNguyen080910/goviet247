@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as policy from '../src/services/tripAudiencePolicy.js';
+import { activeDriverDevices } from '../src/services/driverPushAccess.js';
+import { pushSessionKey } from '../src/services/userSessions.js';
 import * as riderAccess from '../src/services/riderTripAccess.js';
 function load(path, names, deps) {
  const source = readFileSync(new URL(path, import.meta.url), 'utf8').replace(/^import[\s\S]*?;\n/gm, '').replace(/export /g, '').replace('const { PrismaClient } = pkg;', '').replace('const prisma = new PrismaClient();', '');
@@ -44,7 +46,7 @@ test('every trip event uses persisted private rooms; failures do not broadcast',
 });
 test('push recipient query filters by stored user IDs, not caller trip data', async () => {
  let where; const prisma={trip:{findUnique:async()=>({audienceDriverIds:['a']})},device:{findMany:async(args)=>{where=args.where;return [];}}};
- const {sendNewTripToDrivers}=load('../src/services/notificationService.js','sendNewTripToDrivers',{prisma,console:{error(){},log(){}}});
+ const {sendNewTripToDrivers}=load('../src/services/notificationService.js','sendNewTripToDrivers',{prisma,activeDriverDevices,console:{error(){},log(){}}});
  await sendNewTripToDrivers({id:'trip',audienceDriverIds:[]});assert.deepEqual(where.userId,{in:['a']});
 });
 test('driver list restricts at DB query before limiting results; detail rejects unrelated drivers', async () => {
@@ -71,14 +73,14 @@ test('socket rooms derive from verified token, never payload IDs or admin claims
  const source = server.slice(server.indexOf('io.use(async (socket, next)'), server.indexOf('// Pending watcher'));
  let authenticate, connect;
  const io = { use(fn) {authenticate=fn;}, on(event, fn) {connect=fn;} };
- new Function('io','userSessions','verifyAdminJwtToken','prisma','driverSockets','riderSockets','console', source)(
-   io, {verify:async token=>{if(token!=='driver-token')throw Error('bad');return {id:'a'};}},
+ new Function('io','pushSessionKey','userSessions','verifyAdminJwtToken','prisma','driverSockets','riderSockets','console', source)(
+   io, pushSessionKey, {verify:async token=>{if(token!=='driver-token')throw Error('bad');return {id:'a'};}},
    token=>{if(token!=='admin-token')throw Error('bad');return {role:'ADMIN'};},
-   {driverProfile:{findUnique:async()=>({userId:'a'})}},new Map(),new Map(),{log(){}});
+   {driverProfile:{findUnique:async()=>({userId:'a',status:'VERIFIED'})}},new Map(),new Map(),{log(){}});
  const make=token=>({id:'socket', data:{},handshake:{auth:{token},headers:{}},joined:[],handlers:{},join(room){this.joined.push(room);},on(event,fn){this.handlers[event]=fn;}});
  const missing=make(''); let error;await authenticate(missing,e=>{error=e;});assert.equal(error.message,'AUTH_REQUIRED');
  const driver=make('driver-token');await authenticate(driver,e=>{assert.equal(e,undefined);});connect(driver);
  driver.handlers.registerDriver({userId:'b'});driver.handlers.registerAdmin({role:'ADMIN'});driver.handlers.registerRider({userId:'victim'});
- assert.deepEqual(driver.joined,['drivers','driver:a','riders','rider:a']);
+ assert.deepEqual(driver.joined,[`session:${pushSessionKey('driver-token',{id:'a'})}`,'drivers','driver:a','riders','rider:a']);
  const admin=make('admin-token');await authenticate(admin,e=>{assert.equal(e,undefined);});connect(admin);admin.handlers.registerAdmin();assert.deepEqual(admin.joined,['admins']);
 });

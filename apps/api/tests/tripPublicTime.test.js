@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { createBookableTrip } from "../src/services/carAvailability.js";
 import { parseTripTime } from "../src/utils/tripTime.js";
 
 test("OTP confirmation saves both pickup and return as Vietnam wall-clock time", async () => {
@@ -12,10 +13,13 @@ test("OTP confirmation saves both pickup and return as Vietnam wall-clock time",
     note: "", basePricePerKm: 1, holidayFactor: 1, directionFactor: 1, totalPrice: 500000,
   };
   const prisma = { trip: { create: async ({ data }) => { created = data; return { id: "trip", createdAt: new Date(), ...data }; } } };
+  prisma.pricingConfig = { findUnique: async () => ({ isActive: true }) };
+  prisma.$queryRawUnsafe = async () => [];
+  prisma.$transaction = async fn => fn(prisma);
   const source = readFileSync(new URL("../src/controllers/tripPublicController.js", import.meta.url), "utf8")
     .replace(/^import[\s\S]*?;\n/gm, "").replaceAll("export async function", "async function");
-  const confirmTrip = new Function("Date", "prisma", "verifyTripOtp", "validateTripDistance", "parseTripTime", "sendAdminPushNotification", "console",
-    `${source}; return confirmTrip;`)(class extends Date { static [Symbol.hasInstance](value) { return value instanceof Date; } constructor(...args) { super(...(args.length ? args : ["2026-09-22T00:00:00Z"])); } static now() { return new Date("2026-09-22T00:00:00Z").getTime(); } }, prisma, async () => ({ valid: true, payload }), async () => ({ ok: true }), parseTripTime, async () => {}, { log() {}, error() {} });
+  const confirmTrip = new Function("createBookableTrip", "Date", "prisma", "verifyTripOtp", "validateTripDistance", "parseTripTime", "sendAdminPushNotification", "console",
+    `${source}; return confirmTrip;`)(createBookableTrip, class extends Date { static [Symbol.hasInstance](value) { return value instanceof Date; } constructor(...args) { super(...(args.length ? args : ["2026-09-22T00:00:00Z"])); } static now() { return new Date("2026-09-22T00:00:00Z").getTime(); } }, prisma, async () => ({ valid: true, payload }), async () => ({ ok: true }), parseTripTime, async () => {}, { log() {}, error() {} });
   const req = { body: { sessionId: "otp", otpCode: "123456" }, app: { get: () => null } };
   const res = { statusCode: 200, status(code) { this.statusCode = code; return this; }, json(body) { this.body = body; return this; } };
   await confirmTrip(req, res);

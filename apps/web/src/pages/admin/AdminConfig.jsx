@@ -362,7 +362,6 @@ function buildPayloadFromForm(item) {
     overnightTriggerKm: Number(item.overnightTriggerKm || 0),
     overnightTriggerHours: Number(item.overnightTriggerHours || 0),
     kmTiers: buildKmTiersPayload(item.kmTiers),
-    isActive: Boolean(item.isActive),
   };
 }
 
@@ -514,7 +513,6 @@ function PricingCard({
   item,
   saving,
   onFieldChange,
-  onToggleActive,
   onKmTierChange,
   onAddKmTier,
   onRemoveKmTier,
@@ -685,16 +683,6 @@ function PricingCard({
             </Stack>
           </Stack>
         </Box>
-
-        <FormControlLabel
-          control={
-            <Switch
-              checked={Boolean(item?.isActive)}
-              onChange={onToggleActive(carType)}
-            />
-          }
-          label={item?.isActive ? "Đang hoạt động" : "Tạm tắt"}
-        />
 
         <Stack
           direction="row"
@@ -1055,14 +1043,15 @@ export default function AdminConfig() {
     }));
   };
 
-  const handleToggleActive = (carType) => (_, checked) => {
-    setPricingMap((prev) => ({
-      ...prev,
-      [carType]: {
-        ...prev[carType],
-        isActive: checked,
-      },
-    }));
+  const handleToggleActive = async (carType, checked) => {
+    if (savingMap[carType]) return;
+    setSavingMap(prev => ({ ...prev, [carType]: true }));
+    try {
+      const updated = await patchPricingConfig(carType, { isActive: checked });
+      setPricingMap(prev => ({ ...prev, [carType]: { ...prev[carType], isActive: updated.isActive } }));
+      showSnackbar("success", `${CAR_TYPE_META[carType]?.title || carType}: ${checked ? "đã bật nhận đặt" : "đã tạm tắt nhận đặt"}.`);
+    } catch (error) { showSnackbar("error", error.message || "Không thể đổi trạng thái nhận đặt."); }
+    finally { setSavingMap(prev => ({ ...prev, [carType]: false })); }
   };
 
   const handleKmTierChange = (carType, index, field) => (e) => {
@@ -1916,7 +1905,6 @@ export default function AdminConfig() {
                           item={pricingMap[carType]}
                           saving={Boolean(savingMap[carType])}
                           onFieldChange={handlePricingFieldChange}
-                          onToggleActive={handleToggleActive}
                           onKmTierChange={handleKmTierChange}
                           onAddKmTier={handleAddKmTier}
                           onRemoveKmTier={handleRemoveKmTier}
@@ -1941,6 +1929,18 @@ export default function AdminConfig() {
             {/* TAB 2: CHUYẾN ĐI */}
             <TabPanel value={tab} index={2}>
               <Stack spacing={2.5}>
+                <Paper variant="outlined" sx={{ p: 3, borderRadius: 3 }}>
+                  <Stack spacing={2}>
+                    <Typography variant="h6">Loại xe nhận đặt</Typography>
+                    <Typography color="text.secondary" variant="body2">Bật/tắt áp dụng cho Rider Web và Rider Mobile. Thay đổi được lưu ngay; giá cước, phụ thu và các chuyến đã đặt được giữ nguyên.</Typography>
+                    {loadingPricing ? <CircularProgress /> : pricingError ? <Alert severity="error">{pricingError}</Alert> : CAR_TYPE_ORDER.map(carType => (
+                      <Stack key={carType} direction="row" justifyContent="space-between" alignItems="center">
+                        <Typography>{CAR_TYPE_META[carType]?.title || carType}</Typography>
+                        <FormControlLabel label={pricingMap[carType]?.isActive ? "Đang nhận đặt" : "Tạm tắt"} control={<Switch checked={Boolean(pricingMap[carType]?.isActive)} disabled={!pricingMap[carType] || Boolean(savingMap[carType])} onChange={(_, checked) => handleToggleActive(carType, checked)} />} />
+                      </Stack>
+                    ))}
+                  </Stack>
+                </Paper>
                 {loadingTripConfig ? (
                   <Paper
                     elevation={0}

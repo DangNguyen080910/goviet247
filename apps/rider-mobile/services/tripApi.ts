@@ -34,6 +34,7 @@ type ErrorResponse = {
 };
 
 export type RiderPublicTripConfig = {
+  carTypes: { value: string; label: string }[];
   maxStops: number;
   minDistanceKm: number;
   maxDistanceKm: number;
@@ -52,7 +53,8 @@ export async function getRiderPublicTripConfig(): Promise<RiderPublicTripConfig>
     throw new Error(data?.message || "Không tải được cấu hình chuyến đi.");
   }
 
-  return data.data.tripConfig as RiderPublicTripConfig;
+  if (!Array.isArray(data.data.carTypes)) throw new Error("Không tải được loại xe nhận đặt.");
+  return { ...data.data.tripConfig, carTypes: data.data.carTypes.filter((item: any) => ["CAR_5", "CAR_7", "CAR_16"].includes(item?.value) && typeof item?.label === "string") } as RiderPublicTripConfig;
 }
 
 export async function createTrip(payload: CreateTripPayload) {

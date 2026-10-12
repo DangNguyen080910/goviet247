@@ -187,7 +187,8 @@ export async function updatePricingConfig(req, res) {
     }
 
     if (body.isActive != null) {
-      updateData.isActive = Boolean(body.isActive);
+      if (typeof body.isActive !== "boolean") return res.status(400).json({ success: false, message: "Trạng thái nhận đặt phải là bật hoặc tắt." });
+      updateData.isActive = body.isActive;
     }
 
     if (body.kmTiers != null) {
