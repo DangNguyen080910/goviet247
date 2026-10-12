@@ -413,6 +413,7 @@ model PricingConfig {
   minFare                  Int
   overnightFee             Int
   gasolineSurchargePercent Decimal @default(0) @db.Decimal(5, 2)
+  holidayPeriods          Json?
   holidaySurchargePercent  Decimal @default(0) @db.Decimal(5, 2)
   holidayStartDate         String? @db.VarChar(10)
   holidayEndDate           String? @db.VarChar(10)
@@ -569,6 +570,8 @@ model Device {
   userId    String
   platform  String
   pushToken String   @unique
+  pushSessionId String?
+  pushExpiresAt DateTime? @db.Timestamptz(6)
   role      String
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)

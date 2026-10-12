@@ -5,23 +5,24 @@ import * as Notifications from "expo-notifications";
 import Toast from "react-native-toast-message";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NotificationProvider } from "../context/NotificationContext";
+import { getDriverToken } from "../services/storage";
 import AppUpdatePrompt from "../components/AppUpdatePrompt";
 
 Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowBanner: true,
-    shouldShowList: true,
-    shouldPlaySound: true,
-    shouldSetBadge: true,
-  }),
+  handleNotification: async () => {
+    const signedIn = Boolean(await getDriverToken());
+    return { shouldShowBanner: signedIn, shouldShowList: signedIn, shouldPlaySound: signedIn, shouldSetBadge: signedIn };
+  },
 });
 
-function handlePushNavigation(
+async function handlePushNavigation(
   response: Notifications.NotificationResponse | null,
 ) {
   if (!response) {
     return;
   }
+
+  if (!(await getDriverToken())) return;
 
   const data = response.notification.request.content.data || {};
   const type = String(data?.type || "")
@@ -29,12 +30,12 @@ function handlePushNavigation(
     .toUpperCase();
 
   if (type === "NEW_TRIP") {
-    router.replace("/dashboard");
+    router.replace("/bootstrap");
     return;
   }
 
   if (type === "SYSTEM_NOTIFICATION") {
-    router.replace("/dashboard");
+    router.replace("/bootstrap");
     return;
   }
 }

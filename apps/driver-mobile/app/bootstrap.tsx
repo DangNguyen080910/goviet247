@@ -61,18 +61,6 @@ export default function BootstrapScreen() {
 
         console.log("[Push] final permission status =", finalStatus);
 
-        if (finalStatus === "granted") {
-          try {
-            if (Device.isDevice) {
-              await registerPushToken(token);
-            } else {
-              console.log("[Push] skip simulator push token");
-            }
-          } catch (err) {
-            console.warn("[Push] register token error:", err);
-          }
-        }
-
         const meData = await getMe(token);
         if (!active) return;
         const user = meData?.user;
@@ -84,7 +72,7 @@ export default function BootstrapScreen() {
           return;
         }
 
-        const data = await getMyDriverProfile(token);
+        const data = await getMyDriverProfile((await getDriverToken()) || token);
         if (!active) return;
 
         if (!data?.hasDriverProfile) {
@@ -93,6 +81,18 @@ export default function BootstrapScreen() {
         }
 
         const status = data?.profile?.status;
+
+        if (finalStatus === "granted") {
+          try {
+            if (Device.isDevice) {
+              await registerPushToken((await getDriverToken()) || token);
+            } else {
+              console.log("[Push] skip simulator push token");
+            }
+          } catch (err) {
+            console.warn("[Push] register token error:", err);
+          }
+        }
 
         if (status === "PENDING") {
           router.replace("/driver-profile/pending");

@@ -47,9 +47,9 @@ import {
   uploadSystemConfigMedia,
 } from "../../api/adminConfig";
 
-function TabPanel({ value, index, children }) {
-  if (value !== index) return null;
-  return <Box sx={{ pt: 3 }}>{children}</Box>;
+function TabPanel({ value, index, children, keepMounted = false }) {
+  if (value !== index && !keepMounted) return null;
+  return <Box hidden={value !== index} sx={{ pt: 3 }}>{children}</Box>;
 }
 
 function SectionCard({ title, description, children }) {
@@ -270,6 +270,43 @@ function validateKmTiers(kmTiers) {
   return "";
 }
 
+function HolidayPeriodsCard({ carType, item, onSaved, notify }) {
+  const initial = () => Array.isArray(item.holidayPeriods) ? item.holidayPeriods : item.holidayStartDate && item.holidayEndDate ? [{ ...holidayFormFields(item), id: "legacy", enabled: true }] : [];
+  const [periods, setPeriods] = React.useState(initial);
+  const [saving, setSaving] = React.useState(false);
+  const [dirty, setDirty] = React.useState(false);
+  React.useEffect(() => { if (!dirty) setPeriods(initial()); }, [item.holidayPeriods, dirty]);
+  const change = (id, field, value) => { setDirty(true); setPeriods(rows => rows.map(p => p.id === id ? { ...p, [field]: value } : p)); };
+  const save = async () => {
+    setSaving(true);
+    try {
+      const updated = await patchPricingConfig(carType, { holidayPeriods: periods });
+      onSaved(updated); setPeriods(updated.holidayPeriods); setDirty(false);
+      notify("success", "Đã lưu phụ thu lễ, Tết.");
+    } catch (error) { notify("error", error.message || "Không thể lưu phụ thu."); }
+    finally { setSaving(false); }
+  };
+  return <Paper variant="outlined" sx={{ p: 3, borderRadius: 3 }}><Stack spacing={2}>
+    <Typography variant="h6">{CAR_TYPE_META[carType]?.title || carType}</Typography>
+    {periods.length === 0 && <Typography color="text.secondary">Chưa có đợt phụ thu.</Typography>}
+    {periods.map(p => <Box key={p.id} sx={{ border: "1px solid", borderColor: "divider", p: 2, borderRadius: 2 }}><Stack spacing={2}>
+      <FormControlLabel control={<Switch checked={p.enabled} disabled={saving} onChange={e => change(p.id, "enabled", e.target.checked)} />} label="Bật phụ thu" />
+      <TextField label="Tên dịp lễ" value={p.holidayName || ""} disabled={saving} inputProps={{ maxLength: 100 }} onChange={e => change(p.id, "holidayName", e.target.value)} />
+      <TextField label="Phụ thu (%)" type="number" value={p.holidaySurchargePercent} disabled={saving} inputProps={{ min: 0, max: 100, step: 0.01 }} helperText="Mức 0% không tính phụ thu." onChange={e => change(p.id, "holidaySurchargePercent", e.target.value)} />
+      <TextField label="Ngày bắt đầu" type="date" value={p.holidayStartDate || ""} disabled={saving} InputLabelProps={{ shrink: true }} onChange={e => change(p.id, "holidayStartDate", e.target.value)} />
+      <TextField label="Ngày kết thúc (bao gồm ngày này)" type="date" value={p.holidayEndDate || ""} disabled={saving} InputLabelProps={{ shrink: true }} inputProps={{ min: p.holidayStartDate }} onChange={e => change(p.id, "holidayEndDate", e.target.value)} />
+      <TextField label="Ghi chú thêm cho khách" multiline minRows={2} value={p.holidayNote || ""} disabled={saving} inputProps={{ maxLength: 500 }} onChange={e => change(p.id, "holidayNote", e.target.value)} />
+      <Alert severity="info">Xem trước: Đã gồm phụ thu lễ, Tết {p.holidaySurchargePercent || 0}%: [số tiền theo chuyến]<br />{holidayPreview(p)}</Alert>
+      <Button color="error" disabled={saving} startIcon={<DeleteOutlineIcon />} onClick={() => { if (window.confirm("Xóa đợt phụ thu này? Bấm Lưu phụ thu để áp dụng.")) { setDirty(true); setPeriods(rows => rows.filter(row => row.id !== p.id)); } }}>Xóa đợt phụ thu</Button>
+    </Stack></Box>)}
+    <Stack direction="row" spacing={2}>
+      <Button disabled={saving || periods.length >= 100} startIcon={<AddIcon />} onClick={() => { setDirty(true); setPeriods(rows => [...rows, { id: crypto.randomUUID(), enabled: true, holidaySurchargePercent: 0, holidayName: "", holidayNote: "", holidayStartDate: "", holidayEndDate: "" }]); }}>Thêm phụ thu</Button>
+      <Button variant="contained" disabled={saving || !dirty} onClick={save} startIcon={<SaveIcon />}>{saving ? "Đang lưu…" : "Lưu phụ thu"}</Button>
+    </Stack>
+    {dirty && <Typography color="warning.main" variant="body2">Có thay đổi chưa lưu.</Typography>}
+  </Stack></Paper>;
+}
+
 function holidayFormFields(row) {
   return {
     holidaySurchargePercent: toFormValue(row.holidaySurchargePercent ?? 0),
@@ -294,6 +331,7 @@ function normalizePricingRows(rows) {
   for (const row of rows || []) {
     mapped[row.carType] = {
       ...holidayFormFields(row),
+      holidayPeriods: row.holidayPeriods,
       id: row.id,
       carType: row.carType,
       baseFare: toFormValue(row.baseFare),
@@ -315,11 +353,6 @@ function normalizePricingRows(rows) {
 
 function buildPayloadFromForm(item) {
   return {
-    holidaySurchargePercent: Number(item.holidaySurchargePercent || 0),
-    holidayStartDate: item.holidayStartDate || null,
-    holidayEndDate: item.holidayEndDate || null,
-    holidayName: (item.holidayName || "").trim(),
-    holidayNote: (item.holidayNote || "").trim(),
     baseFare: Number(item.baseFare || 0),
     pricePerKm: Number(item.pricePerKm || 0),
     pricePerHour: Number(item.pricePerHour || 0),
@@ -551,54 +584,6 @@ function PricingCard({
           helperText="Chỉ cộng khi khách chọn Xe xăng. Không yêu cầu và Xe điện dùng giá mặc định."
         />
 
-        <Box sx={{ p: 2, border: "1px solid", borderColor: "divider", borderRadius: 2 }}>
-          <Stack spacing={2}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>Phụ thu lễ, Tết</Typography>
-            <Typography variant="body2" color="text.secondary">
-              Áp dụng theo ngày khởi hành, giờ Việt Nam, gồm cả ngày bắt đầu và kết thúc.
-              Chuyến khứ hồi xét ngày khởi hành ban đầu. Mức 0% sẽ tắt phụ thu và ẩn dòng giải thích.
-            </Typography>
-            <TextField
-              label="Phụ thu lễ, Tết (%)"
-              value={item?.holidaySurchargePercent ?? "0"}
-              onChange={onFieldChange(carType, "holidaySurchargePercent")}
-              fullWidth type="number" inputProps={{ min: 0, max: 100, step: 0.01 }}
-              helperText="Tính trên cùng giá gốc với phụ thu xe xăng, không cộng chồng phụ thu."
-            />
-            <TextField
-              label="Tên dịp lễ" placeholder="Quốc khánh"
-              value={item?.holidayName || ""}
-              onChange={onFieldChange(carType, "holidayName")}
-              fullWidth inputProps={{ maxLength: 100 }}
-            />
-            <TextField
-              label="Ngày bắt đầu" type="date"
-              value={item?.holidayStartDate || ""}
-              onChange={onFieldChange(carType, "holidayStartDate")}
-              fullWidth InputLabelProps={{ shrink: true }}
-            />
-            <TextField
-              label="Ngày kết thúc (bao gồm cả ngày này)" type="date"
-              value={item?.holidayEndDate || ""}
-              onChange={onFieldChange(carType, "holidayEndDate")}
-              fullWidth InputLabelProps={{ shrink: true }}
-              inputProps={{ min: item?.holidayStartDate || undefined }}
-            />
-            <TextField
-              label="Ghi chú thêm cho khách (không bắt buộc)"
-              value={item?.holidayNote || ""}
-              onChange={onFieldChange(carType, "holidayNote")}
-              fullWidth multiline minRows={2} inputProps={{ maxLength: 500 }}
-              helperText="Ngày áp dụng được tự thêm vào nội dung. Không cần nhập lại ngày ở đây."
-            />
-            <Alert severity="info">
-              <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                Xem trước: Đã gồm phụ thu lễ, Tết {item?.holidaySurchargePercent || 0}%: [số tiền theo chuyến]
-              </Typography>
-              {holidayPreview(item)}
-            </Alert>
-          </Stack>
-        </Box>
 
         <TextField
           label="Số km kích hoạt qua đêm"
@@ -1141,7 +1126,7 @@ export default function AdminConfig() {
       { key: "minFare", label: "Giá tối thiểu" },
       { key: "overnightFee", label: "Phụ phí qua đêm" },
       { key: "gasolineSurchargePercent", label: "Phụ thu xe xăng" },
-      { key: "holidaySurchargePercent", label: "Phụ thu lễ, Tết" },
+
       { key: "overnightTriggerKm", label: "Số km kích hoạt qua đêm" },
       { key: "overnightTriggerHours", label: "Số giờ kích hoạt qua đêm" },
     ];
@@ -1161,24 +1146,6 @@ export default function AdminConfig() {
     if (Number(item?.gasolineSurchargePercent) > 100) {
       return "Phụ thu xe xăng không được vượt quá 100%.";
     }
-
-    const holidayPercent = Number(item.holidaySurchargePercent);
-    if (holidayPercent > 100 || Math.abs(holidayPercent * 100 - Math.round(holidayPercent * 100)) > 0.000001) {
-      return "Phụ thu lễ, Tết tối đa 100%, tối đa 2 chữ số thập phân.";
-    }
-    const start = item.holidayStartDate;
-    const end = item.holidayEndDate;
-    if ((start && !end) || (!start && end) || (holidayPercent > 0 && (!start || !end))) {
-      return "Vui lòng chọn đủ ngày bắt đầu và ngày kết thúc phụ thu lễ, Tết.";
-    }
-    for (const value of [start, end]) {
-      if (!value) continue;
-      const date = new Date(`${value}T00:00:00.000Z`);
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== value) {
-        return "Ngày áp dụng phụ thu lễ, Tết không hợp lệ.";
-      }
-    }
-    if (start && end && start > end) return "Ngày kết thúc phải từ ngày bắt đầu trở đi.";
 
     const kmTiersError = validateKmTiers(item?.kmTiers || []);
     if (kmTiersError) {
@@ -1454,6 +1421,7 @@ export default function AdminConfig() {
         ...prev,
         [carType]: {
           ...holidayFormFields(updated),
+          holidayPeriods: updated.holidayPeriods,
           id: updated.id,
           carType: updated.carType,
           baseFare: toFormValue(updated.baseFare),
@@ -1872,6 +1840,7 @@ export default function AdminConfig() {
               icon={<DirectionsCarIcon />}
               iconPosition="start"
             />
+            <Tab label="Phụ thu lễ, Tết" icon={<TimerOutlinedIcon />} iconPosition="start" />
             <Tab label="Chuyến đi" icon={<TuneIcon />} iconPosition="start" />
             <Tab label="Tài xế" icon={<LocalTaxiIcon />} iconPosition="start" />
             <Tab
@@ -1960,8 +1929,17 @@ export default function AdminConfig() {
               </Stack>
             </TabPanel>
 
+            <TabPanel value={tab} index={1} keepMounted>
+              <Stack spacing={3}>
+                <Alert severity="info">Áp dụng theo ngày khởi hành giờ Việt Nam, gồm cả ngày bắt đầu và kết thúc. Chuyến khứ hồi dùng ngày khởi hành ban đầu. Các đợt đang bật của cùng loại xe không được trùng ngày. Phụ thu tính trên cùng giá gốc với phụ thu xe xăng.</Alert>
+                {loadingPricing ? <CircularProgress /> : pricingError ? <Alert severity="error">{pricingError}</Alert> : CAR_TYPE_ORDER.map(carType => pricingMap[carType] && (
+                  <HolidayPeriodsCard key={carType} carType={carType} item={pricingMap[carType]} onSaved={updated => setPricingMap(prev => ({ ...prev, [carType]: { ...prev[carType], holidayPeriods: updated.holidayPeriods } }))} notify={showSnackbar} />
+                ))}
+              </Stack>
+            </TabPanel>
+
             {/* TAB 2: CHUYẾN ĐI */}
-            <TabPanel value={tab} index={1}>
+            <TabPanel value={tab} index={2}>
               <Stack spacing={2.5}>
                 {loadingTripConfig ? (
                   <Paper
@@ -2122,7 +2100,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 3: TÀI XẾ */}
-            <TabPanel value={tab} index={2}>
+            <TabPanel value={tab} index={3}>
               <Stack spacing={2.5}>
                 {loadingDriverConfig ? (
                   <Paper
@@ -2361,7 +2339,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 4: NẠP VÍ TÀI XẾ */}
-            <TabPanel value={tab} index={3}>
+            <TabPanel value={tab} index={4}>
               <Stack spacing={2.5}>
                 {loadingSystemConfig ? (
                   <Paper
@@ -2525,7 +2503,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 5: CẢNH BÁO */}
-            <TabPanel value={tab} index={4}>
+            <TabPanel value={tab} index={5}>
               <Stack spacing={2.5}>
                 {loadingAlertConfig ? (
                   <Paper
@@ -2713,7 +2691,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 6: HỆ THỐNG */}
-            <TabPanel value={tab} index={5}>
+            <TabPanel value={tab} index={6}>
               <Stack spacing={2.5}>
                 {loadingSystemConfig ? (
                   <Paper

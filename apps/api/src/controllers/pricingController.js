@@ -1,7 +1,7 @@
 // Path: goviet247/apps/api/src/controllers/pricingController.js
 
 import pkg from "@prisma/client";
-import { validateHolidayConfig } from "../services/holidaySurcharge.js";
+import { validateHolidayConfig, validateHolidayPeriods } from "../services/holidaySurcharge.js";
 import { quotePrice } from "../services/pricingService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
 
@@ -139,6 +139,20 @@ export async function updatePricingConfig(req, res) {
 
     const body = req.body || {};
 
+    if (Object.prototype.hasOwnProperty.call(body, "holidayPeriods")) {
+      const error = validateHolidayPeriods(body.holidayPeriods);
+      if (error) return res.status(400).json({ success: false, message: error });
+      const periods = body.holidayPeriods.map(p => ({ id: p.id, enabled: p.enabled,
+        holidaySurchargePercent: Number(p.holidaySurchargePercent), holidayStartDate: p.holidayStartDate,
+        holidayEndDate: p.holidayEndDate, holidayName: (p.holidayName || "").trim(), holidayNote: (p.holidayNote || "").trim() }));
+      try {
+        const item = await prisma.pricingConfig.update({ where: { carType }, data: { holidayPeriods: periods } });
+        return res.json({ success: true, item });
+      } catch (error) {
+        if (error.code === "P2025") return res.status(404).json({ success: false, message: "Không tìm thấy loại xe." });
+        throw error;
+      }
+    }
     const updateData = {};
 
     const numberFields = [
@@ -252,6 +266,10 @@ export async function updatePricingConfig(req, res) {
       });
     }
 
+    // Older admin clients must not silently replace the new multi-period schedule.
+    if (Array.isArray(existing.holidayPeriods) && ["holidaySurchargePercent", "holidayStartDate", "holidayEndDate", "holidayName", "holidayNote"].some(field => Object.prototype.hasOwnProperty.call(body, field) && String(body[field] ?? "") !== String(existing[field] ?? ""))) {
+      return res.status(409).json({ success: false, message: "Vui lòng tải lại trang và sửa phụ thu trong tab Phụ thu lễ, Tết." });
+    }
     const holidayFields = ["holidaySurchargePercent", "holidayStartDate", "holidayEndDate", "holidayName", "holidayNote"];
     for (const field of holidayFields) {
       if (!Object.prototype.hasOwnProperty.call(body, field)) continue;

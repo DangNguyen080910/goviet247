@@ -1,4 +1,4 @@
-import { userSessions } from './services/userSessions.js';
+import { userSessions, pushSessionKey } from './services/userSessions.js';
 import { verifyAdminJwtToken } from './utils/jwt.js';
 // Path: goviet247/apps/api/src/server.js
 import "dotenv/config";
@@ -161,8 +161,10 @@ io.use(async (socket, next) => {
     const user = await userSessions.verify(token);
     const userId = user.id || user.uid;
     socket.data.userId = userId;
+    socket.data.pushSessionId = pushSessionKey(token, user);
+    socket.join(`session:${socket.data.pushSessionId}`);
     const driver = await prisma.driverProfile.findUnique({ where: { userId } });
-    if (driver) socket.data.driverId = userId;
+    if (driver?.status === "VERIFIED" && (!user.appRole || user.appRole === "DRIVER")) socket.data.driverId = userId;
     return next();
   } catch { return next(new Error('AUTH_INVALID')); }
 });

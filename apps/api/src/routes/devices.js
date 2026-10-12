@@ -3,7 +3,7 @@ import { recordRiderAppUsage, normalizeRiderPlatform } from "../services/riderAp
 import { verifyToken } from "../middleware/authMiddleware.js";
 import { Router } from "express";
 import pkg from "@prisma/client";
-import { userSessions } from "../services/userSessions.js";
+import { userSessions, pushSessionKey } from "../services/userSessions.js";
 import { verifyAdminJwtToken } from "../utils/jwt.js";
 
 const { PrismaClient } = pkg;
@@ -33,6 +33,9 @@ async function resolveDeviceOwner(req) {
     return {
       ownerId: userId,
       roleFallback: "user",
+      claims: payload,
+      pushSessionId: pushSessionKey(token, payload),
+      pushExpiresAt: payload.exp ? new Date(payload.exp * 1000) : null,
       displayName: "User",
     };
   } catch (error) { if (error.status !== 401) throw error; }
@@ -89,6 +92,12 @@ router.post("/", async (req, res) => {
       });
     }
 
+    if (String(role).toUpperCase() === "DRIVER") {
+      if (!owner.claims || (owner.claims.appRole && owner.claims.appRole !== "DRIVER")) return res.status(403).json({ success: false, message: "Tài khoản không thuộc ứng dụng tài xế." });
+      const user = await prisma.user.findUnique({ where: { id: owner.ownerId }, include: { roles: true } });
+      if (!user || !(user.primaryRole === "DRIVER" || user.roles.some(r => r.role === "DRIVER"))) return res.status(403).json({ success: false, message: "Tài khoản không phải tài xế." });
+    }
+
     await prisma.user.upsert({
       where: { id: owner.ownerId },
       update: {},
@@ -104,6 +113,8 @@ router.post("/", async (req, res) => {
         userId: owner.ownerId,
         platform,
         role,
+        pushSessionId: owner.pushSessionId || null,
+        pushExpiresAt: owner.pushExpiresAt || null,
         updatedAt: new Date(),
       },
       create: {
@@ -111,6 +122,8 @@ router.post("/", async (req, res) => {
         platform,
         pushToken,
         role,
+        pushSessionId: owner.pushSessionId || null,
+        pushExpiresAt: owner.pushExpiresAt || null,
       },
     });
 

@@ -6,7 +6,7 @@ import {
   verifyOtpHandler,
   getMe,
 } from "../controllers/authController.js";
-import { userSessions } from "../services/userSessions.js";
+import { userSessions, pushSessionKey } from "../services/userSessions.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 
 const OTP_RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5 phút
@@ -206,6 +206,8 @@ router.get("/me", verifyToken, getMe);
 router.post("/logout", verifyToken, async (req, res) => {
   try {
     await userSessions.revoke(req.authToken, req.user);
+    req.app.get("io")?.in(`session:${pushSessionKey(req.authToken, req.user)}`).disconnectSockets(true);
+    await prisma.device.deleteMany({ where: { userId: req.user.uid || req.user.id, role: { in: ["driver", "DRIVER"] }, pushSessionId: pushSessionKey(req.authToken, req.user) } });
     return res.json({ success: true });
   } catch {
     return res.status(503).json({ success: false, message: "Chưa thể đăng xuất. Vui lòng thử lại." });

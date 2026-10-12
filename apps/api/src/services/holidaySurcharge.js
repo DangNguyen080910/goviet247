@@ -21,6 +21,29 @@ export function validateHolidayConfig(config) {
   return "";
 }
 
+export function getHolidayPeriods(config) {
+  if (Array.isArray(config.holidayPeriods)) return config.holidayPeriods;
+  return config.holidayStartDate && config.holidayEndDate ? [{ ...config, id: "legacy", enabled: true }] : [];
+}
+
+export function validateHolidayPeriods(periods) {
+  if (!Array.isArray(periods) || periods.length > 100) return "Danh sách phụ thu không hợp lệ (tối đa 100 đợt cho mỗi loại xe).";
+  const ids = new Set();
+  for (const item of periods) {
+    if (!item || typeof item !== "object" || typeof item.id !== "string" || !item.id || item.id.length > 100 || ids.has(item.id) || typeof item.enabled !== "boolean") return "Đợt phụ thu không hợp lệ.";
+    ids.add(item.id);
+    if (item.holidaySurchargePercent === null || item.holidaySurchargePercent === "" || !["number", "string"].includes(typeof item.holidaySurchargePercent)) return "Phần trăm phụ thu không hợp lệ.";
+    const error = validateHolidayConfig(item);
+    if (error) return error;
+    if (!item.holidayStartDate || !item.holidayEndDate) return "Vui lòng chọn đủ ngày bắt đầu và kết thúc.";
+  }
+  const active = periods.filter(p => p.enabled && Number(p.holidaySurchargePercent) > 0).sort((a,b) => a.holidayStartDate.localeCompare(b.holidayStartDate));
+  for (let i = 1; i < active.length; i++) {
+    if (active[i].holidayStartDate <= active[i-1].holidayEndDate) return "Các đợt phụ thu đang bật của cùng loại xe không được trùng ngày.";
+  }
+  return "";
+}
+
 const calendarVN = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Ho_Chi_Minh", year: "numeric", month: "2-digit", day: "2-digit",
 });
@@ -31,6 +54,16 @@ function dateVN(date) {
 const displayDate = date => date.split("-").reverse().join("/");
 
 export function calculateHolidaySurcharge(config, pickup, basePrice) {
+  if (!Number.isFinite(pickup?.getTime())) return null;
+  const periods = getHolidayPeriods(config);
+  if (validateHolidayPeriods(periods)) return null;
+  const day = dateVN(pickup);
+  const selected = periods.find(p => p.enabled && Number(p.holidaySurchargePercent) > 0 && day >= p.holidayStartDate && day <= p.holidayEndDate);
+  if (!selected) return null;
+  return calculatePeriodSurcharge(selected, pickup, basePrice);
+}
+
+function calculatePeriodSurcharge(config, pickup, basePrice) {
   const percent = Number(config.holidaySurchargePercent ?? 0);
   if (validateHolidayConfig(config) || percent <= 0 || !Number.isFinite(pickup?.getTime()) || !Number.isFinite(basePrice) || basePrice < 0) return null;
   const day = dateVN(pickup);

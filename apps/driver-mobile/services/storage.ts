@@ -28,6 +28,8 @@ export async function removeDriverToken() {
   }
 
   await SecureStore.deleteItemAsync(DRIVER_TOKEN_KEY);
+  const Notifications = await import("expo-notifications");
+  await Promise.allSettled([Notifications.setBadgeCountAsync(0), Notifications.dismissAllNotificationsAsync(), Notifications.clearLastNotificationResponseAsync()]);
 }
 
 export async function clearDriverToken() {

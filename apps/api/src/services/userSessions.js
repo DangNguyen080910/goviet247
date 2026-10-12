@@ -4,6 +4,7 @@ import { signPersistentToken, signToken, verifyJwtToken } from "../utils/jwt.js"
 
 const hash = value => createHash("sha256").update(value).digest("hex");
 const legacyId = token => `legacy_${hash(token)}`;
+export const pushSessionKey = (token, claims) => claims.sid || legacyId(token);
 const denied = () => Object.assign(new Error("SESSION_INVALID"), { status: 401 });
 const expired = session => session.expiresAt && session.expiresAt.getTime() <= Date.now();
 export const persistentEnabled = () => process.env.JWT_EXPIRES === "never";
