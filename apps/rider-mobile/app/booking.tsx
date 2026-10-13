@@ -75,7 +75,6 @@ function mergeDatePartIntoDatetimeLocal(currentValue: string, nextDate: Date) {
   return `${day}T${(currentValue || vietnamNow()).slice(11, 16)}`;
 }
 
-
 function formatDateOnlyDisplay(v: string) {
   if (!v) return "Chọn ngày";
   return `${v.slice(8, 10)}/${v.slice(5, 7)}/${v.slice(0, 4)}`;
@@ -154,6 +153,7 @@ function getRiderDisplayName(user: MeUser) {
 }
 
 type QuoteState = {
+  inputKey: string;
   quoteId: string;
   totalPrice: number;
   expiresAt: string;
@@ -641,7 +641,23 @@ export default function RiderBookingScreen() {
     );
   }, [numericDistanceKm, minDistanceKm, maxDistanceKm]);
 
+  const currentStopsRef = useRef(stops);
+  currentStopsRef.current = stops;
+  const routeInputKey = JSON.stringify([pickupPlace, stopPlaces, stops, direction]);
+  const routeInputKeyRef = useRef(routeInputKey);
+  routeInputKeyRef.current = routeInputKey;
+  const [routeReadyKey, setRouteReadyKey] = useState("");
+  const quoteInputKey = JSON.stringify([routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKeyRef = useRef(quoteInputKey);
+  quoteInputKeyRef.current = quoteInputKey;
+
+  useEffect(() => {
+    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, direction, { silent: false });
+    return () => { latestRouteRequestRef.current += 1; };
+  }, [pickupPlace, stopPlaces, stops, direction]);
+
   const canEstimate =
+    routeReadyKey === routeInputKey && !isRouteLoading &&
     !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !isRouteLoading &&
     hasValidPickupSelection &&
@@ -673,6 +689,7 @@ export default function RiderBookingScreen() {
   }, [quoteRemainingMs]);
 
   const canCreateTrip =
+    routeReadyKey === routeInputKey && !isRouteLoading && quote?.inputKey === quoteInputKey &&
     !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !!quote &&
     !isQuoteExpired &&
@@ -988,6 +1005,9 @@ export default function RiderBookingScreen() {
     const requestId = Date.now() + Math.random();
 
     latestRouteRequestRef.current = requestId;
+    const inputKey = routeInputKeyRef.current;
+    setRouteReadyKey("");
+    resetRouteState({ keepLoading: true });
 
     const hasPickupCoords =
       !!nextPickupPlace?.placeId &&
@@ -995,7 +1015,7 @@ export default function RiderBookingScreen() {
       Number.isFinite(Number(nextPickupPlace?.lng));
 
     if (!hasPickupCoords) {
-      if (latestRouteRequestRef.current === requestId) {
+      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setDistanceKm("");
         setDriveMinutes("");
         setOutboundDriveMinutes("");
@@ -1031,7 +1051,7 @@ export default function RiderBookingScreen() {
       validStops.length === 0 ||
       validStops.some((item) => item === "__INVALID__")
     ) {
-      if (latestRouteRequestRef.current === requestId) {
+      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setDistanceKm("");
         setDriveMinutes("");
         setOutboundDriveMinutes("");
@@ -1061,9 +1081,11 @@ export default function RiderBookingScreen() {
 
       const route = await getRoute(points);
 
-      if (latestRouteRequestRef.current !== requestId) {
+      if (latestRouteRequestRef.current !== requestId || routeInputKeyRef.current !== inputKey) {
         return;
       }
+
+      setRouteReadyKey(inputKey);
 
       if (Number.isFinite(Number(route?.distanceKm))) {
         setDistanceKm(String(route.distanceKm));
@@ -1110,7 +1132,7 @@ export default function RiderBookingScreen() {
         setReturnDriveMinutes("");
       }
     } catch (error: any) {
-      if (latestRouteRequestRef.current !== requestId) {
+      if (latestRouteRequestRef.current !== requestId || routeInputKeyRef.current !== inputKey) {
         return;
       }
 
@@ -1126,7 +1148,7 @@ export default function RiderBookingScreen() {
         );
       }
     } finally {
-      if (latestRouteRequestRef.current === requestId) {
+      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setIsRouteLoading(false);
       }
     }
@@ -1151,9 +1173,6 @@ export default function RiderBookingScreen() {
       setPickupOptions([]);
       setShowPickupOptions(false);
 
-      await refreshRouteFromPlaces(detail, stopPlaces, stops, direction, {
-        silent: true,
-      });
     } catch (error: any) {
       Alert.alert(
         "Không lấy được chi tiết địa chỉ",
@@ -1210,13 +1229,6 @@ export default function RiderBookingScreen() {
       return next;
     });
 
-    void refreshRouteFromPlaces(
-      pickupPlace,
-      normalizedStopPlaces,
-      normalizedStops,
-      direction,
-      { silent: true },
-    );
   }
 
   function handleChangeStop(index: number, value: string) {
@@ -1244,6 +1256,7 @@ export default function RiderBookingScreen() {
         ? option
         : await getPlaceDetail(String(option?.placeId || "").trim());
 
+      if (currentStopsRef.current !== stops) return;
       const detail = normalizeSelectedPlace(option, rawDetail);
 
       suppressStopSearchMapRef.current[index] = true;
@@ -1265,13 +1278,6 @@ export default function RiderBookingScreen() {
       setShowStopOptionsMap((prev) => ({ ...prev, [index]: false }));
       setActiveStopIndex(null);
 
-      await refreshRouteFromPlaces(
-        pickupPlace,
-        nextStopPlaces,
-        nextStops,
-        direction,
-        { silent: true },
-      );
     } catch (error: any) {
       Alert.alert(
         "Không lấy được chi tiết điểm đến",
@@ -1289,9 +1295,6 @@ export default function RiderBookingScreen() {
       setReturnTime("");
     }
 
-    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, next, {
-      silent: true,
-    });
   }
 
   function openDateTimePicker(
@@ -1551,6 +1554,8 @@ export default function RiderBookingScreen() {
       return;
     }
 
+    if (!canEstimate || isEstimating) return;
+    const inputKey = quoteInputKeyRef.current;
     setIsEstimating(true);
 
     try {
@@ -1572,9 +1577,11 @@ export default function RiderBookingScreen() {
       };
 
       const data = await quotePrice(payload);
+      if (quoteInputKeyRef.current !== inputKey) return;
 
       const now = Date.now();
       const nextQuote = {
+        inputKey,
         quoteId: `qt_${now}`,
         totalPrice: Number(data?.finalPrice || 0),
         expiresAt: new Date(now + quoteExpireSeconds * 1000).toISOString(),
@@ -1586,6 +1593,7 @@ export default function RiderBookingScreen() {
       setShouldScrollToQuote(true);
       await triggerLightHaptic();
     } catch (error: any) {
+      if (quoteInputKeyRef.current !== inputKey) return;
       Alert.alert("Tính giá thất bại", error?.message || "Vui lòng thử lại.");
     } finally {
       setIsEstimating(false);
@@ -1597,7 +1605,7 @@ export default function RiderBookingScreen() {
 
     setSubmitTouched(true);
 
-    if (!quote || isQuoteExpired) {
+    if (!quote || isQuoteExpired || quote.inputKey !== quoteInputKey || routeReadyKey !== routeInputKey || isRouteLoading) {
       Alert.alert("Chưa thể đặt chuyến", "Vui lòng tính giá lại trước.");
       return;
     }
@@ -1891,13 +1899,6 @@ export default function RiderBookingScreen() {
 
                           resetRouteState({ keepLoading: true });
 
-                          void refreshRouteFromPlaces(
-                            pickupPlace,
-                            nextStopPlaces,
-                            nextStops,
-                            direction,
-                            { silent: true },
-                          );
                         }}
                       >
                         <Text style={{ fontSize: 16, color: "#9CA3AF" }}>

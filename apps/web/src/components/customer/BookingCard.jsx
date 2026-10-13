@@ -182,7 +182,6 @@ function isValidVietnamPhone(phone = "") {
 }
 
 
-
 function formatWeekdayHeader(day) {
   const dayIndex =
     typeof day?.day === "function"
@@ -652,42 +651,16 @@ export default function BookingCard() {
     });
   };
 
-  const handleRemoveStop = (idx) =>
-    setStops((prev) => {
-      const next = prev.filter((_, i) => i !== idx);
-
-      setStopPlaces((prevPlaces) => {
-        const nextPlaces = prevPlaces.filter((_, i) => i !== idx);
-        return nextPlaces.length ? nextPlaces : [null];
-      });
-
-      setStopOptions((prevOptions) => {
-        const nextOptions = prevOptions.filter((_, i) => i !== idx);
-        return nextOptions.length ? nextOptions : [[]];
-      });
-
-      setStopLoadingMap((prevMap) => {
-        const nextMap = { ...prevMap };
-        delete nextMap[idx];
-
-        const reindexed = {};
-        Object.keys(nextMap).forEach((key) => {
-          const oldIndex = Number(key);
-          if (oldIndex < idx) reindexed[oldIndex] = nextMap[oldIndex];
-          if (oldIndex > idx) reindexed[oldIndex - 1] = nextMap[oldIndex];
-        });
-
-        return reindexed;
-      });
-
-      setTimeout(() => {
-        const targetIdx = Math.min(idx, next.length - 1);
-        const el = stopInputRefs.current[targetIdx];
-        if (el) el.focus();
-      }, 0);
-
-      return next.length ? next : [""];
-    });
+  const handleRemoveStop = (idx) => {
+    const nextStops = stops.filter((_, i) => i !== idx);
+    const nextPlaces = stopPlaces.filter((_, i) => i !== idx);
+    setStops(nextStops.length ? nextStops : [""]);
+    setStopPlaces(nextPlaces.length ? nextPlaces : [null]);
+    setStopOptions(prev => { const next = prev.filter((_, i) => i !== idx); return next.length ? next : [[]]; });
+    setStopLoadingMap(prev => Object.fromEntries(Object.entries(prev).filter(([key]) => Number(key) !== idx).map(([key, value]) => [Number(key) > idx ? Number(key) - 1 : Number(key), value])));
+    setQuote(null);
+    setTimeout(() => { stopInputRefs.current[Math.max(0, Math.min(idx, nextStops.length - 1))]?.focus(); }, 0);
+  };
 
   const handleChangeStop = (idx, val) => {
     setStops((prev) => prev.map((s, i) => (i === idx ? val : s)));
@@ -1045,7 +1018,23 @@ export default function BookingCard() {
 
   const isPhoneValid = isValidVietnamPhone(riderPhone);
 
+  const currentStopsRef = useRef(stops);
+  currentStopsRef.current = stops;
+  const routeInputKey = JSON.stringify([pickupPlace, stopPlaces, stops, direction]);
+  const routeInputKeyRef = useRef(routeInputKey);
+  routeInputKeyRef.current = routeInputKey;
+  const [routeReadyKey, setRouteReadyKey] = useState("");
+  const quoteInputKey = JSON.stringify([routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKeyRef = useRef(quoteInputKey);
+  quoteInputKeyRef.current = quoteInputKey;
+
+  useEffect(() => {
+    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, direction, { silent: false });
+    return () => { latestRouteRequestRef.current += 1; };
+  }, [pickupPlace, stopPlaces, stops, direction]);
+
   const canEstimate =
+    routeReadyKey === routeInputKey && !isRouteLoading &&
     !isLoadingConfig &&
     carTypeOptions.some(item => item.value === carType) &&
     hasValidPickupSelection &&
@@ -1069,6 +1058,7 @@ export default function BookingCard() {
   const showPhoneError = submitTouched && !isPhoneValid;
 
   const canCreateTrip =
+    routeReadyKey === routeInputKey && !isRouteLoading && quote?.inputKey === quoteInputKey &&
     !isLoadingConfig && carTypeOptions.some(item => item.value === carType) && !!quote && !isQuoteExpired && isNameValid && isPhoneValid && !isCreating;
 
   const missingCreateTripHint = useMemo(() => {
@@ -1097,21 +1087,23 @@ export default function BookingCard() {
     }, 0);
   };
 
-  useEffect(() => {
-    if (pickupPlace && stopPlaces.some((p) => p)) {
-      refreshRouteFromPlaces(pickupPlace, stopPlaces, { silent: true });
-    }
-  }, [direction]);
-
   const refreshRouteFromPlaces = async (
     nextPickupPlace,
     nextStopPlaces,
+    nextStops,
+    nextDirection,
     options = {},
   ) => {
     const { silent = false } = options;
 
     const requestId = Date.now() + Math.random();
     latestRouteRequestRef.current = requestId;
+    const inputKey = routeInputKeyRef.current;
+    setRouteReadyKey("");
+    setDistanceKm("");
+    setDriveMinutes("");
+    setOutboundDriveMinutes("");
+    setReturnDriveMinutes("");
 
     const hasPickupCoords =
       nextPickupPlace &&
@@ -1128,7 +1120,7 @@ export default function BookingCard() {
       );
 
     if (!hasPickupCoords || !hasAllStopsValid) {
-      if (latestRouteRequestRef.current === requestId) {
+      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setDistanceKm("");
         setDriveMinutes("");
         setOutboundDriveMinutes("");
@@ -1140,7 +1132,7 @@ export default function BookingCard() {
     const resolvedStopPlaces = nextStopPlaces;
 
     if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
-      if (latestRouteRequestRef.current === requestId) {
+      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setDistanceKm("");
         setDriveMinutes("");
         setOutboundDriveMinutes("");
@@ -1154,8 +1146,8 @@ export default function BookingCard() {
 
       const validStops = [];
 
-      for (let i = 0; i < stops.length; i++) {
-        const text = stops[i];
+      for (let i = 0; i < nextStops.length; i++) {
+        const text = nextStops[i];
         const place = nextStopPlaces[i];
 
         if (
@@ -1171,8 +1163,8 @@ export default function BookingCard() {
         }
       }
 
-      if (validStops.length !== stops.filter((s) => s.trim()).length) {
-        if (latestRouteRequestRef.current === requestId) {
+      if (validStops.length !== nextStops.filter((s) => s.trim()).length) {
+        if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
           setDistanceKm("");
           setDriveMinutes("");
           setOutboundDriveMinutes("");
@@ -1189,7 +1181,7 @@ export default function BookingCard() {
         ...validStops,
       ];
 
-      if (direction === "ROUND_TRIP") {
+      if (nextDirection === "ROUND_TRIP") {
         points.push({
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
@@ -1199,9 +1191,11 @@ export default function BookingCard() {
       const route = await getRoute(points);
 
       // ✅ Chỉ request mới nhất mới được quyền update UI
-      if (latestRouteRequestRef.current !== requestId) {
+      if (latestRouteRequestRef.current !== requestId || routeInputKeyRef.current !== inputKey) {
         return;
       }
+
+      setRouteReadyKey(inputKey);
 
       if (Number.isFinite(Number(route?.distanceKm))) {
         setDistanceKm(String(route.distanceKm));
@@ -1230,7 +1224,7 @@ export default function BookingCard() {
       if (Number.isFinite(Number(resolvedOutboundMinutes))) {
         setOutboundDriveMinutes(String(resolvedOutboundMinutes));
       } else if (
-        direction === "ROUND_TRIP" &&
+        nextDirection === "ROUND_TRIP" &&
         Number.isFinite(Number(route?.durationMinutes))
       ) {
         setOutboundDriveMinutes(
@@ -1242,13 +1236,13 @@ export default function BookingCard() {
 
       if (Number.isFinite(Number(resolvedReturnMinutes))) {
         setReturnDriveMinutes(String(resolvedReturnMinutes));
-      } else if (direction === "ROUND_TRIP") {
+      } else if (nextDirection === "ROUND_TRIP") {
         setReturnDriveMinutes("");
       } else {
         setReturnDriveMinutes("");
       }
     } catch (e) {
-      if (latestRouteRequestRef.current !== requestId) {
+      if (latestRouteRequestRef.current !== requestId || routeInputKeyRef.current !== inputKey) {
         return;
       }
 
@@ -1261,7 +1255,7 @@ export default function BookingCard() {
         });
       }
     } finally {
-      if (latestRouteRequestRef.current === requestId) {
+      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setIsRouteLoading(false);
       }
     }
@@ -1329,7 +1323,6 @@ export default function BookingCard() {
       setPickupAddress(detail.fullAddress || "");
       setPickupOptions([]);
 
-      await refreshRouteFromPlaces(detail, stopPlaces, { silent: true });
     } catch (e) {
       setToast({
         open: true,
@@ -1354,9 +1347,6 @@ export default function BookingCard() {
       setDriveMinutes("");
       setOutboundDriveMinutes("");
 
-      await refreshRouteFromPlaces(pickupPlace, nextStopPlaces, {
-        silent: true,
-      });
       return;
     }
 
@@ -1367,6 +1357,7 @@ export default function BookingCard() {
         ? option
         : await getPlaceDetail(option.placeId);
 
+      if (currentStopsRef.current !== stops) return;
       const detail = normalizeSelectedPlace(option, rawDetail);
 
       const nextStopPlaces = stopPlaces.map((p, i) => (i === idx ? detail : p));
@@ -1379,9 +1370,6 @@ export default function BookingCard() {
         prev.map((items, i) => (i === idx ? [] : items)),
       );
 
-      await refreshRouteFromPlaces(pickupPlace, nextStopPlaces, {
-        silent: true,
-      });
     } catch (e) {
       setToast({
         open: true,
@@ -1425,6 +1413,8 @@ export default function BookingCard() {
       return;
     }
 
+    if (!canEstimate || isEstimating) return;
+    const inputKey = quoteInputKeyRef.current;
     setIsEstimating(true);
     try {
       const payload = {
@@ -1445,9 +1435,11 @@ export default function BookingCard() {
       };
 
       const data = await quotePrice(payload);
+      if (quoteInputKeyRef.current !== inputKey) return;
 
       const now = Date.now();
       const nextQuote = {
+        inputKey,
         quoteId: "qt_" + now,
         totalPrice: data.finalPrice,
         expiresAt: new Date(now + quoteExpireSeconds * 1000).toISOString(),
@@ -1493,6 +1485,7 @@ export default function BookingCard() {
         }, 350);
       }, 50);
     } catch (e) {
+      if (quoteInputKeyRef.current !== inputKey) return;
       setToast({
         open: true,
         severity: "error",
@@ -1723,7 +1716,7 @@ export default function BookingCard() {
 
     setSubmitTouched(true);
 
-    if (!quote || isQuoteExpired) {
+    if (!quote || isQuoteExpired || quote.inputKey !== quoteInputKey || routeReadyKey !== routeInputKey || isRouteLoading) {
       setToast({
         open: true,
         severity: "warning",
