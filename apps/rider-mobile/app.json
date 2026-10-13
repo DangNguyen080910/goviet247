@@ -7,7 +7,6 @@
     "scheme": "ridermobile",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.goviet247.rider",
@@ -16,7 +15,6 @@
         "NSLocationWhenInUseUsageDescription": "GoViet247 uses your location to help you choose pickup and destination points more quickly and accurately when booking rides."
       }
     },
-
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/GoViet247_icon.png",
@@ -26,16 +24,16 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.goviet247.rider",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "blockedPermissions": [
+        "com.google.android.gms.permission.AD_ID"
+      ]
     },
-
     "web": {
       "favicon": "./assets/GoViet247_icon.png"
     },
-
     "plugins": [
       "expo-router",
-
       [
         "expo-notifications",
         {
@@ -44,7 +42,6 @@
           "defaultChannel": "default"
         }
       ],
-
       [
         "expo-splash-screen",
         {
@@ -57,23 +54,19 @@
           }
         }
       ],
-
       "expo-secure-store",
       "@react-native-community/datetimepicker",
       "./plugins/withAndroid16Compatibility"
     ],
-
     "experiments": {
       "typedRoutes": true
     },
-
     "extra": {
       "router": {},
       "eas": {
         "projectId": "15acfa07-3080-44a9-a756-de160f897561"
       }
     },
-
     "owner": "dangnguyen080910"
   }
 }

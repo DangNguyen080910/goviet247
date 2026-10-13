@@ -1,3 +1,4 @@
+import OperatingProvincePicker from "../../components/OperatingProvincePicker";
 // Path: goviet247/apps/driver-mobile/app/driver-profile/index.tsx
 import { useEffect, useMemo, useState } from "react";
 import { router } from "expo-router";
@@ -17,7 +18,7 @@ import {
 
 import { API_BASE_URL } from "../../constants/api";
 import { clearDriverToken, getDriverToken } from "../../services/storage";
-import { getMyDriverProfile } from "../../services/driverProfileApi";
+import { getMyDriverProfile, updateOperatingProvince } from "../../services/driverProfileApi";
 
 function getDriverDisplayName(profile: any) {
   return (
@@ -29,6 +30,8 @@ function getDriverDisplayName(profile: any) {
 }
 
 export default function DriverProfileScreen() {
+  const [operatingProvinceCode, setOperatingProvinceCode] = useState("79");
+  const [savingProvince, setSavingProvince] = useState(false);
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<any>(null);
   const [errorText, setErrorText] = useState("");
@@ -58,11 +61,25 @@ export default function DriverProfileScreen() {
       }
 
       setProfile(data.profile);
+      setOperatingProvinceCode(data.profile.operatingProvinceCode || "79");
     } catch (error: any) {
       setErrorText(error?.message || "Không tải được hồ sơ.");
     } finally {
       setLoading(false);
     }
+  }
+
+  async function saveProvince() {
+    if (savingProvince) return;
+    setSavingProvince(true);
+    try {
+      const token = await getDriverToken();
+      if (!token) throw new Error("Vui lòng đăng nhập lại.");
+      const updated = await updateOperatingProvince(token, operatingProvinceCode);
+      setProfile((prev: any) => ({ ...prev, ...updated }));
+      Alert.alert("Đã lưu", "Đã cập nhật tỉnh/thành thường hoạt động.");
+    } catch (error: any) { Alert.alert("Chưa thể lưu", error.message || "Vui lòng thử lại."); }
+    finally { setSavingProvince(false); }
   }
 
   const portraitUrl = useMemo(() => {
@@ -255,6 +272,11 @@ export default function DriverProfileScreen() {
             </View>
           </View>
 
+          <View style={styles.card}>
+            <OperatingProvincePicker value={operatingProvinceCode} onChange={setOperatingProvinceCode} disabled={savingProvince} />
+            {!profile.operatingProvinceConfirmedAt && <Text style={styles.label}>Khu vực mặc định chưa xác nhận. Anh/chị vui lòng kiểm tra và bấm lưu.</Text>}
+            <TouchableOpacity disabled={savingProvince} onPress={saveProvince} style={{ backgroundColor: "#1676D2", padding: 14, borderRadius: 12 }}><Text style={{ color: "white", textAlign: "center", fontWeight: "700" }}>{savingProvince ? "Đang lưu…" : "Lưu tỉnh/thành"}</Text></TouchableOpacity>
+          </View>
           <View style={styles.card}>
             <Text style={styles.sectionTitle}>Thông tin xe</Text>
 

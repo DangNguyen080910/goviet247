@@ -1,3 +1,4 @@
+import { isProvinceCode } from "../services/driverOperatingProvince.js";
 // Path: goviet247/apps/api/src/controllers/driverProfileController.js
 import { lockDriverProfile } from "../services/tripAcceptancePolicy.js";
 import { z } from "zod";
@@ -216,6 +217,8 @@ function emitAdminDashboardChanged(req, payload = {}) {
 }
 
 const createDriverProfileSchema = z.object({
+  // Old app versions omit this field; retain default but mark it as unconfirmed.
+  operatingProvinceCode: z.string().refine(isProvinceCode, "Vui lòng chọn tỉnh/thành hợp lệ.").optional(),
   fullName: z
     .string()
     .trim()
@@ -455,6 +458,8 @@ export async function getMyDriverProfile(req, res) {
         fullName: resolvedFullName,
         displayName: resolvedFullName,
         phone: user.phones?.[0]?.e164 || null,
+        operatingProvinceCode: profile.operatingProvinceCode,
+        operatingProvinceConfirmedAt: profile.operatingProvinceConfirmedAt,
         status: profile.status,
         balance: profile.balance,
         vehicleType: profile.vehicleType,
@@ -1205,6 +1210,8 @@ export async function createDriverProfile(req, res) {
         data: {
           userId: uid,
           fullName: body.fullName,
+          operatingProvinceCode: body.operatingProvinceCode || "79",
+          operatingProvinceConfirmedAt: body.operatingProvinceCode ? new Date() : null,
           status: "PENDING",
           vehicleType: body.vehicleType,
           vehicleBrand: body.vehicleBrand,
@@ -1347,5 +1354,21 @@ export async function createDriverProfile(req, res) {
       success: false,
       message: "Internal error",
     });
+  }
+}
+
+export async function updateMyOperatingProvince(req, res) {
+  const uid = req.user?.id || req.user?.uid;
+  if (!uid) return res.status(401).json({ success: false, message: "Vui lòng đăng nhập." });
+  const code = req.body?.operatingProvinceCode;
+  if (!isProvinceCode(code)) return res.status(400).json({ success: false, message: "Vui lòng chọn tỉnh/thành hợp lệ." });
+  try {
+    const profile = await prisma.driverProfile.update({ where: { userId: uid }, data: { operatingProvinceCode: code, operatingProvinceConfirmedAt: new Date() }, select: { operatingProvinceCode: true, operatingProvinceConfirmedAt: true } });
+    try { req.app.get("io")?.to("admins").emit("admin:dashboard_changed", { source: "driver_operating_province_updated", userId: uid }); } catch (error) { console.error("Province event error", error); }
+    return res.json({ success: true, profile });
+  } catch (error) {
+    if (error.code === "P2025") return res.status(404).json({ success: false, message: "Chưa có hồ sơ tài xế." });
+    console.error("Update operating province error", error);
+    return res.status(500).json({ success: false, message: "Không thể lưu tỉnh/thành. Vui lòng thử lại." });
   }
 }

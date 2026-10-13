@@ -3,6 +3,7 @@ import { Router } from "express";
 import { verifyToken } from "../middleware/authMiddleware.js";
 import {
   createDriverProfile,
+  updateMyOperatingProvince,
   createMyDriverBankAccount,
   createMyDriverWithdrawRequest,
   deleteMyDriverBankAccount,
@@ -19,6 +20,7 @@ const router = Router();
 
 // Lấy hồ sơ tài xế hiện tại
 router.get("/me", verifyToken, getMyDriverProfile);
+router.patch("/me/operating-province", verifyToken, updateMyOperatingProvince);
 
 // Lấy tổng quan ví tài xế hiện tại
 router.get("/wallet-summary", verifyToken, getMyDriverWalletSummary);

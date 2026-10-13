@@ -1,3 +1,4 @@
+import { isProvinceCode, driverProvinceSummary } from "../services/driverOperatingProvince.js";
 import { getPenaltyRefundQuote, mutateAdminWallet } from "../services/adminWalletMutation.js";
 import { normalizeDriverWalletItemsForAccounting } from "../services/walletAccounting.js";
 import { getQuarterDateRange } from "../services/accountingQuarter.js";
@@ -3066,6 +3067,10 @@ export function makeAdminController(prisma) {
         const status = String(req.query.status || "ALL");
         const phoneVerified = String(req.query.phoneVerified || "all");
         const tripAcceptBlocked = String(req.query.tripAcceptBlocked || "all");
+        const operatingProvinceCode = String(req.query.operatingProvinceCode || "all");
+        if (operatingProvinceCode !== "all" && !isProvinceCode(operatingProvinceCode)) return res.status(400).json({ success: false, message: "Tỉnh/thành không hợp lệ." });
+        const provinceConfirmed = String(req.query.provinceConfirmed || "all");
+        if (!["all", "true", "false"].includes(provinceConfirmed)) return res.status(400).json({ success: false, message: "Bộ lọc xác nhận khu vực không hợp lệ." });
         const sort = String(req.query.sort || "createdAt_desc");
 
         const page = Math.max(1, parseInt(req.query.page || "1", 10));
@@ -3113,9 +3118,11 @@ export function makeAdminController(prisma) {
         };
 
         const candidates = await prisma.driverProfile.findMany({ where, include });
-        const matched = q
+        const searched = q
           ? candidates.filter((item) => matchesDriverSmartSearch(item, q))
           : candidates;
+        const provinceSummary = driverProvinceSummary(searched);
+        const matched = searched.filter(item => (operatingProvinceCode === "all" || (item.operatingProvinceCode || "79") === operatingProvinceCode) && (provinceConfirmed === "all" || (provinceConfirmed === "true" ? Boolean(item.operatingProvinceConfirmedAt) : !item.operatingProvinceConfirmedAt)));
         const total = matched.length;
 
         const driverUserIds = matched.map((item) => item.userId).filter(Boolean);
@@ -3214,7 +3221,7 @@ export function makeAdminController(prisma) {
           success: true,
           items,
           drivers: items,
-          meta: { page, pageSize, total, totalPages },
+          meta: { page, pageSize, total, totalPages, provinceSummary },
         });
       } catch (e) {
         console.error("getDrivers error:", e);

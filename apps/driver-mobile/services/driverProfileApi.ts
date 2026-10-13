@@ -49,6 +49,8 @@ export type DriverProfileDocumentItem = {
 };
 
 export type DriverProfileData = {
+  operatingProvinceCode: string;
+  operatingProvinceConfirmedAt?: string | null;
   id: string;
   userId: string;
   fullName?: string | null;
@@ -124,6 +126,7 @@ export type DriverContractSubmitPayload = {
 };
 
 export type CreateDriverProfilePayload = {
+  operatingProvinceCode: string;
   fullName: string;
   vehicleType: string;
   vehicleBrand: string;
@@ -566,4 +569,10 @@ export async function createMyDriverWithdrawRequest(
   }
 
   return payload as WithdrawMutationResponse;
+}
+export async function updateOperatingProvince(token: string, operatingProvinceCode: string) {
+  const res = await fetch(`${API_BASE_URL}/api/driver/profile/me/operating-province`, { method: "PATCH", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, body: JSON.stringify({ operatingProvinceCode }) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.success) throw new Error(data.message || "Không thể lưu tỉnh/thành.");
+  return data.profile as Pick<DriverProfileData, "operatingProvinceCode" | "operatingProvinceConfirmedAt">;
 }

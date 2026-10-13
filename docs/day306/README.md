@@ -1,3 +1,5 @@
+> Cập nhật 13/10/2026: Phần tích hợp Meta Rider Mobile dưới đây là lịch sử và đã được gỡ theo yêu cầu. Xem docs/releases/2026-10-13-driver-province-remove-meta.md cho cấu hình phát hành hiện tại.
+
 # Day 306 — bàn giao triển khai (26/09/2026)
 
 Đã triển khai trong repo này. Chưa deploy API/Web, chưa migrate DB thật, chưa chạy EAS build/submit và chưa có kết quả attribution từ campaign thật. Những thay đổi chưa commit có sẵn trước Day 306 được giữ lại.

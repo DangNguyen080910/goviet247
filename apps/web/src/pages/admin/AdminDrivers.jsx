@@ -1,5 +1,6 @@
+import provinces from "../../../../api/src/data/vietnam-provinces.json";
 // Path: goviet247/apps/web/src/pages/admin/AdminDrivers.jsx
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Box,
   Typography,
@@ -102,6 +103,9 @@ const DRIVER_SORT_COLUMNS = {
 };
 
 export default function AdminDrivers() {
+  const requestRef = useRef(0);
+  const [operatingProvinceCode, setOperatingProvinceCode] = useState("all");
+  const [provinceConfirmed, setProvinceConfirmed] = useState("all");
   const [drivers, setDrivers] = useState([]);
   const [loading, setLoading] = useState(true); // list loading
   const [meta, setMeta] = useState(null);
@@ -150,12 +154,14 @@ export default function AdminDrivers() {
       q: qDebounced,
       status,
       phoneVerified,
+      operatingProvinceCode,
+      provinceConfirmed,
       tripAcceptBlocked,
       sort,
       page,
       pageSize,
     };
-  }, [qDebounced, status, phoneVerified, tripAcceptBlocked, sort, page, pageSize]);
+  }, [qDebounced, status, phoneVerified, operatingProvinceCode, provinceConfirmed, tripAcceptBlocked, sort, page, pageSize]);
 
   const [selectedId, setSelectedId] = useState(null);
   const [detail, setDetail] = useState(null);
@@ -263,12 +269,15 @@ export default function AdminDrivers() {
   }
 
   async function load(params = {}) {
+    const requestId = ++requestRef.current;
     try {
       setLoading(true);
       const data = await fetchDrivers(params);
+      if (requestRef.current !== requestId) return;
       setDrivers(data.items || []);
       setMeta(data.meta || null);
     } catch (err) {
+      if (requestRef.current !== requestId) return;
       console.error(err);
       setToast({
         open: true,
@@ -276,7 +285,7 @@ export default function AdminDrivers() {
         message: err?.message || "Không tải được danh sách tài xế.",
       });
     } finally {
-      setLoading(false);
+      if (requestRef.current === requestId) setLoading(false);
     }
   }
 
@@ -569,6 +578,20 @@ export default function AdminDrivers() {
           </Select>
         </FormControl>
 
+        <FormControl size="small" sx={{ minWidth: 230 }}>
+          <InputLabel>Tỉnh/thành thường hoạt động</InputLabel>
+          <Select label="Tỉnh/thành thường hoạt động" value={operatingProvinceCode} onChange={e => { setPage(1); setOperatingProvinceCode(e.target.value); }}>
+            <MenuItem value="all">Tất cả tỉnh/thành</MenuItem>
+            {[...provinces].sort((a,b) => a.name.localeCompare(b.name, "vi")).map(p => <MenuItem key={p.code} value={p.code}>{p.name}</MenuItem>)}
+          </Select>
+        </FormControl>
+        <FormControl size="small" sx={{ minWidth: 210 }}>
+          <InputLabel>Xác nhận khu vực</InputLabel>
+          <Select label="Xác nhận khu vực" value={provinceConfirmed} onChange={e => { setPage(1); setProvinceConfirmed(e.target.value); }}>
+            <MenuItem value="all">Tất cả</MenuItem><MenuItem value="true">Đã xác nhận</MenuItem><MenuItem value="false">Chưa xác nhận</MenuItem>
+          </Select>
+        </FormControl>
+
         <FormControl size="small" sx={{ minWidth: 210 }}>
           <InputLabel>Nhận chuyến</InputLabel>
           <Select label="Nhận chuyến" value={tripAcceptBlocked}
@@ -626,6 +649,17 @@ export default function AdminDrivers() {
         )}
       </Box>
 
+      <Box component="details" sx={{ mb: 2, p: 2, border: "1px solid #ddd", borderRadius: 2 }}>
+        <Typography component="summary" sx={{ cursor: "pointer", fontWeight: 700 }}>Số lượng tài xế theo khu vực</Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ my: 1 }}>Thống kê toàn bộ kết quả tìm kiếm và trạng thái, không giới hạn theo trang hoặc bộ lọc khu vực. Hồ sơ mặc định chưa xác nhận được tính riêng.</Typography>
+        <Stack direction="row" spacing={2} sx={{ my: 1 }}>
+          <Typography>Đã xác nhận: <b>{(meta?.provinceSummary || []).reduce((sum,p) => sum+p.confirmed,0)}</b></Typography>
+          <Typography>Chưa xác nhận: <b>{(meta?.provinceSummary || []).reduce((sum,p) => sum+p.unconfirmed,0)}</b></Typography>
+        </Stack>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+          {(meta?.provinceSummary || []).map(p => <Chip key={p.code} label={`${p.name}: ${p.confirmed} đã xác nhận${p.unconfirmed ? ` · ${p.unconfirmed} chưa xác nhận` : ""}`} onClick={() => { setPage(1); setOperatingProvinceCode(p.code); }} color={operatingProvinceCode === p.code ? "primary" : "default"} />)}
+        </Box>
+      </Box>
       {loading ? (
         <Box p={3}>
           <CircularProgress />
@@ -636,6 +670,7 @@ export default function AdminDrivers() {
             <TableRow>
               {sortableHeader("name")}
               {sortableHeader("phone")}
+              <TableCell>Tỉnh/thành thường hoạt động</TableCell>
               {sortableHeader("vehicleType")}
               {sortableHeader("vehicleBrand")}
               {sortableHeader("vehicleModel")}
@@ -665,6 +700,9 @@ export default function AdminDrivers() {
                     return p.isVerified ? p.e164 : `${p.e164} (chưa xác thực)`;
                   })()}
                 </TableCell>
+                <TableCell>{provinces.find(p => p.code === (d.operatingProvinceCode || "79"))?.name || "-"}
+                  {!d.operatingProvinceConfirmedAt && <Typography variant="caption" display="block" color="warning.main">Mặc định · Chưa xác nhận</Typography>}
+                </TableCell>
                 <TableCell>{vehicleTypeLabel(d.vehicleType)}</TableCell>
                 <TableCell>{d.vehicleBrand || "-"}</TableCell>
                 <TableCell>{d.vehicleModel || "-"}</TableCell>
@@ -688,7 +726,7 @@ export default function AdminDrivers() {
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={11}>
+                <TableCell colSpan={12}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>

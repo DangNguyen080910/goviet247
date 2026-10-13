@@ -1,3 +1,4 @@
+import OperatingProvincePicker from "../../components/OperatingProvincePicker";
 // Path: goviet247/apps/driver-mobile/app/driver-profile/create.tsx
 import { useMemo, useState } from "react";
 import { router } from "expo-router";
@@ -58,6 +59,7 @@ const DOCUMENT_ITEMS: DocumentItem[] = [
 
 export default function DriverProfileCreateScreen() {
   const insets = useSafeAreaInsets();
+  const [operatingProvinceCode, setOperatingProvinceCode] = useState("");
   const [fullName, setFullName] = useState("");
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleBrand, setVehicleBrand] = useState("");
@@ -85,6 +87,7 @@ export default function DriverProfileCreateScreen() {
 
   const isFormValid = useMemo(() => {
     return (
+      operatingProvinceCode.length > 0 &&
       fullName.trim().length >= 2 &&
       vehicleType.trim().length > 0 &&
       vehicleBrand.trim().length > 0 &&
@@ -94,6 +97,7 @@ export default function DriverProfileCreateScreen() {
       allDocsUploaded
     );
   }, [
+    operatingProvinceCode,
     fullName,
     vehicleType,
     vehicleBrand,
@@ -295,7 +299,9 @@ export default function DriverProfileCreateScreen() {
         throw new Error("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
       }
 
+      if (!operatingProvinceCode) throw new Error("Vui lòng chọn tỉnh/thành thường hoạt động.");
       await createDriverProfile(token, {
+        operatingProvinceCode,
         fullName: fullName.trim(),
         vehicleType: vehicleType,
         vehicleBrand: vehicleBrand.trim(),
@@ -377,6 +383,8 @@ export default function DriverProfileCreateScreen() {
                 style={styles.input}
                 placeholderTextColor="#9CA3AF"
               />
+
+              <OperatingProvincePicker value={operatingProvinceCode} onChange={setOperatingProvinceCode} />
 
               <Text style={styles.label}>Loại xe</Text>
               <View style={styles.vehicleTypeRow}>
