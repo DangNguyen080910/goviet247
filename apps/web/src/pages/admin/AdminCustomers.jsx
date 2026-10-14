@@ -56,11 +56,23 @@ function getCustomerDisplayName(customer) {
   );
 }
 
+function formatCustomerCreatedAt(value) {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "-";
+  return new Intl.DateTimeFormat("vi-VN", {
+    timeZone: "Asia/Ho_Chi_Minh",
+    day: "2-digit", month: "2-digit", year: "numeric",
+    hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  }).format(date);
+}
+
 const CUSTOMER_SORT_COLUMNS = {
   name: "Họ tên",
   phone: "SĐT",
   appPlatform: "Rider app",
   tripCount: "Tổng chuyến",
+  createdAt: "Ngày tạo",
   status: "Trạng thái",
 };
 
@@ -495,6 +507,7 @@ export default function AdminCustomers() {
               {sortableHeader("phone")}
               {sortableHeader("appPlatform")}
               {sortableHeader("tripCount")}
+              {sortableHeader("createdAt")}
               {sortableHeader("status")}
             </TableRow>
           </TableHead>
@@ -524,6 +537,7 @@ export default function AdminCustomers() {
                   )) : <Chip size="small" label="Chưa ghi nhận" />}
                 </TableCell>
                 <TableCell>{c._count?.riderTrips ?? 0}</TableCell>
+                <TableCell sx={{ whiteSpace: "nowrap" }}>{formatCustomerCreatedAt(c.createdAt)}</TableCell>
 
                 <TableCell>
                   <Chip
@@ -536,7 +550,7 @@ export default function AdminCustomers() {
 
             {customers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={5}>
+                <TableCell colSpan={6}>
                   <Typography color="text.secondary">
                     Không có khách hàng phù hợp.
                   </Typography>
