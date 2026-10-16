@@ -2,6 +2,7 @@ import { isProvinceCode, driverProvinceSummary } from "../services/driverOperati
 import { getPenaltyRefundQuote, mutateAdminWallet } from "../services/adminWalletMutation.js";
 import { normalizeDriverWalletItemsForAccounting } from "../services/walletAccounting.js";
 import { getQuarterDateRange } from "../services/accountingQuarter.js";
+import { buildAccountingPdf } from "../services/accountingPdf.js";
 import { summarizeApprovedPenaltyRefunds } from "../services/penaltyRefundAccounting.js";
 // Path: goviet247/apps/api/src/controllers/adminController.js
 // Controller admin cho alert log / pending trips / trip detail / driver wallet / settlement
@@ -13,8 +14,6 @@ import {
 import fs from "node:fs";
 import path from "node:path";
 import archiver from "archiver";
-import PDFDocument from "pdfkit";
-import { fileURLToPath } from "node:url";
 import {
   buildS3Key,
   uploadBufferToS3,
@@ -25,13 +24,6 @@ import {
   extractS3KeyFromUrlOrKey,
   getSignedViewUrl,
 } from "../services/s3Service.js";
-
-const ACCOUNTING_FONT_REGULAR = fileURLToPath(
-  new URL("../assets/fonts/NotoSans-Regular.ttf", import.meta.url),
-);
-const ACCOUNTING_FONT_BOLD = fileURLToPath(
-  new URL("../assets/fonts/NotoSans-Bold.ttf", import.meta.url),
-);
 
 export function makeAdminController(prisma) {
   async function mapDriverDocumentsForAdmin(documents = []) {
@@ -1367,140 +1359,6 @@ export function makeAdminController(prisma) {
     return rows;
   }
 
-  function redactAccountingPdfCell(value, header = "") {
-    let safeValue = String(value ?? "");
-    if (/số tài khoản/i.test(header) && safeValue) {
-      const digits = safeValue.replace(/\D/g, "");
-      safeValue = digits.length > 4 ? `•••• ${digits.slice(-4)}` : "[đã ẩn]";
-    }
-    if (/(mật khẩu|password|pass(?:word)?)/i.test(safeValue)) {
-      return "[đã ẩn ghi chú có thông tin mật khẩu]";
-    }
-    return safeValue;
-  }
-
-  function buildAccountingPdf(
-    rows,
-    {
-      title,
-      quarter,
-      year,
-      subtitle = "",
-      pageSize = "A4",
-      columnsPerPage = 5,
-    },
-  ) {
-    return new Promise((resolve, reject) => {
-      const doc = new PDFDocument({
-        size: pageSize,
-        layout: "landscape",
-        margins: { top: 28, bottom: 28, left: 28, right: 28 },
-        bufferPages: false,
-        autoFirstPage: false,
-      });
-      const chunks = [];
-      doc.registerFont("Noto", ACCOUNTING_FONT_REGULAR);
-      doc.registerFont("Noto-Bold", ACCOUNTING_FONT_BOLD);
-      doc.on("data", (chunk) => chunks.push(chunk));
-      doc.on("error", reject);
-      doc.on("end", () => resolve(Buffer.concat(chunks)));
-
-      const headers = rows[0] || [];
-      const dataRows = rows.slice(1);
-      const columnGroups = [];
-      for (let start = 0; start < headers.length; start += columnsPerPage) {
-        columnGroups.push(
-          Array.from(
-            { length: Math.min(columnsPerPage, headers.length - start) },
-            (_, offset) => start + offset,
-          ),
-        );
-      }
-      if (!columnGroups.length) columnGroups.push([]);
-
-      const drawPageHeading = (groupIndex, groupCount) => {
-        doc.addPage();
-        const pageWidth = doc.page.width;
-        doc.font("Noto-Bold").fontSize(15).fillColor("#16324f");
-        doc.text(title, 28, 24, { width: pageWidth - 56 });
-        doc.font("Noto").fontSize(8).fillColor("#475569");
-        doc.text(`Quý ${quarter}/${year} · Phần ${groupIndex + 1}/${groupCount}`, 28, 45);
-        if (subtitle) doc.text(subtitle, 28, 58, { width: pageWidth - 56 });
-        return subtitle ? 78 : 66;
-      };
-
-      const drawTableHeader = (indices, y) => {
-        const left = 28;
-        const usableWidth = doc.page.width - 56;
-        const columnWidth = usableWidth / Math.max(1, indices.length);
-        const headerHeight = 31;
-        indices.forEach((columnIndex, offset) => {
-          const x = left + offset * columnWidth;
-          doc.rect(x, y, columnWidth, headerHeight).fillAndStroke("#e8f0f8", "#b6c8d9");
-          doc.font("Noto-Bold").fontSize(7).fillColor("#102a43");
-          doc.text(String(headers[columnIndex] ?? ""), x + 3, y + 3, {
-            width: columnWidth - 6,
-            height: headerHeight - 6,
-            ellipsis: true,
-          });
-        });
-        return y + headerHeight;
-      };
-
-      const groupCount = columnGroups.length;
-      for (let groupIndex = 0; groupIndex < groupCount; groupIndex += 1) {
-        const indices = columnGroups[groupIndex];
-        let y = drawPageHeading(groupIndex, groupCount);
-        y = drawTableHeader(indices, y);
-        if (!dataRows.length) {
-          doc.font("Noto").fontSize(9).fillColor("#334155");
-          doc.text("Không có dữ liệu trong kỳ này.", 32, y + 10);
-          continue;
-        }
-
-        const left = 28;
-        const usableWidth = doc.page.width - 56;
-        const columnWidth = usableWidth / Math.max(1, indices.length);
-        for (const [rowIndex, dataRow] of dataRows.entries()) {
-          doc.font("Noto").fontSize(6.8);
-          const values = indices.map((columnIndex) =>
-            redactAccountingPdfCell(dataRow[columnIndex], headers[columnIndex]),
-          );
-          const heights = values.map((value) =>
-            Math.max(
-              13,
-              doc.heightOfString(value || " ", {
-                width: columnWidth - 7,
-                font: "Noto",
-                size: 6.8,
-                lineGap: 0.5,
-              }) + 5,
-            ),
-          );
-          const rowHeight = Math.max(...heights);
-          if (y + rowHeight > doc.page.height - 28) {
-            y = drawPageHeading(groupIndex, groupCount);
-            y = drawTableHeader(indices, y);
-          }
-          values.forEach((value, offset) => {
-            const x = left + offset * columnWidth;
-            doc.rect(x, y, columnWidth, rowHeight)
-              .fillAndStroke(rowIndex % 2 ? "#ffffff" : "#f8fafc", "#d7e0e8");
-            doc.font("Noto").fontSize(6.8).fillColor("#1f2937");
-            doc.text(value, x + 3, y + 2, {
-              width: columnWidth - 6,
-              height: rowHeight - 3,
-              lineGap: 0.5,
-            });
-          });
-          y += rowHeight;
-        }
-      }
-
-      doc.end();
-    });
-  }
-
   function buildDriverIncomeSummaryRows(tripRows) {
     if (tripRows.length < 2) {
       return { summaryRows: [[
@@ -1656,10 +1514,12 @@ export function makeAdminController(prisma) {
       "- Hoàn phí Google Ads/TikTok Ads được nhập Thu > Thu khác với nguồn GOOGLE_ADS_REFUND/TIKTOK_ADS_REFUND, kèm chứng từ/ mã hoàn và giao dịch chi gốc. Báo cáo trừ khoản hoàn khỏi chi phí Marketing trong kỳ nhận hoàn, không tính là doanh thu mới.",
       "",
       "CÁCH MỞ VÀ PHẠM VI:",
-      "- Các bảng dữ liệu do hệ thống tạo đều là PDF, mở bằng trình đọc PDF; gói này không yêu cầu mở CSV bằng Excel.",
+      "- Các bảng dữ liệu hệ thống là PDF khổ A4/A3 ngang, lặp tiêu đề cột và đánh số Trang x/y. Mỗi giao dịch giữ các thông tin chính trên cùng một dòng; mã tham chiếu và diễn giải phụ nằm ngay dưới dòng đó.",
+      "- STT được đánh liên tục trong từng báo cáo. Người tạo dữ liệu giống nhau được ghi ở chân trang; các cột mã kỹ thuật trùng ý với nhãn hiển thị không chiếm cột riêng.",
+      "- Tổng số mục theo nhóm có dữ liệu liên quan hoặc chồng chéo giữa các bảng; không phải số tệp hay số giao dịch ngân hàng độc lập.",
       "- Tài liệu kế toán tải lên (sao kê, hoá đơn, hợp đồng, hồ sơ nhân sự) được giữ theo định dạng gốc; không có dữ liệu thì thư mục có thể trống.",
       "- Thư mục 06-chuyen-di có bảng tổng hợp thu nhập theo từng tài xế và một file riêng chứa chi tiết chuyến hoàn thành/phạt huỷ trong kỳ.",
-      "- File rút ví che số tài khoản, chỉ hiển thị 4 số cuối. Ghi chú có thông tin mật khẩu được ẩn khỏi bản PDF.",
+      "- Các bảng hệ thống che số tài khoản, kể cả số ghi trong diễn giải sau nhãn STK/số tài khoản, chỉ giữ 4 số cuối. Dòng ghi chú có mật khẩu được ẩn; các dòng giải trình khác được giữ lại.",
       "- File Ví tài xế liệt kê biến động số dư. Yêu cầu rút tiền có ở file Tài xế rút ví; khoản phạt cũ đã quy về khoản giữ gốc không xuất lặp.",
       "- File Đối chiếu ví và chuyến đi liệt kê các khoản giữ trong ví chưa nằm trong file Chuyến đi; đây là dữ liệu đối chiếu, không phải doanh thu bổ sung.",
       "",
@@ -5832,31 +5692,38 @@ export function makeAdminController(prisma) {
           buildAccountingPdf(parseCsvRows(companyCashCsv), {
             ...pdfMeta,
             title: "Thu chi công ty",
+            reportType: "cash",
           }),
           buildAccountingPdf(parseCsvRows(driverWalletCsv), {
             ...pdfMeta,
             title: "Biến động ví tài xế",
+            reportType: "wallet",
           }),
           buildAccountingPdf(parseCsvRows(walletTripReconciliationCsv), {
             ...pdfMeta,
             title: "Đối chiếu ví và chuyến đi",
+            reportType: "reconciliation",
           }),
           buildAccountingPdf(parseCsvRows(tripAccountingCsv), {
             ...pdfMeta,
             title: "Chi tiết kế toán chuyến đi",
+            reportType: "trips",
             subtitle: "Chỉ gồm chuyến hoàn thành và các khoản phạt huỷ chuyến được duyệt.",
           }),
           buildAccountingPdf(parseCsvRows(driverWithdrawCsv), {
             ...pdfMeta,
             title: "Tài xế rút ví",
+            reportType: "withdraw",
           }),
           buildAccountingPdf(parseCsvRows(revenueReportCsv), {
             ...pdfMeta,
             title: "Báo cáo doanh thu và lợi nhuận",
+            reportType: "revenue",
           }),
           buildAccountingPdf(parseCsvRows(accountingNotesCsv), {
             ...pdfMeta,
             title: "Ghi chú kế toán",
+            reportType: "notes",
           }),
         ]);
         const driverIncome = buildDriverIncomeSummaryRows(
@@ -5867,8 +5734,7 @@ export function makeAdminController(prisma) {
           {
             ...pdfMeta,
             title: "Bảng kê thu nhập tài xế",
-            pageSize: "A3",
-            columnsPerPage: 9,
+            reportType: "driverIncome",
             subtitle:
               "Tổng hợp theo tài xế từ các chuyến hoàn thành. Khách hàng thanh toán trực tiếp cho tài xế; đây là bảng kê đối soát, không phải bảng lương. Hệ thống hiện chỉ có tên và số điện thoại tài xế.",
           },

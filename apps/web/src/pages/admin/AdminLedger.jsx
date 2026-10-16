@@ -1357,7 +1357,8 @@ export default function AdminLedger() {
     const renderMoneyCell = (value) => `<td class="number">${formatMoney(value)}</td>`;
     const summaryHtml = driverRows
       .map(
-        (driver) => `<tr>
+        (driver, index) => `<tr>
+          <td class="number">${index + 1}</td>
           <td>${escapeHtml(driver.driverName)}</td>
           <td>${escapeHtml(driver.driverPhone || "—")}</td>
           <td class="number">${driver.tripCount}</td>
@@ -1372,7 +1373,8 @@ export default function AdminLedger() {
       .join("");
     const detailHtml = completedItems
       .map(
-        (item) => `<tr>
+        (item, index) => `<tr>
+          <td class="number">${index + 1}</td>
           <td>${escapeHtml(item.eventAt ? new Date(item.eventAt).toLocaleDateString("vi-VN") : "")}</td>
           <td>${escapeHtml(item.tripId || "")}</td>
           <td>${escapeHtml(item.driverName || "Chưa có tên")}<br><small>${escapeHtml(item.driverPhone || "—")}</small></td>
@@ -1393,9 +1395,9 @@ export default function AdminLedger() {
           <meta charset="utf-8" />
           <title>${title}</title>
           <style>
-            @page { size: A4 landscape; margin: 10mm; }
+            @page { size: A3 landscape; margin: 10mm; }
             * { box-sizing: border-box; }
-            body { font: 10px Arial, sans-serif; color: #172033; }
+            body { font: 11px Arial, sans-serif; color: #172033; }
             h1 { font-size: 17px; margin: 0 0 5px; }
             h2 { font-size: 12px; margin: 18px 0 7px; }
             p { margin: 3px 0; }
@@ -1404,27 +1406,27 @@ export default function AdminLedger() {
             th, td { border: 1px solid #9aa5b1; padding: 4px 5px; vertical-align: top; overflow-wrap: anywhere; }
             th { background: #eaf0f6; text-align: left; }
             .number { text-align: right; white-space: nowrap; }
-            tfoot { font-weight: bold; background: #f3f6f9; }
+            tfoot { display: table-row-group; font-weight: bold; background: #f3f6f9; }
             thead { display: table-header-group; }
             tr { break-inside: avoid; }
-            small { font-size: 8px; color: #526075; }
+            small { font-size: 10px; color: #526075; }
             @media screen { body { margin: 16px; } }
           </style>
         </head>
         <body>
           <h1>BẢNG KÊ CHUYẾN, KHẤU TRỪ VÀ THỰC NHẬN THEO TÀI XẾ</h1>
-          <p><b>Kỳ:</b> Quý ${tripFilters.quarter}/${tripFilters.year}</p>
+          <p><b>Kỳ:</b> Quý ${tripFilters.quarter}/${tripFilters.year} | Đơn vị tiền: VND | Khổ A3 ngang</p>
           <p class="muted">Bảng kê nội bộ dựa trên các chuyến hoàn thành; không phải bảng lương. Khách thanh toán trực tiếp cho tài xế, nên cột thực nhận là số theo dữ liệu chuyến, không phải khoản lương công ty chi. Hồ sơ hiện có tên và số điện thoại; chưa có mã số thuế/CCCD trong bảng này.</p>
           <h2>Tổng hợp theo tài xế</h2>
           <table>
             <thead><tr>
-              <th>Tài xế</th><th>Số điện thoại</th><th>Số chuyến</th>
+              <th style="width:4%">STT</th><th>Tài xế</th><th>Số điện thoại</th><th>Số chuyến</th>
               <th>Giá trị chuyến</th><th>Phí môi giới (đã gồm VAT)</th>
               <th>VAT tài xế</th><th>Thuế TNCN tài xế</th><th>Tổng khấu trừ</th><th>Thực nhận</th>
             </tr></thead>
             <tbody>${summaryHtml}</tbody>
             <tfoot><tr>
-              <td colspan="2">Tổng cộng</td><td class="number">${summaryTotal.tripCount}</td>
+              <td colspan="3">Tổng cộng</td><td class="number">${summaryTotal.tripCount}</td>
               ${renderMoneyCell(summaryTotal.totalPrice)}
               ${renderMoneyCell(summaryTotal.commissionAmount)}
               ${renderMoneyCell(summaryTotal.driverVatAmount)}
@@ -1436,11 +1438,20 @@ export default function AdminLedger() {
           <h2>Chi tiết từng chuyến</h2>
           <table>
             <thead><tr>
-              <th>Ngày</th><th>Mã chuyến</th><th>Tài xế / SĐT</th><th>Giá trị chuyến</th>
+              <th style="width:4%">STT</th><th>Ngày</th><th>Mã chuyến</th><th>Tài xế / SĐT</th><th>Giá trị chuyến</th>
               <th>Phí môi giới (đã gồm VAT)</th><th>VAT tài xế</th><th>Thuế TNCN tài xế</th>
               <th>Tổng khấu trừ</th><th>Thực nhận</th>
             </tr></thead>
             <tbody>${detailHtml}</tbody>
+            <tfoot><tr>
+              <td colspan="4">Tổng ${summaryTotal.tripCount} chuyến hoàn thành</td>
+              ${renderMoneyCell(summaryTotal.totalPrice)}
+              ${renderMoneyCell(summaryTotal.commissionAmount)}
+              ${renderMoneyCell(summaryTotal.driverVatAmount)}
+              ${renderMoneyCell(summaryTotal.driverPitAmount)}
+              ${renderMoneyCell(summaryTotal.totalDeduction)}
+              ${renderMoneyCell(summaryTotal.driverReceive)}
+            </tr></tfoot>
           </table>
           <p class="muted">Chỉ gồm chuyến hoàn thành. Các khoản phạt hủy và đối soát ví được xem ở file PDF chi tiết trong gói kế toán.</p>
           <script>window.addEventListener("load", () => setTimeout(() => window.print(), 250));</script>
