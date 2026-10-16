@@ -1510,6 +1510,7 @@ export function makeAdminController(prisma) {
       "- Doanh thu chính của công ty là phí môi giới; tổng giá trị chuyến không phải doanh thu công ty.",
       "- Tài xế nạp ví/rút ví là dòng tiền ví tài xế, không phải doanh thu công ty.",
       "- Thu nhập khác có thể gồm phạt huỷ chuyến sau khi trừ các khoản hoàn phạt cho tài xế.",
+      "- Lãi tiền gửi ngân hàng được cộng riêng vào doanh thu tài chính, tổng thu và lợi nhuận tạm tính. Hệ thống nhận diện giao dịch Thu > Thu khác có nguồn BANK_INTEREST hoặc diễn giải bắt đầu bằng Lãi tiền gửi/Lãi ngân hàng (có thể có tiền tố Thu). Khi nhập có thể giữ nguồn là tên ngân hàng và ghi rõ diễn giải này.",
       "- Chi phí công ty gồm các khoản chi thực tế như Marketing, AWS, Server, lương nhân sự, vận hành, chủ sở hữu rút tiền, chi khác và hoàn tiền nếu được ghi nhận là chi phí.",
       "- Hoàn phí Google Ads/TikTok Ads được nhập Thu > Thu khác với nguồn GOOGLE_ADS_REFUND/TIKTOK_ADS_REFUND, kèm chứng từ/ mã hoàn và giao dịch chi gốc. Báo cáo trừ khoản hoàn khỏi chi phí Marketing trong kỳ nhận hoàn, không tính là doanh thu mới.",
       "",
@@ -2023,7 +2024,8 @@ export function makeAdminController(prisma) {
     const penaltyGross = Number(penaltyAgg._sum.penaltyAmount || 0);
     const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
     const penaltyNet = penaltyGross - penaltyRefund;
-    const totalIncome = commission.net + penaltyNet;
+    const bankInterest = await getBankInterestIncomeTotal({ start, end });
+    const totalIncome = commission.net + penaltyNet + bankInterest;
 
     let expenseTotal = 0;
     const expenseByCategory = {};
@@ -2100,6 +2102,7 @@ export function makeAdminController(prisma) {
 
       ["", "", ""],
 
+      ["DOANH_THU_TAI_CHINH", "Lãi tiền gửi ngân hàng", formatMoneyExport(bankInterest)],
       ["TONG_THU", "Tổng thu", formatMoneyExport(totalIncome)],
 
       ["", "", ""],
@@ -2180,6 +2183,34 @@ export function makeAdminController(prisma) {
       select: { tripId: true, driverProfileId: true, penaltyAmount: true },
     }) : [];
     return summarizeApprovedPenaltyRefunds(items, penalties);
+  }
+
+  async function getBankInterestIncomeTotal({ start, end }) {
+    const items = await prisma.companyCashTransaction.findMany({
+      where: {
+        type: "IN",
+        category: "OTHER_IN",
+        txnDate: { gte: start, lte: end },
+      },
+      select: { amount: true, note: true, source: true },
+    });
+    return items.reduce((total, item) => {
+      const source = String(item.source || "").trim().toUpperCase();
+      if (["AWS_REFUND", "GOOGLE_ADS_REFUND", "TIKTOK_ADS_REFUND"].includes(source)) {
+        return total;
+      }
+      const note = String(item.note || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, " ");
+      // Recognize the interest notes used by the cash ledger; do not treat
+      // every miscellaneous receipt as income (refunds and capital differ).
+      const isInterest = source === "BANK_INTEREST" ||
+        /^(?:thu\s+)?lai\s+(?:tien gui|ngan hang)\b/.test(note);
+      return total + (isInterest ? Number(item.amount || 0) : 0);
+    }, 0);
   }
 
   async function getAwsExpenseRefundTotal({ start, end }) {
@@ -6411,7 +6442,8 @@ export function makeAdminController(prisma) {
         const penaltyRefund = Number(penaltyRefundSummary.amount || 0);
         const penalty = penaltyGross - penaltyRefund;
 
-        const revenueTotal = commission.net + penalty;
+        const bankInterest = await getBankInterestIncomeTotal({ start, end });
+        const revenueTotal = commission.net + penalty + bankInterest;
         const awsRefund = await getAwsExpenseRefundTotal({ start, end });
         const marketingRefund = await getMarketingExpenseRefundTotal({ start, end });
 
@@ -6475,6 +6507,7 @@ export function makeAdminController(prisma) {
               penalty,
               penaltyGross,
               penaltyRefund,
+              bankInterest,
               total: revenueTotal,
             },
             expense: {

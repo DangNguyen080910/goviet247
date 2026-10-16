@@ -1556,6 +1556,7 @@ export default function AdminLedger() {
         "Doanh thu phạt huỷ chuyến",
         revenueReport?.revenue?.penalty || 0,
       ],
+      ["DOANH_THU_TAI_CHINH", "Lãi tiền gửi ngân hàng", revenueReport?.revenue?.bankInterest || 0],
       ["DOANH_THU", "Tổng doanh thu", revenueReport?.revenue?.total || 0],
 
       ["", "", ""],
@@ -2082,6 +2083,13 @@ export default function AdminLedger() {
                             <TableCell>Doanh thu phạt huỷ chuyến</TableCell>
                             <TableCell align="right">
                               {formatNumber(revenueReport.revenue.penalty)}
+                            </TableCell>
+                          </TableRow>
+
+                          <TableRow>
+                            <TableCell>Lãi tiền gửi ngân hàng</TableCell>
+                            <TableCell align="right">
+                              {formatNumber(revenueReport.revenue.bankInterest)}
                             </TableCell>
                           </TableRow>
 
