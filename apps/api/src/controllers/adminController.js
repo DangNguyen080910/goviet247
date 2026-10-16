@@ -13,6 +13,8 @@ import {
 import fs from "node:fs";
 import path from "node:path";
 import archiver from "archiver";
+import PDFDocument from "pdfkit";
+import { fileURLToPath } from "node:url";
 import {
   buildS3Key,
   uploadBufferToS3,
@@ -23,6 +25,13 @@ import {
   extractS3KeyFromUrlOrKey,
   getSignedViewUrl,
 } from "../services/s3Service.js";
+
+const ACCOUNTING_FONT_REGULAR = fileURLToPath(
+  new URL("../assets/fonts/NotoSans-Regular.ttf", import.meta.url),
+);
+const ACCOUNTING_FONT_BOLD = fileURLToPath(
+  new URL("../assets/fonts/NotoSans-Bold.ttf", import.meta.url),
+);
 
 export function makeAdminController(prisma) {
   async function mapDriverDocumentsForAdmin(documents = []) {
@@ -1223,41 +1232,41 @@ export function makeAdminController(prisma) {
         case "COMPANY_CASH_EXPORT":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "04-thu-chi-cong-ty",
-            fileName: `thu_chi_cong_ty_Q${quarter}_${year}.csv`,
+            fileName: `thu_chi_cong_ty_Q${quarter}_${year}.pdf`,
           };
 
         case "DRIVER_WALLET_EXPORT":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "05-vi-tai-xe",
-            fileName: `vi_tai_xe_Q${quarter}_${year}.csv`,
+            fileName: `vi_tai_xe_Q${quarter}_${year}.pdf`,
           };
 
         case "WALLET_TRIP_RECONCILIATION_EXPORT":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "12-doi-chieu-vi-va-chuyen-di",
-            fileName: `doi_chieu_vi_va_chuyen_di_Q${quarter}_${year}.csv`,
+            fileName: `doi_chieu_vi_va_chuyen_di_Q${quarter}_${year}.pdf`,
           };
 
         case "TRIP_EXPORT":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "06-chuyen-di",
-            fileName: `chuyen_di_Q${quarter}_${year}.csv`,
+            fileName: `chuyen_di_Q${quarter}_${year}.pdf`,
           };
 
         case "DRIVER_WITHDRAW_EXPORT":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "07-tai-xe-rut-vi",
-            fileName: `tai_xe_rut_vi_Q${quarter}_${year}.csv`,
+            fileName: `tai_xe_rut_vi_Q${quarter}_${year}.pdf`,
           };
 
         case "PAYROLL_HR":
@@ -1277,17 +1286,17 @@ export function makeAdminController(prisma) {
         case "REVENUE_REPORT_EXPORT":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "10-bao-cao-doanh-thu-loi-nhuan",
-            fileName: `bao_cao_doanh_thu_loi_nhuan_Q${quarter}_${year}.csv`,
+            fileName: `bao_cao_doanh_thu_loi_nhuan_Q${quarter}_${year}.pdf`,
           };
 
         case "ACCOUNTING_NOTE":
           return {
             ...group,
-            type: "csv",
+            type: "pdf",
             folderName: "11-ghi-chu-ke-toan",
-            fileName: `ghi_chu_ke_toan_Q${quarter}_${year}.csv`,
+            fileName: `ghi_chu_ke_toan_Q${quarter}_${year}.pdf`,
           };
 
         default:
@@ -1319,6 +1328,262 @@ export function makeAdminController(prisma) {
     return (
       "\uFEFF" + rows.map((row) => row.map(escapeCsvCell).join(",")).join("\n")
     );
+  }
+
+  function parseCsvRows(csvText = "") {
+    const text = String(csvText).replace(/^\uFEFF/, "");
+    const rows = [];
+    let row = [];
+    let cell = "";
+    let quoted = false;
+
+    for (let index = 0; index < text.length; index += 1) {
+      const char = text[index];
+      if (char === '"') {
+        if (quoted && text[index + 1] === '"') {
+          cell += '"';
+          index += 1;
+        } else {
+          quoted = !quoted;
+        }
+      } else if (char === "," && !quoted) {
+        row.push(cell);
+        cell = "";
+      } else if ((char === "\n" || char === "\r") && !quoted) {
+        if (char === "\r" && text[index + 1] === "\n") index += 1;
+        row.push(cell);
+        if (row.some((value) => value !== "")) rows.push(row);
+        row = [];
+        cell = "";
+      } else {
+        cell += char;
+      }
+    }
+
+    if (cell !== "" || row.length) {
+      row.push(cell);
+      if (row.some((value) => value !== "")) rows.push(row);
+    }
+    return rows;
+  }
+
+  function redactAccountingPdfCell(value, header = "") {
+    let safeValue = String(value ?? "");
+    if (/số tài khoản/i.test(header) && safeValue) {
+      const digits = safeValue.replace(/\D/g, "");
+      safeValue = digits.length > 4 ? `•••• ${digits.slice(-4)}` : "[đã ẩn]";
+    }
+    if (/(mật khẩu|password|pass(?:word)?)/i.test(safeValue)) {
+      return "[đã ẩn ghi chú có thông tin mật khẩu]";
+    }
+    return safeValue;
+  }
+
+  function buildAccountingPdf(
+    rows,
+    {
+      title,
+      quarter,
+      year,
+      subtitle = "",
+      pageSize = "A4",
+      columnsPerPage = 5,
+    },
+  ) {
+    return new Promise((resolve, reject) => {
+      const doc = new PDFDocument({
+        size: pageSize,
+        layout: "landscape",
+        margins: { top: 28, bottom: 28, left: 28, right: 28 },
+        bufferPages: false,
+        autoFirstPage: false,
+      });
+      const chunks = [];
+      doc.registerFont("Noto", ACCOUNTING_FONT_REGULAR);
+      doc.registerFont("Noto-Bold", ACCOUNTING_FONT_BOLD);
+      doc.on("data", (chunk) => chunks.push(chunk));
+      doc.on("error", reject);
+      doc.on("end", () => resolve(Buffer.concat(chunks)));
+
+      const headers = rows[0] || [];
+      const dataRows = rows.slice(1);
+      const columnGroups = [];
+      for (let start = 0; start < headers.length; start += columnsPerPage) {
+        columnGroups.push(
+          Array.from(
+            { length: Math.min(columnsPerPage, headers.length - start) },
+            (_, offset) => start + offset,
+          ),
+        );
+      }
+      if (!columnGroups.length) columnGroups.push([]);
+
+      const drawPageHeading = (groupIndex, groupCount) => {
+        doc.addPage();
+        const pageWidth = doc.page.width;
+        doc.font("Noto-Bold").fontSize(15).fillColor("#16324f");
+        doc.text(title, 28, 24, { width: pageWidth - 56 });
+        doc.font("Noto").fontSize(8).fillColor("#475569");
+        doc.text(`Quý ${quarter}/${year} · Phần ${groupIndex + 1}/${groupCount}`, 28, 45);
+        if (subtitle) doc.text(subtitle, 28, 58, { width: pageWidth - 56 });
+        return subtitle ? 78 : 66;
+      };
+
+      const drawTableHeader = (indices, y) => {
+        const left = 28;
+        const usableWidth = doc.page.width - 56;
+        const columnWidth = usableWidth / Math.max(1, indices.length);
+        const headerHeight = 31;
+        indices.forEach((columnIndex, offset) => {
+          const x = left + offset * columnWidth;
+          doc.rect(x, y, columnWidth, headerHeight).fillAndStroke("#e8f0f8", "#b6c8d9");
+          doc.font("Noto-Bold").fontSize(7).fillColor("#102a43");
+          doc.text(String(headers[columnIndex] ?? ""), x + 3, y + 3, {
+            width: columnWidth - 6,
+            height: headerHeight - 6,
+            ellipsis: true,
+          });
+        });
+        return y + headerHeight;
+      };
+
+      const groupCount = columnGroups.length;
+      for (let groupIndex = 0; groupIndex < groupCount; groupIndex += 1) {
+        const indices = columnGroups[groupIndex];
+        let y = drawPageHeading(groupIndex, groupCount);
+        y = drawTableHeader(indices, y);
+        if (!dataRows.length) {
+          doc.font("Noto").fontSize(9).fillColor("#334155");
+          doc.text("Không có dữ liệu trong kỳ này.", 32, y + 10);
+          continue;
+        }
+
+        const left = 28;
+        const usableWidth = doc.page.width - 56;
+        const columnWidth = usableWidth / Math.max(1, indices.length);
+        for (const [rowIndex, dataRow] of dataRows.entries()) {
+          doc.font("Noto").fontSize(6.8);
+          const values = indices.map((columnIndex) =>
+            redactAccountingPdfCell(dataRow[columnIndex], headers[columnIndex]),
+          );
+          const heights = values.map((value) =>
+            Math.max(
+              13,
+              doc.heightOfString(value || " ", {
+                width: columnWidth - 7,
+                font: "Noto",
+                size: 6.8,
+                lineGap: 0.5,
+              }) + 5,
+            ),
+          );
+          const rowHeight = Math.max(...heights);
+          if (y + rowHeight > doc.page.height - 28) {
+            y = drawPageHeading(groupIndex, groupCount);
+            y = drawTableHeader(indices, y);
+          }
+          values.forEach((value, offset) => {
+            const x = left + offset * columnWidth;
+            doc.rect(x, y, columnWidth, rowHeight)
+              .fillAndStroke(rowIndex % 2 ? "#ffffff" : "#f8fafc", "#d7e0e8");
+            doc.font("Noto").fontSize(6.8).fillColor("#1f2937");
+            doc.text(value, x + 3, y + 2, {
+              width: columnWidth - 6,
+              height: rowHeight - 3,
+              lineGap: 0.5,
+            });
+          });
+          y += rowHeight;
+        }
+      }
+
+      doc.end();
+    });
+  }
+
+  function buildDriverIncomeSummaryRows(tripRows) {
+    if (tripRows.length < 2) {
+      return { summaryRows: [[
+        "Tài xế",
+        "SĐT",
+        "Số chuyến hoàn thành",
+        "Tổng giá trị chuyến",
+        "Phí môi giới đã thu",
+        "VAT tài xế",
+        "PIT tài xế",
+        "Tổng khấu trừ",
+        "Tài xế thực nhận",
+      ]] };
+    }
+    const headers = tripRows[0];
+    const getIndex = (label) => headers.indexOf(label);
+    const indices = {
+      rowType: getIndex("Mã loại dòng"),
+      name: getIndex("Tài xế"),
+      phone: getIndex("SĐT"),
+      total: getIndex("Giá chuyến"),
+      commission: getIndex("Phí môi giới đã thu (đã gồm VAT)"),
+      vat: getIndex("VAT tài xế"),
+      pit: getIndex("PIT tài xế"),
+      deduction: getIndex("Tổng khấu trừ"),
+      received: getIndex("Tài xế thực nhận"),
+    };
+    const amount = (row, index) =>
+      index < 0 ? 0 : Number(String(row[index] || "0").replace(/[^\d-]/g, "")) || 0;
+    const summary = new Map();
+
+    for (const row of tripRows.slice(1)) {
+      if (row[indices.rowType] !== "COMPLETED_TRIP") continue;
+      const name = row[indices.name] || "Chưa có tên";
+      const phone = row[indices.phone] || "Chưa có SĐT";
+      const key = `${name}\u0000${phone}`;
+      const item = summary.get(key) || {
+        name,
+        phone,
+        trips: 0,
+        total: 0,
+        commission: 0,
+        vat: 0,
+        pit: 0,
+        deduction: 0,
+        received: 0,
+      };
+      item.trips += 1;
+      item.total += amount(row, indices.total);
+      item.commission += amount(row, indices.commission);
+      item.vat += amount(row, indices.vat);
+      item.pit += amount(row, indices.pit);
+      item.deduction += amount(row, indices.deduction);
+      item.received += amount(row, indices.received);
+      summary.set(key, item);
+    }
+
+    const money = (value) => Number(value || 0).toLocaleString("vi-VN");
+    const result = [[
+      "Tài xế",
+      "SĐT",
+      "Số chuyến hoàn thành",
+      "Tổng giá trị chuyến",
+      "Phí môi giới đã thu",
+      "VAT tài xế",
+      "PIT tài xế",
+      "Tổng khấu trừ",
+      "Tài xế thực nhận",
+    ]];
+    for (const item of summary.values()) {
+      result.push([
+        item.name,
+        item.phone,
+        String(item.trips),
+        money(item.total),
+        money(item.commission),
+        money(item.vat),
+        money(item.pit),
+        money(item.deduction),
+        money(item.received),
+      ]);
+    }
+    return { summaryRows: result };
   }
 
   function formatDateTimeExport(value) {
@@ -1365,36 +1630,38 @@ export function makeAdminController(prisma) {
     adminUsername = "",
   }) {
     const lines = [
-      "GO VIET 247 - GOI EXPORT KE TOAN",
+      "GO VIET 247 - BO HO SO KE TOAN",
       "=================================",
-      `Quy: Q${quarter}`,
-      `Nam: ${year}`,
-      `Pham vi: ${fromDate} -> ${toDate}`,
-      `Nguoi export: ${adminUsername || "admin"}`,
-      `Thoi gian export: ${formatDateTimeExport(new Date())}`,
-      `Tong so muc du lieu: ${totalItems}`,
+      `Quý: Q${quarter}`,
+      `Năm: ${year}`,
+      `Phạm vi: ${fromDate} -> ${toDate}`,
+      `Người xuất: ${adminUsername || "admin"}`,
+      `Thời gian xuất: ${formatDateTimeExport(new Date())}`,
+      `Tổng số mục dữ liệu theo nhóm: ${totalItems}`,
       "",
-      "CAC NHOM DU LIEU:",
+      "CÁC NHÓM TÀI LIỆU:",
       ...groups.map(
         (group) =>
-          `- (${group.folderName || "-"}) ${group.label}: ${group.count} muc`,
+          `- (${group.folderName || "-"}) ${group.label}: ${group.count} mục`,
       ),
       "",
-      "GIAI THICH NGHIEP VU QUAN TRONG:",
-      "- Khach hang thanh toan truc tiep cho tai xe, khong di qua he thong.",
-      "- Doanh thu chinh cua cong ty la phi moi gioi.",
-      "- Thu nhap khac co the gom phat huy chuyen sau khi tru cac khoan hoan phat cho tai xe.",
-      "- Bao cao doanh thu loi nhuan KHONG tinh tong gia tri chuyen la doanh thu cong ty.",
-      "- Tai xe nap vi va tai xe rut vi la dong tien giu ho / hoan tra, khong phai doanh thu cong ty.",
-      "- Chi phi cong ty chi tinh cac khoan chi thuc te nhu Marketing, AWS, Server, Luong, Van hanh, Chu so huu rut tien, Chi khac, va cac khoan Refund neu duoc ghi nhan la chi phi.",
-      "- Hoan phi Google Ads/TikTok Ads nhap Thu > Thu khac, voi Nguon GOOGLE_ADS_REFUND/TIKTOK_ADS_REFUND; ghi Credit Memo/ma hoan va giao dich chi goc trong Ghi chu. Bao cao tru khoan nay khoi chi phi Marketing trong ky nhan hoan, khong tinh la doanh thu moi.",
+      "GIẢI THÍCH NGHIỆP VỤ:",
+      "- Khách hàng thanh toán trực tiếp cho tài xế; công ty không trả lương tài xế.",
+      "- Bảng kê thu nhập tài xế tổng hợp theo chuyến hoàn thành, gồm giá chuyến, phí môi giới, VAT/PIT tài xế, tổng khấu trừ và số thực nhận. Đây là bảng kê đối soát thu nhập, không phải bảng lương.",
+      "- Dữ liệu tài xế hiện có trong hệ thống gồm tên và số điện thoại; không có mã số thuế hoặc CCCD trong bảng kê.",
+      "- Doanh thu chính của công ty là phí môi giới; tổng giá trị chuyến không phải doanh thu công ty.",
+      "- Tài xế nạp ví/rút ví là dòng tiền ví tài xế, không phải doanh thu công ty.",
+      "- Thu nhập khác có thể gồm phạt huỷ chuyến sau khi trừ các khoản hoàn phạt cho tài xế.",
+      "- Chi phí công ty gồm các khoản chi thực tế như Marketing, AWS, Server, lương nhân sự, vận hành, chủ sở hữu rút tiền, chi khác và hoàn tiền nếu được ghi nhận là chi phí.",
+      "- Hoàn phí Google Ads/TikTok Ads được nhập Thu > Thu khác với nguồn GOOGLE_ADS_REFUND/TIKTOK_ADS_REFUND, kèm chứng từ/ mã hoàn và giao dịch chi gốc. Báo cáo trừ khoản hoàn khỏi chi phí Marketing trong kỳ nhận hoàn, không tính là doanh thu mới.",
       "",
-      "GHI CHU:",
-      "- Cac file CSV dung dinh dang UTF-8 BOM de mo Excel de hon.",
-      "- Cac folder chung tu se chua file upload thuc te neu file ton tai tren server.",
-      "- Cac nhom khong co du lieu co the khong xuat file CSV ben trong ZIP.",
-      "- File Vi tai xe chi giu mot dong cho moi bien dong so du. Yeu cau rut tien da co o file Tai xe rut vi, va dong phat cu da duoc quy ve khoan giu goc se khong xuat lap.",
-      "- File Doi chieu vi va chuyen di liet ke cac khoan giu trong vi chua nam trong file Chuyen di; day la du lieu doi chieu, khong phai doanh thu bo sung.",
+      "CÁCH MỞ VÀ PHẠM VI:",
+      "- Các bảng dữ liệu do hệ thống tạo đều là PDF, mở bằng trình đọc PDF; gói này không yêu cầu mở CSV bằng Excel.",
+      "- Tài liệu kế toán tải lên (sao kê, hoá đơn, hợp đồng, hồ sơ nhân sự) được giữ theo định dạng gốc; không có dữ liệu thì thư mục có thể trống.",
+      "- Thư mục 06-chuyen-di có bảng tổng hợp thu nhập theo từng tài xế và một file riêng chứa chi tiết chuyến hoàn thành/phạt huỷ trong kỳ.",
+      "- File rút ví che số tài khoản, chỉ hiển thị 4 số cuối. Ghi chú có thông tin mật khẩu được ẩn khỏi bản PDF.",
+      "- File Ví tài xế liệt kê biến động số dư. Yêu cầu rút tiền có ở file Tài xế rút ví; khoản phạt cũ đã quy về khoản giữ gốc không xuất lặp.",
+      "- File Đối chiếu ví và chuyến đi liệt kê các khoản giữ trong ví chưa nằm trong file Chuyến đi; đây là dữ liệu đối chiếu, không phải doanh thu bổ sung.",
       "",
     ];
 
@@ -5549,6 +5816,64 @@ export function makeAdminController(prisma) {
           year: safeYear,
         });
 
+        const pdfMeta = {
+          quarter: safeQuarter,
+          year: safeYear,
+        };
+        const [
+          companyCashPdf,
+          driverWalletPdf,
+          walletTripReconciliationPdf,
+          tripAccountingPdf,
+          driverWithdrawPdf,
+          revenueReportPdf,
+          accountingNotesPdf,
+        ] = await Promise.all([
+          buildAccountingPdf(parseCsvRows(companyCashCsv), {
+            ...pdfMeta,
+            title: "Thu chi công ty",
+          }),
+          buildAccountingPdf(parseCsvRows(driverWalletCsv), {
+            ...pdfMeta,
+            title: "Biến động ví tài xế",
+          }),
+          buildAccountingPdf(parseCsvRows(walletTripReconciliationCsv), {
+            ...pdfMeta,
+            title: "Đối chiếu ví và chuyến đi",
+          }),
+          buildAccountingPdf(parseCsvRows(tripAccountingCsv), {
+            ...pdfMeta,
+            title: "Chi tiết kế toán chuyến đi",
+            subtitle: "Chỉ gồm chuyến hoàn thành và các khoản phạt huỷ chuyến được duyệt.",
+          }),
+          buildAccountingPdf(parseCsvRows(driverWithdrawCsv), {
+            ...pdfMeta,
+            title: "Tài xế rút ví",
+          }),
+          buildAccountingPdf(parseCsvRows(revenueReportCsv), {
+            ...pdfMeta,
+            title: "Báo cáo doanh thu và lợi nhuận",
+          }),
+          buildAccountingPdf(parseCsvRows(accountingNotesCsv), {
+            ...pdfMeta,
+            title: "Ghi chú kế toán",
+          }),
+        ]);
+        const driverIncome = buildDriverIncomeSummaryRows(
+          parseCsvRows(tripAccountingCsv),
+        );
+        const driverIncomePdf = await buildAccountingPdf(
+          driverIncome.summaryRows,
+          {
+            ...pdfMeta,
+            title: "Bảng kê thu nhập tài xế",
+            pageSize: "A3",
+            columnsPerPage: 9,
+            subtitle:
+              "Tổng hợp theo tài xế từ các chuyến hoàn thành. Khách hàng thanh toán trực tiếp cho tài xế; đây là bảng kê đối soát, không phải bảng lương. Hệ thống hiện chỉ có tên và số điện thoại tài xế.",
+          },
+        );
+
         res.setHeader("Content-Type", "application/zip");
         res.setHeader(
           "Content-Disposition",
@@ -5619,20 +5944,24 @@ export function makeAdminController(prisma) {
           folderName: "03-hoa-don-dau-ra",
         });
 
-        archive.append(companyCashCsv, {
-          name: `04-thu-chi-cong-ty/thu_chi_cong_ty_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(companyCashPdf, {
+          name: `04-thu-chi-cong-ty/thu_chi_cong_ty_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
-        archive.append(driverWalletCsv, {
-          name: `05-vi-tai-xe/vi_tai_xe_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(driverWalletPdf, {
+          name: `05-vi-tai-xe/vi_tai_xe_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
-        archive.append(tripAccountingCsv, {
-          name: `06-chuyen-di/chuyen_di_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(tripAccountingPdf, {
+          name: `06-chuyen-di/chuyen_di_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
-        archive.append(driverWithdrawCsv, {
-          name: `07-tai-xe-rut-vi/tai_xe_rut_vi_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(driverIncomePdf, {
+          name: `06-chuyen-di/bang_ke_thu_nhap_tai_xe_Q${safeQuarter}_${safeYear}.pdf`,
+        });
+
+        archive.append(driverWithdrawPdf, {
+          name: `07-tai-xe-rut-vi/tai_xe_rut_vi_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
         await appendAccountingDocumentsToArchive({
@@ -5651,16 +5980,16 @@ export function makeAdminController(prisma) {
           folderName: "09-hop-dong-phap-ly",
         });
 
-        archive.append(revenueReportCsv, {
-          name: `10-bao-cao-doanh-thu-loi-nhuan/bao_cao_doanh_thu_loi_nhuan_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(revenueReportPdf, {
+          name: `10-bao-cao-doanh-thu-loi-nhuan/bao_cao_doanh_thu_loi_nhuan_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
-        archive.append(accountingNotesCsv, {
-          name: `11-ghi-chu-ke-toan/ghi_chu_ke_toan_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(accountingNotesPdf, {
+          name: `11-ghi-chu-ke-toan/ghi_chu_ke_toan_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
-        archive.append(walletTripReconciliationCsv, {
-          name: `12-doi-chieu-vi-va-chuyen-di/doi_chieu_vi_va_chuyen_di_Q${safeQuarter}_${safeYear}.csv`,
+        archive.append(walletTripReconciliationPdf, {
+          name: `12-doi-chieu-vi-va-chuyen-di/doi_chieu_vi_va_chuyen_di_Q${safeQuarter}_${safeYear}.pdf`,
         });
 
         await archive.finalize();

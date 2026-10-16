@@ -1275,6 +1275,184 @@ export default function AdminLedger() {
     document.body.removeChild(link);
   }
 
+  function handlePrintTripAccountingPdf() {
+    const completedItems = tripItems.filter(
+      (item) => item.totalPrice != null && item.driverReceive != null,
+    );
+
+    if (completedItems.length === 0) {
+      alert("Không có chuyến hoàn thành để tạo bảng kê.");
+      return;
+    }
+
+    const popup = window.open("", "_blank");
+    if (!popup) {
+      alert("Trình duyệt đang chặn cửa sổ in. Hãy cho phép pop-up rồi thử lại.");
+      return;
+    }
+
+    const money = new Intl.NumberFormat("vi-VN", {
+      maximumFractionDigits: 0,
+    });
+    const formatMoney = (value) => money.format(Number(value || 0));
+    const escapeHtml = (value) =>
+      String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[char]);
+
+    const byDriver = new Map();
+    for (const item of completedItems) {
+      const driverName = item.driverName || "Chưa có tên";
+      const driverPhone = item.driverPhone || "";
+      const key = `${driverName}::${driverPhone}`;
+      const current = byDriver.get(key) || {
+        driverName,
+        driverPhone,
+        tripCount: 0,
+        totalPrice: 0,
+        commissionAmount: 0,
+        driverVatAmount: 0,
+        driverPitAmount: 0,
+        totalDeduction: 0,
+        driverReceive: 0,
+      };
+      current.tripCount += 1;
+      current.totalPrice += Number(item.totalPrice || 0);
+      current.commissionAmount += Number(item.commissionAmount || 0);
+      current.driverVatAmount += Number(item.driverVatAmount || 0);
+      current.driverPitAmount += Number(item.driverPitAmount || 0);
+      current.totalDeduction += Number(item.totalDeduction || 0);
+      current.driverReceive += Number(item.driverReceive || 0);
+      byDriver.set(key, current);
+    }
+
+    const driverRows = [...byDriver.values()].sort((a, b) =>
+      a.driverName.localeCompare(b.driverName, "vi"),
+    );
+    const summaryTotal = driverRows.reduce(
+      (total, driver) => {
+        total.tripCount += driver.tripCount;
+        total.totalPrice += driver.totalPrice;
+        total.commissionAmount += driver.commissionAmount;
+        total.driverVatAmount += driver.driverVatAmount;
+        total.driverPitAmount += driver.driverPitAmount;
+        total.totalDeduction += driver.totalDeduction;
+        total.driverReceive += driver.driverReceive;
+        return total;
+      },
+      {
+        tripCount: 0,
+        totalPrice: 0,
+        commissionAmount: 0,
+        driverVatAmount: 0,
+        driverPitAmount: 0,
+        totalDeduction: 0,
+        driverReceive: 0,
+      },
+    );
+    const renderMoneyCell = (value) => `<td class="number">${formatMoney(value)}</td>`;
+    const summaryHtml = driverRows
+      .map(
+        (driver) => `<tr>
+          <td>${escapeHtml(driver.driverName)}</td>
+          <td>${escapeHtml(driver.driverPhone || "—")}</td>
+          <td class="number">${driver.tripCount}</td>
+          ${renderMoneyCell(driver.totalPrice)}
+          ${renderMoneyCell(driver.commissionAmount)}
+          ${renderMoneyCell(driver.driverVatAmount)}
+          ${renderMoneyCell(driver.driverPitAmount)}
+          ${renderMoneyCell(driver.totalDeduction)}
+          ${renderMoneyCell(driver.driverReceive)}
+        </tr>`,
+      )
+      .join("");
+    const detailHtml = completedItems
+      .map(
+        (item) => `<tr>
+          <td>${escapeHtml(item.eventAt ? new Date(item.eventAt).toLocaleDateString("vi-VN") : "")}</td>
+          <td>${escapeHtml(item.tripId || "")}</td>
+          <td>${escapeHtml(item.driverName || "Chưa có tên")}<br><small>${escapeHtml(item.driverPhone || "—")}</small></td>
+          ${renderMoneyCell(item.totalPrice)}
+          ${renderMoneyCell(item.commissionAmount)}
+          ${renderMoneyCell(item.driverVatAmount)}
+          ${renderMoneyCell(item.driverPitAmount)}
+          ${renderMoneyCell(item.totalDeduction)}
+          ${renderMoneyCell(item.driverReceive)}
+        </tr>`,
+      )
+      .join("");
+
+    const title = `Bang_ke_tai_xe_Q${tripFilters.quarter}_${tripFilters.year}`;
+    const html = `<!doctype html>
+      <html lang="vi">
+        <head>
+          <meta charset="utf-8" />
+          <title>${title}</title>
+          <style>
+            @page { size: A4 landscape; margin: 10mm; }
+            * { box-sizing: border-box; }
+            body { font: 10px Arial, sans-serif; color: #172033; }
+            h1 { font-size: 17px; margin: 0 0 5px; }
+            h2 { font-size: 12px; margin: 18px 0 7px; }
+            p { margin: 3px 0; }
+            .muted { color: #526075; }
+            table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+            th, td { border: 1px solid #9aa5b1; padding: 4px 5px; vertical-align: top; overflow-wrap: anywhere; }
+            th { background: #eaf0f6; text-align: left; }
+            .number { text-align: right; white-space: nowrap; }
+            tfoot { font-weight: bold; background: #f3f6f9; }
+            thead { display: table-header-group; }
+            tr { break-inside: avoid; }
+            small { font-size: 8px; color: #526075; }
+            @media screen { body { margin: 16px; } }
+          </style>
+        </head>
+        <body>
+          <h1>BẢNG KÊ CHUYẾN, KHẤU TRỪ VÀ THỰC NHẬN THEO TÀI XẾ</h1>
+          <p><b>Kỳ:</b> Quý ${tripFilters.quarter}/${tripFilters.year}</p>
+          <p class="muted">Bảng kê nội bộ dựa trên các chuyến hoàn thành; không phải bảng lương. Khách thanh toán trực tiếp cho tài xế, nên cột thực nhận là số theo dữ liệu chuyến, không phải khoản lương công ty chi. Hồ sơ hiện có tên và số điện thoại; chưa có mã số thuế/CCCD trong bảng này.</p>
+          <h2>Tổng hợp theo tài xế</h2>
+          <table>
+            <thead><tr>
+              <th>Tài xế</th><th>Số điện thoại</th><th>Số chuyến</th>
+              <th>Giá trị chuyến</th><th>Phí môi giới (đã gồm VAT)</th>
+              <th>VAT tài xế</th><th>Thuế TNCN tài xế</th><th>Tổng khấu trừ</th><th>Thực nhận</th>
+            </tr></thead>
+            <tbody>${summaryHtml}</tbody>
+            <tfoot><tr>
+              <td colspan="2">Tổng cộng</td><td class="number">${summaryTotal.tripCount}</td>
+              ${renderMoneyCell(summaryTotal.totalPrice)}
+              ${renderMoneyCell(summaryTotal.commissionAmount)}
+              ${renderMoneyCell(summaryTotal.driverVatAmount)}
+              ${renderMoneyCell(summaryTotal.driverPitAmount)}
+              ${renderMoneyCell(summaryTotal.totalDeduction)}
+              ${renderMoneyCell(summaryTotal.driverReceive)}
+            </tr></tfoot>
+          </table>
+          <h2>Chi tiết từng chuyến</h2>
+          <table>
+            <thead><tr>
+              <th>Ngày</th><th>Mã chuyến</th><th>Tài xế / SĐT</th><th>Giá trị chuyến</th>
+              <th>Phí môi giới (đã gồm VAT)</th><th>VAT tài xế</th><th>Thuế TNCN tài xế</th>
+              <th>Tổng khấu trừ</th><th>Thực nhận</th>
+            </tr></thead>
+            <tbody>${detailHtml}</tbody>
+          </table>
+          <p class="muted">Chỉ gồm chuyến hoàn thành. Các khoản phạt hủy và đối soát ví được xem ở file PDF chi tiết trong gói kế toán.</p>
+          <script>window.addEventListener("load", () => setTimeout(() => window.print(), 250));</script>
+        </body>
+      </html>`;
+
+    popup.document.open();
+    popup.document.write(html);
+    popup.document.close();
+    popup.focus();
+  }
+
   function handleExportWithdrawCsv() {
     if (!withdrawItems || withdrawItems.length === 0) {
       alert("Không có dữ liệu để export.");
@@ -2679,6 +2857,12 @@ export default function AdminLedger() {
                       <Button variant="outlined" onClick={handleExportTripCsv}>
                         EXPORT CSV
                       </Button>
+                      <Button
+                        variant="outlined"
+                        onClick={handlePrintTripAccountingPdf}
+                      >
+                        IN / LƯU PDF
+                      </Button>
                     </Stack>
                   </Stack>
 
@@ -3055,7 +3239,7 @@ export default function AdminLedger() {
                   <Alert severity="success" sx={{ borderRadius: 2 }}>
                     Bạn có thể xem trước dữ liệu theo quý, sau đó bấm{" "}
                     <strong>Xuất file ZIP</strong> để tải toàn bộ bộ chứng từ và
-                    file CSV kế toán.
+                    các bảng kế toán dạng PDF.
                   </Alert>
                 </Stack>
               </Paper>
