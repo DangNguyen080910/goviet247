@@ -2916,10 +2916,26 @@ export async function adminVerifyTrip(req, res) {
         .status(400)
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
-    if (trip.isVerified && req.body?.driverIds !== undefined) {
-      return res.status(409).json({ success: false, message: 'Chuyến đã được duyệt. Tải lại danh sách để kiểm tra đối tượng nhận chuyến.' });
+    const audienceMode = req.body?.audienceMode;
+    if (audienceMode !== undefined && !["ALL", "SELECTED"].includes(audienceMode)) {
+      return res.status(400).json({ success: false, message: "Đối tượng nhận chuyến không hợp lệ." });
+    }
+    if (audienceMode === "ALL" && req.body?.driverIds !== undefined) {
+      return res.status(400).json({ success: false, message: "Duyệt cho tất cả không được kèm danh sách tài xế chỉ định." });
+    }
+    // Legacy clients omit both fields for public approval. Always resolve the
+    // new approval intent rather than inheriting a previous private audience.
+    let audienceDriverIds = [];
+    if (audienceMode === "SELECTED" || req.body?.driverIds !== undefined) {
+      try { audienceDriverIds = parseAudience(req.body?.driverIds); }
+      catch (error) { return res.status(400).json({ success: false, message: error.message }); }
     }
     if (trip.isVerified) {
+      const currentAudience = Array.isArray(trip.audienceDriverIds) ? trip.audienceDriverIds : [];
+      if (currentAudience.length !== audienceDriverIds.length ||
+          !currentAudience.every(driverId => audienceDriverIds.includes(driverId))) {
+        return res.status(409).json({ success: false, message: "Chuyến đã được duyệt cho đối tượng khác. Đưa chuyến về Chờ duyệt trước khi duyệt lại." });
+      }
       return res.status(200).json({
         success: true,
         trip,
@@ -2932,10 +2948,7 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chuyến đã bị hủy" });
     }
 
-    let audienceDriverIds = trip.audienceDriverIds;
-    if (req.body?.driverIds !== undefined) {
-      try { audienceDriverIds = parseAudience(req.body.driverIds); }
-      catch (error) { return res.status(400).json({ success: false, message: error.message }); }
+    if (audienceDriverIds.length > 0) {
       const count = await prisma.driverProfile.count({ where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false } });
       if (count !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến.' });
     }

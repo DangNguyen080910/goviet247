@@ -249,6 +249,7 @@ export async function fetchPendingTripDetail(tripId: string) {
 export async function verifyPendingTrip(tripId: string) {
   const data = await adminRequest(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
+    body: JSON.stringify({ audienceMode: "ALL" }),
   });
 
   return data;

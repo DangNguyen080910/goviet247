@@ -430,7 +430,7 @@ export default function AdminTrips() {
                               onVerify(t.id);
                             }}
                           >
-                            Duyệt
+                            Duyệt cho tất cả tài xế
                           </Button>
                           <Button size="small" variant="outlined" onClick={e => { e.stopPropagation(); setAudienceTripId(t.id); }}>Duyệt cho tài xế chỉ định</Button>
 

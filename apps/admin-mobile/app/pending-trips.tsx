@@ -508,7 +508,7 @@ export default function PendingTripsScreen() {
       setItems((current) => current.filter((item) => item.id !== completedTripId));
       closeDetailModal();
       router.replace("/home");
-      Alert.alert("Thành công", "Đã duyệt chuyến và gửi tới tài xế.");
+      Alert.alert("Thành công", "Đã duyệt chuyến cho tất cả tài xế đủ điều kiện.");
     } catch (error: any) {
       console.error("verify trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể duyệt chuyến.");
@@ -1271,7 +1271,7 @@ export default function PendingTripsScreen() {
                       <Text style={styles.verifyButtonText}>
                         {actionLoading === "VERIFY"
                           ? "Đang duyệt..."
-                          : "Duyệt chuyến"}
+                          : "Duyệt cho tất cả tài xế"}
                       </Text>
                     </Pressable>
 

@@ -25,9 +25,9 @@ function money(value: unknown) {
 
 function quarterRange(year: number, quarter: number) {
   const startMonth = (quarter - 1) * 3;
-  const from = new Date(Date.UTC(year, startMonth, 1));
-  const to = new Date(Date.UTC(year, startMonth + 3, 1));
-  to.setUTCMilliseconds(to.getUTCMilliseconds() - 1);
+  const vietnamOffset = 7 * 60 * 60 * 1000;
+  const from = new Date(Date.UTC(year, startMonth, 1) - vietnamOffset);
+  const to = new Date(Date.UTC(year, startMonth + 3, 1) - vietnamOffset - 1);
   return { fromDate: from.toISOString(), toDate: to.toISOString() };
 }
 
@@ -35,6 +35,7 @@ export default function LedgerScreen() {
   const now = new Date();
   const [quarter, setQuarter] = useState(Math.floor(now.getMonth() / 3) + 1);
   const [year, setYear] = useState(now.getFullYear());
+  const [cashScope, setCashScope] = useState<"QUARTER" | "ALL">("QUARTER");
   const [cash, setCash] = useState({ totalIn: 0, totalOut: 0, balance: 0 });
   const [report, setReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -55,7 +56,7 @@ export default function LedgerScreen() {
       }
       const range = quarterRange(year, quarter);
       const [cashData, reportData] = await Promise.all([
-        fetchCashSummary(range.fromDate, range.toDate),
+        cashScope === "ALL" ? fetchCashSummary() : fetchCashSummary(range.fromDate, range.toDate),
         fetchRevenueReport(quarter, year),
       ]);
       if (version !== loadVersion.current) return;
@@ -72,21 +73,25 @@ export default function LedgerScreen() {
         setRefreshing(false);
       }
     }
-  }, [quarter, year]);
+  }, [quarter, year, cashScope]);
 
   useFocusEffect(useCallback(() => { void load(); }, [load]));
 
   const rows = useMemo(() => [
     { label: "Phí môi giới", value: report?.revenue?.commission },
     { label: "Phạt huỷ chuyến", value: report?.revenue?.penalty },
+    { label: "Lãi tiền gửi ngân hàng", value: report?.revenue?.bankInterest },
     ...Object.entries(report?.expense?.byCategory || {}).map(([key, value]) => ({
       label: EXPENSE_LABELS[key] || key, value: -(Number(value) || 0),
     })),
   ], [report]);
 
-  const cards = [
+  const cashCards = [
     ["Tổng thu", cash.totalIn, "#15803d"], ["Tổng chi", cash.totalOut, "#dc2626"],
-    ["Chênh lệch", cash.balance, "#0f172a"], ["Doanh thu công ty", report?.revenue?.total, "#0369a1"],
+    ["Chênh lệch thu chi", cash.balance, cash.balance >= 0 ? "#0f172a" : "#dc2626"],
+  ] as const;
+  const cards = [
+    ["Doanh thu công ty", report?.revenue?.total, "#0369a1"],
     ["Chi phí công ty", report?.expense?.total, "#dc2626"], ["Lợi nhuận tạm tính", report?.profit?.amount, Number(report?.profit?.amount || 0) >= 0 ? "#15803d" : "#ea580c"],
   ] as const;
 
@@ -99,6 +104,14 @@ export default function LedgerScreen() {
           <View style={styles.yearRow}><Pressable style={styles.yearButton} onPress={() => setYear((v) => v - 1)}><Text>−</Text></Pressable><Text style={styles.year}>{year}</Text><Pressable style={styles.yearButton} onPress={() => setYear((v) => v + 1)}><Text>+</Text></Pressable></View>
         </View>
         {loading ? <ActivityIndicator size="large" style={{ marginTop: 60 }} /> : loadError ? <Text style={styles.empty}>{loadError}</Text> : <>
+          <Text style={styles.cashTitle}>Thu chi công ty</Text>
+          <View style={styles.scopeRow}>
+            {(["QUARTER", "ALL"] as const).map((scope) => <Pressable key={scope} accessibilityRole="button" accessibilityState={{ selected: cashScope === scope }} onPress={() => setCashScope(scope)} style={[styles.pill, cashScope === scope && styles.pillActive]}><Text style={[styles.pillText, cashScope === scope && styles.pillTextActive]}>{scope === "ALL" ? "Tất cả" : `Quý ${quarter}/${year}`}</Text></Pressable>)}
+          </View>
+          <Text style={styles.periodNote}>{cashScope === "ALL" ? "Toàn bộ giao dịch đã ghi nhận" : `Giao dịch trong quý ${quarter}/${year} · Giờ Việt Nam`}</Text>
+          <View style={styles.grid}>{cashCards.map(([label, value, color], index) => <View key={label} style={[styles.card, index === 2 && styles.balanceCard]}><Text style={styles.cardLabel}>{label}</Text><Text style={[styles.cardValue, { color }]}>{money(value)}</Text></View>)}</View>
+          <Text style={styles.periodNote}>Thu chi gồm cả dòng tiền ví tài xế; chênh lệch thu chi không phải lợi nhuận công ty.</Text>
+          <Text style={styles.sectionTitle}>Doanh thu / lợi nhuận · Q{quarter}/{year}</Text>
           <View style={styles.grid}>{cards.map(([label, value, color]) => <View key={label} style={styles.card}><Text style={styles.cardLabel}>{label}</Text><Text style={[styles.cardValue, { color }]}>{money(value)}</Text></View>)}</View>
           <Text style={styles.sectionTitle}>Danh sách doanh thu / chi phí</Text>
           <View style={styles.list}>{rows.length ? rows.map((row) => <View key={row.label} style={styles.row}><Text style={styles.rowLabel}>{row.label}</Text><Text style={[styles.rowValue, { color: Number(row.value || 0) < 0 ? "#dc2626" : "#15803d" }]}>{money(row.value)}</Text></View>) : <Text style={styles.empty}>Chưa có dữ liệu trong quý này.</Text>}</View>
@@ -109,5 +122,9 @@ export default function LedgerScreen() {
 }
 
 const styles = StyleSheet.create({
+  cashTitle: { fontSize: 20, fontWeight: "900", color: "#0f172a", marginBottom: 12 },
+  scopeRow: { flexDirection: "row", gap: 8 },
+  periodNote: { color: "#64748b", fontSize: 12, lineHeight: 18, marginTop: 8, marginBottom: 12 },
+  balanceCard: { width: "100%", backgroundColor: "#eaf2ff" },
   safe:{flex:1,backgroundColor:"#f5f7fb"},content:{padding:16,paddingBottom:40},header:{flexDirection:"row",alignItems:"center",gap:12,marginBottom:18},back:{fontSize:42,lineHeight:44,color:"#0f172a"},title:{fontSize:28,fontWeight:"900",color:"#0f172a"},subtitle:{color:"#64748b",marginTop:2},filter:{backgroundColor:"white",padding:14,borderRadius:16,marginBottom:14,gap:14},filterGroup:{gap:8},filterLabel:{fontWeight:"700",color:"#475569"},pills:{flexDirection:"row",gap:8},pill:{flex:1,paddingVertical:10,borderRadius:10,backgroundColor:"#eef2f7",alignItems:"center"},pillActive:{backgroundColor:"#1677d2"},pillText:{fontWeight:"800",color:"#475569"},pillTextActive:{color:"white"},yearRow:{flexDirection:"row",justifyContent:"center",alignItems:"center",gap:20},yearButton:{width:40,height:36,borderRadius:10,backgroundColor:"#eef2f7",alignItems:"center",justifyContent:"center"},year:{fontSize:18,fontWeight:"900"},grid:{flexDirection:"row",flexWrap:"wrap",gap:10},card:{width:"48.5%",backgroundColor:"white",padding:14,borderRadius:14,minHeight:96,justifyContent:"space-between"},cardLabel:{color:"#64748b",fontWeight:"700"},cardValue:{fontSize:18,fontWeight:"900",marginTop:10},sectionTitle:{fontSize:20,fontWeight:"900",color:"#0f172a",marginTop:24,marginBottom:10},list:{backgroundColor:"white",borderRadius:14,overflow:"hidden"},row:{flexDirection:"row",justifyContent:"space-between",gap:12,padding:14,borderBottomWidth:StyleSheet.hairlineWidth,borderBottomColor:"#e2e8f0"},rowLabel:{flex:1,color:"#334155",fontWeight:"600"},rowValue:{fontWeight:"900"},empty:{padding:20,textAlign:"center",color:"#64748b"},
 });

@@ -47,7 +47,11 @@ export async function fetchUnverifiedTrips() {
 export async function verifyTrip(tripId, note, driverIds) {
   const data = await request(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
-    body: JSON.stringify({ note, ...(driverIds ? { driverIds } : {}) }),
+    body: JSON.stringify({
+      note,
+      audienceMode: driverIds !== undefined ? "SELECTED" : "ALL",
+      ...(driverIds !== undefined ? { driverIds } : {}),
+    }),
   });
   return data?.trip;
 }

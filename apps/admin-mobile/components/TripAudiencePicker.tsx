@@ -8,7 +8,7 @@ export default function TripAudiencePicker({ tripId, onDone, disabled, onBusy }:
     adminRequest(`/api/trips/admin/trips/${tripId}/audience-candidates`, { method: 'GET' }).then(data => { if(active) { setItems(data.items); setInfo(`${data.config.radiusKm} km / ${data.config.days} ngày. ${data.warning}`); } }).catch(e => { if(active) setError(e.message); }).finally(() => { if(active) setLoading(false); });
     return () => { active = false; };
   }, [tripId, open]);
-  async function submit() { setBusy(true); onBusy(true); try { await adminRequest(`/api/trips/admin/trips/${tripId}/verify`, { method: 'POST', body: JSON.stringify({ driverIds: selected, note: 'Duyệt cho tài xế chỉ định' }) }); onDone(); } catch(e: any) { Alert.alert('Không thể duyệt', e.message); } finally { setBusy(false); onBusy(false); } }
+  async function submit() { setBusy(true); onBusy(true); try { await adminRequest(`/api/trips/admin/trips/${tripId}/verify`, { method: 'POST', body: JSON.stringify({ audienceMode: 'SELECTED', driverIds: selected, note: 'Duyệt cho tài xế chỉ định' }) }); onDone(); } catch(e: any) { Alert.alert('Không thể duyệt', e.message); } finally { setBusy(false); onBusy(false); } }
   return <View style={{padding: 12, borderWidth: 1, borderColor: '#ccc', borderRadius: 8, gap: 10}}>
     <Pressable disabled={busy || disabled} onPress={() => setOpen(!open)}><Text style={{color: '#145ea8', fontWeight: '700'}}>Duyệt và show cho tài xế chỉ định {open ? '▴' : '▾'}</Text></Pressable>
     {open && <><Text>{info || 'Đang tải tài xế…'}</Text><Text>Chỉ người được chọn thấy chuyến. Người nhận trước chạy chuyến; phí áp dụng như hiện tại.</Text>
