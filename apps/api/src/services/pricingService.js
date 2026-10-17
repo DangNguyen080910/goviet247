@@ -3,40 +3,10 @@ import { CAR_TYPE_UNAVAILABLE_MESSAGE } from "./carAvailability.js";
 import pkg from "@prisma/client";
 import { parseTripTime } from "../utils/tripTime.js";
 import { calculateHolidaySurcharge } from "./holidaySurcharge.js";
+import { calculateWaitingTime, calculateTieredWaitingCost } from "./waitingPricing.js";
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
-
-/**
- * Lấy YYYY-MM-DD theo timezone Asia/Ho_Chi_Minh để tính "khác ngày" chuẩn VN
- */
-function getYmdInVN(date) {
-  const fmt = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Ho_Chi_Minh",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-  return fmt.format(date);
-}
-
-/**
- * Tính số ngày chênh theo lịch (calendar days) dựa trên VN timezone
- * Ví dụ: 2026-03-01 -> 2026-03-03 = 2
- */
-function diffCalendarDaysVN(startDate, endDate) {
-  const s = getYmdInVN(startDate);
-  const e = getYmdInVN(endDate);
-
-  const [sy, sm, sd] = s.split("-").map(Number);
-  const [ey, em, ed] = e.split("-").map(Number);
-
-  const sUtc = Date.UTC(sy, sm - 1, sd);
-  const eUtc = Date.UTC(ey, em - 1, ed);
-
-  const diffMs = eUtc - sUtc;
-  return Math.max(0, Math.floor(diffMs / 86400000));
-}
 
 function roundTo10k(vnd) {
   return Math.round(vnd / 10000) * 10000;
@@ -50,15 +20,18 @@ function normalizeKmTiers(rawKmTiers) {
       const from = Number(item?.from);
       const to = item?.to == null || item?.to === "" ? null : Number(item?.to);
       const tierPricePerKm = Number(item?.pricePerKm);
+      const pricePerWaitHour = item?.pricePerWaitHour == null ? null : Number(item.pricePerWaitHour);
 
       if (!Number.isFinite(from) || from < 0) return null;
       if (to !== null && (!Number.isFinite(to) || to <= from)) return null;
       if (!Number.isFinite(tierPricePerKm) || tierPricePerKm < 0) return null;
+      if (pricePerWaitHour !== null && (!Number.isFinite(pricePerWaitHour) || pricePerWaitHour < 0)) return null;
 
       return {
         from,
         to,
         pricePerKm: tierPricePerKm,
+        pricePerWaitHour,
       };
     })
     .filter(Boolean)
@@ -123,8 +96,8 @@ function calculateTieredDistanceCost(distanceKm, rawKmTiers) {
  * Quote giá theo PricingConfig (DB là nguồn sự thật)
  * - ONE_WAY: base + km*perKm + overnight (nếu vượt trigger)
  * - ROUND_TRIP:
- *   - nếu KHÔNG qua đêm: base + km*perKm + wait*perHour
- *   - nếu CÓ qua đêm: base + km*perKm + overnightFee (KHÔNG tính waitCost)
+ *   - Hourly waiting uses the total trip distance tier.
+ *   - Qualifying night waiting is covered by the overnight fee, not hourly fees.
  */
 export async function quotePrice(input, db = prisma) {
   const {
@@ -162,7 +135,7 @@ export async function quotePrice(input, db = prisma) {
 
   const baseFare = Number(config.baseFare);
   const pricePerKm = Number(config.pricePerKm);
-  const pricePerHour = Number(config.pricePerHour);
+  let pricePerHour = Number(config.pricePerHour);
   const minFare = Number(config.minFare);
   const overnightFee = Number(config.overnightFee);
   const gasolineSurchargePercent = Number(
@@ -186,6 +159,7 @@ export async function quotePrice(input, db = prisma) {
   let freeWaitingMinutes = 0;
   let billableWaitMinutes = 0;
   let waitCost = 0;
+  let waitingDetails = {};
 
   if (direction === "ROUND_TRIP") {
     const rt = parseTripTime(returnTime);
@@ -226,21 +200,21 @@ export async function quotePrice(input, db = prisma) {
       };
     }
 
-    overnightCount = diffCalendarDaysVN(pickup, rt);
-    overnightCost = overnightCount * overnightFee;
-
     totalMinutes = Math.round((rt.getTime() - pickup.getTime()) / 60000);
-
-    waitMinutes = Math.max(
-      0,
-      Math.round((rt.getTime() - estimatedArrivalAtDestinationMs) / 60000),
+    const waitingTime = calculateWaitingTime(
+      new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig,
     );
-
-    freeWaitingMinutes = 60;
-    billableWaitMinutes = Math.max(0, waitMinutes - freeWaitingMinutes);
-
-    const waitHours = Math.ceil(billableWaitMinutes / 60);
-    waitCost = waitHours * pricePerHour;
+    const waitingPrice = calculateTieredWaitingCost(
+      km, waitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
+      distance => {
+        const result = calculateTieredDistanceCost(distance, config.kmTiers);
+        return result.usedTierPricing ? result.distanceCost : Math.round(distance * pricePerKm);
+      },
+    );
+    ({ waitMinutes, freeWaitingMinutes, billableWaitMinutes, overnightCount } = waitingTime);
+    ({ waitCost, pricePerHour } = waitingPrice);
+    overnightCost = overnightCount * overnightFee;
+    waitingDetails = { ...waitingTime, ...waitingPrice };
   } else if (direction === "ONE_WAY") {
     const dm = driveMinutes == null ? null : Number(driveMinutes);
     const driveHours = dm != null && Number.isFinite(dm) ? dm / 60 : 0;
@@ -286,6 +260,7 @@ export async function quotePrice(input, db = prisma) {
       distanceKm: km,
 
       totalMinutes,
+      ...waitingDetails,
       waitMinutes,
       freeWaitingMinutes,
       billableWaitMinutes,

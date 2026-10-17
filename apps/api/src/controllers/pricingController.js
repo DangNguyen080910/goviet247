@@ -4,6 +4,7 @@ import pkg from "@prisma/client";
 import { validateHolidayConfig, validateHolidayPeriods } from "../services/holidaySurcharge.js";
 import { quotePrice } from "../services/pricingService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
+import { validateWaitingRules } from "../services/waitingPricing.js";
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
@@ -154,6 +155,12 @@ export async function updatePricingConfig(req, res) {
       }
     }
     const updateData = {};
+    if (Object.prototype.hasOwnProperty.call(body, "roundTripWaitingConfig")) {
+      const error = validateWaitingRules(body.roundTripWaitingConfig);
+      if (error) return res.status(400).json({ success: false, message: error });
+      const { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours } = body.roundTripWaitingConfig;
+      updateData.roundTripWaitingConfig = { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours };
+    }
 
     const numberFields = [
       "baseFare",
@@ -198,6 +205,12 @@ export async function updatePricingConfig(req, res) {
           message: "kmTiers phải là một mảng.",
         });
       }
+      for (const [index, tier] of body.kmTiers.entries()) {
+        const value = tier?.pricePerWaitHour;
+        if (value != null && (value === "" || !["number", "string"].includes(typeof value) || !Number.isFinite(Number(value)) || Number(value) < 0 || !Number.isInteger(Number(value)))) {
+          return res.status(400).json({ success: false, message: `Bậc km #${index + 1}: Giá chờ/giờ phải là số nguyên không âm hoặc để trống.` });
+        }
+      }
 
       const normalizedKmTiers = body.kmTiers.map((item, index) => {
         const from = Number(item?.from);
@@ -221,6 +234,9 @@ export async function updatePricingConfig(req, res) {
           from: Math.round(from),
           to: to == null ? null : Math.round(to),
           pricePerKm: Math.round(pricePerKm),
+          ...(Object.prototype.hasOwnProperty.call(item, "pricePerWaitHour") ? {
+            pricePerWaitHour: item.pricePerWaitHour == null ? null : Number(item.pricePerWaitHour),
+          } : {}),
         };
       });
 
@@ -264,6 +280,15 @@ export async function updatePricingConfig(req, res) {
       return res.status(404).json({
         success: false,
         message: "Không tìm thấy cấu hình cho loại xe này.",
+      });
+    }
+    // Keep hourly rates when an older admin client edits only kilometre prices.
+    if (updateData.kmTiers) {
+      updateData.kmTiers = updateData.kmTiers.map(tier => {
+        if (Object.prototype.hasOwnProperty.call(tier, "pricePerWaitHour")) return tier;
+        const previous = (Array.isArray(existing.kmTiers) ? existing.kmTiers : []).find(old =>
+          Number(old.from) === tier.from && (old.to == null ? null : Number(old.to)) === tier.to);
+        return { ...tier, pricePerWaitHour: previous?.pricePerWaitHour ?? null };
       });
     }
 

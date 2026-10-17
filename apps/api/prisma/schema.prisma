@@ -421,6 +421,7 @@ model PricingConfig {
   holidayNote              String  @default("") @db.VarChar(500)
 
   kmTiers Json?
+  roundTripWaitingConfig Json?
 
   overnightTriggerKm    Int @default(600)
   overnightTriggerHours Int @default(12)
