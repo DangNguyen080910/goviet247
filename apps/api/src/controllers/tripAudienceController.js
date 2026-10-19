@@ -1,5 +1,5 @@
 import { prisma } from '../utils/db.js';
-import { distanceKm } from '../services/tripAudiencePolicy.js';
+import { distanceKm, audienceCarType } from '../services/tripAudiencePolicy.js';
 export async function listTripAudienceCandidates(req, res) {
   try {
     const trip = await prisma.trip.findUnique({ where: { id: req.params.id } });
@@ -20,7 +20,7 @@ export async function listTripAudienceCandidates(req, res) {
     }
     const q = String(req.query.q || '').trim().slice(0,100);
     const drivers = await prisma.driverProfile.findMany({ where: { status: 'VERIFIED', tripAcceptBlocked: false, ...(q ? { OR: [{ fullName: { contains: q, mode: 'insensitive' } }, { user: { phones: { some: { e164: { contains: q } } } } }, { plateNumber: { contains: q, mode: 'insensitive' } }] } : {}) }, include: { user: { select: { displayName: true, phones: { select: { e164: true } } } } }, orderBy: { userId: 'asc' } });
-    const items = drivers.map(d => ({ userId: d.userId, name: d.fullName || d.user.displayName || d.userId, phone: d.user.phones[0]?.e164 || '', plateNumber: d.plateNumber, suggestion: suggestions.get(d.userId) || null })).sort((a,b) => Number(!!b.suggestion)-Number(!!a.suggestion) || (a.suggestion?.distanceKm ?? Infinity)-(b.suggestion?.distanceKm ?? Infinity));
+    const items = drivers.map(d => ({ userId: d.userId, name: d.fullName || d.user.displayName || d.userId, phone: d.user.phones[0]?.e164 || '', plateNumber: d.plateNumber, vehicleType: d.vehicleType, carType: audienceCarType(d.vehicleType), suggestion: suggestions.get(d.userId) || null })).sort((a,b) => Number(!!b.suggestion)-Number(!!a.suggestion) || (a.suggestion?.distanceKm ?? Infinity)-(b.suggestion?.distanceKm ?? Infinity));
     return res.json({ items, config: { radiusKm, days }, warning: trip.pickupLat == null || trip.pickupLng == null ? 'Chuyến thiếu tọa độ: chỉ có tìm tài xế thủ công.' : 'Gợi ý dựa trên lịch sử trong hệ thống, không phải vị trí hiện tại của tài xế.' });
   } catch (error) { console.error(error); return res.status(500).json({ message: 'Không tải được tài xế.' }); }
 }

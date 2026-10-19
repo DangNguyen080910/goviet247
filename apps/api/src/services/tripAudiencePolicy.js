@@ -4,11 +4,17 @@ export function audienceWhere(userId) {
 export function canDriverSeeTrip(trip, userId) {
   return Array.isArray(trip.audienceDriverIds) && (trip.audienceDriverIds.length === 0 || trip.audienceDriverIds.includes(userId));
 }
-export function parseAudience(value) {
-  if (!Array.isArray(value) || !value.length || value.length > 100 || value.some(id => typeof id !== 'string' || !id.trim())) {
-    throw new Error('Chọn từ 1 đến 100 tài xế hợp lệ.');
+export function parseAudience(value, maxCount = 100) {
+  if (!Array.isArray(value) || !value.length || value.length > maxCount || value.some(id => typeof id !== 'string' || !id.trim())) {
+    throw new Error(`Chọn từ 1 đến ${maxCount} tài xế hợp lệ.`);
   }
   return [...new Set(value)];
+}
+export function audienceCarType(vehicleType) {
+  const value = String(vehicleType || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toUpperCase();
+  if (['CAR_5', 'CAR_7', 'CAR_16'].includes(value)) return value;
+  const match = /^(?:XE\s*)?(5|7|16)\s*(?:CHO|SEATS?)?$/.exec(value);
+  return match ? `CAR_${match[1]}` : null;
 }
 export function distanceKm(lat1, lng1, lat2, lng2) {
   if ([lat1, lng1, lat2, lng2].some(v => v == null || !Number.isFinite(Number(v)))) return Infinity;

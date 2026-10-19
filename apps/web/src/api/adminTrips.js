@@ -44,12 +44,13 @@ export async function fetchUnverifiedTrips() {
 }
 
 // ✅ Duyệt chuyến (set isVerified=true)
-export async function verifyTrip(tripId, note, driverIds) {
+export async function verifyTrip(tripId, note, driverIds, carType) {
   const data = await request(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
     body: JSON.stringify({
       note,
-      audienceMode: driverIds !== undefined ? "SELECTED" : "ALL",
+      audienceMode: carType ? "CAR_TYPE" : driverIds !== undefined ? "SELECTED" : "ALL",
+      ...(carType ? { carType } : {}),
       ...(driverIds !== undefined ? { driverIds } : {}),
     }),
   });

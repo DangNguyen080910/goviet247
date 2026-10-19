@@ -1,4 +1,4 @@
-import { audienceWhere, canDriverSeeTrip, parseAudience } from '../services/tripAudiencePolicy.js';
+import { audienceWhere, canDriverSeeTrip, parseAudience, audienceCarType } from '../services/tripAudiencePolicy.js';
 import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/controllers/tripController.js
 /// ======================================================
@@ -2917,8 +2917,12 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
     const audienceMode = req.body?.audienceMode;
-    if (audienceMode !== undefined && !["ALL", "SELECTED"].includes(audienceMode)) {
+    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE"].includes(audienceMode)) {
       return res.status(400).json({ success: false, message: "Đối tượng nhận chuyến không hợp lệ." });
+    }
+    const selectedCarType = req.body?.carType;
+    if (audienceMode === "CAR_TYPE" && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType)) {
+      return res.status(400).json({ success: false, message: "Vui lòng chọn xe 5, 7 hoặc 16 chỗ." });
     }
     if (audienceMode === "ALL" && req.body?.driverIds !== undefined) {
       return res.status(400).json({ success: false, message: "Duyệt cho tất cả không được kèm danh sách tài xế chỉ định." });
@@ -2926,8 +2930,8 @@ export async function adminVerifyTrip(req, res) {
     // Legacy clients omit both fields for public approval. Always resolve the
     // new approval intent rather than inheriting a previous private audience.
     let audienceDriverIds = [];
-    if (audienceMode === "SELECTED" || req.body?.driverIds !== undefined) {
-      try { audienceDriverIds = parseAudience(req.body?.driverIds); }
+    if (["SELECTED", "CAR_TYPE"].includes(audienceMode) || req.body?.driverIds !== undefined) {
+      try { audienceDriverIds = parseAudience(req.body?.driverIds, audienceMode === "CAR_TYPE" ? 10000 : 100); }
       catch (error) { return res.status(400).json({ success: false, message: error.message }); }
     }
     if (trip.isVerified) {
@@ -2949,8 +2953,14 @@ export async function adminVerifyTrip(req, res) {
     }
 
     if (audienceDriverIds.length > 0) {
-      const count = await prisma.driverProfile.count({ where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false } });
-      if (count !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến.' });
+      const drivers = await prisma.driverProfile.findMany({
+        where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false },
+        select: { userId: true, vehicleType: true },
+      });
+      if (drivers.length !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến. Vui lòng tải lại danh sách.' });
+      if (audienceMode === "CAR_TYPE" && drivers.some(driver => audienceCarType(driver.vehicleType) !== selectedCarType)) {
+        return res.status(409).json({ success: false, message: "Có tài xế không còn thuộc nhóm xe đã chọn. Vui lòng tải lại danh sách." });
+      }
     }
     const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
 
