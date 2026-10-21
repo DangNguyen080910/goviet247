@@ -127,6 +127,7 @@ enum CommissionPayoutStatus {
 }
 
 enum AdminDriverActionType {
+  EDIT_PROFILE
   APPROVE_KYC
   REJECT_KYC
   SUSPEND
@@ -714,6 +715,7 @@ model DriverBankAccount {
   accountNumber     String
   accountHolderName String
   isDefault         Boolean  @default(false)
+  archivedAt        DateTime? @db.Timestamptz(6)
   createdAt         DateTime @default(now()) @db.Timestamptz(6)
   updatedAt         DateTime @updatedAt @db.Timestamptz(6)
 

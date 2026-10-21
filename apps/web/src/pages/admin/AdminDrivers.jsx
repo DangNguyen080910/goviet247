@@ -39,6 +39,8 @@ import { initializeAdminSocketBridge } from "../../services/adminSocket";
 
 import { getAdminUser } from "../../utils/adminAuth";
 import DriverActionDialog from "../../components/admin/DriverActionDialog";
+import DriverProfileEditDialog from "../../components/admin/DriverProfileEditDialog";
+import { DriverBankEditDialog, DriverDocumentEditDialog } from "../../components/admin/DriverAssetEditDialogs";
 import {
   docTypeLabel,
   docStatusLabel,
@@ -165,6 +167,9 @@ export default function AdminDrivers() {
 
   const [selectedId, setSelectedId] = useState(null);
   const [detail, setDetail] = useState(null);
+  const [editingProfile, setEditingProfile] = useState(null);
+  const [editingAsset, setEditingAsset] = useState(null);
+  const [bankNotice, setBankNotice] = useState("");
   const [logs, setLogs] = useState([]);
   const [drawerLoading, setDrawerLoading] = useState(false);
 
@@ -300,6 +305,7 @@ export default function AdminDrivers() {
   }
 
   async function openDrawer(driverId) {
+    setBankNotice("");
     setTab(0);
     setSelectedId(driverId);
     setDrawerLoading(true);
@@ -321,6 +327,7 @@ export default function AdminDrivers() {
   }
 
   function closeDrawer() {
+    if (editingProfile || editingAsset) return;
     setSelectedId(null);
     setDetail(null);
     setLogs([]);
@@ -836,6 +843,7 @@ export default function AdminDrivers() {
               {tab === 0 && (
                 <>
                   {renderActions()}
+                  {getAdminUser()?.role === "ADMIN" && <Button sx={{ mt: 2 }} variant="outlined" disabled={actionLoading} onClick={() => setEditingProfile(detail)}>Sửa thông tin</Button>}
 
                   {(() => {
                     const phone = detail.user?.phones?.[0];
@@ -866,6 +874,18 @@ export default function AdminDrivers() {
                     Xe: {detail.vehicleBrand || "-"} {detail.vehicleModel || ""}
                   </Typography>
                   <Typography>Đời xe: {detail.vehicleYear || "-"}</Typography>
+                  <Typography>Khu vực hoạt động: {provinces.find(province => province.code === detail.operatingProvinceCode)?.name || "Chưa có"} {detail.operatingProvinceConfirmedAt ? "(đã xác nhận)" : "(chưa xác nhận)"}</Typography>
+                  <Divider sx={{ my: 2 }} />
+                  <Typography fontWeight={700}>Tài khoản ngân hàng</Typography>
+                  {bankNotice && <Alert severity="warning" sx={{ my: 1 }}>{bankNotice}</Alert>}
+                  {!detail.bankAccounts?.length && <Typography color="text.secondary">Chưa có tài khoản ngân hàng.</Typography>}
+                  {(detail.bankAccounts || []).map(account => <Box key={account.id} sx={{ border: "1px solid #eee", borderRadius: 2, p: 1.5, mt: 1 }}>
+                    <Typography>{account.bankName} {account.isDefault ? "· Mặc định" : ""}</Typography>
+                    <Typography>Số tài khoản: {account.accountNumber}</Typography>
+                    <Typography>Chủ tài khoản: {account.accountHolderName}</Typography>
+                    {getAdminUser()?.role === "ADMIN" && <Button disabled={actionLoading} onClick={() => setEditingAsset({ kind: "bank", target: account, driverId: detail.id })}>Sửa tài khoản</Button>}
+                  </Box>)}
+                  {getAdminUser()?.role === "ADMIN" && <Button sx={{ mt: 1 }} disabled={actionLoading} onClick={() => setEditingAsset({ kind: "bank", target: null, driverId: detail.id })}>Thêm tài khoản ngân hàng</Button>}
                   <Typography>
                     Ngày tạo hồ sơ: {formatNgayGio(detail.createdAt)}
                   </Typography>
@@ -887,6 +907,7 @@ export default function AdminDrivers() {
               {/* TAB 2: Giấy tờ */}
               {tab === 1 && (
                 <>
+                  {getAdminUser()?.role === "ADMIN" && ["CCCD_FRONT", "CCCD_BACK", "PORTRAIT", "DRIVER_LICENSE", "VEHICLE_REGISTRATION"].some(type => !(detail.documents || []).some(doc => doc.type === type)) && <Button sx={{ mb: 2 }} variant="outlined" disabled={actionLoading} onClick={() => setEditingAsset({ kind: "document", target: null, driverId: detail.id, missingTypes: ["CCCD_FRONT", "CCCD_BACK", "PORTRAIT", "DRIVER_LICENSE", "VEHICLE_REGISTRATION"].filter(type => !(detail.documents || []).some(doc => doc.type === type)) })}>Bổ sung giấy tờ</Button>}
                   {!detail.documents || detail.documents.length === 0 ? (
                     <Typography color="text.secondary">
                       Chưa có giấy tờ.
@@ -940,6 +961,7 @@ export default function AdminDrivers() {
                             Ghi chú: {doc.note}
                           </Typography>
                         )}
+                        {getAdminUser()?.role === "ADMIN" && <Button sx={{ mt: 1 }} variant="outlined" disabled={actionLoading} onClick={() => setEditingAsset({ kind: "document", target: doc, driverId: detail.id, missingTypes: [] })}>Thay ảnh giấy tờ</Button>}
 
                         {doc.viewUrl || doc.fileUrl ? (
                           <>
@@ -1006,7 +1028,7 @@ export default function AdminDrivers() {
                     logs.map((x) => (
                       <Box key={x.id} mb={1.5}>
                         <Typography fontWeight={600}>
-                          {x.action === "BLOCK_TRIP_ACCEPT" ? "Khoá nhận chuyến" : x.action === "UNBLOCK_TRIP_ACCEPT" ? "Mở nhận chuyến" : `${x.action} (${x.fromStatus} → ${x.toStatus})`}
+                          {x.action === "EDIT_PROFILE" ? "Sửa thông tin tài xế" : x.action === "BLOCK_TRIP_ACCEPT" ? "Khoá nhận chuyến" : x.action === "UNBLOCK_TRIP_ACCEPT" ? "Mở nhận chuyến" : `${x.action} (${x.fromStatus} → ${x.toStatus})`}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {x.actorUsername} ·{" "}
@@ -1035,6 +1057,24 @@ export default function AdminDrivers() {
       </Drawer>
 
       {/* Dialog bắt reason */}
+      {editingAsset && (() => {
+        const common = { driverId: editingAsset.driverId, onClose: () => setEditingAsset(null), onSaved: async result => {
+          const editedId = editingAsset.driverId;
+          setEditingAsset(null);
+          if (result.pendingCount) setBankNotice(result.message);
+          setToast({ open: true, type: result.pendingCount ? "warning" : "success", message: result.message });
+          try { await Promise.all([refreshSelected(editedId), load(listParams)]); }
+          catch { setToast({ open: true, type: "warning", message: "Đã lưu, nhưng chưa tải lại được hồ sơ. Vui lòng mở lại chi tiết." }); }
+        } };
+        return editingAsset.kind === "bank" ? <DriverBankEditDialog {...common} account={editingAsset.target} /> : <DriverDocumentEditDialog {...common} document={editingAsset.target} missingTypes={editingAsset.missingTypes} />;
+      })()}
+      {editingProfile && <DriverProfileEditDialog driver={editingProfile} onClose={() => setEditingProfile(null)} onSaved={async result => {
+        const editedId = editingProfile.id;
+        setEditingProfile(null);
+        setToast({ open: true, type: "success", message: result.phoneChanged ? "Đã lưu. SĐT mới cần xác thực OTP." : result.message });
+        try { await Promise.all([refreshSelected(editedId), load(listParams)]); }
+        catch { setToast({ open: true, type: "warning", message: "Đã lưu thông tin, nhưng chưa tải lại được chi tiết. Vui lòng mở lại hồ sơ." }); }
+      }} />}
       <DriverActionDialog
         open={dialog.open}
         onClose={closeDialog}

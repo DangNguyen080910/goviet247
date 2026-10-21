@@ -342,6 +342,7 @@ async function getDriverUserOrFail(uid) {
       driverProfile: {
         include: {
           bankAccounts: {
+            where: { archivedAt: null },
             orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
           },
         },
@@ -506,6 +507,7 @@ export async function getMyDriverWalletSummary(req, res) {
         driverProfile: {
           include: {
             bankAccounts: {
+              where: { archivedAt: null },
               orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
             },
             walletTransactions: {
@@ -631,6 +633,7 @@ export async function createMyDriverBankAccount(req, res) {
 
     const bankAccounts = await prisma.driverBankAccount.findMany({
       where: {
+        archivedAt: null,
         driverProfileId: profile.id,
       },
       orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
@@ -737,6 +740,7 @@ export async function deleteMyDriverBankAccount(req, res) {
       if (existing.isDefault) {
         const nextDefault = await tx.driverBankAccount.findFirst({
           where: {
+            archivedAt: null,
             driverProfileId: profile.id,
           },
           orderBy: [{ createdAt: "desc" }],
@@ -753,6 +757,7 @@ export async function deleteMyDriverBankAccount(req, res) {
 
     const bankAccounts = await prisma.driverBankAccount.findMany({
       where: {
+        archivedAt: null,
         driverProfileId: profile.id,
       },
       orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
@@ -840,6 +845,7 @@ export async function setMyDriverDefaultBankAccount(req, res) {
 
     const bankAccounts = await prisma.driverBankAccount.findMany({
       where: {
+        archivedAt: null,
         driverProfileId: profile.id,
       },
       orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
@@ -916,6 +922,7 @@ export async function createMyDriverWithdrawRequest(req, res) {
         where: { id: profile.id },
         include: {
           bankAccounts: {
+            where: { archivedAt: null },
             orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
           },
         },
@@ -979,6 +986,7 @@ export async function createMyDriverWithdrawRequest(req, res) {
         where: { id: freshProfile.id },
         include: {
           bankAccounts: {
+            where: { archivedAt: null },
             orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
           },
           walletTransactions: {

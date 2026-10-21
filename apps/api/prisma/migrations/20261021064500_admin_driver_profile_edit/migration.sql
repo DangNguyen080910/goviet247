@@ -1,0 +1,2 @@
+ALTER TYPE "AdminDriverActionType" ADD VALUE IF NOT EXISTS 'EDIT_PROFILE';
+ALTER TABLE "DriverBankAccount" ADD COLUMN "archivedAt" TIMESTAMPTZ(6);

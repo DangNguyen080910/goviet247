@@ -85,6 +85,29 @@ export async function fetchDriverDetail(id) {
   return data.driver || data.data || data;
 }
 
+export async function patchDriverProfile(id, payload) {
+  const res = await fetch(`${BASE_URL}/drivers/${id}/profile`, {
+    method: "PATCH", headers: getHeaders(), body: JSON.stringify(payload),
+  });
+  const data = await safeJson(res);
+  if (!res.ok || data?.success === false) throw new Error(data?.message || "Không cập nhật được thông tin tài xế.");
+  return data;
+}
+
+export async function saveDriverBankAccount(id, payload) {
+  const res = await fetch(`${BASE_URL}/drivers/${id}/bank-accounts`, { method: "POST", headers: getHeaders(), body: JSON.stringify(payload) });
+  const data = await safeJson(res);
+  if (!res.ok || data?.success === false) throw new Error(data?.message || "Không lưu được tài khoản ngân hàng.");
+  return data;
+}
+
+export async function saveDriverDocument(id, formData) {
+  const res = await fetch(`${BASE_URL}/drivers/${id}/documents`, { method: "POST", headers: { Authorization: `Bearer ${getAdminToken()}` }, body: formData });
+  const data = await safeJson(res);
+  if (!res.ok || data?.success === false) throw new Error(data?.message || "Không lưu được ảnh giấy tờ.");
+  return data;
+}
+
 export async function fetchDriverLogs(id) {
   const res = await fetch(`${BASE_URL}/drivers/${id}/logs`, {
     headers: getHeaders(),

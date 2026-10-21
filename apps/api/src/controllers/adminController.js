@@ -3428,7 +3428,7 @@ export function makeAdminController(prisma) {
                 id: true,
                 displayName: true,
                 phones: {
-                  select: { e164: true, isVerified: true, createdAt: true },
+                  select: { id: true, e164: true, isVerified: true, createdAt: true },
                   orderBy: { createdAt: "desc" },
                   take: 1,
                 },
@@ -3436,6 +3436,7 @@ export function makeAdminController(prisma) {
             },
             documents: true,
             bankAccounts: {
+              where: { archivedAt: null },
               orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
             },
           },

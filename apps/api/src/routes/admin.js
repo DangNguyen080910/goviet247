@@ -2,6 +2,8 @@
 import { Router } from "express";
 import { prisma } from "../utils/db.js";
 import { makeAdminController } from "../controllers/adminController.js";
+import { updateAdminDriverProfile } from "../controllers/adminDriverProfileController.js";
+import { saveAdminDriverBankAccount, adminDocumentUpload, saveAdminDriverDocument } from "../controllers/adminDriverAssetsController.js";
 import {
   adminHuyChuyen,
   adminDieuChinhThongTinChuyen,
@@ -138,6 +140,9 @@ router.get(
   ctrl.getDriverWalletSummary,
 );
 router.get("/drivers/:id", requireAdminOrStaff, ctrl.getDriverDetail);
+router.patch("/drivers/:id/profile", requireAdmin, updateAdminDriverProfile);
+router.post("/drivers/:id/bank-accounts", requireAdmin, saveAdminDriverBankAccount);
+router.post("/drivers/:id/documents", requireAdmin, adminDocumentUpload, saveAdminDriverDocument);
 router.get("/drivers/:id/logs", requireAdminOrStaff, ctrl.getDriverLogs);
 router.get(
   "/drivers/:id/wallet-transactions",
