@@ -1,6 +1,7 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminTripsAssigned.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { formatCarType } from "../../utils/formatCarType";
+import AdminTableScroll, { tripActionCellStyle } from "../../components/admin/AdminTableScroll";
 import {
   Box,
   Paper,
@@ -369,14 +370,15 @@ export default function AdminTripsAssigned() {
               </Box>
             </Paper>
           ) : (
-            <Table size="small">
+            <AdminTableScroll label="Chuyến tài xế đã nhận">
+            <Table size="small" sx={{ minWidth: 2000 }}>
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ fontWeight: 700 }}>Mã chuyến</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Khách hàng</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Tài xế</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
-                  <TableCell sx={{ fontWeight: 700 }}>
+                  <TableCell sx={{ fontWeight: 700, minWidth: 260 }}>
                     Điểm đón → Điểm đến
                   </TableCell>
                   <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
@@ -385,7 +387,7 @@ export default function AdminTripsAssigned() {
                   <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Cập nhật</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Trạng thái</TableCell>
-                  <TableCell sx={{ fontWeight: 700, width: 320 }}>
+                  <TableCell sx={{ ...tripActionCellStyle, fontWeight: 700, zIndex: 3 }}>
                     Hành động
                   </TableCell>
                 </TableRow>
@@ -480,7 +482,7 @@ export default function AdminTripsAssigned() {
 
                       <TableCell>{statusChip(t.status)}</TableCell>
 
-                      <TableCell>
+                      <TableCell sx={tripActionCellStyle}>
                         {tab === "CANCELLED" || t.status === "CANCELLED" ? (
                           <Box>
                             <Typography
@@ -495,10 +497,10 @@ export default function AdminTripsAssigned() {
                           </Box>
                         ) : (
                           <Stack
-                            direction="row"
+                            direction="column"
                             spacing={1}
-                            alignItems="center"
-                            flexWrap="wrap"
+                            alignItems="stretch"
+                            sx={{ "& .MuiButton-root": { whiteSpace: "normal", overflowWrap: "break-word", flexShrink: 0 } }}
                           >
                             {t.status === "ACCEPTED" && (
                               <Button
@@ -563,6 +565,7 @@ export default function AdminTripsAssigned() {
                 })}
               </TableBody>
             </Table>
+            </AdminTableScroll>
           )}
         </Box>
       </Paper>

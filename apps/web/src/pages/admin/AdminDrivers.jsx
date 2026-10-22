@@ -1,4 +1,5 @@
 import provinces from "../../../../api/src/data/vietnam-provinces.json";
+import AdminTableScroll from "../../components/admin/AdminTableScroll";
 // Path: goviet247/apps/web/src/pages/admin/AdminDrivers.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -675,7 +676,8 @@ export default function AdminDrivers() {
           <CircularProgress />
         </Box>
       ) : (
-        <Table>
+        <AdminTableScroll label="Danh sách tài xế">
+        <Table sx={{ minWidth: 1500 }}>
           <TableHead>
             <TableRow>
               {sortableHeader("name")}
@@ -749,6 +751,7 @@ export default function AdminDrivers() {
             )}
           </TableBody>
         </Table>
+        </AdminTableScroll>
       )}
 
       {/* Pagination */}

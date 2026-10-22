@@ -29,6 +29,7 @@ import {
 } from "../../api/adminTrips";
 import { getAdminToken } from "../../utils/adminAuth";
 import { formatCarType } from "../../utils/formatCarType";
+import AdminTableScroll, { tripActionCellStyle } from "../../components/admin/AdminTableScroll";
 
 function formatNgayGio(input) {
   if (!input) return "-";
@@ -249,14 +250,15 @@ export default function AdminTrips() {
           <Typography>Đang tải...</Typography>
         </Stack>
       ) : (
-        <Table size="small">
+        <AdminTableScroll label="Chuyến chờ duyệt">
+        <Table size="small" sx={{ minWidth: 2100 }}>
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: 700 }}>Mã chuyến</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Người đặt</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Khách hàng</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Điểm đón</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Điểm đến</TableCell>
+              <TableCell sx={{ fontWeight: 700, minWidth: 240 }}>Điểm đón</TableCell>
+              <TableCell sx={{ fontWeight: 700, minWidth: 240 }}>Điểm đến</TableCell>
               <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ về</TableCell>
@@ -271,7 +273,7 @@ export default function AdminTrips() {
                 </>
               )}
 
-              <TableCell align="right" sx={{ fontWeight: 700 }}>
+              <TableCell align="right" sx={{ ...tripActionCellStyle, fontWeight: 700, zIndex: 3 }}>
                 Hành động
               </TableCell>
             </TableRow>
@@ -407,12 +409,14 @@ export default function AdminTrips() {
                       </>
                     )}
 
-                    <TableCell align="right">
+                    <TableCell align="right" sx={tripActionCellStyle}>
                       {tab === 0 ? (
                         <Stack
                           direction="row"
                           justifyContent="flex-end"
                           gap={1}
+                          flexWrap="wrap"
+                          sx={{ "& .MuiButton-root": { flexShrink: 0, whiteSpace: "normal" } }}
                         >
                           <Button
                             size="small"
@@ -468,6 +472,7 @@ export default function AdminTrips() {
             )}
           </TableBody>
         </Table>
+        </AdminTableScroll>
       )}
 
       <TripDetailModal

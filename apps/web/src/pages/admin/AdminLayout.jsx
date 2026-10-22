@@ -828,7 +828,7 @@ export default function AdminLayout() {
         </Drawer>
       ) : null}
 
-      <Box component="main" sx={{ flex: 1, p: 3 }}>
+      <Box component="main" sx={{ flex: 1, minWidth: 0, p: 3 }}>
         <Toolbar />
         <Outlet />
       </Box>

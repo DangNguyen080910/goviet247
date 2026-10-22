@@ -5,6 +5,7 @@ import CancelTripDialog from "./CancelTripDialog";
 import { getAdminToken } from "../../utils/adminAuth";
 import { normalizeDisplayAddress } from "../../api/adminTrips";
 import { formatCarType } from "../../utils/formatCarType";
+import AdminTableScroll, { tripActionCellStyle } from "./AdminTableScroll";
 
 // Bật debug nếu cần (mặc định tắt)
 const DEBUG_PENDING_TIME = false;
@@ -326,9 +327,9 @@ export default function PendingTripsTable({
 
   return (
     <>
-      <div style={{ overflowX: "auto" }}>
+      <AdminTableScroll label="Chuyến chưa có tài xế">
         <table
-          style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}
+          style={{ width: "100%", minWidth: 2100, borderCollapse: "separate", borderSpacing: 0, fontSize: 14 }}
         >
           <thead>
             <tr style={{ textAlign: "left" }}>
@@ -342,8 +343,8 @@ export default function PendingTripsTable({
                 </>
               )}
 
-              <th style={th}>Điểm đón</th>
-              <th style={th}>Điểm đến</th>
+              <th style={{ ...th, minWidth: 240 }}>Điểm đón</th>
+              <th style={{ ...th, minWidth: 240 }}>Điểm đến</th>
               <th style={th}>Loại nhiên liệu</th>
               <th style={th}>Loại xe</th>
               <th style={th}>Giờ đón</th>
@@ -354,7 +355,7 @@ export default function PendingTripsTable({
                 <>
                   <th style={th}>Lý do huỷ</th>
                   <th style={th}>Thời gian huỷ</th>
-                  <th style={th}></th>
+                  <th style={{ ...th, ...tripActionCellStyle, zIndex: 3 }}>Hành động</th>
                 </>
               ) : (
                 <>
@@ -362,7 +363,7 @@ export default function PendingTripsTable({
                   <th style={th}>Chờ (phút)</th>
                   <th style={th}>Cảnh báo</th>
                   <th style={th}>Trạng thái</th>
-                  <th style={th}></th>
+                  <th style={{ ...th, ...tripActionCellStyle, zIndex: 3 }}>Hành động</th>
                 </>
               )}
             </tr>
@@ -447,7 +448,7 @@ export default function PendingTripsTable({
                       <td style={td}>{t.cancelReason || "-"}</td>
                       <td style={td}>{formatNgayGio(t.cancelledAt)}</td>
 
-                      <td style={td}>
+                      <td style={{ ...td, ...tripActionCellStyle }}>
                         <Button
                           size="small"
                           variant="outlined"
@@ -488,11 +489,12 @@ export default function PendingTripsTable({
 
                       <td style={td}>{t.status || "-"}</td>
 
-                      <td style={td}>
-                        <div style={{ display: "flex", gap: 8 }}>
+                      <td style={{ ...td, ...tripActionCellStyle }}>
+                        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                           <Button
                             size="small"
                             variant="contained"
+                            sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
                             onClick={(e) => {
                               e.stopPropagation();
                               resendTrip(tripId);
@@ -505,6 +507,7 @@ export default function PendingTripsTable({
                             size="small"
                             variant="outlined"
                             color="warning"
+                            sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
                             onClick={(e) => {
                               e.stopPropagation();
                               returnTripToReview(tripId);
@@ -517,6 +520,7 @@ export default function PendingTripsTable({
                             size="small"
                             variant="outlined"
                             color="error"
+                            sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
                             onClick={(e) => {
                               e.stopPropagation();
                               setSelectedTrip(t);
@@ -534,7 +538,7 @@ export default function PendingTripsTable({
             })}
           </tbody>
         </table>
-      </div>
+      </AdminTableScroll>
 
       {/* ✅ chỉ active tab mới có cancel dialog */}
       <CancelTripDialog

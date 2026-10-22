@@ -1,5 +1,6 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminCustomers.jsx
 import { useEffect, useMemo, useState } from "react";
+import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import {
   Box,
   Typography,
@@ -500,7 +501,8 @@ export default function AdminCustomers() {
           <CircularProgress />
         </Box>
       ) : (
-        <Table>
+        <AdminTableScroll label="Danh sách khách hàng">
+        <Table sx={{ minWidth: 900 }}>
           <TableHead>
             <TableRow>
               {sortableHeader("name")}
@@ -559,6 +561,7 @@ export default function AdminCustomers() {
             )}
           </TableBody>
         </Table>
+        </AdminTableScroll>
       )}
 
       {/* Pagination */}

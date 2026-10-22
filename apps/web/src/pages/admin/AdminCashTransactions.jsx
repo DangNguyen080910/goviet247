@@ -1,5 +1,6 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminCashTransactions.jsx
 import { useEffect, useState, useCallback } from "react";
+import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import {
   Box,
   Button,
@@ -310,7 +311,8 @@ export default function AdminCashTransactions() {
 
       {/* TABLE */}
       <Paper>
-        <Table size="small">
+        <AdminTableScroll label="Thu chi công ty">
+        <Table size="small" sx={{ minWidth: 900 }}>
           <TableHead>
             <TableRow>
               <TableCell>Ngày</TableCell>
@@ -346,6 +348,7 @@ export default function AdminCashTransactions() {
             ))}
           </TableBody>
         </Table>
+        </AdminTableScroll>
       </Paper>
 
       {/* SNACKBAR */}

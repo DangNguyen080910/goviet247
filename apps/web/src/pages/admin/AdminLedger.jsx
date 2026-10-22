@@ -1,6 +1,7 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminLedger.jsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
+import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import {
   Alert,
   Box,
@@ -2890,7 +2891,8 @@ export default function AdminLedger() {
                       <CircularProgress />
                     </Stack>
                   ) : (
-                    <Table>
+                    <AdminTableScroll label="Bảng kê chuyến đi">
+                    <Table sx={{ minWidth: 1600 }}>
                       <TableHead>
                         <TableRow>
                           <TableCell>Loại dòng</TableCell>
@@ -2977,6 +2979,7 @@ export default function AdminLedger() {
                         ))}
                       </TableBody>
                     </Table>
+                    </AdminTableScroll>
                   )}
                 </Stack>
               </Paper>
@@ -3047,7 +3050,8 @@ export default function AdminLedger() {
                       <CircularProgress />
                     </Stack>
                   ) : (
-                    <Table>
+                    <AdminTableScroll label="Bảng kê tài xế rút ví">
+                    <Table sx={{ minWidth: 1600 }}>
                       <TableHead>
                         <TableRow>
                           <TableCell>Mã yêu cầu</TableCell>
@@ -3124,6 +3128,7 @@ export default function AdminLedger() {
                         )}
                       </TableBody>
                     </Table>
+                    </AdminTableScroll>
                   )}
                 </Stack>
               </Paper>
