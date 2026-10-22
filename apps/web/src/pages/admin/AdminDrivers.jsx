@@ -93,6 +93,7 @@ function vehicleTypeLabel(value) {
 const DRIVER_SORT_COLUMNS = {
   name: "Họ tên",
   phone: "SĐT",
+  balance: "Số dư ví (đ)",
   vehicleType: "Loại xe",
   vehicleBrand: "Hãng xe",
   vehicleModel: "Model xe",
@@ -635,10 +636,12 @@ export default function AdminDrivers() {
               setSort(e.target.value);
             }}
           >
-            {!['createdAt_desc', 'createdAt_asc', 'status_asc', 'status_desc'].includes(sort) ? (
+            {!['createdAt_desc', 'createdAt_asc', 'status_asc', 'status_desc', 'balance_desc', 'balance_asc'].includes(sort) ? (
               <MenuItem value={sort}>{DRIVER_SORT_COLUMNS[sortColumn]} {sortDirection === 'asc' ? 'tăng dần' : 'giảm dần'}</MenuItem>
             ) : null}
             <MenuItem value="createdAt_desc">Mới nhất</MenuItem>
+            <MenuItem value="balance_desc">Số dư ví cao nhất</MenuItem>
+            <MenuItem value="balance_asc">Số dư ví thấp nhất</MenuItem>
             <MenuItem value="createdAt_asc">Cũ nhất</MenuItem>
             <MenuItem value="status_asc">Trạng thái A→Z</MenuItem>
             <MenuItem value="status_desc">Trạng thái Z→A</MenuItem>
@@ -677,6 +680,7 @@ export default function AdminDrivers() {
             <TableRow>
               {sortableHeader("name")}
               {sortableHeader("phone")}
+              {sortableHeader("balance", "right")}
               <TableCell>Tỉnh/thành thường hoạt động</TableCell>
               {sortableHeader("vehicleType")}
               {sortableHeader("vehicleBrand")}
@@ -707,6 +711,9 @@ export default function AdminDrivers() {
                     return p.isVerified ? p.e164 : `${p.e164} (chưa xác thực)`;
                   })()}
                 </TableCell>
+                <TableCell align="right" sx={{ whiteSpace: "nowrap", fontVariantNumeric: "tabular-nums", fontWeight: 600, color: Number(d.balance) < 0 ? "error.main" : Number(d.balance) > 0 ? "success.main" : "text.secondary" }}>
+                  {d.balance != null && Number.isFinite(Number(d.balance)) ? Number(d.balance).toLocaleString("vi-VN") : "—"}
+                </TableCell>
                 <TableCell>{provinces.find(p => p.code === (d.operatingProvinceCode || "79"))?.name || "-"}
                   {!d.operatingProvinceConfirmedAt && <Typography variant="caption" display="block" color="warning.main">Mặc định · Chưa xác nhận</Typography>}
                 </TableCell>
@@ -733,7 +740,7 @@ export default function AdminDrivers() {
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={12}>
+                <TableCell colSpan={13}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>
