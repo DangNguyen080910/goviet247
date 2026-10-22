@@ -17,6 +17,14 @@ export default function AdminPendingTrips() {
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
+    const tripId = new URLSearchParams(location.search).get("tripId");
+    if (tripId) {
+      setTab(0);
+      setSelectedTripId(tripId);
+    }
+  }, [location.search, location.key]);
+
+  useEffect(() => {
     const tangRefresh = () => {
       if (location.pathname.startsWith("/admin/pending")) {
         setRefreshKey((k) => k + 1);

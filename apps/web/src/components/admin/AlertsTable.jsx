@@ -17,6 +17,13 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
   const [dangTai, setDangTai] = useState(true);
   const [loi, setLoi] = useState("");
   const [alerts, setAlerts] = useState([]);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  useEffect(() => {
+    const refresh = () => setRefreshKey((value) => value + 1);
+    window.addEventListener("admin:blocked_trip_accept_attempt", refresh);
+    return () => window.removeEventListener("admin:blocked_trip_accept_attempt", refresh);
+  }, []);
 
   useEffect(() => {
     let conSong = true;
@@ -62,7 +69,7 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
     return () => {
       conSong = false;
     };
-  }, []);
+  }, [refreshKey]);
 
   const rows = useMemo(() => {
     const baseRows = Array.isArray(alerts) ? alerts : [];
@@ -74,7 +81,7 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
       const tripId =
         a?.tripId || a?.trip_id || a?.trip?.id || a?.trip?.tripId || "";
       const level = a?.level || a?.alertLevel || "";
-      const channel = a?.channel || a?.type || "";
+      const channel = a?.channel || a?.type || a?.alertType || "";
       const message = a?.message || "";
 
       return (
@@ -129,11 +136,10 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
               >
                 <td style={tdMono}>{tripId || "-"}</td>
                 <td style={td}>{a?.level || a?.alertLevel || "-"}</td>
-                <td style={td}>{a?.channel || a?.type || "-"}</td>
+                <td style={td}>{a?.alertType === "BLOCKED_TRIP_ACCEPT_ATTEMPT" ? "Tài xế bị khoá bấm nhận chuyến" : a?.channel || a?.type || a?.alertType || "-"}</td>
                 <td style={td}>{formatNgayGio(a?.sentAt || a?.createdAt)}</td>
                 <td style={td} title={a?.message || ""}>
-                  {a?.message ? String(a.message).slice(0, 80) : "-"}
-                  {a?.message && String(a.message).length > 80 ? "…" : ""}
+                  {a?.message || "-"}
                 </td>
               </tr>
             );

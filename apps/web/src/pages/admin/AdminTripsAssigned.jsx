@@ -1,5 +1,6 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminTripsAssigned.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { formatCarType } from "../../utils/formatCarType";
 import {
   Box,
   Paper,
@@ -378,6 +379,7 @@ export default function AdminTripsAssigned() {
                   <TableCell sx={{ fontWeight: 700 }}>
                     Điểm đón → Điểm đến
                   </TableCell>
+                  <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ đón</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ về</TableCell>
                   <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
@@ -463,6 +465,7 @@ export default function AdminTripsAssigned() {
                         )}
                       </TableCell>
 
+                      <TableCell sx={{ whiteSpace: "nowrap" }}>{formatCarType(t.carType)}</TableCell>
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.pickupTime)}</TableCell>
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.returnTime)}</TableCell>
                       <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>{formatGia(t.totalPrice)}</TableCell>

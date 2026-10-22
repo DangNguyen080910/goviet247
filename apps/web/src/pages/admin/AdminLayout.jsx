@@ -571,6 +571,20 @@ export default function AdminLayout() {
       loadDashboard();
     };
 
+    const handleBlockedTripAttempt = async (payload) => {
+      if (shouldSkipRealtimeEvent("admin:blocked_trip_accept_attempt", payload)) return;
+      showSnack(
+        `🔒 ${payload?.driverName || "Tài xế"} đang bị khoá, vừa bấm nhận chuyến #${String(payload?.tripId || "").slice(-8).toUpperCase()}.`,
+        `/admin/pending?tripId=${encodeURIComponent(payload?.tripId || "")}`,
+      );
+      window.dispatchEvent(new CustomEvent("admin:blocked_trip_accept_attempt", { detail: payload }));
+      await playAdminUrgentSound();
+      loadDashboard();
+    };
+
+    socket.on("admin:blocked_trip_accept_attempt", handleBlockedTripAttempt);
+    // This listener is scoped to the layout lifecycle, independently of legacy listeners.
+    let cleanupLegacyListeners;
     if (!__adminSocketWired) {
       __adminSocketWired = true;
 
@@ -592,13 +606,17 @@ export default function AdminLayout() {
         handleDashboardChanged,
       );
 
-      return () => {
+      cleanupLegacyListeners = () => {
         window.removeEventListener(
           "admin:dashboard_changed",
           handleDashboardChanged,
         );
       };
     }
+    return () => {
+      socket.off("admin:blocked_trip_accept_attempt", handleBlockedTripAttempt);
+      cleanupLegacyListeners?.();
+    };
   }, [loadDashboard, showSnack, token, user?.username]);
 
   const drawerContent = (

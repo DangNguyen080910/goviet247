@@ -6,6 +6,7 @@ import { emitDriverTripEvent } from '../services/tripAudience.js';
 // ======================================================
 
 import { lockDriverProfile, lockTrip, assertTripAcceptanceAllowed, availableTripWhere } from "../services/tripAcceptancePolicy.js";
+import { notifyBlockedTripAttempt } from "../services/blockedTripAttemptNotification.js";
 import { createMyDriverWithdrawRequest } from "./driverProfileController.js";
 import { prisma } from "../utils/db.js";
 import { estimateFareFromCoordinates } from "../services/fareService.js";
@@ -1248,6 +1249,13 @@ export async function acceptTrip(req, res) {
     });
   } catch (err) {
     console.error("acceptTrip error:", err);
+    if (err.code === "TRIP_ACCEPT_UNAVAILABLE") {
+      await notifyBlockedTripAttempt({
+        io: req.app?.get?.("io"),
+        driverId: req.user?.id || req.user?.uid,
+        tripId: String(req.body?.tripId || "").trim(),
+      });
+    }
     return res.status(err.statusCode || 400).json({
       success: false,
       code: err.code === "TRIP_ACCEPT_UNAVAILABLE" ? err.code : undefined,

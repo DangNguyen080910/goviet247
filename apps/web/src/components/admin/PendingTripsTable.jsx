@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import CancelTripDialog from "./CancelTripDialog";
 import { getAdminToken } from "../../utils/adminAuth";
 import { normalizeDisplayAddress } from "../../api/adminTrips";
+import { formatCarType } from "../../utils/formatCarType";
 
 // Bật debug nếu cần (mặc định tắt)
 const DEBUG_PENDING_TIME = false;
@@ -344,6 +345,7 @@ export default function PendingTripsTable({
               <th style={th}>Điểm đón</th>
               <th style={th}>Điểm đến</th>
               <th style={th}>Loại nhiên liệu</th>
+              <th style={th}>Loại xe</th>
               <th style={th}>Giờ đón</th>
               <th style={th}>Giờ về</th>
               <th style={{ ...th, textAlign: "right" }}>Giá chuyến (đ)</th>
@@ -429,6 +431,7 @@ export default function PendingTripsTable({
                   <td style={{ ...td, fontWeight: 700 }}>
                     {formatFuelPreference(t.fuelPreference)}
                   </td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>{formatCarType(t.carType)}</td>
                   <td style={{ ...td, whiteSpace: "nowrap" }}>
                     {t.pickupTime ? formatNgayGio(t.pickupTime) : "—"}
                   </td>

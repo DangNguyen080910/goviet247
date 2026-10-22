@@ -28,6 +28,7 @@ import {
   normalizeDisplayAddress,
 } from "../../api/adminTrips";
 import { getAdminToken } from "../../utils/adminAuth";
+import { formatCarType } from "../../utils/formatCarType";
 
 function formatNgayGio(input) {
   if (!input) return "-";
@@ -256,6 +257,7 @@ export default function AdminTrips() {
               <TableCell sx={{ fontWeight: 700 }}>Khách hàng</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Điểm đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Điểm đến</TableCell>
+              <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ về</TableCell>
               <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
@@ -279,7 +281,7 @@ export default function AdminTrips() {
             {rows.length === 0 ? (
               <TableRow>
                 <TableCell
-                  colSpan={tab === 0 ? 11 : 13}
+                  colSpan={tab === 0 ? 12 : 14}
                   sx={{ py: 4, color: "text.secondary" }}
                 >
                   {searchText.trim()
@@ -353,6 +355,7 @@ export default function AdminTrips() {
                       )}
                     </TableCell>
 
+                    <TableCell sx={{ whiteSpace: "nowrap" }}>{formatCarType(t.carType)}</TableCell>
                     <TableCell>
                       {t.pickupTime ? formatNgayGio(t.pickupTime) : "—"}
                     </TableCell>
