@@ -257,8 +257,8 @@ export default function AdminTrips() {
               <TableCell sx={{ fontWeight: 700 }}>Điểm đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Điểm đến</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ đón</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Giờ về (Khứ hồi)</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>Giá</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Giờ về</TableCell>
+              <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Loại</TableCell>
 
@@ -354,14 +354,14 @@ export default function AdminTrips() {
                     </TableCell>
 
                     <TableCell>
-                      {t.pickupTime ? formatNgayGio(t.pickupTime) : "-"}
+                      {t.pickupTime ? formatNgayGio(t.pickupTime) : "—"}
                     </TableCell>
 
                     <TableCell>
-                      {t.returnTime ? formatNgayGio(t.returnTime) : "-"}
+                      {t.returnTime ? formatNgayGio(t.returnTime) : "—"}
                     </TableCell>
 
-                    <TableCell>{formatGia(t.totalPrice)}</TableCell>
+                    <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>{formatGia(t.totalPrice)}</TableCell>
 
                     <TableCell sx={{ fontWeight: 700 }}>
                       {formatFuelPreference(t.fuelPreference)}

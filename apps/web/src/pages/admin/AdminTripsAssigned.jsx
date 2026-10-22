@@ -99,9 +99,14 @@ function normalizeText(value) {
 }
 
 function formatNgayGio(value) {
-  if (!value) return "-";
+  if (!value) return "—";
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? "-" : date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
+}
+
+function formatGia(value) {
+  if (value == null || !Number.isFinite(Number(value))) return "—";
+  return Number(value).toLocaleString("vi-VN");
 }
 
 function getAssignedTripRiderName(trip) {
@@ -375,6 +380,7 @@ export default function AdminTripsAssigned() {
                   </TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ đón</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ về</TableCell>
+                  <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Cập nhật</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Trạng thái</TableCell>
                   <TableCell sx={{ fontWeight: 700, width: 320 }}>
@@ -457,8 +463,9 @@ export default function AdminTripsAssigned() {
                         )}
                       </TableCell>
 
-                      <TableCell>{formatNgayGio(t.pickupTime)}</TableCell>
-                      <TableCell>{formatNgayGio(t.returnTime)}</TableCell>
+                      <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.pickupTime)}</TableCell>
+                      <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.returnTime)}</TableCell>
+                      <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>{formatGia(t.totalPrice)}</TableCell>
 
                       <TableCell>
                         <Typography variant="body2">

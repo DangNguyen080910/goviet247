@@ -344,11 +344,12 @@ export default function PendingTripsTable({
               <th style={th}>Điểm đón</th>
               <th style={th}>Điểm đến</th>
               <th style={th}>Loại nhiên liệu</th>
+              <th style={th}>Giờ đón</th>
+              <th style={th}>Giờ về</th>
+              <th style={{ ...th, textAlign: "right" }}>Giá chuyến (đ)</th>
 
               {isCancelledTab ? (
                 <>
-                  <th style={th}>Giờ đón</th>
-                  <th style={th}>Giá</th>
                   <th style={th}>Lý do huỷ</th>
                   <th style={th}>Thời gian huỷ</th>
                   <th style={th}></th>
@@ -428,11 +429,18 @@ export default function PendingTripsTable({
                   <td style={{ ...td, fontWeight: 700 }}>
                     {formatFuelPreference(t.fuelPreference)}
                   </td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>
+                    {t.pickupTime ? formatNgayGio(t.pickupTime) : "—"}
+                  </td>
+                  <td style={{ ...td, whiteSpace: "nowrap" }}>
+                    {t.returnTime ? formatNgayGio(t.returnTime) : "—"}
+                  </td>
+                  <td style={{ ...tdMono, textAlign: "right", whiteSpace: "nowrap" }}>
+                    {formatGia(t.totalPrice)}
+                  </td>
 
                   {isCancelledTab ? (
                     <>
-                      <td style={td}>{formatNgayGio(t.pickupTime)}</td>
-                      <td style={tdMono}>{formatGia(t.totalPrice)}</td>
                       <td style={td}>{t.cancelReason || "-"}</td>
                       <td style={td}>{formatNgayGio(t.cancelledAt)}</td>
 
