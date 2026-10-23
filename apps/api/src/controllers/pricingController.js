@@ -5,6 +5,7 @@ import { validateHolidayConfig, validateHolidayPeriods } from "../services/holid
 import { quotePrice } from "../services/pricingService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
 import { validateWaitingRules } from "../services/waitingPricing.js";
+import { recordQuoteHistory } from "../services/quoteHistoryService.js";
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
@@ -81,10 +82,11 @@ export async function quote(req, res) {
       return res.status(400).json({ success: false, message: result.message });
     }
 
+    const history = await recordQuoteHistory(req, result.data);
     return res.json({
       success: true,
       message: result.message,
-      data: result.data,
+      data: { ...result.data, ...(history || {}) },
     });
   } catch (e) {
     console.error("pricing quote error:", e);

@@ -423,6 +423,7 @@ export default function AdminLayout() {
   ];
 
   const adminOnlyMenu = [
+    { label: "Lịch sử tính giá", icon: <ScheduleIcon />, to: "/admin/quote-history" },
     { label: "Cấu Hình", icon: <SettingsIcon />, to: "/admin/config" },
     {
       label: "Ví Tài Xế",

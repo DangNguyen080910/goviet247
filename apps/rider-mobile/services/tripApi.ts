@@ -13,6 +13,7 @@ type CreateTripPayload = {
   fuelPreference: "ANY" | "ELECTRIC" | "GASOLINE";
   distanceKm: number;
   fareEstimate: number;
+  quoteHistoryToken?: string;
   riderName: string;
   riderPhone: string;
   note: string | null;

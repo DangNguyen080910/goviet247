@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/routes/admin.js
 import { Router } from "express";
+import { getQuoteHistorySettings, updateQuoteHistorySettings, listQuoteHistory } from "../controllers/quoteHistoryController.js";
 import { prisma } from "../utils/db.js";
 import { makeAdminController } from "../controllers/adminController.js";
 import { updateAdminDriverProfile } from "../controllers/adminDriverProfileController.js";
@@ -52,6 +53,9 @@ import { uploadAccountingDocument } from "../middleware/uploadMiddleware.js";
 
 const router = Router();
 const ctrl = makeAdminController(prisma);
+router.get("/quote-history/settings", requireAdmin, getQuoteHistorySettings);
+router.patch("/quote-history/settings", requireAdmin, updateQuoteHistorySettings);
+router.get("/quote-history", requireAdmin, listQuoteHistory);
 
 // New mobile clients verify support before sending a durable wallet operation.
 router.get("/wallet-operations/capabilities", requireAdmin, (req, res) => {

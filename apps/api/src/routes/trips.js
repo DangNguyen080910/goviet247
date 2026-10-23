@@ -1,4 +1,5 @@
 import { createBookableTrip } from "../services/carAvailability.js";
+import { linkQuoteToTrip } from "../services/quoteHistoryService.js";
 import { listTripAudienceCandidates } from '../controllers/tripAudienceController.js';
 import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/routes/trips.js
@@ -384,6 +385,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       })),
     });
 
+    await linkQuoteToTrip(req.body?.quoteHistoryToken, trip);
     const io = req.app?.get?.("io");
 
     if (io) {

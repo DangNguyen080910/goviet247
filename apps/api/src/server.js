@@ -1,4 +1,5 @@
 import { userSessions, pushSessionKey } from './services/userSessions.js';
+import { startQuoteHistoryCleanup } from "./services/quoteHistoryService.js";
 import { verifyAdminJwtToken } from './utils/jwt.js';
 // Path: goviet247/apps/api/src/server.js
 import "dotenv/config";
@@ -197,6 +198,9 @@ io.on("connection", (socket) => {
     riderSockets.delete(socket.id);
   });
 });
+
+// Optional quote analytics are removed in bounded batches after 90 days.
+startQuoteHistoryCleanup();
 
 // Pending watcher
 const watcher = initPendingWatcher({ io, prisma });

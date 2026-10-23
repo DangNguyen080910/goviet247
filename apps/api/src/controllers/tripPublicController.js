@@ -1,4 +1,5 @@
 import { createBookableTrip } from "../services/carAvailability.js";
+import { linkQuoteToTrip } from "../services/quoteHistoryService.js";
 // Path: goviet247/apps/api/src/controllers/tripPublicController.js
 import { prisma } from "../utils/db.js";
 import { parseTripTime } from "../utils/tripTime.js";
@@ -286,6 +287,7 @@ export async function requestTripOtp(req, res) {
 
     // Payload lưu tạm trong OTP session (không tạo Trip ngay)
     const tripDraft = {
+      quoteHistoryToken: typeof req.body?.quoteHistoryToken === "string" ? req.body.quoteHistoryToken.slice(0, 64) : null,
       riderName,
       riderPhone,
       pickupAddress,
@@ -403,6 +405,7 @@ export async function confirmTrip(req, res) {
       status: "PENDING",
     });
 
+    await linkQuoteToTrip(payload.quoteHistoryToken, trip);
     // ✅ Emit realtime cho admin
     const io = req.app.get("io");
     if (io) {

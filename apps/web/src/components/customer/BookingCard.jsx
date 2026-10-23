@@ -1434,6 +1434,11 @@ export default function BookingCard() {
             : Number(driveMinutes),
       };
 
+      payload.historyContext = {
+        pickupAddress: pickupPlace?.fullAddress || pickupAddress.trim(),
+        stops: stops.map((address, index) => stopPlaces[index]?.fullAddress || String(address || "").trim()).filter(Boolean),
+        customerName: riderName.trim(), customerPhone: riderPhone.trim(),
+      };
       const data = await quotePrice(payload);
       if (quoteInputKeyRef.current !== inputKey) return;
 
@@ -1587,6 +1592,7 @@ export default function BookingCard() {
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
       fareEstimate: quote.totalPrice,
+      quoteHistoryToken: quote.raw?.quoteHistoryToken,
       riderName,
       riderPhone,
       note: finalNote,

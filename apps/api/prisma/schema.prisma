@@ -433,6 +433,41 @@ model PricingConfig {
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
 }
 
+model QuoteHistorySetting {
+  id        Int      @id @default(1)
+  enabled   Boolean  @default(true)
+  updatedBy String?
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+}
+
+model QuoteHistory {
+  id               String   @id
+  createdAt        DateTime @default(now()) @db.Timestamptz(6)
+  userId           String?
+  customerKey      String?
+  customerName     String?
+  customerPhone    String?
+  identityVerified Boolean  @default(false)
+  source           String   @default("UNKNOWN")
+  pickupAddress    String?
+  stops            Json
+  pickupTime       DateTime @db.Timestamptz(6)
+  returnTime       DateTime? @db.Timestamptz(6)
+  carType          String
+  direction        String
+  fuelPreference   String
+  distanceKm       Float
+  driveMinutes     Float?
+  finalPrice       Int
+  bookingTokenHash String   @unique
+  tripId           String?  @unique
+  bookedAt         DateTime? @db.Timestamptz(6)
+
+  @@index([createdAt])
+  @@index([source, createdAt])
+  @@index([carType, createdAt])
+}
+
 model TripConfig {
   returnSuggestionRadiusKm Int @default(20)
   returnSuggestionDays Int @default(2)

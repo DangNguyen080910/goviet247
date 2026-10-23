@@ -13,6 +13,7 @@ import AdminSystemNotifications from "./pages/admin/AdminSystemNotifications";
 import AdminTripsAssigned from "./pages/admin/AdminTripsAssigned";
 import AdminDrivers from "./pages/admin/AdminDrivers";
 import AdminCustomers from "./pages/admin/AdminCustomers";
+import AdminQuoteHistory from "./pages/admin/AdminQuoteHistory";
 import AdminTrips from "./pages/admin/AdminTrips";
 import AdminConfig from "./pages/admin/AdminConfig";
 import AdminDriverWallets from "./pages/admin/AdminDriverWallets";
@@ -239,6 +240,7 @@ export default function App() {
         <Route path="trips/assigned" element={<AdminTripsAssigned />} />
         <Route path="drivers" element={<AdminDrivers />} />
         <Route path="users" element={<AdminCustomers />} />
+        <Route path="quote-history" element={<AdminQuoteHistory />} />
         <Route path="trips" element={<AdminTrips />} />
         <Route path="config" element={<AdminConfig />} />
         <Route path="wallets" element={<AdminDriverWallets />} />

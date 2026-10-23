@@ -1438,6 +1438,7 @@ export default function RiderBookingScreen() {
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
       fareEstimate: quote?.totalPrice || 0,
+      quoteHistoryToken: quote?.raw?.quoteHistoryToken,
       riderName: riderName.trim(),
       riderPhone: riderPhone.trim(),
       note: finalNote,
@@ -1576,7 +1577,11 @@ export default function RiderBookingScreen() {
             : Number(driveMinutes),
       };
 
-      const data = await quotePrice(payload);
+      const data = await quotePrice({ ...payload, historyContext: {
+        pickupAddress: pickupPlace?.fullAddress || pickupAddress.trim(),
+        stops: stops.map((address, index) => stopPlaces[index]?.fullAddress || String(address || "").trim()).filter(Boolean),
+        customerName: riderName.trim(), customerPhone: riderPhone.trim(),
+      } });
       if (quoteInputKeyRef.current !== inputKey) return;
 
       const now = Date.now();
