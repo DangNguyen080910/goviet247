@@ -42,6 +42,7 @@ type TripItem = {
   driverVehicle?: {
     vehicleBrand?: string | null;
     vehicleModel?: string | null;
+    vehicleYear?: number | null;
     plateNumber?: string | null;
   } | null;
   stops?: Array<{
@@ -513,6 +514,12 @@ export default function RiderTripHistoryScreen() {
                           <Text style={styles.metaLabel}>Dòng xe</Text>
                           <Text style={styles.metaValue}>
                             {item.driverVehicle.vehicleModel || "Chưa cập nhật"}
+                          </Text>
+                        </View>
+                        <View style={styles.metaRow}>
+                          <Text style={styles.metaLabel}>Đời xe</Text>
+                          <Text style={styles.metaValue}>
+                            {item.driverVehicle.vehicleYear || "Chưa cập nhật"}
                           </Text>
                         </View>
                         <View style={styles.metaRow}>

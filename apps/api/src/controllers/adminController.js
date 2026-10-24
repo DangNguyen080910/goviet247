@@ -709,6 +709,7 @@ export function makeAdminController(prisma) {
       }),
       prisma.adminAlertLog.count({
         where: {
+          readAt: null,
           sentAt: {
             gte: last24h,
           },
@@ -2776,9 +2777,12 @@ export function makeAdminController(prisma) {
 
     async listAlerts(req, res) {
       try {
-        const limit = Math.min(parseInt(req.query.limit || "50", 10), 200);
+        const limit = Math.max(1, Math.min(parseInt(req.query.limit || "50", 10) || 50, 200));
+        const read = String(req.query.read || "all");
+        if (!["all", "unread", "read"].includes(read)) return res.status(400).json({ success: false, message: "Bộ lọc đã xem không hợp lệ." });
 
         const rows = await prisma.adminAlertLog.findMany({
+          where: read === "unread" ? { readAt: null } : read === "read" ? { readAt: { not: null } } : {},
           orderBy: { sentAt: "desc" },
           take: limit,
         });
@@ -2787,6 +2791,27 @@ export function makeAdminController(prisma) {
       } catch (e) {
         console.error("[Admin] listAlerts error:", e);
         res.status(500).json({ success: false, error: "INTERNAL_ERROR" });
+      }
+    },
+
+    async markAlertRead(req, res) {
+      const id = String(req.params.id || "").trim();
+      if (!id || id.length > 128) return res.status(400).json({ success: false, message: "Mã cảnh báo không hợp lệ." });
+      try {
+        // Conditional write preserves the first acknowledgement if two admins click together.
+        const changed = await prisma.adminAlertLog.updateMany({
+          where: { id, readAt: null },
+          data: { readAt: new Date(), readBy: String(req.admin?.username || req.admin?.id || "ADMIN") },
+        });
+        const alert = await prisma.adminAlertLog.findUnique({ where: { id } });
+        if (!alert) return res.status(404).json({ success: false, message: "Không tìm thấy cảnh báo." });
+        if (changed.count) {
+          req.app?.get?.("io")?.to("admins").emit("admin:alerts_read", { alertId: alert.id, readAt: alert.readAt });
+        }
+        return res.json({ success: true, alert });
+      } catch (error) {
+        console.error("[Admin] markAlertRead error:", error?.code || "ERROR");
+        return res.status(500).json({ success: false, message: "Chưa đánh dấu được cảnh báo. Vui lòng thử lại." });
       }
     },
 

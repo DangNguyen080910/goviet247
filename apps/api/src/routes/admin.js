@@ -69,6 +69,7 @@ router.get("/dashboard", requireAdminOrStaff, ctrl.getDashboard);
 // ================= ALERT =================
 
 router.get("/alerts", requireAdminOrStaff, ctrl.listAlerts);
+router.patch("/alerts/:id/read", requireAdminOrStaff, ctrl.markAlertRead);
 router.get("/alerts/:tripId", requireAdminOrStaff, ctrl.listAlertsByTrip);
 
 // ================= SYSTEM NOTIFICATIONS =================

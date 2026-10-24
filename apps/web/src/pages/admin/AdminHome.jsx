@@ -434,7 +434,7 @@ export default function AdminHome() {
 
         <Grid item xs={12} sm={6} md={4} lg={2}>
           <SummaryCard
-            title="Cảnh báo 24h"
+            title="Cảnh báo chưa xem 24h"
             value={stats.recentAlertsCount || 0}
             icon={<WarningAmberIcon fontSize="large" />}
             onClick={() => navigate("/admin/notifications")}

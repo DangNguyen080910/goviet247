@@ -739,6 +739,7 @@ export async function listMyCustomerTrips(req, res) {
               select: {
                 vehicleBrand: true,
                 vehicleModel: true,
+                vehicleYear: true,
                 plateNumber: true,
               },
             },
@@ -765,6 +766,7 @@ export async function listMyCustomerTrips(req, res) {
           ? {
               vehicleBrand: driver.driverProfile.vehicleBrand,
               vehicleModel: driver.driverProfile.vehicleModel,
+              vehicleYear: driver.driverProfile.vehicleYear,
               plateNumber: driver.driverProfile.plateNumber,
             }
           : null,

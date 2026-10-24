@@ -626,9 +626,12 @@ model AdminAlertLog {
   sentTo    String
   sentAt    DateTime @default(now()) @db.Timestamptz(6)
   success   Boolean  @default(true)
+  readAt    DateTime? @db.Timestamptz(6)
+  readBy    String?
   trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
 
   @@index([tripId])
+  @@index([readAt, sentAt])
 }
 
 model admin_users {

@@ -584,6 +584,12 @@ export default function AdminLayout() {
     };
 
     socket.on("admin:blocked_trip_accept_attempt", handleBlockedTripAttempt);
+    const handleAlertsRead = () => {
+      window.dispatchEvent(new Event("admin:alerts_read"));
+    };
+    // Acknowledgements only refresh counts; they must not ring the alert bell.
+    socket.on("admin:alerts_read", handleAlertsRead);
+    window.addEventListener("admin:alerts_read", loadDashboard);
     // This listener is scoped to the layout lifecycle, independently of legacy listeners.
     let cleanupLegacyListeners;
     if (!__adminSocketWired) {
@@ -616,6 +622,8 @@ export default function AdminLayout() {
     }
     return () => {
       socket.off("admin:blocked_trip_accept_attempt", handleBlockedTripAttempt);
+      socket.off("admin:alerts_read", handleAlertsRead);
+      window.removeEventListener("admin:alerts_read", loadDashboard);
       cleanupLegacyListeners?.();
     };
   }, [loadDashboard, showSnack, token, user?.username]);

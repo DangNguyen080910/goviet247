@@ -107,6 +107,7 @@ type RiderTripItem = {
   driverVehicle?: {
     vehicleBrand?: string | null;
     vehicleModel?: string | null;
+    vehicleYear?: number | null;
     plateNumber?: string | null;
   } | null;
   stops?: Array<{

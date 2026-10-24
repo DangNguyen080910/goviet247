@@ -1301,13 +1301,15 @@ export default function CustomerProfile() {
                                 display: "grid",
                                 gridTemplateColumns: {
                                   xs: "1fr",
-                                  sm: "repeat(3, minmax(0, 1fr))",
+                                  sm: "repeat(2, minmax(0, 1fr))",
+                                  lg: "repeat(4, minmax(0, 1fr))",
                                 },
                                 gap: 1,
                               }}
                             >
                               <Typography><b>Hãng xe:</b> {trip.driverVehicle.vehicleBrand || "Chưa cập nhật"}</Typography>
                               <Typography><b>Dòng xe:</b> {trip.driverVehicle.vehicleModel || "Chưa cập nhật"}</Typography>
+                              <Typography><b>Đời xe:</b> {trip.driverVehicle.vehicleYear || "Chưa cập nhật"}</Typography>
                               <Typography><b>Biển số xe:</b> {trip.driverVehicle.plateNumber || "Chưa cập nhật"}</Typography>
                             </Box>
                           </Paper>
