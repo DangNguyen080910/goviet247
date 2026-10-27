@@ -289,6 +289,7 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
       .trim()
       .slice(0, 500);
 
+    if (base.destinationService?.anchorAddress) base.destinationService = { ...base.destinationService, anchorAddress: maskAddress(base.destinationService.anchorAddress) };
     const maskedPickupAddress = maskAddress(trip.pickupAddress);
     const maskedDropoffAddress = maskAddress(trip.dropoffAddress);
 
@@ -338,6 +339,7 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
   }
 
   if (scope === "history") {
+    if (base.destinationService?.anchorAddress) base.destinationService = { ...base.destinationService, anchorAddress: maskAddress(base.destinationService.anchorAddress) };
     return {
       ...base,
       pickupAddress: maskAddress(trip.pickupAddress),
@@ -866,6 +868,7 @@ export async function listAvailableTrips(req, res) {
           distanceKm: Number(t.distanceKm || 0),
           pickupTime: t.pickupTime,
           returnTime: t.returnTime || null,
+          destinationService: t.destinationService,
           totalPrice: t.totalPrice,
           carType: t.carType,
           fuelPreference: t.fuelPreference,
@@ -1788,6 +1791,7 @@ export async function getDriverCancelHistory(req, res) {
             pickupTime: true,
             carType: true,
             direction: true,
+            destinationService: true,
             totalPrice: true,
             cancelReason: true,
             stops: {
@@ -1825,6 +1829,7 @@ export async function getDriverCancelHistory(req, res) {
         pickupTime: trip?.pickupTime || null,
         carType: trip?.carType || null,
         direction: trip?.direction || null,
+        destinationService: trip?.destinationService ? { ...trip.destinationService, anchorAddress: maskAddress(trip.destinationService.anchorAddress) } : null,
         totalPrice: Number(trip?.totalPrice || 0),
         cancelReason: trip?.cancelReason || "Driver huỷ chuyến",
         stops: Array.isArray(trip?.stops)
@@ -1892,6 +1897,7 @@ export async function getMyDriverWalletTransactions(req, res) {
             id: true,
             pickupAddress: true,
             dropoffAddress: true,
+            destinationService: true,
             totalPrice: true,
           },
         },
@@ -2372,6 +2378,7 @@ export async function getAssignedTrips(req, res) {
         dropoffAddress: true,
         pickupTime: true,
         returnTime: true,
+        destinationService: true,
         totalPrice: true,
         updatedAt: true,
         cancelReason: true,

@@ -1,3 +1,4 @@
+import { buildDestinationSnapshot, destinationSignature } from "./destinationService.js";
 import { CAR_TYPE_UNAVAILABLE_MESSAGE } from "./carAvailability.js";
 // Path: goviet247/apps/api/src/services/pricingService.js
 import pkg from "@prisma/client";
@@ -151,6 +152,10 @@ export async function quotePrice(input, db = prisma) {
     ? distanceCost
     : Math.round(km * pricePerKm);
 
+  const serviceConfig = db.tripConfig ? await db.tripConfig.findFirst({ orderBy:{id:"asc"} }) : null;
+  let destinationService;
+  try { destinationService = buildDestinationSnapshot(serviceConfig?.destinationServiceConfig, input); }
+  catch (error) { return {ok:false, message:error.message, status:error.status || 400}; }
   let overnightCount = 0;
   let overnightCost = 0;
 
@@ -202,7 +207,7 @@ export async function quotePrice(input, db = prisma) {
 
     totalMinutes = Math.round((rt.getTime() - pickup.getTime()) / 60000);
     const waitingTime = calculateWaitingTime(
-      new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig,
+      new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig, destinationService.sessions,
     );
     const waitingPrice = calculateTieredWaitingCost(
       km, waitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
@@ -248,12 +253,16 @@ export async function quotePrice(input, db = prisma) {
   const holidaySurchargeAmount = holidaySurcharge?.amount || 0;
   rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount + holidaySurchargeAmount;
 
-  const roundedTotal = roundTo10k(rawTotal);
+  const roundedTotal = roundTo10k(rawTotal) + destinationService.fee;
+  if (!Number.isSafeInteger(roundedTotal) || roundedTotal > 2147483647) return {ok:false,status:400,message:"Giá chuyến vượt giới hạn cho phép. Vui lòng liên hệ GoViet247."};
+  rawTotal += destinationService.fee;
 
   return {
     ok: true,
     message: "Tính giá thành công.",
     data: {
+      destinationService,
+      destinationServiceSignature: destinationSignature(destinationService),
       carType,
       fuelPreference,
       direction,
@@ -317,6 +326,7 @@ export async function calculateTripPrice({
   driveMinutes,
   outboundDriveMinutes,
   fuelPreference = "ANY",
+  destinationServiceDates, destinationAnchorAddress,
 }) {
   const pickupIso =
     pickupTime instanceof Date ? pickupTime.toISOString() : pickupTime;
@@ -325,6 +335,7 @@ export async function calculateTripPrice({
     returnTime instanceof Date ? returnTime.toISOString() : returnTime;
 
   const result = await quotePrice({
+    destinationServiceDates, destinationAnchorAddress,
     carType,
     direction,
     pickupTime: pickupIso,
@@ -342,6 +353,8 @@ export async function calculateTripPrice({
   const d = result.data;
 
   return {
+    destinationService: d.destinationService,
+    destinationServiceSignature: d.destinationServiceSignature,
     distanceKm: d.distanceKm,
     basePricePerKm: d.pricePerKm,
     holidayFactor: 1 + d.holidaySurchargePercent / 100,

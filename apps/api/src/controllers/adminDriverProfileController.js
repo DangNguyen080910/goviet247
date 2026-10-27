@@ -1,7 +1,7 @@
 import { isProvinceCode } from '../services/driverOperatingProvince.js';
 import { prisma } from '../utils/db.js';
 
-const labels = { fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
+const labels = { citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
 const fail = (message, statusCode = 400) => Object.assign(new Error(message), { statusCode });
 const plateKey = value => String(value || '').toUpperCase().replace(/[\s.-]+/g, '');
 const phoneNumber = value => {
@@ -10,7 +10,7 @@ const phoneNumber = value => {
   if (/^84\d{9}$/.test(raw)) return '+' + raw;
   return raw;
 };
-const safeLogValue = (key, value) => key === 'phone' && value ? '••••' + String(value).slice(-4) : value;
+const safeLogValue = (key, value) => ['phone', 'citizenId'].includes(key) && value ? '••••' + String(value).slice(-4) : value;
 
 export async function updateAdminDriverProfile(req, res) {
   try {
@@ -36,6 +36,7 @@ export async function updateAdminDriverProfile(req, res) {
       if (typeof raw !== 'string') throw fail(labels[key] + ' không hợp lệ.');
       let value = raw.trim();
       if (!value || value.length > (key === 'plateNumber' ? 30 : 100)) throw fail(labels[key] + ' không được trống hoặc quá dài.');
+      if (key === 'citizenId' && !/^\d{12}$/.test(value)) throw fail('Số CCCD phải gồm đúng 12 chữ số.');
       if (key === 'phone') {
         value = phoneNumber(value);
         if (!/^\+84[35789]\d{8}$/.test(value)) throw fail('SĐT di động Việt Nam không hợp lệ.');

@@ -1,4 +1,5 @@
 // Path: goviet247/apps/driver-mobile/app/trip-history.tsx
+import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useState } from "react";
 import { router } from "expo-router";
 import {
@@ -192,6 +193,7 @@ export default function TripHistoryScreen() {
           <Text style={styles.value}>
             {Number(trip.totalPrice || 0).toLocaleString("vi-VN")}đ
           </Text>
+          <ServiceSummary snapshot={trip.destinationService} />
         </View>
 
         <View style={styles.row}>
@@ -282,6 +284,7 @@ export default function TripHistoryScreen() {
           <Text style={styles.value}>
             {Number(trip.totalPrice || 0).toLocaleString("vi-VN")}đ
           </Text>
+          <ServiceSummary snapshot={trip.destinationService} />
         </View>
 
         <View style={styles.row}>

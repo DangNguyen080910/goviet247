@@ -1,4 +1,5 @@
 // Path: goviet247/apps/web/src/components/admin/TripDetailModal.jsx
+import { ServiceSummary } from "../customer/DestinationService";
 import { useEffect, useMemo, useState } from "react";
 import { getAdminToken } from "../../utils/adminAuth";
 import { toDateTimeLocalValue, scheduleLocalToIso } from "../../utils/tripTime";
@@ -776,6 +777,8 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                 {formatGia(detail?.totalPrice)}
               </div>
             </Section>
+
+            <ServiceSummary snapshot={detail?.destinationService} />
 
             <Section title="Tài xế đã nhận">
               {detail?.driver ? (

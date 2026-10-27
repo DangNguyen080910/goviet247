@@ -1,4 +1,5 @@
 // Path: goviet247/apps/api/src/controllers/tripConfigController.js
+import { validateDestinationConfig, destinationConfig } from "../services/destinationService.js";
 import pkg from "@prisma/client";
 
 const { PrismaClient } = pkg;
@@ -66,6 +67,11 @@ export async function updateTripConfig(req, res) {
     const current = await getOrCreateTripConfig();
 
     const updateData = {};
+    if (body.destinationServiceConfig !== undefined) {
+      const error = validateDestinationConfig(body.destinationServiceConfig);
+      if (error) return res.status(400).json({ success:false, message:error });
+      updateData.destinationServiceConfig = destinationConfig(body.destinationServiceConfig);
+    }
     for (const [field, max] of [['returnSuggestionRadiusKm', 500], ['returnSuggestionDays', 30]]) {
       if (body[field] === undefined) continue;
       const value = Number(body[field]);

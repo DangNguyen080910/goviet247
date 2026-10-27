@@ -1,3 +1,4 @@
+import { destinationConfig } from "../src/services/destinationService.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -36,7 +37,7 @@ test("old quote cannot create a trip after the type is disabled; lock and check 
 test("public config respects empty and partial active-car lists", async () => {
   for (const types of [[], ["CAR_5", "CAR_7"]]) {
     const db = { tripConfig: { findFirst: async () => ({}) }, systemConfig: { findFirst: async () => ({}) }, pricingConfig: { findMany: async ({ where }) => { assert.equal(where.isActive, true); return types.map(carType => ({ carType })); } } };
-    const handler = controller("tripPublicController.js", "getPublicTripConfig", { prisma: db, console: quiet });
+    const handler = controller("tripPublicController.js", "getPublicTripConfig", { prisma: db, console: quiet, destinationConfig });
     const res = response(); await handler({}, res);
     assert.equal(res.statusCode, 200, JSON.stringify(res.body));
     assert.deepEqual(res.body.data.carTypes.map(item => item.value), types);

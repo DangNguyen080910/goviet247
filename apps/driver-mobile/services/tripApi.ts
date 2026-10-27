@@ -45,6 +45,7 @@ export type AvailableTripItem = {
   distanceKm: number;
   pickupTime: string;
   returnTime?: string | null;
+  destinationService?: any;
   totalPrice: number;
   carType: DriverCarType;
   fuelPreference: DriverFuelPreference;
@@ -74,6 +75,7 @@ export type MyTripItem = {
   distanceKm: number;
   pickupTime: string;
   returnTime?: string | null;
+  destinationService?: any;
   totalPrice: number;
   carType: DriverCarType;
   fuelPreference: DriverFuelPreference;
@@ -111,6 +113,7 @@ export type DriverCancelledTripItem = {
   pickupTime?: string | null;
   carType?: DriverCarType | null;
   direction?: DriverTripDirection | null;
+  destinationService?: any;
   totalPrice: number;
   cancelReason?: string | null;
   stops?: DriverTripStop[];

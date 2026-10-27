@@ -54,6 +54,7 @@ export type DriverProfileData = {
   id: string;
   userId: string;
   fullName?: string | null;
+  citizenId?: string | null;
   displayName?: string | null;
   phone?: string | null;
   status: DriverKycStatus;
@@ -128,6 +129,7 @@ export type DriverContractSubmitPayload = {
 export type CreateDriverProfilePayload = {
   operatingProvinceCode: string;
   fullName: string;
+  citizenId: string;
   vehicleType: string;
   vehicleBrand: string;
   vehicleModel: string;

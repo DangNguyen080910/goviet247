@@ -1,3 +1,4 @@
+import { assertDestinationQuote } from "../services/destinationService.js";
 import { createBookableTrip } from "../services/carAvailability.js";
 import { linkQuoteToTrip } from "../services/quoteHistoryService.js";
 import { listTripAudienceCandidates } from '../controllers/tripAudienceController.js';
@@ -328,6 +329,8 @@ router.post("/", optionalVerifyToken, async (req, res) => {
     }
 
     const pricing = await calculateTripPrice({
+      destinationServiceDates: req.body.destinationServiceDates,
+      destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
       direction,
       distanceKm,
@@ -338,7 +341,9 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       fuelPreference,
     });
 
+    assertDestinationQuote(req.body, pricing.destinationService);
     const totalPrice = Number(pricing.totalPrice);
+    if (req.body.fareEstimate != null && Number(req.body.fareEstimate) !== totalPrice) return res.status(409).json({success:false,message:"Giá chuyến đã thay đổi. Vui lòng tính giá lại."});
     const basePricePerKm = Number(pricing.basePricePerKm);
     const holidayFactor = Number(pricing.holidayFactor || 1);
     const directionFactor = Number(pricing.directionFactor || 1);
@@ -370,6 +375,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       basePricePerKm,
       holidayFactor,
       holidaySurcharge: pricing.holidaySurcharge,
+      destinationService: pricing.destinationService,
       directionFactor,
       totalPrice,
       riderName: riderName || "",
@@ -432,7 +438,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
         "Đã ghi nhận chuyến. Nhân viên sẽ xác nhận trước khi gửi tới tài xế.",
     });
   } catch (err) {
-    if (err.status === 409) return res.status(409).json({ success: false, message: err.message });
+    if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });
     console.error("[Trip] create error:", err);
 
     return res.status(500).json({

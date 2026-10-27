@@ -1,4 +1,5 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminConfig.jsx
+import DestinationServiceConfig from "../../components/admin/DestinationServiceConfig";
 import React from "react";
 import {
   Box,
@@ -1904,9 +1905,11 @@ export default function AdminConfig() {
               icon={<LockOutlinedIcon />}
               iconPosition="start"
             />
+            <Tab label="Phục vụ tại điểm đến" icon={<LocalTaxiIcon />} iconPosition="start" />
           </Tabs>
 
           <Box sx={{ p: 3 }}>
+            <TabPanel value={tab} index={7}><DestinationServiceConfig /></TabPanel>
             {/* TAB 1: GIÁ CƯỚC */}
             <TabPanel value={tab} index={0}>
               <Stack spacing={2.5}>

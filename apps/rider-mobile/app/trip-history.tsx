@@ -1,4 +1,5 @@
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
+import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import {
@@ -21,6 +22,7 @@ import { onRiderSocketEvent } from "../services/riderSocket";
 import { useTripActivity } from "../context/TripActivityContext";
 
 type TripItem = {
+  destinationService?: any;
   id: string;
   pickupAddress: string;
   dropoffAddress: string;
@@ -554,6 +556,7 @@ export default function RiderTripHistoryScreen() {
                         {formatMoney(displayPrice)}
                       </Text>
                     </View>
+                  <ServiceSummary snapshot={item.destinationService} />
                   </View>
 
                   {item?.note ? (

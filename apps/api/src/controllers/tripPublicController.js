@@ -1,3 +1,4 @@
+import { destinationConfig, assertDestinationQuote } from "../services/destinationService.js";
 import { createBookableTrip } from "../services/carAvailability.js";
 import { linkQuoteToTrip } from "../services/quoteHistoryService.js";
 // Path: goviet247/apps/api/src/controllers/tripPublicController.js
@@ -134,6 +135,7 @@ export async function getPublicTripConfig(req, res) {
       success: true,
       data: {
         tripConfig: {
+          destinationServiceConfig: destinationConfig(tripConfig.destinationServiceConfig),
           maxStops: tripConfig.maxStops,
           minDistanceKm: tripConfig.minDistanceKm,
           maxDistanceKm: tripConfig.maxDistanceKm,
@@ -200,11 +202,14 @@ export async function quoteTrip(req, res) {
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
+      destinationServiceDates: req.body.destinationServiceDates,
+      destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
       direction,
       distanceKm: Number(distanceKm),
       pickupTime: pickupDate,
       returnTime: returnDate,
+      outboundDriveMinutes: req.body.outboundDriveMinutes,
       driveMinutes: driveMinutes == null ? undefined : Number(driveMinutes),
       fuelPreference,
     });
@@ -222,7 +227,7 @@ export async function quoteTrip(req, res) {
     });
   } catch (err) {
     console.error("quoteTrip error:", err);
-    if (err.status === 409) return res.status(409).json({ success: false, message: err.message });
+    if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });
     return res
       .status(500)
       .json({ success: false, message: "Tính giá thất bại." });
@@ -276,14 +281,19 @@ export async function requestTripOtp(req, res) {
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
+      destinationServiceDates: req.body.destinationServiceDates,
+      destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
       direction,
       distanceKm: Number(distanceKm),
       pickupTime: pickupDate,
       returnTime: returnDate,
+      outboundDriveMinutes: req.body.outboundDriveMinutes,
       driveMinutes: driveMinutes == null ? undefined : Number(driveMinutes),
       fuelPreference,
     });
+
+    assertDestinationQuote(req.body, pricing.destinationService);
 
     // Payload lưu tạm trong OTP session (không tạo Trip ngay)
     const tripDraft = {
@@ -329,7 +339,7 @@ export async function requestTripOtp(req, res) {
       });
     }
 
-    if (err.status === 409) return res.status(409).json({ success: false, message: err.message });
+    if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });
     console.error("requestTripOtp error:", err);
     return res.status(500).json({
       success: false,
@@ -400,6 +410,7 @@ export async function confirmTrip(req, res) {
       basePricePerKm: Number(basePricePerKm),
       holidayFactor: Number(holidayFactor || 1),
       holidaySurcharge: payload.holidaySurcharge || undefined,
+      destinationService: payload.destinationService,
       directionFactor: Number(directionFactor || 1),
       totalPrice: Number(totalPrice),
       status: "PENDING",

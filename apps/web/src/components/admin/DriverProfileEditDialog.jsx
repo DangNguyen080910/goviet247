@@ -6,6 +6,7 @@ import { patchDriverProfile } from '../../api/adminDrivers';
 const CARS = { CAR_5: 'Xe 5 chỗ', CAR_7: 'Xe 7 chỗ', CAR_16: 'Xe 16 chỗ' };
 function makeForm(driver) {
   return {
+    citizenId: driver.citizenId || '',
     fullName: driver.fullName || '', displayName: driver.user?.displayName || '',
     phone: driver.user?.phones?.[0]?.e164 || '', operatingProvinceCode: driver.operatingProvinceCode || '79',
     provinceConfirmed: !!driver.operatingProvinceConfirmedAt,
@@ -50,6 +51,7 @@ export default function DriverProfileEditDialog({ driver, onClose, onSaved }) {
         <Typography variant="body2">{snapshot.fullName || snapshot.user?.displayName || 'Hồ sơ tài xế'}</Typography>
         {error && <Alert severity="error">{error}</Alert>}
         <TextField label="Họ tên tài xế" value={form.fullName} onChange={update('fullName')} disabled={busy} inputProps={{ maxLength: 100 }} />
+        <TextField label="Số CCCD" value={form.citizenId} onChange={update('citizenId')} disabled={busy} inputProps={{ maxLength: 12, inputMode: 'numeric', pattern: '[0-9]{12}' }} helperText="Nhập đúng 12 chữ số theo giấy tờ; giữ nguyên số 0 ở đầu." />
         <TextField label="Tên hiển thị tài khoản" value={form.displayName} onChange={update('displayName')} disabled={busy} inputProps={{ maxLength: 100 }} helperText="Tài khoản có thể được dùng cho cả app tài xế và khách hàng." />
         <TextField label="Số điện thoại" value={form.phone} onChange={update('phone')} disabled={busy} type="tel" inputProps={{ maxLength: 20 }} helperText="Nhập 0… hoặc +84…; SĐT phải chưa thuộc tài khoản khác." />
         {phoneChanged && <Alert severity="warning">Số mới cần xác thực OTP. Đây là thay đổi SĐT của tài khoản hiện tại, không phải tạo hoặc gộp tài khoản.</Alert>}

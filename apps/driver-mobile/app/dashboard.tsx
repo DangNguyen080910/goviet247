@@ -1,4 +1,5 @@
 // Path: goviet247/apps/driver-mobile/app/dashboard.tsx
+import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { router } from "expo-router";
 import { io, type Socket } from "socket.io-client";
@@ -1291,6 +1292,7 @@ export default function DashboardScreen() {
           </View>
 
           <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
+          <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>
             <Text style={styles.fuelBadgeText}>
@@ -1470,6 +1472,7 @@ export default function DashboardScreen() {
           </View>
 
           <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
+          <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>
             <Text style={styles.fuelBadgeText}>

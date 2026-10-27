@@ -68,6 +68,8 @@ export async function quote(req, res) {
     }
 
     const result = await quotePrice({
+      destinationServiceDates: req.body.destinationServiceDates,
+      destinationAnchorAddress: req.body.destinationAnchorAddress,
       carType,
       direction,
       pickupTime,

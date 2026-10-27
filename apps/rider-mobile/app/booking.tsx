@@ -27,6 +27,8 @@ import BookingTimePicker from "../components/BookingTimePicker";
 import { bookingTimeToIso, formatBookingTime, vietnamNow } from "../utils/bookingTime";
 import AppBrandHeader from "../components/AppBrandHeader";
 import { getMe, updateMe } from "../services/authApi";
+import DestinationService, { ServiceSummary } from "../components/DestinationService";
+import { destinationWindows, destinationConfig } from "../../../packages/shared/destinationService.js";
 import { quotePrice } from "../services/pricingApi";
 import {
   createTrip,
@@ -344,7 +346,7 @@ function mergeVietnamLocationOptions(
 
 export default function RiderBookingScreen() {
   const insets = useSafeAreaInsets();
-  const [tripConfig, setTripConfig] = useState(DEFAULT_TRIP_CONFIG);
+  const [tripConfig, setTripConfig] = useState(DEFAULT_TRIP_CONFIG as typeof DEFAULT_TRIP_CONFIG & {destinationServiceConfig?: any});
   const [carTypeOptions, setCarTypeOptions] = useState<{ value: string; label: string }[]>([]);
   const [configLoading, setConfigLoading] = useState(true);
   const [configError, setConfigError] = useState("");
@@ -430,6 +432,8 @@ export default function RiderBookingScreen() {
   const [submitTouched, setSubmitTouched] = useState(false);
   const [isEstimating, setIsEstimating] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
+  const [destinationServiceDates,setDestinationServiceDates]=useState<string[]>([]);
+  const [destinationAnchorAddress,setDestinationAnchorAddress]=useState("");
   const [quote, setQuote] = useState<QuoteState>(null);
   const [quoteNowTs, setQuoteNowTs] = useState(Date.now());
   const [pickerTarget, setPickerTarget] = useState<"pickup" | "return" | null>(
@@ -647,7 +651,13 @@ export default function RiderBookingScreen() {
   const routeInputKeyRef = useRef(routeInputKey);
   routeInputKeyRef.current = routeInputKey;
   const [routeReadyKey, setRouteReadyKey] = useState("");
-  const quoteInputKey = JSON.stringify([routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const servicePickup = pickupTime ? toIsoFromDatetimeLocal(pickupTime) : "";
+  const serviceReturn = returnTime ? toIsoFromDatetimeLocal(returnTime) : "";
+  const serviceWindows=destinationWindows(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
+  const serviceWindowKey=JSON.stringify(serviceWindows);
+  useEffect(()=>{setDestinationServiceDates(old=>old.filter(date=>JSON.parse(serviceWindowKey).some((w:any)=>w.date===date)));},[serviceWindowKey]);
+  const serviceAnchor=destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
+  const quoteInputKey = JSON.stringify([destinationServiceDates,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
@@ -968,6 +978,9 @@ export default function RiderBookingScreen() {
   useEffect(() => {
     setQuote(null);
   }, [
+    destinationServiceDates,
+    destinationAnchorAddress,
+    tripConfig.destinationServiceConfig,
     pickupAddress,
     stops,
     pickupTime,
@@ -1437,6 +1450,8 @@ export default function RiderBookingScreen() {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
+      destinationServiceDates, destinationAnchorAddress:serviceAnchor,
+      destinationServiceSignature:quote?.raw?.destinationServiceSignature,
       fareEstimate: quote?.totalPrice || 0,
       quoteHistoryToken: quote?.raw?.quoteHistoryToken,
       riderName: riderName.trim(),
@@ -1561,6 +1576,7 @@ export default function RiderBookingScreen() {
 
     try {
       const payload = {
+        destinationServiceDates, destinationAnchorAddress:serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -2104,6 +2120,7 @@ export default function RiderBookingScreen() {
 
             <View style={styles.divider} />
 
+            <DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} dates={destinationServiceDates} onDates={setDestinationServiceDates} />
             <Text style={styles.sectionTitle}>3. Loại xe</Text>
             {configLoading ? <Text>Đang tải loại xe nhận đặt…</Text> : configError ? <Text style={styles.errorText}>{configError} Vui lòng mở lại màn hình đặt xe để thử lại.</Text> : !carTypeOptions.length ? <Text>Hiện chưa có loại xe nhận đặt. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.</Text> : null}
 
@@ -2377,17 +2394,9 @@ export default function RiderBookingScreen() {
                 </View>
               ) : null}
 
+              <ServiceSummary snapshot={quote.raw?.destinationService} />
               <View style={styles.quoteBenefits}>
-                <Text style={styles.quoteBenefitText}>
-                  ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và
-                  chi phí ăn nghỉ của tài xế trong toàn hành trình. Không phát
-                  sinh thêm.
-                </Text>
 
-                <Text style={styles.quoteBenefitText}>
-                  🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến
-                  đi
-                </Text>
 
                 <Text style={styles.quoteBenefitHint}>
                   💡 Đi càng xa, giá mỗi km càng rẻ

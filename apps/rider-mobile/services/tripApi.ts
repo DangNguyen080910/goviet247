@@ -9,6 +9,9 @@ type CreateTripPayload = {
   pickupTime: string;
   returnTime: string | null;
   direction: "ONE_WAY" | "ROUND_TRIP";
+  destinationServiceDates?: string[];
+  destinationAnchorAddress?: string;
+  destinationServiceSignature?: string;
   carType: string;
   fuelPreference: "ANY" | "ELECTRIC" | "GASOLINE";
   distanceKm: number;

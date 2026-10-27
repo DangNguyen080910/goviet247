@@ -271,6 +271,7 @@ model Session {
 }
 
 model Trip {
+  destinationService Json?
   // Empty means public; retained across cancellation, resend and reapproval.
   audienceDriverIds String[] @default([])
   @@index([audienceDriverIds], type: Gin)
@@ -469,6 +470,7 @@ model QuoteHistory {
 }
 
 model TripConfig {
+  destinationServiceConfig Json?
   returnSuggestionRadiusKm Int @default(20)
   returnSuggestionDays Int @default(2)
   id                          Int      @id @default(autoincrement())
@@ -678,6 +680,7 @@ model DriverProfile {
   tripAcceptBlocked Boolean @default(false)
   balance  Int             @default(0)
   fullName String?
+  citizenId String? @db.VarChar(12)
   operatingProvinceCode String @default("79") @db.VarChar(2)
   operatingProvinceConfirmedAt DateTime? @db.Timestamptz(6)
 

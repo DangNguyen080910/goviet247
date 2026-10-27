@@ -876,6 +876,7 @@ export default function AdminDrivers() {
                     );
                   })()}
 
+                  <Typography>Số CCCD: {detail.citizenId || "Chưa cập nhật"}</Typography>
                   <Typography>Biển số: {detail.plateNumber || "-"}</Typography>
                   <Typography>
                     Loại xe: {vehicleTypeLabel(detail.vehicleType)}

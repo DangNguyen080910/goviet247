@@ -219,6 +219,8 @@ function emitAdminDashboardChanged(req, payload = {}) {
 const createDriverProfileSchema = z.object({
   // Old app versions omit this field; retain default but mark it as unconfirmed.
   operatingProvinceCode: z.string().refine(isProvinceCode, "Vui lòng chọn tỉnh/thành hợp lệ.").optional(),
+  // Legacy mobile clients omit citizenId until the mobile rollout.
+  citizenId: z.string().trim().regex(/^\d{12}$/, "Số CCCD phải gồm đúng 12 chữ số.").optional(),
   fullName: z
     .string()
     .trim()
@@ -457,6 +459,7 @@ export async function getMyDriverProfile(req, res) {
         id: profile.id,
         userId: profile.userId,
         fullName: resolvedFullName,
+        citizenId: profile.citizenId,
         displayName: resolvedFullName,
         phone: user.phones?.[0]?.e164 || null,
         operatingProvinceCode: profile.operatingProvinceCode,
@@ -1218,6 +1221,7 @@ export async function createDriverProfile(req, res) {
         data: {
           userId: uid,
           fullName: body.fullName,
+          citizenId: body.citizenId ?? null,
           operatingProvinceCode: body.operatingProvinceCode || "79",
           operatingProvinceConfirmedAt: body.operatingProvinceCode ? new Date() : null,
           status: "PENDING",

@@ -60,6 +60,7 @@ const DOCUMENT_ITEMS: DocumentItem[] = [
 export default function DriverProfileCreateScreen() {
   const insets = useSafeAreaInsets();
   const [operatingProvinceCode, setOperatingProvinceCode] = useState("");
+  const [citizenId, setCitizenId] = useState("");
   const [fullName, setFullName] = useState("");
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleBrand, setVehicleBrand] = useState("");
@@ -89,6 +90,7 @@ export default function DriverProfileCreateScreen() {
     return (
       operatingProvinceCode.length > 0 &&
       fullName.trim().length >= 2 &&
+      /^\d{12}$/.test(citizenId.trim()) &&
       vehicleType.trim().length > 0 &&
       vehicleBrand.trim().length > 0 &&
       vehicleModel.trim().length > 0 &&
@@ -99,6 +101,7 @@ export default function DriverProfileCreateScreen() {
   }, [
     operatingProvinceCode,
     fullName,
+    citizenId,
     vehicleType,
     vehicleBrand,
     vehicleModel,
@@ -254,6 +257,11 @@ export default function DriverProfileCreateScreen() {
       return;
     }
 
+    if (!/^\d{12}$/.test(citizenId.trim())) {
+      setErrorText("Vui lòng nhập số CCCD gồm đúng 12 chữ số.");
+      return;
+    }
+
     if (!vehicleType.trim()) {
       setErrorText("Vui lòng chọn loại xe.");
       return;
@@ -303,6 +311,7 @@ export default function DriverProfileCreateScreen() {
       await createDriverProfile(token, {
         operatingProvinceCode,
         fullName: fullName.trim(),
+        citizenId: citizenId.trim(),
         vehicleType: vehicleType,
         vehicleBrand: vehicleBrand.trim(),
         vehicleModel: vehicleModel.trim(),
@@ -380,6 +389,18 @@ export default function DriverProfileCreateScreen() {
                   if (errorText) setErrorText("");
                 }}
                 placeholder="Ví dụ: Nguyễn Văn A"
+                style={styles.input}
+                placeholderTextColor="#9CA3AF"
+              />
+
+              <Text style={styles.label}>Số CCCD (bắt buộc)</Text>
+              <TextInput
+                value={citizenId}
+                onChangeText={(text) => { setCitizenId(text); if (errorText) setErrorText(""); }}
+                placeholder="Nhập 12 chữ số trên CCCD"
+                keyboardType="number-pad"
+                maxLength={12}
+                editable={!submitting}
                 style={styles.input}
                 placeholderTextColor="#9CA3AF"
               />

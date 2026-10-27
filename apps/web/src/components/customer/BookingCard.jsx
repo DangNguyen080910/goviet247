@@ -53,6 +53,8 @@ dayjs.locale("vi");
 
 import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
 import { useLocation, useNavigate } from "react-router-dom";
+import DestinationService, { ServiceSummary } from "./DestinationService";
+import { destinationWindows, destinationConfig } from "../../../../../packages/shared/destinationService.js";
 import { quotePrice } from "../../api/pricing";
 import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
@@ -275,6 +277,8 @@ export default function BookingCard() {
   const [returnDriveMinutes, setReturnDriveMinutes] = useState("");
   const [isRouteLoading, setIsRouteLoading] = useState(false);
 
+  const [destinationServiceDates, setDestinationServiceDates] = useState([]);
+  const [destinationAnchorAddress, setDestinationAnchorAddress] = useState("");
   const [quote, setQuote] = useState(null);
   const [isEstimating, setIsEstimating] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -932,6 +936,9 @@ export default function BookingCard() {
   useEffect(() => {
     setQuote(null);
   }, [
+    destinationServiceDates,
+    destinationAnchorAddress,
+    tripConfig.destinationServiceConfig,
     pickupAddress,
     stops,
     pickupDate,
@@ -1024,7 +1031,13 @@ export default function BookingCard() {
   const routeInputKeyRef = useRef(routeInputKey);
   routeInputKeyRef.current = routeInputKey;
   const [routeReadyKey, setRouteReadyKey] = useState("");
-  const quoteInputKey = JSON.stringify([routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const servicePickup = pickupPeriod ? combineDateTime(pickupDate,pickupTimeOnly) : "";
+  const serviceReturn = returnPeriod ? combineDateTime(returnDate,returnTimeOnly) : "";
+  const serviceWindows = destinationWindows(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
+  const serviceWindowKey = JSON.stringify(serviceWindows);
+  useEffect(()=>{setDestinationServiceDates(old=>old.filter(date=>JSON.parse(serviceWindowKey).some(w=>w.date===date)));},[serviceWindowKey]);
+  const serviceAnchor = destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
+  const quoteInputKey = JSON.stringify([destinationServiceDates,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
@@ -1418,6 +1431,7 @@ export default function BookingCard() {
     setIsEstimating(true);
     try {
       const payload = {
+        destinationServiceDates, destinationAnchorAddress: serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -1591,6 +1605,8 @@ export default function BookingCard() {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
+      destinationServiceDates, destinationAnchorAddress: serviceAnchor,
+      destinationServiceSignature: quote.raw?.destinationServiceSignature,
       fareEstimate: quote.totalPrice,
       quoteHistoryToken: quote.raw?.quoteHistoryToken,
       riderName,
@@ -2391,6 +2407,7 @@ export default function BookingCard() {
 
               <Divider />
 
+<DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} dates={destinationServiceDates} onDates={setDestinationServiceDates} />
               {/* Actions */}
               <Stack
                 direction={{ xs: "column", sm: "row" }}
@@ -2494,23 +2511,9 @@ export default function BookingCard() {
                 </Box>
               )}
 
+              <ServiceSummary snapshot={quote.raw?.destinationService} />
               <Box sx={{ mt: 0.5, mb: 1.5 }}>
-                <Typography
-                  variant="body2"
-                  sx={{ opacity: 0.8, fontWeight: 700 }}
-                >
-                  ✅ Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và
-                  chi phí ăn nghỉ của tài xế trong toàn hành trình. Không phát
-                  sinh thêm.
-                </Typography>
 
-                <Typography
-                  variant="body2"
-                  sx={{ opacity: 0.85, fontWeight: 700 }}
-                >
-                  🚗 Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến
-                  đi
-                </Typography>
 
                 <Typography
                   variant="body2"

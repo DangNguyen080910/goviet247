@@ -21,7 +21,7 @@ export function validateWaitingRules(value) {
 
 // Only waiting at the destination qualifies. Driving across midnight does not.
 // Use Vietnam calendar windows, including the preceding day's overnight window.
-export function calculateWaitingTime(arrival, returnTime, configuredRules) {
+export function calculateWaitingTime(arrival, returnTime, configuredRules, excludedIntervals = []) {
   const rules = configuredRules || DEFAULT_WAITING_RULES;
   const error = validateWaitingRules(rules);
   if (error) throw new Error(error);
@@ -34,6 +34,7 @@ export function calculateWaitingTime(arrival, returnTime, configuredRules) {
   const lastDay = Math.floor((end + VN_OFFSET) / DAY);
   let overnightCount = 0;
   let coveredMs = 0;
+  const nightIntervals = [];
   for (let day = firstDay; day <= lastDay; day++) {
     const windowStart = day * DAY - VN_OFFSET + rules.nightStartHour * 60 * MINUTE;
     const windowEnd = windowStart + windowHours * 60 * MINUTE;
@@ -41,12 +42,22 @@ export function calculateWaitingTime(arrival, returnTime, configuredRules) {
     if (overlap > 0 && overlap >= threshold) {
       overnightCount++;
       coveredMs += overlap;
+      nightIntervals.push([Math.max(start, windowStart), Math.min(end, windowEnd)]);
     }
   }
   const overnightCoveredMinutes = Math.round(coveredMs / MINUTE);
-  const hourlyWaitMinutes = Math.max(0, waitMinutes - overnightCoveredMinutes);
+  const intervals = [...nightIntervals, ...excludedIntervals.map(i => [Math.max(start, new Date(i.start).getTime()), Math.min(end, new Date(i.end).getTime())])].filter(([a,b]) => b>a).sort((a,b)=>a[0]-b[0]);
+  let unionMs=0, cursorStart=null, cursorEnd=null;
+  for (const [a,b] of intervals) {
+    if (cursorStart === null) { cursorStart=a; cursorEnd=b; }
+    else if (a <= cursorEnd) cursorEnd=Math.max(cursorEnd,b);
+    else { unionMs+=cursorEnd-cursorStart; cursorStart=a; cursorEnd=b; }
+  }
+  if (cursorStart !== null) unionMs+=cursorEnd-cursorStart;
+  const serviceCoveredMinutes = Math.max(0, Math.round((unionMs-coveredMs)/MINUTE));
+  const hourlyWaitMinutes = Math.max(0, waitMinutes - overnightCoveredMinutes - serviceCoveredMinutes);
   const billableWaitMinutes = Math.max(0, hourlyWaitMinutes - rules.freeWaitingMinutes);
-  return { waitMinutes, overnightCount, overnightCoveredMinutes, hourlyWaitMinutes,
+  return { serviceCoveredMinutes, waitMinutes, overnightCount, overnightCoveredMinutes, hourlyWaitMinutes,
     freeWaitingMinutes: rules.freeWaitingMinutes, billableWaitMinutes,
     billableWaitHours: Math.ceil(billableWaitMinutes / 60), waitingRules: rules };
 }

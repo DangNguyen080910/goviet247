@@ -5,6 +5,9 @@ import { Platform } from "react-native";
 import { getRiderToken } from "./storage";
 
 type QuotePricePayload = {
+  destinationServiceDates?: string[];
+  destinationAnchorAddress?: string;
+  destinationServiceSignature?: string;
   carType: string;
   direction: "ONE_WAY" | "ROUND_TRIP";
   pickupTime: string;
