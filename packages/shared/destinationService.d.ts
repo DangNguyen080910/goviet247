@@ -5,3 +5,6 @@ export function destinationWindows(config: any, direction: string, pickup: any, 
 export function destinationSummary(snapshot: any): string[];
 export function vnDay(value: any): string;
 export function vnTime(value: any): string;
+export type DestinationDay = { date: string; standardStart: string | null; standardEnd: string | null; charter: { date: string; start: string; end: string; hours: number; flexible: boolean } | null };
+export function destinationDays(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): DestinationDay[];
+export function destinationDayText(day: DestinationDay, selected: boolean, config: any): string;

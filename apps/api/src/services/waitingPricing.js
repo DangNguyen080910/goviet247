@@ -46,7 +46,13 @@ export function calculateWaitingTime(arrival, returnTime, configuredRules, exclu
     }
   }
   const overnightCoveredMinutes = Math.round(coveredMs / MINUTE);
-  const intervals = [...nightIntervals, ...excludedIntervals.map(i => [Math.max(start, new Date(i.start).getTime()), Math.min(end, new Date(i.end).getTime())])].filter(([a,b]) => b>a).sort((a,b)=>a[0]-b[0]);
+  const intervals = [...nightIntervals, ...excludedIntervals.flatMap(i => {
+    const from = Math.max(start, new Date(i.start).getTime()), to = Math.min(end, new Date(i.end).getTime());
+    let segments = [[from, to]];
+    for (const [a,b] of nightIntervals) segments = segments.flatMap(([x,y]) => y <= a || x >= b ? [[x,y]] : [[x,Math.min(y,a)],[Math.max(x,b),y]].filter(([u,v]) => v > u));
+    let remaining = i.flexible ? Math.max(0, Number(i.hours) * 60 * MINUTE) : Infinity;
+    return segments.flatMap(([a,b]) => { const length = Math.min(Math.max(0,b-a), remaining); remaining -= length; return length > 0 ? [[a,a+length]] : []; });
+  })].filter(([a,b]) => b>a).sort((a,b)=>a[0]-b[0]);
   let unionMs=0, cursorStart=null, cursorEnd=null;
   for (const [a,b] of intervals) {
     if (cursorStart === null) { cursorStart=a; cursorEnd=b; }

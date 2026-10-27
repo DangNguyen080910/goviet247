@@ -16,7 +16,7 @@ for (const dates of [[], ['2026-11-03']]) test(`five-day driver schedule: ${date
  assert.equal(s.tourDisplay.overnightCount, 4);
  const lines = driverTourSummary(s);
  assert.equal(lines.filter(line => /^2026-11-0[1-5]:/.test(line)).length, 5);
- assert.ok(lines.includes(`2026-11-01: ${config.standardName}`));
+ assert.ok(lines.some(line => line.startsWith(`2026-11-01: ${config.standardName}`)));
  if (dates.length) assert.ok(lines.some(line => line.startsWith('2026-11-03: Bao xe')));
  assert.equal(lines.filter(line => line.startsWith('Phụ phí phục vụ tour:')).length, 1);
  assert.equal(lines.some(line => line.startsWith('Phụ phí:')), false);
@@ -29,4 +29,34 @@ test('legacy trips do not invent combined fees or a service schedule', () => {
  const lines = driverTourSummary(old);
  assert.equal(lines.some(line => line.startsWith('Phụ phí phục vụ tour:')), false);
  assert.ok(lines.includes('Phí Bao xe tại điểm đến đã bao gồm trong giá chuyến.'));
+});
+
+test('all-charter two-day trip omits the standard block and retains booked terms and fees', async () => {
+ const request = { ...input, returnTime: '2026-11-02T15:00:00+07:00', destinationServiceDates: ['2026-11-01', '2026-11-02'] };
+ const result = await quotePrice(request, db);
+ assert.equal(result.ok, true);
+ const snapshot = result.data.destinationService;
+ const before = JSON.stringify(snapshot);
+ for (const hidePaymentAndScope of [false, true]) {
+  const lines = driverTourSummary(snapshot, { hidePaymentAndScope });
+  assert.equal(lines.includes(snapshot.standardDescription), false);
+  assert.equal(lines.includes(`${snapshot.standardName} — Đã bao gồm trong giá`), false);
+  assert.equal(lines.some(line => line.startsWith('Giờ hỗ trợ Tiêu chuẩn:')), false);
+  assert.ok(lines.includes(snapshot.charterDescription));
+  assert.equal(lines.filter(line => /^2026-11-0[12]:/.test(line)).length, 2);
+  assert.ok(lines.includes(snapshot.allInclusiveNotice));
+  assert.equal(lines.filter(line => line.startsWith('Phụ phí phục vụ tour:')).length, 1);
+  assert.equal(lines.includes(snapshot.paymentNotice), !hidePaymentAndScope);
+  assert.equal(lines.includes(snapshot.scopeNotice), !hidePaymentAndScope);
+ }
+ assert.equal(JSON.stringify(snapshot), before);
+});
+test('standard-only and mixed schedules retain only applicable descriptions', async () => {
+ for (const dates of [[], ['2026-11-02']]) {
+  const result = await quotePrice({ ...input, destinationServiceDates: dates }, db);
+  const snapshot = result.data.destinationService;
+  const lines = driverTourSummary(snapshot, { hidePaymentAndScope: true });
+  assert.ok(lines.includes(snapshot.standardDescription));
+  assert.equal(lines.includes(snapshot.charterDescription), dates.length > 0);
+ }
 });

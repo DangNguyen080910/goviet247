@@ -8,7 +8,7 @@ export const DEFAULT_DESTINATION_CONFIG = {
   charterName: "Bao xe tại điểm đến",
   charterDescription: "Bao gồm đi ăn uống, tham quan, mua sắm trong phạm vi {radius} km theo đường ô tô tính từ nơi lưu trú đã xác nhận; tối đa {hours} giờ/ngày, trong khung {start}–{end}. Thời gian phục vụ gồm di chuyển và chờ. Khách và tài xế thống nhất các điểm chính và khoảng nghỉ trước mỗi ngày; tài xế phục vụ đúng lịch đã xác nhận. Vé tham quan và chi tiêu cá nhân của khách không bao gồm trong giá.",
   charterRadiusKm: 30, charterHoursPerDay: 8, charterStartHour: 7, charterEndHour: 21, charterDailyFee: 800000,
-  outsideNotice: "Muốn đi ngoài phạm vi, vui lòng thêm điểm đến trước khi tính giá. Điểm thêm không trở thành mốc mở rộng phạm vi phục vụ. Chuyến đã đặt cần liên hệ GoViet247 xác nhận lịch trình và giá cập nhật trước khi thực hiện.",
+  outsideNotice: "Muốn đi ngoài phạm vi, cần liên hệ GoViet247 xác nhận lịch trình và giá cập nhật trước khi thực hiện.",
   allInclusiveNotice: "Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và chi phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh thêm.",
   paymentNotice: "Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến đi",
   scopeNotice: "Áp dụng cho lịch trình và gói phục vụ đã xác nhận. Yêu cầu thay đổi ngoài phạm vi cần được GoViet247 báo giá và khách đồng ý trước khi thực hiện.",
@@ -30,10 +30,28 @@ export function destinationWindows(c, direction, pickup, returnTime, outboundMin
   const result = [];
   for (let day = Date.parse(vnDay(arrival) + "T00:00:00+07:00"), n = 0; day < end && n < 366; day += 86400000, n++) {
     const start = Math.max(arrival, day + c.charterStartHour * 3600000);
-    const finish = Math.min(end, day + c.charterEndHour * 3600000, start + c.charterHoursPerDay * 3600000);
-    if (finish > start) result.push({ date: vnDay(start), start: new Date(start).toISOString(), end: new Date(finish).toISOString(), hours: Math.round((finish-start)/36000)/100 });
+    const finish = Math.min(end, day + c.charterEndHour * 3600000);
+    if (finish > start) result.push({ date: vnDay(start), start: new Date(start).toISOString(), end: new Date(finish).toISOString(), hours: Math.min(c.charterHoursPerDay, Math.round((finish-start)/36000)/100), flexible: true });
   }
   return result;
+}
+// Every itinerary date remains visible even when no charter interval is available.
+export function destinationDays(c, direction, pickup, returnTime, outboundMinutes) {
+  if (!c.enabled || direction !== 'ROUND_TRIP' || !pickup || !returnTime || outboundMinutes == null) return [];
+  const arrival = new Date(pickup).getTime() + Number(outboundMinutes) * 60000;
+  const end = new Date(returnTime).getTime();
+  if (!Number.isFinite(arrival) || !Number.isFinite(end) || end <= arrival || vnDay(arrival) === vnDay(end)) return [];
+  const charter = new Map(destinationWindows(c, direction, pickup, returnTime, outboundMinutes).map(w => [w.date, w]));
+  const days = [];
+  for (let day = Date.parse(vnDay(arrival) + 'T00:00:00+07:00'), n = 0; day <= Date.parse(vnDay(end) + 'T00:00:00+07:00') && n < 367; day += 86400000, n++) {
+    const date = vnDay(day), start = Math.max(arrival, day + c.standardStartHour * 3600000), finish = Math.min(end, day + c.standardEndHour * 3600000);
+    days.push({ date, standardStart: finish > start ? new Date(start).toISOString() : null, standardEnd: finish > start ? new Date(finish).toISOString() : null, charter: charter.get(date) || null });
+  }
+  return days;
+}
+export function destinationDayText(day, selected, c) {
+  if (selected && day.charter) return `${day.date}: ${c.charterName} — tối đa ${day.charter.hours} giờ trong khung ${vnTime(day.charter.start)}–${vnTime(day.charter.end)}. Thống nhất lịch và khoảng nghỉ với tài xế; thời gian gồm di chuyển và chờ.`;
+  return `${day.date}: ${c.standardName} — đã bao gồm trong giá. ` + (day.standardStart ? `Hỗ trợ đi ăn trong phạm vi ${c.standardRadiusKm} km, khung ${vnTime(day.standardStart)}–${vnTime(day.standardEnd)}; hoàn tất lượt đi ăn trước giờ quay về. Muốn ăn trưa rồi về, chọn giờ quay về đủ muộn.` : 'Không còn khung hỗ trợ đi ăn tại điểm đến trong ngày này.');
 }
 export function destinationSummary(snapshot) {
   const terms = snapshot || {};
@@ -42,8 +60,15 @@ export function destinationSummary(snapshot) {
     rows.push(snapshot.title, "Mốc phục vụ: " + snapshot.anchorAddress, snapshot.standardName + " — Đã bao gồm trong giá", snapshot.standardDescription, `Giờ hỗ trợ Tiêu chuẩn: ${snapshot.standardWindow}`);
     if (snapshot.sessions.length) {
       rows.push(snapshot.charterName, snapshot.charterDescription);
-      for (const s of snapshot.sessions) rows.push(`${s.date}: ${vnTime(s.start)}–${vnTime(s.end)} (${s.hours} giờ)`);
+      for (const s of snapshot.sessions) rows.push(`${s.date}: ${s.flexible ? "Tối đa " + s.hours + " giờ trong khung " : ""}${vnTime(s.start)}–${vnTime(s.end)}${s.flexible ? " · Thống nhất lịch và khoảng nghỉ với tài xế" : " (" + s.hours + " giờ)"}`);
       rows.push(`Phụ phí: ${snapshot.sessions.length} ngày × ${snapshot.dailyFee.toLocaleString("vi-VN")}đ = ${snapshot.fee.toLocaleString("vi-VN")}đ. Ngày không chọn Bao xe áp dụng Tiêu chuẩn.`);
+    }
+    if (Array.isArray(snapshot.days)) {
+      const selected = new Map(snapshot.sessions.map(s => [s.date,s]));
+      for (const day of snapshot.days) {
+        if (!selected.has(day.date)) rows.push(`${day.date}: ${snapshot.standardName} — Đã bao gồm trong giá. ` + (day.standardStart ? `Hỗ trợ đi ăn trong phạm vi ${snapshot.standardRadiusKm} km, khung ${vnTime(day.standardStart)}–${vnTime(day.standardEnd)}; hoàn tất lượt đi ăn trước giờ quay về.` : 'Không còn khung hỗ trợ đi ăn tại điểm đến.'));
+      }
+      if (snapshot.days.length && snapshot.days.every(day => selected.has(day.date))) rows.splice(2,3);
     }
     rows.push(snapshot.outsideNotice);
   }

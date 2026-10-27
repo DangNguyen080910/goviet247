@@ -77,7 +77,34 @@ test("trip payment instructions remain the booked instructions after admin edits
   assert.equal(later.paymentNotice, "Hướng dẫn mới");
   const lines = destinationSummary(booked);
   assert.ok(lines.includes("Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến đi"));
-  assert.ok(lines.some(line => line.includes("2026-11-02") && line.includes("07:00–15:00")));
+  assert.ok(lines.some(line => line.includes("2026-11-02") && line.includes("07:00–21:00")));
   assert.ok(lines.some(line => line.includes("800.000đ")));
   assert.equal(lines.includes(later.paymentNotice), false);
+});
+
+test('arrival day charter offers dinner and return day remains explicitly standard', () => {
+ const cfg = destinationConfig({ charterDailyFee: 600000 });
+ const i = { ...input, pickupTime: '2026-10-31T07:00:00+07:00', returnTime: '2026-11-01T12:00:00+07:00', outboundDriveMinutes: 94, destinationServiceDates: ['2026-10-31'] };
+ const snapshot = buildDestinationSnapshot(cfg, i);
+ assert.equal(snapshot.sessions[0].start, '2026-10-31T01:34:00.000Z');
+ assert.equal(snapshot.sessions[0].end, '2026-10-31T14:00:00.000Z');
+ assert.equal(snapshot.sessions[0].hours, 8);
+ assert.equal(snapshot.fee, 600000);
+ assert.ok(destinationSummary(snapshot).some(line => line.includes('2026-11-01: Tiêu chuẩn') && line.includes('07:00–12:00')));
+ const waiting = calculateWaitingTime(new Date('2026-10-31T08:34:00+07:00'), new Date(i.returnTime), undefined, snapshot.sessions);
+ assert.equal(waiting.serviceCoveredMinutes, 480);
+ assert.equal(waiting.overnightCount, 1);
+ const legacy = { ...snapshot.sessions[0], flexible: false, end: '2026-10-31T09:34:00.000Z' };
+ assert.equal(calculateWaitingTime(new Date('2026-10-31T08:34:00+07:00'), new Date(i.returnTime), undefined, [legacy]).serviceCoveredMinutes, 480);
+});
+test('short return-day charter waives only available hours, even with night overlap', () => {
+ const snapshot = buildDestinationSnapshot(c, { ...input, destinationServiceDates: ['2026-11-03'] });
+ assert.equal(snapshot.sessions[0].hours, 5);
+ const waiting = calculateWaitingTime(new Date('2026-11-01T11:00:00+07:00'), new Date(input.returnTime), undefined, snapshot.sessions);
+ assert.equal(waiting.serviceCoveredMinutes, 300);
+ const overlapping = { start: '2026-11-02T20:00:00+07:00', end: '2026-11-03T08:00:00+07:00', hours: 8, flexible: true };
+ const w = calculateWaitingTime(new Date('2026-11-02T20:00:00+07:00'), new Date('2026-11-03T08:00:00+07:00'), undefined, [overlapping]);
+ assert.equal(w.overnightCoveredMinutes, 480);
+ assert.equal(w.serviceCoveredMinutes, 240);
+ assert.equal(w.billableWaitMinutes, 0);
 });
