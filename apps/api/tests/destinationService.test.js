@@ -89,7 +89,7 @@ test('arrival day charter offers dinner and return day remains explicitly standa
  assert.equal(snapshot.sessions[0].start, '2026-10-31T01:34:00.000Z');
  assert.equal(snapshot.sessions[0].end, '2026-10-31T14:00:00.000Z');
  assert.equal(snapshot.sessions[0].hours, 8);
- assert.equal(snapshot.fee, 600000);
+ assert.equal(snapshot.fee, 532857);
  assert.ok(destinationSummary(snapshot).some(line => line.includes('2026-11-01: Tiêu chuẩn') && line.includes('07:00–12:00')));
  const waiting = calculateWaitingTime(new Date('2026-10-31T08:34:00+07:00'), new Date(i.returnTime), undefined, snapshot.sessions);
  assert.equal(waiting.serviceCoveredMinutes, 480);
@@ -107,4 +107,29 @@ test('short return-day charter waives only available hours, even with night over
  assert.equal(w.overnightCoveredMinutes, 480);
  assert.equal(w.serviceCoveredMinutes, 240);
  assert.equal(w.billableWaitMinutes, 0);
+});
+
+test('prorated charter uses full configured window, not eight-hour service limit', () => {
+ const cfg = destinationConfig({ charterDailyFee: 600000, charterStartHour: 7, charterEndHour: 21, charterHoursPerDay: 8 });
+ const base = { ...input, pickupTime: '2026-10-31T07:00:00+07:00', returnTime: '2026-11-02T12:00:00+07:00', outboundDriveMinutes: 420 };
+ const s = buildDestinationSnapshot(cfg, { ...base, destinationServiceDates: ['2026-10-31','2026-11-01','2026-11-02'] });
+ assert.deepEqual(s.sessions.map(i => i.fee), [300000,600000,214286]);
+ assert.deepEqual(s.sessions.map(i => i.hours), [7,8,5]);
+ assert.equal(s.fee, 1114286);
+ assert.equal(buildDestinationSnapshot({ ...cfg, charterHoursPerDay: 4 }, { ...base, destinationServiceDates: ['2026-11-02'] }).fee, 214286);
+ const changed = buildDestinationSnapshot({ ...cfg, charterStartHour: 8, charterEndHour: 20 }, { ...base, destinationServiceDates: ['2026-11-02'] });
+ assert.equal(changed.fee, 200000);
+});
+test('frontend selected total equals backend snapshot and descriptions come from config', async () => {
+ const { destinationDays, destinationSelectedFee, destinationDayText } = await import('../src/shared/destinationService.js');
+ const cfg = destinationConfig({ charterDailyFee: 600000, standardName: 'Gói A', charterName: 'Gói B', standardDescription: 'A {radius}', charterDescription: 'B {radius} {hours} {start} {end}' });
+ const i = { ...input, destinationServiceDates: ['2026-11-03'] };
+ const s = buildDestinationSnapshot(cfg,i);
+ const days = destinationDays(cfg,i.direction,i.pickupTime,i.returnTime,i.outboundDriveMinutes);
+ assert.equal(destinationSelectedFee(days,i.destinationServiceDates), s.fee);
+ assert.equal(s.fee, 214286);
+ assert.equal(s.standardDescription,'A 5');
+ assert.equal(s.charterDescription,'B 30 8 07:00 21:00');
+ assert.equal(destinationDayText(days[2],true,cfg),'07:00–12:00 · Tối đa 5 giờ');
+ assert.ok(!destinationSummary(s).some(line => line.includes('1 ngày ×')));
 });

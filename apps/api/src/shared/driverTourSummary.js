@@ -1,4 +1,4 @@
-import { destinationSummary, vnDay, vnTime } from './destinationService.js';
+import { destinationSummary, destinationSessionText, vnDay, vnTime } from './destinationService.js';
 
 export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}) {
   const summary = destinationSummary(snapshot);
@@ -20,8 +20,8 @@ export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}
       const dayInfo = snapshot.days?.find(day => day.date === date);
       if (!session) standardDays++;
       schedule.push(session
-        ? `${date}: ${snapshot.charterName} · ${session.flexible ? "Tối đa " + session.hours + " giờ trong khung " : ""}${vnTime(session.start)}–${vnTime(session.end)}${session.flexible ? " · Thống nhất lịch với khách" : " (" + session.hours + " giờ)"}`
-        : `${date}: ${snapshot.standardName}${dayInfo ? dayInfo.standardStart ? " · Hỗ trợ đi ăn " + vnTime(dayInfo.standardStart) + "–" + vnTime(dayInfo.standardEnd) + "; hoàn tất trước giờ quay về" : " · Không còn khung hỗ trợ đi ăn tại điểm đến" : ""}`);
+        ? `${date}: ${snapshot.charterName} · ${destinationSessionText(session)}`
+        : `${date}: ${snapshot.standardName}${dayInfo ? dayInfo.standardStart ? " · " + vnTime(dayInfo.standardStart) + "–" + vnTime(dayInfo.standardEnd) : " · Không còn khung hỗ trợ đi ăn tại điểm đến" : ""}`);
     }
     // destinationSummary puts the standard heading, description and hours after the anchor.
     // Hide that block only when every itinerary date has a booked charter session.

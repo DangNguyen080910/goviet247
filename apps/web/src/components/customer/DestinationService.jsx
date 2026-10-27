@@ -1,6 +1,6 @@
 import { driverTourSummary } from "../../../../api/src/shared/driverTourSummary.js";
 import { Box, Typography, TextField, Checkbox, Radio, FormControlLabel, Alert } from "@mui/material";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSummary, vnTime } from "../../../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, vnTime } from "../../../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, admin = false }) {
   const defaults = destinationConfig();
   const notices = [
@@ -25,16 +25,16 @@ export default function DestinationService({ config, direction, pickup, returnTi
   <TextField fullWidth sx={{my:2}} label="Nơi lưu trú làm mốc phục vụ" value={anchor} onChange={e=>onAnchor(e.target.value)} helperText="Xác nhận khách sạn/nơi lưu trú tại điểm đến. Thêm điểm tham quan không thay đổi mốc này." />
   <Typography fontWeight={700}>{c.standardName} — Đã bao gồm trong giá</Typography><Typography variant="body2">{destinationDescription(c)}</Typography>
   <Typography variant="body2">Giờ hỗ trợ: {c.standardStartHour}:00–{c.standardEndHour}:00</Typography>
-  <Typography fontWeight={700} sx={{mt:2}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/ngày phục vụ</Typography><Typography variant="body2">{destinationDescription(c,true)}</Typography>
-  <Typography variant="body2" sx={{mt:1}}>Chọn ngày dùng Bao xe. Ngày không chọn áp dụng Tiêu chuẩn. Bao xe dùng tối đa số giờ quy định trong khung phục vụ, không bắt buộc liên tục từ lúc đến. Mỗi ngày chọn tính đủ một ngày phí.</Typography>
+  <Typography fontWeight={700} sx={{mt:2}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/khung ngày {c.charterStartHour}:00–{c.charterEndHour}:00</Typography><Typography variant="body2">{destinationDescription(c,true)}</Typography>
+  <Typography variant="body2" sx={{mt:1}}>Chọn ngày dùng Bao xe. Ngày không chọn áp dụng Tiêu chuẩn.</Typography>
   {windows.map(w=><Box key={w.date} sx={{p:1.5,my:1,border:'1px solid #bfdbfe',borderRadius:2}}>
     <Typography fontWeight={700}>{w.date}</Typography>
     <FormControlLabel control={<Radio checked={!dates.includes(w.date)} onChange={()=>onDates(dates.filter(d=>d!==w.date))}/>} label={`${c.standardName} — Đã bao gồm trong giá`}/>
-    <FormControlLabel control={<Radio disabled={!w.charter} checked={dates.includes(w.date)} onChange={()=>onDates([...dates.filter(d=>d!==w.date),w.date])}/>} label={`${c.charterName} — +${c.charterDailyFee.toLocaleString('vi-VN')}đ/ngày`}/>
+    <FormControlLabel control={<Radio disabled={!w.charter} checked={dates.includes(w.date)} onChange={()=>onDates([...dates.filter(d=>d!==w.date),w.date])}/>} label={`${c.charterName} — +${(w.charter?.fee || 0).toLocaleString('vi-VN')}đ`}/>
     <Typography variant="body2">{destinationDayText(w,dates.includes(w.date),c)}</Typography>
     {!w.charter && <Typography variant="body2">Không còn khung giờ Bao xe phù hợp trong ngày này.</Typography>}
   </Box>)}
-  <Typography fontWeight={700}>Phụ phí Bao xe: {(dates.length*c.charterDailyFee).toLocaleString("vi-VN")}đ ({dates.length} ngày)</Typography>
+  <Typography fontWeight={700}>Phụ phí Bao xe: {destinationSelectedFee(windows,dates).toLocaleString("vi-VN")}đ ({dates.length} ngày)</Typography>
   <Alert severity="info" sx={{mt:1}}>{c.outsideNotice}</Alert>
  </Box>;
 }

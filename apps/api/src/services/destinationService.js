@@ -22,11 +22,11 @@ export function buildDestinationSnapshot(raw, input) {
   sessions.sort((a,b) => a.start.localeCompare(b.start));
   const anchorAddress = String(input.destinationAnchorAddress || input.dropoffAddress || "Điểm đến cuối cùng trong lịch trình").trim();
   if (windows.length && !anchorAddress) throw Object.assign(new Error("Vui lòng xác nhận nơi lưu trú tại điểm đến."), {status:400});
-  return { version: 2, days: destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes), eligible: windows.length>0, title:c.title, anchorAddress,
+  return { version: 3, days: destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes), eligible: windows.length>0, title:c.title, anchorAddress,
     standardRadiusKm:c.standardRadiusKm, standardName:c.standardName, standardDescription:destinationDescription(c),
     standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
     charterName:c.charterName, charterDescription:destinationDescription(c,true),
-    sessions, dailyFee:c.charterDailyFee, fee:sessions.length*c.charterDailyFee,
+    sessions, dailyFee:c.charterDailyFee, fee:sessions.reduce((sum, session) => sum + session.fee, 0),
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
 }
 export const destinationSignature = snapshot => {
