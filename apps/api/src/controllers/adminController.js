@@ -1,3 +1,4 @@
+import { getDriverAccountingIdentityRows } from "../services/driverAccountingIdentity.js";
 import { isProvinceCode, driverProvinceSummary } from "../services/driverOperatingProvince.js";
 import { getPenaltyRefundQuote, mutateAdminWallet } from "../services/adminWalletMutation.js";
 import { normalizeDriverWalletItemsForAccounting } from "../services/walletAccounting.js";
@@ -978,6 +979,7 @@ export function makeAdminController(prisma) {
   }
 
   const ACCOUNTING_EXPORT_GROUPS = [
+    { key: "DRIVER_IDENTITY_EXPORT", label: "Thông tin tài xế kê khai thuế", kind: "driver_identity" },
     {
       key: "BANK_STATEMENT",
       label: "Sao kê ngân hàng",
@@ -1158,7 +1160,9 @@ export function makeAdminController(prisma) {
       }),
     ]);
 
+    const identityRows = await getDriverAccountingIdentityRows(prisma, { start, end });
     const countMap = {
+      DRIVER_IDENTITY_EXPORT: identityRows.length - 1,
       BANK_STATEMENT: bankStatementCount,
       INPUT_INVOICE: inputInvoiceCount,
       OUTPUT_INVOICE: outputInvoiceCount,
@@ -1201,6 +1205,9 @@ export function makeAdminController(prisma) {
 
     const groups = preview.groups.map((group) => {
       switch (group.key) {
+        case "DRIVER_IDENTITY_EXPORT":
+          return { ...group, type: "pdf", folderName: "13-thong-tin-tai-xe", fileName: `thong_tin_tai_xe_Q${quarter}_${year}.pdf` };
+
         case "BANK_STATEMENT":
           return {
             ...group,
@@ -1507,7 +1514,7 @@ export function makeAdminController(prisma) {
       "GIẢI THÍCH NGHIỆP VỤ:",
       "- Khách hàng thanh toán trực tiếp cho tài xế; công ty không trả lương tài xế.",
       "- Bảng kê thu nhập tài xế tổng hợp theo chuyến hoàn thành, gồm giá chuyến, phí môi giới, VAT/PIT tài xế, tổng khấu trừ và số thực nhận. Đây là bảng kê đối soát thu nhập, không phải bảng lương.",
-      "- Dữ liệu tài xế hiện có trong hệ thống gồm tên và số điện thoại; không có mã số thuế hoặc CCCD trong bảng kê.",
+      "- Thư mục 13: mỗi tài xế có chuyến hoàn thành trong quý một dòng (cùng mốc updatedAt với bảng kê thu nhập). Có mã tài khoản/hồ sơ, họ tên, CCCD/số định danh và SĐT hiện tại lúc xuất; không phải dữ liệu chụp tại thời điểm chuyến. Thiếu CCCD vẫn được liệt kê để bổ sung. Số định danh dùng đối chiếu MST, chưa xác minh khớp đăng ký thuế. Chưa thu thập ngày cấp, nơi cấp, địa chỉ; kế toán xác nhận và bổ sung theo hồ sơ thực tế.",
       "- Doanh thu chính của công ty là phí môi giới; tổng giá trị chuyến không phải doanh thu công ty.",
       "- Tài xế nạp ví/rút ví là dòng tiền ví tài xế, không phải doanh thu công ty.",
       "- Thu nhập khác có thể gồm phạt huỷ chuyến sau khi trừ các khoản hoàn phạt cho tài xế.",
@@ -5793,8 +5800,13 @@ export function makeAdminController(prisma) {
             title: "Bảng kê thu nhập tài xế",
             reportType: "driverIncome",
             subtitle:
-              "Tổng hợp theo tài xế từ các chuyến hoàn thành. Khách hàng thanh toán trực tiếp cho tài xế; đây là bảng kê đối soát, không phải bảng lương. Hệ thống hiện chỉ có tên và số điện thoại tài xế.",
+              "Tổng hợp theo tài xế từ các chuyến hoàn thành. Khách hàng thanh toán trực tiếp cho tài xế; đây là bảng kê đối soát, không phải bảng lương. Thông tin CCCD và liên hệ nằm trong thư mục 13.",
           },
+        );
+
+        const driverIdentityPdf = await buildAccountingPdf(
+          await getDriverAccountingIdentityRows(prisma, { start, end }),
+          { ...pdfMeta, title: "Thông tin tài xế đối chiếu kê khai thuế", reportType: "driverIdentity" },
         );
 
         res.setHeader("Content-Type", "application/zip");
@@ -5842,6 +5854,7 @@ export function makeAdminController(prisma) {
         archive.pipe(res);
 
         archive.append(readmeText, { name: "README.txt" });
+        archive.append(driverIdentityPdf, { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_Q${safeQuarter}_${safeYear}.pdf` });
 
         await appendAccountingDocumentsToArchive({
           archive,

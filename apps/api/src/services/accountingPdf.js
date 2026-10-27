@@ -94,6 +94,14 @@ function reportDefinition(rows, reportType) {
         "VAT đầu ra phí môi giới", "VAT tài xế", "PIT tài xế", "Tổng khấu trừ", "Tài xế thực nhận", "Phạt huỷ chuyến"].map((header) => money(sum(header)))])];
       break;
     }
+    case "driverIdentity":
+      pageSize = "A3";
+      columns = [field("Mã tài khoản tài xế", "Mã tài khoản tài xế", 1.8), field("Họ tên", "Họ tên", 1.6),
+        field("CCCD / số định danh đối chiếu MST", "CCCD / số định danh", 1.4), field("SĐT", "SĐT", 1.2),
+        field("Ghi chú đối chiếu", "Ghi chú đối chiếu", 2)];
+      details = (row) => detail(row, ["Mã hồ sơ"]);
+      note = "Chỉ gồm tài xế có chuyến hoàn thành trong quý, cùng mốc thời gian với bảng kê thu nhập. Thông tin hồ sơ hiện tại lúc xuất. Số định danh chưa xác minh khớp đăng ký thuế. Chưa thu thập ngày cấp, nơi cấp, địa chỉ; kế toán đối chiếu và bổ sung khi cần.";
+      break;
     case "driverIncome":
       pageSize = "A3";
       columns = [field("Tài xế", "Tài xế", 1.65), field("SĐT", "SĐT", 1.15),
