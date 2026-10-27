@@ -1,6 +1,7 @@
+import { driverTourSummary } from "../../api/src/shared/driverTourSummary.js";
 import React from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
-import { destinationConfig, destinationDescription, destinationWindows, destinationSummary, vnTime } from "../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationWindows, vnTime } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot }: { snapshot?: any }) {
   const defaults = destinationConfig();
   const notices = [
@@ -9,8 +10,8 @@ export function ServiceSummary({ snapshot }: { snapshot?: any }) {
   ];
   return (
     <View style={{ padding: 12, marginVertical: 10, backgroundColor: "#eff6ff", borderRadius: 10 }}>
-      {destinationSummary(snapshot).map((line: string, index: number) => (
-        <Text key={index} style={{ color: "#1e3a5f", marginBottom: 6, lineHeight: 21, fontWeight: notices.includes(line) ? "700" : "400" }}>
+      {driverTourSummary(snapshot).map((line: string, index: number) => (
+        <Text key={index} style={{ color: "#1e3a5f", marginBottom: 6, lineHeight: 21, fontWeight: notices.includes(line) || line.startsWith("Phụ phí phục vụ tour:") ? "700" : "400" }}>
           {line}
         </Text>
       ))}

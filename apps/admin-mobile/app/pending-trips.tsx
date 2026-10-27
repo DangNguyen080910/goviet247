@@ -1,3 +1,4 @@
+import TourServiceSummary from "../components/TourServiceSummary";
 import TripAudiencePicker from '../components/TripAudiencePicker';
 // Path: goviet247/apps/admin-mobile/app/pending-trips.tsx
 import { useCallback, useMemo, useState } from "react";
@@ -837,6 +838,7 @@ export default function PendingTripsScreen() {
               >
                 <View style={styles.detailCard}>
                   <Text style={styles.detailCardTitle}>Thông tin chuyến</Text>
+                  <TourServiceSummary snapshot={detail.destinationService} />
 
                   <DetailRow label="Mã chuyến" value={detail.id || "-"} />
                   <CopyTripIdButton tripId={detail.id} />

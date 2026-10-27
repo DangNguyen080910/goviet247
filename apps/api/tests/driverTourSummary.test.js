@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { driverTourSummary } from '../src/shared/driverTourSummary.js';
+import { quotePrice } from '../src/services/pricingService.js';
+import { destinationConfig } from '../src/shared/destinationService.js';
+import { assertDestinationQuote, buildDestinationSnapshot } from '../src/services/destinationService.js';
+const config = destinationConfig({ charterDailyFee: 600000 });
+const input = { carType: 'CAR_5', direction: 'ROUND_TRIP', pickupTime: '2026-11-01T07:00:00+07:00', returnTime: '2026-11-05T18:00:00+07:00', outboundDriveMinutes: 240, driveMinutes: 480, distanceKm: 600, destinationAnchorAddress: 'Khách sạn A' };
+const db = { pricingConfig: { findFirst: async () => ({ baseFare: 50000, pricePerKm: 4800, pricePerHour: 10000, minFare: 100000, overnightFee: 350000, overnightTriggerKm: 600, overnightTriggerHours: 12, gasolineSurchargePercent: 20 }) }, tripConfig: { findFirst: async () => ({ destinationServiceConfig: config }) } };
+for (const dates of [[], ['2026-11-03']]) test(`five-day driver schedule: ${dates.length} charter days`, async () => {
+ const request = { ...input, destinationServiceDates: dates };
+ const result = await quotePrice(request, db);
+ assert.equal(result.ok, true);
+ const data = result.data, s = data.destinationService;
+ assert.equal(s.tourDisplay.total, data.waitCost + data.overnightCost + s.fee);
+ assert.equal(s.tourDisplay.overnightCount, 4);
+ const lines = driverTourSummary(s);
+ assert.equal(lines.filter(line => /^2026-11-0[1-5]:/.test(line)).length, 5);
+ assert.ok(lines.includes(`2026-11-01: ${config.standardName}`));
+ if (dates.length) assert.ok(lines.some(line => line.startsWith('2026-11-03: Bao xe')));
+ assert.equal(lines.filter(line => line.startsWith('Phụ phí phục vụ tour:')).length, 1);
+ assert.equal(lines.some(line => line.startsWith('Phụ phí:')), false);
+ assert.ok(lines.includes(config.allInclusiveNotice));
+ assertDestinationQuote({ destinationServiceSignature: data.destinationServiceSignature }, buildDestinationSnapshot(config, request));
+});
+test('legacy trips do not invent combined fees or a service schedule', () => {
+ assert.equal(driverTourSummary(null).some(line => line.startsWith('Phụ phí phục vụ tour:')), false);
+ const old = buildDestinationSnapshot(config, { ...input, destinationServiceDates: ['2026-11-03'] });
+ const lines = driverTourSummary(old);
+ assert.equal(lines.some(line => line.startsWith('Phụ phí phục vụ tour:')), false);
+ assert.ok(lines.includes('Phí Bao xe tại điểm đến đã bao gồm trong giá chuyến.'));
+});

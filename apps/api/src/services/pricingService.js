@@ -257,6 +257,17 @@ export async function quotePrice(input, db = prisma) {
   if (!Number.isSafeInteger(roundedTotal) || roundedTotal > 2147483647) return {ok:false,status:400,message:"Giá chuyến vượt giới hạn cho phép. Vui lòng liên hệ GoViet247."};
   rawTotal += destinationService.fee;
 
+  // Display-only snapshot: retain the quoted amounts; never reprice old trips.
+  destinationService.tourDisplay = {
+    waitCost, overnightCost, overnightCount,
+    charterCost: destinationService.fee,
+    total: waitCost + overnightCost + destinationService.fee,
+    arrival: direction === "ROUND_TRIP"
+      ? new Date(pickup.getTime() + Number(outboundDriveMinutes) * 60000).toISOString() : null,
+    returnTime: direction === "ROUND_TRIP" ? parseTripTime(returnTime).toISOString() : null,
+  };
+
+
   return {
     ok: true,
     message: "Tính giá thành công.",

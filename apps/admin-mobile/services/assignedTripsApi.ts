@@ -39,6 +39,7 @@ export type AssignedTripItem = {
 };
 
 export type AssignedTripDetail = {
+  destinationService?: any;
   id: string;
   status: string | null;
 
@@ -208,6 +209,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
 
 function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
   const item = raw as {
+    destinationService?: any;
     id?: unknown;
     status?: unknown;
 
@@ -267,6 +269,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
         : pickPhone(item?.driver);
 
   return {
+    destinationService: item?.destinationService ?? null,
     id: typeof item?.id === "string" ? item.id : "",
     status: typeof item?.status === "string" ? item.status : null,
     carType: typeof item?.carType === "string" ? item.carType : null,

@@ -1887,6 +1887,7 @@ export default function AdminConfig() {
               icon={<DirectionsCarIcon />}
               iconPosition="start"
             />
+            <Tab label="Phục vụ tại điểm đến" icon={<LocalTaxiIcon />} iconPosition="start" />
             <Tab label="Phụ thu lễ, Tết" icon={<TimerOutlinedIcon />} iconPosition="start" />
             <Tab label="Chuyến đi" icon={<TuneIcon />} iconPosition="start" />
             <Tab label="Tài xế" icon={<LocalTaxiIcon />} iconPosition="start" />
@@ -1905,11 +1906,10 @@ export default function AdminConfig() {
               icon={<LockOutlinedIcon />}
               iconPosition="start"
             />
-            <Tab label="Phục vụ tại điểm đến" icon={<LocalTaxiIcon />} iconPosition="start" />
           </Tabs>
 
           <Box sx={{ p: 3 }}>
-            <TabPanel value={tab} index={7}><DestinationServiceConfig /></TabPanel>
+            <TabPanel value={tab} index={1}><DestinationServiceConfig /></TabPanel>
             {/* TAB 1: GIÁ CƯỚC */}
             <TabPanel value={tab} index={0}>
               <Stack spacing={2.5}>
@@ -1977,7 +1977,7 @@ export default function AdminConfig() {
               </Stack>
             </TabPanel>
 
-            <TabPanel value={tab} index={1} keepMounted>
+            <TabPanel value={tab} index={2} keepMounted>
               <Stack spacing={3}>
                 <Alert severity="info">Áp dụng theo ngày khởi hành giờ Việt Nam, gồm cả ngày bắt đầu và kết thúc. Chuyến khứ hồi dùng ngày khởi hành ban đầu. Các đợt đang bật của cùng loại xe không được trùng ngày. Phụ thu tính trên cùng giá gốc với phụ thu xe xăng.</Alert>
                 {loadingPricing ? <CircularProgress /> : pricingError ? <Alert severity="error">{pricingError}</Alert> : CAR_TYPE_ORDER.map(carType => pricingMap[carType] && (
@@ -1987,7 +1987,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 2: CHUYẾN ĐI */}
-            <TabPanel value={tab} index={2}>
+            <TabPanel value={tab} index={3}>
               <Stack spacing={2.5}>
                 <Paper variant="outlined" sx={{ p: 3, borderRadius: 3 }}>
                   <Stack spacing={2}>
@@ -2160,7 +2160,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 3: TÀI XẾ */}
-            <TabPanel value={tab} index={3}>
+            <TabPanel value={tab} index={4}>
               <Stack spacing={2.5}>
                 {loadingDriverConfig ? (
                   <Paper
@@ -2399,7 +2399,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 4: NẠP VÍ TÀI XẾ */}
-            <TabPanel value={tab} index={4}>
+            <TabPanel value={tab} index={5}>
               <Stack spacing={2.5}>
                 {loadingSystemConfig ? (
                   <Paper
@@ -2563,7 +2563,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 5: CẢNH BÁO */}
-            <TabPanel value={tab} index={5}>
+            <TabPanel value={tab} index={6}>
               <Stack spacing={2.5}>
                 {loadingAlertConfig ? (
                   <Paper
@@ -2751,7 +2751,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 6: HỆ THỐNG */}
-            <TabPanel value={tab} index={6}>
+            <TabPanel value={tab} index={7}>
               <Stack spacing={2.5}>
                 {loadingSystemConfig ? (
                   <Paper

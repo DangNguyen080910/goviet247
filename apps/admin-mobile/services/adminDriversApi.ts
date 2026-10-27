@@ -144,6 +144,14 @@ export async function fetchDriverDetail(id: string) {
 
   return {
     id: String(raw?.id || ""),
+    tripAcceptBlocked: Boolean(raw?.tripAcceptBlocked),
+    operatingProvinceCode: raw?.operatingProvinceCode || null,
+    operatingProvinceConfirmedAt: raw?.operatingProvinceConfirmedAt || null,
+    updatedAt: raw?.updatedAt || null,
+    fullName: raw?.fullName || '',
+    citizenId: raw?.citizenId || '',
+    accountDisplayName: raw?.user?.displayName || '',
+    profilePhone: raw?.user?.phones?.[0] ? { id: raw.user.phones[0].id, e164: raw.user.phones[0].e164 } : null,
     userId: raw?.userId ? String(raw.userId) : null,
     displayName:
       typeof raw?.displayName === "string"
@@ -333,4 +341,15 @@ export async function patchDriverAccount(
   });
 
   return data;
+}
+
+export async function patchDriverTripAcceptance(id: string, payload: { blocked: boolean; reason: string }) {
+  return adminRequest(`/api/admin/drivers/${id}/trip-acceptance`, { method: 'PATCH', body: JSON.stringify(payload) });
+}
+export async function patchDriverProvince(id: string, payload: { operatingProvinceCode: string; provinceConfirmed: boolean; expectedUpdatedAt: string; reason: string }) {
+  return adminRequest(`/api/admin/drivers/${id}/profile`, { method: 'PATCH', body: JSON.stringify(payload) });
+}
+
+export async function patchDriverProfile(id: string, payload: Record<string, unknown>) {
+  return adminRequest(`/api/admin/drivers/${id}/profile`, { method: 'PATCH', body: JSON.stringify(payload) });
 }

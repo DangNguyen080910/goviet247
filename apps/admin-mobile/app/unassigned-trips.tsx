@@ -1,3 +1,4 @@
+import TourServiceSummary from "../components/TourServiceSummary";
 // Path: admin-mobile/app/unassigned-trips.tsx
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
@@ -751,6 +752,7 @@ export default function UnassignedTripsScreen() {
               >
                 <View style={styles.detailCard}>
                   <Text style={styles.detailCardTitle}>Thông tin chuyến</Text>
+                  <TourServiceSummary snapshot={detail.destinationService} />
 
                   <DetailRow
                     label="Mã chuyến"

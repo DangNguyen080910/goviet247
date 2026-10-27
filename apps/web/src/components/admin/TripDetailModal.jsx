@@ -778,7 +778,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               </div>
             </Section>
 
-            <ServiceSummary snapshot={detail?.destinationService} />
+            <ServiceSummary admin snapshot={detail?.destinationService} />
 
             <Section title="Tài xế đã nhận">
               {detail?.driver ? (

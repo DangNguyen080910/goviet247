@@ -29,7 +29,11 @@ export function buildDestinationSnapshot(raw, input) {
     sessions, dailyFee:c.charterDailyFee, fee:sessions.length*c.charterDailyFee,
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
 }
-export const destinationSignature = snapshot => createHash("sha256").update(JSON.stringify(snapshot)).digest("hex");
+export const destinationSignature = snapshot => {
+  // Display metadata does not change the customer's quoted service selection.
+  const { tourDisplay, ...terms } = snapshot;
+  return createHash("sha256").update(JSON.stringify(terms)).digest("hex");
+};
 export function assertDestinationQuote(input, snapshot) {
   if (input.destinationServiceSignature && input.destinationServiceSignature !== destinationSignature(snapshot)) throw Object.assign(new Error("Điều kiện phục vụ đã thay đổi. Vui lòng tính giá lại trước khi đặt."), { status:409 });
   if (snapshot.sessions.length && !input.destinationServiceSignature) throw Object.assign(new Error("Vui lòng tính giá Bao xe trước khi đặt."), {status:409});

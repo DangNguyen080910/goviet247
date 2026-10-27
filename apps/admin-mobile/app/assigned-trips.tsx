@@ -1,3 +1,4 @@
+import TourServiceSummary from "../components/TourServiceSummary";
 // Path: goviet247/apps/admin-mobile/app/assigned-trips.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { router, useLocalSearchParams } from "expo-router";
@@ -938,6 +939,7 @@ export default function AssignedTripsScreen() {
                 keyboardShouldPersistTaps="handled"
                 keyboardDismissMode={Platform.OS === "ios" ? "interactive" : "on-drag"}
               >
+                <TourServiceSummary snapshot={selectedTripDetail?.destinationService} />
                 <View style={styles.modalInfoBlock}>
                   <Text style={styles.label}>Mã chuyến</Text>
                   <Text style={styles.value}>

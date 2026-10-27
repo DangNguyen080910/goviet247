@@ -1,3 +1,4 @@
+import DriverOperatingControls from "../components/DriverOperatingControls";
 // Path: goviet247/apps/admin-mobile/app/drivers.tsx
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -1034,6 +1035,11 @@ export default function DriversScreen() {
               >
                 {detailTab === "INFO" ? (
                   <View style={styles.detailCard}>
+              <DriverOperatingControls key={driverDetail.id} driver={driverDetail} onSaved={async () => {
+                await loadDriverDetail(driverDetail.id);
+                await loadDrivers(false);
+              }} />
+
                     <InfoRow label="Họ tên" value={driverDetail?.displayName} />
                     <InfoRow
                       label="Số điện thoại"

@@ -1,6 +1,7 @@
+import { driverTourSummary } from "../../../../api/src/shared/driverTourSummary.js";
 import { Box, Typography, TextField, Checkbox, Radio, FormControlLabel, Alert } from "@mui/material";
 import { destinationConfig, destinationDescription, destinationWindows, destinationSummary, vnTime } from "../../../../../packages/shared/destinationService.js";
-export function ServiceSummary({ snapshot }) {
+export function ServiceSummary({ snapshot, admin = false }) {
   const defaults = destinationConfig();
   const notices = [
     snapshot?.allInclusiveNotice || defaults.allInclusiveNotice,
@@ -8,8 +9,8 @@ export function ServiceSummary({ snapshot }) {
   ];
   return (
     <Box sx={{ my: 1, p: 1.5, bgcolor: "#f0f7ff", borderRadius: 2 }}>
-      {destinationSummary(snapshot).map((line, index) => (
-        <Typography key={index} variant="body2" sx={{ mb: 0.7, whiteSpace: "pre-line", fontWeight: notices.includes(line) ? 700 : 400 }}>
+      {(admin ? driverTourSummary(snapshot) : destinationSummary(snapshot)).map((line, index) => (
+        <Typography key={index} variant="body2" sx={{ mb: 0.7, whiteSpace: "pre-line", fontWeight: notices.includes(line) || line.startsWith("Phụ phí phục vụ tour:") ? 700 : 400 }}>
           {line}
         </Typography>
       ))}

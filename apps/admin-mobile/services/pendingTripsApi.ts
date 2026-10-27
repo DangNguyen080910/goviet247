@@ -101,6 +101,7 @@ export async function fetchPendingVerifyCancelledTrips() {
 }
 
 export type PendingTripDetail = {
+  destinationService?: any;
   id: string;
 
   creatorName?: string | null;
@@ -193,6 +194,7 @@ function mapTripDetail(raw: any): PendingTripDetail {
   const driver = raw?.driver || raw?.driverUser || raw?.assignedDriver || null;
 
   return {
+    destinationService: raw?.destinationService ?? null,
     id: String(raw?.id || raw?.tripId || ""),
     creatorName: raw?.creatorName || rider?.displayName || null,
     creatorPhone: raw?.creatorPhone || rider?.phone || null,

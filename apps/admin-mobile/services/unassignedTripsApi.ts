@@ -43,6 +43,7 @@ export type UnassignedTripAlertLog = {
 };
 
 export type UnassignedTripDetail = {
+  destinationService?: any;
   id: string;
   creatorName?: string | null;
   creatorPhone?: string | null;
@@ -225,6 +226,7 @@ function mapAlertLog(raw: unknown): UnassignedTripAlertLog {
 
 function mapTripDetail(raw: unknown): UnassignedTripDetail {
   const item = raw as {
+    destinationService?: any;
     id?: unknown;
     tripId?: unknown;
     creatorName?: unknown;
@@ -281,6 +283,7 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
   const createdAt = typeof item?.createdAt === "string" ? item.createdAt : null;
 
   return {
+    destinationService: item?.destinationService ?? null,
     id: String(item?.id || item?.tripId || ""),
     creatorName:
       typeof item?.creatorName === "string" ? item.creatorName : null,
