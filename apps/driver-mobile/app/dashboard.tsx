@@ -1,3 +1,4 @@
+import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/dashboard.tsx
 import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -1322,6 +1323,8 @@ export default function DashboardScreen() {
             </View>
           </View>
 
+          <TripSurcharges trip={trip} />
+
           <View style={styles.infoRow}>
             <Text style={styles.infoIcon}>📍</Text>
             <Text style={styles.infoText}>
@@ -1498,6 +1501,8 @@ export default function DashboardScreen() {
               </Text>
             </View>
           </View>
+
+          <TripSurcharges trip={trip} />
 
           <TouchableOpacity
             style={styles.incomeToggleButton}

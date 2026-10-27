@@ -869,6 +869,7 @@ export async function listAvailableTrips(req, res) {
           pickupTime: t.pickupTime,
           returnTime: t.returnTime || null,
           destinationService: t.destinationService,
+          holidaySurcharge: t.holidaySurcharge,
           totalPrice: t.totalPrice,
           carType: t.carType,
           fuelPreference: t.fuelPreference,
@@ -1792,6 +1793,7 @@ export async function getDriverCancelHistory(req, res) {
             carType: true,
             direction: true,
             destinationService: true,
+            holidaySurcharge: true,
             totalPrice: true,
             cancelReason: true,
             stops: {
@@ -1830,6 +1832,7 @@ export async function getDriverCancelHistory(req, res) {
         carType: trip?.carType || null,
         direction: trip?.direction || null,
         destinationService: trip?.destinationService ? { ...trip.destinationService, anchorAddress: maskAddress(trip.destinationService.anchorAddress) } : null,
+        holidaySurcharge: trip?.holidaySurcharge || null,
         totalPrice: Number(trip?.totalPrice || 0),
         cancelReason: trip?.cancelReason || "Driver huỷ chuyến",
         stops: Array.isArray(trip?.stops)
@@ -1898,6 +1901,7 @@ export async function getMyDriverWalletTransactions(req, res) {
             pickupAddress: true,
             dropoffAddress: true,
             destinationService: true,
+            holidaySurcharge: true,
             totalPrice: true,
           },
         },

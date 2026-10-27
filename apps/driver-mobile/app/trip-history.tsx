@@ -1,3 +1,4 @@
+import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/trip-history.tsx
 import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useState } from "react";
@@ -193,8 +194,10 @@ export default function TripHistoryScreen() {
           <Text style={styles.value}>
             {Number(trip.totalPrice || 0).toLocaleString("vi-VN")}đ
           </Text>
-          <ServiceSummary snapshot={trip.destinationService} />
         </View>
+
+        <TripSurcharges trip={trip} />
+        <ServiceSummary snapshot={trip.destinationService} />
 
         <View style={styles.row}>
           <Text style={styles.label}>Tiền phạt:</Text>
@@ -264,6 +267,9 @@ export default function TripHistoryScreen() {
           Bao chuyến {getCarTypeLabel(trip.carType)}{" "}
           {trip.direction === "ROUND_TRIP" ? "(khứ hồi)" : "(1 chiều)"}
         </Text>
+        <TripSurcharges trip={trip} />
+        <ServiceSummary snapshot={trip.destinationService} />
+
 
         <View style={styles.row}>
           <Text style={styles.label}>Điểm đón:</Text>
@@ -284,7 +290,6 @@ export default function TripHistoryScreen() {
           <Text style={styles.value}>
             {Number(trip.totalPrice || 0).toLocaleString("vi-VN")}đ
           </Text>
-          <ServiceSummary snapshot={trip.destinationService} />
         </View>
 
         <View style={styles.row}>

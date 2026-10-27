@@ -260,6 +260,7 @@ export async function quotePrice(input, db = prisma) {
   // Display-only snapshot: retain the quoted amounts; never reprice old trips.
   destinationService.tourDisplay = {
     waitCost, overnightCost, overnightCount,
+    fuelSurchargePercent, fuelSurchargeAmount, holidaySurcharge,
     charterCost: destinationService.fee,
     total: waitCost + overnightCost + destinationService.fee,
     arrival: direction === "ROUND_TRIP"
