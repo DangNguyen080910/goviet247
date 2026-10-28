@@ -1,3 +1,4 @@
+import { lockTripMilestones, recordTripMilestone } from "../services/tripMilestoneService.js";
 import { adminTripMoney } from "../services/adminTripMoney.js";
 import { audienceWhere, canDriverSeeTrip, parseAudience, audienceCarType } from '../services/tripAudiencePolicy.js';
 import { emitDriverTripEvent } from '../services/tripAudience.js';
@@ -1960,6 +1961,19 @@ export async function createWithdrawRequest(req, res) {
  * Body: { tripId, newStatus }
  * -> Driver cập nhật trạng thái chuyến
  */
+async function notifyTripMilestone(req, milestone) {
+  if (!milestone) return;
+  try {
+    req.app?.get?.("io")?.to("admins").emit("admin:dashboard_changed", {
+      source: "trip_milestone", milestoneId: milestone.id,
+    });
+    await sendAdminPushNotification({
+      title: "🎉 GoViet247 sắp đạt mốc mới!", body: milestone.message,
+      data: { type: "TRIP_MILESTONE", milestoneId: milestone.id, target: milestone.level },
+    });
+  } catch (error) { console.error("[TripMilestone] notification failed", error); }
+}
+
 export async function changeTripStatus(req, res) {
   try {
     const { tripId, newStatus } = req.body;
@@ -1985,6 +1999,7 @@ export async function changeTripStatus(req, res) {
     };
 
     const result = await prisma.$transaction(async (tx) => {
+      if (newStatus === "COMPLETED") await lockTripMilestones(tx);
       const currentTrip = await tx.trip.findUnique({
         where: { id: tripId },
       });
@@ -2056,9 +2071,11 @@ export async function changeTripStatus(req, res) {
         );
       }
 
-      return { trip, currentTrip, riderNotification };
+      const milestone = newStatus === "COMPLETED" ? await recordTripMilestone(tx, trip.id) : null;
+      return { trip, currentTrip, riderNotification, milestone };
     });
 
+    await notifyTripMilestone(req, result.milestone);
     const { trip, currentTrip, riderNotification } = result;
 
     const io = req.app?.get?.("io");
@@ -2478,6 +2495,7 @@ export async function adminChangeTripStatus(req, res) {
     }
 
     const result = await prisma.$transaction(async (tx) => {
+      if (toStatus === "COMPLETED") await lockTripMilestones(tx);
       const trip = await tx.trip.findUnique({ where: { id } });
 
       if (!trip) {
@@ -2560,7 +2578,9 @@ export async function adminChangeTripStatus(req, res) {
         });
       }
 
+      const milestone = toStatus === "COMPLETED" ? await recordTripMilestone(tx, updated.id) : null;
       return {
+        milestone,
         updated,
         log,
         fromStatus,
@@ -2568,6 +2588,8 @@ export async function adminChangeTripStatus(req, res) {
         riderNotification,
       };
     });
+
+    await notifyTripMilestone(req, result.milestone);
 
     console.log(
       "[AdminChangeTripStatus] result:",

@@ -1,3 +1,4 @@
+import TripMilestoneCelebration from "../../components/admin/TripMilestoneCelebration";
 // Path: goviet247/apps/web/src/pages/admin/AdminLayout.jsx
 import React from "react";
 import { useTheme, useMediaQuery } from "@mui/material";
@@ -745,6 +746,7 @@ export default function AdminLayout() {
 
   return (
     <Box sx={{ display: "flex", minHeight: "100vh" }}>
+      <TripMilestoneCelebration milestones={dashboard?.milestones || []} />
       <AppBar position="fixed" sx={{ zIndex: (t) => t.zIndex.drawer + 1 }}>
         <Toolbar sx={{ gap: 1 }}>
           <IconButton

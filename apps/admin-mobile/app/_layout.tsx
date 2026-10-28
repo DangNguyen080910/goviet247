@@ -1,3 +1,4 @@
+import TripMilestoneCelebration from "../components/TripMilestoneCelebration";
 // Path: goviet247/apps/admin-mobile/app/_layout.tsx
 import { useEffect } from "react";
 import { router, Stack } from "expo-router";
@@ -207,6 +208,7 @@ function RootLayoutContent() {
 
       <StatusBar style="dark" />
       <AppUpdatePrompt />
+      <TripMilestoneCelebration />
     </SafeAreaProvider>
   );
 }

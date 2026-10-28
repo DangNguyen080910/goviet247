@@ -980,6 +980,11 @@ export function makeAdminController(prisma) {
       };
     }
 
+    dashboard.milestones = await prisma.adminAlertLog.findMany({
+      where: { alertType: "TRIP_MILESTONE", success: true },
+      orderBy: { sentAt: "asc" },
+      select: { id: true, level: true, message: true, sentAt: true },
+    });
     return dashboard;
   }
 
