@@ -1,3 +1,4 @@
+import TripMoney from "./TripMoney";
 // Path: goviet247/apps/web/src/components/admin/TripDetailModal.jsx
 import { ServiceSummary } from "../customer/DestinationService";
 import { useEffect, useMemo, useState } from "react";
@@ -774,7 +775,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
 
             <Section title="Giá">
               <div style={{ opacity: 0.95, fontWeight: 700 }}>
-                {formatGia(detail?.totalPrice)}
+                <TripMoney trip={detail} />
               </div>
             </Section>
 

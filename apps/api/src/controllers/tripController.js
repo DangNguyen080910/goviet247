@@ -1,3 +1,4 @@
+import { adminTripMoney } from "../services/adminTripMoney.js";
 import { audienceWhere, canDriverSeeTrip, parseAudience, audienceCarType } from '../services/tripAudiencePolicy.js';
 import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/controllers/tripController.js
@@ -2345,6 +2346,7 @@ export async function adminGetTripDetail(req, res) {
 // =============================================
 export async function getAssignedTrips(req, res) {
   try {
+    const moneyConfig = await prisma.tripConfig.findFirst();
     const { status } = req.query;
 
     const allowed = [
@@ -2383,6 +2385,8 @@ export async function getAssignedTrips(req, res) {
         pickupTime: true,
         returnTime: true,
         destinationService: true,
+        holidaySurcharge: true,
+        driverReceiveSnapshot: true,
         totalPrice: true,
         updatedAt: true,
         cancelReason: true,
@@ -2421,6 +2425,7 @@ export async function getAssignedTrips(req, res) {
 
     const data = trips.map((trip) => ({
       ...trip,
+      ...adminTripMoney(trip, moneyConfig),
       driverName:
         trip.driver?.driverProfile?.fullName ||
         trip.driver?.displayName ||
@@ -2727,6 +2732,7 @@ export async function adminChangeTripStatus(req, res) {
 // GET /api/trips/admin/trips/unverified
 export async function adminListUnverifiedTrips(req, res) {
   try {
+    const moneyConfig = await prisma.tripConfig.findFirst();
     const items = await prisma.trip.findMany({
       where: {
         status: "PENDING",
@@ -2757,6 +2763,7 @@ export async function adminListUnverifiedTrips(req, res) {
 
     const mapped = items.map((t) => ({
       ...t,
+      ...adminTripMoney(t, moneyConfig),
 
       creatorName: t?.rider?.displayName || t?.riderName || "",
 

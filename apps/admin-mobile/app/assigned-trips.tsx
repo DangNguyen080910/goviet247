@@ -1,3 +1,4 @@
+import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 // Path: goviet247/apps/admin-mobile/app/assigned-trips.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -818,14 +819,7 @@ export default function AssignedTripsScreen() {
                     </Text>
                   </View>
 
-                  <View style={styles.infoColumn}>
-                    <Text style={styles.label}>Giá chuyến</Text>
-                    <Text style={styles.value}>
-                      {item.totalPrice != null
-                        ? `${Number(item.totalPrice).toLocaleString("vi-VN")}đ`
-                        : "--"}
-                    </Text>
-                  </View>
+                  <View style={styles.infoColumn}><TripMoney trip={item} /></View>
                 </View>
 
                 <View style={styles.infoRow}>
@@ -1183,14 +1177,7 @@ export default function AssignedTripsScreen() {
                   </Text>
                 </View>
 
-                <View style={styles.modalInfoBlock}>
-                  <Text style={styles.label}>Giá chuyến</Text>
-                  <Text style={styles.value}>
-                    {selectedTripDetail?.totalPrice != null
-                      ? `${Number(selectedTripDetail.totalPrice).toLocaleString("vi-VN")}đ`
-                      : "--"}
-                  </Text>
-                </View>
+                <TripMoney trip={selectedTripDetail} />
 
                 <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
                   <Text style={styles.label}>Ghi chú</Text>

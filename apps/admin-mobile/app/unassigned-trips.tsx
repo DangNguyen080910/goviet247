@@ -1,3 +1,4 @@
+import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 // Path: admin-mobile/app/unassigned-trips.tsx
 import { router, useFocusEffect } from "expo-router";
@@ -547,12 +548,7 @@ export default function UnassignedTripsScreen() {
               <Text style={styles.value}>{formatDateTime(item.pickupTime)}</Text>
             </View>
 
-            <View style={styles.metaItemRight}>
-              <Text style={styles.label}>Giá</Text>
-              <Text style={styles.priceValue}>
-                {formatMoney(getTripPrice(item))}đ
-              </Text>
-            </View>
+            <View style={styles.metaItemRight}><TripMoney trip={item} /></View>
           </View>
 
           <View style={styles.metaRow}>
@@ -830,11 +826,7 @@ export default function UnassignedTripsScreen() {
                     label="Tạo lúc"
                     value={formatDateTime(detail.createdAt)}
                   />
-                  <DetailRow
-                    label="Giá"
-                    value={`${formatMoney(getTripPrice(detail))}đ`}
-                    valueStyle={styles.detailPrice}
-                  />
+                  <TripMoney trip={detail} />
                   <DetailRow
                     label="Loại xe"
                     value={formatCarType(detail.carType)}

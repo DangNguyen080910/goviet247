@@ -23,6 +23,10 @@ export type UnassignedTripItem = {
   }>;
   createdAt: string | null;
   pickupTime: string | null;
+  driverReceive?: number | null;
+  driverReceiveEstimated?: boolean;
+  holidaySurcharge?: any;
+  destinationService?: any;
   totalPrice: number | null;
   status: string | null;
   isVerified: boolean;
@@ -66,6 +70,9 @@ export type UnassignedTripDetail = {
   pickupTime: string | null;
   returnTime: string | null;
   createdAt: string | null;
+  driverReceive?: number | null;
+  driverReceiveEstimated?: boolean;
+  holidaySurcharge?: any;
   totalPrice: number | null;
   tripType: string | null;
   status: string | null;
@@ -152,6 +159,10 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     stops?: unknown;
     createdAt?: unknown;
     pickupTime?: unknown;
+    driverReceive?: unknown;
+    driverReceiveEstimated?: unknown;
+    holidaySurcharge?: any;
+    destinationService?: any;
     totalPrice?: unknown;
     status?: unknown;
     isVerified?: unknown;
@@ -188,6 +199,10 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     stops: mapStops(item?.stops),
     createdAt: typeof item?.createdAt === "string" ? item.createdAt : null,
     pickupTime: typeof item?.pickupTime === "string" ? item.pickupTime : null,
+    driverReceive: item?.driverReceive == null ? null : Number(item.driverReceive),
+    driverReceiveEstimated: Boolean(item?.driverReceiveEstimated),
+    holidaySurcharge: item?.holidaySurcharge ?? null,
+    destinationService: item?.destinationService ?? null,
     totalPrice: pickTripPrice(item as Record<string, unknown>),
     status: typeof item?.status === "string" ? item.status : null,
     isVerified: Boolean(item?.isVerified),
@@ -226,7 +241,6 @@ function mapAlertLog(raw: unknown): UnassignedTripAlertLog {
 
 function mapTripDetail(raw: unknown): UnassignedTripDetail {
   const item = raw as {
-    destinationService?: any;
     id?: unknown;
     tripId?: unknown;
     creatorName?: unknown;
@@ -251,6 +265,10 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
     pickupTime?: unknown;
     returnTime?: unknown;
     createdAt?: unknown;
+    driverReceive?: unknown;
+    driverReceiveEstimated?: unknown;
+    holidaySurcharge?: any;
+    destinationService?: any;
     totalPrice?: unknown;
     tripType?: unknown;
     status?: unknown;
@@ -283,7 +301,6 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
   const createdAt = typeof item?.createdAt === "string" ? item.createdAt : null;
 
   return {
-    destinationService: item?.destinationService ?? null,
     id: String(item?.id || item?.tripId || ""),
     creatorName:
       typeof item?.creatorName === "string" ? item.creatorName : null,
@@ -318,6 +335,10 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
     pickupTime: typeof item?.pickupTime === "string" ? item.pickupTime : null,
     returnTime: typeof item?.returnTime === "string" ? item.returnTime : null,
     createdAt,
+    driverReceive: item?.driverReceive == null ? null : Number(item.driverReceive),
+    driverReceiveEstimated: Boolean(item?.driverReceiveEstimated),
+    holidaySurcharge: item?.holidaySurcharge ?? null,
+    destinationService: item?.destinationService ?? null,
     totalPrice: pickTripPrice(item as Record<string, unknown>),
     tripType: typeof item?.tripType === "string" ? item.tripType : null,
     status: typeof item?.status === "string" ? item.status : null,

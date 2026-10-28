@@ -1,3 +1,4 @@
+import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 import TripAudiencePicker from '../components/TripAudiencePicker';
 // Path: goviet247/apps/admin-mobile/app/pending-trips.tsx
@@ -690,14 +691,9 @@ export default function PendingTripsScreen() {
               <Text style={styles.value}>{formatDateTime(item.createdAt)}</Text>
             </View>
 
-            <View style={styles.priceBox}>
-              <Text style={styles.label}>Giá</Text>
-
-              <Text style={styles.priceValue}>
-                {formatMoney(item.totalPrice)}đ
-              </Text>
-            </View>
+            <View style={styles.priceBox}><TripMoney trip={item} /></View>
           </View>
+
 
           {tab === "CANCELLED" ? (
             <View style={styles.cancelReasonBox}>
@@ -886,11 +882,7 @@ export default function PendingTripsScreen() {
                     label="Tạo lúc"
                     value={formatDateTime(detail.createdAt)}
                   />
-                  <DetailRow
-                    label="Giá"
-                    value={`${formatMoney(detail.totalPrice)}đ`}
-                    valueStyle={styles.detailPrice}
-                  />
+                  <TripMoney trip={detail} />
                   <DetailRow
                     label="Loại xe"
                     value={formatCarType(detail.carType)}

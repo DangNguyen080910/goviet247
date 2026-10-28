@@ -1,3 +1,4 @@
+import TripMoney from "../../components/admin/TripMoney";
 // Path: goviet247/apps/web/src/pages/admin/AdminTripsAssigned.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { formatCarType } from "../../utils/formatCarType";
@@ -384,7 +385,7 @@ export default function AdminTripsAssigned() {
                   <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ đón</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ về</TableCell>
-                  <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
+                  <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến / Tài xế thực nhận (đ)</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Cập nhật</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Trạng thái</TableCell>
                   <TableCell sx={{ ...tripActionCellStyle, fontWeight: 700, zIndex: 3 }}>
@@ -470,7 +471,7 @@ export default function AdminTripsAssigned() {
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatCarType(t.carType)}</TableCell>
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.pickupTime)}</TableCell>
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.returnTime)}</TableCell>
-                      <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>{formatGia(t.totalPrice)}</TableCell>
+                      <TableCell align="right" sx={{ whiteSpace: "nowrap" }}><TripMoney trip={t} /></TableCell>
 
                       <TableCell>
                         <Typography variant="body2">

@@ -1,5 +1,5 @@
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
-import { ServiceSummary } from "../components/DestinationService";
+import TripPricingSummary from "../components/TripPricingSummary";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import {
@@ -556,7 +556,7 @@ export default function RiderTripHistoryScreen() {
                         {formatMoney(displayPrice)}
                       </Text>
                     </View>
-                  <ServiceSummary snapshot={item.destinationService} />
+                  <TripPricingSummary trip={item} />
                   </View>
 
                   {item?.note ? (

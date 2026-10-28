@@ -1,3 +1,4 @@
+import TripMoney from "../../components/admin/TripMoney";
 import TripAudienceDialog from '../../components/admin/TripAudienceDialog';
 // Path: goviet247/apps/web/src/pages/admin/AdminTrips.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -262,7 +263,7 @@ export default function AdminTrips() {
               <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ đón</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Giờ về</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến (đ)</TableCell>
+              <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến / Tài xế thực nhận (đ)</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Loại</TableCell>
 
@@ -366,7 +367,7 @@ export default function AdminTrips() {
                       {t.returnTime ? formatNgayGio(t.returnTime) : "—"}
                     </TableCell>
 
-                    <TableCell align="right" sx={{ whiteSpace: "nowrap" }}>{formatGia(t.totalPrice)}</TableCell>
+                    <TableCell align="right" sx={{ whiteSpace: "nowrap" }}><TripMoney trip={t} /></TableCell>
 
                     <TableCell sx={{ fontWeight: 700 }}>
                       {formatFuelPreference(t.fuelPreference)}

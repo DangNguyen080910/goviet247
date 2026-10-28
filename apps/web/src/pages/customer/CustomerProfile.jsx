@@ -1,5 +1,5 @@
 // Path: goviet247/apps/web/src/pages/customer/CustomerProfile.jsx
-import { ServiceSummary } from "../../components/customer/DestinationService";
+import TripPricingSummary from "../../components/customer/TripPricingSummary";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
@@ -1288,7 +1288,7 @@ export default function CustomerProfile() {
                             </Typography>
                           </Paper>
                         </Box>
-                        <ServiceSummary snapshot={trip.destinationService} />
+                        <TripPricingSummary trip={trip} />
 
                         {trip.driverVehicle ? (
                           <Paper

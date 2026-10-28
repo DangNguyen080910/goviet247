@@ -3,6 +3,8 @@ import React from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, vnTime } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot }: { snapshot?: any }) {
+  // Only booked destination-service packages belong in this panel.
+  if (snapshot?.eligible !== true) return null;
   const defaults = destinationConfig();
   const notices = [
     snapshot?.allInclusiveNotice || defaults.allInclusiveNotice,

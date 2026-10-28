@@ -29,6 +29,10 @@ export type AssignedTripItem = {
   riderPhone: string | null;
   driverName: string | null;
   driverPhone: string | null;
+  driverReceive?: number | null;
+  driverReceiveEstimated?: boolean;
+  holidaySurcharge?: any;
+  destinationService?: any;
   totalPrice: number | null;
 
   stops: Array<{
@@ -64,6 +68,9 @@ export type AssignedTripDetail = {
   driverName: string | null;
   driverPhone: string | null;
 
+  driverReceive?: number | null;
+  driverReceiveEstimated?: boolean;
+  holidaySurcharge?: any;
   totalPrice: number | null;
   tripType: string | null;
   note: string | null;
@@ -126,6 +133,10 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
     pickupTime?: unknown;
+    driverReceive?: unknown;
+    driverReceiveEstimated?: unknown;
+    holidaySurcharge?: any;
+    destinationService?: any;
     totalPrice?: unknown;
     updatedAt?: unknown;
     returnTime?: unknown;
@@ -175,6 +186,10 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     pickupTime:
       typeof item?.pickupTime === "string" ? item.pickupTime : null,
+    driverReceive: item?.driverReceive == null ? null : Number(item.driverReceive),
+    driverReceiveEstimated: Boolean(item?.driverReceiveEstimated),
+    holidaySurcharge: item?.holidaySurcharge ?? null,
+    destinationService: item?.destinationService ?? null,
     totalPrice:
       item?.totalPrice == null ? null : toNumber(item.totalPrice, 0),
     updatedAt: typeof item?.updatedAt === "string" ? item.updatedAt : null,
@@ -209,7 +224,6 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
 
 function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
   const item = raw as {
-    destinationService?: any;
     id?: unknown;
     status?: unknown;
 
@@ -234,6 +248,10 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
     driverName?: unknown;
     driverPhone?: unknown;
 
+    driverReceive?: unknown;
+    driverReceiveEstimated?: unknown;
+    holidaySurcharge?: any;
+    destinationService?: any;
     totalPrice?: unknown;
     tripType?: unknown;
     note?: unknown;
@@ -269,7 +287,6 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
         : pickPhone(item?.driver);
 
   return {
-    destinationService: item?.destinationService ?? null,
     id: typeof item?.id === "string" ? item.id : "",
     status: typeof item?.status === "string" ? item.status : null,
     carType: typeof item?.carType === "string" ? item.carType : null,
@@ -313,6 +330,10 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
           ? item.driver.displayName
           : null,
     driverPhone,
+    driverReceive: item?.driverReceive == null ? null : Number(item.driverReceive),
+    driverReceiveEstimated: Boolean(item?.driverReceiveEstimated),
+    holidaySurcharge: item?.holidaySurcharge ?? null,
+    destinationService: item?.destinationService ?? null,
     totalPrice: item?.totalPrice == null ? null : toNumber(item?.totalPrice, 0),
     tripType: typeof item?.tripType === "string" ? item.tripType : null,
     note:

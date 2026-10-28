@@ -30,6 +30,10 @@ export type PendingTripItem = {
 
   pickupTime: string | null;
 
+  driverReceive?: number | null;
+  driverReceiveEstimated?: boolean;
+  holidaySurcharge?: any;
+  destinationService?: any;
   totalPrice: number | null;
 
   cancelReason?: string | null;
@@ -70,6 +74,10 @@ function mapTripItem(raw: any): PendingTripItem {
         : Number(raw?.estimatedDurationMinutes || 0),
     stops: Array.isArray(raw?.stops) ? raw.stops : [],
     pickupTime: raw?.pickupTime || null,
+    driverReceive: raw?.driverReceive == null ? null : Number(raw.driverReceive),
+    driverReceiveEstimated: Boolean(raw?.driverReceiveEstimated),
+    holidaySurcharge: raw?.holidaySurcharge ?? null,
+    destinationService: raw?.destinationService ?? null,
     totalPrice:
       typeof raw?.totalPrice === "number"
         ? raw.totalPrice
@@ -101,7 +109,6 @@ export async function fetchPendingVerifyCancelledTrips() {
 }
 
 export type PendingTripDetail = {
-  destinationService?: any;
   id: string;
 
   creatorName?: string | null;
@@ -132,6 +139,10 @@ export type PendingTripDetail = {
   pickupTime: string | null;
   returnTime: string | null;
 
+  driverReceive?: number | null;
+  driverReceiveEstimated?: boolean;
+  holidaySurcharge?: any;
+  destinationService?: any;
   totalPrice: number | null;
 
   tripType: string | null;
@@ -223,6 +234,9 @@ function mapTripDetail(raw: any): PendingTripDetail {
     stops: Array.isArray(raw?.stops) ? raw.stops : [],
     pickupTime: raw?.pickupTime || null,
     returnTime: raw?.returnTime || null,
+    driverReceive: raw?.driverReceive == null ? null : Number(raw.driverReceive),
+    driverReceiveEstimated: Boolean(raw?.driverReceiveEstimated),
+    holidaySurcharge: raw?.holidaySurcharge ?? null,
     totalPrice:
       typeof raw?.totalPrice === "number"
         ? raw.totalPrice

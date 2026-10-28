@@ -1,3 +1,4 @@
+import TripMoney from "./TripMoney";
 // Path: goviet247/apps/web/src/components/admin/PendingTripsTable.jsx
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@mui/material";
@@ -349,7 +350,7 @@ export default function PendingTripsTable({
               <th style={th}>Loại xe</th>
               <th style={th}>Giờ đón</th>
               <th style={th}>Giờ về</th>
-              <th style={{ ...th, textAlign: "right" }}>Giá chuyến (đ)</th>
+              <th style={{ ...th, textAlign: "right" }}>Giá chuyến / Tài xế thực nhận (đ)</th>
 
               {isCancelledTab ? (
                 <>
@@ -440,7 +441,7 @@ export default function PendingTripsTable({
                     {t.returnTime ? formatNgayGio(t.returnTime) : "—"}
                   </td>
                   <td style={{ ...tdMono, textAlign: "right", whiteSpace: "nowrap" }}>
-                    {formatGia(t.totalPrice)}
+                    <TripMoney trip={t} />
                   </td>
 
                   {isCancelledTab ? (

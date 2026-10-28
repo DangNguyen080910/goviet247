@@ -1,3 +1,4 @@
+import { adminTripMoney } from "../services/adminTripMoney.js";
 import { getDriverAccountingIdentityRows } from "../services/driverAccountingIdentity.js";
 import { isProvinceCode, driverProvinceSummary } from "../services/driverOperatingProvince.js";
 import { getPenaltyRefundQuote, mutateAdminWallet } from "../services/adminWalletMutation.js";
@@ -3050,6 +3051,7 @@ export function makeAdminController(prisma) {
 
     async listPendingTrips(req, res) {
       try {
+        const moneyConfig = await prisma.tripConfig.findFirst();
         const now = new Date();
 
         const verified = String(req.query.verified || "1");
@@ -3104,6 +3106,7 @@ export function makeAdminController(prisma) {
             : t.pendingTripAlertAt;
 
           return {
+            ...adminTripMoney(t, moneyConfig),
             tripId: t.id,
             id: t.id,
             carType: t.carType,
@@ -3163,6 +3166,7 @@ export function makeAdminController(prisma) {
 
     async getTripDetail(req, res) {
       try {
+        const moneyConfig = await prisma.tripConfig.findFirst();
         const { id } = req.params;
 
         const trip = await prisma.trip.findUnique({
@@ -3234,6 +3238,7 @@ export function makeAdminController(prisma) {
           success: true,
           trip: {
             ...trip,
+            ...adminTripMoney(trip, moneyConfig),
             creatorName,
             creatorPhone,
             stops: normalizeStops(trip.stops),
@@ -4721,6 +4726,7 @@ export function makeAdminController(prisma) {
 
     async listUnverifiedCancelledTrips(req, res) {
       try {
+        const moneyConfig = await prisma.tripConfig.findFirst();
         const trips = await prisma.trip.findMany({
           where: { status: "CANCELLED", isVerified: false },
           orderBy: { cancelledAt: "desc" },
@@ -4733,6 +4739,7 @@ export function makeAdminController(prisma) {
         });
 
         const items = trips.map((t) => ({
+          ...adminTripMoney(t, moneyConfig),
           id: t.id,
           riderName: t.riderName,
           riderPhone: t.riderPhone,
@@ -4759,6 +4766,7 @@ export function makeAdminController(prisma) {
 
     async listPendingCancelledTrips(req, res) {
       try {
+        const moneyConfig = await prisma.tripConfig.findFirst();
         const trips = await prisma.trip.findMany({
           where: { status: "CANCELLED", isVerified: true },
           orderBy: { cancelledAt: "desc" },
@@ -4771,6 +4779,7 @@ export function makeAdminController(prisma) {
         });
 
         const items = trips.map((t) => ({
+          ...adminTripMoney(t, moneyConfig),
           id: t.id,
           riderName: t.riderName,
           riderPhone: t.riderPhone,

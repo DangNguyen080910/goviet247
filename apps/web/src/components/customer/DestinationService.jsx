@@ -2,15 +2,17 @@ import { driverTourSummary } from "../../../../api/src/shared/driverTourSummary.
 import { Box, Typography, TextField, Checkbox, Radio, FormControlLabel, Alert } from "@mui/material";
 import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, vnTime } from "../../../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, admin = false }) {
+  // Only booked destination-service packages belong in this panel.
+  if (snapshot?.eligible !== true) return null;
   const defaults = destinationConfig();
   const notices = [
     snapshot?.allInclusiveNotice || defaults.allInclusiveNotice,
     snapshot?.paymentNotice || defaults.paymentNotice,
   ];
   return (
-    <Box sx={{ my: 1, p: 1.5, bgcolor: "#f0f7ff", borderRadius: 2 }}>
+    <Box sx={{ my: 1, p: 1.5, bgcolor: "#f0f7ff", color: "#1e3a5f", borderRadius: 2 }}>
       {(admin ? driverTourSummary(snapshot) : destinationSummary(snapshot)).map((line, index) => (
-        <Typography key={index} variant="body2" sx={{ mb: 0.7, whiteSpace: "pre-line", fontWeight: notices.includes(line) || line.startsWith("Phụ phí phục vụ tour:") ? 700 : 400 }}>
+        <Typography key={index} variant="body2" sx={{ color: "#1e3a5f", mb: 0.7, whiteSpace: "pre-line", fontWeight: notices.includes(line) || line.startsWith("Phụ phí phục vụ tour:") ? 700 : 400 }}>
           {line}
         </Typography>
       ))}
