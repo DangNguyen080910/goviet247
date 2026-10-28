@@ -677,6 +677,7 @@ export function makeAdminController(prisma) {
       todayVerifiedCount,
       todayCompletedCount,
       todayCancelledCount,
+      totalCompletedTrips,
 
       walletAgg,
       withdrawPendingAgg,
@@ -845,6 +846,8 @@ export function makeAdminController(prisma) {
         },
       }),
 
+      prisma.trip.count({ where: { status: "COMPLETED" } }),
+
       prisma.driverProfile.aggregate({
         _sum: { balance: true },
         _count: { id: true },
@@ -889,6 +892,7 @@ export function makeAdminController(prisma) {
         recentAlertsCount,
         driverKycPendingCount,
         feedbackNewCount,
+        totalCompletedTrips,
       },
       urgent: {
         pendingTrips: urgentPendingTrips.map((item) => ({

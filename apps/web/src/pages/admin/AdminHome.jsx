@@ -690,6 +690,35 @@ export default function AdminHome() {
           </Grid>
         </Grid>
       ) : null}
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Paper
+          elevation={2}
+          sx={{
+            p: 3,
+            width: { xs: "100%", sm: 360 },
+            boxSizing: "border-box",
+            borderRadius: 3,
+            bgcolor: "#00695c",
+            color: "#ffffff",
+          }}
+        >
+          <Stack direction="row" alignItems="center" spacing={2}>
+            <AssignmentTurnedInIcon sx={{ fontSize: 40 }} />
+            <Box>
+              <Typography sx={{ fontWeight: 700 }}>
+                Tổng chuyến đã hoàn thành
+              </Typography>
+              <Typography variant="h3" sx={{ my: 0.5, fontWeight: 800 }}>
+                {stats.totalCompletedTrips == null
+                  ? "—"
+                  : formatMoney(stats.totalCompletedTrips)}
+              </Typography>
+              <Typography variant="body2">Từ trước đến nay</Typography>
+            </Box>
+          </Stack>
+        </Paper>
+      </Box>
     </Stack>
   );
 }
