@@ -1310,6 +1310,7 @@ export default function CustomerProfile() {
                               }}
                             >
                               <Typography><b>Hãng xe:</b> {trip.driverVehicle.vehicleBrand || "Chưa cập nhật"}</Typography>
+                              <Typography><b>Màu xe:</b> {trip.driverVehicle.vehicleColor || "Chưa cập nhật"}</Typography>
                               <Typography><b>Dòng xe:</b> {trip.driverVehicle.vehicleModel || "Chưa cập nhật"}</Typography>
                               <Typography><b>Đời xe:</b> {trip.driverVehicle.vehicleYear || "Chưa cập nhật"}</Typography>
                               <Typography><b>Biển số xe:</b> {trip.driverVehicle.plateNumber || "Chưa cập nhật"}</Typography>

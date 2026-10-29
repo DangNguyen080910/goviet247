@@ -792,6 +792,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
                     v={formatVehicleType(driverProfile?.vehicleType)}
                   />
                   <KV k="Hãng xe" v={driverProfile?.vehicleBrand || "-"} />
+                  <KV k="Màu xe" v={driverProfile?.vehicleColor || "Chưa cập nhật"} />
                   <KV k="Dòng xe" v={driverProfile?.vehicleModel || "-"} />
                   <KV
                     k="Đời xe"

@@ -98,6 +98,7 @@ const DRIVER_SORT_COLUMNS = {
   vehicleType: "Loại xe",
   vehicleBrand: "Hãng xe",
   vehicleModel: "Model xe",
+  vehicleColor: "Màu xe",
   vehicleYear: "Đời xe",
   plateNumber: "Biển số",
   createdAt: "Ngày tạo",
@@ -687,6 +688,7 @@ export default function AdminDrivers() {
               {sortableHeader("vehicleType")}
               {sortableHeader("vehicleBrand")}
               {sortableHeader("vehicleModel")}
+              {sortableHeader("vehicleColor")}
               {sortableHeader("vehicleYear")}
               {sortableHeader("plateNumber")}
               {sortableHeader("createdAt")}
@@ -722,6 +724,7 @@ export default function AdminDrivers() {
                 <TableCell>{vehicleTypeLabel(d.vehicleType)}</TableCell>
                 <TableCell>{d.vehicleBrand || "-"}</TableCell>
                 <TableCell>{d.vehicleModel || "-"}</TableCell>
+                <TableCell>{d.vehicleColor || "Chưa cập nhật"}</TableCell>
                 <TableCell>{d.vehicleYear || "-"}</TableCell>
                 <TableCell>{d.plateNumber || "-"}</TableCell>
                 <TableCell>{formatNgayGio(d.createdAt)}</TableCell>
@@ -742,7 +745,7 @@ export default function AdminDrivers() {
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={13}>
+                <TableCell colSpan={14}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>
@@ -877,6 +880,7 @@ export default function AdminDrivers() {
                   })()}
 
                   <Typography>Số CCCD: {detail.citizenId || "Chưa cập nhật"}</Typography>
+                  <Typography>Màu xe: {detail.vehicleColor || "Chưa cập nhật"}</Typography>
                   <Typography>Biển số: {detail.plateNumber || "-"}</Typography>
                   <Typography>
                     Loại xe: {vehicleTypeLabel(detail.vehicleType)}

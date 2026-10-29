@@ -434,6 +434,7 @@ export default function AdminTripsAssigned() {
                         <Typography sx={{ fontWeight: 600 }}>
                           {driverName}
                         </Typography>
+                        <Typography variant="body2" color="text.secondary">Màu xe: {t.vehicleColor || "Chưa cập nhật"}</Typography>
                         <Typography variant="body2" color="text.secondary">
                           {driverPhone || "-"}
                         </Typography>

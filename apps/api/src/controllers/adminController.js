@@ -3212,6 +3212,7 @@ export function makeAdminController(prisma) {
                     balance: true,
                     vehicleType: true,
                     vehicleBrand: true,
+                    vehicleColor: true,
                     vehicleModel: true,
                     vehicleYear: true,
                     plateNumber: true,
@@ -3251,6 +3252,7 @@ export function makeAdminController(prisma) {
             creatorName,
             creatorPhone,
             stops: normalizeStops(trip.stops),
+            vehicleColor: driverProfile?.vehicleColor ?? null,
             driverName:
               driverProfile?.fullName ||
               trip?.driver?.displayName ||
@@ -3383,6 +3385,7 @@ export function makeAdminController(prisma) {
           vehicletype: "vehicleType",
           vehiclebrand: "vehicleBrand",
           vehiclemodel: "vehicleModel",
+          vehiclecolor: "vehicleColor",
           vehicleyear: "vehicleYear",
           platenumber: "plateNumber",
           completedtripcount: "completedTripCount",
@@ -3400,6 +3403,7 @@ export function makeAdminController(prisma) {
           if (sortColumn === "vehicleType") return item.vehicleType || "";
           if (sortColumn === "vehicleBrand") return item.vehicleBrand || "";
           if (sortColumn === "vehicleModel") return item.vehicleModel || "";
+          if (sortColumn === "vehicleColor") return item.vehicleColor || "";
           if (sortColumn === "vehicleYear") return Number(item.vehicleYear || 0);
           if (sortColumn === "plateNumber") return item.plateNumber || "";
           if (sortColumn === "completedTripCount") return Number(item.completedTripCount || 0);

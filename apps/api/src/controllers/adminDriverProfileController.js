@@ -1,7 +1,7 @@
 import { isProvinceCode } from '../services/driverOperatingProvince.js';
 import { prisma } from '../utils/db.js';
 
-const labels = { citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
+const labels = { citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleColor: 'Màu xe', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
 const fail = (message, statusCode = 400) => Object.assign(new Error(message), { statusCode });
 const plateKey = value => String(value || '').toUpperCase().replace(/[\s.-]+/g, '');
 const phoneNumber = value => {

@@ -18,3 +18,10 @@ export function showError(message: string) {
     visibilityTime: 2500,
   });
 }
+
+export function showTripAcceptError(message: string) {
+  Toast.show({
+    type: "tripAcceptError", text1: "Chưa nhận được chuyến", text2: message,
+    visibilityTime: 5000, onPress: () => Toast.hide(),
+  });
+}

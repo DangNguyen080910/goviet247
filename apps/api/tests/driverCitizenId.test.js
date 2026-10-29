@@ -21,3 +21,30 @@ test('admin rejects invalid CCCD before accessing database', async () => {
     assert.equal(res.statusCode, 400);
   }
 });
+
+test('vehicle color trims text, accepts legacy registration and rejects invalid values', () => {
+  assert.equal(schema.parse({ ...payload, vehicleColor: '  Trắng ngọc trai  ' }).vehicleColor, 'Trắng ngọc trai');
+  assert.equal(schema.parse(payload).vehicleColor, undefined);
+  for (const vehicleColor of ['', '   ', 'x'.repeat(101), 123, null]) {
+    assert.equal(schema.safeParse({ ...payload, vehicleColor }).success, false);
+  }
+});
+test('admin stores vehicle color and records the correction', async () => {
+  let saved, log;
+  const date = new Date('2026-10-29T00:00:00Z');
+  const tx = {
+    $queryRaw: async () => [],
+    driverProfile: {
+      findUnique: async () => ({ id: 'driver1', userId: 'user1', vehicleColor: null, updatedAt: date, status: 'VERIFIED', user: { phones: [] } }),
+      update: async args => { saved = args.data; },
+    },
+    user: { findUnique: async () => ({ displayName: 'Driver' }) },
+    adminDriverActionLog: { create: async args => { log = args.data; } },
+  };
+  const update = new Function('prisma', 'isProvinceCode', adminSource + '; return updateAdminDriverProfile;')({ $transaction: fn => fn(tx) }, () => true);
+  const res = { status(code) { this.statusCode = code; return this; }, json(body) { this.body = body; return this; } };
+  await update({ params: { id: 'driver1' }, body: { vehicleColor: '  Đỏ  ', reason: 'Bổ sung màu xe', expectedUpdatedAt: date.toISOString() } }, res);
+  assert.equal(res.body.success, true);
+  assert.equal(saved.vehicleColor, 'Đỏ');
+  assert.match(log.note, /Màu xe/);
+});

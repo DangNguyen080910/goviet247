@@ -43,7 +43,8 @@ import {
 import { playTripChangedNotify } from "../services/notify";
 import { getMyDriverProfile } from "../services/driverProfileApi";
 import { useNotifications } from "../context/NotificationContext";
-import { showSuccess, showError } from "../services/toast";
+import { showSuccess, showError, showTripAcceptError } from "../services/toast";
+import { tripAcceptFeedback } from "../../api/src/shared/tripAcceptFeedback.js";
 
 type DashboardTab = "AVAILABLE" | "MY_TRIPS";
 
@@ -964,16 +965,16 @@ export default function DashboardScreen() {
         setAcceptingTripId(tripId);
         await acceptDriverTrip(tripId);
 
-        await Promise.all([loadAvailableTrips(), loadMyTrips()]);
+        await Promise.allSettled([loadAvailableTrips(), loadMyTrips()]);
         setActiveTab("MY_TRIPS");
 
         showSuccess("Nhận chuyến thành công.");
       } catch (error: any) {
         if (error?.code === "TRIP_ACCEPT_UNAVAILABLE") return;
-        const message =
-          error instanceof Error ? error.message : "Không thể nhận chuyến.";
-
-        showError(message);
+        const message = tripAcceptFeedback(error);
+        if (message) showTripAcceptError(message);
+        // Refreshes must not replace the acceptance error or imply an automatic retry.
+        void Promise.allSettled([loadAvailableTrips(), loadMyTrips()]);
       } finally {
         setAcceptingTripId(null);
       }

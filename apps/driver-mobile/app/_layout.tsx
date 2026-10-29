@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { Stack, router } from "expo-router";
 import * as Notifications from "expo-notifications";
-import Toast from "react-native-toast-message";
+import Toast, { ErrorToast } from "react-native-toast-message";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NotificationProvider } from "../context/NotificationContext";
 import { getDriverToken } from "../services/storage";
@@ -78,7 +78,10 @@ export default function RootLayout() {
             headerShown: false,
           }}
         />
-        <Toast />
+        <Toast config={{ tripAcceptError: props => <ErrorToast {...props} text2NumberOfLines={4}
+          style={{ height: "auto", minHeight: 78, maxWidth: "95%" }}
+          contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 10 }}
+          text1Style={{ fontSize: 14 }} text2Style={{ fontSize: 13, lineHeight: 18, color: "#374151" }} /> }} />
         <AppUpdatePrompt />
       </NotificationProvider>
     </SafeAreaProvider>

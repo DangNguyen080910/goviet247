@@ -27,6 +27,7 @@ export type AssignedTripItem = {
   cancelledAt: string | null;
   riderName: string | null;
   riderPhone: string | null;
+  vehicleColor: string | null;
   driverName: string | null;
   driverPhone: string | null;
   driverReceive?: number | null;
@@ -65,6 +66,7 @@ export type AssignedTripDetail = {
   riderName: string | null;
   riderPhone: string | null;
 
+  vehicleColor: string | null;
   driverName: string | null;
   driverPhone: string | null;
 
@@ -146,6 +148,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
     riderName?: unknown;
     riderPhone?: unknown;
 
+    vehicleColor?: unknown;
     driverName?: unknown;
     driverPhone?: unknown;
 
@@ -208,6 +211,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
       typeof item?.riderPhone === "string"
         ? item.riderPhone
         : pickPhone(item?.rider),
+    vehicleColor: typeof item?.vehicleColor === "string" ? item.vehicleColor : null,
     driverName:
       typeof item?.driverName === "string"
         ? item.driverName
@@ -245,6 +249,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
     riderName?: unknown;
     riderPhone?: unknown;
 
+    vehicleColor?: unknown;
     driverName?: unknown;
     driverPhone?: unknown;
 
@@ -323,6 +328,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
           ? item.rider.displayName
           : null,
     riderPhone,
+    vehicleColor: typeof item?.vehicleColor === "string" ? item.vehicleColor : null,
     driverName:
       typeof item?.driverName === "string"
         ? item.driverName

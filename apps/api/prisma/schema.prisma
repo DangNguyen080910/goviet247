@@ -686,6 +686,7 @@ model DriverProfile {
 
   vehicleType  String?
   vehicleBrand String?
+  vehicleColor String?
   vehicleModel String?
   vehicleYear  Int?
   plateNumber  String?

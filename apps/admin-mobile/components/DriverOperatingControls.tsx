@@ -5,12 +5,12 @@ import { patchDriverProfile, patchDriverTripAcceptance } from '../services/admin
 
 const fields = [
   ['fullName', 'Họ tên tài xế'], ['citizenId', 'Số CCCD'], ['displayName', 'Tên hiển thị tài khoản'],
-  ['phone', 'Số điện thoại'], ['vehicleBrand', 'Hãng xe'], ['vehicleModel', 'Model xe'],
+  ['phone', 'Số điện thoại'], ['vehicleBrand', 'Hãng xe'], ['vehicleModel', 'Model xe'], ['vehicleColor', 'Màu xe'],
   ['vehicleYear', 'Đời xe'], ['plateNumber', 'Biển số'],
 ] as const;
 function makeForm(driver: any): Record<string, string> {
   return { fullName: driver.fullName || '', citizenId: driver.citizenId || '', displayName: driver.accountDisplayName || '',
-    phone: driver.profilePhone?.e164 || '', vehicleBrand: driver.brand || '', vehicleModel: driver.model || '',
+    phone: driver.profilePhone?.e164 || '', vehicleBrand: driver.brand || '', vehicleModel: driver.model || '', vehicleColor: driver.vehicleColor || '',
     vehicleYear: driver.vehicleYear == null ? '' : String(driver.vehicleYear), plateNumber: driver.licensePlate || '',
     vehicleType: driver.vehicleType || '' };
 }

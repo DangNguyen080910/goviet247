@@ -14,7 +14,11 @@ import {
 import { RULE_MENU_ITEMS } from "../../constants/rulesData";
 
 export default function RulesHomeScreen() {
-  const handlePress = (key: "OPERATION" | "BEHAVIOR" | "TERMS") => {
+  const handlePress = (key: "OPERATION" | "BEHAVIOR" | "TERMS" | "GUIDES") => {
+    if (key === "GUIDES") {
+      router.push("/rules/guides");
+      return;
+    }
     if (key === "OPERATION") {
       router.push("/rules/operation");
       return;

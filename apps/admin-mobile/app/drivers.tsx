@@ -315,6 +315,7 @@ function DriverCard({
         />
         <InfoRow label="Hãng xe" value={item.brand} />
         <InfoRow label="Model xe" value={item.model} />
+        <InfoRow label="Màu xe" value={item.vehicleColor || "Chưa cập nhật"} />
         <InfoRow
           label="Đời xe"
           value={item.vehicleYear ? String(item.vehicleYear) : "--"}
@@ -1058,6 +1059,7 @@ export default function DriversScreen() {
                     />
                     <InfoRow label="Hãng xe" value={driverDetail?.brand} />
                     <InfoRow label="Model xe" value={driverDetail?.model} />
+                    <InfoRow label="Màu xe" value={driverDetail?.vehicleColor || "Chưa cập nhật"} />
                     <InfoRow
                       label="Đời xe"
                       value={

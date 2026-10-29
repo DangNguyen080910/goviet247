@@ -209,16 +209,18 @@ export async function getAvailableTrips(): Promise<AvailableTripItem[]> {
 export async function acceptDriverTrip(tripId: string) {
   const headers = await buildAuthHeaders();
 
-  const response = await fetch(`${API_BASE_URL}/api/trips/driver/accept`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({ tripId }),
-  });
-
-  const payload = (await parseJsonSafe(response)) as
-    | ApiTripSuccess<MyTripItem>
-    | ApiError
-    | null;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  let response: Response;
+  let payload: ApiTripSuccess<MyTripItem> | ApiError | null;
+  try {
+    response = await fetch(`${API_BASE_URL}/api/trips/driver/accept`, {
+      method: "POST", headers, body: JSON.stringify({ tripId }), signal: controller.signal,
+    });
+    payload = await parseJsonSafe(response);
+  } catch {
+    throw Object.assign(new Error("Chưa xác nhận được kết quả nhận chuyến."), { code: "NETWORK_UNCONFIRMED" });
+  } finally { clearTimeout(timeout); }
 
   if (!response.ok) {
     const error = new Error(
@@ -230,11 +232,15 @@ export async function acceptDriverTrip(tripId: string) {
 
     error.code = (payload as ApiError)?.code;
     error.data = (payload as ApiError)?.data;
+    (error as any).status = response.status;
 
     throw error;
   }
 
-  return payload as ApiTripSuccess<MyTripItem> | null;
+  if (!payload || payload.success !== true) {
+    throw Object.assign(new Error("Chưa xác nhận được kết quả nhận chuyến."), { code: "NETWORK_UNCONFIRMED" });
+  }
+  return payload as ApiTripSuccess<MyTripItem>;
 }
 
 export async function getMyTrips(options?: {

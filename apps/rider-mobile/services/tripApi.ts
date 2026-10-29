@@ -109,6 +109,7 @@ type RiderTripItem = {
   note?: string | null;
   driverVehicle?: {
     vehicleBrand?: string | null;
+    vehicleColor?: string | null;
     vehicleModel?: string | null;
     vehicleYear?: number | null;
     plateNumber?: string | null;

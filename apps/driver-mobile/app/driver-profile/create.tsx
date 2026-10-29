@@ -64,6 +64,7 @@ export default function DriverProfileCreateScreen() {
   const [fullName, setFullName] = useState("");
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleBrand, setVehicleBrand] = useState("");
+  const [vehicleColor, setVehicleColor] = useState("");
   const [vehicleModel, setVehicleModel] = useState("");
   const [vehicleYear, setVehicleYear] = useState("");
   const [plateNumber, setPlateNumber] = useState("");
@@ -93,6 +94,7 @@ export default function DriverProfileCreateScreen() {
       /^\d{12}$/.test(citizenId.trim()) &&
       vehicleType.trim().length > 0 &&
       vehicleBrand.trim().length > 0 &&
+      vehicleColor.trim().length > 0 &&
       vehicleModel.trim().length > 0 &&
       vehicleYear.trim().length > 0 &&
       plateNumber.trim().length > 0 &&
@@ -104,6 +106,7 @@ export default function DriverProfileCreateScreen() {
     citizenId,
     vehicleType,
     vehicleBrand,
+    vehicleColor,
     vehicleModel,
     vehicleYear,
     plateNumber,
@@ -272,6 +275,11 @@ export default function DriverProfileCreateScreen() {
       return;
     }
 
+    if (!vehicleColor.trim() || vehicleColor.trim().length > 100) {
+      setErrorText("Vui lòng nhập màu xe (tối đa 100 ký tự).");
+      return;
+    }
+
     if (!vehicleModel.trim()) {
       setErrorText("Vui lòng nhập dòng xe.");
       return;
@@ -314,6 +322,7 @@ export default function DriverProfileCreateScreen() {
         citizenId: citizenId.trim(),
         vehicleType: vehicleType,
         vehicleBrand: vehicleBrand.trim(),
+        vehicleColor: vehicleColor.trim(),
         vehicleModel: vehicleModel.trim(),
         vehicleYear: yearNumber,
         plateNumber: plateNumber.trim().toUpperCase(),
@@ -451,6 +460,9 @@ export default function DriverProfileCreateScreen() {
                 style={styles.input}
                 placeholderTextColor="#9CA3AF"
               />
+
+              <Text style={styles.label}>Màu xe</Text>
+              <TextInput value={vehicleColor} onChangeText={text => { setVehicleColor(text); if (errorText) setErrorText(""); }} maxLength={100} placeholder="Ví dụ: Trắng, Đen, Đỏ…" style={styles.input} placeholderTextColor="#9CA3AF" />
 
               <Text style={styles.label}>Dòng xe</Text>
               <TextInput

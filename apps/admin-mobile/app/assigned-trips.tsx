@@ -731,6 +731,7 @@ export default function AssignedTripsScreen() {
                   <View style={styles.phoneValueRow}>
                     <Text style={[styles.value, styles.phoneValueText]}>
                       {item.driverName || "--"}
+                      {` • Màu xe: ${item.vehicleColor || "Chưa cập nhật"}`}
                       {item.driverPhone ? ` • ${item.driverPhone}` : ""}
                     </Text>
 
@@ -977,6 +978,7 @@ export default function AssignedTripsScreen() {
                   <View style={styles.phoneValueRow}>
                     <Text style={[styles.value, styles.phoneValueText]}>
                       {selectedTripDetail?.driverName || "--"}
+                      {` • Màu xe: ${selectedTripDetail?.vehicleColor || "Chưa cập nhật"}`}
                       {selectedTripDetail?.driverPhone
                         ? ` • ${selectedTripDetail.driverPhone}`
                         : ""}

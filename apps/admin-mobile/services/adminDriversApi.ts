@@ -13,6 +13,7 @@ export type DriverListItem = {
   brand: string | null;
   model: string | null;
   vehicleYear: number | null;
+  vehicleColor: string | null;
   licensePlate: string | null;
   createdAt: string | null;
 };
@@ -106,6 +107,7 @@ function mapDriverItem(raw: any): DriverListItem {
     vehicleYear: toNumberOrNull(
       raw?.vehicleYear ?? raw?.year ?? raw?.vehicle?.year,
     ),
+    vehicleColor: typeof raw?.vehicleColor === "string" ? raw.vehicleColor : null,
     licensePlate:
       typeof raw?.licensePlate === "string"
         ? raw.licensePlate
@@ -183,6 +185,7 @@ export async function fetchDriverDetail(id: string) {
     vehicleYear: toNumberOrNull(
       raw?.vehicleYear ?? raw?.year ?? raw?.vehicle?.year,
     ),
+    vehicleColor: typeof raw?.vehicleColor === "string" ? raw.vehicleColor : null,
     licensePlate:
       typeof raw?.licensePlate === "string"
         ? raw.licensePlate

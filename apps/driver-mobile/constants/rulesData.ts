@@ -15,7 +15,7 @@ export type RuleSection = {
 };
 
 export type RuleMenuItem = {
-  key: "OPERATION" | "BEHAVIOR" | "TERMS";
+  key: "OPERATION" | "BEHAVIOR" | "TERMS" | "GUIDES";
   title: string;
   description: string;
 };
@@ -37,6 +37,11 @@ export type RuleDocument = {
 };
 
 export const RULE_MENU_ITEMS: RuleMenuItem[] = [
+  {
+    key: "GUIDES",
+    title: "Hướng dẫn nhận chuyến & lưu ý",
+    description: "Nhận chuyến, ví tài xế, giá trọn gói, chuyến nhiều ngày và các lưu ý hoạt động.",
+  },
   {
     key: "OPERATION",
     title: "Quy chế hoạt động",

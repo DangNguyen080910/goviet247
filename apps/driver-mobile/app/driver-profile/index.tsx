@@ -303,6 +303,10 @@ export default function DriverProfileScreen() {
             </View>
 
             <View style={[styles.infoItem, styles.infoItemNoBorder]}>
+              <Text style={styles.label}>Màu xe</Text>
+              <Text style={styles.value}>{profile.vehicleColor || "Chưa cập nhật"}</Text>
+            </View>
+            <View style={[styles.infoItem, styles.infoItemNoBorder]}>
               <Text style={styles.label}>Biển số</Text>
               <Text style={styles.value}>{profile.plateNumber || "--"}</Text>
             </View>

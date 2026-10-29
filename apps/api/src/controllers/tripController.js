@@ -742,6 +742,7 @@ export async function listMyCustomerTrips(req, res) {
             driverProfile: {
               select: {
                 vehicleBrand: true,
+                vehicleColor: true,
                 vehicleModel: true,
                 vehicleYear: true,
                 plateNumber: true,
@@ -769,6 +770,7 @@ export async function listMyCustomerTrips(req, res) {
         driverVehicle: driver?.driverProfile
           ? {
               vehicleBrand: driver.driverProfile.vehicleBrand,
+              vehicleColor: driver.driverProfile.vehicleColor,
               vehicleModel: driver.driverProfile.vehicleModel,
               vehicleYear: driver.driverProfile.vehicleYear,
               plateNumber: driver.driverProfile.plateNumber,
@@ -937,7 +939,7 @@ export async function acceptTrip(req, res) {
     if (!driverId) {
       return res.status(401).json({
         success: false,
-        message: "Unauthorized",
+        code: "AUTH_REQUIRED", message: "Phiên đăng nhập đã hết hạn. Anh/chị vui lòng đăng nhập lại để nhận chuyến.",
       });
     }
 
@@ -957,13 +959,13 @@ export async function acceptTrip(req, res) {
       });
 
       if (!driverProfile) {
-        throw new Error("Không tìm thấy hồ sơ tài xế");
+        throw Object.assign(new Error("Chưa tìm thấy hồ sơ tài xế. Vui lòng kiểm tra mục Hồ sơ tài xế hoặc liên hệ GoViet247."), { code: "DRIVER_PROFILE_MISSING", statusCode: 409 });
       }
 
       assertTripAcceptanceAllowed(driverProfile);
 
       if (driverProfile.status !== "VERIFIED") {
-        throw new Error("Tài xế chưa được duyệt");
+        throw Object.assign(new Error("Hồ sơ tài xế chưa ở trạng thái được phép nhận chuyến. Vui lòng kiểm tra mục Hồ sơ tài xế hoặc liên hệ GoViet247."), { code: "DRIVER_NOT_VERIFIED", statusCode: 409 });
       }
 
       await lockTrip(tx, tripId);
@@ -972,24 +974,24 @@ export async function acceptTrip(req, res) {
       });
 
       if (!trip) {
-        throw new Error("Không tìm thấy chuyến");
+        throw Object.assign(new Error("Chuyến này không còn trong danh sách. Anh/chị vui lòng chọn chuyến khác."), { code: "TRIP_NOT_FOUND", statusCode: 409 });
       }
 
-      if (!canDriverSeeTrip(trip, driverId)) throw new Error("Chuyến không khả dụng.");
-      if (trip.status !== "PENDING") {
-        throw new Error("Chuyến không ở trạng thái có thể nhận");
+      if (!canDriverSeeTrip(trip, driverId)) throw Object.assign(new Error("Chuyến này hiện không còn mở nhận cho tài khoản của anh/chị. Vui lòng tải lại danh sách hoặc chọn chuyến khác."), { code: "TRIP_NOT_AVAILABLE", statusCode: 409 });
+      if (trip.status === "CANCELLED" || trip.cancelledAt) {
+        throw Object.assign(new Error("Chuyến này đã bị huỷ nên không thể nhận. Danh sách chuyến sẽ được cập nhật lại."), { code: "TRIP_CANCELLED", statusCode: 409 });
       }
-
-      if (!trip.isVerified || !trip.verifiedAt) {
-        throw new Error("Chuyến chưa được admin duyệt");
-      }
-
-      if (trip.cancelledAt) {
-        throw new Error("Chuyến đã bị huỷ");
-      }
-
       if (trip.driverId) {
-        throw new Error("Chuyến đã có tài xế nhận");
+        const own = trip.driverId === driverId;
+        throw Object.assign(new Error(own
+          ? "Anh/chị đã nhận chuyến này. Vui lòng xem trong Đơn của tôi."
+          : "Chuyến này đã được tài xế khác nhận trước. Anh/chị vui lòng chọn chuyến khác."), { code: own ? "TRIP_ALREADY_YOURS" : "TRIP_ALREADY_ACCEPTED", statusCode: 409 });
+      }
+      if (trip.status !== "PENDING") {
+        throw Object.assign(new Error("Chuyến này hiện không còn mở nhận. Anh/chị vui lòng chọn chuyến khác."), { code: "TRIP_NOT_AVAILABLE", statusCode: 409 });
+      }
+      if (!trip.isVerified || !trip.verifiedAt) {
+        throw Object.assign(new Error("Chuyến này chưa được Admin duyệt mở nhận. Anh/chị vui lòng chọn chuyến khác hoặc chờ cập nhật."), { code: "TRIP_NOT_APPROVED", statusCode: 409 });
       }
 
       if (trip.driverAcceptOpenAt) {
@@ -997,15 +999,15 @@ export async function acceptTrip(req, res) {
         const openAt = new Date(trip.driverAcceptOpenAt);
 
         if (now < openAt) {
-          throw new Error("Chưa tới thời gian cho phép nhận chuyến");
+          throw Object.assign(new Error("Chuyến chưa mở nhận. Anh/chị vui lòng chờ hết thời gian đếm ngược rồi bấm nhận."), { code: "TRIP_NOT_OPEN", statusCode: 409 });
         }
       }
 
       const activeTripCount = await countDriverActiveTrips(driverId, tx);
       if (activeTripCount >= config.maxActiveTrips) {
-        throw new Error(
-          `Bạn đã đạt giới hạn ${config.maxActiveTrips} chuyến đang hoạt động`,
-        );
+        throw Object.assign(new Error(
+          `Anh/chị đang có đủ ${config.maxActiveTrips} chuyến chưa hoàn thành. Vui lòng hoàn thành chuyến đang nhận trước khi nhận thêm.`,
+        ), { code: "ACTIVE_TRIP_LIMIT", statusCode: 409 });
       }
 
       const finance = calculateDriverFinanceSnapshot({
@@ -1025,14 +1027,8 @@ export async function acceptTrip(req, res) {
           requiredWalletAmount - currentBalance,
         );
 
-        const err = new Error(
-          `Số dư ví không đủ. Bạn cần tối thiểu ${requiredWalletAmount.toLocaleString(
-            "vi-VN",
-          )}đ để nhận chuyến này. Thiếu ${missingAmount.toLocaleString(
-            "vi-VN",
-          )}đ.`,
-        );
-
+        const err = new Error(`Ví còn ${currentBalance.toLocaleString("vi-VN")}đ, chuyến này cần ${requiredWalletAmount.toLocaleString("vi-VN")}đ. Anh/chị cần nạp thêm ${missingAmount.toLocaleString("vi-VN")}đ để nhận chuyến.`);
+        err.code = "INSUFFICIENT_BALANCE";
         err.statusCode = 400;
         err.data = {
           currentBalance,
@@ -1266,8 +1262,8 @@ export async function acceptTrip(req, res) {
     }
     return res.status(err.statusCode || 400).json({
       success: false,
-      code: err.code === "TRIP_ACCEPT_UNAVAILABLE" ? err.code : undefined,
-      message: err.code === "P2025" ? "Chuyến vừa thay đổi. Vui lòng tải lại." : err.message || "Nhận chuyến thất bại",
+      code: err.code === "P2025" ? "TRIP_CHANGED" : err.code,
+      message: err.code === "P2025" ? "Chuyến vừa thay đổi. Vui lòng kiểm tra Đơn của tôi và tải lại danh sách trước khi thử lại." : err.message || "Nhận chuyến thất bại",
       data: err.data || null,
     });
   }
@@ -1688,6 +1684,7 @@ export async function listMyTrips(req, res) {
             driverProfile: {
               select: {
                 fullName: true,
+                vehicleColor: true,
               },
             },
           },
@@ -1702,6 +1699,7 @@ export async function listMyTrips(req, res) {
           trip.driver?.displayName ||
           trip.driver?.phones?.[0]?.e164 ||
           "Tài xế",
+        vehicleColor: trip.driver?.driverProfile?.vehicleColor ?? null,
         driverPhone: trip.driver?.phones?.[0]?.e164 || "",
       }),
     );
@@ -2305,6 +2303,7 @@ export async function adminGetTripDetail(req, res) {
                 balance: true,
                 vehicleType: true,
                 vehicleBrand: true,
+                vehicleColor: true,
                 vehicleModel: true,
                 vehicleYear: true,
                 plateNumber: true,
@@ -2349,6 +2348,7 @@ export async function adminGetTripDetail(req, res) {
           driverPhone ||
           "Tài xế",
 
+        vehicleColor: driverProfile?.vehicleColor ?? null,
         driverPhone,
       },
     });
@@ -2433,6 +2433,7 @@ export async function getAssignedTrips(req, res) {
             driverProfile: {
               select: {
                 fullName: true,
+                vehicleColor: true,
               },
             },
           },
@@ -2448,6 +2449,7 @@ export async function getAssignedTrips(req, res) {
         trip.driver?.displayName ||
         trip.driver?.phones?.[0]?.e164 ||
         "Tài xế",
+      vehicleColor: trip.driver?.driverProfile?.vehicleColor ?? null,
       driverPhone: trip.driver?.phones?.[0]?.e164 || "",
     }));
 
