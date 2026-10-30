@@ -1,7 +1,7 @@
 import DriverOperatingControls from "../components/DriverOperatingControls";
 // Path: goviet247/apps/admin-mobile/app/drivers.tsx
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -343,6 +343,7 @@ export default function DriversScreen() {
   const [tripAcceptBlocked, setTripAcceptBlocked] = useState("ALL");
   const [sort, setSort] = useState("newest");
   const [page, setPage] = useState(1);
+  const listRequestRef = useRef(0);
 
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
@@ -378,6 +379,7 @@ export default function DriversScreen() {
 
   const loadDrivers = useCallback(
     async (isRefresh = false) => {
+      const request = ++listRequestRef.current;
       try {
         if (isRefresh) {
           setRefreshing(true);
@@ -386,17 +388,21 @@ export default function DriversScreen() {
         }
 
         const data = await fetchDrivers(queryParams);
+        if (request !== listRequestRef.current) return;
         setItems(Array.isArray(data?.items) ? data.items : []);
         setTotal(Number(data?.meta?.total || 0));
         setTotalPages(Math.max(1, Number(data?.meta?.totalPages || 1)));
       } catch (error: any) {
+        if (request !== listRequestRef.current) return;
         console.error("load drivers error:", error);
         setItems([]);
         setTotal(0);
         setTotalPages(1);
       } finally {
-        setLoading(false);
-        setRefreshing(false);
+        if (request === listRequestRef.current) {
+          setLoading(false);
+          setRefreshing(false);
+        }
       }
     },
     [queryParams],
@@ -422,6 +428,7 @@ export default function DriversScreen() {
 
   useEffect(() => {
     loadDrivers(false);
+    return () => { listRequestRef.current++; };
   }, [loadDrivers]);
 
   useFocusEffect(

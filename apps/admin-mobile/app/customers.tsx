@@ -1,6 +1,6 @@
 // Path: goviet247/apps/admin-mobile/app/customers.tsx
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -271,10 +271,10 @@ export default function CustomersScreen() {
   } | null>(null);
 
   const [page, setPage] = useState(1);
+  const listRequestRef = useRef(0);
 
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [loadingMore, setLoadingMore] = useState(false);
 
   const [selectedId, setSelectedId] = useState("");
   const [detail, setDetail] = useState<any | null>(null);
@@ -309,6 +309,34 @@ export default function CustomersScreen() {
     };
   }, [page, phoneVerified, qDebounced, sort, status]);
 
+  const loadCustomers = useCallback(async (showRefreshSpinner = false) => {
+    const request = ++listRequestRef.current;
+    try {
+      if (showRefreshSpinner) {
+        setRefreshing(true);
+      } else {
+        setLoading(true);
+      }
+
+      const data = await fetchCustomers(params);
+      if (request !== listRequestRef.current) return;
+      setItems(data?.items || []);
+      setMeta(data?.meta || null);
+    } catch (error: any) {
+      if (request !== listRequestRef.current) return;
+      console.error("load customers error:", error);
+      Alert.alert(
+        "Lỗi",
+        error?.message || "Không tải được danh sách khách hàng.",
+      );
+    } finally {
+      if (request === listRequestRef.current) {
+        setLoading(false);
+        setRefreshing(false);
+      }
+    }
+  }, [params]);
+
   useFocusEffect(
     useCallback(() => {
       let active = true;
@@ -320,11 +348,7 @@ export default function CustomersScreen() {
           if (!active) return;
           setAdminRole(String(admin?.role || "").toUpperCase());
 
-          if (page === 1) {
-            await loadCustomers(false);
-          } else {
-            setPage(1);
-          }
+          await loadCustomers(false);
 
           if (detailVisible && selectedId) {
             try {
@@ -351,14 +375,10 @@ export default function CustomersScreen() {
 
       return () => {
         active = false;
+        listRequestRef.current++;
       };
-    }, [detailVisible, page, selectedId]),
+    }, [detailVisible, loadCustomers, selectedId]),
   );
-
-  useEffect(() => {
-    loadCustomers(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params]);
 
   useFocusEffect(
     useCallback(() => {
@@ -386,53 +406,12 @@ export default function CustomersScreen() {
     }, [actionExpanded, detailVisible]),
   );
 
-  async function loadCustomers(showRefreshSpinner = false) {
-    try {
-      if (showRefreshSpinner) {
-        setRefreshing(true);
-      } else {
-        setLoading(true);
-      }
-
-      const data = await fetchCustomers(params);
-      setItems(data?.items || []);
-      setMeta(data?.meta || null);
-    } catch (error: any) {
-      console.error("load customers error:", error);
-      Alert.alert(
-        "Lỗi",
-        error?.message || "Không tải được danh sách khách hàng.",
-      );
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
-  }
-
-  async function loadMoreCustomers() {
-    try {
-      setLoadingMore(true);
-
-      const data = await fetchCustomers(params);
-      setItems((prev) => {
-        const merged = [...prev, ...(data?.items || [])];
-        const map = new Map(merged.map((item) => [item.id, item]));
-        return Array.from(map.values());
-      });
-      setMeta(data?.meta || null);
-    } catch (error: any) {
-      console.error("load more customers error:", error);
-      Alert.alert(
-        "Lỗi",
-        error?.message || "Không tải thêm được danh sách khách hàng.",
-      );
-    } finally {
-      setLoadingMore(false);
-    }
-  }
-
   async function handleRefresh() {
-    setPage(1);
+    if (page !== 1) {
+      setRefreshing(true);
+      setPage(1);
+      return;
+    }
     await loadCustomers(true);
   }
 
@@ -458,10 +437,7 @@ export default function CustomersScreen() {
     setPage(1);
   }
 
-  function canLoadMore() {
-    if (!meta) return false;
-    return Number(meta.page || 1) < Number(meta.totalPages || 1);
-  }
+
 
   async function openDetail(userId: string) {
     try {
@@ -544,7 +520,7 @@ export default function CustomersScreen() {
       void Promise.allSettled([
         fetchCustomerDetail(selectedId).then((detailData) => setDetail(detailData || null)),
         fetchCustomerLogs(selectedId).then((logData) => setLogs(logData?.logs || [])),
-        page === 1 ? loadCustomers() : Promise.resolve(setPage(1)),
+        loadCustomers(),
       ]);
     } catch (error: any) {
       console.error("customer action error:", error);

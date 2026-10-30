@@ -2511,7 +2511,7 @@ export default function BookingCard() {
                 </Box>
               )}
 
-              <ServiceSummary snapshot={quote.raw?.destinationService} />
+              <ServiceSummary snapshot={quote.raw?.destinationService} quote config={tripConfig.destinationServiceConfig} />
               <Box sx={{ mt: 0.5, mb: 1.5 }}>
 
 

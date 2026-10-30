@@ -132,6 +132,7 @@ export default function DashboardScreen() {
   const socketRef = useRef<Socket | null>(null);
   const socketUserIdRef = useRef<string | null>(null);
   const realtimeLoadingRef = useRef(false);
+  const realtimeReloadPendingRef = useRef(false);
   const runtimeBlockHandledRef = useRef(false);
 
   const appStateRef = useRef<AppStateStatus>(AppState.currentState);
@@ -567,13 +568,14 @@ export default function DashboardScreen() {
   ]);
 
   const reloadTripsFromRealtime = useCallback(async () => {
-    if (realtimeLoadingRef.current) {
-      return;
-    }
-
+    realtimeReloadPendingRef.current = true;
+    if (realtimeLoadingRef.current) return;
+    realtimeLoadingRef.current = true;
     try {
-      realtimeLoadingRef.current = true;
-      await Promise.all([loadAvailableTrips(), loadMyTrips()]);
+      do {
+        realtimeReloadPendingRef.current = false;
+        await Promise.allSettled([loadAvailableTrips(), loadMyTrips()]);
+      } while (realtimeReloadPendingRef.current);
     } finally {
       realtimeLoadingRef.current = false;
     }
@@ -697,6 +699,8 @@ export default function DashboardScreen() {
             userId,
           );
           socket?.emit("registerDriver", { userId });
+          // Recover changes missed while disconnected, including cancellations.
+          void reloadTripsFromRealtime();
         });
 
         socket.on("disconnect", (reason) => {
@@ -740,11 +744,12 @@ export default function DashboardScreen() {
         socket.on("trip:changed", async (payload) => {
           console.log("[DriverSocket] trip:changed", payload);
 
-          if (appStateRef.current === "active") {
-            await playTripChangedNotify();
+          // Start refreshing immediately; sound must not delay the list update.
+          const refresh = reloadTripsFromRealtime();
+          if (appStateRef.current === "active" && !payload?.silent) {
+            void playTripChangedNotify();
           }
-
-          await reloadTripsFromRealtime();
+          await refresh;
         });
 
         socket.on("admin:dashboard_changed", async (payload) => {

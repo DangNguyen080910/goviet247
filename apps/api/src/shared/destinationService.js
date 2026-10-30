@@ -85,3 +85,10 @@ export function destinationSummary(snapshot) {
     terms.scopeNotice || DEFAULT_DESTINATION_CONFIG.scopeNotice,
   ];
 }
+
+// Quote notices apply to every trip, independently of destination package eligibility.
+export function destinationQuoteSummary(snapshot, config) {
+  if (snapshot?.eligible === true) return destinationSummary(snapshot);
+  const c = destinationConfig(config);
+  return [snapshot?.allInclusiveNotice || c.allInclusiveNotice, snapshot?.paymentNotice || c.paymentNotice];
+}

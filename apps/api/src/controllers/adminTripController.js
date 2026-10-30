@@ -399,6 +399,7 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
         updatedAt: result.updated.updatedAt,
         reason: "trip_schedule_updated",
       };
+      await emitDriverTripEvent(io, "trip:changed", { ...event, silent: true });
       io.to("admins").emit("admin:trip_schedule_updated", event);
       io.to("admins").emit("admin:dashboard_changed", event);
       if (result.updated.driverId) {
@@ -621,6 +622,15 @@ export async function adminHuyChuyen(req, res) {
 
     const io = req.app?.get?.("io");
     if (io) {
+      const driverEvent = {
+        tripId: result.updated.id, fromStatus: result.fromStatus,
+        toStatus: "CANCELLED", driverId: result.updated.driverId || null,
+        updatedAt: result.updated.updatedAt, reason: "admin_cancel_trip", silent: true,
+      };
+      await emitDriverTripEvent(io, "trip:changed", driverEvent);
+      if (result.updated.driverId) {
+        io.to(`driver:${result.updated.driverId}`).emit("trip:changed", driverEvent);
+      }
       io.to("admins").emit("admin:trip_cancelled", {
         tripId: result.updated.id,
         fromStatus: result.fromStatus,
@@ -1030,6 +1040,10 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         updatedAt: result.updated.updatedAt,
       });
 
+      await emitDriverTripEvent(io, "trip:changed", {
+        tripId: result.updated.id, toStatus: result.updated.status,
+        updatedAt: result.updated.updatedAt, reason: "trip_manual_adjusted", silent: true,
+      });
       await emitRiderTripUpdate(io, prisma, result.updated, { reason: "trip_manual_adjusted" });
     }
 

@@ -1,6 +1,6 @@
 // Path: goviet247/apps/admin-mobile/app/feedback.tsx
 import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -270,6 +270,7 @@ export default function FeedbackScreen() {
   const [status, setStatus] = useState<StatusFilter>("ALL");
 
   const [page, setPage] = useState(1);
+  const listRequestRef = useRef(0);
   const [items, setItems] = useState<FeedbackItem[]>([]);
   const [meta, setMeta] = useState<{
     page: number;
@@ -300,16 +301,6 @@ export default function FeedbackScreen() {
     return () => clearTimeout(timer);
   }, [q]);
 
-  const queryParams = useMemo(() => {
-    return {
-      q: qDebounced,
-      actorRole,
-      status: getStatusParam(groupTab, status),
-      page,
-      pageSize: PAGE_SIZE,
-    };
-  }, [actorRole, groupTab, page, qDebounced, status]);
-
   const loadFeedbacks = useCallback(
     async (
       showRefreshSpinner = false,
@@ -317,7 +308,8 @@ export default function FeedbackScreen() {
       replaceMode?: boolean,
     ) => {
       const targetPage = pageOverride || page;
-      const shouldReplace = replaceMode ?? targetPage === 1;
+      const shouldReplace = replaceMode ?? true;
+      const request = ++listRequestRef.current;
 
       try {
         if (showRefreshSpinner) {
@@ -336,6 +328,7 @@ export default function FeedbackScreen() {
           pageSize: PAGE_SIZE,
         });
 
+        if (request !== listRequestRef.current) return;
         setMeta(res.meta || null);
 
         if (shouldReplace) {
@@ -351,12 +344,15 @@ export default function FeedbackScreen() {
           });
         }
       } catch (error: any) {
+        if (request !== listRequestRef.current) return;
         console.error("load feedbacks error:", error);
         showMessage("Lỗi", error?.message || "Không thể tải thư góp ý.");
       } finally {
-        setLoading(false);
-        setRefreshing(false);
-        setLoadingMore(false);
+        if (request === listRequestRef.current) {
+          setLoading(false);
+          setRefreshing(false);
+          setLoadingMore(false);
+        }
       }
     },
     [actorRole, groupTab, page, qDebounced, status],
@@ -464,14 +460,11 @@ export default function FeedbackScreen() {
       );
 
       return () => {
+        listRequestRef.current++;
         subscription.remove();
       };
     }, [detailVisible, loadFeedbacks]),
   );
-
-  useEffect(() => {
-    loadFeedbacks(false);
-  }, [queryParams, loadFeedbacks]);
 
   function handleChangeGroupTab(nextTab: GroupTab) {
     setGroupTab(nextTab);
@@ -493,18 +486,8 @@ export default function FeedbackScreen() {
   }
 
   function handleRefresh() {
-    setPage(1);
-    loadFeedbacks(true, 1, true);
-  }
-
-  function handleLoadMore() {
-    if (loadingMore) return;
-    if (!meta?.totalPages) return;
-    if (page >= meta.totalPages) return;
-
-    const nextPage = page + 1;
-    setPage(nextPage);
-    loadFeedbacks(false, nextPage, false);
+    if (page !== 1) { setRefreshing(true); setPage(1); return; }
+    void loadFeedbacks(true, 1, true);
   }
 
   const groupLabel = groupTab === "pending" ? "Chưa xử lý" : "Đã xử lý";
@@ -698,7 +681,6 @@ export default function FeedbackScreen() {
                     onPress={() => {
                       const prevPage = Math.max(1, page - 1);
                       setPage(prevPage);
-                      loadFeedbacks(false, prevPage, true);
                     }}
                     style={[
                       styles.secondaryPageButton,
@@ -721,7 +703,6 @@ export default function FeedbackScreen() {
                     onPress={() => {
                       const nextPage = page + 1;
                       setPage(nextPage);
-                      loadFeedbacks(false, nextPage, true);
                     }}
                     style={[
                       styles.primaryPageButton,

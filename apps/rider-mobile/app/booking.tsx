@@ -2394,7 +2394,7 @@ export default function RiderBookingScreen() {
                 </View>
               ) : null}
 
-              <ServiceSummary snapshot={quote.raw?.destinationService} />
+              <ServiceSummary snapshot={quote.raw?.destinationService} quote config={tripConfig.destinationServiceConfig} />
               <View style={styles.quoteBenefits}>
 
 

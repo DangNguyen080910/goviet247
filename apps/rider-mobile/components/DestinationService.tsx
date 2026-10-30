@@ -1,17 +1,17 @@
 import React from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, vnTime } from "../../../packages/shared/destinationService.js";
-export function ServiceSummary({ snapshot }: { snapshot?: any }) {
+import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, destinationQuoteSummary, vnTime } from "../../../packages/shared/destinationService.js";
+export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?: any; quote?: boolean; config?: any }) {
   // Only booked destination-service packages belong in this panel.
-  if (snapshot?.eligible !== true) return null;
-  const defaults = destinationConfig();
+  if (snapshot?.eligible !== true && !quote) return null;
+  const defaults = destinationConfig(config);
   const notices = [
     snapshot?.allInclusiveNotice || defaults.allInclusiveNotice,
     snapshot?.paymentNotice || defaults.paymentNotice,
   ];
   return (
     <View style={{ padding: 12, marginVertical: 10, backgroundColor: "#eff6ff", borderRadius: 10 }}>
-      {destinationSummary(snapshot).map((line: string, index: number) => (
+      {(quote ? destinationQuoteSummary(snapshot, config) : destinationSummary(snapshot)).map((line: string, index: number) => (
         <Text key={index} style={{ color: "#1e3a5f", marginBottom: 6, lineHeight: 21, fontWeight: notices.includes(line) ? "700" : "400" }}>
           {line}
         </Text>

@@ -11,3 +11,5 @@ export function destinationDayText(day: DestinationDay, selected: boolean, confi
 
 export function destinationSelectedFee(days: DestinationDay[], dates: string[]): number;
 export function destinationSessionText(session: any): string;
+
+export function destinationQuoteSummary(snapshot: any, config?: any): string[];

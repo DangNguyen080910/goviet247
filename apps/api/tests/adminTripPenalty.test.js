@@ -7,9 +7,11 @@ const source = readFileSync(new URL("../src/controllers/adminTripController.js",
   .replace(/^import[\s\S]*?;\n/gm, "")
   .replaceAll("export async function", "async function");
 
-function fixture(status = "ACCEPTED") {
+function fixture(status = "ACCEPTED", realtime = false) {
+  const events = [];
+  const io = { to: room => ({ emit: (event, payload) => events.push({room, event, payload}) }) };
   let trip = {
-    id: "trip-1", status, driverId: "driver-A", riderId: null,
+    id: "trip-1", status, driverId: status === "PENDING" ? null : "driver-A", riderId: null,
     pickupTime: new Date("2026-09-23T11:30:00.000Z"),
     returnTime: new Date("2026-09-24T00:30:00.000Z"),
     cancelledAt: null, requiredWalletAmountSnapshot: 120,
@@ -65,14 +67,15 @@ function fixture(status = "ACCEPTED") {
     },
   };
   const factory = new Function("prisma", "lockDriverProfile", "lockTrip", "sendAdminPushNotification",
-    "sendSystemNotificationToDriver", "sendTripStatusChangedToRider", "refundCustomerCancellationHold",
+    "sendSystemNotificationToDriver", "sendTripStatusChangedToRider", "refundCustomerCancellationHold", "emitDriverTripEvent", "emitRiderTripUpdate",
     `${source}; return { adminDriverCancelToReview, adminHuyChuyen };`);
-  const actions = factory(prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold);
+  const actions = factory(prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold,
+    async (_io, event, payload) => { assert.equal(trip.status, "CANCELLED"); events.push({ room:"audience", event, payload }); }, async () => {});
   const req = (body) => ({ params: { id: "trip-1" }, body,
-    admin: { id: 1, username: "admin", role: "ADMIN" }, app: { get: () => null } });
+    admin: { id: 1, username: "admin", role: "ADMIN" }, app: { get: () => realtime ? io : null } });
   const res = () => ({ statusCode: 200, status(code) { this.statusCode = code; return this; },
     json(body) { this.body = body; return this; } });
-  return { actions, req, res, get trip() { return trip; }, penalties, walletWrites, actionLogs };
+  return { actions, req, res, get trip() { return trip; }, penalties, walletWrites, actionLogs, events };
 }
 
 test("return to review records one penalty from the held amount without a new debit", async () => {
@@ -193,4 +196,23 @@ test("older admin client can cancel without silently creating a driver penalty",
   assert.equal(f.trip.status, "CANCELLED");
   assert.equal(f.penalties.length, 0);
   assert.match(f.actionLogs[0].note, /\[UNSPECIFIED\]/);
+});
+
+
+test("admin cancellation of an unassigned trip silently refreshes the driver audience after commit", async () => {
+  const f = fixture("PENDING", true);
+  const response = f.res();
+  await f.actions.adminHuyChuyen(f.req({ cancel_reason: "Không tìm được tài xế", cancel_origin: "CUSTOMER" }), response);
+  assert.equal(response.statusCode, 200);
+  const event = f.events.find(item => item.room === "audience");
+  assert.equal(event.event, "trip:changed");
+  assert.equal(event.payload.toStatus, "CANCELLED");
+  assert.equal(event.payload.tripId, "trip-1");
+  assert.equal(event.payload.silent, true);
+  assert.equal(f.events.some(item => String(item.room).startsWith("driver:")), false);
+});
+test("rejected cancellation does not send a driver refresh", async () => {
+  const f = fixture("PENDING", true);
+  await f.actions.adminHuyChuyen(f.req({ cancel_reason: "" }), f.res());
+  assert.equal(f.events.length, 0);
 });

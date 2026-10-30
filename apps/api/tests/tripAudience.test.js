@@ -22,7 +22,7 @@ test('audience validation rejects empty/malformed and deduplicates', () => {
 });
 test('approval persists audience in guarded write and refuses invalid driver', async () => {
  let write;
- const prisma = {trip: {findUnique: async()=>({status:'PENDING',audienceDriverIds:[]}), update: async(args)=>{write=args;return {id:'trip',...args.data};}},driverProfile:{count:async()=>2}};
+ const prisma = {trip: {findUnique: async()=>({status:'PENDING',audienceDriverIds:[]}), update: async(args)=>{write=args;return {id:'trip',...args.data};}},driverProfile:{findMany:async()=>[{userId:"a"},{userId:"b"}]}};
  const deps = {prisma,...policy,buildDriverAcceptOpenAt:async()=>new Date(), createRiderTripNotification:async()=>null,sendNewTripToDrivers:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{error(){},log(){}}};
  // Use actual local buildDriverAcceptOpenAt through config stub.
  prisma.driverConfig={findFirst:async()=>({newTripAcceptDelaySeconds:0})};
@@ -61,7 +61,7 @@ test('suggestions exclude reciprocal return and missing coordinates', async () =
  const outbound={id:'out',driverId:'a',status:'COMPLETED',direction:'ONE_WAY',pickupTime:yesterday,pickupLat:10,pickupLng:106,dropoffLat:11,dropoffLng:107};
  let history=[outbound];
  const prisma={trip:{findUnique:async()=>({pickupLat:11,pickupLng:107}),findMany:async()=>history},tripConfig:{findFirst:async()=>({returnSuggestionDays:2,returnSuggestionRadiusKm:20})},driverProfile:{findMany:async()=>[{userId:'a',fullName:'A',user:{phones:[]}}]}};
- const {listTripAudienceCandidates}=load('../src/controllers/tripAudienceController.js','listTripAudienceCandidates',{prisma,distanceKm:policy.distanceKm,console});
+ const {listTripAudienceCandidates}=load('../src/controllers/tripAudienceController.js','listTripAudienceCandidates',{prisma,...policy,console});
  let result=await call(listTripAudienceCandidates,{}, {query:{}});assert.equal(result.body.items[0].suggestion.tripId,'out');
  history.push({...outbound,id:'back',status:'ACCEPTED',pickupTime:later,pickupLat:11,pickupLng:107,dropoffLat:10,dropoffLng:106});
  result=await call(listTripAudienceCandidates,{}, {query:{}});assert.equal(result.body.items[0].suggestion,null);
@@ -70,7 +70,7 @@ test('suggestions exclude reciprocal return and missing coordinates', async () =
 
 test('socket rooms derive from verified token, never payload IDs or admin claims', async () => {
  const server = readFileSync(new URL('../src/server.js', import.meta.url), 'utf8');
- const source = server.slice(server.indexOf('io.use(async (socket, next)'), server.indexOf('// Pending watcher'));
+ const source = server.slice(server.indexOf('io.use(async (socket, next)'), server.indexOf('// Pending watcher')).replace('startQuoteHistoryCleanup();', '');
  let authenticate, connect;
  const io = { use(fn) {authenticate=fn;}, on(event, fn) {connect=fn;} };
  new Function('io','pushSessionKey','userSessions','verifyAdminJwtToken','prisma','driverSockets','riderSockets','console', source)(
