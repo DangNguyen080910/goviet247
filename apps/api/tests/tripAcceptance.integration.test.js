@@ -1,4 +1,3 @@
-import * as fuelPolicy from "../src/services/vehicleFuelPolicy.js";
 import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -27,7 +26,7 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, ...policy, ...fuelPolicy, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, ...policy,  ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });

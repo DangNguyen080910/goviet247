@@ -1,4 +1,3 @@
-import { fuelMatches, availableFuelWhere, assertDriverFuel } from "../services/vehicleFuelPolicy.js";
 import { riderDriverContact } from "../shared/tripContact.js";
 import { lockTripMilestones, recordTripMilestone } from "../services/tripMilestoneService.js";
 import { adminTripMoney } from "../services/adminTripMoney.js";
@@ -829,14 +828,12 @@ export async function listAvailableTrips(req, res) {
     const config = await getDriverConfigSnapshot();
     const now = new Date();
 
-    const profile = await prisma.driverProfile.findUnique({ where: { userId: req.user.id || req.user.uid }, select: { vehicleFuelType: true } });
     const trips = await prisma.trip.findMany({
       where: {
         status: "PENDING",
         isVerified: true,
         verifiedAt: { not: null },
         ...audienceWhere(req.user.id || req.user.uid),
-        ...availableFuelWhere(profile?.vehicleFuelType),
         driverId: null,
         cancelledAt: null,
       },
@@ -1005,8 +1002,6 @@ export async function acceptTrip(req, res) {
       if (!trip.isVerified || !trip.verifiedAt) {
         throw Object.assign(new Error("Chuyến này chưa được Admin duyệt mở nhận. Anh/chị vui lòng chọn chuyến khác hoặc chờ cập nhật."), { code: "TRIP_NOT_APPROVED", statusCode: 409 });
       }
-
-      assertDriverFuel(trip, driverProfile);
 
       if (trip.driverAcceptOpenAt) {
         const now = new Date();
@@ -2997,9 +2992,6 @@ export async function adminVerifyTrip(req, res) {
     if (audienceMode === "FUEL_TYPE" && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType)) {
       return res.status(400).json({success:false,message:"Chọn nhóm xe điện hoặc xe xăng hợp lệ."});
     }
-    if ((audienceMode === "FUEL_TYPE" || combinedFilter && selectedFuelType) && !fuelMatches(trip.fuelPreference, selectedFuelType)) {
-      return res.status(409).json({success:false,message:"Nhóm nhiên liệu đã chọn không phù hợp yêu cầu của khách."});
-    }
     if (audienceMode === "CAR_TYPE" && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType)) {
       return res.status(400).json({ success: false, message: "Vui lòng chọn xe 5, 7 hoặc 16 chỗ." });
     }
@@ -3037,8 +3029,7 @@ export async function adminVerifyTrip(req, res) {
         select: { userId: true, vehicleType: true, vehicleFuelType: true },
       });
       if (drivers.length !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến. Vui lòng tải lại danh sách.' });
-      if (drivers.some(driver => !fuelMatches(trip.fuelPreference, driver.vehicleFuelType)) ||
-          ((audienceMode === "FUEL_TYPE" || combinedFilter && selectedFuelType) && drivers.some(driver => driver.vehicleFuelType !== selectedFuelType))) {
+      if ((audienceMode === "FUEL_TYPE" || combinedFilter && selectedFuelType) && drivers.some(driver => driver.vehicleFuelType !== selectedFuelType)) {
         return res.status(409).json({success:false,message:"Có tài xế sai loại nhiên liệu hoặc chưa cập nhật nhiên liệu. Vui lòng tải lại danh sách."});
       }
       if ((audienceMode === "CAR_TYPE" || combinedFilter && selectedCarType) && drivers.some(driver => audienceCarType(driver.vehicleType) !== selectedCarType)) {

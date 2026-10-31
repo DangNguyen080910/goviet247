@@ -1,4 +1,3 @@
-import * as fuelPolicy from "../src/services/vehicleFuelPolicy.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -24,7 +23,7 @@ test('audience validation rejects empty/malformed and deduplicates', () => {
 test('approval persists audience in guarded write and refuses invalid driver', async () => {
  let write;
  const prisma = {trip: {findUnique: async()=>({status:'PENDING',audienceDriverIds:[]}), update: async(args)=>{write=args;return {id:'trip',...args.data};}},driverProfile:{findMany:async()=>[{userId:"a"},{userId:"b"}]}};
- const deps = {prisma,...policy,...fuelPolicy,buildDriverAcceptOpenAt:async()=>new Date(), createRiderTripNotification:async()=>null,sendNewTripToDrivers:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{error(){},log(){}}};
+ const deps = {prisma,...policy,buildDriverAcceptOpenAt:async()=>new Date(), createRiderTripNotification:async()=>null,sendNewTripToDrivers:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{error(){},log(){}}};
  // Use actual local buildDriverAcceptOpenAt through config stub.
  prisma.driverConfig={findFirst:async()=>({newTripAcceptDelaySeconds:0})};
  const api=load('../src/controllers/tripController.js','adminVerifyTrip',Object.fromEntries(Object.entries(deps).filter(([k])=>k!=='buildDriverAcceptOpenAt' && k!=='createRiderTripNotification')));
@@ -52,7 +51,7 @@ test('push recipient query filters by stored user IDs, not caller trip data', as
 });
 test('driver list restricts at DB query before limiting results; detail rejects unrelated drivers', async () => {
  let where;const prisma={phone:{findMany:async()=>[]},driverProfile:{findUnique:async()=>({vehicleFuelType:null})},driverConfig:{findFirst:async()=>null},trip:{findMany:async(args)=>{where=args.where;return [];},findUnique:async()=>({riderId:'rider',driverId:null,audienceDriverIds:['a']})}};
- const api=load('../src/controllers/tripController.js','listAvailableTrips,getTripById',{prisma,...policy,...fuelPolicy,...riderAccess,console:{error(){},log(){}}});
+ const api=load('../src/controllers/tripController.js','listAvailableTrips,getTripById',{prisma,...policy,...riderAccess,console:{error(){},log(){}}});
  await call(api.listAvailableTrips,{}, {user:{id:'b'}});assert.deepEqual(where.OR,policy.audienceWhere('b').OR);
  assert.equal((await call(api.getTripById,{}, {user:{id:'b'}})).statusCode,404);
  assert.equal((await call(api.getTripById,{}, {user:{id:'rider'}})).statusCode,200);
@@ -62,7 +61,7 @@ test('suggestions exclude reciprocal return and missing coordinates', async () =
  const outbound={id:'out',driverId:'a',status:'COMPLETED',direction:'ONE_WAY',pickupTime:yesterday,pickupLat:10,pickupLng:106,dropoffLat:11,dropoffLng:107};
  let history=[outbound];
  const prisma={trip:{findUnique:async()=>({pickupLat:11,pickupLng:107}),findMany:async()=>history},tripConfig:{findFirst:async()=>({returnSuggestionDays:2,returnSuggestionRadiusKm:20})},driverProfile:{findMany:async()=>[{userId:'a',fullName:'A',user:{phones:[]}}]}};
- const {listTripAudienceCandidates}=load('../src/controllers/tripAudienceController.js','listTripAudienceCandidates',{prisma,...policy,...fuelPolicy,console});
+ const {listTripAudienceCandidates}=load('../src/controllers/tripAudienceController.js','listTripAudienceCandidates',{prisma,...policy,console});
  let result=await call(listTripAudienceCandidates,{}, {query:{}});assert.equal(result.body.items[0].suggestion.tripId,'out');
  history.push({...outbound,id:'back',status:'ACCEPTED',pickupTime:later,pickupLat:11,pickupLng:107,dropoffLat:10,dropoffLng:106});
  result=await call(listTripAudienceCandidates,{}, {query:{}});assert.equal(result.body.items[0].suggestion,null);

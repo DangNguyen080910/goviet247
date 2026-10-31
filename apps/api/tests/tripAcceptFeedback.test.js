@@ -1,4 +1,3 @@
-import { assertDriverFuel } from "../src/services/vehicleFuelPolicy.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { tripAcceptFeedback } from "../src/shared/tripAcceptFeedback.js";
@@ -41,7 +40,7 @@ test('backend distinguishes cancelled trips, another driver, own trip, opening t
       prisma:{ $transaction:fn => fn(tx) },
       getDriverConfigSnapshot:async () => ({ maxActiveTrips:3 }),
       lockDriverProfile:async () => {}, lockTrip:async () => {}, assertTripAcceptanceAllowed:() => {},
-      assertDriverFuel, canDriverSeeTrip:() => true, countDriverActiveTrips:async () => activeCount,
+      canDriverSeeTrip:() => true, countDriverActiveTrips:async () => activeCount,
       calculateDriverFinanceSnapshot:() => ({ requiredWalletAmount:95000 }),
       console:{ log:() => {}, error:() => {} },
     };
