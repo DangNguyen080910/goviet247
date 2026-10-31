@@ -1,3 +1,4 @@
+import { updateTripDriverNote } from "../controllers/tripDriverNoteController.js";
 // Path: goviet247/apps/api/src/routes/admin.js
 import { Router } from "express";
 import { getQuoteHistorySettings, updateQuoteHistorySettings, listQuoteHistory } from "../controllers/quoteHistoryController.js";
@@ -53,6 +54,7 @@ import { uploadAccountingDocument } from "../middleware/uploadMiddleware.js";
 
 const router = Router();
 const ctrl = makeAdminController(prisma);
+router.patch("/trips/:id/driver-note", requireAdminOrStaff, updateTripDriverNote);
 router.get("/quote-history/settings", requireAdmin, getQuoteHistorySettings);
 router.patch("/quote-history/settings", requireAdmin, updateQuoteHistorySettings);
 router.get("/quote-history", requireAdmin, listQuoteHistory);

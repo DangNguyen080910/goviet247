@@ -4,6 +4,8 @@ import { API_BASE_URL } from "../constants/api";
 import { getAdminToken } from "./storage";
 
 type AdminRealtimeEvent =
+  | "admin:blocked_trip_accept_attempt"
+  | "admin:alerts_read"
   | "admin:new_trip"
   | "admin:dashboard_changed"
   | "admin:trip_accepted"
@@ -14,11 +16,14 @@ type AdminRealtimeEvent =
 let socket: Socket | null = null;
 
 export async function connectAdminSocket() {
-  if (socket?.connected) {
+  if (socket) {
+    if (!socket.connected) socket.connect();
     return socket;
   }
 
   const token = await getAdminToken();
+  // Another screen may have created the shared connection while storage was loading.
+  if (socket) return socket;
 
   socket = io(API_BASE_URL, {
     transports: ["websocket", "polling"],

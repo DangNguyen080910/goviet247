@@ -1,3 +1,4 @@
+import { Alert, AppState } from "react-native";
 import TripMilestoneCelebration from "../components/TripMilestoneCelebration";
 // Path: goviet247/apps/admin-mobile/app/_layout.tsx
 import { useEffect } from "react";
@@ -113,6 +114,16 @@ function RootLayoutContent() {
           });
         };
 
+        const handleBlockedAttempt = (payload?: any) => {
+          void playAdminUrgentNotify();
+          if (AppState.currentState === "active") {
+            Alert.alert("Tài xế bị khoá vừa bấm nhận chuyến",
+              `${payload?.driverName || "Tài xế"} vừa bấm nhận chuyến #${String(payload?.tripId || "").slice(-8).toUpperCase()}. Chuyến chưa được giao cho tài xế này.`,
+              [{ text: "Để sau", style: "cancel" }, { text: "Xem cảnh báo", onPress: () => router.push("/alerts") },
+                ...(payload?.driverProfileId ? [{ text: "Mở tài xế", onPress: () => router.push({ pathname: "/drivers", params: { driverProfileId: payload.driverProfileId } }) }] : [])]);
+          }
+        };
+        onAdminRealtimeEvent("admin:blocked_trip_accept_attempt", handleBlockedAttempt);
         onAdminRealtimeEvent("admin:new_trip", handleNewTrip);
         onAdminRealtimeEvent("admin:dashboard_changed", handleDashboardChanged);
         onAdminRealtimeEvent("admin:trip_accepted", handleTripAccepted);
@@ -123,6 +134,7 @@ function RootLayoutContent() {
         onAdminRealtimeEvent("admin:trip_cancelled", handleTripCancelled);
 
         return () => {
+          offAdminRealtimeEvent("admin:blocked_trip_accept_attempt", handleBlockedAttempt);
           offAdminRealtimeEvent("admin:new_trip", handleNewTrip);
           offAdminRealtimeEvent(
             "admin:dashboard_changed",
@@ -204,6 +216,7 @@ function RootLayoutContent() {
         <Stack.Screen name="wallets" />
         <Stack.Screen name="ledger" />
         <Stack.Screen name="feedback" />
+        <Stack.Screen name="alerts" />
       </Stack>
 
       <StatusBar style="dark" />

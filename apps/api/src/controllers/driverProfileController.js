@@ -236,6 +236,7 @@ const createDriverProfileSchema = z.object({
     .trim()
     .min(1, "Vui lòng nhập hãng xe.")
     .max(100, "Hãng xe không được vượt quá 100 ký tự."),
+  vehicleFuelType: z.enum(["ELECTRIC", "GASOLINE"]).optional(),
   vehicleColor: z.string().trim().min(1, "Vui lòng nhập màu xe.").max(100, "Màu xe không được vượt quá 100 ký tự.").optional(),
   vehicleModel: z
     .string()
@@ -469,6 +470,7 @@ export async function getMyDriverProfile(req, res) {
         balance: profile.balance,
         vehicleType: profile.vehicleType,
         vehicleBrand: profile.vehicleBrand,
+        vehicleFuelType: profile.vehicleFuelType,
         vehicleColor: profile.vehicleColor,
         vehicleModel: profile.vehicleModel,
         vehicleYear: profile.vehicleYear,
@@ -1229,6 +1231,7 @@ export async function createDriverProfile(req, res) {
           status: "PENDING",
           vehicleType: body.vehicleType,
           vehicleBrand: body.vehicleBrand,
+          vehicleFuelType: body.vehicleFuelType ?? null,
           vehicleColor: body.vehicleColor ?? null,
           vehicleModel: body.vehicleModel,
           vehicleYear: body.vehicleYear,
@@ -1335,6 +1338,7 @@ export async function createDriverProfile(req, res) {
             balance: profile.balance,
             vehicleType: profile.vehicleType,
             vehicleBrand: profile.vehicleBrand,
+            vehicleFuelType: profile.vehicleFuelType,
             vehicleColor: profile.vehicleColor,
             vehicleModel: profile.vehicleModel,
             vehicleYear: profile.vehicleYear,

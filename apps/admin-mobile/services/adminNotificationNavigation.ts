@@ -11,6 +11,8 @@ export function getAdminNotificationRoute(data: NotificationData) {
   const source = normalize(data?.source);
   const status = normalize(data?.status || data?.toStatus);
 
+  if (type === "BLOCKED_TRIP_ACCEPT_ATTEMPT") return "/alerts";
+
   if (type === "DRIVER_WITHDRAW_REQUEST_CREATED") {
     return "/wallets?tab=WITHDRAWS";
   }

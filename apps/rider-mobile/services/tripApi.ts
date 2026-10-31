@@ -107,6 +107,7 @@ type RiderTripItem = {
   riderPhone?: string | null;
   canManage?: boolean;
   note?: string | null;
+  driverContact?: { name: string; phone: string | null } | null;
   driverVehicle?: {
     vehicleBrand?: string | null;
     vehicleColor?: string | null;

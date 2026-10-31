@@ -91,6 +91,7 @@ export default function HomeScreen() {
     Number(stats?.assignedCount || 0) +
     Number(stats?.driverKycPendingCount || 0) +
     Number(stats?.feedbackNewCount || 0) +
+    Number(stats?.recentAlertsCount || 0) +
     Number(walletBadge || 0);
 
   const displayName = adminUsername?.trim() || "Admin";
@@ -177,6 +178,10 @@ export default function HomeScreen() {
         iconBg: "#0284c7",
       },
       {
+        key: "ALERTS", title: "Cảnh Báo", badge: Number(stats?.recentAlertsCount || 0),
+        subtitle: "Chuyến chờ lâu và tài xế bị khoá bấm nhận chuyến", icon: "⚠️", iconBg: "#ea580c",
+      },
+      {
         key: "FEEDBACK",
         title: "Thư Góp Ý",
         badge: Number(stats?.feedbackNewCount || 0),
@@ -257,8 +262,9 @@ export default function HomeScreen() {
     useCallback(() => {
       let active = true;
 
-      const urgentEvents = ["admin:trip_accepted"] as const;
+      const urgentEvents = ["admin:trip_accepted", "admin:blocked_trip_accept_attempt"] as const;
       const normalEvents = [
+        "admin:alerts_read",
         "admin:dashboard_changed",
         "admin:trip_status_changed",
         "admin:trip_cancelled",
@@ -377,6 +383,8 @@ export default function HomeScreen() {
       router.push("/ledger" as any);
       return;
     }
+
+    if (item.key === "ALERTS") { router.push("/alerts"); return; }
 
     console.log("menu pressed:", item.key);
   }

@@ -3,7 +3,7 @@ export function tripAcceptFeedback(error) {
   const code = error?.code;
   if (code === "AUTH_REQUIRED" || error?.status === 401) return "Phiên đăng nhập đã hết hạn. Anh/chị vui lòng đăng nhập lại để nhận chuyến.";
   if (code === "NETWORK_UNCONFIRMED") return "Chưa xác nhận được kết quả nhận chuyến. Anh/chị kiểm tra Đơn của tôi trước khi thử lại.";
-  const known = ["DRIVER_PROFILE_MISSING", "DRIVER_NOT_VERIFIED", "TRIP_NOT_FOUND", "TRIP_NOT_AVAILABLE", "TRIP_NOT_APPROVED", "TRIP_CANCELLED", "TRIP_ALREADY_ACCEPTED", "TRIP_ALREADY_YOURS", "TRIP_NOT_OPEN", "ACTIVE_TRIP_LIMIT", "INSUFFICIENT_BALANCE", "TRIP_CHANGED"];
+  const known = ["FUEL_TYPE_REQUIRED", "FUEL_MISMATCH", "DRIVER_PROFILE_MISSING", "DRIVER_NOT_VERIFIED", "TRIP_NOT_FOUND", "TRIP_NOT_AVAILABLE", "TRIP_NOT_APPROVED", "TRIP_CANCELLED", "TRIP_ALREADY_ACCEPTED", "TRIP_ALREADY_YOURS", "TRIP_NOT_OPEN", "ACTIVE_TRIP_LIMIT", "INSUFFICIENT_BALANCE", "TRIP_CHANGED"];
   if (known.includes(code) && error?.message) return error.message;
   // Compatible with older backend responses, without exposing internal errors.
   const legacy = String(error?.message || "");

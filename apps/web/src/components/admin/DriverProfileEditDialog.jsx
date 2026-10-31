@@ -10,7 +10,7 @@ function makeForm(driver) {
     fullName: driver.fullName || '', displayName: driver.user?.displayName || '',
     phone: driver.user?.phones?.[0]?.e164 || '', operatingProvinceCode: driver.operatingProvinceCode || '79',
     provinceConfirmed: !!driver.operatingProvinceConfirmedAt,
-    vehicleType: driver.vehicleType || '', vehicleBrand: driver.vehicleBrand || '', vehicleModel: driver.vehicleModel || '', vehicleColor: driver.vehicleColor || '',
+    vehicleType: driver.vehicleType || '', vehicleBrand: driver.vehicleBrand || '', vehicleModel: driver.vehicleModel || '', vehicleColor: driver.vehicleColor || '', vehicleFuelType: driver.vehicleFuelType || '',
     vehicleYear: driver.vehicleYear == null ? '' : String(driver.vehicleYear), plateNumber: driver.plateNumber || '',
   };
 }
@@ -64,6 +64,9 @@ export default function DriverProfileEditDialog({ driver, onClose, onSaved }) {
           {Object.entries(CARS).map(([value, label]) => <MenuItem key={value} value={value}>{label}</MenuItem>)}
         </TextField>
         <TextField label="Hãng xe" value={form.vehicleBrand} onChange={update('vehicleBrand')} disabled={busy} inputProps={{ maxLength: 100 }} />
+        <TextField select label="Loại nhiên liệu" value={form.vehicleFuelType} onChange={update('vehicleFuelType')} disabled={busy}>
+          <MenuItem value="" disabled>Chưa cập nhật</MenuItem><MenuItem value="ELECTRIC">Xe điện</MenuItem><MenuItem value="GASOLINE">Xe xăng</MenuItem>
+        </TextField>
         <TextField label="Màu xe" value={form.vehicleColor} onChange={update('vehicleColor')} disabled={busy} inputProps={{ maxLength: 100 }} />
         <TextField label="Model xe" value={form.vehicleModel} onChange={update('vehicleModel')} disabled={busy} inputProps={{ maxLength: 100 }} />
         <TextField label="Đời xe" value={form.vehicleYear} onChange={update('vehicleYear')} disabled={busy} type="number" inputProps={{ min: 1980, max: new Date().getFullYear() + 1, step: 1 }} />

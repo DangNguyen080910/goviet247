@@ -1,3 +1,4 @@
+import DriverContact from "../components/DriverContact";
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
 import TripPricingSummary from "../components/TripPricingSummary";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -41,6 +42,7 @@ type TripItem = {
   riderPhone?: string | null;
   canManage?: boolean;
   note?: string | null;
+  driverContact?: { name: string; phone: string | null } | null;
   driverVehicle?: {
     vehicleBrand?: string | null;
     vehicleColor?: string | null;
@@ -504,6 +506,8 @@ export default function RiderTripHistoryScreen() {
                         {getCarTypeLabel(item?.carType)}
                       </Text>
                     </View>
+
+                    <DriverContact trip={item} />
 
                     {item?.driverVehicle ? (
                       <>

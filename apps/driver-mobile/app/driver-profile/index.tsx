@@ -303,6 +303,10 @@ export default function DriverProfileScreen() {
             </View>
 
             <View style={[styles.infoItem, styles.infoItemNoBorder]}>
+              <Text style={styles.label}>Nhiên liệu</Text>
+              <Text style={styles.value}>{profile.vehicleFuelType === "ELECTRIC" ? "Xe điện" : profile.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"}</Text>
+            </View>
+            <View style={styles.infoItem}>
               <Text style={styles.label}>Màu xe</Text>
               <Text style={styles.value}>{profile.vehicleColor || "Chưa cập nhật"}</Text>
             </View>

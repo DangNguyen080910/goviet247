@@ -1,3 +1,5 @@
+import TripDispatcherNote from "../components/TripDispatcherNote";
+import { phoneCallUrl } from "../../api/src/shared/tripContact.js";
 import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/dashboard.tsx
 import { ServiceSummary } from "../components/DestinationService";
@@ -1127,6 +1129,13 @@ export default function DashboardScreen() {
     }
   }, []);
 
+  const callCustomer = useCallback(async (phone: string) => {
+    const url = phoneCallUrl(phone);
+    if (!url) { showError("Số điện thoại khách chưa hợp lệ. Vui lòng liên hệ GoViet247."); return; }
+    try { await Linking.openURL(url); }
+    catch { showError("Không mở được cuộc gọi. Anh/chị vui lòng gọi trực tiếp số khách hiển thị trên chuyến."); }
+  }, []);
+
   const renderCopyableTripRow = useCallback(
     (icon: string, label: string, value: string) => (
       <View style={styles.infoRow}>
@@ -1330,6 +1339,7 @@ export default function DashboardScreen() {
           </View>
 
           <TripSurcharges trip={trip} />
+          <TripDispatcherNote note={trip.dispatcherNote} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoIcon}>📍</Text>
@@ -1509,6 +1519,7 @@ export default function DashboardScreen() {
           </View>
 
           <TripSurcharges trip={trip} />
+          <TripDispatcherNote note={trip.dispatcherNote} />
 
           <TouchableOpacity
             style={styles.incomeToggleButton}
@@ -1590,11 +1601,13 @@ export default function DashboardScreen() {
           )}
 
           {!!trip.riderPhone && (
-            renderCopyableTripRow(
-              "📞",
-              "SĐT khách",
-              formatVietnamesePhone(trip.riderPhone),
-            )
+            <View style={styles.infoRow}>
+              <Text style={styles.infoIcon}>📞</Text>
+              <Text style={styles.infoText}>SĐT khách: {formatVietnamesePhone(trip.riderPhone)}</Text>
+              <TouchableOpacity accessibilityRole="button" accessibilityLabel="Gọi khách hàng" accessibilityHint="Mở màn hình gọi điện" style={styles.copyButton} activeOpacity={0.75} onPress={() => void callCustomer(trip.riderPhone)}>
+                <Ionicons name="call-outline" size={20} color="#1D4ED8" />
+              </TouchableOpacity>
+            </View>
           )}
 
           {renderCopyableTripRow("📍", "Điểm đón", trip.pickupAddress)}

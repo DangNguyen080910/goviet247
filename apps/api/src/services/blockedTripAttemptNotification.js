@@ -1,3 +1,4 @@
+import { sendAdminPushNotification } from "./notificationService.js";
 import { prisma } from "../utils/db.js";
 import { canDriverSeeTrip } from "./tripAudiencePolicy.js";
 
@@ -45,6 +46,11 @@ export async function notifyBlockedTripAttempt({ io, driverId, tripId }) {
     io?.to("admins").emit("admin:blocked_trip_accept_attempt", {
       alertId: alert.id, tripId, driverProfileId: profile.id, driverId, driverName,
       createdAt: alert.sentAt,
+    });
+    await sendAdminPushNotification({
+      title: "Tài xế bị khoá vừa bấm nhận chuyến",
+      body: `${driverName} vừa bấm nhận chuyến #${tripId.slice(-8).toUpperCase()}. Mở Admin để kiểm tra và xử lý.`,
+      data: { type: "BLOCKED_TRIP_ACCEPT_ATTEMPT", alertId: alert.id, tripId, driverProfileId: profile.id },
     });
   } catch (error) {
     console.error("[BlockedTripAttempt] Could not notify admins:", error?.message);

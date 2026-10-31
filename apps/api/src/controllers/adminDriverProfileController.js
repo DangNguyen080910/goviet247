@@ -1,7 +1,7 @@
 import { isProvinceCode } from '../services/driverOperatingProvince.js';
 import { prisma } from '../utils/db.js';
 
-const labels = { citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleColor: 'Màu xe', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
+const labels = { citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleColor: 'Màu xe', vehicleFuelType: 'Loại nhiên liệu', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
 const fail = (message, statusCode = 400) => Object.assign(new Error(message), { statusCode });
 const plateKey = value => String(value || '').toUpperCase().replace(/[\s.-]+/g, '');
 const phoneNumber = value => {
@@ -42,6 +42,7 @@ export async function updateAdminDriverProfile(req, res) {
         if (!/^\+84[35789]\d{8}$/.test(value)) throw fail('SĐT di động Việt Nam không hợp lệ.');
       }
       if (key === 'operatingProvinceCode' && !isProvinceCode(value)) throw fail('Tỉnh/thành không hợp lệ.');
+      if (key === 'vehicleFuelType' && !['ELECTRIC','GASOLINE'].includes(value)) throw fail('Chọn xe điện hoặc xe xăng.');
       if (key === 'vehicleType' && !['CAR_5', 'CAR_7', 'CAR_16'].includes(value)) throw fail('Chọn xe 5, 7 hoặc 16 chỗ.');
       if (key === 'plateNumber') {
         value = plateKey(value);
@@ -94,11 +95,16 @@ export async function updateAdminDriverProfile(req, res) {
         action: 'EDIT_PROFILE', fromStatus: current.status, toStatus: current.status,
         note: body.reason.trim() + '\n' + JSON.stringify(changes),
       } });
-      return { changed: true, phoneChanged };
+      return { changed: true, phoneChanged, driverId: current.userId };
     });
     if (result.changed) {
       const event = { source: 'driver_profile_updated', driverProfileId: req.params.id };
       req.app?.get?.('io')?.to('admins').emit('admin:dashboard_changed', event);
+      if (values.vehicleFuelType !== undefined && result.driverId) {
+        req.app?.get?.('io')?.to(`driver:${result.driverId}`).emit('trip:changed', {
+          reason: 'driver_vehicle_fuel_updated', silent: true,
+        });
+      }
     }
     return res.json({ success: true, ...result, message: result.changed ? 'Đã cập nhật thông tin tài xế.' : 'Thông tin không thay đổi.' });
   } catch (error) {

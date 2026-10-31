@@ -99,6 +99,7 @@ const DRIVER_SORT_COLUMNS = {
   vehicleBrand: "Hãng xe",
   vehicleModel: "Model xe",
   vehicleColor: "Màu xe",
+  vehicleFuelType: "Nhiên liệu",
   vehicleYear: "Đời xe",
   plateNumber: "Biển số",
   createdAt: "Ngày tạo",
@@ -689,6 +690,7 @@ export default function AdminDrivers() {
               {sortableHeader("vehicleBrand")}
               {sortableHeader("vehicleModel")}
               {sortableHeader("vehicleColor")}
+              {sortableHeader("vehicleFuelType")}
               {sortableHeader("vehicleYear")}
               {sortableHeader("plateNumber")}
               {sortableHeader("createdAt")}
@@ -725,6 +727,7 @@ export default function AdminDrivers() {
                 <TableCell>{d.vehicleBrand || "-"}</TableCell>
                 <TableCell>{d.vehicleModel || "-"}</TableCell>
                 <TableCell>{d.vehicleColor || "Chưa cập nhật"}</TableCell>
+                <TableCell>{d.vehicleFuelType === "ELECTRIC" ? "Xe điện" : d.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"}</TableCell>
                 <TableCell>{d.vehicleYear || "-"}</TableCell>
                 <TableCell>{d.plateNumber || "-"}</TableCell>
                 <TableCell>{formatNgayGio(d.createdAt)}</TableCell>
@@ -745,7 +748,7 @@ export default function AdminDrivers() {
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={14}>
+                <TableCell colSpan={15}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>
@@ -880,6 +883,7 @@ export default function AdminDrivers() {
                   })()}
 
                   <Typography>Số CCCD: {detail.citizenId || "Chưa cập nhật"}</Typography>
+                  <Typography>Nhiên liệu: {detail.vehicleFuelType === "ELECTRIC" ? "Xe điện" : detail.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"}</Typography>
                   <Typography>Màu xe: {detail.vehicleColor || "Chưa cập nhật"}</Typography>
                   <Typography>Biển số: {detail.plateNumber || "-"}</Typography>
                   <Typography>

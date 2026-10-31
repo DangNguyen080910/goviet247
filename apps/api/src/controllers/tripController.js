@@ -1,3 +1,5 @@
+import { fuelMatches, availableFuelWhere, assertDriverFuel } from "../services/vehicleFuelPolicy.js";
+import { riderDriverContact } from "../shared/tripContact.js";
 import { lockTripMilestones, recordTripMilestone } from "../services/tripMilestoneService.js";
 import { adminTripMoney } from "../services/adminTripMoney.js";
 import { audienceWhere, canDriverSeeTrip, parseAudience, audienceCarType } from '../services/tripAudiencePolicy.js';
@@ -739,8 +741,11 @@ export async function listMyCustomerTrips(req, res) {
       include: {
         driver: {
           select: {
+            displayName: true,
+            phones: { select: { e164: true }, orderBy: [{ isVerified: "desc" }, { createdAt: "desc" }], take: 1 },
             driverProfile: {
               select: {
+                fullName: true,
                 vehicleBrand: true,
                 vehicleColor: true,
                 vehicleModel: true,
@@ -764,9 +769,10 @@ export async function listMyCustomerTrips(req, res) {
 
     return res.json({
       success: true,
-    items: trips.map(({ driver, ...trip }) => ({
+    items: trips.map(({ driver, dispatcherNote, verifiedNote, ...trip }) => ({
         ...trip,
         canManage: trip.riderId === riderId,
+        driverContact: riderDriverContact(trip, driver),
         driverVehicle: driver?.driverProfile
           ? {
               vehicleBrand: driver.driverProfile.vehicleBrand,
@@ -801,7 +807,9 @@ export async function getTripById(req, res) {
     const canViewAsPassenger = tripPhoneNumbers.some((phone) => phoneNumbers.includes(phone));
 
     if (!trip || (trip.riderId !== userId && !canViewAsPassenger && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
-    return res.json({ success: true, data: trip });
+    const { dispatcherNote, verifiedNote, ...publicTrip } = trip;
+    const data = trip.driverId === userId ? { ...publicTrip, dispatcherNote } : publicTrip;
+    return res.json({ success: true, data });
   } catch (err) {
     console.error("[Trip] getTripById error:", err);
     return res.status(500).json({ error: "Internal server error" });
@@ -821,12 +829,14 @@ export async function listAvailableTrips(req, res) {
     const config = await getDriverConfigSnapshot();
     const now = new Date();
 
+    const profile = await prisma.driverProfile.findUnique({ where: { userId: req.user.id || req.user.uid }, select: { vehicleFuelType: true } });
     const trips = await prisma.trip.findMany({
       where: {
         status: "PENDING",
         isVerified: true,
         verifiedAt: { not: null },
         ...audienceWhere(req.user.id || req.user.uid),
+        ...availableFuelWhere(profile?.vehicleFuelType),
         driverId: null,
         cancelledAt: null,
       },
@@ -879,6 +889,7 @@ export async function listAvailableTrips(req, res) {
           fuelPreference: t.fuelPreference,
           direction: t.direction,
           note: t.note || null,
+          dispatcherNote: t.dispatcherNote || null,
           status: t.status,
           createdAt: t.createdAt,
           updatedAt: t.updatedAt,
@@ -955,6 +966,7 @@ export async function acceptTrip(req, res) {
           status: true,
           balance: true,
           tripAcceptBlocked: true,
+          vehicleFuelType: true,
         },
       });
 
@@ -993,6 +1005,8 @@ export async function acceptTrip(req, res) {
       if (!trip.isVerified || !trip.verifiedAt) {
         throw Object.assign(new Error("Chuyến này chưa được Admin duyệt mở nhận. Anh/chị vui lòng chọn chuyến khác hoặc chờ cập nhật."), { code: "TRIP_NOT_APPROVED", statusCode: 409 });
       }
+
+      assertDriverFuel(trip, driverProfile);
 
       if (trip.driverAcceptOpenAt) {
         const now = new Date();
@@ -2969,10 +2983,17 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
     const audienceMode = req.body?.audienceMode;
-    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE"].includes(audienceMode)) {
+    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "FUEL_TYPE"].includes(audienceMode)) {
       return res.status(400).json({ success: false, message: "Đối tượng nhận chuyến không hợp lệ." });
     }
     const selectedCarType = req.body?.carType;
+    const selectedFuelType = req.body?.fuelType;
+    if (audienceMode === "FUEL_TYPE" && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType)) {
+      return res.status(400).json({success:false,message:"Chọn nhóm xe điện hoặc xe xăng hợp lệ."});
+    }
+    if (audienceMode === "FUEL_TYPE" && !fuelMatches(trip.fuelPreference, selectedFuelType)) {
+      return res.status(409).json({success:false,message:"Nhóm nhiên liệu đã chọn không phù hợp yêu cầu của khách."});
+    }
     if (audienceMode === "CAR_TYPE" && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType)) {
       return res.status(400).json({ success: false, message: "Vui lòng chọn xe 5, 7 hoặc 16 chỗ." });
     }
@@ -2982,8 +3003,8 @@ export async function adminVerifyTrip(req, res) {
     // Legacy clients omit both fields for public approval. Always resolve the
     // new approval intent rather than inheriting a previous private audience.
     let audienceDriverIds = [];
-    if (["SELECTED", "CAR_TYPE"].includes(audienceMode) || req.body?.driverIds !== undefined) {
-      try { audienceDriverIds = parseAudience(req.body?.driverIds, audienceMode === "CAR_TYPE" ? 10000 : 100); }
+    if (["SELECTED", "CAR_TYPE", "FUEL_TYPE"].includes(audienceMode) || req.body?.driverIds !== undefined) {
+      try { audienceDriverIds = parseAudience(req.body?.driverIds, ["CAR_TYPE", "FUEL_TYPE"].includes(audienceMode) ? 10000 : 100); }
       catch (error) { return res.status(400).json({ success: false, message: error.message }); }
     }
     if (trip.isVerified) {
@@ -3007,9 +3028,13 @@ export async function adminVerifyTrip(req, res) {
     if (audienceDriverIds.length > 0) {
       const drivers = await prisma.driverProfile.findMany({
         where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false },
-        select: { userId: true, vehicleType: true },
+        select: { userId: true, vehicleType: true, vehicleFuelType: true },
       });
       if (drivers.length !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến. Vui lòng tải lại danh sách.' });
+      if (drivers.some(driver => !fuelMatches(trip.fuelPreference, driver.vehicleFuelType)) ||
+          (audienceMode === "FUEL_TYPE" && drivers.some(driver => driver.vehicleFuelType !== selectedFuelType))) {
+        return res.status(409).json({success:false,message:"Có tài xế sai loại nhiên liệu hoặc chưa cập nhật nhiên liệu. Vui lòng tải lại danh sách."});
+      }
       if (audienceMode === "CAR_TYPE" && drivers.some(driver => audienceCarType(driver.vehicleType) !== selectedCarType)) {
         return res.status(409).json({ success: false, message: "Có tài xế không còn thuộc nhóm xe đã chọn. Vui lòng tải lại danh sách." });
       }

@@ -314,6 +314,7 @@ model Trip {
   directionFactor Float          @default(1)
   holidayFactor   Float          @default(1)
   holidaySurcharge Json? // Snapshot of the applied holiday surcharge at booking time
+  dispatcherNote  String? // Admin instructions visible to drivers, never riders
   note            String?
 
   pendingTripAlertAt    DateTime? @db.Timestamptz(6)
@@ -686,6 +687,7 @@ model DriverProfile {
 
   vehicleType  String?
   vehicleBrand String?
+  vehicleFuelType FuelPreference?
   vehicleColor String?
   vehicleModel String?
   vehicleYear  Int?

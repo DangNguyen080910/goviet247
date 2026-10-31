@@ -1,3 +1,4 @@
+import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 import TripAudiencePicker from '../components/TripAudiencePicker';
@@ -942,7 +943,8 @@ export default function PendingTripsScreen() {
                       <Text style={styles.detailValue}>-</Text>
                     )}
                   </View>
-                  <DetailRow label="Ghi chú" value={detail.note || "-"} highlight />
+                  <TripDriverNoteEditor key={detail.id} tripId={detail.id} visible={detailVisible} />
+                  <DetailRow label="Ghi chú của khách" value={detail.note || "-"} highlight />
                 </View>
 
                 {isAdjusting ? (

@@ -1,3 +1,4 @@
+import DriverContact from "../../components/customer/DriverContact";
 // Path: goviet247/apps/web/src/pages/customer/CustomerProfile.jsx
 import TripPricingSummary from "../../components/customer/TripPricingSummary";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -1289,6 +1290,7 @@ export default function CustomerProfile() {
                           </Paper>
                         </Box>
                         <TripPricingSummary trip={trip} />
+                        <DriverContact trip={trip} />
 
                         {trip.driverVehicle ? (
                           <Paper

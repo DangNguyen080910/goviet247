@@ -1,3 +1,4 @@
+import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 // Path: goviet247/apps/admin-mobile/app/assigned-trips.tsx
@@ -1182,7 +1183,8 @@ export default function AssignedTripsScreen() {
                 <TripMoney trip={selectedTripDetail} />
 
                 <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
-                  <Text style={styles.label}>Ghi chú</Text>
+                  <TripDriverNoteEditor key={selectedTripDetail?.id || selectedTripId} tripId={selectedTripDetail?.id || selectedTripId} visible={detailOpen} />
+                  <Text style={styles.label}>Ghi chú của khách</Text>
                   <Text style={styles.value}>
                     {selectedTripDetail?.note || "--"}
                   </Text>

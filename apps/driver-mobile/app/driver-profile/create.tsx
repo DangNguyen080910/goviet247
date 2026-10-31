@@ -64,6 +64,7 @@ export default function DriverProfileCreateScreen() {
   const [fullName, setFullName] = useState("");
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleBrand, setVehicleBrand] = useState("");
+  const [vehicleFuelType, setVehicleFuelType] = useState<"ELECTRIC" | "GASOLINE" | "">("");
   const [vehicleColor, setVehicleColor] = useState("");
   const [vehicleModel, setVehicleModel] = useState("");
   const [vehicleYear, setVehicleYear] = useState("");
@@ -94,6 +95,7 @@ export default function DriverProfileCreateScreen() {
       /^\d{12}$/.test(citizenId.trim()) &&
       vehicleType.trim().length > 0 &&
       vehicleBrand.trim().length > 0 &&
+      !!vehicleFuelType &&
       vehicleColor.trim().length > 0 &&
       vehicleModel.trim().length > 0 &&
       vehicleYear.trim().length > 0 &&
@@ -106,6 +108,7 @@ export default function DriverProfileCreateScreen() {
     citizenId,
     vehicleType,
     vehicleBrand,
+    vehicleFuelType,
     vehicleColor,
     vehicleModel,
     vehicleYear,
@@ -275,6 +278,7 @@ export default function DriverProfileCreateScreen() {
       return;
     }
 
+    if (!vehicleFuelType) { setErrorText("Vui lòng chọn xe điện hoặc xe xăng."); return; }
     if (!vehicleColor.trim() || vehicleColor.trim().length > 100) {
       setErrorText("Vui lòng nhập màu xe (tối đa 100 ký tự).");
       return;
@@ -322,6 +326,7 @@ export default function DriverProfileCreateScreen() {
         citizenId: citizenId.trim(),
         vehicleType: vehicleType,
         vehicleBrand: vehicleBrand.trim(),
+        vehicleFuelType,
         vehicleColor: vehicleColor.trim(),
         vehicleModel: vehicleModel.trim(),
         vehicleYear: yearNumber,
@@ -461,6 +466,10 @@ export default function DriverProfileCreateScreen() {
                 placeholderTextColor="#9CA3AF"
               />
 
+              <Text style={styles.label}>Loại nhiên liệu</Text>
+              <View style={{ flexDirection: "row", gap: 10, marginBottom: 12 }}>
+                {([['ELECTRIC','Xe điện'],['GASOLINE','Xe xăng']] as const).map(([value,label]) => <TouchableOpacity key={value} accessibilityRole="radio" accessibilityState={{checked:vehicleFuelType===value}} onPress={() => {setVehicleFuelType(value);setErrorText("");}} style={{padding:12,borderRadius:8,borderWidth:1,borderColor:vehicleFuelType===value?'#F97316':'#cbd5e1',backgroundColor:vehicleFuelType===value?'#fff7ed':'white'}}><Text style={{fontWeight:'700'}}>{vehicleFuelType===value?'● ':'○ '}{label}</Text></TouchableOpacity>)}
+              </View>
               <Text style={styles.label}>Màu xe</Text>
               <TextInput value={vehicleColor} onChangeText={text => { setVehicleColor(text); if (errorText) setErrorText(""); }} maxLength={100} placeholder="Ví dụ: Trắng, Đen, Đỏ…" style={styles.input} placeholderTextColor="#9CA3AF" />
 

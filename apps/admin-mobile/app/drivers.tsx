@@ -1,6 +1,6 @@
 import DriverOperatingControls from "../components/DriverOperatingControls";
 // Path: goviet247/apps/admin-mobile/app/drivers.tsx
-import { router, useFocusEffect } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -315,6 +315,7 @@ function DriverCard({
         />
         <InfoRow label="Hãng xe" value={item.brand} />
         <InfoRow label="Model xe" value={item.model} />
+        <InfoRow label="Nhiên liệu" value={item.vehicleFuelType === "ELECTRIC" ? "Xe điện" : item.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"} />
         <InfoRow label="Màu xe" value={item.vehicleColor || "Chưa cập nhật"} />
         <InfoRow
           label="Đời xe"
@@ -332,6 +333,7 @@ function DriverCard({
 }
 
 export default function DriversScreen() {
+  const { driverProfileId } = useLocalSearchParams<{ driverProfileId?: string }>();
   const [items, setItems] = useState<DriverListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -427,6 +429,14 @@ export default function DriversScreen() {
   }, []);
 
   useEffect(() => {
+    if (!driverProfileId || typeof driverProfileId !== "string") return;
+    setSelectedDriverId(driverProfileId);
+    setDetailVisible(true);
+    setDetailTab("INFO");
+    void loadDriverDetail(driverProfileId);
+  }, [driverProfileId, loadDriverDetail]);
+
+  useEffect(() => {
     loadDrivers(false);
     return () => { listRequestRef.current++; };
   }, [loadDrivers]);
@@ -437,7 +447,7 @@ export default function DriversScreen() {
 
       const sub = BackHandler.addEventListener("hardwareBackPress", () => {
         if (detailVisible) {
-          setDetailVisible(false);
+          handleCloseDetail();
           return true;
         }
 
@@ -489,6 +499,7 @@ export default function DriversScreen() {
   }
 
   function handleCloseDetail() {
+    router.setParams({ driverProfileId: undefined });
     setDetailVisible(false);
     setSelectedDriverId("");
     setDriverDetail(null);
@@ -1066,6 +1077,7 @@ export default function DriversScreen() {
                     />
                     <InfoRow label="Hãng xe" value={driverDetail?.brand} />
                     <InfoRow label="Model xe" value={driverDetail?.model} />
+                    <InfoRow label="Nhiên liệu" value={driverDetail?.vehicleFuelType === "ELECTRIC" ? "Xe điện" : driverDetail?.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"} />
                     <InfoRow label="Màu xe" value={driverDetail?.vehicleColor || "Chưa cập nhật"} />
                     <InfoRow
                       label="Đời xe"

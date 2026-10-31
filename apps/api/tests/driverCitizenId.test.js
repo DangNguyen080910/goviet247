@@ -43,8 +43,15 @@ test('admin stores vehicle color and records the correction', async () => {
   };
   const update = new Function('prisma', 'isProvinceCode', adminSource + '; return updateAdminDriverProfile;')({ $transaction: fn => fn(tx) }, () => true);
   const res = { status(code) { this.statusCode = code; return this; }, json(body) { this.body = body; return this; } };
-  await update({ params: { id: 'driver1' }, body: { vehicleColor: '  Đỏ  ', reason: 'Bổ sung màu xe', expectedUpdatedAt: date.toISOString() } }, res);
+  await update({ params: { id: 'driver1' }, body: { vehicleColor: '  Đỏ  ', vehicleFuelType: 'GASOLINE', reason: 'Bổ sung màu xe', expectedUpdatedAt: date.toISOString() } }, res);
   assert.equal(res.body.success, true);
   assert.equal(saved.vehicleColor, 'Đỏ');
+  assert.equal(saved.vehicleFuelType, 'GASOLINE');
   assert.match(log.note, /Màu xe/);
+});
+
+test('registration supports explicit electric/gasoline fuel and legacy missing value only', () => {
+  for(const vehicleFuelType of ['ELECTRIC','GASOLINE']) assert.equal(schema.parse({...payload,vehicleFuelType}).vehicleFuelType,vehicleFuelType);
+  assert.equal(schema.parse(payload).vehicleFuelType,undefined);
+  for(const vehicleFuelType of ['ANY','',null,123,'DIESEL']) assert.equal(schema.safeParse({...payload,vehicleFuelType}).success,false);
 });

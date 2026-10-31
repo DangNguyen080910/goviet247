@@ -1,3 +1,4 @@
+import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 // Path: admin-mobile/app/unassigned-trips.tsx
@@ -869,7 +870,8 @@ export default function UnassignedTripsScreen() {
                     label="Lần cuối cảnh báo"
                     value={formatDateTime(detail.lastAlertAt)}
                   />
-                  <DetailRow label="Ghi chú" value={detail.note || "-"} highlight />
+                  <TripDriverNoteEditor key={detail.id} tripId={detail.id} visible={detailVisible} />
+                  <DetailRow label="Ghi chú của khách" value={detail.note || "-"} highlight />
 
                   {Array.isArray(detail.alertLogs) &&
                   detail.alertLogs.length > 0 ? (

@@ -10,7 +10,7 @@ const fields = [
 ] as const;
 function makeForm(driver: any): Record<string, string> {
   return { fullName: driver.fullName || '', citizenId: driver.citizenId || '', displayName: driver.accountDisplayName || '',
-    phone: driver.profilePhone?.e164 || '', vehicleBrand: driver.brand || '', vehicleModel: driver.model || '', vehicleColor: driver.vehicleColor || '',
+    phone: driver.profilePhone?.e164 || '', vehicleBrand: driver.brand || '', vehicleModel: driver.model || '', vehicleColor: driver.vehicleColor || '', vehicleFuelType: driver.vehicleFuelType || '',
     vehicleYear: driver.vehicleYear == null ? '' : String(driver.vehicleYear), plateNumber: driver.licensePlate || '',
     vehicleType: driver.vehicleType || '' };
 }
@@ -70,6 +70,9 @@ export default function DriverOperatingControls({ driver, onSaved }: { driver: a
         </View>)}
         <Text>CCCD gồm đúng 12 chữ số, giữ số 0 đầu. Tên hiển thị và SĐT thuộc tài khoản dùng cho cả app tài xế và khách hàng.</Text>
         {form.phone.trim() !== initial.phone && <Text style={{ color: '#92400e', marginVertical: 8 }}>SĐT mới phải chưa thuộc tài khoản khác và cần xác thực OTP lại. Không tạo hoặc gộp tài khoản.</Text>}
+        <Text style={{ fontWeight: '700', marginVertical: 8 }}>Loại nhiên liệu</Text>
+        {!form.vehicleFuelType && <Text>Chưa cập nhật</Text>}
+        {Object.entries({ ELECTRIC:'Xe điện', GASOLINE:'Xe xăng' }).map(([value,label])=><Pressable key={value} disabled={busy} style={button} onPress={()=>setForm(current=>({...current,vehicleFuelType:value}))}><Text>{form.vehicleFuelType===value?'● ':'○ '}{label}</Text></Pressable>)}
         <Text style={{ fontWeight: '700', marginVertical: 8 }}>Loại xe</Text>
         {!['CAR_5','CAR_7','CAR_16'].includes(form.vehicleType) && <Text>Hiện tại: {form.vehicleType || 'Chưa chọn loại xe'}</Text>}
         {Object.entries({ CAR_5: 'Xe 5 chỗ', CAR_7: 'Xe 7 chỗ', CAR_16: 'Xe 16 chỗ' }).map(([value,label]) => <Pressable disabled={busy} key={value} style={button} onPress={() => setForm(current => ({ ...current, vehicleType: value }))}><Text>{form.vehicleType === value ? '● ' : '○ '}{label}</Text></Pressable>)}

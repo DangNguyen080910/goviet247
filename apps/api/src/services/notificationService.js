@@ -304,7 +304,7 @@ async function sendExpoPushMessages(messages) {
  */
 export async function sendNewTripToDrivers(trip) {
   try {
-    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true } });
+    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true, fuelPreference: true } });
     if (!audience || !Array.isArray(audience.audienceDriverIds)) return;
     let devices = await prisma.device.findMany({
       where: {
@@ -324,6 +324,14 @@ export async function sendNewTripToDrivers(trip) {
     });
 
     devices = await activeDriverDevices(prisma, devices, { requireVerified: true });
+
+    if (["ELECTRIC", "GASOLINE"].includes(audience.fuelPreference)) {
+      const matching = await prisma.driverProfile.findMany({
+        where: { userId: { in: devices.map(d => d.userId) }, vehicleFuelType: audience.fuelPreference }, select: { userId: true },
+      });
+      const matchingIds = new Set(matching.map(d => d.userId));
+      devices = devices.filter(d => matchingIds.has(d.userId));
+    }
 
     if (!devices.length) {
       console.log("📲 [Push] Không có device tài xế nào để gửi thông báo.");

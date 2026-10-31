@@ -61,6 +61,7 @@ export type DriverProfileData = {
   balance: number;
   vehicleType?: string | null;
   vehicleBrand?: string | null;
+  vehicleFuelType?: "ELECTRIC" | "GASOLINE" | null;
   vehicleColor?: string | null;
   vehicleModel?: string | null;
   vehicleYear?: number | null;
@@ -133,6 +134,7 @@ export type CreateDriverProfilePayload = {
   citizenId: string;
   vehicleType: string;
   vehicleBrand: string;
+  vehicleFuelType: "ELECTRIC" | "GASOLINE";
   vehicleColor: string;
   vehicleModel: string;
   vehicleYear: number;

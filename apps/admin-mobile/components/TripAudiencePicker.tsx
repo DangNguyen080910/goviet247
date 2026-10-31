@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { View, Text, TextInput, Pressable, Alert } from 'react-native';
 import { adminRequest } from '../services/adminRequest';
 
-const CARS: Record<string, string> = { CAR_5: 'Xe 5 chỗ', CAR_7: 'Xe 7 chỗ', CAR_16: 'Xe 16 chỗ' };
-type Candidate = { userId: string; name: string; phone: string; plateNumber?: string; vehicleType?: string; carType?: string | null; suggestion?: { distanceKm: number; tripId: string } | null };
+const CARS: Record<string, string> = { CAR_5: 'Xe 5 chỗ', CAR_7: 'Xe 7 chỗ', CAR_16: 'Xe 16 chỗ', ELECTRIC: 'Xe điện', GASOLINE: 'Xe xăng' };
+type Candidate = { userId: string; name: string; phone: string; plateNumber?: string; vehicleType?: string; vehicleFuelType?: string | null; carType?: string | null; suggestion?: { distanceKm: number; tripId: string } | null };
 export default function TripAudiencePicker({ tripId, onDone, disabled, onBusy }: { tripId: string; onDone: () => void; disabled: boolean; onBusy: (busy: boolean) => void }) {
   const [open, setOpen] = useState(false), [items, setItems] = useState<Candidate[]>([]), [selected, setSelected] = useState<string[]>([]), [q, setQ] = useState(''), [carType, setCarType] = useState('');
   const [info, setInfo] = useState(''), [error, setError] = useState(''), [busy, setBusy] = useState(false), [loading, setLoading] = useState(true);
@@ -19,18 +19,18 @@ export default function TripAudiencePicker({ tripId, onDone, disabled, onBusy }:
   }, [tripId, open]);
   function selectGroup(type: string) {
     setCarType(type); setQ(''); setError('');
-    setSelected(type ? items.filter(d => d.carType === type).map(d => d.userId) : []);
+    setSelected(type ? items.filter(d => (d.carType === type || d.vehicleFuelType === type)).map(d => d.userId) : []);
   }
   const limit = carType ? 10000 : 100;
   const cannotSubmit = busy || disabled || loading || !selected.length || selected.length > limit;
-  const visible = items.filter(d => (!carType || d.carType === carType) && (d.name + ' ' + d.phone + ' ' + d.plateNumber).toLocaleLowerCase('vi').includes(q.toLocaleLowerCase('vi')));
+  const visible = items.filter(d => (!carType || (d.carType === carType || d.vehicleFuelType === carType)) && (d.name + ' ' + d.phone + ' ' + d.plateNumber).toLocaleLowerCase('vi').includes(q.toLocaleLowerCase('vi')));
   async function submit() {
     if (cannotSubmit) return;
     setBusy(true); onBusy(true);
     try {
       await adminRequest('/api/trips/admin/trips/' + tripId + '/verify', { method: 'POST', body: JSON.stringify({
-        audienceMode: carType ? 'CAR_TYPE' : 'SELECTED', driverIds: selected,
-        ...(carType ? { carType } : {}),
+        audienceMode: ['ELECTRIC','GASOLINE'].includes(carType) ? 'FUEL_TYPE' : carType ? 'CAR_TYPE' : 'SELECTED', driverIds: selected,
+        ...(['ELECTRIC','GASOLINE'].includes(carType) ? { fuelType: carType } : carType ? { carType } : {}),
         note: carType ? 'Duyệt nhóm ' + CARS[carType] + ', ' + selected.length + ' tài xế được chọn' : 'Duyệt cho tài xế chỉ định',
       }) });
       onDone();
@@ -42,10 +42,10 @@ export default function TripAudiencePicker({ tripId, onDone, disabled, onBusy }:
     {open && <>
       <Text>{info || 'Đang tải tài xế…'}</Text><Text>Chỉ người được chọn thấy chuyến. Người nhận trước chạy chuyến; phí áp dụng như hiện tại.</Text>
       {!!error && <Text style={{ color: '#b42318' }}>{error}</Text>}
-      <Text style={{ fontWeight: '700' }}>Chọn nhanh theo loại xe</Text>
+      <Text style={{ fontWeight: '700' }}>Chọn nhanh theo loại xe hoặc nhiên liệu</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
         {Object.entries(CARS).map(([type, label]) => {
-          const count = items.filter(d => d.carType === type).length;
+          const count = items.filter(d => (d.carType === type || d.vehicleFuelType === type)).length;
           const locked = busy || disabled || loading || !count;
           return <Pressable key={type} accessibilityRole="button" accessibilityState={{ selected: carType === type, disabled: locked }} disabled={locked} onPress={() => selectGroup(type)} style={{ padding: 10, borderRadius: 8, backgroundColor: carType === type ? '#145ea8' : '#e8f0fa', opacity: locked ? 0.5 : 1 }}>
             <Text style={{ color: carType === type ? 'white' : '#145ea8' }}>Tất cả {label.toLowerCase()} ({count})</Text>
@@ -60,7 +60,7 @@ export default function TripAudiencePicker({ tripId, onDone, disabled, onBusy }:
       <TextInput editable={!busy && !disabled && !loading} accessibilityLabel="Tìm tài xế" placeholder="Tên, SĐT, biển số" value={q} onChangeText={setQ} style={{ borderWidth: 1, borderColor: '#ccc', padding: 10 }} />
       {!loading && !visible.length && <Text>Không có tài xế phù hợp trong danh sách.</Text>}
       {visible.map(d => <Pressable key={d.userId} disabled={busy || disabled || loading} accessibilityRole="checkbox" accessibilityState={{ checked: selected.includes(d.userId) }} onPress={() => setSelected(s => s.includes(d.userId) ? s.filter(id => id !== d.userId) : [...s, d.userId])} style={{ paddingVertical: 10 }}>
-        <Text>{selected.includes(d.userId) ? '☑' : '☐'} {d.name} • {CARS[d.carType || ''] || d.vehicleType || 'Chưa rõ loại xe'} • {d.phone} • {d.plateNumber}</Text>
+        <Text>{selected.includes(d.userId) ? '☑' : '☐'} {d.name} • {CARS[d.carType || ''] || d.vehicleType || 'Chưa rõ loại xe'} • {CARS[d.vehicleFuelType || ''] || 'Chưa cập nhật nhiên liệu'} • {d.phone} • {d.plateNumber}</Text>
         {d.suggestion && <Text style={{ color: '#147348' }}>Gợi ý: cách {d.suggestion.distanceKm} km • {d.suggestion.tripId}</Text>}
       </Pressable>)}
       <Text>Danh sách được chốt khi duyệt; tài xế đăng ký sau không tự được thêm.</Text>
