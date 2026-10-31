@@ -1261,7 +1261,7 @@ export default function CustomerProfile() {
                         <TripPricingSummary trip={trip} />
                         <DriverContact trip={trip} />
 
-                        {String(trip.status).toUpperCase() !== "COMPLETED" && trip.driverVehicle ? (
+                        {!["COMPLETED", "CANCELLED"].includes(String(trip.status).trim().toUpperCase()) && trip.driverVehicle ? (
                           <Paper
                             variant="outlined"
                             sx={{ p: 1.5, borderRadius: 2.5, bgcolor: "#f8fafc" }}

@@ -478,7 +478,7 @@ export default function RiderTripHistoryScreen() {
 
                     <DriverContact trip={item} />
 
-                    {String(item.status).toUpperCase() !== "COMPLETED" && item?.driverVehicle ? (
+                    {!["COMPLETED", "CANCELLED"].includes(String(item.status).trim().toUpperCase()) && item?.driverVehicle ? (
                       <>
                         <View style={styles.metaRow}>
                           <Text style={styles.metaLabel}>Hãng xe</Text>
