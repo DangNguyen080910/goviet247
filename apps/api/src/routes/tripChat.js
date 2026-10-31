@@ -14,6 +14,7 @@ const wrap = fn => async (req, res) => {
     console.error('[TripChat]', e.message);
     res.status(e.status || 400).json({
       success: false,
+      code: e.code,
       message: e.status ? e.message : 'Không xử lý được yêu cầu. Vui lòng thử lại.'
     });
   }

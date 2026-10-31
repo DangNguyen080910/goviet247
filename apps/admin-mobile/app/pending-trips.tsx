@@ -1,3 +1,4 @@
+import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
@@ -564,7 +565,6 @@ export default function PendingTripsScreen() {
               {item.id}
             </Text>
             <CopyTripIdButton tripId={item.id} />
-                  <TripChatButton tripId={item.id} />
 
             {tab === "PENDING" ? (
               <View style={styles.pendingBadge}>
@@ -576,6 +576,7 @@ export default function PendingTripsScreen() {
               </View>
             )}
           </View>
+          <TripChatButton tripId={item.id} />
 
           <View style={styles.identityBlock}>
             <Text style={styles.identityLabel}>👤 Người đặt</Text>
@@ -714,6 +715,8 @@ export default function PendingTripsScreen() {
     [openTripDetail, tab],
   );
 
+  const {openChatFromDetail, onChatDetailDismiss} = useTripChatNavigation(closeDetailModal);
+
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
       <View style={styles.content}>
@@ -802,6 +805,7 @@ export default function PendingTripsScreen() {
         animationType="slide"
         presentationStyle="pageSheet"
         onRequestClose={closeDetailModal}
+        onDismiss={onChatDetailDismiss}
       >
         <SafeAreaView style={styles.modalContainer} edges={["top", "bottom"]}>
           <KeyboardAvoidingView
@@ -818,7 +822,7 @@ export default function PendingTripsScreen() {
 
               <Text style={styles.modalTitle}>Chi tiết chuyến</Text>
 
-              <View style={styles.modalClosePlaceholder} />
+              <TripChatButton tripId={selectedTripId} label="Liên hệ" onOpen={() => openChatFromDetail(selectedTripId)} />
             </View>
 
             {detailLoading ? (
@@ -1592,6 +1596,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   modalHeader: {
+    flexWrap: "wrap",
+    gap: 8,
     paddingHorizontal: 16,
     paddingTop: 6,
     paddingBottom: 12,

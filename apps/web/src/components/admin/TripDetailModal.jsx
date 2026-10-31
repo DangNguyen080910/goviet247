@@ -435,10 +435,11 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
         <div style={header}>
           <div>
             <div style={{ fontSize: 16, fontWeight: 700 }}>Chi tiết chuyến</div>
-            <div style={{ fontSize: 12, opacity: 0.8 }}>{tripId}</div>
+            <div style={{ fontSize: 12, opacity: 0.8, overflowWrap: "anywhere" }}>{tripId}</div>
           </div>
 
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+            <TripChatButton tripId={tripId} />
             {canManualAdjust && (
               <button style={btnPrimary} onClick={openAdjustForm}>
                 Cập nhật thông tin chuyến
@@ -771,7 +772,6 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               )}
             </Section>
 
-            <TripChatButton tripId={tripId} />
             <TripDriverNoteEditor key={tripId} tripId={tripId} />
 
             <Section title="Ghi chú của khách" highlight>
@@ -969,6 +969,14 @@ const modal = {
 };
 
 const header = {
+  position: "sticky",
+  top: -16,
+  zIndex: 1,
+  background: "#111",
+  paddingTop: 8,
+  paddingBottom: 12,
+  flexWrap: "wrap",
+  gap: 12,
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

@@ -1,3 +1,4 @@
+import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
@@ -612,6 +613,8 @@ export default function AssignedTripsScreen() {
     });
   }, [items, searchText]);
 
+  const {openChatFromDetail, onChatDetailDismiss} = useTripChatNavigation(closeTripDetail);
+
   return (
     <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
       <View style={styles.container}>
@@ -702,13 +705,13 @@ export default function AssignedTripsScreen() {
                 <View style={styles.cardHeader}>
                   <Text style={styles.tripId}>{item.id}</Text>
                   <CopyTripIdButton tripId={item.id} />
-                  <TripChatButton tripId={item.id} />
                   <View style={styles.statusChip}>
                     <Text style={styles.statusChipText}>
                       {getStatusLabel(item.status)}
                     </Text>
                   </View>
                 </View>
+                <TripChatButton tripId={item.id} />
 
                 <View style={styles.infoBlock}>
                   <Text style={styles.label}>Khách hàng</Text>
@@ -908,6 +911,7 @@ export default function AssignedTripsScreen() {
         transparent
         animationType="fade"
         onRequestClose={closeTripDetail}
+        onDismiss={onChatDetailDismiss}
       >
         <KeyboardAvoidingView
           style={styles.modalOverlayCenter}
@@ -916,6 +920,7 @@ export default function AssignedTripsScreen() {
           <View style={styles.modalSheetCentered}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>Chi tiết chuyến</Text>
+              <TripChatButton tripId={selectedTripId} label="Liên hệ" onOpen={() => openChatFromDetail(selectedTripId)} />
               <Pressable
                 style={styles.modalCloseButton}
                 onPress={closeTripDetail}
@@ -1631,11 +1636,12 @@ const styles = StyleSheet.create({
   },
 
   modalHeader: {
+    flexWrap: "wrap",
+    gap: 8,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 14,
-    gap: 12,
   },
 
   modalTitle: {

@@ -1438,6 +1438,7 @@ export default function DashboardScreen() {
           </View>
 
           <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
+          <TripChatButton tripId={trip.id} label="Liên hệ khách / GoViet247" prominent />
           <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>
@@ -1540,7 +1541,6 @@ export default function DashboardScreen() {
             </View>
           ) : null}
 
-          <TripChatButton tripId={trip.id} label="Liên hệ khách / GoViet247" />
 
           {renderCopyableTripRow("📍", "Điểm đón", trip.pickupAddress)}
 

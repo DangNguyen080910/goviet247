@@ -460,7 +460,6 @@ export default function RiderTripHistoryScreen() {
                   </View>
 
                   <TripRoute trip={item} />
-                  <TripChatButton tripId={item.id} label="Liên hệ tài xế / GoViet247" />
 
                   <View style={styles.metaGroup}>
                     <View style={styles.metaRow}>
@@ -510,6 +509,7 @@ export default function RiderTripHistoryScreen() {
                         </View>
                       </>
                     ) : null}
+                    <TripChatButton tripId={item.id} status={item.status} label="Liên hệ tài xế / GoViet247" />
 
                     <View style={styles.metaRow}>
                       <Text style={styles.metaLabel}>Giờ đón</Text>

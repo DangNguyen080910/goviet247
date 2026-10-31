@@ -1,3 +1,4 @@
+import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../../../api/src/shared/tripChat.js';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Alert, Box, Button, Chip, Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, Typography } from '@mui/material';
@@ -10,9 +11,12 @@ export function openTripChat(tripId) {
 }
 export function TripChatButton({
   tripId,
-  label = 'Liên hệ chuyến'
+  label = 'Liên hệ chuyến',
+  status
 }) {
-  return <Button variant="outlined" onClick={() => openTripChat(tripId)} sx={{
+  const ended = isRiderChatEnded(status);
+  return <Button variant="outlined" onClick={() => ended ? window.alert(RIDER_CHAT_ENDED_NOTICE) : openTripChat(tripId)} sx={{
+    ...(ended ? {color: "#64748b", backgroundColor: "#f1f5f9", borderColor: "#cbd5e1"} : {}),
     textTransform: 'none',
     borderRadius: 2
   }}>💬 {label}</Button>;
@@ -71,7 +75,13 @@ export default function TripChatHub() {
       }
     });
     const d = await res.json();
-    if (!res.ok) throw new Error(d.message || 'Không tải được hội thoại.');
+    if (!res.ok) {
+      if (d.code === 'RIDER_CHAT_ENDED') {
+        activeRequest.current++; audio.current?.pause(); setItems([]); setCanSend(false); setOpen(false);
+        window.alert(RIDER_CHAT_ENDED_NOTICE);
+      }
+      throw new Error(d.message || 'Không tải được hội thoại.');
+    }
     return d;
   }
   const post = (path, body) => api(path, {
@@ -359,7 +369,7 @@ export default function TripChatHub() {
       borderRadius: 6,
       textTransform: 'none'
     }}>💬 Tin nhắn {unread ? `(${unread})` : ''}</Button>}
- <Dialog open={open} onClose={close} fullWidth maxWidth="sm"><DialogTitle sx={{
+ <Dialog open={open} onClose={close} fullWidth maxWidth="sm" sx={{zIndex:10020}}><DialogTitle sx={{
         display: 'flex',
         alignItems: 'center',
         gap: 1

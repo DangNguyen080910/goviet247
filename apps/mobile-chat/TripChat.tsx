@@ -1,3 +1,4 @@
+import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, Alert, Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
@@ -34,7 +35,7 @@ async function api(path: string, options: RequestInit = {}) {
     }
   });
   const data = await response.json();
-  if (!response.ok) throw new Error(data.message || 'Không tải được hội thoại.');
+  if (!response.ok) throw Object.assign(new Error(data.message || 'Không tải được hội thoại.'), {code:data.code});
   return data;
 }
 const post = (path: string, body: any) => api(path, {
@@ -53,13 +54,20 @@ const button = {
 } as const;
 export function TripChatButton({
   tripId,
-  label = 'Liên hệ chuyến'
+  label = 'Liên hệ chuyến',
+  status,
+  onOpen,
+  prominent = false
 }: {
   tripId: string;
   label?: string;
+  status?: string;
+  onOpen?: () => void;
+  prominent?: boolean;
 }) {
-  return <Pressable accessibilityRole="button" onPress={() => router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any)} style={button}><Text style={{
-      color: blue,
+  const ended = config?.role === 'RIDER' && isRiderChatEnded(status);
+  return <Pressable accessibilityRole="button" onPress={event => { event.stopPropagation(); if (ended) Alert.alert('Liên hệ GoViet247', RIDER_CHAT_ENDED_NOTICE); else if (onOpen) onOpen(); else router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any); }} style={[button, prominent ? {backgroundColor:blue,minHeight:48,justifyContent:'center',alignItems:'center',marginHorizontal:0,marginBottom:12} : null, ended ? {backgroundColor:'#f1f5f9'} : null]}><Text style={{
+      color: ended ? '#64748b' : prominent ? 'white' : blue,
       fontWeight: '700'
     }}>💬 {label}</Text></Pressable>;
 }
@@ -184,7 +192,16 @@ export default function TripChatScreen() {
       return;
     }
     const version = generation.current;
-    const d = await api(`/${encodeURIComponent(tripId)}/messages`);
+    let d;
+    try { d = await api(`/${encodeURIComponent(tripId)}/messages`); }
+    catch (error: any) {
+      if (error.code === 'RIDER_CHAT_ENDED' && version === generation.current && mounted.current) {
+        generation.current++;
+        setItems([]); setCanSend(false); setMore(false); setReplies([]);
+        await sound.current?.unloadAsync(); sound.current = null; setPlaying('');
+      }
+      throw error;
+    }
     if (!mounted.current || version !== generation.current) return;
     setActor(d.actor);
     setCanSend(d.canSend);

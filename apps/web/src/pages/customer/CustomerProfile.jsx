@@ -1260,7 +1260,6 @@ export default function CustomerProfile() {
                           </Paper>
                         </Box>
                         <TripPricingSummary trip={trip} />
-                        <TripChatButton tripId={trip.id} label="Liên hệ tài xế / GoViet247" />
 
                         {hasActiveTripContact(trip.status) && trip.driverVehicle ? (
                           <Paper
@@ -1289,6 +1288,8 @@ export default function CustomerProfile() {
                             </Box>
                           </Paper>
                         ) : null}
+
+                        <TripChatButton tripId={trip.id} status={trip.status} label="Liên hệ tài xế / GoViet247" />
 
                         <Stack
                           direction={{ xs: "column", sm: "row" }}

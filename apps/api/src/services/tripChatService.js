@@ -5,7 +5,7 @@ import { prisma } from '../utils/db.js';
 import { userSessions } from './userSessions.js';
 import { verifyAdminJwtToken } from '../utils/jwt.js';
 import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere, getTripRiderRecipientUserIds } from './riderTripAccess.js';
-import { chatCanSend } from '../shared/tripChat.js';
+import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
 import { activeDriverDevices } from './driverPushAccess.js';
 const s3 = new S3Client({
   region: process.env.AWS_REGION
@@ -73,6 +73,7 @@ export async function chatAccess(db, tripId, actor) {
   }
   const phones = await getVerifiedRiderPhoneVariants(db, actor.id);
   if (trip.riderId !== actor.id && !phoneVariants(trip.riderPhone).some(p => phones.includes(p))) throw fail('Không có quyền xem hội thoại.');
+  if (isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE), {code:'RIDER_CHAT_ENDED'});
   actor.role = 'RIDER';
   actor.label = trip.riderId === actor.id ? 'Người đặt chuyến' : 'Hành khách';
   return trip;
@@ -251,7 +252,7 @@ export async function deliverChatPush() {
           }
         });
         if (!trip) continue;
-        const riders = await getTripRiderRecipientUserIds(prisma, trip);
+        const riders = isRiderChatEnded(trip.status) ? [] : await getTripRiderRecipientUserIds(prisma, trip);
         const admins = await prisma.admin_users.findMany({
           where: {
             is_active: true

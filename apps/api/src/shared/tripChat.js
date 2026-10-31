@@ -69,3 +69,6 @@ export function containsContactNumber(value) {
 export function assertNoContactNumber(value) {
   if (containsContactNumber(value)) throw Object.assign(new Error('Không được gửi số điện thoại cá nhân. Vui lòng liên hệ trong GoViet247 hoặc nhờ hỗ trợ.'), {code:'CHAT_CONTACT_BLOCKED'});
 }
+
+export const RIDER_CHAT_ENDED_NOTICE = 'Chuyến đã kết thúc hoặc đã huỷ. Nếu cần hỗ trợ, vui lòng liên hệ GoViet247 qua mục Hỗ trợ hoặc Góp ý.';
+export function isRiderChatEnded(status) { return ['COMPLETED', 'CANCELLED'].includes(String(status || '').trim().toUpperCase()); }
