@@ -2983,15 +2983,21 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
     const audienceMode = req.body?.audienceMode;
-    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "FUEL_TYPE"].includes(audienceMode)) {
+    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode)) {
       return res.status(400).json({ success: false, message: "Đối tượng nhận chuyến không hợp lệ." });
     }
     const selectedCarType = req.body?.carType;
     const selectedFuelType = req.body?.fuelType;
+    const combinedFilter = audienceMode === "VEHICLE_FILTER";
+    if (combinedFilter && (!selectedCarType && !selectedFuelType ||
+        selectedCarType !== undefined && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType) ||
+        selectedFuelType !== undefined && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType))) {
+      return res.status(400).json({success:false,message:"Chọn ít nhất một bộ lọc số chỗ hoặc nhiên liệu hợp lệ."});
+    }
     if (audienceMode === "FUEL_TYPE" && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType)) {
       return res.status(400).json({success:false,message:"Chọn nhóm xe điện hoặc xe xăng hợp lệ."});
     }
-    if (audienceMode === "FUEL_TYPE" && !fuelMatches(trip.fuelPreference, selectedFuelType)) {
+    if ((audienceMode === "FUEL_TYPE" || combinedFilter && selectedFuelType) && !fuelMatches(trip.fuelPreference, selectedFuelType)) {
       return res.status(409).json({success:false,message:"Nhóm nhiên liệu đã chọn không phù hợp yêu cầu của khách."});
     }
     if (audienceMode === "CAR_TYPE" && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType)) {
@@ -3003,8 +3009,8 @@ export async function adminVerifyTrip(req, res) {
     // Legacy clients omit both fields for public approval. Always resolve the
     // new approval intent rather than inheriting a previous private audience.
     let audienceDriverIds = [];
-    if (["SELECTED", "CAR_TYPE", "FUEL_TYPE"].includes(audienceMode) || req.body?.driverIds !== undefined) {
-      try { audienceDriverIds = parseAudience(req.body?.driverIds, ["CAR_TYPE", "FUEL_TYPE"].includes(audienceMode) ? 10000 : 100); }
+    if (["SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) || req.body?.driverIds !== undefined) {
+      try { audienceDriverIds = parseAudience(req.body?.driverIds, ["CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) ? 10000 : 100); }
       catch (error) { return res.status(400).json({ success: false, message: error.message }); }
     }
     if (trip.isVerified) {
@@ -3032,10 +3038,10 @@ export async function adminVerifyTrip(req, res) {
       });
       if (drivers.length !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến. Vui lòng tải lại danh sách.' });
       if (drivers.some(driver => !fuelMatches(trip.fuelPreference, driver.vehicleFuelType)) ||
-          (audienceMode === "FUEL_TYPE" && drivers.some(driver => driver.vehicleFuelType !== selectedFuelType))) {
+          ((audienceMode === "FUEL_TYPE" || combinedFilter && selectedFuelType) && drivers.some(driver => driver.vehicleFuelType !== selectedFuelType))) {
         return res.status(409).json({success:false,message:"Có tài xế sai loại nhiên liệu hoặc chưa cập nhật nhiên liệu. Vui lòng tải lại danh sách."});
       }
-      if (audienceMode === "CAR_TYPE" && drivers.some(driver => audienceCarType(driver.vehicleType) !== selectedCarType)) {
+      if ((audienceMode === "CAR_TYPE" || combinedFilter && selectedCarType) && drivers.some(driver => audienceCarType(driver.vehicleType) !== selectedCarType)) {
         return res.status(409).json({ success: false, message: "Có tài xế không còn thuộc nhóm xe đã chọn. Vui lòng tải lại danh sách." });
       }
     }

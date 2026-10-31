@@ -55,3 +55,17 @@ test('candidate lookup excludes unknown and mismatched fuel before returning dri
   const res=response();await handler({params:{id:'t'},query:{}},res);
   assert.equal(res.statusCode,200);assert.equal(filter.vehicleFuelType,'ELECTRIC');
 });
+
+test('combined vehicle filter validates both seat count and fuel at approval', async()=>{
+  let written;
+  let profiles=[{userId:'a',vehicleType:'CAR_5',vehicleFuelType:'GASOLINE'}];
+  const prisma={trip:{findUnique:async()=>({id:'t',status:'PENDING',fuelPreference:'ANY',audienceDriverIds:[]}),update:async args=>{written=args;return {id:'t',...args.data};}},driverProfile:{findMany:async()=>profiles},driverConfig:{findFirst:async()=>({newTripAcceptDelaySeconds:0})}};
+  const verify=controller('adminVerifyTrip',{prisma,...fuelPolicy,...audiencePolicy,sendNewTripToDrivers:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{log(){},error(){}}});
+  async function run(extra={}){const res=response();await verify({params:{id:'t'},admin:{id:1},body:{audienceMode:'VEHICLE_FILTER',carType:'CAR_5',fuelType:'GASOLINE',driverIds:['a'],...extra},app:{get:()=>null}},res);return res;}
+  assert.equal((await run()).statusCode,200);assert.deepEqual(written.data.audienceDriverIds,['a']);
+  for(const wrong of [{vehicleType:'CAR_7',vehicleFuelType:'GASOLINE'},{vehicleType:'CAR_5',vehicleFuelType:'ELECTRIC'},{vehicleType:'CAR_5',vehicleFuelType:null}]){
+    written=null;profiles=[{userId:'a',...wrong}];assert.equal((await run()).statusCode,409);assert.equal(written,null);
+  }
+  assert.equal((await run({carType:undefined,fuelType:undefined})).statusCode,400);
+  assert.equal((await run({fuelType:'DIESEL'})).statusCode,400);
+});
