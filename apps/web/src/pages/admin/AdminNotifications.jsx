@@ -17,7 +17,7 @@ export default function AdminNotifications() {
       </Typography>
 
       <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
-        Lịch sử cảnh báo chuyến chờ quá lâu và tài xế bị khoá bấm nhận chuyến.
+        Lịch sử cảnh báo chuyến, tài xế bị khoá và gửi số điện thoại trong hội thoại.
       </Typography>
 
       <Paper elevation={3} sx={{ p: 2 }}>

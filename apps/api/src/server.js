@@ -1,8 +1,10 @@
+import "dotenv/config";
+import tripChatRoutes from "./routes/tripChat.js";
+import { deliverChatPush } from "./services/tripChatService.js";
 import { userSessions, pushSessionKey } from './services/userSessions.js';
 import { startQuoteHistoryCleanup } from "./services/quoteHistoryService.js";
 import { verifyAdminJwtToken } from './utils/jwt.js';
 // Path: goviet247/apps/api/src/server.js
-import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -103,6 +105,7 @@ app.get("/", (req, res) => {
 });
 
 // --- REST routes ---
+app.use("/api/trip-chat", tripChatRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/driver/documents", driverDocumentsRoutes);
 app.use("/api/driver/profile", driverProfileRoutes);
@@ -210,3 +213,6 @@ const port = process.env.PORT || process.env.API_PORT || 5050;
 server.listen(port, () => {
   console.log(`[API] chạy ở http://localhost:${port}`);
 });
+
+const chatDeliveryTimer=setInterval(() => { void deliverChatPush(); }, 5000);
+chatDeliveryTimer.unref();

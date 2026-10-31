@@ -363,6 +363,7 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
 
   return {
     ...base,
+    riderPhone: "",
     pickupAddress: normalizeDisplayAddress(trip.pickupAddress),
     pickupAddressMasked: maskAddress(trip.pickupAddress),
     dropoffAddress: normalizeDisplayAddress(trip.dropoffAddress),
@@ -740,11 +741,8 @@ export async function listMyCustomerTrips(req, res) {
       include: {
         driver: {
           select: {
-            displayName: true,
-            phones: { select: { e164: true }, orderBy: [{ isVerified: "desc" }, { createdAt: "desc" }], take: 1 },
             driverProfile: {
               select: {
-                fullName: true,
                 vehicleBrand: true,
                 vehicleColor: true,
                 vehicleModel: true,
@@ -807,7 +805,7 @@ export async function getTripById(req, res) {
 
     if (!trip || (trip.riderId !== userId && !canViewAsPassenger && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
     const { dispatcherNote, verifiedNote, ...publicTrip } = trip;
-    const data = trip.driverId === userId ? { ...publicTrip, dispatcherNote } : publicTrip;
+    const data = trip.driverId === userId ? serializeDriverTrip({ ...publicTrip, dispatcherNote }, ["COMPLETED", "CANCELLED"].includes(trip.status) ? "history" : "active") : publicTrip;
     return res.json({ success: true, data });
   } catch (err) {
     console.error("[Trip] getTripById error:", err);
@@ -1256,7 +1254,7 @@ export async function acceptTrip(req, res) {
 
     return res.json({
       success: true,
-      trip: result.trip,
+      trip: serializeDriverTrip(result.trip, "active"),
       wallet: result.wallet,
       message: "Nhận chuyến thành công",
     });
@@ -1603,7 +1601,7 @@ export async function cancelDriverTrip(req, res) {
 
     return res.json({
       success: true,
-      trip: result.trip,
+      trip: serializeDriverTrip(result.trip, "history"),
       penaltyLog: result.penaltyLog,
       penaltyWalletTxn: result.penaltyWalletTxn,
       penalty: result.penalty,

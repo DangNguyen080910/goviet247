@@ -1,3 +1,4 @@
+import { openTripChat } from '../TripChatHub';
 // Path: goviet247/apps/web/src/components/admin/AlertsTable.jsx
 import { useEffect, useMemo, useState } from "react";
 import { getAdminToken } from "../../utils/adminAuth";
@@ -27,9 +28,11 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
     const refresh = () => setRefreshKey((value) => value + 1);
     window.addEventListener("admin:blocked_trip_accept_attempt", refresh);
     window.addEventListener("admin:alerts_read", refresh);
+    window.addEventListener("admin:dashboard_changed", refresh);
     return () => {
       window.removeEventListener("admin:blocked_trip_accept_attempt", refresh);
       window.removeEventListener("admin:alerts_read", refresh);
+      window.removeEventListener("admin:dashboard_changed", refresh);
     };
   }, []);
 
@@ -162,12 +165,13 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
               >
                 <td style={tdMono}>{tripId || "-"}</td>
                 <td style={td}>{a?.level || a?.alertLevel || "-"}</td>
-                <td style={td}>{a?.alertType === "BLOCKED_TRIP_ACCEPT_ATTEMPT" ? "Tài xế bị khoá bấm nhận chuyến" : a?.channel || a?.type || a?.alertType || "-"}</td>
+                <td style={td}>{a?.alertType === "CHAT_CONTACT_BLOCKED" ? "Chặn số điện thoại trong hội thoại" : a?.alertType === "BLOCKED_TRIP_ACCEPT_ATTEMPT" ? "Tài xế bị khoá bấm nhận chuyến" : a?.channel || a?.type || a?.alertType || "-"}</td>
                 <td style={td}>{formatNgayGio(a?.sentAt || a?.createdAt)}</td>
                 <td style={td} title={a?.message || ""}>
                   {a?.message || "-"}
                 </td>
                 <td style={{ ...td, minWidth: 180 }}>
+                  {a.alertType === "CHAT_CONTACT_BLOCKED" && <Button size="small" onClick={event => { event.stopPropagation(); openTripChat(tripId); }}>Mở hội thoại chuyến</Button>}
                   {a.readAt ? <>
                     <Chip size="small" color="success" label="Đã xem" />
                     <div style={{ fontSize: 12, marginTop: 6 }}>{formatNgayGio(a.readAt)}{a.readBy ? ` · ${a.readBy}` : ""}</div>

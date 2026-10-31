@@ -27,7 +27,8 @@
       "googleServicesFile": "./google-services.json",
       "blockedPermissions": [
         "com.google.android.gms.permission.AD_ID"
-      ]
+      ],
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/GoViet247_icon.png"
@@ -56,7 +57,19 @@
       ],
       "expo-secure-store",
       "@react-native-community/datetimepicker",
-      "./plugins/withAndroid16Compatibility"
+      "./plugins/withAndroid16Compatibility",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Cho phép GoViet247 ghi tin nhắn thoại khi bạn bấm ghi âm."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Cho phép GoViet247 lấy vị trí khi bạn chọn gửi vị trí trong hội thoại."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

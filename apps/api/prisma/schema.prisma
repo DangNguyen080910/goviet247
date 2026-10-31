@@ -271,6 +271,9 @@ model Session {
 }
 
 model Trip {
+  chatMessages TripChatMessage[]
+  chatReads TripChatRead[]
+  chatAccesses TripChatAccess[]
   destinationService Json?
   // Empty means public; retained across cancellation, resend and reapproval.
   audienceDriverIds String[] @default([])
@@ -1019,4 +1022,49 @@ model SeoRoute {
   @@index([from])
   @@index([to])
   @@index([source])
+}
+
+model TripChatMessage {
+  id String @id @default(cuid())
+  tripId String
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  senderId String
+  senderRole String
+  senderLabel String
+  clientId String
+  kind String
+  text String?
+  audioKey String?
+  audioDeleteKey String?
+  deletedAt DateTime? @db.Timestamptz(6)
+  deletedBy String?
+  audioMime String?
+  durationMs Int?
+  latitude Float?
+  longitude Float?
+  locationLabel String?
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  pushAttemptAt DateTime? @db.Timestamptz(6)
+  pushDoneAt DateTime? @db.Timestamptz(6)
+  pushAttempts Int @default(0)
+  @@unique([tripId, senderId, clientId])
+  @@index([tripId, createdAt, id])
+  @@index([pushDoneAt, pushAttemptAt])
+}
+model TripChatRead {
+  tripId String
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  actorId String
+  readAt DateTime @default(now()) @db.Timestamptz(6)
+  messageId String @default("")
+  @@id([tripId, actorId])
+}
+model TripChatAccess {
+  id String @id @default(cuid())
+  tripId String
+  trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  actorId String
+  action String
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  @@index([tripId, createdAt])
 }

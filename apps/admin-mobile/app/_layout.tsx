@@ -1,3 +1,4 @@
+import { ChatInboxBadge, isChatVisible } from "../services/tripChat";
 import { Alert, AppState } from "react-native";
 import TripMilestoneCelebration from "../components/TripMilestoneCelebration";
 // Path: goviet247/apps/admin-mobile/app/_layout.tsx
@@ -29,14 +30,9 @@ import AppUpdatePrompt from "../components/AppUpdatePrompt";
 import { getAdminNotificationResponseRoute } from "../services/adminNotificationNavigation";
 
 Notifications.setNotificationHandler({
-  handleNotification: async () =>
-    ({
-      shouldShowAlert: true,
-      shouldShowBanner: true,
-      shouldShowList: true,
-      shouldPlaySound: true,
-      shouldSetBadge: true,
-    }) as any,
+  handleNotification: async notification => ({
+    shouldShowBanner:!isChatVisible(notification.request.content.data),shouldShowList:!isChatVisible(notification.request.content.data),shouldPlaySound:!isChatVisible(notification.request.content.data),shouldSetBadge:true,
+  }),
 });
 
 export default function RootLayout() {
@@ -80,8 +76,11 @@ function RootLayoutContent() {
           });
         };
 
-        const handleDashboardChanged = () => {
-          playAdminNormalNotify();
+        const handleDashboardChanged = (payload?: any) => {
+          if (payload?.source === 'chat_contact_alert') {
+            void playAdminUrgentNotify();
+            if (AppState.currentState === 'active') Alert.alert('Đã chặn gửi số điện thoại', 'Có thành viên thử gửi số điện thoại trong hội thoại chuyến. Mở Cảnh báo để kiểm tra.', [{text:'Để sau',style:'cancel'},{text:'Xem cảnh báo',onPress:()=>router.push('/alerts')}]);
+          } else playAdminNormalNotify();
 
           Notifications.setBadgeCountAsync(1).catch(() => {});
         };
@@ -220,6 +219,7 @@ function RootLayoutContent() {
       </Stack>
 
       <StatusBar style="dark" />
+      <ChatInboxBadge />
       <AppUpdatePrompt />
       <TripMilestoneCelebration />
     </SafeAreaProvider>

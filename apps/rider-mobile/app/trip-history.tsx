@@ -1,6 +1,6 @@
+import { TripChatButton } from "../services/tripChat";
 import { hasActiveTripContact } from "../../api/src/shared/tripContact.js";
 import TripRoute from "../components/TripRoute";
-import DriverContact from "../components/DriverContact";
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
 import TripPricingSummary from "../components/TripPricingSummary";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -362,8 +362,7 @@ export default function RiderTripHistoryScreen() {
           <View style={styles.successBox}>
             <Text style={styles.successBoxText}>Đặt chuyến thành công.</Text>
             <Text style={styles.successBoxText}>
-              Nhân viên sẽ xác nhận và Tài xế sẽ liên hệ bạn trong ít phút tới.
-              Vui lòng để ý điện thoại.
+              Nhân viên sẽ xác nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để nhận tin nhắn, ghi âm và vị trí từ tài xế.
             </Text>
           </View>
         ) : null}
@@ -461,6 +460,7 @@ export default function RiderTripHistoryScreen() {
                   </View>
 
                   <TripRoute trip={item} />
+                  <TripChatButton tripId={item.id} label="Liên hệ tài xế / GoViet247" />
 
                   <View style={styles.metaGroup}>
                     <View style={styles.metaRow}>
@@ -477,7 +477,6 @@ export default function RiderTripHistoryScreen() {
                       </Text>
                     </View>
 
-                    <DriverContact trip={item} />
 
                     {hasActiveTripContact(item.status) && item?.driverVehicle ? (
                       <>

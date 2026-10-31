@@ -7,11 +7,7 @@ export function phoneCallUrl(phone) {
   const normalized = raw.replace(/[().\s-]/g, "");
   return /^\+?\d{6,15}$/.test(normalized) ? `tel:${normalized}` : null;
 }
-export function riderDriverContact(trip, driver) {
-  if (!trip?.driverId || !hasActiveTripContact(trip.status) || !driver) return null;
-  const phone = driver.phones?.[0]?.e164 || null;
-  return {
-    name: driver.driverProfile?.fullName || driver.displayName || "Tài xế",
-    phone: phoneCallUrl(phone) ? phone : null,
-  };
+// Rider clients never receive the driver's personal contact details.
+export function riderDriverContact() {
+  return null;
 }

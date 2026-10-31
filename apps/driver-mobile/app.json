@@ -25,7 +25,8 @@
       "icon": "./assets/images/GoViet247_driver_icon.png",
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.goviet247.driver"
+      "package": "com.goviet247.driver",
+      "permissions": []
     },
     "web": {
       "output": "static",
@@ -57,7 +58,19 @@
         }
       ],
       "expo-secure-store",
-      "./plugins/withAndroid16Compatibility"
+      "./plugins/withAndroid16Compatibility",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Cho phép GoViet247 ghi tin nhắn thoại khi bạn bấm ghi âm."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Cho phép GoViet247 lấy vị trí khi bạn chọn gửi vị trí trong hội thoại."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

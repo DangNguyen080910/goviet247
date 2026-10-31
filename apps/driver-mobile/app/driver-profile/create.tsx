@@ -727,6 +727,7 @@ export default function DriverProfileCreateScreen() {
                 quy định vận hành theo từng thời điểm mà không cần ký lại hợp
                 đồng, và sẽ được thông báo thông qua hệ thống.
               </Text>
+              <Text style={styles.contractParagraph}>Không được xin số điện thoại của khách hàng hoặc cung cấp số điện thoại cá nhân cho khách, kể cả khi khách yêu cầu. Mọi liên hệ cho chuyến đi thực hiện qua ứng dụng GoViet247. Khi GoViet247 xác minh có vi phạm, khách hàng được miễn phí chuyến đi liên quan và tài khoản tài xế bị khoá vĩnh viễn. Trường hợp không liên hệ được qua ứng dụng, tài xế phải nhờ GoViet247 hỗ trợ.</Text>
 
               <Text style={styles.contractParagraph}>
                 Khi bấm xác nhận, tài xế đồng ý rằng đây là sự chấp thuận điện

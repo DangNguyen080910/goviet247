@@ -435,7 +435,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       success: true,
       trip,
       message:
-        "Đã ghi nhận chuyến. Nhân viên sẽ xác nhận trước khi gửi tới tài xế.",
+        "Đã ghi nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để tài xế liên hệ sau khi nhận chuyến.",
     });
   } catch (err) {
     if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });

@@ -1,3 +1,4 @@
+import { TripChatButton } from "../TripChatHub";
 import TripDriverNoteEditor from "./TripDriverNoteEditor";
 import TripMoney from "./TripMoney";
 // Path: goviet247/apps/web/src/components/admin/TripDetailModal.jsx
@@ -770,6 +771,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               )}
             </Section>
 
+            <TripChatButton tripId={tripId} />
             <TripDriverNoteEditor key={tripId} tripId={tripId} />
 
             <Section title="Ghi chú của khách" highlight>

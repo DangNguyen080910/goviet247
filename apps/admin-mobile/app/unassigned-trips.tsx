@@ -1,3 +1,4 @@
+import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
@@ -427,6 +428,7 @@ export default function UnassignedTripsScreen() {
               {item.id}
             </Text>
             <CopyTripIdButton tripId={item.id} />
+                  <TripChatButton tripId={item.id} />
 
             <View
               style={

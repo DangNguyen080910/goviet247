@@ -99,7 +99,7 @@ export const DRIVER_GUIDES = [
         "paragraphs": [
           "Sau khi hồ sơ tài xế được duyệt, các chuyến mới sẽ tự động hiển thị tại mục “Chuyến đang chờ” trên ứng dụng khi có khách đặt chuyến phù hợp.",
           "Trước khi bấm “Nhận chuyến”, vui lòng đọc kỹ: điểm đón và điểm trả; ngày giờ đón, giờ về nếu là chuyến khứ hồi; loại xe khách yêu cầu; giá chuyến; ghi chú và yêu cầu của khách; chuyến có phù hợp, thuận tiện với cung đường của mình hay không.",
-          "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Người nhận thành công trước sẽ được giữ chuyến và nhận thông tin liên hệ của khách hàng.",
+          "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Người nhận thành công trước sẽ được giữ chuyến và mở mục Liên hệ khách / GoViet247 để nhắn tin, gửi ghi âm hoặc vị trí trong ứng dụng.",
           "GoViet247 là ứng dụng kết nối xe tiện chuyến. Số lượng chuyến phụ thuộc vào nhu cầu đặt xe của khách theo từng thời điểm và khu vực; hệ thống không thể cam kết tài xế sẽ nhận được số lượng chuyến cố định."
         ]
       },
@@ -211,7 +211,7 @@ export const DRIVER_GUIDES = [
       {
         "title": "3. Không kéo khách ra ngoài hệ thống",
         "paragraphs": [
-          "Không tự ý trao đổi để khách thanh toán hoặc đặt chuyến ngoài GoViet247. Không gửi số điện thoại riêng nhằm né hệ thống. Không giới thiệu khách đặt chuyến trực tiếp ngoài ứng dụng cho các chuyến sau.",
+          "Không tự ý trao đổi để khách thanh toán hoặc đặt chuyến ngoài GoViet247. Không xin số khách hoặc cung cấp số điện thoại cá nhân, kể cả khi khách yêu cầu. Mọi liên hệ chuyến đi thực hiện trong ứng dụng. Sau khi GoViet247 xác minh vi phạm, khách được miễn phí chuyến liên quan và tài khoản tài xế bị khoá vĩnh viễn. Không giới thiệu khách đặt chuyến trực tiếp ngoài ứng dụng cho các chuyến sau.",
           "Vi phạm nghiêm trọng có thể dẫn đến khoá tài khoản vĩnh viễn."
         ]
       },

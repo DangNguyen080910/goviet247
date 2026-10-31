@@ -25,8 +25,8 @@ function fixture(initial = {}) {
   function controller(file, names) {
     const source = readFileSync(new URL(`../src/controllers/${file}.js`, import.meta.url), "utf8")
       .replace(/^import[\s\S]*?;\n/gm, "").replaceAll("export async function", "async function");
-    return new Function("prisma", "parseTripTime", "lockTrip", "sendAdminPushNotification", "sendTripStatusChangedToRider", "sendSystemNotificationToDriver", "sendNewTripToDrivers", "console",
-      `${source}; return {${names.join(",")}};`)(prisma, parseTripTime, noop, noop, noop, noop, noop, { log() {}, error() {} });
+    return new Function("prisma", "parseTripTime", "lockTrip", "sendAdminPushNotification", "sendTripStatusChangedToRider", "sendSystemNotificationToDriver", "sendNewTripToDrivers", "lockTripMilestones", "recordTripMilestone", "console",
+      `${source}; return {${names.join(",")}};`)(prisma, parseTripTime, noop, noop, noop, noop, noop, noop, noop, { log() {}, error() {} });
   }
   const actions = { ...controller("adminTripController", ["adminChuyenVeChoDuyet", "adminCapNhatThoiGianChuyen", "adminDieuChinhThongTinChuyen"]),
     ...controller("tripController", ["adminChangeTripStatus", "adminVerifyTrip", "adminResendPendingTrip"]) };

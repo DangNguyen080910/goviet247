@@ -1,3 +1,4 @@
+import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
@@ -701,6 +702,7 @@ export default function AssignedTripsScreen() {
                 <View style={styles.cardHeader}>
                   <Text style={styles.tripId}>{item.id}</Text>
                   <CopyTripIdButton tripId={item.id} />
+                  <TripChatButton tripId={item.id} />
                   <View style={styles.statusChip}>
                     <Text style={styles.statusChipText}>
                       {getStatusLabel(item.status)}

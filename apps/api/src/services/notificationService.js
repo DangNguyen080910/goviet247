@@ -753,7 +753,7 @@ function buildRiderTripStatusPushContent(trip, options = {}) {
   if (reason === "ADMIN_VERIFY_TRIP") {
     return {
       title: "Chuyến đã được duyệt",
-      body: "Chuyến của bạn đã được duyệt và đang chờ tài xế nhận.",
+      body: "Chuyến đã duyệt, đang tìm tài xế. Vui lòng bật thông báo và theo dõi mục Liên hệ chuyến trên GoViet247.",
     };
   }
 

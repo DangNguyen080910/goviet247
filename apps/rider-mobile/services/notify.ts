@@ -1,3 +1,4 @@
+import { isChatVisible } from "./tripChat";
 // Path: goviet247/apps/rider-mobile/services/notify.ts
 import * as Notifications from "expo-notifications";
 import * as Haptics from "expo-haptics";
@@ -5,10 +6,10 @@ import { Audio } from "expo-av";
 
 export function configureRiderNotificationHandler() {
   Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldShowBanner: true,
-      shouldShowList: true,
-      shouldPlaySound: true,
+    handleNotification: async notification => ({
+      shouldShowBanner: !isChatVisible(notification.request.content.data),
+      shouldShowList: !isChatVisible(notification.request.content.data),
+      shouldPlaySound: !isChatVisible(notification.request.content.data),
       shouldSetBadge: true,
     }),
   });

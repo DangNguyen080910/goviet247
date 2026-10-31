@@ -1,3 +1,4 @@
+import { TripChatButton } from "../services/tripChat";
 import TripRoute from "../components/TripRoute";
 import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/trip-history.tsx
@@ -181,6 +182,7 @@ export default function TripHistoryScreen() {
         </Text>
 
         <TripRoute trip={trip} />
+        <TripChatButton tripId={trip.id} label="Lịch sử liên hệ" />
 
         <View style={styles.row}>
           <Text style={styles.label}>Khách trả:</Text>
@@ -265,6 +267,7 @@ export default function TripHistoryScreen() {
 
 
         <TripRoute trip={trip} masked />
+        <TripChatButton tripId={trip.id} label="Lịch sử liên hệ" />
 
         <View style={styles.row}>
           <Text style={styles.label}>Khách trả:</Text>

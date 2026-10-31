@@ -566,6 +566,8 @@ export default function AdminLayout() {
         showSnack("💰 Ví tài xế vừa có thay đổi mới.", "/admin/wallets");
       } else if (source.includes("penalty")) {
         showSnack("⚠️ Có thay đổi mới ở phạt huỷ chuyến.", "/admin/wallets");
+      } else if (source === "chat_contact_alert") {
+        showSnack("🚨 Đã chặn gửi số điện thoại trong hội thoại. Mở Cảnh báo để kiểm tra.", "/admin/alerts");
       } else if (source.includes("alert")) {
         showSnack("🚨 Có cảnh báo mới từ hệ thống.", "/admin/alerts");
       }

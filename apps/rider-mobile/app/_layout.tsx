@@ -1,3 +1,4 @@
+import { ChatInboxBadge, isChatVisible } from "../services/tripChat";
 // Path: goviet247/apps/rider-mobile/app/_layout.tsx
 import { useEffect, useRef, useState } from "react";
 import { Tabs, router, usePathname } from "expo-router";
@@ -52,6 +53,7 @@ function handlePushNavigation(
     requestAnimationFrame(() => {
       setTimeout(() => {
         try {
+          if (type === "TRIP_CHAT" && data.tripId) { router.push(`/trip-chat?tripId=${encodeURIComponent(String(data.tripId))}` as any); return; }
           if (type === "SYSTEM_NOTIFICATION") {
             router.replace("/notifications");
             return;
@@ -425,7 +427,8 @@ export default function RootLayout() {
 
       <RootLayoutInner />
 
-      <AppUpdatePrompt />
+      <ChatInboxBadge />
+        <AppUpdatePrompt />
 
       <GlobalSupportButton />
     </SafeAreaProvider>

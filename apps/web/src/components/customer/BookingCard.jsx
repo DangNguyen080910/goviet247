@@ -2743,8 +2743,7 @@ export default function BookingCard() {
               GoViet247 đã ghi nhận chuyến của bạn.
             </Typography>
             <Typography sx={{ opacity: 0.85 }}>
-              Nhân viên sẽ xác nhận và Tài xế sẽ liên hệ bạn trong ít phút tới.
-              Vui lòng để ý điện thoại.
+              Nhân viên sẽ xác nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để nhận tin nhắn, ghi âm và vị trí từ tài xế.
             </Typography>
 
             {!!successDialog.tripId && (

@@ -76,7 +76,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
             severity: "DANGER",
           },
           {
-            text: "Không được xin số điện thoại khách để chào mời các chuyến đi sau ngoài hệ thống.",
+            text: "Không được xin số điện thoại của khách hàng hoặc cung cấp số điện thoại cá nhân cho khách, kể cả khi khách yêu cầu. Mọi liên hệ cho chuyến đi thực hiện qua ứng dụng GoViet247. Khi GoViet247 xác minh có vi phạm, khách hàng được miễn phí chuyến đi liên quan và tài khoản tài xế bị khoá vĩnh viễn. Trường hợp không liên hệ được qua ứng dụng, tài xế phải nhờ GoViet247 hỗ trợ.",
             severity: "DANGER",
           },
           {
@@ -278,7 +278,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
         title: "Không chủ động liên hệ khách",
         bullets: [
           {
-            text: "Không gọi hoặc nhắn khách sau khi nhận chuyến có thể làm khách chờ lâu và phát sinh huỷ chuyến.",
+            text: "Không chủ động nhắn tin hoặc gửi ghi âm trong mục Liên hệ khách sau khi nhận chuyến có thể làm khách chờ lâu và phát sinh huỷ chuyến. Khi không liên hệ được, phải nhờ GoViet247 hỗ trợ.",
             severity: "WARNING",
           },
           {

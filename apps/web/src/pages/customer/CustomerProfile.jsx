@@ -1,6 +1,6 @@
+import { TripChatButton } from "../../components/TripChatHub";
 import { hasActiveTripContact } from "../../../../api/src/shared/tripContact.js";
 import { tripRoutePoints } from "../../../../api/src/shared/tripRoute.js";
-import DriverContact from "../../components/customer/DriverContact";
 // Path: goviet247/apps/web/src/pages/customer/CustomerProfile.jsx
 import TripPricingSummary from "../../components/customer/TripPricingSummary";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -1260,7 +1260,7 @@ export default function CustomerProfile() {
                           </Paper>
                         </Box>
                         <TripPricingSummary trip={trip} />
-                        <DriverContact trip={trip} />
+                        <TripChatButton tripId={trip.id} label="Liên hệ tài xế / GoViet247" />
 
                         {hasActiveTripContact(trip.status) && trip.driverVehicle ? (
                           <Paper

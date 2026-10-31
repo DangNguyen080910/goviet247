@@ -1,3 +1,4 @@
+import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
@@ -563,6 +564,7 @@ export default function PendingTripsScreen() {
               {item.id}
             </Text>
             <CopyTripIdButton tripId={item.id} />
+                  <TripChatButton tripId={item.id} />
 
             {tab === "PENDING" ? (
               <View style={styles.pendingBadge}>

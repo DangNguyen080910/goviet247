@@ -1,9 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { riderDriverContact, phoneCallUrl } from "../src/shared/tripContact.js";
+import { hasActiveTripContact, riderDriverContact, phoneCallUrl } from "../src/shared/tripContact.js";
 const driver = {displayName:"Tên tài khoản", phones:[{e164:"+84901234567"}],driverProfile:{fullName:"Nguyễn Văn A"}};
-test("only active assigned trips expose driver contact, prioritizing profile name", () => {
-  for (const status of ["ACCEPTED","CONTACTED","IN_PROGRESS"]) assert.deepEqual(riderDriverContact({status,driverId:"a"},driver),{name:"Nguyễn Văn A",phone:"+84901234567"});
+test("active trips no longer expose personal driver contact", () => {
+  for (const status of ["ACCEPTED","CONTACTED","IN_PROGRESS"]) assert.equal(riderDriverContact({status,driverId:"a"},driver),null);
 });
 test("pending, completed and cancelled trips return no driver name or phone", () => {
   for (const status of ["PENDING","COMPLETED","CANCELLED",null]) assert.equal(riderDriverContact({status,driverId:"a"},driver),null);
@@ -27,13 +27,12 @@ test('customer API omits raw driver data and removes contact from finished trips
       {id:'done',riderId:'rider',driverId:'driver',status:'COMPLETED',driver},
       {id:'cancelled',riderId:'rider',driverId:'driver',status:'CANCELLED',driver},
     ]}},
-    getVerifiedRiderPhoneVariants:async()=>[], riderTripAccessWhere:()=>({riderId:'rider'}), riderDriverContact,
+    getVerifiedRiderPhoneVariants:async()=>[], riderTripAccessWhere:()=>({riderId:'rider'}), riderDriverContact, hasActiveTripContact,
   };
   const list=new Function(...Object.keys(dependencies), body+'; return listMyCustomerTrips;')(...Object.values(dependencies));
   let response;
   await list({user:{id:'rider'}},{json:value=>{response=value;},status:()=>assert.fail('API error')});
-  assert.equal(response.items[0].driverContact.name,'Nguyễn Văn A');
-  for(const row of response.items.slice(1)) {
+  for(const row of response.items) {
     assert.equal(row.driverContact,null);
     assert.equal('driver' in row,false);
     assert.doesNotMatch(JSON.stringify(row),/Nguyễn Văn A|84901234567/);

@@ -1,3 +1,4 @@
+import TripChatHub from "./components/TripChatHub";
 // Path: goviet247/apps/web/src/App.jsx
 
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -36,6 +37,8 @@ import NotFoundPage from "./pages/customer/NotFoundPage";
 
 export default function App() {
   return (
+    <>
+    <TripChatHub />
     <Routes>
       {/* ====================================================== */}
       {/* CUSTOMER */}
@@ -254,5 +257,6 @@ export default function App() {
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { ChatInboxBadge, isChatVisible } from "../services/tripChat";
 // Path: goviet247/apps/driver-mobile/app/_layout.tsx
 import { useEffect } from "react";
 import { Stack, router } from "expo-router";
@@ -9,7 +10,8 @@ import { getDriverToken } from "../services/storage";
 import AppUpdatePrompt from "../components/AppUpdatePrompt";
 
 Notifications.setNotificationHandler({
-  handleNotification: async () => {
+  handleNotification: async notification => {
+    if (isChatVisible(notification.request.content.data)) return { shouldShowBanner:false,shouldShowList:false,shouldPlaySound:false,shouldSetBadge:false };
     const signedIn = Boolean(await getDriverToken());
     return { shouldShowBanner: signedIn, shouldShowList: signedIn, shouldPlaySound: signedIn, shouldSetBadge: signedIn };
   },
@@ -28,6 +30,8 @@ async function handlePushNavigation(
   const type = String(data?.type || "")
     .trim()
     .toUpperCase();
+
+  if (type === "TRIP_CHAT" && data.tripId) { router.push(`/trip-chat?tripId=${encodeURIComponent(String(data.tripId))}` as any); return; }
 
   if (type === "NEW_TRIP") {
     router.replace("/bootstrap");
@@ -82,6 +86,7 @@ export default function RootLayout() {
           style={{ height: "auto", minHeight: 78, maxWidth: "95%" }}
           contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 10 }}
           text1Style={{ fontSize: 14 }} text2Style={{ fontSize: 13, lineHeight: 18, color: "#374151" }} /> }} />
+        <ChatInboxBadge />
         <AppUpdatePrompt />
       </NotificationProvider>
     </SafeAreaProvider>
