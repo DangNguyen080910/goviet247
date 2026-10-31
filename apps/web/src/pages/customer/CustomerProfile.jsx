@@ -1,3 +1,4 @@
+import { hasActiveTripContact } from "../../../../api/src/shared/tripContact.js";
 import { tripRoutePoints } from "../../../../api/src/shared/tripRoute.js";
 import DriverContact from "../../components/customer/DriverContact";
 // Path: goviet247/apps/web/src/pages/customer/CustomerProfile.jsx
@@ -1261,7 +1262,7 @@ export default function CustomerProfile() {
                         <TripPricingSummary trip={trip} />
                         <DriverContact trip={trip} />
 
-                        {!["COMPLETED", "CANCELLED"].includes(String(trip.status).trim().toUpperCase()) && trip.driverVehicle ? (
+                        {hasActiveTripContact(trip.status) && trip.driverVehicle ? (
                           <Paper
                             variant="outlined"
                             sx={{ p: 1.5, borderRadius: 2.5, bgcolor: "#f8fafc" }}

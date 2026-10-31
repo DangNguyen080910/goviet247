@@ -1,5 +1,5 @@
 export function hasActiveTripContact(status) {
-  return ["ACCEPTED", "CONTACTED", "IN_PROGRESS"].includes(String(status || "").toUpperCase());
+  return ["ACCEPTED", "CONTACTED", "IN_PROGRESS"].includes(String(status || "").trim().toUpperCase());
 }
 export function phoneCallUrl(phone) {
   const raw = String(phone || "").trim();

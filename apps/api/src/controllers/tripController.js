@@ -1,4 +1,4 @@
-import { riderDriverContact } from "../shared/tripContact.js";
+import { hasActiveTripContact, riderDriverContact } from "../shared/tripContact.js";
 import { lockTripMilestones, recordTripMilestone } from "../services/tripMilestoneService.js";
 import { adminTripMoney } from "../services/adminTripMoney.js";
 import { audienceWhere, canDriverSeeTrip, parseAudience, audienceCarType } from '../services/tripAudiencePolicy.js';
@@ -772,7 +772,7 @@ export async function listMyCustomerTrips(req, res) {
         ...trip,
         canManage: trip.riderId === riderId,
         driverContact: riderDriverContact(trip, driver),
-        driverVehicle: !["COMPLETED", "CANCELLED"].includes(String(trip.status).trim().toUpperCase()) && driver?.driverProfile
+        driverVehicle: hasActiveTripContact(trip.status) && driver?.driverProfile
           ? {
               vehicleBrand: driver.driverProfile.vehicleBrand,
               vehicleColor: driver.driverProfile.vehicleColor,

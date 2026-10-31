@@ -1,3 +1,4 @@
+import { hasActiveTripContact } from "../../api/src/shared/tripContact.js";
 import TripRoute from "../components/TripRoute";
 import DriverContact from "../components/DriverContact";
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
@@ -478,7 +479,7 @@ export default function RiderTripHistoryScreen() {
 
                     <DriverContact trip={item} />
 
-                    {!["COMPLETED", "CANCELLED"].includes(String(item.status).trim().toUpperCase()) && item?.driverVehicle ? (
+                    {hasActiveTripContact(item.status) && item?.driverVehicle ? (
                       <>
                         <View style={styles.metaRow}>
                           <Text style={styles.metaLabel}>Hãng xe</Text>
