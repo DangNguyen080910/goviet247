@@ -1,3 +1,4 @@
+import TripRoute from "../components/TripRoute";
 import DriverContact from "../components/DriverContact";
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
 import TripPricingSummary from "../components/TripPricingSummary";
@@ -171,17 +172,6 @@ function getCarTypeLabel(carTypeRaw: string | null | undefined) {
   return carTypeRaw || "Chưa xác định";
 }
 
-function normalizeAddress(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d")
-    .replace(/Đ/g, "D")
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 function getShortTripId(id: string | null | undefined) {
   const raw = String(id || "").trim();
 
@@ -190,27 +180,6 @@ function getShortTripId(id: string | null | undefined) {
   if (raw.length <= 8) return raw.toUpperCase();
 
   return raw.slice(raw.length - 8).toUpperCase();
-}
-
-function getRouteText(item: TripItem) {
-  const pickup = String(item?.pickupAddress || "").trim();
-  const dropoff = String(item?.dropoffAddress || "").trim();
-  const stops = Array.isArray(item?.stops)
-    ? item.stops
-        .map((stop) => String(stop?.address || "").trim())
-        .filter(Boolean)
-    : [];
-
-  const parts: string[] = [];
-
-  [pickup, ...stops, dropoff].filter(Boolean).forEach((address) => {
-    const previous = parts[parts.length - 1];
-    if (!previous || normalizeAddress(previous) !== normalizeAddress(address)) {
-      parts.push(address);
-    }
-  });
-
-  return parts.join(" → ");
 }
 
 export default function RiderTripHistoryScreen() {
@@ -490,7 +459,7 @@ export default function RiderTripHistoryScreen() {
                     </Text>
                   </View>
 
-                  <Text style={styles.routeText}>{getRouteText(item)}</Text>
+                  <TripRoute trip={item} />
 
                   <View style={styles.metaGroup}>
                     <View style={styles.metaRow}>
@@ -509,7 +478,7 @@ export default function RiderTripHistoryScreen() {
 
                     <DriverContact trip={item} />
 
-                    {item?.driverVehicle ? (
+                    {String(item.status).toUpperCase() !== "COMPLETED" && item?.driverVehicle ? (
                       <>
                         <View style={styles.metaRow}>
                           <Text style={styles.metaLabel}>Hãng xe</Text>

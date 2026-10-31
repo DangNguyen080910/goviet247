@@ -1,3 +1,4 @@
+import { tripRoutePoints } from "../../api/src/shared/tripRoute.js";
 import TripDispatcherNote from "../components/TripDispatcherNote";
 import { phoneCallUrl } from "../../api/src/shared/tripContact.js";
 import TripSurcharges from "../components/TripSurcharges";
@@ -1192,62 +1193,7 @@ export default function DashboardScreen() {
       trip: AvailableTripItem | MyTripItem,
       mode: "masked" | "full" = "full",
     ) => {
-      const allStops = Array.isArray(trip?.stops) ? trip.stops : [];
-      const isRoundTrip = trip?.direction === "ROUND_TRIP";
-
-      const getAddress = (value?: {
-        address?: string | null;
-        addressMasked?: string | null;
-      }) => {
-        if (mode === "masked") {
-          return value?.addressMasked || value?.address || "";
-        }
-
-        return value?.address || value?.addressMasked || "";
-      };
-
-      const dropoffAddress =
-        mode === "masked"
-          ? trip.dropoffAddressMasked || trip.dropoffAddress || ""
-          : trip.dropoffAddress || trip.dropoffAddressMasked || "";
-
-      // Rule production:
-      // - Không dùng "Điểm dừng"
-      // - Không dùng "Điểm về"
-      // - Tất cả điểm sau điểm đón đều gọi là "Điểm đến"
-      // - Khứ hồi chỉ hiển thị hành trình đi, không cần render điểm quay về
-      if (isRoundTrip) {
-        return {
-          destinations: allStops.map((stop, index) => ({
-            key: stop.id || `${trip.id}-destination-${index}`,
-            label: allStops.length === 1 ? "Điểm đến" : `Điểm đến ${index + 1}`,
-            address: getAddress(stop),
-          })),
-        };
-      }
-
-      // 1 chiều, nếu không có stops thì fallback về dropoffAddress
-      if (allStops.length === 0) {
-        return {
-          destinations: dropoffAddress
-            ? [
-                {
-                  key: `${trip.id}-destination-final`,
-                  label: "Điểm đến",
-                  address: dropoffAddress,
-                },
-              ]
-            : [],
-        };
-      }
-
-      return {
-        destinations: allStops.map((stop, index) => ({
-          key: stop.id || `${trip.id}-destination-${index}`,
-          label: allStops.length === 1 ? "Điểm đến" : `Điểm đến ${index + 1}`,
-          address: getAddress(stop),
-        })),
-      };
+      return { destinations: tripRoutePoints(trip, { masked: mode === "masked" }).filter(point => point.label !== "Điểm đón").map((point, index) => ({ ...point, key: `${trip.id}-route-${index}` })) };
     },
     [],
   );

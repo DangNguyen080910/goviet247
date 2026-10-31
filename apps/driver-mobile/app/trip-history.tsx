@@ -1,3 +1,4 @@
+import TripRoute from "../components/TripRoute";
 import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/trip-history.tsx
 import { ServiceSummary } from "../components/DestinationService";
@@ -179,15 +180,7 @@ export default function TripHistoryScreen() {
           {trip.direction === "ROUND_TRIP" ? "(khứ hồi)" : "(1 chiều)"}
         </Text>
 
-        <View style={styles.row}>
-          <Text style={styles.label}>Điểm đón:</Text>
-          <Text style={styles.value}>{trip.pickupAddress}</Text>
-        </View>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>Điểm trả:</Text>
-          <Text style={styles.value}>{trip.dropoffAddress}</Text>
-        </View>
+        <TripRoute trip={trip} />
 
         <View style={styles.row}>
           <Text style={styles.label}>Khách trả:</Text>
@@ -271,19 +264,7 @@ export default function TripHistoryScreen() {
         <ServiceSummary snapshot={trip.destinationService} />
 
 
-        <View style={styles.row}>
-          <Text style={styles.label}>Điểm đón:</Text>
-          <Text style={styles.value}>
-            {trip.pickupAddressMasked || trip.pickupAddress}
-          </Text>
-        </View>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>Điểm trả:</Text>
-          <Text style={styles.value}>
-            {trip.dropoffAddressMasked || trip.dropoffAddress}
-          </Text>
-        </View>
+        <TripRoute trip={trip} masked />
 
         <View style={styles.row}>
           <Text style={styles.label}>Khách trả:</Text>

@@ -772,7 +772,7 @@ export async function listMyCustomerTrips(req, res) {
         ...trip,
         canManage: trip.riderId === riderId,
         driverContact: riderDriverContact(trip, driver),
-        driverVehicle: driver?.driverProfile
+        driverVehicle: String(trip.status).toUpperCase() !== "COMPLETED" && driver?.driverProfile
           ? {
               vehicleBrand: driver.driverProfile.vehicleBrand,
               vehicleColor: driver.driverProfile.vehicleColor,

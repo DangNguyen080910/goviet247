@@ -1,3 +1,4 @@
+import { tripRoutePoints } from "../../../../api/src/shared/tripRoute.js";
 import DriverContact from "../../components/customer/DriverContact";
 // Path: goviet247/apps/web/src/pages/customer/CustomerProfile.jsx
 import TripPricingSummary from "../../components/customer/TripPricingSummary";
@@ -115,37 +116,7 @@ function normalizeText(value) {
 }
 
 function getRouteText(trip) {
-  const pickup = String(trip?.pickupAddress || "").trim();
-  const dropoff = String(trip?.dropoffAddress || "").trim();
-
-  const stopAddresses = Array.isArray(trip?.stops)
-    ? trip.stops
-        .map((stop) => String(stop?.address || "").trim())
-        .filter(Boolean)
-    : [];
-
-  const parts = [];
-
-  if (pickup) {
-    parts.push(pickup);
-  }
-
-  stopAddresses.forEach((address) => {
-    const last = parts[parts.length - 1];
-    if (normalizeText(last) !== normalizeText(address)) {
-      parts.push(address);
-    }
-  });
-
-  if (dropoff) {
-    const last = parts[parts.length - 1];
-    if (normalizeText(last) !== normalizeText(dropoff)) {
-      parts.push(dropoff);
-    }
-  }
-
-  if (parts.length === 0) return "—";
-  return parts.join(" → ");
+  return tripRoutePoints(trip).map(point => point.address).join(" → ") || "—";
 }
 
 function getTripTypeLabel(trip) {
@@ -1061,19 +1032,17 @@ export default function CustomerProfile() {
                             Tuyến đường
                           </Typography>
 
-                          <Typography
-                            sx={{
-                              fontWeight: 700,
-                              color: "#111827",
-                              whiteSpace: "normal",
-                              wordBreak: "break-word",
-                              lineHeight: 1.65,
-                              fontSize: { xs: 14, md: 15 },
-                            }}
-                            title={getRouteText(trip)}
-                          >
-                            {getRouteText(trip)}
-                          </Typography>
+                          <Stack spacing={1.5}>
+                            {tripRoutePoints(trip).map((point, index) => (
+                              <Box key={index} sx={{ display: "flex", gap: 1.5, alignItems: "flex-start" }}>
+                                <Box sx={{ bgcolor: point.label === "Quay về điểm đón" ? "#fff7ed" : "#eff6ff", color: point.label === "Quay về điểm đón" ? "#ea580c" : "#2563eb", borderRadius: "50%", width: 26, height: 26, flexShrink: 0, textAlign: "center", lineHeight: "26px", fontWeight: 800 }}>{index + 1}</Box>
+                                <Box sx={{ minWidth: 0 }}>
+                                  <Typography sx={{ fontSize: 12, color: "#64748b", fontWeight: 700 }}>{point.label}</Typography>
+                                  <Typography sx={{ fontWeight: 700, color: "#111827", overflowWrap: "anywhere", lineHeight: 1.65, fontSize: { xs: 14, md: 15 } }}>{point.address}</Typography>
+                                </Box>
+                              </Box>
+                            ))}
+                          </Stack>
                         </Box>
 
                         <Box
@@ -1292,7 +1261,7 @@ export default function CustomerProfile() {
                         <TripPricingSummary trip={trip} />
                         <DriverContact trip={trip} />
 
-                        {trip.driverVehicle ? (
+                        {String(trip.status).toUpperCase() !== "COMPLETED" && trip.driverVehicle ? (
                           <Paper
                             variant="outlined"
                             sx={{ p: 1.5, borderRadius: 2.5, bgcolor: "#f8fafc" }}
