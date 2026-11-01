@@ -1,3 +1,4 @@
+import { FloatingActionsProvider } from './components/FloatingActionsContext';
 import TripChatHub from "./components/TripChatHub";
 // Path: goviet247/apps/web/src/App.jsx
 
@@ -37,7 +38,7 @@ import NotFoundPage from "./pages/customer/NotFoundPage";
 
 export default function App() {
   return (
-    <>
+    <FloatingActionsProvider>
     <TripChatHub />
     <Routes>
       {/* ====================================================== */}
@@ -257,6 +258,6 @@ export default function App() {
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-    </>
+    </FloatingActionsProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { ChatInboxBadge, isChatVisible } from "../services/tripChat";
+import { isChatVisible } from "../services/tripChat";
 // Path: goviet247/apps/rider-mobile/app/_layout.tsx
 import { useEffect, useRef, useState } from "react";
 import { Tabs, router, usePathname } from "expo-router";
@@ -427,7 +427,6 @@ export default function RootLayout() {
 
       <RootLayoutInner />
 
-      <ChatInboxBadge />
         <AppUpdatePrompt />
 
       <GlobalSupportButton />

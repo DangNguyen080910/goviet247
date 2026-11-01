@@ -1,358 +1,233 @@
-// Path: goviet247/apps/rider-mobile/components/GlobalSupportButton.tsx
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  Alert,
-  Animated,
-  Dimensions,
-  Linking,
-  PanResponder,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "@expo/vector-icons";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
-import { API_BASE_URL } from "../constants/api";
-
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Alert, Animated, Keyboard, Linking, PanResponder, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
+import { usePathname } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { API_BASE_URL } from '../constants/api';
+import { ChatInboxBadge } from '../services/tripChat';
+import { CONTACT_DOCK_WIDTH, CONTACT_DOCK_HEIGHT, constrainContactDock } from '../utils/contactDock';
 const BUTTON_SIZE = 64;
-const STORAGE_KEY = "support_button_position";
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const SCREEN_HEIGHT = Dimensions.get("window").height;
-
+const STORAGE_KEY = 'rider_contact_dock_position_v1';
 function normalizePhoneForZalo(phone: string) {
-  let cleaned = String(phone || "").replace(/\D/g, "");
-
-  if (!cleaned) {
-    return "";
-  }
-
-  if (cleaned.startsWith("0")) {
-    cleaned = `84${cleaned.slice(1)}`;
-  }
-
-  return cleaned;
+  const digits = String(phone || '').replace(/\D/g, '');
+  return digits.startsWith('0') ? `84${digits.slice(1)}` : digits;
 }
-
 export default function GlobalSupportButton() {
-  const insets = useSafeAreaInsets();
-
-  const [supportPhone, setSupportPhone] = useState("");
-  const [showTooltip, setShowTooltip] = useState(true);
-
-  const pulseAnim = useRef(new Animated.Value(1)).current;
-
-  const pan = useRef(
-    new Animated.ValueXY({
-      x: SCREEN_WIDTH - 92,
-      y: SCREEN_HEIGHT - 260,
-    }),
-  ).current;
-
+  const insets = useSafeAreaInsets(),
+    {
+      width,
+      height
+    } = useWindowDimensions(),
+    path = usePathname();
+  const [supportPhone, setSupportPhone] = useState(''),
+    [showTooltip, setShowTooltip] = useState(true),
+    [keyboardOpen, setKeyboardOpen] = useState(false);
+  const [dockHeight, setDockHeight] = useState(CONTACT_DOCK_HEIGHT);
+  const initial = constrainContactDock(null, width, height, insets.top, insets.bottom);
+  const [position, setPosition] = useState(initial);
+  const point = useRef(initial),
+    origin = useRef(initial),
+    moved = useRef(false);
+  const bounds = useRef({
+    width,
+    height,
+    top: insets.top,
+    bottom: insets.bottom,
+    dockHeight
+  });
+  bounds.current = {
+    width,
+    height,
+    top: insets.top,
+    bottom: insets.bottom,
+    dockHeight
+  };
+  const pan = useRef(new Animated.ValueXY(initial)).current;
+  const clamp = (value: any, snap = false) => {
+    const b = bounds.current;
+    return constrainContactDock(value, b.width, b.height, b.top, b.bottom, snap, b.dockHeight);
+  };
   useEffect(() => {
-    async function loadSupportPhone() {
-      try {
-        const response = await fetch(
-          `${API_BASE_URL}/api/public/system-config`,
-        );
-
-        const res = await response.json();
-
-        console.log(
-          "[GlobalSupportButton] system config response:",
-          JSON.stringify(res),
-        );
-
-        const phone = String(res?.data?.supportPhoneRider || "").trim();
-
-        console.log("[GlobalSupportButton] support phone:", phone);
-
-        if (!phone) {
-          return;
-        }
-
-        setSupportPhone(phone);
-      } catch (error) {
-        console.warn("[GlobalSupportButton] load config error:", error);
-      }
-    }
-
-    void loadSupportPhone();
+    let alive = true;
+    void fetch(`${API_BASE_URL}/api/public/system-config`).then(r => r.json()).then(r => {
+      if (alive) setSupportPhone(String(r?.data?.supportPhoneRider || '').trim());
+    }).catch(() => {});
+    return () => {
+      alive = false;
+    };
   }, []);
-
   useEffect(() => {
-    async function restorePosition() {
+    let alive = true;
+    void (async () => {
       try {
         const saved = await AsyncStorage.getItem(STORAGE_KEY);
-
-        if (!saved) {
-          return;
+        const legacy = saved ? null : await AsyncStorage.getItem('support_button_position');
+        let next = saved ? JSON.parse(saved) : null;
+        if (!next && legacy) {
+          const old = JSON.parse(legacy);
+          next = {
+            x: old.x - (CONTACT_DOCK_WIDTH - BUTTON_SIZE),
+            y: old.y - 60
+          };
         }
-
-        const parsed = JSON.parse(saved);
-
-        if (typeof parsed?.x === "number" && typeof parsed?.y === "number") {
-          pan.setValue({
-            x: parsed.x,
-            y: parsed.y,
-          });
+        if (alive && !moved.current) {
+          const value = clamp(next, true);
+          point.current = value;
+          setPosition(value);
+          pan.setValue(value);
         }
-      } catch (error) {
-        console.warn("[GlobalSupportButton] restore position error:", error);
-      }
-    }
-
-    void restorePosition();
-  }, [pan]);
-
-  useEffect(() => {
-    const pulseLoop = Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulseAnim, {
-          toValue: 1.06,
-          duration: 900,
-          useNativeDriver: true,
-        }),
-
-        Animated.timing(pulseAnim, {
-          toValue: 1,
-          duration: 900,
-          useNativeDriver: true,
-        }),
-      ]),
-    );
-
-    pulseLoop.start();
-
+      } catch {}
+    })();
     return () => {
-      pulseLoop.stop();
+      alive = false;
     };
-  }, [pulseAnim]);
-
+  }, [pan]);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTooltip(false);
-    }, 4500);
-
-    return () => clearTimeout(timer);
+    const next = clamp(point.current, true);
+    point.current = next;
+    setPosition(next);
+    pan.setValue(next);
+  }, [width, height, insets.top, insets.bottom, dockHeight, pan]);
+  useEffect(() => {
+    const show = Keyboard.addListener('keyboardDidShow', () => setKeyboardOpen(true));
+    const hide = Keyboard.addListener('keyboardDidHide', () => setKeyboardOpen(false));
+    const timer = setTimeout(() => setShowTooltip(false), 4500);
+    return () => {
+      show.remove();
+      hide.remove();
+      clearTimeout(timer);
+    };
   }, []);
-
-  async function persistPosition(x: number, y: number) {
-    try {
-      await AsyncStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({
-          x,
-          y,
-        }),
-      );
-    } catch (error) {
-      console.warn("[GlobalSupportButton] persist position error:", error);
-    }
-  }
-
-  const panResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onStartShouldSetPanResponder: () => false,
-
-        onMoveShouldSetPanResponder: (_, gestureState) => {
-          return Math.abs(gestureState.dx) > 6 || Math.abs(gestureState.dy) > 6;
-        },
-
-        onPanResponderGrant: () => {
-          pan.extractOffset();
-        },
-
-        onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
-          useNativeDriver: false,
-        }),
-
-        onPanResponderRelease: async () => {
-          pan.flattenOffset();
-
-          const currentX = (pan.x as any)._value || 0;
-
-          const currentY = (pan.y as any)._value || 0;
-
-          const snapLeft = currentX < SCREEN_WIDTH / 2;
-
-          const finalX = snapLeft ? 16 : SCREEN_WIDTH - BUTTON_SIZE - 16;
-
-          const minY = insets.top + 80;
-
-          const maxY =
-            SCREEN_HEIGHT - BUTTON_SIZE - 120 - Math.max(insets.bottom, 16);
-
-          const finalY = Math.min(Math.max(currentY, minY), maxY);
-
-          Animated.spring(pan, {
-            toValue: {
-              x: finalX,
-              y: finalY,
-            },
-            useNativeDriver: false,
-          }).start();
-
-          await persistPosition(finalX, finalY);
-        },
-      }),
-    [insets.bottom, insets.top, pan],
-  );
-
+  const responder = useMemo(() => PanResponder.create({
+    onStartShouldSetPanResponder: () => false,
+    onMoveShouldSetPanResponder: (_, g) => Math.hypot(g.dx, g.dy) > 6,
+    onMoveShouldSetPanResponderCapture: (_, g) => Math.hypot(g.dx, g.dy) > 6,
+    onPanResponderGrant: () => {
+      moved.current = true;
+      origin.current = point.current;
+      setShowTooltip(false);
+    },
+    onPanResponderMove: (_, g) => {
+      const next = clamp({
+        x: origin.current.x + g.dx,
+        y: origin.current.y + g.dy
+      });
+      point.current = next;
+      pan.setValue(next);
+    },
+    onPanResponderRelease: () => {
+      const next = clamp(point.current, true);
+      point.current = next;
+      setPosition(next);
+      pan.setValue(next);
+      void AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next)).catch(() => {});
+    },
+    onPanResponderTerminate: () => {
+      const next = clamp(point.current, true);
+      point.current = next;
+      setPosition(next);
+      pan.setValue(next);
+    },
+    onPanResponderTerminationRequest: () => false
+  }), [pan]);
   async function handleOpenSupport() {
     try {
       const zaloPhone = normalizePhoneForZalo(supportPhone);
-
       if (!zaloPhone) {
-        Alert.alert(
-          "Thiếu số hỗ trợ",
-          "Hiện chưa có số điện thoại hỗ trợ khách hàng.",
-        );
-
+        Alert.alert("Thiếu số hỗ trợ", "Hiện chưa có số điện thoại hỗ trợ khách hàng.");
         return;
       }
-
       const zaloWebUrl = `https://zalo.me/${zaloPhone}`;
-
       console.log("[GlobalSupportButton] opening zalo:", zaloWebUrl);
-
       try {
         await Linking.openURL(zaloWebUrl);
         return;
       } catch (_webError) {
-        Alert.alert(
-          "Không mở được Zalo",
-          "Thiết bị hiện không mở được Zalo. Vui lòng gọi hotline để được hỗ trợ nhanh.",
-          [
-            {
-              text: "Đóng",
-              style: "cancel",
-            },
-
-            {
-              text: "Gọi hotline",
-              onPress: () => {
-                void Linking.openURL(`tel:${supportPhone}`);
-              },
-            },
-          ],
-        );
+        Alert.alert("Không mở được Zalo", "Thiết bị hiện không mở được Zalo. Vui lòng gọi hotline để được hỗ trợ nhanh.", [{
+          text: "Đóng",
+          style: "cancel"
+        }, {
+          text: "Gọi hotline",
+          onPress: () => {
+            void Linking.openURL(`tel:${supportPhone}`);
+          }
+        }]);
       }
     } catch (error) {
       console.error("[GlobalSupportButton] open zalo error:", error);
-
-      Alert.alert(
-        "Không mở được Zalo",
-        "Có lỗi xảy ra khi mở Zalo. Vui lòng gọi hotline để được hỗ trợ nhanh.",
-        [
-          {
-            text: "Đóng",
-            style: "cancel",
-          },
-
-          {
-            text: "Gọi hotline",
-            onPress: () => {
-              void Linking.openURL(`tel:${supportPhone}`);
-            },
-          },
-        ],
-      );
+      Alert.alert("Không mở được Zalo", "Có lỗi xảy ra khi mở Zalo. Vui lòng gọi hotline để được hỗ trợ nhanh.", [{
+        text: "Đóng",
+        style: "cancel"
+      }, {
+        text: "Gọi hotline",
+        onPress: () => {
+          void Linking.openURL(`tel:${supportPhone}`);
+        }
+      }]);
     }
   }
-
-  return (
-    <Animated.View
-      style={[
-        styles.wrapper,
-        {
-          transform: [
-            ...pan.getTranslateTransform(),
-            {
-              scale: pulseAnim,
-            },
-          ],
-        },
-      ]}
-      {...panResponder.panHandlers}
-    >
-      {showTooltip ? (
-        <View style={styles.tooltip}>
-          <Text style={styles.tooltipText}>Bạn cần hỗ trợ?</Text>
-        </View>
-      ) : null}
-
-      <Pressable
-        onPress={handleOpenSupport}
-        style={({ pressed }) => [
-          styles.button,
-          pressed && {
-            opacity: 0.85,
-          },
-        ]}
-      >
-        <Ionicons name="chatbubble-ellipses" size={30} color="#FFFFFF" />
-      </Pressable>
-    </Animated.View>
-  );
+  if (keyboardOpen || path.includes('trip-chat')) return null;
+  const onLeft = position.x + CONTACT_DOCK_WIDTH / 2 < width / 2;
+  return <Animated.View pointerEvents="box-none" onLayout={event => {const next=event.nativeEvent.layout.height;if(next>0 && Math.abs(next-dockHeight)>1)setDockHeight(next);}} style={[styles.wrapper, {
+    transform: pan.getTranslateTransform(),
+    alignItems: onLeft ? 'flex-start' : 'flex-end'
+  }]} {...responder.panHandlers}>
+  <View pointerEvents="box-none" style={{
+      width: CONTACT_DOCK_WIDTH,
+      minHeight: 48,
+      marginBottom: 12
+    }}><ChatInboxBadge inline /></View>
+  <View>
+   {showTooltip && <View pointerEvents="none" style={[styles.tooltip, onLeft ? {
+        left: BUTTON_SIZE + 10
+      } : {
+        right: BUTTON_SIZE + 10
+      }]}><Text style={styles.tooltipText}>Bạn cần hỗ trợ?</Text></View>}
+   <Pressable accessibilityRole="button" accessibilityLabel="Hỗ trợ GoViet247, có thể kéo để di chuyển" onPress={handleOpenSupport} style={({
+        pressed
+      }) => [styles.button, {
+        opacity: pressed ? 0.85 : 1
+      }]}><Ionicons name="headset-outline" size={25} color="white" /><Text maxFontSizeMultiplier={1.3} style={{color:"white",fontSize:11,lineHeight:14,fontWeight:"800"}}>Hỗ trợ</Text></Pressable>
+  </View>
+ </Animated.View>;
 }
-
 const styles = StyleSheet.create({
   wrapper: {
-    position: "absolute",
-    zIndex: 99999,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: CONTACT_DOCK_WIDTH,
+    zIndex: 1000
   },
-
   button: {
     width: BUTTON_SIZE,
     height: BUTTON_SIZE,
-    borderRadius: BUTTON_SIZE / 2,
-    backgroundColor: "#0068FF",
-
-    alignItems: "center",
-    justifyContent: "center",
-
-    shadowColor: "#000",
-    shadowOpacity: 0.22,
-    shadowRadius: 10,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-
-    elevation: 10,
-  },
-
-  tooltip: {
-    position: "absolute",
-    bottom: 74,
-    right: -6,
-
-    backgroundColor: "#111827",
-
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-
-    borderRadius: 999,
-
-    shadowColor: "#000",
-    shadowOpacity: 0.15,
+    borderRadius: 32,
+    backgroundColor: '#0068ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOpacity: 0.18,
     shadowRadius: 8,
     shadowOffset: {
       width: 0,
-      height: 2,
-    },
-
-    elevation: 6,
+      height: 4
+    }
   },
-
+  tooltip: {
+    position: 'absolute',
+    bottom: 12,
+    backgroundColor: '#111827',
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderRadius: 20,
+    minWidth: 120
+  },
   tooltipText: {
-    color: "#FFFFFF",
-    fontSize: 13,
-    fontWeight: "700",
-  },
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '700'
+  }
 });

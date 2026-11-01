@@ -582,6 +582,7 @@ export default function CustomerLayout() {
 
       {/* ================= FOOTER ================= */}
       <Box
+        data-customer-footer
         sx={{
           position: "fixed",
           left: 0,

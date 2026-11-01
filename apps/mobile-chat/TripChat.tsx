@@ -71,7 +71,7 @@ export function TripChatButton({
       fontWeight: '700'
     }}>💬 {label}</Text></Pressable>;
 }
-export function ChatInboxBadge() {
+export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
   const [unread, setUnread] = useState(0),
     [signed, setSigned] = useState(false);
   const path = usePathname();
@@ -109,9 +109,7 @@ export function ChatInboxBadge() {
   }, []);
   if (!signed || path.includes('trip-chat') || /login|bootstrap|index|driver-profile/.test(path)) return null;
   return <Pressable accessibilityLabel={`Tin nhắn chuyến, ${unread} chưa đọc`} onPress={() => router.push('/trip-chat' as any)} style={{
-    position: 'absolute',
-    right: 16,
-    bottom: 100,
+    ...(inline ? {minHeight:48,alignItems:'center' as const,justifyContent:'center' as const,width:'100%' as const} : {position:'absolute' as const,right:16,bottom:100}),
     backgroundColor: blue,
     padding: 12,
     borderRadius: 24,
@@ -119,7 +117,7 @@ export function ChatInboxBadge() {
   }}><Text style={{
       color: 'white',
       fontWeight: '800'
-    }}>💬 {unread ? `${unread} mới` : 'Tin nhắn'}</Text></Pressable>;
+    }}>💬 Tin nhắn{unread ? ` (${unread})` : ''}</Text></Pressable>;
 }
 type Msg = {
   deletedAt?: string | null;

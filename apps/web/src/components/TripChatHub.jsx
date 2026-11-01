@@ -1,3 +1,5 @@
+import { createPortal } from 'react-dom';
+import { useFloatingActions } from './FloatingActionsContext';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../../../api/src/shared/tripChat.js';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -24,6 +26,7 @@ export function TripChatButton({
 const base = import.meta.env.VITE_API_BASE || 'http://localhost:5050';
 const makeId = () => crypto.randomUUID();
 export default function TripChatHub() {
+  const {dockTarget, dockDragRef} = useFloatingActions();
   const route = useLocation(),
     isAdmin = route.pathname.startsWith('/admin'),
     tokenKey = isAdmin ? 'admin_token' : 'gv247_customer_token';
@@ -358,17 +361,29 @@ export default function TripChatHub() {
     setPlaces([]);
   }
   const mapUrl = m => `https://www.google.com/maps/search/?api=1&query=${m.latitude},${m.longitude}`;
-  return <>{signed && !open && <Button variant="contained" onClick={() => {
+  const docked = !isAdmin && Boolean(dockTarget);
+  const launcher = signed && !open ? <Button variant="contained"
+    onPointerDown={event => docked && dockDragRef.current?.startDrag(event)}
+    onPointerMove={event => docked && dockDragRef.current?.moveDrag(event)}
+    onPointerUp={event => docked && dockDragRef.current?.finish(event)}
+    onPointerCancel={event => docked && dockDragRef.current?.finish(event)}
+    onLostPointerCapture={event => docked && dockDragRef.current?.finish(event)}
+    aria-label={`Tin nhắn chuyến${unread ? ` (${unread} chưa đọc)` : ''}, có thể kéo để di chuyển`}
+    onClick={event => {
+      if (docked && dockDragRef.current?.consumeClick(event)) return;
       setTripId('');
       setOpen(true);
     }} sx={{
-      position: 'fixed',
-      bottom: 100,
-      right: 20,
-      zIndex: 1400,
+      ...(!isAdmin && dockTarget ? {} : {position:'fixed',bottom:100,right:20,zIndex:1400}),
+      minHeight:44,
+      touchAction: docked ? 'none' : 'auto',
+      userSelect:'none',
+      cursor:docked ? 'grab' : 'pointer',
+      whiteSpace:'nowrap',
       borderRadius: 6,
       textTransform: 'none'
-    }}>💬 Tin nhắn {unread ? `(${unread})` : ''}</Button>}
+    }}>💬 Tin nhắn {unread ? `(${unread})` : ''}</Button> : null;
+  return <>{!isAdmin && dockTarget ? createPortal(launcher, dockTarget) : launcher}
  <Dialog open={open} onClose={close} fullWidth maxWidth="sm" sx={{zIndex:10020}}><DialogTitle sx={{
         display: 'flex',
         alignItems: 'center',
