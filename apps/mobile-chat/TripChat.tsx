@@ -1,3 +1,4 @@
+import DraggableFloatingAction from './DraggableFloatingAction';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -108,8 +109,9 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
     };
   }, []);
   if (!signed || path.includes('trip-chat') || /login|bootstrap|index|driver-profile/.test(path)) return null;
-  return <Pressable accessibilityLabel={`Tin nhắn chuyến, ${unread} chưa đọc`} onPress={() => router.push('/trip-chat' as any)} style={{
-    ...(inline ? {minHeight:48,alignItems:'center' as const,justifyContent:'center' as const,width:'100%' as const} : {position:'absolute' as const,right:16,bottom:100}),
+  const draggable = !inline && config?.role === 'ADMIN';
+  const action = <Pressable accessibilityLabel={`Tin nhắn chuyến, ${unread} chưa đọc${draggable ? ", có thể kéo để di chuyển" : ""}`} onPress={() => router.push('/trip-chat' as any)} style={{
+    ...(inline || draggable ? {minHeight:48,alignItems:'center' as const,justifyContent:'center' as const,width:'100%' as const} : {position:'absolute' as const,right:16,bottom:100}),
     backgroundColor: blue,
     padding: 12,
     borderRadius: 24,
@@ -118,6 +120,7 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
       color: 'white',
       fontWeight: '800'
     }}>💬 Tin nhắn{unread ? ` (${unread})` : ''}</Text></Pressable>;
+  return draggable ? <DraggableFloatingAction storageKey="goviet247_admin_inbox_position_v1">{action}</DraggableFloatingAction> : action;
 }
 type Msg = {
   deletedAt?: string | null;

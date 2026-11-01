@@ -1,3 +1,4 @@
+import useDraggableInbox from './useDraggableInbox';
 import { createPortal } from 'react-dom';
 import { useFloatingActions } from './FloatingActionsContext';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../../../api/src/shared/tripChat.js';
@@ -30,6 +31,7 @@ export default function TripChatHub() {
   const route = useLocation(),
     isAdmin = route.pathname.startsWith('/admin'),
     tokenKey = isAdmin ? 'admin_token' : 'gv247_customer_token';
+  const adminDrag = useDraggableInbox(isAdmin);
   const [open, setOpen] = useState(false),
     [tripId, setTripId] = useState(''),
     [items, setItems] = useState([]),
@@ -363,22 +365,23 @@ export default function TripChatHub() {
   const mapUrl = m => `https://www.google.com/maps/search/?api=1&query=${m.latitude},${m.longitude}`;
   const docked = !isAdmin && Boolean(dockTarget);
   const launcher = signed && !open ? <Button variant="contained"
-    onPointerDown={event => docked && dockDragRef.current?.startDrag(event)}
-    onPointerMove={event => docked && dockDragRef.current?.moveDrag(event)}
-    onPointerUp={event => docked && dockDragRef.current?.finish(event)}
-    onPointerCancel={event => docked && dockDragRef.current?.finish(event)}
-    onLostPointerCapture={event => docked && dockDragRef.current?.finish(event)}
+    ref={isAdmin ? adminDrag.ref : undefined}
+    onPointerDown={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.startDrag(event)}
+    onPointerMove={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.moveDrag(event)}
+    onPointerUp={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.finish(event)}
+    onPointerCancel={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.finish(event)}
+    onLostPointerCapture={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.finish(event)}
     aria-label={`Tin nhắn chuyến${unread ? ` (${unread} chưa đọc)` : ''}, có thể kéo để di chuyển`}
     onClick={event => {
-      if (docked && dockDragRef.current?.consumeClick(event)) return;
+      if ((docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.consumeClick(event)) return;
       setTripId('');
       setOpen(true);
     }} sx={{
-      ...(!isAdmin && dockTarget ? {} : {position:'fixed',bottom:100,right:20,zIndex:1400}),
+      ...(isAdmin ? adminDrag.style : dockTarget ? {} : {position:'fixed',bottom:100,right:20,zIndex:1400}),
       minHeight:44,
-      touchAction: docked ? 'none' : 'auto',
+      touchAction: docked || isAdmin ? 'none' : 'auto',
       userSelect:'none',
-      cursor:docked ? 'grab' : 'pointer',
+      cursor:docked || isAdmin ? 'grab' : 'pointer',
       whiteSpace:'nowrap',
       borderRadius: 6,
       textTransform: 'none'
