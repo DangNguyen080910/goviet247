@@ -8,7 +8,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "check:native": "node scripts/check-native-linking.cjs",
+    "eas-build-post-install": "node scripts/check-native-linking.cjs"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -45,7 +47,8 @@
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.5.1",
     "socket.io-client": "^4.8.3",
-    "expo-location": "~19.0.8"
+    "expo-location": "~19.0.8",
+    "@react-native-async-storage/async-storage": "2.2.0"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
