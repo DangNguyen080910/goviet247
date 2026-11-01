@@ -5,7 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  react-native-screens@4.16.0: 3839630cb03e41586eb662438a8fea3079aec7246c40720c4a9e603978cd695d
+  react-native-screens@4.16.0:
+    hash: 3839630cb03e41586eb662438a8fea3079aec7246c40720c4a9e603978cd695d
+    path: patches/react-native-screens@4.16.0.patch
 
 importers:
 
