@@ -2,7 +2,7 @@
   "expo": {
     "name": "GoViet247",
     "slug": "rider-mobile",
-    "version": "1.1.8",
+    "version": "1.1.9",
     "icon": "./assets/GoViet247_icon.png",
     "scheme": "ridermobile",
     "userInterfaceStyle": "automatic",
@@ -28,7 +28,9 @@
       "blockedPermissions": [
         "com.google.android.gms.permission.AD_ID"
       ],
-      "permissions": []
+      "permissions": [
+        "android.permission.CAMERA"
+      ]
     },
     "web": {
       "favicon": "./assets/GoViet247_icon.png"
@@ -68,6 +70,14 @@
         "expo-location",
         {
           "locationWhenInUsePermission": "Cho phép GoViet247 lấy vị trí khi bạn chọn gửi vị trí trong hội thoại."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Cho phép GoViet247 chụp ảnh để gửi trong hội thoại chuyến.",
+          "photosPermission": "Cho phép GoViet247 chọn ảnh để gửi trong hội thoại chuyến.",
+          "microphonePermission": "Cho phép GoViet247 ghi tin nhắn thoại khi bạn bấm ghi âm."
         }
       ]
     ],

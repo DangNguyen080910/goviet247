@@ -1,9 +1,10 @@
+import { prepareChatImage, CHAT_IMAGE_MAX_BYTES } from '../services/chatImage.js';
 import { recordBlockedChatContact } from '../services/chatContactAlert.js';
 import { Router } from 'express';
 import multer from 'multer';
 import { prisma } from '../utils/db.js';
 import { chatAuth, chatAccess, chatTripWhere, messageWhere, createChatMessage, deleteChatMessage, storeAudio, removeAudio, audioUrl } from '../services/tripChatService.js';
-import { chatCanSend, validateChatPayload, CHAT_QUICK_REPLIES } from '../shared/tripChat.js';
+import { chatCanSend, validateChatPayload, CHAT_QUICK_REPLIES, chatMessageForClient } from '../shared/tripChat.js';
 const router = Router();
 router.use(chatAuth);
 router.use((req, res, next) => { res.set("Cache-Control", "no-store"); next(); });
@@ -110,7 +111,7 @@ router.get('/conversations', wrap(async (req, res) => {
       tripId: trip.id,
       status: trip.status,
       unread,
-      last,
+      last: chatMessageForClient(last, req.query.media === 'images'),
       canSend: chatCanSend(trip, a)
     });
   }
@@ -186,7 +187,7 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
   }
   res.set('Cache-Control', 'no-store').json({
     success: true,
-    items,
+    items: items.map(m => chatMessageForClient(m, req.query.media === 'images')),
     hasMore,
     actor: a,
     canSend: chatCanSend(trip, a),
@@ -337,6 +338,37 @@ router.post('/:tripId/audio', async (req, res, next) => {
     if (key) await removeAudio(key).catch(() => {});
     throw e;
   }
+}));
+// Authorize before buffering the upload; createChatMessage rechecks assignment/status under lock.
+const uploadImage = multer({storage: multer.memoryStorage(), limits: {fileSize: CHAT_IMAGE_MAX_BYTES, files: 1, fields: 1, fieldSize: 200},
+  fileFilter: (req, file, cb) => cb(null, ['image/jpeg', 'image/png', 'image/webp'].includes(file.mimetype))
+}).single('image');
+router.post('/:tripId/image', async (req, res, next) => {
+  try {
+    const trip = await chatAccess(prisma, req.params.tripId, req.chatActor);
+    if (!chatCanSend(trip, req.chatActor)) return res.status(403).json({success:false, message:'Hội thoại chỉ đọc.'});
+    const recent = await prisma.tripChatMessage.count({where:{tripId:trip.id, senderId:req.chatActor.id, createdAt:{gte:new Date(Date.now()-60000)}}});
+    if (recent >= 20) return res.status(429).json({success:false, message:'Bạn gửi quá nhanh. Vui lòng chờ một phút.'});
+  } catch (e) { return res.status(e.status || 403).json({success:false, code:e.code, message:e.status ? e.message : 'Không có quyền gửi ảnh.'}); }
+  uploadImage(req, res, error => error ? res.status(400).json({success:false, message:'Mỗi lần gửi một ảnh JPEG, PNG hoặc WebP, tối đa 10 MB.'}) : next());
+}, wrap(async (req, res) => {
+  const clientId = String(req.body.clientId || '');
+  if (!req.file || !/^[a-zA-Z0-9_-]{8,100}$/.test(clientId)) return res.status(400).json({success:false, message:'Ảnh hoặc mã tin nhắn không hợp lệ.'});
+  const file = await prepareChatImage(req.file.buffer);
+  let key;
+  try {
+    key = await storeAudio(file, req.params.tripId);
+    const m = await createChatMessage(req.params.tripId, req.chatActor, {kind:'IMAGE', imageKey:key, imageMime:file.mimetype, clientId});
+    if (m.imageKey !== key) await removeAudio(key);
+    res.status(201).json({success:true, id:m.id});
+  } catch (e) { if (key) await removeAudio(key).catch(() => {}); throw e; }
+}));
+router.get('/:tripId/image/:id', wrap(async (req, res) => {
+  const actor = req.chatActor, trip = await chatAccess(prisma, req.params.tripId, actor);
+  const m = await prisma.tripChatMessage.findFirst({where:{...messageWhere(trip, actor), id:req.params.id, kind:'IMAGE', deletedAt:null}});
+  if (!m?.imageKey) return res.status(404).json({success:false, message:'Ảnh đã bị xoá hoặc không còn truy cập được.'});
+  if (actor.role === 'ADMIN') await prisma.tripChatAccess.create({data:{tripId:trip.id, actorId:actor.id, action:'VIEW_IMAGE'}});
+  res.json({success:true, url:await audioUrl(m.imageKey)});
 }));
 router.get('/:tripId/audio/:id', wrap(async (req, res) => {
   const a = req.chatActor,

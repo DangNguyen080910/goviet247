@@ -72,3 +72,9 @@ export function assertNoContactNumber(value) {
 
 export const RIDER_CHAT_ENDED_NOTICE = 'Chuyến đã kết thúc hoặc đã huỷ. Nếu cần hỗ trợ, vui lòng liên hệ GoViet247 qua mục Hỗ trợ hoặc Góp ý.';
 export function isRiderChatEnded(status) { return ['COMPLETED', 'CANCELLED'].includes(String(status || '').trim().toUpperCase()); }
+
+// Older installed clients treat unknown kinds as locations; never send them IMAGE.
+export function chatMessageForClient(message, supportsImages) {
+  if (!message || message.kind !== 'IMAGE' || supportsImages) return message;
+  return {...message, kind:'TEXT', text:message.deletedAt ? null : 'Hình ảnh trong chuyến. Vui lòng cập nhật ứng dụng hoặc mở GoViet247 trên Web để xem.'};
+}

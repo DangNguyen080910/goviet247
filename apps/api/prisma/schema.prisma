@@ -1034,6 +1034,9 @@ model TripChatMessage {
   clientId String
   kind String
   text String?
+  imageKey String?
+  imageMime String?
+  imageDeleteKey String?
   audioKey String?
   audioDeleteKey String?
   deletedAt DateTime? @db.Timestamptz(6)

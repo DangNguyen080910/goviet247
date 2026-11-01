@@ -26,6 +26,19 @@ export function TripChatButton({
 }
 const base = import.meta.env.VITE_API_BASE || 'http://localhost:5050';
 const makeId = () => crypto.randomUUID();
+function ChatImage({tripId, messageId, loadImage, onOpen}) {
+  const [url, setUrl] = useState(''), [failed, setFailed] = useState(false);
+  const loader = useRef(loadImage); loader.current = loadImage;
+  useEffect(() => {
+    let alive = true;
+    loader.current(`/${tripId}/image/${messageId}`).then(d => {if (alive) setUrl(d.url);}).catch(() => {if (alive) setFailed(true);});
+    return () => {alive=false;};
+  }, [tripId, messageId]);
+  return <Button onClick={onOpen} sx={{display:'block',p:0,textTransform:'none',textAlign:'left'}}>
+    {url && !failed ? <Box component="img" src={url} alt="Ảnh trong hội thoại chuyến" onError={() => setFailed(true)} sx={{display:'block',maxWidth:'100%',width:240,height:180,objectFit:'cover',borderRadius:2}} /> : <Typography sx={{p:2}}>{failed ? 'Ảnh chưa tải được · Bấm thử lại' : 'Đang tải ảnh…'}</Typography>}
+    <Typography fontSize={12}>Bấm xem ảnh lớn</Typography>
+  </Button>;
+}
 export default function TripChatHub() {
   const {dockTarget, dockDragRef} = useFloatingActions();
   const route = useLocation(),
@@ -52,6 +65,8 @@ export default function TripChatHub() {
     [places, setPlaces] = useState([]),
     [locationOpen, setLocationOpen] = useState(false),
     [signed, setSigned] = useState(false);
+  const [imageDraft, setImageDraft] = useState(null), [imageView, setImageView] = useState(null), [cameraOpen, setCameraOpen] = useState(false);
+  const imageInput = useRef(null), cameraInput = useRef(null), cameraVideo = useRef(null), cameraStream = useRef(null);
   const recorder = useRef(null),
     chunks = useRef([]),
     stream = useRef(null),
@@ -69,7 +84,7 @@ export default function TripChatHub() {
   async function api(path, options = {}) {
     const token = localStorage.getItem(tokenKey);
     if (!token) throw new Error('Vui lòng đăng nhập.');
-    const res = await fetch(`${base}/api/trip-chat${path}`, {
+    const res = await fetch(`${base}/api/trip-chat${path}${path.includes('?') ? '&' : '?'}media=images`, {
       ...options,
       headers: {
         ...(options.body instanceof FormData ? {} : {
@@ -82,7 +97,7 @@ export default function TripChatHub() {
     const d = await res.json();
     if (!res.ok) {
       if (d.code === 'RIDER_CHAT_ENDED') {
-        activeRequest.current++; audio.current?.pause(); setItems([]); setCanSend(false); setOpen(false);
+        activeRequest.current++; audio.current?.pause(); setImageView(null); setImageDraft(null); setItems([]); setCanSend(false); setOpen(false);
         window.alert(RIDER_CHAT_ENDED_NOTICE);
       }
       throw new Error(d.message || 'Không tải được hội thoại.');
@@ -183,6 +198,7 @@ export default function TripChatHub() {
       d.items.forEach(m => map.set(m.id, m));
       return [...map.values()].sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id));
     });
+    setImageView(current => current && d.items.some(m => m.id === current.id && m.deletedAt) ? null : current);
     setActor(d.actor);
     setCanSend(d.canSend);
     setReplies(d.quickReplies || []);
@@ -205,6 +221,10 @@ export default function TripChatHub() {
   useEffect(() => {
     activeRequest.current++;
     setItems([]);
+    setImageDraft(null);
+    setImageView(null);
+    stopCamera();
+    setCanSend(false);
     setError('');
     setText('');
     setLocation(null);
@@ -228,6 +248,7 @@ export default function TripChatHub() {
     };
   }, [open, tripId, tokenKey]);
   useEffect(() => () => {
+    cameraStream.current?.getTracks().forEach(t => t.stop());
     abort.current = true;
     recorder.current?.stop();
     stream.current?.getTracks().forEach(t => t.stop());
@@ -249,6 +270,8 @@ export default function TripChatHub() {
     return () => document.removeEventListener('visibilitychange', hidden);
   }, []);
   function close() {
+    stopCamera();
+    setImageView(null);
     if (recorder.current?.state === 'recording') recorder.current.stop();
     audio.current?.pause();
     setOpen(false);
@@ -327,6 +350,52 @@ export default function TripChatHub() {
     audio.current = a;
     await a.play();
   }
+  async function prepareImage(file, generation = activeRequest.current) {
+    if (!file) return;
+    if (!['image/jpeg','image/png','image/webp'].includes(file.type)) throw new Error('Chọn ảnh JPEG, PNG hoặc WebP.');
+    if (file.size > 10 * 1024 * 1024) throw new Error('Ảnh tối đa 10 MB. Vui lòng chọn ảnh nhỏ hơn.');
+    const url = URL.createObjectURL(file);
+    try {
+      const img = new Image(); img.src = url; await img.decode();
+      if (img.naturalWidth * img.naturalHeight > 40000000) throw new Error('Ảnh quá lớn. Vui lòng chọn ảnh dưới 40 megapixel.');
+      const scale = Math.min(1,1920/Math.max(img.naturalWidth,img.naturalHeight));
+      const canvas = document.createElement('canvas'); canvas.width = Math.max(1,Math.round(img.naturalWidth*scale)); canvas.height = Math.max(1,Math.round(img.naturalHeight*scale));
+      const ctx = canvas.getContext('2d'); ctx.fillStyle = '#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      const blob = await new Promise(resolve => canvas.toBlob(resolve,'image/jpeg',0.82));
+      if (!blob) throw new Error('Không xử lý được ảnh. Vui lòng chọn ảnh khác.');
+      if (generation !== activeRequest.current) return;
+      setLocationOpen(false); setImageDraft({blob,clientId:makeId()});
+    } finally {URL.revokeObjectURL(url);}
+  }
+  async function sendImage() {
+    if (!imageDraft) return;
+    const generation = activeRequest.current;
+    const form = new FormData();form.append('image',imageDraft.blob,'photo.jpg');form.append('clientId',imageDraft.clientId);
+    await api(`/${tripId}/image`,{method:'POST',body:form});
+    if (generation !== activeRequest.current) return;
+    setImageDraft(null); await load();
+  }
+  async function viewImage(id) {
+    const generation = activeRequest.current;
+    const d = await api(`/${tripId}/image/${id}`);
+    if (generation === activeRequest.current) setImageView({id,url:d.url});
+  }
+  function stopCamera() {cameraStream.current?.getTracks().forEach(t => t.stop());cameraStream.current=null;setCameraOpen(false);}
+  async function startCamera() {
+    if (!navigator.mediaDevices?.getUserMedia) throw new Error('Không mở được camera. Bạn có thể chọn ảnh có sẵn.');
+    const generation = activeRequest.current;
+    const input = await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+    if (generation !== activeRequest.current) {input.getTracks().forEach(t => t.stop());return;}
+    cameraStream.current=input;setCameraOpen(true);
+  }
+  async function captureImage() {
+    const video=cameraVideo.current, generation=activeRequest.current;
+    if (!video?.videoWidth) throw new Error('Camera chưa sẵn sàng. Vui lòng thử lại.');
+    const canvas=document.createElement('canvas');canvas.width=video.videoWidth;canvas.height=video.videoHeight;canvas.getContext('2d').drawImage(video,0,0);
+    const blob=await new Promise(resolve => canvas.toBlob(resolve,'image/jpeg',0.82));
+    stopCamera();if (blob) await prepareImage(new File([blob],'photo.jpg',{type:'image/jpeg'}),generation);
+  }
+  useEffect(() => {if (!imageDraft) return;const url=URL.createObjectURL(imageDraft.blob);setImageDraft(current => current?.blob === imageDraft.blob ? {...current,url} : current);return () => URL.revokeObjectURL(url);},[imageDraft?.blob]);
   async function currentLocation() {
     const p = await new Promise((resolve, reject) => navigator.geolocation ? navigator.geolocation.getCurrentPosition(resolve, reject, {
       enableHighAccuracy: true,
@@ -404,7 +473,7 @@ export default function TripChatHub() {
             textAlign: 'left',
             justifyContent: 'flex-start',
             textTransform: 'none'
-          }}><Box><Typography fontWeight={800}>#{c.tripId.slice(-8).toUpperCase()} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography><Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button>)}</Stack> : <>
+          }}><Box><Typography fontWeight={800}>#{c.tripId.slice(-8).toUpperCase()} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography><Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button>)}</Stack> : <>
  <Typography sx={{
             p: 1.5,
             fontSize: 12,
@@ -439,12 +508,13 @@ export default function TripChatHub() {
               }}>Tin nhắn đã được GoViet247 xoá.</Typography> : m.kind === 'TEXT' ? <Typography sx={{
                 whiteSpace: 'pre-wrap',
                 overflowWrap: 'anywhere'
-              }}>{m.text}</Typography> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording} onClick={() => run(() => listen(m))}>▶ Nghe · {Math.ceil(m.durationMs / 1000)}s</Button><Button onClick={() => audio.current?.pause()}>Dừng</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
+              }}>{m.text}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording} onClick={() => run(() => listen(m))}>▶ Nghe · {Math.ceil(m.durationMs / 1000)}s</Button><Button onClick={() => audio.current?.pause()}>Dừng</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
                 textAlign: 'left',
                 textTransform: 'none'
               }}>📍 {m.locationLabel}<br />Vị trí tại thời điểm gửi · Mở bản đồ</Button>}{actor.role === 'ADMIN' && !m.deletedAt && <Button size="small" color="error" disabled={busy} onClick={() => {
                 if (window.confirm('Xoá nội dung tin nhắn khỏi hội thoại? Thao tác sẽ được lưu nhật ký.')) void run(async () => {
                   audio.current?.pause();
+                  setImageView(null);
                   await api(`/${tripId}/messages/${m.id}`, {
                     method: 'DELETE'
                   });
@@ -483,14 +553,16 @@ export default function TripChatHub() {
                   setLocationOpen(false);
                   await load();
                 })}>Gửi vị trí này</Button></>}<Button onClick={() => setLocationOpen(false)}>Đóng chọn vị trí</Button></Stack>}
- {draft ? <><audio controls src={draft.url} /><Stack direction="row"><Button disabled={busy} onClick={() => run(sendAudio)}>Gửi ghi âm</Button><Button disabled={busy} onClick={() => {
+ <input hidden type="file" accept="image/jpeg,image/png,image/webp" ref={imageInput} onChange={e => {const file=e.target.files?.[0];e.target.value='';if (file) void run(() => prepareImage(file));}} />
+ <input hidden type="file" accept="image/*" capture="environment" ref={cameraInput} onChange={e => {const file=e.target.files?.[0];e.target.value='';if (file) void run(() => prepareImage(file));}} />
+ {imageDraft ? <><Typography fontWeight={700}>Xem trước ảnh</Typography><Box component="img" src={imageDraft.url} alt="Ảnh sắp gửi" sx={{width:'100%',maxHeight:220,objectFit:'contain'}} /><Stack direction="row"><Button disabled={busy} variant="contained" onClick={() => run(sendImage)}>{busy ? 'Đang gửi…' : 'Gửi ảnh'}</Button><Button disabled={busy} onClick={() => setImageDraft(null)}>Bỏ ảnh</Button></Stack></> : draft ? <><audio controls src={draft.url} /><Stack direction="row"><Button disabled={busy} onClick={() => run(sendAudio)}>Gửi ghi âm</Button><Button disabled={busy} onClick={() => {
                   URL.revokeObjectURL(draft.url);
                   setDraft(null);
                 }}>Xoá ghi âm</Button></Stack></> : <><TextField multiline maxRows={4} placeholder="Nhắn tin cho chuyến…" value={text} onChange={e => setText(e.target.value)} slotProps={{
                 htmlInput: {
                   maxLength: 2000
                 }
-              }} disabled={busy || recording} /><Stack direction="row" flexWrap="wrap" gap={1}><Button variant="contained" disabled={busy || recording || !text.trim()} onClick={() => run(sendText)}>Gửi</Button><Button disabled={busy} onClick={() => recording ? recorder.current?.stop() : run(record)}>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Button><Button disabled={busy || recording} onClick={() => setLocationOpen(v => !v)}>📍 Vị trí</Button></Stack></>}
+              }} disabled={busy || recording} /><Stack direction="row" flexWrap="wrap" gap={1}><Button variant="contained" disabled={busy || recording || !text.trim()} onClick={() => run(sendText)}>Gửi</Button><Button disabled={busy} onClick={() => recording ? recorder.current?.stop() : run(record)}>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Button><Button disabled={busy || recording} onClick={() => setLocationOpen(v => !v)}>📍 Vị trí</Button><Button disabled={busy || recording} onClick={() => imageInput.current?.click()}>🖼 Chọn ảnh</Button><Button disabled={busy || recording} onClick={() => /Android|iPhone|iPad/i.test(navigator.userAgent) ? cameraInput.current?.click() : run(startCamera)}>📷 Chụp ảnh</Button></Stack></>}
  <Typography sx={{
               fontSize: 11,
               color: '#64748b'
@@ -498,5 +570,7 @@ export default function TripChatHub() {
  {'Notification' in window && Notification.permission === 'default' && <Button onClick={() => Notification.requestPermission()}>Cho phép thông báo trên trình duyệt</Button>}
  </Stack>}
  </>}
- </DialogContent></Dialog></>;
+ </DialogContent></Dialog>
+ <Dialog open={cameraOpen} onClose={stopCamera} fullWidth maxWidth="sm" sx={{zIndex:10040}}><DialogTitle>Chụp ảnh gửi trong chuyến</DialogTitle><DialogContent><Box component="video" ref={video => {cameraVideo.current=video;if(video && cameraStream.current){video.srcObject=cameraStream.current;video.play().catch(() => {});}}} autoPlay muted playsInline sx={{width:'100%',borderRadius:2}} /><Stack direction="row"><Button disabled={busy} onClick={() => run(captureImage)}>Chụp ảnh</Button><Button onClick={stopCamera}>Đóng camera</Button></Stack></DialogContent></Dialog>
+ <Dialog open={Boolean(imageView)} onClose={() => setImageView(null)} fullWidth maxWidth="lg" sx={{zIndex:10050}}><DialogTitle sx={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>Ảnh trong hội thoại<IconButton aria-label="Đóng ảnh" onClick={() => setImageView(null)}>×</IconButton></DialogTitle><DialogContent>{imageView && <Box component="img" src={imageView.url} alt="Ảnh trong chuyến" onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} sx={{display:'block',width:'100%',maxHeight:'75vh',objectFit:'contain'}} />}</DialogContent></Dialog></>;
 }

@@ -2,11 +2,12 @@ import DraggableFloatingAction from './DraggableFloatingAction';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { AppState, Alert, Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { AppState, Alert, Image, Modal, Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams, usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Audio } from 'expo-av';
 import * as Location from 'expo-location';
+import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
 import * as Haptics from 'expo-haptics';
 type Config = {
@@ -25,7 +26,7 @@ export function isChatVisible(data: Record<string, unknown>) {
 async function api(path: string, options: RequestInit = {}) {
   const token = await config.getToken();
   if (!token) throw new Error('Vui lòng đăng nhập.');
-  const response = await fetch(`${config.base}/api/trip-chat${path}`, {
+  const response = await fetch(`${config.base}/api/trip-chat${path}${path.includes('?') ? '&' : '?'}media=images`, {
     ...options,
     headers: {
       ...(options.body instanceof FormData ? {} : {
@@ -135,6 +136,19 @@ type Msg = {
   locationLabel?: string;
   durationMs?: number;
 };
+function ChatImage({tripId, messageId, onOpen}: {tripId:string; messageId:string; onOpen:()=>void}) {
+  const [uri, setUri] = useState('');
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    api(`/${tripId}/image/${messageId}`).then(d => {if (alive) setUri(d.url);}).catch(() => {if (alive) setFailed(true);});
+    return () => {alive = false;};
+  }, [tripId, messageId]);
+  return <Pressable accessibilityRole="button" accessibilityLabel="Xem ảnh chuyến" onPress={onOpen}>
+    {uri && !failed ? <Image source={{uri}} resizeMode="cover" style={{width:220,height:165,borderRadius:10,maxWidth:'100%'}} onError={() => setFailed(true)} /> : <Text style={{padding:20,color:blue}}>{failed ? 'Ảnh chưa tải được · Bấm thử lại' : 'Đang tải ảnh…'}</Text>}
+    <Text style={{color:blue,fontSize:12,marginTop:5}}>Bấm xem ảnh lớn</Text>
+  </Pressable>;
+}
 export default function TripChatScreen() {
   const focused = useIsFocused();
   const params = useLocalSearchParams<{
@@ -151,6 +165,9 @@ export default function TripChatScreen() {
     [busy, setBusy] = useState(false),
     [more, setMore] = useState(false),
     [older, setOlder] = useState(false);
+  const [imageDraft, setImageDraft] = useState<{uri:string; type:string; name:string; clientId:string} | null>(null);
+  const [imageView, setImageView] = useState<{id:string; uri:string} | null>(null);
+  const sending = useRef(false);
   const [recording, setRecording] = useState(false),
     [draft, setDraft] = useState<{
       uri: string;
@@ -175,7 +192,8 @@ export default function TripChatScreen() {
     [places, setPlaces] = useState<any[]>([]),
     [pickLocation, setPickLocation] = useState(false);
   const run = async (fn: () => Promise<any>) => {
-    if (busy) return;
+    if (sending.current) return;
+    sending.current = true;
     setBusy(true);
     setError('');
     try {
@@ -183,6 +201,7 @@ export default function TripChatScreen() {
     } catch (e: any) {
       setError(e.message || 'Không thực hiện được.');
     } finally {
+      sending.current = false;
       if (mounted.current) setBusy(false);
     }
   };
@@ -198,12 +217,13 @@ export default function TripChatScreen() {
     catch (error: any) {
       if (error.code === 'RIDER_CHAT_ENDED' && version === generation.current && mounted.current) {
         generation.current++;
-        setItems([]); setCanSend(false); setMore(false); setReplies([]);
+        setItems([]); setImageView(null); setImageDraft(null); setCanSend(false); setMore(false); setReplies([]);
         await sound.current?.unloadAsync(); sound.current = null; setPlaying('');
       }
       throw error;
     }
     if (!mounted.current || version !== generation.current) return;
+    setImageView(current => current && d.items.some((m:Msg) => m.id === current.id && m.deletedAt) ? null : current);
     setActor(d.actor);
     setCanSend(d.canSend);
     setReplies(d.quickReplies || []);
@@ -234,6 +254,9 @@ export default function TripChatScreen() {
     setOlder(false);
     olderRef.current = false;
     setDraft(null);
+    setImageDraft(null);
+    setImageView(null);
+    setCanSend(false);
     setText('');
     const refresh = () => {
       if (AppState.currentState === 'active') void load().catch((e: any) => mounted.current && setError(e.message));
@@ -365,6 +388,40 @@ export default function TripChatScreen() {
     setDraft(null);
     await load();
   }
+  async function chooseImage(camera: boolean) {
+    const version = generation.current;
+    if (camera) {
+      const permission = await ImagePicker.requestCameraPermissionsAsync();
+      if (!permission.granted) throw new Error('Vui lòng cho phép camera để chụp ảnh, hoặc chọn ảnh có sẵn.');
+    }
+    const options: ImagePicker.ImagePickerOptions = {mediaTypes:['images'], quality:0.75, allowsMultipleSelection:false, exif:false,
+      preferredAssetRepresentationMode:ImagePicker.UIImagePickerPreferredAssetRepresentationMode.Compatible};
+    const result = camera ? await ImagePicker.launchCameraAsync(options) : await ImagePicker.launchImageLibraryAsync(options);
+    if (result.canceled || !mounted.current || version !== generation.current) return;
+    const asset = result.assets[0];
+    if ((asset.fileSize || 0) > 10 * 1024 * 1024) throw new Error('Ảnh tối đa 10 MB. Vui lòng chọn ảnh nhỏ hơn.');
+    setPickLocation(false);
+    setImageDraft({uri:asset.uri, type:asset.mimeType && ['image/jpeg','image/png','image/webp'].includes(asset.mimeType) ? asset.mimeType : 'image/jpeg', name:asset.fileName || 'photo.jpg', clientId:id()});
+  }
+  async function sendImage() {
+    if (!imageDraft) return;
+    const version = generation.current;
+    const data = new FormData();
+    if (Platform.OS === 'web') {
+      const blob = await (await fetch(imageDraft.uri)).blob();
+      data.append('image', blob, imageDraft.name);
+    } else data.append('image', {uri:imageDraft.uri, type:imageDraft.type, name:imageDraft.name} as any);
+    data.append('clientId', imageDraft.clientId);
+    await api(`/${tripId}/image`, {method:'POST',body:data});
+    if (!mounted.current || version !== generation.current) return;
+    setImageDraft(null);
+    await load();
+  }
+  async function viewImage(messageId:string) {
+    const version = generation.current;
+    const d = await api(`/${tripId}/image/${messageId}`);
+    if (mounted.current && version === generation.current) setImageView({id:messageId,uri:d.url});
+  }
   async function currentLocation() {
     const permission = await Location.requestForegroundPermissionsAsync();
     if (!permission.granted) throw new Error('Không có quyền GPS. Bạn có thể tìm địa chỉ bên dưới.');
@@ -435,7 +492,7 @@ export default function TripChatScreen() {
         marginBottom: 10
       }} onPress={() => router.push(`/trip-chat?tripId=${c.tripId}` as any)}><Text style={{
           fontWeight: '800'
-        }}>#{c.tripId.slice(-8).toUpperCase()} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text><Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text></Pressable>)}</ScrollView> : <>
+        }}>#{c.tripId.slice(-8).toUpperCase()} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text><Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text></Pressable>)}</ScrollView> : <>
  <Text style={{
         padding: 10,
         color: '#64748b',
@@ -475,7 +532,7 @@ export default function TripChatScreen() {
             color: ink,
             fontSize: 15,
             lineHeight: 22
-          }}>{m.text}</Text> : m.kind === 'AUDIO' ? <Pressable disabled={recording} style={button} onPress={() => void run(async () => {
+          }}>{m.text}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording} style={button} onPress={() => void run(async () => {
             const d = await api(`/${tripId}/audio/${m.id}`);
             await play(d.url, m.id);
           })}><Text style={{
@@ -497,6 +554,7 @@ export default function TripChatScreen() {
               await sound.current?.unloadAsync();
               sound.current = null;
               setPlaying('');
+              setImageView(null);
               await api(`/${tripId}/messages/${m.id}`, {
                 method: 'DELETE'
               });
@@ -551,7 +609,7 @@ export default function TripChatScreen() {
             setPickLocation(false);
             setLocation(null);
           }}><Text>Đóng chọn vị trí</Text></Pressable></View>}
- {draft ? <View style={{
+ {imageDraft ? <View style={{padding:8}}><Text style={{color:ink,fontWeight:'700'}}>Xem trước ảnh</Text><Image source={{uri:imageDraft.uri}} resizeMode="contain" style={{height:170,width:'100%',marginVertical:8}} /><View style={{flexDirection:'row'}}><Pressable disabled={busy} style={button} onPress={() => void run(sendImage)}><Text style={{color:blue,fontWeight:'800'}}>{busy ? 'Đang gửi…' : 'Gửi ảnh'}</Text></Pressable><Pressable disabled={busy} style={button} onPress={() => setImageDraft(null)}><Text>Bỏ ảnh</Text></Pressable></View></View> : draft ? <View style={{
           flexDirection: 'row',
           flexWrap: 'wrap'
         }}><Pressable style={button} onPress={() => void run(() => play(draft.uri, 'draft'))}><Text>{playing === 'draft' ? 'Dừng nghe' : '▶ Nghe lại'} · {Math.ceil(draft.durationMs / 1000)}s</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(sendAudio)}><Text>Gửi ghi âm</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => {
@@ -574,12 +632,15 @@ export default function TripChatScreen() {
           }}><Pressable style={button} disabled={busy || recording || !text.trim()} onPress={() => void run(sendText)}><Text style={{
                 fontWeight: '800',
                 color: blue
-              }}>Gửi</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(recording ? stopRecording : startRecording)}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => setPickLocation(v => !v)}><Text>📍 Vị trí</Text></Pressable></View></>}
+              }}>Gửi</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(recording ? stopRecording : startRecording)}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => setPickLocation(v => !v)}><Text>📍 Vị trí</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(() => chooseImage(true))}><Text>📷 Chụp ảnh</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(() => chooseImage(false))}><Text>🖼 Chọn ảnh</Text></Pressable></View></>}
  <Text style={{
           fontSize: 11,
           color: '#64748b'
         }}>Ghi âm tối đa 60 giây. Vui lòng dừng xe an toàn trước khi thao tác.</Text>
  </View>}
  </>}
+ <Modal visible={Boolean(imageView)} transparent animationType="fade" onRequestClose={() => setImageView(null)}>
+ <SafeAreaView style={{flex:1,backgroundColor:'rgba(0,0,0,0.96)'}}><Pressable accessibilityLabel="Đóng ảnh" onPress={() => setImageView(null)} style={{padding:18,alignSelf:'flex-end'}}><Text style={{color:'white',fontSize:18}}>Đóng ✕</Text></Pressable>{imageView && <Image source={{uri:imageView.uri}} resizeMode="contain" style={{flex:1,width:'100%'}} onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} />}</SafeAreaView>
+ </Modal>
  </SafeAreaView>;
 }

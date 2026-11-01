@@ -91,11 +91,11 @@ export function messageWhere(trip, actor) {
 }
 export async function privateAudioBucket() {
   const Bucket = process.env.TRIP_CHAT_AUDIO_BUCKET;
-  if (!Bucket) throw fail('Chưa cấu hình kho ghi âm riêng tư.', 503);
+  if (!Bucket) throw fail('Chưa cấu hình kho tệp hội thoại riêng tư.', 503);
   const result = await s3.send(new GetPublicAccessBlockCommand({
     Bucket
   }));
-  if (!['BlockPublicAcls', 'IgnorePublicAcls', 'BlockPublicPolicy', 'RestrictPublicBuckets'].every(k => result.PublicAccessBlockConfiguration?.[k])) throw fail('Kho ghi âm phải chặn truy cập công khai.', 503);
+  if (!['BlockPublicAcls', 'IgnorePublicAcls', 'BlockPublicPolicy', 'RestrictPublicBuckets'].every(k => result.PublicAccessBlockConfiguration?.[k])) throw fail('Kho tệp hội thoại phải chặn truy cập công khai.', 503);
   return Bucket;
 }
 export async function storeAudio(file, tripId) {
@@ -176,25 +176,24 @@ export async function deliverChatPush() {
   delivering = true;
   try {
     const deletions = await prisma.tripChatMessage.findMany({
-      where: {
-        audioDeleteKey: {
-          not: null
-        }
-      },
+      where: { OR: [{audioDeleteKey: {not: null}}, {imageDeleteKey: {not: null}}] },
       take: 20,
       select: {
         id: true,
-        audioDeleteKey: true
+        audioDeleteKey: true,
+        imageDeleteKey: true
       }
     });
     for (const item of deletions) try {
       await removeAudio(item.audioDeleteKey);
+      await removeAudio(item.imageDeleteKey);
       await prisma.tripChatMessage.update({
         where: {
           id: item.id
         },
         data: {
-          audioDeleteKey: null
+          audioDeleteKey: null,
+          imageDeleteKey: null
         }
       });
     } catch (error) {
@@ -296,7 +295,7 @@ export async function deliverChatPush() {
         const notifications = eligible.filter(d => /^(ExponentPushToken|ExpoPushToken)\[/.test(d.pushToken)).map(d => ({
           to: d.pushToken,
           title: `Liên hệ chuyến #${trip.id.slice(-8).toUpperCase()}`,
-          body: `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
+          body: `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'IMAGE' ? 'hình ảnh' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
           sound: d.role.toLowerCase() === 'driver' ? 'new_trip.wav' : 'default',
           channelId: d.role.toLowerCase() === 'driver' ? 'trip_chat_v1' : 'trip_chat_default_v1',
           priority: 'high',
@@ -366,6 +365,9 @@ export async function deleteChatMessage(db, tripId, messageId, actor) {
         deletedAt: new Date(),
         deletedBy: actor.id,
         text: null,
+        imageDeleteKey: message.imageKey,
+        imageKey: null,
+        imageMime: null,
         audioDeleteKey: message.audioKey,
         audioKey: null,
         audioMime: null,
