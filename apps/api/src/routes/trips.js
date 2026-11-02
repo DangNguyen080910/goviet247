@@ -81,7 +81,7 @@ router.post("/estimate", estimateTrip);
  * 2️⃣ Tạo chuyến đi mới (Rider tạo cuốc)
  * POST /api/trips
  */
-router.post("/", optionalVerifyToken, async (req, res) => {
+export async function createTripHandler(req, res) {
   try {
     const riderId = req.user?.uid || req.user?.id || null;
 
@@ -350,6 +350,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
 
     const trip = await createBookableTrip(prisma, {
       riderId,
+      ...(req.partnerTripData || {}),
       pickupAddress,
       pickupLat: pickupLat != null ? Number(pickupLat) : null,
       pickupLng: pickupLng != null ? Number(pickupLng) : null,
@@ -383,7 +384,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       isVerified: false,
     });
 
-    await prisma.tripStop.createMany({
+    if (!req.partnerTripData) await prisma.tripStop.createMany({
       data: stops.map((addr, idx) => ({
         tripId: trip.id,
         seq: idx + 1,
@@ -397,6 +398,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
     if (io) {
       const adminPayload = {
         source: "create_trip",
+        partnerCompanyName: trip.partnerCompanyName || null,
         tripId: trip.id,
         status: trip.status,
         fromStatus: null,
@@ -420,7 +422,7 @@ router.post("/", optionalVerifyToken, async (req, res) => {
     try {
       await sendAdminPushNotification({
         title: "🚨 Có chuyến mới chờ duyệt",
-        body: `${riderName || "Khách hàng"} vừa đặt chuyến mới.`,
+        body: `${req.partnerTripData?.partnerCompanyName ? "Đối tác " + req.partnerTripData.partnerCompanyName : riderName || "Khách hàng"} vừa đặt chuyến mới.`,
         data: {
           source: "create_trip",
           tripId: trip.id,
@@ -447,7 +449,8 @@ router.post("/", optionalVerifyToken, async (req, res) => {
       message: err.message || "Không thể tạo chuyến đi.",
     });
   }
-});
+}
+router.post("/", optionalVerifyToken, createTripHandler);
 
 // Lịch sử chuyến của customer đang đăng nhập
 router.get("/my", verifyToken, listMyCustomerTrips);

@@ -304,7 +304,7 @@ async function sendExpoPushMessages(messages) {
  */
 export async function sendNewTripToDrivers(trip) {
   try {
-    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true } });
+    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true, partnerCompanyId: true } });
     if (!audience || !Array.isArray(audience.audienceDriverIds)) return;
     let devices = await prisma.device.findMany({
       where: {
@@ -342,7 +342,7 @@ export async function sendNewTripToDrivers(trip) {
       return;
     }
 
-    const title = "🚗 Cuốc mới";
+    const title = audience.partnerCompanyId ? "🚗 Cuốc mới · Khách đối tác" : "🚗 Cuốc mới";
     const pickupMasked = maskAddress(trip.pickupAddress);
     const dropoffMasked = maskAddress(trip.dropoffAddress);
     const pickup = shortText(pickupMasked, 32);

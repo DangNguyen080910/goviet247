@@ -7,6 +7,7 @@ import { verifyAdminJwtToken } from './utils/jwt.js';
 // Path: goviet247/apps/api/src/server.js
 import express from "express";
 import cors from "cors";
+import partnerRoutes from "./routes/partners.js";
 import helmet from "helmet";
 import morgan from "morgan";
 import http from "http";
@@ -77,6 +78,7 @@ const corsOptions = {
 };
 
 // --- Middlewares ---
+app.use("/api/partners/company", express.json({limit:"3mb"}));
 app.use(express.json());
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
@@ -105,6 +107,7 @@ app.get("/", (req, res) => {
 });
 
 // --- REST routes ---
+app.use("/api/partners", partnerRoutes);
 app.use("/api/trip-chat", tripChatRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/driver/documents", driverDocumentsRoutes);

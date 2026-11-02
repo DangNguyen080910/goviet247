@@ -1,6 +1,7 @@
 export const CHAT_ACTIVE_STATUSES = ['ACCEPTED', 'CONTACTED', 'IN_PROGRESS'];
 export const CHAT_QUICK_REPLIES = {
   DRIVER: ['Tôi xác nhận nhận chuyến và sẽ đón đúng lịch đã đặt.', 'Tôi đã đến điểm đón.', 'Anh/chị vui lòng gửi vị trí.', 'Tôi sẽ phản hồi khi dừng xe an toàn.'],
+  PARTNER: ['Bên điều phối đã nhận thông tin.', 'Vui lòng chờ, chúng tôi đang liên hệ khách.', 'Khách đang ra điểm đón.'],
   RIDER: ['Tôi xác nhận chuyến và sẽ có mặt tại điểm đón đúng giờ đã đặt.', 'Tôi đang ra.', 'Tôi đang ở điểm đón đã gửi.', 'Tôi cần hỗ trợ tìm xe.'],
   ADMIN: ['GoViet247 đang kiểm tra.', 'Anh/chị vui lòng xác nhận điểm đón.', 'Thông tin chuyến đã được cập nhật.']
 };

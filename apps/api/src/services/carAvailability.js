@@ -13,6 +13,23 @@ export async function createBookableTrip(db, data) {
   return db.$transaction(async tx => {
     await tx.$queryRawUnsafe('SELECT "carType" FROM "PricingConfig" WHERE "carType"::text = $1 FOR SHARE', data.carType);
     await assertCarTypeBookable(tx, data.carType);
-    return tx.trip.create({ data });
+    const {partnerStops, partnerAuditData, partnerSessionVersion, ...tripData} = data;
+    if (tripData.partnerCompanyId) {
+      await tx.$queryRawUnsafe('SELECT "id" FROM "PartnerCompany" WHERE "id" = $1 FOR SHARE', tripData.partnerCompanyId);
+      const company = await tx.partnerCompany.findUnique({where:{id:tripData.partnerCompanyId}});
+      if (!company?.isActive) throw Object.assign(new Error("Công ty đã bị khóa."), {status:409});
+    }
+    if (tripData.partnerCompanyId) {
+      const assigned=await tx.partnerMember.findUnique({where:{id:tripData.partnerAssignedToId}});
+      if(!assigned?.isActive || assigned.companyId!==tripData.partnerCompanyId) throw Object.assign(new Error("Điều phối viên không còn hoạt động."),{status:409});
+      if(tripData.partnerCreatedById) {
+        const creator=await tx.partnerMember.findUnique({where:{id:tripData.partnerCreatedById}});
+        if(!creator?.isActive || creator.mustChangePassword || creator.sessionVersion!==partnerSessionVersion) throw Object.assign(new Error("Phiên đăng nhập đã thay đổi. Vui lòng đăng nhập lại."),{status:409});
+      }
+    }
+    const trip = await tx.trip.create({data:tripData});
+    if (partnerStops) await tx.tripStop.createMany({data:partnerStops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
+    if (partnerAuditData) await tx.partnerAuditLog.create({data:{...partnerAuditData,targetId:trip.id}});
+    return trip;
   });
 }

@@ -270,7 +270,68 @@ model Session {
   @@index([userId])
 }
 
+enum PartnerRole {
+  ADMIN
+  DISPATCHER
+}
+
+model PartnerCompany {
+  id String @id @default(cuid())
+  code String @unique @db.VarChar(50)
+  name String @db.VarChar(150)
+  managementName String @db.VarChar(150)
+  managementPhone String @db.VarChar(30)
+  logoUrl String?
+  greeting String @default("") @db.VarChar(500)
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+  members PartnerMember[]
+  trips Trip[]
+  auditLogs PartnerAuditLog[]
+}
+
+model PartnerMember {
+  id String @id @default(cuid())
+  companyId String
+  company PartnerCompany @relation(fields: [companyId], references: [id], onDelete: Restrict)
+  username String @db.VarChar(50)
+  displayName String @db.VarChar(150)
+  passwordHash String
+  role PartnerRole @default(DISPATCHER)
+  isActive Boolean @default(true)
+  mustChangePassword Boolean @default(true)
+  sessionVersion Int @default(0)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  createdTrips Trip[] @relation("PartnerTripCreator")
+  assignedTrips Trip[] @relation("PartnerTripAssignee")
+  @@unique([companyId, username])
+}
+
+model PartnerAuditLog {
+  id String @id @default(cuid())
+  companyId String
+  company PartnerCompany @relation(fields: [companyId], references: [id], onDelete: Restrict)
+  actorId String
+  actorLabel String
+  action String
+  targetId String?
+  detail Json?
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  @@index([companyId, createdAt])
+}
+
 model Trip {
+  partnerCompanyId String?
+  partnerCompany PartnerCompany? @relation(fields: [partnerCompanyId], references: [id], onDelete: Restrict)
+  partnerCompanyName String?
+  partnerGreeting String?
+  partnerCreatedById String?
+  partnerCreatedBy PartnerMember? @relation("PartnerTripCreator", fields: [partnerCreatedById], references: [id], onDelete: Restrict)
+  partnerAssignedToId String?
+  partnerAssignedTo PartnerMember? @relation("PartnerTripAssignee", fields: [partnerAssignedToId], references: [id], onDelete: Restrict)
+  @@index([partnerCompanyId, pickupTime])
+
   chatMessages TripChatMessage[]
   chatReads TripChatRead[]
   chatAccesses TripChatAccess[]
@@ -1025,6 +1086,10 @@ model SeoRoute {
 }
 
 model TripChatMessage {
+  // ALL for ordinary chat; acceptance notices target one side plus GoViet247.
+  audience String @default("ALL")
+  recipientId String?
+
   id String @id @default(cuid())
   tripId String
   trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)

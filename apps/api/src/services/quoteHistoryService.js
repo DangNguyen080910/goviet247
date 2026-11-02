@@ -38,7 +38,7 @@ export async function recordQuoteHistory(req, quote) {
       customerName: text(context.customerName, 150) || user?.displayName || null,
       customerPhone: text(context.customerPhone, 40) || user?.phones?.[0]?.e164 || null,
       identityVerified: Boolean(user),
-      source: ["WEB", "ANDROID", "IOS"].includes(context.source) ? context.source : "UNKNOWN",
+      source: ["WEB", "ANDROID", "IOS", "PARTNER"].includes(context.source) ? context.source : "UNKNOWN",
       pickupAddress: text(context.pickupAddress, 800), stops,
       pickupTime: new Date(input.pickupTime),
       returnTime: input.returnTime ? new Date(input.returnTime) : null,

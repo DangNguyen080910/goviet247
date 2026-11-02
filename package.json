@@ -8,7 +8,12 @@
     "dev:web": "pnpm --filter @goviet247/web dev",
     "db:migrate": "pnpm --filter @goviet247/api prisma migrate dev --name init",
     "docker:up": "docker compose -f infra/docker-compose.yml up -d",
-    "docker:down": "docker compose -f infra/docker-compose.yml down -v"
+    "docker:down": "docker compose -f infra/docker-compose.yml down -v",
+    "dev:partners": "pnpm --filter @goviet247/web-partners dev",
+    "build:partners": "pnpm --filter @goviet247/web-partners build"
   },
-  "workspaces": ["apps/*", "packages/*"]
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

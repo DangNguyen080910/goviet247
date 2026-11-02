@@ -55,7 +55,7 @@ import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
 import { useLocation, useNavigate } from "react-router-dom";
 import DestinationService, { ServiceSummary } from "./DestinationService";
 import { destinationWindows, destinationConfig } from "../../../../../packages/shared/destinationService.js";
-import { quotePrice } from "../../api/pricing";
+import { quotePrice as customerQuotePrice } from "../../api/pricing";
 import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
 import { requestOtp, verifyOtp, getMe } from "../../api/auth";
@@ -215,10 +215,11 @@ function formatWeekdayHeader(day) {
     .toUpperCase();
 }
 
-export default function BookingCard() {
+export default function BookingCard({ partner = null }) {
+  const quotePrice = partner?.quote || customerQuotePrice;
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, login } = useCustomerAuth();
+  const { user, login } = useCustomerAuth() || {};
   const suggestedFrom =
     location.state?.source === "seo-route" &&
     !/^(các tỉnh|theo nhu cầu)$/i.test(String(location.state.routeFrom || ""))
@@ -1021,9 +1022,9 @@ export default function BookingCard() {
     );
   }, [numericDistanceKm, minDistanceKm, maxDistanceKm]);
 
-  const isNameValid = riderName.trim().length >= 2;
+  const isNameValid = Boolean(partner) || riderName.trim().length >= 2;
 
-  const isPhoneValid = isValidVietnamPhone(riderPhone);
+  const isPhoneValid = Boolean(partner) || isValidVietnamPhone(riderPhone);
 
   const currentStopsRef = useRef(stops);
   currentStopsRef.current = stops;
@@ -1770,14 +1771,14 @@ export default function BookingCard() {
       return;
     }
 
-    if (!user) {
+    if (!user && !partner) {
       await handleOpenGuestOtpDialog(payload);
       return;
     }
 
     setIsCreating(true);
     try {
-      const res = await createTrip(payload);
+      const res = await (partner ? partner.createTrip({...payload,riderName:"",riderPhone:""}) : createTrip(payload));
 
       const tripId =
         res?.trip?.id ||
@@ -1845,7 +1846,7 @@ export default function BookingCard() {
     resetFormAfterSuccess();
 
     if (mustRedirect) {
-      navigate("/ho-so", { replace: true });
+      navigate(partner ? partner.successPath || "/chuyen-xe" : "/ho-so", { replace: true });
     }
   };
 
@@ -2354,10 +2355,10 @@ export default function BookingCard() {
                 <Typography
                   sx={{ fontWeight: 800, fontSize: 13, opacity: 0.85 }}
                 >
-                  Thông tin khách
+                  {partner ? "Ghi chú điều phối" : "Thông tin khách"}
                 </Typography>
 
-                <TextField
+                {!partner && <TextField
                   label="Tên khách hàng"
                   value={riderName}
                   onChange={(e) => setRiderName(e.target.value)}
@@ -2371,9 +2372,9 @@ export default function BookingCard() {
                       ? "Vui lòng nhập tên (tối thiểu 2 ký tự)."
                       : ""
                   }
-                />
+                />}
 
-                <TextField
+                {!partner && <TextField
                   label="Số điện thoại"
                   value={riderPhone}
                   onChange={(e) =>
@@ -2388,7 +2389,7 @@ export default function BookingCard() {
                   helperText={
                     showPhoneError ? "Vui lòng nhập đúng số điện thoại." : ""
                   }
-                />
+                />}
 
                 <TextField
                   label="Ghi chú (tuỳ chọn)"
@@ -2599,7 +2600,7 @@ export default function BookingCard() {
         )}
 
         {/* Tải ứng dụng: đặt sau luồng booking để không cạnh tranh với CTA chính */}
-        <Box
+        {!partner && <Box
           component="section"
           aria-labelledby="booking-app-download-title"
           sx={{
@@ -2698,7 +2699,7 @@ export default function BookingCard() {
               </Button>
             </Stack>
           </Stack>
-        </Box>
+        </Box>}
       </Box>
 
       {/* Back to top button */}

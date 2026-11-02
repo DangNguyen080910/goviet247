@@ -3129,12 +3129,12 @@ export function makeAdminController(prisma) {
 
             // 👤 Người đặt (account tạo chuyến)
             creatorName:
-              t.rider?.displayName || t.rider?.phones?.[0]?.e164 || "",
+              t.partnerCompanyName || t.rider?.displayName || t.rider?.phones?.[0]?.e164 || "",
 
             creatorPhone: t.rider?.phones?.[0]?.e164 || "",
 
             // 🚕 Hành khách thực tế
-            riderName: t.riderName || "Khách",
+            riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName || "Khách",
             riderPhone: t.riderPhone || "",
 
             pickupAddress: t.pickupAddress,
@@ -3243,7 +3243,7 @@ export function makeAdminController(prisma) {
         const driverPhone = trip?.driver?.phones?.[0]?.e164 || "";
         const creatorPhone = trip?.rider?.phones?.[0]?.e164 || "";
         const creatorName =
-          trip?.rider?.displayName || creatorPhone || "Chưa có người đặt";
+          trip?.partnerCompanyName || trip?.rider?.displayName || creatorPhone || "Chưa có người đặt";
 
         res.json({
           success: true,
@@ -4757,7 +4757,7 @@ export function makeAdminController(prisma) {
         const items = trips.map((t) => ({
           ...adminTripMoney(t, moneyConfig),
           id: t.id,
-          riderName: t.riderName,
+          riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName,
           riderPhone: t.riderPhone,
           pickupAddress: t.pickupAddress,
           dropoffAddress: t.dropoffAddress,
@@ -4797,7 +4797,7 @@ export function makeAdminController(prisma) {
         const items = trips.map((t) => ({
           ...adminTripMoney(t, moneyConfig),
           id: t.id,
-          riderName: t.riderName,
+          riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName,
           riderPhone: t.riderPhone,
           pickupAddress: t.pickupAddress,
           dropoffAddress: t.dropoffAddress,

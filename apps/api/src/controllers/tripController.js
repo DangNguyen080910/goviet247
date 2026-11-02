@@ -1,3 +1,4 @@
+import { createAcceptanceChatNotices } from "../services/tripAcceptanceChat.js";
 import { hasActiveTripContact, riderDriverContact } from "../shared/tripContact.js";
 import { lockTripMilestones, recordTripMilestone } from "../services/tripMilestoneService.js";
 import { adminTripMoney } from "../services/adminTripMoney.js";
@@ -282,9 +283,12 @@ function maskRiderPhone() {
 function serializeDriverTrip(trip, scope = "active", extra = {}) {
   const stops = Array.isArray(trip?.stops) ? trip.stops : [];
 
+  const {partnerCompanyId, partnerCreatedById, partnerAssignedToId, partnerCompany, partnerCreatedBy, partnerAssignedTo, partnerCompanyName, partnerGreeting, ...safeTrip} = trip;
   const base = {
-    ...trip,
-    ...extra,
+    ...safeTrip, ...extra,
+    isPartnerTrip:Boolean(partnerCompanyId),
+    partnerCompanyName:scope === "active" ? partnerCompanyName || null : null,
+    partnerGreeting:scope === "active" ? partnerGreeting || null : null,
   };
 
   if (scope === "available") {
@@ -801,7 +805,7 @@ export async function getTripById(req, res) {
     const userId = req.user?.id || req.user?.uid;
     const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, userId);
     const tripPhoneNumbers = phoneVariants(trip?.riderPhone);
-    const canViewAsPassenger = tripPhoneNumbers.some((phone) => phoneNumbers.includes(phone));
+    const canViewAsPassenger = !trip?.partnerCompanyId && tripPhoneNumbers.some((phone) => phoneNumbers.includes(phone));
 
     if (!trip || (trip.riderId !== userId && !canViewAsPassenger && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
     const { dispatcherNote, verifiedNote, ...publicTrip } = trip;
@@ -871,6 +875,7 @@ export async function listAvailableTrips(req, res) {
       return serializeDriverTrip(
         {
           id: t.id,
+          partnerCompanyId: t.partnerCompanyId,
           pickupAddress: t.pickupAddress,
           dropoffAddress: t.dropoffAddress,
           stops: t.stops || [],
@@ -1135,6 +1140,8 @@ export async function acceptTrip(req, res) {
           driverReceiveSnapshot: finance.driverReceiveAmount,
         },
       });
+
+      await createAcceptanceChatNotices(tx, updated);
 
       const riderNotification = await createRiderTripNotification(tx, updated, {
         reason: "driver_accept_trip",
@@ -2256,10 +2263,10 @@ export async function adminGetPendingTrips(req, res) {
       return {
         tripId: t.id,
 
-        riderName: t.riderName,
+        riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName,
         riderPhone: t.riderPhone,
 
-        creatorName: t?.rider?.displayName || t?.riderName || "",
+        creatorName: t.partnerCompanyName || t?.rider?.displayName || t?.riderName || "",
 
         creatorPhone: t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
 
@@ -2345,7 +2352,7 @@ export async function adminGetTripDetail(req, res) {
         creatorPhone: trip?.riderPhone || "",
 
         // 🚖 Hành khách
-        riderName: trip?.riderName || "Khách",
+        riderName: trip?.partnerCompanyName ? `Đối tác · ${trip.partnerCompanyName}` : trip?.riderName || "Khách",
 
         riderPhone: trip?.riderPhone || "",
 
@@ -2794,9 +2801,10 @@ export async function adminListUnverifiedTrips(req, res) {
 
     const mapped = items.map((t) => ({
       ...t,
+      riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName,
       ...adminTripMoney(t, moneyConfig),
 
-      creatorName: t?.rider?.displayName || t?.riderName || "",
+      creatorName: t.partnerCompanyName || t?.rider?.displayName || t?.riderName || "",
 
       creatorPhone: t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
     }));

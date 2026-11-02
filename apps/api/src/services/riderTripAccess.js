@@ -28,6 +28,7 @@ export async function getVerifiedRiderPhoneVariants(db, userId) {
 }
 
 export async function getTripRiderRecipientUserIds(db, trip) {
+  if (trip?.partnerCompanyId) return [];
   const userIds = new Set();
   const ownerId = String(trip?.riderId || "").trim();
   if (ownerId) userIds.add(ownerId);
@@ -48,7 +49,7 @@ export function riderTripAccessWhere(userId, phoneNumbers = []) {
   const normalizedUserId = String(userId || "").trim();
   if (normalizedUserId) OR.push({ riderId: normalizedUserId });
   if (phoneNumbers.length) OR.push({ riderPhone: { in: phoneNumbers } });
-  return OR.length ? { OR } : { id: "__no_rider_trip_access__" };
+  return OR.length ? { partnerCompanyId: null, OR } : { id: "__no_rider_trip_access__" };
 }
 
 export async function emitRiderTripUpdate(io, db, trip, payload = {}) {

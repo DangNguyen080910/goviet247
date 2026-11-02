@@ -1,3 +1,4 @@
+import { chatAudienceLabel } from '../api/src/shared/tripChatVisibility.js';
 import DraggableFloatingAction from './DraggableFloatingAction';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
@@ -128,6 +129,8 @@ type Msg = {
   id: string;
   senderId: string;
   senderLabel: string;
+  senderRole?: string;
+  audience?: string;
   kind: string;
   text?: string;
   createdAt: string;
@@ -524,7 +527,7 @@ export default function TripChatScreen() {
             fontWeight: '700',
             color: '#475569',
             marginBottom: 5
-          }}>{m.senderLabel}</Text>
+          }}>{m.senderLabel}</Text>{config.role === 'ADMIN' && m.senderRole === 'SYSTEM' && <Text style={{fontSize:11,color:'#64748b',marginBottom:4}}>{chatAudienceLabel(m.audience)}</Text>}
  {m.deletedAt ? <Text style={{
             fontStyle: 'italic',
             color: '#64748b'

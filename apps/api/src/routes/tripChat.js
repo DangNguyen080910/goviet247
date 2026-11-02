@@ -22,6 +22,7 @@ const wrap = fn => async (req, res) => {
 };
 const fields = {
   deletedAt: true,
+  audience: true,
   id: true,
   tripId: true,
   senderId: true,
@@ -66,12 +67,13 @@ router.get('/conversations', wrap(async (req, res) => {
     const a = {
       ...actor
     };
+    let authorizedTrip;
     try {
-      await chatAccess(prisma, trip.id, a);
+      authorizedTrip = await chatAccess(prisma, trip.id, a);
     } catch {
       continue;
     }
-    const where = messageWhere(trip, a);
+    const where = messageWhere(authorizedTrip, a);
     const read = await prisma.tripChatRead.findUnique({
       where: {
         tripId_actorId: {

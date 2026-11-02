@@ -424,6 +424,7 @@ export default function AdminLayout() {
   ];
 
   const adminOnlyMenu = [
+    { label: "Đối tác", icon: <PeopleIcon />, to: "/admin/partners" },
     { label: "Lịch sử tính giá", icon: <ScheduleIcon />, to: "/admin/quote-history" },
     { label: "Cấu Hình", icon: <SettingsIcon />, to: "/admin/config" },
     {

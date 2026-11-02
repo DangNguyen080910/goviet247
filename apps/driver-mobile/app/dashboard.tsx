@@ -1254,7 +1254,7 @@ export default function DashboardScreen() {
             </Text>
           </View>
 
-          <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
+          <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Khách đối tác" : ""}</Text>
           <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>
@@ -1437,8 +1437,13 @@ export default function DashboardScreen() {
             </Text>
           </View>
 
-          <Text style={styles.tripTitle}>{getTripTitle(trip)}</Text>
-          <TripChatButton tripId={trip.id} label="Liên hệ khách / GoViet247" prominent />
+          <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Khách đối tác" : ""}</Text>
+          {trip.isPartnerTrip && <View style={{padding:12,backgroundColor:'#e6f4f1',borderRadius:8,marginBottom:8}}>
+            <Text style={{fontWeight:'700'}}>Khách đối tác · {trip.partnerCompanyName}</Text>
+            <Text>{trip.partnerGreeting}</Text>
+            <Text>Chỉ trao đổi với điều phối viên qua chat GoViet247. Điều phối viên liên hệ khách.</Text>
+          </View>}
+          <TripChatButton tripId={trip.id} label={trip.isPartnerTrip ? "Chat điều phối viên / GoViet247" : "Liên hệ khách / GoViet247"} prominent />
           <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>

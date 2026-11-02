@@ -37,6 +37,9 @@ export type DriverTripStop = {
 
 export type AvailableTripItem = {
   id: string;
+  isPartnerTrip?: boolean;
+  partnerCompanyName?: string | null;
+  partnerGreeting?: string | null;
   pickupAddress: string;
   pickupAddressMasked?: string;
   dropoffAddress: string;
@@ -69,6 +72,9 @@ export type AvailableTripItem = {
 
 export type MyTripItem = {
   id: string;
+  isPartnerTrip?: boolean;
+  partnerCompanyName?: string | null;
+  partnerGreeting?: string | null;
   pickupAddress: string;
   pickupAddressMasked?: string;
   dropoffAddress: string;

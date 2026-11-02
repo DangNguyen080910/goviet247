@@ -1,10 +1,14 @@
+import { chatAudienceWhere } from '../shared/tripChatVisibility.js';
+import { chatPushRecipientIds } from './tripAcceptanceChat.js';
+import { verifyPartnerToken } from './partnerAccess.js';
+import jwt from 'jsonwebtoken';
 import { randomUUID } from 'node:crypto';
 import { S3Client, PutObjectCommand, GetObjectCommand, GetPublicAccessBlockCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { prisma } from '../utils/db.js';
 import { userSessions } from './userSessions.js';
 import { verifyAdminJwtToken } from '../utils/jwt.js';
-import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere, getTripRiderRecipientUserIds } from './riderTripAccess.js';
+import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere } from './riderTripAccess.js';
 import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
 import { activeDriverDevices } from './driverPushAccess.js';
 const s3 = new S3Client({
@@ -16,6 +20,12 @@ const fail = (message, status = 403) => Object.assign(new Error(message), {
 export async function chatAuth(req, res, next) {
   try {
     const token = String(req.headers.authorization || '').replace(/^Bearer /, '');
+    if (jwt.decode(token)?.aud === 'goviet247-partners') {
+      const member = await verifyPartnerToken(token);
+      if(member.mustChangePassword) throw fail('Vui lòng đổi mật khẩu ban đầu.',403);
+      req.chatActor={id:`partner-${member.id}`,memberId:member.id,companyId:member.companyId,role:'PARTNER',label:`${member.company.name} · ${member.displayName}`};
+      return next();
+    }
     let admin;
     try {
       admin = verifyAdminJwtToken(token);
@@ -57,6 +67,13 @@ export async function chatAccess(db, tripId, actor) {
   });
   if (!trip) throw fail('Không tìm thấy hội thoại.', 404);
   if (actor.role === 'ADMIN') return trip;
+  if (actor.role === 'PARTNER') {
+    const member=await db.partnerMember.findUnique({where:{id:actor.memberId},include:{company:true}});
+    if(!member?.isActive || !member.company.isActive || member.mustChangePassword || member.companyId!==trip.partnerCompanyId) throw fail('Không có quyền xem hội thoại.');
+    if (member.role!=='ADMIN' && trip.partnerAssignedToId!==member.id) throw fail('Chỉ điều phối viên phụ trách được xem hội thoại.');
+    if (isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE),{code:'RIDER_CHAT_ENDED'});
+    return trip;
+  }
   if (trip.driverId === actor.id) {
     const profile = await db.driverProfile.findUnique({
       where: {
@@ -71,6 +88,7 @@ export async function chatAccess(db, tripId, actor) {
     actor.label = 'Tài xế';
     return trip;
   }
+  if (trip.partnerCompanyId) throw fail('Không có quyền xem hội thoại.');
   const phones = await getVerifiedRiderPhoneVariants(db, actor.id);
   if (trip.riderId !== actor.id && !phoneVariants(trip.riderPhone).some(p => phones.includes(p))) throw fail('Không có quyền xem hội thoại.');
   if (isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE), {code:'RIDER_CHAT_ENDED'});
@@ -82,6 +100,7 @@ export function messageWhere(trip, actor) {
   // A replacement driver must not inherit the former driver's conversation.
   return {
     tripId: trip.id,
+    AND: [chatAudienceWhere(actor)],
     ...(actor.role === 'DRIVER' && trip.acceptedAt ? {
       createdAt: {
         gte: trip.acceptedAt
@@ -163,6 +182,7 @@ export async function createChatMessage(tripId, actor, data) {
 }
 export async function chatTripWhere(actor) {
   if (actor.role === 'ADMIN') return {};
+  if (actor.role === 'PARTNER') return {partnerCompanyId:actor.companyId,...(actor.memberId ? {OR:[{partnerAssignedToId:actor.memberId},{partnerCompany:{members:{some:{id:actor.memberId,role:'ADMIN',isActive:true}}}}]}:{id:'__no_partner_access__'})};
   const phones = await getVerifiedRiderPhoneVariants(prisma, actor.id);
   return {
     OR: [{
@@ -251,16 +271,7 @@ export async function deliverChatPush() {
           }
         });
         if (!trip) continue;
-        const riders = isRiderChatEnded(trip.status) ? [] : await getTripRiderRecipientUserIds(prisma, trip);
-        const admins = await prisma.admin_users.findMany({
-          where: {
-            is_active: true
-          },
-          select: {
-            id: true
-          }
-        });
-        const ids = [...new Set([...riders, ...(trip.driverId && (!trip.acceptedAt || m.createdAt >= trip.acceptedAt) ? [trip.driverId] : []), ...admins.map(a => `admin-${a.id}`)])].filter(id => id !== m.senderId);
+        const ids = await chatPushRecipientIds(prisma, trip, m);
         const reads = await prisma.tripChatRead.findMany({
           where: {
             tripId: m.tripId,
@@ -295,7 +306,7 @@ export async function deliverChatPush() {
         const notifications = eligible.filter(d => /^(ExponentPushToken|ExpoPushToken)\[/.test(d.pushToken)).map(d => ({
           to: d.pushToken,
           title: `Liên hệ chuyến #${trip.id.slice(-8).toUpperCase()}`,
-          body: `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'IMAGE' ? 'hình ảnh' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
+          body: m.senderRole === 'SYSTEM' ? m.text || 'Có thông báo mới về chuyến.' : `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'IMAGE' ? 'hình ảnh' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
           sound: d.role.toLowerCase() === 'driver' ? 'new_trip.wav' : 'default',
           channelId: d.role.toLowerCase() === 'driver' ? 'trip_chat_v1' : 'trip_chat_default_v1',
           priority: 'high',

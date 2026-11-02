@@ -1,3 +1,4 @@
+import { chatAudienceLabel } from '../../../api/src/shared/tripChatVisibility.js';
 import useDraggableInbox from './useDraggableInbox';
 import { createPortal } from 'react-dom';
 import { useFloatingActions } from './FloatingActionsContext';
@@ -39,11 +40,11 @@ function ChatImage({tripId, messageId, loadImage, onOpen}) {
     <Typography fontSize={12}>Bấm xem ảnh lớn</Typography>
   </Button>;
 }
-export default function TripChatHub() {
+export default function TripChatHub({ partnerTokenKey = null }) {
   const {dockTarget, dockDragRef} = useFloatingActions();
   const route = useLocation(),
     isAdmin = route.pathname.startsWith('/admin'),
-    tokenKey = isAdmin ? 'admin_token' : 'gv247_customer_token';
+    tokenKey = partnerTokenKey || (isAdmin ? 'admin_token' : 'gv247_customer_token');
   const adminDrag = useDraggableInbox(isAdmin);
   const [open, setOpen] = useState(false),
     [tripId, setTripId] = useState(''),
@@ -495,14 +496,14 @@ export default function TripChatHub() {
               maxWidth: '90%',
               p: 1.5,
               borderRadius: 3,
-              bgcolor: m.senderId === actor.id ? '#dbeafe' : 'white',
+              bgcolor: m.senderRole === 'SYSTEM' ? '#eef2ff' : m.senderId === actor.id ? '#dbeafe' : 'white',
               border: '1px solid #e2e8f0'
             }}><Typography sx={{
                 fontSize: 12,
                 color: '#475569',
                 fontWeight: 700,
                 mb: 0.5
-              }}>{m.senderLabel}</Typography>{m.deletedAt ? <Typography sx={{
+              }}>{m.senderLabel}</Typography>{actor.role === 'ADMIN' && m.senderRole === 'SYSTEM' && <Typography sx={{fontSize:11,color:'#64748b',mb:0.5}}>{chatAudienceLabel(m.audience)}</Typography>}{m.deletedAt ? <Typography sx={{
                 fontStyle: 'italic',
                 color: '#64748b'
               }}>Tin nhắn đã được GoViet247 xoá.</Typography> : m.kind === 'TEXT' ? <Typography sx={{
