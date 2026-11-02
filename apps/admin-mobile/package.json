@@ -8,7 +8,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "check:native": "node ../mobile-chat/check-native-linking.cjs",
+    "eas-build-post-install": "node ../mobile-chat/check-native-linking.cjs"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
