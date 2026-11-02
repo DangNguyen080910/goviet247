@@ -42,7 +42,7 @@ The initial password must be changed before booking, chatting or managing staff.
 2. Install locked dependencies and generate Prisma Client.
 3. Apply migrations using `prisma migrate deploy` as part of the normal release.
 4. Build and release the API, Admin web and partner web together.
-5. Set partner `VITE_API_BASE` to the production API origin before building.
+5. `.env.production` supplies `VITE_API_BASE=https://api.goviet247.com` for normal production builds. Override it only with an intentional HTTPS API origin. Production builds reject missing, HTTP or loopback API URLs; development still uses localhost.
 6. Serve `apps/web-partners/dist` with HTTPS and SPA fallback to `index.html` for all application paths.
 7. Provision DNS/TLS for `partners.goviet247.com` and append that exact origin to API `CORS_ORIGINS`.
 8. Build/release driver-mobile to show partner labels and the company greeting. Older apps can still use existing chat, but do not show the new partner-specific labels.
