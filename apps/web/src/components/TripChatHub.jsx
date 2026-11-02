@@ -45,7 +45,8 @@ export default function TripChatHub({ partnerTokenKey = null }) {
   const route = useLocation(),
     isAdmin = route.pathname.startsWith('/admin'),
     tokenKey = partnerTokenKey || (isAdmin ? 'admin_token' : 'gv247_customer_token');
-  const adminDrag = useDraggableInbox(isAdmin);
+  const draggableInbox = isAdmin || Boolean(partnerTokenKey);
+  const inboxDrag = useDraggableInbox(draggableInbox, partnerTokenKey ? 'goviet247-partner-inbox-position' : undefined);
   const [open, setOpen] = useState(false),
     [tripId, setTripId] = useState(''),
     [items, setItems] = useState([]),
@@ -435,23 +436,23 @@ export default function TripChatHub({ partnerTokenKey = null }) {
   const mapUrl = m => `https://www.google.com/maps/search/?api=1&query=${m.latitude},${m.longitude}`;
   const docked = !isAdmin && Boolean(dockTarget);
   const launcher = signed && !open ? <Button variant="contained"
-    ref={isAdmin ? adminDrag.ref : undefined}
-    onPointerDown={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.startDrag(event)}
-    onPointerMove={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.moveDrag(event)}
-    onPointerUp={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.finish(event)}
-    onPointerCancel={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.finish(event)}
-    onLostPointerCapture={event => (docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.finish(event)}
+    ref={!docked && draggableInbox ? inboxDrag.ref : undefined}
+    onPointerDown={event => (docked ? dockDragRef.current : draggableInbox ? inboxDrag : null)?.startDrag(event)}
+    onPointerMove={event => (docked ? dockDragRef.current : draggableInbox ? inboxDrag : null)?.moveDrag(event)}
+    onPointerUp={event => (docked ? dockDragRef.current : draggableInbox ? inboxDrag : null)?.finish(event)}
+    onPointerCancel={event => (docked ? dockDragRef.current : draggableInbox ? inboxDrag : null)?.finish(event)}
+    onLostPointerCapture={event => (docked ? dockDragRef.current : draggableInbox ? inboxDrag : null)?.finish(event)}
     aria-label={`Tin nhắn chuyến${unread ? ` (${unread} chưa đọc)` : ''}, có thể kéo để di chuyển`}
     onClick={event => {
-      if ((docked ? dockDragRef.current : isAdmin ? adminDrag : null)?.consumeClick(event)) return;
+      if ((docked ? dockDragRef.current : draggableInbox ? inboxDrag : null)?.consumeClick(event)) return;
       setTripId('');
       setOpen(true);
     }} sx={{
-      ...(isAdmin ? adminDrag.style : dockTarget ? {} : {position:'fixed',bottom:100,right:20,zIndex:1400}),
+      ...(docked ? {} : draggableInbox ? inboxDrag.style : {position:'fixed',bottom:100,right:20,zIndex:1400}),
       minHeight:44,
-      touchAction: docked || isAdmin ? 'none' : 'auto',
+      touchAction: docked || draggableInbox ? 'none' : 'auto',
       userSelect:'none',
-      cursor:docked || isAdmin ? 'grab' : 'pointer',
+      cursor:docked || draggableInbox ? 'grab' : 'pointer',
       whiteSpace:'nowrap',
       borderRadius: 6,
       textTransform: 'none'

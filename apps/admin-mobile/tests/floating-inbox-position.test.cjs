@@ -3,11 +3,19 @@ const e={};const code=ts.transpileModule(fs.readFileSync(path.join(__dirname,'..
 test('admin inbox positions stay in safe screen area after dragging or restoring invalid values',()=>{
  for(const b of [{width:320,height:568,top:20,bottom:0},{width:390,height:844,top:47,bottom:34},{width:844,height:390,top:0,bottom:21}]) {
   for(const size of [{width:172,height:48},{width:172,height:90}])for(const value of [null,{x:9999,y:9999},{x:-100,y:-100},{x:NaN,y:Infinity}]) {
-   const p=e.constrainFloatingPoint(value,b,size,true);assert(Number.isFinite(p.x)&&Number.isFinite(p.y));assert(p.x>=16);assert(p.x+size.width<=b.width-16);assert(p.y>=b.top+8);assert(p.y+size.height<=b.height-b.bottom-88);
+   const p=e.constrainFloatingPoint(value,b,size,true);assert(Number.isFinite(p.x)&&Number.isFinite(p.y));assert(p.x>=16);assert(p.x+size.width<=b.width-16);assert(p.y>=b.top+8);assert(p.y+size.height<=b.height-b.bottom-8);
   }
  }
 });
 test('screen rotation clamps a previously saved portrait position',()=>{
  const size={width:172,height:48},portrait=e.constrainFloatingPoint(null,{width:390,height:844,top:47,bottom:34},size);
- const p=e.constrainFloatingPoint(portrait,{width:844,height:390,top:0,bottom:21},size,true);assert(p.x+172<=828);assert(p.y+48<=281);
+ const p=e.constrainFloatingPoint(portrait,{width:844,height:390,top:0,bottom:21},size,true);assert(p.x+172<=828);assert(p.y+48<=361);
+});
+
+test('dragging down reaches 8 points above the system safe area, with no extra 88-point barrier',()=>{
+ const bounds={width:390,height:844,top:47,bottom:34},size={width:172,height:48};
+ const bottom=e.constrainFloatingPoint({x:9999,y:9999},bounds,size,true);
+ assert.equal(bottom.y+size.height,844-34-8);
+ const initial=e.constrainFloatingPoint(null,bounds,size);
+ assert.equal(bottom.y-initial.y,80);
 });

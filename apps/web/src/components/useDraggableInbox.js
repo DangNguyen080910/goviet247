@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 const STORAGE_KEY='goviet247-admin-inbox-position';
-export default function useDraggableInbox(enabled) {
+export default function useDraggableInbox(enabled, storageKey = STORAGE_KEY) {
  const [node,setNode]=useState(null),[position,setPosition]=useState(null);
  const point=useRef(null),gesture=useRef(null),suppress=useRef(false);
  function clamp(value,snap=false) {
@@ -16,19 +16,19 @@ export default function useDraggableInbox(enabled) {
  useEffect(()=>{
   if(!enabled||!node)return;
   let saved=point.current;
-  if(!saved)try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY));}catch{}
+  if(!saved)try{saved=JSON.parse(localStorage.getItem(storageKey));}catch{}
   move(clamp(saved));
   const resize=()=>move(clamp(point.current,true));
   const observer=typeof ResizeObserver!=='undefined'?new ResizeObserver(resize):null;observer?.observe(node);
   window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);window.visualViewport?.addEventListener('scroll',resize);
   return()=>{observer?.disconnect();window.removeEventListener('resize',resize);window.visualViewport?.removeEventListener('resize',resize);window.visualViewport?.removeEventListener('scroll',resize);};
- },[enabled,node]);
+ },[enabled,node,storageKey]);
  return {
   ref:setNode,
   style:position?{position:'fixed',left:position.x,top:position.y,zIndex:1400}:{position:'fixed',bottom:100,right:20,zIndex:1400},
   startDrag(event){if(!event.isPrimary||event.button!==0)return;suppress.current=false;gesture.current={id:event.pointerId,x:event.clientX,y:event.clientY,origin:point.current||clamp(null),moved:false};event.currentTarget.setPointerCapture(event.pointerId);},
   moveDrag(event){const g=gesture.current;if(!g||g.id!==event.pointerId)return;const dx=event.clientX-g.x,dy=event.clientY-g.y;if(!g.moved&&Math.hypot(dx,dy)<6)return;g.moved=true;suppress.current=true;move(clamp({x:g.origin.x+dx,y:g.origin.y+dy}));},
-  finish(event){const g=gesture.current;if(!g||g.id!==event.pointerId)return;gesture.current=null;if(g.moved){const next=clamp(point.current,true);move(next);try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next));}catch{}}if(event.currentTarget.hasPointerCapture(event.pointerId))event.currentTarget.releasePointerCapture(event.pointerId);},
+  finish(event){const g=gesture.current;if(!g||g.id!==event.pointerId)return;gesture.current=null;if(g.moved){const next=clamp(point.current,true);move(next);try{localStorage.setItem(storageKey,JSON.stringify(next));}catch{}}if(event.currentTarget.hasPointerCapture(event.pointerId))event.currentTarget.releasePointerCapture(event.pointerId);},
   consumeClick(event){const blocked=suppress.current&&event.detail!==0;suppress.current=false;if(blocked){event.preventDefault();event.stopPropagation();}return blocked;}
  };
 }
