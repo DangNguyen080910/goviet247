@@ -121,6 +121,7 @@ router.get('/conversations', wrap(async (req, res) => {
   res.json({
     success: true,
     items,
+    actorId: actor.id,
     unread: items.reduce((s, i) => s + i.unread, 0)
   });
 }));

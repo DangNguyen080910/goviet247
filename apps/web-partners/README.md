@@ -53,8 +53,8 @@ No production migration, DNS update, account creation, mobile submission or depl
 
 ## Data and permissions
 
-- Management phone/name live only on `PartnerCompany`; only GoViet247 ADMIN receives them.
-  They are never copied into `riderPhone` or used for passenger lookup.
+- Management contact lives on `PartnerCompany`; new trips keep partner contact snapshots for Admin columns.
+  Verified management/creator phone accounts can now access their authorized Partner trips through Rider (see `docs/releases/2026-11-03-partner-rider-contacts.md`). They are never copied into the raw passenger `riderPhone` or exposed to drivers.
 - Partner trip passenger name/phone are always empty. Notes reject phone numbers using the existing chat rule.
 - Trip creation reuses the existing validation, fare calculation, booking availability lock, approval and notification flow.
   Company metadata, creator, assignee, stops and creation audit are saved with the booking transaction.

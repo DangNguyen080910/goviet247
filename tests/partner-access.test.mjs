@@ -39,7 +39,7 @@ test('only company admins can manage members; only GoViet247 can manage companie
 test('partner trip response hides driver identity/contact and terminal vehicle data',()=>{
  const t={id:'t1',partnerCompanyName:'OT Travel',riderPhone:'private',driverId:'d1',driver:{phones:[{e164:'private'}],driverProfile:{vehicleBrand:'Toyota',plateNumber:'51A-12345'}}};
  for(const status of ['PENDING','COMPLETED','CANCELLED']){
-  const out=serializePartnerTrip({...t,status});assert.equal(out.vehicle,null);assert.equal(out.canChat,false);
+  const out=serializePartnerTrip({...t,status});assert.equal(out.vehicle,null);assert.equal(out.canChat,status==='PENDING');
   assert.ok(!JSON.stringify(out).includes('private'));assert.ok(!JSON.stringify(out).includes('51A-12345'));assert.equal(out.driverId,undefined);
  }
  const active=serializePartnerTrip({...t,status:'ACCEPTED'});assert.equal(active.vehicle.plate,'51A-12345');assert.equal(active.canChat,true);
@@ -48,7 +48,9 @@ test('management contact never appears in public company profile',()=>{
  const c=publicCompany({id:'c1',name:'OT',managementName:'Founder',managementPhone:'secret'});
  assert.equal(c.managementPhone,undefined);assert.equal(c.managementName,undefined);
 });
-test('partner trips never grant rider access or notifications through phone matching',async()=>{
- const recipients=await getTripRiderRecipientUserIds({phone:{findMany:()=>{throw Error('must not query phone');}}},{partnerCompanyId:'c1',riderId:'u1',riderPhone:'0901234567'});
- assert.deepEqual(recipients,[]);assert.equal(riderTripAccessWhere('u1',['0901234567']).partnerCompanyId,null);
+test('partner mobile access never falls back to generic passenger phone fields',async()=>{
+ const db={partnerCompany:{findUnique:async()=>({id:'c1',isActive:false})},phone:{findMany:()=>{throw Error('must not query phone for disabled company');}}};
+ const recipients=await getTripRiderRecipientUserIds(db,{partnerCompanyId:'c1',riderId:'u1',riderPhone:'0901234567'});
+ assert.deepEqual(recipients,[]);
+ const where=riderTripAccessWhere('u1',['0901234567']);assert.equal(where.OR[0].partnerCompanyId,null);assert.equal(where.OR[1].partnerCompany.isActive,true);
 });

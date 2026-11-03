@@ -24,7 +24,7 @@ test("old quote cannot create a trip after the type is disabled; lock and check 
   let created = 0;
   const order = [];
   let enabled = false;
-  const db = { $queryRawUnsafe: async (sql, type) => { assert.match(sql, /FOR SHARE/); assert.equal(type, "CAR_16"); order.push("lock"); }, pricingConfig: { findUnique: async () => { order.push("check"); return { isActive: enabled }; } }, trip: { create: async ({ data }) => { created++; order.push("create"); return data; } } };
+  const db = { tripChatMessage:{createMany:async()=>({count:1})}, $queryRawUnsafe: async (sql, type) => { assert.match(sql, /FOR SHARE/); assert.equal(type, "CAR_16"); order.push("lock"); }, pricingConfig: { findUnique: async () => { order.push("check"); return { isActive: enabled }; } }, trip: { create: async ({ data }) => { created++; order.push("create"); return data; } } };
   db.$transaction = async fn => fn(db);
   await assert.rejects(createBookableTrip(db, { carType: "CAR_16" }), { status: 409 });
   assert.equal(created, 0);
@@ -62,7 +62,7 @@ test("admin toggle changes only availability and rejects non-boolean input", asy
 
 test("OTP confirmation refuses a vehicle disabled after the OTP was issued", async () => {
   let created = false;
-  const db = { $queryRawUnsafe: async () => [], pricingConfig: { findUnique: async () => ({ isActive: false }) }, trip: { create: async () => { created = true; } } };
+  const db = { tripChatMessage:{createMany:async()=>({count:1})}, $queryRawUnsafe: async () => [], pricingConfig: { findUnique: async () => ({ isActive: false }) }, trip: { create: async () => { created = true; } } };
   db.$transaction = async fn => fn(db);
   const payload = { pickupTime: "2099-01-01T08:00:00+07:00", carType: "CAR_16", distanceKm: 100 };
   const handler = controller("tripPublicController.js", "confirmTrip", { prisma: db, createBookableTrip, parseTripTime, verifyTripOtp: async () => ({ valid: true, payload }), validateTripDistance: async () => ({ ok: true }), console: quiet });

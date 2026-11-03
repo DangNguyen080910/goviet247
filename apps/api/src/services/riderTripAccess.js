@@ -1,3 +1,4 @@
+import { partnerParticipantPhones, partnerRiderAccessWhere } from './partnerRiderAccess.js';
 function normalizeDigits(value) {
   return String(value || "").replace(/\D/g, "");
 }
@@ -28,7 +29,12 @@ export async function getVerifiedRiderPhoneVariants(db, userId) {
 }
 
 export async function getTripRiderRecipientUserIds(db, trip) {
-  if (trip?.partnerCompanyId) return [];
+  if (trip?.partnerCompanyId) {
+    const numbers=await partnerParticipantPhones(db,trip);
+    if(!numbers.length)return [];
+    const rows=await db.phone.findMany({where:{e164:{in:numbers},isVerified:true,userId:{not:null}},select:{userId:true}});
+    return [...new Set(rows.map(p=>p.userId).filter(Boolean))];
+  }
   const userIds = new Set();
   const ownerId = String(trip?.riderId || "").trim();
   if (ownerId) userIds.add(ownerId);
@@ -49,7 +55,8 @@ export function riderTripAccessWhere(userId, phoneNumbers = []) {
   const normalizedUserId = String(userId || "").trim();
   if (normalizedUserId) OR.push({ riderId: normalizedUserId });
   if (phoneNumbers.length) OR.push({ riderPhone: { in: phoneNumbers } });
-  return OR.length ? { partnerCompanyId: null, OR } : { id: "__no_rider_trip_access__" };
+  const ordinary=OR.length ? {partnerCompanyId:null,OR} : {id:'__no_rider_trip_access__'};
+  return phoneNumbers.length ? {OR:[ordinary,partnerRiderAccessWhere(phoneNumbers)]} : ordinary;
 }
 
 export async function emitRiderTripUpdate(io, db, trip, payload = {}) {

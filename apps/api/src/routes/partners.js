@@ -1,3 +1,6 @@
+import { partnerSessionPolicy, setPartnerRefreshCookie, refreshPartnerSession, partnerRememberUntil } from '../services/partnerAccess.js';
+import { normalizePartnerPhone } from '../services/partnerRiderAccess.js';
+import { canSelfCancelTrip } from '../shared/tripSelfService.js';
 import { chatAudienceWhere } from '../shared/tripChatVisibility.js';
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
@@ -17,7 +20,7 @@ const username = value => {
 };
 const text=(value,max=150)=>String(value || '').trim().slice(0,max);
 const password = value => { if (typeof value !== 'string' || value.length < 10 || Buffer.byteLength(value,'utf8') > 72) throw fail('Mật khẩu cần ít nhất 10 ký tự, tối đa 72 byte.'); return value; };
-const memberSelect={id:true,username:true,displayName:true,role:true,isActive:true,mustChangePassword:true};
+const memberSelect={id:true,username:true,displayName:true,phone:true,role:true,isActive:true,mustChangePassword:true};
 const attempts=new Map();
 // Bounded login throttling, in addition to the deployment's gateway rate limit.
 router.post('/login',wrap(async(req,res)=>{
@@ -33,7 +36,14 @@ router.post('/login',wrap(async(req,res)=>{
   const raw=typeof req.body.password === 'string' ? req.body.password : '';
   if(!company?.isActive || !m?.isActive || !await bcrypt.compare(raw,m.passwordHash)) throw fail('Thông tin đăng nhập không đúng hoặc tài khoản đã bị khóa.',401);
   attempts.delete(key);
-  res.json({success:true,token:signPartnerToken(m),member:publicMember(m),company:publicCompany(company)});
+  const rememberUntil=req.body.rememberMe===true ? Math.floor(Date.now()/1000)+partnerSessionPolicy().rememberSeconds : undefined;
+  setPartnerRefreshCookie(res,m,rememberUntil);
+  res.set('Cache-Control','no-store');
+  res.json({success:true,token:signPartnerToken(m,{rememberUntil}),member:publicMember(m),company:publicCompany(company)});
+}));
+router.post('/refresh',wrap(async(req,res)=>{
+  const {token}=await refreshPartnerSession(req,res);
+  res.json({success:true,token});
 }));
 router.use(partnerAuth);
 router.get('/me',wrap(async(req,res)=>{
@@ -42,6 +52,7 @@ router.get('/me',wrap(async(req,res)=>{
 }));
 router.post('/logout',wrap(async(req,res)=>{
   if(req.partnerActor.member) await prisma.partnerMember.update({where:{id:req.partnerActor.member.id},data:{sessionVersion:{increment:1}}});
+  setPartnerRefreshCookie(res,null);
   res.json({success:true});
 }));
 router.post('/password',wrap(async(req,res)=>{
@@ -56,7 +67,10 @@ router.post('/password',wrap(async(req,res)=>{
     const saved=await tx.partnerMember.update({where:{id:m.id,sessionVersion:m.sessionVersion,passwordHash:m.passwordHash,isActive:true},data:{passwordHash:hash,mustChangePassword:false,sessionVersion:{increment:1}}});
     await partnerAudit(tx,req,m.companyId,'CHANGE_PASSWORD',m.id); return saved;
   });
-  res.json({success:true,token:signPartnerToken(updated)});
+  const rememberUntil=partnerRememberUntil(String(req.headers.authorization || '').replace(/^Bearer /,''));
+  setPartnerRefreshCookie(res,updated,rememberUntil);
+  res.set('Cache-Control','no-store');
+  res.json({success:true,token:signPartnerToken(updated,{rememberUntil})});
 }));
 router.get('/companies',wrap(async(req,res)=>{
   requireSuperAdmin(req);
@@ -65,11 +79,11 @@ router.get('/companies',wrap(async(req,res)=>{
 }));
 router.post('/companies',wrap(async(req,res)=>{
   requireSuperAdmin(req);
-  const b=req.body,code=username(b.code),name=text(b.name),managementName=text(b.managementName),managementPhone=text(b.managementPhone,30);
+  const b=req.body,code=username(b.code),name=text(b.name),managementName=text(b.managementName),managementPhone=normalizePartnerPhone(b.managementPhone);
   if(!name || !managementName || !/^\+?[0-9(). -]{8,25}$/.test(managementPhone)) throw fail('Cần tên công ty, người liên hệ quản lý và số điện thoại hợp lệ.');
   const adminUsername=username(b.adminUsername), hash=await bcrypt.hash(password(b.password),12);
   const company=await prisma.$transaction(async tx=>{
-    const c=await tx.partnerCompany.create({data:{code,name,managementName,managementPhone,greeting:text(b.greeting,500),members:{create:{username:adminUsername,displayName:text(b.adminName)||managementName,passwordHash:hash,role:'ADMIN'}}}});
+    const c=await tx.partnerCompany.create({data:{code,name,managementName,managementPhone,greeting:text(b.greeting,500),members:{create:{username:adminUsername,displayName:text(b.adminName)||managementName,phone:managementPhone,passwordHash:hash,role:'ADMIN'}}}});
     await partnerAudit(tx,req,c.id,'CREATE_COMPANY',c.id); return c;
   });
   res.status(201).json({success:true,company});
@@ -95,7 +109,7 @@ router.patch('/company',wrap(async(req,res)=>{
   if(req.partnerActor.superAdmin) {
     for(const field of ['name','managementName','managementPhone','greeting']) if(b[field]!==undefined) data[field]=text(b[field],field==='greeting'?500:150);
     if(data.name==='' || data.managementName==='') throw fail('Tên công ty và người quản lý không được để trống.');
-    if(data.managementPhone!==undefined && !/^\+?[0-9(). -]{8,25}$/.test(data.managementPhone)) throw fail('Số điện thoại quản lý không hợp lệ.');
+    if(data.managementPhone!==undefined) {data.managementPhone=normalizePartnerPhone(data.managementPhone);if(!data.managementPhone) throw fail('Cần số di động Việt Nam hợp lệ để quản lý đăng nhập Rider.');}
     if(typeof b.isActive==='boolean') data.isActive=b.isActive;
   }
   const c=await prisma.$transaction(async tx=>{
@@ -112,9 +126,10 @@ router.post('/members',wrap(async(req,res)=>{
   requireCompanyAdmin(req);
   const companyId=companyScope(req),b=req.body,name=username(b.username),displayName=text(b.displayName);
   if(!displayName || !['ADMIN','DISPATCHER'].includes(b.role)) throw fail('Cần họ tên và vai trò hợp lệ.');
+  const phone=normalizePartnerPhone(b.phone);if(!phone) throw fail('Cần số di động nhân viên để liên kết app Rider.');
   const passwordHash=await bcrypt.hash(password(b.password),12);
   const m=await prisma.$transaction(async tx=>{
-    const m=await tx.partnerMember.create({data:{companyId,username:name,displayName,role:b.role,passwordHash}});
+    const m=await tx.partnerMember.create({data:{companyId,username:name,displayName,phone,role:b.role,passwordHash}});
     await partnerAudit(tx,req,companyId,'CREATE_MEMBER',m.id);return m;
   });
   res.status(201).json({success:true,member:publicMember(m)});
@@ -131,6 +146,7 @@ router.patch('/members/:id',wrap(async(req,res)=>{
     if(b.role!==undefined) {if(!['ADMIN','DISPATCHER'].includes(b.role)) throw fail('Vai trò không hợp lệ.');data.role=b.role;}
     if(typeof b.isActive==='boolean') data.isActive=b.isActive;
     if(b.displayName!==undefined) {data.displayName=text(b.displayName);if(!data.displayName) throw fail('Họ tên không được để trống.');}
+    if(b.phone!==undefined) {data.phone=normalizePartnerPhone(b.phone);if(!data.phone) throw fail("Số điện thoại nhân viên không hợp lệ.");}
     if(hash) Object.assign(data,{passwordHash:hash,mustChangePassword:true});
     if(m.role==='ADMIN' && m.isActive && (data.role==='DISPATCHER'||data.isActive===false)) {
       const others=await tx.partnerMember.count({where:{companyId,role:'ADMIN',isActive:true,id:{not:m.id}}});
@@ -138,6 +154,7 @@ router.patch('/members/:id',wrap(async(req,res)=>{
     }
     if(data.isActive===false && await tx.trip.count({where:{partnerCompanyId:companyId,partnerAssignedToId:m.id,status:{in:['PENDING','ACCEPTED','CONTACTED','IN_PROGRESS']}}})) throw fail('Hãy chuyển các chuyến đang phụ trách trước khi khóa nhân viên.');
     const updated=await tx.partnerMember.update({where:{id:m.id},data});
+    if(data.phone && !m.phone) await tx.trip.updateMany({where:{partnerCompanyId:companyId,partnerBookerPhone:null,OR:[{partnerCreatedById:m.id},{partnerCreatedById:null,partnerAssignedToId:m.id}]},data:{partnerBookerPhone:data.phone,partnerBookerName:updated.displayName}});
     await partnerAudit(tx,req,companyId,'UPDATE_MEMBER',m.id,{fields:Object.keys(data).filter(k=>k!=='passwordHash')});return updated;
   });
   res.json({success:true,member:publicMember(result)});
@@ -168,7 +185,11 @@ router.post('/trips',wrap(async(req,res)=>{
 const tripInclude={stops:{orderBy:{seq:'asc'}},partnerCreatedBy:{select:memberSelect},partnerAssignedTo:{select:memberSelect},driver:{select:{driverProfile:{select:{vehicleBrand:true,vehicleModel:true,vehicleColor:true,plateNumber:true}}}}};
 router.get('/trips',wrap(async(req,res)=>{
   const companyId=companyScope(req),page=Math.max(1,Math.min(100000,Math.floor(Number(req.query.page)||1))),where={partnerCompanyId:companyId};
-  if(req.query.status) {
+  if(['PENDING_REVIEW','PENDING_DRIVER'].includes(req.query.status)) {
+    where.status='PENDING';
+    if(req.query.status==='PENDING_REVIEW') Object.assign(where,{isVerified:false,verifiedAt:null});
+    else where.OR=[{isVerified:true},{verifiedAt:{not:null}}];
+  } else if(req.query.status) {
     if(!['PENDING','ACCEPTED','CONTACTED','IN_PROGRESS','COMPLETED','CANCELLED'].includes(req.query.status)) throw fail('Trạng thái không hợp lệ.');
     where.status=req.query.status;
   }
@@ -226,8 +247,8 @@ router.post('/trips/:id/cancel',wrap(async(req,res)=>{
     if(!t) throw fail('Không tìm thấy chuyến.',404);
     const actor=req.partnerActor;
     if(!actor.superAdmin && actor.member.role!=='ADMIN' && t.partnerAssignedToId!==actor.member.id) throw fail('Chỉ người phụ trách hoặc Admin được hủy chuyến.',403);
-    if(t.status!=='PENDING' || t.driverId || t.cancelledAt) throw fail('Chỉ tự hủy khi chuyến còn đang chờ và chưa có tài xế.',409);
-    const updated=await tx.trip.update({where:{id:t.id},data:{status:'CANCELLED',cancelledAt:new Date(),cancelReason:'Đối tác hủy chuyến đang chờ'}});
+    if(!canSelfCancelTrip(t)) throw fail('Chỉ được tự hủy chuyến khi còn chờ duyệt. Chuyến đã duyệt, vui lòng nhắn GoViet247 để được hỗ trợ.',409);
+    const updated=await tx.trip.update({where:{id:t.id},data:{status:'CANCELLED',cancelledAt:new Date(),cancelReason:'Đối tác hủy chuyến chờ duyệt'}});
     await partnerAudit(tx,req,companyId,'CANCEL_TRIP',t.id);return updated;
   });
   const io=req.app.get('io');

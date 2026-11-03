@@ -47,7 +47,7 @@ test('audience visibility excludes the opposite side, other drivers and unknown 
  assert.deepEqual(chatAudienceWhere(driver),{OR:[{audience:'ALL'},{audience:'DRIVER',recipientId:'driver1'}]});
  assert.match(chatAudienceLabel('PARTNER'),/đối tác/);
 });
-function recipientDb(){return {admin_users:{findMany:async()=>[{id:1}]},partnerMember:{findMany:async()=>[{id:'m1'},{id:'m2'}]}};}
+function recipientDb(){return {partnerCompany:{findUnique:async()=>({id:'company1',isActive:true,managementPhone:null})},phone:{findMany:async()=>[]},admin_users:{findMany:async()=>[{id:1}]},partnerMember:{findUnique:async()=>null,findMany:async()=>[{id:'m1'},{id:'m2'}]}};}
 const notice=audience=>({senderId:'goviet247-system',senderRole:'SYSTEM',clientId:'accept_1_123_DRIVER',audience,recipientId:'driver1',createdAt:acceptedAt});
 test('push for rider notice only targets rider and GoViet247, not driver',async()=>{
  assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('RIDER'))).sort(),['admin-1','rider1']);

@@ -30,7 +30,8 @@
       ],
       "permissions": [
         "android.permission.CAMERA"
-      ]
+      ],
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "favicon": "./assets/GoViet247_icon.png"

@@ -1,4 +1,4 @@
-import { ChatInboxBadge, isChatVisible } from "../services/tripChat";
+import { ChatInboxBadge, isChatVisible, chatPushShouldPlaySound } from "../services/tripChat";
 // Path: goviet247/apps/driver-mobile/app/_layout.tsx
 import { useEffect } from "react";
 import { Stack, router } from "expo-router";
@@ -11,9 +11,9 @@ import AppUpdatePrompt from "../components/AppUpdatePrompt";
 
 Notifications.setNotificationHandler({
   handleNotification: async notification => {
-    if (isChatVisible(notification.request.content.data)) return { shouldShowBanner:false,shouldShowList:false,shouldPlaySound:false,shouldSetBadge:false };
+    if (isChatVisible(notification.request.content.data)) return { shouldShowBanner:false,shouldShowList:false,shouldPlaySound:await chatPushShouldPlaySound(notification.request.content.data),shouldSetBadge:false };
     const signedIn = Boolean(await getDriverToken());
-    return { shouldShowBanner: signedIn, shouldShowList: signedIn, shouldPlaySound: signedIn, shouldSetBadge: signedIn };
+    return { shouldShowBanner: signedIn, shouldShowList: signedIn, shouldPlaySound: signedIn && await chatPushShouldPlaySound(notification.request.content.data), shouldSetBadge: signedIn };
   },
 });
 

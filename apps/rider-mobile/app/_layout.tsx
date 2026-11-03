@@ -212,6 +212,11 @@ function TabsNavigator() {
           href: null,
         }}
       />
+      <Tabs.Screen name="trip-chat" options={{
+        title: "Trip-chat",
+        tabBarIcon: ({ color, size, focused }) => <Ionicons name={focused ? "chatbubbles" : "chatbubbles-outline"} size={size} color={color} />,
+        tabBarStyle: { display: "none" },
+      }} />
     </Tabs>
   );
 }
@@ -242,6 +247,7 @@ function GuestTabsNavigator({ userId }: { userId: string }) {
           <Tabs.Screen name="profile" options={{ href: null }} />
           <Tabs.Screen name="feedback" options={{ href: null }} />
           <Tabs.Screen name="booking" options={{ href: null }} />
+          <Tabs.Screen name="trip-chat" options={{ href: null, tabBarStyle: { display: "none" } }} />
         </Tabs>
       </TripActivityProvider>
     </NotificationProvider>

@@ -31,10 +31,10 @@ import DestinationService, { ServiceSummary } from "../components/DestinationSer
 import { destinationWindows, destinationConfig } from "../../../packages/shared/destinationService.js";
 import { quotePrice } from "../services/pricingApi";
 import {
-  createTrip,
+  createTrip, getBookingCompanies, BookingCompany,
   getRiderPublicTripConfig,
 } from "../services/tripApi";
-import { getRiderToken } from "../services/storage";
+import { getRiderBookingMode, setRiderBookingMode, getRiderToken } from "../services/storage";
 import { searchPlaces, getPlaceDetail, getRoute } from "../services/mapApi";
 import {
   searchVietnamLocations,
@@ -421,6 +421,46 @@ export default function RiderBookingScreen() {
   const [riderPhone, setRiderPhone] = useState("");
   const [note, setNote] = useState("");
   const [accountUser, setAccountUser] = useState<MeUser>(null);
+  const [bookingCompanies,setBookingCompanies]=useState<BookingCompany[]>([]);
+  const [bookingMode,setBookingMode]=useState('');
+  const [modeUserId,setModeUserId]=useState('');
+  const [modeLoading,setModeLoading]=useState(true);
+  const [modeError,setModeError]=useState('');
+  const [modeReload,setModeReload]=useState(0);
+  const createPendingRef=useRef(false);
+  const selectedCompany=bookingCompanies.find(company=>company.id===bookingMode);
+  const isCompanyBooking=Boolean(selectedCompany);
+  const modeReady=!modeLoading && !modeError && (bookingMode==='personal' || isCompanyBooking);
+  useFocusEffect(useCallback(()=>{
+    let active=true;
+    setModeLoading(true);
+    setModeError('');
+    (async()=>{
+      const token=await getRiderToken();
+      if(!token){if(active){setBookingCompanies([]);setModeUserId('');setBookingMode('personal');}return;}
+      const me=await getMe(token);
+      const userId=me?.user?.id;
+      if(!userId) throw new Error('Vui lòng đăng nhập lại.');
+      const companies=await getBookingCompanies();
+      const saved=await getRiderBookingMode(userId);
+      if(!active)return;
+      setModeUserId(userId);setBookingCompanies(companies);
+      if(saved && saved!=='personal' && !companies.some(company=>company.id===saved)) {
+        setBookingMode('');
+        Alert.alert('Quyền công ty đã thay đổi','Vui lòng chọn lại hình thức đặt chuyến.');
+      } else {
+        const initial=saved || companies[0]?.id || 'personal';
+        setBookingMode(initial);
+        if(!saved) void setRiderBookingMode(userId,initial).catch(()=>{});
+      }
+    })().catch(error=>{if(active)setModeError(error.message || 'Không tải được quyền đặt chuyến.');})
+      .finally(()=>{if(active)setModeLoading(false);});
+    return ()=>{active=false;};
+  },[modeReload]));
+  function chooseBookingMode(mode:string) {
+    setBookingMode(mode);
+    if(modeUserId) void setRiderBookingMode(modeUserId,mode).catch(()=>{});
+  }
   const [profileLoading, setProfileLoading] = useState(true);
 
   const [distanceKm, setDistanceKm] = useState("");
@@ -593,8 +633,8 @@ export default function RiderBookingScreen() {
     return formatDurationMinutes(estimatedTripMinutes);
   }, [estimatedTripMinutes]);
 
-  const isNameValid = riderName.trim().length >= 2;
-  const isPhoneValid = /^0(3|5|7|8|9)[0-9]{8}$/.test(riderPhone.trim());
+  const isNameValid = isCompanyBooking || riderName.trim().length >= 2;
+  const isPhoneValid = isCompanyBooking || /^0(3|5|7|8|9)[0-9]{8}$/.test(riderPhone.trim());
 
   const showNameError = submitTouched && !isNameValid;
   const showPhoneError = submitTouched && !isPhoneValid;
@@ -657,7 +697,7 @@ export default function RiderBookingScreen() {
   const serviceWindowKey=JSON.stringify(serviceWindows);
   useEffect(()=>{setDestinationServiceDates(old=>old.filter(date=>JSON.parse(serviceWindowKey).some((w:any)=>w.date===date)));},[serviceWindowKey]);
   const serviceAnchor=destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
-  const quoteInputKey = JSON.stringify([destinationServiceDates,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKey = JSON.stringify([bookingMode,destinationServiceDates,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
@@ -666,7 +706,7 @@ export default function RiderBookingScreen() {
     return () => { latestRouteRequestRef.current += 1; };
   }, [pickupPlace, stopPlaces, stops, direction]);
 
-  const canEstimate =
+  const canEstimate = modeReady &&
     routeReadyKey === routeInputKey && !isRouteLoading &&
     !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !isRouteLoading &&
@@ -698,7 +738,7 @@ export default function RiderBookingScreen() {
     return formatCountdownLabel(quoteRemainingMs);
   }, [quoteRemainingMs]);
 
-  const canCreateTrip =
+  const canCreateTrip = modeReady &&
     routeReadyKey === routeInputKey && !isRouteLoading && quote?.inputKey === quoteInputKey &&
     !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !!quote &&
@@ -1454,8 +1494,9 @@ export default function RiderBookingScreen() {
       destinationServiceSignature:quote?.raw?.destinationServiceSignature,
       fareEstimate: quote?.totalPrice || 0,
       quoteHistoryToken: quote?.raw?.quoteHistoryToken,
-      riderName: riderName.trim(),
-      riderPhone: riderPhone.trim(),
+      bookingCompanyId: selectedCompany?.id,
+      riderName: isCompanyBooking ? "" : riderName.trim(),
+      riderPhone: isCompanyBooking ? "" : riderPhone.trim(),
       note: finalNote,
     };
   }
@@ -1596,7 +1637,7 @@ export default function RiderBookingScreen() {
       const data = await quotePrice({ ...payload, historyContext: {
         pickupAddress: pickupPlace?.fullAddress || pickupAddress.trim(),
         stops: stops.map((address, index) => stopPlaces[index]?.fullAddress || String(address || "").trim()).filter(Boolean),
-        customerName: riderName.trim(), customerPhone: riderPhone.trim(),
+        customerName: selectedCompany?.name || riderName.trim(), customerPhone: isCompanyBooking ? "" : riderPhone.trim(),
       } });
       if (quoteInputKeyRef.current !== inputKey) return;
 
@@ -1622,8 +1663,9 @@ export default function RiderBookingScreen() {
   }
 
   async function handleCreateTrip() {
-    if (isCreating) return;
+    if (isCreating || createPendingRef.current) return;
 
+    if(!modeReady){Alert.alert('Chưa thể đặt chuyến','Vui lòng kiểm tra và chọn hình thức đặt chuyến.');return;}
     setSubmitTouched(true);
 
     if (!quote || isQuoteExpired || quote.inputKey !== quoteInputKey || routeReadyKey !== routeInputKey || isRouteLoading) {
@@ -1656,7 +1698,19 @@ export default function RiderBookingScreen() {
       return;
     }
 
+    createPendingRef.current=true;
     setIsCreating(true);
+    if(bookingMode==='personal' && bookingCompanies.length) {
+      const confirmed=await new Promise<boolean>(resolve=>Alert.alert('Xác nhận đặt cá nhân',
+        `Bạn đang đặt chuyến cá nhân. Chuyến này không thuộc ${bookingCompanies.map(company=>company.name).join(', ')} và không xuất hiện trong danh sách chuyến của công ty.`,
+        [{text:'Quay lại',style:'cancel',onPress:()=>resolve(false)},{text:'Xác nhận đặt cá nhân',onPress:()=>resolve(true)}],
+        {cancelable:true,onDismiss:()=>resolve(false)}));
+      if(!confirmed){createPendingRef.current=false;setIsCreating(false);return;}
+    }
+    if(quoteInputKeyRef.current!==quote.inputKey || Date.now()>=new Date(quote.expiresAt).getTime()){
+      createPendingRef.current=false;setIsCreating(false);
+      Alert.alert('Vui lòng tính giá lại','Thông tin hoặc giá chuyến đã thay đổi.');return;
+    }
 
     try {
       const token = await getRiderToken();
@@ -1664,7 +1718,7 @@ export default function RiderBookingScreen() {
       const currentAccountName = getRiderDisplayName(accountUser);
 
       if (
-        token &&
+        !isCompanyBooking && token &&
         normalizedName.length >= 2 &&
         normalizedName !== currentAccountName
       ) {
@@ -1715,36 +1769,12 @@ export default function RiderBookingScreen() {
         router.replace("/trip-history");
       };
 
-      if (Platform.OS === "web") {
-        Alert.alert(
-          "Đặt chuyến thành công ✅",
-          tripId
-            ? `Mã chuyến: ${shortTripId(tripId)}`
-            : "GoViet247 đã ghi nhận chuyến của bạn.",
-        );
-
-        setTimeout(() => {
-          goToTripHistory();
-        }, 50);
-
-        return;
-      }
-
-      Alert.alert(
-        "Đặt chuyến thành công ✅",
-        tripId
-          ? `Mã chuyến: ${shortTripId(tripId)}`
-          : "GoViet247 đã ghi nhận chuyến của bạn.",
-        [
-          {
-            text: "OK",
-            onPress: goToTripHistory,
-          },
-        ],
-      );
+      goToTripHistory();
     } catch (error: any) {
+      if(isCompanyBooking && [403,409].includes(error?.status)){setQuote(null);setModeReload(value=>value+1);}
       Alert.alert("Tạo chuyến thất bại", error?.message || "Vui lòng thử lại.");
     } finally {
+      createPendingRef.current=false;
       setIsCreating(false);
     }
   }
@@ -1775,6 +1805,13 @@ export default function RiderBookingScreen() {
           />
 
           <View style={styles.card}>
+            <Text style={styles.sectionTitle}>Hình thức đặt chuyến</Text>
+            <Text style={styles.helperText}>{modeLoading ? 'Đang kiểm tra quyền đặt chuyến...' : modeError || (selectedCompany ? `Đang đặt cho: ${selectedCompany.name}` : bookingMode==='personal' ? 'Đang đặt chuyến cá nhân' : 'Vui lòng chọn lại hình thức đặt chuyến.')}</Text>
+            {modeError ? <Pressable onPress={()=>setModeReload(value=>value+1)} style={styles.input}><Text>Thử lại</Text></Pressable> : null}
+            {!modeLoading && !modeError ? <View>
+              {bookingCompanies.map(company=><Pressable key={company.id} disabled={isCreating} onPress={()=>chooseBookingMode(company.id)} style={styles.input}><Text>{bookingMode===company.id ? '●' : '○'} Đặt cho {company.name}</Text></Pressable>)}
+              <Pressable disabled={isCreating} onPress={()=>chooseBookingMode('personal')} style={styles.input}><Text>{bookingMode==='personal' ? '●' : '○'} Đặt cá nhân</Text></Pressable>
+            </View> : null}
             <Text style={styles.sectionTitle}>1. Lộ trình</Text>
 
             <Text style={styles.label}>Điểm đón</Text>
@@ -2223,6 +2260,7 @@ export default function RiderBookingScreen() {
 
             <View style={styles.divider} />
 
+            {isCompanyBooking ? <Text style={styles.helperText}>Chuyến công ty: hệ thống tự gắn quản lý và điều phối viên. Không cần nhập thông tin khách đi.</Text> : <>
             <Text style={styles.sectionTitle}>5. Thông tin khách</Text>
 
             <Text style={styles.label}>Tên khách hàng</Text>
@@ -2266,7 +2304,8 @@ export default function RiderBookingScreen() {
               </Text>
             ) : null}
 
-            <Text style={styles.label}>Ghi chú (tuỳ chọn)</Text>
+            </>}
+            <Text style={styles.label}>{isCompanyBooking ? 'Ghi chú điều phối (không ghi số điện thoại)' : 'Ghi chú (tuỳ chọn)'}</Text>
             <TextInput
               value={note}
               onChangeText={setNote}

@@ -1,4 +1,4 @@
-import { ChatInboxBadge, isChatVisible } from "../services/tripChat";
+import { ChatInboxBadge, isChatVisible, chatPushShouldPlaySound } from "../services/tripChat";
 import { Alert, AppState } from "react-native";
 import TripMilestoneCelebration from "../components/TripMilestoneCelebration";
 // Path: goviet247/apps/admin-mobile/app/_layout.tsx
@@ -31,7 +31,7 @@ import { getAdminNotificationResponseRoute } from "../services/adminNotification
 
 Notifications.setNotificationHandler({
   handleNotification: async notification => ({
-    shouldShowBanner:!isChatVisible(notification.request.content.data),shouldShowList:!isChatVisible(notification.request.content.data),shouldPlaySound:!isChatVisible(notification.request.content.data),shouldSetBadge:true,
+    shouldShowBanner:!isChatVisible(notification.request.content.data),shouldShowList:!isChatVisible(notification.request.content.data),shouldPlaySound:await chatPushShouldPlaySound(notification.request.content.data),shouldSetBadge:true,
   }),
 });
 

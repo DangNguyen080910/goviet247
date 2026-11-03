@@ -1,3 +1,5 @@
+import {partnerFetch} from './partners/partnerSession';
+import { newUnreadConversations } from '../../../api/src/shared/chatAlerts.js';
 import { chatAudienceLabel } from '../../../api/src/shared/tripChatVisibility.js';
 import useDraggableInbox from './useDraggableInbox';
 import { createPortal } from 'react-dom';
@@ -5,7 +7,7 @@ import { useFloatingActions } from './FloatingActionsContext';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../../../api/src/shared/tripChat.js';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Alert, Box, Button, Chip, Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Chip, Snackbar, Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, Typography } from '@mui/material';
 export function openTripChat(tripId) {
   window.dispatchEvent(new CustomEvent('goviet:chat-open', {
     detail: {
@@ -47,6 +49,9 @@ export default function TripChatHub({ partnerTokenKey = null }) {
     tokenKey = partnerTokenKey || (isAdmin ? 'admin_token' : 'gv247_customer_token');
   const draggableInbox = isAdmin || Boolean(partnerTokenKey);
   const inboxDrag = useDraggableInbox(draggableInbox, partnerTokenKey ? 'goviet247-partner-inbox-position' : undefined);
+  const [soundReady,setSoundReady]=useState(false),[incoming,setIncoming]=useState(null);
+  const [notificationPermission,setNotificationPermission]=useState(()=>('Notification' in window ? Notification.permission : 'unsupported'));
+  const previousInbox=useRef(new Map()),toneContext=useRef(null);
   const [open, setOpen] = useState(false),
     [tripId, setTripId] = useState(''),
     [items, setItems] = useState([]),
@@ -86,7 +91,8 @@ export default function TripChatHub({ partnerTokenKey = null }) {
   async function api(path, options = {}) {
     const token = localStorage.getItem(tokenKey);
     if (!token) throw new Error('Vui lòng đăng nhập.');
-    const res = await fetch(`${base}/api/trip-chat${path}${path.includes('?') ? '&' : '?'}media=images`, {
+    const request=partnerTokenKey ? (url,options)=>partnerFetch(base,url,options) : fetch;
+    const res = await request(`${base}/api/trip-chat${path}${path.includes('?') ? '&' : '?'}media=images`, {
       ...options,
       headers: {
         ...(options.body instanceof FormData ? {} : {
@@ -124,22 +130,39 @@ export default function TripChatHub({ partnerTokenKey = null }) {
       setBusy(false);
     }
   }
-  function quietTone() {
-    if (Date.now() - soundTimer.current < 3000) return;
-    soundTimer.current = Date.now();
+  async function unlockSound() {
     try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)(),
-        osc = ctx.createOscillator(),
-        gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      gain.gain.value = 0.035;
-      osc.frequency.value = 660;
-      osc.start();
-      osc.stop(ctx.currentTime + 0.12);
-      osc.onended = () => ctx.close();
+      const Context=window.AudioContext || window.webkitAudioContext;
+      if(!Context) return;
+      const ctx=toneContext.current || (toneContext.current=new Context());
+      if(ctx.state!=='running') await ctx.resume();
+      setSoundReady(ctx.state==='running');
+    } catch { setSoundReady(false); }
+  }
+  async function enableAlerts() {
+    await unlockSound();
+    if('Notification' in window) {
+      try {setNotificationPermission(await Notification.requestPermission());} catch {setNotificationPermission('denied');}
+    }
+    quietTone();
+  }
+  function quietTone() {
+    const ctx=toneContext.current;
+    if(!ctx || ctx.state!=='running') {setSoundReady(false);return;}
+    if(Date.now()-soundTimer.current<2000) return;
+    soundTimer.current=Date.now();
+    try {
+      const osc=ctx.createOscillator(),gain=ctx.createGain();osc.connect(gain);gain.connect(ctx.destination);
+      gain.gain.setValueAtTime(0.12,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.5);
+      osc.frequency.setValueAtTime(740,ctx.currentTime);osc.frequency.setValueAtTime(988,ctx.currentTime+0.16);
+      osc.start();osc.stop(ctx.currentTime+0.5);
     } catch {}
   }
+  useEffect(()=>{
+    const unlock=()=>{void unlockSound();};
+    window.addEventListener('pointerdown',unlock);window.addEventListener('keydown',unlock);
+    return()=>{window.removeEventListener('pointerdown',unlock);window.removeEventListener('keydown',unlock);const ctx=toneContext.current;toneContext.current=null;void ctx?.close();};
+  },[]);
   useEffect(() => {
     const handler = e => {
       setTripId(e.detail.tripId || '');
@@ -154,6 +177,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
     setItems([]);
     setInbox([]);
     lastUnread.current = -1;
+    previousInbox.current=new Map();
   }, [tokenKey]);
   useEffect(() => {
     let alive = true;
@@ -173,12 +197,15 @@ export default function TripChatHub({ partnerTokenKey = null }) {
         if (!alive) return;
         setInbox(d.items);
         setUnread(d.unread);
-        if (lastUnread.current >= 0 && d.unread > lastUnread.current && !open) {
-          quietTone();
-          if (document.hidden && 'Notification' in window && Notification.permission === 'granted') new Notification('GoViet247 · Tin nhắn chuyến', {
-            body: 'Có tin nhắn mới. Mở GoViet247 để xem.',
-            tag: 'trip-chat'
-          });
+        const fresh=newUnreadConversations(previousInbox.current,d.items,d.actorId);
+        previousInbox.current=new Map(d.items.map(c=>[c.tripId,c.last.id]));
+        if(fresh.length) {
+          quietTone();const latest=fresh[0];
+          setIncoming({tripId:latest.tripId,label:`Có tin nhắn mới · #${latest.tripId.slice(-8).toUpperCase()}`});
+          if(document.hidden && 'Notification' in window && Notification.permission==='granted') {
+            try {const notice=new Notification('GoViet247 · Tin nhắn chuyến',{body:'Có tin nhắn mới. Bấm để mở hội thoại.',tag:'trip-chat'});
+              notice.onclick=()=>{window.focus();openTripChat(latest.tripId);notice.close();};} catch {}
+          }
         }
         lastUnread.current = d.unread;
       } catch {}
@@ -458,6 +485,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
       textTransform: 'none'
     }}>💬 Tin nhắn {unread ? `(${unread})` : ''}</Button> : null;
   return <>{!isAdmin && dockTarget ? createPortal(launcher, dockTarget) : launcher}
+ <Snackbar open={signed && (Boolean(incoming) || !soundReady || notificationPermission==='default')} autoHideDuration={incoming?6000:null} onClose={()=>setIncoming(null)} anchorOrigin={{vertical:'bottom',horizontal:'center'}} message={incoming?.label || 'Bật chuông và thông báo để không bỏ lỡ tin nhắn'} action={incoming ? <Button color="inherit" onClick={()=>{openTripChat(incoming.tripId);setIncoming(null);}}>Xem tin</Button> : <Button color="inherit" onClick={enableAlerts}>Bật chuông / thông báo</Button>} />
  <Dialog open={open} onClose={close} fullWidth maxWidth="sm" sx={{zIndex:10020}}><DialogTitle sx={{
         display: 'flex',
         alignItems: 'center',
@@ -480,7 +508,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
             p: 1.5,
             fontSize: 12,
             color: '#64748b'
-          }}>Hội thoại chung giữa khách, tài xế phụ trách và GoViet247. Không chia sẻ số điện thoại cá nhân.</Typography>
+          }}>Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.</Typography>
  <Stack spacing={1.5} sx={{
             height: 'min(48vh,440px)',
             overflowY: 'auto',
@@ -527,7 +555,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
                 color: '#64748b',
                 mt: 0.5
               }}>{new Date(m.createdAt).toLocaleString('vi-VN')}</Typography></Box>)}<div ref={end} /></Stack>
- {!canSend ? <Alert severity="info">Hội thoại chỉ đọc khi chưa có tài xế hoặc chuyến đã kết thúc. Nhờ GoViet247 hỗ trợ nếu cần.</Alert> : <Stack spacing={1} sx={{
+ {!canSend ? <Alert severity="info">Hội thoại hiện chỉ đọc. Chuyến đã kết thúc hoặc tài khoản chưa có quyền gửi tin. Nhờ GoViet247 hỗ trợ nếu cần.</Alert> : <Stack spacing={1} sx={{
             p: 2
           }}>
  <Box sx={{
@@ -569,7 +597,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
               fontSize: 11,
               color: '#64748b'
             }}>Ghi âm tối đa 60 giây. GoViet247 có thể xem hội thoại để hỗ trợ và giải quyết tranh chấp.</Typography>
- {'Notification' in window && Notification.permission === 'default' && <Button onClick={() => Notification.requestPermission()}>Cho phép thông báo trên trình duyệt</Button>}
+ {'Notification' in window && Notification.permission === 'default' && <Button onClick={enableAlerts}>Cho phép thông báo trên trình duyệt</Button>}
  </Stack>}
  </>}
  </DialogContent></Dialog>

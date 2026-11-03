@@ -28,7 +28,8 @@
       "googleServicesFile": "./google-services.json",
       "permissions": [
         "android.permission.CAMERA"
-      ]
+      ],
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "output": "static",

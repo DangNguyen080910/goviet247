@@ -75,8 +75,8 @@ test('a verified passenger phone grants access, an unverified/unrelated phone do
     role: 'RIDER'
   }));
 });
-test('non-admin writes close at terminal statuses or without a driver', () => {
-  for (const status of ['PENDING', 'COMPLETED', 'CANCELLED', 'NEW_UNKNOWN']) assert.equal(chatCanSend({
+test('rider and partner can chat before assignment; driver waits for acceptance', () => {
+  for (const status of ['COMPLETED', 'CANCELLED', 'NEW_UNKNOWN']) assert.equal(chatCanSend({
     ...trip,
     status
   }, {
@@ -87,7 +87,9 @@ test('non-admin writes close at terminal statuses or without a driver', () => {
     driverId: null
   }, {
     role: 'RIDER'
-  }), false);
+  }), true);
+  for(const role of ['RIDER','PARTNER']) assert.equal(chatCanSend({...trip,status:'PENDING',driverId:null},{role}),true);
+  assert.equal(chatCanSend({...trip,status:'PENDING',driverId:null},{role:'DRIVER'}),false);
   for (const status of ['ACCEPTED', 'CONTACTED', 'IN_PROGRESS']) assert.equal(chatCanSend({
     ...trip,
     status
@@ -101,20 +103,12 @@ test('non-admin writes close at terminal statuses or without a driver', () => {
     role: 'ADMIN'
   }), true);
 });
-test('replacement drivers cannot read messages before their acceptance', () => {
-  assert.deepEqual(messageWhere(trip, {
-    role: 'DRIVER'
-  }), {
-    tripId: 't',
-    createdAt: {
-      gte: trip.acceptedAt
-    }
-  });
-  assert.deepEqual(messageWhere(trip, {
-    role: 'RIDER'
-  }), {
-    tripId: 't'
-  });
+test('replacement drivers keep acceptance cutoff and private audience filtering', () => {
+  const driver=messageWhere(trip,{role:'DRIVER',id:'d'});
+  assert.equal(driver.tripId,'t');assert.deepEqual(driver.createdAt,{gte:trip.acceptedAt});
+  assert.deepEqual(driver.AND,[{OR:[{audience:'ALL'},{audience:'DRIVER',recipientId:'d'}]}]);
+  const rider=messageWhere(trip,{role:'RIDER',id:'r'});
+  assert.equal(rider.createdAt,undefined);assert.deepEqual(rider.AND,[{OR:[{audience:'ALL'},{audience:'RIDER'}]}]);
 });
 test('message input accepts valid text/location and rejects invalid/coerced coordinates', () => {
   const clientId = 'client_12345';

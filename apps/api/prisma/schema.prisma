@@ -281,6 +281,7 @@ model PartnerCompany {
   name String @db.VarChar(150)
   managementName String @db.VarChar(150)
   managementPhone String @db.VarChar(30)
+  @@index([managementPhone])
   logoUrl String?
   greeting String @default("") @db.VarChar(500)
   isActive Boolean @default(true)
@@ -297,6 +298,7 @@ model PartnerMember {
   company PartnerCompany @relation(fields: [companyId], references: [id], onDelete: Restrict)
   username String @db.VarChar(50)
   displayName String @db.VarChar(150)
+  phone String? @db.VarChar(30)
   passwordHash String
   role PartnerRole @default(DISPATCHER)
   isActive Boolean @default(true)
@@ -306,6 +308,7 @@ model PartnerMember {
   createdTrips Trip[] @relation("PartnerTripCreator")
   assignedTrips Trip[] @relation("PartnerTripAssignee")
   @@unique([companyId, username])
+  @@unique([companyId, phone])
 }
 
 model PartnerAuditLog {
@@ -325,6 +328,10 @@ model Trip {
   partnerCompanyId String?
   partnerCompany PartnerCompany? @relation(fields: [partnerCompanyId], references: [id], onDelete: Restrict)
   partnerCompanyName String?
+  partnerManagerName String?
+  partnerManagerPhone String?
+  partnerBookerName String?
+  partnerBookerPhone String?
   partnerGreeting String?
   partnerCreatedById String?
   partnerCreatedBy PartnerMember? @relation("PartnerTripCreator", fields: [partnerCreatedById], references: [id], onDelete: Restrict)

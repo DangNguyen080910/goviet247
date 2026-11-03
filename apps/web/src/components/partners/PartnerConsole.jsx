@@ -1,3 +1,4 @@
+import {partnerFetch} from './partnerSession';
 import {useEffect,useState} from 'react';
 import {Alert,Box,Button,Chip,Dialog,DialogContent,DialogTitle,MenuItem,Pagination,Paper,Stack,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,TextField,Typography} from '@mui/material';
 import {openTripChat} from '../TripChatHub';
@@ -5,12 +6,14 @@ export const partnerBase=import.meta.env.VITE_API_BASE || 'http://localhost:5050
 export async function partnerRequest(path,{token,companyId,method='GET',body,signal}={}) {
   const url=new URL(`${partnerBase}/api/partners${path}`);
   if(companyId) url.searchParams.set('companyId',companyId);
-  const res=await fetch(url,{method,signal,headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});
+  const request=token ? (url,options)=>partnerFetch(partnerBase,url,options) : fetch;
+  const res=await request(url,{method,signal,credentials:'include',headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});
   const data=await res.json();
   if(!res.ok || !data.success) {const e=new Error(data.message || 'Chưa xử lý được yêu cầu.');e.status=res.status;throw e;}
   return data;
 }
-export const statuses={PENDING:'Chờ nhận / duyệt',ACCEPTED:'Đã nhận',CONTACTED:'Đã xác nhận',IN_PROGRESS:'Đang thực hiện',COMPLETED:'Hoàn thành',CANCELLED:'Đã hủy'};
+export const statuses={PENDING:'Tất cả chuyến đang chờ',PENDING_REVIEW:'Chờ duyệt',PENDING_DRIVER:'Chờ tài xế',ACCEPTED:'Đã nhận',CONTACTED:'Đã xác nhận',IN_PROGRESS:'Đang thực hiện',COMPLETED:'Hoàn thành',CANCELLED:'Đã hủy'};
+const tripStatusLabel=t=>t.status==='PENDING'?(t.isVerified||t.verifiedAt?'Chờ tài xế':'Chờ duyệt'):statuses[t.status];
 const actions={CREATE_COMPANY:'Tạo công ty',UPDATE_COMPANY:'Cập nhật công ty',CREATE_MEMBER:'Thêm nhân viên',UPDATE_MEMBER:'Cập nhật nhân viên',CHANGE_PASSWORD:'Đổi mật khẩu',CREATE_TRIP:'Tạo chuyến',ASSIGN_TRIP:'Chuyển điều phối',CANCEL_TRIP:'Hủy chuyến'};
 const money=n=>Number(n||0).toLocaleString('vi-VN')+' đ';
 const time=t=>t?new Date(t).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}):'—';
@@ -39,7 +42,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
     const timer=setInterval(load,10000);return()=>{alive=false;c.abort();clearInterval(timer);};
   },[tripId,token,companyId,revision]);
   async function assign(id){setBusy(true);try{await api(`/trips/${selected.id}/assignment`,{method:'PATCH',body:{assignedToId:id}});setRevision(v=>v+1);}catch(e){setError(e.message);}finally{setBusy(false);}}
-  async function cancel(){if(!window.confirm('Hủy chuyến đang chờ này?'))return;setBusy(true);try{await api(`/trips/${selected.id}/cancel`,{method:'POST'});setRevision(v=>v+1);}catch(e){setError(e.message);}finally{setBusy(false);}}
+  async function cancel(trip=selected){if(!window.confirm('Hủy chuyến đang chờ duyệt này?'))return;setBusy(true);try{await api(`/trips/${trip.id}/cancel`,{method:'POST'});setRevision(v=>v+1);}catch(e){setError(e.message);}finally{setBusy(false);}}
   return <Stack spacing={2}>
     <Typography variant="h5">Chuyến xe</Typography>
     <Typography color="text.secondary">Quản lý theo giờ đón tại Việt Nam. Thông tin xe được ẩn khi chuyến kết thúc.</Typography>
@@ -56,19 +59,19 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
         <TableCell sx={{minWidth:230}}>{t.pickupAddress}<br/>→ {t.dropoffAddress}</TableCell><TableCell>{vehicles[t.carType]}</TableCell>
         <TableCell>{t.createdBy?.displayName||'GoViet247'}<br/><strong>{t.assignedTo?.displayName||'—'}</strong></TableCell>
         <TableCell>{t.vehicle ? `${t.vehicle.brand||''} ${t.vehicle.model||''} · ${t.vehicle.plate||''}`:'—'}</TableCell>
-        <TableCell><Chip size="small" label={statuses[t.status]} color={t.status==='COMPLETED'?'success':'default'}/></TableCell><TableCell sx={{whiteSpace:'nowrap'}}>{money(t.totalPrice)}</TableCell>
-        <TableCell>{t.canChat&&<Button onClick={()=>openTripChat(t.id)}>Chat{t.unread?` (${t.unread})`:""}</Button>}</TableCell>
+        <TableCell><Chip size="small" label={tripStatusLabel(t)} color={t.status==='COMPLETED'?'success':'default'}/></TableCell><TableCell sx={{whiteSpace:'nowrap'}}>{money(t.totalPrice)}</TableCell>
+        <TableCell>{t.canChat&&<Button onClick={()=>openTripChat(t.id)}>Chat{t.unread?` (${t.unread})`:""}</Button>}{t.canCancel&&<Button color="error" disabled={busy} onClick={()=>cancel(t)}>Hủy chuyến</Button>}</TableCell>
       </TableRow>)}{!items.length&&<TableRow><TableCell colSpan={9}>Chưa có chuyến phù hợp.</TableCell></TableRow>}</TableBody></Table></TableContainer>
     <Stack direction="row" spacing={2} alignItems="center"><Typography>{total} chuyến</Typography><Pagination count={Math.max(1,Math.ceil(total/50))} page={page} onChange={(_,n)=>setPage(n)}/></Stack>
     <Dialog open={Boolean(selected&&tripId)} onClose={onClose} fullWidth maxWidth="sm"><DialogTitle>Chi tiết chuyến #{selected?.id.slice(-8).toUpperCase()}</DialogTitle><DialogContent>
-      {selected&&<Stack spacing={2} sx={{pt:1}}><Chip label={statuses[selected.status]}/><Typography>{time(selected.pickupTime)} · {vehicles[selected.carType]} · {money(selected.totalPrice)}</Typography>
+      {selected&&<Stack spacing={2} sx={{pt:1}}><Chip label={tripStatusLabel(selected)}/><Typography>{time(selected.pickupTime)} · {vehicles[selected.carType]} · {money(selected.totalPrice)}</Typography>
         <Typography>Đón: {selected.pickupAddress}</Typography>{selected.stops?.map(s=><Typography key={s.id}>Điểm {s.seq}: {s.address}</Typography>)}
         {selected.note&&<Typography>Ghi chú: {selected.note}</Typography>}
         <Typography>Người tạo: {selected.createdBy?.displayName||'GoViet247'}</Typography>
         <TextField select label="Điều phối phụ trách" disabled={busy||!selected.canReassign||['COMPLETED','CANCELLED'].includes(selected.status)} value={selected.assignedTo?.id||''} onChange={e=>assign(e.target.value)}>{members.map(m=><MenuItem key={m.id} value={m.id}>{m.displayName} ({m.username})</MenuItem>)}</TextField>
         {selected.vehicle&&<Typography>Xe: {selected.vehicle.brand} {selected.vehicle.model} · {selected.vehicle.color} · {selected.vehicle.plate}</Typography>}
         {selected.canChat&&<Button variant="contained" onClick={()=>openTripChat(selected.id)}>Chat chuyến</Button>}
-        {selected.canCancel&&<Button color="error" disabled={busy} onClick={cancel}>Hủy chuyến đang chờ</Button>}
+        {selected.canCancel&&<Button color="error" disabled={busy} onClick={()=>cancel(selected)}>Hủy chuyến chờ duyệt</Button>}
         {error&&<Alert severity="error">{error}</Alert>}<Button onClick={onClose}>Đóng</Button>
       </Stack>}
     </DialogContent></Dialog>
@@ -81,11 +84,12 @@ export function PartnerMembers({token,companyId}) {
   async function save(e){e.preventDefault();setBusy(true);setError('');try{await api(form.id?`/members/${form.id}`:'/members',{method:form.id?'PATCH':'POST',body:form});setForm(null);setRevision(v=>v+1);}catch(e){setError(e.message);}finally{setBusy(false);}}
   async function toggle(m){if(!window.confirm(`${m.isActive?'Khóa':'Mở khóa'} tài khoản ${m.username}?`))return;setBusy(true);try{await api(`/members/${m.id}`,{method:'PATCH',body:{isActive:!m.isActive}});setRevision(v=>v+1);setError('');}catch(e){setError(e.message);}finally{setBusy(false);}}
   return <Stack spacing={2}><Typography variant="h5">Nhân viên</Typography><Typography color="text.secondary">Khóa tài khoản sẽ giữ nguyên lịch sử. Hãy chuyển chuyến đang phụ trách trước khi khóa.</Typography>
-    {error&&<Alert severity="error">{error}</Alert>}<Button variant="contained" onClick={()=>setForm({username:'',displayName:'',password:'',role:'DISPATCHER'})}>Thêm nhân viên</Button>
-    <TableContainer component={Paper}><Table><TableHead><TableRow>{['Username','Họ tên','Quyền','Trạng thái',''].map(v=><TableCell key={v}>{v}</TableCell>)}</TableRow></TableHead><TableBody>{items.map(m=><TableRow key={m.id}><TableCell>{m.username}</TableCell><TableCell>{m.displayName}</TableCell><TableCell>{m.role==='ADMIN'?'Admin công ty':'Điều phối viên'}</TableCell><TableCell>{m.isActive?'Hoạt động':'Đã khóa'}</TableCell><TableCell><Button onClick={()=>setForm({...m,password:''})}>Sửa / Đặt lại mật khẩu</Button><Button color="warning" disabled={busy} onClick={()=>toggle(m)}>{m.isActive?'Khóa':'Mở khóa'}</Button></TableCell></TableRow>)}</TableBody></Table></TableContainer>
+    {error&&<Alert severity="error">{error}</Alert>}<Button variant="contained" onClick={()=>setForm({username:'',displayName:'',phone:'',password:'',role:'DISPATCHER'})}>Thêm nhân viên</Button>
+    <TableContainer component={Paper}><Table><TableHead><TableRow>{['Username','Họ tên','Số điện thoại Rider','Quyền','Trạng thái',''].map(v=><TableCell key={v}>{v}</TableCell>)}</TableRow></TableHead><TableBody>{items.map(m=><TableRow key={m.id}><TableCell>{m.username}</TableCell><TableCell>{m.displayName}</TableCell><TableCell>{m.phone||"Chưa cập nhật"}</TableCell><TableCell>{m.role==='ADMIN'?'Admin công ty':'Điều phối viên'}</TableCell><TableCell>{m.isActive?'Hoạt động':'Đã khóa'}</TableCell><TableCell><Button onClick={()=>setForm({...m,password:''})}>Sửa / Đặt lại mật khẩu</Button><Button color="warning" disabled={busy} onClick={()=>toggle(m)}>{m.isActive?'Khóa':'Mở khóa'}</Button></TableCell></TableRow>)}</TableBody></Table></TableContainer>
     <Dialog open={Boolean(form)} onClose={()=>!busy&&setForm(null)} fullWidth><DialogTitle>{form?.id?'Cập nhật nhân viên':'Thêm nhân viên'}</DialogTitle><DialogContent>{form&&<Stack component="form" spacing={2} onSubmit={save} sx={{pt:1}}>
       <TextField required label="Username" disabled={Boolean(form.id)} value={form.username} onChange={e=>setForm({...form,username:e.target.value})}/>
       <TextField required label="Họ tên" value={form.displayName} onChange={e=>setForm({...form,displayName:e.target.value})}/>
+      <TextField required label="Số di động đăng nhập Rider" type="tel" value={form.phone||""} onChange={e=>setForm({...form,phone:e.target.value})} helperText="Nhân viên đăng nhập app Rider bằng số này và xác thực OTP để xem chuyến, chat và nhận thông báo."/>
       <TextField required={!form.id} type="password" autoComplete="new-password" label={form.id?'Mật khẩu mới (bỏ trống để giữ nguyên)':'Mật khẩu ban đầu'} value={form.password} onChange={e=>setForm({...form,password:e.target.value})} helperText="Ít nhất 10 ký tự. Nhân viên phải đổi khi đăng nhập."/>
       <TextField select label="Quyền" value={form.role} onChange={e=>setForm({...form,role:e.target.value})}><MenuItem value="DISPATCHER">Điều phối viên</MenuItem><MenuItem value="ADMIN">Admin công ty</MenuItem></TextField>
       {error&&<Alert severity="error">{error}</Alert>}<Button disabled={busy} type="submit" variant="contained">{busy?'Đang lưu…':'Lưu'}</Button><Button disabled={busy} onClick={()=>setForm(null)}>Đóng</Button>

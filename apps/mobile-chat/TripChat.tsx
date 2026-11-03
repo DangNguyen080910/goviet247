@@ -1,16 +1,19 @@
 import { chatAudienceLabel } from '../api/src/shared/tripChatVisibility.js';
+import { playChatAlert, setChatRecordingActive } from './chatAlerts';
+import { createChatRecording } from './audioRecording';
+import { splitChatLinks } from './chatLinks';
+import { newUnreadConversations } from '../api/src/shared/chatAlerts.js';
 import DraggableFloatingAction from './DraggableFloatingAction';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { AppState, Alert, Image, Modal, Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { AppState, Alert, Image, Keyboard, KeyboardAvoidingView, Modal, Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams, usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Audio } from 'expo-av';
 import * as Location from 'expo-location';
 import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
-import * as Haptics from 'expo-haptics';
 type Config = {
   base: string;
   getToken: () => Promise<string | null>;
@@ -79,6 +82,7 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
     [signed, setSigned] = useState(false);
   const path = usePathname();
   const last = useRef(-1);
+  const previousInbox = useRef(new Map<string,string>());
   useEffect(() => {
     let alive = true;
     async function load() {
@@ -89,13 +93,15 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
         activeChatTrip = '';
         if (alive) setUnread(0);
         last.current = -1;
+        previousInbox.current.clear();
         return;
       }
       try {
         const d = await api('/conversations');
         if (!alive) return;
         setUnread(d.unread);
-        if (last.current >= 0 && d.unread > last.current && !activeChatTrip) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+        for (const c of newUnreadConversations(previousInbox.current,d.items,d.actorId)) if(c.tripId!==activeChatTrip) void playChatAlert(c.last.id);
+        previousInbox.current=new Map(d.items.map((c:any)=>[c.tripId,c.last.id]));
         last.current = d.unread;
       } catch {}
     }
@@ -111,7 +117,7 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
     };
   }, []);
   if (!signed || path.includes('trip-chat') || /login|bootstrap|index|driver-profile/.test(path)) return null;
-  const draggable = !inline && config?.role === 'ADMIN';
+  const draggable = !inline && ['ADMIN', 'DRIVER'].includes(config?.role);
   const action = <Pressable accessibilityLabel={`Tin nhắn chuyến, ${unread} chưa đọc${draggable ? ", có thể kéo để di chuyển" : ""}`} onPress={() => router.push('/trip-chat' as any)} style={{
     ...(inline || draggable ? {minHeight:48,alignItems:'center' as const,justifyContent:'center' as const,width:'100%' as const} : {position:'absolute' as const,right:16,bottom:100}),
     backgroundColor: blue,
@@ -122,7 +128,7 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
       color: 'white',
       fontWeight: '800'
     }}>💬 Tin nhắn{unread ? ` (${unread})` : ''}</Text></Pressable>;
-  return draggable ? <DraggableFloatingAction storageKey="goviet247_admin_inbox_position_v1">{action}</DraggableFloatingAction> : action;
+  return draggable ? <DraggableFloatingAction storageKey={config.role === 'DRIVER' ? 'goviet247_driver_inbox_position_v1' : 'goviet247_admin_inbox_position_v1'}>{action}</DraggableFloatingAction> : action;
 }
 type Msg = {
   deletedAt?: string | null;
@@ -158,6 +164,15 @@ export default function TripChatScreen() {
       tripId?: string;
     }>(),
     tripId = String(params.tripId || '');
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+  useEffect(() => {
+    const show = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow', () => {
+      setKeyboardVisible(true);
+      requestAnimationFrame(() => scroll.current?.scrollToEnd({ animated: true }));
+    });
+    const hide = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide', () => setKeyboardVisible(false));
+    return () => { show.remove(); hide.remove(); };
+  }, []);
   const [items, setItems] = useState<Msg[]>([]),
     [inbox, setInbox] = useState<any[]>([]),
     [actor, setActor] = useState<any>({}),
@@ -190,10 +205,7 @@ export default function TripChatScreen() {
       payload: string;
       clientId: string;
     } | null>(null);
-  const [location, setLocation] = useState<any>(null),
-    [query, setQuery] = useState(''),
-    [places, setPlaces] = useState<any[]>([]),
-    [pickLocation, setPickLocation] = useState(false);
+
   const run = async (fn: () => Promise<any>) => {
     if (sending.current) return;
     sending.current = true;
@@ -238,7 +250,7 @@ export default function TripChatScreen() {
     });
     const latest = d.items.at(-1);
     if (latest && latest.id !== lastId.current) {
-      if (lastId.current && latest.senderId !== d.actor.id) Haptics.selectionAsync().catch(() => {});
+      if (lastId.current && latest.senderId !== d.actor.id) void playChatAlert(latest.id);
       lastId.current = latest.id;
       if (!olderRef.current) setTimeout(() => scroll.current?.scrollToEnd({
         animated: true
@@ -277,6 +289,7 @@ export default function TripChatScreen() {
       activeChatTrip = '';
       clearInterval(timer);
       sub.remove();
+      if (recorder.current) setChatRecordingActive(false);
       recorder.current?.stopAndUnloadAsync().catch(() => {});
       recorder.current = null;
       sound.current?.unloadAsync().catch(() => {});
@@ -310,24 +323,27 @@ export default function TripChatScreen() {
         allowsRecordingIOS: false,
         playsInSilentModeIOS: true
       }).catch(() => {});
+      setChatRecordingActive(false);
       if (mounted.current) setRecording(false);
     }
   }
   async function startRecording() {
-    const p = await Audio.requestPermissionsAsync();
-    if (!p.granted) throw new Error('Vui lòng cho phép sử dụng micro.');
-    await sound.current?.unloadAsync();
-    sound.current = null;
-    setPlaying('');
-    await Audio.setAudioModeAsync({
-      allowsRecordingIOS: true,
-      playsInSilentModeIOS: true,
-      staysActiveInBackground: false
-    });
-    const result = await Audio.Recording.createAsync(Audio.RecordingOptionsPresets.HIGH_QUALITY);
-    recorder.current = result.recording;
-    setSeconds(0);
-    setRecording(true);
+    const version = generation.current;
+    setChatRecordingActive(true);
+    try {
+      await sound.current?.unloadAsync();
+      sound.current = null;
+      setPlaying('');
+      const recording = await createChatRecording(() => mounted.current && version === generation.current);
+      if (!mounted.current || version !== generation.current || AppState.currentState !== 'active') {
+        await recording.stopAndUnloadAsync().catch(() => {});
+        setChatRecordingActive(false);
+        return;
+      }
+      recorder.current = recording;
+      setSeconds(0);
+      setRecording(true);
+    } catch (error) { setChatRecordingActive(false); throw error; }
   }
   async function play(uri: string, key: string) {
     if (playing === key) {
@@ -373,6 +389,10 @@ export default function TripChatScreen() {
   }
   async function sendAudio() {
     if (!draft) return;
+    await sound.current?.unloadAsync();
+    sound.current = null;
+    setPlaying('');
+    const version = generation.current;
     const data = new FormData();
     if (Platform.OS === 'web') {
       const blob = await (await fetch(draft.uri)).blob();
@@ -388,6 +408,7 @@ export default function TripChatScreen() {
       method: 'POST',
       body: data
     });
+    if (!mounted.current || version !== generation.current) return;
     setDraft(null);
     await load();
   }
@@ -403,7 +424,6 @@ export default function TripChatScreen() {
     if (result.canceled || !mounted.current || version !== generation.current) return;
     const asset = result.assets[0];
     if ((asset.fileSize || 0) > 10 * 1024 * 1024) throw new Error('Ảnh tối đa 10 MB. Vui lòng chọn ảnh nhỏ hơn.');
-    setPickLocation(false);
     setImageDraft({uri:asset.uri, type:asset.mimeType && ['image/jpeg','image/png','image/webp'].includes(asset.mimeType) ? asset.mimeType : 'image/jpeg', name:asset.fileName || 'photo.jpg', clientId:id()});
   }
   async function sendImage() {
@@ -426,40 +446,20 @@ export default function TripChatScreen() {
     if (mounted.current && version === generation.current) setImageView({id:messageId,uri:d.url});
   }
   async function currentLocation() {
+    const version = generation.current;
+    Keyboard.dismiss();
     const permission = await Location.requestForegroundPermissionsAsync();
-    if (!permission.granted) throw new Error('Không có quyền GPS. Bạn có thể tìm địa chỉ bên dưới.');
-    const position = await Location.getCurrentPositionAsync({
-      accuracy: Location.Accuracy.High
-    });
-    setLocation({
+    if (!permission.granted) throw new Error('Vui lòng cho phép vị trí trong Cài đặt để gửi định vị hiện tại.');
+    const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+    if (!mounted.current || version !== generation.current) return;
+    await post(`/${tripId}/messages`, {
+      kind: 'LOCATION',
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
-      locationLabel: 'Vị trí hiện tại',
+      locationLabel: 'Định vị hiện tại',
       clientId: id()
     });
-  }
-  async function search() {
-    if (query.trim().length < 3) throw new Error('Nhập ít nhất 3 ký tự.');
-    const d = await (await fetch(`${config.base}/api/maps/autocomplete?q=${encodeURIComponent(query)}`)).json();
-    if (!d.success) throw new Error(d.message);
-    setPlaces(d.items || []);
-  }
-  async function selectPlace(p: any) {
-    const placeId = p.placeId || p.place_id || p.id;
-    const d = await (await fetch(`${config.base}/api/maps/place-detail?placeId=${encodeURIComponent(placeId)}`)).json();
-    if (!d.success) throw new Error(d.message);
-    const raw = d.item?.data?.place || d.item?.data || d.item?.place || d.item?.result || d.item;
-    const loc = raw?.geometry?.location || raw?.location || raw;
-    const latitude = Number(raw?.lat ?? raw?.latitude ?? loc?.lat),
-      longitude = Number(raw?.lng ?? raw?.longitude ?? loc?.lng);
-    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) throw new Error('Địa chỉ chưa có toạ độ.');
-    setLocation({
-      latitude,
-      longitude,
-      locationLabel: p.description || p.address || p.name || query,
-      clientId: id()
-    });
-    setPlaces([]);
+    await load();
   }
   function openMap(lat: number, lon: number) {
     const url = Platform.OS === 'ios' ? `https://maps.apple.com/?ll=${lat},${lon}&q=${lat},${lon}` : `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
@@ -468,7 +468,7 @@ export default function TripChatScreen() {
   return <SafeAreaView style={{
     flex: 1,
     backgroundColor: '#f8fafc'
-  }}><View style={{
+  }}><KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}><View style={{
       padding: 16,
       flexDirection: 'row',
       alignItems: 'center',
@@ -500,7 +500,7 @@ export default function TripChatScreen() {
         padding: 10,
         color: '#64748b',
         fontSize: 12
-      }}>Khách, tài xế phụ trách và GoViet247 cùng xem hội thoại này. Không chia sẻ số điện thoại cá nhân.</Text>
+      }}>Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.</Text>
  <ScrollView ref={scroll} style={{
         flex: 1
       }} contentContainerStyle={{
@@ -535,7 +535,7 @@ export default function TripChatScreen() {
             color: ink,
             fontSize: 15,
             lineHeight: 22
-          }}>{m.text}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording} style={button} onPress={() => void run(async () => {
+          }}>{splitChatLinks(m.text || '').map((part, index) => part.url ? <Text key={index} accessibilityRole="link" style={{color: blue, textDecorationLine: 'underline'}} onPress={() => void run(() => Linking.openURL(part.url!))}>{part.text}</Text> : part.text)}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording} style={button} onPress={() => void run(async () => {
             const d = await api(`/${tripId}/audio/${m.id}`);
             await play(d.url, m.id);
           })}><Text style={{
@@ -575,43 +575,19 @@ export default function TripChatScreen() {
  {!canSend ? <Text style={{
         padding: 16,
         color: '#64748b'
-      }}>Hội thoại chỉ đọc khi chưa có tài xế hoặc chuyến đã kết thúc. Liên hệ hỗ trợ GoViet247 nếu cần.</Text> : <View style={{
+      }}>Hội thoại hiện chỉ đọc. Chuyến đã kết thúc hoặc tài khoản chưa có quyền gửi tin. Liên hệ hỗ trợ GoViet247 nếu cần.</Text> : <ScrollView keyboardShouldPersistTaps="handled" style={{ flexGrow: 0, flexShrink: 1, maxHeight: '65%' }} contentContainerStyle={{
         padding: 10,
         borderTopWidth: 1,
         borderColor: '#e2e8f0',
         backgroundColor: 'white'
       }}>
- <ScrollView horizontal showsHorizontalScrollIndicator={false}>{replies.map(reply => <Pressable key={reply} disabled={busy || recording} onPress={() => setText(reply)} style={{
+ {!keyboardVisible && <ScrollView horizontal showsHorizontalScrollIndicator={false}>{replies.map(reply => <Pressable key={reply} disabled={busy || recording} onPress={() => setText(reply)} style={{
             ...button,
             maxWidth: 260
           }}><Text style={{
               color: blue,
               fontSize: 12
-            }}>{reply}</Text></Pressable>)}</ScrollView>
- {pickLocation && <View style={{
-          padding: 8,
-          backgroundColor: '#f1f5f9',
-          borderRadius: 12
-        }}><Pressable style={button} disabled={busy} onPress={() => void run(currentLocation)}><Text>📍 Dùng vị trí hiện tại</Text></Pressable><TextInput placeholder="Tìm địa chỉ / điểm hẹn" value={query} onChangeText={setQuery} style={{
-            padding: 10,
-            borderWidth: 1,
-            borderColor: '#cbd5e1',
-            borderRadius: 8
-          }} /><Pressable style={button} disabled={busy} onPress={() => void run(search)}><Text>Tìm điểm</Text></Pressable>{places.slice(0, 5).map((p: any, i: number) => <Pressable key={i} style={button} onPress={() => void run(() => selectPlace(p))}><Text>{p.description || p.address || p.name}</Text></Pressable>)}{location && <><Text>{location.locationLabel} ({location.latitude.toFixed(5)}, {location.longitude.toFixed(5)})</Text><Pressable style={button} onPress={() => void run(() => openMap(location.latitude, location.longitude))}><Text>Xem điểm trên bản đồ</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(async () => {
-              await post(`/${tripId}/messages`, {
-                kind: 'LOCATION',
-                ...location
-              });
-              setLocation(null);
-              setPickLocation(false);
-              await load();
-            })}><Text style={{
-                color: blue,
-                fontWeight: '800'
-              }}>Gửi vị trí này</Text></Pressable></>}<Pressable onPress={() => {
-            setPickLocation(false);
-            setLocation(null);
-          }}><Text>Đóng chọn vị trí</Text></Pressable></View>}
+            }}>{reply}</Text></Pressable>)}</ScrollView>}
  {imageDraft ? <View style={{padding:8}}><Text style={{color:ink,fontWeight:'700'}}>Xem trước ảnh</Text><Image source={{uri:imageDraft.uri}} resizeMode="contain" style={{height:170,width:'100%',marginVertical:8}} /><View style={{flexDirection:'row'}}><Pressable disabled={busy} style={button} onPress={() => void run(sendImage)}><Text style={{color:blue,fontWeight:'800'}}>{busy ? 'Đang gửi…' : 'Gửi ảnh'}</Text></Pressable><Pressable disabled={busy} style={button} onPress={() => setImageDraft(null)}><Text>Bỏ ảnh</Text></Pressable></View></View> : draft ? <View style={{
           flexDirection: 'row',
           flexWrap: 'wrap'
@@ -635,13 +611,14 @@ export default function TripChatScreen() {
           }}><Pressable style={button} disabled={busy || recording || !text.trim()} onPress={() => void run(sendText)}><Text style={{
                 fontWeight: '800',
                 color: blue
-              }}>Gửi</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(recording ? stopRecording : startRecording)}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => setPickLocation(v => !v)}><Text>📍 Vị trí</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(() => chooseImage(true))}><Text>📷 Chụp ảnh</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(() => chooseImage(false))}><Text>🖼 Chọn ảnh</Text></Pressable></View></>}
+              }}>Gửi</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => { Keyboard.dismiss(); void run(recording ? stopRecording : startRecording); }}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(currentLocation)}><Text>📍 Gửi định vị</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(true)); }}><Text>📷 Chụp ảnh</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(false)); }}><Text>🖼 Chọn ảnh</Text></Pressable></View></>}
  <Text style={{
           fontSize: 11,
           color: '#64748b'
         }}>Ghi âm tối đa 60 giây. Vui lòng dừng xe an toàn trước khi thao tác.</Text>
- </View>}
+ </ScrollView>}
  </>}
+ </KeyboardAvoidingView>
  <Modal visible={Boolean(imageView)} transparent animationType="fade" onRequestClose={() => setImageView(null)}>
  <SafeAreaView style={{flex:1,backgroundColor:'rgba(0,0,0,0.96)'}}><Pressable accessibilityLabel="Đóng ảnh" onPress={() => setImageView(null)} style={{padding:18,alignSelf:'flex-end'}}><Text style={{color:'white',fontSize:18}}>Đóng ✕</Text></Pressable>{imageView && <Image source={{uri:imageView.uri}} resizeMode="contain" style={{flex:1,width:'100%'}} onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} />}</SafeAreaView>
  </Modal>

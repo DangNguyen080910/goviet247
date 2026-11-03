@@ -1,4 +1,5 @@
 // Path: goviet247/apps/web/src/components/customer/BookingCard.jsx
+import { openTripChat } from "../TripChatHub";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Box,
@@ -2744,7 +2745,7 @@ export default function BookingCard({ partner = null }) {
               GoViet247 đã ghi nhận chuyến của bạn.
             </Typography>
             <Typography sx={{ opacity: 0.85 }}>
-              Nhân viên sẽ xác nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để nhận tin nhắn, ghi âm và vị trí từ tài xế.
+              Chuyến đang chờ duyệt. Bạn có thể nhắn GoViet247 ngay tại đây để bổ sung yêu cầu hoặc nhờ hỗ trợ. Vui lòng bật chuông và thông báo để nhận phản hồi.
             </Typography>
 
             {!!successDialog.tripId && (
@@ -2776,6 +2777,7 @@ export default function BookingCard({ partner = null }) {
           </Stack>
         </DialogContent>
         <DialogActions sx={{ px: 2.5, pb: 2 }}>
+          {successDialog.tripId && <Button onClick={()=>{const id=successDialog.tripId;handleCloseSuccessDialog();openTripChat(id);}}>Nhắn GoViet247</Button>}
           <Button
             onClick={handleCloseSuccessDialog}
             variant="contained"

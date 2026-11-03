@@ -8,6 +8,7 @@ function load(file,mocks){
 }
 function chatModule(){return load('apps/api/src/services/tripChatService.js',{
  '../shared/tripChatVisibility.js':{},'./tripAcceptanceChat.js':{},
+ './partnerRiderAccess.js':{getPartnerRiderContext:async()=>null},
  './partnerAccess.js':{},jsonwebtoken:{default:{}},'node:crypto':require('node:crypto'),
  '@aws-sdk/client-s3':{S3Client:class{}},'@aws-sdk/s3-request-presigner':{},'../utils/db.js':{prisma:{}},'./userSessions.js':{},'../utils/jwt.js':{},
  './riderTripAccess.js':{getVerifiedRiderPhoneVariants:async()=>[],phoneVariants:()=>[],riderTripAccessWhere:()=>({})},
@@ -40,7 +41,7 @@ function routes(){
  const fail=(m,status=400)=>Object.assign(new Error(m),{status});
  const access={partnerAuth(){},partnerWrap:fn=>fn,partnerFail:fail,companyScope:req=>req.partnerActor.superAdmin?req.query.companyId:req.partnerActor.member.companyId,
   requireCompanyAdmin:req=>{if(!req.partnerActor.superAdmin&&req.partnerActor.member.role!=='ADMIN')throw fail('denied',403);},requireSuperAdmin(){},publicMember:m=>m,publicCompany:c=>c,serializePartnerTrip:t=>t,partnerAudit:async()=>{}};
- load('apps/api/src/routes/partners.js',{'../shared/tripChatVisibility.js':{},express:{Router:()=>fakeRouter},bcryptjs:{default:{hash:async()=> 'hash'}},sharp:{default:()=>{}},'../utils/db.js':{prisma:db},'../services/partnerAccess.js':access,
+ load('apps/api/src/routes/partners.js',{'../services/partnerRiderAccess.js':load('apps/api/src/services/partnerRiderAccess.js',{}),'../shared/tripSelfService.js':load('apps/api/src/shared/tripSelfService.js',{}),'../shared/tripChatVisibility.js':{},express:{Router:()=>fakeRouter},bcryptjs:{default:{hash:async()=> 'hash'}},sharp:{default:()=>{}},'../utils/db.js':{prisma:db},'../services/partnerAccess.js':access,
   './trips.js':{createTripHandler:async req=>{booking=req;}},'../controllers/pricingController.js':{quote(){}},'../shared/tripChat.js':{assertNoContactNumber(){}},'../services/tripAudience.js':{emitDriverTripEvent(){}}});
  const res={json:d=>d,status(){return this;}};db.$transaction=fn=>fn(db);db.$queryRawUnsafe=async()=>[];db.partnerAuditLog={create:async()=>{}};
  return{handlers,db,res,booking:()=>booking};

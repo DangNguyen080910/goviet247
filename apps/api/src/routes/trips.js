@@ -1,3 +1,8 @@
+import { riderBookingCompanies, resolveRiderCompanyBooking } from '../services/partnerRiderBooking.js';
+import { assertNoContactNumber } from '../shared/tripChat.js';
+import { getVerifiedRiderPhoneVariants } from "../services/riderTripAccess.js";
+import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
+import { canSelfCancelTrip } from "../shared/tripSelfService.js";
 import { assertDestinationQuote } from "../services/destinationService.js";
 import { createBookableTrip } from "../services/carAvailability.js";
 import { linkQuoteToTrip } from "../services/quoteHistoryService.js";
@@ -83,7 +88,20 @@ router.post("/estimate", estimateTrip);
  */
 export async function createTripHandler(req, res) {
   try {
-    const riderId = req.user?.uid || req.user?.id || null;
+    let riderId = req.user?.uid || req.user?.id || null;
+    if (!req.partnerTripData && req.body.bookingCompanyId) {
+      if(!riderId) return res.status(401).json({success:false,message:'Vui lòng đăng nhập lại.'});
+      const {company,member,assigned}=await resolveRiderCompanyBooking(prisma,riderId,String(req.body.bookingCompanyId));
+      try {assertNoContactNumber(req.body.note);} catch(error) {error.status=400;throw error;}
+      req.partnerTripData={partnerCompanyId:company.id,partnerCompanyName:company.name,
+        partnerGreeting:company.greeting || `Em là tài xế đón khách của ${company.name}.`,
+        partnerCreatedById:member?.id || null,partnerAssignedToId:assigned.id,
+        partnerRiderBookingUserId:riderId,
+        partnerStops:Array.isArray(req.body.stops)?req.body.stops.map(s=>String(s || '').trim()).filter(Boolean):[],
+        partnerAuditData:{companyId:company.id,actorId:riderId,actorLabel:'Rider · '+(member?.displayName || company.managementName),action:'CREATE_TRIP'}};
+      req.body={...req.body,riderName:'',riderPhone:''};
+      riderId=null;
+    }
 
     const {
       pickupAddress,
@@ -450,12 +468,15 @@ export async function createTripHandler(req, res) {
     });
   }
 }
+router.get('/booking-companies',verifyToken,async(req,res,next)=>{
+  try {res.json({success:true,companies:await riderBookingCompanies(prisma,req.user?.uid || req.user?.id)});} catch(error){next(error);}
+});
 router.post("/", optionalVerifyToken, createTripHandler);
 
 // Lịch sử chuyến của customer đang đăng nhập
 router.get("/my", verifyToken, listMyCustomerTrips);
 
-// Rider tự huỷ chuyến, chỉ khi còn PENDING
+// Rider tự huỷ chuyến chỉ khi PENDING và chưa được Admin duyệt.
 router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
   try {
     const tripId = String(req.params?.id || "").trim();
@@ -481,7 +502,11 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       select: {
         id: true,
         riderId: true,
+        partnerCompanyId: true,
         status: true,
+        isVerified: true,
+        verifiedAt: true,
+        driverId: true,
         cancelledAt: true,
       },
     });
@@ -493,7 +518,9 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       });
     }
 
-    if (trip.riderId !== riderId) {
+    const verifiedPhones=trip.partnerCompanyId ? await getVerifiedRiderPhoneVariants(prisma,riderId) : [];
+    const partnerContext=await getPartnerRiderContext(prisma,trip,verifiedPhones);
+    if (trip.partnerCompanyId ? !partnerContext : trip.riderId !== riderId) {
       return res.status(403).json({
         success: false,
         message: "Bạn không có quyền huỷ chuyến này.",
@@ -507,7 +534,7 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
       });
     }
 
-    if (trip.status !== "PENDING") {
+    if (!canSelfCancelTrip(trip)) {
       return res.status(400).json({
         success: false,
         message:
@@ -517,7 +544,7 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
 
     const updated = await prisma.$transaction(async (tx) => {
       const changed = await tx.trip.update({
-        where: { id: tripId, riderId, status: "PENDING", cancelledAt: null },
+        where: { id: tripId, status: "PENDING", isVerified: false, verifiedAt: null, driverId: null, cancelledAt: null, ...(trip.partnerCompanyId ? partnerRiderAccessWhere(verifiedPhones) : {riderId,partnerCompanyId:null}) },
         data: {
           status: "CANCELLED",
           cancelledAt: new Date(),

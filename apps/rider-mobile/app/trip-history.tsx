@@ -1,3 +1,4 @@
+import { canSelfCancelTrip } from "../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../services/tripChat";
 import { hasActiveTripContact } from "../../api/src/shared/tripContact.js";
 import TripRoute from "../components/TripRoute";
@@ -40,9 +41,12 @@ type TripItem = {
   verifiedAt?: string | null;
   direction?: "ONE_WAY" | "ROUND_TRIP" | string | null;
   carType?: string | null;
+  partnerCompanyName?: string | null;
   riderName?: string | null;
   riderPhone?: string | null;
   canManage?: boolean;
+  driverId?: string | null;
+  cancelledAt?: string | null;
   note?: string | null;
   driverContact?: { name: string; phone: string | null } | null;
   driverVehicle?: {
@@ -202,7 +206,8 @@ export default function RiderTripHistoryScreen() {
   const [cancellingTripId, setCancellingTripId] = useState("");
 
   const scrollViewRef = useRef<ScrollView | null>(null);
-  const [focusCardY, setFocusCardY] = useState(0);
+  const [focusCard, setFocusCard] = useState<{ tripId: string; y: number } | null>(null);
+  const [listTop, setListTop] = useState<number | null>(null);
   const [didAutoFocus, setDidAutoFocus] = useState(false);
 
   async function loadTrips(options?: { silent?: boolean }) {
@@ -251,7 +256,7 @@ export default function RiderTripHistoryScreen() {
   }
 
   function handleCancelTrip(item: TripItem) {
-    if (item.canManage === false) return;
+    if (item.canManage === false || !canSelfCancelTrip(item)) return;
     const message =
       "Bạn chỉ có thể tự huỷ chuyến khi chuyến đang ở trạng thái Chờ duyệt.";
 
@@ -294,7 +299,7 @@ export default function RiderTripHistoryScreen() {
     useCallback(() => {
       void loadTrips({ silent: true });
       void markAllAsSeen();
-    }, [markAllAsSeen]),
+    }, [markAllAsSeen, focusTripId]),
   );
 
   useEffect(() => {
@@ -313,21 +318,21 @@ export default function RiderTripHistoryScreen() {
   }, [focusTripId]);
 
   useEffect(() => {
-    if (!focusTripId || !items.length || didAutoFocus) return;
+    if (!focusTripId || !items.length || didAutoFocus || listTop === null || focusCard?.tripId !== focusTripId) return;
 
     const hasFocusedTrip = items.some((item) => item.id === focusTripId);
     if (!hasFocusedTrip) return;
 
     const timer = setTimeout(() => {
       scrollViewRef.current?.scrollTo({
-        y: Math.max(0, focusCardY - 12),
+        y: Math.max(0, listTop + focusCard.y - 12),
         animated: true,
       });
       setDidAutoFocus(true);
     }, 250);
 
     return () => clearTimeout(timer);
-  }, [focusTripId, items, focusCardY, didAutoFocus]);
+  }, [focusTripId, items, focusCard, listTop, didAutoFocus]);
 
   const sortedItems = useMemo(() => {
     const next = [...items];
@@ -362,7 +367,7 @@ export default function RiderTripHistoryScreen() {
           <View style={styles.successBox}>
             <Text style={styles.successBoxText}>Đặt chuyến thành công.</Text>
             <Text style={styles.successBoxText}>
-              Nhân viên sẽ xác nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để nhận tin nhắn, ghi âm và vị trí từ tài xế.
+              GoViet247 đã ghi nhận chuyến của bạn. Bạn có thể nhắn GoViet247 ngay tại chuyến bên dưới; tài xế sẽ liên hệ trong hội thoại này sau khi nhận chuyến. Vui lòng bật thông báo để nhận tin nhắn.
             </Text>
           </View>
         ) : null}
@@ -418,7 +423,7 @@ export default function RiderTripHistoryScreen() {
             </Text>
           </View>
         ) : (
-          <View style={styles.listWrap}>
+          <View style={styles.listWrap} onLayout={event => setListTop(event.nativeEvent.layout.y)}>
             {sortedItems.map((item) => {
               const statusMeta = getTripStatusMeta(item);
               const displayPrice =
@@ -433,7 +438,7 @@ export default function RiderTripHistoryScreen() {
                   ]}
                   onLayout={(event) => {
                     if (item.id === focusTripId) {
-                      setFocusCardY(event.nativeEvent.layout.y);
+                      setFocusCard({ tripId: item.id, y: event.nativeEvent.layout.y });
                     }
                   }}
                 >
@@ -509,7 +514,7 @@ export default function RiderTripHistoryScreen() {
                         </View>
                       </>
                     ) : null}
-                    <TripChatButton tripId={item.id} status={item.status} label="Liên hệ tài xế / GoViet247" />
+                    <TripChatButton tripId={item.id} status={item.status} label={item.status === "PENDING" ? "Nhắn GoViet247" : "Liên hệ tài xế / GoViet247"} />
 
                     <View style={styles.metaRow}>
                       <Text style={styles.metaLabel}>Giờ đón</Text>
@@ -544,9 +549,7 @@ export default function RiderTripHistoryScreen() {
                     </View>
                   ) : null}
 
-                  {item.canManage !== false && String(item?.status || "")
-                    .trim()
-                    .toUpperCase() === "PENDING" ? (
+                  {item.canManage !== false && canSelfCancelTrip(item) ? (
                     <Pressable
                       style={[
                         styles.cancelButton,

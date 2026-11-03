@@ -35,7 +35,7 @@ export async function chatPushRecipientIds(db, trip, message) {
   const actors = admins.map(a => ({id: `admin-${a.id}`, role: 'ADMIN'}));
   if (!isRiderChatEnded(trip.status)) {
     const riders = await getTripRiderRecipientUserIds(db, trip);
-    actors.push(...riders.map(id => ({id, role: 'RIDER'})));
+    actors.push(...riders.map(id => ({id, role: trip.partnerCompanyId ? 'PARTNER' : 'RIDER'})));
     if (trip.partnerCompanyId) {
       const members = await db.partnerMember.findMany({where: {companyId: trip.partnerCompanyId, isActive: true,
         mustChangePassword: false, company: {isActive: true}, OR: [{role: 'ADMIN'}, {id: trip.partnerAssignedToId || '__none__'}]}, select: {id: true}});

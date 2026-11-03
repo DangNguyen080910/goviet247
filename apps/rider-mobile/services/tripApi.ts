@@ -3,6 +3,7 @@ import { API_BASE_URL } from "../constants/api";
 import { getRiderToken } from "./storage";
 
 type CreateTripPayload = {
+  bookingCompanyId?: string;
   pickupAddress: string;
   dropoffAddress: string;
   stops: string[];
@@ -83,7 +84,7 @@ export async function createTrip(payload: CreateTripPayload) {
     | ErrorResponse;
 
   if (!res.ok || !(data as CreateTripResponse)?.success) {
-    throw new Error((data as ErrorResponse)?.message || "Tạo chuyến thất bại.");
+    throw Object.assign(new Error((data as ErrorResponse)?.message || "Tạo chuyến thất bại."),{status:res.status});
   }
 
   return data as CreateTripResponse;
@@ -238,4 +239,14 @@ export async function getRiderSupportConfig(): Promise<RiderSupportConfig> {
     supportPhoneRider: data?.supportPhoneRider || "",
     supportEmailRider: data?.supportEmailRider || "",
   };
+}
+
+export type BookingCompany = {id:string;name:string};
+export async function getBookingCompanies(): Promise<BookingCompany[]> {
+  const token=await getRiderToken();
+  if(!token) return [];
+  const res=await fetch(`${API_BASE_URL}/api/trips/booking-companies`,{headers:{Authorization:`Bearer ${token}`}});
+  const data=await res.json();
+  if(!res.ok || !data.success || !Array.isArray(data.companies)) throw new Error(data.message || 'Không tải được quyền đặt chuyến.');
+  return data.companies;
 }

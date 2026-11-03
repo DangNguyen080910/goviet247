@@ -1,3 +1,4 @@
+import { canSelfCancelTrip } from "../../../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../../components/TripChatHub";
 import { hasActiveTripContact } from "../../../../api/src/shared/tripContact.js";
 import { tripRoutePoints } from "../../../../api/src/shared/tripRoute.js";
@@ -164,11 +165,7 @@ function canShowFeedbackButton(trip) {
 }
 
 function canCancelTripByRider(trip) {
-  return (
-    String(trip?.status || "")
-      .trim()
-      .toUpperCase() === "PENDING"
-  );
+  return trip?.canManage !== false && canSelfCancelTrip(trip);
 }
 
 function getApiBaseUrl() {
@@ -732,7 +729,7 @@ export default function CustomerProfile() {
   };
 
   const handleCancelTrip = async () => {
-    if (!selectedTrip?.id || !token) return;
+    if (!selectedTrip?.id || !token || !canCancelTripByRider(selectedTrip)) return;
 
     const finalReason =
       cancelReason === "Lý do khác"
@@ -1012,8 +1009,8 @@ export default function CustomerProfile() {
                           </Box>
 
                           <Chip
-                            label={getStatusLabel(trip.status, trip.isVerified)}
-                            color={getStatusColor(trip.status, trip.isVerified)}
+                            label={getStatusLabel(trip.status, trip.isVerified || Boolean(trip.verifiedAt))}
+                            color={getStatusColor(trip.status, trip.isVerified || Boolean(trip.verifiedAt))}
                             size="small"
                             sx={{ fontWeight: 700 }}
                           />
@@ -1289,7 +1286,7 @@ export default function CustomerProfile() {
                           </Paper>
                         ) : null}
 
-                        <TripChatButton tripId={trip.id} status={trip.status} label="Liên hệ tài xế / GoViet247" />
+                        <TripChatButton tripId={trip.id} status={trip.status} label={trip.status === "PENDING" ? "Nhắn GoViet247" : "Liên hệ tài xế / GoViet247"} />
 
                         <Stack
                           direction={{ xs: "column", sm: "row" }}

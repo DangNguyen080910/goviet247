@@ -5,9 +5,11 @@ export const CHAT_QUICK_REPLIES = {
   RIDER: ['Tôi xác nhận chuyến và sẽ có mặt tại điểm đón đúng giờ đã đặt.', 'Tôi đang ra.', 'Tôi đang ở điểm đón đã gửi.', 'Tôi cần hỗ trợ tìm xe.'],
   ADMIN: ['GoViet247 đang kiểm tra.', 'Anh/chị vui lòng xác nhận điểm đón.', 'Thông tin chuyến đã được cập nhật.']
 };
-export const CHAT_BOOKING_NOTICE = 'Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để nhận tin nhắn, ghi âm và vị trí từ tài xế. Không liên hệ được, vui lòng nhờ GoViet247 hỗ trợ.';
+export const CHAT_BOOKING_NOTICE = 'Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến để bổ sung yêu cầu hoặc nhờ hỗ trợ. Vui lòng bật chuông và thông báo để nhận phản hồi. Tài xế sẽ tham gia chat sau khi nhận chuyến.';
 export function chatCanSend(trip, actor) {
-  return actor.role === 'ADMIN' || Boolean(trip.driverId) && CHAT_ACTIVE_STATUSES.includes(trip.status);
+  if (actor.role === 'ADMIN') return true;
+  if (['RIDER', 'PARTNER'].includes(actor.role)) return ['PENDING', ...CHAT_ACTIVE_STATUSES].includes(trip.status);
+  return actor.role === 'DRIVER' && Boolean(trip.driverId) && CHAT_ACTIVE_STATUSES.includes(trip.status);
 }
 export function validateChatPayload(body) {
   const clientId = String(body.clientId || '');

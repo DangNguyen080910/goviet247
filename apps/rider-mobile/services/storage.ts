@@ -171,3 +171,12 @@ export async function saveRiderNotificationReadIds(
 
   await SecureStore.setItemAsync(key, raw);
 }
+export async function getRiderBookingMode(userId: string) {
+  const key=`rider_booking_mode_${sanitizeSecureStoreKeyPart(userId)}`;
+  return Platform.OS === 'web' ? localStorage.getItem(key) : SecureStore.getItemAsync(key);
+}
+export async function setRiderBookingMode(userId: string, mode: string) {
+  const key=`rider_booking_mode_${sanitizeSecureStoreKeyPart(userId)}`;
+  if(Platform.OS === 'web') localStorage.setItem(key,mode);
+  else await SecureStore.setItemAsync(key,mode);
+}

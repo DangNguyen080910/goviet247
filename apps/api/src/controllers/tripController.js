@@ -1,3 +1,4 @@
+import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
 import { createAcceptanceChatNotices } from "../services/tripAcceptanceChat.js";
 import { hasActiveTripContact, riderDriverContact } from "../shared/tripContact.js";
 import { lockTripMilestones, recordTripMilestone } from "../services/tripMilestoneService.js";
@@ -25,6 +26,7 @@ import { calculateDriverFinanceSnapshot } from "../services/driverFinanceService
 import {
   emitRiderTripUpdate,
   getVerifiedRiderPhoneVariants,
+  getTripRiderRecipientUserIds,
   phoneVariants,
   riderTripAccessWhere,
 } from "../services/riderTripAccess.js";
@@ -283,7 +285,7 @@ function maskRiderPhone() {
 function serializeDriverTrip(trip, scope = "active", extra = {}) {
   const stops = Array.isArray(trip?.stops) ? trip.stops : [];
 
-  const {partnerCompanyId, partnerCreatedById, partnerAssignedToId, partnerCompany, partnerCreatedBy, partnerAssignedTo, partnerCompanyName, partnerGreeting, ...safeTrip} = trip;
+  const {partnerCompanyId, partnerCreatedById, partnerAssignedToId, partnerCompany, partnerCreatedBy, partnerAssignedTo, partnerCompanyName, partnerGreeting, partnerManagerName, partnerManagerPhone, partnerBookerName, partnerBookerPhone, ...safeTrip} = trip;
   const base = {
     ...safeTrip, ...extra,
     isPartnerTrip:Boolean(partnerCompanyId),
@@ -522,6 +524,11 @@ export async function createRiderTripNotification(tx, trip, options = {}) {
   const actorAdminId = options?.createdByAdminId || null;
   const content = buildRiderTripNotificationContent(trip, reason);
 
+  if(trip.partnerCompanyId) {
+    const ids=await getTripRiderRecipientUserIds(tx,trip);let first=null;
+    for(const id of ids) {const notice=await tx.systemNotification.create({data:{audience:'RIDER',targetType:'USER',targetUserId:id,title:content.title,message:`${content.message} [tripId:${trip.id}]`,isActive:true,createdByAdminId:actorAdminId}});first ||= notice;}
+    return first;
+  }
   return tx.systemNotification.create({
     data: {
       audience: "RIDER",
@@ -540,7 +547,7 @@ async function emitTripChangedToRider(io, payload = {}) {
   try {
     const trip = await prisma.trip.findUnique({
       where: { id: payload.tripId },
-      select: { id: true, riderId: true, riderPhone: true, status: true, updatedAt: true },
+      select: { id: true, riderId: true, riderPhone: true, status: true, updatedAt: true, partnerCompanyId:true,partnerCreatedById:true,partnerAssignedToId:true },
     });
     await emitRiderTripUpdate(io, prisma, trip, payload);
   } catch (error) {
@@ -772,7 +779,11 @@ export async function listMyCustomerTrips(req, res) {
       success: true,
     items: trips.map(({ driver, dispatcherNote, verifiedNote, ...trip }) => ({
         ...trip,
-        canManage: trip.riderId === riderId,
+        canManage: Boolean(trip.partnerCompanyId) || trip.riderId === riderId,
+        creatorName:trip.partnerCompanyId ? trip.partnerManagerName : undefined,
+        creatorPhone:trip.partnerCompanyId ? trip.partnerManagerPhone : undefined,
+        riderName:trip.partnerCompanyId ? trip.partnerBookerName : trip.riderName,
+        riderPhone:trip.partnerCompanyId ? trip.partnerBookerPhone : trip.riderPhone,
         driverContact: riderDriverContact(trip, driver),
         driverVehicle: hasActiveTripContact(trip.status) && driver?.driverProfile
           ? {
@@ -807,9 +818,10 @@ export async function getTripById(req, res) {
     const tripPhoneNumbers = phoneVariants(trip?.riderPhone);
     const canViewAsPassenger = !trip?.partnerCompanyId && tripPhoneNumbers.some((phone) => phoneNumbers.includes(phone));
 
-    if (!trip || (trip.riderId !== userId && !canViewAsPassenger && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
+    const partnerContext=await getPartnerRiderContext(prisma,trip,phoneNumbers);
+    if (!trip || (trip.riderId !== userId && !canViewAsPassenger && !partnerContext && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
     const { dispatcherNote, verifiedNote, ...publicTrip } = trip;
-    const data = trip.driverId === userId ? serializeDriverTrip({ ...publicTrip, dispatcherNote }, ["COMPLETED", "CANCELLED"].includes(trip.status) ? "history" : "active") : publicTrip;
+    const data = trip.driverId === userId ? serializeDriverTrip({ ...publicTrip, dispatcherNote }, ["COMPLETED", "CANCELLED"].includes(trip.status) ? "history" : "active") : {...publicTrip,...(partnerContext ? {riderName:trip.partnerBookerName,riderPhone:trip.partnerBookerPhone,creatorName:trip.partnerManagerName,creatorPhone:trip.partnerManagerPhone,canManage:true}: {})};
     return res.json({ success: true, data });
   } catch (err) {
     console.error("[Trip] getTripById error:", err);
@@ -2263,12 +2275,12 @@ export async function adminGetPendingTrips(req, res) {
       return {
         tripId: t.id,
 
-        riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName,
-        riderPhone: t.riderPhone,
+        riderName: t.partnerCompanyName ? `${t.partnerBookerName || t.partnerCompanyName} · Đối tác` : t.riderName,
+        riderPhone: t.partnerCompanyId ? t.partnerBookerPhone || "" : t.riderPhone,
 
-        creatorName: t.partnerCompanyName || t?.rider?.displayName || t?.riderName || "",
+        creatorName: t.partnerManagerName || t.partnerCompanyName || t?.rider?.displayName || t?.riderName || "",
 
-        creatorPhone: t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
+        creatorPhone: t.partnerCompanyId ? t.partnerManagerPhone || "" : t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
 
         pickupAddress: t.pickupAddress,
         dropoffAddress: t.dropoffAddress,
@@ -2347,14 +2359,14 @@ export async function adminGetTripDetail(req, res) {
         ...trip,
 
         // 👤 Người đặt
-        creatorName: trip?.rider?.displayName || trip?.riderPhone || "",
+        creatorName: trip?.partnerManagerName || trip?.rider?.displayName || trip?.riderPhone || "",
 
-        creatorPhone: trip?.riderPhone || "",
+        creatorPhone: trip?.partnerCompanyId ? trip.partnerManagerPhone || "" : trip?.riderPhone || "",
 
         // 🚖 Hành khách
-        riderName: trip?.partnerCompanyName ? `Đối tác · ${trip.partnerCompanyName}` : trip?.riderName || "Khách",
+        riderName: trip?.partnerCompanyName ? `${trip.partnerBookerName || trip.partnerCompanyName} · Đối tác` : trip?.riderName || "Khách",
 
-        riderPhone: trip?.riderPhone || "",
+        riderPhone: trip?.partnerCompanyId ? trip.partnerBookerPhone || "" : trip?.riderPhone || "",
 
         driverName:
           driverProfile?.fullName ||
@@ -2801,12 +2813,12 @@ export async function adminListUnverifiedTrips(req, res) {
 
     const mapped = items.map((t) => ({
       ...t,
-      riderName: t.partnerCompanyName ? `Đối tác · ${t.partnerCompanyName}` : t.riderName,
+      riderName: t.partnerCompanyName ? `${t.partnerBookerName || t.partnerCompanyName} · Đối tác` : t.riderName,
       ...adminTripMoney(t, moneyConfig),
 
-      creatorName: t.partnerCompanyName || t?.rider?.displayName || t?.riderName || "",
+      creatorName: t.partnerManagerName || t.partnerCompanyName || t?.rider?.displayName || t?.riderName || "",
 
-      creatorPhone: t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
+      creatorPhone: t.partnerCompanyId ? t.partnerManagerPhone || "" : t?.rider?.phones?.[0]?.e164 || t?.riderPhone || "",
     }));
 
     return res.json({

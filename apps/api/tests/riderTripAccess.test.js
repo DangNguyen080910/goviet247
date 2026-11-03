@@ -42,8 +42,8 @@ function project(value, select) {
 function fixture({ verified = true, passengerAccount = true, ownerId = 'booker' } = {}) {
   const phones = passengerAccount ? [{ userId: 'passenger', isVerified: verified, e164: '+84900000001' }] : [];
   const trips = [
-    { id: 'shared-trip', riderId: ownerId, riderPhone: '0900000001', driverId: 'driver', status: 'PENDING', cancelledAt: null, updatedAt: new Date(), driver: null },
-    { id: 'other-trip', riderId: 'other', riderPhone: '0900000099', driverId: null, status: 'COMPLETED', driver: null },
+    { partnerCompanyId:null, id: 'shared-trip', riderId: ownerId, riderPhone: '0900000001', driverId: 'driver', status: 'PENDING', cancelledAt: null, updatedAt: new Date(), driver: null },
+    { partnerCompanyId:null, id: 'other-trip', riderId: 'other', riderPhone: '0900000099', driverId: null, status: 'COMPLETED', driver: null },
   ];
   const notices = [
     { id: 'approved', audience: 'RIDER', targetType: 'USER', targetUserId: ownerId, isActive: true, title: 'Approved', message: 'Approved [tripId:shared-trip]' },
@@ -234,7 +234,7 @@ function cancellationRoutes(f, pushed) {
 }
 
 test('view-only passenger cannot cancel; owner cancellation saves a trip notice and sends push', async () => {
-  const f = fixture(); const pushed = [];
+  const f = fixture(); Object.assign(f.trips[0],{driverId:null,isVerified:false,verifiedAt:null}); const pushed = [];
   const handler = cancellationRoutes(f, pushed);
   const request = (userId) => ({ params: { id: 'shared-trip' }, user: { id: userId }, body: {}, app: { get: () => null } });
   let res = response();

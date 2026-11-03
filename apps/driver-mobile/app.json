@@ -28,7 +28,8 @@
       "package": "com.goviet247.driver",
       "permissions": [
         "android.permission.CAMERA"
-      ]
+      ],
+      "softwareKeyboardLayoutMode": "resize"
     },
     "web": {
       "output": "static",

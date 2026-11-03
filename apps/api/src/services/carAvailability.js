@@ -1,3 +1,6 @@
+import { resolveRiderCompanyBooking } from './partnerRiderBooking.js';
+import { normalizePartnerPhone } from './partnerRiderAccess.js';
+import { createBookingChatNotice } from './tripBookingChat.js';
 export const CAR_TYPES = ["CAR_5", "CAR_7", "CAR_16"];
 export const CAR_TYPE_UNAVAILABLE_MESSAGE = "Loại xe này đang tạm ngừng nhận đặt. Vui lòng chọn loại xe khác.";
 
@@ -13,23 +16,38 @@ export async function createBookableTrip(db, data) {
   return db.$transaction(async tx => {
     await tx.$queryRawUnsafe('SELECT "carType" FROM "PricingConfig" WHERE "carType"::text = $1 FOR SHARE', data.carType);
     await assertCarTypeBookable(tx, data.carType);
-    const {partnerStops, partnerAuditData, partnerSessionVersion, ...tripData} = data;
+    const {partnerStops, partnerAuditData, partnerSessionVersion, partnerRiderBookingUserId, ...tripData} = data;
     if (tripData.partnerCompanyId) {
       await tx.$queryRawUnsafe('SELECT "id" FROM "PartnerCompany" WHERE "id" = $1 FOR SHARE', tripData.partnerCompanyId);
       const company = await tx.partnerCompany.findUnique({where:{id:tripData.partnerCompanyId}});
+      if (company) {tripData.partnerManagerName=company.managementName;tripData.partnerManagerPhone=normalizePartnerPhone(company.managementPhone);}
       if (!company?.isActive) throw Object.assign(new Error("Công ty đã bị khóa."), {status:409});
     }
     if (tripData.partnerCompanyId) {
+      await tx.$queryRawUnsafe('SELECT "id" FROM "PartnerMember" WHERE "id" IN ($1, $2) FOR SHARE',tripData.partnerAssignedToId,tripData.partnerCreatedById || tripData.partnerAssignedToId);
       const assigned=await tx.partnerMember.findUnique({where:{id:tripData.partnerAssignedToId}});
       if(!assigned?.isActive || assigned.companyId!==tripData.partnerCompanyId) throw Object.assign(new Error("Điều phối viên không còn hoạt động."),{status:409});
       if(tripData.partnerCreatedById) {
         const creator=await tx.partnerMember.findUnique({where:{id:tripData.partnerCreatedById}});
-        if(!creator?.isActive || creator.mustChangePassword || creator.sessionVersion!==partnerSessionVersion) throw Object.assign(new Error("Phiên đăng nhập đã thay đổi. Vui lòng đăng nhập lại."),{status:409});
+        if(!creator?.isActive || (!partnerRiderBookingUserId && (creator.mustChangePassword || creator.sessionVersion!==partnerSessionVersion))) throw Object.assign(new Error("Phiên đăng nhập đã thay đổi. Vui lòng đăng nhập lại."),{status:409});
       }
+    }
+    if(tripData.partnerCompanyId) {
+      const member=await tx.partnerMember.findUnique({where:{id:tripData.partnerCreatedById || tripData.partnerAssignedToId}});
+      const phone=normalizePartnerPhone(member?.phone);
+      if(!phone) throw Object.assign(new Error('Vui lòng cập nhật số điện thoại nhân viên trước khi đặt chuyến.'),{status:400});
+      tripData.partnerBookerName=member.displayName;tripData.partnerBookerPhone=phone;
+    }
+    if(partnerRiderBookingUserId) {
+      await tx.$queryRawUnsafe('SELECT "id" FROM "Phone" WHERE "userId" = $1 FOR SHARE',partnerRiderBookingUserId);
+      const context=await resolveRiderCompanyBooking(tx,partnerRiderBookingUserId,tripData.partnerCompanyId);
+      if(context.assigned.id!==tripData.partnerAssignedToId || (context.member?.id || null)!==(tripData.partnerCreatedById || null)) throw Object.assign(new Error('Quyền điều phối đã thay đổi. Vui lòng chọn lại công ty.'),{status:409});
+      tripData.partnerBookerName=context.bookerName;tripData.partnerBookerPhone=normalizePartnerPhone(context.bookerPhone);
     }
     const trip = await tx.trip.create({data:tripData});
     if (partnerStops) await tx.tripStop.createMany({data:partnerStops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
     if (partnerAuditData) await tx.partnerAuditLog.create({data:{...partnerAuditData,targetId:trip.id}});
+    await createBookingChatNotice(tx, trip);
     return trip;
   });
 }

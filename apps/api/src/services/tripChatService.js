@@ -1,9 +1,11 @@
+import { hasPrivateChatPrefixPolicy } from '../shared/chatStoragePolicy.js';
+import { getPartnerRiderContext } from './partnerRiderAccess.js';
 import { chatAudienceWhere } from '../shared/tripChatVisibility.js';
 import { chatPushRecipientIds } from './tripAcceptanceChat.js';
 import { verifyPartnerToken } from './partnerAccess.js';
 import jwt from 'jsonwebtoken';
 import { randomUUID } from 'node:crypto';
-import { S3Client, PutObjectCommand, GetObjectCommand, GetPublicAccessBlockCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, PutObjectCommand, GetObjectCommand, GetPublicAccessBlockCommand, GetBucketPolicyCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { prisma } from '../utils/db.js';
 import { userSessions } from './userSessions.js';
@@ -12,7 +14,7 @@ import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere } fr
 import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
 import { activeDriverDevices } from './driverPushAccess.js';
 const s3 = new S3Client({
-  region: process.env.AWS_REGION
+  region: process.env.TRIP_CHAT_AWS_REGION || process.env.AWS_REGION
 });
 const fail = (message, status = 403) => Object.assign(new Error(message), {
   status
@@ -67,7 +69,7 @@ export async function chatAccess(db, tripId, actor) {
   });
   if (!trip) throw fail('Không tìm thấy hội thoại.', 404);
   if (actor.role === 'ADMIN') return trip;
-  if (actor.role === 'PARTNER') {
+  if (actor.role === 'PARTNER' && actor.memberId) {
     const member=await db.partnerMember.findUnique({where:{id:actor.memberId},include:{company:true}});
     if(!member?.isActive || !member.company.isActive || member.mustChangePassword || member.companyId!==trip.partnerCompanyId) throw fail('Không có quyền xem hội thoại.');
     if (member.role!=='ADMIN' && trip.partnerAssignedToId!==member.id) throw fail('Chỉ điều phối viên phụ trách được xem hội thoại.');
@@ -88,8 +90,17 @@ export async function chatAccess(db, tripId, actor) {
     actor.label = 'Tài xế';
     return trip;
   }
-  if (trip.partnerCompanyId) throw fail('Không có quyền xem hội thoại.');
   const phones = await getVerifiedRiderPhoneVariants(db, actor.id);
+  if (trip.partnerCompanyId) {
+    const context=await getPartnerRiderContext(db,trip,phones);
+    if(!context) throw fail('Không có quyền xem hội thoại.');
+    if(isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE),{code:'RIDER_CHAT_ENDED'});
+    actor.role='PARTNER';actor.partnerViaRider=true;
+    const manager=phones.includes(context.partnerCompany.managementPhone);
+    const member=context.partnerCreatedBy || context.partnerAssignedTo;
+    actor.label=`${context.partnerCompany.name} · ${manager ? context.partnerCompany.managementName : member?.displayName || 'Điều phối viên'}`;
+    return trip;
+  }
   if (trip.riderId !== actor.id && !phoneVariants(trip.riderPhone).some(p => phones.includes(p))) throw fail('Không có quyền xem hội thoại.');
   if (isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE), {code:'RIDER_CHAT_ENDED'});
   actor.role = 'RIDER';
@@ -114,7 +125,12 @@ export async function privateAudioBucket() {
   const result = await s3.send(new GetPublicAccessBlockCommand({
     Bucket
   }));
-  if (!['BlockPublicAcls', 'IgnorePublicAcls', 'BlockPublicPolicy', 'RestrictPublicBuckets'].every(k => result.PublicAccessBlockConfiguration?.[k])) throw fail('Kho tệp hội thoại phải chặn truy cập công khai.', 503);
+  if (['BlockPublicAcls', 'IgnorePublicAcls', 'BlockPublicPolicy', 'RestrictPublicBuckets'].every(k => result.PublicAccessBlockConfiguration?.[k])) return Bucket;
+  const owner = process.env.TRIP_CHAT_AWS_ACCOUNT_ID;
+  if (process.env.TRIP_CHAT_STORAGE_MODE !== 'shared-prefix' || !/^[0-9]{12}$/.test(owner || '')) throw fail('Kho tệp hội thoại phải chặn truy cập công khai hoặc cấu hình bảo vệ riêng trip-chat/.', 503);
+  // ExpectedBucketOwner also verifies that the configured account owns this bucket.
+  const policy = await s3.send(new GetBucketPolicyCommand({ Bucket, ExpectedBucketOwner: owner }));
+  if (!hasPrivateChatPrefixPolicy(policy.Policy, Bucket, owner)) throw fail('Thiếu chính sách bảo vệ riêng tư cho trip-chat/.', 503);
   return Bucket;
 }
 export async function storeAudio(file, tripId) {
@@ -148,7 +164,7 @@ export async function createChatMessage(tripId, actor, data) {
     // Serialize with trip status/reassignment updates before authorizing a write.
     await tx.$queryRaw`SELECT "id" FROM "Trip" WHERE "id" = ${tripId} FOR UPDATE`;
     const trip = await chatAccess(tx, tripId, actor);
-    if (!chatCanSend(trip, actor)) throw fail('Hội thoại chỉ đọc. Chưa có tài xế hoặc chuyến đã kết thúc.');
+    if (!chatCanSend(trip, actor)) throw fail('Không thể gửi tin trong hội thoại này. Vui lòng kiểm tra trạng thái chuyến và quyền truy cập.');
     const existing = await tx.tripChatMessage.findUnique({
       where: {
         tripId_senderId_clientId: {
@@ -182,7 +198,7 @@ export async function createChatMessage(tripId, actor, data) {
 }
 export async function chatTripWhere(actor) {
   if (actor.role === 'ADMIN') return {};
-  if (actor.role === 'PARTNER') return {partnerCompanyId:actor.companyId,...(actor.memberId ? {OR:[{partnerAssignedToId:actor.memberId},{partnerCompany:{members:{some:{id:actor.memberId,role:'ADMIN',isActive:true}}}}]}:{id:'__no_partner_access__'})};
+  if (actor.role === 'PARTNER' && actor.memberId) return {partnerCompanyId:actor.companyId,...(actor.memberId ? {OR:[{partnerAssignedToId:actor.memberId},{partnerCompany:{members:{some:{id:actor.memberId,role:'ADMIN',isActive:true}}}}]}:{id:'__no_partner_access__'})};
   const phones = await getVerifiedRiderPhoneVariants(prisma, actor.id);
   return {
     OR: [{

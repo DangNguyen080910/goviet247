@@ -1,4 +1,4 @@
-import { isChatVisible } from "./tripChat";
+import { isChatVisible, chatPushShouldPlaySound } from "./tripChat";
 // Path: goviet247/apps/rider-mobile/services/notify.ts
 import * as Notifications from "expo-notifications";
 import * as Haptics from "expo-haptics";
@@ -9,7 +9,7 @@ export function configureRiderNotificationHandler() {
     handleNotification: async notification => ({
       shouldShowBanner: !isChatVisible(notification.request.content.data),
       shouldShowList: !isChatVisible(notification.request.content.data),
-      shouldPlaySound: !isChatVisible(notification.request.content.data),
+      shouldPlaySound: await chatPushShouldPlaySound(notification.request.content.data),
       shouldSetBadge: true,
     }),
   });
@@ -55,6 +55,7 @@ export async function configureRiderAudioMode() {
 }
 
 export async function triggerRiderForegroundPushHaptic(type: string) {
+  if (type === "TRIP_CHAT") return; // Shared chat alert already plays the haptic.
   try {
     if (type === "TRIP_STATUS_CHANGED") {
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
