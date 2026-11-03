@@ -17,3 +17,9 @@ export function chatTripDetailRows(trip) {
   if(trip.totalPrice!=null)rows.push(['Giá chuyến',`${Number(trip.totalPrice).toLocaleString('vi-VN')} đ`]);
   return rows;
 }
+
+export function chatConversationRoute(conversation) {
+  const pickup=String(conversation?.pickupAddress || '').trim();
+  const dropoff=String(conversation?.dropoffAddress || '').trim();
+  return pickup && dropoff ? `${pickup} → ${dropoff}` : pickup || dropoff;
+}

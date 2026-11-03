@@ -1,4 +1,4 @@
-import {chatTripDetailRows} from '../api/src/shared/chatTripDetail.js';
+import {chatTripDetailRows,chatConversationRoute} from '../api/src/shared/chatTripDetail.js';
 import { chatAudienceLabel } from '../api/src/shared/tripChatVisibility.js';
 import { playChatAlert, setChatRecordingActive } from './chatAlerts';
 import { createChatRecording } from './audioRecording';
@@ -507,9 +507,9 @@ export default function TripChatScreen() {
         ...button,
         backgroundColor: 'white',
         marginBottom: 10
-      }} onPress={() => router.push(`/trip-chat?tripId=${c.tripId}` as any)}><Text style={{
+      }} onPress={() => router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any)}><Text style={{
           fontWeight: '800'
-        }}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text><Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text><Pressable accessibilityRole="button" style={button} onPress={event=>{event.stopPropagation();void showTrip(c.tripId);}}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></Pressable>)}</ScrollView> : <>
+        }}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text>{chatConversationRoute(c) ? <Text style={{color:'#64748b',marginVertical:6}}>{chatConversationRoute(c)}</Text> : null}<Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text><Pressable accessibilityRole="button" style={button} onPress={event=>{event.stopPropagation();router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any);}}><Text style={{color:blue}}>Xem tin nhắn</Text></Pressable></Pressable>)}</ScrollView> : <>
  <Text style={{
         padding: 10,
         color: '#64748b',

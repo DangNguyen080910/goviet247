@@ -1,5 +1,5 @@
 import {splitChatLinks} from '../../../mobile-chat/chatLinks';
-import {chatTripDetailRows} from '../../../api/src/shared/chatTripDetail.js';
+import {chatTripDetailRows,chatConversationRoute} from '../../../api/src/shared/chatTripDetail.js';
 import {partnerFetch} from './partners/partnerSession';
 import { newUnreadConversations } from '../../../api/src/shared/chatAlerts.js';
 import { chatAudienceLabel } from '../../../api/src/shared/tripChatVisibility.js';
@@ -484,7 +484,7 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false 
             textAlign: 'left',
             justifyContent: 'flex-start',
             textTransform: 'none'
-          }}><Button onClick={()=>setTripId(c.tripId)} sx={{textAlign:'left',textTransform:'none',width:'100%',justifyContent:'flex-start'}}><Box sx={{minWidth:0,overflowWrap:'anywhere'}}><Typography fontWeight={800}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography><Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button><Button onClick={()=>void showTrip(c.tripId)}>Xem chuyến</Button></Box>)}</Stack> : <>
+          }}><Button onClick={()=>setTripId(c.tripId)} sx={{textAlign:'left',textTransform:'none',width:'100%',justifyContent:'flex-start'}}><Box sx={{minWidth:0,overflowWrap:'anywhere'}}><Typography fontWeight={800}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography>{chatConversationRoute(c)&&<Typography sx={{color:'text.secondary',my:0.5}}>{chatConversationRoute(c)}</Typography>}<Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button><Button onClick={()=>setTripId(c.tripId)}>Xem tin nhắn</Button></Box>)}</Stack> : <>
  <Typography sx={{
             p: 1.5,
             fontSize: 12,

@@ -5,7 +5,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import { prisma } from '../utils/db.js';
 import { chatAuth, chatAccess, chatTripWhere, messageWhere, createChatMessage, deleteChatMessage, storeAudio, removeAudio, audioUrl } from '../services/tripChatService.js';
-import { chatCanSend, validateChatPayload, CHAT_QUICK_REPLIES, chatMessageForClient } from '../shared/tripChat.js';
+import { isRiderChatEnded, chatCanSend, validateChatPayload, CHAT_QUICK_REPLIES, chatMessageForClient } from '../shared/tripChat.js';
 const router = Router();
 router.use(chatAuth);
 router.use((req, res, next) => { res.set("Cache-Control", "no-store"); next(); });
@@ -47,7 +47,7 @@ router.get('/conversations', wrap(async (req, res) => {
   const actor = req.chatActor;
   const trips = await prisma.trip.findMany({
     where: {
-      AND: [await chatTripWhere(actor), {
+      AND: [await chatTripWhere(actor), {status:{notIn:['COMPLETED','CANCELLED']}}, {
         chatMessages: {
           some: {}
         }
@@ -79,6 +79,7 @@ router.get('/conversations', wrap(async (req, res) => {
     } catch {
       continue;
     }
+    if(isRiderChatEnded(authorizedTrip.status)) continue;
     const where = messageWhere(authorizedTrip, a);
     const read = await prisma.tripChatRead.findUnique({
       where: {
@@ -117,10 +118,12 @@ router.get('/conversations', wrap(async (req, res) => {
     });
     if (last) items.push({
       tripId: trip.id,
-      status: trip.status,
+      pickupAddress: authorizedTrip.pickupAddress || '',
+      dropoffAddress: authorizedTrip.dropoffAddress || '',
+      status: authorizedTrip.status,
       unread,
       last: chatMessageForClient(last, req.query.media === 'images'),
-      canSend: chatCanSend(trip, a)
+      canSend: chatCanSend(authorizedTrip, a)
     });
   }
   items.sort((a, b) => new Date(b.last.createdAt) - new Date(a.last.createdAt));
