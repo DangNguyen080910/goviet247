@@ -1,7 +1,9 @@
 // Fail closed for old unbound devices: drivers re-register on their next app launch.
 export async function activeDriverDevices(db, devices, { requireVerified = false } = {}) {
   const now = new Date();
-  const candidates = devices.filter(d => d.pushSessionId && (!d.pushExpiresAt || d.pushExpiresAt > now));
+  // A persistent upgrade keeps the same session key. The device may still carry
+  // the old JWT expiry, so a tracked session is the authority for expiry/revocation.
+  const candidates = devices.filter(d => d.pushSessionId);
   if (!candidates.length) return [];
   const sessions = await db.session.findMany({ where: { id: { in: [...new Set(candidates.map(d => d.pushSessionId))] } }, select: { id: true, userId: true, expiresAt: true } });
   const byId = new Map(sessions.map(s => [s.id, s]));
