@@ -1,10 +1,11 @@
+import {chatTripDetailRows} from '../api/src/shared/chatTripDetail.js';
 import { chatAudienceLabel } from '../api/src/shared/tripChatVisibility.js';
 import { playChatAlert, setChatRecordingActive } from './chatAlerts';
 import { createChatRecording } from './audioRecording';
 import { splitChatLinks } from './chatLinks';
 import { newUnreadConversations } from '../api/src/shared/chatAlerts.js';
 import DraggableFloatingAction from './DraggableFloatingAction';
-import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../api/src/shared/tripChat.js';
+import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE, DRIVER_CHAT_ENDED_NOTICE, COMPLETED_CHAT_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, Alert, Image, Keyboard, KeyboardAvoidingView, Modal, Linking, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
@@ -71,11 +72,12 @@ export function TripChatButton({
   onOpen?: () => void;
   prominent?: boolean;
 }) {
-  const ended = config?.role === 'RIDER' && isRiderChatEnded(status);
-  return <Pressable accessibilityRole="button" onPress={event => { event.stopPropagation(); if (ended) Alert.alert('Liên hệ GoViet247', RIDER_CHAT_ENDED_NOTICE); else if (onOpen) onOpen(); else router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any); }} style={[button, prominent ? {backgroundColor:blue,minHeight:48,justifyContent:'center',alignItems:'center',marginHorizontal:0,marginBottom:12} : null, ended ? {backgroundColor:'#f1f5f9'} : null]}><Text style={{
+  const driverEnded=config?.role==='DRIVER' && ['COMPLETED','CANCELLED'].includes(String(status));
+  const ended = driverEnded || (config?.role === 'RIDER' && isRiderChatEnded(status));
+  return <Pressable accessibilityRole="button" onPress={event => { event.stopPropagation(); if (ended) Alert.alert('Liên hệ GoViet247', driverEnded?DRIVER_CHAT_ENDED_NOTICE:RIDER_CHAT_ENDED_NOTICE); else if (onOpen) onOpen(); else router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any); }} style={[button, prominent ? {backgroundColor:blue,minHeight:48,justifyContent:'center',alignItems:'center',marginHorizontal:0,marginBottom:12} : null, ended ? {backgroundColor:'#f1f5f9'} : null]}><Text style={{
       color: ended ? '#64748b' : prominent ? 'white' : blue,
       fontWeight: '700'
-    }}>💬 {label}</Text></Pressable>;
+    }}>💬 {config?.role==='RIDER' && status==='COMPLETED'?'Hỗ trợ GoViet247':label}</Text></Pressable>;
 }
 export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
   const [unread, setUnread] = useState(0),
@@ -159,6 +161,17 @@ function ChatImage({tripId, messageId, onOpen}: {tripId:string; messageId:string
   </Pressable>;
 }
 export default function TripChatScreen() {
+  const [chatStatus,setChatStatus]=useState('');
+  const [tripView,setTripView]=useState<{id:string;loading:boolean;trip?:any;error?:string}|null>(null);
+  const detailRequest=useRef(0);
+  useEffect(()=>()=>{detailRequest.current++;},[]);
+  function closeTripView(){detailRequest.current++;setTripView(null);}
+  async function showTrip(id:string){
+    Keyboard.dismiss();const request=++detailRequest.current;setTripView({id,loading:true});
+    try{const data=await api(`/${encodeURIComponent(id)}/trip`);if(detailRequest.current===request)setTripView({id,loading:false,trip:data.trip});}
+    catch(error:any){if(detailRequest.current===request)setTripView({id,loading:false,error:error.message});}
+  }
+
   const focused = useIsFocused();
   const params = useLocalSearchParams<{
       tripId?: string;
@@ -230,9 +243,9 @@ export default function TripChatScreen() {
     let d;
     try { d = await api(`/${encodeURIComponent(tripId)}/messages`); }
     catch (error: any) {
-      if (error.code === 'RIDER_CHAT_ENDED' && version === generation.current && mounted.current) {
+      if (['RIDER_CHAT_ENDED','DRIVER_CHAT_ENDED'].includes(error.code) && version === generation.current && mounted.current) {
         generation.current++;
-        setItems([]); setImageView(null); setImageDraft(null); setCanSend(false); setMore(false); setReplies([]);
+        setItems([]); setImageView(null); setImageDraft(null); setCanSend(false);setChatStatus(''); setMore(false); setReplies([]);
         await sound.current?.unloadAsync(); sound.current = null; setPlaying('');
       }
       throw error;
@@ -240,7 +253,7 @@ export default function TripChatScreen() {
     if (!mounted.current || version !== generation.current) return;
     setImageView(current => current && d.items.some((m:Msg) => m.id === current.id && m.deletedAt) ? null : current);
     setActor(d.actor);
-    setCanSend(d.canSend);
+    setCanSend(d.canSend);setChatStatus(d.status || '');
     setReplies(d.quickReplies || []);
     if (!olderRef.current) setMore(d.hasMore);
     setItems(current => {
@@ -271,7 +284,7 @@ export default function TripChatScreen() {
     setDraft(null);
     setImageDraft(null);
     setImageView(null);
-    setCanSend(false);
+    setCanSend(false);setChatStatus('');
     setText('');
     const refresh = () => {
       if (AppState.currentState === 'active') void load().catch((e: any) => mounted.current && setError(e.message));
@@ -482,7 +495,8 @@ export default function TripChatScreen() {
         fontWeight: '800',
         color: ink,
         flex: 1
-      }}>{tripId ? `Liên hệ #${tripId.slice(-8).toUpperCase()}` : 'Tin nhắn chuyến'}</Text></View>
+      }}>{tripId ? 'Liên hệ chuyến' : 'Tin nhắn chuyến'}</Text></View>
+ {tripId ? <View style={{padding:12,gap:6}}><Text selectable style={{fontWeight:'800',flexShrink:1}}>#{tripId}</Text><Pressable accessibilityRole="button" style={button} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
  {!!error && <Text accessibilityRole="alert" style={{
       color: '#b91c1c',
       padding: 12
@@ -495,12 +509,12 @@ export default function TripChatScreen() {
         marginBottom: 10
       }} onPress={() => router.push(`/trip-chat?tripId=${c.tripId}` as any)}><Text style={{
           fontWeight: '800'
-        }}>#{c.tripId.slice(-8).toUpperCase()} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text><Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text></Pressable>)}</ScrollView> : <>
+        }}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text><Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text><Pressable accessibilityRole="button" style={button} onPress={event=>{event.stopPropagation();void showTrip(c.tripId);}}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></Pressable>)}</ScrollView> : <>
  <Text style={{
         padding: 10,
         color: '#64748b',
         fontSize: 12
-      }}>Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.</Text>
+      }}>{chatStatus==='COMPLETED'?COMPLETED_CHAT_NOTICE:'Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.'}</Text>
  <ScrollView ref={scroll} style={{
         flex: 1
       }} contentContainerStyle={{
@@ -527,7 +541,7 @@ export default function TripChatScreen() {
             fontWeight: '700',
             color: '#475569',
             marginBottom: 5
-          }}>{m.senderLabel}</Text>{config.role === 'ADMIN' && m.senderRole === 'SYSTEM' && <Text style={{fontSize:11,color:'#64748b',marginBottom:4}}>{chatAudienceLabel(m.audience)}</Text>}
+          }}>{m.senderLabel}</Text>{config.role === 'ADMIN' && m.audience && m.audience !== 'ALL' && <Text style={{fontSize:11,color:'#64748b',marginBottom:4}}>{chatAudienceLabel(m.audience)}</Text>}
  {m.deletedAt ? <Text style={{
             fontStyle: 'italic',
             color: '#64748b'
@@ -619,6 +633,13 @@ export default function TripChatScreen() {
  </ScrollView>}
  </>}
  </KeyboardAvoidingView>
+ <Modal visible={Boolean(tripView)} animationType="slide" onRequestClose={closeTripView}>
+ <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}><View style={{padding:16,gap:10}}><Text style={{fontSize:20,fontWeight:'800'}}>Chi tiết chuyến</Text><Pressable accessibilityRole="button" style={button} onPress={closeTripView}><Text style={{color:blue}}>← Quay lại tin nhắn</Text></Pressable></View>
+ <ScrollView contentContainerStyle={{padding:16,gap:14}}><Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text>
+ {tripView?.loading ? <Text>Đang tải chuyến...</Text> : null}
+ {tripView?.error ? <><Text accessibilityRole="alert" style={{color:'#b91c1c'}}>{tripView.error}</Text><Pressable style={button} onPress={()=>void showTrip(tripView.id)}><Text>Thử lại</Text></Pressable></> : null}
+ {tripView?.trip ? chatTripDetailRows(tripView.trip).map(([label,value]:string[],index:number)=><View key={index} style={{gap:4}}><Text style={{color:'#64748b'}}>{label}</Text><Text selectable style={{color:ink,fontSize:16}}>{value}</Text></View>) : null}
+ </ScrollView></SafeAreaView></Modal>
  <Modal visible={Boolean(imageView)} transparent animationType="fade" onRequestClose={() => setImageView(null)}>
  <SafeAreaView style={{flex:1,backgroundColor:'rgba(0,0,0,0.96)'}}><Pressable accessibilityLabel="Đóng ảnh" onPress={() => setImageView(null)} style={{padding:18,alignSelf:'flex-end'}}><Text style={{color:'white',fontSize:18}}>Đóng ✕</Text></Pressable>{imageView && <Image source={{uri:imageView.uri}} resizeMode="contain" style={{flex:1,width:'100%'}} onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} />}</SafeAreaView>
  </Modal>

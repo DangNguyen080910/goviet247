@@ -7,12 +7,12 @@ function load(file,mocks){
  const exports={};vm.runInNewContext(code,{exports,require:id=>{assert.ok(id in mocks,'missing mock '+id);return mocks[id];},console,Buffer,Date,Map,setInterval,clearInterval,process},{filename:file});return exports;
 }
 function chatModule(){return load('apps/api/src/services/tripChatService.js',{
- '../shared/tripChatVisibility.js':{},'./tripAcceptanceChat.js':{},
+ '../shared/chatStoragePolicy.js':{},'../shared/tripChatVisibility.js':{},'./tripAcceptanceChat.js':{},
  './partnerRiderAccess.js':{getPartnerRiderContext:async()=>null},
  './partnerAccess.js':{},jsonwebtoken:{default:{}},'node:crypto':require('node:crypto'),
  '@aws-sdk/client-s3':{S3Client:class{}},'@aws-sdk/s3-request-presigner':{},'../utils/db.js':{prisma:{}},'./userSessions.js':{},'../utils/jwt.js':{},
  './riderTripAccess.js':{getVerifiedRiderPhoneVariants:async()=>[],phoneVariants:()=>[],riderTripAccessWhere:()=>({})},
- '../shared/tripChat.js':{isRiderChatEnded:s=>['COMPLETED','CANCELLED'].includes(s),RIDER_CHAT_ENDED_NOTICE:'ended'},'./driverPushAccess.js':{}
+ '../shared/tripChat.js':{isRiderChatEnded:s=>['CANCELLED'].includes(s),RIDER_CHAT_ENDED_NOTICE:'ended'},'./driverPushAccess.js':{}
 });}
 function chatDb(member,trip){return {trip:{findUnique:async()=>trip},partnerMember:{findUnique:async()=>member},driverProfile:{findUnique:async()=>({status:'VERIFIED'})}};}
 const trip={id:'t1',partnerCompanyId:'c1',partnerAssignedToId:'m1',driverId:'d1',status:'ACCEPTED'};
@@ -29,9 +29,9 @@ test('company admin can support other dispatchers; reassignment removes prior di
  assert.equal((await chatAccess(chatDb({...member,id:'m2',role:'ADMIN'},trip),'t1',actor)).id,'t1');
  await assert.rejects(chatAccess(chatDb(member,{...trip,partnerAssignedToId:'m2'}),'t1',actor),{status:403});
 });
-test('partner chat closes after completion/cancellation and unrelated riders cannot read it',async()=>{
+test('partner chat closes after cancellation and unrelated riders cannot read it',async()=>{
  const {chatAccess}=chatModule();
- for(const status of ['COMPLETED','CANCELLED'])await assert.rejects(chatAccess(chatDb(member,{...trip,status}),'t1',{id:'partner-m1',memberId:'m1',role:'PARTNER'}),{code:'RIDER_CHAT_ENDED'});
+ for(const status of ['CANCELLED'])await assert.rejects(chatAccess(chatDb(member,{...trip,status}),'t1',{id:'partner-m1',memberId:'m1',role:'PARTNER'}),{code:'RIDER_CHAT_ENDED'});
  await assert.rejects(chatAccess(chatDb(member,trip),'t1',{id:'rider1',role:'RIDER'}),{status:403});
  assert.equal((await chatAccess(chatDb(member,trip),'t1',{id:'d1',role:'RIDER'})).id,'t1');
 });
@@ -75,4 +75,16 @@ test('member changes preserve last company admin and require moving active assig
  await assert.rejects(handlers['PATCH /members/:id'](req,res),{status:400});assert.equal(updated,false);
  db.partnerMember.findFirst=async()=>member;
  await assert.rejects(handlers['PATCH /members/:id'](req,res),{status:400});assert.equal(updated,false);
+});
+
+test('read-only trip access can open ended trips without reopening their chat or crossing company scope',async()=>{
+ const {chatAccess}=chatModule(),ended={...trip,status:'CANCELLED'};
+ const actor={id:'partner-m1',memberId:'m1',role:'PARTNER'};
+ await assert.rejects(chatAccess(chatDb(member,ended),'t1',{...actor}),{code:'RIDER_CHAT_ENDED'});
+ assert.equal((await chatAccess(chatDb(member,ended),'t1',{...actor},{allowEnded:true})).id,'t1');
+ await assert.rejects(chatAccess(chatDb({...member,companyId:'other'},ended),'t1',{...actor},{allowEnded:true}),{status:403});
+ const riderTrip={...ended,partnerCompanyId:null,riderId:'r1',riderPhone:''};
+ assert.equal((await chatAccess(chatDb(member,riderTrip),'t1',{id:'r1',role:'RIDER'},{allowEnded:true})).id,'t1');
+ await assert.rejects(chatAccess(chatDb(member,riderTrip),'t1',{id:'r1',role:'RIDER'}),{code:'RIDER_CHAT_ENDED'});
+ await assert.rejects(chatAccess(chatDb(member,riderTrip),'t1',{id:'outsider',role:'RIDER'},{allowEnded:true}),{status:403});
 });

@@ -1847,6 +1847,7 @@ export default function BookingCard({ partner = null }) {
     resetFormAfterSuccess();
 
     if (mustRedirect) {
+      partner?.onSuccessClosed?.();
       navigate(partner ? partner.successPath || "/chuyen-xe" : "/ho-so", { replace: true });
     }
   };

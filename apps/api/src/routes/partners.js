@@ -48,7 +48,7 @@ router.post('/refresh',wrap(async(req,res)=>{
 router.use(partnerAuth);
 router.get('/me',wrap(async(req,res)=>{
   const a=req.partnerActor;
-  res.json({success:true,superAdmin:a.superAdmin,member:a.member ? publicMember(a.member):null,company:a.member ? publicCompany(a.member.company):null});
+  res.json({success:true,superAdmin:a.superAdmin,admin:a.admin || null,member:a.member ? publicMember(a.member):null,company:a.member ? publicCompany(a.member.company):null});
 }));
 router.post('/logout',wrap(async(req,res)=>{
   if(req.partnerActor.member) await prisma.partnerMember.update({where:{id:req.partnerActor.member.id},data:{sessionVersion:{increment:1}}});

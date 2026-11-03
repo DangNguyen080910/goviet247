@@ -76,7 +76,7 @@ test('a verified passenger phone grants access, an unverified/unrelated phone do
   }));
 });
 test('rider and partner can chat before assignment; driver waits for acceptance', () => {
-  for (const status of ['COMPLETED', 'CANCELLED', 'NEW_UNKNOWN']) assert.equal(chatCanSend({
+  for (const status of ['CANCELLED', 'NEW_UNKNOWN']) assert.equal(chatCanSend({
     ...trip,
     status
   }, {
@@ -238,13 +238,20 @@ test('only admin may delete; deletion clears content, queues audio removal and l
   assert.equal(logs.length, 1);
 });
 
-test('ended trip chat is unavailable to booker/passenger while admin keeps history',async()=>{
- for(const status of ['COMPLETED','CANCELLED']) {
-  const ended={...trip,status};
-  await assert.rejects(()=>chatAccess(db(ended),'t',{id:'r',role:'RIDER'}),e=>e.status===403&&e.code==='RIDER_CHAT_ENDED');
-  const passenger={...db(ended),phone:{findMany:async()=>[{e164:'+84901234567'}]}};
-  await assert.rejects(()=>chatAccess(passenger,'t',{id:'passenger',role:'RIDER'}),e=>e.code==='RIDER_CHAT_ENDED');
-  assert.equal((await chatAccess(db(ended),'t',{id:'admin-1',role:'ADMIN'})).id,'t');
-  assert.equal((await chatAccess(db(ended),'t',{id:'d',role:'RIDER'})).id,'t');
- }
+test('completed support stays open for booker/passenger and Admin but driver chat is closed',async()=>{
+ const ended={...trip,status:'COMPLETED'};
+ assert.equal((await chatAccess(db(ended),'t',{id:'r',role:'RIDER'})).id,'t');
+ const passenger={...db(ended),phone:{findMany:async()=>[{e164:'+84901234567'}]}};
+ assert.equal((await chatAccess(passenger,'t',{id:'passenger',role:'RIDER'})).id,'t');
+ assert.equal((await chatAccess(db(ended),'t',{id:'admin-1',role:'ADMIN'})).id,'t');
+ await assert.rejects(()=>chatAccess(db(ended),'t',{id:'d',role:'RIDER'}),e=>e.code==='DRIVER_CHAT_ENDED');
+ assert.equal((await chatAccess(db(ended),'t',{id:'d',role:'RIDER'},{allowEnded:true})).id,'t');
+ for(const role of ['RIDER','PARTNER'])assert.equal(chatCanSend(ended,{role}),true);
+ assert.equal(chatCanSend(ended,{role:'DRIVER'}),false);
+});
+test('cancelled chat remains closed to customers and driver',async()=>{
+ const ended={...trip,status:'CANCELLED'};
+ await assert.rejects(()=>chatAccess(db(ended),'t',{id:'r',role:'RIDER'}),e=>e.code==='RIDER_CHAT_ENDED');
+ await assert.rejects(()=>chatAccess(db(ended),'t',{id:'d',role:'RIDER'}),e=>e.code==='DRIVER_CHAT_ENDED');
+ assert.equal((await chatAccess(db(ended),'t',{id:'admin-1',role:'ADMIN'})).id,'t');
 });

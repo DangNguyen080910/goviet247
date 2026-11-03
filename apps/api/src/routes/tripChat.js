@@ -1,3 +1,4 @@
+import {chatTripSummary} from '../shared/chatTripDetail.js';
 import { prepareChatImage, CHAT_IMAGE_MAX_BYTES } from '../services/chatImage.js';
 import { recordBlockedChatContact } from '../services/chatContactAlert.js';
 import { Router } from 'express';
@@ -37,6 +38,11 @@ const fields = {
   createdAt: true,
   clientId: true
 };
+router.get('/:id/trip',wrap(async(req,res)=>{
+  const trip=await chatAccess(prisma,req.params.id,req.chatActor,{allowEnded:true});
+  const stops=await prisma.tripStop.findMany({where:{tripId:trip.id},orderBy:{seq:'asc'},select:{address:true}});
+  res.json({success:true,trip:chatTripSummary(trip,stops)});
+}));
 router.get('/conversations', wrap(async (req, res) => {
   const actor = req.chatActor;
   const trips = await prisma.trip.findMany({
@@ -194,7 +200,7 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
     hasMore,
     actor: a,
     canSend: chatCanSend(trip, a),
-    quickReplies: CHAT_QUICK_REPLIES[a.role],
+    quickReplies: trip.status==='COMPLETED' ? (a.role==='ADMIN'?['GoViet247 đã nhận phản ánh và đang kiểm tra.','Cảm ơn anh/chị đã cung cấp thông tin.']:['Tôi cần hỗ trợ về chuyến này.','Tôi muốn phản ánh về chuyến đi.']) : CHAT_QUICK_REPLIES[a.role],
     status: trip.status
   });
 }));

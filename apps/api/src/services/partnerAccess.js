@@ -70,7 +70,7 @@ export async function resolvePartnerActor(token) {
   if (claims?.role === 'ADMIN') {
     const admin = await prisma.admin_users.findUnique({where:{id:Number(claims.id)}});
     if (!admin?.is_active || admin.role !== 'ADMIN') throw partnerFail('Không có quyền quản lý đối tác.', 403);
-    return {superAdmin:true, id:`admin-${admin.id}`, label:`GoViet247 · ${admin.username}`};
+    return {superAdmin:true, id:`admin-${admin.id}`, label:`GoViet247 · ${admin.username}`,admin:{id:admin.id,username:admin.username,role:admin.role}};
   }
   const member = await verifyPartnerToken(token);
   return {superAdmin:false, id:`partner-${member.id}`, label:member.displayName, member, companyId:member.companyId};

@@ -42,7 +42,7 @@ export async function chatPushRecipientIds(db, trip, message) {
       actors.push(...members.map(m => ({id: `partner-${m.id}`, role: 'PARTNER'})));
     }
   }
-  if (trip.driverId && (!trip.acceptedAt || new Date(message.createdAt) >= new Date(trip.acceptedAt))) {
+  if (CHAT_ACTIVE_STATUSES.includes(trip.status) && trip.driverId && (!trip.acceptedAt || new Date(message.createdAt) >= new Date(trip.acceptedAt))) {
     actors.push({id: trip.driverId, role: 'DRIVER'});
   }
   return [...new Set(actors.filter(a => a.id !== message.senderId && chatAudienceVisible(message, a)).map(a => a.id))];

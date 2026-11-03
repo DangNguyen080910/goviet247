@@ -22,7 +22,7 @@ function App(){
   useEffect(()=>{
     if(!token){setSession(null);setLoading(false);return;}
     let alive=true;const c=new AbortController();
-    async function check(){try{const d=await partnerRequest('/me',{token,signal:c.signal});if(alive){setSession(d);setError('');}}catch(e){if(alive&&e.name!=='AbortError'){if(e.status===401){clearPartnerToken();setToken('');setSession(null);}setError(e.message);}}finally{if(alive)setLoading(false);}}
+    async function check(){try{const d=await partnerRequest('/me',{token,signal:c.signal});if(alive){if(d.superAdmin){clearPartnerToken();setSession(null);setError('Vui lòng đăng nhập bằng tài khoản đối tác.');return;}setSession(d);setError('');}}catch(e){if(alive&&e.name!=='AbortError'){if(e.status===401){clearPartnerToken();setToken('');setSession(null);}setError(e.message);}}finally{if(alive)setLoading(false);}}
     void check();const timer=setInterval(check,30000);return()=>{alive=false;c.abort();clearInterval(timer);};
   },[token]);
   const acceptToken=t=>{storePartnerToken(t);setToken(t);};

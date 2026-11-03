@@ -11,7 +11,7 @@ import { prisma } from '../utils/db.js';
 import { userSessions } from './userSessions.js';
 import { verifyAdminJwtToken } from '../utils/jwt.js';
 import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere } from './riderTripAccess.js';
-import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
+import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE, DRIVER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
 import { activeDriverDevices } from './driverPushAccess.js';
 const s3 = new S3Client({
   region: process.env.TRIP_CHAT_AWS_REGION || process.env.AWS_REGION
@@ -61,7 +61,7 @@ export async function chatAuth(req, res, next) {
     });
   }
 }
-export async function chatAccess(db, tripId, actor) {
+export async function chatAccess(db, tripId, actor, {allowEnded=false}={}) {
   const trip = await db.trip.findUnique({
     where: {
       id: tripId
@@ -73,10 +73,11 @@ export async function chatAccess(db, tripId, actor) {
     const member=await db.partnerMember.findUnique({where:{id:actor.memberId},include:{company:true}});
     if(!member?.isActive || !member.company.isActive || member.mustChangePassword || member.companyId!==trip.partnerCompanyId) throw fail('Không có quyền xem hội thoại.');
     if (member.role!=='ADMIN' && trip.partnerAssignedToId!==member.id) throw fail('Chỉ điều phối viên phụ trách được xem hội thoại.');
-    if (isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE),{code:'RIDER_CHAT_ENDED'});
+    if (!allowEnded && isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE),{code:'RIDER_CHAT_ENDED'});
     return trip;
   }
   if (trip.driverId === actor.id) {
+    if(!allowEnded && ['COMPLETED','CANCELLED'].includes(trip.status)) throw Object.assign(fail(DRIVER_CHAT_ENDED_NOTICE),{code:'DRIVER_CHAT_ENDED'});
     const profile = await db.driverProfile.findUnique({
       where: {
         userId: actor.id
@@ -94,7 +95,7 @@ export async function chatAccess(db, tripId, actor) {
   if (trip.partnerCompanyId) {
     const context=await getPartnerRiderContext(db,trip,phones);
     if(!context) throw fail('Không có quyền xem hội thoại.');
-    if(isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE),{code:'RIDER_CHAT_ENDED'});
+    if(!allowEnded && isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE),{code:'RIDER_CHAT_ENDED'});
     actor.role='PARTNER';actor.partnerViaRider=true;
     const manager=phones.includes(context.partnerCompany.managementPhone);
     const member=context.partnerCreatedBy || context.partnerAssignedTo;
@@ -102,7 +103,7 @@ export async function chatAccess(db, tripId, actor) {
     return trip;
   }
   if (trip.riderId !== actor.id && !phoneVariants(trip.riderPhone).some(p => phones.includes(p))) throw fail('Không có quyền xem hội thoại.');
-  if (isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE), {code:'RIDER_CHAT_ENDED'});
+  if (!allowEnded && isRiderChatEnded(trip.status)) throw Object.assign(fail(RIDER_CHAT_ENDED_NOTICE), {code:'RIDER_CHAT_ENDED'});
   actor.role = 'RIDER';
   actor.label = trip.riderId === actor.id ? 'Người đặt chuyến' : 'Hành khách';
   return trip;
@@ -188,6 +189,7 @@ export async function createChatMessage(tripId, actor, data) {
     return tx.tripChatMessage.create({
       data: {
         ...data,
+        ...(trip.status==='COMPLETED'?{audience:trip.partnerCompanyId?'PARTNER':'RIDER',recipientId:null}:{}),
         tripId,
         senderId: actor.id,
         senderRole: actor.role,
@@ -321,7 +323,7 @@ export async function deliverChatPush() {
         const eligible = [...userDevices, ...devices.filter(d => d.userId.startsWith('admin-') && (!d.pushExpiresAt || d.pushExpiresAt > new Date()))];
         const notifications = eligible.filter(d => /^(ExponentPushToken|ExpoPushToken)\[/.test(d.pushToken)).map(d => ({
           to: d.pushToken,
-          title: `Liên hệ chuyến #${trip.id.slice(-8).toUpperCase()}`,
+          title: `Liên hệ chuyến #${trip.id}`,
           body: m.senderRole === 'SYSTEM' ? m.text || 'Có thông báo mới về chuyến.' : `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'IMAGE' ? 'hình ảnh' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
           sound: d.role.toLowerCase() === 'driver' ? 'new_trip.wav' : 'default',
           channelId: d.role.toLowerCase() === 'driver' ? 'trip_chat_v1' : 'trip_chat_default_v1',

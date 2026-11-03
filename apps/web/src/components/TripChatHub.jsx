@@ -1,10 +1,12 @@
+import {splitChatLinks} from '../../../mobile-chat/chatLinks';
+import {chatTripDetailRows} from '../../../api/src/shared/chatTripDetail.js';
 import {partnerFetch} from './partners/partnerSession';
 import { newUnreadConversations } from '../../../api/src/shared/chatAlerts.js';
 import { chatAudienceLabel } from '../../../api/src/shared/tripChatVisibility.js';
 import useDraggableInbox from './useDraggableInbox';
 import { createPortal } from 'react-dom';
 import { useFloatingActions } from './FloatingActionsContext';
-import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE } from '../../../api/src/shared/tripChat.js';
+import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE, DRIVER_CHAT_ENDED_NOTICE, COMPLETED_CHAT_NOTICE } from '../../../api/src/shared/tripChat.js';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Alert, Box, Button, Chip, Snackbar, Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, Typography } from '@mui/material';
@@ -25,7 +27,7 @@ export function TripChatButton({
     ...(ended ? {color: "#64748b", backgroundColor: "#f1f5f9", borderColor: "#cbd5e1"} : {}),
     textTransform: 'none',
     borderRadius: 2
-  }}>💬 {label}</Button>;
+  }}>💬 {status==='COMPLETED'?'Hỗ trợ GoViet247':label}</Button>;
 }
 const base = import.meta.env.VITE_API_BASE || 'http://localhost:5050';
 const makeId = () => crypto.randomUUID();
@@ -42,10 +44,20 @@ function ChatImage({tripId, messageId, loadImage, onOpen}) {
     <Typography fontSize={12}>Bấm xem ảnh lớn</Typography>
   </Button>;
 }
-export default function TripChatHub({ partnerTokenKey = null }) {
+export default function TripChatHub({ partnerTokenKey = null, adminMode = false }) {
+  const [chatStatus,setChatStatus]=useState('');
+  const [tripView,setTripView]=useState(null);
+  const detailRequest=useRef(0);
+  useEffect(()=>()=>{detailRequest.current++;},[]);
+  function closeTripView(){detailRequest.current++;setTripView(null);}
+  async function showTrip(id){
+    const request=++detailRequest.current;setTripView({id,loading:true});
+    try{const data=await api(`/${encodeURIComponent(id)}/trip`);if(detailRequest.current===request)setTripView({id,loading:false,trip:data.trip});}
+    catch(error){if(detailRequest.current===request)setTripView({id,loading:false,error:error.message});}
+  }
   const {dockTarget, dockDragRef} = useFloatingActions();
   const route = useLocation(),
-    isAdmin = route.pathname.startsWith('/admin'),
+    isAdmin = adminMode || route.pathname.startsWith('/admin'),
     tokenKey = partnerTokenKey || (isAdmin ? 'admin_token' : 'gv247_customer_token');
   const draggableInbox = isAdmin || Boolean(partnerTokenKey);
   const inboxDrag = useDraggableInbox(draggableInbox, partnerTokenKey ? 'goviet247-partner-inbox-position' : undefined);
@@ -67,10 +79,6 @@ export default function TripChatHub({ partnerTokenKey = null }) {
     [draft, setDraft] = useState(null),
     [recording, setRecording] = useState(false),
     [seconds, setSeconds] = useState(0),
-    [location, setLocation] = useState(null),
-    [query, setQuery] = useState(''),
-    [places, setPlaces] = useState([]),
-    [locationOpen, setLocationOpen] = useState(false),
     [signed, setSigned] = useState(false);
   const [imageDraft, setImageDraft] = useState(null), [imageView, setImageView] = useState(null), [cameraOpen, setCameraOpen] = useState(false);
   const imageInput = useRef(null), cameraInput = useRef(null), cameraVideo = useRef(null), cameraStream = useRef(null);
@@ -104,9 +112,9 @@ export default function TripChatHub({ partnerTokenKey = null }) {
     });
     const d = await res.json();
     if (!res.ok) {
-      if (d.code === 'RIDER_CHAT_ENDED') {
-        activeRequest.current++; audio.current?.pause(); setImageView(null); setImageDraft(null); setItems([]); setCanSend(false); setOpen(false);
-        window.alert(RIDER_CHAT_ENDED_NOTICE);
+      if (['RIDER_CHAT_ENDED','DRIVER_CHAT_ENDED'].includes(d.code)) {
+        activeRequest.current++; audio.current?.pause(); setImageView(null); setImageDraft(null); setItems([]); setCanSend(false);setChatStatus(''); setOpen(false);
+        window.alert(d.code==='DRIVER_CHAT_ENDED'?DRIVER_CHAT_ENDED_NOTICE:RIDER_CHAT_ENDED_NOTICE);
       }
       throw new Error(d.message || 'Không tải được hội thoại.');
     }
@@ -201,7 +209,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
         previousInbox.current=new Map(d.items.map(c=>[c.tripId,c.last.id]));
         if(fresh.length) {
           quietTone();const latest=fresh[0];
-          setIncoming({tripId:latest.tripId,label:`Có tin nhắn mới · #${latest.tripId.slice(-8).toUpperCase()}`});
+          setIncoming({tripId:latest.tripId,label:`Có tin nhắn mới · #${latest.tripId}`});
           if(document.hidden && 'Notification' in window && Notification.permission==='granted') {
             try {const notice=new Notification('GoViet247 · Tin nhắn chuyến',{body:'Có tin nhắn mới. Bấm để mở hội thoại.',tag:'trip-chat'});
               notice.onclick=()=>{window.focus();openTripChat(latest.tripId);notice.close();};} catch {}
@@ -229,7 +237,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
     });
     setImageView(current => current && d.items.some(m => m.id === current.id && m.deletedAt) ? null : current);
     setActor(d.actor);
-    setCanSend(d.canSend);
+    setCanSend(d.canSend);setChatStatus(d.status || '');
     setReplies(d.quickReplies || []);
     if (!loadedOlder.current) setMore(d.hasMore);
     const latest = d.items.at(-1);
@@ -253,10 +261,9 @@ export default function TripChatHub({ partnerTokenKey = null }) {
     setImageDraft(null);
     setImageView(null);
     stopCamera();
-    setCanSend(false);
+    setCanSend(false);setChatStatus('');
     setError('');
     setText('');
-    setLocation(null);
     setDraft(current => {
       if (current) URL.revokeObjectURL(current.url);
       return null;
@@ -393,7 +400,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
       const blob = await new Promise(resolve => canvas.toBlob(resolve,'image/jpeg',0.82));
       if (!blob) throw new Error('Không xử lý được ảnh. Vui lòng chọn ảnh khác.');
       if (generation !== activeRequest.current) return;
-      setLocationOpen(false); setImageDraft({blob,clientId:makeId()});
+      setImageDraft({blob,clientId:makeId()});
     } finally {URL.revokeObjectURL(url);}
   }
   async function sendImage() {
@@ -426,39 +433,13 @@ export default function TripChatHub({ partnerTokenKey = null }) {
   }
   useEffect(() => {if (!imageDraft) return;const url=URL.createObjectURL(imageDraft.blob);setImageDraft(current => current?.blob === imageDraft.blob ? {...current,url} : current);return () => URL.revokeObjectURL(url);},[imageDraft?.blob]);
   async function currentLocation() {
-    const p = await new Promise((resolve, reject) => navigator.geolocation ? navigator.geolocation.getCurrentPosition(resolve, reject, {
-      enableHighAccuracy: true,
-      timeout: 15000
-    }) : reject(new Error('Không hỗ trợ GPS.')));
-    setLocation({
-      latitude: p.coords.latitude,
-      longitude: p.coords.longitude,
-      locationLabel: 'Vị trí hiện tại',
-      clientId: makeId()
-    });
-  }
-  async function search() {
-    const res = await fetch(`${base}/api/maps/autocomplete?q=${encodeURIComponent(query)}`),
-      d = await res.json();
-    if (!res.ok || !d.success) throw new Error(d.message || 'Không tìm được địa chỉ.');
-    setPlaces(d.items || []);
-  }
-  async function selectPlace(p) {
-    const res = await fetch(`${base}/api/maps/place-detail?placeId=${encodeURIComponent(p.placeId || p.place_id || p.id)}`),
-      d = await res.json();
-    if (!res.ok || !d.success) throw new Error(d.message || 'Không lấy được vị trí.');
-    const raw = d.item?.data?.place || d.item?.data || d.item?.place || d.item?.result || d.item,
-      loc = raw?.geometry?.location || raw?.location || raw;
-    const latitude = Number(raw.lat ?? raw.latitude ?? loc.lat),
-      longitude = Number(raw.lng ?? raw.longitude ?? loc.lng);
-    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) throw new Error('Địa chỉ chưa có toạ độ.');
-    setLocation({
-      latitude,
-      longitude,
-      locationLabel: p.description || p.address || p.name || query,
-      clientId: makeId()
-    });
-    setPlaces([]);
+    const generation=activeRequest.current;
+    let position;
+    try {position=await new Promise((resolve,reject)=>navigator.geolocation ? navigator.geolocation.getCurrentPosition(resolve,reject,{enableHighAccuracy:true,timeout:15000,maximumAge:0}) : reject(new Error('Trình duyệt không hỗ trợ định vị.')));}
+    catch(error){throw new Error(error.code===1?'Vui lòng cho phép vị trí trong trình duyệt để gửi định vị hiện tại.':error.message || 'Không lấy được định vị hiện tại. Vui lòng thử lại.');}
+    if(generation!==activeRequest.current)return;
+    await post(`/${tripId}/messages`,{kind:'LOCATION',latitude:position.coords.latitude,longitude:position.coords.longitude,locationLabel:'Định vị hiện tại',clientId:makeId()});
+    await load();
   }
   const mapUrl = m => `https://www.google.com/maps/search/?api=1&query=${m.latitude},${m.longitude}`;
   const docked = !isAdmin && Boolean(dockTarget);
@@ -492,23 +473,23 @@ export default function TripChatHub({ partnerTokenKey = null }) {
         gap: 1
       }}>{tripId ? <Button onClick={() => setTripId('')}>←</Button> : null}<Typography component="span" sx={{
           fontWeight: 800,
-          flex: 1
-        }}>{tripId ? `Liên hệ #${tripId.slice(-8).toUpperCase()}` : 'Tin nhắn chuyến'}</Typography><IconButton aria-label="Đóng hội thoại" onClick={close}>×</IconButton></DialogTitle>
+          flex: 1, minWidth:0, overflowWrap:'anywhere'
+        }}>{tripId ? `Liên hệ #${tripId}` : 'Tin nhắn chuyến'}</Typography>{tripId&&<Button onClick={()=>void showTrip(tripId)} sx={{flexShrink:0}}>Xem chuyến</Button>}<IconButton aria-label="Đóng hội thoại" onClick={close}>×</IconButton></DialogTitle>
  <DialogContent dividers sx={{
         p: 0
       }}>{error && <Alert severity="error">{error}</Alert>}
  {!tripId ? <Stack spacing={1} sx={{
           p: 2
-        }}>{!inbox.length && <Typography>Chưa có tin nhắn. Mở một chuyến để liên hệ.</Typography>}{inbox.map(c => <Button key={c.tripId} onClick={() => setTripId(c.tripId)} sx={{
+        }}>{!inbox.length && <Typography>Chưa có tin nhắn. Mở một chuyến để liên hệ.</Typography>}{inbox.map(c => <Box key={c.tripId}  sx={{
             textAlign: 'left',
             justifyContent: 'flex-start',
             textTransform: 'none'
-          }}><Box><Typography fontWeight={800}>#{c.tripId.slice(-8).toUpperCase()} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography><Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button>)}</Stack> : <>
+          }}><Button onClick={()=>setTripId(c.tripId)} sx={{textAlign:'left',textTransform:'none',width:'100%',justifyContent:'flex-start'}}><Box sx={{minWidth:0,overflowWrap:'anywhere'}}><Typography fontWeight={800}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography><Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button><Button onClick={()=>void showTrip(c.tripId)}>Xem chuyến</Button></Box>)}</Stack> : <>
  <Typography sx={{
             p: 1.5,
             fontSize: 12,
             color: '#64748b'
-          }}>Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.</Typography>
+          }}>{chatStatus==='COMPLETED'?COMPLETED_CHAT_NOTICE:'Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.'}</Typography>
  <Stack spacing={1.5} sx={{
             height: 'min(48vh,440px)',
             overflowY: 'auto',
@@ -532,13 +513,13 @@ export default function TripChatHub({ partnerTokenKey = null }) {
                 color: '#475569',
                 fontWeight: 700,
                 mb: 0.5
-              }}>{m.senderLabel}</Typography>{actor.role === 'ADMIN' && m.senderRole === 'SYSTEM' && <Typography sx={{fontSize:11,color:'#64748b',mb:0.5}}>{chatAudienceLabel(m.audience)}</Typography>}{m.deletedAt ? <Typography sx={{
+              }}>{m.senderLabel}</Typography>{actor.role === 'ADMIN' && m.audience && m.audience !== 'ALL' && <Typography sx={{fontSize:11,color:'#64748b',mb:0.5}}>{chatAudienceLabel(m.audience)}</Typography>}{m.deletedAt ? <Typography sx={{
                 fontStyle: 'italic',
                 color: '#64748b'
               }}>Tin nhắn đã được GoViet247 xoá.</Typography> : m.kind === 'TEXT' ? <Typography sx={{
                 whiteSpace: 'pre-wrap',
                 overflowWrap: 'anywhere'
-              }}>{m.text}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording} onClick={() => run(() => listen(m))}>▶ Nghe · {Math.ceil(m.durationMs / 1000)}s</Button><Button onClick={() => audio.current?.pause()}>Dừng</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
+              }}>{splitChatLinks(m.text || '').map((part,index)=>part.url?<a key={index} href={part.url} target="_blank" rel="noopener noreferrer" style={{color:'#1976d2',textDecoration:'underline',overflowWrap:'anywhere'}}>{part.text}</a>:part.text)}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording} onClick={() => run(() => listen(m))}>▶ Nghe · {Math.ceil(m.durationMs / 1000)}s</Button><Button onClick={() => audio.current?.pause()}>Dừng</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
                 textAlign: 'left',
                 textTransform: 'none'
               }}>📍 {m.locationLabel}<br />Vị trí tại thời điểm gửi · Mở bản đồ</Button>}{actor.role === 'ADMIN' && !m.deletedAt && <Button size="small" color="error" disabled={busy} onClick={() => {
@@ -566,23 +547,6 @@ export default function TripChatHub({ partnerTokenKey = null }) {
             }}>{replies.map(reply => <Chip key={reply} label={reply} onClick={() => setText(reply)} sx={{
                 maxWidth: 300
               }} />)}</Box>
- {locationOpen && <Stack spacing={1} sx={{
-              p: 1.5,
-              bgcolor: '#f1f5f9',
-              borderRadius: 2
-            }}><Button disabled={busy} onClick={() => run(currentLocation)}>Dùng vị trí hiện tại</Button><TextField size="small" label="Tìm địa chỉ / điểm hẹn" value={query} onChange={e => setQuery(e.target.value)} /><Button disabled={busy || query.length < 3} onClick={() => run(search)}>Tìm điểm</Button>{places.slice(0, 5).map((p, i) => <Button key={i} onClick={() => run(() => selectPlace(p))}>{p.description || p.address || p.name}</Button>)}{location && <><Typography>{location.locationLabel}</Typography><iframe title="Xem trước vị trí gửi" style={{
-                  width: '100%',
-                  height: 180,
-                  border: 0
-                }} src={`https://www.openstreetmap.org/export/embed.html?bbox=${location.longitude - 0.005},${location.latitude - 0.005},${location.longitude + 0.005},${location.latitude + 0.005}&marker=${location.latitude},${location.longitude}`} /><Button disabled={busy} onClick={() => run(async () => {
-                  await post(`/${tripId}/messages`, {
-                    kind: 'LOCATION',
-                    ...location
-                  });
-                  setLocation(null);
-                  setLocationOpen(false);
-                  await load();
-                })}>Gửi vị trí này</Button></>}<Button onClick={() => setLocationOpen(false)}>Đóng chọn vị trí</Button></Stack>}
  <input hidden type="file" accept="image/jpeg,image/png,image/webp" ref={imageInput} onChange={e => {const file=e.target.files?.[0];e.target.value='';if (file) void run(() => prepareImage(file));}} />
  <input hidden type="file" accept="image/*" capture="environment" ref={cameraInput} onChange={e => {const file=e.target.files?.[0];e.target.value='';if (file) void run(() => prepareImage(file));}} />
  {imageDraft ? <><Typography fontWeight={700}>Xem trước ảnh</Typography><Box component="img" src={imageDraft.url} alt="Ảnh sắp gửi" sx={{width:'100%',maxHeight:220,objectFit:'contain'}} /><Stack direction="row"><Button disabled={busy} variant="contained" onClick={() => run(sendImage)}>{busy ? 'Đang gửi…' : 'Gửi ảnh'}</Button><Button disabled={busy} onClick={() => setImageDraft(null)}>Bỏ ảnh</Button></Stack></> : draft ? <><audio controls src={draft.url} /><Stack direction="row"><Button disabled={busy} onClick={() => run(sendAudio)}>Gửi ghi âm</Button><Button disabled={busy} onClick={() => {
@@ -592,7 +556,7 @@ export default function TripChatHub({ partnerTokenKey = null }) {
                 htmlInput: {
                   maxLength: 2000
                 }
-              }} disabled={busy || recording} /><Stack direction="row" flexWrap="wrap" gap={1}><Button variant="contained" disabled={busy || recording || !text.trim()} onClick={() => run(sendText)}>Gửi</Button><Button disabled={busy} onClick={() => recording ? recorder.current?.stop() : run(record)}>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Button><Button disabled={busy || recording} onClick={() => setLocationOpen(v => !v)}>📍 Vị trí</Button><Button disabled={busy || recording} onClick={() => imageInput.current?.click()}>🖼 Chọn ảnh</Button><Button disabled={busy || recording} onClick={() => /Android|iPhone|iPad/i.test(navigator.userAgent) ? cameraInput.current?.click() : run(startCamera)}>📷 Chụp ảnh</Button></Stack></>}
+              }} disabled={busy || recording} /><Stack direction="row" flexWrap="wrap" gap={1}><Button variant="contained" disabled={busy || recording || !text.trim()} onClick={() => run(sendText)}>Gửi</Button><Button disabled={busy} onClick={() => recording ? recorder.current?.stop() : run(record)}>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Button><Button disabled={busy || recording} onClick={() => run(currentLocation)}>📍 Định vị</Button><Button disabled={busy || recording} onClick={() => imageInput.current?.click()}>🖼 Chọn ảnh</Button><Button disabled={busy || recording} onClick={() => /Android|iPhone|iPad/i.test(navigator.userAgent) ? cameraInput.current?.click() : run(startCamera)}>📷 Chụp ảnh</Button></Stack></>}
  <Typography sx={{
               fontSize: 11,
               color: '#64748b'
@@ -602,5 +566,11 @@ export default function TripChatHub({ partnerTokenKey = null }) {
  </>}
  </DialogContent></Dialog>
  <Dialog open={cameraOpen} onClose={stopCamera} fullWidth maxWidth="sm" sx={{zIndex:10040}}><DialogTitle>Chụp ảnh gửi trong chuyến</DialogTitle><DialogContent><Box component="video" ref={video => {cameraVideo.current=video;if(video && cameraStream.current){video.srcObject=cameraStream.current;video.play().catch(() => {});}}} autoPlay muted playsInline sx={{width:'100%',borderRadius:2}} /><Stack direction="row"><Button disabled={busy} onClick={() => run(captureImage)}>Chụp ảnh</Button><Button onClick={stopCamera}>Đóng camera</Button></Stack></DialogContent></Dialog>
+ <Dialog open={Boolean(tripView)} onClose={closeTripView} fullWidth maxWidth="sm" sx={{zIndex:10040}}><DialogTitle>Chi tiết chuyến<Button onClick={closeTripView} sx={{float:'right'}}>Quay lại tin nhắn</Button></DialogTitle><DialogContent dividers><Stack spacing={2}>
+ <Typography sx={{overflowWrap:'anywhere',fontWeight:800}}>#{tripView?.id}</Typography>
+ {tripView?.loading&&<Typography>Đang tải chuyến...</Typography>}
+ {tripView?.error&&<Alert severity="error" action={<Button onClick={()=>void showTrip(tripView.id)}>Thử lại</Button>}>{tripView.error}</Alert>}
+ {tripView?.trip&&chatTripDetailRows(tripView.trip).map(([label,value],index)=><Box key={index}><Typography color="text.secondary">{label}</Typography><Typography sx={{overflowWrap:'anywhere'}}>{value}</Typography></Box>)}
+ </Stack></DialogContent></Dialog>
  <Dialog open={Boolean(imageView)} onClose={() => setImageView(null)} fullWidth maxWidth="lg" sx={{zIndex:10050}}><DialogTitle sx={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>Ảnh trong hội thoại<IconButton aria-label="Đóng ảnh" onClick={() => setImageView(null)}>×</IconButton></DialogTitle><DialogContent>{imageView && <Box component="img" src={imageView.url} alt="Ảnh trong chuyến" onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} sx={{display:'block',width:'100%',maxHeight:'75vh',objectFit:'contain'}} />}</DialogContent></Dialog></>;
 }
