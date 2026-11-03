@@ -77,7 +77,7 @@ export function TripChatButton({
   return <Pressable accessibilityRole="button" onPress={event => { event.stopPropagation(); if (ended) Alert.alert('Liên hệ GoViet247', driverEnded?DRIVER_CHAT_ENDED_NOTICE:RIDER_CHAT_ENDED_NOTICE); else if (onOpen) onOpen(); else router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any); }} style={[button, prominent ? {backgroundColor:blue,minHeight:48,justifyContent:'center',alignItems:'center',marginHorizontal:0,marginBottom:12} : null, ended ? {backgroundColor:'#f1f5f9'} : null]}><Text style={{
       color: ended ? '#64748b' : prominent ? 'white' : blue,
       fontWeight: '700'
-    }}>💬 {config?.role==='RIDER' && status==='COMPLETED'?'Hỗ trợ GoViet247':label}</Text></Pressable>;
+    }}>💬 {config?.role!=='ADMIN' && isRiderChatEnded(status)?'Chat chuyến (đã kết thúc)':label}</Text></Pressable>;
 }
 export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
   const [unread, setUnread] = useState(0),

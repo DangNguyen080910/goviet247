@@ -189,7 +189,6 @@ export async function createChatMessage(tripId, actor, data) {
     return tx.tripChatMessage.create({
       data: {
         ...data,
-        ...(trip.status==='COMPLETED'?{audience:trip.partnerCompanyId?'PARTNER':'RIDER',recipientId:null}:{}),
         tripId,
         senderId: actor.id,
         senderRole: actor.role,

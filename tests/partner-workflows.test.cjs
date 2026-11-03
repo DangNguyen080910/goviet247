@@ -12,7 +12,7 @@ function chatModule(){return load('apps/api/src/services/tripChatService.js',{
  './partnerAccess.js':{},jsonwebtoken:{default:{}},'node:crypto':require('node:crypto'),
  '@aws-sdk/client-s3':{S3Client:class{}},'@aws-sdk/s3-request-presigner':{},'../utils/db.js':{prisma:{}},'./userSessions.js':{},'../utils/jwt.js':{},
  './riderTripAccess.js':{getVerifiedRiderPhoneVariants:async()=>[],phoneVariants:()=>[],riderTripAccessWhere:()=>({})},
- '../shared/tripChat.js':{isRiderChatEnded:s=>['CANCELLED'].includes(s),RIDER_CHAT_ENDED_NOTICE:'ended'},'./driverPushAccess.js':{}
+ '../shared/tripChat.js':{isRiderChatEnded:s=>['COMPLETED','CANCELLED'].includes(s),RIDER_CHAT_ENDED_NOTICE:'ended'},'./driverPushAccess.js':{}
 });}
 function chatDb(member,trip){return {trip:{findUnique:async()=>trip},partnerMember:{findUnique:async()=>member},driverProfile:{findUnique:async()=>({status:'VERIFIED'})}};}
 const trip={id:'t1',partnerCompanyId:'c1',partnerAssignedToId:'m1',driverId:'d1',status:'ACCEPTED'};
@@ -31,7 +31,7 @@ test('company admin can support other dispatchers; reassignment removes prior di
 });
 test('partner chat closes after cancellation and unrelated riders cannot read it',async()=>{
  const {chatAccess}=chatModule();
- for(const status of ['CANCELLED'])await assert.rejects(chatAccess(chatDb(member,{...trip,status}),'t1',{id:'partner-m1',memberId:'m1',role:'PARTNER'}),{code:'RIDER_CHAT_ENDED'});
+ for(const status of ['COMPLETED','CANCELLED'])await assert.rejects(chatAccess(chatDb(member,{...trip,status}),'t1',{id:'partner-m1',memberId:'m1',role:'PARTNER'}),{code:'RIDER_CHAT_ENDED'});
  await assert.rejects(chatAccess(chatDb(member,trip),'t1',{id:'rider1',role:'RIDER'}),{status:403});
  assert.equal((await chatAccess(chatDb(member,trip),'t1',{id:'d1',role:'RIDER'})).id,'t1');
 });

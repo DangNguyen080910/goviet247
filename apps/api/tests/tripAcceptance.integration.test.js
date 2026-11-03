@@ -1,3 +1,6 @@
+import {isProvinceCode} from '../src/services/driverOperatingProvince.js';
+import {createAcceptanceChatNotices} from '../src/services/tripAcceptanceChat.js';
+import * as tripContact from '../src/shared/tripContact.js';
 import test, { after, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -26,14 +29,14 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, ...policy,  ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });
 }
 function withdrawals(prisma = db) {
   return controller('driverProfileController.js', ['createMyDriverWithdrawRequest'], {
-    prisma, z, ...policy, sendAdminPushNotification: noop,
+    prisma, z, isProvinceCode, ...policy, sendAdminPushNotification: noop,
   }).createMyDriverWithdrawRequest;
 }
 function admins(prisma = db) {

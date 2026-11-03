@@ -6,8 +6,10 @@ const compile=source=>ts.transpileModule(source,{compilerOptions:{jsx:ts.JsxEmit
 function renderChat(platform,keyboardVisible=false){
  const source=read('apps/mobile-chat/TripChat.tsx');
  const snippet=source.slice(source.indexOf('export default function TripChatScreen')).replace('export default function','function');
+ const ast=ts.createSourceFile('Chat.tsx',snippet,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),stateNames=[];
+ function visit(node){if(ts.isVariableDeclaration(node)&&ts.isArrayBindingPattern(node.name)&&node.initializer&&ts.isCallExpression(node.initializer)&&node.initializer.expression.getText(ast)==='useState')stateNames.push(node.name.elements[0].name.getText(ast));ts.forEachChild(node,visit);}visit(ast);
  let state=0;const effects=[],listeners={},removed=[];
- const deps={React:{createElement:(type,props,...children)=>({type,props:props||{},children}),Fragment:'Fragment'},useIsFocused:()=>true,useLocalSearchParams:()=>({tripId:'new-trip'}),useState:initial=>{const n=state++;return[n===0?keyboardVisible:n===4?true:n===5?['Quick reply']:initial,()=>{}];},useEffect:fn=>effects.push(fn),useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:platform},Keyboard:{addListener:(name,fn)=>{listeners[name]=fn;return{remove:()=>removed.push(name)};}},requestAnimationFrame:fn=>fn(),blue:'#2563eb',ink:'#000',button:{},router:{back(){}},chatAudienceLabel:()=>'',config:{role:'RIDER'}};
+ const deps={React:{createElement:(type,props,...children)=>({type,props:props||{},children}),Fragment:'Fragment'},useIsFocused:()=>true,useLocalSearchParams:()=>({tripId:'new-trip'}),useState:initial=>{const name=stateNames[state++];return[name==='keyboardVisible'?keyboardVisible:name==='canSend'?true:name==='replies'?['Quick reply']:initial,()=>{}];},useEffect:fn=>effects.push(fn),useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:platform},Keyboard:{addListener:(name,fn)=>{listeners[name]=fn;return{remove:()=>removed.push(name)};}},requestAnimationFrame:fn=>fn(),blue:'#2563eb',ink:'#000',button:{},router:{back(){}},chatAudienceLabel:()=>'',config:{role:'RIDER'}};
  for(const name of ['SafeAreaView','KeyboardAvoidingView','View','Pressable','Text','TextInput','ScrollView','Modal','Image'])deps[name]=name;
  const component=new Function(...Object.keys(deps),compile(snippet)+';return TripChatScreen;')(...Object.values(deps));
  return{tree:component(),effects,listeners,removed};
@@ -19,7 +21,7 @@ for(const platform of ['ios','android'])test(`${platform}: composer and controls
  const inside=nodes(avoid);assert(inside.some(n=>n.type==='TextInput'&&n.props.placeholder==='Nhắn tin cho chuyến…'));
  const composer=inside.find(n=>n.type==='ScrollView'&&n.props.style?.maxHeight==='65%');assert(composer);assert.equal(composer.props.keyboardShouldPersistTaps,'handled');
  assert(nodes(composer).some(n=>n.type==='Pressable'));
- const cleanup=h.effects[0]();assert.equal(Object.keys(h.listeners).length,2);cleanup();assert.equal(h.removed.length,2);
+ const keyboardEffect=h.effects.find(fn=>fn.toString().includes('Keyboard.addListener'));assert(keyboardEffect);const cleanup=keyboardEffect();assert.equal(Object.keys(h.listeners).length,2);cleanup();assert.equal(h.removed.length,2);
  const compact=nodes(renderChat(platform,true).tree);assert(!compact.some(n=>n.type==='ScrollView'&&n.props.horizontal));
 });
 test('Rider has one visible chat tab with a real icon and one hidden guest route',()=>{

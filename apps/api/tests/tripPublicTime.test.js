@@ -13,6 +13,7 @@ test("OTP confirmation saves both pickup and return as Vietnam wall-clock time",
     note: "", basePricePerKm: 1, holidayFactor: 1, directionFactor: 1, totalPrice: 500000,
   };
   const prisma = { trip: { create: async ({ data }) => { created = data; return { id: "trip", createdAt: new Date(), ...data }; } } };
+  prisma.tripChatMessage = {createMany:async()=>({count:1})};
   prisma.pricingConfig = { findUnique: async () => ({ isActive: true }) };
   prisma.$queryRawUnsafe = async () => [];
   prisma.$transaction = async fn => fn(prisma);

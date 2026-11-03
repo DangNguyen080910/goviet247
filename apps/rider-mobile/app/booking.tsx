@@ -1805,13 +1805,14 @@ export default function RiderBookingScreen() {
           />
 
           <View style={styles.card}>
-            <Text style={styles.sectionTitle}>Hình thức đặt chuyến</Text>
-            <Text style={styles.helperText}>{modeLoading ? 'Đang kiểm tra quyền đặt chuyến...' : modeError || (selectedCompany ? `Đang đặt cho: ${selectedCompany.name}` : bookingMode==='personal' ? 'Đang đặt chuyến cá nhân' : 'Vui lòng chọn lại hình thức đặt chuyến.')}</Text>
-            {modeError ? <Pressable onPress={()=>setModeReload(value=>value+1)} style={styles.input}><Text>Thử lại</Text></Pressable> : null}
-            {!modeLoading && !modeError ? <View>
+            {Boolean(modeUserId) && !modeLoading && !modeError && bookingCompanies.length > 0 ? <View>
+              <Text style={styles.sectionTitle}>Hình thức đặt chuyến</Text>
+              <Text style={styles.helperText}>{selectedCompany ? `Đang đặt cho: ${selectedCompany.name}` : bookingMode==='personal' ? 'Đang đặt chuyến cá nhân' : 'Vui lòng chọn lại hình thức đặt chuyến.'}</Text>
               {bookingCompanies.map(company=><Pressable key={company.id} disabled={isCreating} onPress={()=>chooseBookingMode(company.id)} style={styles.input}><Text>{bookingMode===company.id ? '●' : '○'} Đặt cho {company.name}</Text></Pressable>)}
               <Pressable disabled={isCreating} onPress={()=>chooseBookingMode('personal')} style={styles.input}><Text>{bookingMode==='personal' ? '●' : '○'} Đặt cá nhân</Text></Pressable>
             </View> : null}
+            {modeError ? <View><Text style={styles.errorText}>Chưa tải được thông tin tài khoản. Vui lòng thử lại.</Text><Pressable onPress={()=>setModeReload(value=>value+1)} style={styles.input}><Text>Thử lại</Text></Pressable></View> : null}
+            {!modeLoading && !modeError && bookingCompanies.length===0 && bookingMode==='' ? <View><Text style={styles.helperText}>Vui lòng xác nhận tiếp tục đặt xe bằng tài khoản hiện tại.</Text><Pressable onPress={()=>chooseBookingMode('personal')} style={styles.input}><Text>Tiếp tục đặt xe</Text></Pressable></View> : null}
             <Text style={styles.sectionTitle}>1. Lộ trình</Text>
 
             <Text style={styles.label}>Điểm đón</Text>

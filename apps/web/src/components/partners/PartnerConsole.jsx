@@ -1,3 +1,4 @@
+import {isRiderChatEnded,RIDER_CHAT_ENDED_NOTICE} from '../../../../api/src/shared/tripChat.js';
 import {partnerFetch} from './partnerSession';
 import {useEffect,useState} from 'react';
 import {Alert,Box,Button,Chip,Dialog,DialogContent,DialogTitle,MenuItem,Pagination,Paper,Stack,Table,TableBody,TableCell,TableContainer,TableHead,TableRow,TextField,Typography} from '@mui/material';
@@ -60,7 +61,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
         <TableCell>{t.createdBy?.displayName||'GoViet247'}<br/><strong>{t.assignedTo?.displayName||'—'}</strong></TableCell>
         <TableCell>{t.vehicle ? `${t.vehicle.brand||''} ${t.vehicle.model||''} · ${t.vehicle.plate||''}`:'—'}</TableCell>
         <TableCell><Chip size="small" label={tripStatusLabel(t)} color={t.status==='COMPLETED'?'success':'default'}/></TableCell><TableCell sx={{whiteSpace:'nowrap'}}>{money(t.totalPrice)}</TableCell>
-        <TableCell>{t.canChat&&<Button onClick={()=>openTripChat(t.id)}>Chat{t.unread?` (${t.unread})`:""}</Button>}{t.canCancel&&<Button color="error" disabled={busy} onClick={()=>cancel(t)}>Hủy chuyến</Button>}</TableCell>
+        <TableCell>{t.canChat?<Button onClick={()=>openTripChat(t.id)}>Chat{t.unread?` (${t.unread})`:""}</Button>:isRiderChatEnded(t.status)?<Button sx={{color:"#64748b",bgcolor:"#f1f5f9"}} onClick={()=>window.alert(RIDER_CHAT_ENDED_NOTICE)}>Chat chuyến (đã kết thúc)</Button>:null}{t.canCancel&&<Button color="error" disabled={busy} onClick={()=>cancel(t)}>Hủy chuyến</Button>}</TableCell>
       </TableRow>)}{!items.length&&<TableRow><TableCell colSpan={9}>Chưa có chuyến phù hợp.</TableCell></TableRow>}</TableBody></Table></TableContainer>
     <Stack direction="row" spacing={2} alignItems="center"><Typography>{total} chuyến</Typography><Pagination count={Math.max(1,Math.ceil(total/50))} page={page} onChange={(_,n)=>setPage(n)}/></Stack>
     <Dialog open={Boolean(selected&&tripId)} onClose={onClose} fullWidth maxWidth="sm"><DialogTitle>Chi tiết chuyến #{selected?.id.slice(-8).toUpperCase()}</DialogTitle><DialogContent>
@@ -70,7 +71,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
         <Typography>Người tạo: {selected.createdBy?.displayName||'GoViet247'}</Typography>
         <TextField select label="Điều phối phụ trách" disabled={busy||!selected.canReassign||['COMPLETED','CANCELLED'].includes(selected.status)} value={selected.assignedTo?.id||''} onChange={e=>assign(e.target.value)}>{members.map(m=><MenuItem key={m.id} value={m.id}>{m.displayName} ({m.username})</MenuItem>)}</TextField>
         {selected.vehicle&&<Typography>Xe: {selected.vehicle.brand} {selected.vehicle.model} · {selected.vehicle.color} · {selected.vehicle.plate}</Typography>}
-        {selected.canChat&&<Button variant="contained" onClick={()=>openTripChat(selected.id)}>Chat chuyến</Button>}
+        {selected.canChat?<Button variant="contained" onClick={()=>openTripChat(selected.id)}>Chat chuyến</Button>:isRiderChatEnded(selected.status)?<Button sx={{color:"#64748b",bgcolor:"#f1f5f9"}} onClick={()=>window.alert(RIDER_CHAT_ENDED_NOTICE)}>Chat chuyến (đã kết thúc)</Button>:null}
         {selected.canCancel&&<Button color="error" disabled={busy} onClick={()=>cancel(selected)}>Hủy chuyến chờ duyệt</Button>}
         {error&&<Alert severity="error">{error}</Alert>}<Button onClick={onClose}>Đóng</Button>
       </Stack>}

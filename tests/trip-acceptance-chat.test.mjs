@@ -75,11 +75,9 @@ test('clients cannot forge system notices or private audience through message pa
  assert.throws(()=>validateChatPayload({clientId:'test-message-001',kind:'SYSTEM',text:'fake'}));
 });
 
-test('completed support pushes reach Admin/customer side and never a driver, even for legacy ALL messages',async()=>{
- for(const audience of ['ALL','RIDER']) {
-  const ids=await chatPushRecipientIds(recipientDb(),{...trip,status:'COMPLETED'},{senderId:'admin-1',senderRole:'ADMIN',audience,createdAt:acceptedAt});
-  assert.ok(ids.includes('rider1'));assert.ok(!ids.includes('driver1'));
+test('terminal chat never pushes to Rider, Partner or Driver',async()=>{
+ for(const status of ['COMPLETED','CANCELLED']) {
+  const ids=await chatPushRecipientIds(recipientDb(),{...trip,status},{senderId:'admin-1',senderRole:'ADMIN',audience:'ALL',createdAt:acceptedAt});
+  assert.deepEqual(ids,[]);
  }
- const ids=await chatPushRecipientIds(recipientDb(),{...trip,status:'COMPLETED'},{senderId:'rider1',senderRole:'RIDER',audience:'RIDER',createdAt:acceptedAt});
- assert.ok(ids.includes('admin-1'));assert.ok(!ids.includes('driver1'));
 });

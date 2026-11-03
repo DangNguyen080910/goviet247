@@ -27,7 +27,7 @@ globalThis.__prisma__=db;
 S3Client.prototype.send=async command=>{
  const name=command.constructor.name, data=command.input;
  if(name==='GetPublicAccessBlockCommand')return {PublicAccessBlockConfiguration:{BlockPublicAcls:true,IgnorePublicAcls:true,BlockPublicPolicy:true,RestrictPublicBuckets:true}};
- if(name==='PutObjectCommand'){objects.set(data.Key,data.Body);if(revokeOnUpload)trip.status='COMPLETED';return {};}
+ if(name==='PutObjectCommand'){objects.set(data.Key,data.Body);if(revokeOnUpload)trip.status=revokeOnUpload;return {};}
  if(name==='DeleteObjectCommand'){objects.delete(data.Key);return {};}
  throw new Error(`Unexpected S3 operation ${name}`);
 };
@@ -60,7 +60,10 @@ test('HTTP image routes authorize uploads and signed reads; retries create one p
  await deliverChatPush();assert.equal(objects.size,0,'delivery worker cleans deleted image object');assert.equal(rows[0].imageDeleteKey,null);
 });
 test('HTTP rechecks trip access after upload and cleans private file if trip closes in flight',async()=>{
- reset();revokeOnUpload=true;assert.equal((await upload('booker')).status,403);assert.equal(rows.length,0);assert.equal(objects.size,0);
+ reset();revokeOnUpload='CANCELLED';assert.equal((await upload('booker')).status,403);assert.equal(rows.length,0);assert.equal(objects.size,0);
  assert.equal((await upload('booker','closed_photo_123')).status,403);assert.equal((await read('missing')).status,403);
+});
+test('completion during image upload rejects it and cleans the private object',async()=>{
+ reset();revokeOnUpload='COMPLETED';const response=await upload('booker','completed_photo_123');assert.equal(response.status,403);assert.equal(rows.length,0);assert.equal(objects.size,0);
 });
 test.after(()=>new Promise(resolve=>server.close(resolve)));

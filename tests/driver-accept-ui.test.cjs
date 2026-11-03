@@ -16,7 +16,10 @@ function acceptHandler(error) {
     acceptDriverTrip: async () => { if (error) throw error; },
     loadAvailableTrips: async () => calls.push(['available']), loadMyTrips: async () => calls.push(['mine']),
     setActiveTab: tab => calls.push(['tab', tab]), showSuccess: () => calls.push(['success']),
-    showError: () => calls.push(['error']), Error,
+    showTripAcceptError: () => calls.push(['error']), showError: () => calls.push(['error']), tripAcceptFeedback: error=> {
+      const source=fs.readFileSync(path.join(root,'apps/api/src/shared/tripAcceptFeedback.js'),'utf8').replace('export function','function');
+      return new Function(source+';return tripAcceptFeedback;')()(error);
+    }, Error,
   };
   const js = ts.transpileModule(`const handler = ${source.slice(start, end)};`, { compilerOptions: { target: ts.ScriptTarget.ES2020 } }).outputText;
   const handler = vm.runInNewContext(js + '\nhandler;', context);
@@ -28,7 +31,7 @@ test('blocked acceptance silently clears loading and keeps available trips/tab',
 });
 test('ordinary acceptance errors remain visible', async () => {
   const { handler, calls } = acceptHandler(new Error('insufficient wallet'));
-  await handler('trip'); assert.deepEqual(calls, [['loading','trip'], ['error'], ['loading',null]]);
+  await handler('trip'); assert.deepEqual(calls, [['loading','trip'], ['error'], ['available'], ['mine'], ['loading',null]]);
 });
 test('successful acceptance refreshes trips and opens my trips', async () => {
   const { handler, calls } = acceptHandler(); await handler('trip');

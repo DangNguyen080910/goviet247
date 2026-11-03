@@ -200,7 +200,7 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
     hasMore,
     actor: a,
     canSend: chatCanSend(trip, a),
-    quickReplies: trip.status==='COMPLETED' ? (a.role==='ADMIN'?['GoViet247 đã nhận phản ánh và đang kiểm tra.','Cảm ơn anh/chị đã cung cấp thông tin.']:['Tôi cần hỗ trợ về chuyến này.','Tôi muốn phản ánh về chuyến đi.']) : CHAT_QUICK_REPLIES[a.role],
+    quickReplies: CHAT_QUICK_REPLIES[a.role],
     status: trip.status
   });
 }));

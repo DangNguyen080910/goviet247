@@ -1,3 +1,5 @@
+> Superseded: 2026-11-03-release-readiness.md contains the final policy: completed chat is closed to all non-admin participants; GoViet247 administration retains read-only message history.
+
 # Completed-trip support and consistent chat controls
 
 This release supersedes the completed-chat closure policy in the earlier self-service/detail notes and defers the GoViet247 Admin entry on the Partner portal.

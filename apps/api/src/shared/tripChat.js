@@ -7,8 +7,8 @@ export const CHAT_QUICK_REPLIES = {
 };
 export const CHAT_BOOKING_NOTICE = 'Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến để bổ sung yêu cầu hoặc nhờ hỗ trợ. Vui lòng bật chuông và thông báo để nhận phản hồi. Tài xế sẽ tham gia chat sau khi nhận chuyến.';
 export function chatCanSend(trip, actor) {
-  if (actor.role === 'ADMIN') return true;
-  if (['RIDER', 'PARTNER'].includes(actor.role)) return ['PENDING', 'COMPLETED', ...CHAT_ACTIVE_STATUSES].includes(trip.status);
+  if (actor.role === 'ADMIN') return !isRiderChatEnded(trip.status);
+  if (['RIDER', 'PARTNER'].includes(actor.role)) return ['PENDING', ...CHAT_ACTIVE_STATUSES].includes(trip.status);
   return actor.role === 'DRIVER' && Boolean(trip.driverId) && CHAT_ACTIVE_STATUSES.includes(trip.status);
 }
 export function validateChatPayload(body) {
@@ -73,8 +73,8 @@ export function assertNoContactNumber(value) {
   if (containsContactNumber(value)) throw Object.assign(new Error('Không được gửi số điện thoại cá nhân. Vui lòng liên hệ trong GoViet247 hoặc nhờ hỗ trợ.'), {code:'CHAT_CONTACT_BLOCKED'});
 }
 
-export const RIDER_CHAT_ENDED_NOTICE = 'Chuyến đã huỷ. Nếu cần hỗ trợ, vui lòng liên hệ GoViet247 qua mục Hỗ trợ hoặc Góp ý.';
-export function isRiderChatEnded(status) { return ['CANCELLED'].includes(String(status || '').trim().toUpperCase()); }
+export const RIDER_CHAT_ENDED_NOTICE = 'Bạn không thể xem hoặc nhắn tin khi chuyến đã hoàn thành hoặc đã hủy. Nếu cần hỗ trợ, vui lòng liên hệ GoViet247 qua Zalo.';
+export function isRiderChatEnded(status) { return ['COMPLETED', 'CANCELLED'].includes(String(status || '').trim().toUpperCase()); }
 
 // Older installed clients treat unknown kinds as locations; never send them IMAGE.
 export function chatMessageForClient(message, supportsImages) {
@@ -82,5 +82,5 @@ export function chatMessageForClient(message, supportsImages) {
   return {...message, kind:'TEXT', text:message.deletedAt ? null : 'Hình ảnh trong chuyến. Vui lòng cập nhật ứng dụng hoặc mở GoViet247 trên Web để xem.'};
 }
 
-export const DRIVER_CHAT_ENDED_NOTICE='Chuyến đã kết thúc. Tài xế không còn tham gia hội thoại của chuyến này.';
-export const COMPLETED_CHAT_NOTICE='Chuyến đã hoàn thành. Bạn có thể tiếp tục nhắn GoViet247 để được hỗ trợ hoặc phản ánh về chuyến. Tài xế không còn tham gia hội thoại này.';
+export const DRIVER_CHAT_ENDED_NOTICE=RIDER_CHAT_ENDED_NOTICE;
+export const COMPLETED_CHAT_NOTICE='Chuyến đã hoàn thành. Hội thoại đã đóng; chỉ Admin GoViet247 được xem lại lịch sử.';

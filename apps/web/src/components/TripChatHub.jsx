@@ -27,7 +27,7 @@ export function TripChatButton({
     ...(ended ? {color: "#64748b", backgroundColor: "#f1f5f9", borderColor: "#cbd5e1"} : {}),
     textTransform: 'none',
     borderRadius: 2
-  }}>💬 {status==='COMPLETED'?'Hỗ trợ GoViet247':label}</Button>;
+  }}>💬 {ended?'Chat chuyến (đã kết thúc)':label}</Button>;
 }
 const base = import.meta.env.VITE_API_BASE || 'http://localhost:5050';
 const makeId = () => crypto.randomUUID();

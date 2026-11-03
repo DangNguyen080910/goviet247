@@ -17,7 +17,7 @@ test('riders and partners can chat immediately; drivers still require an accepte
  }
  assert.equal(chatCanSend(pending,{role:'DRIVER'}),false);
  assert.equal(chatCanSend({...pending,status:'ACCEPTED',driverId:'d'},{role:'DRIVER'}),true);
- assert.equal(chatCanSend({...pending,status:'CANCELLED'},{role:'ADMIN'}),true);
+ assert.equal(chatCanSend({...pending,status:'CANCELLED'},{role:'ADMIN'}),false);
 });
 test('new booking gets one private system notice, with retry-safe key, for rider or partner',async()=>{
  for(const partnerCompanyId of [null,'company1']){

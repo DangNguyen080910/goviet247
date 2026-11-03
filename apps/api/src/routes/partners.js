@@ -205,7 +205,7 @@ router.get('/trips',wrap(async(req,res)=>{
     const item=serializePartnerTrip(t);
     item.canReassign=actor.superAdmin || actor.member.role==='ADMIN' || t.partnerAssignedToId===actor.member.id;
     item.canCancel=item.canCancel && item.canReassign;
-    item.canChat=item.canChat && (actor.superAdmin || actor.member.role==='ADMIN' || t.partnerAssignedToId===actor.member.id);
+    item.canChat=actor.superAdmin || (item.canChat && (actor.member.role==='ADMIN' || t.partnerAssignedToId===actor.member.id));
     if(item.canChat) {
       const read=await prisma.tripChatRead.findUnique({where:{tripId_actorId:{tripId:t.id,actorId}}});
       item.unread=await prisma.tripChatMessage.count({where:{tripId:t.id,AND:[chatAudienceWhere({id:actorId,role:actor.superAdmin?'ADMIN':'PARTNER'})],senderId:{not:actorId},OR:[{createdAt:{gt:read?.readAt || new Date(0)}},{createdAt:read?.readAt || new Date(0),id:{gt:read?.messageId || ''}}]}});
@@ -220,7 +220,7 @@ router.get('/trips/:id',wrap(async(req,res)=>{
   const item=serializePartnerTrip(trip),actor=req.partnerActor;
   item.canReassign=actor.superAdmin || actor.member.role==='ADMIN' || trip.partnerAssignedToId===actor.member.id;
   item.canCancel=item.canCancel && item.canReassign;
-  item.canChat=item.canChat && (actor.superAdmin || actor.member.role==='ADMIN' || trip.partnerAssignedToId===actor.member.id);
+  item.canChat=actor.superAdmin || (item.canChat && (actor.member.role==='ADMIN' || trip.partnerAssignedToId===actor.member.id));
   res.json({success:true,trip:item});
 }));
 router.patch('/trips/:id/assignment',wrap(async(req,res)=>{
