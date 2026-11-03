@@ -610,22 +610,24 @@ export default function TripChatScreen() {
             setDraft(null);
             setPlaying('');
           }}><Text>Xoá</Text></Pressable></View> : <>
- <TextInput multiline maxLength={2000} value={text} onChangeText={setText} editable={!recording && !busy} placeholder="Nhắn tin cho chuyến…" style={{
-            borderWidth: 1,
-            borderColor: '#cbd5e1',
-            borderRadius: 12,
-            padding: 12,
-            maxHeight: 110,
-            color: ink,
-            marginTop: 6
+ <View style={{flexDirection:'row',alignItems:'flex-end',gap:8,marginTop:6}}>
+ <TextInput multiline maxLength={2000} value={text} onChangeText={setText} editable={!recording && !busy} placeholder="Nhắn tin cho chuyến…" placeholderTextColor="#64748b" style={{
+            flex:1,
+            minWidth:0,
+            minHeight:44,
+            borderWidth:1,
+            borderColor:'#cbd5e1',
+            borderRadius:12,
+            padding:12,
+            maxHeight:110,
+            color:ink
           }} />
- <View style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap'
-          }}><Pressable style={button} disabled={busy || recording || !text.trim()} onPress={() => void run(sendText)}><Text style={{
-                fontWeight: '800',
-                color: blue
-              }}>Gửi</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => { Keyboard.dismiss(); void run(recording ? stopRecording : startRecording); }}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(currentLocation)}><Text>📍 Gửi định vị</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(true)); }}><Text>📷 Chụp ảnh</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(false)); }}><Text>🖼 Chọn ảnh</Text></Pressable></View></>}
+ <Pressable accessibilityRole="button" accessibilityLabel="Gửi tin nhắn" disabled={busy || recording || !text.trim()} onPress={() => void run(sendText)} style={{
+   minWidth:52,minHeight:44,paddingHorizontal:12,borderRadius:12,alignItems:'center',justifyContent:'center',
+   backgroundColor:blue,opacity:busy || recording || !text.trim() ? 0.4 : 1
+ }}><Text style={{fontWeight:'800',color:'white'}}>Gửi</Text></Pressable>
+ </View>
+ <View style={{flexDirection:'row',flexWrap:'wrap'}}><Pressable style={button} disabled={busy} onPress={() => { Keyboard.dismiss(); void run(recording ? stopRecording : startRecording); }}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(currentLocation)}><Text>📍 Gửi định vị</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(true)); }}><Text>📷 Chụp ảnh</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(false)); }}><Text>🖼 Chọn ảnh</Text></Pressable></View></>}
  <Text style={{
           fontSize: 11,
           color: '#64748b'
