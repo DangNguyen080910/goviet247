@@ -325,8 +325,8 @@ export async function deliverChatPush() {
           to: d.pushToken,
           title: `Liên hệ chuyến #${trip.id}`,
           body: m.senderRole === 'SYSTEM' ? m.text || 'Có thông báo mới về chuyến.' : `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'IMAGE' ? 'hình ảnh' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
-          sound: d.role.toLowerCase() === 'driver' ? 'new_trip.wav' : 'default',
-          channelId: d.role.toLowerCase() === 'driver' ? 'trip_chat_v1' : 'trip_chat_default_v1',
+          sound: 'default',
+          channelId: 'trip_chat_default_v1',
           priority: 'high',
           ttl: 3600,
           data: {
