@@ -1,3 +1,4 @@
+import { sendChatPushBatch } from './chatPushTransport.js';
 import { hasPrivateChatPrefixPolicy } from '../shared/chatStoragePolicy.js';
 import { getPartnerRiderContext } from './partnerRiderAccess.js';
 import { chatAudienceWhere } from '../shared/tripChatVisibility.js';
@@ -336,24 +337,9 @@ export async function deliverChatPush() {
         }));
         for (let i = 0; i < notifications.length; i += 100) {
           const batch = notifications.slice(i, i + 100);
-          const response = await fetch('https://exp.host/--/api/v2/push/send', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(batch),
-            signal: AbortSignal.timeout(15000)
+          await sendChatPushBatch(batch, {
+            removeDevice: pushToken => prisma.device.deleteMany({where:{pushToken}}),
           });
-          const result = await response.json();
-          if (!response.ok || result.errors) throw new Error('Push rejected');
-          const tickets = Array.isArray(result.data) ? result.data : [result.data];
-          for (let j = 0; j < tickets.length; j++) if (tickets[j]?.status === 'error') {
-            if (tickets[j].details?.error === 'DeviceNotRegistered') await prisma.device.deleteMany({
-              where: {
-                pushToken: batch[j].to
-              }
-            });else throw new Error('Push ticket failed');
-          }
         }
         await prisma.tripChatMessage.update({
           where: {
