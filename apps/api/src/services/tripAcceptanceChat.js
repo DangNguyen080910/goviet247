@@ -31,8 +31,9 @@ export async function chatPushRecipientIds(db, trip, message) {
   if (message.senderRole === 'SYSTEM' && message.clientId?.startsWith('accept_') &&
     (!trip.driverId || !CHAT_ACTIVE_STATUSES.includes(trip.status) || !trip.acceptedAt ||
       new Date(message.createdAt).getTime() !== new Date(trip.acceptedAt).getTime())) return [];
-  const admins = await db.admin_users.findMany({where: {is_active: true, role: {in: ['ADMIN', 'STAFF']}}, select: {id: true}});
-  const actors = admins.map(a => ({id: `admin-${a.id}`, role: 'ADMIN'}));
+  // Admin/Staff chat alerts are in-app only. Keep their inbox/read access unchanged.
+  // Partner company admins remain eligible: they are separate partner-* actors.
+  const actors = [];
   if (!isRiderChatEnded(trip.status)) {
     const riders = await getTripRiderRecipientUserIds(db, trip);
     actors.push(...riders.map(id => ({id, role: trip.partnerCompanyId ? 'PARTNER' : 'RIDER'})));
