@@ -11,7 +11,11 @@ function acceptHandler(error) {
   const end = source.indexOf('\n    },\n    [', start) + 6;
   assert.ok(start > 0 && end > start);
   const calls = [];
-  const context = { availableTrips: [], getAcceptLockRemainingSeconds: () => 0,
+  const stateSource = fs.readFileSync(path.join(root, 'apps/api/src/shared/availableTripState.js'), 'utf8').replace(/export /g, '');
+  const { AvailableTripState, confirmsTripUnavailable } = new Function(stateSource + '; return { AvailableTripState, confirmsTripUnavailable };')();
+  const context = { availableTrips: [{ id: 'trip' }], getAcceptLockRemainingSeconds: () => 0,
+    availableTripStateRef: { current: new AvailableTripState() }, acceptingTripRef: { current: null },
+    confirmsTripUnavailable, setAvailableTrips: () => {},
     setAcceptingTripId: id => calls.push(['loading', id]),
     acceptDriverTrip: async () => { if (error) throw error; },
     loadAvailableTrips: async () => calls.push(['available']), loadMyTrips: async () => calls.push(['mine']),

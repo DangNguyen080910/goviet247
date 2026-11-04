@@ -1511,76 +1511,80 @@ export async function cancelDriverTrip(req, res) {
     });
 
     const io = req.app?.get?.("io");
-    if (io) {
-      io.to("admins").emit("admin:trip_status_changed", {
-        tripId: result.realtime.tripId,
-        driverId: result.realtime.driverId,
-        previousDriverId: result.realtime.previousDriverId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-        reason: result.realtime.reason,
-      });
+    try {
+      if (io) {
+        io.to("admins").emit("admin:trip_status_changed", {
+          tripId: result.realtime.tripId,
+          driverId: result.realtime.driverId,
+          previousDriverId: result.realtime.previousDriverId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+          reason: result.realtime.reason,
+        });
 
-      emitAdminDashboardChanged(io, {
-        source: "driver_cancel_trip",
-        tripId: result.realtime.tripId,
-        driverId: result.realtime.driverId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        status: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-      });
+        emitAdminDashboardChanged(io, {
+          source: "driver_cancel_trip",
+          tripId: result.realtime.tripId,
+          driverId: result.realtime.driverId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          status: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+        });
 
-      emitTripChangedToDrivers(io, {
-        tripId: result.realtime.tripId,
-        driverId: result.realtime.driverId,
-        previousDriverId: result.realtime.previousDriverId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-        reason: result.realtime.reason,
-        refreshAvailable: true,
-      });
+        emitTripChangedToDrivers(io, {
+          tripId: result.realtime.tripId,
+          driverId: result.realtime.driverId,
+          previousDriverId: result.realtime.previousDriverId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+          reason: result.realtime.reason,
+          refreshAvailable: true,
+        });
 
-      await emitTripChangedToRider(io, {
-        riderId: result.trip?.riderId || null,
-        tripId: result.realtime.tripId,
-        fromStatus: result.realtime.fromStatus,
-        toStatus: result.realtime.toStatus,
-        updatedAt: result.realtime.updatedAt,
-        reason: result.realtime.reason,
-      });
+        await emitTripChangedToRider(io, {
+          riderId: result.trip?.riderId || null,
+          tripId: result.realtime.tripId,
+          fromStatus: result.realtime.fromStatus,
+          toStatus: result.realtime.toStatus,
+          updatedAt: result.realtime.updatedAt,
+          reason: result.realtime.reason,
+        });
 
-      if (result.riderNotification && result.trip?.riderId) {
-        io.to(`rider:${result.trip.riderId}`).emit(
-          "rider:notification_changed",
-          {
-            source: "driver_cancel_trip",
-            audience: "RIDER",
-            targetUserId: result.trip.riderId,
-            notificationId: result.riderNotification.id,
-            updatedAt:
-              result.riderNotification.updatedAt ||
-              result.riderNotification.createdAt,
-          },
-        );
+        if (result.riderNotification && result.trip?.riderId) {
+          io.to(`rider:${result.trip.riderId}`).emit(
+            "rider:notification_changed",
+            {
+              source: "driver_cancel_trip",
+              audience: "RIDER",
+              targetUserId: result.trip.riderId,
+              notificationId: result.riderNotification.id,
+              updatedAt:
+                result.riderNotification.updatedAt ||
+                result.riderNotification.createdAt,
+            },
+          );
+        }
+
+        if (result.driverNotification) {
+          io.to(`driver:${result.realtime.previousDriverId}`).emit(
+            "driver:notification_changed",
+            {
+              source: "driver_cancel_trip",
+              audience: "DRIVER",
+              targetUserId: result.realtime.previousDriverId,
+              notificationId: result.driverNotification.id,
+              updatedAt:
+                result.driverNotification.updatedAt ||
+                result.driverNotification.createdAt,
+            },
+          );
+        }
       }
-
-      if (result.driverNotification) {
-        io.to(`driver:${result.realtime.previousDriverId}`).emit(
-          "driver:notification_changed",
-          {
-            source: "driver_cancel_trip",
-            audience: "DRIVER",
-            targetUserId: result.realtime.previousDriverId,
-            notificationId: result.driverNotification.id,
-            updatedAt:
-              result.driverNotification.updatedAt ||
-              result.driverNotification.createdAt,
-          },
-        );
-      }
+    } catch (socketError) {
+      console.error("[cancelDriverTrip] saved; realtime delivery failed:", socketError);
     }
 
     try {
@@ -2103,59 +2107,63 @@ export async function changeTripStatus(req, res) {
     const { trip, currentTrip, riderNotification } = result;
 
     const io = req.app?.get?.("io");
-    if (io && trip) {
-      io.to("admins").emit("admin:trip_status_changed", {
-        tripId: trip.id,
-        fromStatus: currentTrip.status,
-        toStatus: trip.status,
-        driverId: trip.driverId || currentTrip.driverId || null,
-        updatedAt: trip.updatedAt || null,
-      });
-
-      emitAdminDashboardChanged(io, {
-        source: "driver_change_trip_status",
-        tripId: trip.id,
-        driverId: trip.driverId || currentTrip.driverId || null,
-        fromStatus: currentTrip.status,
-        toStatus: trip.status,
-        status: trip.status,
-        updatedAt: trip.updatedAt || null,
-      });
-
-      emitTripChangedToDrivers(io, {
-        tripId: trip.id,
-        fromStatus: currentTrip.status,
-        toStatus: trip.status,
-        driverId: trip.driverId || null,
-        previousDriverId: currentTrip.driverId || null,
-        updatedAt: trip.updatedAt || null,
-        reason: "driver_change_status",
-        refreshAvailable: true,
-      });
-
-      await emitTripChangedToRider(io, {
-        riderId: trip.riderId || null,
-        tripId: trip.id,
-        fromStatus: currentTrip.status,
-        toStatus: trip.status,
-        updatedAt: trip.updatedAt || null,
-        reason: "driver_change_status",
-      });
-
-      if (riderNotification && trip.riderId) {
-        io.to(`rider:${trip.riderId}`).emit("rider:notification_changed", {
-          source: "driver_change_status",
-          audience: "RIDER",
-          targetUserId: trip.riderId,
-          notificationId: riderNotification.id,
+    try {
+      if (io && trip) {
+        io.to("admins").emit("admin:trip_status_changed", {
           tripId: trip.id,
-          updatedAt: riderNotification.updatedAt || riderNotification.createdAt,
+          fromStatus: currentTrip.status,
+          toStatus: trip.status,
+          driverId: trip.driverId || currentTrip.driverId || null,
+          updatedAt: trip.updatedAt || null,
         });
-      }
 
-      console.log(
-        `[Socket] Emit admin:trip_status_changed -> admins (${tripId}) ${currentTrip.status} -> ${trip.status}`,
-      );
+        emitAdminDashboardChanged(io, {
+          source: "driver_change_trip_status",
+          tripId: trip.id,
+          driverId: trip.driverId || currentTrip.driverId || null,
+          fromStatus: currentTrip.status,
+          toStatus: trip.status,
+          status: trip.status,
+          updatedAt: trip.updatedAt || null,
+        });
+
+        emitTripChangedToDrivers(io, {
+          tripId: trip.id,
+          fromStatus: currentTrip.status,
+          toStatus: trip.status,
+          driverId: trip.driverId || null,
+          previousDriverId: currentTrip.driverId || null,
+          updatedAt: trip.updatedAt || null,
+          reason: "driver_change_status",
+          refreshAvailable: true,
+        });
+
+        await emitTripChangedToRider(io, {
+          riderId: trip.riderId || null,
+          tripId: trip.id,
+          fromStatus: currentTrip.status,
+          toStatus: trip.status,
+          updatedAt: trip.updatedAt || null,
+          reason: "driver_change_status",
+        });
+
+        if (riderNotification && trip.riderId) {
+          io.to(`rider:${trip.riderId}`).emit("rider:notification_changed", {
+            source: "driver_change_status",
+            audience: "RIDER",
+            targetUserId: trip.riderId,
+            notificationId: riderNotification.id,
+            tripId: trip.id,
+            updatedAt: riderNotification.updatedAt || riderNotification.createdAt,
+          });
+        }
+
+        console.log(
+          `[Socket] Emit admin:trip_status_changed -> admins (${tripId}) ${currentTrip.status} -> ${trip.status}`,
+        );
+      }
+    } catch (socketError) {
+      console.error("[changeTripStatus] saved; realtime delivery failed:", socketError);
     }
 
     try {
@@ -2638,99 +2646,103 @@ export async function adminChangeTripStatus(req, res) {
 
     const io = req.app?.get?.("io");
 
-    if (io) {
-      console.log(
-        "[AdminChangeTripStatus] emitting realtime:",
-        JSON.stringify(
-          {
-            event: "trip_status_changed_bundle",
-            tripId: result.updated?.id || null,
-            fromStatus: result.fromStatus || null,
-            toStatus: result.updated?.status || null,
-            driverId: result.updated?.driverId || null,
-            riderId: result.updated?.riderId || null,
-            updatedAt: result.updated?.updatedAt || null,
-          },
-          null,
-          2,
-        ),
-      );
-      io.to("admins").emit("admin:trip_status_changed", {
-        tripId: result.updated.id,
-        fromStatus: result.fromStatus,
-        toStatus: result.updated.status,
-        driverId: result.updated.driverId || null,
-        updatedAt: result.updated.updatedAt,
-      });
-
-      emitAdminDashboardChanged(io, {
-        source: "admin_change_trip_status",
-        tripId: result.updated.id,
-        driverId: result.updated.driverId || null,
-        fromStatus: result.fromStatus,
-        toStatus: result.updated.status,
-        status: result.updated.status,
-        updatedAt: result.updated.updatedAt || null,
-      });
-
-      emitTripChangedToDrivers(io, {
-        tripId: result.updated.id,
-        fromStatus: result.fromStatus,
-        toStatus: result.updated.status,
-        driverId: result.updated.driverId || null,
-        previousDriverId: result.updated.driverId || null,
-        updatedAt: result.updated.updatedAt || null,
-        reason: "admin_change_status",
-        refreshAvailable: true,
-      });
-
-      await emitTripChangedToRider(io, {
-        riderId: result.updated?.riderId || null,
-        tripId: result.updated.id,
-        fromStatus: result.fromStatus,
-        toStatus: result.updated.status,
-        updatedAt: result.updated.updatedAt || null,
-        reason: "admin_change_status",
-      });
-
-      if (result.riderNotification && result.updated?.riderId) {
-        io.to(`rider:${result.updated.riderId}`).emit(
-          "rider:notification_changed",
-          {
-            source: "admin_change_trip_status",
-            audience: "RIDER",
-            targetUserId: result.updated.riderId,
-            notificationId: result.riderNotification.id,
-            tripId: result.updated.id,
-            updatedAt:
-              result.riderNotification.updatedAt ||
-              result.riderNotification.createdAt,
-          },
+    try {
+      if (io) {
+        console.log(
+          "[AdminChangeTripStatus] emitting realtime:",
+          JSON.stringify(
+            {
+              event: "trip_status_changed_bundle",
+              tripId: result.updated?.id || null,
+              fromStatus: result.fromStatus || null,
+              toStatus: result.updated?.status || null,
+              driverId: result.updated?.driverId || null,
+              riderId: result.updated?.riderId || null,
+              updatedAt: result.updated?.updatedAt || null,
+            },
+            null,
+            2,
+          ),
         );
-      }
+        io.to("admins").emit("admin:trip_status_changed", {
+          tripId: result.updated.id,
+          fromStatus: result.fromStatus,
+          toStatus: result.updated.status,
+          driverId: result.updated.driverId || null,
+          updatedAt: result.updated.updatedAt,
+        });
 
-      if (result.driverNotification && result.updated.driverId) {
-        io.to(`driver:${result.updated.driverId}`).emit(
-          "driver:notification_changed",
-          {
-            source: "admin_change_trip_status",
-            audience: "DRIVER",
-            targetUserId: result.updated.driverId,
-            notificationId: result.driverNotification.id,
-            updatedAt:
-              result.driverNotification.updatedAt ||
-              result.driverNotification.createdAt,
-          },
-        );
+        emitAdminDashboardChanged(io, {
+          source: "admin_change_trip_status",
+          tripId: result.updated.id,
+          driverId: result.updated.driverId || null,
+          fromStatus: result.fromStatus,
+          toStatus: result.updated.status,
+          status: result.updated.status,
+          updatedAt: result.updated.updatedAt || null,
+        });
+
+        emitTripChangedToDrivers(io, {
+          tripId: result.updated.id,
+          fromStatus: result.fromStatus,
+          toStatus: result.updated.status,
+          driverId: result.updated.driverId || null,
+          previousDriverId: result.updated.driverId || null,
+          updatedAt: result.updated.updatedAt || null,
+          reason: "admin_change_status",
+          refreshAvailable: true,
+        });
+
+        await emitTripChangedToRider(io, {
+          riderId: result.updated?.riderId || null,
+          tripId: result.updated.id,
+          fromStatus: result.fromStatus,
+          toStatus: result.updated.status,
+          updatedAt: result.updated.updatedAt || null,
+          reason: "admin_change_status",
+        });
+
+        if (result.riderNotification && result.updated?.riderId) {
+          io.to(`rider:${result.updated.riderId}`).emit(
+            "rider:notification_changed",
+            {
+              source: "admin_change_trip_status",
+              audience: "RIDER",
+              targetUserId: result.updated.riderId,
+              notificationId: result.riderNotification.id,
+              tripId: result.updated.id,
+              updatedAt:
+                result.riderNotification.updatedAt ||
+                result.riderNotification.createdAt,
+            },
+          );
+        }
+
+        if (result.driverNotification && result.updated.driverId) {
+          io.to(`driver:${result.updated.driverId}`).emit(
+            "driver:notification_changed",
+            {
+              source: "admin_change_trip_status",
+              audience: "DRIVER",
+              targetUserId: result.updated.driverId,
+              notificationId: result.driverNotification.id,
+              updatedAt:
+                result.driverNotification.updatedAt ||
+                result.driverNotification.createdAt,
+            },
+          );
+
+          console.log(
+            `[Socket] Emit driver:notification_changed -> driver:${result.updated.driverId} (${result.updated.id})`,
+          );
+        }
 
         console.log(
-          `[Socket] Emit driver:notification_changed -> driver:${result.updated.driverId} (${result.updated.id})`,
+          `[Socket] Emit admin:trip_status_changed -> admins (${result.updated.id})`,
         );
       }
-
-      console.log(
-        `[Socket] Emit admin:trip_status_changed -> admins (${result.updated.id})`,
-      );
+    } catch (socketError) {
+      console.error("[adminChangeTripStatus] saved; realtime delivery failed:", socketError);
     }
 
     try {
@@ -2909,43 +2921,47 @@ export async function adminResendPendingTrip(req, res) {
 
     const io = req.app?.get?.("io");
 
-    if (io) {
-      // Báo app tài xế đang mở tải lại danh sách
-      emitDriverTripEvent(io, "trip:new", {
-        id: updated.id,
-        pickupAddressMasked: maskAddress(updated.pickupAddress),
-        dropoffAddressMasked: maskAddress(updated.dropoffAddress),
-        pickupTime: updated.pickupTime,
-        returnTime: updated.returnTime || null,
-        carType: updated.carType,
-        direction: updated.direction,
-        totalPrice: updated.totalPrice,
-        distanceKm: updated.distanceKm,
-        driverAcceptOpenAt: updated.driverAcceptOpenAt,
-        createdAt: updated.createdAt,
-        updatedAt: updated.updatedAt,
-        reason: "admin_resend_pending_trip",
-      });
+    try {
+      if (io) {
+        // Báo app tài xế đang mở tải lại danh sách
+        emitDriverTripEvent(io, "trip:new", {
+          id: updated.id,
+          pickupAddressMasked: maskAddress(updated.pickupAddress),
+          dropoffAddressMasked: maskAddress(updated.dropoffAddress),
+          pickupTime: updated.pickupTime,
+          returnTime: updated.returnTime || null,
+          carType: updated.carType,
+          direction: updated.direction,
+          totalPrice: updated.totalPrice,
+          distanceKm: updated.distanceKm,
+          driverAcceptOpenAt: updated.driverAcceptOpenAt,
+          createdAt: updated.createdAt,
+          updatedAt: updated.updatedAt,
+          reason: "admin_resend_pending_trip",
+        });
 
-      emitTripChangedToDrivers(io, {
-        tripId: updated.id,
-        fromStatus: updated.status,
-        toStatus: updated.status,
-        driverId: null,
-        previousDriverId: null,
-        updatedAt: updated.updatedAt,
-        reason: "admin_resend_pending_trip",
-        refreshAvailable: true,
-      });
+        emitTripChangedToDrivers(io, {
+          tripId: updated.id,
+          fromStatus: updated.status,
+          toStatus: updated.status,
+          driverId: null,
+          previousDriverId: null,
+          updatedAt: updated.updatedAt,
+          reason: "admin_resend_pending_trip",
+          refreshAvailable: true,
+        });
 
-      emitAdminDashboardChanged(io, {
-        source: "admin_resend_pending_trip",
-        tripId: updated.id,
-        status: updated.status,
-        fromStatus: updated.status,
-        toStatus: updated.status,
-        updatedAt: updated.updatedAt,
-      });
+        emitAdminDashboardChanged(io, {
+          source: "admin_resend_pending_trip",
+          tripId: updated.id,
+          status: updated.status,
+          fromStatus: updated.status,
+          toStatus: updated.status,
+          updatedAt: updated.updatedAt,
+        });
+      }
+    } catch (socketError) {
+      console.error("[adminResendPendingTrip] saved; realtime delivery failed:", socketError);
     }
 
     // Gửi push notification lại tới điện thoại tài xế
@@ -3083,48 +3099,52 @@ export async function adminVerifyTrip(req, res) {
     }
 
     const io = req.app.get("io");
-    if (io) {
-      emitDriverTripEvent(io, "trip:new", {
-        id: updated.id,
-        pickupAddressMasked: maskAddress(updated.pickupAddress),
-        dropoffAddressMasked: maskAddress(updated.dropoffAddress),
-        pickupTime: updated.pickupTime,
-        carType: updated.carType,
-        direction: updated.direction,
-        totalPrice: updated.totalPrice,
-        distanceKm: updated.distanceKm,
-        createdAt: updated.createdAt,
-        driverAcceptOpenAt: updated.driverAcceptOpenAt || null,
-      });
-
-      emitAdminDashboardChanged(io, {
-        source: "admin_verify_trip",
-        tripId: updated.id,
-        status: updated.status,
-        updatedAt: updated.updatedAt || updated.verifiedAt || new Date(),
-      });
-
-      await emitTripChangedToRider(io, {
-        riderId: updated.riderId || null,
-        tripId: updated.id,
-        fromStatus: "PENDING",
-        toStatus: updated.status,
-        updatedAt: updated.updatedAt || updated.verifiedAt || new Date(),
-        reason: "admin_verify_trip",
-      });
-
-      if (riderNotification && updated.riderId) {
-        io.to(`rider:${updated.riderId}`).emit("rider:notification_changed", {
-          source: "admin_verify_trip",
-          audience: "RIDER",
-          targetUserId: updated.riderId,
-          notificationId: riderNotification.id,
-          tripId: updated.id,
-          updatedAt: riderNotification.updatedAt || riderNotification.createdAt,
+    try {
+      if (io) {
+        emitDriverTripEvent(io, "trip:new", {
+          id: updated.id,
+          pickupAddressMasked: maskAddress(updated.pickupAddress),
+          dropoffAddressMasked: maskAddress(updated.dropoffAddress),
+          pickupTime: updated.pickupTime,
+          carType: updated.carType,
+          direction: updated.direction,
+          totalPrice: updated.totalPrice,
+          distanceKm: updated.distanceKm,
+          createdAt: updated.createdAt,
+          driverAcceptOpenAt: updated.driverAcceptOpenAt || null,
         });
-      }
 
-      console.log(`[Socket] Emit trip:new -> drivers (${updated.id})`);
+        emitAdminDashboardChanged(io, {
+          source: "admin_verify_trip",
+          tripId: updated.id,
+          status: updated.status,
+          updatedAt: updated.updatedAt || updated.verifiedAt || new Date(),
+        });
+
+        await emitTripChangedToRider(io, {
+          riderId: updated.riderId || null,
+          tripId: updated.id,
+          fromStatus: "PENDING",
+          toStatus: updated.status,
+          updatedAt: updated.updatedAt || updated.verifiedAt || new Date(),
+          reason: "admin_verify_trip",
+        });
+
+        if (riderNotification && updated.riderId) {
+          io.to(`rider:${updated.riderId}`).emit("rider:notification_changed", {
+            source: "admin_verify_trip",
+            audience: "RIDER",
+            targetUserId: updated.riderId,
+            notificationId: riderNotification.id,
+            tripId: updated.id,
+            updatedAt: riderNotification.updatedAt || riderNotification.createdAt,
+          });
+        }
+
+        console.log(`[Socket] Emit trip:new -> drivers (${updated.id})`);
+      }
+    } catch (socketError) {
+      console.error("[adminVerifyTrip] saved; realtime delivery failed:", socketError);
     }
 
     try {

@@ -252,9 +252,13 @@ router.post('/trips/:id/cancel',wrap(async(req,res)=>{
     await partnerAudit(tx,req,companyId,'CANCEL_TRIP',t.id);return updated;
   });
   const io=req.app.get('io');
-  if(io) {
-    io.to('admins').emit('admin:dashboard_changed',{tripId:trip.id,source:'partner_cancel',status:trip.status});
-    await emitDriverTripEvent(io,'trip:changed',{tripId:trip.id,status:trip.status});
+  try {
+    if(io) {
+      io.to('admins').emit('admin:dashboard_changed',{tripId:trip.id,source:'partner_cancel',status:trip.status});
+      await emitDriverTripEvent(io,'trip:changed',{tripId:trip.id,status:trip.status});
+    }
+  } catch (socketError) {
+    console.error("[partnerCancelTrip] saved; realtime delivery failed:", socketError);
   }
   res.json({success:true});
 }));

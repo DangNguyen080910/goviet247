@@ -418,16 +418,20 @@ export async function confirmTrip(req, res) {
 
     await linkQuoteToTrip(payload.quoteHistoryToken, trip);
     // ✅ Emit realtime cho admin
-    const io = req.app.get("io");
-    if (io) {
-      io.to("admins").emit("admin:new_trip", {
-        tripId: trip.id,
-        status: trip.status,
-        createdAt: trip.createdAt,
-      });
-      console.log("[Socket] emitted admin:new_trip:", trip.id);
-    } else {
-      console.log("[Socket] io not found on app (skip emit)");
+    try {
+      const io = req.app.get("io");
+      if (io) {
+        io.to("admins").emit("admin:new_trip", {
+          tripId: trip.id,
+          status: trip.status,
+          createdAt: trip.createdAt,
+        });
+        console.log("[Socket] emitted admin:new_trip:", trip.id);
+      } else {
+        console.log("[Socket] io not found on app (skip emit)");
+      }
+    } catch (socketError) {
+      console.error("[Trip] OTP booking saved; realtime delivery failed:", socketError);
     }
 
     sendAdminPushNotification({

@@ -16,7 +16,7 @@ export async function createBookableTrip(db, data) {
   return db.$transaction(async tx => {
     await tx.$queryRawUnsafe('SELECT "carType" FROM "PricingConfig" WHERE "carType"::text = $1 FOR SHARE', data.carType);
     await assertCarTypeBookable(tx, data.carType);
-    const {partnerStops, partnerAuditData, partnerSessionVersion, partnerRiderBookingUserId, ...tripData} = data;
+    const {bookingStops, partnerStops, partnerAuditData, partnerSessionVersion, partnerRiderBookingUserId, ...tripData} = data;
     if (tripData.partnerCompanyId) {
       await tx.$queryRawUnsafe('SELECT "id" FROM "PartnerCompany" WHERE "id" = $1 FOR SHARE', tripData.partnerCompanyId);
       const company = await tx.partnerCompany.findUnique({where:{id:tripData.partnerCompanyId}});
@@ -45,7 +45,8 @@ export async function createBookableTrip(db, data) {
       tripData.partnerBookerName=context.bookerName;tripData.partnerBookerPhone=normalizePartnerPhone(context.bookerPhone);
     }
     const trip = await tx.trip.create({data:tripData});
-    if (partnerStops) await tx.tripStop.createMany({data:partnerStops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
+    const stops = partnerStops || bookingStops;
+    if (stops?.length) await tx.tripStop.createMany({data:stops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
     if (partnerAuditData) await tx.partnerAuditLog.create({data:{...partnerAuditData,targetId:trip.id}});
     await createBookingChatNotice(tx, trip);
     return trip;

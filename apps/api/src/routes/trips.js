@@ -367,6 +367,7 @@ export async function createTripHandler(req, res) {
     const directionFactor = Number(pricing.directionFactor || 1);
 
     const trip = await createBookableTrip(prisma, {
+      bookingStops: req.partnerTripData ? undefined : stops,
       riderId,
       ...(req.partnerTripData || {}),
       pickupAddress,
@@ -402,39 +403,35 @@ export async function createTripHandler(req, res) {
       isVerified: false,
     });
 
-    if (!req.partnerTripData) await prisma.tripStop.createMany({
-      data: stops.map((addr, idx) => ({
-        tripId: trip.id,
-        seq: idx + 1,
-        address: addr,
-      })),
-    });
-
     await linkQuoteToTrip(req.body?.quoteHistoryToken, trip);
-    const io = req.app?.get?.("io");
+    try {
+      const io = req.app?.get?.("io");
 
-    if (io) {
-      const adminPayload = {
-        source: "create_trip",
-        partnerCompanyName: trip.partnerCompanyName || null,
-        tripId: trip.id,
-        status: trip.status,
-        fromStatus: null,
-        toStatus: trip.status,
-        createdAt: trip.createdAt,
-        updatedAt: trip.updatedAt || trip.createdAt,
-      };
+      if (io) {
+        const adminPayload = {
+          source: "create_trip",
+          partnerCompanyName: trip.partnerCompanyName || null,
+          tripId: trip.id,
+          status: trip.status,
+          fromStatus: null,
+          toStatus: trip.status,
+          createdAt: trip.createdAt,
+          updatedAt: trip.updatedAt || trip.createdAt,
+        };
 
-      await emitRiderTripUpdate(io, prisma, trip, { reason: "create_trip" });
-      io.to("admins").emit("admin:new_trip", adminPayload);
-      io.to("admins").emit("admin:dashboard_changed", adminPayload);
+        await emitRiderTripUpdate(io, prisma, trip, { reason: "create_trip" });
+        io.to("admins").emit("admin:new_trip", adminPayload);
+        io.to("admins").emit("admin:dashboard_changed", adminPayload);
 
-      console.log(
-        "[Socket] Emit admin:new_trip + admin:dashboard_changed -> admins",
-        JSON.stringify(adminPayload),
-      );
-    } else {
-      console.log("[Socket] io not found on app (skip admin emit)");
+        console.log(
+          "[Socket] Emit admin:new_trip + admin:dashboard_changed -> admins",
+          JSON.stringify(adminPayload),
+        );
+      } else {
+        console.log("[Socket] io not found on app (skip admin emit)");
+      }
+    } catch (socketError) {
+      console.error("[Trip] booking saved; realtime delivery failed:", socketError);
     }
 
     try {
@@ -557,40 +554,44 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
 
     const io = req.app?.get?.("io");
 
-    if (io) {
-      const realtimePayload = {
-        tripId: updated.id,
-        fromStatus: trip.status,
-        toStatus: updated.status,
-        driverId: null,
-        previousDriverId: null,
-        updatedAt: updated.updatedAt,
-        reason: "rider_cancel_trip",
-      };
+    try {
+      if (io) {
+        const realtimePayload = {
+          tripId: updated.id,
+          fromStatus: trip.status,
+          toStatus: updated.status,
+          driverId: null,
+          previousDriverId: null,
+          updatedAt: updated.updatedAt,
+          reason: "rider_cancel_trip",
+        };
 
-      // Báo toàn bộ app tài xế reload danh sách chuyến đang chờ
-      emitDriverTripEvent(io, "trip:changed", realtimePayload);
+        // Báo toàn bộ app tài xế reload danh sách chuyến đang chờ
+        emitDriverTripEvent(io, "trip:changed", realtimePayload);
 
-      // Báo admin reload dashboard / badge
-      io.to("admins").emit("admin:trip_status_changed", realtimePayload);
+        // Báo admin reload dashboard / badge
+        io.to("admins").emit("admin:trip_status_changed", realtimePayload);
 
-      io.to("admins").emit("admin:dashboard_changed", {
-        source: "rider_cancel_trip",
-        tripId: updated.id,
-        status: updated.status,
-        fromStatus: trip.status,
-        toStatus: updated.status,
-        updatedAt: updated.updatedAt,
-      });
+        io.to("admins").emit("admin:dashboard_changed", {
+          source: "rider_cancel_trip",
+          tripId: updated.id,
+          status: updated.status,
+          fromStatus: trip.status,
+          toStatus: updated.status,
+          updatedAt: updated.updatedAt,
+        });
 
-      // Báo cho Rider app cập nhật chính chuyến vừa huỷ
-      await emitRiderTripUpdate(io, prisma, updated, {
-        fromStatus: trip.status, toStatus: updated.status, reason: "rider_cancel_trip",
-      });
+        // Báo cho Rider app cập nhật chính chuyến vừa huỷ
+        await emitRiderTripUpdate(io, prisma, updated, {
+          fromStatus: trip.status, toStatus: updated.status, reason: "rider_cancel_trip",
+        });
 
-      console.log(
-        `[Socket] Rider cancelled trip ${updated.id} → emitted trip:changed`,
-      );
+        console.log(
+          `[Socket] Rider cancelled trip ${updated.id} → emitted trip:changed`,
+        );
+      }
+    } catch (socketError) {
+      console.error("[riderCancelTrip] saved; realtime delivery failed:", socketError);
     }
 
     try {

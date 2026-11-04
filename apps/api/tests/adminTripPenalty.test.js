@@ -72,7 +72,7 @@ function fixture(status = "ACCEPTED", realtime = false) {
   const actions = factory(prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold,
     async (_io, event, payload) => { assert.equal(trip.status, "CANCELLED"); events.push({ room:"audience", event, payload }); }, async () => {});
   const req = (body) => ({ params: { id: "trip-1" }, body,
-    admin: { id: 1, username: "admin", role: "ADMIN" }, app: { get: () => realtime ? io : null } });
+    admin: { id: 1, username: "admin", role: "ADMIN" }, app: { get: () => realtime === "fail" ? { to() { throw Error("socket down"); } } : realtime ? io : null } });
   const res = () => ({ statusCode: 200, status(code) { this.statusCode = code; return this; },
     json(body) { this.body = body; return this; } });
   return { actions, req, res, get trip() { return trip; }, penalties, walletWrites, actionLogs, events };
@@ -215,4 +215,15 @@ test("rejected cancellation does not send a driver refresh", async () => {
   const f = fixture("PENDING", true);
   await f.actions.adminHuyChuyen(f.req({ cancel_reason: "" }), f.res());
   assert.equal(f.events.length, 0);
+});
+
+for (const cancelOrigin of ['CUSTOMER', 'DRIVER']) test(`${cancelOrigin}: socket failure after cancellation does not report failure or debit twice`, async () => {
+  const f = fixture('CONTACTED', 'fail');
+  const res = f.res();
+  await f.actions.adminHuyChuyen(f.req({ cancel_reason: 'Test', cancel_origin: cancelOrigin }), res);
+  assert.equal(res.statusCode, 200, JSON.stringify(res.body));
+  assert.equal(res.body.success, true);
+  assert.equal(f.trip.status, cancelOrigin === 'CUSTOMER' ? 'CANCELLED' : 'PENDING');
+  assert.equal(f.trip.driver.driverProfile.balance, cancelOrigin === 'CUSTOMER' ? 1000 : 880);
+  assert.equal(f.penalties.length, cancelOrigin === 'CUSTOMER' ? 0 : 1);
 });

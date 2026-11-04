@@ -140,21 +140,25 @@ export async function adminDriverCancelToReview(req, res) {
       reason: "admin_driver_cancel_to_review",
     };
     const io = req.app?.get?.("io");
-    if (io) {
-      io.to("admins").emit("admin:trip_status_changed", event);
-      io.to("admins").emit("admin:dashboard_changed", { ...event, source: event.reason });
-      emitDriverTripEvent(io, "trip:changed", event);
-      io.to(`driver:${result.previousDriverId}`).emit("trip:changed", event);
-      await emitRiderTripUpdate(io, prisma, result.trip, event);
-      if (result.trip.riderId) {
-        io.to(`rider:${result.trip.riderId}`).emit("rider:trip_changed", event);
-        io.to(`rider:${result.trip.riderId}`).emit("rider:notification_changed", {
-          source: event.reason, notificationId: result.riderNotification?.id,
+    try {
+      if (io) {
+        io.to("admins").emit("admin:trip_status_changed", event);
+        io.to("admins").emit("admin:dashboard_changed", { ...event, source: event.reason });
+        emitDriverTripEvent(io, "trip:changed", event);
+        io.to(`driver:${result.previousDriverId}`).emit("trip:changed", event);
+        await emitRiderTripUpdate(io, prisma, result.trip, event);
+        if (result.trip.riderId) {
+          io.to(`rider:${result.trip.riderId}`).emit("rider:trip_changed", event);
+          io.to(`rider:${result.trip.riderId}`).emit("rider:notification_changed", {
+            source: event.reason, notificationId: result.riderNotification?.id,
+          });
+        }
+        io.to(`driver:${result.previousDriverId}`).emit("driver:notification_changed", {
+          source: event.reason, notificationId: result.driverNotification.id,
         });
       }
-      io.to(`driver:${result.previousDriverId}`).emit("driver:notification_changed", {
-        source: event.reason, notificationId: result.driverNotification.id,
-      });
+    } catch (socketError) {
+      console.error("[adminDriverCancelToReview] saved; realtime delivery failed:", socketError);
     }
     await Promise.allSettled([
       sendSystemNotificationToDriver(result.previousDriverId, result.driverNotification),
@@ -277,10 +281,14 @@ export async function adminChuyenVeChoDuyet(req, res) {
       reason: "admin_return_trip_to_review",
     };
     const io = req.app?.get?.("io");
-    if (io) {
-      emitDriverTripEvent(io, "trip:changed", event);
-      io.to("admins").emit("admin:trip_status_changed", event);
-      io.to("admins").emit("admin:dashboard_changed", event);
+    try {
+      if (io) {
+        emitDriverTripEvent(io, "trip:changed", event);
+        io.to("admins").emit("admin:trip_status_changed", event);
+        io.to("admins").emit("admin:dashboard_changed", event);
+      }
+    } catch (socketError) {
+      console.error("[adminChuyenVeChoDuyet] saved; realtime delivery failed:", socketError);
     }
 
     return res.json({
@@ -390,22 +398,26 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
     });
 
     const io = req.app?.get?.("io");
-    if (io) {
-      const event = {
-        tripId: result.updated.id,
-        status: result.updated.status,
-        pickupTime: result.updated.pickupTime,
-        returnTime: result.updated.returnTime,
-        updatedAt: result.updated.updatedAt,
-        reason: "trip_schedule_updated",
-      };
-      await emitDriverTripEvent(io, "trip:changed", { ...event, silent: true });
-      io.to("admins").emit("admin:trip_schedule_updated", event);
-      io.to("admins").emit("admin:dashboard_changed", event);
-      if (result.updated.driverId) {
-        io.to(`driver:${result.updated.driverId}`).emit("trip:changed", event);
+    try {
+      if (io) {
+        const event = {
+          tripId: result.updated.id,
+          status: result.updated.status,
+          pickupTime: result.updated.pickupTime,
+          returnTime: result.updated.returnTime,
+          updatedAt: result.updated.updatedAt,
+          reason: "trip_schedule_updated",
+        };
+        await emitDriverTripEvent(io, "trip:changed", { ...event, silent: true });
+        io.to("admins").emit("admin:trip_schedule_updated", event);
+        io.to("admins").emit("admin:dashboard_changed", event);
+        if (result.updated.driverId) {
+          io.to(`driver:${result.updated.driverId}`).emit("trip:changed", event);
+        }
+        await emitRiderTripUpdate(io, prisma, result.updated, event);
       }
-      await emitRiderTripUpdate(io, prisma, result.updated, event);
+    } catch (socketError) {
+      console.error("[adminCapNhatThoiGianChuyen] saved; realtime delivery failed:", socketError);
     }
 
     return res.json({
@@ -621,32 +633,36 @@ export async function adminHuyChuyen(req, res) {
     });
 
     const io = req.app?.get?.("io");
-    if (io) {
-      const driverEvent = {
-        tripId: result.updated.id, fromStatus: result.fromStatus,
-        toStatus: "CANCELLED", driverId: result.updated.driverId || null,
-        updatedAt: result.updated.updatedAt, reason: "admin_cancel_trip", silent: true,
-      };
-      await emitDriverTripEvent(io, "trip:changed", driverEvent);
-      if (result.updated.driverId) {
-        io.to(`driver:${result.updated.driverId}`).emit("trip:changed", driverEvent);
-      }
-      io.to("admins").emit("admin:trip_cancelled", {
-        tripId: result.updated.id,
-        fromStatus: result.fromStatus,
-        toStatus: "CANCELLED",
-        driverId: result.updated.driverId || null,
-        cancelReason: result.updated.cancelReason || "",
-        cancelledAt: result.updated.cancelledAt,
-        updatedAt: result.updated.updatedAt,
-      });
+    try {
+      if (io) {
+        const driverEvent = {
+          tripId: result.updated.id, fromStatus: result.fromStatus,
+          toStatus: "CANCELLED", driverId: result.updated.driverId || null,
+          updatedAt: result.updated.updatedAt, reason: "admin_cancel_trip", silent: true,
+        };
+        await emitDriverTripEvent(io, "trip:changed", driverEvent);
+        if (result.updated.driverId) {
+          io.to(`driver:${result.updated.driverId}`).emit("trip:changed", driverEvent);
+        }
+        io.to("admins").emit("admin:trip_cancelled", {
+          tripId: result.updated.id,
+          fromStatus: result.fromStatus,
+          toStatus: "CANCELLED",
+          driverId: result.updated.driverId || null,
+          cancelReason: result.updated.cancelReason || "",
+          cancelledAt: result.updated.cancelledAt,
+          updatedAt: result.updated.updatedAt,
+        });
 
-      console.log(
-        `[Socket] Emit admin:trip_cancelled -> admins (${result.updated.id})`,
-      );
-      await emitRiderTripUpdate(io, prisma, result.updated, {
-        fromStatus: result.fromStatus, toStatus: "CANCELLED", reason: "admin_cancel_trip",
-      });
+        console.log(
+          `[Socket] Emit admin:trip_cancelled -> admins (${result.updated.id})`,
+        );
+        await emitRiderTripUpdate(io, prisma, result.updated, {
+          fromStatus: result.fromStatus, toStatus: "CANCELLED", reason: "admin_cancel_trip",
+        });
+      }
+    } catch (socketError) {
+      console.error("[adminHuyChuyen] saved; realtime delivery failed:", socketError);
     }
     sendTripStatusChangedToRider(result.updated, { reason: "admin_cancel_trip" })
       .catch((error) => console.error("[RiderPush] admin cancellation error:", error));
@@ -1027,24 +1043,28 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
 
     const io = req.app?.get?.("io");
 
-    if (io) {
-      io.to("admins").emit("admin:dashboard_changed", {
-        reason: "trip_manual_adjusted",
-        tripId: result.updated.id,
-        updatedAt: result.updated.updatedAt,
-      });
+    try {
+      if (io) {
+        io.to("admins").emit("admin:dashboard_changed", {
+          reason: "trip_manual_adjusted",
+          tripId: result.updated.id,
+          updatedAt: result.updated.updatedAt,
+        });
 
-      io.to("admins").emit("admin:trip_manual_adjusted", {
-        tripId: result.updated.id,
-        status: result.updated.status,
-        updatedAt: result.updated.updatedAt,
-      });
+        io.to("admins").emit("admin:trip_manual_adjusted", {
+          tripId: result.updated.id,
+          status: result.updated.status,
+          updatedAt: result.updated.updatedAt,
+        });
 
-      await emitDriverTripEvent(io, "trip:changed", {
-        tripId: result.updated.id, toStatus: result.updated.status,
-        updatedAt: result.updated.updatedAt, reason: "trip_manual_adjusted", silent: true,
-      });
-      await emitRiderTripUpdate(io, prisma, result.updated, { reason: "trip_manual_adjusted" });
+        await emitDriverTripEvent(io, "trip:changed", {
+          tripId: result.updated.id, toStatus: result.updated.status,
+          updatedAt: result.updated.updatedAt, reason: "trip_manual_adjusted", silent: true,
+        });
+        await emitRiderTripUpdate(io, prisma, result.updated, { reason: "trip_manual_adjusted" });
+      }
+    } catch (socketError) {
+      console.error("[adminDieuChinhThongTinChuyen] saved; realtime delivery failed:", socketError);
     }
 
     return res.json({

@@ -1,3 +1,4 @@
+import { createBookableTrip } from '../src/services/carAvailability.js';
 import {isProvinceCode} from '../src/services/driverOperatingProvince.js';
 import {createAcceptanceChatNotices} from '../src/services/tripAcceptanceChat.js';
 import * as tripContact from '../src/shared/tripContact.js';
@@ -230,4 +231,47 @@ integration('two invited drivers race: exactly one winner and one hold', async (
   const results = await Promise.all(['a','b'].map(id => call(trips().acceptTrip, request({ tripId: 'private' }, id))));
   assert.equal(results.filter(r => r.body.success).length, 1);
   assert.equal(await db.driverWalletTransaction.count(), 1);
+});
+
+for (const action of ['changeTripStatus', 'cancelDriverTrip']) integration(`${action}: socket failure cannot turn a committed change into an API failure`, async () => {
+  await trip(); const api = trips(); await call(api.acceptTrip, request({ tripId: 'trip' }));
+  const req = request({ tripId: 'trip', newStatus: 'CONTACTED' });
+  req.app.get = () => ({ to() { throw new Error('socket down'); } });
+  const result = await call(api[action], req);
+  assert.equal(result.body.success, true, JSON.stringify(result.body));
+  const saved = await db.trip.findUnique({ where: { id: 'trip' } });
+  assert.equal(saved.status, action === 'changeTripStatus' ? 'CONTACTED' : 'PENDING');
+  assert.equal((await db.driverProfile.findUnique({ where: { userId: 'a' } })).balance, 90000);
+  assert.equal(await db.driverWalletTransaction.count({ where: { type: 'COMMISSION_HOLD' } }), 1);
+  assert.equal(await db.driverWalletTransaction.count({ where: { type: 'TRIP_CANCEL_PENALTY' } }), action === 'cancelDriverTrip' ? 1 : 0);
+  // Retrying a committed action cannot create another hold or penalty.
+  assert.equal((await call(api[action], req)).body.success, false);
+  assert.equal((await db.driverProfile.findUnique({ where: { userId: 'a' } })).balance, 90000);
+  assert.equal(await db.driverWalletTransaction.count(), action === 'cancelDriverTrip' ? 2 : 1);
+});
+
+async function bookingData() {
+  await db.pricingConfig.upsert({ where: { carType: 'CAR_5' }, update: { isActive: true },
+    create: { carType: 'CAR_5', baseFare: 0, pricePerKm: 10000, pricePerHour: 0, minFare: 0, overnightFee: 0 } });
+  return { riderId: 'rider', pickupAddress: 'A', dropoffAddress: 'C', distanceKm: 10,
+    status: 'PENDING', basePricePerKm: 10000, carType: 'CAR_5', direction: 'ONE_WAY',
+    pickupTime: new Date(), totalPrice: 100000, bookingStops: ['B', 'C'] };
+}
+integration('booking atomically saves the trip, stops and initial chat notice', async () => {
+  const saved = await createBookableTrip(db, await bookingData());
+  assert.equal(await db.trip.count(), 1);
+  const stops = await db.tripStop.findMany({ where: { tripId: saved.id }, orderBy: { seq: 'asc' } });
+  assert.deepEqual(stops.map(stop => stop.address), ['B', 'C']);
+  assert.equal(await db.tripChatMessage.count({ where: { tripId: saved.id } }), 1);
+});
+integration('a failed stop insert rolls back the trip and chat notice in PostgreSQL', async () => {
+  const data = await bookingData();
+  const failing = { $transaction: fn => db.$transaction(tx => fn(new Proxy(tx, { get(target, key) {
+    if (key === 'tripStop') return { createMany: async () => { throw Error('injected stop failure'); } };
+    return Reflect.get(target, key);
+  } }))) };
+  await assert.rejects(createBookableTrip(failing, data), /injected stop failure/);
+  assert.equal(await db.trip.count(), 0);
+  assert.equal(await db.tripStop.count(), 0);
+  assert.equal(await db.tripChatMessage.count(), 0);
 });

@@ -864,6 +864,7 @@ export default function RiderBookingScreen() {
   }, [quote?.expiresAt, pickerTarget]);
 
   useEffect(() => {
+    let active = true;
     const keyword = String(pickupAddress || "").trim();
     const lat = gpsLocation?.lat;
     const lng = gpsLocation?.lng;
@@ -902,6 +903,7 @@ export default function RiderBookingScreen() {
         setPickupLoading(true);
 
         const items = await searchPlaces(keyword, { lat, lng });
+        if (!active) return;
         const nextItems = mergeVietnamLocationOptions(
           keyword,
           Array.isArray(items) ? (items as PlaceSuggestion[]) : [],
@@ -911,14 +913,16 @@ export default function RiderBookingScreen() {
         setPickupOptions(nextItems);
         setShowPickupOptions(true);
       } catch (error: any) {
+        if (!active) return;
         console.warn("pickup autocomplete error:", error);
         setPickupOptions([]);
       } finally {
-        setPickupLoading(false);
+        if (active) setPickupLoading(false);
       }
     }, 350);
 
     return () => {
+      active = false;
       if (pickupSearchTimerRef.current) {
         clearTimeout(pickupSearchTimerRef.current);
       }
@@ -926,6 +930,7 @@ export default function RiderBookingScreen() {
   }, [pickupAddress, gpsLocation?.lat, gpsLocation?.lng]);
 
   useEffect(() => {
+    let active = true;
     const lat = gpsLocation?.lat;
     const lng = gpsLocation?.lng;
 
@@ -986,6 +991,7 @@ export default function RiderBookingScreen() {
           setStopLoadingMap((prev) => ({ ...prev, [index]: true }));
 
           const items = await searchPlaces(keyword, { lat, lng });
+          if (!active) return;
           const nextItems = mergeVietnamLocationOptions(
             keyword,
             Array.isArray(items) ? (items as PlaceSuggestion[]) : [],
@@ -998,17 +1004,19 @@ export default function RiderBookingScreen() {
           );
           setShowStopOptionsMap((prev) => ({ ...prev, [index]: true }));
         } catch (error: any) {
+          if (!active) return;
           console.warn(`stop autocomplete error [${index}]:`, error);
           setStopOptions((prev) =>
             prev.map((oldItems, i) => (i === index ? [] : oldItems)),
           );
         } finally {
-          setStopLoadingMap((prev) => ({ ...prev, [index]: false }));
+          if (active) setStopLoadingMap((prev) => ({ ...prev, [index]: false }));
         }
       }, 350);
     });
 
     return () => {
+      active = false;
       Object.values(stopSearchTimersRef.current).forEach((timer) => {
         clearTimeout(timer);
       });

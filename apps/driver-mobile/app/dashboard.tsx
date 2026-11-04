@@ -1,3 +1,4 @@
+import { AvailableTripState, confirmsTripUnavailable } from "../../api/src/shared/availableTripState.js";
 import { TripChatButton } from "../services/tripChat";
 import { tripRoutePoints } from "../../api/src/shared/tripRoute.js";
 import TripDispatcherNote from "../components/TripDispatcherNote";
@@ -135,6 +136,8 @@ export default function DashboardScreen() {
 
   const socketRef = useRef<Socket | null>(null);
   const socketUserIdRef = useRef<string | null>(null);
+  const availableTripStateRef = useRef(new AvailableTripState());
+  const acceptingTripRef = useRef<string | null>(null);
   const realtimeLoadingRef = useRef(false);
   const realtimeReloadPendingRef = useRef(false);
   const runtimeBlockHandledRef = useRef(false);
@@ -519,10 +522,12 @@ export default function DashboardScreen() {
   }, [forceLogoutWithBlockedStatus]);
 
   const loadAvailableTrips = useCallback(async () => {
+    const request = availableTripStateRef.current.beginRequest();
     try {
       setAvailableError("");
       const items = await getAvailableTrips();
-      setAvailableTrips(items);
+      const snapshot = availableTripStateRef.current.applySnapshot(request, items);
+      if (snapshot) setAvailableTrips(snapshot);
     } catch (error) {
       const message =
         error instanceof Error
@@ -742,13 +747,18 @@ export default function DashboardScreen() {
         socket.on("trip:new", async (payload) => {
           console.log("[DriverSocket] trip:new", payload);
 
+          const removedId = availableTripStateRef.current.handleEvent(payload);
+          if (removedId) setAvailableTrips((items) => items.filter((trip) => trip.id !== removedId));
           await reloadTripsFromRealtime();
         });
 
         socket.on("trip:changed", async (payload) => {
           console.log("[DriverSocket] trip:changed", payload);
 
-          // Start refreshing immediately; sound must not delay the list update.
+          const removedId = availableTripStateRef.current.handleEvent(payload);
+          if (removedId) setAvailableTrips((items) => items.filter((trip) => trip.id !== removedId));
+
+          // Remove the card before any HTTP reload or notification sound.
           const refresh = reloadTripsFromRealtime();
           if (appStateRef.current === "active" && !payload?.silent) {
             void playTripChangedNotify();
@@ -963,7 +973,9 @@ export default function DashboardScreen() {
 
   const handleAcceptTrip = useCallback(
     async (tripId: string) => {
+      if (acceptingTripRef.current || !availableTripStateRef.current.canAccept(tripId)) return;
       const trip = availableTrips.find((t) => t.id === tripId);
+      if (!trip) return;
       const remainingSeconds = trip ? getAcceptLockRemainingSeconds(trip) : 0;
 
       if (remainingSeconds > 0) {
@@ -971,20 +983,28 @@ export default function DashboardScreen() {
       }
 
       try {
+        acceptingTripRef.current = tripId;
         setAcceptingTripId(tripId);
         await acceptDriverTrip(tripId);
+        availableTripStateRef.current.markUnavailable(tripId);
+        setAvailableTrips((items) => items.filter((item) => item.id !== tripId));
 
         await Promise.allSettled([loadAvailableTrips(), loadMyTrips()]);
         setActiveTab("MY_TRIPS");
 
         showSuccess("Nhận chuyến thành công.");
       } catch (error: any) {
+        if (confirmsTripUnavailable(error)) {
+          availableTripStateRef.current.markUnavailable(tripId);
+          setAvailableTrips((items) => items.filter((item) => item.id !== tripId));
+        }
         if (error?.code === "TRIP_ACCEPT_UNAVAILABLE") return;
         const message = tripAcceptFeedback(error);
         if (message) showTripAcceptError(message);
         // Refreshes must not replace the acceptance error or imply an automatic retry.
         void Promise.allSettled([loadAvailableTrips(), loadMyTrips()]);
       } finally {
+        acceptingTripRef.current = null;
         setAcceptingTripId(null);
       }
     },

@@ -25,13 +25,13 @@ function fixture(initial = {}) {
   function controller(file, names) {
     const source = readFileSync(new URL(`../src/controllers/${file}.js`, import.meta.url), "utf8")
       .replace(/^import[\s\S]*?;\n/gm, "").replaceAll("export async function", "async function");
-    return new Function("prisma", "parseTripTime", "lockTrip", "sendAdminPushNotification", "sendTripStatusChangedToRider", "sendSystemNotificationToDriver", "sendNewTripToDrivers", "lockTripMilestones", "recordTripMilestone", "console",
-      `${source}; return {${names.join(",")}};`)(prisma, parseTripTime, noop, noop, noop, noop, noop, noop, noop, { log() {}, error() {} });
+    return new Function("emitDriverTripEvent", "emitRiderTripUpdate", "prisma", "parseTripTime", "lockTrip", "sendAdminPushNotification", "sendTripStatusChangedToRider", "sendSystemNotificationToDriver", "sendNewTripToDrivers", "lockTripMilestones", "recordTripMilestone", "console",
+      `${source}; return {${names.join(",")}};`)(noop, noop, prisma, parseTripTime, noop, noop, noop, noop, noop, noop, noop, { log() {}, error() {} });
   }
   const actions = { ...controller("adminTripController", ["adminChuyenVeChoDuyet", "adminCapNhatThoiGianChuyen", "adminDieuChinhThongTinChuyen"]),
     ...controller("tripController", ["adminChangeTripStatus", "adminVerifyTrip", "adminResendPendingTrip"]) };
-  async function run(name, body = {}) {
-    const req = { params: { id: trip.id }, body, admin: { id: 1, role: "ADMIN", username: "test" }, app: { get: () => null } };
+  async function run(name, body = {}, io = null) {
+    const req = { params: { id: trip.id }, body, admin: { id: 1, role: "ADMIN", username: "test" }, app: { get: () => io } };
     const res = { statusCode: 200, status(code) { this.statusCode = code; return this; }, json(value) { this.body = value; return this; } };
     await actions[name](req, res);
     return res;
@@ -82,4 +82,18 @@ test("manual adjustment retains schedule audit even with long addresses/notes", 
   assert.equal(res.statusCode, 200, JSON.stringify(res.body));
   assert.match(f.logs[0].note, /2026-09-23T11:30:00.000Z -> 2026-09-23T12:30:00.000Z/);
   assert.match(f.logs[0].note, /2026-09-24T00:30:00.000Z -> 2026-09-24T01:30:00.000Z/);
+});
+
+for (const [action, initial, body] of [
+  ["adminChuyenVeChoDuyet", {}, {}],
+  ["adminCapNhatThoiGianChuyen", { status: "CONTACTED" }, { pickupTime: "2026-09-23T18:30", returnTime: "2026-09-24T06:30" }],
+  ["adminVerifyTrip", { isVerified: false }, {}],
+  ["adminResendPendingTrip", {}, {}],
+  ["adminChangeTripStatus", { status: "ACCEPTED" }, { toStatus: "CONTACTED" }],
+]) test(`${action}: a realtime failure preserves the successful write and response`, async () => {
+  const f = fixture(initial);
+  const result = await f.run(action, body, { to() { throw new Error("socket down"); } });
+  assert.equal(result.statusCode, 200, JSON.stringify(result.body));
+  assert.equal(result.body.success, true);
+  assert.ok(f.writes.length > 0);
 });
