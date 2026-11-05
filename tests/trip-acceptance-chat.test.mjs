@@ -49,15 +49,15 @@ test('audience visibility excludes the opposite side, other drivers and unknown 
 });
 function recipientDb(){return {partnerCompany:{findUnique:async()=>({id:'company1',isActive:true,managementPhone:null})},phone:{findMany:async()=>[]},admin_users:{findMany:async()=>[{id:1}]},partnerMember:{findUnique:async()=>null,findMany:async()=>[{id:'m1'},{id:'m2'}]}};}
 const notice=audience=>({senderId:'goviet247-system',senderRole:'SYSTEM',clientId:'accept_1_123_DRIVER',audience,recipientId:'driver1',createdAt:acceptedAt});
-test('push for rider notice only targets rider, not Admin or driver',async()=>{
- assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('RIDER'))).sort(),['rider1']);
+test('push for rider notice only targets rider and GoViet247, not driver',async()=>{
+ assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('RIDER'))).sort(),['admin-1','rider1']);
 });
-test('push for driver notice only targets the accepting driver, not Admin',async()=>{
- assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('DRIVER'))).sort(),['driver1']);
+test('push for driver notice only targets the accepting driver and GoViet247',async()=>{
+ assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('DRIVER'))).sort(),['admin-1','driver1']);
 });
-test('partner notices keep company admins and dispatchers, without GoViet247 Admin push',async()=>{
+test('partner notices only target eligible partner members and GoViet247',async()=>{
  const ids=await chatPushRecipientIds(recipientDb(),{...trip,partnerCompanyId:'company1',partnerAssignedToId:'m1'},notice('PARTNER'));
- assert.deepEqual(ids.sort(),['partner-m1','partner-m2']);
+ assert.deepEqual(ids.sort(),['admin-1','partner-m1','partner-m2']);
 });
 test('late acceptance pushes are discarded after reassignment, return to pool or completion',async()=>{
  for(const changed of [{...trip,acceptedAt:new Date(acceptedAt.getTime()+1),driverId:'driver2'},
@@ -67,7 +67,7 @@ test('late acceptance pushes are discarded after reassignment, return to pool or
 });
 test('ordinary shared messages still notify both sides, excluding the sender',async()=>{
  const ids=await chatPushRecipientIds(recipientDb(),trip,{senderId:'rider1',senderRole:'RIDER',audience:'ALL',createdAt:acceptedAt});
- assert.deepEqual(ids.sort(),['driver1']);
+ assert.deepEqual(ids.sort(),['admin-1','driver1']);
 });
 test('clients cannot forge system notices or private audience through message payloads',()=>{
  const payload=validateChatPayload({clientId:'test-message-001',kind:'TEXT',text:'Xin chào',audience:'DRIVER',recipientId:'driver1',senderRole:'SYSTEM'});
@@ -82,16 +82,17 @@ test('terminal chat never pushes to Rider, Partner or Driver',async()=>{
  }
 });
 
-test('Admin push exclusion does not query or change staff inbox/read access', async () => {
- const db=recipientDb();
- db.admin_users.findMany=async()=>assert.fail('Admin push lookup must be disabled');
+test('Admin recipients are restored without changing staff inbox/read permissions', async () => {
+ const db=recipientDb();let queried=false;
+ db.admin_users.findMany=async({where})=>{queried=true;assert.equal(where.is_active,true);assert.deepEqual(where.role.in,['ADMIN','STAFF']);return [{id:1},{id:2}];};
  const message={senderId:'driver1',senderRole:'DRIVER',audience:'ALL',createdAt:acceptedAt};
- assert.deepEqual(await chatPushRecipientIds(db,trip,message),['rider1']);
+ assert.deepEqual((await chatPushRecipientIds(db,trip,message)).sort(),['admin-1','admin-2','rider1']);
+ assert.equal(queried,true);
  const admin={role:'ADMIN',id:'admin-1'};
- assert.equal(chatAudienceVisible(message,admin),true);
- assert.deepEqual(chatAudienceWhere(admin),{});
+ assert.equal(chatAudienceVisible(message,admin),true);assert.deepEqual(chatAudienceWhere(admin),{});
 });
-test('messages sent by Admin still push to Rider and Driver', async () => {
- const ids=await chatPushRecipientIds(recipientDb(),trip,{senderId:'admin-1',senderRole:'ADMIN',audience:'ALL',createdAt:acceptedAt});
- assert.deepEqual(ids.sort(),['driver1','rider1']);
+test('an Admin sender never receives their own push but other Admins and participants do', async () => {
+ const db=recipientDb();db.admin_users.findMany=async()=>[{id:1},{id:2}];
+ const ids=await chatPushRecipientIds(db,trip,{senderId:'admin-1',senderRole:'ADMIN',audience:'ALL',createdAt:acceptedAt});
+ assert.deepEqual(ids.sort(),['admin-2','driver1','rider1']);
 });

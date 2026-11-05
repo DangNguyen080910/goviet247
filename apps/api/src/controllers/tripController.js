@@ -838,6 +838,8 @@ export async function getTripById(req, res) {
  * -> Driver xem danh sách các chuyến đang chờ nhận
  */
 export async function listAvailableTrips(req, res) {
+  // Availability must never be served from an old HTTP cache.
+  res.set?.("Cache-Control", "no-store");
   try {
     const config = await getDriverConfigSnapshot();
     const now = new Date();

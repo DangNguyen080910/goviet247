@@ -1,5 +1,7 @@
 # Day 315A — Thông báo tin nhắn — 04/11/2026
 
+> **Đã thay đổi ngày 05/11/2026:** theo yêu cầu mới, đã bật lại push chat Admin/Staff trong API local. Chính sách tắt push bên dưới là lịch sử của ngày 04/11; xem `day316-admin-chat-push-restored-2026-11-05.md` để triển khai chính sách mới.
+
 ## Trạng thái bản sửa
 
 Đã cập nhật **API local** theo yêu cầu Đ. **Đ tự deploy**, chưa sửa hệ thống đang chạy hoặc phát hành app/web từ công việc này.

@@ -289,8 +289,7 @@ export async function deliverChatPush() {
           }
         });
         if (!trip) continue;
-        // Never send TRIP_CHAT push to Admin/Staff; foreground polling still alerts them.
-        const ids = (await chatPushRecipientIds(prisma, trip, m)).filter(id => !id.startsWith('admin-'));
+        const ids = await chatPushRecipientIds(prisma, trip, m);
         const reads = await prisma.tripChatRead.findMany({
           where: {
             tripId: m.tripId,
@@ -320,7 +319,8 @@ export async function deliverChatPush() {
             }
           }
         });
-        const eligible = await activeDriverDevices(prisma, devices.filter(d => !d.userId.startsWith('admin-')));
+        const userDevices = await activeDriverDevices(prisma, devices.filter(d => !d.userId.startsWith('admin-')));
+        const eligible = [...userDevices, ...devices.filter(d => d.userId.startsWith('admin-') && (!d.pushExpiresAt || d.pushExpiresAt > new Date()))];
         const notifications = eligible.filter(d => /^(ExponentPushToken|ExpoPushToken)\[/.test(d.pushToken)).map(d => ({
           to: d.pushToken,
           title: `Liên hệ chuyến #${trip.id}`,

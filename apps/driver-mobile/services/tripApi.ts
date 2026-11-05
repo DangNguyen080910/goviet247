@@ -194,25 +194,36 @@ function getErrorMessage(payload: ApiError | null, fallback: string) {
 
 export async function getAvailableTrips(): Promise<AvailableTripItem[]> {
   const headers = await buildAuthHeaders();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/trips/driver/available`, {
+      method: "GET",
+      headers,
+      cache: "no-store",
+      signal: controller.signal,
+    });
 
-  const response = await fetch(`${API_BASE_URL}/api/trips/driver/available`, {
-    method: "GET",
-    headers,
-  });
+    const payload = (await parseJsonSafe(response)) as
+      | ApiListSuccess<AvailableTripItem>
+      | ApiError
+      | null;
 
-  const payload = (await parseJsonSafe(response)) as
-    | ApiListSuccess<AvailableTripItem>
-    | ApiError
-    | null;
+    if (!response.ok) {
+      throw new Error(
+        getErrorMessage(payload as ApiError, "Không thể tải danh sách chuyến.")
+      );
+    }
 
-  if (!response.ok) {
-    throw new Error(
-      getErrorMessage(payload as ApiError, "Không thể tải danh sách chuyến.")
-    );
+    const successPayload = payload as ApiListSuccess<AvailableTripItem> | null;
+    if (successPayload?.success !== true || !Array.isArray(successPayload.items)) {
+      throw new Error("Chưa thể tải danh sách chuyến. Vui lòng thử lại.");
+    }
+    return successPayload.items;
+  } finally {
+    // A stalled fetch/body must not hold the foreground reconciliation loop forever.
+    clearTimeout(timeout);
   }
-
-  const successPayload = payload as ApiListSuccess<AvailableTripItem> | null;
-  return Array.isArray(successPayload?.items) ? successPayload.items : [];
 }
 
 export async function acceptDriverTrip(tripId: string) {

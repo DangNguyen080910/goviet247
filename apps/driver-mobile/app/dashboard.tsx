@@ -595,6 +595,32 @@ export default function DashboardScreen() {
   }, [loadDashboardData]);
 
   useEffect(() => {
+    let disposed = false;
+    let inFlight = false;
+
+    async function reconcileAvailableTrips() {
+      if (disposed || inFlight || AppState.currentState !== "active") return;
+      inFlight = true;
+      try {
+        // Recover missed socket events independently of My Trips or notification requests.
+        await loadAvailableTrips();
+      } finally {
+        inFlight = false;
+      }
+    }
+
+    const timer = setInterval(() => void reconcileAvailableTrips(), 5000);
+    const subscription = AppState.addEventListener("change", (state) => {
+      if (state === "active") void reconcileAvailableTrips();
+    });
+    return () => {
+      disposed = true;
+      clearInterval(timer);
+      subscription.remove();
+    };
+  }, [loadAvailableTrips]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTimeMs(Date.now());
     }, 1000);
