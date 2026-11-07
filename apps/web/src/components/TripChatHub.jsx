@@ -85,6 +85,7 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
     [seconds, setSeconds] = useState(0),
     [signed, setSigned] = useState(false);
   const [imageDraft, setImageDraft] = useState(null), [imageView, setImageView] = useState(null), [cameraOpen, setCameraOpen] = useState(false);
+  const [playback,setPlayback]=useState({id:null,state:'idle',position:0,duration:0});
   const historyFrom = useRef(null);
   const imageInput = useRef(null), cameraInput = useRef(null), cameraVideo = useRef(null), cameraStream = useRef(null);
   const recorder = useRef(null),
@@ -402,13 +403,36 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
     await load();
   }
   async function listen(m) {
-    if(callActive.current)throw new Error('Vui lòng kết thúc cuộc gọi trước khi nghe tin nhắn thoại.');
+    if(callActive.current)throw new Error('Vui lòng kết thúc cuộc gọi trước khi nghe ghi âm.');
+    const current=audio.current;
+    if(playingMessage.current===m.id && current && !current.ended && !current.error){
+      if(current.paused)await current.play();else current.pause();return;
+    }
     audio.current?.pause();
-    const d = await api(`/${tripId}/audio/${m.id}`);
-    if(callActive.current)return;
-    const a = new Audio(d.url);
-    audio.current = a;playingMessage.current=m.id;
-    await a.play();
+    setPlayback({id:m.id,state:'loading',position:0,duration:0});
+    try {
+      let d;
+      if(m.recordingCallId){
+        const response=await fetch(`${base}/api/trip-calls/${encodeURIComponent(m.recordingCallId)}/recording`,{headers:{Authorization:`Bearer ${localStorage.getItem(tokenKey)}`}});
+        d=await response.json();if(!response.ok)throw new Error(d.message || 'Chưa nghe được ghi âm.');
+      }else d=await api(`/${tripId}/audio/${m.id}`);
+      if(callActive.current){setPlayback({id:m.id,state:'idle',position:0,duration:0});return;}
+      const a=new Audio(d.url);audio.current=a;playingMessage.current=m.id;
+      const update=state=>{if(audio.current===a)setPlayback({id:m.id,state,position:a.currentTime*1000,duration:Number.isFinite(a.duration)?a.duration*1000:0});};
+      a.onplaying=()=>update('playing');a.onpause=()=>update(a.ended?'ended':'paused');
+      a.onwaiting=()=>update('loading');a.ontimeupdate=()=>update(a.ended?'ended':a.paused?'paused':'playing');
+      a.onended=()=>update('ended');a.onerror=()=>{update('error');setError('Không phát được ghi âm. Vui lòng thử lại.');};
+      await a.play();
+    }catch(e){setPlayback({id:m.id,state:'error',position:0,duration:0});throw e;}
+  }
+  function playbackLabel(m){
+    const p=playback.id===m.id?playback:null;
+    const time=ms=>`${Math.floor(ms/60000)}:${String(Math.floor(ms/1000)%60).padStart(2,'0')}`;
+    if(p?.state==='loading')return '⏳ Đang tải ghi âm…';
+    if(p?.state==='error')return '↻ Lỗi phát · Thử lại';
+    if(p?.state==='ended')return '↻ Đã nghe xong · Nghe lại';
+    if(p && ['playing','paused'].includes(p.state))return `${p.state==='playing'?'⏸ Đang phát · Tạm dừng':'▶ Đã tạm dừng · Nghe tiếp'} · ${time(p.position)} / ${time(p.duration || m.durationMs || 0)}`;
+    return m.recordingCallId?'▶ Nghe ghi âm cuộc gọi':`▶ Nghe ghi âm · ${time(m.durationMs || 0)}`;
   }
   async function prepareImage(file, generation = activeRequest.current) {
     if (!file) return;
@@ -544,14 +568,10 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
               }}>Tin nhắn đã được GoViet247 xoá.</Typography> : m.kind === 'TEXT' ? <Typography sx={{
                 whiteSpace: 'pre-wrap',
                 overflowWrap: 'anywhere'
-              }}>{splitChatLinks(m.text || '').map((part,index)=>part.url?<a key={index} href={part.url} target="_blank" rel="noopener noreferrer" style={{color:'#1976d2',textDecoration:'underline',overflowWrap:'anywhere'}}>{part.text}</a>:part.text)}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording} onClick={() => run(() => listen(m))}>▶ Nghe · {Math.ceil(m.durationMs / 1000)}s</Button><Button onClick={() => audio.current?.pause()}>Dừng</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
+              }}>{splitChatLinks(m.text || '').map((part,index)=>part.url?<a key={index} href={part.url} target="_blank" rel="noopener noreferrer" style={{color:'#1976d2',textDecoration:'underline',overflowWrap:'anywhere'}}>{part.text}</a>:part.text)}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording || busy} onClick={() => run(() => listen(m))}>{playbackLabel(m)}</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
                 textAlign: 'left',
                 textTransform: 'none'
-              }}>📍 {m.locationLabel}<br />Vị trí tại thời điểm gửi · Mở bản đồ</Button>}{actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Button disabled={recording} onClick={() => run(async () => {
-                const response=await fetch(`${base}/api/trip-calls/${encodeURIComponent(m.recordingCallId)}/recording`,{headers:{Authorization:`Bearer ${localStorage.getItem(tokenKey)}`}});
-                const data=await response.json();if(!response.ok)throw new Error(data.message || 'Chưa nghe được ghi âm.');
-                audio.current?.pause();audio.current=new Audio(data.url);playingMessage.current=m.id;await audio.current.play();
-              })}>▶ Nghe ghi âm cuộc gọi</Button>}{!m.deletedAt && <Button aria-label={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} aria-pressed={Boolean(m.hearted)} disabled={!canSend || busy} sx={{display:'flex',ml:'auto',minWidth:44,minHeight:44,borderRadius:6,color:m.hearted ? '#e11d48' : '#64748b',bgcolor:m.hearted ? '#fff1f2' : '#f8fafc',fontSize:18}} onClick={() => run(async () => {
+              }}>📍 {m.locationLabel}<br />Vị trí tại thời điểm gửi · Mở bản đồ</Button>}{actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Button disabled={recording || busy} onClick={() => run(() => listen(m))}>{playbackLabel(m)}</Button>}{!m.deletedAt && <Button aria-label={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} aria-pressed={Boolean(m.hearted)} disabled={!canSend || busy} sx={{display:'flex',ml:'auto',minWidth:44,minHeight:44,borderRadius:6,color:m.hearted ? '#e11d48' : '#64748b',bgcolor:m.hearted ? '#fff1f2' : '#f8fafc',fontSize:18}} onClick={() => run(async () => {
                 const result = await api(`/${tripId}/messages/${m.id}/heart`,{method:'PUT',body:JSON.stringify({active:!m.hearted})});
                 setItems(current => current.map(item => item.id === m.id ? {...item,hearted:result.hearted,heartCount:result.heartCount} : item));
                 await load();

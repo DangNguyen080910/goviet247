@@ -1,3 +1,4 @@
+import {showPermissionSettings} from './permissionHelp';
 import { AppState } from 'react-native';
 import { Audio } from 'expo-av';
 
@@ -16,7 +17,10 @@ export async function waitForRecordingForeground(isCurrent: () => boolean) {
 }
 export async function createChatRecording(isCurrent: () => boolean) {
   const permission = await Audio.requestPermissionsAsync();
-  if (!permission.granted) throw new Error('Vui lòng cho phép sử dụng micro trong Cài đặt.');
+  if (!permission.granted) {
+    showPermissionSettings('Cho phép dùng micro','Bật Micro cho GoViet247 để ghi âm và gửi tin nhắn thoại.');
+    throw new Error('Chưa có quyền micro. Bấm Mở Cài đặt để bật.');
+  }
   for (let attempt = 0; attempt < 2; attempt++) {
     await waitForRecordingForeground(isCurrent);
     const recording = new Audio.Recording();

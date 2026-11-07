@@ -1,3 +1,4 @@
+import {showPermissionSettings} from './permissionHelp';
 import {chatSupportUrl} from '../api/src/shared/chatSupport.js';
 import {CHAT_SERVICE_NOTICE} from '../api/src/shared/chatServiceNotice.js';
 import {configureCalls, TripCallButton, useTripCallActive} from './TripCalls';
@@ -232,6 +233,7 @@ export default function TripChatScreen() {
     } | null>(null),
     [seconds, setSeconds] = useState(0),
     [playing, setPlaying] = useState('');
+  const [playback, setPlayback] = useState({id:'',state:'idle',position:0,duration:0});
   const recorder = useRef<Audio.Recording | null>(null),
     sound = useRef<Audio.Sound | null>(null),
     scroll = useRef<ScrollView | null>(null),
@@ -402,21 +404,28 @@ export default function TripChatScreen() {
       setRecording(true);
     } catch (error) { setChatRecordingActive(false); throw error; }
   }
-  async function listenTo(work: () => Promise<void>) {
+  async function listenTo(key: string, work: () => Promise<void>) {
     await run(async () => {
-      try { await work(); }
+      try {
+        if (playing === key && sound.current) { await play('',key); return; }
+        setPlayback({id:key,state:'loading',position:0,duration:0});
+        await work();
+      }
       catch (e: any) {
+        setPlayback({id:key,state:'error',position:0,duration:0});
         Alert.alert('Chưa nghe được ghi âm', e.message || 'Vui lòng thử lại.');
         throw e;
       }
     });
   }
   async function play(uri: string, key: string, mimeType?: string) {
-    if (playing === key) {
-      await sound.current?.unloadAsync();
-      sound.current = null;
-      setPlaying('');
-      return;
+    if (playing === key && sound.current) {
+      const status = await sound.current.getStatusAsync();
+      if (status.isLoaded) {
+        if (status.isPlaying) await sound.current.pauseAsync();
+        else await sound.current.playAsync();
+        return;
+      }
     }
     await sound.current?.unloadAsync();
     sound.current = null;
@@ -433,21 +442,33 @@ export default function TripChatScreen() {
       ...(mimeType ? {overrideFileExtensionAndroid: mimeType.includes('webm') ? 'webm' : mimeType.includes('ogg') ? 'ogg' : mimeType.includes('mpeg') ? 'mp3' : mimeType.includes('aac') ? 'aac' : 'mp4'} : {})
     }, {
       shouldPlay: true,
+      progressUpdateIntervalMillis: 250,
       volume: 1.0
     });
     sound.current = result.sound;
     setPlaying(key);
     result.sound.setOnPlaybackStatusUpdate(status => {
+      if (sound.current !== result.sound || !mounted.current) return;
+      if (status.isLoaded) setPlayback({id:key,state:status.didJustFinish?'ended':status.isBuffering?'loading':status.isPlaying?'playing':'paused',position:status.positionMillis,duration:status.durationMillis || 0});
       if (!status.isLoaded && status.error && mounted.current) {
+        setPlayback(current => ({...current,state:'error'}));
         setPlaying('');
         setError('Không phát được ghi âm. Vui lòng bấm nghe lại.');
         Alert.alert('Chưa nghe được ghi âm', 'Không tải hoặc phát được file âm thanh. Vui lòng thử lại.');
       }
       if (status.isLoaded && status.didJustFinish) {
-        result.sound.unloadAsync().catch(() => {});
-        if (mounted.current) setPlaying('');
+        setPlaying('');
       }
     });
+  }
+  function playbackLabel(key: string, call = false, duration = 0) {
+    const item = playback.id === key ? playback : null;
+    const time = (ms: number) => `${Math.floor(ms/60000)}:${String(Math.floor(ms/1000)%60).padStart(2,'0')}`;
+    if (item?.state === 'loading') return '⏳ Đang tải ghi âm…';
+    if (item?.state === 'error') return '↻ Lỗi phát · Thử lại';
+    if (item?.state === 'ended') return '↻ Đã nghe xong · Nghe lại';
+    if (playing === key && item) return `${item.state === 'playing' ? '⏸ Đang phát · Tạm dừng' : '▶ Đã tạm dừng · Nghe tiếp'} · ${time(item.position)} / ${time(item.duration || duration)}`;
+    return call ? '▶ Nghe ghi âm cuộc gọi' : `▶ Nghe ghi âm · ${time(duration)}`;
   }
   async function sendText() {
     if (!text.trim()) return;
@@ -494,7 +515,7 @@ export default function TripChatScreen() {
     const version = generation.current;
     if (camera) {
       const permission = await ImagePicker.requestCameraPermissionsAsync();
-      if (!permission.granted) throw new Error('Vui lòng cho phép camera để chụp ảnh, hoặc chọn ảnh có sẵn.');
+      if (!permission.granted) {showPermissionSettings('Cho phép chụp ảnh','Bật Camera cho GoViet247 để chụp và gửi ảnh. Bạn cũng có thể chọn ảnh có sẵn.');return;}
     }
     const options: ImagePicker.ImagePickerOptions = {mediaTypes:['images'], quality:0.75, allowsMultipleSelection:false, exif:false,
       preferredAssetRepresentationMode:ImagePicker.UIImagePickerPreferredAssetRepresentationMode.Compatible};
@@ -527,7 +548,11 @@ export default function TripChatScreen() {
     const version = generation.current;
     Keyboard.dismiss();
     const permission = await Location.requestForegroundPermissionsAsync();
-    if (!permission.granted) throw new Error('Vui lòng cho phép vị trí trong Cài đặt để gửi định vị hiện tại.');
+    if (!permission.granted) {showPermissionSettings('Cho phép gửi vị trí','Bật quyền Vị trí khi dùng GoViet247 để gửi định vị hiện tại.');return;}
+    if (!await Location.hasServicesEnabledAsync()) {
+      if (Platform.OS === 'android') {try {await Location.enableNetworkProviderAsync();} catch {throw new Error('Vui lòng bật Vị trí/GPS trên điện thoại rồi gửi lại.');}}
+      else {Alert.alert('Bật Dịch vụ định vị','Mở Cài đặt → Quyền riêng tư & Bảo mật → Dịch vụ định vị, bật định vị rồi quay lại gửi vị trí.');return;}
+    }
     const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
     if (!mounted.current || version !== generation.current) return;
     await post(`/${tripId}/messages`, {
@@ -626,24 +651,24 @@ export default function TripChatScreen() {
             color: ink,
             fontSize: 15,
             lineHeight: 22
-          }}>{splitChatLinks(m.text || '').map((part, index) => part.url ? <Text key={index} accessibilityRole="link" style={{color: blue, textDecorationLine: 'underline'}} onPress={() => void run(() => Linking.openURL(part.url!))}>{part.text}</Text> : part.text)}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording || busy} style={button} onPress={() => void listenTo(async () => {
+          }}>{splitChatLinks(m.text || '').map((part, index) => part.url ? <Text key={index} accessibilityRole="link" style={{color: blue, textDecorationLine: 'underline'}} onPress={() => void run(() => Linking.openURL(part.url!))}>{part.text}</Text> : part.text)}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording || busy} style={button} onPress={() => void listenTo(m.id, async () => {
             const d = await api(`/${tripId}/audio/${m.id}`);
             await play(d.url, m.id, d.mimeType);
           })}><Text style={{
               color: blue
-            }}>{playing === m.id ? '⏹ Dừng' : '▶ Nghe ghi âm'} · {Math.ceil((m.durationMs || 0) / 1000)} giây</Text></Pressable> : <Pressable onPress={() => void run(() => openMap(m.latitude!, m.longitude!))}><Text style={{
+            }}>{playbackLabel(m.id,false,m.durationMs || 0)}</Text></Pressable> : <Pressable onPress={() => void run(() => openMap(m.latitude!, m.longitude!))}><Text style={{
               color: blue,
               fontWeight: '700'
             }}>📍 {m.locationLabel || 'Vị trí được gửi'}</Text><Text style={{
               fontSize: 12,
               color: '#64748b'
             }}>Vị trí tại thời điểm gửi · Bấm mở bản đồ</Text></Pressable>}
- {actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Pressable style={button} disabled={recording || busy} accessibilityRole="button" onPress={() => void listenTo(async () => {
+ {actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Pressable style={button} disabled={recording || busy} accessibilityRole="button" onPress={() => void listenTo(m.id, async () => {
    const token=await config.getToken();
    const response=await fetch(`${config.base}/api/trip-calls/${encodeURIComponent(m.recordingCallId!)}/recording`,{headers:{Authorization:`Bearer ${token}`}});
    const data=await response.json();if(!response.ok)throw new Error(data.message || 'Chưa nghe được ghi âm.');
    await play(data.url,m.id,'audio/mp4');
- })}><Text style={{color:blue}}>{playing === m.id ? '⏹ Dừng ghi âm cuộc gọi' : busy ? 'Đang tải ghi âm…' : '▶ Nghe ghi âm cuộc gọi'}</Text></Pressable>}
+ })}><Text style={{color:blue}}>{playbackLabel(m.id,true)}</Text></Pressable>}
  {!m.deletedAt && <Pressable accessibilityRole="button" accessibilityLabel={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} accessibilityState={{selected:Boolean(m.hearted),disabled:!canSend || busy}} disabled={!canSend || busy} style={{alignSelf:'flex-end',minWidth:44,minHeight:44,alignItems:'center',justifyContent:'center',borderRadius:22,backgroundColor:m.hearted ? '#fff1f2' : '#f8fafc',marginTop:6}} onPress={() => void run(async () => {
    const result = await api(`/${tripId}/messages/${m.id}/heart`, {method:'PUT',body:JSON.stringify({active:!m.hearted})});
    setItems(current => current.map(item => item.id === m.id ? {...item,hearted:result.hearted,heartCount:result.heartCount} : item));
@@ -693,7 +718,7 @@ export default function TripChatScreen() {
  {imageDraft ? <View style={{padding:8}}><Text style={{color:ink,fontWeight:'700'}}>Xem trước ảnh</Text><Image source={{uri:imageDraft.uri}} resizeMode="contain" style={{height:170,width:'100%',marginVertical:8}} /><View style={{flexDirection:'row'}}><Pressable disabled={busy} style={button} onPress={() => void run(sendImage)}><Text style={{color:blue,fontWeight:'800'}}>{busy ? 'Đang gửi…' : 'Gửi ảnh'}</Text></Pressable><Pressable disabled={busy} style={button} onPress={() => setImageDraft(null)}><Text>Bỏ ảnh</Text></Pressable></View></View> : draft ? <View style={{
           flexDirection: 'row',
           flexWrap: 'wrap'
-        }}><Pressable style={button} onPress={() => void run(() => play(draft.uri, 'draft'))}><Text>{playing === 'draft' ? 'Dừng nghe' : '▶ Nghe lại'} · {Math.ceil(draft.durationMs / 1000)}s</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(sendAudio)}><Text>Gửi ghi âm</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => {
+        }}><Pressable style={button} onPress={() => void run(() => play(draft.uri, 'draft'))}><Text>{playbackLabel('draft',false,draft.durationMs)}</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => void run(sendAudio)}><Text>Gửi ghi âm</Text></Pressable><Pressable style={button} disabled={busy} onPress={() => {
             sound.current?.unloadAsync().catch(() => {});
             setDraft(null);
             setPlaying('');

@@ -1,3 +1,4 @@
+import {showPermissionSettings} from './permissionHelp';
 import {tripCallActionLabel} from '../api/src/shared/tripCallLabels.js';
 import {setChatCallActive} from './chatAlerts';
 import React, {useEffect, useState} from 'react';
@@ -39,6 +40,7 @@ async function ensureConfigured(force=false):Promise<boolean>{
  if(!native||!config||config.role==='ADMIN')return false;
  const token=await config.getToken();
  if(!token){await clearCallSession();return false;}
+ if(force && !await native.microphone()){showPermissionSettings('Cho phép cuộc gọi',Platform.OS==='android'?'Bật Micro và Thông báo cho GoViet247 để gọi và nhận cuộc gọi.':microphoneNotice(config.role));return false;}
  if(configuredToken===token)return true;
  if(!force&&declinedToken===token)return false;
  if(configuring)return configuring;
@@ -50,7 +52,7 @@ async function ensureConfigured(force=false):Promise<boolean>{
   if(!await native.matchesSession(token)){
    const agree=await new Promise<boolean>(resolve=>Alert.alert('Cho phép dùng micro',microphoneNotice(config!.role),[{text:'Để sau',style:'cancel',onPress:()=>resolve(false)},{text:'Đồng ý',onPress:()=>resolve(true)}],{cancelable:false}));
    if(!agree){declinedToken=token;return false;}
-   if(!await native.microphone()){Alert.alert('Chưa đủ quyền gọi',Platform.OS==='android'?'Bạn mở Cài đặt để cho phép GoViet247 dùng micro và hiển thị thông báo cuộc gọi.':'Bạn mở Cài đặt để cho phép GoViet247 dùng micro khi gọi.');declinedToken=token;return false;}
+   if(!await native.microphone()){showPermissionSettings('Chưa đủ quyền gọi',Platform.OS==='android'?'Bạn mở Cài đặt để cho phép GoViet247 dùng micro và hiển thị thông báo cuộc gọi.':'Bạn mở Cài đặt để cho phép GoViet247 dùng micro khi gọi.');declinedToken=token;return false;}
   }
   // Consent dialogs and permission sheets can outlive a logout/account switch.
   if(epoch!==sessionEpoch||await config.getToken()!==token)return false;
