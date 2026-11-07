@@ -757,6 +757,7 @@ model DriverProfile {
   balance  Int             @default(0)
   fullName String?
   citizenId String? @db.VarChar(12)
+  residentialAddress String? @db.VarChar(500)
   operatingProvinceCode String @default("79") @db.VarChar(2)
   operatingProvinceConfirmedAt DateTime? @db.Timestamptz(6)
 

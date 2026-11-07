@@ -7,7 +7,7 @@ export async function getDriverAccountingIdentityRows(prisma, { start, end }) {
   const ids = [...new Set(trips.map(item => item.driverId).filter(Boolean))];
   const profiles = ids.length ? await prisma.driverProfile.findMany({
     where: { userId: { in: ids } },
-    select: { id: true, userId: true, fullName: true, citizenId: true,
+    select: { id: true, userId: true, fullName: true, citizenId: true, residentialAddress: true,
       user: { select: { displayName: true, phones: { select: { e164: true }, orderBy: { createdAt: 'desc' }, take: 1 } } } },
   }) : [];
   const byUser = new Map(profiles.map(item => [item.userId, item]));
@@ -15,8 +15,8 @@ export async function getDriverAccountingIdentityRows(prisma, { start, end }) {
     const profile = byUser.get(id);
     const citizenId = profile?.citizenId || '';
     return [id, profile?.id || '', profile?.fullName || profile?.user?.displayName || 'Chưa cập nhật',
-      citizenId || 'Chưa cập nhật', profile?.user?.phones?.[0]?.e164 || 'Chưa cập nhật',
+      citizenId || 'Chưa cập nhật', profile?.residentialAddress || 'Chưa cập nhật', profile?.user?.phones?.[0]?.e164 || 'Chưa cập nhật',
       /^\d{12}$/.test(citizenId) ? 'Cần đối chiếu đăng ký thuế' : 'Thiếu hoặc sai CCCD - cần bổ sung'];
   });
-  return [['Mã tài khoản tài xế', 'Mã hồ sơ', 'Họ tên', 'CCCD / số định danh', 'SĐT', 'Ghi chú đối chiếu'], ...rows];
+  return [['Mã tài khoản tài xế', 'Mã hồ sơ', 'Họ tên', 'CCCD / số định danh', 'Địa chỉ cư trú', 'SĐT', 'Ghi chú đối chiếu'], ...rows];
 }

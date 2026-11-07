@@ -61,6 +61,7 @@ export default function DriverProfileCreateScreen() {
   const insets = useSafeAreaInsets();
   const [operatingProvinceCode, setOperatingProvinceCode] = useState("");
   const [citizenId, setCitizenId] = useState("");
+  const [residentialAddress, setResidentialAddress] = useState("");
   const [fullName, setFullName] = useState("");
   const [vehicleType, setVehicleType] = useState("");
   const [vehicleBrand, setVehicleBrand] = useState("");
@@ -324,6 +325,7 @@ export default function DriverProfileCreateScreen() {
         operatingProvinceCode,
         fullName: fullName.trim(),
         citizenId: citizenId.trim(),
+        residentialAddress: residentialAddress.trim(),
         vehicleType: vehicleType,
         vehicleBrand: vehicleBrand.trim(),
         vehicleFuelType,
@@ -418,6 +420,14 @@ export default function DriverProfileCreateScreen() {
                 style={styles.input}
                 placeholderTextColor="#9CA3AF"
               />
+
+              <Text style={styles.label}>Địa chỉ cư trú</Text>
+              <TextInput value={residentialAddress} onChangeText={setResidentialAddress}
+                placeholder="Số nhà, đường / ấp, thôn, phường / xã, tỉnh / thành phố"
+                multiline maxLength={500} editable={!submitting}
+                style={[styles.input, { minHeight: 90, textAlignVertical: 'top' }]}
+                placeholderTextColor="#9CA3AF" />
+              <Text style={{ color: '#6B7280', marginBottom: 16 }}>Dùng để đối chiếu hồ sơ và lập hoá đơn.</Text>
 
               <OperatingProvincePicker value={operatingProvinceCode} onChange={setOperatingProvinceCode} />
 

@@ -266,6 +266,7 @@ export default function DriverProfileScreen() {
             </Text>
 
             <Text style={styles.driverPhone}>{profile.phone || "--"}</Text>
+            <Text style={[styles.driverPhone, { marginTop: 8 }]}>Địa chỉ cư trú: {profile.residentialAddress || "Chưa cập nhật"}</Text>
 
             <View style={styles.statusBadge}>
               <Text style={styles.statusBadgeText}>Đã duyệt</Text>

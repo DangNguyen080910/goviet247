@@ -55,6 +55,7 @@ export type DriverProfileData = {
   userId: string;
   fullName?: string | null;
   citizenId?: string | null;
+  residentialAddress?: string | null;
   displayName?: string | null;
   phone?: string | null;
   status: DriverKycStatus;
@@ -132,6 +133,7 @@ export type CreateDriverProfilePayload = {
   operatingProvinceCode: string;
   fullName: string;
   citizenId: string;
+  residentialAddress?: string;
   vehicleType: string;
   vehicleBrand: string;
   vehicleFuelType: "ELECTRIC" | "GASOLINE";

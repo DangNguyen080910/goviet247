@@ -154,6 +154,7 @@ export async function fetchDriverDetail(id: string) {
     updatedAt: raw?.updatedAt || null,
     fullName: raw?.fullName || '',
     citizenId: raw?.citizenId || '',
+    residentialAddress: raw?.residentialAddress || '',
     accountDisplayName: raw?.user?.displayName || '',
     profilePhone: raw?.user?.phones?.[0] ? { id: raw.user.phones[0].id, e164: raw.user.phones[0].e164 } : null,
     userId: raw?.userId ? String(raw.userId) : null,

@@ -883,6 +883,7 @@ export default function AdminDrivers() {
                   })()}
 
                   <Typography>Số CCCD: {detail.citizenId || "Chưa cập nhật"}</Typography>
+                  <Typography sx={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>Địa chỉ cư trú: {detail.residentialAddress || "Chưa cập nhật"}</Typography>
                   <Typography>Nhiên liệu: {detail.vehicleFuelType === "ELECTRIC" ? "Xe điện" : detail.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"}</Typography>
                   <Typography>Màu xe: {detail.vehicleColor || "Chưa cập nhật"}</Typography>
                   <Typography>Biển số: {detail.plateNumber || "-"}</Typography>

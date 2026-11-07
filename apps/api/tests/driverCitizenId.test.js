@@ -55,3 +55,24 @@ test('registration supports explicit electric/gasoline fuel and legacy missing v
   assert.equal(schema.parse(payload).vehicleFuelType,undefined);
   for(const vehicleFuelType of ['ANY','',null,123,'DIESEL']) assert.equal(schema.safeParse({...payload,vehicleFuelType}).success,false);
 });
+
+test('address is optional, trimmed and limited to 500 characters', () => {
+  assert.equal(schema.parse({ ...payload, residentialAddress: '  12 Nguyễn Trãi, TP. Hồ Chí Minh  ' }).residentialAddress, '12 Nguyễn Trãi, TP. Hồ Chí Minh');
+  assert.equal(schema.parse(payload).residentialAddress, undefined);
+  for (const residentialAddress of [123, null, 'x'.repeat(501)]) assert.equal(schema.safeParse({ ...payload, residentialAddress }).success, false);
+});
+test('admin can backfill and clear address with an audit entry', async () => {
+  const date = new Date('2026-11-07T00:00:00Z');
+  let saved, log;
+  const tx = {
+    $queryRaw: async () => [],
+    driverProfile: { findUnique: async () => ({ id: 'd', userId: 'u', residentialAddress: 'Old', updatedAt: date, status: 'VERIFIED', user: { phones: [] } }), update: async args => { saved = args.data; } },
+    user: { findUnique: async () => ({}) }, adminDriverActionLog: { create: async args => { log = args.data; } },
+  };
+  const update = new Function('prisma', 'isProvinceCode', adminSource + '; return updateAdminDriverProfile;')({ $transaction: fn => fn(tx) }, () => true);
+  for (const [input, expected] of [['  12 Nguyễn Trãi  ', '12 Nguyễn Trãi'], ['   ', null]]) {
+    const res = { status(n) { this.statusCode = n; return this; }, json(body) { this.body = body; return this; } };
+    await update({ params: { id: 'd' }, body: { residentialAddress: input, reason: 'Đối chiếu hồ sơ', expectedUpdatedAt: date.toISOString() } }, res);
+    assert.equal(res.body.success, true); assert.equal(saved.residentialAddress, expected); assert.match(log.note, /Địa chỉ cư trú/);
+  }
+});

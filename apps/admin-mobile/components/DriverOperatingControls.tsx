@@ -4,12 +4,12 @@ import provinces from '../../api/src/data/vietnam-provinces.json';
 import { patchDriverProfile, patchDriverTripAcceptance } from '../services/adminDriversApi';
 
 const fields = [
-  ['fullName', 'Họ tên tài xế'], ['citizenId', 'Số CCCD'], ['displayName', 'Tên hiển thị tài khoản'],
+  ['fullName', 'Họ tên tài xế'], ['citizenId', 'Số CCCD'], ['residentialAddress', 'Địa chỉ cư trú'], ['displayName', 'Tên hiển thị tài khoản'],
   ['phone', 'Số điện thoại'], ['vehicleBrand', 'Hãng xe'], ['vehicleModel', 'Model xe'], ['vehicleColor', 'Màu xe'],
   ['vehicleYear', 'Đời xe'], ['plateNumber', 'Biển số'],
 ] as const;
 function makeForm(driver: any): Record<string, string> {
-  return { fullName: driver.fullName || '', citizenId: driver.citizenId || '', displayName: driver.accountDisplayName || '',
+  return { fullName: driver.fullName || '', citizenId: driver.citizenId || '', residentialAddress: driver.residentialAddress || '', displayName: driver.accountDisplayName || '',
     phone: driver.profilePhone?.e164 || '', vehicleBrand: driver.brand || '', vehicleModel: driver.model || '', vehicleColor: driver.vehicleColor || '', vehicleFuelType: driver.vehicleFuelType || '',
     vehicleYear: driver.vehicleYear == null ? '' : String(driver.vehicleYear), plateNumber: driver.licensePlate || '',
     vehicleType: driver.vehicleType || '' };
@@ -55,6 +55,7 @@ export default function DriverOperatingControls({ driver, onSaved }: { driver: a
     <Text style={{ marginVertical: 6 }}>Chỉ thay đổi quyền nhận chuyến mới. Chuyến đã nhận vẫn tiếp tục xử lý; không gửi thông báo cho tài xế.</Text>
     <Pressable disabled={busy} style={button} onPress={() => open('ACCEPT')}><Text>{driver.tripAcceptBlocked ? 'Mở khóa nhận chuyến' : 'Khóa nhận chuyến'}</Text></Pressable>
     <Text style={{ marginTop: 10 }}>Số CCCD: {driver.citizenId || "Chưa cập nhật"}</Text>
+    <Text style={{ marginTop: 10 }}>Địa chỉ cư trú: {driver.residentialAddress || "Chưa cập nhật"}</Text>
     <Text style={{ marginTop: 10, fontWeight: '700' }}>Tỉnh/thành thường hoạt động: {name}</Text>
     <Text>{driver.operatingProvinceConfirmedAt ? 'Đã xác nhận khu vực' : 'Chưa xác nhận khu vực'}</Text>
     <Pressable disabled={busy} style={button} onPress={() => open('PROVINCE')}><Text>Sửa thông tin tài xế</Text></Pressable>
@@ -65,7 +66,8 @@ export default function DriverOperatingControls({ driver, onSaved }: { driver: a
           <Text style={{ fontWeight: '600', marginBottom: 4 }}>{label}</Text>
           <TextInput accessibilityLabel={label} editable={!busy} value={form[key]} onChangeText={value => setForm(current => ({ ...current, [key]: value }))}
             keyboardType={key === 'citizenId' || key === 'vehicleYear' ? 'number-pad' : key === 'phone' ? 'phone-pad' : 'default'}
-            maxLength={key === 'citizenId' ? 12 : key === 'phone' ? 20 : key === 'plateNumber' ? 30 : 100}
+            multiline={key === 'residentialAddress'}
+            maxLength={key === 'residentialAddress' ? 500 : key === 'citizenId' ? 12 : key === 'phone' ? 20 : key === 'plateNumber' ? 30 : 100}
             style={{ padding: 12, borderWidth: 1, borderColor: '#94a3b8', backgroundColor: '#fff', borderRadius: 8 }} />
         </View>)}
         <Text>CCCD gồm đúng 12 chữ số, giữ số 0 đầu. Tên hiển thị và SĐT thuộc tài khoản dùng cho cả app tài xế và khách hàng.</Text>

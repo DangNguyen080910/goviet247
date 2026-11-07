@@ -1078,13 +1078,13 @@ export function makeAdminController(prisma) {
       select: { id: true, updatedAt: true, acceptedAt: true, driverId: true, totalPrice: true,
         commissionAmountSnapshot: true, commissionPercentSnapshot: true,
         driver: { select: { displayName: true, phones: { select: { e164: true }, orderBy: { createdAt: "asc" }, take: 1 },
-          driverProfile: { select: { id: true, fullName: true, citizenId: true } } } } },
+          driverProfile: { select: { id: true, fullName: true, citizenId: true, residentialAddress: true } } } } },
     });
     return trips.map(trip => {
       const fee = splitVatIncludedAmount(trip.commissionAmountSnapshot);
       return { tripId: trip.id, eventAt: trip.updatedAt, acceptedAt: trip.acceptedAt,
         driverId: trip.driverId, driverName: trip.driver?.driverProfile?.fullName || trip.driver?.displayName || "Chưa cập nhật",
-        driverPhone: trip.driver?.phones?.[0]?.e164 || "", citizenId: trip.driver?.driverProfile?.citizenId || "",
+        driverPhone: trip.driver?.phones?.[0]?.e164 || "", citizenId: trip.driver?.driverProfile?.citizenId || "", residentialAddress: trip.driver?.driverProfile?.residentialAddress || "",
         totalPrice: trip.totalPrice, commissionPercent: trip.commissionPercentSnapshot == null ? null : Number(trip.commissionPercentSnapshot),
         commissionGross: fee.gross, commissionNet: fee.net, commissionVat: fee.vat, vatRate: fee.vatRate,
         note: trip.commissionAmountSnapshot == null ? "Thiếu phí chụp tại chuyến; cần đối chiếu" : "" };
@@ -1093,8 +1093,8 @@ export function makeAdminController(prisma) {
 
   function buildCommissionDetailCsv(items) {
     return buildCsvString([
-      ["Ngày ghi nhận (giờ VN)", "Mã chuyến", "Mã tài xế", "Tài xế", "SĐT", "CCCD / số định danh", "Giá chuyến", "Tỷ lệ hoa hồng (%)", "Phí hoa hồng gồm VAT", "Phí trước VAT (tham khảo)", "VAT (tham khảo)", "Thuế suất VAT tham khảo (%)", "Ghi chú"],
-      ...items.map(i => [formatDateTimeExport(i.eventAt), i.tripId, i.driverId, i.driverName, i.driverPhone, i.citizenId,
+      ["Ngày ghi nhận (giờ VN)", "Mã chuyến", "Mã tài xế", "Tài xế", "SĐT", "CCCD / số định danh", "Địa chỉ cư trú", "Giá chuyến", "Tỷ lệ hoa hồng (%)", "Phí hoa hồng gồm VAT", "Phí trước VAT (tham khảo)", "VAT (tham khảo)", "Thuế suất VAT tham khảo (%)", "Ghi chú"],
+      ...items.map(i => [formatDateTimeExport(i.eventAt), i.tripId, i.driverId, i.driverName, i.driverPhone, i.citizenId, i.residentialAddress,
         i.totalPrice, i.commissionPercent, i.commissionGross, i.commissionNet, i.commissionVat, i.vatRate, i.note]),
     ]);
   }

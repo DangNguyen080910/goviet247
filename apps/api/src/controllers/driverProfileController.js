@@ -217,6 +217,7 @@ function emitAdminDashboardChanged(req, payload = {}) {
 }
 
 const createDriverProfileSchema = z.object({
+  residentialAddress: z.string().trim().max(500, "Địa chỉ không được vượt quá 500 ký tự.").optional(),
   // Old app versions omit this field; retain default but mark it as unconfirmed.
   operatingProvinceCode: z.string().refine(isProvinceCode, "Vui lòng chọn tỉnh/thành hợp lệ.").optional(),
   // Legacy mobile clients omit citizenId until the mobile rollout.
@@ -462,6 +463,7 @@ export async function getMyDriverProfile(req, res) {
         userId: profile.userId,
         fullName: resolvedFullName,
         citizenId: profile.citizenId,
+        residentialAddress: profile.residentialAddress,
         displayName: resolvedFullName,
         phone: user.phones?.[0]?.e164 || null,
         operatingProvinceCode: profile.operatingProvinceCode,
@@ -1226,6 +1228,7 @@ export async function createDriverProfile(req, res) {
           userId: uid,
           fullName: body.fullName,
           citizenId: body.citizenId ?? null,
+          residentialAddress: body.residentialAddress || null,
           operatingProvinceCode: body.operatingProvinceCode || "79",
           operatingProvinceConfirmedAt: body.operatingProvinceCode ? new Date() : null,
           status: "PENDING",

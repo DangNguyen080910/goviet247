@@ -18,7 +18,7 @@ test('commission detail and CSV retain per-trip fee, identity, zero and missing 
     where=args.where;
     return [{id:'trip-A',updatedAt:new Date('2026-10-31T17:00:00Z'),driverId:'driver-A',totalPrice:1000000,
       commissionAmountSnapshot:108000,commissionPercentSnapshot:10.8,
-      driver:{displayName:'A',phones:[{e164:'0123456789'}],driverProfile:{fullName:'Tài xế A',citizenId:'001234567890'}}},
+      driver:{displayName:'A',phones:[{e164:'0123456789'}],driverProfile:{fullName:'Tài xế A',citizenId:'001234567890',residentialAddress:'12 Nguyễn Trãi'}}},
       {id:'trip-B',updatedAt:new Date(),totalPrice:100,commissionAmountSnapshot:null}];
   } } });
   const res=response(); await ctrl.getCommissionDetails({query:{month:'11',year:'2026'}}, res);
@@ -27,6 +27,7 @@ test('commission detail and CSV retain per-trip fee, identity, zero and missing 
   assert.deepEqual(res.body.totals,{gross:108000,net:100000,vat:8000});
   assert.match(res.body.items[1].note,/Thiếu/);
   assert.equal(res.body.items[0].citizenId,'001234567890');
+  assert.equal(res.body.items[0].residentialAddress,'12 Nguyễn Trãi');
   const csv=response(); await ctrl.getCommissionDetails({query:{quarter:'4',year:'2026',format:'csv'}},csv);
   assert.match(csv.headers['Content-Disposition'],/Q4_2026/);
   assert.ok(csv.body.startsWith('\uFEFF'));

@@ -1,7 +1,7 @@
 import { isProvinceCode } from '../services/driverOperatingProvince.js';
 import { prisma } from '../utils/db.js';
 
-const labels = { citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleColor: 'Màu xe', vehicleFuelType: 'Loại nhiên liệu', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
+const labels = { residentialAddress: 'Địa chỉ cư trú', citizenId: 'Số CCCD', fullName: 'Họ tên', displayName: 'Tên hiển thị', phone: 'SĐT', operatingProvinceCode: 'Khu vực hoạt động', provinceConfirmed: 'Xác nhận khu vực', vehicleType: 'Loại xe', vehicleBrand: 'Hãng xe', vehicleModel: 'Model xe', vehicleColor: 'Màu xe', vehicleFuelType: 'Loại nhiên liệu', vehicleYear: 'Đời xe', plateNumber: 'Biển số' };
 const fail = (message, statusCode = 400) => Object.assign(new Error(message), { statusCode });
 const plateKey = value => String(value || '').toUpperCase().replace(/[\s.-]+/g, '');
 const phoneNumber = value => {
@@ -35,6 +35,10 @@ export async function updateAdminDriverProfile(req, res) {
       }
       if (typeof raw !== 'string') throw fail(labels[key] + ' không hợp lệ.');
       let value = raw.trim();
+      if (key === 'residentialAddress') {
+        if (value.length > 500) throw fail('Địa chỉ không được vượt quá 500 ký tự.');
+        values[key] = value || null; continue;
+      }
       if (!value || value.length > (key === 'plateNumber' ? 30 : 100)) throw fail(labels[key] + ' không được trống hoặc quá dài.');
       if (key === 'citizenId' && !/^\d{12}$/.test(value)) throw fail('Số CCCD phải gồm đúng 12 chữ số.');
       if (key === 'phone') {

@@ -9,12 +9,14 @@ test('quarter identity list deduplicates by account and retains missing identiti
     return [{ driverId: 'a' }, { driverId: 'a' }, { driverId: 'b' }, { driverId: 'c' }];
   } }, driverProfile: { findMany: async query => {
     assert.deepEqual(query.where.userId.in, ['a', 'b', 'c']);
-    return [{ userId: 'a', id: 'profile-a', fullName: 'Nguyễn Văn An', citizenId: '001234567890', user: { phones: [{ e164: '+84900000000' }] } },
+    return [{ userId: 'a', id: 'profile-a', fullName: 'Nguyễn Văn An', citizenId: '001234567890', residentialAddress: '12 Nguyễn Trãi', user: { phones: [{ e164: '+84900000000' }] } },
       { userId: 'b', id: 'profile-b', fullName: 'Nguyễn Văn An', citizenId: null, user: { phones: [] } }];
   } } };
   const rows = await getDriverAccountingIdentityRows(db, { start, end });
   assert.equal(rows.length, 4);
   assert.equal(rows[1][3], '001234567890');
+  assert.equal(rows[1][4], '12 Nguyễn Trãi');
+  assert.equal(rows[2][4], 'Chưa cập nhật');
   assert.equal(rows[2][3], 'Chưa cập nhật');
   assert.equal(rows[3][0], 'c');
   const pdf = await buildAccountingPdf(rows, { title: 'Thông tin tài xế đối chiếu kê khai thuế', quarter: 3, year: 2026, reportType: 'driverIdentity' });

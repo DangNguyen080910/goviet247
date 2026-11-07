@@ -56,7 +56,7 @@ function reportDefinition(rows, reportType) {
         combined("Tài xế / SĐT", ["Tài xế", "SĐT"], 1.7), field("CCCD / số định danh", "CCCD / số định danh", 1.4),
         field("Giá chuyến", "Giá chuyến", 1, true), field("% hoa hồng", "Tỷ lệ hoa hồng (%)", .65, true),
         field("Phí gồm VAT", "Phí hoa hồng gồm VAT", 1.1, true), field("Trước VAT", "Phí trước VAT (tham khảo)", 1.1, true), field("VAT", "VAT (tham khảo)", .9, true)];
-      details = row => detail(row, ["Ghi chú", "Thuế suất VAT tham khảo (%)"]);
+      details = row => detail(row, ["Địa chỉ cư trú", "Ghi chú", "Thuế suất VAT tham khảo (%)"]);
       summary += ` | Tổng phí gồm VAT: ${money(sum("Phí hoa hồng gồm VAT"))}đ`;
       note = "Số tiền VAT tham khảo theo cách tính báo cáo hiện tại. Ngày ghi nhận là ngày cập nhật chuyến; không phải hoá đơn điện tử.";
       totals = [total(["", "", "", "TỔNG", "", "", money(sum("Phí hoa hồng gồm VAT")), money(sum("Phí trước VAT (tham khảo)")), money(sum("VAT (tham khảo)"))])];
@@ -109,10 +109,10 @@ function reportDefinition(rows, reportType) {
     case "driverIdentity":
       pageSize = "A3";
       columns = [field("Mã tài khoản tài xế", "Mã tài khoản tài xế", 1.8), field("Họ tên", "Họ tên", 1.6),
-        field("CCCD / số định danh đối chiếu MST", "CCCD / số định danh", 1.4), field("SĐT", "SĐT", 1.2),
+        field("CCCD / số định danh đối chiếu MST", "CCCD / số định danh", 1.4), field("Địa chỉ cư trú", "Địa chỉ cư trú", 2), field("SĐT", "SĐT", 1.2),
         field("Ghi chú đối chiếu", "Ghi chú đối chiếu", 2)];
       details = (row) => detail(row, ["Mã hồ sơ"]);
-      note = "Chỉ gồm tài xế có chuyến hoàn thành trong quý, cùng mốc thời gian với bảng kê thu nhập. Thông tin hồ sơ hiện tại lúc xuất. Số định danh chưa xác minh khớp đăng ký thuế. Chưa thu thập ngày cấp, nơi cấp, địa chỉ; kế toán đối chiếu và bổ sung khi cần.";
+      note = "Chỉ gồm tài xế có chuyến hoàn thành trong quý, cùng mốc thời gian với bảng kê thu nhập. Thông tin hồ sơ hiện tại lúc xuất. Số định danh chưa xác minh khớp đăng ký thuế. Địa chỉ thiếu được ghi Chưa cập nhật. Chưa thu thập ngày cấp, nơi cấp; kế toán đối chiếu và bổ sung khi cần.";
       break;
     case "driverIncome":
       pageSize = "A3";
