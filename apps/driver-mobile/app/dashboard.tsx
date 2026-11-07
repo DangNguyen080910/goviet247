@@ -1,3 +1,4 @@
+import {fetchDriverNotifications, type DriverNotificationItem} from "../services/notificationApi";
 import { AvailableTripState, confirmsTripUnavailable } from "../../api/src/shared/availableTripState.js";
 import { TripChatButton } from "../services/tripChat";
 import { tripRoutePoints } from "../../api/src/shared/tripRoute.js";
@@ -7,7 +8,7 @@ import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/dashboard.tsx
 import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { io, type Socket } from "socket.io-client";
 import * as Clipboard from "expo-clipboard";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -114,6 +115,8 @@ export default function DashboardScreen() {
     string | null
   >(null);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [targetNotification,setTargetNotification] = useState<DriverNotificationItem | null>(null);
+  const notificationParams = useLocalSearchParams<{notificationId?: string; openNotifications?: string; focusRequest?: string}>();
   const [notificationModalVisible, setNotificationModalVisible] =
     useState(false);
 
@@ -856,6 +859,21 @@ export default function DashboardScreen() {
     }
   }, [markAllAsRead, unreadCount]);
 
+  useEffect(() => {
+    let active=true;
+    setTargetNotification(null);
+    if(notificationParams.openNotifications === "1") {
+      void handleOpenNotifications();
+      void refreshNotifications();
+      if(notificationParams.notificationId) void fetchDriverNotifications(String(notificationParams.notificationId)).then(data=>{
+        if(!active)return;
+        setTargetNotification(data.items[0] || null);
+        if(!data.items.length) Alert.alert("Thông báo không còn khả dụng","Thông báo đã được gỡ hoặc không thuộc tài khoản đang đăng nhập.");
+      }).catch(()=>{if(active)Alert.alert("Chưa tải được thông báo","Vui lòng kiểm tra kết nối rồi mở lại thông báo.");});
+    }
+    return ()=>{active=false;};
+  }, [notificationParams.notificationId, notificationParams.focusRequest, notificationParams.openNotifications]);
+
   const handleCloseNotifications = useCallback(() => {
     setNotificationModalVisible(false);
   }, []);
@@ -1099,7 +1117,6 @@ export default function DashboardScreen() {
   };
 
   const getStatusConfirmationContent = (trip: MyTripItem | null) => {
-    const formattedSupportPhone = formatVietnamesePhone(supportPhone);
 
     if (trip?.status === "ACCEPTED") {
       return {
@@ -1114,7 +1131,7 @@ export default function DashboardScreen() {
     if (trip?.status === "CONTACTED") {
       return {
         title: "Xác nhận đã đón khách",
-        message: `Bạn xác nhận khách đã lên xe và bạn đã gửi hình ảnh kèm định vị điểm đón cho Admin qua Zalo số ${formattedSupportPhone}?`,
+        message: `Bạn xác nhận khách đã lên xe và bạn đã gửi hình ảnh kèm định vị điểm đón trong Liên hệ chuyến để Admin kiểm tra?`,
         note: "Chuyến đi sẽ được chuyển sang trạng thái Đang trên hành trình.",
         confirmLabel: "Xác nhận đã đón",
       };
@@ -1122,7 +1139,7 @@ export default function DashboardScreen() {
 
     return {
       title: "Xác nhận hoàn thành chuyến",
-      message: `Bạn xác nhận đã trả khách an toàn và đã gửi hình ảnh kèm định vị điểm trả cho Admin qua Zalo số ${formattedSupportPhone}?`,
+      message: `Bạn xác nhận đã trả khách an toàn và đã gửi hình ảnh kèm định vị điểm trả trong Liên hệ chuyến để Admin kiểm tra?`,
       note: "Vui lòng kiểm tra kỹ trước khi hoàn thành chuyến.",
       confirmLabel: "Xác nhận hoàn thành",
     };
@@ -1409,7 +1426,7 @@ export default function DashboardScreen() {
         <View style={[styles.noticeBox, styles.noticeInfoBox]}>
           <Text style={[styles.noticeText, styles.noticeInfoText]}>
             ℹ️ Vui lòng xin phép khách chụp hình như nội quy công ty và gửi định
-            vị cho admin qua Zalo số điện thoại: {supportPhone} khi đón khách.
+            vị trong Liên hệ chuyến để Admin kiểm tra khi đón khách.
           </Text>
         </View>
       );
@@ -1420,7 +1437,7 @@ export default function DashboardScreen() {
         <View style={[styles.noticeBox, styles.noticeInfoBox]}>
           <Text style={[styles.noticeText, styles.noticeInfoText]}>
             ℹ️ Vui lòng xin phép khách chụp hình như nội quy công ty và gửi định
-            vị cho admin qua Zalo số điện thoại: {supportPhone} khi trả khách.
+            vị trong Liên hệ chuyến để Admin kiểm tra khi trả khách.
           </Text>
         </View>
       );
@@ -1713,7 +1730,7 @@ export default function DashboardScreen() {
       );
     }
 
-    if (!notifications.length) {
+    if (!notifications.length && !targetNotification) {
       return (
         <View style={styles.notificationEmptyWrap}>
           <Text style={styles.notificationEmptyTitle}>Chưa có thông báo</Text>
@@ -1724,8 +1741,8 @@ export default function DashboardScreen() {
       );
     }
 
-    return notifications.map((item) => (
-      <View key={item.id} style={styles.notificationCard}>
+    return [...(targetNotification ? [targetNotification] : []),...notifications.filter(item=>item.id!==targetNotification?.id)].sort((a,b)=>Number(b.id===notificationParams.notificationId)-Number(a.id===notificationParams.notificationId)).map((item) => (
+      <View key={item.id} style={[styles.notificationCard,item.id===notificationParams.notificationId ? {borderColor:"#F97316",borderWidth:2} : undefined]}>
         <View style={styles.notificationCardTop}>
           <Text style={styles.notificationBadge}>
             {item.isRead ? "ĐÃ ĐỌC" : "THÔNG BÁO"}

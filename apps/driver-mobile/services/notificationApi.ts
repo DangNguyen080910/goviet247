@@ -43,14 +43,14 @@ function normalizeItem(item: any): DriverNotificationItem {
   };
 }
 
-export async function fetchDriverNotifications(): Promise<DriverNotificationResponse> {
+export async function fetchDriverNotifications(notificationId?: string): Promise<DriverNotificationResponse> {
   const token = await getDriverToken();
 
   if (!token) {
     throw new Error("Thiếu token tài xế");
   }
 
-  const url = buildDriverNotificationUrl();
+  const url = buildDriverNotificationUrl(notificationId ? `?notificationId=${encodeURIComponent(notificationId)}` : "");
   const res = await fetch(url, {
     method: "GET",
     headers: {

@@ -105,8 +105,8 @@ test('rider and partner can chat before assignment; driver waits for acceptance'
 });
 test('replacement drivers keep acceptance cutoff and private audience filtering', () => {
   const driver=messageWhere(trip,{role:'DRIVER',id:'d'});
-  assert.equal(driver.tripId,'t');assert.deepEqual(driver.createdAt,{gte:trip.acceptedAt});
-  assert.deepEqual(driver.AND,[{OR:[{audience:'ALL'},{audience:'DRIVER',recipientId:'d'}]}]);
+  assert.equal(driver.tripId,'t');assert.deepEqual(driver.AND[1].OR,[{historyAt:{gte:trip.acceptedAt}},{historyAt:null,createdAt:{gte:trip.acceptedAt}}]);
+  assert.deepEqual(driver.AND.slice(0,1),[{OR:[{audience:'ALL'},{audience:'DRIVER',recipientId:'d'}]}]);
   const rider=messageWhere(trip,{role:'RIDER',id:'r'});
   assert.equal(rider.createdAt,undefined);assert.deepEqual(rider.AND,[{OR:[{audience:'ALL'},{audience:'RIDER'}]}]);
 });

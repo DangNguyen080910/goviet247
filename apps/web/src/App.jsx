@@ -1,8 +1,10 @@
 import { FloatingActionsProvider } from './components/FloatingActionsContext';
 import TripChatHub from "./components/TripChatHub";
+import WebTripChat from "./components/WebTripChat";
+import {useCustomerAuth} from "./context/CustomerAuthContext";
 // Path: goviet247/apps/web/src/App.jsx
 
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 // ADMIN
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -37,10 +39,14 @@ import SeoHubPage from "./pages/customer/SeoHubPage";
 import SeoProvinceHubPage from "./pages/customer/SeoProvinceHubPage";
 import NotFoundPage from "./pages/customer/NotFoundPage";
 
+function ChatEntry(){
+  const route=useLocation(),{token}=useCustomerAuth();
+  return route.pathname.startsWith('/admin')?<TripChatHub/>:<WebTripChat tokenRevision={token}/>;
+}
 export default function App() {
   return (
     <FloatingActionsProvider>
-    <TripChatHub />
+    <ChatEntry />
     <Routes>
       {/* ====================================================== */}
       {/* CUSTOMER */}

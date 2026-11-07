@@ -3,13 +3,14 @@ const fs=require('node:fs'),path=require('node:path'),ts=require('typescript');
 const root=path.resolve(__dirname,'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const compile=source=>ts.transpileModule(source,{compilerOptions:{jsx:ts.JsxEmit.React,target:ts.ScriptTarget.ES2020}}).outputText;
+const CHAT_SERVICE_NOTICE=new Function(read('apps/api/src/shared/chatServiceNotice.js').replace('export const','const')+';return CHAT_SERVICE_NOTICE;')();
 function renderChat(platform,keyboardVisible=false){
  const source=read('apps/mobile-chat/TripChat.tsx');
  const snippet=source.slice(source.indexOf('export default function TripChatScreen')).replace('export default function','function');
  const ast=ts.createSourceFile('Chat.tsx',snippet,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),stateNames=[];
  function visit(node){if(ts.isVariableDeclaration(node)&&ts.isArrayBindingPattern(node.name)&&node.initializer&&ts.isCallExpression(node.initializer)&&node.initializer.expression.getText(ast)==='useState')stateNames.push(node.name.elements[0].name.getText(ast));ts.forEachChild(node,visit);}visit(ast);
  let state=0;const effects=[],listeners={},removed=[];
- const deps={React:{createElement:(type,props,...children)=>({type,props:props||{},children}),Fragment:'Fragment'},useIsFocused:()=>true,useLocalSearchParams:()=>({tripId:'new-trip'}),useState:initial=>{const name=stateNames[state++];return[name==='keyboardVisible'?keyboardVisible:name==='canSend'?true:name==='replies'?['Quick reply']:initial,()=>{}];},useEffect:fn=>effects.push(fn),useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:platform},Keyboard:{addListener:(name,fn)=>{listeners[name]=fn;return{remove:()=>removed.push(name)};}},requestAnimationFrame:fn=>fn(),blue:'#2563eb',ink:'#000',button:{},router:{back(){}},chatAudienceLabel:()=>'',config:{role:'RIDER'}};
+ const deps={CHAT_SERVICE_NOTICE,chatActionButton:{},chatActionLabel:{},useTripCallActive:()=>false,TripCallButton:'TripCallButton',React:{createElement:(type,props,...children)=>({type,props:props||{},children}),Fragment:'Fragment'},useIsFocused:()=>true,useLocalSearchParams:()=>({tripId:'new-trip'}),useState:initial=>{const name=stateNames[state++];return[name==='keyboardVisible'?keyboardVisible:name==='canSend'?true:name==='replies'?['Quick reply']:initial,()=>{}];},useEffect:fn=>effects.push(fn),useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:platform},Keyboard:{addListener:(name,fn)=>{listeners[name]=fn;return{remove:()=>removed.push(name)};}},requestAnimationFrame:fn=>fn(),blue:'#2563eb',ink:'#000',button:{},router:{back(){}},chatAudienceLabel:()=>'',config:{role:'RIDER'}};
  for(const name of ['SafeAreaView','KeyboardAvoidingView','View','Pressable','Text','TextInput','ScrollView','Modal','Image'])deps[name]=name;
  const component=new Function(...Object.keys(deps),compile(snippet)+';return TripChatScreen;')(...Object.values(deps));
  return{tree:component(),effects,listeners,removed};

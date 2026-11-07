@@ -8,8 +8,11 @@
     "seo:import": "node scripts/importSeoRoutes.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-chime-sdk-media-pipelines": "^3.1163.0",
+    "@aws-sdk/client-chime-sdk-meetings": "^3.1163.0",
     "@aws-sdk/client-pinpoint-sms-voice-v2": "^3.1024.0",
     "@aws-sdk/client-s3": "^3.1022.0",
+    "@aws-sdk/credential-providers": "^3.1163.0",
     "@aws-sdk/s3-request-presigner": "^3.1022.0",
     "@prisma/client": "^5.19.0",
     "archiver": "^7.0.1",

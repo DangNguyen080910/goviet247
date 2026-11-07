@@ -1,3 +1,4 @@
+import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
@@ -5,7 +6,7 @@ import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 import TripAudiencePicker from '../components/TripAudiencePicker';
 // Path: goviet247/apps/admin-mobile/app/pending-trips.tsx
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import {
   ActivityIndicator,
@@ -221,7 +222,7 @@ function DetailRow({
 }
 
 export default function PendingTripsScreen() {
-  const params = useLocalSearchParams<{ tab?: string }>();
+  const params = useLocalSearchParams<{ tab?: string; tripId?: string; focusRequest?: string }>();
   const initialTab: TabKey =
     String(params.tab || "").toUpperCase() === "CANCELLED"
       ? "CANCELLED"
@@ -301,7 +302,8 @@ export default function PendingTripsScreen() {
     }, [loadData]),
   );
 
-  const closeDetailModal = useCallback(() => {
+  const closeDetailModal = useCallback(async () => {
+    try{await flushDriverNoteDraft(selectedTripId);}catch(error:any){Alert.alert("Chưa lưu được ghi chú",error.message);return false;}
     setDetailVisible(false);
     setDetail(null);
     setSelectedTripId("");
@@ -310,7 +312,7 @@ export default function PendingTripsScreen() {
     setActionLoading("");
     setIsAdjusting(false);
     setAdjustLoading(false);
-  }, []);
+  }, [selectedTripId]);
 
   const openTripDetail = useCallback(async (tripId: string) => {
     try {
@@ -331,6 +333,8 @@ export default function PendingTripsScreen() {
       setDetailLoading(false);
     }
   }, []);
+
+  useEffect(()=>{if(params.tripId)void openTripDetail(String(params.tripId));},[params.tripId,params.focusRequest]);
 
   const openAdjustForm = useCallback(() => {
     if (!detail) return;
@@ -840,6 +844,7 @@ export default function PendingTripsScreen() {
                 }
               >
                 <View style={styles.detailCard}>
+                  <TripDriverNoteEditor key={detail.id} tripId={detail.id} visible={detailVisible} />
                   <Text style={styles.detailCardTitle}>Thông tin chuyến</Text>
                   <TourServiceSummary snapshot={detail.destinationService} />
 
@@ -949,7 +954,7 @@ export default function PendingTripsScreen() {
                       <Text style={styles.detailValue}>-</Text>
                     )}
                   </View>
-                  <TripDriverNoteEditor key={detail.id} tripId={detail.id} visible={detailVisible} />
+
                   <DetailRow label="Ghi chú của khách" value={detail.note || "-"} highlight />
                 </View>
 

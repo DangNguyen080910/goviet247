@@ -26,8 +26,6 @@ import {
   disconnectAdminSocket
 } from "../services/adminSocket";
 import {
-  playAdminNormalNotify,
-  playAdminUrgentNotify,
   warmupAdminNotify,
 } from "../services/adminNotify";
 
@@ -243,12 +241,12 @@ export default function HomeScreen() {
   );
 
   const handleUrgentRealtime = useCallback(async () => {
-    await playAdminUrgentNotify();
+    // Server push owns sound; realtime only refreshes the dashboard.
     await loadDashboard(false);
   }, [loadDashboard]);
 
   const handleNormalRealtime = useCallback(async () => {
-    await playAdminNormalNotify();
+    // Server push owns sound; realtime only refreshes the dashboard.
     await loadDashboard(false);
   }, [loadDashboard]);
 

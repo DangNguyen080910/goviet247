@@ -1,3 +1,4 @@
+import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
 import { createAcceptanceChatNotices } from "../services/tripAcceptanceChat.js";
 import { hasActiveTripContact, riderDriverContact } from "../shared/tripContact.js";
@@ -436,59 +437,7 @@ function emitTripChangedToDrivers(io, payload = {}) {
 }
 
 function buildRiderTripNotificationContent(trip, reason = "") {
-  const status = String(trip?.status || "")
-    .trim()
-    .toUpperCase();
-  const shortTripId = String(trip?.id || "")
-    .slice(-8)
-    .toUpperCase();
-
-  if (reason === "admin_verify_trip") {
-    return {
-      title: "Chuyến đã được duyệt",
-      message: `Chuyến #${shortTripId} đã được duyệt. Hệ thống đang tìm tài xế phù hợp cho bạn.`,
-    };
-  }
-
-  if (reason === "driver_accept_trip" || status === "ACCEPTED") {
-    return {
-      title: "Đã có tài xế nhận chuyến",
-      message: `Chuyến #${shortTripId} đã có tài xế nhận. Tài xế sẽ liên hệ bạn sớm.`,
-    };
-  }
-
-  if (status === "CONTACTED") {
-    return {
-      title: "Tài xế đã liên hệ",
-      message: `Chuyến #${shortTripId} đã chuyển sang trạng thái Đã liên hệ.`,
-    };
-  }
-
-  if (status === "IN_PROGRESS") {
-    return {
-      title: "Chuyến đang trên hành trình",
-      message: `Chuyến #${shortTripId} đang được thực hiện. Chúc bạn có chuyến đi an toàn.`,
-    };
-  }
-
-  if (status === "COMPLETED") {
-    return {
-      title: "Chuyến đã hoàn thành",
-      message: `Chuyến #${shortTripId} đã hoàn thành. Cảm ơn bạn đã sử dụng GoViet247.`,
-    };
-  }
-
-  if (status === "CANCELLED" || status === "CANCELED") {
-    return {
-      title: "Chuyến đã huỷ",
-      message: `Chuyến #${shortTripId} đã được huỷ. Vui lòng kiểm tra lại hoạt động chuyến đi.`,
-    };
-  }
-
-  return {
-    title: "Cập nhật chuyến",
-    message: `Chuyến #${shortTripId} vừa được cập nhật trạng thái.`,
-  };
+  return tripNotificationContent(trip, reason);
 }
 
 function buildAdminTripStatusPushContent(trip, fromStatus, source) {
@@ -1074,6 +1023,7 @@ export async function acceptTrip(req, res) {
         throw new Error("Snapshot tài chính không hợp lệ");
       }
 
+      const walletHoldId = `${tripId}:${Number(trip.version || 0) + 1}`;
       const balanceBefore = Number(driverProfile.balance || 0);
       const balanceAfterCommission = balanceBefore - commissionAmount;
       const balanceAfterVat = balanceAfterCommission - vatAmount;
@@ -1096,6 +1046,7 @@ export async function acceptTrip(req, res) {
             balanceAfter: balanceAfterCommission,
             note: `Phí môi giới cho chuyến ${tripId}`,
             tripId,
+            walletHoldId,
           },
         });
       }
@@ -1110,6 +1061,7 @@ export async function acceptTrip(req, res) {
             balanceAfter: balanceAfterVat,
             note: `VAT tài xế cho chuyến ${tripId}`,
             tripId,
+            walletHoldId,
           },
         });
       }
@@ -1124,6 +1076,7 @@ export async function acceptTrip(req, res) {
             balanceAfter: balanceAfterPit,
             note: `PIT tài xế cho chuyến ${tripId}`,
             tripId,
+            walletHoldId,
           },
         });
       }
@@ -1137,6 +1090,7 @@ export async function acceptTrip(req, res) {
           status: "ACCEPTED",
           driverId,
           acceptedAt,
+          walletHoldId,
 
           commissionPercentSnapshot: finance.commissionPercent,
           commissionAmountSnapshot: finance.commissionAmount,
@@ -1424,6 +1378,7 @@ export async function cancelDriverTrip(req, res) {
           data: {
             driverProfileId: driverProfile.id,
             type: "TRIP_CANCEL_PENALTY",
+            walletHoldId: trip.walletHoldId || null,
             amount: -penaltyAmount,
             balanceBefore: balanceBeforePenalty,
             balanceAfter: balanceAfterPenalty,
@@ -1439,7 +1394,8 @@ export async function cancelDriverTrip(req, res) {
           version: { increment: 1 },
           status: "PENDING",
           driverId: null,
-          acceptedAt: null,
+          chatVisibleFrom: new Date(),
+          acceptedAt: null, walletHoldId: null,
 
           isVerified: false,
           verifiedAt: null,
@@ -1466,6 +1422,7 @@ export async function cancelDriverTrip(req, res) {
         },
       });
 
+      await tx.tripChatMessage.create({data:{tripId:trip.id,senderId:'system-assignment',senderRole:'SYSTEM',senderLabel:'Lịch sử phân công',clientId:`release_${trip.id}_${trip.version}`,kind:'TEXT',audience:'ADMIN',pushDoneAt:new Date(),text:`Kết thúc lượt tài xế ${driverUserId}. Hội thoại phía trên được lưu riêng cho Admin. Lý do: ${"Tài xế huỷ chuyến"}`}});
       const riderNotification = await createRiderTripNotification(
         tx,
         updatedTrip,
@@ -2071,9 +2028,9 @@ export async function changeTripStatus(req, res) {
       const statusNotes = {
         CONTACTED: "Tài xế xác nhận đã liên hệ khách.",
         IN_PROGRESS:
-          "Tài xế xác nhận đã đón khách và đã gửi ảnh, định vị điểm đón cho Admin qua Zalo.",
+          "Tài xế xác nhận đã đón khách và đã gửi ảnh, định vị điểm đón trong Liên hệ chuyến để Admin kiểm tra.",
         COMPLETED:
-          "Tài xế xác nhận đã trả khách và đã gửi ảnh, định vị điểm trả cho Admin qua Zalo.",
+          "Tài xế xác nhận đã trả khách và đã gửi ảnh, định vị điểm trả trong Liên hệ chuyến để Admin kiểm tra.",
       };
 
       await tx.adminTripActionLog.create({

@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 
 // Never push a route underneath an open native Modal.
 // iOS waits for onDismiss; Android waits for the invisible modal commit.
-export function useTripChatNavigation(closeDetail: () => void) {
+export function useTripChatNavigation(closeDetail: () => void | boolean | Promise<void | boolean>) {
   const pending = useRef('');
   const task = useRef<ReturnType<typeof InteractionManager.runAfterInteractions> | null>(null);
   const frames = useRef<number[]>([]);
@@ -13,10 +13,10 @@ export function useTripChatNavigation(closeDetail: () => void) {
     pending.current = '';
     if (tripId) router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any);
   }, []);
-  const openChatFromDetail = useCallback((tripId: string) => {
+  const openChatFromDetail = useCallback(async (tripId: string) => {
     if (!tripId || pending.current) return;
     pending.current = tripId;
-    closeDetail();
+    try {if(await closeDetail()===false){pending.current="";return;}}catch{pending.current="";return;}
     if (Platform.OS !== 'ios') {
       task.current = InteractionManager.runAfterInteractions(() => {
         frames.current.push(requestAnimationFrame(() => {

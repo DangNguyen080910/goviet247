@@ -1,3 +1,5 @@
+import {chatNotificationRoute, claimNotificationResponse} from '../../api/src/shared/chatNotificationNavigation.js';
+import {TripCallOverlay} from '../../mobile-chat/TripCalls';
 import { ChatInboxBadge, isChatVisible, chatPushShouldPlaySound } from "../services/tripChat";
 // Path: goviet247/apps/driver-mobile/app/_layout.tsx
 import { useEffect } from "react";
@@ -24,14 +26,16 @@ async function handlePushNavigation(
     return;
   }
 
-  if (!(await getDriverToken())) return;
+  if (!(await getDriverToken()) || !claimNotificationResponse(response)) return;
 
   const data = response.notification.request.content.data || {};
+    void Notifications.clearLastNotificationResponseAsync().catch(() => {});
   const type = String(data?.type || "")
     .trim()
     .toUpperCase();
 
-  if (type === "TRIP_CHAT" && data.tripId) { router.push(`/trip-chat?tripId=${encodeURIComponent(String(data.tripId))}` as any); return; }
+  const chatRoute = chatNotificationRoute(data);
+          if (chatRoute) { router.push(chatRoute as any); return; }
 
   if (type === "NEW_TRIP") {
     router.replace("/bootstrap");
@@ -39,7 +43,7 @@ async function handlePushNavigation(
   }
 
   if (type === "SYSTEM_NOTIFICATION") {
-    router.replace("/bootstrap");
+    router.push({pathname: "/dashboard", params: {notificationId: String(data.notificationId || ""), openNotifications: "1", focusRequest: `${response.notification.request.identifier}_${Date.now()}`}});
     return;
   }
 }
@@ -87,6 +91,7 @@ export default function RootLayout() {
           contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 10 }}
           text1Style={{ fontSize: 14 }} text2Style={{ fontSize: 13, lineHeight: 18, color: "#374151" }} /> }} />
         <ChatInboxBadge />
+        <TripCallOverlay />
         <AppUpdatePrompt />
       </NotificationProvider>
     </SafeAreaProvider>

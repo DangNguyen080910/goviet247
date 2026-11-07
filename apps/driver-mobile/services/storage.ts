@@ -1,3 +1,4 @@
+import {clearCallSession} from '../../mobile-chat/TripCalls';
 // Path: goviet247/apps/driver-mobile/services/storage.ts
 import { Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
@@ -28,6 +29,7 @@ export async function removeDriverToken() {
   }
 
   await SecureStore.deleteItemAsync(DRIVER_TOKEN_KEY);
+  await clearCallSession();
   const Notifications = await import("expo-notifications");
   await Promise.allSettled([Notifications.setBadgeCountAsync(0), Notifications.dismissAllNotificationsAsync(), Notifications.clearLastNotificationResponseAsync()]);
 }

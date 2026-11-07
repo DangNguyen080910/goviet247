@@ -42,3 +42,17 @@ test("admin wallet subtraction exports a negative movement matching the balance 
   assert.equal(exported.balanceBefore + exported.amount, exported.balanceAfter);
   assert.equal(debit.amount, 500000);
 });
+
+for (const scoped of [true,false]) test(`refund then same-driver reassignment counts only real movements (scoped=${scoped})`,()=>{
+ const types=['COMMISSION_HOLD','COMMISSION_REFUND','COMMISSION_HOLD','TRIP_CANCEL_PENALTY'];
+ const rows=types.map((type,i)=>({...row(String(i),'A','trip',type,i===1?100:-100,i+1),...(scoped?{walletHoldId:i<2?'first':'second'}:{})}));
+ const result=normalizeDriverWalletItemsForAccounting(rows);
+ assert.equal(result.reduce((sum,r)=>sum+r.amount,0),-100);
+ assert.deepEqual(result.map(r=>r.id),['0','1','2']);
+ assert.deepEqual(normalizeDriverWalletItemsForAccounting([rows[3]],rows.slice(0,3)),[]);
+});
+test('scoped penalty never matches a different acceptance with the same amount',()=>{
+ const hold={...row('h','A','trip','COMMISSION_HOLD',-100,1),walletHoldId:'old'};
+ const penalty={...row('p','A','trip','TRIP_CANCEL_PENALTY',-100,2),walletHoldId:'new'};
+ assert.equal(normalizeDriverWalletItemsForAccounting([hold,penalty]).length,2);
+});

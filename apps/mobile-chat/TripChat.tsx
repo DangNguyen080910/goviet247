@@ -1,9 +1,12 @@
+import {chatSupportUrl} from '../api/src/shared/chatSupport.js';
+import {CHAT_SERVICE_NOTICE} from '../api/src/shared/chatServiceNotice.js';
+import {configureCalls, TripCallButton, useTripCallActive} from './TripCalls';
 import {chatTripDetailRows,chatConversationRoute} from '../api/src/shared/chatTripDetail.js';
 import { chatAudienceLabel } from '../api/src/shared/tripChatVisibility.js';
 import { playChatAlert, setChatRecordingActive } from './chatAlerts';
 import { createChatRecording } from './audioRecording';
 import { splitChatLinks } from './chatLinks';
-import { newUnreadConversations } from '../api/src/shared/chatAlerts.js';
+import { newUnreadConversations, chatMessageAlertsAdmin } from '../api/src/shared/chatAlerts.js';
 import DraggableFloatingAction from './DraggableFloatingAction';
 import { isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE, DRIVER_CHAT_ENDED_NOTICE, COMPLETED_CHAT_NOTICE } from '../api/src/shared/tripChat.js';
 import { useIsFocused } from '@react-navigation/native';
@@ -24,9 +27,10 @@ let config: Config;
 export let activeChatTrip = '';
 export function configureChat(value: Config) {
   config = value;
+  configureCalls(value);
 }
 export function isChatVisible(data: Record<string, unknown>) {
-  return data?.type === 'TRIP_CHAT' && activeChatTrip === String(data.tripId) && AppState.currentState === 'active';
+  return ['TRIP_CHAT','TRIP_CALL_MISSED'].includes(String(data?.type)) && activeChatTrip === String(data.tripId) && AppState.currentState === 'active';
 }
 async function api(path: string, options: RequestInit = {}) {
   const token = await config.getToken();
@@ -59,6 +63,8 @@ const button = {
   backgroundColor: '#eff6ff',
   margin: 3
 } as const;
+const chatActionButton = {flex:1,minWidth:0,minHeight:64,paddingHorizontal:2,paddingVertical:8,borderRadius:12,backgroundColor:'#eff6ff',alignItems:'center',justifyContent:'center',gap:4} as const;
+const chatActionLabel = {fontSize:12,textAlign:'center',color:ink} as const;
 export function TripChatButton({
   tripId,
   label = 'Liên hệ chuyến',
@@ -74,10 +80,10 @@ export function TripChatButton({
 }) {
   const driverEnded=config?.role==='DRIVER' && ['COMPLETED','CANCELLED'].includes(String(status));
   const ended = driverEnded || (config?.role === 'RIDER' && isRiderChatEnded(status));
-  return <Pressable accessibilityRole="button" onPress={event => { event.stopPropagation(); if (ended) Alert.alert('Liên hệ GoViet247', driverEnded?DRIVER_CHAT_ENDED_NOTICE:RIDER_CHAT_ENDED_NOTICE); else if (onOpen) onOpen(); else router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any); }} style={[button, prominent ? {backgroundColor:blue,minHeight:48,justifyContent:'center',alignItems:'center',marginHorizontal:0,marginBottom:12} : null, ended ? {backgroundColor:'#f1f5f9'} : null]}><Text style={{
+  return <Pressable accessibilityRole="button" onPress={event => { event.stopPropagation(); if (ended) Alert.alert('Liên hệ GoViet247', driverEnded?DRIVER_CHAT_ENDED_NOTICE:RIDER_CHAT_ENDED_NOTICE,[{text:'Đóng',style:'cancel'},{text:'Mở Zalo hỗ trợ',onPress:()=>{void chatSupportUrl(config.base,config.role).then(url=>Linking.openURL(url)).catch(error=>Alert.alert('Liên hệ GoViet247',error.message));}}]); else if (onOpen) onOpen(); else router.push(`/trip-chat?tripId=${encodeURIComponent(tripId)}` as any); }} style={[button, prominent ? {backgroundColor:blue,minHeight:48,justifyContent:'center',alignItems:'center',marginHorizontal:0,marginBottom:12} : null, ended ? {backgroundColor:'#f1f5f9'} : null]}><Text style={{
       color: ended ? '#64748b' : prominent ? 'white' : blue,
       fontWeight: '700'
-    }}>💬 {config?.role!=='ADMIN' && isRiderChatEnded(status)?'Chat chuyến (đã kết thúc)':label}</Text></Pressable>;
+    }}>💬 {config?.role!=='ADMIN' && isRiderChatEnded(status)?'Liên hệ hỗ trợ':label}</Text></Pressable>;
 }
 export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
   const [unread, setUnread] = useState(0),
@@ -133,6 +139,9 @@ export function ChatInboxBadge({inline = false}: {inline?: boolean} = {}) {
   return draggable ? <DraggableFloatingAction storageKey={config.role === 'DRIVER' ? 'goviet247_driver_inbox_position_v1' : 'goviet247_admin_inbox_position_v1'}>{action}</DraggableFloatingAction> : action;
 }
 type Msg = {
+  recordingCallId?: string;
+  heartCount?: number;
+  hearted?: boolean;
   deletedAt?: string | null;
   id: string;
   senderId: string;
@@ -161,6 +170,16 @@ function ChatImage({tripId, messageId, onOpen}: {tripId:string; messageId:string
   </Pressable>;
 }
 export default function TripChatScreen() {
+  const callActive=useTripCallActive();
+  useEffect(()=>{
+    if(!callActive)return;
+    // Discard an interrupted voice draft; never send it automatically during a call.
+    generation.current++;
+    const rec=recorder.current;recorder.current=null;
+    void rec?.stopAndUnloadAsync().catch(()=>{});
+    void sound.current?.unloadAsync().catch(()=>{});sound.current=null;
+    setRecording(false);setPlaying('');setChatRecordingActive(false);
+  },[callActive]);
   const [chatStatus,setChatStatus]=useState('');
   const [tripView,setTripView]=useState<{id:string;loading:boolean;trip?:any;error?:string}|null>(null);
   const detailRequest=useRef(0);
@@ -175,8 +194,13 @@ export default function TripChatScreen() {
   const focused = useIsFocused();
   const params = useLocalSearchParams<{
       tripId?: string;
+      messageId?: string;
+      callId?: string;
     }>(),
     tripId = String(params.tripId || '');
+  const targetMessageId = String(params.messageId || '');
+  const targetLoaded = useRef(''), targetFocused = useRef('');
+  const atBottom = useRef(!targetMessageId);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   useEffect(() => {
     const show = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow', () => {
@@ -198,6 +222,7 @@ export default function TripChatScreen() {
     [older, setOlder] = useState(false);
   const [imageDraft, setImageDraft] = useState<{uri:string; type:string; name:string; clientId:string} | null>(null);
   const [imageView, setImageView] = useState<{id:string; uri:string} | null>(null);
+  const historyFrom = useRef<string | null>(null);
   const sending = useRef(false);
   const [recording, setRecording] = useState(false),
     [draft, setDraft] = useState<{
@@ -233,7 +258,7 @@ export default function TripChatScreen() {
       if (mounted.current) setBusy(false);
     }
   };
-  const load = useCallback(async () => {
+  const load = useCallback(async (): Promise<void> => {
     if (!tripId) {
       const d = await api('/conversations');
       if (mounted.current) setInbox(d.items);
@@ -241,7 +266,11 @@ export default function TripChatScreen() {
     }
     const version = generation.current;
     let d;
-    try { d = await api(`/${encodeURIComponent(tripId)}/messages`); }
+    try {
+      const target = targetMessageId && targetLoaded.current !== targetMessageId;
+      d = await api(`/${encodeURIComponent(tripId)}/messages${target ? `?around=${encodeURIComponent(targetMessageId)}` : targetMessageId && lastId.current ? `?after=${encodeURIComponent(lastId.current)}` : ''}`);
+      if (target && mounted.current && version === generation.current) { targetLoaded.current = targetMessageId; olderRef.current = true; setMore(d.hasMore); }
+    }
     catch (error: any) {
       if (['RIDER_CHAT_ENDED','DRIVER_CHAT_ENDED'].includes(error.code) && version === generation.current && mounted.current) {
         generation.current++;
@@ -251,33 +280,48 @@ export default function TripChatScreen() {
       throw error;
     }
     if (!mounted.current || version !== generation.current) return;
+    if (historyFrom.current && (!d.visibleFrom || d.visibleFrom < historyFrom.current)) return;
+    if (historyFrom.current !== d.visibleFrom || d.historyReset) {
+      historyFrom.current = d.visibleFrom || null;
+      olderRef.current = false; lastId.current = ''; setMore(d.hasMore);
+      setImageView(null); await sound.current?.unloadAsync(); sound.current = null; setPlaying('');
+    }
     setImageView(current => current && d.items.some((m:Msg) => m.id === current.id && m.deletedAt) ? null : current);
     setActor(d.actor);
     setCanSend(d.canSend);setChatStatus(d.status || '');
     setReplies(d.quickReplies || []);
     if (!olderRef.current) setMore(d.hasMore);
+    const deleted=new Map<string,string>((d.deletedMessages || []).map((m:any)=>[String(m.id),String(m.deletedAt)]));
+    if(deleted.has(playing)){await sound.current?.unloadAsync();sound.current=null;setPlaying('');}
+    setImageView(current=>current && deleted.has(current.id)?null:current);
     setItems(current => {
-      const byId = new Map((olderRef.current ? current : []).map(m => [m.id, m]));
+      const byId = new Map((olderRef.current ? current.filter(m => !d.visibleFrom || m.createdAt >= d.visibleFrom) : []).map(m => [m.id, m]));
       for (const m of d.items) byId.set(m.id, m);
+      for(const [id,deletedAt] of deleted){const old=byId.get(id);if(old)byId.set(id,{...old,deletedAt,text:undefined,heartCount:0,hearted:false});}
       return [...byId.values()].sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.id.localeCompare(b.id));
     });
     const latest = d.items.at(-1);
     if (latest && latest.id !== lastId.current) {
-      if (lastId.current && latest.senderId !== d.actor.id) void playChatAlert(latest.id);
+      if (lastId.current && latest.senderId !== d.actor.id && (d.actor.role !== 'ADMIN' || chatMessageAlertsAdmin(latest))) void playChatAlert(latest.id);
       lastId.current = latest.id;
-      if (!olderRef.current) setTimeout(() => scroll.current?.scrollToEnd({
+      if (!olderRef.current && !targetMessageId) setTimeout(() => scroll.current?.scrollToEnd({
         animated: true
       }), 100);
     }
-    if (latest && AppState.currentState === 'active') await post(`/${tripId}/read`, {
+    if (latest && atBottom.current && AppState.currentState === 'active') await post(`/${tripId}/read`, {
       messageId: latest.id
     });
-  }, [tripId]);
+    if (targetMessageId && d.hasMore && d.items.length && targetLoaded.current) {
+      setTimeout(() => { if (mounted.current && version === generation.current && AppState.currentState === 'active') void load().catch((e:any)=>setError(e.message)); }, 100);
+    }
+  }, [tripId, targetMessageId]);
   useEffect(() => {
     if (!focused) return;
     generation.current++;
     mounted.current = true;
     lastId.current = '';
+    historyFrom.current = null;
+    targetLoaded.current = ''; targetFocused.current = ''; atBottom.current = !targetMessageId;
     setItems([]);
     setOlder(false);
     olderRef.current = false;
@@ -307,7 +351,7 @@ export default function TripChatScreen() {
       recorder.current = null;
       sound.current?.unloadAsync().catch(() => {});
     };
-  }, [tripId, focused]);
+  }, [tripId, focused, targetMessageId]);
   useEffect(() => {
     if (!recording) return;
     const timer = setInterval(() => setSeconds(s => s + 1), 1000);
@@ -495,8 +539,8 @@ export default function TripChatScreen() {
         fontWeight: '800',
         color: ink,
         flex: 1
-      }}>{tripId ? 'Liên hệ chuyến' : 'Tin nhắn chuyến'}</Text></View>
- {tripId ? <View style={{padding:12,gap:6}}><Text selectable style={{fontWeight:'800',flexShrink:1}}>#{tripId}</Text><Pressable accessibilityRole="button" style={button} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
+      }}>{tripId ? 'Liên hệ chuyến' : 'Tin nhắn chuyến'}</Text>{tripId && <TripCallButton tripId={tripId}/>}</View>
+ {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',alignItems:'center'}}><Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:0,color:ink}}>#{tripId}</Text><Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
  {!!error && <Text accessibilityRole="alert" style={{
       color: '#b91c1c',
       padding: 12
@@ -510,32 +554,44 @@ export default function TripChatScreen() {
       }} onPress={() => router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any)}><Text style={{
           fontWeight: '800'
         }}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text>{chatConversationRoute(c) ? <Text style={{color:'#64748b',marginVertical:6}}>{chatConversationRoute(c)}</Text> : null}<Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text><Pressable accessibilityRole="button" style={button} onPress={event=>{event.stopPropagation();router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any);}}><Text style={{color:blue}}>Xem tin nhắn</Text></Pressable></Pressable>)}</ScrollView> : <>
- <Text style={{
-        padding: 10,
-        color: '#64748b',
-        fontSize: 12
-      }}>{chatStatus==='COMPLETED'?COMPLETED_CHAT_NOTICE:'Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến. Tài xế tham gia sau khi nhận chuyến. Không chia sẻ số điện thoại cá nhân.'}</Text>
- <ScrollView ref={scroll} style={{
+ <ScrollView ref={scroll} scrollEventThrottle={100} onScroll={event => {
+   const {layoutMeasurement,contentOffset,contentSize} = event.nativeEvent;
+   atBottom.current = layoutMeasurement.height + contentOffset.y >= contentSize.height - 30;
+   if (atBottom.current && lastId.current && AppState.currentState === "active") void post(`/${tripId}/read`,{messageId:lastId.current}).catch(()=>{});
+ }} style={{
         flex: 1
       }} contentContainerStyle={{
         padding: 14,
         gap: 10
       }} keyboardShouldPersistTaps="handled">
+ {chatStatus==='COMPLETED' ? <Text style={{color:'#64748b',fontSize:13}}>{COMPLETED_CHAT_NOTICE}</Text> : <View style={{backgroundColor:'#fff1f2',borderColor:'#fecdd3',borderWidth:1,borderRadius:12,padding:12,gap:6}}>
+ <Text style={{color:'#9f1239',fontSize:13,fontWeight:'700',lineHeight:19}}>{CHAT_SERVICE_NOTICE.lead}</Text>
+ <Text style={{color:ink,fontSize:13,lineHeight:19}}>{CHAT_SERVICE_NOTICE.recording}</Text>
+ <Text style={{color:ink,fontSize:13,lineHeight:19}}>{CHAT_SERVICE_NOTICE.outside}</Text>
+ </View>}
  {more && <Pressable style={button} onPress={() => void run(async () => {
           const d = await api(`/${tripId}/messages?before=${items[0]?.id}`);
+          if (d.visibleFrom !== historyFrom.current || d.historyReset) { await load(); return; }
           setOlder(true);
           olderRef.current = true;
           setItems(current => [...d.items, ...current.filter(m => !d.items.some((x: Msg) => x.id === m.id))]);
           setMore(d.hasMore);
         })}><Text>Tải tin cũ hơn</Text></Pressable>}
- {items.map(m => <View key={m.id} style={{
+ {items.map(m => <View key={m.id} onLayout={event => {
+          if (m.id === targetMessageId && targetFocused.current !== targetMessageId) {
+            targetFocused.current = targetMessageId;
+            const y = event.nativeEvent.layout.y;
+            requestAnimationFrame(() => scroll.current?.scrollTo({y:Math.max(0,y-24),animated:true}));
+          }
+        }} style={{
           alignSelf: m.senderId === actor.id ? 'flex-end' : 'flex-start',
           maxWidth: '92%',
           backgroundColor: m.senderId === actor.id ? '#dbeafe' : 'white',
           padding: 12,
           borderRadius: 14,
           borderWidth: 1,
-          borderColor: '#e2e8f0'
+          borderColor: m.id === targetMessageId ? '#f97316' : '#e2e8f0',
+          ...(m.id === targetMessageId ? {borderWidth:2} : {})
         }}><Text style={{
             fontSize: 12,
             fontWeight: '700',
@@ -561,6 +617,17 @@ export default function TripChatScreen() {
               fontSize: 12,
               color: '#64748b'
             }}>Vị trí tại thời điểm gửi · Bấm mở bản đồ</Text></Pressable>}
+ {actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Pressable style={button} disabled={recording} accessibilityRole="button" onPress={() => void run(async () => {
+   const token=await config.getToken();
+   const response=await fetch(`${config.base}/api/trip-calls/${encodeURIComponent(m.recordingCallId!)}/recording`,{headers:{Authorization:`Bearer ${token}`}});
+   const data=await response.json();if(!response.ok)throw new Error(data.message || 'Chưa nghe được ghi âm.');
+   await play(data.url,m.id);
+ })}><Text style={{color:blue}}>▶ Nghe ghi âm cuộc gọi</Text></Pressable>}
+ {!m.deletedAt && <Pressable accessibilityRole="button" accessibilityLabel={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} accessibilityState={{selected:Boolean(m.hearted),disabled:!canSend || busy}} disabled={!canSend || busy} style={{alignSelf:'flex-end',minWidth:44,minHeight:44,alignItems:'center',justifyContent:'center',borderRadius:22,backgroundColor:m.hearted ? '#fff1f2' : '#f8fafc',marginTop:6}} onPress={() => void run(async () => {
+   const result = await api(`/${tripId}/messages/${m.id}/heart`, {method:'PUT',body:JSON.stringify({active:!m.hearted})});
+   setItems(current => current.map(item => item.id === m.id ? {...item,hearted:result.hearted,heartCount:result.heartCount} : item));
+   await load();
+ })}><Text style={{fontSize:18,color:m.hearted ? '#e11d48' : '#64748b'}}>{m.hearted ? '♥' : '♡'}{m.heartCount ? ` ${m.heartCount}` : ''}</Text></Pressable>}
  {actor.role === 'ADMIN' && !m.deletedAt && <Pressable disabled={busy} style={button} onPress={() => Alert.alert('Xoá tin nhắn', 'Xoá nội dung khỏi hội thoại? Thao tác được lưu nhật ký.', [{
             text: 'Giữ lại',
             style: 'cancel'
@@ -627,7 +694,12 @@ export default function TripChatScreen() {
    backgroundColor:blue,opacity:busy || recording || !text.trim() ? 0.4 : 1
  }}><Text style={{fontWeight:'800',color:'white'}}>Gửi</Text></Pressable>
  </View>
- <View style={{flexDirection:'row',flexWrap:'wrap'}}><Pressable style={button} disabled={busy} onPress={() => { Keyboard.dismiss(); void run(recording ? stopRecording : startRecording); }}><Text>{recording ? `⏹ Dừng (${seconds}s)` : '🎙 Ghi âm'}</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => void run(currentLocation)}><Text>📍 Gửi định vị</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(true)); }}><Text>📷 Chụp ảnh</Text></Pressable><Pressable style={button} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(false)); }}><Text>🖼 Chọn ảnh</Text></Pressable></View></>}
+ <View style={{flexDirection:'row',gap:4,marginTop:6}}>
+ <Pressable accessibilityRole="button" accessibilityLabel={recording?'Dừng ghi âm':'Ghi âm'} style={chatActionButton} disabled={busy} onPress={() => { Keyboard.dismiss(); void run(recording ? stopRecording : startRecording); }}><Text accessible={false} style={{fontSize:20}}>{recording?'⏹':'🎙'}</Text><Text style={chatActionLabel}>{recording ? `Dừng (${seconds}s)` : 'Ghi âm'}</Text></Pressable>
+ <Pressable accessibilityRole="button" accessibilityLabel="Gửi định vị" style={chatActionButton} disabled={busy || recording} onPress={() => void run(currentLocation)}><Text accessible={false} style={{fontSize:20}}>📍</Text><Text style={chatActionLabel}>Gửi định vị</Text></Pressable>
+ <Pressable accessibilityRole="button" accessibilityLabel="Chụp ảnh" style={chatActionButton} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(true)); }}><Text accessible={false} style={{fontSize:20}}>📷</Text><Text style={chatActionLabel}>Chụp ảnh</Text></Pressable>
+ <Pressable accessibilityRole="button" accessibilityLabel="Chọn ảnh" style={chatActionButton} disabled={busy || recording} onPress={() => { Keyboard.dismiss(); void run(() => chooseImage(false)); }}><Text accessible={false} style={{fontSize:20}}>🖼</Text><Text style={chatActionLabel}>Chọn ảnh</Text></Pressable>
+ </View></>}
  <Text style={{
           fontSize: 11,
           color: '#64748b'

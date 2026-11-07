@@ -1,3 +1,4 @@
+import {flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
 import { TripChatButton } from "../TripChatHub";
 import TripDriverNoteEditor from "./TripDriverNoteEditor";
 import TripMoney from "./TripMoney";
@@ -151,6 +152,7 @@ function getWaitMinutes(detail) {
 }
 
 export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
+  async function closeWithNote(){try{await flushDriverNoteDraft(tripId);onClose();}catch(error){window.alert(error.message||"Chưa lưu được ghi chú.");}}
   const [dangTai, setDangTai] = useState(true);
   const [loi, setLoi] = useState("");
   const [detail, setDetail] = useState(null);
@@ -430,7 +432,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
   }
 
   return (
-    <div style={overlay} onClick={onClose}>
+    <div style={overlay} onClick={closeWithNote}>
       <div style={modal} onClick={(e) => e.stopPropagation()}>
         <div style={header}>
           <div>
@@ -451,12 +453,13 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               </button>
             )}
 
-            <button style={btn} onClick={onClose}>
+            <button style={btn} onClick={closeWithNote}>
               Đóng
             </button>
           </div>
         </div>
 
+        {!dangTai && !loi && <TripDriverNoteEditor key={tripId} tripId={tripId} />}
         {dangTai && <div>Đang tải…</div>}
         {loi && <div style={{ color: "crimson" }}>Lỗi: {loi}</div>}
         {adjustError && <div style={{ color: "crimson", marginBottom: 10 }}>{adjustError}</div>}
@@ -772,7 +775,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
               )}
             </Section>
 
-            <TripDriverNoteEditor key={tripId} tripId={tripId} />
+
 
             <Section title="Ghi chú của khách" highlight>
               <div style={{ opacity: 0.9 }}>{detail?.note || "-"}</div>

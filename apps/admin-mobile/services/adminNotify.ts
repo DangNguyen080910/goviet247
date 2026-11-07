@@ -58,17 +58,7 @@ async function vibrateMedium() {
 
 export async function warmupAdminNotify() {
   try {
-    Notifications.setNotificationHandler({
-      handleNotification: async () =>
-        ({
-          shouldShowAlert: true,
-          shouldShowBanner: true,
-          shouldShowList: true,
-          shouldPlaySound: true,
-          shouldSetBadge: true,
-        }) as any,
-    });
-
+    // Root layout owns foreground presentation and chat sound deduplication.
     if (Platform.OS === "android") {
       await Notifications.setNotificationChannelAsync("admin_new_trip_v1", {
         name: "Chuyến mới chờ duyệt",

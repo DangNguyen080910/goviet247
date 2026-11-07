@@ -12,3 +12,15 @@ export function getQuarterDateRange(year, quarter) {
   const end = new Date(Date.UTC(safeYear, startMonth + 3, 1) - VIETNAM_UTC_OFFSET_MS - 1);
   return { year: safeYear, quarter: safeQuarter, start, end };
 }
+
+// A month takes precedence over quarter; all boundaries remain Vietnam local time.
+export function getAccountingPeriod(year, quarter, month) {
+  const range = getQuarterDateRange(year, quarter);
+  if (month == null || month === "") return { ...range, month: null, periodKey: `Q${range.quarter}_${range.year}` };
+  const m = Number(month);
+  if (!Number.isInteger(m) || m < 1 || m > 12) throw new Error("Tháng không hợp lệ. Vui lòng chọn từ 1 đến 12.");
+  return { year: range.year, quarter: Math.ceil(m / 3), month: m,
+    start: new Date(Date.UTC(range.year, m - 1, 1) - VIETNAM_UTC_OFFSET_MS),
+    end: new Date(Date.UTC(range.year, m, 1) - VIETNAM_UTC_OFFSET_MS - 1),
+    periodKey: `T${String(m).padStart(2, "0")}_${range.year}` };
+}

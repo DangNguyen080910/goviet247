@@ -1,3 +1,4 @@
+import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
@@ -312,14 +313,15 @@ export default function UnassignedTripsScreen() {
     }, [loadData]),
   );
 
-  const closeDetail = useCallback(() => {
+  const closeDetail = useCallback(async () => {
+    try{await flushDriverNoteDraft(selectedTripId);}catch(error:any){Alert.alert("Chưa lưu được ghi chú",error.message);return false;}
     setDetailVisible(false);
     setSelectedTripId("");
     setDetail(null);
     setDetailLoading(false);
     setActionLoading("");
     setCancelReason("");
-  }, []);
+  }, [selectedTripId]);
 
   const openTripDetail = useCallback(async (tripId: string) => {
     try {

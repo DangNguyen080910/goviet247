@@ -1,3 +1,4 @@
+import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { Alert } from "react-native";
 import { router } from "expo-router";
 import { API_BASE_URL } from "../constants/api";
@@ -33,6 +34,8 @@ async function handleAuthExpired() {
 }
 const inFlightMutations = new Map<string, Promise<any>>();
 export async function adminRequest(path: string, options: RequestInit = {}) {
+  const verifying=path.match(/^\/api\/(?:admin\/trips|trips\/admin\/trips)\/([^/]+)\/(?!driver-note(?:$|\?))/);
+  if(verifying && String(options.method||"GET").toUpperCase()!=="GET")await flushDriverNoteDraft(decodeURIComponent(verifying[1]));
   const token = await getAdminToken();
   const method = String(options.method || "GET").toUpperCase();
   const isMutation = method !== "GET" && method !== "HEAD";

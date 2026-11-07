@@ -1,12 +1,14 @@
+import {chatMessageAlertsAdmin} from '../shared/chatAlerts.js';
+import { chatMessageInCurrentHistory } from '../shared/chatAssignmentHistory.js';
 import { CHAT_ACTIVE_STATUSES, isRiderChatEnded } from '../shared/tripChat.js';
 import { chatAudienceVisible } from '../shared/tripChatVisibility.js';
 import { getTripRiderRecipientUserIds } from './riderTripAccess.js';
 
 export const ACCEPTANCE_CHAT_TEXT = {
-  RIDER: 'Tài xế đã nhận chuyến của bạn. Tài xế sẽ nhắn tại đây để xác nhận lịch đón và thông tin chuyến. Bạn vui lòng theo dõi và phản hồi nhé.',
-  PARTNER: 'Tài xế đã nhận chuyến của công ty. Vui lòng trao đổi tại đây để xác nhận lịch đón và yêu cầu phục vụ khách.',
-  DRIVER_RIDER: 'Bạn đã nhận chuyến thành công. Vui lòng nhắn tại đây ngay để xác nhận lịch đón và thông tin chuyến với người đặt.',
-  DRIVER_PARTNER: 'Bạn đã nhận chuyến đối tác thành công. Vui lòng nhắn xác nhận với điều phối viên tại đây ngay. Điều phối viên sẽ trực tiếp liên hệ khách.',
+  RIDER: 'Tài xế đã nhận chuyến. Mở Liên hệ chuyến để nhắn tin xác nhận lịch đón. Người trực tiếp đi có thể bấm Gọi tài xế để trao đổi qua Internet.',
+  PARTNER: 'Chuyến của công ty đã có tài xế nhận. Mở Liên hệ chuyến để xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên phụ trách có thể nhắn tin hoặc bấm Gọi tài xế.',
+  DRIVER_RIDER: 'Bạn đã nhận chuyến thành công. Mở Liên hệ chuyến để nhắn tin xác nhận lịch đón với khách; dùng nút Gọi khách khi cần trao đổi với người trực tiếp đi.',
+  DRIVER_PARTNER: 'Bạn đã nhận chuyến đối tác. Mở Liên hệ chuyến để nhắn tin hoặc bấm Gọi điều phối, xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên sẽ liên hệ khách.',
 };
 
 // Called only inside the successful acceptance transaction, while the trip row is locked.
@@ -31,9 +33,15 @@ export async function chatPushRecipientIds(db, trip, message) {
   if (message.senderRole === 'SYSTEM' && message.clientId?.startsWith('accept_') &&
     (!trip.driverId || !CHAT_ACTIVE_STATUSES.includes(trip.status) || !trip.acceptedAt ||
       new Date(message.createdAt).getTime() !== new Date(trip.acceptedAt).getTime())) return [];
-  const admins = await db.admin_users.findMany({where: {is_active: true, role: {in: ['ADMIN', 'STAFF']}}, select: {id: true}});
+  if (message.senderRole === 'SYSTEM' && message.clientId === 'booking_created') return [];
+  if (message.senderRole === 'SYSTEM' && message.clientId?.startsWith('accept_')) {
+    // Customer/Admin already receive the status push for this same acceptance.
+    if (message.audience === 'RIDER') return [];
+    if (message.audience === 'DRIVER') return CHAT_ACTIVE_STATUSES.includes(trip.status) && trip.driverId === message.recipientId ? [trip.driverId] : [];
+  }
+  const admins = chatMessageAlertsAdmin(message) ? await db.admin_users.findMany({where: {is_active: true, role: {in: message.recordingCallId ? ['ADMIN'] : ['ADMIN', 'STAFF']}}, select: {id: true}}) : [];
   const actors = admins.map(a => ({id: `admin-${a.id}`, role: 'ADMIN'}));
-  if (!isRiderChatEnded(trip.status)) {
+  if (!isRiderChatEnded(trip.status) && chatMessageInCurrentHistory(trip, {role:'RIDER'}, message)) {
     const riders = await getTripRiderRecipientUserIds(db, trip);
     actors.push(...riders.map(id => ({id, role: trip.partnerCompanyId ? 'PARTNER' : 'RIDER'})));
     if (trip.partnerCompanyId) {
@@ -42,8 +50,13 @@ export async function chatPushRecipientIds(db, trip, message) {
       actors.push(...members.map(m => ({id: `partner-${m.id}`, role: 'PARTNER'})));
     }
   }
-  if (CHAT_ACTIVE_STATUSES.includes(trip.status) && trip.driverId && (!trip.acceptedAt || new Date(message.createdAt) >= new Date(trip.acceptedAt))) {
+  if (CHAT_ACTIVE_STATUSES.includes(trip.status) && trip.driverId && (!trip.acceptedAt || new Date(message.historyAt ?? message.createdAt) >= new Date(trip.acceptedAt))) {
     actors.push({id: trip.driverId, role: 'DRIVER'});
   }
-  return [...new Set(actors.filter(a => a.id !== message.senderId && chatAudienceVisible(message, a)).map(a => a.id))];
+  if (message.senderId === 'system-call' && message.clientId?.startsWith('call_')) {
+    const call = await db.tripCall.findUnique({where:{id:message.clientId.slice(5)}});
+    return [...new Set(actors.filter(a => a.role === 'ADMIN' || (call?.status === 'MISSED' && call.calleeAliases.includes(a.id))).map(a => a.id))];
+  }
+  const recipients = message.senderRole === 'SYSTEM' && message.clientId?.startsWith('accept_') ? actors.filter(a => a.id.startsWith('partner-')) : actors;
+  return [...new Set(recipients.filter(a => a.id !== message.senderId && chatAudienceVisible(message, a)).map(a => a.id))];
 }

@@ -1,5 +1,4 @@
 // Path: goviet247/apps/web/src/components/customer/BookingCard.jsx
-import { openTripChat } from "../TripChatHub";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Box,
@@ -125,12 +124,6 @@ function isDateTimeInPast(dateObj, timeObj) {
   if (!Number.isFinite(valueMs)) return false;
 
   return valueMs <= Date.now();
-}
-
-// Cắt bớt mã chuyến cho dễ nhìn
-function shortTripId(id = "", n = 10) {
-  if (!id) return "";
-  return id.length <= n ? id : `${id.slice(0, n)}…`;
 }
 
 function trackGoogleAdsConversion() {
@@ -294,12 +287,6 @@ export default function BookingCard({ partner = null }) {
     message: "",
   });
 
-  // ✅ Popup đặt chuyến thành công
-  const [successDialog, setSuccessDialog] = useState({
-    open: false,
-    tripId: "",
-  });
-
   const [otpDialogOpen, setOtpDialogOpen] = useState(false);
   const [otpSessionId, setOtpSessionId] = useState("");
   const [otpCode, setOtpCode] = useState("");
@@ -308,8 +295,7 @@ export default function BookingCard({ partner = null }) {
   const [otpLoading, setOtpLoading] = useState(false);
   const [otpErrorMsg, setOtpErrorMsg] = useState("");
   const [pendingTripPayload, setPendingTripPayload] = useState(null);
-  const [shouldRedirectAfterSuccess, setShouldRedirectAfterSuccess] =
-    useState(false);
+
 
   // ✅ Ref cho ô Điểm đón
   const pickupInputRef = useRef(null);
@@ -1709,23 +1695,16 @@ export default function BookingCard({ partner = null }) {
         res?.data?.tripId ||
         "";
 
-      trackGoogleAdsConversion();
+      try { trackGoogleAdsConversion(); } catch { /* Booking succeeded even if conversion reporting fails. */ }
 
       if (typeof window !== "undefined" && window.fbq) {
-        window.fbq("track", "Lead", {
+        try { window.fbq("track", "Lead", {
           value: quote.totalPrice,
           currency: "VND",
-        });
+        }); } catch { /* Do not interrupt navigation after booking. */ }
       }
 
-      setShouldRedirectAfterSuccess(true);
-      setSuccessDialog({ open: true, tripId });
-
-      setToast({
-        open: true,
-        severity: "success",
-        message: res?.message || "Đã tạo chuyến thành công.",
-      });
+      finishCreatedTrip(tripId);
 
       resetOtpDialogState();
     } catch (e) {
@@ -1788,23 +1767,16 @@ export default function BookingCard({ partner = null }) {
         res?.data?.tripId ||
         "";
 
-      trackGoogleAdsConversion();
+      try { trackGoogleAdsConversion(); } catch { /* Booking succeeded even if conversion reporting fails. */ }
 
       if (typeof window !== "undefined" && window.fbq) {
-        window.fbq("track", "Lead", {
+        try { window.fbq("track", "Lead", {
           value: quote.totalPrice,
           currency: "VND",
-        });
+        }); } catch { /* Do not interrupt navigation after booking. */ }
       }
 
-      setShouldRedirectAfterSuccess(true);
-      setSuccessDialog({ open: true, tripId });
-
-      setToast({
-        open: true,
-        severity: "success",
-        message: res?.message || "Đã tạo chuyến thành công.",
-      });
+      finishCreatedTrip(tripId);
     } catch (e) {
       setToast({
         open: true,
@@ -1839,18 +1811,15 @@ export default function BookingCard({ partner = null }) {
     scroller.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleCloseSuccessDialog = () => {
-    const mustRedirect = shouldRedirectAfterSuccess;
-
-    setSuccessDialog({ open: false, tripId: "" });
-    setShouldRedirectAfterSuccess(false);
+  function finishCreatedTrip(tripId) {
     resetFormAfterSuccess();
-
-    if (mustRedirect) {
-      partner?.onSuccessClosed?.();
-      navigate(partner ? partner.successPath || "/chuyen-xe" : "/ho-so", { replace: true });
-    }
-  };
+    // Embedded Admin booking opens the created trip without leaving its selected company.
+    if (partner?.onCreated) { partner.onCreated(tripId); return; }
+    partner?.onSuccessClosed?.();
+    const basePath=partner ? partner.successPath || '/chuyen-xe' : '/ho-so';
+    const destination=tripId ? (basePath==='/chuyen-xe' ? `${basePath}/${encodeURIComponent(tripId)}` : `${basePath}?focusTripId=${encodeURIComponent(tripId)}&justCreated=1`) : basePath;
+    navigate(destination,{replace:true,state:{focusTripId:tripId,justCreated:true}});
+  }
 
   return (
     <Container maxWidth={false} sx={{ px: 0 }}>
@@ -2729,65 +2698,7 @@ export default function BookingCard({ partner = null }) {
         </Tooltip>
       )}
 
-      {/* ✅ Dialog: đặt chuyến thành công */}
-      <Dialog
-        open={successDialog.open}
-        onClose={handleCloseSuccessDialog}
-        aria-labelledby="success-trip-title"
-        fullWidth
-        maxWidth="xs"
-      >
-        <DialogTitle id="success-trip-title" sx={{ fontWeight: 900 }}>
-          Đặt chuyến thành công ✅
-        </DialogTitle>
-        <DialogContent>
-          <Stack spacing={1.2} sx={{ pt: 0.5 }}>
-            <Typography sx={{ fontWeight: 800 }}>
-              GoViet247 đã ghi nhận chuyến của bạn.
-            </Typography>
-            <Typography sx={{ opacity: 0.85 }}>
-              Chuyến đang chờ duyệt. Bạn có thể nhắn GoViet247 ngay tại đây để bổ sung yêu cầu hoặc nhờ hỗ trợ. Vui lòng bật chuông và thông báo để nhận phản hồi.
-            </Typography>
 
-            {!!successDialog.tripId && (
-              <Box
-                sx={{
-                  mt: 0.5,
-                  p: 1,
-                  borderRadius: 2,
-                  bgcolor: "rgba(0,0,0,0.04)",
-                  border: "1px solid rgba(0,0,0,0.08)",
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{ opacity: 0.75, fontWeight: 800 }}
-                >
-                  Mã chuyến:
-                </Typography>
-                <Typography sx={{ fontWeight: 900 }}>
-                  {shortTripId(successDialog.tripId)}
-                </Typography>
-              </Box>
-            )}
-
-            <Typography sx={{ opacity: 0.85 }}>
-              Cảm ơn bạn đã sử dụng dịch vụ GoViet247.
-            </Typography>
-
-          </Stack>
-        </DialogContent>
-        <DialogActions sx={{ px: 2.5, pb: 2 }}>
-          {successDialog.tripId && <Button onClick={()=>{const id=successDialog.tripId;handleCloseSuccessDialog();openTripChat(id);}}>Nhắn GoViet247</Button>}
-          <Button
-            onClick={handleCloseSuccessDialog}
-            variant="contained"
-            sx={{ textTransform: "none", fontWeight: 900, borderRadius: 2 }}
-          >
-            OK
-          </Button>
-        </DialogActions>
-      </Dialog>
 
       <Dialog
         open={otpDialogOpen}

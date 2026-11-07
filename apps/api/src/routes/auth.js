@@ -207,7 +207,7 @@ router.post("/logout", verifyToken, async (req, res) => {
   try {
     await userSessions.revoke(req.authToken, req.user);
     req.app.get("io")?.in(`session:${pushSessionKey(req.authToken, req.user)}`).disconnectSockets(true);
-    await prisma.device.deleteMany({ where: { userId: req.user.uid || req.user.id, role: { in: ["driver", "DRIVER"] }, pushSessionId: pushSessionKey(req.authToken, req.user) } });
+    await prisma.device.deleteMany({ where: { userId: req.user.uid || req.user.id, pushSessionId: pushSessionKey(req.authToken, req.user) } });
     return res.json({ success: true });
   } catch {
     return res.status(503).json({ success: false, message: "Chưa thể đăng xuất. Vui lòng thử lại." });

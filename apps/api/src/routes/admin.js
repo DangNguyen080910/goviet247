@@ -389,6 +389,8 @@ router.get(
   ctrl.exportAccountingNotesCsv,
 );
 
+router.get("/commission-details", requireAdmin, ctrl.getCommissionDetails);
+
 router.get("/revenue-report", requireAdminOrStaff, ctrl.getRevenueReport);
 
 router.get("/accounting-notes", requireAdminOrStaff, ctrl.listAccountingNotes);

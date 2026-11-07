@@ -1,0 +1,33 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+group = 'com.goviet247'
+version = '0.1.0'
+android {
+  namespace 'com.goviet247.tripcalling'
+  defaultConfig {
+    minSdkVersion 24
+    versionCode 1
+    versionName '0.1.0'
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+}
+dependencies {
+  if (findProject(':expo-notifications')) {
+    implementation project(':expo-notifications')
+  } else {
+    implementation 'host.exp.exponent:expo.modules.notifications:0.32.16'
+  }
+  implementation('software.aws.chimesdk:amazon-chime-sdk:0.25.5') {
+    exclude group: 'software.aws.chimesdk', module: 'amazon-chime-sdk-media'
+    exclude group: 'software.aws.chimesdk', module: 'amazon-chime-sdk-machine-learning'
+  }
+  implementation 'software.aws.chimesdk:amazon-chime-sdk-media-no-video-codecs:0.25.4'
+  implementation 'androidx.core:core-ktx:1.16.0'
+  implementation 'com.google.firebase:firebase-messaging:24.0.1'
+  implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}

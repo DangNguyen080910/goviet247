@@ -1,3 +1,4 @@
+import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
 import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
@@ -276,7 +277,7 @@ async function copyPhoneToClipboard(phone?: string | null) {
 
 export default function AssignedTripsScreen() {
   const detailScrollRef = useRef<ScrollView>(null);
-  const params = useLocalSearchParams<{ tab?: string }>();
+  const params = useLocalSearchParams<{ tab?: string; tripId?: string; focusRequest?: string }>();
   const requestedTab = String(params.tab || "").toUpperCase();
   const initialTab = TABS.some((item) => item.key === requestedTab)
     ? (requestedTab as AssignedTripsTabStatus)
@@ -302,7 +303,7 @@ export default function AssignedTripsScreen() {
   const [cancelReason, setCancelReason] = useState("");
   const [cancelOrigin, setCancelOrigin] = useState<"CUSTOMER" | "DRIVER" | "">("");
   const [cancelResolution, setCancelResolution] = useState<
-    "REFUND_AND_CANCEL" | "PENALTY_AND_REVIEW" | "PENALTY_AND_CANCEL" | ""
+    "REFUND_AND_CANCEL" | "REFUND_AND_REVIEW" | "PENALTY_AND_REVIEW" | "PENALTY_AND_CANCEL" | ""
   >("");
   const [scheduleEditing, setScheduleEditing] = useState(false);
   const [scheduleSubmitting, setScheduleSubmitting] = useState(false);
@@ -388,6 +389,8 @@ export default function AssignedTripsScreen() {
     }
   }
 
+  useEffect(()=>{if(params.tripId)void openTripDetail(String(params.tripId));},[params.tripId,params.focusRequest]);
+
   async function submitScheduleUpdate() {
     const pickupTime = scheduleInputToIso(pickupTimeInput, selectedTripDetail?.pickupTime);
     const isRoundTrip = getTripTypeLabel(
@@ -432,7 +435,8 @@ export default function AssignedTripsScreen() {
     }
   }
 
-  function closeTripDetail() {
+  async function closeTripDetail() {
+    try{await flushDriverNoteDraft(selectedTripId);}catch(error:any){Alert.alert("Chưa lưu được ghi chú",error.message);return false;}
     setCancelOrigin("");
     setCancelReason("");
     setCancelResolution("");
@@ -541,8 +545,8 @@ export default function AssignedTripsScreen() {
         currentTripId,
         trimmedReason,
         currentCancelOrigin,
-        currentCancelResolution === "PENALTY_AND_CANCEL"
-          ? "PENALTY_AND_CANCEL"
+        currentCancelResolution === "PENALTY_AND_CANCEL" || currentCancelResolution === "REFUND_AND_REVIEW"
+          ? currentCancelResolution
           : undefined,
       );
 
@@ -1260,6 +1264,17 @@ export default function AssignedTripsScreen() {
                     <Pressable
                       onPress={() => {
                         setCancelOrigin("DRIVER");
+                        setCancelResolution("REFUND_AND_REVIEW");
+                      }}
+                      disabled={cancelSubmitting}
+                    >
+                      <Text style={styles.inlineCardTitle}>
+                        {cancelOrigin === "DRIVER" && cancelResolution === "REFUND_AND_REVIEW" ? "●" : "○"} Tài xế huỷ — hoàn ví, về Chờ duyệt tìm tài xế khác (không phạt)
+                      </Text>
+                    </Pressable>
+                    <Pressable
+                      onPress={() => {
+                        setCancelOrigin("DRIVER");
                         setCancelResolution("PENALTY_AND_REVIEW");
                       }}
                       disabled={cancelSubmitting}
@@ -1302,7 +1317,7 @@ export default function AssignedTripsScreen() {
                       <Text style={styles.submitButtonText}>
                         {cancelSubmitting
                           ? "Đang xử lý..."
-                          : cancelResolution === "PENALTY_AND_REVIEW"
+                          : (cancelResolution === "PENALTY_AND_REVIEW" || cancelResolution === "REFUND_AND_REVIEW")
                             ? "Gỡ tài xế, tìm người khác"
                             : "Xác nhận huỷ chuyến"}
                       </Text>

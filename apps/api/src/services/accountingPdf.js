@@ -163,12 +163,12 @@ function reportDefinition(rows, reportType) {
   };
 }
 
-export function buildAccountingPdf(rows, { title, quarter, year, subtitle = "", reportType = "generic" }) {
+export function buildAccountingPdf(rows, { title, quarter, year, month, subtitle = "", reportType = "generic" }) {
   return new Promise((resolve, reject) => {
     const report = reportDefinition(rows, reportType);
     const doc = new PDFDocument({ size: report.pageSize, layout: "landscape", margin: 28,
       bufferPages: true, autoFirstPage: false,
-      info: { Title: `${title} - Q${quarter}/${year}`, Author: "GoViet247", Subject: "Bảng đối chiếu kế toán" },
+      info: { Title: `${title} - ${month ? `T${month}` : `Q${quarter}`}/${year}`, Author: "GoViet247", Subject: "Bảng đối chiếu kế toán" },
     });
     const chunks = [];
     doc.on("data", (chunk) => chunks.push(chunk));
@@ -238,7 +238,7 @@ export function buildAccountingPdf(rows, { title, quarter, year, subtitle = "", 
       const heading = wrap(title, usable, { bold: true, size: 16 });
       textLines(heading, left, y, usable, { bold: true, size: 16, leading: 20, color: "#16324f" });
       y += heading.length * 20 + 4;
-      const period = `Quý ${quarter}/${year} | Khổ ${report.pageSize} ngang | ${report.summary}`;
+      const period = `${month ? `Tháng ${month}` : `Quý ${quarter}`}/${year} | Khổ ${report.pageSize} ngang | ${report.summary}`;
       const contextLines = wrap(period, usable, { size: 8.5 });
       textLines(contextLines, left, y, usable, { size: 8.5, leading: 12 });
       y += contextLines.length * 12 + 4;
@@ -345,7 +345,7 @@ export function buildAccountingPdf(rows, { title, quarter, year, subtitle = "", 
         const footerY = doc.page.height - 26;
         doc.moveTo(left, footerY - 7).lineTo(doc.page.width - left, footerY - 7).strokeColor("#c9d5df").stroke();
         const author = report.author ? ` | Người tạo dữ liệu: ${report.author}` : "";
-        textLines([`GoViet247 | Q${quarter}/${year}${author}`], left, footerY, usable - 100, { size: 7.3, color: "#64748b" });
+        textLines([`GoViet247 | ${month ? `T${month}` : `Q${quarter}`}/${year}${author}`], left, footerY, usable - 100, { size: 7.3, color: "#64748b" });
         textLines([`Trang ${page - range.start + 1}/${range.count}`], doc.page.width - left - 95, footerY, 95, { size: 8, align: "right", color: "#475569" });
         doc.page.margins.bottom = originalBottomMargin;
       }

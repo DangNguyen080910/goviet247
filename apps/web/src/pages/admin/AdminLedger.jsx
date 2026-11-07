@@ -1,6 +1,7 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminLedger.jsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
+import CommissionDetails from "../../components/admin/CommissionDetails";
 import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import {
   Alert,
@@ -113,6 +114,7 @@ const TAB_LIST = [
   { label: "DT / LN" },
   { label: "Ghi chú" },
   { label: "Export" },
+  { label: "Hoa hồng" },
 ];
 
 const DOCUMENT_TYPE_BY_TAB = {
@@ -533,6 +535,9 @@ export default function AdminLedger() {
     message: "",
   });
 
+  const [exportMode, setExportMode] = useState("quarter");
+  const [exportMonth, setExportMonth] = useState(new Date().getMonth() + 1);
+  const exportVersion = useRef(0);
   const [exportQuarter, setExportQuarter] = useState(currentQuarter);
   const [exportYear, setExportYear] = useState(currentYear);
   const [exportPreview, setExportPreview] = useState(null);
@@ -973,18 +978,26 @@ export default function AdminLedger() {
     }
   };
 
+  useEffect(() => {
+    exportVersion.current += 1;
+    setExportPreview(null);
+    setExportPreviewError("");
+  }, [exportMode, exportMonth, exportQuarter, exportYear]);
+
   const handlePreviewAccountingExport = useCallback(async () => {
+    const version = ++exportVersion.current;
     try {
       setExportPreviewLoading(true);
       setExportPreviewError("");
 
       const data = await fetchAccountingExportPreview({
-        quarter: exportQuarter,
+        ...(exportMode === "month" ? { month: exportMonth } : { quarter: exportQuarter }),
         year: exportYear,
       });
 
-      setExportPreview(data?.data || null);
+      if (version === exportVersion.current) setExportPreview(data?.data || null);
     } catch (err) {
+      if (version !== exportVersion.current) return;
       setExportPreview(null);
       setExportPreviewError(
         err?.message || "Không thể tải dữ liệu xem trước export.",
@@ -992,7 +1005,7 @@ export default function AdminLedger() {
     } finally {
       setExportPreviewLoading(false);
     }
-  }, [exportQuarter, exportYear]);
+  }, [exportQuarter, exportYear, exportMonth, exportMode]);
 
   const handleExportAccountingZip = useCallback(async () => {
     try {
@@ -1000,7 +1013,7 @@ export default function AdminLedger() {
       setExportPreviewError("");
 
       await exportAccountingZip({
-        quarter: exportQuarter,
+        ...(exportMode === "month" ? { month: exportMonth } : { quarter: exportQuarter }),
         year: exportYear,
       });
 
@@ -1019,7 +1032,7 @@ export default function AdminLedger() {
     } finally {
       setExportZipLoading(false);
     }
-  }, [exportQuarter, exportYear, setSnackbar]);
+  }, [exportQuarter, exportYear, exportMonth, exportMode, setSnackbar]);
 
   useEffect(() => {
     loadCashData();
@@ -1658,7 +1671,7 @@ export default function AdminLedger() {
               ))}
             </Tabs>
 
-            {tab === 10 ? (
+            {tab === 12 ? <CommissionDetails /> : tab === 10 ? (
               <>
                 <Typography variant="h5" sx={{ fontWeight: 800 }}>
                   Ghi Chú
@@ -3144,7 +3157,7 @@ export default function AdminLedger() {
                       color="text.secondary"
                       sx={{ mt: 0.5 }}
                     >
-                      Chọn quý và năm để xem trước toàn bộ dữ liệu kế toán sẽ
+                      Chọn tháng hoặc quý và năm để xem trước dữ liệu kế toán sẽ
                       được gom vào file ZIP gửi kế toán.
                     </Typography>
                   </Box>
@@ -3157,7 +3170,12 @@ export default function AdminLedger() {
                         alignItems={{ xs: "stretch", md: "center" }}
                         flexWrap="wrap"
                       >
-                        <TextField
+                        <TextField select label="Xuất theo" value={exportMode} onChange={e => setExportMode(e.target.value)} sx={{ minWidth: 140 }}>
+                          <MenuItem value="quarter">Quý</MenuItem><MenuItem value="month">Tháng</MenuItem>
+                        </TextField>
+                        {exportMode === "month" ? <TextField select label="Tháng" value={exportMonth} onChange={e => setExportMonth(Number(e.target.value))} sx={{ minWidth: 140 }}>
+                          {Array.from({ length: 12 }, (_, i) => <MenuItem key={i+1} value={i+1}>Tháng {i+1}</MenuItem>)}
+                        </TextField> : <TextField
                           select
                           label="Quý"
                           value={exportQuarter}
@@ -3171,7 +3189,7 @@ export default function AdminLedger() {
                               {o.label}
                             </MenuItem>
                           ))}
-                        </TextField>
+                        </TextField>}
 
                         <TextField
                           label="Năm"
@@ -3206,6 +3224,8 @@ export default function AdminLedger() {
                     </CardContent>
                   </Card>
 
+                  {exportPreview?.unassignedDocumentCount > 0 && <Alert severity="warning">Có {exportPreview.unassignedDocumentCount} hồ sơ trong quý chưa gắn tháng nên không được đưa vào gói tháng này. Đ vui lòng gắn tháng cho hồ sơ trước khi xuất nếu cần.</Alert>}
+                  {exportMode === "month" && <Alert severity="info">Hồ sơ tải lên lấy theo tháng đã gắn; ghi chú kế toán lấy theo ngày tạo trong tháng. Các bảng giao dịch lấy theo phạm vi ngày hiển thị.</Alert>}
                   {exportPreview ? (
                     <Alert severity="info" sx={{ borderRadius: 2 }}>
                       Phạm vi export: từ{" "}
@@ -3261,9 +3281,9 @@ export default function AdminLedger() {
                   </Grid>
 
                   <Alert severity="success" sx={{ borderRadius: 2 }}>
-                    Bạn có thể xem trước dữ liệu theo quý, sau đó bấm{" "}
+                    Bạn có thể xem trước dữ liệu theo tháng hoặc quý, sau đó bấm{" "}
                     <strong>Xuất file ZIP</strong> để tải toàn bộ bộ chứng từ và
-                    các bảng kế toán dạng PDF.
+                    các bảng kế toán dạng PDF và bảng chi tiết hoa hồng CSV.
                   </Alert>
                 </Stack>
               </Paper>

@@ -1,5 +1,7 @@
+import {useNavigate} from "react-router-dom";
 import { useEffect, useMemo, useRef } from "react";
 import {
+  Button,
   Box,
   CircularProgress,
   Container,
@@ -23,7 +25,8 @@ function formatDateTime(value) {
   return date.toLocaleString("vi-VN");
 }
 
-function NotificationCard({ title, message, createdAt, unread = false }) {
+function NotificationCard({ title, message, createdAt, unread = false, tripId }) {
+  const navigate=useNavigate();
   return (
     <Paper
       elevation={0}
@@ -96,6 +99,7 @@ function NotificationCard({ title, message, createdAt, unread = false }) {
           >
             {message || "Không có nội dung"}
           </Typography>
+          {tripId && <Button onClick={()=>navigate(`/ho-so?focusTripId=${encodeURIComponent(tripId)}`)}>Xem chuyến</Button>}
 
           <Stack
             direction="row"
@@ -209,8 +213,9 @@ export default function CustomerNotifications() {
               {visibleItems.map((item) => (
                 <NotificationCard
                   key={item.id}
+                  tripId={item.tripId || item.data?.tripId || item.meta?.tripId || String(item.message||'').match(/\[tripId:([^\]]+)\]/)?.[1]}
                   title={item.title || "Thông báo hệ thống"}
-                  message={item.message || ""}
+                  message={String(item.message || "").replace(/\s*\[tripId:[^\]]+\]/g, "").trim()}
                   createdAt={item.createdAt}
                   unread={Boolean(item.isRead === false)}
                 />

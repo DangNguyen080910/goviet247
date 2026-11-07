@@ -1,4 +1,5 @@
 const HOLD_TYPES = new Set(["COMMISSION_HOLD", "DRIVER_VAT_HOLD", "DRIVER_PIT_HOLD"]);
+const REFUND_TYPES = new Set(["COMMISSION_REFUND", "DRIVER_VAT_REFUND", "DRIVER_PIT_REFUND"]);
 
 function eventTime(item) {
   return new Date(item.createdAt || 0).getTime();
@@ -15,7 +16,7 @@ export function normalizeDriverWalletItemsForAccounting(items = [], holdReferenc
   const references = [...list, ...(Array.isArray(holdReferences) ? holdReferences : [])];
   const holdsByKey = new Map();
   for (const item of references) {
-    if (!HOLD_TYPES.has(item.type) || !item.tripId || !item.driverProfileId) continue;
+    if ((!HOLD_TYPES.has(item.type) && !REFUND_TYPES.has(item.type)) || !item.tripId || !item.driverProfileId) continue;
     const key = walletKey(item);
     if (!holdsByKey.has(key)) holdsByKey.set(key, new Map());
     holdsByKey.get(key).set(item.id, item);
@@ -33,8 +34,9 @@ export function normalizeDriverWalletItemsForAccounting(items = [], holdReferenc
     let previousPenaltyAt = -Infinity;
     for (const penalty of penalties.sort((a, b) => eventTime(a) - eventTime(b))) {
       const penaltyAt = eventTime(penalty);
-      const held = holds.filter((hold) => eventTime(hold) > previousPenaltyAt && eventTime(hold) <= penaltyAt)
-        .reduce((sum, hold) => sum + Math.abs(Number(hold.amount || 0)), 0);
+      const held = holds.filter((hold) => eventTime(hold) <= penaltyAt &&
+        (penalty.walletHoldId ? hold.walletHoldId === penalty.walletHoldId : eventTime(hold) > previousPenaltyAt))
+        .reduce((sum, hold) => sum + (HOLD_TYPES.has(hold.type) ? Math.abs(Number(hold.amount || 0)) : -Math.abs(Number(hold.amount || 0))), 0);
       if (held > 0 && held === Math.abs(Number(penalty.amount || 0))) shadowIds.add(penalty.id);
       previousPenaltyAt = penaltyAt;
     }

@@ -3,7 +3,7 @@ import { getDriverAccountingIdentityRows } from "../services/driverAccountingIde
 import { isProvinceCode, driverProvinceSummary } from "../services/driverOperatingProvince.js";
 import { getPenaltyRefundQuote, mutateAdminWallet } from "../services/adminWalletMutation.js";
 import { normalizeDriverWalletItemsForAccounting } from "../services/walletAccounting.js";
-import { getQuarterDateRange } from "../services/accountingQuarter.js";
+import { getQuarterDateRange, getAccountingPeriod } from "../services/accountingQuarter.js";
 import { buildAccountingPdf } from "../services/accountingPdf.js";
 import { summarizeApprovedPenaltyRefunds } from "../services/penaltyRefundAccounting.js";
 // Path: goviet247/apps/api/src/controllers/adminController.js
@@ -989,6 +989,7 @@ export function makeAdminController(prisma) {
   }
 
   const ACCOUNTING_EXPORT_GROUPS = [
+    { key: "COMMISSION_DETAIL_EXPORT", label: "Chi tiết hoa hồng", kind: "commission_detail" },
     { key: "DRIVER_IDENTITY_EXPORT", label: "Thông tin tài xế kê khai thuế", kind: "driver_identity" },
     {
       key: "BANK_STATEMENT",
@@ -1065,13 +1066,41 @@ export function makeAdminController(prisma) {
     return new Date(date.getTime() + 7 * 60 * 60 * 1000).toISOString().slice(0, 10);
   }
 
-  async function getAccountingExportPreviewGroups({ quarter, year }) {
+  async function getCommissionDetailItems({ start, end }) {
+    const trips = await prisma.trip.findMany({
+      where: { status: "COMPLETED", updatedAt: { gte: start, lte: end } },
+      orderBy: [{ updatedAt: "asc" }, { id: "asc" }],
+      select: { id: true, updatedAt: true, acceptedAt: true, driverId: true, totalPrice: true,
+        commissionAmountSnapshot: true, commissionPercentSnapshot: true,
+        driver: { select: { displayName: true, phones: { select: { e164: true }, orderBy: { createdAt: "asc" }, take: 1 },
+          driverProfile: { select: { id: true, fullName: true, citizenId: true } } } } },
+    });
+    return trips.map(trip => {
+      const fee = splitVatIncludedAmount(trip.commissionAmountSnapshot);
+      return { tripId: trip.id, eventAt: trip.updatedAt, acceptedAt: trip.acceptedAt,
+        driverId: trip.driverId, driverName: trip.driver?.driverProfile?.fullName || trip.driver?.displayName || "Chưa cập nhật",
+        driverPhone: trip.driver?.phones?.[0]?.e164 || "", citizenId: trip.driver?.driverProfile?.citizenId || "",
+        totalPrice: trip.totalPrice, commissionPercent: trip.commissionPercentSnapshot == null ? null : Number(trip.commissionPercentSnapshot),
+        commissionGross: fee.gross, commissionNet: fee.net, commissionVat: fee.vat, vatRate: fee.vatRate,
+        note: trip.commissionAmountSnapshot == null ? "Thiếu phí chụp tại chuyến; cần đối chiếu" : "" };
+    });
+  }
+
+  function buildCommissionDetailCsv(items) {
+    return buildCsvString([
+      ["Ngày ghi nhận (giờ VN)", "Mã chuyến", "Mã tài xế", "Tài xế", "SĐT", "CCCD / số định danh", "Giá chuyến", "Tỷ lệ hoa hồng (%)", "Phí hoa hồng gồm VAT", "Phí trước VAT (tham khảo)", "VAT (tham khảo)", "Thuế suất VAT tham khảo (%)", "Ghi chú"],
+      ...items.map(i => [formatDateTimeExport(i.eventAt), i.tripId, i.driverId, i.driverName, i.driverPhone, i.citizenId,
+        i.totalPrice, i.commissionPercent, i.commissionGross, i.commissionNet, i.commissionVat, i.vatRate, i.note]),
+    ]);
+  }
+
+  async function getAccountingExportPreviewGroups({ quarter, year, month }) {
     const {
       start,
       end,
       quarter: safeQuarter,
       year: safeYear,
-    } = getQuarterDateRange(year, quarter);
+    } = getAccountingPeriod(year, quarter, month);
 
     const [
       bankStatementCount,
@@ -1092,6 +1121,7 @@ export function makeAdminController(prisma) {
           documentType: "BANK_STATEMENT",
           quarter: safeQuarter,
           year: safeYear,
+          ...(month ? { month: Number(month) } : {}),
         },
       }),
       prisma.accountingDocument.count({
@@ -1099,6 +1129,7 @@ export function makeAdminController(prisma) {
           documentType: "INPUT_INVOICE",
           quarter: safeQuarter,
           year: safeYear,
+          ...(month ? { month: Number(month) } : {}),
         },
       }),
       prisma.accountingDocument.count({
@@ -1106,6 +1137,7 @@ export function makeAdminController(prisma) {
           documentType: "OUTPUT_INVOICE",
           quarter: safeQuarter,
           year: safeYear,
+          ...(month ? { month: Number(month) } : {}),
         },
       }),
       prisma.accountingDocument.count({
@@ -1113,6 +1145,7 @@ export function makeAdminController(prisma) {
           documentType: "PAYROLL_HR",
           quarter: safeQuarter,
           year: safeYear,
+          ...(month ? { month: Number(month) } : {}),
         },
       }),
       prisma.accountingDocument.count({
@@ -1120,12 +1153,14 @@ export function makeAdminController(prisma) {
           documentType: "LEGAL_CONTRACT",
           quarter: safeQuarter,
           year: safeYear,
+          ...(month ? { month: Number(month) } : {}),
         },
       }),
       prisma.accountingNote.count({
         where: {
           quarter: safeQuarter,
           year: safeYear,
+          ...(month ? { createdAt: { gte: start, lte: end } } : {}),
         },
       }),
       prisma.companyCashTransaction.count({
@@ -1170,9 +1205,12 @@ export function makeAdminController(prisma) {
       }),
     ]);
 
+    const commissionItems = await getCommissionDetailItems({ start, end });
+    const unassignedDocumentCount = month ? await prisma.accountingDocument.count({ where: { quarter: safeQuarter, year: safeYear, month: null } }) : 0;
     const identityRows = await getDriverAccountingIdentityRows(prisma, { start, end });
     const countMap = {
       DRIVER_IDENTITY_EXPORT: identityRows.length - 1,
+      COMMISSION_DETAIL_EXPORT: commissionItems.length,
       BANK_STATEMENT: bankStatementCount,
       INPUT_INVOICE: inputInvoiceCount,
       OUTPUT_INVOICE: outputInvoiceCount,
@@ -1202,6 +1240,8 @@ export function makeAdminController(prisma) {
 
     return {
       quarter: safeQuarter,
+      month: month ? Number(month) : null,
+      unassignedDocumentCount,
       year: safeYear,
       fromDate: formatDateOnly(start),
       toDate: formatDateOnly(end),
@@ -1210,13 +1250,16 @@ export function makeAdminController(prisma) {
     };
   }
 
-  async function getAccountingExportPackageData({ quarter, year }) {
-    const preview = await getAccountingExportPreviewGroups({ quarter, year });
+  async function getAccountingExportPackageData({ quarter, year, month }) {
+    const period = getAccountingPeriod(year, quarter, month);
+    const preview = await getAccountingExportPreviewGroups({ quarter: period.quarter, year, month });
 
     const groups = preview.groups.map((group) => {
       switch (group.key) {
+        case "COMMISSION_DETAIL_EXPORT":
+          return { ...group, type: "csv", folderName: "14-chi-tiet-hoa-hong", fileName: `chi_tiet_hoa_hong_${period.periodKey}.csv` };
         case "DRIVER_IDENTITY_EXPORT":
-          return { ...group, type: "pdf", folderName: "13-thong-tin-tai-xe", fileName: `thong_tin_tai_xe_Q${quarter}_${year}.pdf` };
+          return { ...group, type: "pdf", folderName: "13-thong-tin-tai-xe", fileName: `thong_tin_tai_xe_${period.periodKey}.pdf` };
 
         case "BANK_STATEMENT":
           return {
@@ -1244,7 +1287,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "04-thu-chi-cong-ty",
-            fileName: `thu_chi_cong_ty_Q${quarter}_${year}.pdf`,
+            fileName: `thu_chi_cong_ty_${period.periodKey}.pdf`,
           };
 
         case "DRIVER_WALLET_EXPORT":
@@ -1252,7 +1295,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "05-vi-tai-xe",
-            fileName: `vi_tai_xe_Q${quarter}_${year}.pdf`,
+            fileName: `vi_tai_xe_${period.periodKey}.pdf`,
           };
 
         case "WALLET_TRIP_RECONCILIATION_EXPORT":
@@ -1260,7 +1303,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "12-doi-chieu-vi-va-chuyen-di",
-            fileName: `doi_chieu_vi_va_chuyen_di_Q${quarter}_${year}.pdf`,
+            fileName: `doi_chieu_vi_va_chuyen_di_${period.periodKey}.pdf`,
           };
 
         case "TRIP_EXPORT":
@@ -1268,7 +1311,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "06-chuyen-di",
-            fileName: `chuyen_di_Q${quarter}_${year}.pdf`,
+            fileName: `chuyen_di_${period.periodKey}.pdf`,
           };
 
         case "DRIVER_WITHDRAW_EXPORT":
@@ -1276,7 +1319,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "07-tai-xe-rut-vi",
-            fileName: `tai_xe_rut_vi_Q${quarter}_${year}.pdf`,
+            fileName: `tai_xe_rut_vi_${period.periodKey}.pdf`,
           };
 
         case "PAYROLL_HR":
@@ -1298,7 +1341,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "10-bao-cao-doanh-thu-loi-nhuan",
-            fileName: `bao_cao_doanh_thu_loi_nhuan_Q${quarter}_${year}.pdf`,
+            fileName: `bao_cao_doanh_thu_loi_nhuan_${period.periodKey}.pdf`,
           };
 
         case "ACCOUNTING_NOTE":
@@ -1306,7 +1349,7 @@ export function makeAdminController(prisma) {
             ...group,
             type: "pdf",
             folderName: "11-ghi-chu-ke-toan",
-            fileName: `ghi_chu_ke_toan_Q${quarter}_${year}.pdf`,
+            fileName: `ghi_chu_ke_toan_${period.periodKey}.pdf`,
           };
 
         default:
@@ -1318,11 +1361,13 @@ export function makeAdminController(prisma) {
     });
 
     return {
-      quarter,
+      quarter: period.quarter,
+      month: period.month,
+      unassignedDocumentCount: preview.unassignedDocumentCount,
       year,
       fromDate: preview.fromDate,
       toDate: preview.toDate,
-      zipFileName: `ViNaLighthouse_goviet247_ke_toan_Q${quarter}_${year}.zip`,
+      zipFileName: `ViNaLighthouse_goviet247_ke_toan_${period.periodKey}.zip`,
       readmeFileName: "README.txt",
       groups,
       totalItems: preview.totalItems,
@@ -1497,6 +1542,8 @@ export function makeAdminController(prisma) {
   }
 
   function buildAccountingExportReadme({
+    month,
+    unassignedDocumentCount = 0,
     quarter,
     year,
     fromDate,
@@ -1508,7 +1555,7 @@ export function makeAdminController(prisma) {
     const lines = [
       "GO VIET 247 - BO HO SO KE TOAN",
       "=================================",
-      `Quý: Q${quarter}`,
+      month ? `Tháng: ${month}` : `Quý: Q${quarter}`,
       `Năm: ${year}`,
       `Phạm vi: ${fromDate} -> ${toDate}`,
       `Người xuất: ${adminUsername || "admin"}`,
@@ -1522,9 +1569,11 @@ export function makeAdminController(prisma) {
       ),
       "",
       "GIẢI THÍCH NGHIỆP VỤ:",
+      "- Thư mục 14: chi tiết hoa hồng chuyến hoàn thành theo updatedAt (cùng mốc với báo cáo doanh thu); chưa có mốc hoàn thành bất biến. Không tính giữ ví của chuyến chưa hoàn thành hoặc đã huỷ. CCCD/liên hệ là dữ liệu hiện tại, không phải thông tin người mua đã xác minh. VAT tham khảo theo cấu hình báo cáo hiện tại, không phải hoá đơn đã phát hành; kế toán xác nhận thuế suất và bên mua trước khi lập hoá đơn. Làm tròn VAT từng dòng có thể lệch vài đồng với báo cáo tổng hợp.",
+      ...(month ? [`- Hồ sơ tải lên chỉ lấy tháng đã gắn. Có ${unassignedDocumentCount} hồ sơ trong quý chưa gắn tháng, không đưa vào gói này. Ghi chú kế toán lấy theo ngày tạo trong tháng.`] : []),
       "- Khách hàng thanh toán trực tiếp cho tài xế; công ty không trả lương tài xế.",
       "- Bảng kê thu nhập tài xế tổng hợp theo chuyến hoàn thành, gồm giá chuyến, phí môi giới, VAT/PIT tài xế, tổng khấu trừ và số thực nhận. Đây là bảng kê đối soát thu nhập, không phải bảng lương.",
-      "- Thư mục 13: mỗi tài xế có chuyến hoàn thành trong quý một dòng (cùng mốc updatedAt với bảng kê thu nhập). Có mã tài khoản/hồ sơ, họ tên, CCCD/số định danh và SĐT hiện tại lúc xuất; không phải dữ liệu chụp tại thời điểm chuyến. Thiếu CCCD vẫn được liệt kê để bổ sung. Số định danh dùng đối chiếu MST, chưa xác minh khớp đăng ký thuế. Chưa thu thập ngày cấp, nơi cấp, địa chỉ; kế toán xác nhận và bổ sung theo hồ sơ thực tế.",
+      "- Thư mục 13: mỗi tài xế có chuyến hoàn thành trong kỳ một dòng (cùng mốc updatedAt với bảng kê thu nhập). Có mã tài khoản/hồ sơ, họ tên, CCCD/số định danh và SĐT hiện tại lúc xuất; không phải dữ liệu chụp tại thời điểm chuyến. Thiếu CCCD vẫn được liệt kê để bổ sung. Số định danh dùng đối chiếu MST, chưa xác minh khớp đăng ký thuế. Chưa thu thập ngày cấp, nơi cấp, địa chỉ; kế toán xác nhận và bổ sung theo hồ sơ thực tế.",
       "- Doanh thu chính của công ty là phí môi giới; tổng giá trị chuyến không phải doanh thu công ty.",
       "- Tài xế nạp ví/rút ví là dòng tiền ví tài xế, không phải doanh thu công ty.",
       "- Thu nhập khác có thể gồm phạt huỷ chuyến sau khi trừ các khoản hoàn phạt cho tài xế.",
@@ -1547,13 +1596,13 @@ export function makeAdminController(prisma) {
     return lines.join("\n");
   }
 
-  async function buildAccountingNotesCsvForQuarter({ quarter, year }) {
+  async function buildAccountingNotesCsvForQuarter({ quarter, year, month }) {
     const {
       start,
       end,
       quarter: safeQuarter,
       year: safeYear,
-    } = getQuarterDateRange(year, quarter);
+    } = getAccountingPeriod(year, quarter, month);
 
     const completedAgg = await prisma.trip.aggregate({
       where: {
@@ -1632,6 +1681,7 @@ export function makeAdminController(prisma) {
       where: {
         quarter: safeQuarter,
         year: safeYear,
+        ...(month ? { createdAt: { gte: start, lte: end } } : {}),
       },
       orderBy: { createdAt: "desc" },
     });
@@ -2295,10 +2345,10 @@ export function makeAdminController(prisma) {
     const holdReferences = penaltyTripIds.length ? await prisma.driverWalletTransaction.findMany({
       where: {
         tripId: { in: penaltyTripIds },
-        type: { in: ["COMMISSION_HOLD", "DRIVER_VAT_HOLD", "DRIVER_PIT_HOLD"] },
+        type: { in: ["COMMISSION_HOLD", "DRIVER_VAT_HOLD", "DRIVER_PIT_HOLD", "COMMISSION_REFUND", "DRIVER_VAT_REFUND", "DRIVER_PIT_REFUND"] },
         createdAt: { lte: end },
       },
-      select: { id: true, driverProfileId: true, tripId: true, type: true, amount: true, createdAt: true },
+      select: { id: true, driverProfileId: true, tripId: true, walletHoldId: true, type: true, amount: true, createdAt: true },
     }) : [];
     return normalizeDriverWalletItemsForAccounting(rawItems, holdReferences);
   }
@@ -2727,6 +2777,7 @@ export function makeAdminController(prisma) {
   }
 
   async function appendAccountingDocumentsToArchive({
+    month,
     archive,
     quarter,
     year,
@@ -2738,6 +2789,7 @@ export function makeAdminController(prisma) {
         documentType,
         quarter,
         year,
+        ...(month ? { month: Number(month) } : {}),
       },
       orderBy: { createdAt: "asc" },
     });
@@ -5619,9 +5671,34 @@ export function makeAdminController(prisma) {
       }
     },
 
+    async getCommissionDetails(req, res) {
+      try {
+        const { year, quarter, month } = req.query;
+        if (!Number.isInteger(Number(year)) || Number(year) < 2000 || Number(year) > 2100 ||
+          (month == null && ![1,2,3,4].includes(Number(quarter))) ||
+          (month != null && (!Number.isInteger(Number(month)) || Number(month) < 1 || Number(month) > 12))) {
+          return res.status(400).json({ success: false, message: "Kỳ kế toán không hợp lệ." });
+        }
+        const period = getAccountingPeriod(year, quarter, month);
+        const items = await getCommissionDetailItems(period);
+        if (req.query.format === "csv") {
+          res.setHeader("Content-Type", "text/csv; charset=utf-8");
+          res.setHeader("Content-Disposition", `attachment; filename="chi_tiet_hoa_hong_${period.periodKey}.csv"`);
+          return res.send(buildCommissionDetailCsv(items));
+        }
+        const totals = items.reduce((acc, i) => ({ gross: acc.gross + i.commissionGross, net: acc.net + i.commissionNet, vat: acc.vat + i.commissionVat }), { gross: 0, net: 0, vat: 0 });
+        return res.json({ success: true, items, totals, periodKey: period.periodKey });
+      } catch (err) {
+        console.error("getCommissionDetails", err);
+        return res.status(500).json({ success: false, message: "Không tải được chi tiết hoa hồng." });
+      }
+    },
+
     async getAccountingExportPreview(req, res) {
       try {
-        const quarter = Number(req.query?.quarter || 0);
+        const month = req.query?.month == null || req.query.month === "" ? null : Number(req.query.month);
+        if (month !== null && (!Number.isInteger(month) || month < 1 || month > 12)) return res.status(400).json({ success: false, message: "Tháng không hợp lệ." });
+        const quarter = month ? Math.ceil(month / 3) : Number(req.query?.quarter || 0);
         const year = Number(req.query?.year || 0);
 
         if (![1, 2, 3, 4].includes(quarter)) {
@@ -5641,6 +5718,7 @@ export function makeAdminController(prisma) {
         const data = await getAccountingExportPreviewGroups({
           quarter,
           year,
+          month,
         });
 
         return res.json({
@@ -5658,7 +5736,9 @@ export function makeAdminController(prisma) {
 
     async getAccountingExportPackage(req, res) {
       try {
-        const quarter = Number(req.query?.quarter || 0);
+        const month = req.query?.month == null || req.query.month === "" ? null : Number(req.query.month);
+        if (month !== null && (!Number.isInteger(month) || month < 1 || month > 12)) return res.status(400).json({ success: false, message: "Tháng không hợp lệ." });
+        const quarter = month ? Math.ceil(month / 3) : Number(req.query?.quarter || 0);
         const year = Number(req.query?.year || 0);
 
         if (![1, 2, 3, 4].includes(quarter)) {
@@ -5678,6 +5758,7 @@ export function makeAdminController(prisma) {
         const data = await getAccountingExportPackageData({
           quarter,
           year,
+          month,
         });
 
         return res.json({
@@ -5695,7 +5776,9 @@ export function makeAdminController(prisma) {
 
     async exportAccountingZip(req, res) {
       try {
-        const quarter = Number(req.query?.quarter || 0);
+        const month = req.query?.month == null || req.query.month === "" ? null : Number(req.query.month);
+        if (month !== null && (!Number.isInteger(month) || month < 1 || month > 12)) return res.status(400).json({ success: false, message: "Tháng không hợp lệ." });
+        const quarter = month ? Math.ceil(month / 3) : Number(req.query?.quarter || 0);
         const year = Number(req.query?.year || 0);
 
         if (![1, 2, 3, 4].includes(quarter)) {
@@ -5717,16 +5800,18 @@ export function makeAdminController(prisma) {
           end,
           quarter: safeQuarter,
           year: safeYear,
-        } = getQuarterDateRange(year, quarter);
+        } = getAccountingPeriod(year, quarter, month);
+        const periodKey = getAccountingPeriod(year, quarter, month).periodKey;
 
         const packageData = await getAccountingExportPackageData({
           quarter: safeQuarter,
           year: safeYear,
+          month,
         });
 
         const zipFileName =
           packageData?.zipFileName ||
-          `ViNaLighthouse_goviet247_ke_toan_Q${safeQuarter}_${safeYear}.zip`;
+          `ViNaLighthouse_goviet247_ke_toan_${periodKey}.zip`;
 
         // Build hết nội dung trước, tránh đang stream mới lỗi giữa chừng làm ZIP bị corrupt
         const readmeText = buildAccountingExportReadme({
@@ -5765,11 +5850,14 @@ export function makeAdminController(prisma) {
         const accountingNotesCsv = await buildAccountingNotesCsvForQuarter({
           quarter: safeQuarter,
           year: safeYear,
+          month,
         });
 
+        const commissionCsv = buildCommissionDetailCsv(await getCommissionDetailItems({ start, end }));
         const pdfMeta = {
           quarter: safeQuarter,
           year: safeYear,
+          month,
         };
         const [
           companyCashPdf,
@@ -5881,12 +5969,14 @@ export function makeAdminController(prisma) {
         archive.pipe(res);
 
         archive.append(readmeText, { name: "README.txt" });
-        archive.append(driverIdentityPdf, { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_Q${safeQuarter}_${safeYear}.pdf` });
+        archive.append(commissionCsv, { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.csv` });
+        archive.append(driverIdentityPdf, { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_${periodKey}.pdf` });
 
         await appendAccountingDocumentsToArchive({
           archive,
           quarter: safeQuarter,
           year: safeYear,
+          month,
           documentType: "BANK_STATEMENT",
           folderName: "01-sao-ke-ngan-hang",
         });
@@ -5895,6 +5985,7 @@ export function makeAdminController(prisma) {
           archive,
           quarter: safeQuarter,
           year: safeYear,
+          month,
           documentType: "INPUT_INVOICE",
           folderName: "02-hoa-don-dau-vao",
         });
@@ -5903,34 +5994,36 @@ export function makeAdminController(prisma) {
           archive,
           quarter: safeQuarter,
           year: safeYear,
+          month,
           documentType: "OUTPUT_INVOICE",
           folderName: "03-hoa-don-dau-ra",
         });
 
         archive.append(companyCashPdf, {
-          name: `04-thu-chi-cong-ty/thu_chi_cong_ty_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `04-thu-chi-cong-ty/thu_chi_cong_ty_${periodKey}.pdf`,
         });
 
         archive.append(driverWalletPdf, {
-          name: `05-vi-tai-xe/vi_tai_xe_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `05-vi-tai-xe/vi_tai_xe_${periodKey}.pdf`,
         });
 
         archive.append(tripAccountingPdf, {
-          name: `06-chuyen-di/chuyen_di_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `06-chuyen-di/chuyen_di_${periodKey}.pdf`,
         });
 
         archive.append(driverIncomePdf, {
-          name: `06-chuyen-di/bang_ke_thu_nhap_tai_xe_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `06-chuyen-di/bang_ke_thu_nhap_tai_xe_${periodKey}.pdf`,
         });
 
         archive.append(driverWithdrawPdf, {
-          name: `07-tai-xe-rut-vi/tai_xe_rut_vi_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `07-tai-xe-rut-vi/tai_xe_rut_vi_${periodKey}.pdf`,
         });
 
         await appendAccountingDocumentsToArchive({
           archive,
           quarter: safeQuarter,
           year: safeYear,
+          month,
           documentType: "PAYROLL_HR",
           folderName: "08-luong-nhan-su",
         });
@@ -5939,20 +6032,21 @@ export function makeAdminController(prisma) {
           archive,
           quarter: safeQuarter,
           year: safeYear,
+          month,
           documentType: "LEGAL_CONTRACT",
           folderName: "09-hop-dong-phap-ly",
         });
 
         archive.append(revenueReportPdf, {
-          name: `10-bao-cao-doanh-thu-loi-nhuan/bao_cao_doanh_thu_loi_nhuan_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `10-bao-cao-doanh-thu-loi-nhuan/bao_cao_doanh_thu_loi_nhuan_${periodKey}.pdf`,
         });
 
         archive.append(accountingNotesPdf, {
-          name: `11-ghi-chu-ke-toan/ghi_chu_ke_toan_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `11-ghi-chu-ke-toan/ghi_chu_ke_toan_${periodKey}.pdf`,
         });
 
         archive.append(walletTripReconciliationPdf, {
-          name: `12-doi-chieu-vi-va-chuyen-di/doi_chieu_vi_va_chuyen_di_Q${safeQuarter}_${safeYear}.pdf`,
+          name: `12-doi-chieu-vi-va-chuyen-di/doi_chieu_vi_va_chuyen_di_${periodKey}.pdf`,
         });
 
         await archive.finalize();

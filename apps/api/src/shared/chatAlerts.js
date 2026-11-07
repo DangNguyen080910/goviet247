@@ -10,3 +10,15 @@ export function createChatAlertGate(now = Date.now) {
     last = time; return true;
   };
 }
+
+// Instructional system chat remains readable, but is not an Admin alert.
+// Call summaries/recordings keep their operational notifications.
+export function chatMessageAlertsAdmin(message) {
+  return message?.senderRole !== 'SYSTEM' || message?.senderId === 'system-call' || Boolean(message?.recordingCallId);
+}
+export function chatAlertMessageWhere(where, actor) {
+  if (!['ADMIN', 'STAFF'].includes(String(actor?.role || '').toUpperCase())) return where;
+  return {AND: [where, {OR: [
+    {senderRole: {not: 'SYSTEM'}}, {senderId: 'system-call'}, {recordingCallId: {not: null}},
+  ]}]};
+}

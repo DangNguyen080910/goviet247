@@ -1,3 +1,4 @@
+import {flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
 // Path: goviet247/apps/web/src/components/admin/CancelTripDialog.jsx
 import { useMemo, useState } from "react";
 import {
@@ -51,6 +52,7 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
 
       setSubmitting(true);
 
+      await flushDriverNoteDraft(id);
       const res = await fetch(`/api/admin/trips/${id}/cancel`, {
         method: "POST",
         headers: {
@@ -60,7 +62,7 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
         body: JSON.stringify({
           cancel_reason: r,
           ...(needsDriverSettlement ? { cancel_origin: origin } : {}),
-          ...(needsDriverSettlement && resolution === "PENALTY_AND_CANCEL"
+          ...(needsDriverSettlement && ["PENALTY_AND_CANCEL", "REFUND_AND_REVIEW"].includes(resolution)
             ? { cancel_resolution: resolution }
             : {}),
         }),
@@ -108,6 +110,11 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
                 value="CUSTOMER:PENALTY_AND_CANCEL"
                 control={<Radio />}
                 label="Khách huỷ — ghi phạt và huỷ chuyến"
+              />
+              <FormControlLabel
+                value="DRIVER:REFUND_AND_REVIEW"
+                control={<Radio />}
+                label="Tài xế huỷ — hoàn ví, đưa về Chờ duyệt tìm tài xế khác (không phạt)"
               />
               <FormControlLabel
                 value="DRIVER:PENALTY_AND_REVIEW"
@@ -158,7 +165,7 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
           onClick={handleSubmit}
           disabled={submitting || !canCancel}
         >
-          {resolution === "PENALTY_AND_REVIEW"
+          {["PENALTY_AND_REVIEW", "REFUND_AND_REVIEW"].includes(resolution)
             ? "GỠ TÀI XẾ, TÌM NGƯỜI KHÁC"
             : "XÁC NHẬN HUỶ CHUYẾN"}
         </Button>

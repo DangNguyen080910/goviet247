@@ -419,7 +419,7 @@ export default function AdminHome() {
             title="Chuyến chưa có tài xế"
             value={stats.unassignedCount || 0}
             icon={<WarningAmberIcon fontSize="large" />}
-            onClick={() => navigate("/admin/pending-trips")}
+            onClick={() => navigate("/admin/pending")}
           />
         </Grid>
 
@@ -437,7 +437,7 @@ export default function AdminHome() {
             title="Cảnh báo chưa xem 24h"
             value={stats.recentAlertsCount || 0}
             icon={<WarningAmberIcon fontSize="large" />}
-            onClick={() => navigate("/admin/notifications")}
+            onClick={() => navigate("/admin/alerts")}
           />
         </Grid>
 
@@ -470,7 +470,7 @@ export default function AdminHome() {
             <UrgentTripList
               items={urgent.pendingTrips}
               emptyText="Hiện không có chuyến chờ duyệt."
-              onOpenPage={() => navigate("/admin/trips")}
+              onOpenPage={() => navigate("/admin/pending")}
             />
           </SectionPaper>
         </Grid>
@@ -483,7 +483,7 @@ export default function AdminHome() {
             <UrgentTripList
               items={urgent.unassignedTrips}
               emptyText="Hiện không có chuyến verified đang chờ tài xế."
-              onOpenPage={() => navigate("/admin/pending-trips")}
+              onOpenPage={() => navigate("/admin/pending")}
             />
           </SectionPaper>
         </Grid>

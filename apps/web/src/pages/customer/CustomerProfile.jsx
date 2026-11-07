@@ -1,3 +1,4 @@
+import {tripNotificationContent} from '../../../../api/src/shared/tripNotificationContent.js';
 import { canSelfCancelTrip } from "../../../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../../components/TripChatHub";
 import { hasActiveTripContact } from "../../../../api/src/shared/tripContact.js";
@@ -30,7 +31,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HistoryIcon from "@mui/icons-material/History";
 import FeedbackOutlinedIcon from "@mui/icons-material/FeedbackOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import { useCustomerAuth } from "../../context/CustomerAuthContext";
 import { getMyTrips } from "../../api/trips";
 import { updateMe } from "../../api/auth";
@@ -109,12 +110,6 @@ function getStatusColor(status, isVerified) {
   if (s === "CANCELLED") return "default";
 
   return "default";
-}
-
-function normalizeText(value) {
-  return String(value || "")
-    .trim()
-    .toLowerCase();
 }
 
 function getRouteText(trip) {
@@ -285,40 +280,12 @@ function getTripRealtimeChangeInfo(prevTrip, nextTrip) {
   }
 
   if (!prevVerified && nextVerified && nextStatus === "PENDING") {
-    return {
-      level: "urgent",
-      message: `🎉 Chuyến ${String(nextTrip.id).slice(0, 8)}… đã được duyệt và đang chờ tài xế.`,
-    };
+    return {level: "urgent", message: tripNotificationContent(nextTrip, "admin_verify_trip").message};
   }
-
-  if (
-    prevStatus !== nextStatus &&
-    (nextStatus === "ACCEPTED" || nextStatus === "CONTACTED")
-  ) {
+  if (prevStatus !== nextStatus && ["ACCEPTED", "CONTACTED", "CANCELLED", "CANCELED", "IN_PROGRESS", "COMPLETED"].includes(nextStatus)) {
     return {
-      level: "urgent",
-      message: `🚕 Chuyến ${String(nextTrip.id).slice(0, 8)}… đã có tài xế nhận.`,
-    };
-  }
-
-  if (prevStatus !== nextStatus && nextStatus === "CANCELLED") {
-    return {
-      level: "urgent",
-      message: `⚠️ Chuyến ${String(nextTrip.id).slice(0, 8)}… đã bị huỷ.`,
-    };
-  }
-
-  if (prevStatus !== nextStatus && nextStatus === "IN_PROGRESS") {
-    return {
-      level: "update",
-      message: `🛣️ Chuyến ${String(nextTrip.id).slice(0, 8)}… đang di chuyển.`,
-    };
-  }
-
-  if (prevStatus !== nextStatus && nextStatus === "COMPLETED") {
-    return {
-      level: "update",
-      message: `✅ Chuyến ${String(nextTrip.id).slice(0, 8)}… đã hoàn thành.`,
+      level: ["ACCEPTED", "CONTACTED", "CANCELLED", "CANCELED"].includes(nextStatus) ? "urgent" : "update",
+      message: tripNotificationContent(nextTrip).message,
     };
   }
 
@@ -334,7 +301,11 @@ const CANCEL_REASON_OPTIONS = [
 ];
 
 export default function CustomerProfile() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(), location=useLocation();
+  const bookingQuery=new URLSearchParams(location.search);
+  const focusTripId=bookingQuery.get('focusTripId') || location.state?.focusTripId || '';
+  const justCreated=bookingQuery.get('justCreated')==='1' || location.state?.justCreated===true;
+  const focusedTripNodes=useRef(new Map()),didFocusTrip=useRef('');
   const { token, user, loading, login, pushNotification } = useCustomerAuth();
   const socketRef = useRef(null);
 
@@ -347,6 +318,15 @@ export default function CustomerProfile() {
 
   const [tripLoading, setTripLoading] = useState(true);
   const [trips, setTrips] = useState([]);
+
+  useEffect(()=>{
+    if(!focusTripId||tripLoading||didFocusTrip.current===focusTripId)return;
+    const node=focusedTripNodes.current.get(focusTripId);if(!node)return;
+    const frame=requestAnimationFrame(()=>{
+      node.scrollIntoView({behavior:'smooth',block:'center'});
+      node.focus({preventScroll:true});didFocusTrip.current=focusTripId;
+    });return()=>cancelAnimationFrame(frame);
+  },[focusTripId,tripLoading,trips]);
 
   const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState(null);
@@ -931,6 +911,7 @@ export default function CustomerProfile() {
                 </Typography>
               </Stack>
 
+              {justCreated&&<Alert severity="success" sx={{mb:2}}>Đặt chuyến thành công. Mở Liên hệ chuyến để nhắn GoViet247 và theo dõi tài xế nhận chuyến.</Alert>}
               {tripLoading ? (
                 <Box sx={{ py: 4, textAlign: "center" }}>
                   <CircularProgress size={28} />
@@ -970,11 +951,16 @@ export default function CustomerProfile() {
                   {trips.map((trip) => (
                     <Paper
                       key={trip.id}
+                      ref={node=>{if(node)focusedTripNodes.current.set(trip.id,node);else focusedTripNodes.current.delete(trip.id);}}
+                      tabIndex={trip.id===focusTripId?-1:undefined}
+                      aria-label={trip.id===focusTripId?'Chuyến vừa đặt hoặc được chọn':undefined}
                       variant="outlined"
                       sx={{
                         p: { xs: 2, md: 2.5 },
                         borderRadius: 3,
-                        borderColor: "rgba(15,23,42,0.08)",
+                        borderColor: trip.id===focusTripId ? '#2563eb' : "rgba(15,23,42,0.08)",
+                        backgroundColor: trip.id===focusTripId ? '#eff6ff' : 'white',
+                        scrollMarginBlock: '100px',
                         boxShadow: "0 4px 14px rgba(15,23,42,0.04)",
                       }}
                     >

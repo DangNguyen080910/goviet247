@@ -11,7 +11,7 @@ export default function AdminPartners({sessionToken,sessionUser,onCompanyChange,
   useEffect(()=>{let alive=true;partnerRequest('/companies',{token}).then(d=>{if(alive)setCompanies(d.items);}).catch(e=>{if(alive)setError(e.message);});return()=>{alive=false;};},[token,revision]);
   useEffect(()=>{setAssignedToId('');if(!companyId)return;let alive=true;partnerRequest('/members',{token,companyId}).then(d=>{if(alive)setMembers(d.items.filter(m=>m.isActive));}).catch(e=>{if(alive)setError(e.message);});return()=>{alive=false;};},[token,companyId,revision]);
   const booking={quote:async body=>(await partnerRequest('/quote',{token,companyId,method:'POST',body})).data,
-    createTrip:async body=>{if(!assignedToId)throw new Error('Vui lòng chọn điều phối viên.');return partnerRequest('/trips',{token,companyId,method:'POST',body:{...body,assignedToId}});},successPath:portal?'/chuyen-xe':'/admin/partners',onSuccessClosed:portal?()=>setTab('trips'):undefined};
+    createTrip:async body=>{if(!assignedToId)throw new Error('Vui lòng chọn điều phối viên.');return partnerRequest('/trips',{token,companyId,method:'POST',body:{...body,assignedToId}});},successPath:portal?'/chuyen-xe':'/admin/partners',onCreated:id=>{setTab('trips');setTripId(id);setRevision(v=>v+1);}};
   async function create(e){e.preventDefault();setBusy(true);setError('');try{const d=await partnerRequest('/companies',{token,method:'POST',body:form});setForm(null);setCompanyId(d.company.id);setRevision(v=>v+1);}catch(e){setError(e.message);}finally{setBusy(false);}}
   useEffect(()=>{onCompanyChange?.(companies.find(c=>c.id===companyId)||null);},[companyId,companies,onCompanyChange]);
   if(user?.role!=='ADMIN')return <Alert severity="error">Chỉ Admin GoViet247 được quản lý đối tác.</Alert>;

@@ -1,3 +1,4 @@
+import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { activeDriverDevices } from "./driverPushAccess.js";
 // Path: goviet247/apps/api/src/services/notificationService.js
 // ======================================================
@@ -662,8 +663,9 @@ export async function sendSystemNotificationToRiders(notification) {
       return;
     }
 
-    const devices = await prisma.device.findMany({
+    let devices = await prisma.device.findMany({
       where: {
+        ...(notification.targetType === "USER" ? {userId: notification.targetUserId || "__no_recipient__"} : {}),
         role: {
           in: ["rider", "RIDER"],
         },
@@ -673,8 +675,12 @@ export async function sendSystemNotificationToRiders(notification) {
         platform: true,
         pushToken: true,
         role: true,
+        pushSessionId: true,
+        pushExpiresAt: true,
       },
     });
+
+    devices = await activeDriverDevices(prisma, devices);
 
     if (!devices.length) {
       console.log(
@@ -742,53 +748,8 @@ export async function sendSystemNotificationToRiders(notification) {
 }
 
 function buildRiderTripStatusPushContent(trip, options = {}) {
-  const status = String(trip?.status || "")
-    .trim()
-    .toUpperCase();
-
-  const reason = String(options?.reason || "")
-    .trim()
-    .toUpperCase();
-
-  if (reason === "ADMIN_VERIFY_TRIP") {
-    return {
-      title: "Chuyến đã được duyệt",
-      body: "Chuyến đã duyệt, đang tìm tài xế. Vui lòng bật thông báo và theo dõi mục Liên hệ chuyến trên GoViet247.",
-    };
-  }
-
-  switch (status) {
-    case "ACCEPTED":
-      return {
-        title: "Đã có tài xế nhận chuyến",
-        body: "Tài xế đã nhận chuyến và sẽ sớm liên hệ với bạn. Vui lòng để ý điện thoại.",
-      };
-    case "CONTACTED":
-      return {
-        title: "Tài xế đã liên hệ",
-        body: "Tài xế đã liên hệ với bạn. Chúc bạn có chuyến đi an toàn và thoải mái cùng GoViet247.",
-      };
-    case "IN_PROGRESS":
-      return {
-        title: "Chuyến đi đã bắt đầu",
-        body: "Tài xế đã đón bạn và chuyến đi đã bắt đầu. Chúc bạn có hành trình an toàn và thoải mái.",
-      };
-    case "COMPLETED":
-      return {
-        title: "Chuyến đi đã hoàn thành",
-        body: "Cảm ơn bạn đã đồng hành cùng GoViet247.",
-      };
-    case "CANCELLED":
-      return {
-        title: "Chuyến đi đã bị huỷ",
-        body: "Chuyến đi của bạn đã bị hủy. Vui lòng mở ứng dụng để xem chi tiết.",
-      };
-    default:
-      return {
-        title: "Cập nhật chuyến đi",
-        body: "Chuyến đi của bạn vừa có cập nhật mới.",
-      };
-  }
+  const {title,message}=tripNotificationContent(trip,options.reason);
+  return {title,body:message};
 }
 
 export async function sendTripStatusChangedToRider(trip, options = {}) {
@@ -796,7 +757,7 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
     const recipientIds = await getTripRiderRecipientUserIds(prisma, trip);
     if (!recipientIds.length) return;
 
-    const devices = await prisma.device.findMany({
+    let devices = await prisma.device.findMany({
       where: {
         role: {
           in: ["rider", "RIDER"],
@@ -808,8 +769,12 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
         pushToken: true,
         platform: true,
         role: true,
+        pushSessionId: true,
+        pushExpiresAt: true,
       },
     });
+
+    devices = await activeDriverDevices(prisma, devices);
 
     if (!devices.length) {
       console.log(`[Push] Không có device rider cho tripId=${trip?.id}`);
@@ -829,7 +794,7 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
 
     const content = buildRiderTripStatusPushContent(trip, options);
 
-    const messages = validDevices.map((device) => ({
+    const messages = [...new Map(validDevices.map(device => [device.pushToken, device])).values()].map((device) => ({
       to: device.pushToken,
       sound: "default",
       title: shortText(content.title || "Cập nhật chuyến đi", 60),

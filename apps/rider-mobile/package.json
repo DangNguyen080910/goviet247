@@ -34,7 +34,8 @@
     "react-native-screens": "~4.16.0",
     "socket.io-client": "^4.8.3",
     "@expo/vector-icons": "^15.0.3",
-    "@react-navigation/native": "^7.1.8"
+    "@react-navigation/native": "^7.1.8",
+    "@goviet247/trip-calling-native": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",

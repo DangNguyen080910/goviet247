@@ -23,3 +23,19 @@ test('unregistered tokens are removed; malformed tickets and HTTP failures canno
  assert.deepEqual(removed,['stale']);
  for(const result of [response({data:[]}),response({errors:[{code:'UNAUTHORIZED'}]},401)]) await assert.rejects(sendChatPushBatch([message('r')],{fetchImpl:async()=>result,removeDevice:async()=>{}}));
 });
+
+test('partial success persists accepted devices before throwing for a failed device', async()=>{
+ const accepted=[];
+ await assert.rejects(sendChatPushBatch([message('ok-device'),message('bad-device')],{
+  fetchImpl:async()=>response({data:[{status:'ok'},{status:'error',details:{error:'InvalidCredentials'}}]}),
+  removeDevice:async()=>assert.fail(),onAccepted:async token=>accepted.push(token)
+ }),/InvalidCredentials/);
+ assert.deepEqual(accepted,['ok-device']);
+});
+test('mixed-project split preserves per-device acknowledgements',async()=>{
+ const accepted=[];
+ await sendChatPushBatch([message('rider'),message('admin')],{
+  fetchImpl:async(_url,o)=>JSON.parse(o.body).length>1?response({errors:[{code:'PUSH_TOO_MANY_EXPERIENCE_IDS'}]},400):response({data:[{status:'ok'}]}),
+  removeDevice:async()=>assert.fail(),onAccepted:async token=>accepted.push(token)
+ });assert.deepEqual(accepted,['rider','admin']);
+});

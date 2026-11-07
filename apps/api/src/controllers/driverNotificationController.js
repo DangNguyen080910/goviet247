@@ -33,8 +33,10 @@ export async function getMyDriverNotifications(req, res) {
       });
     }
 
+    const notificationId = String(req.query?.notificationId || "").trim();
     const items = await prisma.systemNotification.findMany({
       where: {
+        ...(notificationId ? {id: notificationId} : {}),
         audience: "DRIVER",
         isActive: true,
         OR: [

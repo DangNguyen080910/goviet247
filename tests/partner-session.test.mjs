@@ -8,7 +8,7 @@ const member={id:'member-1',sessionVersion:2,isActive:true,company:{isActive:tru
 const db={partnerMember:{findUnique:async()=>member}};
 function response(){return {cookies:[],cookie(...args){this.cookies.push(args);},clearCookie(...args){this.cleared=args;},set(){}};}
 function request(token,origin='https://partners.goviet247.com',mode='partner-refresh'){return {headers:{cookie:`${PARTNER_REFRESH_COOKIE}=${token}`},get:key=>key.toLowerCase()==='origin'?origin:mode};}
-function refreshToken(until,version=2){return jwt.sign({sub:member.id,version,rememberUntil:until},process.env.JWT_SECRET,{algorithm:'HS256',audience:'goviet247-partners-refresh',issuer:'goviet247',expiresIn:until-Math.floor(Date.now()/1000)});}
+function refreshToken(until,version=2){const issuedAt=Math.floor(Date.now()/1000);return jwt.sign({sub:member.id,version,rememberUntil:until,iat:issuedAt},process.env.JWT_SECRET,{algorithm:'HS256',audience:'goviet247-partners-refresh',issuer:'goviet247',expiresIn:until-issuedAt});}
 test('normal access lasts twelve hours; remembered access remains bounded by absolute deadline',()=>{
  const normal=jwt.decode(signPartnerToken(member));assert.equal(normal.exp-normal.iat,43200);assert.equal(normal.rememberUntil,undefined);
  const until=Math.floor(Date.now()/1000)+120;

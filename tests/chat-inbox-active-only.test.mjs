@@ -1,3 +1,5 @@
+import {chatAlertMessageWhere} from '../apps/api/src/shared/chatAlerts.js';
+import {chatHeartsForClient} from '../apps/api/src/services/tripChatService.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -6,8 +8,8 @@ import {isRiderChatEnded,chatCanSend} from '../apps/api/src/shared/tripChat.js';
 const source=fs.readFileSync(new URL('../apps/api/src/routes/tripChat.js',import.meta.url),'utf8'),ast=ts.createSourceFile('chat.js',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.JS);let callback;
 function visit(node){if(ts.isCallExpression(node)&&node.expression.getText(ast)==='router.get'&&node.arguments[0]?.text==='/conversations')callback=node.arguments[1].arguments[0].getText(ast);ts.forEachChild(node,visit);}visit(ast);assert(callback);
 async function inbox(role,listed,actual=listed){
- let query;const touched=[];const db={trip:{findMany:async args=>{query=args;return listed;}},tripChatRead:{findUnique:async()=>null},tripChatMessage:{count:async({where})=>{touched.push(where.tripId);return 2;},findFirst:async({where})=>({id:'message-'+where.tripId,createdAt:'2026-11-03T00:00:00Z',text:'test'})}};
- const deps={fields:{},prisma:db,chatTripWhere:async()=>({scope:role}),chatAccess:async(db,id)=>actual.find(t=>t.id===id),isRiderChatEnded,messageWhere:trip=>({tripId:trip.id}),chatCanSend,chatMessageForClient:m=>m};
+ let query;const touched=[];const db={trip:{findMany:async args=>{query=args;return listed;}},tripChatRead:{findUnique:async()=>null},tripChatMessage:{count:async({where})=>{touched.push(where.tripId || where.AND?.[0]?.tripId);return 2;},findFirst:async({where})=>({id:'message-'+(where.tripId || where.AND?.[0]?.tripId),createdAt:'2026-11-03T00:00:00Z',text:'test'})}};
+ const deps={chatAlertMessageWhere,chatHeartsForClient,fields:{},prisma:db,chatTripWhere:async()=>({scope:role}),chatAccess:async(db,id)=>actual.find(t=>t.id===id),isRiderChatEnded,messageWhere:trip=>({tripId:trip.id}),chatCanSend,chatMessageForClient:m=>m};
  const js=ts.transpileModule('const handler='+callback+';',{compilerOptions:{target:ts.ScriptTarget.ES2020}}).outputText;
  const handler=new Function(...Object.keys(deps),js+';return handler;')(...Object.values(deps));let body;await handler({chatActor:{id:'actor',role},query:{}},{json:value=>{body=value;}});return {body,query,touched};
 }

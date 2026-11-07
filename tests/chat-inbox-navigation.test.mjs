@@ -1,3 +1,5 @@
+import {CHAT_SERVICE_NOTICE} from '../apps/api/src/shared/chatServiceNotice.js';
+import {chatHeartsForClient} from '../apps/api/src/services/tripChatService.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -9,12 +11,12 @@ const React={createElement:(type,props,...children)=>({type,props:props||{},chil
 function nodes(tree){if(tree==null||typeof tree!=='object')return[];if(Array.isArray(tree))return tree.flatMap(nodes);return [tree,...nodes(tree.children)];}
 function text(tree){if(tree==null)return '';if(Array.isArray(tree))return tree.map(text).join('');if(typeof tree!=='object')return String(tree);return text(tree.children);}
 const conversation={tripId:'full-trip-CaseSensitive123',pickupAddress:'123 Nguyễn Huệ',dropoffAddress:'Sân bay Tân Sơn Nhất',unread:2,last:{senderLabel:'Người đặt chuyến',kind:'TEXT',text:'Tôi đang ra.'}};
-function native(params={}) {
+function native(params={}, overrides={}) {
  const source=read('apps/mobile-chat/TripChat.tsx'),snippet=source.slice(source.indexOf('export default function TripChatScreen')).replace('export default function','function');
  const ast=ts.createSourceFile('chat.tsx',snippet,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),names=[];
  function visit(node){if(ts.isVariableDeclaration(node)&&ts.isArrayBindingPattern(node.name)&&node.initializer&&ts.isCallExpression(node.initializer)&&node.initializer.expression.getText(ast)==='useState')names.push(node.name.elements[0].name.getText(ast));ts.forEachChild(node,visit);}visit(ast);
  let index=0;const routes=[],requests=[],states=[];
- const deps={React,useIsFocused:()=>true,useLocalSearchParams:()=>params,useState:initial=>{const name=names[index++];return [name==='inbox'?[conversation]:initial,value=>states.push({name,value})];},useEffect(){},useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:'ios'},router:{push:value=>routes.push(value),back(){}},Keyboard:{dismiss(){}},blue:'#1976d2',ink:'#000',button:{},config:{role:'RIDER'},chatConversationRoute,api:async path=>{requests.push(path);return {trip:{id:conversation.tripId}};}};
+ const deps={requestAnimationFrame:fn=>fn(),CHAT_SERVICE_NOTICE,chatActionButton:{},chatActionLabel:{},chatHeartsForClient,React,useTripCallActive:()=>false,TripCallButton:'TripCallButton',useIsFocused:()=>true,useLocalSearchParams:()=>params,useState:initial=>{const name=names[index++];return [Object.hasOwn(overrides,name)?overrides[name]:name==='inbox'?[conversation]:initial,value=>states.push({name,value})];},useEffect(){},useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:'ios'},router:{push:value=>routes.push(value),back(){}},Keyboard:{dismiss(){}},blue:'#1976d2',ink:'#000',button:{},config:{role:'RIDER'},chatConversationRoute,api:async path=>{requests.push(path);return {trip:{id:conversation.tripId}};}};
  for(const name of ['SafeAreaView','KeyboardAvoidingView','View','Pressable','Text','TextInput','ScrollView','Modal','Image'])deps[name]=name;
  const screen=new Function(...Object.keys(deps),compile(snippet)+';return TripChatScreen;')(...Object.values(deps));
  return {tree:screen(),routes,requests,states};
@@ -45,7 +47,17 @@ test('old API responses without addresses still render a working inbox and no in
 test('inbox API includes route from the authorized trip, preserving code and message preview',()=>{
  const source=read('apps/api/src/routes/tripChat.js'),ast=ts.createSourceFile('chat.js',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.JS);let object;
  function visit(node){if(ts.isCallExpression(node)&&node.expression.getText(ast)==='items.push'&&node.arguments[0]&&ts.isObjectLiteralExpression(node.arguments[0]))object=node.arguments[0].getText(ast);ts.forEachChild(node,visit);}visit(ast);assert(object);
- const deps={trip:{id:'full-code',status:'ACCEPTED',pickupAddress:'stale',dropoffAddress:'stale'},authorizedTrip:{pickupAddress:'Current pickup',dropoffAddress:'Current destination'},unread:2,last:{text:'Message preview'},chatMessageForClient:value=>value,req:{query:{media:'images'}},chatCanSend:()=>true,a:{role:'RIDER'}};
+ const deps={chatHeartsForClient,trip:{id:'full-code',status:'ACCEPTED',pickupAddress:'stale',dropoffAddress:'stale'},authorizedTrip:{pickupAddress:'Current pickup',dropoffAddress:'Current destination'},unread:2,last:{text:'Message preview'},chatMessageForClient:value=>value,req:{query:{media:'images'}},chatCanSend:()=>true,a:{role:'RIDER'}};
  const result=new Function(...Object.keys(deps),`return (${object});`)(...Object.values(deps));
  assert.equal(result.tripId,'full-code');assert.equal(chatConversationRoute(result),'Current pickup → Current destination');assert.equal(result.last.text,'Message preview');assert.equal(result.unread,2);
+});
+
+test('notification message gets a visible focus border and scrolls to its measured position once',()=>{
+ const m={id:'target-42',senderId:'someone',senderLabel:'Khách',kind:'TEXT',createdAt:'2026-11-07',deletedAt:'2026-11-07'};
+ const h=native({tripId:conversation.tripId,messageId:m.id},{items:[m]});
+ const all=nodes(h.tree),bubble=all.find(n=>n.props.key===m.id),list=all.find(n=>n.type==='ScrollView'&&n.props.ref);
+ assert.ok(bubble);assert.equal(bubble.props.style.borderWidth,2);
+ const scrolled=[];list.props.ref.current={scrollTo:value=>scrolled.push(value)};
+ bubble.props.onLayout({nativeEvent:{layout:{y:420}}});bubble.props.onLayout({nativeEvent:{layout:{y:420}}});
+ assert.deepEqual(scrolled,[{y:396,animated:true}]);
 });

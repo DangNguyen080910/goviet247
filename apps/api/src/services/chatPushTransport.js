@@ -2,7 +2,7 @@
 // Expo rejects a mixed-project batch before sending any notifications. Split only
 // that rejected batch, preserving normal batching and avoiding a new app build.
 const safeCode = value => /^[A-Za-z0-9_]+$/.test(String(value || '')) ? String(value) : 'UNKNOWN';
-export async function sendChatPushBatch(batch, { fetchImpl = fetch, removeDevice }) {
+export async function sendChatPushBatch(batch, { fetchImpl = fetch, removeDevice, onAccepted = async () => {} }) {
   if (!batch.length) return;
   const response = await fetchImpl('https://exp.host/--/api/v2/push/send', {
     method: 'POST', headers: {'Content-Type':'application/json'},
@@ -14,7 +14,7 @@ export async function sendChatPushBatch(batch, { fetchImpl = fetch, removeDevice
     const failures = [];
     // Continue to the other devices even when one project's credentials fail.
     for (const item of batch) {
-      try { await sendChatPushBatch([item], {fetchImpl, removeDevice}); }
+      try { await sendChatPushBatch([item], {fetchImpl, removeDevice, onAccepted}); }
       catch (error) { failures.push(error.message); }
     }
     if (failures.length) throw new Error(`Expo split: ${[...new Set(failures)].join(', ')}`);
@@ -30,7 +30,10 @@ export async function sendChatPushBatch(batch, { fetchImpl = fetch, removeDevice
   const failures = [];
   for (let i=0; i<tickets.length; i++) {
     const ticket=tickets[i];
-    if (ticket.status !== 'error') continue;
+    if (ticket.status === 'ok') {
+      try { await onAccepted(batch[i].to); } catch { failures.push('RECEIPT_NOT_SAVED'); }
+      continue;
+    }
     const code=safeCode(ticket.details?.error);
     if (code === 'DeviceNotRegistered') await removeDevice(batch[i].to);
     else failures.push(code);

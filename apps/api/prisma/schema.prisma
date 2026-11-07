@@ -189,6 +189,7 @@ enum AccountingDocumentType {
 }
 
 model User {
+  callDevices TripCallDevice[]
   id                    String                   @id @default(cuid())
   displayName           String?
   primaryRole           UserPrimaryRole          @default(RIDER)
@@ -339,6 +340,7 @@ model Trip {
   partnerAssignedTo PartnerMember? @relation("PartnerTripAssignee", fields: [partnerAssignedToId], references: [id], onDelete: Restrict)
   @@index([partnerCompanyId, pickupTime])
 
+  calls TripCall[]
   chatMessages TripChatMessage[]
   chatReads TripChatRead[]
   chatAccesses TripChatAccess[]
@@ -385,6 +387,8 @@ model Trip {
   directionFactor Float          @default(1)
   holidayFactor   Float          @default(1)
   holidaySurcharge Json? // Snapshot of the applied holiday surcharge at booking time
+  walletHoldId String? // Unique financial scope for each driver assignment
+  chatVisibleFrom DateTime? @db.Timestamptz(6) // Previous assignments remain Admin-only
   dispatcherNote  String? // Admin instructions visible to drivers, never riders
   note            String?
 
@@ -802,6 +806,8 @@ model DriverDocument {
 }
 
 model DriverWalletTransaction {
+  walletHoldId String?
+  @@index([walletHoldId])
   id                String              @id @default(cuid())
   driverProfileId   String
   type              DriverWalletTxnType
@@ -1092,7 +1098,19 @@ model SeoRoute {
   @@index([source])
 }
 
+model TripChatReaction {
+  messageId String
+  message TripChatMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  actorId String
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  @@id([messageId, actorId])
+}
+
 model TripChatMessage {
+  // Assignment scope is independent of when a call summary reaches the chat.
+  historyAt DateTime? @db.Timestamptz(6)
+  recordingCallId String?
+  reactions TripChatReaction[]
   // ALL for ordinary chat; acceptance notices target one side plus GoViet247.
   audience String @default("ALL")
   recipientId String?
@@ -1122,6 +1140,7 @@ model TripChatMessage {
   pushAttemptAt DateTime? @db.Timestamptz(6)
   pushDoneAt DateTime? @db.Timestamptz(6)
   pushAttempts Int @default(0)
+  pushDeliveredTokens String[] @default([])
   @@unique([tripId, senderId, clientId])
   @@index([tripId, createdAt, id])
   @@index([pushDoneAt, pushAttemptAt])
@@ -1142,4 +1161,81 @@ model TripChatAccess {
   action String
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   @@index([tripId, createdAt])
+}
+
+// Credentials are server-only. Never include this record directly in API responses.
+model TripCall {
+ invites TripCallInvite[]
+ id String @id @default(cuid())
+ tripId String
+ trip Trip @relation(fields:[tripId], references:[id], onDelete:Restrict)
+ clientId String
+ callerId String
+ calleeId String
+ callerLabel String
+ calleeLabel String
+ callerAliases String[]
+ calleeAliases String[]
+ callerDevice String
+ calleeDevice String?
+ status String @default("RINGING")
+ createdAt DateTime @default(now()) @db.Timestamptz(6)
+ answeredAt DateTime? @db.Timestamptz(6)
+ startedAt DateTime? @db.Timestamptz(6)
+ endedAt DateTime? @db.Timestamptz(6)
+ callerSeenAt DateTime @default(now()) @db.Timestamptz(6)
+ calleeSeenAt DateTime? @db.Timestamptz(6)
+ callerJoined Boolean @default(false)
+ calleeJoined Boolean @default(false)
+ meeting Json?
+ callerAttendee Json?
+ calleeAttendee Json?
+ captureId String?
+ captureArn String?
+ concatId String?
+ recordingKey String?
+ cleanupDoneAt DateTime? @db.Timestamptz(6)
+ reservations TripCallReservation[]
+ @@unique([callerId,clientId])
+ @@index([status,createdAt])
+ @@index([endedAt,cleanupDoneAt])
+}
+model TripCallReservation {
+ actorId String @id
+ callId String
+ call TripCall @relation(fields:[callId],references:[id],onDelete:Cascade)
+ @@index([callId])
+}
+
+// Native VoIP tokens are separate from Expo chat push tokens.
+model TripCallDevice {
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ invites TripCallInvite[]
+ id String @id @default(cuid())
+ installationId String
+ appKind String
+ userId String
+ token String
+ environment String
+ pushSessionId String
+ pushExpiresAt DateTime? @db.Timestamptz(6)
+ generation String
+ lastRegisteredAt DateTime @default(now()) @db.Timestamptz(6)
+ @@unique([installationId,appKind])
+ @@unique([token,appKind,environment])
+ @@index([userId])
+}
+model TripCallInvite {
+ call TripCall @relation(fields:[callId],references:[id],onDelete:Cascade)
+ device TripCallDevice @relation(fields:[deviceId],references:[id],onDelete:Cascade)
+ id String @id @default(cuid())
+ callId String
+ deviceId String
+ generation String
+ attempts Int @default(0)
+ attemptAt DateTime? @db.Timestamptz(6)
+ sentAt DateTime? @db.Timestamptz(6)
+ lastError String?
+ @@unique([callId,deviceId,generation])
+ @@index([callId])
 }

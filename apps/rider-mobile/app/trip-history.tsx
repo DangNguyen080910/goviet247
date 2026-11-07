@@ -367,7 +367,7 @@ export default function RiderTripHistoryScreen() {
           <View style={styles.successBox}>
             <Text style={styles.successBoxText}>Đặt chuyến thành công.</Text>
             <Text style={styles.successBoxText}>
-              GoViet247 đã ghi nhận chuyến của bạn. Bạn có thể nhắn GoViet247 ngay tại chuyến bên dưới; tài xế sẽ liên hệ trong hội thoại này sau khi nhận chuyến. Vui lòng bật thông báo để nhận tin nhắn.
+              GoViet247 đã ghi nhận chuyến của bạn. Mở Liên hệ chuyến để nhắn GoViet247; tài xế tham gia sau khi nhận chuyến. Vui lòng bật chuông và thông báo để nhận phản hồi.
             </Text>
           </View>
         ) : null}

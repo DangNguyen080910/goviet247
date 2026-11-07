@@ -1,3 +1,5 @@
+import {createChatMediaDeletionQueue} from "../apps/api/src/services/chatMediaDeletionQueue.js";
+import {createHash} from 'node:crypto';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -8,18 +10,20 @@ const start = source.indexOf('export async function deliverChatPush(');
 const end = source.indexOf('\nexport ', start + 1);
 const body = source.slice(start, end).replace('export ', '');
 const future = new Date(Date.now() + 3600000);
-function fixture(ids, { readIds = [], expired = false, adminExpired = false } = {}) {
+function fixture(ids, { readIds = [], expired = false, adminExpired = false, failAfterFirst = false, duplicate = false } = {}) {
   let done = false;
+  let sends = 0;
   let queriedIds;
   const sent = [];
   const message = { id: 'm1', tripId: 'trip1', senderId: 'sender', senderRole: 'DRIVER',
     senderLabel: 'Tài xế', kind: 'TEXT', createdAt: new Date(), pushAttempts: 0 };
   const devices = ids.map(id => ({ userId: id, pushToken: `ExpoPushToken[${id}]`, pushSessionId: `session-${id}`, pushExpiresAt: id.startsWith('admin-') && adminExpired ? new Date(0) : future }));
+  if (duplicate) devices.push({...devices[0]});
   const prisma = {
     tripChatMessage: {
       findMany: async args => args.select ? [] : done ? [] : [message],
       updateMany: async () => ({ count: 1 }),
-      update: async ({ data }) => { if (data.pushDoneAt) done = true; return { ...message, ...data }; },
+      update: async ({ data }) => { if (data.pushDoneAt) done = true; if(data.pushDeliveredTokens) (message.pushDeliveredTokens ||= []).push(data.pushDeliveredTokens.push); return { ...message, ...data }; },
     },
     trip: { findUnique: async () => ({ id: 'trip1' }) },
     tripChatRead: { findMany: async () => readIds.map(actorId => ({ actorId })) },
@@ -29,8 +33,14 @@ function fixture(ids, { readIds = [], expired = false, adminExpired = false } = 
     },
     session: { findMany: async () => devices.filter(d => !d.userId.startsWith('admin-')).map(d => ({ id: d.pushSessionId, userId: d.userId, expiresAt: expired ? new Date(0) : null })) },
   };
-  const deps = { prisma, delivering: false, chatPushRecipientIds: async () => ids, activeDriverDevices,
-    sendChatPushBatch: async batch => sent.push(...batch), removeAudio: async () => {}, console: { error() {} } };
+  const deps = { createHash, prisma, delivering: false, drainMediaDeletions: createChatMediaDeletionQueue(), chatPushRecipientIds: async () => ids, activeDriverDevices,
+    sendChatPushBatch: async (batch,{onAccepted}) => {
+      sends++;
+      for (let i=0;i<batch.length;i++) {
+        if(failAfterFirst && sends===1 && i===1) throw new Error('temporary device failure');
+        sent.push(batch[i]);await onAccepted(batch[i].to);
+      }
+    }, removeAudio: async () => {}, console: { error() {} } };
   const deliver = new Function(...Object.keys(deps), body + ';return deliverChatPush;')(...Object.values(deps));
   return { deliver, sent, get done() { return done; }, get queriedIds() { return queriedIds; } };
 }
@@ -65,4 +75,13 @@ test('expired Admin push bindings and expired user sessions remain suppressed', 
   await f.deliver();
   assert.deepEqual(f.sent, []);
   assert.equal(f.done, true);
+});
+
+test('a retry excludes acknowledged devices after partial success',async()=>{
+ const f=fixture(['admin-1','rider1'],{failAfterFirst:true});
+ await f.deliver();assert.equal(f.done,false);assert.equal(f.sent.length,1);
+ await f.deliver();assert.equal(f.done,true);assert.equal(f.sent.length,2);assert.deepEqual(f.sent.map(m=>m.to).sort(),['ExpoPushToken[admin-1]','ExpoPushToken[rider1]']);
+});
+test('duplicate device rows sharing a token produce one chat push',async()=>{
+ const f=fixture(['admin-1'],{duplicate:true});await f.deliver();assert.equal(f.sent.length,1);
 });

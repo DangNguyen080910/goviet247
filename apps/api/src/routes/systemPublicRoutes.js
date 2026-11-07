@@ -16,10 +16,15 @@ function notificationItem(item) {
 }
 
 // Compatibility for rider versions already installed, and public announcements.
-router.get("/system-notifications", async (req, res) => {
+router.get("/system-notifications", (req, res, next) => {
+  // Anonymous compatibility clients can read public announcements only.
+  if (req.headers.authorization) return verifyToken(req, res, next);
+  next();
+}, async (req, res) => {
   try {
-    const audience = String(req.query.audience || "").trim().toUpperCase();
-    const userId = String(req.query.userId || "").trim();
+    const requestedAudience = String(req.query.audience || "RIDER").trim().toUpperCase();
+    const audience = ["RIDER", "DRIVER"].includes(requestedAudience) ? requestedAudience : "RIDER";
+    const userId = String(req.user?.uid || req.user?.id || "").trim();
     const items = await prisma.systemNotification.findMany({
       where: {
         isActive: true,

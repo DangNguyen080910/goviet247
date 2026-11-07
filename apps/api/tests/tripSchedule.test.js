@@ -1,3 +1,4 @@
+import {tripNotificationContent} from "../src/shared/tripNotificationContent.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -25,8 +26,8 @@ function fixture(initial = {}) {
   function controller(file, names) {
     const source = readFileSync(new URL(`../src/controllers/${file}.js`, import.meta.url), "utf8")
       .replace(/^import[\s\S]*?;\n/gm, "").replaceAll("export async function", "async function");
-    return new Function("emitDriverTripEvent", "emitRiderTripUpdate", "prisma", "parseTripTime", "lockTrip", "sendAdminPushNotification", "sendTripStatusChangedToRider", "sendSystemNotificationToDriver", "sendNewTripToDrivers", "lockTripMilestones", "recordTripMilestone", "console",
-      `${source}; return {${names.join(",")}};`)(noop, noop, prisma, parseTripTime, noop, noop, noop, noop, noop, noop, noop, { log() {}, error() {} });
+    return new Function("emitDriverTripEvent", "emitRiderTripUpdate", "prisma", "parseTripTime", "lockTrip", "sendAdminPushNotification", "sendTripStatusChangedToRider", "sendSystemNotificationToDriver", "sendNewTripToDrivers", "lockTripMilestones", "recordTripMilestone", "tripNotificationContent", "console",
+      `${source}; return {${names.join(",")}};`)(noop, noop, prisma, parseTripTime, noop, noop, noop, noop, noop, noop, noop, tripNotificationContent, { log() {}, error() {} });
   }
   const actions = { ...controller("adminTripController", ["adminChuyenVeChoDuyet", "adminCapNhatThoiGianChuyen", "adminDieuChinhThongTinChuyen"]),
     ...controller("tripController", ["adminChangeTripStatus", "adminVerifyTrip", "adminResendPendingTrip"]) };

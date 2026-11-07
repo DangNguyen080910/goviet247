@@ -1,4 +1,5 @@
 import "dotenv/config";
+import tripCallRoutes, {sweepTripCalls,deliverTripCallInvites} from './routes/tripCalls.js';
 import tripChatRoutes from "./routes/tripChat.js";
 import { deliverChatPush } from "./services/tripChatService.js";
 import { userSessions, pushSessionKey } from './services/userSessions.js';
@@ -109,6 +110,7 @@ app.get("/", (req, res) => {
 // --- REST routes ---
 app.use("/api/partners", partnerRoutes);
 app.use("/api/trip-chat", tripChatRoutes);
+app.use("/api/trip-calls", tripCallRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/driver/documents", driverDocumentsRoutes);
 app.use("/api/driver/profile", driverProfileRoutes);
@@ -217,5 +219,9 @@ server.listen(port, () => {
   console.log(`[API] chạy ở http://localhost:${port}`);
 });
 
+const callRecoveryTimer=setInterval(() => { void sweepTripCalls(); }, 5000);
+callRecoveryTimer.unref();
+const callInviteTimer=setInterval(() => { void deliverTripCallInvites(); }, 2000);
+callInviteTimer.unref();
 const chatDeliveryTimer=setInterval(() => { void deliverChatPush(); }, 5000);
 chatDeliveryTimer.unref();

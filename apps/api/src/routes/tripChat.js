@@ -1,10 +1,12 @@
+import {chatAlertMessageWhere} from '../shared/chatAlerts.js';
+import { chatVisibleFrom } from '../shared/chatAssignmentHistory.js';
 import {chatTripSummary} from '../shared/chatTripDetail.js';
 import { prepareChatImage, CHAT_IMAGE_MAX_BYTES } from '../services/chatImage.js';
 import { recordBlockedChatContact } from '../services/chatContactAlert.js';
 import { Router } from 'express';
 import multer from 'multer';
 import { prisma } from '../utils/db.js';
-import { chatAuth, chatAccess, chatTripWhere, messageWhere, createChatMessage, deleteChatMessage, storeAudio, removeAudio, audioUrl } from '../services/tripChatService.js';
+import { setChatHeart, chatHeartsForClient, chatAuth, chatAccess, chatTripWhere, messageWhere, createChatMessage, deleteChatMessage, storeAudio, removeAudio, audioUrl } from '../services/tripChatService.js';
 import { isRiderChatEnded, chatCanSend, validateChatPayload, CHAT_QUICK_REPLIES, chatMessageForClient } from '../shared/tripChat.js';
 const router = Router();
 router.use(chatAuth);
@@ -22,6 +24,8 @@ const wrap = fn => async (req, res) => {
   }
 };
 const fields = {
+  recordingCallId:true,
+  reactions: {select:{actorId:true}},
   deletedAt: true,
   audience: true,
   id: true,
@@ -80,7 +84,7 @@ router.get('/conversations', wrap(async (req, res) => {
       continue;
     }
     if(isRiderChatEnded(authorizedTrip.status)) continue;
-    const where = messageWhere(authorizedTrip, a);
+    const where = chatAlertMessageWhere(messageWhere(authorizedTrip, a), a);
     const read = await prisma.tripChatRead.findUnique({
       where: {
         tripId_actorId: {
@@ -122,7 +126,7 @@ router.get('/conversations', wrap(async (req, res) => {
       dropoffAddress: authorizedTrip.dropoffAddress || '',
       status: authorizedTrip.status,
       unread,
-      last: chatMessageForClient(last, req.query.media === 'images'),
+      last: chatMessageForClient(chatHeartsForClient(last, a), req.query.media === 'images'),
       canSend: chatCanSend(authorizedTrip, a)
     });
   }
@@ -138,17 +142,20 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
   const a = req.chatActor,
     trip = await chatAccess(prisma, req.params.tripId, a);
   const before = String(req.query.before || '');
-  const cursor = before ? await prisma.tripChatMessage.findFirst({
+  const around = String(req.query.around || '');
+  const after = String(req.query.after || '');
+  const cursor = (before || around || after) ? await prisma.tripChatMessage.findFirst({
     where: {
       ...messageWhere(trip, a),
-      id: before
+      id: before || around || after
     },
     select: {
       createdAt: true,
       id: true
     }
   }) : null;
-  if (before && !cursor) return res.status(400).json({
+  const historyReset = Boolean((before || around || after) && !cursor && chatVisibleFrom(trip, a));
+  if ((before || around || after) && !cursor && !historyReset) return res.status(400).json({
     success: false,
     message: 'Mốc tin nhắn không hợp lệ.'
   });
@@ -156,12 +163,12 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
     AND: [messageWhere(trip, a), ...(cursor ? [{
       OR: [{
         createdAt: {
-          lt: cursor.createdAt
+          ...(after ? {gt: cursor.createdAt} : {lt: cursor.createdAt})
         }
       }, {
         createdAt: cursor.createdAt,
         id: {
-          lt: cursor.id
+          ...(after ? {gt: cursor.id} : around ? {lte: cursor.id} : {lt: cursor.id})
         }
       }]
     }] : [])]
@@ -170,14 +177,14 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
     where,
     select: fields,
     orderBy: [{
-      createdAt: 'desc'
+      createdAt: after ? 'asc' : 'desc'
     }, {
-      id: 'desc'
+      id: after ? 'asc' : 'desc'
     }],
     take: 51
   });
   const hasMore = rows.length > 50,
-    items = rows.slice(0, 50).reverse();
+    items = after ? rows.slice(0, 50) : rows.slice(0, 50).reverse();
   if (a.role === 'ADMIN' && !before) {
     const last = await prisma.tripChatAccess.findFirst({
       where: {
@@ -197,10 +204,14 @@ router.get('/:tripId/messages', wrap(async (req, res) => {
       }
     });
   }
+  const deletedMessages=await prisma.tripChatMessage.findMany({where:{...messageWhere(trip,a),deletedAt:{not:null}},select:{id:true,deletedAt:true}});
   res.set('Cache-Control', 'no-store').json({
     success: true,
-    items: items.map(m => chatMessageForClient(m, req.query.media === 'images')),
+    items: items.map(m => chatMessageForClient(chatHeartsForClient(m, a), req.query.media === 'images')),
     hasMore,
+    historyReset,
+    deletedMessages,
+    visibleFrom: chatVisibleFrom(trip, a)?.toISOString() || null,
     actor: a,
     canSend: chatCanSend(trip, a),
     quickReplies: CHAT_QUICK_REPLIES[a.role],
@@ -404,10 +415,15 @@ router.get('/:tripId/audio/:id', wrap(async (req, res) => {
       action: 'PLAY_AUDIO'
     }
   });
+  const deletedMessages=await prisma.tripChatMessage.findMany({where:{...messageWhere(trip,a),deletedAt:{not:null}},select:{id:true,deletedAt:true}});
   res.set('Cache-Control', 'no-store').json({
     success: true,
     url: await audioUrl(m.audioKey)
   });
+}));
+router.put('/:tripId/messages/:id/heart', wrap(async (req, res) => {
+  const reaction = await setChatHeart(prisma, req.params.tripId, req.params.id, req.chatActor, req.body.active);
+  res.json({success:true, ...reaction});
 }));
 router.delete('/:tripId/messages/:id', wrap(async (req, res) => {
   await deleteChatMessage(prisma, req.params.tripId, req.params.id, req.chatActor);

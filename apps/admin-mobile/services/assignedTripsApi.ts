@@ -401,7 +401,7 @@ export async function cancelAssignedTrip(
   tripId: string,
   reason: string,
   origin: "CUSTOMER" | "DRIVER",
-  resolution?: "PENALTY_AND_CANCEL",
+  resolution?: "PENALTY_AND_CANCEL" | "REFUND_AND_REVIEW",
 ) {
   return adminRequest(`/api/admin/trips/${tripId}/cancel`, {
     method: "POST",

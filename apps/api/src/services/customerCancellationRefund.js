@@ -10,16 +10,17 @@ function conflict(message) {
 
 // Caller holds the driver-profile row lock and the trip row lock in one transaction.
 // Every credit and the cancellation commit together, or none of them commit.
-export async function refundCustomerCancellationHold(tx, trip) {
+export async function refundCustomerCancellationHold(tx, trip, reason = "khách huỷ") {
   const profileId = trip.driver?.driverProfile?.id;
   if (!trip.driverId || !profileId) return { amount: 0, transactions: [] };
 
   const holds = await tx.driverWalletTransaction.findMany({
     where: {
       driverProfileId: profileId, tripId: trip.id,
+      ...(trip.walletHoldId ? {walletHoldId: trip.walletHoldId} : {}),
       type: { in: HOLD_TO_REFUND.map(([type]) => type) },
     },
-    select: { type: true, amount: true },
+    select: { type: true, amount: true, createdAt: true },
   });
   const expected = Number(trip.requiredWalletAmountSnapshot ??
     (Number(trip.commissionAmountSnapshot || 0) + Number(trip.driverVatAmountSnapshot || 0) + Number(trip.driverPitAmountSnapshot || 0)));
@@ -42,12 +43,19 @@ export async function refundCustomerCancellationHold(tx, trip) {
   if (amount !== expected) throw conflict("Tổng khoản giữ ví không khớp chuyến; chưa huỷ hay hoàn ví.");
   if (amount === 0) return { amount: 0, transactions: [] };
 
+  if(trip.walletHoldId && holds.some(h=>!h.createdAt || !Number.isFinite(new Date(h.createdAt).getTime())))throw conflict("Chưa xác định được thời điểm giữ ví; vui lòng kiểm tra lịch sử ví.");
+
   // Old manual refunds may use ADJUST_ADD. Any existing credit for this
   // driver and trip needs a human review to avoid a second refund.
   const previousCredits = await tx.driverWalletTransaction.findMany({
     where: {
       driverProfileId: profileId,
       OR: [{ tripId: trip.id }, { note: { contains: trip.id } }],
+      ...(trip.walletHoldId ? {AND: [{OR: [
+        {walletHoldId: trip.walletHoldId},
+        // Unscoped manual credits since the current hold still need review.
+        {walletHoldId: null, createdAt: {gte: new Date(Math.min(...holds.map(h => new Date(h.createdAt).getTime())))}}
+      ]}]} : {}),
       type: { in: ["COMMISSION_REFUND", "DRIVER_VAT_REFUND", "DRIVER_PIT_REFUND", "ADJUST_ADD"] },
     },
     select: { amount: true },
@@ -69,8 +77,9 @@ export async function refundCustomerCancellationHold(tx, trip) {
     transactions.push(await tx.driverWalletTransaction.create({
       data: {
         driverProfileId: profileId, tripId: trip.id, type: part.refundType,
+        ...(trip.walletHoldId ? {walletHoldId: trip.walletHoldId} : {}),
         amount: part.amount, balanceBefore, balanceAfter: balance,
-        note: `Hoàn khoản giữ chuyến khách huỷ - TripID: ${trip.id} (${part.label})`,
+        note: `Hoàn khoản giữ chuyến ${reason} - TripID: ${trip.id} (${part.label})`,
       },
     }));
   }

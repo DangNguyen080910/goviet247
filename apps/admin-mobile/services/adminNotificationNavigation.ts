@@ -1,3 +1,4 @@
+import {chatNotificationRoute} from '../../api/src/shared/chatNotificationNavigation.js';
 import type * as Notifications from "expo-notifications";
 
 type NotificationData = Record<string, unknown> | undefined;
@@ -6,12 +7,13 @@ function normalize(value: unknown) {
   return String(value || "").trim().toUpperCase();
 }
 
-export function getAdminNotificationRoute(data: NotificationData) {
+function notificationRoute(data: NotificationData) {
   const type = normalize(data?.type);
   const source = normalize(data?.source);
   const status = normalize(data?.status || data?.toStatus);
 
-  if (type === "TRIP_CHAT" && data?.tripId) return `/trip-chat?tripId=${encodeURIComponent(String(data.tripId))}`;
+  const chatRoute = chatNotificationRoute(data);
+  if (chatRoute) return chatRoute;
 
   if (type === "CHAT_CONTACT_BLOCKED" || type === "BLOCKED_TRIP_ACCEPT_ATTEMPT") return "/alerts";
 
@@ -61,6 +63,14 @@ export function getAdminNotificationRoute(data: NotificationData) {
   }
 
   return "/home";
+}
+
+let focusSequence = 0;
+export function getAdminNotificationRoute(data: NotificationData) {
+  let route=notificationRoute(data);
+  const tripId=String(data?.tripId||'').trim();
+  if(tripId && route.startsWith('/assigned-trips') && normalize(data?.status||data?.toStatus)==='PENDING')route='/pending-trips?tab=PENDING';
+  return tripId && /^\/(pending-trips|assigned-trips)(\?|$)/.test(route) ? `${route}${route.includes('?')?'&':'?'}tripId=${encodeURIComponent(tripId)}&focusRequest=${Date.now()}_${++focusSequence}` : route;
 }
 
 export function getAdminNotificationResponseRoute(

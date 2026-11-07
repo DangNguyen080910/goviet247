@@ -1,3 +1,5 @@
+import {createChatMediaDeletionQueue} from "./chatMediaDeletionQueue.js";
+import { chatVisibleFrom, chatMessageInCurrentHistory } from '../shared/chatAssignmentHistory.js';
 import { sendChatPushBatch } from './chatPushTransport.js';
 import { hasPrivateChatPrefixPolicy } from '../shared/chatStoragePolicy.js';
 import { getPartnerRiderContext } from './partnerRiderAccess.js';
@@ -5,11 +7,11 @@ import { chatAudienceWhere } from '../shared/tripChatVisibility.js';
 import { chatPushRecipientIds } from './tripAcceptanceChat.js';
 import { verifyPartnerToken } from './partnerAccess.js';
 import jwt from 'jsonwebtoken';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 import { S3Client, PutObjectCommand, GetObjectCommand, GetPublicAccessBlockCommand, GetBucketPolicyCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { prisma } from '../utils/db.js';
-import { userSessions } from './userSessions.js';
+import { userSessions, pushSessionKey } from './userSessions.js';
 import { verifyAdminJwtToken } from '../utils/jwt.js';
 import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere } from './riderTripAccess.js';
 import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE, DRIVER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
@@ -43,11 +45,13 @@ export async function chatAuth(req, res, next) {
       req.chatActor = {
         id: `admin-${row.id}`,
         role: 'ADMIN',
+        recordingAdmin: row.role === 'ADMIN',
         label: `Hỗ trợ GoViet247 · ${row.username}`
       };
     } else {
       const user = await userSessions.verify(token);
       const id = user.id || user.uid;
+      req.chatCallSession = {id:pushSessionKey(token,user),appRole:user.appRole || null,expiresAt:user.exp ? new Date(user.exp * 1000) : null};
       req.chatActor = {
         id,
         role: 'RIDER',
@@ -113,12 +117,11 @@ export function messageWhere(trip, actor) {
   // A replacement driver must not inherit the former driver's conversation.
   return {
     tripId: trip.id,
-    AND: [chatAudienceWhere(actor)],
-    ...(actor.role === 'DRIVER' && trip.acceptedAt ? {
-      createdAt: {
-        gte: trip.acceptedAt
-      }
-    } : {})
+    ...(actor.role === 'ADMIN' && actor.recordingAdmin !== true ? {recordingCallId:null} : {}),
+    AND: [chatAudienceWhere(actor), ...(chatVisibleFrom(trip, actor) ? [{OR: [
+      {historyAt: {gte: chatVisibleFrom(trip, actor)}},
+      {historyAt: null, createdAt: {gte: chatVisibleFrom(trip, actor)}}
+    ]}] : [])]
   };
 }
 export async function privateAudioBucket() {
@@ -176,7 +179,10 @@ export async function createChatMessage(tripId, actor, data) {
         }
       }
     });
-    if (existing) return existing;
+    if (existing) {
+      if (!chatMessageInCurrentHistory(trip, actor, existing)) throw fail('Tin nhắn thuộc lần giao tài xế trước. Vui lòng gửi lại tin mới.', 409);
+      return existing;
+    }
     const recent = await tx.tripChatMessage.count({
       where: {
         tripId,
@@ -190,6 +196,7 @@ export async function createChatMessage(tripId, actor, data) {
     return tx.tripChatMessage.create({
       data: {
         ...data,
+        createdAt: new Date(),
         tripId,
         senderId: actor.id,
         senderRole: actor.role,
@@ -209,34 +216,12 @@ export async function chatTripWhere(actor) {
   };
 }
 let delivering = false;
+const drainMediaDeletions = createChatMediaDeletionQueue();
 export async function deliverChatPush() {
   if (delivering) return;
   delivering = true;
   try {
-    const deletions = await prisma.tripChatMessage.findMany({
-      where: { OR: [{audioDeleteKey: {not: null}}, {imageDeleteKey: {not: null}}] },
-      take: 20,
-      select: {
-        id: true,
-        audioDeleteKey: true,
-        imageDeleteKey: true
-      }
-    });
-    for (const item of deletions) try {
-      await removeAudio(item.audioDeleteKey);
-      await removeAudio(item.imageDeleteKey);
-      await prisma.tripChatMessage.update({
-        where: {
-          id: item.id
-        },
-        data: {
-          audioDeleteKey: null,
-          imageDeleteKey: null
-        }
-      });
-    } catch (error) {
-      console.error('[TripChat] audio deletion pending', item.id, error.message);
-    }
+    await drainMediaDeletions(prisma, removeAudio);
     const messages = await prisma.tripChatMessage.findMany({
       where: {
         pushDoneAt: null,
@@ -251,12 +236,13 @@ export async function deliverChatPush() {
           }
         }]
       },
-      take: 20,
+      take: 200,
       orderBy: {
         createdAt: 'asc'
       }
     });
-    for (const m of messages) {
+    await Promise.all(Array.from({length:Math.min(8,messages.length)},async()=>{
+     for(;;){const m=messages.shift();if(!m)return;
       const claimed = await prisma.tripChatMessage.updateMany({
         where: {
           id: m.id,
@@ -321,16 +307,21 @@ export async function deliverChatPush() {
         });
         const userDevices = await activeDriverDevices(prisma, devices.filter(d => !d.userId.startsWith('admin-')));
         const eligible = [...userDevices, ...devices.filter(d => d.userId.startsWith('admin-') && (!d.pushExpiresAt || d.pushExpiresAt > new Date()))];
-        const notifications = eligible.filter(d => /^(ExponentPushToken|ExpoPushToken)\[/.test(d.pushToken)).map(d => ({
+        const call = m.senderId === 'system-call' && m.clientId?.startsWith('call_') ? await prisma.tripCall.findUnique({where:{id:m.clientId.slice(5)}}) : null;
+        const uniqueDevices = [...new Map(eligible.map(d => [d.pushToken, d])).values()];
+        const acknowledged = new Set(m.pushDeliveredTokens || []);
+        const digest = token => createHash('sha256').update(token).digest('hex');
+        const notifications = uniqueDevices.filter(d => !acknowledged.has(digest(d.pushToken))).filter(d => /^(ExponentPushToken|ExpoPushToken)\[/.test(d.pushToken)).map(d => ({
           to: d.pushToken,
-          title: `Liên hệ chuyến #${trip.id}`,
+          title: call?.status === 'MISSED' ? 'Cuộc gọi nhỡ · GoViet247' : `Liên hệ chuyến #${trip.id}`,
           body: m.senderRole === 'SYSTEM' ? m.text || 'Có thông báo mới về chuyến.' : `${m.senderLabel} đã gửi ${m.kind === 'AUDIO' ? 'tin nhắn thoại' : m.kind === 'IMAGE' ? 'hình ảnh' : m.kind === 'LOCATION' ? 'vị trí' : 'tin nhắn'}.`,
           sound: 'default',
           channelId: 'trip_chat_default_v1',
           priority: 'high',
           ttl: 3600,
           data: {
-            type: 'TRIP_CHAT',
+            type: call?.status === 'MISSED' ? 'TRIP_CALL_MISSED' : 'TRIP_CHAT',
+            ...(call ? {callId:call.id} : {}),
             tripId: trip.id,
             messageId: m.id
           }
@@ -339,6 +330,12 @@ export async function deliverChatPush() {
           const batch = notifications.slice(i, i + 100);
           await sendChatPushBatch(batch, {
             removeDevice: pushToken => prisma.device.deleteMany({where:{pushToken}}),
+            onAccepted: async token => {
+              const hash = digest(token);
+              if (acknowledged.has(hash)) return;
+              await prisma.tripChatMessage.update({where:{id:m.id},data:{pushDeliveredTokens:{push:hash}}});
+              acknowledged.add(hash);
+            },
           });
         }
         await prisma.tripChatMessage.update({
@@ -352,7 +349,8 @@ export async function deliverChatPush() {
       } catch (error) {
         console.error('[TripChat] push retry pending', m.id, error.message);
       }
-    }
+     }
+    }));
   } catch (error) {
     console.error('[TripChat] delivery worker', error.message);
   } finally {
@@ -399,4 +397,25 @@ export async function deleteChatMessage(db, tripId, messageId, actor) {
       }
     });
   });
+}
+
+// Explicit desired state makes retries and concurrent taps on two devices idempotent.
+export async function setChatHeart(db, tripId, messageId, actor, active) {
+  if (typeof active !== 'boolean') throw fail('Trạng thái tim không hợp lệ.', 400);
+  return db.$transaction(async tx => {
+    await tx.$queryRaw`SELECT "id" FROM "Trip" WHERE "id" = ${tripId} FOR UPDATE`;
+    const trip = await chatAccess(tx, tripId, actor);
+    if (!chatCanSend(trip, actor)) throw fail('Hội thoại hiện chỉ đọc.');
+    const message = await tx.tripChatMessage.findFirst({where:{...messageWhere(trip, actor), id:messageId}});
+    if (!message || message.deletedAt) throw fail('Tin nhắn không còn truy cập được.', 404);
+    const key = {messageId, actorId:actor.id};
+    if (active) await tx.tripChatReaction.upsert({where:{messageId_actorId:key},create:key,update:{}});
+    else await tx.tripChatReaction.deleteMany({where:key});
+    return {heartCount:await tx.tripChatReaction.count({where:{messageId}}),hearted:active};
+  });
+}
+export function chatHeartsForClient(message, actor) {
+  const {reactions = [], ...visible} = message;
+  return {...visible, heartCount:message.deletedAt ? 0 : reactions.length,
+    hearted:!message.deletedAt && reactions.some(r => r.actorId === actor.id)};
 }

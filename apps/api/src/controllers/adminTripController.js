@@ -40,6 +40,7 @@ async function recordAdminCancellationPenalty(tx, trip, actorId) {
 export async function adminDriverCancelToReview(req, res) {
   const tripId = String(req.params.id || "").trim();
   const reason = String(req.body?.reason || "").trim();
+  const refundAndReview = String(req.body?.cancel_resolution || "").trim().toUpperCase() === "REFUND_AND_REVIEW";
   if (!tripId || !reason) {
     return res.status(400).json({ success: false, message: "Cần mã chuyến và lý do tài xế nhận nhầm." });
   }
@@ -81,13 +82,15 @@ export async function adminDriverCancelToReview(req, res) {
         Number(trip.driverVatAmountSnapshot || 0) +
         Number(trip.driverPitAmountSnapshot || 0);
       const actor = req.admin;
-      const penaltyLog = await recordAdminCancellationPenalty(tx, trip, actor?.id ?? null);
+      const refund = refundAndReview ? await refundCustomerCancellationHold(tx, trip, "tài xế huỷ, tìm tài xế khác") : null;
+      const penaltyLog = refundAndReview ? null : await recordAdminCancellationPenalty(tx, trip, actor?.id ?? null);
 
       const changed = await tx.trip.updateMany({
         where: { id: tripId, driverId: trip.driverId, status: trip.status, cancelledAt: null },
         data: {
           version: { increment: 1 }, status: "PENDING", driverId: null,
-          acceptedAt: null, isVerified: false, verifiedAt: null,
+          chatVisibleFrom: new Date(),
+          acceptedAt: null, walletHoldId: null, isVerified: false, verifiedAt: null,
           verifiedById: null, verifiedNote: `Tài xế huỷ, admin đưa về chờ duyệt: ${reason.slice(0, 300)}`,
           driverAcceptOpenAt: null, cancelledAt: null,
           cancelReason: `Tài xế huỷ chuyến do admin xử lý: ${reason.slice(0, 300)}`,
@@ -104,20 +107,21 @@ export async function adminDriverCancelToReview(req, res) {
         error.statusCode = 409;
         throw error;
       }
+      await tx.tripChatMessage.create({data:{tripId:tripId,senderId:'system-assignment',senderRole:'SYSTEM',senderLabel:'Lịch sử phân công',clientId:`release_${tripId}_${trip.version}`,kind:'TEXT',audience:'ADMIN',pushDoneAt:new Date(),text:`Kết thúc lượt tài xế ${trip.driverId}. Hội thoại phía trên được lưu riêng cho Admin. Lý do: ${reason}`}});
       const updated = await tx.trip.findUnique({ where: { id: tripId } });
       const actionLog = await tx.adminTripActionLog.create({
         data: {
           tripId, fromStatus: trip.status, toStatus: "PENDING",
           actorRole: actor?.role || "ADMIN", actorId: actor?.id ?? null,
           actorUsername: actor?.username || "admin",
-          note: `Tài xế huỷ, admin đưa chuyến về Chờ duyệt. Lý do: ${reason.slice(0, 400)}. Ghi nhận phạt huỷ ${penaltyLog?.penaltyAmount || 0}đ từ khoản đã khấu trừ; không trừ ví thêm.`,
+          note: `Tài xế huỷ, admin đưa chuyến về Chờ duyệt. Lý do: ${reason.slice(0, 400)}. ${refundAndReview ? `Đã hoàn ${refund.amount}đ vào ví tài xế; không ghi phạt.` : `Ghi nhận phạt huỷ ${penaltyLog?.penaltyAmount || 0}đ từ khoản đã khấu trừ; không trừ ví thêm.`}`,
         },
       });
       const driverNotification = await tx.systemNotification.create({
         data: {
           audience: "DRIVER", targetType: "USER", targetUserId: trip.driverId,
           title: "Chuyến đã được chuyển về chờ duyệt",
-          message: `Admin đã chuyển chuyến #${tripId.slice(-8).toUpperCase()} về chờ duyệt vì bạn huỷ chuyến. Khoản đã khấu trừ khi nhận chuyến được ghi nhận là phạt và không tự hoàn. Lý do: ${reason.slice(0, 200)}. [tripId:${tripId}]`,
+          message: `Admin đã chuyển chuyến #${tripId.slice(-8).toUpperCase()} về chờ duyệt vì bạn huỷ chuyến. ${refundAndReview ? `Đã hoàn ${refund.amount}đ vào ví của bạn, không ghi phạt.` : "Khoản đã khấu trừ khi nhận chuyến được ghi nhận là phạt và không tự hoàn."} Lý do: ${reason.slice(0, 200)}. [tripId:${tripId}]`,
           isActive: true, createdByAdminId: actor?.id ?? null,
         },
       });
@@ -130,7 +134,7 @@ export async function adminDriverCancelToReview(req, res) {
         },
       });
       return { trip: updated, previousDriverId: trip.driverId, previousStatus: trip.status,
-        heldAmount, actionLog, driverNotification, riderNotification };
+        heldAmount, refundedAmount: refund?.amount ?? 0, actionLog, driverNotification, riderNotification };
     });
 
     const event = {
@@ -147,12 +151,6 @@ export async function adminDriverCancelToReview(req, res) {
         emitDriverTripEvent(io, "trip:changed", event);
         io.to(`driver:${result.previousDriverId}`).emit("trip:changed", event);
         await emitRiderTripUpdate(io, prisma, result.trip, event);
-        if (result.trip.riderId) {
-          io.to(`rider:${result.trip.riderId}`).emit("rider:trip_changed", event);
-          io.to(`rider:${result.trip.riderId}`).emit("rider:notification_changed", {
-            source: event.reason, notificationId: result.riderNotification?.id,
-          });
-        }
         io.to(`driver:${result.previousDriverId}`).emit("driver:notification_changed", {
           source: event.reason, notificationId: result.driverNotification.id,
         });
@@ -164,8 +162,8 @@ export async function adminDriverCancelToReview(req, res) {
       sendSystemNotificationToDriver(result.previousDriverId, result.driverNotification),
       sendTripStatusChangedToRider(result.trip, { reason: event.reason }),
     ]);
-    return res.json({ success: true, message: "Đã gỡ tài xế và chuyển chuyến về Chờ duyệt.",
-      trip: result.trip, heldAmount: result.heldAmount,
+    return res.json({ success: true, message: refundAndReview ? `Đã hoàn ${result.refundedAmount}đ vào ví tài xế, không ghi phạt và chuyển chuyến về Chờ duyệt tìm tài xế khác.` : "Đã gỡ tài xế và chuyển chuyến về Chờ duyệt.",
+      trip: result.trip, heldAmount: result.heldAmount, refundedAmount: result.refundedAmount,
       actionLog: result.actionLog });
   } catch (error) {
     return res.status(error.statusCode || 500).json({
@@ -224,7 +222,7 @@ export async function adminChuyenVeChoDuyet(req, res) {
           status: "PENDING",
           isVerified: true,
           driverId: null,
-          acceptedAt: null,
+          acceptedAt: null, walletHoldId: null,
           cancelledAt: null,
         },
         data: {
@@ -459,7 +457,8 @@ export async function adminHuyChuyen(req, res) {
     if (cancelOrigin && !["CUSTOMER", "DRIVER"].includes(cancelOrigin)) {
       return res.status(400).json({ success: false, message: "Bên huỷ chuyến không hợp lệ." });
     }
-    if (cancelResolution && cancelResolution !== "PENALTY_AND_CANCEL") {
+    if ((cancelResolution && !["PENALTY_AND_CANCEL", "REFUND_AND_REVIEW"].includes(cancelResolution)) ||
+        (cancelResolution === "REFUND_AND_REVIEW" && cancelOrigin !== "DRIVER")) {
       return res.status(400).json({
         success: false,
         message: "Cách xử lý huỷ chuyến không hợp lệ.",
@@ -492,7 +491,7 @@ export async function adminHuyChuyen(req, res) {
         });
       }
       return adminDriverCancelToReview(
-        { ...req, body: { ...req.body, reason: cancelReason } }, res,
+        { ...req, body: { ...req.body, reason: cancelReason, cancel_resolution: cancelResolution } }, res,
       );
     }
 
@@ -617,7 +616,7 @@ export async function adminHuyChuyen(req, res) {
       await tx.systemNotification.create({
         data: {
           audience: "RIDER", targetType: "USER", targetUserId: updated.riderId || null,
-          title: "Chuyến đã huỷ",
+          title: "Chuyến đã hủy",
           message: `Chuyến #${tripId.slice(-8).toUpperCase()} đã được huỷ. Vui lòng kiểm tra lại hoạt động chuyến đi. [tripId:${tripId}]`,
           isActive: true, createdByAdminId: actorId,
         },

@@ -23,7 +23,7 @@ test('new booking gets one private system notice, with retry-safe key, for rider
  for(const partnerCompanyId of [null,'company1']){
   const rows=new Map(),tx={tripChatMessage:{createMany:async({data,skipDuplicates})=>{assert.equal(skipDuplicates,true);for(const m of data)rows.set(m.clientId,m);}}};
   await createBookingChatNotice(tx,{...pending,partnerCompanyId});await createBookingChatNotice(tx,{...pending,partnerCompanyId});
-  assert.equal(rows.size,1);const note=[...rows.values()][0];assert.equal(note.senderRole,'SYSTEM');assert.equal(note.audience,partnerCompanyId?'PARTNER':'RIDER');assert.match(note.text,/chờ.*duyệt/);assert.match(note.text,/nhắn ngay tại đây/);
+  assert.equal(rows.size,1);const note=[...rows.values()][0];assert.equal(note.senderRole,'SYSTEM');assert.equal(note.audience,partnerCompanyId?'PARTNER':'RIDER');assert.match(note.text,/chờ.*duyệt/);assert.match(note.text,/Liên hệ chuyến/);
  }
 });
 test('alerts detect a new message even if total unread is unchanged, and exclude own or deleted previews',()=>{

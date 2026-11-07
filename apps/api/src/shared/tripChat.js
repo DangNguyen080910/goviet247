@@ -5,7 +5,7 @@ export const CHAT_QUICK_REPLIES = {
   RIDER: ['Tôi xác nhận chuyến và sẽ có mặt tại điểm đón đúng giờ đã đặt.', 'Tôi đang ra.', 'Tôi đang ở điểm đón đã gửi.', 'Tôi cần hỗ trợ tìm xe.'],
   ADMIN: ['GoViet247 đang kiểm tra.', 'Anh/chị vui lòng xác nhận điểm đón.', 'Thông tin chuyến đã được cập nhật.']
 };
-export const CHAT_BOOKING_NOTICE = 'Bạn có thể nhắn GoViet247 ngay sau khi đặt chuyến để bổ sung yêu cầu hoặc nhờ hỗ trợ. Vui lòng bật chuông và thông báo để nhận phản hồi. Tài xế sẽ tham gia chat sau khi nhận chuyến.';
+export const CHAT_BOOKING_NOTICE = 'Mở Liên hệ chuyến để nhắn GoViet247 khi cần hỗ trợ. Tài xế tham gia hội thoại sau khi nhận chuyến. Vui lòng bật chuông và thông báo để nhận phản hồi.';
 export function chatCanSend(trip, actor) {
   if (actor.role === 'ADMIN') return !isRiderChatEnded(trip.status);
   if (['RIDER', 'PARTNER'].includes(actor.role)) return ['PENDING', ...CHAT_ACTIVE_STATUSES].includes(trip.status);

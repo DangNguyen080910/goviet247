@@ -1,3 +1,4 @@
+import {claimNotificationResponse} from '../../api/src/shared/chatNotificationNavigation.js';
 import { ChatInboxBadge, isChatVisible, chatPushShouldPlaySound } from "../services/tripChat";
 import { Alert, AppState } from "react-native";
 import TripMilestoneCelebration from "../components/TripMilestoneCelebration";
@@ -13,10 +14,7 @@ import {
 import { AdminRealtimeBadgeProvider } from "../context/AdminRealtimeBadgeContext";
 import "react-native-reanimated";
 import {
-  playAdminNormalNotify,
-  playAdminNewTripNotify,
   playAdminUrgentNotify,
-  showAdminLocalNotification,
   unloadAdminNotify,
   warmupAdminNotify,
 } from "../services/adminNotify";
@@ -65,52 +63,28 @@ function RootLayoutContent() {
         console.log("[RootLayout] Admin socket setup done.");
 
         const handleNewTrip = () => {
-          playAdminNewTripNotify();
-
           Notifications.setBadgeCountAsync(1).catch(() => {});
-
-          showAdminLocalNotification({
-            title: "Có chuyến mới",
-            body: "Có chuyến mới đang chờ admin xử lý.",
-            silent: true,
-          });
         };
 
         const handleDashboardChanged = (payload?: any) => {
           if (payload?.source === 'chat_contact_alert') {
             void playAdminUrgentNotify();
             if (AppState.currentState === 'active') Alert.alert('Đã chặn gửi số điện thoại', 'Có thành viên thử gửi số điện thoại trong hội thoại chuyến. Mở Cảnh báo để kiểm tra.', [{text:'Để sau',style:'cancel'},{text:'Xem cảnh báo',onPress:()=>router.push('/alerts')}]);
-          } else playAdminNormalNotify();
+          }
 
           Notifications.setBadgeCountAsync(1).catch(() => {});
         };
 
         const handleTripAccepted = () => {
-          playAdminUrgentNotify();
-
           Notifications.setBadgeCountAsync(1).catch(() => {});
-
-          showAdminLocalNotification({
-            title: "Tài xế đã nhận chuyến",
-            body: "Một chuyến vừa được tài xế nhận.",
-          });
         };
 
         const handleTripStatusChanged = () => {
-          playAdminNormalNotify();
-
           Notifications.setBadgeCountAsync(1).catch(() => {});
         };
 
         const handleTripCancelled = () => {
-          playAdminUrgentNotify();
-
           Notifications.setBadgeCountAsync(1).catch(() => {});
-
-          showAdminLocalNotification({
-            title: "Chuyến bị huỷ",
-            body: "Một chuyến vừa được huỷ, vui lòng kiểm tra.",
-          });
         };
 
         const handleBlockedAttempt = (payload?: any) => {
@@ -172,8 +146,15 @@ function RootLayoutContent() {
       Notifications.setBadgeCountAsync(0).catch(() => {});
     });
 
+    void Notifications.getLastNotificationResponseAsync().then(response => {
+      if (!claimNotificationResponse(response)) return;
+      void Notifications.clearLastNotificationResponseAsync().catch(() => {});
+      router.push(getAdminNotificationResponseRoute(response) as any);
+    }).catch(() => {});
+
     const responseSub = Notifications.addNotificationResponseReceivedListener(
       (response) => {
+        if (!claimNotificationResponse(response)) return;
         Notifications.setBadgeCountAsync(0).catch(() => {});
         Notifications.clearLastNotificationResponseAsync().catch(() => {});
         router.push(getAdminNotificationResponseRoute(response) as any);

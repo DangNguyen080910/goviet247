@@ -22,8 +22,8 @@ test('iOS dismisses detail before navigation, and repeated taps navigate once',(
   f.onChatDetailDismiss();f.onChatDetailDismiss();
   assert.deepEqual(f.calls,['close detail','/trip-chat?tripId=trip-1']);
 });
-test('Android waits for interactions and modal removal frames before navigation',()=>{
-  const f=mount('android');f.openChatFromDetail('trip/2');
+test('Android waits for interactions and modal removal frames before navigation',async()=>{
+  const f=mount('android');await f.openChatFromDetail('trip/2');
   assert.deepEqual(f.calls,['close detail']);f.interactions.shift()();
   assert.deepEqual(f.calls,['close detail']);f.frames.shift()();
   assert.deepEqual(f.calls,['close detail']);f.frames.shift()();

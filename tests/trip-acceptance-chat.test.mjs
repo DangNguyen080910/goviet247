@@ -49,15 +49,15 @@ test('audience visibility excludes the opposite side, other drivers and unknown 
 });
 function recipientDb(){return {partnerCompany:{findUnique:async()=>({id:'company1',isActive:true,managementPhone:null})},phone:{findMany:async()=>[]},admin_users:{findMany:async()=>[{id:1}]},partnerMember:{findUnique:async()=>null,findMany:async()=>[{id:'m1'},{id:'m2'}]}};}
 const notice=audience=>({senderId:'goviet247-system',senderRole:'SYSTEM',clientId:'accept_1_123_DRIVER',audience,recipientId:'driver1',createdAt:acceptedAt});
-test('push for rider notice only targets rider and GoViet247, not driver',async()=>{
- assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('RIDER'))).sort(),['admin-1','rider1']);
+test('acceptance rider chat does not duplicate the status push',async()=>{
+ assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('RIDER'))).sort(),[]);
 });
-test('push for driver notice only targets the accepting driver and GoViet247',async()=>{
- assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('DRIVER'))).sort(),['admin-1','driver1']);
+test('acceptance driver chat only alerts the accepting driver',async()=>{
+ assert.deepEqual((await chatPushRecipientIds(recipientDb(),trip,notice('DRIVER'))).sort(),['driver1']);
 });
-test('partner notices only target eligible partner members and GoViet247',async()=>{
+test('partner acceptance does not duplicate Admin or Rider status pushes',async()=>{
  const ids=await chatPushRecipientIds(recipientDb(),{...trip,partnerCompanyId:'company1',partnerAssignedToId:'m1'},notice('PARTNER'));
- assert.deepEqual(ids.sort(),['admin-1','partner-m1','partner-m2']);
+ assert.deepEqual(ids.sort(),['partner-m1','partner-m2']);
 });
 test('late acceptance pushes are discarded after reassignment, return to pool or completion',async()=>{
  for(const changed of [{...trip,acceptedAt:new Date(acceptedAt.getTime()+1),driverId:'driver2'},
@@ -95,4 +95,29 @@ test('an Admin sender never receives their own push but other Admins and partici
  const db=recipientDb();db.admin_users.findMany=async()=>[{id:1},{id:2}];
  const ids=await chatPushRecipientIds(db,trip,{senderId:'admin-1',senderRole:'ADMIN',audience:'ALL',createdAt:acceptedAt});
  assert.deepEqual(ids.sort(),['admin-2','driver1','rider1']);
+});
+
+test('booking chat stays in history without another external new-booking push',async()=>{
+ assert.deepEqual(await chatPushRecipientIds(recipientDb(),trip,{senderRole:'SYSTEM',clientId:'booking_created'}),[]);
+});
+test('missed call alerts only the callee and Admin, never the booker or caller',async()=>{
+ const db=recipientDb();db.tripCall={findUnique:async()=>({status:'MISSED',calleeAliases:['rider1']})};
+ const log={senderId:'system-call',senderRole:'SYSTEM',clientId:'call_test',audience:'ALL',createdAt:acceptedAt};
+ assert.deepEqual((await chatPushRecipientIds(db,trip,log)).sort(),['admin-1','rider1']);
+ db.tripCall.findUnique=async()=>({status:'MISSED',calleeAliases:['driver1']});
+ assert.deepEqual((await chatPushRecipientIds(db,trip,log)).sort(),['admin-1','driver1']);
+ db.tripCall.findUnique=async()=>({status:'ENDED',calleeAliases:['rider1']});
+ assert.deepEqual(await chatPushRecipientIds(db,trip,log),['admin-1']);
+});
+
+test('system guidance stays visible to Admin but does not push to Admin or Staff',async()=>{
+ const db=recipientDb();db.admin_users.findMany=async()=>{assert.fail('automatic guidance must not look up Admin devices');};
+ const message={senderId:'goviet247-system',senderRole:'SYSTEM',clientId:'reminder_1',audience:'ALL',createdAt:acceptedAt};
+ assert.equal(chatAudienceVisible(message,{role:'ADMIN',id:'admin-1'}),true);
+ assert.deepEqual((await chatPushRecipientIds(db,trip,message)).sort(),['driver1','rider1']);
+ assert.deepEqual(await chatPushRecipientIds(db,trip,{...message,audience:'ADMIN'}),[]);
+});
+test('recording-ready notices keep Admin alerts',async()=>{
+ const message={senderId:'system-call',senderRole:'SYSTEM',clientId:'record_call1',recordingCallId:'call1',audience:'ADMIN',createdAt:acceptedAt};
+ assert.deepEqual(await chatPushRecipientIds(recipientDb(),trip,message),['admin-1']);
 });

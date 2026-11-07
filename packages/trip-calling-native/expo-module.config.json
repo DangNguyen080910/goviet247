@@ -1,0 +1,19 @@
+{
+  "platforms": [
+    "apple",
+    "android"
+  ],
+  "apple": {
+    "modules": [
+      "GoVietTripCallingModule"
+    ],
+    "appDelegateSubscribers": [
+      "GoVietTripCallingSubscriber"
+    ]
+  },
+  "android": {
+    "modules": [
+      "com.goviet247.tripcalling.GoVietTripCallingModule"
+    ]
+  }
+}

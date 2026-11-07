@@ -1,3 +1,4 @@
+import {clearCallSession} from '../../mobile-chat/TripCalls';
 // Path: goviet247/apps/rider-mobile/services/storage.ts
 import { Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
@@ -46,6 +47,7 @@ export async function removeRiderToken() {
   }
 
   await SecureStore.deleteItemAsync(RIDER_TOKEN_KEY);
+  await clearCallSession();
 }
 
 export async function getRiderTripActivitySeenAt(userId: string) {

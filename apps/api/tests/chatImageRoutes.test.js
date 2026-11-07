@@ -9,7 +9,7 @@ import {S3Client} from '@aws-sdk/client-s3';
 process.env.JWT_SECRET='chat-image-test-only';process.env.ADMIN_JWT_SECRET='chat-image-admin-test-only';
 process.env.AWS_REGION='ap-southeast-1';process.env.AWS_ACCESS_KEY_ID='test-only';process.env.AWS_SECRET_ACCESS_KEY='test-only';process.env.TRIP_CHAT_AUDIO_BUCKET='chat-image-test-only';
 let trip, rows, objects, audit, revokeOnUpload=false, sequence=0;
-const matches=(m,w)=>m.tripId===w.tripId && (!w.id || m.id===w.id) && (!w.kind || m.kind===w.kind) && (w.deletedAt !== null || !m.deletedAt) && (!w.createdAt?.gte || m.createdAt>=w.createdAt.gte);
+const matches=(m,w)=>m.tripId===w.tripId && (!w.id || m.id===w.id) && (!w.kind || m.kind===w.kind) && (w.deletedAt !== null || !m.deletedAt) && (!w.createdAt?.gte || m.createdAt>=w.createdAt.gte) && (!w.AND?.[1] || (m.historyAt ? m.historyAt>=w.AND[1].OR[0].historyAt.gte : m.createdAt>=w.AND[1].OR[1].createdAt.gte));
 const db={
  trip:{findUnique:async({where})=>where.id===trip.id?trip:null},
  driverProfile:{findUnique:async()=>({status:'VERIFIED'})},phone:{findMany:async()=>[]},session:{findUnique:async()=>null},admin_users:{findUnique:async()=>({id:1,is_active:true,role:'ADMIN',username:'test'})},

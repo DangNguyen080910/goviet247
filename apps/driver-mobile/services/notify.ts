@@ -13,6 +13,7 @@ import { Platform } from "react-native";
  */
 
 let audioModePrepared = false;
+let lastTripChangedAt = 0;
 
 async function ensureAudioMode() {
   if (audioModePrepared) {
@@ -103,6 +104,9 @@ async function pulseTripChangedHaptics() {
 }
 
 export async function playTripChangedNotify() {
+  const now = Date.now();
+  if (now - lastTripChangedAt < 1800) return;
+  lastTripChangedAt = now;
   try {
     await playSoundOnce(require("../assets/sounds/trip-update.mp3"));
     await pulseTripChangedHaptics();

@@ -1,3 +1,5 @@
+import {chatNotificationRoute, claimNotificationResponse} from '../../api/src/shared/chatNotificationNavigation.js';
+import {TripCallOverlay} from '../../mobile-chat/TripCalls';
 import { isChatVisible } from "../services/tripChat";
 // Path: goviet247/apps/rider-mobile/app/_layout.tsx
 import { useEffect, useRef, useState } from "react";
@@ -37,12 +39,13 @@ configureRiderNotificationHandler();
 function handlePushNavigation(
   response: Notifications.NotificationResponse | null,
 ) {
-  if (!response) {
+  if (!response || !claimNotificationResponse(response)) {
     return;
   }
 
   try {
     const data = response.notification.request.content.data || {};
+    void Notifications.clearLastNotificationResponseAsync().catch(() => {});
 
     const type = String(data?.type || "")
       .trim()
@@ -53,7 +56,8 @@ function handlePushNavigation(
     requestAnimationFrame(() => {
       setTimeout(() => {
         try {
-          if (type === "TRIP_CHAT" && data.tripId) { router.push(`/trip-chat?tripId=${encodeURIComponent(String(data.tripId))}` as any); return; }
+          const chatRoute = chatNotificationRoute(data);
+          if (chatRoute) { router.push(chatRoute as any); return; }
           if (type === "SYSTEM_NOTIFICATION") {
             router.replace("/notifications");
             return;
@@ -432,6 +436,7 @@ export default function RootLayout() {
       />
 
       <RootLayoutInner />
+      <TripCallOverlay />
 
         <AppUpdatePrompt />
 

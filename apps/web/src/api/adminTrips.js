@@ -1,9 +1,12 @@
 // Path: goviet247/apps/web/src/api/adminTrips.js
+import {flushDriverNoteDraft} from "../../../mobile-chat/driverNoteDrafts.js";
 import { getAdminToken } from "../utils/adminAuth";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
 async function request(path, options = {}) {
+  const tripMutation=path.match(/^\/api\/(?:admin\/trips|trips\/admin\/trips)\/([^/]+)\//);
+  if(tripMutation && !["GET","HEAD"].includes(String(options.method||"GET").toUpperCase()))await flushDriverNoteDraft(decodeURIComponent(tripMutation[1]));
   const token = getAdminToken();
 
   const res = await fetch(`${API_BASE}${path}`, {
@@ -45,6 +48,7 @@ export async function fetchUnverifiedTrips() {
 
 // ✅ Duyệt chuyến (set isVerified=true)
 export async function verifyTrip(tripId, note, driverIds, carType, fuelType) {
+  await flushDriverNoteDraft(tripId);
   const data = await request(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
     body: JSON.stringify({

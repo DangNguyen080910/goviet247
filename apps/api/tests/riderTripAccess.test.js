@@ -1,3 +1,5 @@
+import {activeDriverDevices} from "../src/services/driverPushAccess.js";
+import {tripNotificationContent} from '../src/shared/tripNotificationContent.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -17,7 +19,7 @@ function load(relative, supplied, result) {
       if (key) imports[key] = noop;
     }
   }
-  const bindings = { ...imports, console: quiet, ...supplied };
+  const bindings = { ...imports, tripNotificationContent, console: quiet, ...supplied };
   const code = source.replace(/^import[\s\S]*?;\n/gm, '')
     .replace(/^export default .*;\n?/gm, '')
     .replace(/export (?=(?:async )?function)/g, '');
@@ -143,12 +145,15 @@ test('trip detail admits owner, driver and verified passenger; rejects unrelated
   assert.equal(res.statusCode, 404);
 });
 
-test('legacy notification endpoint retains installed-app behavior', async () => {
+test('legacy endpoint ignores a forged query identity and exposes only public notices anonymously', async () => {
   const f = fixture();
   const { routes } = notifications(f.db);
   const res = response();
   await routes.get('/system-notifications').at(-1)({ query: { audience: 'RIDER', userId: 'booker' } }, res);
-  assert.deepEqual(res.body.items.map((n) => n.id), ['approved', 'accepted', 'public']);
+  assert.deepEqual(res.body.items.map((n) => n.id), ['public']);
+  const signedIn = response();
+  await routes.get('/system-notifications').at(-1)({query:{audience:'RIDER',userId:'other'},user:{id:'booker'}}, signedIn);
+  assert.deepEqual(signedIn.body.items.map(n=>n.id), ['approved','accepted','public']);
 });
 
 test('authenticated passenger sees historical trip notices, no unrelated/private owner notices', async () => {
@@ -180,7 +185,7 @@ test('new notification endpoint denies missing identity and does not share throu
 function push(db, messages) {
   return load('services/notificationService.js', {
     pkg: { PrismaClient: class { constructor() { return db; } } },
-    getTripRiderRecipientUserIds,
+    getTripRiderRecipientUserIds, activeDriverDevices,
     fetch: async (_url, options) => { messages.push(...JSON.parse(options.body)); return { ok: true, json: async () => ({ data: [] }) }; },
   }, 'sendTripStatusChangedToRider');
 }
@@ -193,8 +198,9 @@ test('push safely skips accounts without registered devices', async () => {
 
 test('status push targets both accounts with recipient-specific navigation data', async () => {
   const f = fixture(); const messages = [];
-  const devices = ['booker', 'passenger', 'other'].map((userId) => ({ userId, role: 'rider', pushToken: `ExponentPushToken[${userId}]` }));
+  const devices = ['booker', 'passenger', 'other'].map((userId) => ({ userId, role: 'rider', pushSessionId: `session_${userId}`, pushToken: `ExponentPushToken[${userId}]` }));
   f.db.device.findMany = async ({ where }) => devices.filter((d) => matches(d, where));
+  f.db.session={findMany:async()=>devices.map(d=>({id:d.pushSessionId,userId:d.userId,expiresAt:null}))};
   await push(f.db, messages)({ ...f.trips[0], status: 'CONTACTED' });
   assert.deepEqual(messages.map((m) => m.data.riderId), ['booker', 'passenger']);
   assert.ok(messages.every((m) => m.data.tripId === 'shared-trip' && m.data.status === 'CONTACTED'));
@@ -246,7 +252,7 @@ test('view-only passenger cannot cancel; owner cancellation saves a trip notice 
   assert.equal(res.statusCode, 200);
   assert.equal(f.trips[0].status, 'CANCELLED');
   assert.deepEqual(pushed, ['shared-trip']);
-  assert.equal(f.notices.at(-1).title, 'Chuyến đã huỷ');
+  assert.equal(f.notices.at(-1).title, 'Chuyến đã hủy');
 });
 
 
@@ -279,7 +285,7 @@ test('admin cancellation includes passenger phone in selected result, persists n
   await handler({ params: { id: 'shared-trip' }, body: { cancel_reason: 'Khách yêu cầu huỷ', cancel_origin: 'CUSTOMER' },
     admin: { id: 1, username: 'admin', role: 'ADMIN' }, app: { get: () => io } }, res);
   assert.equal(res.statusCode, 200, JSON.stringify(res.body));
-  assert.equal(f.notices.at(-1).title, 'Chuyến đã huỷ');
+  assert.equal(f.notices.at(-1).title, 'Chuyến đã hủy');
   assert.deepEqual(pushed, ['0900000001']);
   assert.ok(events.some((e) => e.room === 'rider:passenger' && e.name === 'rider:trip_changed'));
 });
@@ -299,4 +305,12 @@ test('concurrent driver acceptance stops owner cancellation without saving a can
   assert.equal(res.statusCode, 409);
   assert.equal(f.notices.length, initialNotices);
   assert.deepEqual(pushed, []);
+});
+
+test('rider status push excludes revoked sessions after logout', async()=>{
+ const f=fixture(), messages=[];
+ f.db.device.findMany=async()=>[{userId:'booker',role:'rider',pushSessionId:'revoked',pushToken:'ExponentPushToken[booker]'}];
+ f.db.session={findMany:async()=>[{id:'revoked',userId:'booker',expiresAt:new Date(0)}]};
+ await push(f.db,messages)({...f.trips[0],status:'CONTACTED'});
+ assert.deepEqual(messages,[]);
 });

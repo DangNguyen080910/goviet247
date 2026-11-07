@@ -59,6 +59,7 @@ function fixture(status = "ACCEPTED", realtime = false) {
           updateMany: async () => { throw new Error("unexpected balance update"); },
         },
         adminTripActionLog: { create: async ({ data }) => { actionLogs.push(data); return data; } },
+        tripChatMessage: {create:async ({data})=>{assert.equal(data.audience,"ADMIN");assert.ok(data.pushDoneAt);return data;}},
         systemNotification: { create: async ({ data }) => ({ id: "notice", ...data }) },
       };
       const result = await callback(tx);
@@ -226,4 +227,26 @@ for (const cancelOrigin of ['CUSTOMER', 'DRIVER']) test(`${cancelOrigin}: socket
   assert.equal(f.trip.status, cancelOrigin === 'CUSTOMER' ? 'CANCELLED' : 'PENDING');
   assert.equal(f.trip.driver.driverProfile.balance, cancelOrigin === 'CUSTOMER' ? 1000 : 880);
   assert.equal(f.penalties.length, cancelOrigin === 'CUSTOMER' ? 0 : 1);
+});
+
+for (const status of ['ACCEPTED', 'CONTACTED']) test(`driver refund and review: ${status} refunds all held components once without penalty`, async () => {
+  const f = fixture(status), response = f.res();
+  const body = {cancel_reason:'Sự cố ngoài mong muốn',cancel_origin:'DRIVER',cancel_resolution:'REFUND_AND_REVIEW'};
+  await f.actions.adminHuyChuyen(f.req(body), response);
+  assert.equal(response.statusCode, 200);
+  assert.equal(f.trip.status, 'PENDING'); assert.equal(f.trip.driverId, null);
+  assert.ok(f.trip.chatVisibleFrom instanceof Date);
+  assert.equal(f.trip.driver.driverProfile.balance, 1000);
+  assert.equal(f.penalties.length, 0); assert.equal(f.walletWrites.length, 3);
+  assert.equal(f.walletWrites.reduce((sum, row) => sum + row.amount, 0), 120);
+  assert.match(f.actionLogs[0].note, /Đã hoàn 120đ/);
+  const retry = f.res(); await f.actions.adminHuyChuyen(f.req(body), retry);
+  assert.equal(retry.statusCode, 409); assert.equal(f.walletWrites.length, 3);
+});
+test('refund and review rejects wrong origin and trips already in progress', async () => {
+ for (const [status,origin,expected] of [['ACCEPTED','CUSTOMER',400],['IN_PROGRESS','DRIVER',409]]) {
+  const f=fixture(status),response=f.res();
+  await f.actions.adminHuyChuyen(f.req({cancel_reason:'Sự cố',cancel_origin:origin,cancel_resolution:'REFUND_AND_REVIEW'}),response);
+  assert.equal(response.statusCode,expected);assert.equal(f.walletWrites.length,0);assert.equal(f.penalties.length,0);assert.equal(f.trip.status,status);
+ }
 });
