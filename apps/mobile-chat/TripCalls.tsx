@@ -3,7 +3,7 @@ import {setChatCallActive} from './chatAlerts';
 import React, {useEffect, useState} from 'react';
 import {Alert, AppState, Modal, Platform, Pressable, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {requireOptionalNativeModule} from 'expo-modules-core';
+import {requireOptionalNativeModule} from 'expo';
 import * as SecureStore from 'expo-secure-store';
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
