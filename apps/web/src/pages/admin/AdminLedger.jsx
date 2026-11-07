@@ -1008,12 +1008,13 @@ export default function AdminLedger() {
     }
   }, [exportQuarter, exportYear, exportMonth, exportMode]);
 
-  const handleExportAccountingZip = useCallback(async () => {
+  const handleExportAccountingZip = useCallback(async (format = "pdf") => {
     try {
       setExportZipLoading(true);
       setExportPreviewError("");
 
       await exportAccountingZip({
+        format,
         ...(exportMode === "month" ? { month: exportMonth } : { quarter: exportQuarter }),
         year: exportYear,
       });
@@ -1708,12 +1709,7 @@ export default function AdminLedger() {
                           Lọc
                         </Button>
 
-                        <Button
-                          variant="outlined"
-                          onClick={handleExportAccountingNotesCsv}
-                        >
-                          Export CSV
-                        </Button>
+
                       </Stack>
                     </Stack>
                   </CardContent>
@@ -1897,8 +1893,7 @@ export default function AdminLedger() {
                 </Paper>
 
                 <Alert severity="info" sx={{ borderRadius: 2 }}>
-                  Tab Ghi chú hiện đã có summary tự động và ghi chú tay theo
-                  quý. Bước tiếp theo mình sẽ làm export CSV riêng cho kế toán.
+                  Ghi chú gồm tổng hợp tự động và ghi chú điều hành. Chọn Export Excel hoặc Export PDF để tải bảng kê theo kỳ đã chọn.
                 </Alert>
               </>
             ) : tab === 9 ? (
@@ -1922,12 +1917,7 @@ export default function AdminLedger() {
                           Lọc
                         </Button>
 
-                        <Button
-                          variant="outlined"
-                          onClick={handleExportRevenueReportCsv}
-                        >
-                          Export CSV
-                        </Button>
+
                       </Stack>
                     </Stack>
                   </CardContent>
@@ -2404,9 +2394,7 @@ export default function AdminLedger() {
                         Lọc
                       </Button>
 
-                      <Button variant="outlined" onClick={handleExportCash}>
-                        Export CSV
-                      </Button>
+
                     </Stack>
                   </CardContent>
                 </Card>
@@ -2642,12 +2630,7 @@ export default function AdminLedger() {
                         Lọc
                       </Button>
 
-                      <Button
-                        variant="outlined"
-                        onClick={handleExportWalletCsv}
-                      >
-                        Export CSV
-                      </Button>
+
                     </Stack>
                   </CardContent>
                 </Card>
@@ -2741,9 +2724,7 @@ export default function AdminLedger() {
                         LỌC
                       </Button>
 
-                      <Button variant="outlined" onClick={handleExportTripCsv}>
-                        EXPORT CSV
-                      </Button>
+
                       <Button
                         variant="outlined"
                         onClick={handlePrintTripAccountingPdf}
@@ -2873,12 +2854,7 @@ export default function AdminLedger() {
                         LỌC
                       </Button>
 
-                      <Button
-                        variant="outlined"
-                        onClick={handleExportWithdrawCsv}
-                      >
-                        EXPORT CSV
-                      </Button>
+
                     </Stack>
                   </Stack>
 
@@ -3037,13 +3013,14 @@ export default function AdminLedger() {
 
                         <Button
                           variant="outlined"
-                          onClick={handleExportAccountingZip}
+                          onClick={()=>handleExportAccountingZip("xlsx")}
                           disabled={exportZipLoading || !exportPreview}
                         >
                           {exportZipLoading
                             ? "Đang xuất ZIP..."
-                            : "Xuất file ZIP"}
+                            : "Export Excel"}
                         </Button>
+                        <Button variant="outlined" onClick={()=>handleExportAccountingZip("pdf")} disabled={exportZipLoading || !exportPreview}>Export PDF</Button>
                       </Stack>
                     </CardContent>
                   </Card>
@@ -3106,8 +3083,8 @@ export default function AdminLedger() {
 
                   <Alert severity="success" sx={{ borderRadius: 2 }}>
                     Bạn có thể xem trước dữ liệu theo tháng hoặc quý, sau đó bấm{" "}
-                    <strong>Xuất file ZIP</strong> để tải toàn bộ bộ chứng từ và
-                    các bảng kế toán dạng PDF và bảng chi tiết hoa hồng CSV/PDF.
+                    <strong>Export Excel hoặc Export PDF</strong> để tải toàn bộ bộ chứng từ và
+                    các bảng kế toán theo định dạng đã chọn, kèm chứng từ gốc trong file ZIP.
                   </Alert>
                 </Stack>
               </Paper>

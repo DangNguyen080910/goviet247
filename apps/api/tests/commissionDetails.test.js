@@ -62,7 +62,7 @@ test('monthly package uses selected month for documents and all transaction rang
   assert.ok(res.body.data.groups.some(g=>g.key==='COMMISSION_DETAIL_EXPORT' && g.fileName.endsWith('T11_2026.csv')));
 });
 
-test('monthly ZIP contains commission CSV and monthly PDF labels', async () => {
+for (const format of ['pdf','xlsx']) test(`monthly ZIP contains only selected report format: ${format}`, async () => {
   const { PassThrough } = await import('node:stream');
   const { writeFile, mkdtemp, rm } = await import('node:fs/promises');
   const { tmpdir } = await import('node:os');
@@ -77,7 +77,7 @@ test('monthly ZIP contains commission CSV and monthly PDF labels', async () => {
   const res=new PassThrough(); res.headers={};res.setHeader=(k,v)=>res.headers[k]=v;
   res.status=code=>{throw new Error(`Unexpected status ${code}`);};
   const chunks=[];res.on('data',chunk=>chunks.push(chunk));
-  await ctrl.exportAccountingZip({query:{month:'11',year:'2026'},admin:{username:'test'}},res);
+  await ctrl.exportAccountingZip({query:{month:'11',year:'2026',format},admin:{username:'test'}},res);
   assert.match(res.headers['Content-Disposition'],/T11_2026/);
   assert.equal(docs.length,5);assert.ok(docs.every(d=>d.month===11 && d.quarter===4));
   const dir=await mkdtemp(join(tmpdir(),'goviet-accounting-'));
@@ -86,8 +86,9 @@ test('monthly ZIP contains commission CSV and monthly PDF labels', async () => {
     const output=execFileSync('python3',['-c',`import zipfile,sys
 with zipfile.ZipFile(sys.argv[1]) as z:
  assert z.testzip() is None
- assert '14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_T11_2026.csv' in z.namelist()
- assert any(n.startswith('14-chi-tiet-hoa-hong/') and n.endswith('.pdf') for n in z.namelist())
+ assert not any(n.endswith('.csv') for n in z.namelist())
+ assert any(n.startswith('14-chi-tiet-hoa-hong/') and n.endswith('.${format}') for n in z.namelist())
+ assert not any(n.endswith('.${format === 'pdf' ? 'xlsx' : 'pdf'}') for n in z.namelist())
  assert 'Tháng: 11' in z.read('README.txt').decode()
  assert all('Q4_' not in n for n in z.namelist())
  print('ZIP OK')`,file],{encoding:'utf8'});
@@ -99,14 +100,37 @@ test('all ledger PDF report types export valid monthly PDFs', async () => {
   const ranges=[];
   const model={count:async()=>0,findMany:async args=>{ranges.push(args?.where);return [];},aggregate:async()=>({_sum:{},_count:{id:0}})};
   const ctrl=makeAdminController(new Proxy({}, {get:()=>model}));
-  for(const reportType of ['cash','wallet','trips','withdraw','revenue','notes','commission','documents']) {
+  for (const format of ['pdf','xlsx']) for(const reportType of ['cash','wallet','trips','withdraw','revenue','notes','commission','documents']) {
     const res=response();
-    await ctrl.exportAccountingReportPdf({query:{year:'2026',month:'11',reportType,documentType:'BANK_STATEMENT'}},res);
+    await ctrl.exportAccountingReportPdf({query:{year:'2026',month:'11',format,reportType,documentType:'BANK_STATEMENT'}},res);
     assert.equal(res.statusCode,200,reportType);
-    assert.equal(res.headers['Content-Type'],'application/pdf');
+    assert.equal(res.headers['Content-Type'],format === 'pdf' ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     assert.match(res.headers['Content-Disposition'],/T11_2026/);
-    assert.equal(res.body.subarray(0,4).toString(),'%PDF');
+    assert.equal(res.body.subarray(0,format === 'pdf' ? 4 : 2).toString(),format === 'pdf' ? '%PDF' : 'PK');
   }
   assert.ok(ranges.some(w=>w?.month===11));
   const invalid=response();await ctrl.exportAccountingReportPdf({query:{year:'2026',month:'13',reportType:'cash'}},invalid);assert.equal(invalid.statusCode,400);
+});
+
+test('Excel export preserves identities and safe text with numeric amounts', async () => {
+  const {buildAccountingExcel}=await import('../src/services/accountingExcel.js');
+  const {writeFile,mkdtemp,rm}=await import('node:fs/promises');
+  const {execFileSync}=await import('node:child_process');
+  const dir=await mkdtemp('/private/tmp/accounting-xlsx-');
+  try {
+    const file=dir+'/test.xlsx';
+    await writeFile(file,await buildAccountingExcel([['CCCD / số định danh','SĐT','Số tiền','Ghi chú'],['001234567890','0901234567','108000','=HYPERLINK("bad")']],{title:'Hoa hồng'}));
+    execFileSync('python3',['-c',`import zipfile,sys,xml.etree.ElementTree as E
+with zipfile.ZipFile(sys.argv[1]) as z:
+ assert z.testzip() is None
+ root=E.fromstring(z.read('xl/worksheets/sheet1.xml'))
+ ns={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+ cells={c.attrib['r']:c for c in root.findall('.//s:c',ns)}
+ assert cells['A2'].find('.//s:t',ns).text=='001234567890'
+ assert cells['B2'].find('.//s:t',ns).text=='0901234567'
+ assert cells['C2'].find('s:v',ns).text=='108000'
+ assert cells['D2'].attrib['t']=='inlineStr'
+ assert not root.findall('.//s:f',ns)
+`,file]);
+  } finally {await rm(dir,{recursive:true,force:true});}
 });

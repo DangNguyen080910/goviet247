@@ -1,3 +1,4 @@
+import { buildAccountingExcel } from "../services/accountingExcel.js";
 function accountingDateBound(value, end = false) {
   return new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T${end ? "23:59:59.999" : "00:00:00.000"}+07:00` : value);
 }
@@ -5709,6 +5710,12 @@ export function makeAdminController(prisma) {
           title = builders[reportType][0];
           rows = parseCsvRows(await builders[reportType][1](period));
         } else return res.status(400).json({ success: false, message: "Loại báo cáo không hợp lệ." });
+        if (req.query.format === "xlsx") {
+          const excel = await buildAccountingExcel(rows, {title});
+          res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+          res.setHeader("Content-Disposition", `attachment; filename="${reportType}_${period.periodKey}.xlsx"`);
+          return res.send(excel);
+        }
         const pdf = await buildAccountingPdf(rows, { ...period, title, reportType,
           subtitle: reportType === "cash" && req.query.fromDate ? `Từ ${req.query.fromDate} đến ${req.query.toDate} (giờ Việt Nam).` : reportType === "commission" ? "Chuyến hoàn thành theo ngày cập nhật; VAT tham khảo, kế toán đối chiếu trước khi lập hoá đơn. Hồ sơ tài xế là dữ liệu hiện tại." : reportType === "documents" ? "Bảng kê hồ sơ. File chứng từ gốc nằm trong gói Export ZIP." : reportType === "notes" && period.month ? "Ghi chú được lọc theo ngày tạo trong tháng." : "" });
         res.setHeader("Content-Type", "application/pdf");
@@ -5825,6 +5832,8 @@ export function makeAdminController(prisma) {
 
     async exportAccountingZip(req, res) {
       try {
+        const excelMode = req.query.format === "xlsx";
+        if (req.query.format && !["xlsx", "pdf"].includes(req.query.format)) return res.status(400).json({success:false,message:"Định dạng không hợp lệ."});
         const month = req.query?.month == null || req.query.month === "" ? null : Number(req.query.month);
         if (month !== null && (!Number.isInteger(month) || month < 1 || month > 12)) return res.status(400).json({ success: false, message: "Tháng không hợp lệ." });
         const quarter = month ? Math.ceil(month / 3) : Number(req.query?.quarter || 0);
@@ -6018,10 +6027,12 @@ export function makeAdminController(prisma) {
 
         archive.pipe(res);
 
-        archive.append(readmeText, { name: "README.txt" });
-        archive.append(commissionCsv, { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.csv` });
-        archive.append(commissionPdf, { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.pdf` });
-        archive.append(driverIdentityPdf, { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_${periodKey}.pdf` });
+        async function appendReport(pdf, rows, options) {
+          archive.append(excelMode ? await buildAccountingExcel(rows) : pdf, {name: options.name.replace(/\.pdf$/, excelMode ? ".xlsx" : ".pdf")});
+        }
+        archive.append((excelMode ? "ĐỊNH DẠNG BẢNG: Excel (.xlsx). Các hướng dẫn bố cục PDF dưới đây chỉ áp dụng khi chọn Export PDF.\n\n" : "ĐỊNH DẠNG BẢNG: PDF.\n\n") + readmeText.replace(/CSV\/PDF|CSV và PDF/g, excelMode ? "Excel" : "PDF"), { name: "README.txt" });
+        await appendReport(commissionPdf, parseCsvRows(commissionCsv), { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.pdf` });
+        await appendReport(driverIdentityPdf, await getDriverAccountingIdentityRows(prisma, {start,end}), { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_${periodKey}.pdf` });
 
         await appendAccountingDocumentsToArchive({
           archive,
@@ -6050,23 +6061,23 @@ export function makeAdminController(prisma) {
           folderName: "03-hoa-don-dau-ra",
         });
 
-        archive.append(companyCashPdf, {
+        await appendReport(companyCashPdf, parseCsvRows(companyCashCsv), {
           name: `04-thu-chi-cong-ty/thu_chi_cong_ty_${periodKey}.pdf`,
         });
 
-        archive.append(driverWalletPdf, {
+        await appendReport(driverWalletPdf, parseCsvRows(driverWalletCsv), {
           name: `05-vi-tai-xe/vi_tai_xe_${periodKey}.pdf`,
         });
 
-        archive.append(tripAccountingPdf, {
+        await appendReport(tripAccountingPdf, parseCsvRows(tripAccountingCsv), {
           name: `06-chuyen-di/chuyen_di_${periodKey}.pdf`,
         });
 
-        archive.append(driverIncomePdf, {
+        await appendReport(driverIncomePdf, driverIncome.summaryRows, {
           name: `06-chuyen-di/bang_ke_thu_nhap_tai_xe_${periodKey}.pdf`,
         });
 
-        archive.append(driverWithdrawPdf, {
+        await appendReport(driverWithdrawPdf, parseCsvRows(driverWithdrawCsv), {
           name: `07-tai-xe-rut-vi/tai_xe_rut_vi_${periodKey}.pdf`,
         });
 
@@ -6088,15 +6099,15 @@ export function makeAdminController(prisma) {
           folderName: "09-hop-dong-phap-ly",
         });
 
-        archive.append(revenueReportPdf, {
+        await appendReport(revenueReportPdf, parseCsvRows(revenueReportCsv), {
           name: `10-bao-cao-doanh-thu-loi-nhuan/bao_cao_doanh_thu_loi_nhuan_${periodKey}.pdf`,
         });
 
-        archive.append(accountingNotesPdf, {
+        await appendReport(accountingNotesPdf, parseCsvRows(accountingNotesCsv), {
           name: `11-ghi-chu-ke-toan/ghi_chu_ke_toan_${periodKey}.pdf`,
         });
 
-        archive.append(walletTripReconciliationPdf, {
+        await appendReport(walletTripReconciliationPdf, parseCsvRows(walletTripReconciliationCsv), {
           name: `12-doi-chieu-vi-va-chuyen-di/doi_chieu_vi_va_chuyen_di_${periodKey}.pdf`,
         });
 

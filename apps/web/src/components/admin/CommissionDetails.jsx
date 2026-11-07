@@ -46,7 +46,6 @@ export default function CommissionDetails() {
       </TextField>
       <TextField label="Năm" type="number" value={year} onChange={e => setYear(e.target.value)} inputProps={{ min: 2000, max: 2100 }} sx={{ width: 130 }} />
       <AccountingPdfButton period={{year,quarter,month:mode === "month" ? month : null}} reportType="commission" />
-      <Button variant="outlined" onClick={download} disabled={!data || loading || downloading}>{downloading ? "Đang xuất..." : "Xuất CSV chi tiết"}</Button>
     </Stack>
     <Alert severity="info">Mỗi chuyến hoàn thành một dòng; khoản giữ ví của chuyến chưa hoàn thành hoặc đã huỷ không được tính. Ngày ghi nhận theo lần cập nhật chuyến, cùng kỳ với báo cáo DT / LN. Đây là bảng đối chiếu để lập hoá đơn, chưa phải hoá đơn điện tử.</Alert>
     <Alert severity="warning">VAT là số tham khảo theo cách tính báo cáo hiện tại. Kế toán cần xác nhận thuế suất, thông tin bên mua và bổ sung địa chỉ/MST trước khi xuất hoá đơn. CCCD/SĐT là hồ sơ tài xế hiện tại.</Alert>
