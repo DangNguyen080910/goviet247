@@ -1808,8 +1808,7 @@ export default function RiderBookingScreen() {
           keyboardDismissMode="on-drag"
         >
           <AppBrandHeader
-            title="Đặt xe"
-            subtitle="Nhập thông tin chuyến đi để tính giá và tạo chuyến."
+            subtitle="Nhập thông tin chuyến đi để xem giá nhé."
           />
 
           <View style={styles.card}>

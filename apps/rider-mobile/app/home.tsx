@@ -75,7 +75,7 @@ export default function RiderHomeScreen() {
                 router.navigate("/booking");
               }}
             >
-              <Text style={styles.primaryButtonText}>🚗 Đặt xe ngay</Text>
+              <Text style={styles.primaryButtonText}>🚗 Xem giá</Text>
             </Pressable>
           </View>
 

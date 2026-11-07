@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getRiderPublicSystemConfig } from "../services/tripApi";
 
 type Props = {
-  title: string;
+  title?: string;
   subtitle?: string;
 };
 
@@ -39,7 +39,7 @@ export default function AppBrandHeader({ title, subtitle }: Props) {
         <Text style={styles.brandText}>{brandName}</Text>
       </View>
 
-      <Text style={styles.title}>{title}</Text>
+      {title ? <Text style={styles.title}>{title}</Text> : null}
 
       {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
     </View>
