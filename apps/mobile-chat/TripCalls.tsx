@@ -18,7 +18,7 @@ let config:Config, device='', configuredToken='', declinedToken='', configuring:
 let sessionEpoch=0;
 let current:Snapshot={};
 const listeners=new Set<(value:Snapshot)=>void>();
-const notice='Cuộc gọi được ghi âm để hỗ trợ xử lý chuyến. Chỉ admin GoViet247 được nghe lại. Bạn đồng ý bật cuộc gọi và ghi âm khi tham gia?';
+const microphoneNotice=(role:string)=>role==='DRIVER'?'Cho phép dùng micro để bạn và khách hàng gọi cho nhau trong ứng dụng.':'Cho phép dùng micro để bạn và tài xế gọi cho nhau trong ứng dụng.';
 const live=['RINGING','CONNECTING','CONNECTED'];
 export function configureCalls(value:Config){config=value;}
 function publish(value:Snapshot){setChatCallActive(!!value.call?.id);current=value;listeners.forEach(fn=>fn(value));}
@@ -48,7 +48,7 @@ async function ensureConfigured(force=false):Promise<boolean>{
   // Do not prompt or register until the API feature is deliberately enabled.
   await request(`/incoming?deviceId=${encodeURIComponent(deviceIdValue)}`);
   if(!await native.matchesSession(token)){
-   const agree=await new Promise<boolean>(resolve=>Alert.alert('Bật cuộc gọi GoViet247',notice,[{text:'Để sau',style:'cancel',onPress:()=>resolve(false)},{text:'Đồng ý',onPress:()=>resolve(true)}],{cancelable:false}));
+   const agree=await new Promise<boolean>(resolve=>Alert.alert('Cho phép dùng micro',microphoneNotice(config!.role),[{text:'Để sau',style:'cancel',onPress:()=>resolve(false)},{text:'Đồng ý',onPress:()=>resolve(true)}],{cancelable:false}));
    if(!agree){declinedToken=token;return false;}
    if(!await native.microphone()){Alert.alert('Chưa đủ quyền gọi',Platform.OS==='android'?'Bạn mở Cài đặt để cho phép GoViet247 dùng micro và hiển thị thông báo cuộc gọi.':'Bạn mở Cài đặt để cho phép GoViet247 dùng micro khi gọi.');declinedToken=token;return false;}
   }
@@ -83,7 +83,7 @@ export function TripCallButton({tripId}:{tripId:string}){
   setStarting(true);
   try{
    if(!await ensureConfigured(true))return;
-   const yes=await new Promise<boolean>(resolve=>Alert.alert(`Gọi ${eligible?.label||'liên hệ chuyến'}`,'Cuộc gọi qua internet có ghi âm. Chỉ admin GoViet247 được nghe lại.',[{text:'Hủy',style:'cancel',onPress:()=>resolve(false)},{text:'Gọi',onPress:()=>resolve(true)}],{cancelable:false}));
+   const yes=await new Promise<boolean>(resolve=>Alert.alert(`Gọi ${eligible?.label||'liên hệ chuyến'}`,'Bạn muốn bắt đầu cuộc gọi?',[{text:'Hủy',style:'cancel',onPress:()=>resolve(false)},{text:'Gọi',onPress:()=>resolve(true)}],{cancelable:false}));
    if(!yes)return;
    const deviceIdValue=await deviceId(),token=await config.getToken();
    if(!token||token!==configuredToken)return;
@@ -111,7 +111,7 @@ export function TripCallOverlay(){
  const incoming=call.side==='callee'&&call.status==='RINGING';
  const seconds=call.startedAt?Math.max(0,Math.floor((now-Date.parse(call.startedAt))/1000)):0;
  const status=call.status==='CONNECTED'?`${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`:incoming?'Cuộc gọi đến':call.status==='RINGING'?'Đang gọi…':'Đang kết nối…';
- const action=async(fn:()=>Promise<unknown>)=>{try{await fn();}catch(error:any){Alert.alert('Cuộc gọi',error.message||'Vui lòng thử lại.');}};
+ const action=async(fn:()=>Promise<unknown>)=>{try{await fn();publish(await native.snapshot());}catch(error:any){Alert.alert('Cuộc gọi',error.message||'Vui lòng thử lại.');}};
  const circle=(label:string,icon:React.ComponentProps<typeof Feather>['name'],onPress:()=>void,color='#334155',selected=false)=><Pressable accessibilityRole="button" accessibilityLabel={label} accessibilityState={{selected}} onPress={onPress} style={{alignItems:'center',gap:10,minWidth:85}}><View style={{width:66,height:66,borderRadius:33,alignItems:'center',justifyContent:'center',backgroundColor:color}}><Feather name={icon} size={27} color="white"/></View><Text style={{color:'white',fontSize:14}}>{label}</Text></Pressable>;
- return <Modal visible animationType="fade" onRequestClose={()=>{}}><SafeAreaView style={{flex:1,backgroundColor:'#0f172a',padding:24,justifyContent:'space-between'}}><Text style={{color:'#fb923c',fontSize:22,fontWeight:'800',textAlign:'center'}}>GoViet247</Text><View style={{alignItems:'center',gap:20}}><View style={{backgroundColor:'#334155',padding:30,borderRadius:70}}><Feather name="user" color="white" size={58}/></View><Text style={{color:'white',fontSize:28,fontWeight:'700',textAlign:'center'}}>{call.side==='caller'?call.calleeLabel:call.callerLabel}</Text><Text accessibilityLiveRegion="polite" style={{color:'#cbd5e1',fontSize:19}}>{status}</Text><Text style={{color:'#cbd5e1',textAlign:'center',lineHeight:22}}>Cuộc gọi qua internet · Có ghi âm{`\n`}Chỉ admin GoViet247 được nghe lại</Text></View><View style={{gap:35,paddingBottom:24}}>{!incoming&&<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(snapshot.muted?'Bật micro':'Tắt micro',snapshot.muted?'mic-off':'mic',()=>void action(()=>native.mute(!snapshot.muted)),snapshot.muted?'#ea580c':'#334155',!!snapshot.muted)}{circle('Loa ngoài','volume-2',()=>void action(()=>native.speaker(!snapshot.speaker)),snapshot.speaker?'#ea580c':'#334155',!!snapshot.speaker)}</View>}<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(incoming?'Từ chối':'Kết thúc','phone-off',()=>void action(()=>native.end()),'#dc2626')}{incoming&&circle('Nghe máy','phone',()=>void action(()=>native.answer()),'#16a34a')}</View></View></SafeAreaView></Modal>;
+ return <Modal visible animationType="fade" onRequestClose={()=>{}}><SafeAreaView style={{flex:1,backgroundColor:'#0f172a',padding:24,justifyContent:'space-between'}}><Text style={{color:'#fb923c',fontSize:22,fontWeight:'800',textAlign:'center'}}>GoViet247</Text><View style={{alignItems:'center',gap:20}}><View style={{backgroundColor:'#334155',padding:30,borderRadius:70}}><Feather name="user" color="white" size={58}/></View><Text style={{color:'white',fontSize:28,fontWeight:'700',textAlign:'center'}}>{call.side==='caller'?call.calleeLabel:call.callerLabel}</Text><Text accessibilityLiveRegion="polite" style={{color:'#cbd5e1',fontSize:19}}>{status}</Text></View><View style={{gap:35,paddingBottom:24}}>{!incoming&&<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(snapshot.muted?'Bật micro':'Tắt micro',snapshot.muted?'mic-off':'mic',()=>void action(()=>native.mute(!snapshot.muted)),snapshot.muted?'#ea580c':'#334155',!!snapshot.muted)}{circle('Loa ngoài','volume-2',()=>void action(()=>native.speaker(!snapshot.speaker)),snapshot.speaker?'#ea580c':'#334155',!!snapshot.speaker)}</View>}<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(incoming?'Từ chối':'Kết thúc','phone-off',()=>void action(()=>native.end()),'#dc2626')}{incoming&&circle('Nghe máy','phone',()=>void action(()=>native.answer()),'#16a34a')}</View></View></SafeAreaView></Modal>;
 }

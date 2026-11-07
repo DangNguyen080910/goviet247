@@ -8,6 +8,7 @@ import android.os.*
 import android.telecom.*
 import android.telecom.Connection
 import androidx.core.content.ContextCompat
+import com.amazonaws.services.chime.sdk.meetings.device.MediaDeviceType
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.AudioVideoObserver
 import com.amazonaws.services.chime.sdk.meetings.audiovideo.video.RemoteVideoSource
 import com.amazonaws.services.chime.sdk.meetings.session.*
@@ -168,14 +169,19 @@ object CallManager : AudioVideoObserver {
       session=meeting;meeting.audioVideo.addAudioVideoObserver(this);meeting.audioVideo.start()
     }catch(_:Exception){error="Không kết nối được âm thanh.";endOnServer();finish()}
   }
-  fun mute(value:Boolean){muted=value;if(value)session?.audioVideo?.realtimeLocalMute() else session?.audioVideo?.realtimeLocalUnmute()}
+  fun mute(value:Boolean){
+    val audio=session?.audioVideo ?: error("Âm thanh đang kết nối. Vui lòng thử lại.")
+    check(if(value)audio.realtimeLocalMute() else audio.realtimeLocalUnmute()){"Chưa đổi được micro. Vui lòng thử lại."}
+    muted=value
+  }
   @Suppress("DEPRECATION")
   fun speaker(value:Boolean){
-    val manager=context.getSystemService(AudioManager::class.java)
-    if(Build.VERSION.SDK_INT>=31){
-      if(value){val device=manager.availableCommunicationDevices.firstOrNull{it.type==AudioDeviceInfo.TYPE_BUILTIN_SPEAKER};check(device!=null&&manager.setCommunicationDevice(device))}
-      else manager.clearCommunicationDevice()
-    } else manager.isSpeakerphoneOn=value
+    val audio=session?.audioVideo ?: error("Âm thanh đang kết nối. Vui lòng thử lại.")
+    val type=if(value)MediaDeviceType.AUDIO_BUILTIN_SPEAKER else MediaDeviceType.AUDIO_HANDSET
+    val device=audio.listAudioDevices().firstOrNull{it.type==type}
+      ?: error("Không tìm thấy thiết bị âm thanh phù hợp.")
+    audio.chooseAudioDevice(device)
+    connection?.setAudioRoute(if(value)CallAudioState.ROUTE_SPEAKER else CallAudioState.ROUTE_EARPIECE)
     speaker=value
   }
   private fun telecom()=context.getSystemService(TelecomManager::class.java)
@@ -190,7 +196,7 @@ object CallManager : AudioVideoObserver {
     val answer=PendingIntent.getActivity(context,2,Intent(open).setAction("ANSWER"),flags)
     val end=PendingIntent.getBroadcast(context,3,Intent(context,CallActionReceiver::class.java).putExtra("callId",callId()),flags)
     val label=peerLabel()
-    val builder=Notification.Builder(context,if(incoming)CHANNEL else "goviet_trip_call_ongoing_v1").setSmallIcon(android.R.drawable.sym_action_call).setContentTitle(label).setContentText(if(incoming)"Cuộc gọi đến · Có ghi âm" else "Cuộc gọi qua internet · Có ghi âm").setContentIntent(content).setCategory(Notification.CATEGORY_CALL).setOngoing(true).setVisibility(Notification.VISIBILITY_PRIVATE)
+    val builder=Notification.Builder(context,if(incoming)CHANNEL else "goviet_trip_call_ongoing_v1").setSmallIcon(android.R.drawable.sym_action_call).setContentTitle(label).setContentText(if(incoming)"Cuộc gọi đến" else "Cuộc gọi đang diễn ra").setContentIntent(content).setCategory(Notification.CATEGORY_CALL).setOngoing(true).setVisibility(Notification.VISIBILITY_PRIVATE)
     if(Build.VERSION.SDK_INT>=31){val person=Person.Builder().setName(label).setImportant(true).build();builder.setStyle(if(incoming)Notification.CallStyle.forIncomingCall(person,end,answer) else Notification.CallStyle.forOngoingCall(person,end))}
     else {if(incoming)builder.addAction(Notification.Action.Builder(null,"Nghe máy",answer).build());builder.addAction(Notification.Action.Builder(null,"Kết thúc",end).build())}
     if(incoming){
@@ -211,7 +217,7 @@ object CallManager : AudioVideoObserver {
   }
   private fun jsonMap(value:JSONObject):Map<String,Any?> = value.keys().asSequence().associateWith { key->when(val v=value.opt(key)){JSONObject.NULL->null;is JSONObject->jsonMap(v);else->v} }
   override fun onAudioSessionStartedConnecting(reconnecting:Boolean){}
-  override fun onAudioSessionStarted(reconnecting:Boolean){mute(muted);if(speaker)try{speaker(true)}catch(_:Exception){};joined=true;connection?.setActive();tick()}
+  override fun onAudioSessionStarted(reconnecting:Boolean){main.post { connection?.setActive();joined=true;try{mute(muted);speaker(speaker)}catch(_:Exception){error="Chưa thiết lập được âm thanh. Vui lòng thử lại."};tick() }}
   override fun onAudioSessionDropped(){joined=false}
   override fun onAudioSessionStopped(sessionStatus:MeetingSessionStatus){if(session!=null){error="Cuộc gọi bị ngắt.";end()}}
   override fun onAudioSessionCancelledReconnect(){end()}

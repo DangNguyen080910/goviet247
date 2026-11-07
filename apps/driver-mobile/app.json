@@ -65,7 +65,7 @@
       [
         "expo-av",
         {
-          "microphonePermission": "GoViet247 dùng micro để gọi qua internet và gửi tin nhắn thoại. Cuộc gọi được ghi âm để hỗ trợ chuyến."
+          "microphonePermission": "Cho phép GoViet247 dùng micro để bạn và khách hàng gọi cho nhau, và gửi tin nhắn thoại."
         }
       ],
       [
@@ -79,7 +79,7 @@
         {
           "cameraPermission": "Cho phép GoViet247 chụp ảnh để gửi trong hội thoại chuyến.",
           "photosPermission": "Cho phép GoViet247 chọn ảnh để gửi trong hội thoại chuyến.",
-          "microphonePermission": "GoViet247 dùng micro để gọi qua internet và gửi tin nhắn thoại. Cuộc gọi được ghi âm để hỗ trợ chuyến."
+          "microphonePermission": "Cho phép GoViet247 dùng micro để bạn và khách hàng gọi cho nhau, và gửi tin nhắn thoại."
         }
       ],
       "@goviet247/trip-calling-native"

@@ -415,10 +415,10 @@ router.get('/:tripId/audio/:id', wrap(async (req, res) => {
       action: 'PLAY_AUDIO'
     }
   });
-  const deletedMessages=await prisma.tripChatMessage.findMany({where:{...messageWhere(trip,a),deletedAt:{not:null}},select:{id:true,deletedAt:true}});
   res.set('Cache-Control', 'no-store').json({
     success: true,
-    url: await audioUrl(m.audioKey)
+    url: await audioUrl(m.audioKey),
+    mimeType: m.audioMime
   });
 }));
 router.put('/:tripId/messages/:id/heart', wrap(async (req, res) => {

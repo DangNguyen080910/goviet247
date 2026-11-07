@@ -45,7 +45,9 @@ class CallConnection : Connection() {
   override fun onAbort(){CallManager.end()}
   @Suppress("DEPRECATION")
   override fun onCallAudioStateChanged(state: CallAudioState){
-    if(previousMuted!=state.isMuted && (previousMuted!=null || state.isMuted))CallManager.mute(state.isMuted)
+    if(previousMuted!=state.isMuted && (previousMuted!=null || state.isMuted)){
+      try{CallManager.mute(state.isMuted)}catch(_:IllegalStateException){ /* Audio may still be connecting. */ }
+    }
     previousMuted=state.isMuted
   }
 }
@@ -69,6 +71,9 @@ class CallActionReceiver : BroadcastReceiver() {
 class CallActivity : Activity() {
   private val handler=Handler(Looper.getMainLooper())
   private lateinit var status:TextView
+  private lateinit var micButton:Button
+  private lateinit var speakerButton:Button
+  private var answerButton:Button?=null
   private val refresh=object:Runnable {
     override fun run(){
       if(CallManager.callId()==null){finish();return}
@@ -76,7 +81,12 @@ class CallActivity : Activity() {
       val call=snapshot["call"] as? Map<*,*> ?: emptyMap<String,Any>()
       val state=call["status"]?.toString()
       status.text=when(state){"RINGING"->if(call["side"]=="callee")"Cuộc gọi đến" else "Đang gọi…";"CONNECTED"->"Đang nói chuyện";else->"Đang kết nối…"}
-      handler.postDelayed(this,1000)
+      micButton.text=if(snapshot["muted"]==true)"Bật micro" else "Tắt micro"
+      speakerButton.text=if(snapshot["speaker"]==true)"Tắt loa ngoài" else "Bật loa ngoài"
+      micButton.isEnabled=snapshot["joined"]==true
+      speakerButton.isEnabled=snapshot["joined"]==true
+      answerButton?.visibility=if(call["side"]=="callee" && state=="RINGING" && !CallManager.answered())android.view.View.VISIBLE else android.view.View.GONE
+      handler.postDelayed(this,250)
     }
   }
   override fun onCreate(savedInstanceState:Bundle?){
@@ -86,11 +96,10 @@ class CallActivity : Activity() {
     val root=LinearLayout(this).apply {orientation=LinearLayout.VERTICAL;gravity=Gravity.CENTER;setPadding(32,40,32,40);setBackgroundColor(Color.rgb(15,23,42))}
     fun label(value:String,size:Float)=TextView(this).apply{text=value;textSize=size;gravity=Gravity.CENTER;setTextColor(Color.WHITE);setPadding(0,16,0,16);root.addView(this)}
     label("GoViet247",26f);label(CallManager.peerLabel(),30f);status=label("Đang kết nối…",20f)
-    label("Cuộc gọi qua internet · Có ghi âm\nChỉ admin GoViet247 được nghe lại",16f)
-    fun button(text:String,action:()->Unit){root.addView(Button(this).apply{this.text=text;setOnClickListener{try{action()}catch(_:Exception){Toast.makeText(this@CallActivity,"Chưa thực hiện được. Vui lòng thử lại.",Toast.LENGTH_SHORT).show()}}})}
-    if(!CallManager.answered())button("Nghe máy"){CallManager.answer()}
-    button("Bật / tắt micro"){CallManager.mute(!(CallManager.snapshot()["muted"] as? Boolean ?: false))}
-    button("Bật / tắt loa ngoài"){CallManager.speaker(!(CallManager.snapshot()["speaker"] as? Boolean ?: false))}
+    fun button(text:String,action:()->Unit):Button = Button(this).apply{this.text=text;setOnClickListener{try{action()}catch(e:Exception){Toast.makeText(this@CallActivity,e.message ?: "Chưa thực hiện được. Vui lòng thử lại.",Toast.LENGTH_SHORT).show()}};root.addView(this)}
+    answerButton=button("Nghe máy"){CallManager.answer()}
+    micButton=button("Tắt micro"){CallManager.mute(!(CallManager.snapshot()["muted"] as? Boolean ?: false))}
+    speakerButton=button("Bật loa ngoài"){CallManager.speaker(!(CallManager.snapshot()["speaker"] as? Boolean ?: false))}
     button("Kết thúc"){CallManager.end();finish()}
     setContentView(root);handler.post(refresh)
     if(intent.action=="ANSWER")CallManager.answer()

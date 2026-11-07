@@ -42,12 +42,18 @@ export function createCallAws(env=process.env) {
   async stopMeeting(id) {try {await meetings.send(new DeleteMeetingCommand({MeetingId:id}));}catch(e){if(e.name!=='NotFoundException')throw e;}},
   async pipeline(id) {return pipelines.send(new GetMediaPipelineCommand({MediaPipelineId:id}));},
   async recording(callId) {
-   const response=await s3.send(new ListObjectsV2Command({Bucket:bucket,Prefix:`call-recordings/${callId}/final/`,MaxKeys:100}));
-   return response.Contents?.find(o=> /\/audio\/[^/]+\.mp4$/.test(o.Key || '') && o.Size>0)?.Key || null;
+   let token;
+   do {
+    const response=await s3.send(new ListObjectsV2Command({Bucket:bucket,Prefix:`call-recordings/${callId}/final/audio/`,ContinuationToken:token}));
+    const key=response.Contents?.find(o=> /\/audio\/[^/]+\.mp4$/.test(o.Key || '') && o.Size>0)?.Key;
+    if(key)return key;
+    token=response.IsTruncated?response.NextContinuationToken:undefined;
+   }while(token);
+   return null;
   },
   async recordingUrl(key,callId) {
    if(!key?.startsWith(`call-recordings/${callId}/final/`))throw callError('Ghi âm không hợp lệ.',404);
-   return getSignedUrl(s3,new GetObjectCommand({Bucket:bucket,Key:key,ResponseContentType:'audio/mp4'}),{expiresIn:60});
+   return getSignedUrl(s3,new GetObjectCommand({Bucket:bucket,Key:key,ResponseContentType:'audio/mp4',ResponseContentDisposition:'inline'}),{expiresIn:3600});
   }
  };
 }

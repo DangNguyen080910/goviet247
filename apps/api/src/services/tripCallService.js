@@ -131,7 +131,13 @@ export function createTripCallService(db, aws) {
   async recording(id,actor) {
    if(actor.role!=='ADMIN' || actor.recordingAdmin!==true)throw callError('Chỉ Admin được nghe ghi âm.');
    const call=await db.tripCall.findUnique({where:{id}});
-   if(!call?.recordingKey)throw callError('Ghi âm đang xử lý hoặc chưa có.',404);
+   if(!call)throw callError('Không tìm thấy cuộc gọi.',404);
+   // Recover a completed recording even when the background sweep has not indexed it yet.
+   if(!call.recordingKey && call.concatId && terminal.includes(call.status)){
+    const key=await aws.recording(id);
+    if(key){await db.tripCall.update({where:{id},data:{recordingKey:key}});call.recordingKey=key;}
+   }
+   if(!call.recordingKey)throw callError('Ghi âm đang xử lý. Vui lòng thử lại sau ít phút.',404);
    await db.tripChatAccess.create({data:{tripId:call.tripId,actorId:actor.id,action:`PLAY_CALL_RECORDING:${id}`}});
    return {url:await aws.recordingUrl(call.recordingKey,id)};
   },

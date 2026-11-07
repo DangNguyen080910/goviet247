@@ -27,7 +27,7 @@ public class GoVietTripCallingModule: Module {
     }.runOnQueue(.main)
     AsyncFunction("answer") { (promise: Promise) in GoVietCallManager.shared.answer(promise) }.runOnQueue(.main)
     AsyncFunction("end") { GoVietCallManager.shared.end() }.runOnQueue(.main)
-    AsyncFunction("mute") { (muted: Bool) in GoVietCallManager.shared.mute(muted) }.runOnQueue(.main)
+    AsyncFunction("mute") { (muted: Bool) in try GoVietCallManager.shared.mute(muted) }.runOnQueue(.main)
     AsyncFunction("speaker") { (speaker: Bool) in try GoVietCallManager.shared.speaker(speaker) }.runOnQueue(.main)
   }
 }

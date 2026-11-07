@@ -5,7 +5,7 @@ import TripChatHub from './TripChatHub';
 import {partnerFetch,partnerTokenKey} from './partners/partnerSession';
 import {WebCallClient,webCallIdentity} from './webCallClient';
 const base=import.meta.env.VITE_API_BASE || 'http://localhost:5050';
-const notice='Cuộc gọi được ghi âm để GoViet247 hỗ trợ và xử lý phản ánh. Chỉ bộ phận quản trị được nghe lại.';
+
 const capable=()=>window.isSecureContext&&Boolean(navigator.mediaDevices?.getUserMedia)&&Boolean(window.RTCPeerConnection);
 function CallButton({tripId,disabled,onCall,tokenKey,partner}) {
   const [eligibility,setEligibility]=useState(null);
@@ -100,14 +100,14 @@ export default function WebTripChat({partner=false,tokenRevision=''}){
   async function run(fn){setBusy(true);try{await fn();}catch(e){setView(v=>({...v,message:e.name==='NotAllowedError'?'Vui lòng cho phép micro để gọi điện.':e.message}));}finally{setBusy(false);}}
   const ring=view.call?.status==='RINGING'&&!view.owned;
   return <>
-    <TripChatHub partnerTokenKey={partner?tokenKey:null} renderCallButton={tripId=><CallButton tokenKey={tokenKey} partner={partner} tripId={tripId} disabled={active||busy} onCall={id=>{if(window.confirm(`${notice}\n\nĐồng ý và gọi tài xế?`))void run(()=>controller.current?.dial(id));}}/>}/>
+    <TripChatHub partnerTokenKey={partner?tokenKey:null} renderCallButton={tripId=><CallButton tokenKey={tokenKey} partner={partner} tripId={tripId} disabled={active||busy} onCall={id=>{if(window.confirm('Gọi tài xế?'))void run(()=>controller.current?.dial(id));}}/>}/>
     {signed&&!ready&&!active&&capable()&&<Button onClick={()=>void run(async()=>{await unlock();if('Notification'in window&&Notification.permission==='default')await Notification.requestPermission();})} sx={{position:'fixed',bottom:16,left:16,zIndex:1400,bgcolor:'white',borderRadius:3,boxShadow:2}}>☎ Bật chuông cuộc gọi</Button>}
     {view.message&&!active&&<Alert severity="info" onClose={()=>setView(v=>({...v,message:''}))} sx={{position:'fixed',bottom:70,left:16,zIndex:10060,maxWidth:'90vw'}}>{view.message}</Alert>}
     <Dialog open={active} fullWidth maxWidth="xs" sx={{zIndex:10100}}><DialogTitle>{ring?'Tài xế đang gọi':view.call?.status==='CONNECTED'?'Đang gọi tài xế':'Đang kết nối cuộc gọi'}</DialogTitle><DialogContent><Stack spacing={2} sx={{py:2}}>
       <Typography sx={{overflowWrap:'anywhere'}}>Chuyến #{view.call?.tripId}</Typography>
       <Typography>{view.call?.startedAt?`${Math.max(0,Math.floor((now-new Date(view.call.startedAt).getTime())/1000))} giây`:ring?'Cuộc gọi thoại qua Internet':view.call?.status==='RINGING'?'Đang đổ chuông…':'Đang kết nối…'}</Typography>
-      <Alert severity="info">{notice}</Alert>{view.message&&<Alert severity="warning">{view.message}</Alert>}
-      {ring?<Button variant="contained" disabled={busy} onClick={()=>void run(()=>controller.current?.answer())}>Đồng ý ghi âm và nghe</Button>:<>
+      {view.message&&<Alert severity="warning">{view.message}</Alert>}
+      {ring?<Button variant="contained" disabled={busy} onClick={()=>void run(()=>controller.current?.answer())}>Nghe máy</Button>:<>
         <Button disabled={!sdkSession.current||busy} onClick={()=>{const av=sdkSession.current?.audioVideo;if(!av)return;if(muted)av.realtimeUnmuteLocalAudio();else av.realtimeMuteLocalAudio();setMuted(!muted);}}>{muted?'Bật micro':'Tắt micro'}</Button>
         <Button onClick={()=>void run(()=>audioElement.current?.play())}>Bật âm thanh nếu chưa nghe được</Button>
       </>}

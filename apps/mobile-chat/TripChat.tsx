@@ -402,7 +402,16 @@ export default function TripChatScreen() {
       setRecording(true);
     } catch (error) { setChatRecordingActive(false); throw error; }
   }
-  async function play(uri: string, key: string) {
+  async function listenTo(work: () => Promise<void>) {
+    await run(async () => {
+      try { await work(); }
+      catch (e: any) {
+        Alert.alert('Chưa nghe được ghi âm', e.message || 'Vui lòng thử lại.');
+        throw e;
+      }
+    });
+  }
+  async function play(uri: string, key: string, mimeType?: string) {
     if (playing === key) {
       await sound.current?.unloadAsync();
       sound.current = null;
@@ -410,18 +419,30 @@ export default function TripChatScreen() {
       return;
     }
     await sound.current?.unloadAsync();
+    sound.current = null;
+    setPlaying('');
+    await Audio.setIsEnabledAsync(true);
     await Audio.setAudioModeAsync({
       allowsRecordingIOS: false,
-      playsInSilentModeIOS: true
+      playsInSilentModeIOS: true,
+      playThroughEarpieceAndroid: false,
+      shouldDuckAndroid: false
     });
     const result = await Audio.Sound.createAsync({
-      uri
+      uri,
+      ...(mimeType ? {overrideFileExtensionAndroid: mimeType.includes('webm') ? 'webm' : mimeType.includes('ogg') ? 'ogg' : mimeType.includes('mpeg') ? 'mp3' : mimeType.includes('aac') ? 'aac' : 'mp4'} : {})
     }, {
-      shouldPlay: true
+      shouldPlay: true,
+      volume: 1.0
     });
     sound.current = result.sound;
     setPlaying(key);
     result.sound.setOnPlaybackStatusUpdate(status => {
+      if (!status.isLoaded && status.error && mounted.current) {
+        setPlaying('');
+        setError('Không phát được ghi âm. Vui lòng bấm nghe lại.');
+        Alert.alert('Chưa nghe được ghi âm', 'Không tải hoặc phát được file âm thanh. Vui lòng thử lại.');
+      }
       if (status.isLoaded && status.didJustFinish) {
         result.sound.unloadAsync().catch(() => {});
         if (mounted.current) setPlaying('');
@@ -605,9 +626,9 @@ export default function TripChatScreen() {
             color: ink,
             fontSize: 15,
             lineHeight: 22
-          }}>{splitChatLinks(m.text || '').map((part, index) => part.url ? <Text key={index} accessibilityRole="link" style={{color: blue, textDecorationLine: 'underline'}} onPress={() => void run(() => Linking.openURL(part.url!))}>{part.text}</Text> : part.text)}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording} style={button} onPress={() => void run(async () => {
+          }}>{splitChatLinks(m.text || '').map((part, index) => part.url ? <Text key={index} accessibilityRole="link" style={{color: blue, textDecorationLine: 'underline'}} onPress={() => void run(() => Linking.openURL(part.url!))}>{part.text}</Text> : part.text)}</Text> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} onOpen={() => void run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Pressable disabled={recording || busy} style={button} onPress={() => void listenTo(async () => {
             const d = await api(`/${tripId}/audio/${m.id}`);
-            await play(d.url, m.id);
+            await play(d.url, m.id, d.mimeType);
           })}><Text style={{
               color: blue
             }}>{playing === m.id ? '⏹ Dừng' : '▶ Nghe ghi âm'} · {Math.ceil((m.durationMs || 0) / 1000)} giây</Text></Pressable> : <Pressable onPress={() => void run(() => openMap(m.latitude!, m.longitude!))}><Text style={{
@@ -617,12 +638,12 @@ export default function TripChatScreen() {
               fontSize: 12,
               color: '#64748b'
             }}>Vị trí tại thời điểm gửi · Bấm mở bản đồ</Text></Pressable>}
- {actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Pressable style={button} disabled={recording} accessibilityRole="button" onPress={() => void run(async () => {
+ {actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Pressable style={button} disabled={recording || busy} accessibilityRole="button" onPress={() => void listenTo(async () => {
    const token=await config.getToken();
    const response=await fetch(`${config.base}/api/trip-calls/${encodeURIComponent(m.recordingCallId!)}/recording`,{headers:{Authorization:`Bearer ${token}`}});
    const data=await response.json();if(!response.ok)throw new Error(data.message || 'Chưa nghe được ghi âm.');
-   await play(data.url,m.id);
- })}><Text style={{color:blue}}>▶ Nghe ghi âm cuộc gọi</Text></Pressable>}
+   await play(data.url,m.id,'audio/mp4');
+ })}><Text style={{color:blue}}>{playing === m.id ? '⏹ Dừng ghi âm cuộc gọi' : busy ? 'Đang tải ghi âm…' : '▶ Nghe ghi âm cuộc gọi'}</Text></Pressable>}
  {!m.deletedAt && <Pressable accessibilityRole="button" accessibilityLabel={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} accessibilityState={{selected:Boolean(m.hearted),disabled:!canSend || busy}} disabled={!canSend || busy} style={{alignSelf:'flex-end',minWidth:44,minHeight:44,alignItems:'center',justifyContent:'center',borderRadius:22,backgroundColor:m.hearted ? '#fff1f2' : '#f8fafc',marginTop:6}} onPress={() => void run(async () => {
    const result = await api(`/${tripId}/messages/${m.id}/heart`, {method:'PUT',body:JSON.stringify({active:!m.hearted})});
    setItems(current => current.map(item => item.id === m.id ? {...item,hearted:result.hearted,heartCount:result.heartCount} : item));

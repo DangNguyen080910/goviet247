@@ -112,7 +112,7 @@ final class GoVietCallManager: NSObject, PKPushRegistryDelegate, CXProviderDeleg
     let incomingUUID = UUID(uuidString:data["callUUID"] as? String ?? "") ?? UUID()
     let update = CXCallUpdate()
     update.remoteHandle = CXHandle(type:.generic,value:"GoViet247")
-    update.localizedCallerName = "\(data["callerName"] as? String ?? "Cuộc gọi chuyến") · Có ghi âm"
+    update.localizedCallerName = "\(data["callerName"] as? String ?? "Cuộc gọi chuyến")"
     update.hasVideo = false
     update.supportsHolding = false
     update.supportsGrouping = false
@@ -244,8 +244,19 @@ final class GoVietCallManager: NSObject, PKPushRegistryDelegate, CXProviderDeleg
     do { try session.audioVideo.start(callKitEnabled:true) }
     catch { lastError = "Không mở được micro cuộc gọi."; endOnServer(); finish(reason:.failed) }
   }
-  func mute(_ value: Bool) { muted = value; if value { _ = meeting?.audioVideo.realtimeLocalMute() } else { _ = meeting?.audioVideo.realtimeLocalUnmute() } }
-  func speaker(_ value: Bool) throws { try AVAudioSession.sharedInstance().overrideOutputAudioPort(value ? .speaker : .none); loudspeaker = value }
+  func mute(_ value: Bool) throws {
+    guard let audio = meeting?.audioVideo else { throw NSError(domain:"GoVietCall",code:1,userInfo:[NSLocalizedDescriptionKey:"Âm thanh đang kết nối. Vui lòng thử lại."]) }
+    guard value ? audio.realtimeLocalMute() : audio.realtimeLocalUnmute() else { throw NSError(domain:"GoVietCall",code:2,userInfo:[NSLocalizedDescriptionKey:"Chưa đổi được micro. Vui lòng thử lại."]) }
+    muted = value
+  }
+  func speaker(_ value: Bool) throws {
+    guard let audio = meeting?.audioVideo,
+          let device = audio.listAudioDevices().first(where: { $0.type == (value ? .audioBuiltInSpeaker : .audioHandset) }) else {
+      throw NSError(domain:"GoVietCall",code:3,userInfo:[NSLocalizedDescriptionKey:"Không tìm thấy thiết bị âm thanh phù hợp."])
+    }
+    audio.chooseAudioDevice(mediaDevice:device)
+    loudspeaker = value
+  }
   func providerDidReset(_ provider: CXProvider) { endOnServer(); finish(reason:.failed) }
   func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
     do { try configureAudio(); action.fulfill(); provider.reportOutgoingCall(with:action.callUUID,startedConnectingAt:Date()) }
@@ -266,13 +277,13 @@ final class GoVietCallManager: NSObject, PKPushRegistryDelegate, CXProviderDeleg
     }
   }
   func provider(_ provider: CXProvider, perform action: CXEndCallAction) { endOnServer(); finish(reason:.remoteEnded); action.fulfill() }
-  func provider(_ provider: CXProvider, perform action: CXSetMutedCallAction) { mute(action.isMuted); action.fulfill() }
+  func provider(_ provider: CXProvider, perform action: CXSetMutedCallAction) { do { try mute(action.isMuted); action.fulfill() } catch { action.fail() } }
   func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) { audioActive = true; startAudioIfReady() }
   func provider(_ provider: CXProvider, didDeactivate audioSession: AVAudioSession) { audioActive = false }
   func provider(_ provider: CXProvider, timedOutPerforming action: CXAction) { endOnServer(); finish(reason:.failed); action.fail() }
   func audioSessionDidStartConnecting(reconnecting: Bool) {}
   func audioSessionDidStart(reconnecting: Bool) {
-    DispatchQueue.main.async { self.mute(self.muted); if self.loudspeaker { try? self.speaker(true) }; self.joined = true; if let id = self.uuid, self.call["side"] as? String == "caller" { self.provider.reportOutgoingCall(with:id,connectedAt:Date()) }; self.tick() }
+    DispatchQueue.main.async { try? self.mute(self.muted); try? self.speaker(self.loudspeaker); self.joined = true; if let id = self.uuid, self.call["side"] as? String == "caller" { self.provider.reportOutgoingCall(with:id,connectedAt:Date()) }; self.tick() }
   }
   func audioSessionDidDrop() { DispatchQueue.main.async { self.joined = false } }
   func audioSessionDidStopWithStatus(sessionStatus: MeetingSessionStatus) { DispatchQueue.main.async { if self.uuid != nil { self.endOnServer(); self.finish(reason:.failed) } } }
