@@ -50,6 +50,18 @@ function reportDefinition(rows, reportType) {
   const total = (values) => ({ cells: values, isTotal: true });
 
   switch (reportType) {
+    case "commission": {
+      pageSize = "A3";
+      columns = [field("Ngày ghi nhận", "Ngày ghi nhận (giờ VN)", 1.15), combined("Chuyến / tài xế", ["Mã chuyến", "Mã tài xế"], 2.1),
+        combined("Tài xế / SĐT", ["Tài xế", "SĐT"], 1.7), field("CCCD / số định danh", "CCCD / số định danh", 1.4),
+        field("Giá chuyến", "Giá chuyến", 1, true), field("% hoa hồng", "Tỷ lệ hoa hồng (%)", .65, true),
+        field("Phí gồm VAT", "Phí hoa hồng gồm VAT", 1.1, true), field("Trước VAT", "Phí trước VAT (tham khảo)", 1.1, true), field("VAT", "VAT (tham khảo)", .9, true)];
+      details = row => detail(row, ["Ghi chú", "Thuế suất VAT tham khảo (%)"]);
+      summary += ` | Tổng phí gồm VAT: ${money(sum("Phí hoa hồng gồm VAT"))}đ`;
+      note = "Số tiền VAT tham khảo theo cách tính báo cáo hiện tại. Ngày ghi nhận là ngày cập nhật chuyến; không phải hoá đơn điện tử.";
+      totals = [total(["", "", "", "TỔNG", "", "", money(sum("Phí hoa hồng gồm VAT")), money(sum("Phí trước VAT (tham khảo)")), money(sum("VAT (tham khảo)"))])];
+      break;
+    }
     case "cash": {
       columns = [field("Ngày giờ", "Ngày", 1.05), field("Thu / Chi", "Loại", 0.55),
         field("Nhóm", "Nhóm", 0.85), field("Diễn giải", "Ghi chú", 3.15),

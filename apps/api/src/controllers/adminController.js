@@ -1,3 +1,7 @@
+function accountingDateBound(value, end = false) {
+  return new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T${end ? "23:59:59.999" : "00:00:00.000"}+07:00` : value);
+}
+
 import { adminTripMoney } from "../services/adminTripMoney.js";
 import { getDriverAccountingIdentityRows } from "../services/driverAccountingIdentity.js";
 import { isProvinceCode, driverProvinceSummary } from "../services/driverOperatingProvince.js";
@@ -1257,7 +1261,7 @@ export function makeAdminController(prisma) {
     const groups = preview.groups.map((group) => {
       switch (group.key) {
         case "COMMISSION_DETAIL_EXPORT":
-          return { ...group, type: "csv", folderName: "14-chi-tiet-hoa-hong", fileName: `chi_tiet_hoa_hong_${period.periodKey}.csv` };
+          return { ...group, type: "csv_pdf", folderName: "14-chi-tiet-hoa-hong", fileName: `chi_tiet_hoa_hong_${period.periodKey}.csv` };
         case "DRIVER_IDENTITY_EXPORT":
           return { ...group, type: "pdf", folderName: "13-thong-tin-tai-xe", fileName: `thong_tin_tai_xe_${period.periodKey}.pdf` };
 
@@ -4083,17 +4087,15 @@ export function makeAdminController(prisma) {
           where.createdAt = {};
 
           if (fromDateRaw) {
-            const fromDate = new Date(fromDateRaw);
+            const fromDate = accountingDateBound(fromDateRaw);
             if (!Number.isNaN(fromDate.getTime())) {
-              fromDate.setHours(0, 0, 0, 0);
               where.createdAt.gte = fromDate;
             }
           }
 
           if (toDateRaw) {
-            const toDate = new Date(toDateRaw);
+            const toDate = accountingDateBound(toDateRaw, true);
             if (!Number.isNaN(toDate.getTime())) {
-              toDate.setHours(23, 59, 59, 999);
               where.createdAt.lte = toDate;
             }
           }
@@ -5097,11 +5099,11 @@ export function makeAdminController(prisma) {
           where.createdAt = {};
 
           if (req.query.dateFrom) {
-            where.createdAt.gte = new Date(req.query.dateFrom);
+            where.createdAt.gte = accountingDateBound(req.query.dateFrom);
           }
 
           if (req.query.dateTo) {
-            where.createdAt.lte = new Date(req.query.dateTo);
+            where.createdAt.lte = accountingDateBound(req.query.dateTo, true);
           }
         }
 
@@ -5303,7 +5305,7 @@ export function makeAdminController(prisma) {
           end,
           quarter: safeQuarter,
           year: safeYear,
-        } = getQuarterDateRange(year, quarter);
+        } = getAccountingPeriod(year, quarter, req.query?.month);
 
         const [completedTrips, approvedPenaltyLogs] = await Promise.all([
           prisma.trip.findMany({
@@ -5466,7 +5468,7 @@ export function makeAdminController(prisma) {
           end,
           quarter: safeQuarter,
           year: safeYear,
-        } = getQuarterDateRange(year, quarter);
+        } = getAccountingPeriod(year, quarter, req.query?.month);
 
         // ===============================
         // 1. COMPLETED TRIPS
@@ -5671,6 +5673,53 @@ export function makeAdminController(prisma) {
       }
     },
 
+    async exportAccountingReportPdf(req, res) {
+      try {
+        const { year, quarter, month, reportType, documentType } = req.query;
+        if (!Number.isInteger(Number(year)) || Number(year) < 2000 || Number(year) > 2100 ||
+          (month == null && ![1,2,3,4].includes(Number(quarter))) ||
+          (month != null && (!Number.isInteger(Number(month)) || Number(month) < 1 || Number(month) > 12)))
+          return res.status(400).json({ success: false, message: "Kỳ kế toán không hợp lệ." });
+        const period = getAccountingPeriod(year, quarter, month);
+        if (reportType === "cash" && req.query.fromDate && req.query.toDate) {
+          period.start = accountingDateBound(req.query.fromDate);
+          period.end = accountingDateBound(req.query.toDate, true);
+          if (!Number.isFinite(+period.start) || !Number.isFinite(+period.end) || period.start > period.end)
+            return res.status(400).json({ success: false, message: "Khoảng ngày không hợp lệ." });
+        }
+        const builders = {
+          cash: ["Thu chi công ty", buildCompanyCashCsvForQuarter],
+          wallet: ["Biến động ví tài xế", buildDriverWalletCsvForQuarter],
+          trips: ["Chi tiết kế toán chuyến đi", buildTripAccountingCsvForQuarter],
+          withdraw: ["Tài xế rút ví", buildDriverWithdrawCsvForQuarter],
+          revenue: ["Báo cáo doanh thu và lợi nhuận", buildRevenueReportCsvForQuarter],
+          notes: ["Ghi chú kế toán", buildAccountingNotesCsvForQuarter],
+        };
+        let title, rows;
+        if (reportType === "commission") {
+          title = "Chi tiết hoa hồng";
+          rows = parseCsvRows(buildCommissionDetailCsv(await getCommissionDetailItems(period)));
+        } else if (reportType === "documents") {
+          const allowed = { BANK_STATEMENT: "Sao kê ngân hàng", INPUT_INVOICE: "Hoá đơn đầu vào", OUTPUT_INVOICE: "Hoá đơn đầu ra", PAYROLL_HR: "Lương và nhân sự", LEGAL_CONTRACT: "Hợp đồng pháp lý" };
+          if (!allowed[documentType]) return res.status(400).json({ success: false, message: "Loại hồ sơ không hợp lệ." });
+          title = `Bảng kê ${allowed[documentType]}`;
+          const items = await prisma.accountingDocument.findMany({ where: { documentType, quarter: period.quarter, year: period.year, ...(period.month ? { month: period.month } : {}) }, orderBy: { createdAt: "asc" } });
+          rows = [["Tiêu đề", "Tháng", "Tên file", "Mô tả", "Ngày tạo"], ...items.map(i => [i.title, i.month || "Chưa gắn tháng", i.fileName, i.description, formatDateTimeExport(i.createdAt)])];
+        } else if (builders[reportType]) {
+          title = builders[reportType][0];
+          rows = parseCsvRows(await builders[reportType][1](period));
+        } else return res.status(400).json({ success: false, message: "Loại báo cáo không hợp lệ." });
+        const pdf = await buildAccountingPdf(rows, { ...period, title, reportType,
+          subtitle: reportType === "cash" && req.query.fromDate ? `Từ ${req.query.fromDate} đến ${req.query.toDate} (giờ Việt Nam).` : reportType === "commission" ? "Chuyến hoàn thành theo ngày cập nhật; VAT tham khảo, kế toán đối chiếu trước khi lập hoá đơn. Hồ sơ tài xế là dữ liệu hiện tại." : reportType === "documents" ? "Bảng kê hồ sơ. File chứng từ gốc nằm trong gói Export ZIP." : reportType === "notes" && period.month ? "Ghi chú được lọc theo ngày tạo trong tháng." : "" });
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", `attachment; filename="${reportType}_${period.periodKey}.pdf"`);
+        return res.send(pdf);
+      } catch (err) {
+        console.error("exportAccountingReportPdf", err);
+        return res.status(500).json({ success: false, message: "Không xuất được PDF kế toán." });
+      }
+    },
+
     async getCommissionDetails(req, res) {
       try {
         const { year, quarter, month } = req.query;
@@ -5854,6 +5903,7 @@ export function makeAdminController(prisma) {
         });
 
         const commissionCsv = buildCommissionDetailCsv(await getCommissionDetailItems({ start, end }));
+        const commissionPdf = await buildAccountingPdf(parseCsvRows(commissionCsv), { quarter: safeQuarter, year: safeYear, month, title: "Chi tiết hoa hồng", reportType: "commission", subtitle: "VAT tham khảo; kế toán xác nhận thuế suất và bên mua trước khi lập hoá đơn. Ngày ghi nhận theo ngày cập nhật chuyến hoàn thành." });
         const pdfMeta = {
           quarter: safeQuarter,
           year: safeYear,
@@ -5970,6 +6020,7 @@ export function makeAdminController(prisma) {
 
         archive.append(readmeText, { name: "README.txt" });
         archive.append(commissionCsv, { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.csv` });
+        archive.append(commissionPdf, { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.pdf` });
         archive.append(driverIdentityPdf, { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_${periodKey}.pdf` });
 
         await appendAccountingDocumentsToArchive({
@@ -6072,7 +6123,8 @@ export function makeAdminController(prisma) {
     async listAccountingDocuments(req, res) {
       try {
         const documentType = String(req.query.documentType || "").trim();
-        const quarter = parseInt(req.query.quarter || "0", 10);
+        const period = getAccountingPeriod(req.query.year, req.query.quarter, req.query.month);
+        const quarter = period.quarter;
         const year = parseInt(req.query.year || "0", 10);
 
         if (!documentType || !quarter || !year) {
@@ -6087,6 +6139,7 @@ export function makeAdminController(prisma) {
             documentType,
             quarter,
             year,
+            ...(period.month ? { month: period.month } : {}),
           },
           orderBy: { createdAt: "desc" },
         });
@@ -6233,13 +6286,15 @@ export function makeAdminController(prisma) {
 
     async listAccountingNotes(req, res) {
       try {
-        const quarter = Number(req.query?.quarter || 1);
+        const period = getAccountingPeriod(req.query.year, req.query.quarter, req.query.month);
+        const quarter = period.quarter;
         const year = Number(req.query?.year || new Date().getFullYear());
 
         const items = await prisma.accountingNote.findMany({
           where: {
             quarter,
             year,
+            ...(period.month ? { createdAt: { gte: period.start, lte: period.end } } : {}),
           },
           orderBy: { createdAt: "desc" },
         });
@@ -6319,20 +6374,18 @@ export function makeAdminController(prisma) {
         const quarter = Number(req.query?.quarter || 1);
         const year = Number(req.query?.year || new Date().getFullYear());
 
-        const { quarter: safeQuarter, year: safeYear } = getQuarterDateRange(
-          year,
-          quarter,
-        );
+        const { quarter: safeQuarter, year: safeYear } = getAccountingPeriod(year, quarter, req.query.month);
 
         const csv = await buildAccountingNotesCsvForQuarter({
           quarter: safeQuarter,
           year: safeYear,
+          month: req.query.month,
         });
 
         res.setHeader("Content-Type", "text/csv; charset=utf-8");
         res.setHeader(
           "Content-Disposition",
-          `attachment; filename="ghi_chu_ke_toan_Q${safeQuarter}_${safeYear}.csv"`,
+          `attachment; filename="ghi_chu_ke_toan_${getAccountingPeriod(year, quarter, req.query.month).periodKey}.csv"`,
         );
 
         return res.send(csv);
@@ -6353,8 +6406,8 @@ export function makeAdminController(prisma) {
 
         if (fromDate || toDate) {
           where.txnDate = {};
-          if (fromDate) where.txnDate.gte = new Date(fromDate);
-          if (toDate) where.txnDate.lte = new Date(toDate);
+          if (fromDate) where.txnDate.gte = accountingDateBound(fromDate);
+          if (toDate) where.txnDate.lte = accountingDateBound(toDate, true);
         }
 
         if (type) where.type = type;
@@ -6471,8 +6524,8 @@ export function makeAdminController(prisma) {
 
         if (fromDate || toDate) {
           where.txnDate = {};
-          if (fromDate) where.txnDate.gte = new Date(fromDate);
-          if (toDate) where.txnDate.lte = new Date(toDate);
+          if (fromDate) where.txnDate.gte = accountingDateBound(fromDate);
+          if (toDate) where.txnDate.lte = accountingDateBound(toDate, true);
         }
 
         const items = await prisma.companyCashTransaction.findMany({
@@ -6512,8 +6565,8 @@ export function makeAdminController(prisma) {
 
         if (fromDate || toDate) {
           where.txnDate = {};
-          if (fromDate) where.txnDate.gte = new Date(fromDate);
-          if (toDate) where.txnDate.lte = new Date(toDate);
+          if (fromDate) where.txnDate.gte = accountingDateBound(fromDate);
+          if (toDate) where.txnDate.lte = accountingDateBound(toDate, true);
         }
 
         const items = await prisma.companyCashTransaction.findMany({
@@ -6566,7 +6619,7 @@ export function makeAdminController(prisma) {
         const quarter = Number(req.query?.quarter || 1);
         const year = Number(req.query?.year || new Date().getFullYear());
 
-        const { start, end } = getQuarterDateRange(year, quarter);
+        const { start, end } = getAccountingPeriod(year, quarter, req.query?.month);
 
         const completedAgg = await prisma.trip.aggregate({
           where: {

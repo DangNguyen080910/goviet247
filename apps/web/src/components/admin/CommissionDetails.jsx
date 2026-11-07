@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Alert, Button, MenuItem, Stack, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography, CircularProgress } from "@mui/material";
+import AccountingPdfButton from "./AccountingPdfButton";
 import AdminTableScroll from "./AdminTableScroll";
 import { getAdminToken } from "../../utils/adminAuth";
 const base = `${import.meta.env.VITE_API_BASE || "http://localhost:5050"}/api/admin/commission-details`;
@@ -44,6 +45,7 @@ export default function CommissionDetails() {
         {Array.from({ length: mode === "month" ? 12 : 4 }, (_, i) => <MenuItem key={i+1} value={i+1}>{i+1}</MenuItem>)}
       </TextField>
       <TextField label="Năm" type="number" value={year} onChange={e => setYear(e.target.value)} inputProps={{ min: 2000, max: 2100 }} sx={{ width: 130 }} />
+      <AccountingPdfButton period={{year,quarter,month:mode === "month" ? month : null}} reportType="commission" />
       <Button variant="outlined" onClick={download} disabled={!data || loading || downloading}>{downloading ? "Đang xuất..." : "Xuất CSV chi tiết"}</Button>
     </Stack>
     <Alert severity="info">Mỗi chuyến hoàn thành một dòng; khoản giữ ví của chuyến chưa hoàn thành hoặc đã huỷ không được tính. Ngày ghi nhận theo lần cập nhật chuyến, cùng kỳ với báo cáo DT / LN. Đây là bảng đối chiếu để lập hoá đơn, chưa phải hoá đơn điện tử.</Alert>

@@ -87,9 +87,26 @@ test('monthly ZIP contains commission CSV and monthly PDF labels', async () => {
 with zipfile.ZipFile(sys.argv[1]) as z:
  assert z.testzip() is None
  assert '14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_T11_2026.csv' in z.namelist()
+ assert any(n.startswith('14-chi-tiet-hoa-hong/') and n.endswith('.pdf') for n in z.namelist())
  assert 'Tháng: 11' in z.read('README.txt').decode()
  assert all('Q4_' not in n for n in z.namelist())
  print('ZIP OK')`,file],{encoding:'utf8'});
     assert.match(output,/ZIP OK/);
   } finally {await rm(dir,{recursive:true,force:true});}
+});
+
+test('all ledger PDF report types export valid monthly PDFs', async () => {
+  const ranges=[];
+  const model={count:async()=>0,findMany:async args=>{ranges.push(args?.where);return [];},aggregate:async()=>({_sum:{},_count:{id:0}})};
+  const ctrl=makeAdminController(new Proxy({}, {get:()=>model}));
+  for(const reportType of ['cash','wallet','trips','withdraw','revenue','notes','commission','documents']) {
+    const res=response();
+    await ctrl.exportAccountingReportPdf({query:{year:'2026',month:'11',reportType,documentType:'BANK_STATEMENT'}},res);
+    assert.equal(res.statusCode,200,reportType);
+    assert.equal(res.headers['Content-Type'],'application/pdf');
+    assert.match(res.headers['Content-Disposition'],/T11_2026/);
+    assert.equal(res.body.subarray(0,4).toString(),'%PDF');
+  }
+  assert.ok(ranges.some(w=>w?.month===11));
+  const invalid=response();await ctrl.exportAccountingReportPdf({query:{year:'2026',month:'13',reportType:'cash'}},invalid);assert.equal(invalid.statusCode,400);
 });

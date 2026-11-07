@@ -1,6 +1,8 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminLedger.jsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
+import AccountingPeriodFilter, { accountingRange, accountingPeriodLabel } from "../../components/admin/AccountingPeriodFilter";
+import AccountingPdfButton from "../../components/admin/AccountingPdfButton";
 import CommissionDetails from "../../components/admin/CommissionDetails";
 import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import {
@@ -113,8 +115,8 @@ const TAB_LIST = [
   { label: "Hợp đồng" },
   { label: "DT / LN" },
   { label: "Ghi chú" },
-  { label: "Export" },
-  { label: "Hoa hồng" },
+  { label: "Hoa hồng", value: 12 },
+  { label: "Export", value: 11 },
 ];
 
 const DOCUMENT_TYPE_BY_TAB = {
@@ -269,7 +271,7 @@ function buildRevenueReportExportFilename(filters = {}) {
   const quarter = Number(filters?.quarter || 1);
   const year = Number(filters?.year || new Date().getFullYear());
 
-  return `bao_cao_doanh_thu_loi_nhuan_Q${quarter}_${year}.csv`;
+  return `bao_cao_doanh_thu_loi_nhuan_${filters.month ? `T${filters.month}` : `Q${quarter}`}_${year}.csv`;
 }
 
 function downloadCsv(filename, rows) {
@@ -474,10 +476,8 @@ export default function AdminLedger() {
     source: "",
   });
 
-  const [cashFilters, setCashFilters] = useState({
-    fromDate: "",
-    toDate: "",
-  });
+  const [cashPeriod, setCashPeriod] = useState({ quarter: currentQuarter, year: currentYear, month: null });
+  const [cashFilters, setCashFilters] = useState(() => accountingRange({quarter:currentQuarter,year:currentYear}));
 
   const [tripItems, setTripItems] = useState([]);
   const [tripLoading, setTripLoading] = useState(false);
@@ -600,6 +600,7 @@ export default function AdminLedger() {
       const res = await fetchAccountingDocuments({
         documentType,
         quarter: docFilters.quarter,
+        month: docFilters.month,
         year: docFilters.year,
       });
 
@@ -622,6 +623,7 @@ export default function AdminLedger() {
 
       const res = await fetchAccountingSummary({
         quarter: docFilters.quarter,
+        month: docFilters.month,
         year: docFilters.year,
       });
 
@@ -640,6 +642,7 @@ export default function AdminLedger() {
       );
       setAccountingSummary({
         quarter: docFilters.quarter,
+        month: docFilters.month,
         year: docFilters.year,
         items: [],
       });
@@ -654,6 +657,7 @@ export default function AdminLedger() {
 
       const res = await fetchAccountingNotes({
         quarter: docFilters.quarter,
+        month: docFilters.month,
         year: docFilters.year,
       });
 
@@ -683,6 +687,7 @@ export default function AdminLedger() {
         title: noteForm.title.trim(),
         content: noteForm.content.trim(),
         quarter: docFilters.quarter,
+        month: docFilters.month,
         year: docFilters.year,
       });
 
@@ -714,6 +719,7 @@ export default function AdminLedger() {
     try {
       await exportAccountingNotesCsv({
         quarter: docFilters.quarter,
+        month: docFilters.month,
         year: docFilters.year,
       });
 
@@ -731,16 +737,13 @@ export default function AdminLedger() {
     try {
       setWalletLoading(true);
 
-      const { fromDate, toDate } = getQuarterDateRange(
-        walletFilters.year,
-        walletFilters.quarter,
-      );
+      const { fromDate, toDate } = accountingRange(walletFilters);
 
-      const res = await fetchLedgerTransactions({
+      const res = await fetchAllAccountingPages(fetchLedgerTransactions, {
         dateFrom: fromDate,
         dateTo: toDate,
         page: 1,
-        pageSize: 5000,
+        pageSize: 100,
         type: "ALL",
       });
 
@@ -779,16 +782,13 @@ export default function AdminLedger() {
     try {
       setWithdrawLoading(true);
 
-      const { fromDate, toDate } = getQuarterDateRange(
-        withdrawFilters.year,
-        withdrawFilters.quarter,
-      );
+      const { fromDate, toDate } = accountingRange(withdrawFilters);
 
-      const data = await fetchWithdrawRequests({
+      const data = await fetchAllAccountingPages(fetchWithdrawRequests, {
         fromDate,
         toDate,
         page: 1,
-        pageSize: 5000,
+        pageSize: 100,
         status: "ALL",
       });
 
@@ -811,6 +811,7 @@ export default function AdminLedger() {
 
       const res = await fetchRevenueReport({
         quarter: revenueFilters.quarter,
+        month: revenueFilters.month,
         year: revenueFilters.year,
       });
 
@@ -897,7 +898,7 @@ export default function AdminLedger() {
     ];
 
     downloadCsv(
-      `vi_tai_xe_q${walletFilters.quarter}_${walletFilters.year}.csv`,
+      `vi_tai_xe_${walletFilters.month ? `T${walletFilters.month}` : `Q${walletFilters.quarter}`}_${walletFilters.year}.csv`,
       rows,
     );
   };
@@ -928,8 +929,8 @@ export default function AdminLedger() {
       formData.append("quarter", String(docFilters.quarter));
       formData.append("year", String(docFilters.year));
 
-      if (docForm.month) {
-        formData.append("month", String(docForm.month));
+      if (docFilters.month || docForm.month) {
+        formData.append("month", String(docFilters.month || docForm.month));
       }
 
       formData.append("file", docForm.file);
@@ -1279,7 +1280,7 @@ export default function AdminLedger() {
 
     const url = URL.createObjectURL(blob);
 
-    const fileName = `chuyen_di_Q${tripFilters.quarter}_${tripFilters.year}.csv`;
+    const fileName = `chuyen_di_${tripFilters.month ? `T${tripFilters.month}` : `Q${tripFilters.quarter}`}_${tripFilters.year}.csv`;
 
     const link = document.createElement("a");
     link.href = url;
@@ -1402,7 +1403,7 @@ export default function AdminLedger() {
       )
       .join("");
 
-    const title = `Bang_ke_tai_xe_Q${tripFilters.quarter}_${tripFilters.year}`;
+    const title = `Bang_ke_tai_xe_${tripFilters.month ? `T${tripFilters.month}` : `Q${tripFilters.quarter}`}_${tripFilters.year}`;
     const html = `<!doctype html>
       <html lang="vi">
         <head>
@@ -1429,7 +1430,7 @@ export default function AdminLedger() {
         </head>
         <body>
           <h1>BẢNG KÊ CHUYẾN, KHẤU TRỪ VÀ THỰC NHẬN THEO TÀI XẾ</h1>
-          <p><b>Kỳ:</b> Quý ${tripFilters.quarter}/${tripFilters.year} | Đơn vị tiền: VND | Khổ A3 ngang</p>
+          <p><b>Kỳ:</b> ${accountingPeriodLabel(tripFilters)} | Đơn vị tiền: VND | Khổ A3 ngang</p>
           <p class="muted">Bảng kê nội bộ dựa trên các chuyến hoàn thành; không phải bảng lương. Khách thanh toán trực tiếp cho tài xế, nên cột thực nhận là số theo dữ liệu chuyến, không phải khoản lương công ty chi. Hồ sơ hiện có tên và số điện thoại; chưa có mã số thuế/CCCD trong bảng này.</p>
           <h2>Tổng hợp theo tài xế</h2>
           <table>
@@ -1532,7 +1533,7 @@ export default function AdminLedger() {
     });
 
     const url = URL.createObjectURL(blob);
-    const fileName = `tai_xe_rut_vi_Q${withdrawFilters.quarter}_${withdrawFilters.year}.csv`;
+    const fileName = `tai_xe_rut_vi_${withdrawFilters.month ? `T${withdrawFilters.month}` : `Q${withdrawFilters.quarter}`}_${withdrawFilters.year}.csv`;
 
     const link = document.createElement("a");
     link.href = url;
@@ -1667,10 +1668,14 @@ export default function AdminLedger() {
               allowScrollButtonsMobile
             >
               {TAB_LIST.map((t, idx) => (
-                <Tab key={idx} label={t.label} />
+                <Tab key={t.value ?? idx} value={t.value ?? idx} label={t.label} />
               ))}
             </Tabs>
 
+            {tab !== 11 && tab !== 12 && <Stack direction="row" spacing={1} alignItems="center">
+              <AccountingPdfButton dateRange={tab === 3 ? cashFilters : undefined} period={tab === 3 ? { ...cashPeriod } : tab === 4 ? walletFilters : tab === 5 ? tripFilters : tab === 6 ? withdrawFilters : tab === 9 ? revenueFilters : docFilters}
+                reportType={tab === 3 ? "cash" : tab === 4 ? "wallet" : tab === 5 ? "trips" : tab === 6 ? "withdraw" : tab === 9 ? "revenue" : tab === 10 ? "notes" : "documents"} documentType={DOCUMENT_TYPE_BY_TAB[tab]} />
+            </Stack>}
             {tab === 12 ? <CommissionDetails /> : tab === 10 ? (
               <>
                 <Typography variant="h5" sx={{ fontWeight: 800 }}>
@@ -1691,37 +1696,7 @@ export default function AdminLedger() {
                         alignItems={{ xs: "stretch", md: "center" }}
                         flexWrap="wrap"
                       >
-                        <TextField
-                          select
-                          label="Quý"
-                          value={docFilters.quarter}
-                          onChange={(e) =>
-                            setDocFilters((prev) => ({
-                              ...prev,
-                              quarter: Number(e.target.value),
-                            }))
-                          }
-                          sx={{ minWidth: 140 }}
-                        >
-                          {QUARTER_OPTIONS.map((o) => (
-                            <MenuItem key={o.value} value={o.value}>
-                              {o.label}
-                            </MenuItem>
-                          ))}
-                        </TextField>
-
-                        <TextField
-                          label="Năm"
-                          type="number"
-                          value={docFilters.year}
-                          onChange={(e) =>
-                            setDocFilters((prev) => ({
-                              ...prev,
-                              year: Number(e.target.value || currentYear),
-                            }))
-                          }
-                          sx={{ minWidth: 140 }}
-                        />
+                        <AccountingPeriodFilter value={docFilters} onChange={setDocFilters} />
 
                         <Button
                           variant="contained"
@@ -1748,8 +1723,7 @@ export default function AdminLedger() {
                   <CardContent>
                     <Stack spacing={1}>
                       <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                        Tóm tắt kế toán Q{accountingSummary.quarter}/
-                        {accountingSummary.year}
+                        Tóm tắt kế toán {accountingPeriodLabel(docFilters)}
                       </Typography>
 
                       <Typography variant="body2" color="text.secondary">
@@ -1812,8 +1786,7 @@ export default function AdminLedger() {
                       </Typography>
 
                       <Typography variant="body2" color="text.secondary">
-                        Ghi chú này sẽ được lưu cho Q{docFilters.quarter}/
-                        {docFilters.year}.
+                        Ghi chú lưu theo quý {docFilters.quarter}/{docFilters.year}; khi lọc tháng sẽ lấy theo ngày tạo.
                       </Typography>
 
                       <TextField
@@ -1942,37 +1915,7 @@ export default function AdminLedger() {
                       alignItems={{ xs: "stretch", md: "center" }}
                       flexWrap="wrap"
                     >
-                      <TextField
-                        select
-                        label="Quý"
-                        value={revenueFilters.quarter}
-                        onChange={(e) =>
-                          setRevenueFilters((prev) => ({
-                            ...prev,
-                            quarter: Number(e.target.value),
-                          }))
-                        }
-                        sx={{ minWidth: 140 }}
-                      >
-                        {QUARTER_OPTIONS.map((o) => (
-                          <MenuItem key={o.value} value={o.value}>
-                            {o.label}
-                          </MenuItem>
-                        ))}
-                      </TextField>
-
-                      <TextField
-                        label="Năm"
-                        type="number"
-                        value={revenueFilters.year}
-                        onChange={(e) =>
-                          setRevenueFilters((prev) => ({
-                            ...prev,
-                            year: Number(e.target.value || currentYear),
-                          }))
-                        }
-                        sx={{ minWidth: 140 }}
-                      />
+                      <AccountingPeriodFilter value={revenueFilters} onChange={setRevenueFilters} />
 
                       <Stack direction="row" spacing={1}>
                         <Button variant="contained" onClick={loadRevenueReport}>
@@ -2224,37 +2167,7 @@ export default function AdminLedger() {
                       alignItems={{ xs: "stretch", md: "center" }}
                       flexWrap="wrap"
                     >
-                      <TextField
-                        select
-                        label="Quý"
-                        value={docFilters.quarter}
-                        onChange={(e) =>
-                          setDocFilters((prev) => ({
-                            ...prev,
-                            quarter: Number(e.target.value),
-                          }))
-                        }
-                        sx={{ minWidth: 140 }}
-                      >
-                        {QUARTER_OPTIONS.map((o) => (
-                          <MenuItem key={o.value} value={o.value}>
-                            {o.label}
-                          </MenuItem>
-                        ))}
-                      </TextField>
-
-                      <TextField
-                        label="Năm"
-                        type="number"
-                        value={docFilters.year}
-                        onChange={(e) =>
-                          setDocFilters((prev) => ({
-                            ...prev,
-                            year: Number(e.target.value || currentYear),
-                          }))
-                        }
-                        sx={{ minWidth: 140 }}
-                      />
+                      <AccountingPeriodFilter value={docFilters} onChange={setDocFilters} />
 
                       <Button
                         variant="contained"
@@ -2303,7 +2216,7 @@ export default function AdminLedger() {
                         <TextField
                           select
                           label="Tháng"
-                          value={docForm.month}
+                          value={docFilters.month || docForm.month} disabled={Boolean(docFilters.month)}
                           onChange={(e) =>
                             setDocForm((prev) => ({
                               ...prev,
@@ -2460,6 +2373,7 @@ export default function AdminLedger() {
                       spacing={2}
                       alignItems={{ xs: "stretch", md: "center" }}
                     >
+                      <AccountingPeriodFilter value={cashPeriod} onChange={value => { setCashPeriod(value); setCashFilters(accountingRange(value)); }} />
                       <TextField
                         type="date"
                         label="Từ ngày"
@@ -2722,37 +2636,7 @@ export default function AdminLedger() {
                       alignItems={{ xs: "stretch", md: "center" }}
                       flexWrap="wrap"
                     >
-                      <TextField
-                        select
-                        label="Quý"
-                        value={walletFilters.quarter}
-                        onChange={(e) =>
-                          setWalletFilters((prev) => ({
-                            ...prev,
-                            quarter: Number(e.target.value),
-                          }))
-                        }
-                        sx={{ minWidth: 140 }}
-                      >
-                        {QUARTER_OPTIONS.map((o) => (
-                          <MenuItem key={o.value} value={o.value}>
-                            {o.label}
-                          </MenuItem>
-                        ))}
-                      </TextField>
-
-                      <TextField
-                        label="Năm"
-                        type="number"
-                        value={walletFilters.year}
-                        onChange={(e) =>
-                          setWalletFilters((prev) => ({
-                            ...prev,
-                            year: Number(e.target.value || currentYear),
-                          }))
-                        }
-                        sx={{ minWidth: 140 }}
-                      />
+                      <AccountingPeriodFilter value={walletFilters} onChange={setWalletFilters} />
 
                       <Button variant="contained" onClick={loadWalletData}>
                         Lọc
@@ -2850,37 +2734,7 @@ export default function AdminLedger() {
                   </Typography>
 
                   <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
-                    <TextField
-                      select
-                      label="Quý"
-                      value={tripFilters.quarter}
-                      onChange={(e) =>
-                        setTripFilters((prev) => ({
-                          ...prev,
-                          quarter: Number(e.target.value),
-                        }))
-                      }
-                      sx={{ minWidth: 140 }}
-                    >
-                      {[1, 2, 3, 4].map((q) => (
-                        <MenuItem key={q} value={q}>
-                          Q{q}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-
-                    <TextField
-                      label="Năm"
-                      type="number"
-                      value={tripFilters.year}
-                      onChange={(e) =>
-                        setTripFilters((prev) => ({
-                          ...prev,
-                          year: Number(e.target.value),
-                        }))
-                      }
-                      sx={{ minWidth: 160 }}
-                    />
+                    <AccountingPeriodFilter value={tripFilters} onChange={setTripFilters} />
 
                     <Stack direction="row" spacing={1}>
                       <Button variant="contained" onClick={loadTripData}>
@@ -3012,37 +2866,7 @@ export default function AdminLedger() {
                   </Typography>
 
                   <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
-                    <TextField
-                      select
-                      label="Quý"
-                      value={withdrawFilters.quarter}
-                      onChange={(e) =>
-                        setWithdrawFilters((prev) => ({
-                          ...prev,
-                          quarter: Number(e.target.value),
-                        }))
-                      }
-                      sx={{ minWidth: 140 }}
-                    >
-                      {[1, 2, 3, 4].map((q) => (
-                        <MenuItem key={q} value={q}>
-                          Q{q}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-
-                    <TextField
-                      label="Năm"
-                      type="number"
-                      value={withdrawFilters.year}
-                      onChange={(e) =>
-                        setWithdrawFilters((prev) => ({
-                          ...prev,
-                          year: Number(e.target.value || currentYear),
-                        }))
-                      }
-                      sx={{ minWidth: 160 }}
-                    />
+                    <AccountingPeriodFilter value={withdrawFilters} onChange={setWithdrawFilters} />
 
                     <Stack direction="row" spacing={1}>
                       <Button variant="contained" onClick={loadWithdrawData}>
@@ -3283,7 +3107,7 @@ export default function AdminLedger() {
                   <Alert severity="success" sx={{ borderRadius: 2 }}>
                     Bạn có thể xem trước dữ liệu theo tháng hoặc quý, sau đó bấm{" "}
                     <strong>Xuất file ZIP</strong> để tải toàn bộ bộ chứng từ và
-                    các bảng kế toán dạng PDF và bảng chi tiết hoa hồng CSV.
+                    các bảng kế toán dạng PDF và bảng chi tiết hoa hồng CSV/PDF.
                   </Alert>
                 </Stack>
               </Paper>
@@ -3320,4 +3144,14 @@ export default function AdminLedger() {
       </Stack>
     </Box>
   );
+}
+
+async function fetchAllAccountingPages(fetchPage, params) {
+  const first = await fetchPage({...params, page:1});
+  const items = [...(first.items || [])];
+  for (let page=2; page <= (first.meta?.totalPages || 1); page++) {
+    const next = await fetchPage({...params,page});
+    items.push(...(next.items || []));
+  }
+  return {...first,items};
 }

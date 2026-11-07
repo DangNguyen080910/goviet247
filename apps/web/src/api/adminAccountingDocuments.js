@@ -164,7 +164,7 @@ export async function exportAccountingNotesCsv(params = {}) {
   const year = params?.year || "";
 
   link.href = url;
-  link.download = `ghi_chu_ke_toan_Q${quarter}_${year}.csv`;
+  link.download = `ghi_chu_ke_toan_${params.month ? `T${params.month}` : `Q${quarter}`}_${year}.csv`;
   document.body.appendChild(link);
   link.click();
   link.remove();
