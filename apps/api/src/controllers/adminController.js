@@ -1,3 +1,4 @@
+import { buildCommissionInvoiceExcel, invoiceIssues } from "../services/commissionInvoice.js";
 import { buildAccountingExcel } from "../services/accountingExcel.js";
 function accountingDateBound(value, end = false) {
   return new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T${end ? "23:59:59.999" : "00:00:00.000"}+07:00` : value);
@@ -5766,6 +5767,15 @@ export function makeAdminController(prisma) {
         }
         const period = getAccountingPeriod(year, quarter, month);
         const items = await getCommissionDetailItems(period);
+        if (req.query.format === "invoice-xlsx") {
+          const issues = invoiceIssues(items);
+          if (issues.length) return res.status(422).json({ success: false,
+            message: `${issues.length} chuyến thiếu thông tin lập hóa đơn. Bổ sung hồ sơ tài xế hoặc đối chiếu phí rồi xuất lại.`, issues });
+          if (!items.length) return res.status(422).json({ success: false, message: "Không có hoa hồng trong kỳ để lập hóa đơn." });
+          res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+          res.setHeader("Content-Disposition", `attachment; filename="hoa_don_hoa_hong_${period.periodKey}.xlsx"`);
+          return res.send(await buildCommissionInvoiceExcel(items));
+        }
         if (req.query.format === "csv") {
           res.setHeader("Content-Type", "text/csv; charset=utf-8");
           res.setHeader("Content-Disposition", `attachment; filename="chi_tiet_hoa_hong_${period.periodKey}.csv"`);

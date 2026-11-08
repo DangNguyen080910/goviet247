@@ -30,10 +30,14 @@ export default function CommissionDetails() {
   async function download() {
     setDownloading(true); setError("");
     try {
-      const res = await fetch(`${base}?${query}&format=csv`, { headers: { Authorization: `Bearer ${getAdminToken()}` } });
-      if (!res.ok) throw new Error("Không xuất được chi tiết hoa hồng. Vui lòng thử lại.");
+      const res = await fetch(`${base}?${query}&format=invoice-xlsx`, { headers: { Authorization: `Bearer ${getAdminToken()}` } });
+      if (!res.ok) {
+        const body = await res.json();
+        const details = (body.issues || []).slice(0, 5).map(i => `${i.driverName} (${i.tripId}): ${i.missing.join(", ")}`).join("; ");
+        throw new Error([body.message || "Không xuất được hóa đơn hoa hồng.", details].filter(Boolean).join(" "));
+      }
       const url = URL.createObjectURL(await res.blob());
-      const link = document.createElement("a"); link.href = url; link.download = `chi_tiet_hoa_hong_${data.periodKey}.csv`;
+      const link = document.createElement("a"); link.href = url; link.download = `hoa_don_hoa_hong_${data.periodKey}.xlsx`;
       document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (err) { setError(err.message); } finally { setDownloading(false); }
   }
@@ -45,9 +49,11 @@ export default function CommissionDetails() {
         {Array.from({ length: mode === "month" ? 12 : 4 }, (_, i) => <MenuItem key={i+1} value={i+1}>{i+1}</MenuItem>)}
       </TextField>
       <TextField label="Năm" type="number" value={year} onChange={e => setYear(e.target.value)} inputProps={{ min: 2000, max: 2100 }} sx={{ width: 130 }} />
+      <Button variant="contained" onClick={download} disabled={loading || downloading || !data?.items?.length}>{downloading ? "Đang xuất…" : "Xuất mẫu hóa đơn kế toán"}</Button>
       <AccountingPdfButton period={{year,quarter,month:mode === "month" ? month : null}} reportType="commission" />
     </Stack>
     <Alert severity="info">Mỗi chuyến hoàn thành một dòng; khoản giữ ví của chuyến chưa hoàn thành hoặc đã huỷ không được tính. Ngày ghi nhận theo lần cập nhật chuyến, cùng kỳ với báo cáo DT / LN. Đây là bảng đối chiếu để lập hoá đơn, chưa phải hoá đơn điện tử.</Alert>
+    <Alert severity="info">Mẫu hóa đơn VIN-HOADON gồm 27 cột, mỗi chuyến một hóa đơn; thanh toán đối trừ công nợ (mã 5), loại dịch vụ (mã 1). Kế toán kiểm tra VAT và hình thức thanh toán trước khi nhập. Địa chỉ lấy từ Hồ sơ tài xế → Chỉnh sửa → Địa chỉ cư trú; đồng thời có trong mục 13-thong-tin-tai-xe của gói Export Excel/PDF.</Alert>
     <Alert severity="warning">VAT là số tham khảo theo cách tính báo cáo hiện tại. Kế toán cần xác nhận thuế suất, thông tin bên mua và bổ sung địa chỉ/MST trước khi xuất hoá đơn. CCCD/SĐT là hồ sơ tài xế hiện tại.</Alert>
     {error && <Alert severity="error">{error}</Alert>}
     {loading ? <CircularProgress /> : data && <>

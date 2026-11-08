@@ -16,7 +16,7 @@ export async function getDriverAccountingIdentityRows(prisma, { start, end }) {
     const citizenId = profile?.citizenId || '';
     return [id, profile?.id || '', profile?.fullName || profile?.user?.displayName || 'Chưa cập nhật',
       citizenId || 'Chưa cập nhật', profile?.residentialAddress || 'Chưa cập nhật', profile?.user?.phones?.[0]?.e164 || 'Chưa cập nhật',
-      /^\d{12}$/.test(citizenId) ? 'Cần đối chiếu đăng ký thuế' : 'Thiếu hoặc sai CCCD - cần bổ sung'];
+      [!/^\d{12}$/.test(citizenId) && 'Thiếu hoặc sai CCCD - cần bổ sung', !profile?.residentialAddress?.trim() && 'Thiếu địa chỉ cư trú - cần bổ sung'].filter(Boolean).join('; ') || 'Cần đối chiếu đăng ký thuế'];
   });
   return [['Mã tài khoản tài xế', 'Mã hồ sơ', 'Họ tên', 'CCCD / số định danh', 'Địa chỉ cư trú', 'SĐT', 'Ghi chú đối chiếu'], ...rows];
 }

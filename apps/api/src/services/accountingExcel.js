@@ -4,9 +4,9 @@ import { PassThrough } from "node:stream";
 const xml = value => String(value ?? "").replace(/[\x00-\x08\x0b\x0c\x0e-\x1f]/g, "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]));
 function column(n) { let s=""; for(n++; n; n=Math.floor((n-1)/26)) s=String.fromCharCode(65+(n-1)%26)+s; return s; }
 // Explicit inline strings preserve leading-zero identities and prevent formula execution.
-export async function buildAccountingExcel(rows, {title="Sổ sách"} = {}) {
+export async function buildAccountingExcel(rows, {title="Sổ sách", numericColumns} = {}) {
   const headers=rows[0] || [];
-  const numeric=headers.map(h => !/mã|sđt|điện thoại|cccd|định danh|tài khoản|ngày|tháng|năm/i.test(h) && /tiền|phí|vat|pit|thuế|giá|tỷ lệ|số dư|balance|amount|giá trị|tổng thu|tổng chi/i.test(h));
+  const numeric=headers.map((h, index) => numericColumns ? numericColumns.includes(index) : !/mã|sđt|điện thoại|cccd|định danh|tài khoản|ngày|tháng|năm/i.test(h) && /tiền|phí|vat|pit|thuế|giá|tỷ lệ|số dư|balance|amount|giá trị|tổng thu|tổng chi/i.test(h));
   const body=rows.map((row,i)=>`<row r="${i+1}">${row.map((v,j)=> {
     const ref=column(j)+(i+1), raw=i === 0 ? String(v ?? "") : redactAccountingPdfCell(v, headers[j]);
     return i>0 && numeric[j] && /^-?\d+(\.\d+)?$/.test(raw) && Number.isFinite(Number(raw))

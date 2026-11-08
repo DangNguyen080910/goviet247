@@ -461,6 +461,7 @@ export default function AdminLedger() {
   const docFileInputRef = useRef(null);
 
   const [cashItems, setCashItems] = useState([]);
+  const [cashAllTimeSummary, setCashAllTimeSummary] = useState(null);
   const [cashSummary, setCashSummary] = useState({
     totalIn: 0,
     totalOut: 0,
@@ -567,13 +568,16 @@ export default function AdminLedger() {
   const loadCashData = useCallback(async () => {
     try {
       setCashLoading(true);
+      setCashAllTimeSummary(null);
 
-      const [listRes, summaryRes] = await Promise.all([
+      const [listRes, summaryRes, allTimeSummaryRes] = await Promise.all([
         fetchCompanyCashTransactions(cashFilters),
         fetchCompanyCashSummary(cashFilters),
+        fetchCompanyCashSummary(),
       ]);
 
       setCashItems(listRes.items || []);
+      setCashAllTimeSummary(allTimeSummaryRes);
       setCashSummary(summaryRes || { totalIn: 0, totalOut: 0, balance: 0 });
     } catch (error) {
       console.error("cash load error:", error);
@@ -2356,6 +2360,29 @@ export default function AdminLedger() {
                   Thu Chi Công Ty
                 </Typography>
 
+                <Card variant="outlined" sx={{ bgcolor: "action.hover" }}>
+                  <CardContent>
+                    <Typography sx={{ fontWeight: 800, mb: 1 }}>Lũy kế toàn bộ thu chi đã ghi nhận</Typography>
+                    <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
+                      {[
+                        ["Tổng thu", "totalIn", "success.main"],
+                        ["Tổng chi", "totalOut", "error.main"],
+                        ["Chênh lệch thu − chi", "balance", "text.primary"],
+                      ].map(([label, key, color]) => (
+                        <Box key={key} sx={{ flex: 1 }}>
+                          <Typography variant="body2">{label}</Typography>
+                          <Typography sx={{ fontWeight: 800, color }}>
+                            {cashAllTimeSummary ? `${formatNumber(cashAllTimeSummary[key])} đ` : cashLoading ? "Đang tải…" : "Chưa tải được"}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Stack>
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                      Từ giao dịch đầu tiên đến giao dịch cuối cùng, không phụ thuộc bộ lọc bên dưới. Chênh lệch là tổng thu trừ tổng chi trong sổ; khi so với ngân hàng cần tính cả số dư đầu kỳ và các khoản tiền mặt.
+                    </Typography>
+                  </CardContent>
+                </Card>
+
                 <Card>
                   <CardContent>
                     <Stack
@@ -2402,7 +2429,7 @@ export default function AdminLedger() {
                 <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
                   <Card sx={{ flex: 1 }}>
                     <CardContent>
-                      <Typography>Tổng thu</Typography>
+                      <Typography>Tổng thu trong kỳ lọc</Typography>
                       <Typography color="green" sx={{ fontWeight: 700 }}>
                         {formatNumber(cashSummary.totalIn)}
                       </Typography>
@@ -2411,7 +2438,7 @@ export default function AdminLedger() {
 
                   <Card sx={{ flex: 1 }}>
                     <CardContent>
-                      <Typography>Tổng chi</Typography>
+                      <Typography>Tổng chi trong kỳ lọc</Typography>
                       <Typography color="red" sx={{ fontWeight: 700 }}>
                         {formatNumber(cashSummary.totalOut)}
                       </Typography>
@@ -2420,7 +2447,7 @@ export default function AdminLedger() {
 
                   <Card sx={{ flex: 1 }}>
                     <CardContent>
-                      <Typography>Chênh lệch</Typography>
+                      <Typography>Chênh lệch trong kỳ lọc</Typography>
                       <Typography sx={{ fontWeight: 700 }}>
                         {formatNumber(cashSummary.balance)}
                       </Typography>
