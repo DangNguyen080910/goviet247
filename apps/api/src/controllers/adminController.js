@@ -5741,7 +5741,7 @@ export function makeAdminController(prisma) {
           rows = parseCsvRows(await builders[reportType][1](period));
         } else return res.status(400).json({ success: false, message: "Loại báo cáo không hợp lệ." });
         if (req.query.format === "xlsx") {
-          const excel = await buildAccountingExcel(rows, {title});
+          const excel = await buildAccountingExcel(rows, {title, numberLocale: reportType === "commission" ? "raw" : "vi-VN"});
           res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
           res.setHeader("Content-Disposition", `attachment; filename="${reportType}_${period.periodKey}.xlsx"`);
           return res.send(excel);
@@ -6067,10 +6067,10 @@ export function makeAdminController(prisma) {
         archive.pipe(res);
 
         async function appendReport(pdf, rows, options) {
-          archive.append(excelMode ? await buildAccountingExcel(rows) : pdf, {name: options.name.replace(/\.pdf$/, excelMode ? ".xlsx" : ".pdf")});
+          archive.append(excelMode ? await buildAccountingExcel(rows, {numberLocale: options.numberLocale || "vi-VN"}) : pdf, {name: options.name.replace(/\.pdf$/, excelMode ? ".xlsx" : ".pdf")});
         }
         archive.append((excelMode ? "ĐỊNH DẠNG BẢNG: Excel (.xlsx). Các hướng dẫn bố cục PDF dưới đây chỉ áp dụng khi chọn Export PDF.\n\n" : "ĐỊNH DẠNG BẢNG: PDF.\n\n") + readmeText.replace(/CSV\/PDF|CSV và PDF/g, excelMode ? "Excel" : "PDF"), { name: "README.txt" });
-        await appendReport(commissionPdf, parseCsvRows(commissionCsv), { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.pdf` });
+        await appendReport(commissionPdf, parseCsvRows(commissionCsv), { name: `14-chi-tiet-hoa-hong/chi_tiet_hoa_hong_${periodKey}.pdf`, numberLocale: "raw" });
         await appendReport(driverIdentityPdf, await getDriverAccountingIdentityRows(prisma, {start,end}), { name: `13-thong-tin-tai-xe/thong_tin_tai_xe_${periodKey}.pdf` });
 
         await appendAccountingDocumentsToArchive({
