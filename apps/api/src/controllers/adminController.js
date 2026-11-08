@@ -2988,18 +2988,21 @@ export function makeAdminController(prisma) {
           });
         }
 
+        if (req.body?.isActive !== undefined && typeof req.body.isActive !== "boolean") {
+          return res.status(400).json({ success: false, message: "isActive phải là true hoặc false." });
+        }
         const notification = await prisma.systemNotification.create({
           data: {
             title,
             message,
             audience,
             targetType: "ALL",
-            isActive: true,
+            isActive: req.body?.isActive ?? true,
             createdByAdminId: req.admin?.id ?? null,
           },
         });
 
-        if (audience === "DRIVER") {
+        if (notification.isActive && audience === "DRIVER") {
           emitDriverNotificationChanged(req, {
             source: "admin_system_notification_created",
             audience: "DRIVER",
@@ -3017,7 +3020,7 @@ export function makeAdminController(prisma) {
           }
         }
 
-        if (audience === "RIDER") {
+        if (notification.isActive && audience === "RIDER") {
           emitRiderNotificationChanged(req, {
             source: "admin_system_notification_created",
             audience: "RIDER",
@@ -3064,7 +3067,10 @@ export function makeAdminController(prisma) {
           });
         }
 
-        const isActive = Boolean(req.body?.isActive);
+        if (typeof req.body.isActive !== "boolean") {
+          return res.status(400).json({ success: false, message: "isActive phải là true hoặc false." });
+        }
+        const isActive = req.body.isActive;
 
         const existed = await prisma.systemNotification.findUnique({
           where: { id },
@@ -3101,6 +3107,14 @@ export function makeAdminController(prisma) {
           });
         }
 
+        if (String(item.audience || "").toUpperCase() === "RIDER") {
+          emitRiderNotificationChanged(req, {
+            source: "admin_system_notification_updated",
+            audience: "RIDER", notificationId: item.id,
+            updatedAt: item.updatedAt || new Date().toISOString(),
+          });
+        }
+
         return res.json({
           success: true,
           message: "Đã cập nhật trạng thái thông báo.",
@@ -3112,6 +3126,21 @@ export function makeAdminController(prisma) {
           success: false,
           message: "Lỗi server khi cập nhật trạng thái thông báo.",
         });
+      }
+    },
+
+    async deleteSystemNotification(req, res) {
+      try {
+        const item = await prisma.systemNotification.delete({ where: { id: req.params.id } });
+        const payload = { source: "admin_system_notification_deleted", audience: item.audience,
+          notificationId: item.id, updatedAt: new Date().toISOString() };
+        if (item.audience === "DRIVER") emitDriverNotificationChanged(req, payload);
+        if (item.audience === "RIDER") emitRiderNotificationChanged(req, payload);
+        return res.json({ success: true, message: "Đã xoá thông báo." });
+      } catch (e) {
+        if (e.code === "P2025") return res.status(404).json({ success: false, message: "Không tìm thấy thông báo." });
+        console.error("[Admin] deleteSystemNotification error:", e);
+        return res.status(500).json({ success: false, message: "Không xoá được thông báo. Vui lòng thử lại." });
       }
     },
 

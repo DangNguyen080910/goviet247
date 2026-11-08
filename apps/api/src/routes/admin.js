@@ -94,6 +94,8 @@ router.patch(
   ctrl.updateSystemNotification,
 );
 
+router.delete("/system-notifications/:id", requireAdmin, ctrl.deleteSystemNotification);
+
 // ================= PENDING TRIPS =================
 
 router.get("/pending-trips", requireAdminOrStaff, ctrl.listPendingTrips);

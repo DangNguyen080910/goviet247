@@ -21,11 +21,13 @@ import {
   fetchSystemNotifications,
   createSystemNotification,
   updateSystemNotification,
+  deleteSystemNotification,
 } from "../../api/systemNotifications";
 
 export default function AdminSystemNotifications() {
   const [tab, setTab] = useState("DRIVER");
   const [loading, setLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [items, setItems] = useState([]);
 
   const [title, setTitle] = useState("");
@@ -67,6 +69,8 @@ export default function AdminSystemNotifications() {
       return;
     }
 
+    if (saving) return;
+    setSaving(true);
     try {
       await createSystemNotification({
         title: title.trim(),
@@ -75,7 +79,7 @@ export default function AdminSystemNotifications() {
         isActive: active,
       });
 
-      showSnack("Tạo thông báo thành công 🎉");
+      showSnack(active ? "Đã gửi thông báo." : "Đã lưu thông báo ở trạng thái tắt, chưa gửi cho người nhận.");
 
       setTitle("");
       setContent("");
@@ -85,10 +89,14 @@ export default function AdminSystemNotifications() {
     } catch (err) {
       console.error(err);
       showSnack(err.message, "error");
+    } finally {
+      setSaving(false);
     }
   };
 
   const handleToggle = async (item) => {
+    if (saving) return;
+    setSaving(true);
     try {
       await updateSystemNotification(item.id, {
         isActive: !item.isActive,
@@ -99,6 +107,22 @@ export default function AdminSystemNotifications() {
     } catch (err) {
       console.error(err);
       showSnack(err.message, "error");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async (item) => {
+    if (saving || !window.confirm(`Xoá thông báo “${item.title}”? Thao tác này không thể hoàn tác.`)) return;
+    setSaving(true);
+    try {
+      await deleteSystemNotification(item.id);
+      setItems(current => current.filter(row => row.id !== item.id));
+      showSnack("Đã xoá thông báo.");
+    } catch (err) {
+      showSnack(err.message, "error");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -152,8 +176,8 @@ export default function AdminSystemNotifications() {
             label="Kích hoạt ngay"
           />
 
-          <Button variant="contained" onClick={handleCreate}>
-            GỬI THÔNG BÁO
+          <Button variant="contained" disabled={saving} onClick={handleCreate}>
+            {active ? "GỬI THÔNG BÁO" : "LƯU THÔNG BÁO"}
           </Button>
         </Stack>
       </Paper>
@@ -204,12 +228,14 @@ export default function AdminSystemNotifications() {
                   <FormControlLabel
                     control={
                       <Switch
+                        disabled={saving}
                         checked={item.isActive}
                         onChange={() => handleToggle(item)}
                       />
                     }
                     label="Bật/Tắt"
                   />
+                  <Button color="error" disabled={saving} onClick={() => handleDelete(item)}>Xoá</Button>
                 </Stack>
               </Box>
             ))}

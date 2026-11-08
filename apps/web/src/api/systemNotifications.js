@@ -94,3 +94,9 @@ export async function getPublicSystemNotifications(params = {}) {
 
   return Array.isArray(data.items) ? data.items : [];
 }
+export async function deleteSystemNotification(id) {
+  const res = await fetch(`${BASE_URL}/${encodeURIComponent(id)}`, {
+    method: "DELETE", headers: buildHeaders(),
+  });
+  return parseJson(res);
+}
