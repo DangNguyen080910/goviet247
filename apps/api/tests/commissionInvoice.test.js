@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCommissionInvoiceExcel, invoiceHeaders, invoiceIssues } from '../src/services/commissionInvoice.js';
+import { buildCommissionInvoiceExcel, invoiceHeaders, invoiceIssues, normalizeInvoicePhone } from '../src/services/commissionInvoice.js';
 import { makeAdminController } from '../src/controllers/adminController.js';
 import { mkdtemp, writeFile, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -45,4 +45,21 @@ test('incomplete identity and missing or zero fees are reported rather than sile
   const res={status(n){this.code=n;return this;},json(body){this.body=body;return this;}};
   await ctrl.getCommissionDetails({query:{year:'2026',month:'10',format:'invoice-xlsx'}},res);
   assert.equal(res.code,422);assert.equal(res.body.issues[0].tripId,'bad');
+});
+
+test('VIN phone format is domestic text without changing canonical profile phones',async()=>{
+ for(const value of ['+84901234567','0084901234567','84901234567','0901234567',' +84 90 123 45 67 '])assert.equal(normalizeInvoicePhone(value),'0901234567');
+ assert.equal(normalizeInvoicePhone('+842812345678'),'02812345678');
+ assert.equal(normalizeInvoicePhone(''),'');assert.equal(normalizeInvoicePhone(undefined),'');
+ for(const value of ['+12025550123','09012','abc','+840901234567']){assert.equal(normalizeInvoicePhone(value),null);assert.match(invoiceIssues([{...item,driverPhone:value}])[0].missing.join(','),/SĐT/);}
+ const source={...item,driverPhone:'+84901234567'};
+ const dir=await mkdtemp('/private/tmp/invoice-phone-test-');
+ try{const file=dir+'/invoice.xlsx';await writeFile(file,await buildCommissionInvoiceExcel([source]));
+ const result=JSON.parse(execFileSync('python3',['-c',`import zipfile,sys,json,xml.etree.ElementTree as E
+with zipfile.ZipFile(sys.argv[1]) as z:
+ root=E.fromstring(z.read('xl/worksheets/sheet1.xml'));ns={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+ c=root.find('.//s:c[@r="I2"]',ns)
+ print(json.dumps({'type':c.get('t'),'value':''.join(c.itertext())}))`,file],{encoding:'utf8'}));
+ assert.deepEqual(result,{type:'inlineStr',value:'0901234567'});assert.equal(source.driverPhone,'+84901234567');
+ }finally{await rm(dir,{recursive:true,force:true});}
 });
