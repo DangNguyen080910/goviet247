@@ -421,6 +421,7 @@ model Trip {
   acceptedAt                   DateTime?    @db.Timestamptz(6)
   driverAcceptOpenAt           DateTime?    @db.Timestamptz(6)
 
+  commissionInvoiceState CommissionInvoiceState?
   alertLogs          AdminAlertLog[]
   driver             User?                     @relation("DriverTrips", fields: [driverId], references: [id])
   rider              User?                     @relation("RiderTrips", fields: [riderId], references: [id])
@@ -1239,4 +1240,17 @@ model TripCallInvite {
  lastError String?
  @@unique([callId,deviceId,generation])
  @@index([callId])
+}
+
+// Manual confirmation records issuance outside GoViet247; exporting is never issuance.
+model CommissionInvoiceState {
+  tripId String @id
+  recognizedAt DateTime @db.Timestamptz(6)
+  legacyTimestamp Boolean @default(false)
+  issuedAt DateTime? @db.Timestamptz(6)
+  invoiceNumber String?
+  confirmedAt DateTime? @db.Timestamptz(6)
+  confirmedBy String?
+  trip Trip @relation(fields:[tripId], references:[id], onDelete:Cascade)
+  @@index([issuedAt, recognizedAt])
 }

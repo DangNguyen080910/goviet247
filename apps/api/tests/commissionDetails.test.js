@@ -23,7 +23,7 @@ test('commission detail and CSV retain per-trip fee, identity, zero and missing 
   } } });
   const res=response(); await ctrl.getCommissionDetails({query:{month:'11',year:'2026'}}, res);
   assert.equal(res.statusCode,200); assert.equal(where.status,'COMPLETED');
-  assert.equal(where.updatedAt.gte.toISOString(),'2026-10-31T17:00:00.000Z');
+  assert.equal(where.commissionInvoiceState.recognizedAt.gte.toISOString(),'2026-10-31T17:00:00.000Z');
   assert.deepEqual(res.body.totals,{gross:108000,net:100000,vat:8000});
   assert.match(res.body.items[1].note,/Thiếu/);
   assert.equal(res.body.items[0].citizenId,'001234567890');
@@ -134,4 +134,17 @@ with zipfile.ZipFile(sys.argv[1]) as z:
  assert not root.findall('.//s:f',ns)
 `,file]);
   } finally {await rm(dir,{recursive:true,force:true});}
+});
+
+test('daily exports share Vietnam boundaries and pending scope without changing invoice state',async()=>{
+ const calls=[];
+ const recognizedAt=new Date('2026-11-07T17:00:01Z');
+ const ctrl=makeAdminController({trip:{findMany:async q=>{calls.push(q);return [{id:'daily',driverId:'driver-daily',updatedAt:new Date('2026-12-01'),commissionInvoiceState:{recognizedAt,legacyTimestamp:false,issuedAt:null},commissionAmountSnapshot:108000,commissionPercentSnapshot:8,driver:{displayName:'An',phones:[],driverProfile:{fullName:'An',citizenId:'001234567890',residentialAddress:'TP HCM'}}}];}}});
+ const res=response();await ctrl.getCommissionDetails({query:{day:'2026-11-08',pendingOnly:'true'}},res);
+ assert.equal(res.body.items[0].eventAt,recognizedAt);assert.equal(res.body.items[0].recognitionEstimated,false);
+ assert.equal(res.body.periodKey,'N2026-11-08');
+ for(const format of ['invoice-xlsx','csv']){const out=response();await ctrl.getCommissionDetails({query:{day:'2026-11-08',pendingOnly:'true',format}},out);assert.equal(out.statusCode,200);assert.match(out.headers['Content-Disposition'],/N2026-11-08/);}
+ for(const format of ['xlsx','pdf']){const out=response();await ctrl.exportAccountingReportPdf({query:{day:'2026-11-08',pendingOnly:'true',reportType:'commission',format}},out);assert.equal(out.statusCode,200);assert.ok(Buffer.isBuffer(out.body));assert.match(out.headers['Content-Disposition'],/N2026-11-08/);}
+ for(const q of calls){assert.equal(q.where.commissionInvoiceState.issuedAt,null);assert.equal(q.where.commissionInvoiceState.recognizedAt.gte.toISOString(),'2026-11-07T17:00:00.000Z');assert.equal(q.where.commissionInvoiceState.recognizedAt.lte.toISOString(),'2026-11-08T16:59:59.999Z');}
+ const bad=response();await ctrl.getCommissionDetails({query:{day:'2026-11-31'}},bad);assert.equal(bad.statusCode,400);
 });

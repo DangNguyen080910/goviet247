@@ -1,3 +1,4 @@
+import { getCommissionPeriod } from "../services/commissionInvoiceTracking.js";
 import { buildCommissionInvoiceExcel, invoiceIssues } from "../services/commissionInvoice.js";
 import { buildAccountingExcel } from "../services/accountingExcel.js";
 function accountingDateBound(value, end = false) {
@@ -1072,18 +1073,18 @@ export function makeAdminController(prisma) {
     return new Date(date.getTime() + 7 * 60 * 60 * 1000).toISOString().slice(0, 10);
   }
 
-  async function getCommissionDetailItems({ start, end }) {
+  async function getCommissionDetailItems({ start, end }, pendingOnly = false) {
     const trips = await prisma.trip.findMany({
-      where: { status: "COMPLETED", updatedAt: { gte: start, lte: end } },
-      orderBy: [{ updatedAt: "asc" }, { id: "asc" }],
-      select: { id: true, updatedAt: true, acceptedAt: true, driverId: true, totalPrice: true,
+      where: { status: "COMPLETED", commissionInvoiceState: { recognizedAt: { gte: start, lte: end }, ...(pendingOnly ? { issuedAt: null } : {}) } },
+      orderBy: [{ commissionInvoiceState: { recognizedAt: "asc" } }, { id: "asc" }],
+      select: { id: true, updatedAt: true, commissionInvoiceState: true, acceptedAt: true, driverId: true, totalPrice: true,
         commissionAmountSnapshot: true, commissionPercentSnapshot: true,
         driver: { select: { displayName: true, phones: { select: { e164: true }, orderBy: { createdAt: "asc" }, take: 1 },
           driverProfile: { select: { id: true, fullName: true, citizenId: true, residentialAddress: true } } } } },
     });
     return trips.map(trip => {
       const fee = splitVatIncludedAmount(trip.commissionAmountSnapshot);
-      return { tripId: trip.id, eventAt: trip.updatedAt, acceptedAt: trip.acceptedAt,
+      return { tripId: trip.id, eventAt: trip.commissionInvoiceState?.recognizedAt || trip.updatedAt, recognitionEstimated: trip.commissionInvoiceState?.legacyTimestamp ?? true, invoice: trip.commissionInvoiceState?.issuedAt ? { issuedAt: trip.commissionInvoiceState.issuedAt, invoiceNumber: trip.commissionInvoiceState.invoiceNumber, confirmedBy: trip.commissionInvoiceState.confirmedBy } : null, acceptedAt: trip.acceptedAt,
         driverId: trip.driverId, driverName: trip.driver?.driverProfile?.fullName || trip.driver?.displayName || "Chưa cập nhật",
         driverPhone: trip.driver?.phones?.[0]?.e164 || "", citizenId: trip.driver?.driverProfile?.citizenId || "", residentialAddress: trip.driver?.driverProfile?.residentialAddress || "",
         totalPrice: trip.totalPrice, commissionPercent: trip.commissionPercentSnapshot == null ? null : Number(trip.commissionPercentSnapshot),
@@ -5707,11 +5708,13 @@ export function makeAdminController(prisma) {
     async exportAccountingReportPdf(req, res) {
       try {
         const { year, quarter, month, reportType, documentType } = req.query;
-        if (!Number.isInteger(Number(year)) || Number(year) < 2000 || Number(year) > 2100 ||
+        if (reportType !== "commission" && (!Number.isInteger(Number(year)) || Number(year) < 2000 || Number(year) > 2100 ||
           (month == null && ![1,2,3,4].includes(Number(quarter))) ||
-          (month != null && (!Number.isInteger(Number(month)) || Number(month) < 1 || Number(month) > 12)))
+          (month != null && (!Number.isInteger(Number(month)) || Number(month) < 1 || Number(month) > 12))))
           return res.status(400).json({ success: false, message: "Kỳ kế toán không hợp lệ." });
-        const period = getAccountingPeriod(year, quarter, month);
+        let period;
+        try { period = reportType === "commission" ? getCommissionPeriod(req.query) : getAccountingPeriod(year, quarter, month); }
+        catch(error) { return res.status(400).json({success:false,message:error.message}); }
         if (reportType === "cash" && req.query.fromDate && req.query.toDate) {
           period.start = accountingDateBound(req.query.fromDate);
           period.end = accountingDateBound(req.query.toDate, true);
@@ -5729,7 +5732,7 @@ export function makeAdminController(prisma) {
         let title, rows;
         if (reportType === "commission") {
           title = "Chi tiết hoa hồng";
-          rows = parseCsvRows(buildCommissionDetailCsv(await getCommissionDetailItems(period)));
+          rows = parseCsvRows(buildCommissionDetailCsv(await getCommissionDetailItems(period, req.query.pendingOnly === "true")));
         } else if (reportType === "documents") {
           const allowed = { BANK_STATEMENT: "Sao kê ngân hàng", INPUT_INVOICE: "Hoá đơn đầu vào", OUTPUT_INVOICE: "Hoá đơn đầu ra", PAYROLL_HR: "Lương và nhân sự", LEGAL_CONTRACT: "Hợp đồng pháp lý" };
           if (!allowed[documentType]) return res.status(400).json({ success: false, message: "Loại hồ sơ không hợp lệ." });
@@ -5747,7 +5750,7 @@ export function makeAdminController(prisma) {
           return res.send(excel);
         }
         const pdf = await buildAccountingPdf(rows, { ...period, title, reportType,
-          subtitle: reportType === "cash" && req.query.fromDate ? `Từ ${req.query.fromDate} đến ${req.query.toDate} (giờ Việt Nam).` : reportType === "commission" ? "Chuyến hoàn thành theo ngày cập nhật; VAT tham khảo, kế toán đối chiếu trước khi lập hoá đơn. Hồ sơ tài xế là dữ liệu hiện tại." : reportType === "documents" ? "Bảng kê hồ sơ. File chứng từ gốc nằm trong gói Export ZIP." : reportType === "notes" && period.month ? "Ghi chú được lọc theo ngày tạo trong tháng." : "" });
+          subtitle: reportType === "cash" && req.query.fromDate ? `Từ ${req.query.fromDate} đến ${req.query.toDate} (giờ Việt Nam).` : reportType === "commission" ? "Ngày ghi nhận cố định khi hoàn thành (chuyến cũ cần đối chiếu); VAT tham khảo, kế toán đối chiếu trước khi lập hoá đơn. Hồ sơ tài xế là dữ liệu hiện tại." : reportType === "documents" ? "Bảng kê hồ sơ. File chứng từ gốc nằm trong gói Export ZIP." : reportType === "notes" && period.month ? "Ghi chú được lọc theo ngày tạo trong tháng." : "" });
         res.setHeader("Content-Type", "application/pdf");
         res.setHeader("Content-Disposition", `attachment; filename="${reportType}_${period.periodKey}.pdf"`);
         return res.send(pdf);
@@ -5759,14 +5762,11 @@ export function makeAdminController(prisma) {
 
     async getCommissionDetails(req, res) {
       try {
-        const { year, quarter, month } = req.query;
-        if (!Number.isInteger(Number(year)) || Number(year) < 2000 || Number(year) > 2100 ||
-          (month == null && ![1,2,3,4].includes(Number(quarter))) ||
-          (month != null && (!Number.isInteger(Number(month)) || Number(month) < 1 || Number(month) > 12))) {
-          return res.status(400).json({ success: false, message: "Kỳ kế toán không hợp lệ." });
-        }
-        const period = getAccountingPeriod(year, quarter, month);
-        const items = await getCommissionDetailItems(period);
+        let period;
+        try { period = getCommissionPeriod(req.query); }
+        catch(error) { return res.status(400).json({success:false,message:error.message}); }
+        let items = await getCommissionDetailItems(period, req.query.format === "invoice-xlsx" || req.query.pendingOnly === "true");
+        if (req.query.format === "invoice-xlsx") items = items.filter(i => i.commissionGross > 0 || i.note);
         if (req.query.format === "invoice-xlsx") {
           const issues = invoiceIssues(items);
           if (issues.length) return res.status(422).json({ success: false,
@@ -5951,7 +5951,7 @@ export function makeAdminController(prisma) {
         });
 
         const commissionCsv = buildCommissionDetailCsv(await getCommissionDetailItems({ start, end }));
-        const commissionPdf = await buildAccountingPdf(parseCsvRows(commissionCsv), { quarter: safeQuarter, year: safeYear, month, title: "Chi tiết hoa hồng", reportType: "commission", subtitle: "VAT tham khảo; kế toán xác nhận thuế suất và bên mua trước khi lập hoá đơn. Ngày ghi nhận theo ngày cập nhật chuyến hoàn thành." });
+        const commissionPdf = await buildAccountingPdf(parseCsvRows(commissionCsv), { quarter: safeQuarter, year: safeYear, month, title: "Chi tiết hoa hồng", reportType: "commission", subtitle: "VAT tham khảo; kế toán xác nhận thuế suất và bên mua trước khi lập hoá đơn. Ngày ghi nhận được lưu riêng khi hoàn thành; chuyến cũ dùng mốc cập nhật trước khi chuyển đổi, cần đối chiếu." });
         const pdfMeta = {
           quarter: safeQuarter,
           year: safeYear,

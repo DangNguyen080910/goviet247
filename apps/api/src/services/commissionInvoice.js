@@ -17,7 +17,7 @@ export function invoiceIssues(items) {
 export async function buildCommissionInvoiceExcel(items) {
   if (invoiceIssues(items).length) throw new Error('Thiếu thông tin lập hóa đơn');
   return buildAccountingExcel([invoiceHeaders, ...items.map(i => [
-    `GV247-${i.tripId}`, '', '', '', i.driverName, i.citizenId, '', i.residentialAddress,
+    `GV247-${i.tripId}`, i.citizenId, '', i.driverName, i.driverName, i.citizenId, '', i.residentialAddress,
     i.driverPhone, '', 'VND', 1, 5, '', '', 0, `Hoa hồng chuyến ${i.tripId}`,
     1, `Phí dịch vụ kết nối chuyến ${i.tripId}`, 'Chuyến', 1, i.commissionNet,
     i.commissionNet, i.vatRate, i.commissionNet, i.commissionVat, i.commissionGross,

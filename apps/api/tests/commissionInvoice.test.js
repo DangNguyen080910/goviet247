@@ -22,6 +22,8 @@ with zipfile.ZipFile(sys.argv[1]) as z:
     assert.equal(result.length,3);
     for (const row of result.slice(1)) {
       assert.equal(row.length,27);
+      assert.equal(row[1].v,item.citizenId);assert.equal(row[1].type,'inlineStr');
+      assert.equal(row[3].v,item.driverName);
       assert.equal(row[5].v,'001234567890');assert.equal(row[5].type,'inlineStr');
       assert.equal(row[8].v,'0901234567');assert.equal(row[8].type,'inlineStr');
       assert.equal(row[7].v,item.residentialAddress);

@@ -38,7 +38,7 @@ export default function AlertsScreen() {
   return <SafeAreaView style={{flex:1,backgroundColor:"#f1f5f9"}}>
     <View style={{padding:16,flexDirection:"row",alignItems:"center",gap:16}}><Pressable onPress={()=>router.replace("/home")} accessibilityRole="button"><Text style={{fontSize:28}}>‹</Text></Pressable><Text style={{fontSize:23,fontWeight:"800"}}>Cảnh Báo</Text></View>
     <ScrollView contentContainerStyle={{padding:16,gap:12,paddingBottom:70}} refreshControl={<RefreshControl refreshing={loading} onRefresh={load}/>}>
-      <Text>Cảnh báo chuyến, tài xế bị khoá và gửi số điện thoại trong hội thoại. Trạng thái đã xem dùng chung với Admin Web.</Text>
+      <Text>Nhắc hóa đơn hoa hồng lúc 21:00, cảnh báo chuyến và hội thoại. Trạng thái đã xem dùng chung với Admin Web.</Text>
       <TextInput accessibilityLabel="Tìm cảnh báo" placeholder="Tìm mã chuyến hoặc tài xế" value={q} onChangeText={setQ} style={{backgroundColor:"white",padding:12,borderRadius:10}}/>
       <View style={{flexDirection:"row",gap:8}}>{([['unread','Chưa xem'],['read','Đã xem'],['all','Tất cả']] as const).map(([value,label])=><Pressable accessibilityRole="button" key={value} onPress={()=>setRead(value)} style={{padding:10,borderRadius:8,backgroundColor:read===value?"#1976d2":"#e2e8f0"}}><Text style={{color:read===value?"white":"#334155"}}>{label}</Text></Pressable>)}</View>
       <Text style={{color:"#64748b"}}>Hiển thị tối đa 200 cảnh báo mới nhất theo bộ lọc. Số trên Trang chủ chỉ đếm cảnh báo chưa xem trong 24 giờ.</Text>
@@ -48,9 +48,10 @@ export default function AlertsScreen() {
       {visible.map(item=>{
         const driverId=blockedAlertDriverId(item);
         return <View key={item.id} style={{backgroundColor:"white",padding:16,borderRadius:12,gap:10,borderLeftWidth:4,borderLeftColor:item.readAt?"#16a34a":"#f97316"}}>
-          <Text style={{fontWeight:"800",fontSize:16}}>{item.alertType==="CHAT_CONTACT_BLOCKED"?"Đã chặn gửi số điện thoại trong hội thoại":driverId?"Tài xế bị khoá bấm nhận chuyến":item.alertType==="TRIP_MILESTONE"?"Mốc chuyến GoViet247":"Cảnh báo chuyến"}</Text>
+          <Text style={{fontWeight:"800",fontSize:16}}>{item.alertType==="COMMISSION_INVOICE_DAILY"?"Nhắc hóa đơn hoa hồng":item.alertType==="CHAT_CONTACT_BLOCKED"?"Đã chặn gửi số điện thoại trong hội thoại":driverId?"Tài xế bị khoá bấm nhận chuyến":item.alertType==="TRIP_MILESTONE"?"Mốc chuyến GoViet247":"Cảnh báo chuyến"}</Text>
           <Text selectable>Mã chuyến: {item.tripId}</Text><Text>{new Date(item.sentAt).toLocaleString("vi-VN")}</Text>
           <Text style={{fontSize:15,lineHeight:23}}>{item.message}</Text>
+          {item.alertType==="COMMISSION_INVOICE_DAILY"&&<Pressable onPress={()=>router.push(`/commission?day=${encodeURIComponent(item.message.match(/INVOICE_DAY:(\d{4}-\d{2}-\d{2})/)?.[1]||'')}` as any)} style={{padding:12,backgroundColor:'#1976d2',borderRadius:8}}><Text style={{color:'white'}}>Mở Hoa Hồng theo ngày</Text></Pressable>}
           {item.alertType==="CHAT_CONTACT_BLOCKED"&&<Pressable accessibilityRole="button" onPress={()=>router.push(`/trip-chat?tripId=${encodeURIComponent(item.tripId)}` as any)} style={{padding:12,borderRadius:8,backgroundColor:"#1976d2"}}><Text style={{color:"white",fontWeight:"700"}}>Mở hội thoại chuyến</Text></Pressable>}
           {!!driverId&&<Pressable accessibilityRole="button" onPress={()=>router.push({pathname:"/drivers",params:{driverProfileId:driverId}})} style={{backgroundColor:"#1976d2",padding:12,borderRadius:8}}><Text style={{color:"white",fontWeight:"700"}}>Mở hồ sơ tài xế để kiểm tra / mở khoá</Text></Pressable>}
           {item.readAt?<Text style={{color:"#15803d"}}>Đã xem • {item.readBy||"Admin"} • {new Date(item.readAt).toLocaleString("vi-VN")}</Text>:<Pressable disabled={!!saving} onPress={()=>void mark(item)} style={{padding:10}}><Text style={{color:"#1976d2",fontWeight:"700"}}>{saving===item.id?"Đang lưu…":"Đánh dấu đã xem"}</Text></Pressable>}

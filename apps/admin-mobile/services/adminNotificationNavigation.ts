@@ -12,6 +12,8 @@ function notificationRoute(data: NotificationData) {
   const source = normalize(data?.source);
   const status = normalize(data?.status || data?.toStatus);
 
+  if (type === "COMMISSION_INVOICE_DAILY") return `/commission?day=${encodeURIComponent(String(data?.day || new Date(Date.now()+7*3600000).toISOString().slice(0,10)))}`;
+
   const chatRoute = chatNotificationRoute(data);
   if (chatRoute) return chatRoute;
 

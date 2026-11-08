@@ -579,12 +579,12 @@ export async function sendSystemNotificationToDriver(userId, notification) {
   }
 }
 
-export async function sendAdminPushNotification({ title, body, data = {} }) {
+export async function sendAdminPushNotification({ title, body, data = {}, roles = ["admin", "staff", "ADMIN", "STAFF"] }) {
   try {
     const devices = await prisma.device.findMany({
       where: {
         role: {
-          in: ["admin", "staff", "ADMIN", "STAFF"],
+          in: roles,
         },
       },
       select: {

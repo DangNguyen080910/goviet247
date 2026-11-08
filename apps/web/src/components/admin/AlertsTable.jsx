@@ -165,12 +165,13 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
               >
                 <td style={tdMono}>{tripId || "-"}</td>
                 <td style={td}>{a?.level || a?.alertLevel || "-"}</td>
-                <td style={td}>{a?.alertType === "CHAT_CONTACT_BLOCKED" ? "Chặn số điện thoại trong hội thoại" : a?.alertType === "BLOCKED_TRIP_ACCEPT_ATTEMPT" ? "Tài xế bị khoá bấm nhận chuyến" : a?.channel || a?.type || a?.alertType || "-"}</td>
+                <td style={td}>{a?.alertType === "COMMISSION_INVOICE_DAILY" ? "Nhắc hóa đơn hoa hồng" : a?.alertType === "CHAT_CONTACT_BLOCKED" ? "Chặn số điện thoại trong hội thoại" : a?.alertType === "BLOCKED_TRIP_ACCEPT_ATTEMPT" ? "Tài xế bị khoá bấm nhận chuyến" : a?.channel || a?.type || a?.alertType || "-"}</td>
                 <td style={td}>{formatNgayGio(a?.sentAt || a?.createdAt)}</td>
                 <td style={td} title={a?.message || ""}>
                   {a?.message || "-"}
                 </td>
                 <td style={{ ...td, minWidth: 180 }}>
+                  {a.alertType === "COMMISSION_INVOICE_DAILY" && <Button size="small" href={`/admin/ledger?commissionDay=${encodeURIComponent(a.message?.match(/INVOICE_DAY:(\d{4}-\d{2}-\d{2})/)?.[1] || '')}`} onClick={event=>event.stopPropagation()}>Mở Hoa Hồng</Button>}
                   {a.alertType === "CHAT_CONTACT_BLOCKED" && <Button size="small" onClick={event => { event.stopPropagation(); openTripChat(tripId); }}>Mở hội thoại chuyến</Button>}
                   {a.readAt ? <>
                     <Chip size="small" color="success" label="Đã xem" />

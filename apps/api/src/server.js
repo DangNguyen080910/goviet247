@@ -1,3 +1,5 @@
+import { startCommissionInvoiceReminder } from "./services/commissionInvoiceTracking.js";
+import { sendAdminPushNotification as sendInvoiceAdminPush } from "./services/notificationService.js";
 import "dotenv/config";
 import tripCallRoutes, {sweepTripCalls,deliverTripCallInvites} from './routes/tripCalls.js';
 import tripChatRoutes from "./routes/tripChat.js";
@@ -211,6 +213,7 @@ io.on("connection", (socket) => {
 startQuoteHistoryCleanup();
 
 // Pending watcher
+startCommissionInvoiceReminder({db:prisma,io,notify:sendInvoiceAdminPush});
 const watcher = initPendingWatcher({ io, prisma });
 watcher.runOnce();
 

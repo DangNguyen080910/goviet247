@@ -104,6 +104,7 @@ export default function LedgerScreen() {
           <View style={styles.yearRow}><Pressable style={styles.yearButton} onPress={() => setYear((v) => v - 1)}><Text>−</Text></Pressable><Text style={styles.year}>{year}</Text><Pressable style={styles.yearButton} onPress={() => setYear((v) => v + 1)}><Text>+</Text></Pressable></View>
         </View>
         {loading ? <ActivityIndicator size="large" style={{ marginTop: 60 }} /> : loadError ? <Text style={styles.empty}>{loadError}</Text> : <>
+          <Pressable accessibilityRole="button" onPress={()=>router.push("/commission" as any)} style={[styles.pillActive,{padding:14,borderRadius:12,marginBottom:16}]}><Text style={{color:"white",fontWeight:"800"}}>Hoa Hồng · Xuất hóa đơn theo ngày</Text></Pressable>
           <Text style={styles.cashTitle}>Thu chi công ty</Text>
           <View style={styles.scopeRow}>
             {(["QUARTER", "ALL"] as const).map((scope) => <Pressable key={scope} accessibilityRole="button" accessibilityState={{ selected: cashScope === scope }} onPress={() => setCashScope(scope)} style={[styles.pill, cashScope === scope && styles.pillActive]}><Text style={[styles.pillText, cashScope === scope && styles.pillTextActive]}>{scope === "ALL" ? "Tất cả" : `Quý ${quarter}/${year}`}</Text></Pressable>)}

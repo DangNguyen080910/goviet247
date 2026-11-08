@@ -58,7 +58,7 @@ function reportDefinition(rows, reportType) {
         field("Phí gồm VAT", "Phí hoa hồng gồm VAT", 1.1, true), field("Trước VAT", "Phí trước VAT (tham khảo)", 1.1, true), field("VAT", "VAT (tham khảo)", .9, true)];
       details = row => detail(row, ["Địa chỉ cư trú", "Ghi chú", "Thuế suất VAT tham khảo (%)"]);
       summary += ` | Tổng phí gồm VAT: ${money(sum("Phí hoa hồng gồm VAT"))}đ`;
-      note = "Số tiền VAT tham khảo theo cách tính báo cáo hiện tại. Ngày ghi nhận là ngày cập nhật chuyến; không phải hoá đơn điện tử.";
+      note = "Số tiền VAT tham khảo theo cách tính báo cáo hiện tại. Ngày ghi nhận được lưu khi hoàn thành; chuyến cũ dùng mốc cập nhật trước khi chuyển đổi, cần đối chiếu. Không phải hoá đơn điện tử.";
       totals = [total(["", "", "", "TỔNG", "", "", money(sum("Phí hoa hồng gồm VAT")), money(sum("Phí trước VAT (tham khảo)")), money(sum("VAT (tham khảo)"))])];
       break;
     }

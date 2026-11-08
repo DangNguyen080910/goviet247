@@ -528,7 +528,7 @@ export default function AdminLedger() {
     quarter: currentQuarter,
     year: currentYear,
   });
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(() => new URLSearchParams(window.location.search).has("commissionDay") ? 11 : 0);
 
   const [snackbar, setSnackbar] = useState({
     open: false,
