@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCommissionInvoiceExcel, invoiceHeaders, invoiceIssues, normalizeInvoicePhone } from '../src/services/commissionInvoice.js';
+import { buildCommissionInvoiceExcel, invoiceHeaders, invoiceIssues, normalizeInvoicePhone, invoicePaymentMethod } from '../src/services/commissionInvoice.js';
 import { makeAdminController } from '../src/controllers/adminController.js';
 import { mkdtemp, writeFile, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -27,7 +27,7 @@ with zipfile.ZipFile(sys.argv[1]) as z:
       assert.equal(row[5].v,'001234567890');assert.equal(row[5].type,'inlineStr');
       assert.equal(row[8].v,'0901234567');assert.equal(row[8].type,'inlineStr');
       assert.equal(row[7].v,item.residentialAddress);
-      assert.equal(row[12].v,'5');assert.equal(row[17].v,'1');
+      assert.equal(row[12].v,String(invoicePaymentMethod.code));assert.equal(row[12].v,'20');assert.equal(row[12].type,null);assert.equal(row[17].v,'1');
       assert.equal(row[20].v,'1');assert.equal(row[21].v,'100000');
       assert.equal(row[23].v,'8');assert.equal(row[25].v,'8000');
       assert.equal(row[26].v,'108000');assert.equal(row[26].type,null);

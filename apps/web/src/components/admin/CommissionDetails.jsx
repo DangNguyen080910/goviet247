@@ -53,7 +53,7 @@ export default function CommissionDetails() {
       <Button variant="contained" onClick={download} disabled={loading||downloading||!data?.items?.some(i=>!i.invoice&&(i.commissionGross>0||i.note))}>{downloading?'Đang xuất…':'Xuất mẫu VIN-HOADON (chưa xác nhận)'}</Button>
       <AccountingPdfButton period={{year,quarter,month:mode==='month'?month:null}} dateRange={{...(mode==='day'?{day}:{}),pendingOnly:String(pendingOnly)}} reportType="commission"/>
     </Stack>
-    <Alert severity="info">Một chuyến một dòng. File mẫu điền số định danh vào MST và CCCD, họ tên tài xế vào tên bên mua/người mua; địa chỉ lấy từ hồ sơ. Loại dịch vụ 1, thanh toán đối trừ công nợ 5. Đối chiếu thông tin đăng ký thuế, VAT và cách thanh toán trước khi nhập VIN-HOADON.</Alert>
+    <Alert severity="info">Một chuyến một dòng. File mẫu điền số định danh vào MST và CCCD, họ tên tài xế vào tên bên mua/người mua; địa chỉ lấy từ hồ sơ. Loại dịch vụ 1, thanh toán TM/CK/Bù trừ. Đối chiếu thông tin đăng ký thuế, VAT và cách thanh toán trước khi nhập VIN-HOADON.</Alert>
     <Alert severity="warning">Tải Excel không phải phát hành hóa đơn. Chỉ xác nhận sau khi hóa đơn đã ký/phát hành trên VIN-HOADON, nhập ký hiệu/số và ngày lập thực tế. Dữ liệu cũ lấy mốc cập nhật tại thời điểm nâng cấp, cần đối chiếu kỳ trước; không tự lùi ngày hóa đơn.</Alert>
     {error&&<Alert severity="error">{error}</Alert>}
     {loading?<CircularProgress/>:data&&<>
