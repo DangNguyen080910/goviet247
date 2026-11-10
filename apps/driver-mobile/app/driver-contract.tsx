@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, ActivityIndicator, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { router } from "expo-router";
+import { DRIVER_CONTRACT_RECONSENT_VISIBLE } from "../constants/contractFeatures";
+import { Redirect, router } from "expo-router";
 import { getDriverToken } from "../services/storage";
 import { getDriverContract, acceptDriverContract, type DriverContractResponse } from "../services/driverProfileApi";
 export default function DriverContractScreen() {
+  return DRIVER_CONTRACT_RECONSENT_VISIBLE ? <ActiveContractScreen /> : <Redirect href="/dashboard" />;
+}
+function ActiveContractScreen() {
   const [data,setData] = useState<DriverContractResponse | null>(null);
   const [viewHistory,setViewHistory] = useState<string|null>(null);
   const [busy,setBusy] = useState(false); const [error,setError] = useState(""); const [checked,setChecked] = useState(false);

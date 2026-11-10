@@ -1,9 +1,13 @@
+import { DRIVER_CONTRACT_RECONSENT_VISIBLE } from '../constants/contractFeatures';
 import {useEffect,useState} from 'react';
 import {AppState,Text,TouchableOpacity,View} from 'react-native';
 import {router} from 'expo-router';
 import {getDriverContract,type DriverContractResponse} from '../services/driverProfileApi';
 import {getDriverToken} from '../services/storage';
 export default function ContractReminder(){
+ return DRIVER_CONTRACT_RECONSENT_VISIBLE ? <ActiveContractReminder /> : null;
+}
+function ActiveContractReminder(){
  const [data,setData]=useState<DriverContractResponse|null>(null);
  useEffect(()=>{let alive=true;async function load(){try{const token=await getDriverToken();if(!token)return;const next=await getDriverContract(token);if(alive)setData(next);}catch{if(alive)setData(null);}}
  void load();const sub=AppState.addEventListener('change',s=>{if(s==='active')void load();});const timer=setInterval(()=>void load(),60000);return()=>{alive=false;sub.remove();clearInterval(timer);};},[]);

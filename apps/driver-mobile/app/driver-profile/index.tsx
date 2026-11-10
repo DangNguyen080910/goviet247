@@ -273,7 +273,6 @@ export default function DriverProfileScreen() {
             </View>
           </View>
 
-          <TouchableOpacity onPress={() => router.push("../driver-contract")} style={{padding:16,backgroundColor:"white",borderRadius:12,marginBottom:12}}><Text style={{color:"#1676D2",fontWeight:"700"}}>Xem hợp đồng và lịch sử xác nhận</Text></TouchableOpacity>
           <View style={styles.card}>
             <OperatingProvincePicker value={operatingProvinceCode} onChange={setOperatingProvinceCode} disabled={savingProvince} />
             {!profile.operatingProvinceConfirmedAt && <Text style={styles.label}>Khu vực mặc định chưa xác nhận. Anh/chị vui lòng kiểm tra và bấm lưu.</Text>}

@@ -33,10 +33,10 @@ test('old contracts remain fallback when there is no published version',async()=
 test('new-trip restriction is opt-in, respects grace, and accepts only matching receipt',async()=>{
  let acceptance=null;let release={...row,requireForNewTrips:false};
  const db={driverContractVersion:{findFirst:async()=>release},driverContractAcceptance:{findFirst:async({where})=>acceptance&&acceptance.contractFileHash===where.contractFileHash?acceptance:null}};
- await assertCurrentContractForNewTrip(db,{id:'p'});
- release={...row,publishedAt:new Date()};await assertCurrentContractForNewTrip(db,{id:'p'});
- release=row;await assert.rejects(()=>assertCurrentContractForNewTrip(db,{id:'p'}),e=>e.code==='CONTRACT_ACCEPTANCE_REQUIRED');
- acceptance={contractFileHash:contractHash(c)};await assertCurrentContractForNewTrip(db,{id:'p'});
+ await assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'});
+ release={...row,publishedAt:new Date()};await assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'});
+ release=row;await assert.rejects(()=>assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'}),e=>e.code==='CONTRACT_ACCEPTANCE_REQUIRED');
+ acceptance={contractFileHash:contractHash(c)};await assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'});
 });
 test('published row cannot be edited and failed save never writes',async()=>{
  let writes=0;const tx={$queryRaw:async()=>[],driverContractVersion:{findUnique:async()=>row,update:async()=>{writes++;}}};const db={$transaction:async fn=>fn(tx)};const output=res();
@@ -45,6 +45,24 @@ test('published row cannot be edited and failed save never writes',async()=>{
 });
 test('publication changes during reading rejects stale acceptance before any write',async()=>{
  let writes=0;const tx={$queryRaw:async()=>[],driverContractVersion:{findFirst:async()=>row},driverProfile:{findUnique:async()=>({id:'p',userId:'u',fullName:'A',citizenId:'001234567890',residentialAddress:'X',updatedAt:new Date('2026-01-01'),user:{phones:[]}})},driverContractAcceptance:{updateMany:async()=>{writes++;},create:async()=>{writes++;}}};
- const output=res();await makeDriverContractController({$transaction:async fn=>fn(tx)},{}).accept({user:{uid:'u'},headers:{},body:{contractAccepted:true,contractCode:c.code,contractVersion:'v1.0',contractFileHash:'old',expectedUpdatedAt:'2026-01-01T00:00:00.000Z'}},output);
+ const output=res();await makeDriverContractController({$transaction:async fn=>fn(tx)},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'}).accept({user:{uid:'u'},headers:{},body:{contractAccepted:true,contractCode:c.code,contractVersion:'v1.0',contractFileHash:'old',expectedUpdatedAt:'2026-01-01T00:00:00.000Z'}},output);
  assert.equal(output.statusCode,409);assert.equal(writes,0);
+});
+
+test('paused reconsent never blocks trips or writes an existing-driver acceptance', async () => {
+ const unavailable = new Proxy({}, {get(){throw new Error('Must not access DB while paused');}});
+ await assertCurrentContractForNewTrip(unavailable,{id:'p'},{});
+ const output=res();
+ await makeDriverContractController(unavailable,{}).accept({user:{uid:'u'},body:{}},output);
+ assert.equal(output.statusCode,409);
+ assert.match(output.body.message,/tạm dừng/);
+});
+
+test('paused current endpoint tells already-installed clients not to prompt reconsent', async () => {
+ const db={driverContractVersion:{findFirst:async()=>row},driverProfile:{findUnique:async()=>({id:'p',user:{phones:[]}})},driverContractAcceptance:{findFirst:async()=>null,findMany:async()=>[]}};
+ const output=res();
+ await makeDriverContractController(db,{}).current({user:{uid:'u'}},output);
+ assert.equal(output.body.needsAcceptance,false);
+ assert.equal(output.body.reconsentEnabled,false);
+ assert.equal(output.body.contract.version,row.version);
 });

@@ -65,8 +65,10 @@ export async function currentDriverContract(db, env = process.env) {
   if (!row) return {contract:activeDriverContract(env), release:null};
   return {contract:{...row.content,contentHash:contractHash(row.content)},release:{id:row.id,version:row.version,publishedAt:row.publishedAt,changeSummary:row.changeSummary,graceDays:row.graceDays,requireForNewTrips:row.requireForNewTrips,deadline:new Date(row.publishedAt.getTime()+row.graceDays*86400000)}};
 }
-export async function assertCurrentContractForNewTrip(db, profile) {
-  const {contract,release}=await currentDriverContract(db);
+export const driverContractReconsentEnabled = (env = process.env) => env.DRIVER_CONTRACT_RECONSENT_ENABLED === 'true';
+export async function assertCurrentContractForNewTrip(db, profile, env = process.env) {
+  if (!driverContractReconsentEnabled(env)) return;
+  const {contract,release}=await currentDriverContract(db,env);
   if (!release?.requireForNewTrips || Date.now()<release.deadline.getTime()) return;
   const accepted=await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,contractVersion:contract.version,contractFileHash:contract.contentHash,isActive:true}});
   if (!accepted) throw Object.assign(new Error('Vui lòng mở Hồ sơ → Hợp đồng để đọc và xác nhận hợp đồng mới trước khi nhận chuyến mới.'),{statusCode:409,code:'CONTRACT_ACCEPTANCE_REQUIRED'});
