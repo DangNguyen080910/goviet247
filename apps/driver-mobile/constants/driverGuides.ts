@@ -211,8 +211,8 @@ export const DRIVER_GUIDES = [
       {
         "title": "3. Không kéo khách ra ngoài hệ thống",
         "paragraphs": [
-          "Không tự ý trao đổi để khách thanh toán hoặc đặt chuyến ngoài GoViet247. Không xin số khách hoặc cung cấp số điện thoại cá nhân, kể cả khi khách yêu cầu. Mọi liên hệ chuyến đi thực hiện trong ứng dụng. Sau khi GoViet247 xác minh vi phạm, khách được miễn phí chuyến liên quan và tài khoản tài xế bị khoá vĩnh viễn. Không giới thiệu khách đặt chuyến trực tiếp ngoài ứng dụng cho các chuyến sau.",
-          "Vi phạm nghiêm trọng có thể dẫn đến khoá tài khoản vĩnh viễn."
+          "Tài xế sử dụng tính năng gọi điện và nhắn tin trong ứng dụng GoViet247 để liên hệ phục vụ chuyến đi. Không chủ động xin hoặc trao đổi số điện thoại cá nhân nhằm mời chào, thỏa thuận hoặc nhận chuyến ngoài hệ thống. Khi không liên hệ được qua ứng dụng, tài xế liên hệ GoViet247 để được hỗ trợ phương án phù hợp.",
+          "Khi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm."
         ]
       },
       {
