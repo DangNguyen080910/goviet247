@@ -1,5 +1,6 @@
 // Path: goviet247/apps/web/src/pages/admin/AdminCustomers.jsx
 import { useEffect, useMemo, useState } from "react";
+import AccountExitStatus from "../../components/admin/AccountExitStatus";
 import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import {
   Box,
@@ -511,6 +512,7 @@ export default function AdminCustomers() {
               {sortableHeader("tripCount")}
               {sortableHeader("createdAt")}
               {sortableHeader("status")}
+              <TableCell>Yêu cầu xóa / Đăng nhập lại</TableCell>
             </TableRow>
           </TableHead>
 
@@ -547,12 +549,13 @@ export default function AdminCustomers() {
                     color={statusColor(c.riderProfile?.status || "ACTIVE")}
                   />
                 </TableCell>
+                <TableCell><AccountExitStatus requests={c.accountExitRequests} /></TableCell>
               </TableRow>
             ))}
 
             {customers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={6}>
+                <TableCell colSpan={7}>
                   <Typography color="text.secondary">
                     Không có khách hàng phù hợp.
                   </Typography>

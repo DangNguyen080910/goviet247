@@ -191,6 +191,7 @@ export async function getCustomers(req, res) {
     });
 
     const select = {
+        accountExitRequests: { where: { appRole: "RIDER" } },
         riderAppUsages: { select: { platform: true, firstSeenAt: true, lastSeenAt: true } },
         id: true,
         displayName: true,

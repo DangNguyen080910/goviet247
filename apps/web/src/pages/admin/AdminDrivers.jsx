@@ -1,4 +1,5 @@
 import provinces from "../../../../api/src/data/vietnam-provinces.json";
+import AccountExitStatus from "../../components/admin/AccountExitStatus";
 import AdminTableScroll from "../../components/admin/AdminTableScroll";
 // Path: goviet247/apps/web/src/pages/admin/AdminDrivers.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -698,6 +699,7 @@ export default function AdminDrivers() {
               {sortableHeader("completedTripCount", "right")}
               {sortableHeader("cancelledTripCount", "right")}
               {sortableHeader("status")}
+              <TableCell>Yêu cầu xóa / Đăng nhập lại</TableCell>
             </TableRow>
           </TableHead>
 
@@ -744,12 +746,13 @@ export default function AdminDrivers() {
                   <Chip label={d.status} color={statusColor(d.status)} />
                   {d.tripAcceptBlocked && <Chip size="small" color="warning" label="Khoá nhận chuyến" sx={{ mt: 0.5 }} />}
                 </TableCell>
+                <TableCell><AccountExitStatus requests={d.user?.accountExitRequests} /></TableCell>
               </TableRow>
             ))}
 
             {drivers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={15}>
+                <TableCell colSpan={16}>
                   <Typography color="text.secondary">
                     Không có tài xế phù hợp.
                   </Typography>

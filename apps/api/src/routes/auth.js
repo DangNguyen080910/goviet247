@@ -1,3 +1,4 @@
+import { accountExitRole, recordAccountExit } from "../services/accountExitRequest.js";
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../utils/db.js";
@@ -350,35 +351,11 @@ router.delete("/me", verifyToken, async (req, res) => {
       });
     }
 
-    const deletedPhone = `deleted_${Date.now()}`;
+    const appRole = accountExitRole(req.user);
+    if (!appRole) return res.status(400).json({ success: false, message: "Không xác định được ứng dụng. Vui lòng đăng nhập lại." });
 
     await prisma.$transaction(async (tx) => {
-      const currentPhone = existingUser?.phones?.[0]?.e164 || `unknown_${uid}`;
-
-      const now = new Date();
-
-      const timestamp = [
-        now.getFullYear(),
-        String(now.getMonth() + 1).padStart(2, "0"),
-        String(now.getDate()).padStart(2, "0"),
-        String(now.getHours()).padStart(2, "0"),
-        String(now.getMinutes()).padStart(2, "0"),
-        String(now.getSeconds()).padStart(2, "0"),
-      ].join("");
-
-      const uniqueDeletedPhone = `deleted_${timestamp}_${Math.random()
-        .toString(36)
-        .slice(2, 8)}_${currentPhone}`;
-
-      await tx.phone.updateMany({
-        where: {
-          userId: uid,
-        },
-        data: {
-          // e164: uniqueDeletedPhone,
-          e164: currentPhone
-        },
-      });
+      await recordAccountExit(tx, uid, appRole);
 
       await tx.session.updateMany({ where: { userId: uid }, data: { expiresAt: new Date(0) } });
 

@@ -1,4 +1,5 @@
 // Path: goviet247/apps/api/src/controllers/authController.js
+import { recordAccountReturn } from "../services/accountExitRequest.js";
 import { prisma } from "../utils/db.js";
 import { requestOtp, verifyOtp } from "../services/otpService.js";
 import { issueUserToken, userSessions, persistentEnabled, supportsPersistent } from "../services/userSessions.js";
@@ -182,6 +183,8 @@ export async function verifyOtpHandler(req, res) {
       appRole: result.appRole,
       phone: resolvePhone(user),
     }, req);
+
+    await recordAccountReturn(prisma, user.id, result.appRole);
 
     return res.json({
       success: true,

@@ -189,6 +189,7 @@ enum AccountingDocumentType {
 }
 
 model User {
+  accountExitRequests AccountExitRequest[]
   callDevices TripCallDevice[]
   id                    String                   @id @default(cuid())
   displayName           String?
@@ -1270,4 +1271,15 @@ model DriverContractVersion {
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
   @@index([publishedAt])
+}
+
+// Per-app request marker. Profiles and role memberships remain unchanged.
+model AccountExitRequest {
+  userId String
+  appRole String
+  requestedAt DateTime @db.Timestamptz(6)
+  returnedAt DateTime? @db.Timestamptz(6)
+  requestCount Int @default(1)
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  @@id([userId, appRole])
 }

@@ -3404,6 +3404,7 @@ export function makeAdminController(prisma) {
         const include = {
           user: {
             select: {
+              accountExitRequests: { where: { appRole: "DRIVER" } },
               id: true,
               displayName: true,
               phones: {
