@@ -1,4 +1,4 @@
-import { driverContractReconsentEnabled, activeDriverContract, buildContractAcceptance, acceptanceEvidence, renderContractEvidence, currentDriverContract, lockContractPublication } from '../services/driverContract.js';
+import { registrationDriverContract, driverContractReconsentEnabled, activeDriverContract, buildContractAcceptance, acceptanceEvidence, renderContractEvidence, currentDriverContract, lockContractPublication } from '../services/driverContract.js';
 const replyError = (res, error) => {
   if (!error.statusCode) console.error('[DriverContract]', error);
   return res.status(error.statusCode || 500).json({success:false, message:error.statusCode ? error.message : 'Không xử lý được hợp đồng. Vui lòng thử lại.'});
@@ -7,8 +7,8 @@ export function makeDriverContractController(db, env = process.env) {
   return {
     async current(req,res) {
       try {
-        const {contract,release} = await currentDriverContract(db,env);
         const profile = await db.driverProfile.findUnique({where:{userId:req.user.uid},include:{user:{include:{phones:{orderBy:{createdAt:'desc'},take:1}}}}});
+        const {contract,release} = await (profile ? currentDriverContract(db,env) : registrationDriverContract(db,env));
         const latest = profile ? await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,isActive:true},orderBy:[{agreedAt:'desc'},{id:'desc'}]}) : null;
         const history=profile?await db.driverContractAcceptance.findMany({where:{driverProfileId:profile.id},orderBy:[{agreedAt:'desc'},{id:'desc'}]}):[];
         res.setHeader('Cache-Control','no-store');

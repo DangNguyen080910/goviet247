@@ -73,3 +73,21 @@ export async function assertCurrentContractForNewTrip(db, profile, env = process
   const accepted=await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,contractVersion:contract.version,contractFileHash:contract.contentHash,isActive:true}});
   if (!accepted) throw Object.assign(new Error('Vui lòng mở Hồ sơ → Hợp đồng để đọc và xác nhận hợp đồng mới trước khi nhận chuyến mới.'),{statusCode:409,code:'CONTRACT_ACCEPTANCE_REQUIRED'});
 }
+
+// Registration-only revision: do not rewrite published versions or old receipts.
+// Existing drivers remain on their saved evidence and the paused reconsent flow.
+const contactPolicy = JSON.parse(readFileSync(new URL('../contracts/driver-contact-policy.json', import.meta.url), 'utf8'));
+export async function registrationDriverContract(db, env = process.env) {
+  const source = await currentDriverContract(db, env);
+  const {contentHash: ignoredHash, ...original} = source.contract;
+  const content = structuredClone(original);
+  let changed = false;
+  content.sections = content.sections.map(section => ({...section, paragraphs: section.paragraphs.flatMap(text => {
+    if (text !== contactPolicy.legacyParagraph) return [text];
+    changed = true;
+    return [...contactPolicy.paragraphs];
+  })}));
+  if (!changed) return source;
+  content.version = original.version === legacy.version ? 'v1.1-2026-11-10' : `${original.version}-contact-20261110`;
+  return {contract: {...content, contentHash: contractHash(content)}, release: null};
+}
