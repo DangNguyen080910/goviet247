@@ -1,3 +1,4 @@
+import { ACCOUNT_EXIT_FILTERS, matchesAccountExit, compareAccountExitDates } from "../shared/accountExitAdmin.js";
 // Path: goviet247/apps/api/src/controllers/adminCustomerController.js
 
 import { summarizeRiderAppUsage } from "../services/riderAppUsage.js";
@@ -174,6 +175,8 @@ async function findCustomerUserById(userId) {
 // sort: newest|oldest
 export async function getCustomers(req, res) {
   try {
+    const exitStatus = String(req.query.exitStatus || "all");
+    if (!ACCOUNT_EXIT_FILTERS.includes(exitStatus)) return res.status(400).json({ success: false, message: "Bộ lọc yêu cầu xóa không hợp lệ." });
     const q = (req.query.q || "").trim();
     const status = (req.query.status || "all").toUpperCase();
     const phoneVerified = (req.query.phoneVerified || "all").toLowerCase();
@@ -234,6 +237,7 @@ export async function getCustomers(req, res) {
     const appUsageSummary = summarizeRiderAppUsage(matched);
 
     const filtered = matched.filter((item) => {
+      if (!matchesAccountExit(item.accountExitRequests, exitStatus)) return false;
       const platforms = item.riderAppUsages.map((usage) => usage.platform);
       if (appPlatform === "recorded") return platforms.length > 0;
       if (appPlatform === "unrecorded") return platforms.length === 0;
@@ -253,6 +257,8 @@ export async function getCustomers(req, res) {
       tripcount: "tripCount",
       status: "status",
       createdat: "createdAt",
+      exitrequestedat: "exitRequestedAt",
+      exitreturnedat: "exitReturnedAt",
     };
     const sortColumn = customerSortColumns[String(sortMatch?.[1] || "createdAt").toLowerCase()] || "createdAt";
     const sortDirection = sortMatch?.[2] === "asc" ? 1 : -1;
@@ -267,6 +273,10 @@ export async function getCustomers(req, res) {
     };
 
     filtered.sort((a, b) => {
+      if (sortColumn === "exitRequestedAt" || sortColumn === "exitReturnedAt") {
+        return compareAccountExitDates(a.accountExitRequests, b.accountExitRequests, sortColumn, sortDirection)
+          || collator.compare(String(a.id), String(b.id));
+      }
       const valueA = sortValue(a);
       const valueB = sortValue(b);
       const compared = typeof valueA === "number" && typeof valueB === "number"

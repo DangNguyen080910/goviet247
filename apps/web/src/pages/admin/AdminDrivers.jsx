@@ -105,6 +105,8 @@ const DRIVER_SORT_COLUMNS = {
   vehicleYear: "Đời xe",
   plateNumber: "Biển số",
   createdAt: "Ngày tạo",
+  exitRequestedAt: "Yêu cầu xóa / Đăng nhập lại",
+  exitReturnedAt: "Ngày đăng nhập lại",
   completedTripCount: "Hoàn thành",
   cancelledTripCount: "Đã huỷ",
   status: "Trạng thái",
@@ -121,6 +123,7 @@ export default function AdminDrivers() {
   // Filters (A)
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("ALL"); // ALL | PENDING | VERIFIED | REJECTED | SUSPENDED
+  const [exitStatus, setExitStatus] = useState("all");
   const [phoneVerified, setPhoneVerified] = useState("all"); // all | true | false
   const [tripAcceptBlocked, setTripAcceptBlocked] = useState("all");
   const [sort, setSort] = useState("createdAt_desc"); // createdAt_desc | createdAt_asc | status_asc | status_desc
@@ -162,6 +165,7 @@ export default function AdminDrivers() {
       q: qDebounced,
       status,
       phoneVerified,
+      exitStatus,
       operatingProvinceCode,
       provinceConfirmed,
       tripAcceptBlocked,
@@ -169,7 +173,7 @@ export default function AdminDrivers() {
       page,
       pageSize,
     };
-  }, [qDebounced, status, phoneVerified, operatingProvinceCode, provinceConfirmed, tripAcceptBlocked, sort, page, pageSize]);
+  }, [qDebounced, status, phoneVerified, exitStatus, operatingProvinceCode, provinceConfirmed, tripAcceptBlocked, sort, page, pageSize]);
 
   const [selectedId, setSelectedId] = useState(null);
   const [detail, setDetail] = useState(null);
@@ -631,6 +635,18 @@ export default function AdminDrivers() {
           </Select>
         </FormControl>
 
+        <FormControl size="small" sx={{ minWidth: 245 }}>
+          <InputLabel>Yêu cầu xóa / Đăng nhập lại</InputLabel>
+          <Select label="Yêu cầu xóa / Đăng nhập lại" value={exitStatus}
+            onChange={e => { setPage(1); setExitStatus(e.target.value); }}>
+            <MenuItem value="all">Tất cả</MenuItem>
+            <MenuItem value="requested">Đã có yêu cầu xóa</MenuItem>
+            <MenuItem value="pending">Đã yêu cầu, chưa đăng nhập lại</MenuItem>
+            <MenuItem value="returned">Đã đăng nhập lại sau yêu cầu</MenuItem>
+            <MenuItem value="unrecorded">Chưa ghi nhận yêu cầu</MenuItem>
+          </Select>
+        </FormControl>
+
         <FormControl size="small" sx={{ minWidth: 190 }}>
           <InputLabel>Sắp xếp</InputLabel>
           <Select
@@ -641,10 +657,14 @@ export default function AdminDrivers() {
               setSort(e.target.value);
             }}
           >
-            {!['createdAt_desc', 'createdAt_asc', 'status_asc', 'status_desc', 'balance_desc', 'balance_asc'].includes(sort) ? (
+            {!['createdAt_desc', 'createdAt_asc', 'status_asc', 'status_desc', 'balance_desc', 'balance_asc', "exitRequestedAt_desc", "exitRequestedAt_asc", "exitReturnedAt_desc", "exitReturnedAt_asc"].includes(sort) ? (
               <MenuItem value={sort}>{DRIVER_SORT_COLUMNS[sortColumn]} {sortDirection === 'asc' ? 'tăng dần' : 'giảm dần'}</MenuItem>
             ) : null}
             <MenuItem value="createdAt_desc">Mới nhất</MenuItem>
+            <MenuItem value="exitRequestedAt_desc">Yêu cầu xóa mới nhất</MenuItem>
+            <MenuItem value="exitRequestedAt_asc">Yêu cầu xóa cũ nhất</MenuItem>
+            <MenuItem value="exitReturnedAt_desc">Đăng nhập lại mới nhất</MenuItem>
+            <MenuItem value="exitReturnedAt_asc">Đăng nhập lại cũ nhất</MenuItem>
             <MenuItem value="balance_desc">Số dư ví cao nhất</MenuItem>
             <MenuItem value="balance_asc">Số dư ví thấp nhất</MenuItem>
             <MenuItem value="createdAt_asc">Cũ nhất</MenuItem>
@@ -699,7 +719,7 @@ export default function AdminDrivers() {
               {sortableHeader("completedTripCount", "right")}
               {sortableHeader("cancelledTripCount", "right")}
               {sortableHeader("status")}
-              <TableCell>Yêu cầu xóa / Đăng nhập lại</TableCell>
+              {sortableHeader("exitRequestedAt")}
             </TableRow>
           </TableHead>
 

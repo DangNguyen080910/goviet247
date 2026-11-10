@@ -1,3 +1,4 @@
+import { ACCOUNT_EXIT_FILTERS, matchesAccountExit, compareAccountExitDates } from "../shared/accountExitAdmin.js";
 import { getCommissionPeriod } from "../services/commissionInvoiceTracking.js";
 import { buildCommissionInvoiceExcel, invoiceIssues } from "../services/commissionInvoice.js";
 import { buildAccountingExcel } from "../services/accountingExcel.js";
@@ -3360,6 +3361,8 @@ export function makeAdminController(prisma) {
 
     async getDrivers(req, res) {
       try {
+        const exitStatus = String(req.query.exitStatus || "all");
+        if (!ACCOUNT_EXIT_FILTERS.includes(exitStatus)) return res.status(400).json({ success: false, message: "Bộ lọc yêu cầu xóa không hợp lệ." });
         const q = String(req.query.q || "").trim();
         const status = String(req.query.status || "ALL");
         const phoneVerified = String(req.query.phoneVerified || "all");
@@ -3415,7 +3418,7 @@ export function makeAdminController(prisma) {
           },
         };
 
-        const candidates = await prisma.driverProfile.findMany({ where, include });
+        const candidates = (await prisma.driverProfile.findMany({ where, include })).filter(item => matchesAccountExit(item.user?.accountExitRequests, exitStatus));
         const searched = q
           ? candidates.filter((item) => matchesDriverSmartSearch(item, q))
           : candidates;
@@ -3485,6 +3488,8 @@ export function makeAdminController(prisma) {
           cancelledtripcount: "cancelledTripCount",
           status: "status",
           createdat: "createdAt",
+          exitrequestedat: "exitRequestedAt",
+          exitreturnedat: "exitReturnedAt",
         };
         const sortColumn = driverSortColumns[String(sortMatch?.[1] || "createdAt").toLowerCase()] || "createdAt";
         const sortDirection = sortMatch?.[2] === "asc" ? 1 : -1;
@@ -3507,6 +3512,10 @@ export function makeAdminController(prisma) {
         };
 
         mappedItems.sort((a, b) => {
+          if (sortColumn === "exitRequestedAt" || sortColumn === "exitReturnedAt") {
+            return compareAccountExitDates(a.user?.accountExitRequests, b.user?.accountExitRequests, sortColumn, sortDirection)
+              || collator.compare(String(a.id), String(b.id));
+          }
           const valueA = sortValue(a);
           const valueB = sortValue(b);
           const compared = typeof valueA === "number" && typeof valueB === "number"

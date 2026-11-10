@@ -75,6 +75,8 @@ const CUSTOMER_SORT_COLUMNS = {
   appPlatform: "Rider app",
   tripCount: "Tổng chuyến",
   createdAt: "Ngày tạo",
+  exitRequestedAt: "Yêu cầu xóa / Đăng nhập lại",
+  exitReturnedAt: "Ngày đăng nhập lại",
   status: "Trạng thái",
 };
 
@@ -88,6 +90,7 @@ export default function AdminCustomers() {
   // Filters
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("all"); // all | ACTIVE | SUSPENDED
+  const [exitStatus, setExitStatus] = useState("all");
   const [phoneVerified, setPhoneVerified] = useState("all"); // all | true | false
   const [sort, setSort] = useState("newest"); // newest | oldest
 
@@ -130,11 +133,12 @@ export default function AdminCustomers() {
       q: qDebounced,
       status,
       phoneVerified,
+      exitStatus,
       sort,
       page,
       pageSize,
     };
-  }, [qDebounced, status, phoneVerified, sort, page, pageSize, appPlatform]);
+  }, [qDebounced, status, phoneVerified, exitStatus, sort, page, pageSize, appPlatform]);
 
   const [selectedId, setSelectedId] = useState(null);
   const [detail, setDetail] = useState(null);
@@ -458,6 +462,18 @@ export default function AdminCustomers() {
           </Select>
         </FormControl>
 
+        <FormControl size="small" sx={{ minWidth: 245 }}>
+          <InputLabel>Yêu cầu xóa / Đăng nhập lại</InputLabel>
+          <Select label="Yêu cầu xóa / Đăng nhập lại" value={exitStatus}
+            onChange={e => { setPage(1); setExitStatus(e.target.value); }}>
+            <MenuItem value="all">Tất cả</MenuItem>
+            <MenuItem value="requested">Đã có yêu cầu xóa</MenuItem>
+            <MenuItem value="pending">Đã yêu cầu, chưa đăng nhập lại</MenuItem>
+            <MenuItem value="returned">Đã đăng nhập lại sau yêu cầu</MenuItem>
+            <MenuItem value="unrecorded">Chưa ghi nhận yêu cầu</MenuItem>
+          </Select>
+        </FormControl>
+
         <FormControl size="small" sx={{ minWidth: 190 }}>
           <InputLabel>Sắp xếp</InputLabel>
           <Select
@@ -468,10 +484,14 @@ export default function AdminCustomers() {
               setSort(e.target.value);
             }}
           >
-            {!['newest', 'oldest'].includes(sort) ? (
+            {!['newest', 'oldest', "exitRequestedAt_desc", "exitRequestedAt_asc", "exitReturnedAt_desc", "exitReturnedAt_asc"].includes(sort) ? (
               <MenuItem value={sort}>{CUSTOMER_SORT_COLUMNS[sortColumn]} {sortDirection === 'asc' ? 'tăng dần' : 'giảm dần'}</MenuItem>
             ) : null}
             <MenuItem value="newest">Mới nhất</MenuItem>
+            <MenuItem value="exitRequestedAt_desc">Yêu cầu xóa mới nhất</MenuItem>
+            <MenuItem value="exitRequestedAt_asc">Yêu cầu xóa cũ nhất</MenuItem>
+            <MenuItem value="exitReturnedAt_desc">Đăng nhập lại mới nhất</MenuItem>
+            <MenuItem value="exitReturnedAt_asc">Đăng nhập lại cũ nhất</MenuItem>
             <MenuItem value="oldest">Cũ nhất</MenuItem>
           </Select>
         </FormControl>
@@ -512,7 +532,7 @@ export default function AdminCustomers() {
               {sortableHeader("tripCount")}
               {sortableHeader("createdAt")}
               {sortableHeader("status")}
-              <TableCell>Yêu cầu xóa / Đăng nhập lại</TableCell>
+              {sortableHeader("exitRequestedAt")}
             </TableRow>
           </TableHead>
 

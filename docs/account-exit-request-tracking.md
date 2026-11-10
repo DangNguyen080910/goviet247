@@ -10,6 +10,12 @@ Admin Web có cột “Yêu cầu xóa / Đăng nhập lại” trong Tài Xế 
 - Trạng thái xuất hiện khi tải/làm mới danh sách Admin; không gửi push hoặc thông báo chủ động.
 - Nội dung nút/hộp thoại trên Mobile được giữ nguyên theo phạm vi yêu cầu. Marker chỉ ghi nhận yêu cầu, không chứng minh dữ liệu đã xóa.
 
+## Lọc và sắp xếp
+
+Hai danh sách hỗ trợ bộ lọc Tất cả / Đã có yêu cầu xóa / Đã yêu cầu, chưa đăng nhập lại / Đã đăng nhập lại sau yêu cầu / Chưa ghi nhận yêu cầu. Lọc và sắp xếp thực hiện trên server trước phân trang, phối hợp các bộ lọc hiện có. “Chưa ghi nhận” không chứng minh chưa từng bấm trước khi triển khai.
+
+Bấm tiêu đề cột để sắp xếp thời gian yêu cầu tăng/giảm; menu Sắp xếp có thêm yêu cầu mới/cũ nhất và đăng nhập lại mới/cũ nhất. Dòng thiếu ngày tương ứng luôn nằm sau. Đổi bộ lọc/sắp xếp quay về trang 1. Phần bổ sung này không có migration mới.
+
 ## Triển khai
 
 Triển khai API và build/deploy Web. Không cần phát hành Rider/Driver Mobile hoặc thêm thư viện.
