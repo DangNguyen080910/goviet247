@@ -29,6 +29,7 @@ import {
 } from "@mui/material";
 
 import {
+  downloadDriverContractEvidence,
   fetchDrivers,
   fetchDriverDetail,
   fetchDriverLogs,
@@ -67,7 +68,7 @@ function formatNgayGio(input) {
   if (!input) return "-";
   const d = new Date(input);
   if (Number.isNaN(d.getTime())) return String(input);
-  return d.toLocaleString("vi-VN");
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function getDriverDisplayName(driver) {
@@ -882,6 +883,9 @@ export default function AdminDrivers() {
                     );
                   })()}
 
+                  {getAdminUser()?.role === "ADMIN" && <Button sx={{my:1}} variant="outlined" disabled={actionLoading} onClick={async()=>{
+                    try {await downloadDriverContractEvidence(detail.id);}catch(error){window.alert(error.message || "Không xuất được bản ghi hợp đồng.");}
+                  }}>Xuất bản ghi đồng ý hợp đồng</Button>}
                   <Typography>Số CCCD: {detail.citizenId || "Chưa cập nhật"}</Typography>
                   <Typography sx={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>Địa chỉ cư trú: {detail.residentialAddress || "Chưa cập nhật"}</Typography>
                   <Typography>Nhiên liệu: {detail.vehicleFuelType === "ELECTRIC" ? "Xe điện" : detail.vehicleFuelType === "GASOLINE" ? "Xe xăng" : "Chưa cập nhật"}</Typography>
@@ -965,14 +969,14 @@ export default function AdminDrivers() {
                         >
                           Tải lên:{" "}
                           {doc.createdAt
-                            ? new Date(doc.createdAt).toLocaleString("vi-VN")
+                            ? new Date(doc.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
                             : "-"}
                         </Typography>
 
                         {doc.reviewedAt && (
                           <Typography variant="body2" color="text.secondary">
                             Duyệt lúc:{" "}
-                            {new Date(doc.reviewedAt).toLocaleString("vi-VN")}
+                            {new Date(doc.reviewedAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
                           </Typography>
                         )}
 
@@ -1052,7 +1056,7 @@ export default function AdminDrivers() {
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {x.actorUsername} ·{" "}
-                          {new Date(x.createdAt).toLocaleString("vi-VN")}
+                          {new Date(x.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
                         </Typography>
                         {x.note && (
                           <Typography variant="body2">

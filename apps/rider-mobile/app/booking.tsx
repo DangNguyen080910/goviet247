@@ -61,15 +61,7 @@ function toMsFromDatetimeLocal(v: string) {
 }
 
 function toDatetimeLocalInputValue(date: Date) {
-  const pad = (n: number) => String(n).padStart(2, "0");
-
-  const yyyy = date.getFullYear();
-  const mm = pad(date.getMonth() + 1);
-  const dd = pad(date.getDate());
-  const hh = pad(date.getHours());
-  const mi = pad(date.getMinutes());
-
-  return `${yyyy}-${mm}-${dd}T${hh}:${mi}`;
+  return new Date(date.getTime() + 7 * 3600000).toISOString().slice(0, 16);
 }
 
 function mergeDatePartIntoDatetimeLocal(currentValue: string, nextDate: Date) {
@@ -483,8 +475,7 @@ export default function RiderBookingScreen() {
   const [pickerValue, setPickerValue] = useState(new Date());
 
   const todayStartDate = useMemo(() => {
-    const nextDate = new Date(vietnamNow());
-    nextDate.setHours(0, 0, 0, 0);
+    const nextDate = new Date(`${vietnamNow().slice(0, 10)}T00:00:00+07:00`);
     return nextDate;
   }, []);
 
@@ -1363,8 +1354,8 @@ export default function RiderBookingScreen() {
     mode: "date" | "time",
   ) {
     const rawValue = target === "pickup" ? pickupTime : returnTime;
-    const baseDate = new Date(rawValue || vietnamNow());
-    const safeDate = Number.isNaN(baseDate.getTime()) ? new Date(vietnamNow()) : baseDate;
+    const baseDate = new Date(bookingTimeToIso(rawValue || vietnamNow()));
+    const safeDate = Number.isNaN(baseDate.getTime()) ? new Date(bookingTimeToIso(vietnamNow())) : baseDate;
 
     setPickerTarget(target);
     setPickerMode(mode);
@@ -2515,6 +2506,8 @@ export default function RiderBookingScreen() {
             >
               <DateTimePicker
                 value={pickerValue}
+                timeZoneName="Asia/Ho_Chi_Minh"
+                locale="vi-VN"
                 mode={pickerMode}
                 display="spinner"
                 minuteInterval={5}
@@ -2555,6 +2548,8 @@ export default function RiderBookingScreen() {
       {pickerTarget && pickerMode === "date" && Platform.OS === "android" ? (
         <DateTimePicker
           value={pickerValue}
+                timeZoneName="Asia/Ho_Chi_Minh"
+                locale="vi-VN"
           mode={pickerMode}
           display="default"
           is24Hour

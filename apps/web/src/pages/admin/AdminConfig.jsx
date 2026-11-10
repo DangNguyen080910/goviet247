@@ -1,3 +1,4 @@
+import ContractConfig from '../../components/admin/ContractConfig';
 // Path: goviet247/apps/web/src/pages/admin/AdminConfig.jsx
 import DestinationServiceConfig from "../../components/admin/DestinationServiceConfig";
 import React from "react";
@@ -1906,9 +1907,11 @@ export default function AdminConfig() {
               icon={<LockOutlinedIcon />}
               iconPosition="start"
             />
+            <Tab label="Hợp đồng" icon={<LockOutlinedIcon />} iconPosition="start" />
           </Tabs>
 
           <Box sx={{ p: 3 }}>
+            <TabPanel value={tab} index={8}><ContractConfig /></TabPanel>
             <TabPanel value={tab} index={1}><DestinationServiceConfig /></TabPanel>
             {/* TAB 1: GIÁ CƯỚC */}
             <TabPanel value={tab} index={0}>

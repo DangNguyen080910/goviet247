@@ -1,3 +1,4 @@
+import { legacyDriverContract, validateContractSubmission, buildContractAcceptance, currentDriverContract, lockContractPublication } from "../services/driverContract.js";
 import { isProvinceCode } from "../services/driverOperatingProvince.js";
 // Path: goviet247/apps/api/src/controllers/driverProfileController.js
 import { lockDriverProfile } from "../services/tripAcceptancePolicy.js";
@@ -41,11 +42,7 @@ async function mapDriverDocumentsWithSignedUrl(documents = []) {
   );
 }
 
-const DEFAULT_DRIVER_CONTRACT = {
-  code: "GOVIET247_DRIVER_PARTNERSHIP",
-  title: "Hợp đồng hợp tác tài xế GoViet247",
-  version: "v1.0",
-};
+const DEFAULT_DRIVER_CONTRACT = legacyDriverContract;
 
 function normalizeIpAddress(req) {
   const forwarded = req.headers["x-forwarded-for"];
@@ -217,11 +214,10 @@ function emitAdminDashboardChanged(req, payload = {}) {
 }
 
 const createDriverProfileSchema = z.object({
-  residentialAddress: z.string().trim().max(500, "Địa chỉ không được vượt quá 500 ký tự.").optional(),
+  residentialAddress: z.string({ required_error: "Vui lòng nhập địa chỉ cư trú." }).trim().min(1, "Vui lòng nhập địa chỉ cư trú.").max(500, "Địa chỉ không được vượt quá 500 ký tự."),
   // Old app versions omit this field; retain default but mark it as unconfirmed.
   operatingProvinceCode: z.string().refine(isProvinceCode, "Vui lòng chọn tỉnh/thành hợp lệ.").optional(),
-  // Legacy mobile clients omit citizenId until the mobile rollout.
-  citizenId: z.string().trim().regex(/^\d{12}$/, "Số CCCD phải gồm đúng 12 chữ số.").optional(),
+  citizenId: z.string({ required_error: "Vui lòng nhập số CCCD gồm đúng 12 chữ số." }).trim().regex(/^\d{12}$/, "Số CCCD phải gồm đúng 12 chữ số."),
   fullName: z
     .string()
     .trim()
@@ -1127,6 +1123,7 @@ export async function createDriverProfile(req, res) {
     }
 
     const body = createDriverProfileSchema.parse(req.body || {});
+    validateContractSubmission(body,process.env,(await currentDriverContract(prisma)).contract);
     const normalizedPlateNumber = normalizePlateNumber(body.plateNumber);
 
     const user = await prisma.user.findUnique({
@@ -1216,6 +1213,9 @@ export async function createDriverProfile(req, res) {
     const phoneE164 = user.phones?.[0]?.e164 || null;
 
     const profile = await prisma.$transaction(async (tx) => {
+      await lockContractPublication(tx);
+      const currentContract=(await currentDriverContract(tx)).contract;
+      validateContractSubmission(body,process.env,currentContract);
       await tx.user.update({
         where: { id: uid },
         data: {
@@ -1252,19 +1252,7 @@ export async function createDriverProfile(req, res) {
       });
 
       await tx.driverContractAcceptance.create({
-        data: {
-          driverProfileId: createdProfile.id,
-          contractCode: body.contractCode,
-          contractTitle: body.contractTitle,
-          contractVersion: body.contractVersion,
-          contractFileUrl: body.contractFileUrl || null,
-          contractFileHash: body.contractFileHash || null,
-          ipAddress,
-          deviceInfo,
-          appVersion,
-          phoneE164,
-          isActive: true,
-        },
+        data: buildContractAcceptance(body, createdProfile, {ipAddress, deviceInfo, appVersion, phoneE164},process.env,currentContract),
       });
 
       return tx.driverProfile.findUnique({
@@ -1365,6 +1353,7 @@ export async function createDriverProfile(req, res) {
         : null,
     });
   } catch (error) {
+    if (error?.statusCode) return res.status(error.statusCode).json({success:false, message:error.message});
     if (error?.name === "ZodError") {
       return res.status(400).json({
         success: false,

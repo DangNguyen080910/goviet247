@@ -36,7 +36,7 @@ test('backend distinguishes cancelled trips, another driver, own trip, opening t
   ];
   for (const [trip, activeCount, balance, expectedCode] of cases) {
     const tx = { driverProfile:{ findUnique:async () => ({ id:'profile1', status:'VERIFIED', balance }) }, trip:{ findUnique:async () => trip } };
-    const dependencies = {
+    const dependencies = { assertCurrentContractForNewTrip:async()=>{},
       prisma:{ $transaction:fn => fn(tx) },
       getDriverConfigSnapshot:async () => ({ maxActiveTrips:3 }),
       lockDriverProfile:async () => {}, lockTrip:async () => {}, assertTripAcceptanceAllowed:() => {},
@@ -54,3 +54,5 @@ test('backend distinguishes cancelled trips, another driver, own trip, opening t
     }
   }
 });
+
+test('contract reminder reason remains actionable in driver app',()=>{assert.equal(tripAcceptFeedback({code:'CONTRACT_ACCEPTANCE_REQUIRED',message:'Mở Hồ sơ → Hợp đồng để xác nhận.'}),'Mở Hồ sơ → Hợp đồng để xác nhận.');});

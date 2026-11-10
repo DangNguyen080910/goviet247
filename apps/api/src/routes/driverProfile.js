@@ -16,7 +16,13 @@ import {
   markAllDriverNotificationsAsRead,
 } from "../controllers/driverNotificationController.js";
 
+import { prisma } from "../utils/db.js";
+import { makeDriverContractController } from "../controllers/driverContractController.js";
+
 const router = Router();
+const contract = makeDriverContractController(prisma);
+router.get("/contract", verifyToken, contract.current);
+router.post("/contract/accept", verifyToken, contract.accept);
 
 // Lấy hồ sơ tài xế hiện tại
 router.get("/me", verifyToken, getMyDriverProfile);

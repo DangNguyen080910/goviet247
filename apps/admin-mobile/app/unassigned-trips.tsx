@@ -78,7 +78,7 @@ function formatDateTime(value: string | null | undefined) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "-";
 
-  return date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
+  return date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false , day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function buildDestinationList(

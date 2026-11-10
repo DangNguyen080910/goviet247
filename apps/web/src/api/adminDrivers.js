@@ -238,3 +238,11 @@ export async function patchDriverTripAcceptance(id, payload) {
   if (!res.ok || data?.success === false) throw new Error(data?.message || "Không cập nhật được quyền nhận chuyến.");
   return data;
 }
+
+export async function downloadDriverContractEvidence(id) {
+  const res = await fetch(`${BASE_URL}/drivers/${encodeURIComponent(id)}/contract-evidence?format=html`, {headers:getHeaders()});
+  if (!res.ok) {const body=await safeJson(res);throw new Error(body.message || "Không xuất được bản ghi hợp đồng.");}
+  const url=URL.createObjectURL(await res.blob());
+  const link=document.createElement("a");link.href=url;link.download=`ban_ghi_hop_dong_${id}.html`;link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}

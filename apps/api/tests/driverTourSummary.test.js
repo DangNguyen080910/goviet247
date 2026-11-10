@@ -15,9 +15,9 @@ for (const dates of [[], ['2026-11-03']]) test(`five-day driver schedule: ${date
  assert.equal(s.tourDisplay.total, data.waitCost + data.overnightCost + s.fee);
  assert.equal(s.tourDisplay.overnightCount, 4);
  const lines = driverTourSummary(s);
- assert.equal(lines.filter(line => /^2026-11-0[1-5]:/.test(line)).length, 5);
- assert.ok(lines.some(line => line.startsWith(`2026-11-01: ${config.standardName}`)));
- if (dates.length) assert.ok(lines.some(line => line.startsWith('2026-11-03: Bao xe')));
+ assert.equal(lines.filter(line => /^0[1-5]\/11\/2026:/.test(line)).length, 5);
+ assert.ok(lines.some(line => line.startsWith(`01/11/2026: ${config.standardName}`)));
+ if (dates.length) assert.ok(lines.some(line => line.startsWith('03/11/2026: Bao xe')));
  assert.equal(lines.filter(line => line.startsWith('Phụ phí phục vụ tour:')).length, 1);
  assert.equal(lines.some(line => line.startsWith('Phụ phí:')), false);
  assert.ok(lines.includes(config.allInclusiveNotice));
@@ -43,7 +43,7 @@ test('all-charter two-day trip omits the standard block and retains booked terms
   assert.equal(lines.includes(`${snapshot.standardName} — Đã bao gồm trong giá`), false);
   assert.equal(lines.some(line => line.startsWith('Giờ hỗ trợ Tiêu chuẩn:')), false);
   assert.ok(lines.includes(snapshot.charterDescription));
-  assert.equal(lines.filter(line => /^2026-11-0[12]:/.test(line)).length, 2);
+  assert.equal(lines.filter(line => /^0[12]\/11\/2026:/.test(line)).length, 2);
   assert.ok(lines.includes(snapshot.allInclusiveNotice));
   assert.equal(lines.filter(line => line.startsWith('Phụ phí phục vụ tour:')).length, 1);
   assert.equal(lines.includes(snapshot.paymentNotice), !hidePaymentAndScope);

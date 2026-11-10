@@ -1,3 +1,5 @@
+import {makeAdminContractController} from '../controllers/adminContractController.js';
+import { makeDriverContractController } from "../controllers/driverContractController.js";
 import { makeCommissionInvoiceController } from "../controllers/commissionInvoiceController.js";
 import { updateTripDriverNote } from "../controllers/tripDriverNoteController.js";
 // Path: goviet247/apps/api/src/routes/admin.js
@@ -55,6 +57,14 @@ import { uploadAccountingDocument } from "../middleware/uploadMiddleware.js";
 
 const router = Router();
 const ctrl = makeAdminController(prisma);
+const driverContract = makeDriverContractController(prisma);
+const managedContracts=makeAdminContractController(prisma);
+router.get('/contracts/drivers',requireAdmin,managedContracts.list);
+router.post('/contracts/drivers',requireAdmin,managedContracts.save);
+router.patch('/contracts/drivers/:id',requireAdmin,managedContracts.save);
+router.post('/contracts/drivers/:id/publish',requireAdmin,managedContracts.publish);
+router.get('/contracts/drivers-status',requireAdmin,managedContracts.status);
+router.get("/drivers/:id/contract-evidence", requireAdmin, driverContract.exportEvidence);
 router.patch("/trips/:id/driver-note", requireAdminOrStaff, updateTripDriverNote);
 router.get("/quote-history/settings", requireAdmin, getQuoteHistorySettings);
 router.patch("/quote-history/settings", requireAdmin, updateQuoteHistorySettings);

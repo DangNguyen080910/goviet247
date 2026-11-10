@@ -19,7 +19,7 @@ function formatNgayGio(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false , day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function formatGia(v) {
@@ -848,7 +848,7 @@ function AlertsBlock({ detail }) {
             </div>
             <div style={{ fontSize: 13, opacity: 0.9 }}>
               Thời gian gửi:{" "}
-              {a?.sentAt ? new Date(a.sentAt).toLocaleString("vi-VN") : "-"}
+              {a?.sentAt ? new Date(a.sentAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }) : "-"}
             </div>
             <div style={{ fontSize: 13, opacity: 0.9 }}>
               Kênh: {a?.channel || a?.type || "-"}

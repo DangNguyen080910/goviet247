@@ -32,9 +32,9 @@ function quarterRange(year: number, quarter: number) {
 }
 
 export default function LedgerScreen() {
-  const now = new Date();
-  const [quarter, setQuarter] = useState(Math.floor(now.getMonth() / 3) + 1);
-  const [year, setYear] = useState(now.getFullYear());
+  const now = new Date(Date.now() + 7 * 3600000);
+  const [quarter, setQuarter] = useState(Math.floor(now.getUTCMonth() / 3) + 1);
+  const [year, setYear] = useState(now.getUTCFullYear());
   const [cashScope, setCashScope] = useState<"QUARTER" | "ALL">("QUARTER");
   const [cash, setCash] = useState({ totalIn: 0, totalOut: 0, balance: 0 });
   const [report, setReport] = useState<any>(null);

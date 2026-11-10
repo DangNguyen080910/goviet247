@@ -104,7 +104,7 @@ function normalizeText(value) {
 function formatNgayGio(value) {
   if (!value) return "—";
   const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "-" : date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false });
+  return Number.isNaN(date.getTime()) ? "-" : date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false , day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function formatGia(value) {
@@ -477,7 +477,7 @@ export default function AdminTripsAssigned() {
                       <TableCell>
                         <Typography variant="body2">
                           {t.updatedAt
-                            ? new Date(t.updatedAt).toLocaleString("vi-VN")
+                            ? new Date(t.updatedAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
                             : ""}
                         </Typography>
                       </TableCell>

@@ -30,7 +30,7 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, assertCurrentContractForNewTrip:async()=>{}, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });

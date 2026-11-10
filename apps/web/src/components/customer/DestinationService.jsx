@@ -1,3 +1,4 @@
+import {formatVietnamDate} from "../../../../api/src/shared/vietnamDate.js";
 import { driverTourSummary } from "../../../../api/src/shared/driverTourSummary.js";
 import { Box, Typography, TextField, Checkbox, Radio, FormControlLabel, Alert } from "@mui/material";
 import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, destinationQuoteSummary, vnTime } from "../../../../../packages/shared/destinationService.js";
@@ -30,7 +31,7 @@ export default function DestinationService({ config, direction, pickup, returnTi
   <Typography fontWeight={700} sx={{mt:2}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/khung ngày {c.charterStartHour}:00–{c.charterEndHour}:00</Typography><Typography variant="body2">{destinationDescription(c,true)}</Typography>
   <Typography variant="body2" sx={{mt:1}}>Chọn ngày dùng Bao xe. Ngày không chọn áp dụng Tiêu chuẩn.</Typography>
   {windows.map(w=><Box key={w.date} sx={{p:1.5,my:1,border:'1px solid #bfdbfe',borderRadius:2}}>
-    <Typography fontWeight={700}>{w.date}</Typography>
+    <Typography fontWeight={700}>{formatVietnamDate(w.date)}</Typography>
     <FormControlLabel control={<Radio checked={!dates.includes(w.date)} onChange={()=>onDates(dates.filter(d=>d!==w.date))}/>} label={`${c.standardName} — Đã bao gồm trong giá`}/>
     <FormControlLabel control={<Radio disabled={!w.charter} checked={dates.includes(w.date)} onChange={()=>onDates([...dates.filter(d=>d!==w.date),w.date])}/>} label={`${c.charterName} — +${(w.charter?.fee || 0).toLocaleString('vi-VN')}đ`}/>
     <Typography variant="body2">{destinationDayText(w,dates.includes(w.date),c)}</Typography>

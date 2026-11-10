@@ -1,3 +1,4 @@
+import {formatVietnamDate} from './vietnamDate.js';
 export const DEFAULT_DESTINATION_CONFIG = {
   enabled: true,
   title: "Nhu cầu sử dụng xe tại điểm đến",
@@ -66,13 +67,13 @@ export function destinationSummary(snapshot) {
     rows.push(snapshot.title, "Mốc phục vụ: " + snapshot.anchorAddress, snapshot.standardName + " — Đã bao gồm trong giá", snapshot.standardDescription, `Giờ hỗ trợ Tiêu chuẩn: ${snapshot.standardWindow}`);
     if (snapshot.sessions.length) {
       rows.push(snapshot.charterName, snapshot.charterDescription);
-      for (const s of snapshot.sessions) rows.push(`${s.date}: ${destinationSessionText(s)}${s.fee != null ? " · +" + s.fee.toLocaleString("vi-VN") + "đ" : ""}`);
+      for (const s of snapshot.sessions) rows.push(`${formatVietnamDate(s.date)}: ${destinationSessionText(s)}${s.fee != null ? " · +" + s.fee.toLocaleString("vi-VN") + "đ" : ""}`);
       rows.push(snapshot.version >= 3 ? `Phụ phí: ${snapshot.fee.toLocaleString("vi-VN")}đ (${snapshot.sessions.length} ngày chọn Bao xe)` : `Phụ phí: ${snapshot.sessions.length} ngày × ${snapshot.dailyFee.toLocaleString("vi-VN")}đ = ${snapshot.fee.toLocaleString("vi-VN")}đ. Ngày không chọn Bao xe áp dụng Tiêu chuẩn.`);
     }
     if (Array.isArray(snapshot.days)) {
       const selected = new Map(snapshot.sessions.map(s => [s.date,s]));
       for (const day of snapshot.days) {
-        if (!selected.has(day.date)) rows.push(`${day.date}: ${snapshot.standardName} — Đã bao gồm trong giá. ` + (day.standardStart ? `${vnTime(day.standardStart)}–${vnTime(day.standardEnd)}` : 'Không còn khung hỗ trợ đi ăn tại điểm đến.'));
+        if (!selected.has(day.date)) rows.push(`${formatVietnamDate(day.date)}: ${snapshot.standardName} — Đã bao gồm trong giá. ` + (day.standardStart ? `${vnTime(day.standardStart)}–${vnTime(day.standardEnd)}` : 'Không còn khung hỗ trợ đi ăn tại điểm đến.'));
       }
       if (snapshot.days.length && snapshot.days.every(day => selected.has(day.date))) rows.splice(2,3);
     }

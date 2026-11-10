@@ -55,7 +55,7 @@ function formatDateTime(value?: string | null) {
   return date.toLocaleString("vi-VN", {
     hour12: false,
     timeZone: "Asia/Ho_Chi_Minh",
-  });
+   day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function getStatusLabel(status?: string | null) {

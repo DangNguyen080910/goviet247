@@ -17,7 +17,7 @@ export const statuses={PENDING:'Tất cả chuyến đang chờ',PENDING_REVIEW:
 const tripStatusLabel=t=>t.status==='PENDING'?(t.isVerified||t.verifiedAt?'Chờ tài xế':'Chờ duyệt'):statuses[t.status];
 const actions={CREATE_COMPANY:'Tạo công ty',UPDATE_COMPANY:'Cập nhật công ty',CREATE_MEMBER:'Thêm nhân viên',UPDATE_MEMBER:'Cập nhật nhân viên',CHANGE_PASSWORD:'Đổi mật khẩu',CREATE_TRIP:'Tạo chuyến',ASSIGN_TRIP:'Chuyển điều phối',CANCEL_TRIP:'Hủy chuyến'};
 const money=n=>Number(n||0).toLocaleString('vi-VN')+' đ';
-const time=t=>t?new Date(t).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}):'—';
+const time=t=>t?new Date(t).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh', hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }):'—';
 const vehicles={CAR_5:'Xe 5 chỗ',CAR_7:'Xe 7 chỗ',CAR_16:'Xe 16 chỗ'};
 function usePartnerApi(token,companyId) {
   return (path,options={})=>partnerRequest(path,{token,companyId,...options});

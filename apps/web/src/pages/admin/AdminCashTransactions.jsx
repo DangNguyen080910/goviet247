@@ -329,11 +329,11 @@ export default function AdminCashTransactions() {
             {items.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>
-                  {new Date(row.txnDate).toLocaleDateString()}
+                  {new Date(row.txnDate).toLocaleDateString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", day: "2-digit", month: "2-digit", year: "numeric" })}
                 </TableCell>
                 <TableCell>{row.type}</TableCell>
                 <TableCell>{row.category}</TableCell>
-                <TableCell>{row.amount.toLocaleString()}</TableCell>
+                <TableCell>{row.amount.toLocaleString("vi-VN")}</TableCell>
                 <TableCell>{row.note}</TableCell>
                 <TableCell>{row.createdByUsername}</TableCell>
                 <TableCell>

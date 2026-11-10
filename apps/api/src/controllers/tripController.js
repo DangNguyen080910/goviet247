@@ -1,3 +1,4 @@
+import {assertCurrentContractForNewTrip} from '../services/driverContract.js';
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
 import { createAcceptanceChatNotices } from "../services/tripAcceptanceChat.js";
@@ -938,6 +939,7 @@ export async function acceptTrip(req, res) {
       }
 
       assertTripAcceptanceAllowed(driverProfile);
+      await assertCurrentContractForNewTrip(tx,driverProfile);
 
       if (driverProfile.status !== "VERIFIED") {
         throw Object.assign(new Error("Hồ sơ tài xế chưa ở trạng thái được phép nhận chuyến. Vui lòng kiểm tra mục Hồ sơ tài xế hoặc liên hệ GoViet247."), { code: "DRIVER_NOT_VERIFIED", statusCode: 409 });

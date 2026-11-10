@@ -43,7 +43,7 @@ function formatDateTime(value) {
   if (!value) return "--";
   const d = new Date(value);
   if (Number.isNaN(d.getTime())) return "--";
-  return d.toLocaleString("vi-VN");
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function getPhoneText(phones) {

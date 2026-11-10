@@ -77,7 +77,7 @@ test("trip payment instructions remain the booked instructions after admin edits
   assert.equal(later.paymentNotice, "Hướng dẫn mới");
   const lines = destinationSummary(booked);
   assert.ok(lines.includes("Thanh toán trực tiếp cho tài xế sau khi hoàn thành chuyến đi"));
-  assert.ok(lines.some(line => line.includes("2026-11-02") && line.includes("07:00–21:00")));
+  assert.ok(lines.some(line => line.includes("02/11/2026") && line.includes("07:00–21:00")));
   assert.ok(lines.some(line => line.includes("800.000đ")));
   assert.equal(lines.includes(later.paymentNotice), false);
 });
@@ -90,7 +90,7 @@ test('arrival day charter offers dinner and return day remains explicitly standa
  assert.equal(snapshot.sessions[0].end, '2026-10-31T14:00:00.000Z');
  assert.equal(snapshot.sessions[0].hours, 8);
  assert.equal(snapshot.fee, 532857);
- assert.ok(destinationSummary(snapshot).some(line => line.includes('2026-11-01: Tiêu chuẩn') && line.includes('07:00–12:00')));
+ assert.ok(destinationSummary(snapshot).some(line => line.includes('01/11/2026: Tiêu chuẩn') && line.includes('07:00–12:00')));
  const waiting = calculateWaitingTime(new Date('2026-10-31T08:34:00+07:00'), new Date(i.returnTime), undefined, snapshot.sessions);
  assert.equal(waiting.serviceCoveredMinutes, 480);
  assert.equal(waiting.overnightCount, 1);

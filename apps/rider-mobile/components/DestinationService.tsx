@@ -1,3 +1,4 @@
+import {formatVietnamDate} from "../../api/src/shared/vietnamDate.js";
 import React from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, destinationQuoteSummary, vnTime } from "../../../packages/shared/destinationService.js";
@@ -29,7 +30,7 @@ export default function DestinationService({config,direction,pickup,returnTime,o
  <Text style={{fontWeight:"700"}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/khung ngày {c.charterStartHour}:00–{c.charterEndHour}:00</Text><Text>{destinationDescription(c,true)}</Text>
 
  {windows.map(w=><View key={w.date} style={{padding:12,backgroundColor:'#f1f5f9',borderRadius:8,gap:8}}>
-   <Text style={{fontWeight:'700'}}>{w.date}</Text>
+   <Text style={{fontWeight:'700'}}>{formatVietnamDate(w.date)}</Text>
    <Pressable accessibilityRole="radio" accessibilityState={{checked:!dates.includes(w.date)}} onPress={()=>onDates(dates.filter((d:string)=>d!==w.date))}><Text>{!dates.includes(w.date)?'◉':'○'} {c.standardName} — Đã bao gồm trong giá</Text></Pressable>
    <Pressable disabled={!w.charter} accessibilityRole="radio" accessibilityState={{checked:dates.includes(w.date),disabled:!w.charter}} onPress={()=>onDates([...dates.filter((d:string)=>d!==w.date),w.date])}><Text>{dates.includes(w.date)?'◉':'○'} {c.charterName} — +{(w.charter?.fee || 0).toLocaleString('vi-VN')}đ</Text></Pressable>
    <Text>{destinationDayText(w,dates.includes(w.date),c)}</Text>

@@ -27,8 +27,8 @@ test('pasted Maps and other web links preserve query strings, open separately an
 function chatFunction(name,next,deps){const s=read('apps/mobile-chat/TripChat.tsx'),start=s.indexOf(`  async function ${name}(`),end=s.indexOf(`  ${next}`,start);return new Function(...Object.keys(deps),compile(s.slice(start,end))+`;return ${name};`)(...Object.values(deps));}
 test('GPS action posts only current coordinates; denial/cancel sends nothing',async()=>{
  for(const [granted,current,expected] of [[true,true,1],[false,true,0],[true,false,0]]){
- const posts=[];const deps={generation:{current:1},mounted:{current},Keyboard:{dismiss(){}},Location:{requestForegroundPermissionsAsync:async()=>({granted}),getCurrentPositionAsync:async()=>({coords:{latitude:10.5,longitude:106.5}}),Accuracy:{High:1}},tripId:'trip-1',id:()=> 'message-123',post:async(...args)=>posts.push(args),load:async()=>{}};
- const fn=chatFunction('currentLocation','function openMap',deps);if(!granted)await assert.rejects(fn,/Cài đặt/);else await fn();assert.equal(posts.length,expected);if(expected)assert.deepEqual(posts[0][1],{kind:'LOCATION',latitude:10.5,longitude:106.5,locationLabel:'Định vị hiện tại',clientId:'message-123'});
+ const posts=[];const deps={generation:{current:1},mounted:{current},showPermissionSettings:()=>{},Keyboard:{dismiss(){}},Location:{hasServicesEnabledAsync:async()=>true,requestForegroundPermissionsAsync:async()=>({granted}),getCurrentPositionAsync:async()=>({coords:{latitude:10.5,longitude:106.5}}),Accuracy:{High:1}},tripId:'trip-1',id:()=> 'message-123',post:async(...args)=>posts.push(args),load:async()=>{}};
+ const fn=chatFunction('currentLocation','function openMap',deps);await fn();assert.equal(posts.length,expected);if(expected)assert.deepEqual(posts[0][1],{kind:'LOCATION',latitude:10.5,longitude:106.5,locationLabel:'Định vị hiện tại',clientId:'message-123'});
  }
  assert.doesNotMatch(read('apps/mobile-chat/TripChat.tsx'),/Tìm địa chỉ \/ điểm hẹn|async function search\(/);
 });

@@ -1,3 +1,4 @@
+import ContractReminder from '../components/ContractReminder';
 import {fetchDriverNotifications, type DriverNotificationItem} from "../services/notificationApi";
 import { AvailableTripState, confirmsTripUnavailable } from "../../api/src/shared/availableTripState.js";
 import { TripChatButton } from "../services/tripChat";
@@ -1864,6 +1865,7 @@ export default function DashboardScreen() {
             <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
           }
         >
+          <ContractReminder />
           {activeTab === "AVAILABLE"
             ? renderAvailableContent()
             : renderMyTripsContent()}

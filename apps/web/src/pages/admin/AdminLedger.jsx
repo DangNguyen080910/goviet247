@@ -228,7 +228,7 @@ function formatVND(value) {
 }
 
 function getQuarterDateRange(year, quarter) {
-  const safeYear = Number(year) || new Date().getFullYear();
+  const safeYear = Number(year) || new Date(Date.now() + 7 * 3600000).getUTCFullYear();
   const safeQuarter = Number(quarter) || 1;
   const startMonth = (safeQuarter - 1) * 3;
 
@@ -269,7 +269,7 @@ function buildCashExportFilename(filters = {}) {
 
 function buildRevenueReportExportFilename(filters = {}) {
   const quarter = Number(filters?.quarter || 1);
-  const year = Number(filters?.year || new Date().getFullYear());
+  const year = Number(filters?.year || new Date(Date.now() + 7 * 3600000).getUTCFullYear());
 
   return `bao_cao_doanh_thu_loi_nhuan_${filters.month ? `T${filters.month}` : `Q${quarter}`}_${year}.csv`;
 }
@@ -419,7 +419,7 @@ function formatNumber(value) {
 }
 
 function getCurrentQuarter() {
-  return Math.floor(new Date().getMonth() / 3) + 1;
+  return Math.floor(new Date(Date.now() + 7 * 3600000).getUTCMonth() / 3) + 1;
 }
 
 export default function AdminLedger() {
@@ -427,7 +427,7 @@ export default function AdminLedger() {
   const role = String(user?.role || "").toUpperCase();
   const isSuperAdmin = role === "ADMIN";
 
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date(Date.now() + 7 * 3600000).getUTCFullYear();
   const currentQuarter = getCurrentQuarter();
 
   const [docItems, setDocItems] = useState([]);
@@ -537,7 +537,7 @@ export default function AdminLedger() {
   });
 
   const [exportMode, setExportMode] = useState("quarter");
-  const [exportMonth, setExportMonth] = useState(new Date().getMonth() + 1);
+  const [exportMonth, setExportMonth] = useState(new Date(Date.now() + 7 * 3600000).getUTCMonth() + 1);
   const exportVersion = useRef(0);
   const [exportQuarter, setExportQuarter] = useState(currentQuarter);
   const [exportYear, setExportYear] = useState(currentYear);
@@ -887,7 +887,7 @@ export default function AdminLedger() {
         "Ghi chú",
       ],
       ...walletItemsForAccounting.map((row) => [
-        new Date(row.createdAt).toLocaleString("vi-VN"),
+        new Date(row.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }),
         row.id,
         row.driverName,
         row.phone,
@@ -1205,7 +1205,7 @@ export default function AdminLedger() {
         "Người tạo",
       ],
       ...cashItems.map((row) => [
-        new Date(row.txnDate).toLocaleString("vi-VN"),
+        new Date(row.txnDate).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }),
         row.type === "IN" ? "Thu" : "Chi",
         CATEGORY_OPTIONS.find((item) => item.value === row.category)?.label ||
           row.category ||
@@ -1250,7 +1250,7 @@ export default function AdminLedger() {
     const rows = tripItems.map((row) => [
       row.rowTypeLabel || "",
       row.tripId || "",
-      row.eventAt ? new Date(row.eventAt).toLocaleString("vi-VN") : "",
+      row.eventAt ? new Date(row.eventAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }) : "",
       row.driverName || "",
       row.driverPhone || "",
       row.carTypeLabel || "",
@@ -1395,7 +1395,7 @@ export default function AdminLedger() {
       .map(
         (item, index) => `<tr>
           <td class="number">${index + 1}</td>
-          <td>${escapeHtml(item.eventAt ? new Date(item.eventAt).toLocaleDateString("vi-VN") : "")}</td>
+          <td>${escapeHtml(item.eventAt ? new Date(item.eventAt).toLocaleDateString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", day: "2-digit", month: "2-digit", year: "numeric" }) : "")}</td>
           <td>${escapeHtml(item.tripId || "")}</td>
           <td>${escapeHtml(item.driverName || "Chưa có tên")}<br><small>${escapeHtml(item.driverPhone || "—")}</small></td>
           ${renderMoneyCell(item.totalPrice)}
@@ -1507,7 +1507,7 @@ export default function AdminLedger() {
 
     const rows = withdrawItems.map((row) => [
       row.id || "",
-      row.createdAt ? new Date(row.createdAt).toLocaleString("vi-VN") : "",
+      row.createdAt ? new Date(row.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }) : "",
       row.driverProfile?.fullName ||
         row.driverProfile?.user?.displayName ||
         row.driverProfile?.user?.phones?.[0]?.e164 ||
@@ -1518,8 +1518,8 @@ export default function AdminLedger() {
       row.bankAccount?.accountHolderName || "",
       row.amount != null ? row.amount : "",
       row.status || "",
-      row.approvedAt ? new Date(row.approvedAt).toLocaleString("vi-VN") : "",
-      row.paidAt ? new Date(row.paidAt).toLocaleString("vi-VN") : "",
+      row.approvedAt ? new Date(row.approvedAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }) : "",
+      row.paidAt ? new Date(row.paidAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }) : "",
       row.rejectReason || "",
     ]);
 
@@ -1875,8 +1875,7 @@ export default function AdminLedger() {
                               </TableCell>
                               <TableCell>
                                 {new Date(row.createdAt).toLocaleString(
-                                  "vi-VN",
-                                )}
+                                  "vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
                               </TableCell>
                               <TableCell>
                                 <Button
@@ -2335,8 +2334,7 @@ export default function AdminLedger() {
                               </TableCell>
                               <TableCell>
                                 {new Date(row.createdAt).toLocaleString(
-                                  "vi-VN",
-                                )}
+                                  "vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
                               </TableCell>
                               <TableCell>
                                 <Button
@@ -2610,8 +2608,7 @@ export default function AdminLedger() {
                             <TableRow key={row.id}>
                               <TableCell>
                                 {new Date(row.txnDate).toLocaleDateString(
-                                  "vi-VN",
-                                )}
+                                  "vi-VN", { timeZone: "Asia/Ho_Chi_Minh", day: "2-digit", month: "2-digit", year: "numeric" })}
                               </TableCell>
                               <TableCell>{row.type}</TableCell>
                               <TableCell>{row.category}</TableCell>
@@ -2703,8 +2700,7 @@ export default function AdminLedger() {
                             <TableRow key={item.id}>
                               <TableCell>
                                 {new Date(item.createdAt).toLocaleString(
-                                  "vi-VN",
-                                )}
+                                  "vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
                               </TableCell>
                               <TableCell>{item.driverName}</TableCell>
                               <TableCell>{item.phone}</TableCell>
@@ -2797,7 +2793,7 @@ export default function AdminLedger() {
                             <TableCell>{row.tripId}</TableCell>
                             <TableCell>
                               {row.eventAt
-                                ? new Date(row.eventAt).toLocaleString("vi-VN")
+                                ? new Date(row.eventAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
                                 : ""}
                             </TableCell>
                             <TableCell>{row.driverName}</TableCell>
@@ -2923,8 +2919,7 @@ export default function AdminLedger() {
                               <TableCell>
                                 {row.createdAt
                                   ? new Date(row.createdAt).toLocaleString(
-                                      "vi-VN",
-                                    )
+                                      "vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
                                   : ""}
                               </TableCell>
                               <TableCell>
@@ -2953,13 +2948,12 @@ export default function AdminLedger() {
                               <TableCell>
                                 {row.approvedAt
                                   ? new Date(row.approvedAt).toLocaleString(
-                                      "vi-VN",
-                                    )
+                                      "vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
                                   : "-"}
                               </TableCell>
                               <TableCell>
                                 {row.paidAt
-                                  ? new Date(row.paidAt).toLocaleString("vi-VN")
+                                  ? new Date(row.paidAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
                                   : "-"}
                               </TableCell>
                               <TableCell>{row.rejectReason || "-"}</TableCell>

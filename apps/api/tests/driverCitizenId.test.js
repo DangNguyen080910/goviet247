@@ -4,10 +4,11 @@ import { readFileSync } from 'node:fs';
 import { z } from 'zod';
 const source = readFileSync(new URL('../src/controllers/driverProfileController.js', import.meta.url), 'utf8');
 const schema = new Function('z', 'isProvinceCode', 'DEFAULT_DRIVER_CONTRACT', source.slice(source.indexOf('const createDriverProfileSchema ='), source.indexOf('const createDriverBankAccountSchema =')) + '; return createDriverProfileSchema;')(z, () => true, { code: 'test', title: 'Test', version: 'v1' });
-const payload = { fullName: 'Test Driver', vehicleType: 'CAR_5', vehicleBrand: 'Test', vehicleModel: 'Test', vehicleYear: 2026, plateNumber: '51A12345', documents: { CCCD_FRONT: 'a', CCCD_BACK: 'b', PORTRAIT: 'c', DRIVER_LICENSE: 'd', VEHICLE_REGISTRATION: 'e' }, contractAccepted: true };
-test('registration retains leading zeros and supports legacy clients', () => {
+const payload = { citizenId: '001234567890', residentialAddress: '12 Nguyễn Trãi, TP. Hồ Chí Minh', fullName: 'Test Driver', vehicleType: 'CAR_5', vehicleBrand: 'Test', vehicleModel: 'Test', vehicleYear: 2026, plateNumber: '51A12345', documents: { CCCD_FRONT: 'a', CCCD_BACK: 'b', PORTRAIT: 'c', DRIVER_LICENSE: 'd', VEHICLE_REGISTRATION: 'e' }, contractAccepted: true };
+test('registration requires CCCD and retains leading zeros', () => {
   assert.equal(schema.parse({ ...payload, citizenId: ' 001234567890 ' }).citizenId, '001234567890');
-  assert.equal(schema.parse(payload).citizenId, undefined);
+  const { citizenId, ...missing } = payload;
+  assert.equal(schema.safeParse(missing).success, false);
 });
 test('registration rejects invalid or numeric CCCD values', () => {
   for (const citizenId of ['', '12345678901', '1234567890123', '00123456789A', 123456789012, null]) assert.equal(schema.safeParse({ ...payload, citizenId }).success, false);
@@ -56,10 +57,11 @@ test('registration supports explicit electric/gasoline fuel and legacy missing v
   for(const vehicleFuelType of ['ANY','',null,123,'DIESEL']) assert.equal(schema.safeParse({...payload,vehicleFuelType}).success,false);
 });
 
-test('address is optional, trimmed and limited to 500 characters', () => {
+test('address is required, trimmed and limited to 500 characters', () => {
   assert.equal(schema.parse({ ...payload, residentialAddress: '  12 Nguyễn Trãi, TP. Hồ Chí Minh  ' }).residentialAddress, '12 Nguyễn Trãi, TP. Hồ Chí Minh');
-  assert.equal(schema.parse(payload).residentialAddress, undefined);
-  for (const residentialAddress of [123, null, 'x'.repeat(501)]) assert.equal(schema.safeParse({ ...payload, residentialAddress }).success, false);
+  const { residentialAddress, ...missing } = payload;
+  assert.equal(schema.safeParse(missing).success, false);
+  for (const residentialAddress of ['', '   ', 123, null, 'x'.repeat(501)]) assert.equal(schema.safeParse({ ...payload, residentialAddress }).success, false);
 });
 test('admin can backfill and clear address with an audit entry', async () => {
   const date = new Date('2026-11-07T00:00:00Z');

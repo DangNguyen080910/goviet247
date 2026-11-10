@@ -63,7 +63,7 @@ function formatDateTime(input) {
 
   return d.toLocaleString("vi-VN", {
     timeZone: "Asia/Ho_Chi_Minh",
-  });
+   hour12: false, day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function formatPrice(value) {

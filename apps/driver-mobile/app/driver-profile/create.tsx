@@ -1,6 +1,6 @@
 import OperatingProvincePicker from "../../components/OperatingProvincePicker";
 // Path: goviet247/apps/driver-mobile/app/driver-profile/create.tsx
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { router } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import {
@@ -25,6 +25,8 @@ import {
 import { logoutSession } from "../../services/authApi";
 import { getDriverToken } from "../../services/storage";
 import {
+  getDriverContract,
+  type DriverContractDocument,
   createDriverProfile,
   type DriverDocumentType,
   uploadDriverDocument,
@@ -84,6 +86,15 @@ export default function DriverProfileCreateScreen() {
   const [contractModalVisible, setContractModalVisible] = useState(false);
   const [contractCheckedInModal, setContractCheckedInModal] = useState(false);
   const [hasAcceptedContract, setHasAcceptedContract] = useState(false);
+  const [contractDocument, setContractDocument] = useState<DriverContractDocument | null>(null);
+  const [contractLoading, setContractLoading] = useState(false);
+  const [contractError, setContractError] = useState("");
+  const [acceptedIdentity, setAcceptedIdentity] = useState("");
+  const identityKey = JSON.stringify([fullName.trim(), citizenId.trim(), residentialAddress.trim(), plateNumber.trim().toUpperCase()]);
+
+  useEffect(() => {
+    if (acceptedIdentity !== identityKey) {setHasAcceptedContract(false);setContractCheckedInModal(false);}
+  }, [identityKey, acceptedIdentity]);
 
   const allDocsUploaded = useMemo(() => {
     return DOCUMENT_ITEMS.every((item) => !!uploadedDocs[item.type]?.fileUrl);
@@ -94,6 +105,8 @@ export default function DriverProfileCreateScreen() {
       operatingProvinceCode.length > 0 &&
       fullName.trim().length >= 2 &&
       /^\d{12}$/.test(citizenId.trim()) &&
+      residentialAddress.trim().length > 0 &&
+      residentialAddress.trim().length <= 500 &&
       vehicleType.trim().length > 0 &&
       vehicleBrand.trim().length > 0 &&
       !!vehicleFuelType &&
@@ -107,6 +120,7 @@ export default function DriverProfileCreateScreen() {
     operatingProvinceCode,
     fullName,
     citizenId,
+    residentialAddress,
     vehicleType,
     vehicleBrand,
     vehicleFuelType,
@@ -225,9 +239,16 @@ export default function DriverProfileCreateScreen() {
     }
   };
 
-  const openContractModal = () => {
-    setContractCheckedInModal(hasAcceptedContract);
-    setContractModalVisible(true);
+  const openContractModal = async () => {
+    setHasAcceptedContract(false); setContractCheckedInModal(false); setContractDocument(null);
+    setContractError(""); setContractModalVisible(true); setContractLoading(true);
+    try {
+      const token = await getDriverToken();
+      if (!token) throw new Error("Phiên đăng nhập đã hết hạn.");
+      const data = await getDriverContract(token);
+      setContractDocument(data.contract);
+    } catch (error: any) { setContractError(error?.message || "Không tải được hợp đồng."); }
+    finally { setContractLoading(false); }
   };
 
   const closeContractModal = () => {
@@ -235,12 +256,13 @@ export default function DriverProfileCreateScreen() {
   };
 
   const confirmContractAcceptance = () => {
-    if (!contractCheckedInModal) {
+    if (!contractCheckedInModal || !contractDocument || contractLoading) {
       setErrorText("Vui lòng xác nhận bạn đã đọc và đồng ý hợp đồng.");
       return;
     }
 
     setHasAcceptedContract(true);
+    setAcceptedIdentity(identityKey);
     setErrorText("");
     setContractModalVisible(false);
   };
@@ -258,6 +280,10 @@ export default function DriverProfileCreateScreen() {
 
   const handleSubmit = async () => {
     const yearNumber = Number(vehicleYear.trim());
+    if (!contractDocument || acceptedIdentity !== identityKey) {
+      setHasAcceptedContract(false);
+      setErrorText("Vui lòng kiểm tra thông tin và mở hợp đồng để xác nhận trước khi gửi."); return;
+    }
 
     if (!fullName.trim()) {
       setErrorText("Vui lòng nhập họ và tên.");
@@ -266,6 +292,11 @@ export default function DriverProfileCreateScreen() {
 
     if (!/^\d{12}$/.test(citizenId.trim())) {
       setErrorText("Vui lòng nhập số CCCD gồm đúng 12 chữ số.");
+      return;
+    }
+
+    if (!residentialAddress.trim() || residentialAddress.trim().length > 500) {
+      setErrorText("Vui lòng nhập địa chỉ cư trú (tối đa 500 ký tự).");
       return;
     }
 
@@ -343,9 +374,10 @@ export default function DriverProfileCreateScreen() {
         },
 
         contractAccepted: true,
-        contractCode: "GOVIET247_DRIVER_PARTNERSHIP",
-        contractTitle: "Hợp đồng hợp tác tài xế GoViet247",
-        contractVersion: "v1.0",
+        contractCode: contractDocument.code,
+        contractTitle: contractDocument.title,
+        contractVersion: contractDocument.version,
+        contractFileHash: contractDocument.contentHash,
         contractAppVersion: "driver-mobile-web-dev",
       });
 
@@ -421,7 +453,7 @@ export default function DriverProfileCreateScreen() {
                 placeholderTextColor="#9CA3AF"
               />
 
-              <Text style={styles.label}>Địa chỉ cư trú</Text>
+              <Text style={styles.label}>Địa chỉ cư trú (bắt buộc)</Text>
               <TextInput value={residentialAddress} onChangeText={setResidentialAddress}
                 placeholder="Số nhà, đường / ấp, thôn, phường / xã, tỉnh / thành phố"
                 multiline maxLength={500} editable={!submitting}
@@ -673,80 +705,22 @@ export default function DriverProfileCreateScreen() {
               contentContainerStyle={styles.modalContentInner}
               showsVerticalScrollIndicator={false}
             >
-              <Text style={styles.contractParagraph}>
-                Bằng việc tham gia nền tảng GoViet247, tài xế xác nhận đã đọc,
-                hiểu và đồng ý hợp tác với vai trò đối tác vận hành độc lập.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                Tài xế cam kết cung cấp thông tin cá nhân, thông tin phương tiện
-                và giấy tờ hợp lệ, trung thực, còn hiệu lực. Mọi hành vi cung
-                cấp thông tin sai lệch có thể dẫn đến từ chối hồ sơ hoặc khóa
-                tài khoản.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                Tài xế hiểu rằng GoViet247 là nền tảng kết nối chuyến đi. Tài xế
-                có trách nhiệm thực hiện chuyến đúng thông tin đã nhận, liên hệ
-                khách lịch sự, đón đúng giờ và tuân thủ quy định vận hành của hệ
-                thống.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                Tài xế đồng ý rằng các khoản hoa hồng, khoản giữ lại, nghĩa vụ
-                phí hoặc nghĩa vụ vận hành khác sẽ được áp dụng theo cấu hình và
-                chính sách hiện hành của hệ thống tại từng thời điểm.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                Tài xế hiểu và đồng ý rằng mọi nghĩa vụ thuế phát sinh từ thu
-                nhập cá nhân là trách nhiệm của tài xế theo quy định pháp luật.
-                Hệ thống GoViet247 có thể hỗ trợ tính toán, tạm giữ hoặc khấu
-                trừ các khoản liên quan đến thuế trực tiếp từ ví tài xế để hỗ
-                trợ việc thực hiện nghĩa vụ này.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                Tài xế đồng ý rằng các khoản hoa hồng, phí hoặc nghĩa vụ tài
-                chính có thể được trừ trực tiếp vào số dư ví tài xế trên hệ
-                thống.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                Tài xế cam kết bảo mật thông tin khách hàng, không sử dụng dữ
-                liệu chuyến đi sai mục đích, không tự ý thu thêm khoản ngoài
-                thỏa thuận nếu không có xác nhận hợp lệ từ hệ thống hoặc khách
-                hàng.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                GoViet247 không đảm bảo số lượng chuyến đi, thu nhập hoặc tần
-                suất hoạt động cho tài xế. Việc nhận chuyến phụ thuộc vào nhu
-                cầu thị trường và sự chủ động của tài xế.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                GoViet247 có quyền xem xét, tạm ngưng hoặc chấm dứt quyền hoạt
-                động của tài xế nếu phát hiện vi phạm quy định, có hành vi gian
-                lận, ảnh hưởng xấu đến khách hàng hoặc ảnh hưởng đến uy tín nền
-                tảng.
-              </Text>
-
-              <Text style={styles.contractParagraph}>
-                GoViet247 có quyền cập nhật, thay đổi chính sách, mức phí hoặc
-                quy định vận hành theo từng thời điểm mà không cần ký lại hợp
-                đồng, và sẽ được thông báo thông qua hệ thống.
-              </Text>
-              <Text style={styles.contractParagraph}>Không được xin số điện thoại của khách hàng hoặc cung cấp số điện thoại cá nhân cho khách, kể cả khi khách yêu cầu. Mọi liên hệ cho chuyến đi thực hiện qua ứng dụng GoViet247. Khi GoViet247 xác minh có vi phạm, khách hàng được miễn phí chuyến đi liên quan và tài khoản tài xế bị khoá vĩnh viễn. Trường hợp không liên hệ được qua ứng dụng, tài xế phải nhờ GoViet247 hỗ trợ.</Text>
-
-              <Text style={styles.contractParagraph}>
-                Khi bấm xác nhận, tài xế đồng ý rằng đây là sự chấp thuận điện
-                tử có giá trị dùng để hoàn tất bước đăng ký hồ sơ tài xế trên hệ
-                thống.
-              </Text>
+              {contractLoading && <ActivityIndicator />}
+              {!!contractError && <Text style={styles.contractParagraph}>{contractError}</Text>}
+              {!!contractError && <TouchableOpacity onPress={openContractModal}><Text style={styles.contractParagraph}>Thử tải lại hợp đồng</Text></TouchableOpacity>}
+              {contractDocument && <>
+                <Text style={styles.contractParagraph}>{contractDocument.title} · {contractDocument.version}</Text>
+                <Text style={styles.contractParagraph}>Tài xế: {fullName.trim()} · CCCD: {citizenId.trim()} · Địa chỉ: {residentialAddress.trim()} · Biển số: {plateNumber.trim().toUpperCase()}</Text>
+                {contractDocument.company && <Text style={styles.contractParagraph}>{contractDocument.company.name} · MST {contractDocument.company.taxCode} · {contractDocument.company.address} · Đại diện {contractDocument.company.representative}, {contractDocument.company.position}</Text>}
+                {contractDocument.sections.map(section => <View key={section.heading}>
+                  <Text style={[styles.contractParagraph, {fontWeight: "700"}]}>{section.heading}</Text>
+                  {section.paragraphs.map((text, index) => <Text key={index} style={styles.contractParagraph}>{text}</Text>)}
+                </View>)}
+              </>}
 
               <TouchableOpacity
                 style={styles.checkboxRow}
+                disabled={!contractDocument || contractLoading}
                 onPress={() => setContractCheckedInModal((prev) => !prev)}
                 activeOpacity={0.85}
               >
@@ -762,7 +736,7 @@ export default function DriverProfileCreateScreen() {
                 </View>
 
                 <Text style={styles.checkboxText}>
-                  Tôi đã đọc kỹ và đồng ý với hợp đồng hợp tác tài xế.
+                  {contractDocument?.confirmation || "Vui lòng tải đầy đủ hợp đồng trước khi xác nhận."}
                 </Text>
               </TouchableOpacity>
             </ScrollView>

@@ -1,3 +1,4 @@
+import {formatVietnamDate} from './vietnamDate.js';
 import { destinationSummary, destinationSessionText, vnDay, vnTime } from './destinationService.js';
 
 export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}) {
@@ -7,7 +8,7 @@ export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}
   // Replace only the old itemized charter-fee line; retain all service terms.
   const display = snapshot?.tourDisplay;
   const result = rows.filter(line => !String(line).startsWith('Phụ phí: ')
-    && !(display?.arrival && display?.returnTime && /^\d{4}-\d{2}-\d{2}:/.test(String(line))));
+    && !(display?.arrival && display?.returnTime && /^(?:\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4}):/.test(String(line))));
   if (snapshot?.eligible && display?.arrival && display?.returnTime) {
     const sessions = new Map((snapshot.sessions || []).map(session => [session.date, session]));
     const first = Date.parse(vnDay(display.arrival) + 'T00:00:00+07:00');
@@ -20,8 +21,8 @@ export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}
       const dayInfo = snapshot.days?.find(day => day.date === date);
       if (!session) standardDays++;
       schedule.push(session
-        ? `${date}: ${snapshot.charterName} · ${destinationSessionText(session)}`
-        : `${date}: ${snapshot.standardName}${dayInfo ? dayInfo.standardStart ? " · " + vnTime(dayInfo.standardStart) + "–" + vnTime(dayInfo.standardEnd) : " · Không còn khung hỗ trợ đi ăn tại điểm đến" : ""}`);
+        ? `${formatVietnamDate(date)}: ${snapshot.charterName} · ${destinationSessionText(session)}`
+        : `${formatVietnamDate(date)}: ${snapshot.standardName}${dayInfo ? dayInfo.standardStart ? " · " + vnTime(dayInfo.standardStart) + "–" + vnTime(dayInfo.standardEnd) : " · Không còn khung hỗ trợ đi ăn tại điểm đến" : ""}`);
     }
     // destinationSummary puts the standard heading, description and hours after the anchor.
     // Hide that block only when every itinerary date has a booked charter session.

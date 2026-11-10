@@ -976,6 +976,7 @@ model DriverContractAcceptance {
   contractVersion  String
   contractFileUrl  String?
   contractFileHash String?
+  contentSnapshot  Json?
   agreedAt         DateTime  @default(now()) @db.Timestamptz(6)
   otpVerifiedAt    DateTime? @db.Timestamptz(6)
   ipAddress        String?
@@ -1253,4 +1254,20 @@ model CommissionInvoiceState {
   confirmedBy String?
   trip Trip @relation(fields:[tripId], references:[id], onDelete:Cascade)
   @@index([issuedAt, recognizedAt])
+}
+
+// Published content is immutable; a replacement is a new version.
+model DriverContractVersion {
+  id String @id @default(cuid())
+  version String @unique
+  content Json
+  changeSummary String
+  graceDays Int @default(7)
+  requireForNewTrips Boolean @default(false)
+  createdBy String
+  publishedBy String?
+  publishedAt DateTime? @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+  @@index([publishedAt])
 }

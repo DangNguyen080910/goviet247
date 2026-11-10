@@ -119,6 +119,32 @@ export type DriverWalletSummaryData = {
   recentWithdrawRequests: DriverWithdrawRequestItem[];
 };
 
+export type DriverContractDocument = {
+  code: string; title: string; version: string; contentHash: string;
+  company?: { name: string; taxCode: string; address: string; representative: string; position: string; phone: string };
+  sections: {heading: string; paragraphs: string[]}[]; confirmation: string;
+};
+export type DriverContractResponse = {
+  success: true; contract: DriverContractDocument;
+  needsAcceptance?: boolean;
+  release?: null | {version:string;changeSummary:string;publishedAt:string;deadline:string;graceDays:number;requireForNewTrips:boolean};
+  history?: Array<{id:string;contractVersion:string;agreedAt:string;evidenceNotice:string;contentSnapshot?:{contentVerified?:boolean;content?:DriverContractDocument;identity?:Record<string,unknown>}}>;
+  profile: null | {id: string; fullName: string; citizenId: string | null; residentialAddress: string | null; plateNumber: string | null; phone: string | null; updatedAt: string};
+  acceptance: null | {id: string; contractVersion: string; agreedAt: string; contractFileHash: string | null; evidenceNotice: string; contentSnapshot?: {contentVerified?: boolean; identity?: Record<string, unknown>}};
+};
+export async function getDriverContract(token: string): Promise<DriverContractResponse> {
+  const response = await fetch(`${API_BASE_URL}/api/driver/profile/contract`, {headers: buildAuthHeaders(token)});
+  const body = await parseJsonSafe(response);
+  if (!response.ok || !body?.success || !body.contract?.contentHash) throw new Error(body?.message || "Không tải được hợp đồng. Vui lòng thử lại.");
+  return body as DriverContractResponse;
+}
+export async function acceptDriverContract(token: string, contract: DriverContractDocument, expectedUpdatedAt: string) {
+  const response = await fetch(`${API_BASE_URL}/api/driver/profile/contract/accept`, {method: "POST", headers: buildAuthHeaders(token), body: JSON.stringify({contractAccepted:true, contractCode:contract.code, contractVersion:contract.version, contractFileHash:contract.contentHash, expectedUpdatedAt})});
+  const body = await parseJsonSafe(response);
+  if (!response.ok || !body?.success) throw new Error(body?.message || "Không xác nhận được hợp đồng. Vui lòng tải lại.");
+  return body;
+}
+
 export type DriverContractSubmitPayload = {
   contractAccepted: true;
   contractCode: string;

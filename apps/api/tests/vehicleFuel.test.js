@@ -5,6 +5,7 @@ import * as audiencePolicy from '../src/services/tripAudiencePolicy.js';
 const quiet = { log(){}, error(){} };
 function controller(name,deps){
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8').replace(/^import[\s\S]*?;\n/gm,'').replace(/export /g,'');
+  deps={assertCurrentContractForNewTrip:async()=>{},...deps};
   return new Function(...Object.keys(deps),source+`; return ${name};`)(...Object.values(deps));
 }
 function response(){return {statusCode:200,status(code){this.statusCode=code;return this;},json(body){this.body=body;return this;}};}
@@ -25,7 +26,7 @@ test('acceptance uses admin audience, not customer fuel, for electric, gasoline 
   const a=raw.indexOf('export async function acceptTrip('),b=raw.indexOf('\n}',a)+2;
   for(const preference of ['GASOLINE','ELECTRIC']) for(const fuel of ['ELECTRIC','GASOLINE',null]) for(const audience of [[],['other']]){
     const tx={driverProfile:{findUnique:async()=>({status:'VERIFIED',balance:0,vehicleFuelType:fuel})},trip:{findUnique:async()=>({id:'t',status:'PENDING',isVerified:true,verifiedAt:new Date(),fuelPreference:preference,audienceDriverIds:audience})}};
-    const deps={prisma:{$transaction:fn=>fn(tx)},...audiencePolicy,getDriverConfigSnapshot:async()=>({maxActiveTrips:3}),lockDriverProfile:async()=>{},lockTrip:async()=>{},assertTripAcceptanceAllowed:()=>{},countDriverActiveTrips:async()=>0,calculateDriverFinanceSnapshot:()=>({requiredWalletAmount:95000}),console:quiet};
+    const deps={assertCurrentContractForNewTrip:async()=>{},prisma:{$transaction:fn=>fn(tx)},...audiencePolicy,getDriverConfigSnapshot:async()=>({maxActiveTrips:3}),lockDriverProfile:async()=>{},lockTrip:async()=>{},assertTripAcceptanceAllowed:()=>{},countDriverActiveTrips:async()=>0,calculateDriverFinanceSnapshot:()=>({requiredWalletAmount:95000}),console:quiet};
     const handler=new Function(...Object.keys(deps),raw.slice(a,b).replace('export ','')+';return acceptTrip;')(...Object.values(deps));
     const res=response();await handler({body:{tripId:'t'},user:{id:'d'}},res);
     // A public trip reaches the wallet check regardless of fuel; a private trip still rejects outsiders first.
