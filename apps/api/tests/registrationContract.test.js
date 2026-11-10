@@ -45,3 +45,19 @@ test('registration endpoint serves softened content to users without a driver pr
  assert.equal(res.body.needsAcceptance,false);
  assert.equal(res.body.history.length,0);
 });
+
+test('temporary compatibility records the legacy app consent without claiming a verified snapshot', async () => {
+ const { registrationContractForSubmission } = await import('../src/services/driverContract.js');
+ const body = { contractAccepted: true, contractCode: legacy.code, contractVersion: legacy.version };
+ const db = store(null);
+ const env = { DRIVER_REGISTRATION_ALLOW_LEGACY_V1: 'true' };
+ const selected = await registrationContractForSubmission(db, body, env);
+ const record = buildContractAcceptance(body, {id:'p',userId:'u'}, {}, env, selected);
+ assert.equal(record.contractVersion, 'v1.0');
+ assert.equal(record.contentSnapshot.contentVerified, false);
+ const strict = await registrationContractForSubmission(db, body, {});
+ assert.throws(() => validateContractSubmission(body, {}, strict), {statusCode:409});
+ const modern = await registrationDriverContract(db, env);
+ const modernBody = {...body, contractVersion:modern.contract.version, contractFileHash:modern.contract.contentHash};
+ assert.deepEqual(await registrationContractForSubmission(db, modernBody, env), modern.contract);
+});

@@ -1,4 +1,4 @@
-import { legacyDriverContract, validateContractSubmission, buildContractAcceptance, registrationDriverContract, lockContractPublication } from "../services/driverContract.js";
+import { legacyDriverContract, validateContractSubmission, buildContractAcceptance, registrationContractForSubmission, lockContractPublication } from "../services/driverContract.js";
 import { isProvinceCode } from "../services/driverOperatingProvince.js";
 // Path: goviet247/apps/api/src/controllers/driverProfileController.js
 import { lockDriverProfile } from "../services/tripAcceptancePolicy.js";
@@ -1123,7 +1123,7 @@ export async function createDriverProfile(req, res) {
     }
 
     const body = createDriverProfileSchema.parse(req.body || {});
-    validateContractSubmission(body,process.env,(await registrationDriverContract(prisma)).contract);
+    validateContractSubmission(body,process.env,await registrationContractForSubmission(prisma, body));
     const normalizedPlateNumber = normalizePlateNumber(body.plateNumber);
 
     const user = await prisma.user.findUnique({
@@ -1214,7 +1214,7 @@ export async function createDriverProfile(req, res) {
 
     const profile = await prisma.$transaction(async (tx) => {
       await lockContractPublication(tx);
-      const currentContract=(await registrationDriverContract(tx)).contract;
+      const currentContract=await registrationContractForSubmission(tx, body);
       validateContractSubmission(body,process.env,currentContract);
       await tx.user.update({
         where: { id: uid },

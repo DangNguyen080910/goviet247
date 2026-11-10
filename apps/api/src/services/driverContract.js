@@ -91,3 +91,16 @@ export async function registrationDriverContract(db, env = process.env) {
   content.version = original.version === legacy.version ? 'v1.1-2026-11-10' : `${original.version}-contact-20261110`;
   return {contract: {...content, contentHash: contractHash(content)}, release: null};
 }
+
+// The released 1.1.7 app submits v1.0 without a hash. Preserve its actual
+// acceptance version and leave content verification to hash-capable clients.
+export async function registrationContractForSubmission(db, body, env = process.env) {
+  if (
+    env.DRIVER_REGISTRATION_ALLOW_LEGACY_V1 === 'true' &&
+    body.contractVersion === legacy.version &&
+    !body.contractFileHash
+  ) {
+    return {...structuredClone(legacy), contentHash: contractHash(legacy)};
+  }
+  return (await registrationDriverContract(db, env)).contract;
+}
