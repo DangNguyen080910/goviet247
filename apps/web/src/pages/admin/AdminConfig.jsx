@@ -1902,16 +1902,16 @@ export default function AdminConfig() {
               icon={<WarningAmberIcon />}
               iconPosition="start"
             />
+            <Tab label="Hợp đồng" icon={<LockOutlinedIcon />} iconPosition="start" />
             <Tab
               label="Hệ thống"
               icon={<LockOutlinedIcon />}
               iconPosition="start"
             />
-            <Tab label="Hợp đồng" icon={<LockOutlinedIcon />} iconPosition="start" />
           </Tabs>
 
           <Box sx={{ p: 3 }}>
-            <TabPanel value={tab} index={8}><ContractConfig /></TabPanel>
+            <TabPanel value={tab} index={7}><ContractConfig /></TabPanel>
             <TabPanel value={tab} index={1}><DestinationServiceConfig /></TabPanel>
             {/* TAB 1: GIÁ CƯỚC */}
             <TabPanel value={tab} index={0}>
@@ -2754,7 +2754,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 6: HỆ THỐNG */}
-            <TabPanel value={tab} index={7}>
+            <TabPanel value={tab} index={8}>
               <Stack spacing={2.5}>
                 {loadingSystemConfig ? (
                   <Paper
