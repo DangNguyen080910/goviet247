@@ -1,6 +1,6 @@
 // Path: goviet247/apps/driver-mobile/app/bootstrap.tsx
 import { useEffect, useState } from "react";
-import { router } from "expo-router";
+import { router, type Href } from "expo-router";
 import {
   ActivityIndicator,
   Pressable,
@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { getDriverToken, removeDriverToken } from "../services/storage";
 import { ApiError, getMe } from "../services/authApi";
-import { getMyDriverProfile } from "../services/driverProfileApi";
+import { getDriverContract, getMyDriverProfile } from "../services/driverProfileApi";
 import { refreshPushNotifications } from "../services/pushRegister";
 
 function isDriverRole(role: string | null | undefined) {
@@ -51,6 +51,13 @@ export default function BootstrapScreen() {
 
         if (!data?.hasDriverProfile) {
           router.replace("/driver-profile/create");
+          return;
+        }
+
+        const agreement = await getDriverContract((await getDriverToken()) || token);
+        if (!active) return;
+        if (agreement.needsAcceptance) {
+          router.replace("/driver-contract?required=1" as Href);
           return;
         }
 

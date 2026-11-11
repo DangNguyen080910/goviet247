@@ -112,6 +112,7 @@ export type DriverWithdrawRequestItem = {
 };
 
 export type DriverWalletSummaryData = {
+  hasActiveWithdrawal?: boolean;
   balance: number;
   defaultBankAccount?: DriverBankAccountSummary | null;
   bankAccounts: DriverBankAccountSummary[];

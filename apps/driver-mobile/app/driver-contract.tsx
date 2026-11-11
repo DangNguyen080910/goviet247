@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, ActivityIndicator, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DRIVER_CONTRACT_RECONSENT_VISIBLE } from "../constants/contractFeatures";
-import { Redirect, router } from "expo-router";
-import { getDriverToken } from "../services/storage";
+import { Redirect, router, useLocalSearchParams } from "expo-router";
+import { getDriverToken, removeDriverToken } from "../services/storage";
 import { getDriverContract, acceptDriverContract, type DriverContractResponse } from "../services/driverProfileApi";
 export default function DriverContractScreen() {
   return DRIVER_CONTRACT_RECONSENT_VISIBLE ? <ActiveContractScreen /> : <Redirect href="/dashboard" />;
 }
 function ActiveContractScreen() {
+  const required = useLocalSearchParams<{ required?: string }>().required === "1";
   const [data,setData] = useState<DriverContractResponse | null>(null);
   const [viewHistory,setViewHistory] = useState<string|null>(null);
   const [busy,setBusy] = useState(false); const [error,setError] = useState(""); const [checked,setChecked] = useState(false);
   async function load() {
     setBusy(true);setError("");setChecked(false);setData(null);
-    try { const token = await getDriverToken(); if (!token) throw new Error("Vui lòng đăng nhập lại."); setData(await getDriverContract(token)); }
+    try { const token = await getDriverToken(); if (!token) throw new Error("Vui lòng đăng nhập lại."); const next = await getDriverContract(token); if (required && !next.needsAcceptance) router.replace("/bootstrap"); else setData(next); }
     catch(e:any){setError(e.message || "Không tải được hợp đồng.");}finally{setBusy(false);}
   }
   useEffect(()=>{void load();},[]);
@@ -27,7 +28,11 @@ function ActiveContractScreen() {
   const missingIdentity=!!data?.release && (!data.profile?.residentialAddress?.trim() || !/^\d{12}$/.test(data.profile?.citizenId||''));
   const p={fontSize:16,lineHeight:24,marginBottom:12,color:"#17202a"};
   return <SafeAreaView style={{flex:1,backgroundColor:"white"}}><ScrollView contentContainerStyle={{padding:20}}>
-    <TouchableOpacity onPress={()=>router.back()}><Text style={p}>‹ Quay lại</Text></TouchableOpacity>
+    {required ? (
+      <TouchableOpacity onPress={async () => { await removeDriverToken(); router.replace("/"); }}>
+        <Text style={p}>Đăng xuất</Text>
+      </TouchableOpacity>
+    ) : <TouchableOpacity onPress={()=>router.back()}><Text style={p}>‹ Quay lại</Text></TouchableOpacity>}
     <Text style={[p,{fontSize:22,fontWeight:"700"}]}>Hợp đồng tài xế</Text>
     {busy && <ActivityIndicator/>}{!!error && <Text style={[p,{color:"#b42318"}]}>{error}</Text>}
     <TouchableOpacity disabled={busy} onPress={load}><Text style={[p,{color:"#1676D2"}]}>Tải lại</Text></TouchableOpacity>

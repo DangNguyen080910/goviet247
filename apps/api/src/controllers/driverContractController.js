@@ -1,4 +1,4 @@
-import { registrationDriverContract, driverContractReconsentEnabled, activeDriverContract, buildContractAcceptance, acceptanceEvidence, renderContractEvidence, currentDriverContract, lockContractPublication } from '../services/driverContract.js';
+import { registrationDriverContract, driverContractReconsentEnabled, buildContractAcceptance, acceptanceEvidence, renderContractEvidence, currentDriverContract, lockContractPublication } from '../services/driverContract.js';
 const replyError = (res, error) => {
   if (!error.statusCode) console.error('[DriverContract]', error);
   return res.status(error.statusCode || 500).json({success:false, message:error.statusCode ? error.message : 'Không xử lý được hợp đồng. Vui lòng thử lại.'});
@@ -12,15 +12,16 @@ export function makeDriverContractController(db, env = process.env) {
         const latest = profile ? await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,isActive:true},orderBy:[{agreedAt:'desc'},{id:'desc'}]}) : null;
         const history=profile?await db.driverContractAcceptance.findMany({where:{driverProfileId:profile.id},orderBy:[{agreedAt:'desc'},{id:'desc'}]}):[];
         res.setHeader('Cache-Control','no-store');
-        return res.json({success:true,contract,release,reconsentEnabled:driverContractReconsentEnabled(env),needsAcceptance:driverContractReconsentEnabled(env) && !!profile && !(latest?.contractVersion===contract.version && latest?.contractFileHash===contract.contentHash),history:history.map(acceptanceEvidence),profile:profile ? {id:profile.id,fullName:profile.fullName,citizenId:profile.citizenId,residentialAddress:profile.residentialAddress,plateNumber:profile.plateNumber,phone:profile.user?.phones?.[0]?.e164 || null,updatedAt:profile.updatedAt} : null,acceptance:latest ? acceptanceEvidence(latest) : null});
+        return res.json({success:true,contract,release,reconsentEnabled:driverContractReconsentEnabled(env, contract),needsAcceptance:driverContractReconsentEnabled(env, contract) && !!profile && !(latest?.contractVersion===contract.version && latest?.contractFileHash===contract.contentHash),history:history.map(acceptanceEvidence),profile:profile ? {id:profile.id,fullName:profile.fullName,citizenId:profile.citizenId,residentialAddress:profile.residentialAddress,plateNumber:profile.plateNumber,phone:profile.user?.phones?.[0]?.e164 || null,updatedAt:profile.updatedAt} : null,acceptance:latest ? acceptanceEvidence(latest) : null});
       } catch(error){return replyError(res,error);}
     },
     async accept(req,res) {
       try {
-        if (!driverContractReconsentEnabled(env)) throw Object.assign(new Error('Tính năng xác nhận lại hợp đồng đang tạm dừng. Bạn vẫn có thể sử dụng ứng dụng.'),{statusCode:409});
         const result = await db.$transaction(async tx => {
           await lockContractPublication(tx);
           const {contract}=await currentDriverContract(tx,env);
+          if (!driverContractReconsentEnabled(env, contract)) throw Object.assign(new Error('Tính năng xác nhận lại hợp đồng đang tạm dừng. Bạn vẫn có thể sử dụng ứng dụng.'),{statusCode:409});
+
           const found = await tx.driverProfile.findUnique({where:{userId:req.user.uid},select:{id:true}});
           if (!found) throw Object.assign(new Error('Chưa có hồ sơ tài xế.'),{statusCode:404});
           await tx.$queryRaw`SELECT id FROM "DriverProfile" WHERE id = ${found.id} FOR UPDATE`;

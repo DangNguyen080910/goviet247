@@ -1961,7 +1961,7 @@ export function makeAdminController(prisma) {
     DRIVER_PIT_REFUND: "Hoàn PIT tài xế",
     WITHDRAW_REQUEST: "Yêu cầu rút tiền",
     WITHDRAW_REJECT_REFUND: "Hoàn tiền từ chối rút",
-    WITHDRAW_PAID: "Tài xế rút ví",
+    WITHDRAW_PAID: "Đã chuyển khoản rút ví",
     ADJUST_ADD: "Điều chỉnh cộng",
     ADJUST_SUBTRACT: "Điều chỉnh trừ",
   };

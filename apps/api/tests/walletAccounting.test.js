@@ -56,3 +56,18 @@ test('scoped penalty never matches a different acceptance with the same amount',
  const penalty={...row('p','A','trip','TRIP_CANCEL_PENALTY',-100,2),walletHoldId:'new'};
  assert.equal(normalizeDriverWalletItemsForAccounting([hold,penalty]).length,2);
 });
+
+test("withdrawal reservations and refunds reconcile across reporting periods", () => {
+  const rows = [
+    { type: "WITHDRAW_REQUEST", amount: 100000, balanceBefore: 400000, balanceAfter: 300000 },
+    { type: "WITHDRAW_REQUEST", amount: 100000, balanceBefore: 300000, balanceAfter: 200000 },
+    { type: "WITHDRAW_PAID", amount: 100000, balanceBefore: 200000, balanceAfter: 200000 },
+    { type: "WITHDRAW_REJECT_REFUND", amount: 100000, balanceBefore: 200000, balanceAfter: 300000 },
+  ];
+  const exported = [
+    ...normalizeDriverWalletItemsForAccounting(rows.slice(0, 2)),
+    ...normalizeDriverWalletItemsForAccounting(rows.slice(2)),
+  ];
+  assert.deepEqual(exported.map(item => item.amount), [-100000, -100000, 0, 100000]);
+  for (const item of exported) assert.equal(item.balanceBefore + item.amount, item.balanceAfter);
+});

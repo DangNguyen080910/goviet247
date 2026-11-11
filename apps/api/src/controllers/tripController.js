@@ -1,4 +1,5 @@
 import {assertCurrentContractForNewTrip} from '../services/driverContract.js';
+import { dropoffIsRepresented } from '../shared/tripRoute.js';
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
 import { createAcceptanceChatNotices } from "../services/tripAcceptanceChat.js";
@@ -290,6 +291,7 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
   const {partnerCompanyId, partnerCreatedById, partnerAssignedToId, partnerCompany, partnerCreatedBy, partnerAssignedTo, partnerCompanyName, partnerGreeting, partnerManagerName, partnerManagerPhone, partnerBookerName, partnerBookerPhone, ...safeTrip} = trip;
   const base = {
     ...safeTrip, ...extra,
+    dropoffAlreadyInRoute: dropoffIsRepresented(trip),
     isPartnerTrip:Boolean(partnerCompanyId),
     partnerCompanyName:scope === "active" ? partnerCompanyName || null : null,
     partnerGreeting:scope === "active" ? partnerGreeting || null : null,
@@ -317,7 +319,7 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
       const isLastStop = index === stops.length - 1;
 
       const displayAddress =
-        isLastStop && customerNote
+        isLastStop && base.dropoffAlreadyInRoute && customerNote
           ? buildAddressWithNote(maskedAddress)
           : maskedAddress;
 

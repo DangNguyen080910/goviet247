@@ -564,7 +564,14 @@ export default function WalletScreen() {
     return Number(numeric);
   }, [withdrawAmount]);
 
+  const hasActiveWithdrawal = wallet?.hasActiveWithdrawal ??
+    wallet?.recentWithdrawRequests?.some(request => request.status === "PENDING" || request.status === "APPROVED") ?? false;
+
   const validateWithdrawAmount = useCallback(() => {
+    if (hasActiveWithdrawal) {
+      return "Bạn đang có yêu cầu rút tiền chưa hoàn tất.";
+    }
+
     const amount = parseWithdrawAmount();
 
     if (!wallet?.defaultBankAccount) {
@@ -584,7 +591,7 @@ export default function WalletScreen() {
     }
 
     return "";
-  }, [parseWithdrawAmount, wallet]);
+  }, [hasActiveWithdrawal, parseWithdrawAmount, wallet]);
 
   const doSubmitWithdraw = useCallback(async () => {
     try {
@@ -1325,6 +1332,7 @@ export default function WalletScreen() {
               </Text>
             ) : null}
 
+            {hasActiveWithdrawal && <Text style={styles.helperText}>Lệnh rút đang chờ xử lý. Khi GoViet247 xác nhận đã chuyển khoản, bạn có thể gửi lệnh mới.</Text>}
             {!!withdrawError && (
               <Text style={styles.formErrorText}>{withdrawError}</Text>
             )}
@@ -1332,11 +1340,11 @@ export default function WalletScreen() {
             <TouchableOpacity
               style={[
                 styles.primaryButton,
-                (!defaultBank || submittingWithdraw) &&
+                (!defaultBank || submittingWithdraw || hasActiveWithdrawal) &&
                   styles.primaryButtonDisabled,
               ]}
               activeOpacity={0.85}
-              disabled={!defaultBank || submittingWithdraw}
+              disabled={!defaultBank || submittingWithdraw || hasActiveWithdrawal}
               onPress={handleSubmitWithdraw}
             >
               <Text style={styles.primaryButtonText}>

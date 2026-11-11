@@ -1,3 +1,4 @@
+import ContractReminder from '../components/ContractReminder';
 import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
 import { enablePushNotifications } from "../services/pushRegister";
 import {fetchDriverNotifications, type DriverNotificationItem} from "../services/notificationApi";
@@ -1045,6 +1046,10 @@ export default function DashboardScreen() {
           setAvailableTrips((items) => items.filter((item) => item.id !== tripId));
         }
         if (error?.code === "TRIP_ACCEPT_UNAVAILABLE") return;
+        if (error?.code === "CONTRACT_ACCEPTANCE_REQUIRED") {
+          router.replace("/bootstrap");
+          return;
+        }
         const message = tripAcceptFeedback(error);
         if (message) showTripAcceptError(message);
         // Refreshes must not replace the acceptance error or imply an automatic retry.
@@ -1872,6 +1877,7 @@ export default function DashboardScreen() {
             <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
           }
         >
+          <ContractReminder />
           {activeTab === "AVAILABLE"
             ? renderAvailableContent()
             : renderMyTripsContent()}

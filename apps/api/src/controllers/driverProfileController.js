@@ -151,7 +151,11 @@ function toWithdrawBankAccountSummary(item) {
   };
 }
 
-function buildWalletSummaryData(profile) {
+async function buildWalletSummaryData(profile, db = prisma) {
+  const activeRequest = await db.driverWithdrawRequest.findFirst({
+    where: { driverProfileId: profile.id, status: { in: ["PENDING", "APPROVED"] } },
+    select: { id: true },
+  });
   const defaultBankAccount =
     profile.bankAccounts.find((item) => item.isDefault) ||
     profile.bankAccounts[0] ||
@@ -159,6 +163,7 @@ function buildWalletSummaryData(profile) {
 
   return {
     balance: profile.balance,
+    hasActiveWithdrawal: Boolean(activeRequest),
     defaultBankAccount: defaultBankAccount
       ? toBankAccountSummary(defaultBankAccount)
       : null,
@@ -556,7 +561,7 @@ export async function getMyDriverWalletSummary(req, res) {
 
     return res.json({
       success: true,
-      data: buildWalletSummaryData(profile),
+      data: await buildWalletSummaryData(profile),
     });
   } catch (error) {
     console.error("GET /api/driver/profile/wallet-summary error:", error);
@@ -900,25 +905,6 @@ export async function createMyDriverWithdrawRequest(req, res) {
     }
 
     const profile = result.profile;
-    const defaultBankAccount =
-      profile.bankAccounts.find((item) => item.isDefault) ||
-      profile.bankAccounts[0] ||
-      null;
-
-    if (!defaultBankAccount) {
-      return res.status(400).json({
-        success: false,
-        message: "Bạn cần có tài khoản ngân hàng mặc định trước khi rút tiền.",
-      });
-    }
-
-    if (amount > profile.balance) {
-      return res.status(400).json({
-        success: false,
-        message: "Số dư ví không đủ để tạo yêu cầu rút tiền này.",
-      });
-    }
-
     const note = `Driver gửi yêu cầu rút ${amount.toLocaleString("vi-VN")}đ.`;
 
     const created = await prisma.$transaction(async (tx) => {
@@ -935,6 +921,20 @@ export async function createMyDriverWithdrawRequest(req, res) {
 
       if (!freshProfile) {
         throw new Error("Chưa tìm thấy hồ sơ tài xế.");
+      }
+
+      const activeRequest = await tx.driverWithdrawRequest.findFirst({
+        where: {
+          driverProfileId: freshProfile.id,
+          status: { in: ["PENDING", "APPROVED"] },
+        },
+        select: { id: true },
+      });
+      if (activeRequest) {
+        throw Object.assign(
+          new Error("Bạn đang có yêu cầu rút tiền chưa hoàn tất. Vui lòng chờ xử lý trước khi gửi yêu cầu mới."),
+          { code: "WITHDRAW_IN_PROGRESS" },
+        );
       }
 
       const freshDefaultBank =
@@ -1010,12 +1010,10 @@ export async function createMyDriverWithdrawRequest(req, res) {
 
       return {
         withdrawRequest,
-        updatedProfile,
+        wallet: await buildWalletSummaryData(updatedProfile, tx),
         driverProfileId: freshProfile.id,
       };
     });
-
-    const updatedProfile = created.updatedProfile;
 
     if (created?.withdrawRequest) {
       emitAdminDashboardChanged(req, {
@@ -1075,7 +1073,7 @@ export async function createMyDriverWithdrawRequest(req, res) {
               : null,
           }
         : null,
-      data: updatedProfile ? buildWalletSummaryData(updatedProfile) : null,
+      data: created.wallet,
     });
   } catch (error) {
     if (error?.name === "ZodError") {
@@ -1097,6 +1095,10 @@ export async function createMyDriverWithdrawRequest(req, res) {
         success: false,
         message,
       });
+    }
+
+    if (error?.code === "WITHDRAW_IN_PROGRESS") {
+      return res.status(409).json({ success: false, code: error.code, message });
     }
 
     console.error("POST /api/driver/profile/withdraw-requests error:", error);

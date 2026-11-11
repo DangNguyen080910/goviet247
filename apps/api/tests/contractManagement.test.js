@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import {draftSchema,checkPublish,makeAdminContractController} from '../src/controllers/adminContractController.js';
-import {activeDriverContract,currentDriverContract,contractHash,buildContractAcceptance,assertCurrentContractForNewTrip} from '../src/services/driverContract.js';
+import {activeDriverContract,currentDriverContract,contractHash,buildContractAcceptance,assertCurrentContractForNewTrip,validateRegistrationSubmission} from '../src/services/driverContract.js';
 import {makeDriverContractController} from '../src/controllers/driverContractController.js';
 const c={...activeDriverContract({DRIVER_CONTRACT_VERSION:'v2.0-2026-11-09',DRIVER_CONTRACT_V2_APPROVED:'true'}),version:'v3-test'};delete c.contentHash;
 const row={id:'v3',content:c,version:c.version,publishedAt:new Date('2026-01-01'),updatedAt:new Date('2026-01-01'),graceDays:7,requireForNewTrips:true,changeSummary:'Bổ sung thông tin'};
@@ -50,10 +51,10 @@ test('publication changes during reading rejects stale acceptance before any wri
 });
 
 test('paused reconsent never blocks trips or writes an existing-driver acceptance', async () => {
- const unavailable = new Proxy({}, {get(){throw new Error('Must not access DB while paused');}});
- await assertCurrentContractForNewTrip(unavailable,{id:'p'},{});
+ const tx = {$queryRaw: async () => [], driverContractVersion: {findFirst: async () => row}};
+ await assertCurrentContractForNewTrip(tx,{id:'p'},{});
  const output=res();
- await makeDriverContractController(unavailable,{}).accept({user:{uid:'u'},body:{}},output);
+ await makeDriverContractController({$transaction: fn => fn(tx)},{}).accept({user:{uid:'u'},body:{}},output);
  assert.equal(output.statusCode,409);
  assert.match(output.body.message,/tạm dừng/);
 });
@@ -65,4 +66,25 @@ test('paused current endpoint tells already-installed clients not to prompt reco
  assert.equal(output.body.needsAcceptance,false);
  assert.equal(output.body.reconsentEnabled,false);
  assert.equal(output.body.contract.version,row.version);
+});
+
+test('official v2.3 prompts existing drivers and rejects legacy registration even with legacy mode enabled', async () => {
+ const migration = readFileSync(new URL('../prisma/migrations/20261111161000_official_driver_contract/migration.sql', import.meta.url), 'utf8');
+ const content = JSON.parse(migration.split('$contract$')[1]);
+ const official = {...row, version: content.version, content, graceDays: 0};
+ const env = {DRIVER_CONTRACT_RECONSENT_ENABLED: 'false', DRIVER_REGISTRATION_ALLOW_LEGACY_V1: 'true'};
+ const db = {
+  driverContractVersion: {findFirst: async () => official},
+  driverProfile: {findUnique: async () => ({id: 'p', user: {phones: []}})},
+  driverContractAcceptance: {findFirst: async () => null, findMany: async () => []},
+ };
+ const output = res();
+ await makeDriverContractController(db, env).current({user: {uid: 'u'}}, output);
+ assert.equal(output.body.needsAcceptance, true);
+ assert.equal(output.body.contract.version, 'v2.3');
+ await assert.rejects(() => assertCurrentContractForNewTrip(db, {id: 'p'}, env), {code: 'CONTRACT_ACCEPTANCE_REQUIRED'});
+ const body = {contractAccepted: true, contractCode: content.code, residentialAddress: 'Địa chỉ', contractVersion: 'v1.0'};
+ await assert.rejects(() => validateRegistrationSubmission(db, body, env), {statusCode: 409});
+ const contract = await validateRegistrationSubmission(db, {...body, contractVersion: content.version, contractFileHash: contractHash(content)}, env);
+ assert.equal(contract.confirmation, content.confirmation);
 });

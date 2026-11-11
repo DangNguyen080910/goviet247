@@ -51,7 +51,7 @@ export function renderContractEvidence(profile, records, exportedAt = new Date()
   const body = records.map(row => {
     const info = acceptanceEvidence(row);
     const snapshot = row.contentSnapshot?.contentVerified ? row.contentSnapshot : null;
-    return `<section><h2>Bản ghi ${html(row.id)}</h2>${line('Mã hợp đồng',row.contractCode)}${line('Phiên bản',row.contractVersion)}${line('Thời điểm ghi nhận theo giờ Việt Nam',new Date(row.agreedAt).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}))}${line('Thời điểm gốc UTC',new Date(row.agreedAt).toISOString())}${line('SĐT lưu trong bản ghi',row.phoneE164)}${line('IP lưu trong bản ghi',row.ipAddress)}${line('Thông tin thiết bị',row.deviceInfo)}${line('Ứng dụng',row.appVersion)}${line('Mã kiểm tra nội dung',row.contractFileHash)}<p>${html(info.evidenceNotice)}</p>${snapshot ? `<h3>Thông tin lưu tại thời điểm xác nhận</h3>${line('Họ tên',snapshot.identity.fullName)}${line('CCCD',snapshot.identity.citizenId)}${line('Địa chỉ',snapshot.identity.residentialAddress)}<h3>Nội dung đã lưu</h3>${snapshot.content.sections.map(s=>`<h4>${html(s.heading)}</h4>${s.paragraphs.map(t=>`<p>${html(t)}</p>`).join('')}`).join('')}` : '<p>Không đính kèm một nội dung hợp đồng mới hoặc tái tạo nội dung cũ chưa được lưu làm chứng cứ. Cần đối chiếu bản ứng dụng, tài liệu và hồ sơ liên quan.</p>'}</section>`;
+    return `<section><h2>Bản ghi ${html(row.id)}</h2>${line('Mã hợp đồng',row.contractCode)}${line('Phiên bản',row.contractVersion)}${line('Thời điểm ghi nhận theo giờ Việt Nam',new Date(row.agreedAt).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}))}${line('Thời điểm gốc UTC',new Date(row.agreedAt).toISOString())}${line('SĐT lưu trong bản ghi',row.phoneE164)}${line('IP lưu trong bản ghi',row.ipAddress)}${line('Thông tin thiết bị',row.deviceInfo)}${line('Ứng dụng',row.appVersion)}${line('Mã kiểm tra nội dung',row.contractFileHash)}<p>${html(info.evidenceNotice)}</p>${snapshot ? `<h3>Thông tin lưu tại thời điểm xác nhận</h3>${line('Họ tên',snapshot.identity.fullName)}${line('CCCD',snapshot.identity.citizenId)}${line('Địa chỉ',snapshot.identity.residentialAddress)}<h3>Nội dung đã lưu</h3>${snapshot.content.sections.map(s=>`<h4>${html(s.heading)}</h4>${s.paragraphs.map(t=>`<p>${html(t)}</p>`).join('')}`).join('')}<h4>Xác nhận của bên B</h4><p style="white-space:pre-wrap">${html(snapshot.content.confirmation)}</p>` : '<p>Không đính kèm một nội dung hợp đồng mới hoặc tái tạo nội dung cũ chưa được lưu làm chứng cứ. Cần đối chiếu bản ứng dụng, tài liệu và hồ sơ liên quan.</p>'}</section>`;
   }).join('');
   return `<!doctype html><html lang="vi"><meta charset="utf-8"><title>Bản ghi chấp thuận hợp đồng tài xế</title><style>body{font:16px/1.55 Georgia,serif;max-width:850px;margin:35px auto;padding:0 20px;color:#111}h1{font-size:25px}h2{font-size:21px}h3,h4{font-size:18px}p{overflow-wrap:anywhere}section{border-top:1px solid #bbb;margin-top:24px;padding-top:12px}@media print{body{margin:0;max-width:none}h2,h3,h4{break-after:avoid}p{orphans:3;widows:3}}</style><body><h1>Bản ghi chấp thuận hợp đồng tài xế</h1>${line('Thời điểm xuất',exportedAt.toISOString())}<p>Tài liệu trích xuất bản ghi hệ thống, không phải bản hợp đồng mới được ký và không xác nhận đã hoàn thành kê khai hoặc nộp thuế.</p><h2>Thông tin hồ sơ hiện tại</h2><p>Thông tin dưới đây có thể đã thay đổi sau ngày đồng ý cũ.</p>${line('Mã hồ sơ',profile.id)}${line('Họ tên hiện tại',profile.fullName)}${line('CCCD hiện tại',profile.citizenId)}${line('Địa chỉ hiện tại',profile.residentialAddress)}${records.length ? body : '<p>Không có bản ghi chấp thuận trong dữ liệu hệ thống.</p>'}</body></html>`;
 }
@@ -65,10 +65,12 @@ export async function currentDriverContract(db, env = process.env) {
   if (!row) return {contract:activeDriverContract(env), release:null};
   return {contract:{...row.content,contentHash:contractHash(row.content)},release:{id:row.id,version:row.version,publishedAt:row.publishedAt,changeSummary:row.changeSummary,graceDays:row.graceDays,requireForNewTrips:row.requireForNewTrips,deadline:new Date(row.publishedAt.getTime()+row.graceDays*86400000)}};
 }
-export const driverContractReconsentEnabled = (env = process.env) => env.DRIVER_CONTRACT_RECONSENT_ENABLED === 'true';
+const OFFICIAL_VERSION = 'v2.3';
+export const driverContractReconsentEnabled = (env = process.env, contract) =>
+  contract?.version === OFFICIAL_VERSION || env.DRIVER_CONTRACT_RECONSENT_ENABLED === 'true';
 export async function assertCurrentContractForNewTrip(db, profile, env = process.env) {
-  if (!driverContractReconsentEnabled(env)) return;
   const {contract,release}=await currentDriverContract(db,env);
+  if (!driverContractReconsentEnabled(env, contract)) return;
   if (!release?.requireForNewTrips || Date.now()<release.deadline.getTime()) return;
   const accepted=await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,contractVersion:contract.version,contractFileHash:contract.contentHash,isActive:true}});
   if (!accepted) throw Object.assign(new Error('Vui lòng mở Hồ sơ → Hợp đồng để đọc và xác nhận hợp đồng mới trước khi nhận chuyến mới.'),{statusCode:409,code:'CONTRACT_ACCEPTANCE_REQUIRED'});
@@ -79,6 +81,7 @@ export async function assertCurrentContractForNewTrip(db, profile, env = process
 const contactPolicy = JSON.parse(readFileSync(new URL('../contracts/driver-contact-policy.json', import.meta.url), 'utf8'));
 export async function registrationDriverContract(db, env = process.env) {
   const source = await currentDriverContract(db, env);
+  if (source.contract.version === OFFICIAL_VERSION) return source;
   const {contentHash: ignoredHash, ...original} = source.contract;
   const content = structuredClone(original);
   let changed = false;
@@ -95,10 +98,11 @@ export async function registrationDriverContract(db, env = process.env) {
 // The released 1.1.7 app submits v1.0 without a hash. Preserve its actual
 // acceptance version and leave content verification to hash-capable clients.
 export async function registrationContractForSubmission(db, body, env = process.env) {
-  if (isLegacyRegistrationSubmission(body, env)) {
+  const {contract} = await registrationDriverContract(db, env);
+  if (contract.version !== OFFICIAL_VERSION && isLegacyRegistrationSubmission(body, env)) {
     return {...structuredClone(legacy), contentHash: contractHash(legacy)};
   }
-  return (await registrationDriverContract(db, env)).contract;
+  return contract;
 }
 
 function isLegacyRegistrationSubmission(body, env) {
@@ -108,9 +112,9 @@ function isLegacyRegistrationSubmission(body, env) {
 }
 
 export async function validateRegistrationSubmission(db, body, env = process.env) {
-  if (!body.residentialAddress && !isLegacyRegistrationSubmission(body, env)) {
+  const contract = await registrationContractForSubmission(db, body, env);
+  if (!body.residentialAddress && (contract.version === OFFICIAL_VERSION || !isLegacyRegistrationSubmission(body, env))) {
     throw Object.assign(new Error('Vui lòng nhập địa chỉ cư trú.'), {statusCode: 422});
   }
-  const contract = await registrationContractForSubmission(db, body, env);
   return validateContractSubmission(body, env, contract);
 }
