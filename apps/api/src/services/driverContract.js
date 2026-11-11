@@ -95,12 +95,22 @@ export async function registrationDriverContract(db, env = process.env) {
 // The released 1.1.7 app submits v1.0 without a hash. Preserve its actual
 // acceptance version and leave content verification to hash-capable clients.
 export async function registrationContractForSubmission(db, body, env = process.env) {
-  if (
-    env.DRIVER_REGISTRATION_ALLOW_LEGACY_V1 === 'true' &&
-    body.contractVersion === legacy.version &&
-    !body.contractFileHash
-  ) {
+  if (isLegacyRegistrationSubmission(body, env)) {
     return {...structuredClone(legacy), contentHash: contractHash(legacy)};
   }
   return (await registrationDriverContract(db, env)).contract;
+}
+
+function isLegacyRegistrationSubmission(body, env) {
+  return env.DRIVER_REGISTRATION_ALLOW_LEGACY_V1 === 'true' &&
+    body.contractVersion === legacy.version &&
+    !body.contractFileHash;
+}
+
+export async function validateRegistrationSubmission(db, body, env = process.env) {
+  if (!body.residentialAddress && !isLegacyRegistrationSubmission(body, env)) {
+    throw Object.assign(new Error('Vui lòng nhập địa chỉ cư trú.'), {statusCode: 422});
+  }
+  const contract = await registrationContractForSubmission(db, body, env);
+  return validateContractSubmission(body, env, contract);
 }

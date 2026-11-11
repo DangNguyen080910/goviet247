@@ -1,4 +1,4 @@
-import { legacyDriverContract, validateContractSubmission, buildContractAcceptance, registrationContractForSubmission, lockContractPublication } from "../services/driverContract.js";
+import { legacyDriverContract, buildContractAcceptance, validateRegistrationSubmission, lockContractPublication } from "../services/driverContract.js";
 import { isProvinceCode } from "../services/driverOperatingProvince.js";
 // Path: goviet247/apps/api/src/controllers/driverProfileController.js
 import { lockDriverProfile } from "../services/tripAcceptancePolicy.js";
@@ -214,7 +214,7 @@ function emitAdminDashboardChanged(req, payload = {}) {
 }
 
 const createDriverProfileSchema = z.object({
-  residentialAddress: z.string({ required_error: "Vui lòng nhập địa chỉ cư trú." }).trim().min(1, "Vui lòng nhập địa chỉ cư trú.").max(500, "Địa chỉ không được vượt quá 500 ký tự."),
+  residentialAddress: z.string().trim().max(500, "Địa chỉ không được vượt quá 500 ký tự.").optional(),
   // Old app versions omit this field; retain default but mark it as unconfirmed.
   operatingProvinceCode: z.string().refine(isProvinceCode, "Vui lòng chọn tỉnh/thành hợp lệ.").optional(),
   citizenId: z.string({ required_error: "Vui lòng nhập số CCCD gồm đúng 12 chữ số." }).trim().regex(/^\d{12}$/, "Số CCCD phải gồm đúng 12 chữ số."),
@@ -1123,7 +1123,7 @@ export async function createDriverProfile(req, res) {
     }
 
     const body = createDriverProfileSchema.parse(req.body || {});
-    validateContractSubmission(body,process.env,await registrationContractForSubmission(prisma, body));
+    await validateRegistrationSubmission(prisma, body);
     const normalizedPlateNumber = normalizePlateNumber(body.plateNumber);
 
     const user = await prisma.user.findUnique({
@@ -1214,8 +1214,7 @@ export async function createDriverProfile(req, res) {
 
     const profile = await prisma.$transaction(async (tx) => {
       await lockContractPublication(tx);
-      const currentContract=await registrationContractForSubmission(tx, body);
-      validateContractSubmission(body,process.env,currentContract);
+      const currentContract = await validateRegistrationSubmission(tx, body);
       await tx.user.update({
         where: { id: uid },
         data: {

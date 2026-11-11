@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { registrationDriverContract, activeDriverContract, contractHash, buildContractAcceptance, validateContractSubmission } from '../src/services/driverContract.js';
+import { registrationDriverContract, activeDriverContract, contractHash, buildContractAcceptance, validateContractSubmission, validateRegistrationSubmission } from '../src/services/driverContract.js';
 import { makeDriverContractController } from '../src/controllers/driverContractController.js';
 const legacy = JSON.parse(readFileSync(new URL('../src/contracts/driver-partnership-v1.json',import.meta.url)));
 const store = row => ({driverContractVersion:{findFirst:async()=>row}});
@@ -60,4 +60,18 @@ test('temporary compatibility records the legacy app consent without claiming a 
  const modern = await registrationDriverContract(db, env);
  const modernBody = {...body, contractVersion:modern.contract.version, contractFileHash:modern.contract.contentHash};
  assert.deepEqual(await registrationContractForSubmission(db, modernBody, env), modern.contract);
+});
+
+test('only the enabled legacy registration flow can submit without a residential address', async () => {
+ const db = store(null);
+ const env = { DRIVER_REGISTRATION_ALLOW_LEGACY_V1: 'true' };
+ const body = { contractAccepted: true, contractCode: legacy.code, contractVersion: legacy.version };
+ assert.equal((await validateRegistrationSubmission(db, body, env)).version, legacy.version);
+ await assert.rejects(validateRegistrationSubmission(db, body, {}), {statusCode: 422});
+ await assert.rejects(validateRegistrationSubmission(db, {...body, contractAccepted: false}, env), {statusCode: 409});
+
+ const {contract} = await registrationDriverContract(db, env);
+ const modern = {...body, contractVersion: contract.version, contractFileHash: contract.contentHash};
+ await assert.rejects(validateRegistrationSubmission(db, modern, env), {statusCode: 422});
+ assert.equal((await validateRegistrationSubmission(db, {...modern, residentialAddress: 'Địa chỉ đã nhập'}, env)).version, contract.version);
 });
