@@ -413,6 +413,9 @@ export default function DriverProfileCreateScreen() {
       router.replace("/driver-profile/pending");
     } catch (error: any) {
       setErrorText(error?.message || "Gửi hồ sơ tài xế thất bại.");
+      if (error?.code === "DRIVER_CONTRACT_CHANGED") {
+        await openContractModal();
+      }
     } finally {
       setSubmitting(false);
     }

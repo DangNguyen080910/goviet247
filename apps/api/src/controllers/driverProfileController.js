@@ -1354,7 +1354,7 @@ export async function createDriverProfile(req, res) {
         : null,
     });
   } catch (error) {
-    if (error?.statusCode) return res.status(error.statusCode).json({success:false, message:error.message});
+    if (error?.statusCode) return res.status(error.statusCode).json({success:false, message:error.message, code:error.code});
     if (error?.name === "ZodError") {
       return res.status(400).json({
         success: false,

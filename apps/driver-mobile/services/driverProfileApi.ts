@@ -172,6 +172,7 @@ export type CreateDriverProfilePayload = {
 } & DriverContractSubmitPayload;
 
 type ApiError = {
+  code?: string;
   success?: false;
   message?: string;
 };
@@ -435,8 +436,9 @@ export async function createDriverProfile(
     | null;
 
   if (!response.ok) {
-    throw new Error(
-      getErrorMessage(payload as ApiError, "Không thể tạo hồ sơ tài xế.")
+    throw Object.assign(
+      new Error(getErrorMessage(payload as ApiError, "Không thể tạo hồ sơ tài xế.")),
+      { code: (payload as ApiError | null)?.code },
     );
   }
 

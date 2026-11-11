@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {draftSchema,checkPublish,makeAdminContractController} from '../src/controllers/adminContractController.js';
-import {activeDriverContract,currentDriverContract,contractHash,buildContractAcceptance,assertCurrentContractForNewTrip,validateRegistrationSubmission} from '../src/services/driverContract.js';
+import {activeDriverContract,currentDriverContract,contractHash,buildContractAcceptance,assertCurrentContractForNewTrip,validateRegistrationSubmission,registrationDriverContract} from '../src/services/driverContract.js';
 import {makeDriverContractController} from '../src/controllers/driverContractController.js';
 const c={...activeDriverContract({DRIVER_CONTRACT_VERSION:'v2.0-2026-11-09',DRIVER_CONTRACT_V2_APPROVED:'true'}),version:'v3-test'};delete c.contentHash;
 const row={id:'v3',content:c,version:c.version,publishedAt:new Date('2026-01-01'),updatedAt:new Date('2026-01-01'),graceDays:7,requireForNewTrips:true,changeSummary:'Bổ sung thông tin'};
@@ -68,7 +68,7 @@ test('paused current endpoint tells already-installed clients not to prompt reco
  assert.equal(output.body.contract.version,row.version);
 });
 
-test('official v2.3 prompts existing drivers and rejects legacy registration even with legacy mode enabled', async () => {
+test('official v2.3 enforces signing after rollout and keeps legacy registration working while paused', async () => {
  const migration = readFileSync(new URL('../prisma/migrations/20261111161000_official_driver_contract/migration.sql', import.meta.url), 'utf8');
  const content = JSON.parse(migration.split('$contract$')[1]);
  const official = {...row, version: content.version, content, graceDays: 0};
@@ -87,4 +87,21 @@ test('official v2.3 prompts existing drivers and rejects legacy registration eve
  await assert.rejects(() => validateRegistrationSubmission(db, body, env), {statusCode: 409});
  const contract = await validateRegistrationSubmission(db, {...body, contractVersion: content.version, contractFileHash: contractHash(content)}, env);
  assert.equal(contract.confirmation, content.confirmation);
+ official.requireForNewTrips = false;
+ await makeDriverContractController(db, env).current({user: {uid: 'u'}}, output);
+ assert.equal(output.body.needsAcceptance, false);
+ assert.equal(output.body.contract.version, 'v2.3');
+ await assertCurrentContractForNewTrip(db, {id: 'p'}, env);
+ assert.equal((await registrationDriverContract(db, env)).contract.version, 'v2.3');
+ const oldBody = {...body, residentialAddress: undefined};
+ const legacy = await validateRegistrationSubmission(db, oldBody, env);
+ const legacyReceipt = buildContractAcceptance(oldBody, {id:'p', userId:'u', fullName:'Tài xế'}, {}, env, legacy);
+ assert.equal(legacyReceipt.contractVersion, 'v1.0');
+ assert.equal(legacyReceipt.contentSnapshot.contentVerified, false);
+ await assert.rejects(() => validateRegistrationSubmission(db, oldBody, {}), {statusCode: 422});
+ await assert.rejects(() => validateRegistrationSubmission(db, {...oldBody, contractVersion: 'v2.3', contractFileHash: contractHash(content)}, env), {statusCode: 422});
+ official.requireForNewTrips = true;
+ await assert.rejects(() => assertCurrentContractForNewTrip(db, {id: 'p'}, env), {code: 'CONTRACT_ACCEPTANCE_REQUIRED'});
+ await assert.rejects(() => validateRegistrationSubmission(db, oldBody, env), {statusCode: 422});
+
 });

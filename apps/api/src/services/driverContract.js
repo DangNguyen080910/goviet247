@@ -19,7 +19,7 @@ export function validateContractSubmission(body, env = process.env, selected = n
   // Missing hashes are accepted only for old v1 clients, never evidence of v2 consent.
   if (body.contractAccepted !== true || body.contractCode !== current.code || body.contractVersion !== current.version ||
       (body.contractFileHash ? body.contractFileHash !== current.contentHash : current.version !== legacy.version)) {
-    throw Object.assign(new Error('Hợp đồng đã thay đổi hoặc chưa được xác nhận. Vui lòng mở lại hợp đồng và đồng ý đúng phiên bản.'), {statusCode: 409});
+    throw Object.assign(new Error('Hợp đồng đã thay đổi hoặc chưa được xác nhận. Vui lòng mở lại hợp đồng và đồng ý đúng phiên bản.'), {statusCode: 409, code: 'DRIVER_CONTRACT_CHANGED'});
   }
   return current;
 }
@@ -66,11 +66,14 @@ export async function currentDriverContract(db, env = process.env) {
   return {contract:{...row.content,contentHash:contractHash(row.content)},release:{id:row.id,version:row.version,publishedAt:row.publishedAt,changeSummary:row.changeSummary,graceDays:row.graceDays,requireForNewTrips:row.requireForNewTrips,deadline:new Date(row.publishedAt.getTime()+row.graceDays*86400000)}};
 }
 const OFFICIAL_VERSION = 'v2.3';
-export const driverContractReconsentEnabled = (env = process.env, contract) =>
-  contract?.version === OFFICIAL_VERSION || env.DRIVER_CONTRACT_RECONSENT_ENABLED === 'true';
+
+export const driverContractReconsentEnabled = (env = process.env, contract, release) =>
+  contract?.version === OFFICIAL_VERSION
+    ? release?.requireForNewTrips === true
+    : env.DRIVER_CONTRACT_RECONSENT_ENABLED === 'true';
 export async function assertCurrentContractForNewTrip(db, profile, env = process.env) {
   const {contract,release}=await currentDriverContract(db,env);
-  if (!driverContractReconsentEnabled(env, contract)) return;
+  if (!driverContractReconsentEnabled(env, contract, release)) return;
   if (!release?.requireForNewTrips || Date.now()<release.deadline.getTime()) return;
   const accepted=await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,contractVersion:contract.version,contractFileHash:contract.contentHash,isActive:true}});
   if (!accepted) throw Object.assign(new Error('Vui lòng mở Hồ sơ → Hợp đồng để đọc và xác nhận hợp đồng mới trước khi nhận chuyến mới.'),{statusCode:409,code:'CONTRACT_ACCEPTANCE_REQUIRED'});
@@ -95,11 +98,13 @@ export async function registrationDriverContract(db, env = process.env) {
   return {contract: {...content, contentHash: contractHash(content)}, release: null};
 }
 
-// The released 1.1.7 app submits v1.0 without a hash. Preserve its actual
-// acceptance version and leave content verification to hash-capable clients.
+// During rollout the released 1.1.7 app can still submit its actual v1.0
+// acceptance. Once the official release requires reconsent for trips, only
+// the official registration contract is accepted.
 export async function registrationContractForSubmission(db, body, env = process.env) {
-  const {contract} = await registrationDriverContract(db, env);
-  if (contract.version !== OFFICIAL_VERSION && isLegacyRegistrationSubmission(body, env)) {
+  const {contract, release} = await registrationDriverContract(db, env);
+  const legacyAllowed = contract.version !== OFFICIAL_VERSION || !release?.requireForNewTrips;
+  if (legacyAllowed && isLegacyRegistrationSubmission(body, env)) {
     return {...structuredClone(legacy), contentHash: contractHash(legacy)};
   }
   return contract;
@@ -113,7 +118,7 @@ function isLegacyRegistrationSubmission(body, env) {
 
 export async function validateRegistrationSubmission(db, body, env = process.env) {
   const contract = await registrationContractForSubmission(db, body, env);
-  if (!body.residentialAddress && (contract.version === OFFICIAL_VERSION || !isLegacyRegistrationSubmission(body, env))) {
+  if (!body.residentialAddress && (contract.version !== legacy.version || !isLegacyRegistrationSubmission(body, env))) {
     throw Object.assign(new Error('Vui lòng nhập địa chỉ cư trú.'), {statusCode: 422});
   }
   return validateContractSubmission(body, env, contract);
