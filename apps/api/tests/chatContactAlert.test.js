@@ -16,8 +16,8 @@ function fixture({status='ACCEPTED',recent=false}={}) {
  return {db,options,alerts,events,pushes};
 }
 const body={clientId:'phone_attempt',text:'Gọi tôi 0901234567'};
-test('phone validation returns a distinct code without accepting a message',()=>{
- assert.throws(()=>validateChatPayload(body),e=>e.code===CHAT_CONTACT_ALERT);
+test('phone messages pass chat validation',()=>{
+ assert.equal(validateChatPayload(body).text,body.text);
  assert.throws(()=>validateChatPayload({clientId:'x',text:'hello'}),e=>!e.code);
 });
 test('authorized blocked sender creates unread admin history and notifies only admins',async()=>{

@@ -1,3 +1,4 @@
+import { showPermissionSettings } from '../../mobile-chat/permissionHelp';
 // Path: goviet247/apps/rider-mobile/app/booking.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { router, useFocusEffect } from "expo-router";
@@ -788,43 +789,30 @@ export default function RiderBookingScreen() {
     };
   }, []);
 
-  useEffect(() => {
-    let alive = true;
+  const [locating, setLocating] = useState(false);
 
-    async function loadGpsLocation() {
-      try {
-        const permission = await Location.requestForegroundPermissionsAsync();
-
-        if (!alive || permission.status !== "granted") {
-          return;
+  async function useNearbyLocation() {
+    if (locating) return;
+    setLocating(true);
+    try {
+      const permission = await Location.requestForegroundPermissionsAsync();
+      if (!permission.granted) {
+        if (!permission.canAskAgain) {
+          showPermissionSettings("Vị trí", "Bật quyền Vị trí để tìm địa chỉ gần bạn.");
         }
-
-        const currentPosition = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.Balanced,
-        });
-
-        if (!alive) return;
-
-        const latitude = Number(currentPosition?.coords?.latitude);
-        const longitude = Number(currentPosition?.coords?.longitude);
-
-        if (Number.isFinite(latitude) && Number.isFinite(longitude)) {
-          setGpsLocation({
-            lat: latitude,
-            lng: longitude,
-          });
-        }
-      } catch (error) {
-        console.warn("load rider gps location error:", error);
+        return;
       }
+
+      const { coords } = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.Balanced,
+      });
+      setGpsLocation({ lat: coords.latitude, lng: coords.longitude });
+    } catch {
+      Alert.alert("Chưa lấy được vị trí", "Bạn có thể nhập địa chỉ đón hoặc thử lại.");
+    } finally {
+      setLocating(false);
     }
-
-    void loadGpsLocation();
-
-    return () => {
-      alive = false;
-    };
-  }, []);
+  }
 
   useEffect(() => {
     if (pickerTarget) return;
@@ -1814,6 +1802,11 @@ export default function RiderBookingScreen() {
             <Text style={styles.sectionTitle}>1. Lộ trình</Text>
 
             <Text style={styles.label}>Điểm đón</Text>
+            <Pressable accessibilityRole="button" disabled={locating} onPress={() => void useNearbyLocation()} style={{ paddingVertical: 8 }}>
+              <Text style={{ color: "#2563eb" }}>
+                {locating ? "Đang lấy vị trí…" : gpsLocation ? "Đang ưu tiên địa chỉ gần bạn · Cập nhật vị trí" : "Ưu tiên địa chỉ gần tôi"}
+              </Text>
+            </Pressable>
             <View style={{ position: "relative" }}>
               <TextInput
                 value={pickupAddress}

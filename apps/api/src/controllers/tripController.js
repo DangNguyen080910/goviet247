@@ -371,7 +371,11 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
 
   return {
     ...base,
-    riderPhone: "",
+    riderPhone: hasActiveTripContact(trip.status)
+      ? partnerCompanyId
+        ? (partnerAssignedTo?.isActive && partnerAssignedTo.companyId === partnerCompanyId ? partnerAssignedTo.phone || "" : "")
+        : trip.riderPhone || ""
+      : "",
     pickupAddress: normalizeDisplayAddress(trip.pickupAddress),
     pickupAddressMasked: maskAddress(trip.pickupAddress),
     dropoffAddress: normalizeDisplayAddress(trip.dropoffAddress),
@@ -702,6 +706,7 @@ export async function listMyCustomerTrips(req, res) {
       include: {
         driver: {
           select: {
+            phones: { where: { isVerified: true }, orderBy: { createdAt: "asc" }, take: 1, select: { e164: true } },
             driverProfile: {
               select: {
                 vehicleBrand: true,
@@ -762,7 +767,10 @@ export async function listMyCustomerTrips(req, res) {
 export async function getTripById(req, res) {
   try {
     const { id } = req.params;
-    const trip = await prisma.trip.findUnique({ where: { id } });
+    const trip = await prisma.trip.findUnique({
+      where: { id },
+      include: { partnerAssignedTo: { select: { phone: true, isActive: true, companyId: true } } },
+    });
     const userId = req.user?.id || req.user?.uid;
     const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, userId);
     const tripPhoneNumbers = phoneVariants(trip?.riderPhone);
@@ -770,8 +778,8 @@ export async function getTripById(req, res) {
 
     const partnerContext=await getPartnerRiderContext(prisma,trip,phoneNumbers);
     if (!trip || (trip.riderId !== userId && !canViewAsPassenger && !partnerContext && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
-    const { dispatcherNote, verifiedNote, ...publicTrip } = trip;
-    const data = trip.driverId === userId ? serializeDriverTrip({ ...publicTrip, dispatcherNote }, ["COMPLETED", "CANCELLED"].includes(trip.status) ? "history" : "active") : {...publicTrip,...(partnerContext ? {riderName:trip.partnerBookerName,riderPhone:trip.partnerBookerPhone,creatorName:trip.partnerManagerName,creatorPhone:trip.partnerManagerPhone,canManage:true}: {})};
+    const { dispatcherNote, verifiedNote, partnerAssignedTo, ...publicTrip } = trip;
+    const data = trip.driverId === userId ? serializeDriverTrip({ ...publicTrip, dispatcherNote, partnerAssignedTo }, ["COMPLETED", "CANCELLED"].includes(trip.status) ? "history" : "active") : {...publicTrip,...(partnerContext ? {riderName:trip.partnerBookerName,riderPhone:trip.partnerBookerPhone,creatorName:trip.partnerManagerName,creatorPhone:trip.partnerManagerPhone,canManage:true}: {})};
     return res.json({ success: true, data });
   } catch (err) {
     console.error("[Trip] getTripById error:", err);
@@ -1653,6 +1661,7 @@ export async function listMyTrips(req, res) {
       orderBy: { updatedAt: "desc" },
       take: 100,
       include: {
+        partnerAssignedTo: { select: { phone: true, isActive: true, companyId: true } },
         stops: {
           orderBy: { seq: "asc" },
           select: {

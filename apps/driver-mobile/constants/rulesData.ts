@@ -76,7 +76,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
             severity: "DANGER",
           },
           {
-            text: "Tài xế sử dụng tính năng gọi điện và nhắn tin trong ứng dụng GoViet247 để liên hệ phục vụ chuyến đi. Không chủ động xin hoặc trao đổi số điện thoại cá nhân nhằm mời chào, thỏa thuận hoặc nhận chuyến ngoài hệ thống. Khi không liên hệ được qua ứng dụng, tài xế liên hệ GoViet247 để được hỗ trợ phương án phù hợp.\n\nKhi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm.",
+            text: "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, tài xế liên hệ điều phối viên phụ trách. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.\n\nKhi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm.",
             severity: "DANGER",
           },
           {
@@ -139,7 +139,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
             severity: "WARNING",
           },
           {
-            text: "Liên hệ khách sớm để xác nhận điểm đón, thời gian và các thông tin cần thiết.",
+            text: "Sau khi nhận chuyến, liên hệ sớm với khách hoặc điều phối viên phụ trách để xác nhận giờ và điểm đón. Anh/chị có thể gọi hoặc chat trên app, hoặc gọi trực tiếp bằng số hiển thị trong Đơn của tôi.",
           },
           {
             text: "Nếu có điểm chưa rõ hoặc phát sinh thay đổi lớn, báo admin trước khi thực hiện.",
@@ -278,7 +278,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
         title: "Không chủ động liên hệ khách",
         bullets: [
           {
-            text: "Không chủ động nhắn tin hoặc gửi ghi âm trong mục Liên hệ khách sau khi nhận chuyến có thể làm khách chờ lâu và phát sinh huỷ chuyến. Khi không liên hệ được, phải nhờ GoViet247 hỗ trợ.",
+            text: "Chủ động liên hệ sau khi nhận chuyến bằng cách phù hợp. Nếu chưa liên hệ được với khách hoặc điều phối viên, vui lòng báo GoViet247 và gửi mã chuyến để được hỗ trợ.",
             severity: "WARNING",
           },
           {

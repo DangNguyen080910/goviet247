@@ -1,6 +1,5 @@
 import {showPermissionSettings} from './permissionHelp';
 import {chatSupportUrl} from '../api/src/shared/chatSupport.js';
-import {CHAT_SERVICE_NOTICE} from '../api/src/shared/chatServiceNotice.js';
 import {configureCalls, TripCallButton, useTripCallActive} from './TripCalls';
 import {chatTripDetailRows,chatConversationRoute} from '../api/src/shared/chatTripDetail.js';
 import { chatAudienceLabel } from '../api/src/shared/tripChatVisibility.js';
@@ -610,11 +609,7 @@ export default function TripChatScreen() {
         padding: 14,
         gap: 10
       }} keyboardShouldPersistTaps="handled">
- {chatStatus==='COMPLETED' ? <Text style={{color:'#64748b',fontSize:13}}>{COMPLETED_CHAT_NOTICE}</Text> : <View style={{backgroundColor:'#fff1f2',borderColor:'#fecdd3',borderWidth:1,borderRadius:12,padding:12,gap:6}}>
- <Text style={{color:'#9f1239',fontSize:13,fontWeight:'700',lineHeight:19}}>{CHAT_SERVICE_NOTICE.lead}</Text>
- <Text style={{color:ink,fontSize:13,lineHeight:19}}>{CHAT_SERVICE_NOTICE.recording}</Text>
- <Text style={{color:ink,fontSize:13,lineHeight:19}}>{CHAT_SERVICE_NOTICE.outside}</Text>
- </View>}
+ {chatStatus==='COMPLETED' && <Text style={{color:'#64748b',fontSize:13}}>{COMPLETED_CHAT_NOTICE}</Text>}
  {more && <Pressable style={button} onPress={() => void run(async () => {
           const d = await api(`/${tripId}/messages?before=${items[0]?.id}`);
           if (d.visibleFrom !== historyFrom.current || d.historyReset) { await load(); return; }

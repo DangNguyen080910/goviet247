@@ -18,7 +18,6 @@ export function validateChatPayload(body) {
   if (kind === 'TEXT') {
     const text = String(body.text || '').trim();
     if (!text || text.length > 2000) throw new Error('Tin nhắn cần từ 1 đến 2.000 ký tự.');
-    assertNoContactNumber(text);
     return {
       clientId,
       kind,
@@ -29,7 +28,6 @@ export function validateChatPayload(body) {
     const latitude = body.latitude,
       longitude = body.longitude;
     if (typeof latitude !== 'number' || typeof longitude !== 'number' || !Number.isFinite(latitude) || !Number.isFinite(longitude) || Math.abs(latitude) > 90 || Math.abs(longitude) > 180) throw new Error('Vị trí không hợp lệ.');
-    assertNoContactNumber(body.locationLabel);
     return {
       clientId,
       kind,

@@ -1,7 +1,7 @@
 import {tripNotificationContent} from '../../../../api/src/shared/tripNotificationContent.js';
 import { canSelfCancelTrip } from "../../../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../../components/TripChatHub";
-import { hasActiveTripContact } from "../../../../api/src/shared/tripContact.js";
+import { hasActiveTripContact, phoneCallUrl } from "../../../../api/src/shared/tripContact.js";
 import { tripRoutePoints } from "../../../../api/src/shared/tripRoute.js";
 // Path: goviet247/apps/web/src/pages/customer/CustomerProfile.jsx
 import TripPricingSummary from "../../components/customer/TripPricingSummary";
@@ -1272,6 +1272,9 @@ export default function CustomerProfile() {
                           </Paper>
                         ) : null}
 
+                        {hasActiveTripContact(trip.status) && phoneCallUrl(trip.driverContact?.phone) && (
+                          <Button href={phoneCallUrl(trip.driverContact.phone)}>Gọi trực tiếp tài xế · {trip.driverContact.phone}</Button>
+                        )}
                         <TripChatButton tripId={trip.id} status={trip.status} label={trip.status === "PENDING" ? "Nhắn GoViet247" : "Liên hệ tài xế / GoViet247"} />
 
                         <Stack

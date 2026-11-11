@@ -1,3 +1,5 @@
+import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
+import { enablePushNotifications } from "../services/pushRegister";
 import {fetchDriverNotifications, type DriverNotificationItem} from "../services/notificationApi";
 import { AvailableTripState, confirmsTripUnavailable } from "../../api/src/shared/availableTripState.js";
 import { TripChatButton } from "../services/tripChat";
@@ -1610,6 +1612,12 @@ export default function DashboardScreen() {
           ) : null}
 
 
+          {!!phoneCallUrl(trip.riderPhone) && <>
+            {renderCopyableTripRow("☎", trip.isPartnerTrip ? "Số điều phối viên" : "Số điện thoại khách", trip.riderPhone)}
+            <TouchableOpacity accessibilityRole="button" onPress={() => void callCustomer(trip.riderPhone)}>
+              <Text style={styles.incomeToggleButtonText}>{trip.isPartnerTrip ? "Gọi trực tiếp điều phối viên" : "Gọi trực tiếp khách"}</Text>
+            </TouchableOpacity>
+          </>}
           {renderCopyableTripRow("📍", "Điểm đón", trip.pickupAddress)}
 
           {routeDisplay.destinations.map((destination) => (
@@ -2050,6 +2058,8 @@ export default function DashboardScreen() {
                   <Text style={styles.notificationCloseButtonText}>✕</Text>
                 </TouchableOpacity>
               </View>
+
+              <NotificationPermissionActions enablePush={() => enablePushNotifications(getDriverToken)} />
 
               <ScrollView
                 style={styles.notificationListScroll}

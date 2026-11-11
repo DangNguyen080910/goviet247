@@ -16,12 +16,14 @@ class GoVietTripCallingModule : Module() {
     OnCreate { appContext.reactContext?.let { CallManager.init(it) } }
     AsyncFunction("matchesSession") { token: String -> CallManager.matchesSession(token) }.runOnQueue(Queues.MAIN)
     AsyncFunction("microphone") { promise: Promise ->
-      val permissions=mutableListOf(Manifest.permission.RECORD_AUDIO)
-      if(Build.VERSION.SDK_INT>=33) permissions.add(Manifest.permission.POST_NOTIFICATIONS)
-      if(Build.VERSION.SDK_INT>=31) permissions.add(Manifest.permission.BLUETOOTH_CONNECT)
-      val manager=appContext.permissions
-      if(manager==null) promise.resolve(false)
-      else manager.askForPermissions(PermissionsResponseListener { result -> promise.resolve(result.filterKeys { it!=Manifest.permission.BLUETOOTH_CONNECT }.values.all { it.status==PermissionsStatus.GRANTED }) },*permissions.toTypedArray())
+      val manager = appContext.permissions
+      if (manager == null) {
+        promise.resolve(false)
+      } else {
+        manager.askForPermissions(PermissionsResponseListener { result ->
+          promise.resolve(result[Manifest.permission.RECORD_AUDIO]?.status == PermissionsStatus.GRANTED)
+        }, Manifest.permission.RECORD_AUDIO)
+      }
     }.runOnQueue(Queues.MAIN)
     AsyncFunction("configure") { value: Map<String,String> ->
       CallManager.init(requireNotNull(appContext.reactContext))

@@ -9,7 +9,7 @@ const store = row => ({driverContractVersion:{findFirst:async()=>row}});
 test('new registration gets only the softened clause under a new version and hash; legacy stays unchanged',async()=>{
  const oldHash=contractHash(legacy);
  const {contract,release}=await registrationDriverContract(store(null),{});
- assert.equal(contract.version,'v1.1-2026-11-10');
+ assert.equal(contract.version,'v1.2-2026-11-11');
  assert.equal(release,null);
  assert.doesNotMatch(JSON.stringify(contract),/khách hàng được miễn phí|khoá vĩnh viễn|kể cả khi khách yêu cầu/);
  assert.match(JSON.stringify(contract),/tiếp nhận giải trình/);
@@ -30,7 +30,7 @@ test('published harsh content is revised for registration without mutating its s
  const row={id:'r',version:content.version,content,publishedAt:new Date(),graceDays:7};
  const before=structuredClone(row);
  const result=await registrationDriverContract(store(row),{});
- assert.equal(result.contract.version,'v-published-contact-20261110');
+ assert.equal(result.contract.version,'v-published-contact-20261111');
  assert.doesNotMatch(JSON.stringify(result.contract),/khách hàng được miễn phí/);
  assert.deepEqual(row,before);
  const softened={...row,content:result.contract,version:result.contract.version};
@@ -41,7 +41,7 @@ test('registration endpoint serves softened content to users without a driver pr
  const db={...store(null),driverProfile:{findUnique:async()=>null}};
  const res={setHeader(){},json(body){this.body=body;return this;}};
  await makeDriverContractController(db,{}).current({user:{uid:'new'}},res);
- assert.equal(res.body.contract.version,'v1.1-2026-11-10');
+ assert.equal(res.body.contract.version,'v1.2-2026-11-11');
  assert.equal(res.body.needsAcceptance,false);
  assert.equal(res.body.history.length,0);
 });

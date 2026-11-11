@@ -1,4 +1,4 @@
-import {showPermissionSettings} from './permissionHelp';
+import {requestNotificationPermission, showPermissionSettings} from './permissionHelp';
 import {tripCallActionLabel} from '../api/src/shared/tripCallLabels.js';
 import {setChatCallActive} from './chatAlerts';
 import React, {useEffect, useState} from 'react';
@@ -15,11 +15,16 @@ type Call={id:string;tripId?:string;status:string;side?:string;callerLabel?:stri
 type Snapshot={call?:Call;joined?:boolean;muted?:boolean;speaker?:boolean;error?:string;configured?:boolean};
 const availableNative=Platform.OS!=='web'?requireOptionalNativeModule('GoVietTripCalling'):null;
 const native=availableNative?.supported===false?null:availableNative;
-let config:Config, device='', configuredToken='', declinedToken='', configuring:Promise<boolean>|null=null;
+let config:Config, device='', configuredToken='', configuring:Promise<boolean>|null=null;
 let sessionEpoch=0;
 let current:Snapshot={};
 const listeners=new Set<(value:Snapshot)=>void>();
-const microphoneNotice=(role:string)=>role==='DRIVER'?'Cho phép dùng micro để bạn và khách hàng gọi cho nhau trong ứng dụng.':'Cho phép dùng micro để bạn và tài xế gọi cho nhau trong ứng dụng.';
+const recordingNotice = 'Cuộc gọi được ghi âm để GoViet247 hỗ trợ và xử lý phản ánh.';
+async function requestMicrophone() {
+ if (await native.microphone()) return true;
+ showPermissionSettings('Cần quyền micro', 'Bật quyền Micro để nói chuyện qua ứng dụng.');
+ return false;
+}
 const live=['RINGING','CONNECTING','CONNECTED'];
 export function configureCalls(value:Config){config=value;}
 function publish(value:Snapshot){setChatCallActive(!!value.call?.id);current=value;listeners.forEach(fn=>fn(value));}
@@ -36,26 +41,30 @@ async function request(path:string,body?:object){
   const data=await response.json();if(!response.ok)throw Object.assign(new Error(data.message||'Không kết nối được cuộc gọi.'),{code:data.code});return data;
  }finally{clearTimeout(timeout);}
 }
-async function ensureConfigured(force=false):Promise<boolean>{
+async function ensureConfigured(mode: 'restore' | 'outgoing' | 'incoming' = 'restore'): Promise<boolean> {
  if(!native||!config||config.role==='ADMIN')return false;
- const token=await config.getToken();
- if(!token){await clearCallSession();return false;}
- if(force && !await native.microphone()){showPermissionSettings('Cho phép cuộc gọi',Platform.OS==='android'?'Bật Micro và Thông báo cho GoViet247 để gọi và nhận cuộc gọi.':microphoneNotice(config.role));return false;}
- if(configuredToken===token)return true;
- if(!force&&declinedToken===token)return false;
+ const epoch = sessionEpoch;
+ const token = await config.getToken();
+ if(!token || epoch !== sessionEpoch)return false;
+ const stillCurrent = async () => epoch === sessionEpoch && await config.getToken() === token;
+ if(mode==='restore' && !await native.matchesSession(token))return false;
+ if(configuredToken===token && mode!=='incoming')return true;
  if(configuring)return configuring;
- const epoch=sessionEpoch;
  configuring=(async()=>{
   const deviceIdValue=await deviceId();
-  // Do not prompt or register until the API feature is deliberately enabled.
   await request(`/incoming?deviceId=${encodeURIComponent(deviceIdValue)}`);
-  if(!await native.matchesSession(token)){
-   const agree=await new Promise<boolean>(resolve=>Alert.alert('Cho phép dùng micro',microphoneNotice(config!.role),[{text:'Để sau',style:'cancel',onPress:()=>resolve(false)},{text:'Đồng ý',onPress:()=>resolve(true)}],{cancelable:false}));
-   if(!agree){declinedToken=token;return false;}
-   if(!await native.microphone()){showPermissionSettings('Chưa đủ quyền gọi',Platform.OS==='android'?'Bạn mở Cài đặt để cho phép GoViet247 dùng micro và hiển thị thông báo cuộc gọi.':'Bạn mở Cài đặt để cho phép GoViet247 dùng micro khi gọi.');declinedToken=token;return false;}
+  if(!await stillCurrent())return false;
+  if(mode==='incoming'){
+   const agree = await new Promise<boolean>(resolve => Alert.alert(
+    'Bật nhận cuộc gọi trong app',
+    `${recordingNotice} Ứng dụng cần quyền micro để bạn nghe máy, kể cả khi điện thoại đang khóa.`,
+    [{text:'Để sau',style:'cancel',onPress:()=>resolve(false)},{text:'Bật',onPress:()=>resolve(true)}],
+    {cancelable:false},
+   ));
+   if(!agree || !await stillCurrent() || !await requestMicrophone() || !await stillCurrent())return false;
+   if(Platform.OS==='android' && !await requestNotificationPermission())return false;
   }
-  // Consent dialogs and permission sheets can outlive a logout/account switch.
-  if(epoch!==sessionEpoch||await config.getToken()!==token)return false;
+  if(!await stillCurrent())return false;
   const androidToken=Platform.OS==='android'?(await Notifications.getExpoPushTokenAsync({projectId:Constants.easConfig?.projectId||Constants.expoConfig?.extra?.eas?.projectId})).data:undefined;
   if(epoch!==sessionEpoch||await config.getToken()!==token)return false;
   await native.configure({...(androidToken?{pushToken:androidToken}:{}),base:config.base.replace(/\/$/,''),token,deviceId:deviceIdValue,appKind:config.role,environment:Platform.OS==='android'?'android-expo':process.env.EXPO_PUBLIC_TRIP_CALL_APNS_ENV||(__DEV__?'sandbox':'production')});
@@ -64,8 +73,13 @@ async function ensureConfigured(force=false):Promise<boolean>{
  })().finally(()=>{configuring=null;});
  return configuring;
 }
+export async function enableIncomingCalls() {
+ return ensureConfigured('incoming');
+}
+export const supportsIncomingCalls = !!native;
+
 export async function clearCallSession(){
- sessionEpoch++;configuredToken='';declinedToken='';publish({});if(native)await native.clear();
+ sessionEpoch++;configuredToken='';publish({});if(native)await native.clear();
 }
 function useSnapshot(){const [value,setValue]=useState(current);useEffect(()=>{listeners.add(setValue);return()=>{listeners.delete(setValue);};},[]);return value;}
 export function useTripCallActive(){return !!useSnapshot().call?.id;}
@@ -84,11 +98,13 @@ export function TripCallButton({tripId}:{tripId:string}){
   if(starting||snapshot.call?.id)return;
   setStarting(true);
   try{
-   if(!await ensureConfigured(true))return;
-   const yes=await new Promise<boolean>(resolve=>Alert.alert(`Gọi ${eligible?.label||'liên hệ chuyến'}`,'Bạn muốn bắt đầu cuộc gọi?',[{text:'Hủy',style:'cancel',onPress:()=>resolve(false)},{text:'Gọi',onPress:()=>resolve(true)}],{cancelable:false}));
-   if(!yes)return;
+   const startingToken = await config.getToken();
+   if (!startingToken) return;
+   const yes=await new Promise<boolean>(resolve=>Alert.alert(`Gọi ${eligible?.label||'liên hệ chuyến'}`,recordingNotice,[{text:'Hủy',style:'cancel',onPress:()=>resolve(false)},{text:'Gọi',onPress:()=>resolve(true)}],{cancelable:false}));
+   if(!yes || await config.getToken() !== startingToken || !await requestMicrophone() ||
+      await config.getToken() !== startingToken || !await ensureConfigured('outgoing'))return;
    const deviceIdValue=await deviceId(),token=await config.getToken();
-   if(!token||token!==configuredToken)return;
+   if(token!==startingToken||token!==configuredToken)return;
    const data=await request(`/trip/${encodeURIComponent(tripId)}`,{deviceId:deviceIdValue,clientId:`call_${Date.now()}_${Math.random().toString(36).slice(2,14)}`,consent:true});
    try{await native.outgoing(data.call);publish(await native.snapshot());}
    catch(error){await request(`/${encodeURIComponent(data.call.id)}/end`,{deviceId:deviceIdValue}).catch(()=>{});throw error;}
@@ -115,5 +131,5 @@ export function TripCallOverlay(){
  const status=call.status==='CONNECTED'?`${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`:incoming?'Cuộc gọi đến':call.status==='RINGING'?'Đang gọi…':'Đang kết nối…';
  const action=async(fn:()=>Promise<unknown>)=>{try{await fn();publish(await native.snapshot());}catch(error:any){Alert.alert('Cuộc gọi',error.message||'Vui lòng thử lại.');}};
  const circle=(label:string,icon:React.ComponentProps<typeof Feather>['name'],onPress:()=>void,color='#334155',selected=false)=><Pressable accessibilityRole="button" accessibilityLabel={label} accessibilityState={{selected}} onPress={onPress} style={{alignItems:'center',gap:10,minWidth:85}}><View style={{width:66,height:66,borderRadius:33,alignItems:'center',justifyContent:'center',backgroundColor:color}}><Feather name={icon} size={27} color="white"/></View><Text style={{color:'white',fontSize:14}}>{label}</Text></Pressable>;
- return <Modal visible animationType="fade" onRequestClose={()=>{}}><SafeAreaView style={{flex:1,backgroundColor:'#0f172a',padding:24,justifyContent:'space-between'}}><Text style={{color:'#fb923c',fontSize:22,fontWeight:'800',textAlign:'center'}}>GoViet247</Text><View style={{alignItems:'center',gap:20}}><View style={{backgroundColor:'#334155',padding:30,borderRadius:70}}><Feather name="user" color="white" size={58}/></View><Text style={{color:'white',fontSize:28,fontWeight:'700',textAlign:'center'}}>{call.side==='caller'?call.calleeLabel:call.callerLabel}</Text><Text accessibilityLiveRegion="polite" style={{color:'#cbd5e1',fontSize:19}}>{status}</Text></View><View style={{gap:35,paddingBottom:24}}>{!incoming&&<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(snapshot.muted?'Bật micro':'Tắt micro',snapshot.muted?'mic-off':'mic',()=>void action(()=>native.mute(!snapshot.muted)),snapshot.muted?'#ea580c':'#334155',!!snapshot.muted)}{circle('Loa ngoài','volume-2',()=>void action(()=>native.speaker(!snapshot.speaker)),snapshot.speaker?'#ea580c':'#334155',!!snapshot.speaker)}</View>}<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(incoming?'Từ chối':'Kết thúc','phone-off',()=>void action(()=>native.end()),'#dc2626')}{incoming&&circle('Nghe máy','phone',()=>void action(()=>native.answer()),'#16a34a')}</View></View></SafeAreaView></Modal>;
+ return <Modal visible animationType="fade" onRequestClose={()=>{}}><SafeAreaView style={{flex:1,backgroundColor:'#0f172a',padding:24,justifyContent:'space-between'}}><Text style={{color:'#fb923c',fontSize:22,fontWeight:'800',textAlign:'center'}}>GoViet247</Text><View style={{alignItems:'center',gap:20}}><View style={{backgroundColor:'#334155',padding:30,borderRadius:70}}><Feather name="user" color="white" size={58}/></View><Text style={{color:'white',fontSize:28,fontWeight:'700',textAlign:'center'}}>{call.side==='caller'?call.calleeLabel:call.callerLabel}</Text><Text accessibilityLiveRegion="polite" style={{color:'#cbd5e1',fontSize:19}}>{status}</Text>{incoming && <Text style={{color:'#cbd5e1',textAlign:'center'}}>{recordingNotice}</Text>}</View><View style={{gap:35,paddingBottom:24}}>{!incoming&&<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(snapshot.muted?'Bật micro':'Tắt micro',snapshot.muted?'mic-off':'mic',()=>void action(()=>native.mute(!snapshot.muted)),snapshot.muted?'#ea580c':'#334155',!!snapshot.muted)}{circle('Loa ngoài','volume-2',()=>void action(()=>native.speaker(!snapshot.speaker)),snapshot.speaker?'#ea580c':'#334155',!!snapshot.speaker)}</View>}<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>{circle(incoming?'Từ chối':'Kết thúc','phone-off',()=>void action(()=>native.end()),'#dc2626')}{incoming&&circle('Nghe máy','phone',()=>void action(async()=>{if(await requestMicrophone())await native.answer();}),'#16a34a')}</View></View></SafeAreaView></Modal>;
 }

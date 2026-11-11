@@ -2,7 +2,6 @@ import {chatAlertMessageWhere} from '../shared/chatAlerts.js';
 import { chatVisibleFrom } from '../shared/chatAssignmentHistory.js';
 import {chatTripSummary} from '../shared/chatTripDetail.js';
 import { prepareChatImage, CHAT_IMAGE_MAX_BYTES } from '../services/chatImage.js';
-import { recordBlockedChatContact } from '../services/chatContactAlert.js';
 import { Router } from 'express';
 import multer from 'multer';
 import { prisma } from '../utils/db.js';
@@ -272,13 +271,6 @@ router.post('/:tripId/messages', wrap(async (req, res) => {
   try {
     data = validateChatPayload(req.body);
   } catch (e) {
-    if (e.code === 'CHAT_CONTACT_BLOCKED') {
-      try { await recordBlockedChatContact(prisma, req.params.tripId, req.chatActor, req.body, {io:req.app.get('io')}); }
-      catch(error) {
-        if (error.status) throw error;
-        console.error('[ChatContactAlert] could not persist alert', error.message);
-      }
-    }
     return res.status(400).json({success:false, code:e.code, message:e.message});
   }
   const message = await createChatMessage(req.params.tripId, req.chatActor, data);

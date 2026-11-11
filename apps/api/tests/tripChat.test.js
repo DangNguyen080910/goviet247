@@ -158,22 +158,19 @@ test('agreed confirmations are role specific and do not modify trip state', () =
   assert.equal(CHAT_QUICK_REPLIES.DRIVER[0], 'Tôi xác nhận nhận chuyến và sẽ đón đúng lịch đã đặt.');
   assert.equal(CHAT_QUICK_REPLIES.RIDER[0], 'Tôi xác nhận chuyến và sẽ có mặt tại điểm đón đúng giờ đã đặt.');
 });
-test('blocks common personal phone formats while allowing addresses, fares and times', () => {
+test('detects phone numbers in booking notes and permits contact in trip chat', () => {
   for (const text of ['Gọi 0901234567', '+84 901 234 567', '090.123.4567', '(090) 123-4567', '０９０１２３４５６７', 'không chín không một hai ba bốn năm sáu bảy']) {
     assert.equal(containsContactNumber(text), true, text);
-    assert.throws(() => validateChatPayload({
-      clientId: 'test_phone',
-      text
-    }), /số điện thoại/);
+    assert.equal(validateChatPayload({clientId: "test_phone", text}).text, text);
   }
   for (const text of ['Tôi đến lúc 07:30', 'Giá 1.500.000 đồng', '33/4 Đặng Văn Ngữ', 'Hẹn ngày 01/11/2026']) assert.equal(containsContactNumber(text), false, text);
-  assert.throws(() => validateChatPayload({
+  assert.equal(validateChatPayload({
     clientId: 'test_label',
     kind: 'LOCATION',
     latitude: 10,
     longitude: 106,
     locationLabel: 'Gọi 0901234567'
-  }), /số điện thoại/);
+  }).locationLabel, 'Gọi 0901234567');
 });
 test('only admin may delete; deletion clears content, queues audio removal and leaves an audit', async () => {
   for (const role of ['RIDER', 'DRIVER']) await assert.rejects(() => deleteChatMessage({}, 't', 'm', {

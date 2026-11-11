@@ -48,7 +48,7 @@ function mobile(app, options = {}) {
     '../services/authApi': {ApiError, getMe:()=>value(opts.me)},
     '../services/storage': storage,
     '../services/driverProfileApi': {getMyDriverProfile:()=>value(opts.profile)},
-    '../services/pushRegister': {registerPushToken:async()=>{}},
+    '../services/pushRegister': {refreshPushNotifications:async()=>{}},
     '../services/notify': {prepareNotificationUx:async()=>{},configureRiderAudioMode:async()=>{}},
   }).default;
   const run = () => {h.reset();component();return h.effects[0]();};

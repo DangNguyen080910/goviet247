@@ -88,7 +88,7 @@ export async function registrationDriverContract(db, env = process.env) {
     return [...contactPolicy.paragraphs];
   })}));
   if (!changed) return source;
-  content.version = original.version === legacy.version ? 'v1.1-2026-11-10' : `${original.version}-contact-20261110`;
+  content.version = original.version === legacy.version ? 'v1.2-2026-11-11' : `${original.version}-contact-20261111`;
   return {contract: {...content, contentHash: contractHash(content)}, release: null};
 }
 

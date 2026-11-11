@@ -1,6 +1,6 @@
 import { canSelfCancelTrip } from "../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../services/tripChat";
-import { hasActiveTripContact } from "../../api/src/shared/tripContact.js";
+import { hasActiveTripContact, phoneCallUrl } from "../../api/src/shared/tripContact.js";
 import TripRoute from "../components/TripRoute";
 // Path: goviet247/apps/rider-mobile/app/trip-history.tsx
 import TripPricingSummary from "../components/TripPricingSummary";
@@ -9,6 +9,7 @@ import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import {
   ActivityIndicator,
   Alert,
+  Linking,
   Platform,
   Pressable,
   ScrollView,
@@ -514,6 +515,14 @@ export default function RiderTripHistoryScreen() {
                         </View>
                       </>
                     ) : null}
+                    {hasActiveTripContact(item.status) && phoneCallUrl(item.driverContact?.phone) && (
+                      <Pressable accessibilityRole="button" onPress={() => {
+                        const url = phoneCallUrl(item.driverContact?.phone);
+                        if (url) void Linking.openURL(url).catch(() => Alert.alert("Không mở được cuộc gọi", "Vui lòng thử lại hoặc liên hệ qua app."));
+                      }}>
+                        <Text style={{ color: "#1D4ED8", paddingVertical: 8 }}>Gọi trực tiếp tài xế · {item.driverContact?.phone}</Text>
+                      </Pressable>
+                    )}
                     <TripChatButton tripId={item.id} status={item.status} label={item.status === "PENDING" ? "Nhắn GoViet247" : "Liên hệ tài xế / GoViet247"} />
 
                     <View style={styles.metaRow}>

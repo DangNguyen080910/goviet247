@@ -14,6 +14,7 @@ import {
   ActivityIndicator,
   Alert,
   Image,
+  Linking,
   Platform,
   Modal,
   KeyboardAvoidingView,
@@ -24,6 +25,7 @@ import {
 } from "react-native-safe-area-context";
 import { logoutSession } from "../../services/authApi";
 import { getDriverToken } from "../../services/storage";
+import { getDriverSupportPhone } from "../../services/systemConfigApi";
 import {
   getDriverContract,
   type DriverContractDocument,
@@ -74,6 +76,7 @@ export default function DriverProfileCreateScreen() {
   const [plateNumber, setPlateNumber] = useState("");
 
   const [errorText, setErrorText] = useState("");
+  const [supportPhone, setSupportPhone] = useState("0326184628");
   const [submitting, setSubmitting] = useState(false);
   const [uploadingType, setUploadingType] = useState<DriverDocumentType | null>(
     null,
@@ -95,6 +98,32 @@ export default function DriverProfileCreateScreen() {
   useEffect(() => {
     if (acceptedIdentity !== identityKey) {setHasAcceptedContract(false);setContractCheckedInModal(false);}
   }, [identityKey, acceptedIdentity]);
+
+  useEffect(() => {
+    let active = true;
+    void getDriverSupportPhone().then((value) => {
+      const phone = String(value || "").trim();
+      if (active && /^\+?\d{8,15}$/.test(phone.replace(/[ .()-]/g, ""))) {
+        setSupportPhone(phone);
+      }
+    });
+    return () => { active = false; };
+  }, []);
+
+  const supportLink = (
+    <Text
+      accessibilityRole="link"
+      style={styles.registrationSupport}
+      onPress={() => {
+        const dialNumber = supportPhone.replace(/[^+\d]/g, "");
+        void Linking.openURL(`tel:${dialNumber}`).catch(() => {
+          Alert.alert("Hỗ trợ đăng ký", `Vui lòng gọi GoViet247 theo số ${supportPhone}.`);
+        });
+      }}
+    >
+      Hỗ trợ đăng ký: {supportPhone}
+    </Text>
+  );
 
   const allDocsUploaded = useMemo(() => {
     return DOCUMENT_ITEMS.every((item) => !!uploadedDocs[item.type]?.fileUrl);
@@ -425,6 +454,7 @@ export default function DriverProfileCreateScreen() {
               Vui lòng nhập thông tin xe và tải đầy đủ giấy tờ để gửi admin
               duyệt.
             </Text>
+            {supportLink}
 
             <View style={styles.card}>
               <Text style={styles.sectionTitle}>Thông tin cá nhân & xe</Text>
@@ -655,7 +685,12 @@ export default function DriverProfileCreateScreen() {
               </TouchableOpacity>
             </View>
 
-            {!!errorText && <Text style={styles.errorText}>{errorText}</Text>}
+            {!!errorText && (
+              <View>
+                <Text accessibilityLiveRegion="polite" style={styles.errorText}>{errorText}</Text>
+                {supportLink}
+              </View>
+            )}
 
             <TouchableOpacity
               style={[
@@ -706,7 +741,12 @@ export default function DriverProfileCreateScreen() {
               showsVerticalScrollIndicator={false}
             >
               {contractLoading && <ActivityIndicator />}
-              {!!contractError && <Text style={styles.contractParagraph}>{contractError}</Text>}
+              {!!contractError && (
+                <View>
+                  <Text accessibilityLiveRegion="polite" style={styles.contractParagraph}>{contractError}</Text>
+                  {supportLink}
+                </View>
+              )}
               {!!contractError && <TouchableOpacity onPress={openContractModal}><Text style={styles.contractParagraph}>Thử tải lại hợp đồng</Text></TouchableOpacity>}
               {contractDocument && <>
                 <Text style={styles.contractParagraph}>{contractDocument.title} · {contractDocument.version}</Text>
@@ -999,6 +1039,12 @@ const styles = StyleSheet.create({
     color: "#1D4ED8",
     fontSize: 15,
     fontWeight: "800",
+  },
+  registrationSupport: {
+    color: "#1D4ED8",
+    textDecorationLine: "underline",
+    paddingVertical: 12,
+    fontWeight: "600",
   },
   errorText: {
     color: "#DC2626",

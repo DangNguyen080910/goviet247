@@ -1,3 +1,6 @@
+import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
+import { enablePushNotifications } from "../services/pushRegister";
+import { getRiderToken } from "../services/storage";
 // Path: goviet247/apps/rider-mobile/app/notifications.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useFocusEffect, router } from "expo-router";
@@ -87,6 +90,7 @@ export default function RiderNotificationsScreen() {
         showsVerticalScrollIndicator={false}
       >
         <AppBrandHeader title="Thông báo" />
+        <NotificationPermissionActions enablePush={() => enablePushNotifications(getRiderToken)} />
 
         <View style={styles.topActions}>
           <Pressable

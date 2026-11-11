@@ -1,7 +1,6 @@
 // Path: goviet247/apps/driver-mobile/app/bootstrap.tsx
 import { useEffect, useState } from "react";
 import { router } from "expo-router";
-import * as Notifications from "expo-notifications";
 import {
   ActivityIndicator,
   Pressable,
@@ -13,9 +12,7 @@ import {
 import { getDriverToken, removeDriverToken } from "../services/storage";
 import { ApiError, getMe } from "../services/authApi";
 import { getMyDriverProfile } from "../services/driverProfileApi";
-import { registerPushToken } from "../services/pushRegister";
-import { prepareNotificationUx } from "../services/notify";
-import * as Device from "expo-device";
+import { refreshPushNotifications } from "../services/pushRegister";
 
 function isDriverRole(role: string | null | undefined) {
   const normalized = String(role || "")
@@ -38,29 +35,6 @@ export default function BootstrapScreen() {
           return;
         }
 
-        await prepareNotificationUx().catch((err) => {
-          console.warn("[Push] prepare notification ux error:", err);
-        });
-
-        const currentPermission = await Notifications.getPermissionsAsync();
-
-        let finalStatus = currentPermission.status;
-
-        if (finalStatus !== "granted") {
-          const requestedPermission =
-            await Notifications.requestPermissionsAsync({
-              ios: {
-                allowAlert: true,
-                allowBadge: true,
-                allowSound: true,
-              },
-            });
-
-          finalStatus = requestedPermission.status;
-        }
-
-        console.log("[Push] final permission status =", finalStatus);
-
         const meData = await getMe(token);
         if (!active) return;
         const user = meData?.user;
@@ -82,17 +56,9 @@ export default function BootstrapScreen() {
 
         const status = data?.profile?.status;
 
-        if (finalStatus === "granted") {
-          try {
-            if (Device.isDevice) {
-              await registerPushToken((await getDriverToken()) || token);
-            } else {
-              console.log("[Push] skip simulator push token");
-            }
-          } catch (err) {
-            console.warn("[Push] register token error:", err);
-          }
-        }
+        void refreshPushNotifications(token).catch((error) => {
+          console.warn("[Push] register token error:", error);
+        });
 
         if (status === "PENDING") {
           router.replace("/driver-profile/pending");

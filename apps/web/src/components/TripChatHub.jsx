@@ -1,4 +1,3 @@
-import {CHAT_SERVICE_NOTICE} from '../../../api/src/shared/chatServiceNotice.js';
 import {splitChatLinks} from '../../../mobile-chat/chatLinks';
 import {chatTripDetailRows,chatConversationRoute} from '../../../api/src/shared/chatTripDetail.js';
 import {partnerFetch} from './partners/partnerSession';
@@ -539,11 +538,7 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
             overflowY: 'auto',
             p: 2,
             bgcolor: '#f8fafc'
-          }}>{chatStatus==='COMPLETED' ? <Typography sx={{fontSize:13,color:'#64748b'}}>{COMPLETED_CHAT_NOTICE}</Typography> : <Box sx={{bgcolor:'#fff1f2',border:'1px solid #fecdd3',borderRadius:3,p:1.5,display:'grid',gap:0.75}}>
- <Typography sx={{color:'#9f1239',fontSize:13,fontWeight:700}}>{CHAT_SERVICE_NOTICE.lead}</Typography>
- <Typography sx={{color:'#0f172a',fontSize:13}}>{CHAT_SERVICE_NOTICE.recording}</Typography>
- <Typography sx={{color:'#0f172a',fontSize:13}}>{CHAT_SERVICE_NOTICE.outside}</Typography>
- </Box>}{more && <Button disabled={busy} onClick={() => run(async () => {
+          }}>{chatStatus==='COMPLETED' && <Typography sx={{fontSize:13,color:'#64748b'}}>{COMPLETED_CHAT_NOTICE}</Typography>}{more && <Button disabled={busy} onClick={() => run(async () => {
               const d = await api(`/${tripId}/messages?before=${items[0]?.id}`);
               if (d.visibleFrom !== historyFrom.current || d.historyReset) { await load(); return; }
               loadedOlder.current = true;

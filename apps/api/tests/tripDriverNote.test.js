@@ -40,7 +40,7 @@ test('Rider detail hides dispatcher/internal notes while assigned Driver detail 
   const start=controller.indexOf('export async function getTripById('),end=controller.indexOf('\n}',start)+2;
   const trip={id:'t1',riderId:'r1',driverId:'d1',dispatcherNote:'Điều hành',verifiedNote:'Chỉ admin',riderPhone:'0901234567'};
   const serializerStart=controller.indexOf('function serializeDriverTrip('),serializerEnd=controller.indexOf('\n}',serializerStart)+2;
-  const serializeDriverTrip=new Function('maskAddress','normalizeDisplayAddress','maskRiderName','maskRiderPhone',controller.slice(serializerStart,serializerEnd)+';return serializeDriverTrip;')(v=>v,v=>v,()=> 'Khách hàng',()=> '');
+  const serializeDriverTrip=new Function('hasActiveTripContact','maskAddress','normalizeDisplayAddress','maskRiderName','maskRiderPhone',controller.slice(serializerStart,serializerEnd)+';return serializeDriverTrip;')(()=>false,v=>v,v=>v,()=> 'Khách hàng',()=> '');
   const deps={getPartnerRiderContext,serializeDriverTrip,prisma:{trip:{findUnique:async()=>trip}},getVerifiedRiderPhoneVariants:async()=>[],phoneVariants:()=>[]};
   const get=new Function(...Object.keys(deps),controller.slice(start,end).replace('export ','')+'; return getTripById;')(...Object.values(deps));
   for(const id of ['r1','d1']){
