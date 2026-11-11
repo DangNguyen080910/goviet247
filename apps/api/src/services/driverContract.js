@@ -58,7 +58,7 @@ export function renderContractEvidence(profile, records, exportedAt = new Date()
 
 // Serialize publication and acceptance so an old version cannot be accepted across a publish.
 export async function lockContractPublication(tx) {
-  await tx.$queryRaw`SELECT pg_advisory_xact_lock(247101126)`;
+  await tx.$queryRaw`SELECT pg_advisory_xact_lock(247101126)::text`;
 }
 export async function currentDriverContract(db, env = process.env) {
   const row = await db.driverContractVersion.findFirst({where:{publishedAt:{not:null}},orderBy:[{publishedAt:'desc'},{id:'desc'}]});
