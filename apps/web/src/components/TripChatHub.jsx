@@ -583,7 +583,7 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
                 fontSize: 11,
                 color: '#64748b',
                 mt: 0.5
-              }}>{new Date(m.createdAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}</Typography></Box>)}<div ref={end} /></Stack>
+              }}>{new Date(m.createdAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</Typography></Box>)}<div ref={end} /></Stack>
  {!canSend ? <Alert severity="info">Hội thoại hiện chỉ đọc. Chuyến đã kết thúc hoặc tài khoản chưa có quyền gửi tin. Nhờ GoViet247 hỗ trợ nếu cần.</Alert> : <Stack spacing={1} sx={{
             p: 2
           }}>

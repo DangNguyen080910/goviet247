@@ -11,7 +11,7 @@ import AdminTableScroll from "../../components/admin/AdminTableScroll";
 import TripDetailModal from "../../components/admin/TripDetailModal";
 
 const day = (date) => date.toLocaleDateString("en-CA", { timeZone: "Asia/Ho_Chi_Minh" });
-const formatTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false , day: "2-digit", month: "2-digit", year: "numeric" }) : "—";
+const formatTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" }) : "—";
 const money = (value) => Number(value || 0).toLocaleString("vi-VN");
 const sources = { WEB: "Web", ANDROID: "Android", IOS: "iOS", UNKNOWN: "Chưa xác định" };
 const fuels = { ANY: "Không yêu cầu", ELECTRIC: "Xe điện", GASOLINE: "Xe xăng" };

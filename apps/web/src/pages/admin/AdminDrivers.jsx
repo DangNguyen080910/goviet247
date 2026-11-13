@@ -69,7 +69,7 @@ function formatNgayGio(input) {
   if (!input) return "-";
   const d = new Date(input);
   if (Number.isNaN(d.getTime())) return String(input);
-  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" });
+  return d.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
 function getDriverDisplayName(driver) {
@@ -992,14 +992,14 @@ export default function AdminDrivers() {
                         >
                           Tải lên:{" "}
                           {doc.createdAt
-                            ? new Date(doc.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })
+                            ? new Date(doc.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })
                             : "-"}
                         </Typography>
 
                         {doc.reviewedAt && (
                           <Typography variant="body2" color="text.secondary">
                             Duyệt lúc:{" "}
-                            {new Date(doc.reviewedAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
+                            {new Date(doc.reviewedAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}
                           </Typography>
                         )}
 
@@ -1079,7 +1079,7 @@ export default function AdminDrivers() {
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {x.actorUsername} ·{" "}
-                          {new Date(x.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
+                          {new Date(x.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}
                         </Typography>
                         {x.note && (
                           <Typography variant="body2">

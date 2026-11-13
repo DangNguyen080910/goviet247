@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {Alert,Box,Button,Checkbox,Chip,Dialog,DialogTitle,DialogContent,DialogActions,FormControlLabel,MenuItem,Paper,Stack,Tab,Tabs,TextField,Typography} from '@mui/material';
 import {contractRequest} from '../../api/adminContracts';
-const dt=v=>v?new Date(v).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" }): 'Chưa phát hành';
+const dt=v=>v?new Date(v).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" }): 'Chưa phát hành';
 function Content({content}){return <Box sx={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}><Typography variant="h6">{content.title}</Typography><Typography>Phiên bản: {content.version}</Typography>{content.company&&<Box sx={{my:2}}>{Object.values(content.company).map((s,i)=><Typography key={i}>{s}</Typography>)}</Box>}{content.sections.map((s,i)=><Box key={i} sx={{my:2}}><Typography fontWeight={700}>{s.heading}</Typography>{s.paragraphs.map((t,j)=><Typography key={j} sx={{my:1}}>{t}</Typography>)}</Box>)}<Typography>{content.confirmation}</Typography></Box>}
 export default function ContractConfig(){
  const [kind,setKind]=useState(0),[tab,setTab]=useState(0),[data,setData]=useState(null),[draft,setDraft]=useState(null),[preview,setPreview]=useState(null),[publish,setPublish]=useState(null),[reviewed,setReviewed]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[status,setStatus]=useState(null),[pending,setPending]=useState(true),[version,setVersion]=useState('');

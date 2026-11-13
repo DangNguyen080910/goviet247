@@ -726,7 +726,7 @@ export default function AdminCustomers() {
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {x.actorUsername} ·{" "}
-                          {new Date(x.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}
+                          {new Date(x.createdAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}
                         </Typography>
                         {x.note && (
                           <Typography variant="body2">

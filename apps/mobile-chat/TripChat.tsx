@@ -692,7 +692,7 @@ export default function TripChatScreen() {
             fontSize: 11,
             color: '#64748b',
             marginTop: 7
-          }}>{new Date(m.createdAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, day: "2-digit", month: "2-digit", year: "numeric" })}</Text></View>)}
+          }}>{new Date(m.createdAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</Text></View>)}
  </ScrollView>
  {!canSend ? <Text style={{
         padding: 16,
