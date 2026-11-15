@@ -4192,11 +4192,8 @@ export function makeAdminController(prisma) {
         const [items, total] = await Promise.all([
           prisma.driverWithdrawRequest.findMany({
             where,
-            orderBy: [
-              { paidAt: "desc" },
-              { approvedAt: "desc" },
-              { createdAt: "desc" },
-            ],
+            // PostgreSQL enum order puts open requests ahead of paid and rejected ones.
+            orderBy: [{ status: "asc" }, { createdAt: "desc" }, { id: "desc" }],
             skip: (page - 1) * pageSize,
             take: pageSize,
             include: {

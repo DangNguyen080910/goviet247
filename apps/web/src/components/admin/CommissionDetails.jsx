@@ -35,9 +35,22 @@ export default function CommissionDetails() {
       const url=URL.createObjectURL(await res.blob()),link=document.createElement('a');link.href=url;link.download=`hoa_don_hoa_hong_${data.periodKey}.xlsx`;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
     }catch(e){setError(e.message);}finally{setDownloading(false);}
   }
-  async function confirm(){
+  const editingInvoice = Boolean(selected?.invoice);
+  async function saveInvoice(){
     setSaving(true);setSaveError('');
-    try{await fetch(`${api}/commission-invoices/${encodeURIComponent(selected.tripId)}/confirm`,{method:'POST',headers:{Authorization:`Bearer ${getAdminToken()}`,'Content-Type':'application/json'},body:JSON.stringify({invoiceNumber,issuedDay})}).then(read);setSelected(null);setRefresh(n=>n+1);}
+    try {
+      const action = editingInvoice ? 'number' : 'confirm';
+      const body = editingInvoice
+        ? {invoiceNumber, previousInvoiceNumber: selected.invoice.invoiceNumber ?? null}
+        : {invoiceNumber, issuedDay};
+      await fetch(`${api}/commission-invoices/${encodeURIComponent(selected.tripId)}/${action}`, {
+        method: editingInvoice ? 'PATCH' : 'POST',
+        headers: {Authorization: `Bearer ${getAdminToken()}`, 'Content-Type': 'application/json'},
+        body: JSON.stringify(body),
+      }).then(read);
+      setSelected(null);
+      setRefresh(n=>n+1);
+    }
     catch(e){setSaveError(e.message);}finally{setSaving(false);}
   }
   return <Stack spacing={2}>
@@ -63,10 +76,10 @@ export default function CommissionDetails() {
           <TableCell>{new Date(i.eventAt).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh', hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}{i.recognitionEstimated&&<Typography variant="caption" display="block">Mốc dữ liệu cũ, cần đối chiếu</Typography>}</TableCell>
           <TableCell>{i.tripId}</TableCell><TableCell>{i.driverName}<br/>{i.driverId}</TableCell><TableCell>{i.driverPhone||'Chưa cập nhật'}</TableCell><TableCell>{i.citizenId||'Chưa cập nhật'}</TableCell><TableCell sx={{minWidth:220}}>{i.residentialAddress||'Chưa cập nhật'}</TableCell>
           <TableCell>{money(i.totalPrice)}</TableCell><TableCell>{i.commissionPercent??'—'}</TableCell><TableCell>{money(i.commissionGross)}</TableCell><TableCell>{money(i.commissionNet)}</TableCell><TableCell>{money(i.commissionVat)}</TableCell>
-          <TableCell sx={{minWidth:210}}>{i.invoice?<>Đã xác nhận: {i.invoice.invoiceNumber}<br/>{new Date(i.invoice.issuedAt).toLocaleDateString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh', day: "2-digit", month: "2-digit", year: "numeric" })}</>:i.commissionGross>0?<Button size="small" onClick={()=>{setSelected(i);setInvoiceNumber('');setIssuedDay(today());setSaveError('');}}>Xác nhận đã phát hành</Button>:i.note||'Không phát sinh phí'}</TableCell>
+          <TableCell sx={{minWidth:210}}>{i.invoice?<>Đã xác nhận: {i.invoice.invoiceNumber}<br/>{new Date(i.invoice.issuedAt).toLocaleDateString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh', day: "2-digit", month: "2-digit", year: "numeric" })}<br/><Button size="small" onClick={()=>{setSelected(i);setInvoiceNumber(i.invoice.invoiceNumber ?? '');setSaveError('');}}>Sửa ký hiệu / số hóa đơn</Button></>:i.commissionGross>0?<Button size="small" onClick={()=>{setSelected(i);setInvoiceNumber('');setIssuedDay(today());setSaveError('');}}>Xác nhận đã phát hành</Button>:i.note||'Không phát sinh phí'}</TableCell>
         </TableRow>)}
       </TableBody></Table></AdminTableScroll>
     </>}
-    <Dialog open={!!selected} onClose={()=>!saving&&setSelected(null)} fullWidth><DialogTitle>Xác nhận hóa đơn đã phát hành</DialogTitle><DialogContent><Stack spacing={2} sx={{pt:1}}><Typography>{selected?.driverName} · {money(selected?.commissionGross)}. Chỉ ghi nhận hóa đơn thực tế đã phát hành cho chuyến này; thao tác này không ký hay gửi cơ quan thuế.</Typography><TextField label="Ký hiệu / số hóa đơn" value={invoiceNumber} onChange={e=>setInvoiceNumber(e.target.value)} inputProps={{maxLength:100}}/><TextField type="date" label="Ngày lập trên hóa đơn" value={issuedDay} onChange={e=>setIssuedDay(e.target.value)} InputLabelProps={{shrink:true}} inputProps={{max:today()}}/>{saveError&&<Alert severity="error">{saveError}</Alert>}</Stack></DialogContent><DialogActions><Button disabled={saving} onClick={()=>setSelected(null)}>Hủy</Button><Button disabled={saving||!invoiceNumber.trim()||!issuedDay} onClick={confirm}>Lưu xác nhận</Button></DialogActions></Dialog>
+    <Dialog open={!!selected} onClose={()=>!saving&&setSelected(null)} fullWidth><DialogTitle>{editingInvoice ? "Sửa ký hiệu / số hóa đơn" : "Xác nhận hóa đơn đã phát hành"}</DialogTitle><DialogContent><Stack spacing={2} sx={{pt:1}}><Typography>{selected?.driverName} · {money(selected?.commissionGross)}. Chỉ ghi nhận hóa đơn thực tế đã phát hành cho chuyến này; thao tác này không ký hay gửi cơ quan thuế.</Typography><TextField label="Ký hiệu / số hóa đơn" value={invoiceNumber} onChange={e=>setInvoiceNumber(e.target.value)} inputProps={{maxLength:100}}/>{!editingInvoice && <TextField type="date" label="Ngày lập trên hóa đơn" value={issuedDay} onChange={e=>setIssuedDay(e.target.value)} InputLabelProps={{shrink:true}} inputProps={{max:today()}}/>}{saveError&&<Alert severity="error">{saveError}</Alert>}</Stack></DialogContent><DialogActions><Button disabled={saving} onClick={()=>setSelected(null)}>Hủy</Button><Button disabled={saving||!invoiceNumber.trim()||(!editingInvoice&&!issuedDay)} onClick={saveInvoice}>{editingInvoice ? "Lưu thay đổi" : "Lưu xác nhận"}</Button></DialogActions></Dialog>
   </Stack>;
 }

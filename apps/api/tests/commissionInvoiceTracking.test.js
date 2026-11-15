@@ -45,3 +45,32 @@ test('manual confirmation writes only invoice state, validates input and rejects
  for(const body of [{issuedDay:'2026-02-30',invoiceNumber:'x'},{issuedDay:'2026-10-31',invoiceNumber:''},{issuedDay:'2100-01-01',invoiceNumber:'x'}]){res=response();await c.confirmIssued({...req,body},res);assert.equal(res.code,400);}
  assert.equal(writes,2);
 });
+
+test('an invoice number correction keeps the confirmation and rejects stale edits', async () => {
+ const issuedAt = new Date('2026-11-13T00:00:00Z');
+ const original = {invoiceNumber:'ABC/129', issuedAt, confirmedAt:issuedAt, confirmedBy:'admin'};
+ let row = {...original};
+ const db = {commissionInvoiceState:{
+   async updateMany({where,data}) {
+     assert.deepEqual(where.issuedAt,{not:null});
+     assert.deepEqual(where.confirmedAt,{not:null});
+     if (where.invoiceNumber !== row.invoiceNumber) return {count:0};
+     row = {...row,...data};
+     return {count:1};
+   },
+   async findFirst() { return row; },
+ }};
+ const controller = makeCommissionInvoiceController(db);
+ const req = {params:{tripId:'t1'},body:{previousInvoiceNumber:'ABC/129',invoiceNumber:' ABC/130 '}};
+ let res = response();
+ await controller.updateInvoiceNumber(req,res);
+ assert.equal(res.code,200);
+ assert.deepEqual(row,{...original,invoiceNumber:'ABC/130'});
+ res = response();
+ await controller.updateInvoiceNumber(req,res);
+ assert.equal(res.code,200);
+ res = response();
+ await controller.updateInvoiceNumber({...req,body:{...req.body,invoiceNumber:'ABC/131'}},res);
+ assert.equal(res.code,409);
+ assert.equal(row.invoiceNumber,'ABC/130');
+});

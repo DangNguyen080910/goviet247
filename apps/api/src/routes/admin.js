@@ -408,6 +408,7 @@ router.get("/commission-details", requireAdmin, ctrl.getCommissionDetails);
 const invoiceCtrl = makeCommissionInvoiceController(prisma);
 router.get("/commission-invoices/summary", requireAdmin, invoiceCtrl.summary);
 router.post("/commission-invoices/:tripId/confirm", requireAdmin, invoiceCtrl.confirmIssued);
+router.patch("/commission-invoices/:tripId/number", requireAdmin, invoiceCtrl.updateInvoiceNumber);
 
 router.get("/revenue-report", requireAdminOrStaff, ctrl.getRevenueReport);
 

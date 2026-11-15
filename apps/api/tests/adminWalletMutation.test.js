@@ -138,6 +138,9 @@ test("withdraw and ledger search resolve accented names and local/international 
       assert.equal(res.statusCode, 200);
       assert.equal(res.body.items[0]?.driverProfile.fullName, driver.fullName, `${method}: ${q}`);
       assert.equal(seen.take, 50); assert.equal(seen.skip, 0);
+      if (method === "listDriverWithdrawRequests") {
+        assert.deepEqual(seen.orderBy, [{ status: "asc" }, { createdAt: "desc" }, { id: "desc" }]);
+      }
     }
   }
 });

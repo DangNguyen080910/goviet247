@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, ActivityIndicator, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DRIVER_CONTRACT_RECONSENT_VISIBLE } from "../constants/contractFeatures";
@@ -10,6 +10,7 @@ export default function DriverContractScreen() {
 }
 function ActiveContractScreen() {
   const required = useLocalSearchParams<{ required?: string }>().required === "1";
+  const scroll = useRef<ScrollView>(null);
   const [data,setData] = useState<DriverContractResponse | null>(null);
   const [viewHistory,setViewHistory] = useState<string|null>(null);
   const [busy,setBusy] = useState(false); const [error,setError] = useState(""); const [checked,setChecked] = useState(false);
@@ -27,7 +28,7 @@ function ActiveContractScreen() {
   }
   const missingIdentity=!!data?.release && (!data.profile?.residentialAddress?.trim() || !/^\d{12}$/.test(data.profile?.citizenId||''));
   const p={fontSize:16,lineHeight:24,marginBottom:12,color:"#17202a"};
-  return <SafeAreaView style={{flex:1,backgroundColor:"white"}}><ScrollView contentContainerStyle={{padding:20}}>
+  return <SafeAreaView style={{flex:1,backgroundColor:"white"}}><ScrollView ref={scroll} contentContainerStyle={{padding:20}}>
     {required ? (
       <TouchableOpacity onPress={async () => { await removeDriverToken(); router.replace("/"); }}>
         <Text style={p}>Đăng xuất</Text>
@@ -36,6 +37,12 @@ function ActiveContractScreen() {
     <Text style={[p,{fontSize:22,fontWeight:"700"}]}>Hợp đồng tài xế</Text>
     {busy && <ActivityIndicator/>}{!!error && <Text style={[p,{color:"#b42318"}]}>{error}</Text>}
     <TouchableOpacity disabled={busy} onPress={load}><Text style={[p,{color:"#1676D2"}]}>Tải lại</Text></TouchableOpacity>
+    {data?.profile && data.needsAcceptance && (
+      <TouchableOpacity accessibilityRole="button" onPress={() => scroll.current?.scrollToEnd()}
+        style={{padding:14, marginBottom:16, borderRadius:8, backgroundColor:"#EAF4FF"}}>
+        <Text style={{color:"#125EA7", fontWeight:"700", fontSize:16}}>Đi đến phần đồng ý ở cuối hợp đồng ↓</Text>
+      </TouchableOpacity>
+    )}
     {data && <>
       {data.release && <View><Text style={p}>Cập nhật: {data.release.changeSummary}</Text><Text style={p}>{data.needsAcceptance ? 'Bạn chưa xác nhận phiên bản đang áp dụng.' : 'Bạn đã xác nhận phiên bản đang áp dụng.'}</Text><Text style={p}>{data.release.requireForNewTrips ? 'Thời hạn xác nhận để nhận chuyến mới: '+new Date(data.release.deadline).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" }) : 'Hiện không chặn nhận chuyến nếu chưa xác nhận.'}</Text></View>}
       {(data.history||[]).length>0 && <View><Text style={[p,{fontWeight:'700'}]}>Lịch sử xác nhận của bạn</Text>{data.history!.map(h=><View key={h.id}><TouchableOpacity accessibilityRole="button" onPress={()=>setViewHistory(viewHistory===h.id?null:h.id)}><Text style={[p,{color:'#1676D2'}]}>{h.contractVersion} · {new Date(h.agreedAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })} · {viewHistory===h.id?'Thu gọn':'Xem bản đã xác nhận'}</Text></TouchableOpacity>{viewHistory===h.id&&<View><Text style={p}>{h.evidenceNotice}</Text>{h.contentSnapshot?.identity&&<Text style={p}>Thông tin được lưu khi xác nhận: {Object.values(h.contentSnapshot.identity).filter(v=>typeof v==='string').join(' · ')}</Text>}{h.contentSnapshot?.contentVerified&&h.contentSnapshot.content&&<View><Text style={[p,{fontWeight:'700'}]}>{h.contentSnapshot.content.title}</Text>{h.contentSnapshot.content.company&&<Text style={p}>{Object.values(h.contentSnapshot.content.company).join(' · ')}</Text>}<Text style={p}>{h.contentSnapshot.content.confirmation}</Text></View>}{h.contentSnapshot?.contentVerified&&h.contentSnapshot.content?.sections.map((s,i)=><View key={i}><Text style={[p,{fontWeight:'700'}]}>{s.heading}</Text>{s.paragraphs.map((t,j)=><Text key={j} style={p}>{t}</Text>)}</View>)}</View>}</View>)}</View>}
@@ -47,8 +54,20 @@ function ActiveContractScreen() {
       {data.contract.sections.map(section=><View key={section.heading}><Text style={[p,{fontWeight:"700"}]}>{section.heading}</Text>{section.paragraphs.map((t,i)=><Text key={i} style={p}>{t}</Text>)}</View>)}
       {!data.profile && <Text style={p}>Vui lòng tạo hồ sơ tài xế để giao kết hợp đồng.</Text>}
       {missingIdentity&&<View><Text style={[p,{color:'#b42318'}]}>Hồ sơ còn thiếu CCCD hoặc địa chỉ. Vui lòng liên hệ GoViet247 để bổ sung và tải lại hợp đồng trước khi xác nhận.</Text><TouchableOpacity onPress={()=>router.push('/support' as any)}><Text style={[p,{color:'#1676D2'}]}>Liên hệ hỗ trợ</Text></TouchableOpacity></View>}
-      {data.profile && data.needsAcceptance !== false && <><TouchableOpacity disabled={busy} accessibilityRole="checkbox" accessibilityState={{checked}} onPress={()=>setChecked(!checked)}><Text style={p}>{checked ? "☑" : "☐"} {data.contract.confirmation}</Text></TouchableOpacity>
-      <TouchableOpacity disabled={!checked || busy || missingIdentity} onPress={accept} style={{padding:16,backgroundColor:checked && !busy && !missingIdentity ? "#1676D2":"#aaa",borderRadius:8}}><Text style={{color:"white",textAlign:"center",fontWeight:"700"}}>Xác nhận nội dung đang hiển thị</Text></TouchableOpacity></>}
+      {data.profile && data.needsAcceptance && <View style={{marginTop:16, gap:12}}>
+        <Text style={[p,{fontWeight:"700"}]}>Xác nhận của tài xế</Text>
+        <Text style={p}>{data.contract.confirmation}</Text>
+        <TouchableOpacity disabled={busy || missingIdentity} accessibilityRole="checkbox"
+          accessibilityState={{checked, disabled:busy || missingIdentity}} onPress={()=>setChecked(!checked)}
+          style={{flexDirection:"row", alignItems:"center", gap:12, padding:14, borderWidth:2,
+            borderColor:"#1768B2", borderRadius:10, backgroundColor:checked ? "#DBEDFF" : "#F2F8FF"}}>
+          <View style={{width:36, height:36, borderWidth:2, borderRadius:6, borderColor:"#1768B2",
+            backgroundColor:checked ? "#1768B2" : "#fff", alignItems:"center", justifyContent:"center"}}>
+            {checked && <Text style={{color:"#fff", fontSize:22, fontWeight:"700"}}>✓</Text>}
+          </View>
+          <Text style={{flex:1, fontSize:17, fontWeight:"700", color:"#123D62"}}>Tôi đã đọc và đồng ý với hợp đồng</Text>
+        </TouchableOpacity>
+      <TouchableOpacity disabled={!checked || busy || missingIdentity} onPress={accept} style={{padding:16,backgroundColor:checked && !busy && !missingIdentity ? "#1676D2":"#aaa",borderRadius:8}}><Text style={{color:"white",textAlign:"center",fontWeight:"700"}}>Xác nhận nội dung đang hiển thị</Text></TouchableOpacity></View>}
     </>}
   </ScrollView></SafeAreaView>;
 }

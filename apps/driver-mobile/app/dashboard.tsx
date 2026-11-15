@@ -1045,7 +1045,6 @@ export default function DashboardScreen() {
           availableTripStateRef.current.markUnavailable(tripId);
           setAvailableTrips((items) => items.filter((item) => item.id !== tripId));
         }
-        if (error?.code === "TRIP_ACCEPT_UNAVAILABLE") return;
         if (error?.code === "CONTRACT_ACCEPTANCE_REQUIRED") {
           router.replace("/bootstrap");
           return;

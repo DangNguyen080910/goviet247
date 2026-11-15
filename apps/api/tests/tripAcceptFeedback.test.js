@@ -1,8 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { tripAcceptFeedback } from "../src/shared/tripAcceptFeedback.js";
-test("blocked acceptance remains silent", () => {
-  assert.equal(tripAcceptFeedback({ code: "TRIP_ACCEPT_UNAVAILABLE", message: "blocked" }), null);
+test("blocked acceptance and unknown errors direct drivers to support", () => {
+  const expected = "Bạn không thể nhận chuyến này. Vui lòng liên hệ Zalo team support GoViet247 để được hỗ trợ.";
+  assert.equal(tripAcceptFeedback({ code: "TRIP_ACCEPT_UNAVAILABLE", message: "blocked" }), expected);
+  assert.equal(tripAcceptFeedback({ code: "UNKNOWN", message: "internal detail" }), expected);
 });
 test("preserves confirmed reasons and variable wallet amounts", () => {
   for (const code of ["INSUFFICIENT_BALANCE", "ACTIVE_TRIP_LIMIT", "TRIP_CANCELLED", "TRIP_ALREADY_ACCEPTED", "TRIP_ALREADY_YOURS", "TRIP_NOT_OPEN"]) {

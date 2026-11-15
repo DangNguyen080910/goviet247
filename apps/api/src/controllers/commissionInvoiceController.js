@@ -6,6 +6,40 @@ export function makeCommissionInvoiceController(db) {
       try{invoiceDayPeriod(day);}catch(e){return res.status(400).json({success:false,message:e.message});}
       try{return res.json({success:true,summary:await commissionInvoiceSummary(db,day)});}catch(e){console.error('[InvoiceSummary]',e);return res.status(500).json({success:false,message:'Không tải được tình trạng hóa đơn.'});}
     },
+    async updateInvoiceNumber(req, res) {
+      const { tripId } = req.params;
+      const { invoiceNumber, previousInvoiceNumber } = req.body || {};
+      const next = typeof invoiceNumber === 'string' ? invoiceNumber.trim() : '';
+      if (!next || next.length > 100 ||
+          (previousInvoiceNumber !== null && typeof previousInvoiceNumber !== 'string')) {
+        return res.status(400).json({ success: false, message: 'Nhập ký hiệu/số hóa đơn hợp lệ.' });
+      }
+
+      try {
+        const where = { tripId, issuedAt: { not: null }, confirmedAt: { not: null } };
+        const changed = await db.commissionInvoiceState.updateMany({
+          where: { ...where, invoiceNumber: previousInvoiceNumber },
+          data: { invoiceNumber: next },
+        });
+        if (!changed.count) {
+          const current = await db.commissionInvoiceState.findFirst({ where, select: { invoiceNumber: true } });
+          // A retry can arrive after the first save has already succeeded.
+          if (current?.invoiceNumber === next) return res.json({ success: true });
+          return res.status(409).json({
+            success: false,
+            message: 'Thông tin xác nhận đã thay đổi. Vui lòng tải lại danh sách trước khi sửa.',
+          });
+        }
+        req.app?.get?.('io')?.to('admins').emit('admin:dashboard_changed', {
+          source: 'commission_invoice_number_updated',
+          tripId,
+        });
+        return res.json({ success: true });
+      } catch (error) {
+        console.error('[InvoiceNumberUpdate]', error);
+        return res.status(500).json({ success: false, message: 'Chưa lưu được ký hiệu/số hóa đơn.' });
+      }
+    },
     async confirmIssued(req,res) {
       const tripId=String(req.params.tripId||'');
       const invoiceNumber=String(req.body?.invoiceNumber||'').trim();
