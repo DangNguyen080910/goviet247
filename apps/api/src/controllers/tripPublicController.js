@@ -8,6 +8,7 @@ import { calculateTripPrice } from "../services/pricingService.js";
 import {
   requestTripOtp as requestTripOtpService,
   verifyTripOtp,
+  respondToOtpLock,
 } from "../services/otpService.js";
 import { sendAdminPushNotification } from "../services/notificationService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
@@ -330,6 +331,7 @@ export async function requestTripOtp(req, res) {
       },
     });
   } catch (err) {
+    if (respondToOtpLock(res, err)) return;
     const message = String(err?.message || "").trim();
 
     if (message === "GUI_OTP_THAT_BAI") {
@@ -454,6 +456,7 @@ export async function confirmTrip(req, res) {
       totalPrice: trip.totalPrice,
     });
   } catch (err) {
+    if (respondToOtpLock(res, err)) return;
     console.error("confirmTrip error:", err);
     return res.status(400).json({
       success: false,

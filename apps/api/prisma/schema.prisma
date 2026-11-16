@@ -225,6 +225,8 @@ model Phone {
   isVerified Boolean      @default(false)
   userId     String?
   createdAt  DateTime     @default(now()) @db.Timestamptz(6)
+  otpFailureStreak Int @default(0)
+  otpLockedUntil DateTime? @db.Timestamptz(6)
   attempts   OtpAttempt[]
   sessions   OtpSession[]
   user       User?        @relation(fields: [userId], references: [id])

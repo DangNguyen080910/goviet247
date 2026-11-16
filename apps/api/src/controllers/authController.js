@@ -1,7 +1,7 @@
 // Path: goviet247/apps/api/src/controllers/authController.js
 import { recordAccountReturn } from "../services/accountExitRequest.js";
 import { prisma } from "../utils/db.js";
-import { requestOtp, verifyOtp } from "../services/otpService.js";
+import { requestOtp, verifyOtp, respondToOtpLock } from "../services/otpService.js";
 import { issueUserToken, userSessions, persistentEnabled, supportsPersistent } from "../services/userSessions.js";
 import { getOtpProviderUnavailablePayload } from "../utils/otpProviderMessage.js";
 
@@ -133,6 +133,7 @@ export async function requestOtpHandler(req, res) {
       ...(isTestMode && { debug_otp: result.otp }),
     });
   } catch (error) {
+    if (respondToOtpLock(res, error)) return;
     const message = String(error?.message || "").trim();
 
     if (message === "GUI_OTP_THAT_BAI") {
@@ -192,6 +193,7 @@ export async function verifyOtpHandler(req, res) {
       user: buildAuthUserPayload(user, result.appRole),
     });
   } catch (error) {
+    if (respondToOtpLock(res, error)) return;
     const message = String(error?.message || "").trim();
 
     if (

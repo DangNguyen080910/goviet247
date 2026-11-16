@@ -10,7 +10,8 @@ import { sendSms } from "./smsService.js";
 
 const TTL_SEC = Number(process.env.OTP_CODE_TTL_SEC || 180); // OTP hết hạn sau 3 phút
 const RESEND_COOLDOWN_SEC = Number(process.env.OTP_RESEND_COOLDOWN_SEC || 30); // Chờ mới cho gửi lại
-const MAX_ATTEMPTS = Number(process.env.OTP_MAX_ATTEMPTS || 5); // Giới hạn số lần nhập
+const OTP_FAILURE_LIMIT = 3;
+const OTP_LOCK_MS = 6 * 60 * 60 * 1000;
 const OTP_FALLBACK_ON_SMS_FAIL =
   String(process.env.OTP_FALLBACK_ON_SMS_FAIL || "false")
     .trim()
@@ -31,6 +32,88 @@ function isAppReviewPhone(e164) {
 
 function randomCode() {
   return String(Math.floor(100000 + Math.random() * 900000));
+}
+
+function assertOtpAvailable(phone) {
+  if (phone.otpLockedUntil && phone.otpLockedUntil.getTime() > Date.now()) {
+    throw Object.assign(new Error(
+      "Số điện thoại này bị khóa xác thực OTP trong 6 tiếng do nhập sai 3 lần liên tiếp. Vui lòng thử lại sau hoặc liên hệ Zalo 0326 184 628 để được hỗ trợ.",
+    ), { code: "OTP_PHONE_LOCKED", lockedUntil: phone.otpLockedUntil });
+  }
+}
+
+export function respondToOtpLock(res, error) {
+  if (error?.code !== "OTP_PHONE_LOCKED") return false;
+  const retryAfter = Math.max(1, Math.ceil((error.lockedUntil.getTime() - Date.now()) / 1000));
+  res.set("Retry-After", String(retryAfter)).status(429).json({
+    success: false,
+    code: error.code,
+    message: error.message,
+    lockedUntil: error.lockedUntil,
+  });
+  return true;
+}
+
+async function lockOtpPhone(tx, phoneId) {
+  await tx.$queryRaw`SELECT "id" FROM "Phone" WHERE "id" = ${phoneId} FOR UPDATE`;
+  const phone = await tx.phone.findUniqueOrThrow({ where: { id: phoneId } });
+  assertOtpAvailable(phone);
+  return phone;
+}
+
+async function createOtpSession(e164, data) {
+  return prisma.$transaction(async (tx) => {
+    const phone = await tx.phone.upsert({ where: { e164 }, create: { e164 }, update: {} });
+    await lockOtpPhone(tx, phone.id);
+    return tx.otpSession.create({ data: { ...data, phoneId: phone.id } });
+  });
+}
+
+async function verifyOtpAttempt(sessionId, code, purpose, onVerified) {
+  const initialSession = await prisma.otpSession.findUnique({ where: { id: sessionId } });
+  if (!initialSession) throw new Error("PHIEN_KHONG_TON_TAI");
+
+  const result = await prisma.$transaction(async (tx) => {
+    const phone = await lockOtpPhone(tx, initialSession.phoneId);
+    const session = await tx.otpSession.findUnique({ where: { id: sessionId } });
+    if (!session) throw new Error("PHIEN_KHONG_TON_TAI");
+    if (session.purpose !== purpose) throw new Error("PHIEN_KHONG_DUNG_MUC_DICH");
+    if (session.status !== "pending") throw new Error("PHIEN_KHONG_HOP_LE");
+    if (new Date() > session.expiresAt) throw new Error("MA_HET_HAN");
+
+    const success = await bcrypt.compare(code, session.codeHash);
+    await tx.otpAttempt.create({ data: { sessionId, phoneId: phone.id, success } });
+    if (!success) {
+      const streak = (phone.otpLockedUntil ? 0 : phone.otpFailureStreak) + 1;
+      const lockedUntil = streak >= OTP_FAILURE_LIMIT ? new Date(Date.now() + OTP_LOCK_MS) : null;
+      await tx.phone.update({
+        where: { id: phone.id },
+        data: { otpFailureStreak: streak, otpLockedUntil: lockedUntil },
+      });
+      await tx.otpSession.update({
+        where: { id: sessionId },
+        data: { attemptCount: { increment: 1 } },
+      });
+      return { success: false, lockedUntil };
+    }
+
+    await tx.phone.update({
+      where: { id: phone.id },
+      data: { otpFailureStreak: 0, otpLockedUntil: null },
+    });
+    await tx.otpSession.update({
+      where: { id: sessionId },
+      data: { status: "verified", usedAt: new Date() },
+    });
+    return { success: true, value: await onVerified(tx, session, phone) };
+  });
+
+  // Throw after the transaction commits so the failed attempt and lock are retained.
+  if (!result.success) {
+    assertOtpAvailable({ otpLockedUntil: result.lockedUntil });
+    throw new Error("MA_SAI");
+  }
+  return result.value;
 }
 
 function normalizeAppRole(input) {
@@ -177,27 +260,12 @@ export async function requestOtp(e164, appRole = "RIDER") {
   const expiresAt = new Date(now.getTime() + TTL_SEC * 1000);
   const resendAfter = new Date(now.getTime() + RESEND_COOLDOWN_SEC * 1000);
 
-  let phone = await prisma.phone.findUnique({
-    where: { e164 },
-  });
-
-  if (!phone) {
-    phone = await prisma.phone.create({
-      data: { e164 },
-    });
-  }
-
-  const session = await prisma.otpSession.create({
-    data: {
-      phoneId: phone.id,
-      codeHash,
-      expiresAt,
-      resendAfter,
-      purpose: "AUTH",
-      payloadJson: JSON.stringify({
-        appRole: normalizedRole,
-      }),
-    },
+  const session = await createOtpSession(e164, {
+    codeHash,
+    expiresAt,
+    resendAfter,
+    purpose: "AUTH",
+    payloadJson: JSON.stringify({ appRole: normalizedRole }),
   });
 
   if (!isAppReviewLogin) {
@@ -237,62 +305,10 @@ export async function requestOtp(e164, appRole = "RIDER") {
  *   + DriverProfile sẽ tạo ở bước hoàn thiện hồ sơ tài xế sau OTP
  */
 export async function verifyOtp(sessionId, code, fallbackAppRole = "RIDER") {
-  const session = await prisma.otpSession.findUnique({
-    where: { id: sessionId },
-    include: { phone: true },
-  });
-
-  if (!session) {
-    throw new Error("PHIEN_KHONG_TON_TAI");
-  }
-
-  if (session.purpose !== "AUTH") {
-    throw new Error("PHIEN_KHONG_DUNG_MUC_DICH");
-  }
-
-  if (session.status !== "pending") {
-    throw new Error("PHIEN_KHONG_HOP_LE");
-  }
-
-  if (session.attemptCount >= MAX_ATTEMPTS) {
-    throw new Error("VUOT_QUA_SO_LAN_THU");
-  }
-
-  if (new Date() > session.expiresAt) {
-    throw new Error("MA_HET_HAN");
-  }
-
-  const ok = await bcrypt.compare(code, session.codeHash);
-
-  // Ghi log attempt
-  await prisma.otpAttempt.create({
-    data: {
-      sessionId: session.id,
-      phoneId: session.phoneId,
-      success: ok,
-    },
-  });
-
-  if (!ok) {
-    await prisma.otpSession.update({
-      where: { id: session.id },
-      data: {
-        attemptCount: {
-          increment: 1,
-        },
-      },
-    });
-
-    throw new Error("MA_SAI");
-  }
-
-  const sessionPayload = safeParseJson(session.payloadJson);
-  const appRole = normalizeAppRole(
-    sessionPayload?.appRole || fallbackAppRole || "RIDER",
-  );
-
-  const result = await prisma.$transaction(async (tx) => {
-    let userId = session.phone.userId;
+  return verifyOtpAttempt(sessionId, code, "AUTH", async (tx, session, phone) => {
+    const sessionPayload = safeParseJson(session.payloadJson);
+    const appRole = normalizeAppRole(sessionPayload?.appRole || fallbackAppRole || "RIDER");
+    let userId = phone.userId;
 
     // Nếu phone chưa gắn user thì tạo user mới
     if (!userId) {
@@ -336,15 +352,6 @@ export async function verifyOtp(sessionId, code, fallbackAppRole = "RIDER") {
       await ensureRiderProfile(tx, userId);
     }
 
-    // Khoá session OTP sau khi dùng thành công
-    await tx.otpSession.update({
-      where: { id: session.id },
-      data: {
-        status: "verified",
-        usedAt: new Date(),
-      },
-    });
-
     const user = await tx.user.findUnique({
       where: { id: userId },
       include: {
@@ -365,8 +372,6 @@ export async function verifyOtp(sessionId, code, fallbackAppRole = "RIDER") {
       user,
     };
   });
-
-  return result;
 }
 
 /* =====================================================
@@ -386,25 +391,12 @@ export async function requestTripOtp(e164, tripDraft) {
   const expiresAt = new Date(now.getTime() + TTL_SEC * 1000);
   const resendAfter = new Date(now.getTime() + RESEND_COOLDOWN_SEC * 1000);
 
-  let phone = await prisma.phone.findUnique({
-    where: { e164 },
-  });
-
-  if (!phone) {
-    phone = await prisma.phone.create({
-      data: { e164 },
-    });
-  }
-
-  const session = await prisma.otpSession.create({
-    data: {
-      phoneId: phone.id,
-      codeHash,
-      expiresAt,
-      resendAfter,
-      purpose: "TRIP",
-      payloadJson: JSON.stringify(tripDraft),
-    },
+  const session = await createOtpSession(e164, {
+    codeHash,
+    expiresAt,
+    resendAfter,
+    purpose: "TRIP",
+    payloadJson: JSON.stringify(tripDraft),
   });
 
   await sendOtpSmsOrThrow({
@@ -431,65 +423,8 @@ export async function requestTripOtp(e164, tripDraft) {
  * - Không tạo user ở đây
  */
 export async function verifyTripOtp(sessionId, code) {
-  const session = await prisma.otpSession.findUnique({
-    where: { id: sessionId },
-  });
-
-  if (!session) {
-    throw new Error("PHIEN_KHONG_TON_TAI");
-  }
-
-  if (session.purpose !== "TRIP") {
-    throw new Error("PHIEN_KHONG_DUNG_MUC_DICH");
-  }
-
-  if (session.status !== "pending") {
-    throw new Error("PHIEN_KHONG_HOP_LE");
-  }
-
-  if (session.attemptCount >= MAX_ATTEMPTS) {
-    throw new Error("VUOT_QUA_SO_LAN_THU");
-  }
-
-  if (new Date() > session.expiresAt) {
-    throw new Error("MA_HET_HAN");
-  }
-
-  const ok = await bcrypt.compare(code, session.codeHash);
-
-  await prisma.otpAttempt.create({
-    data: {
-      sessionId: session.id,
-      phoneId: session.phoneId,
-      success: ok,
-    },
-  });
-
-  if (!ok) {
-    await prisma.otpSession.update({
-      where: { id: session.id },
-      data: {
-        attemptCount: {
-          increment: 1,
-        },
-      },
-    });
-
-    throw new Error("MA_SAI");
-  }
-
-  await prisma.otpSession.update({
-    where: { id: session.id },
-    data: {
-      status: "verified",
-      usedAt: new Date(),
-    },
-  });
-
-  const payload = session.payloadJson ? JSON.parse(session.payloadJson) : null;
-
-  return {
+  return verifyOtpAttempt(sessionId, code, "TRIP", async (_tx, session) => ({
     valid: true,
-    payload,
-  };
+    payload: session.payloadJson ? JSON.parse(session.payloadJson) : null,
+  }));
 }

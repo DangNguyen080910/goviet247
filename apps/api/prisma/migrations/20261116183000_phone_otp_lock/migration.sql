@@ -1,0 +1,3 @@
+ALTER TABLE "Phone"
+  ADD COLUMN "otpFailureStreak" INTEGER NOT NULL DEFAULT 0,
+  ADD COLUMN "otpLockedUntil" TIMESTAMPTZ(6);
