@@ -53,7 +53,7 @@ export async function verifyTrip(tripId, note, driverIds, carType, fuelType) {
     method: "POST",
     body: JSON.stringify({
       note,
-      audienceMode: fuelType ? "VEHICLE_FILTER" : ["ELECTRIC", "GASOLINE"].includes(carType) ? "FUEL_TYPE" : carType ? "CAR_TYPE" : driverIds !== undefined ? "SELECTED" : "ALL",
+      audienceMode: fuelType ? "VEHICLE_FILTER" : ["ELECTRIC", "GASOLINE"].includes(carType) ? "FUEL_TYPE" : carType ? (driverIds === undefined ? "QUICK_CAR_TYPE" : "CAR_TYPE") : driverIds !== undefined ? "SELECTED" : "ALL",
       ...(["ELECTRIC", "GASOLINE"].includes(carType) ? { fuelType: carType } : carType ? { carType } : {}),
       ...(fuelType ? { fuelType } : {}),
       ...(driverIds !== undefined ? { driverIds } : {}),

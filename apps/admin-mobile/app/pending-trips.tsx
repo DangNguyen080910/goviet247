@@ -29,6 +29,7 @@ import CopyTripIdButton from "../components/CopyTripIdButton";
 import { formatScheduleInput, scheduleInputToIso } from "../utils/tripTime";
 import {
   cancelPendingTrip,
+  fetchActiveApprovalCarTypes,
   fetchPendingTripDetail,
   fetchPendingVerifyCancelledTrips,
   fetchPendingVerifyTrips,
@@ -36,7 +37,10 @@ import {
   PendingTripDetail,
   PendingTripItem,
   verifyPendingTrip,
+  type QuickApprovalCarType,
 } from "../services/pendingTripsApi";
+
+const QUICK_CAR_TYPES: readonly QuickApprovalCarType[] = ["CAR_5", "CAR_7", "CAR_16"];
 
 type TabKey = "PENDING" | "CANCELLED";
 
@@ -231,6 +235,7 @@ export default function PendingTripsScreen() {
   const [searchText, setSearchText] = useState("");
   const [items, setItems] = useState<PendingTripItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeCarTypes, setActiveCarTypes] = useState<string[]>([]);
   const [refreshing, setRefreshing] = useState(false);
 
   const [selectedTripId, setSelectedTripId] = useState("");
@@ -279,12 +284,16 @@ export default function PendingTripsScreen() {
           setLoading(true);
         }
 
-        const data =
-          tab === "PENDING"
-            ? await fetchPendingVerifyTrips()
-            : await fetchPendingVerifyCancelledTrips();
-
-        setItems(data);
+        if (tab === "PENDING") {
+          const [data, carTypes] = await Promise.all([
+            fetchPendingVerifyTrips(),
+            fetchActiveApprovalCarTypes().catch(() => []),
+          ]);
+          setItems(data);
+          setActiveCarTypes(carTypes);
+        } else {
+          setItems(await fetchPendingVerifyCancelledTrips());
+        }
       } catch (error) {
         console.error("load pending trips error:", error);
         setItems([]);
@@ -506,18 +515,20 @@ export default function PendingTripsScreen() {
     }
   }, [adjustForm, loadData, selectedTripId]);
 
-  const handleVerifyTrip = useCallback(async () => {
+  const handleVerifyTrip = useCallback(async (carType?: QuickApprovalCarType) => {
     if (!selectedTripId) return;
 
     try {
       setActionLoading("VERIFY");
-      await verifyPendingTrip(selectedTripId);
+      await verifyPendingTrip(selectedTripId, carType);
 
       const completedTripId = selectedTripId;
       setItems((current) => current.filter((item) => item.id !== completedTripId));
       closeDetailModal();
       router.replace("/home");
-      Alert.alert("Thành công", "Đã duyệt chuyến cho tất cả tài xế đủ điều kiện.");
+      Alert.alert("Thành công", carType
+        ? `Đã duyệt chuyến cho tài xế xe ${formatCarType(carType)} đủ điều kiện.`
+        : "Đã duyệt chuyến cho tất cả tài xế đủ điều kiện.");
     } catch (error: any) {
       console.error("verify trip error:", error);
       Alert.alert("Lỗi", error?.message || "Không thể duyệt chuyến.");
@@ -1267,12 +1278,23 @@ export default function PendingTripsScreen() {
                       style={styles.cancelInput}
                     />
 
+                    {QUICK_CAR_TYPES.filter((type) => activeCarTypes.includes(type)).map((type) => (
+                      <Pressable
+                        key={type}
+                        style={[styles.verifyButton, actionLoading !== "" && styles.buttonDisabled]}
+                        onPress={() => handleVerifyTrip(type)}
+                        disabled={actionLoading !== ""}
+                      >
+                        <Text style={styles.verifyButtonText}>Duyệt xe {formatCarType(type)}</Text>
+                      </Pressable>
+                    ))}
+
                     <Pressable
                       style={[
                         styles.verifyButton,
                         actionLoading !== "" && styles.buttonDisabled,
                       ]}
-                      onPress={handleVerifyTrip}
+                      onPress={() => handleVerifyTrip()}
                       disabled={actionLoading !== ""}
                     >
                       <Text style={styles.verifyButtonText}>

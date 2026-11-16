@@ -262,10 +262,19 @@ export async function fetchPendingTripDetail(tripId: string) {
   return mapTripDetail(data?.item || data?.trip || data?.data || data);
 }
 
-export async function verifyPendingTrip(tripId: string) {
+export type QuickApprovalCarType = "CAR_5" | "CAR_7" | "CAR_16";
+
+export async function fetchActiveApprovalCarTypes(): Promise<string[]> {
+  const result = await adminRequest("/api/public/trips/config", { cache: "no-store" });
+  return (result?.data?.carTypes || []).map(({ value }: { value: string }) => value);
+}
+
+export async function verifyPendingTrip(tripId: string, carType?: QuickApprovalCarType) {
   const data = await adminRequest(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
-    body: JSON.stringify({ audienceMode: "ALL" }),
+    body: JSON.stringify(carType
+      ? { audienceMode: "QUICK_CAR_TYPE", carType }
+      : { audienceMode: "ALL" }),
   });
 
   return data;

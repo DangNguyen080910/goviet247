@@ -2984,12 +2984,13 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
     const audienceMode = req.body?.audienceMode;
-    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode)) {
+    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "QUICK_CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode)) {
       return res.status(400).json({ success: false, message: "Đối tượng nhận chuyến không hợp lệ." });
     }
     const selectedCarType = req.body?.carType;
     const selectedFuelType = req.body?.fuelType;
     const combinedFilter = audienceMode === "VEHICLE_FILTER";
+    const quickCarType = audienceMode === "QUICK_CAR_TYPE";
     if (combinedFilter && (!selectedCarType && !selectedFuelType ||
         selectedCarType !== undefined && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType) ||
         selectedFuelType !== undefined && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType))) {
@@ -2998,7 +2999,7 @@ export async function adminVerifyTrip(req, res) {
     if (audienceMode === "FUEL_TYPE" && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType)) {
       return res.status(400).json({success:false,message:"Chọn nhóm xe điện hoặc xe xăng hợp lệ."});
     }
-    if (audienceMode === "CAR_TYPE" && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType)) {
+    if ((audienceMode === "CAR_TYPE" || quickCarType) && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType)) {
       return res.status(400).json({ success: false, message: "Vui lòng chọn xe 5, 7 hoặc 16 chỗ." });
     }
     if (audienceMode === "ALL" && req.body?.driverIds !== undefined) {
@@ -3007,7 +3008,28 @@ export async function adminVerifyTrip(req, res) {
     // Legacy clients omit both fields for public approval. Always resolve the
     // new approval intent rather than inheriting a previous private audience.
     let audienceDriverIds = [];
-    if (["SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) || req.body?.driverIds !== undefined) {
+    if (quickCarType) {
+      if (req.body?.driverIds !== undefined || selectedFuelType !== undefined) {
+        return res.status(400).json({ success: false, message: "Duyệt nhanh theo số chỗ chỉ nhận loại xe." });
+      }
+      const pricing = await prisma.pricingConfig.findUnique({
+        where: { carType: selectedCarType },
+        select: { isActive: true },
+      });
+      if (!pricing?.isActive) {
+        return res.status(409).json({ success: false, message: "Loại xe này đang tạm tắt nhận đặt. Vui lòng tải lại danh sách." });
+      }
+      const drivers = await prisma.driverProfile.findMany({
+        where: { status: "VERIFIED", tripAcceptBlocked: false },
+        select: { userId: true, vehicleType: true },
+      });
+      audienceDriverIds = drivers
+        .filter(driver => audienceCarType(driver.vehicleType) === selectedCarType)
+        .map(driver => driver.userId);
+      if (!audienceDriverIds.length) {
+        return res.status(409).json({ success: false, message: "Chưa có tài xế đủ điều kiện cho loại xe này." });
+      }
+    } else if (["SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) || req.body?.driverIds !== undefined) {
       try { audienceDriverIds = parseAudience(req.body?.driverIds, ["CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) ? 10000 : 100); }
       catch (error) { return res.status(400).json({ success: false, message: error.message }); }
     }
@@ -3029,7 +3051,7 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chuyến đã bị hủy" });
     }
 
-    if (audienceDriverIds.length > 0) {
+    if (!quickCarType && audienceDriverIds.length > 0) {
       const drivers = await prisma.driverProfile.findMany({
         where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false },
         select: { userId: true, vehicleType: true, vehicleFuelType: true },

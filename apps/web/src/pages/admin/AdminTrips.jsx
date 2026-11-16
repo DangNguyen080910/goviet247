@@ -28,9 +28,16 @@ import {
   verifyTrip,
   normalizeDisplayAddress,
 } from "../../api/adminTrips";
+import { getPublicTripConfig } from "../../api/publicConfig";
 import { getAdminToken } from "../../utils/adminAuth";
 import { formatCarType } from "../../utils/formatCarType";
 import AdminTableScroll, { tripActionCellStyle } from "../../components/admin/AdminTableScroll";
+
+const QUICK_VEHICLES = [
+  { value: "CAR_5", label: "5 chỗ" },
+  { value: "CAR_7", label: "7 chỗ" },
+  { value: "CAR_16", label: "16 chỗ" },
+];
 
 function formatNgayGio(input) {
   if (!input) return "-";
@@ -112,6 +119,8 @@ export default function AdminTrips() {
 
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
+  const [activeCarTypes, setActiveCarTypes] = useState([]);
+  const [verifyingTripId, setVerifyingTripId] = useState("");
 
   const [selectedTripId, setSelectedTripId] = useState("");
   const [cancelTripId, setCancelTripId] = useState("");
@@ -130,7 +139,11 @@ export default function AdminTrips() {
 
     try {
       if (tab === 0) {
-        const data = await fetchUnverifiedTrips();
+        const [data, config] = await Promise.all([
+          fetchUnverifiedTrips(),
+          getPublicTripConfig().catch(() => null),
+        ]);
+        setActiveCarTypes((config?.carTypes || []).map(({ value }) => value));
         setItems(Array.isArray(data) ? data : []);
       } else {
         const data = await fetchUnverifiedCancelledTrips();
@@ -180,9 +193,11 @@ export default function AdminTrips() {
     };
   }, [tab]);
 
-  const onVerify = async (tripId) => {
+  const onVerify = async (tripId, vehicle) => {
+    setVerifyingTripId(tripId);
     try {
-      await verifyTrip(tripId, "Đã duyệt lộ trình/giá");
+      const note = vehicle ? `Duyệt cho tài xế xe ${vehicle.label}` : "Đã duyệt lộ trình/giá";
+      await verifyTrip(tripId, note, undefined, vehicle?.value);
 
       setToast({
         open: true,
@@ -197,6 +212,8 @@ export default function AdminTrips() {
         severity: "error",
         message: e.message || "Duyệt chuyến thất bại.",
       });
+    } finally {
+      setVerifyingTripId("");
     }
   };
 
@@ -413,10 +430,9 @@ export default function AdminTrips() {
                     <TableCell align="right" sx={tripActionCellStyle}>
                       {tab === 0 ? (
                         <Stack
-                          direction="row"
-                          justifyContent="flex-end"
+                          direction="column"
+                          alignItems="flex-end"
                           gap={1}
-                          flexWrap="wrap"
                           sx={{ "& .MuiButton-root": { flexShrink: 0, whiteSpace: "normal" } }}
                         >
                           <Button
@@ -430,9 +446,25 @@ export default function AdminTrips() {
                             Chi tiết
                           </Button>
 
+                          {QUICK_VEHICLES.filter(({ value }) => activeCarTypes.includes(value)).map((vehicle) => (
+                            <Button
+                              key={vehicle.value}
+                              size="small"
+                              variant="outlined"
+                              disabled={Boolean(verifyingTripId)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onVerify(t.id, vehicle);
+                              }}
+                            >
+                              Duyệt xe {vehicle.label}
+                            </Button>
+                          ))}
+
                           <Button
                             size="small"
                             variant="contained"
+                            disabled={Boolean(verifyingTripId)}
                             onClick={(e) => {
                               e.stopPropagation();
                               onVerify(t.id);
@@ -440,7 +472,7 @@ export default function AdminTrips() {
                           >
                             Duyệt cho tất cả tài xế
                           </Button>
-                          <Button size="small" variant="outlined" onClick={e => { e.stopPropagation(); setAudienceTripId(t.id); }}>Duyệt cho tài xế chỉ định</Button>
+                          <Button size="small" variant="outlined" disabled={Boolean(verifyingTripId)} onClick={e => { e.stopPropagation(); setAudienceTripId(t.id); }}>Duyệt cho tài xế chỉ định</Button>
 
                           <Button
                             size="small"
