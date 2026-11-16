@@ -11,7 +11,9 @@ import { sendSms } from "./smsService.js";
 const TTL_SEC = Number(process.env.OTP_CODE_TTL_SEC || 180); // OTP hết hạn sau 3 phút
 const RESEND_COOLDOWN_SEC = Number(process.env.OTP_RESEND_COOLDOWN_SEC || 30); // Chờ mới cho gửi lại
 const OTP_FAILURE_LIMIT = 3;
-const OTP_LOCK_MS = 6 * 60 * 60 * 1000;
+const OTP_LOCK_MS = 30 * 60 * 1000;
+const OTP_SEND_LIMIT = 3;
+const OTP_SEND_WINDOW_MS = 5 * 60 * 1000;
 const OTP_FALLBACK_ON_SMS_FAIL =
   String(process.env.OTP_FALLBACK_ON_SMS_FAIL || "false")
     .trim()
@@ -37,13 +39,13 @@ function randomCode() {
 function assertOtpAvailable(phone) {
   if (phone.otpLockedUntil && phone.otpLockedUntil.getTime() > Date.now()) {
     throw Object.assign(new Error(
-      "Số điện thoại này bị khóa xác thực OTP trong 6 tiếng do nhập sai 3 lần liên tiếp. Vui lòng thử lại sau hoặc liên hệ Zalo 0326 184 628 để được hỗ trợ.",
+      "Số điện thoại này bị khóa xác thực OTP trong 30 phút do nhập sai 3 lần liên tiếp. Vui lòng thử lại sau hoặc liên hệ Zalo 0326 184 628 để được hỗ trợ.",
     ), { code: "OTP_PHONE_LOCKED", lockedUntil: phone.otpLockedUntil });
   }
 }
 
 export function respondToOtpLock(res, error) {
-  if (error?.code !== "OTP_PHONE_LOCKED") return false;
+  if (!["OTP_PHONE_LOCKED", "OTP_SEND_LIMIT"].includes(error?.code)) return false;
   const retryAfter = Math.max(1, Math.ceil((error.lockedUntil.getTime() - Date.now()) / 1000));
   res.set("Retry-After", String(retryAfter)).status(429).json({
     success: false,
@@ -61,10 +63,37 @@ async function lockOtpPhone(tx, phoneId) {
   return phone;
 }
 
+async function assertOtpSendAvailable(tx, phoneId) {
+  const now = Date.now();
+  const recentSince = new Date(now - OTP_LOCK_MS - OTP_SEND_WINDOW_MS);
+  const lastVerified = await tx.otpSession.findFirst({
+    where: { phoneId, usedAt: { gte: recentSince } },
+    orderBy: { usedAt: "desc" },
+    select: { usedAt: true },
+  });
+  const recentRequests = await tx.otpSession.findMany({
+    where: { phoneId, createdAt: { gt: lastVerified?.usedAt || recentSince } },
+    orderBy: { createdAt: "desc" },
+    take: OTP_SEND_LIMIT,
+    select: { createdAt: true },
+  });
+  if (recentRequests.length < OTP_SEND_LIMIT) return;
+
+  const newest = recentRequests[0].createdAt.getTime();
+  const oldest = recentRequests[OTP_SEND_LIMIT - 1].createdAt.getTime();
+  const lockedUntil = new Date(newest + OTP_LOCK_MS);
+  if (newest - oldest > OTP_SEND_WINDOW_MS || lockedUntil.getTime() <= now) return;
+
+  throw Object.assign(new Error(
+    "Số điện thoại này đã yêu cầu OTP quá nhiều lần. Vui lòng thử lại sau hoặc liên hệ Zalo 0326 184 628 để được hỗ trợ.",
+  ), { code: "OTP_SEND_LIMIT", lockedUntil });
+}
+
 async function createOtpSession(e164, data) {
   return prisma.$transaction(async (tx) => {
     const phone = await tx.phone.upsert({ where: { e164 }, create: { e164 }, update: {} });
     await lockOtpPhone(tx, phone.id);
+    await assertOtpSendAvailable(tx, phone.id);
     return tx.otpSession.create({ data: { ...data, phoneId: phone.id } });
   });
 }

@@ -246,6 +246,9 @@ model OtpSession {
   usedAt       DateTime?    @db.Timestamptz(6)
   attempts     OtpAttempt[]
   phone        Phone        @relation(fields: [phoneId], references: [id])
+
+  @@index([phoneId, createdAt])
+  @@index([phoneId, usedAt])
 }
 
 model OtpAttempt {
