@@ -643,6 +643,25 @@ export default function BookingCard({ partner = null }) {
     });
   };
 
+  const handleMoveStop = (index, offset) => {
+    const target = index + offset;
+    if (target < 0 || target >= stops.length) return;
+    const swap = (items) => {
+      const next = [...items];
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    };
+    Object.values(stopAutocompleteTimersRef.current).forEach(clearTimeout);
+    setStopLoadingMap({});
+    setStopOptions(stops.map(() => []));
+    setDistanceKm("");
+    setDriveMinutes("");
+    setOutboundDriveMinutes("");
+    setReturnDriveMinutes("");
+    setStops(swap(stops));
+    setStopPlaces(swap(stopPlaces));
+  };
+
   const handleRemoveStop = (idx) => {
     const nextStops = stops.filter((_, i) => i !== idx);
     const nextPlaces = stopPlaces.filter((_, i) => i !== idx);
@@ -2063,6 +2082,21 @@ export default function BookingCard({ partner = null }) {
                             />
                           )}
                         />
+
+                        {stops.length > 1 && (
+                          <Stack spacing={0}>
+                            {[-1, 1].map((offset) => (
+                              <IconButton key={offset} size="small"
+                                aria-label={`Chuyển điểm đến ${idx + 1} ${offset < 0 ? "lên" : "xuống"}`}
+                                title={offset < 0 ? "Chuyển lên" : "Chuyển xuống"}
+                                disabled={idx + offset < 0 || idx + offset >= stops.length}
+                                onClick={() => handleMoveStop(idx, offset)}
+                                sx={{ minWidth: 32, minHeight: 32 }}>
+                                {offset < 0 ? "↑" : "↓"}
+                              </IconButton>
+                            ))}
+                          </Stack>
+                        )}
 
                         <IconButton
                           onClick={() => handleRemoveStop(idx)}

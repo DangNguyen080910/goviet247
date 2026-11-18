@@ -1240,6 +1240,25 @@ export default function RiderBookingScreen() {
     setActiveStopIndex(newIndex);
   }
 
+  function handleMoveStop(index: number, offset: number) {
+    const target = index + offset;
+    if (target < 0 || target >= stops.length) return;
+    const swap = <T,>(items: T[]): T[] => {
+      const next = [...items];
+      [next[index], next[target]] = [next[target], next[index]];
+      return next;
+    };
+    Object.values(stopSearchTimersRef.current).forEach(clearTimeout);
+    suppressStopSearchMapRef.current = {};
+    setShowStopOptionsMap({});
+    setStopLoadingMap({});
+    setStopOptions(stops.map(() => []));
+    setActiveStopIndex(target);
+    resetRouteState();
+    setStops(swap(stops));
+    setStopPlaces(swap(stopPlaces));
+  }
+
   function handleRemoveStop(index: number) {
     const nextStops = stops.filter((_, i) => i !== index);
     const normalizedStops = nextStops.length ? nextStops : [""];
@@ -1899,6 +1918,24 @@ export default function RiderBookingScreen() {
 
             {stops.map((stop, index) => (
               <View key={index} style={styles.stopBlock}>
+                {stops.length > 1 ? (
+                  <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+                    <Text style={styles.helperText}>Điểm đến {index + 1}</Text>
+                    {[-1, 1].map((offset) => {
+                      const disabled = index + offset < 0 || index + offset >= stops.length;
+                      return (
+                        <Pressable key={offset} disabled={disabled}
+                          accessibilityRole="button"
+                          accessibilityLabel={`Chuyển điểm đến ${index + 1} ${offset < 0 ? "lên" : "xuống"}`}
+                          accessibilityState={{ disabled }}
+                          onPress={() => handleMoveStop(index, offset)}
+                          style={{ padding: 10, minHeight: 44, opacity: disabled ? 0.35 : 1 }}>
+                          <Text>{offset < 0 ? "↑ Lên" : "↓ Xuống"}</Text>
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+                ) : null}
                 <View style={styles.stopRow}>
                   <View
                     style={[styles.stopInputWrap, { position: "relative" }]}
