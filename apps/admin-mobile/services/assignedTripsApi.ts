@@ -385,7 +385,7 @@ export async function fetchAssignedTripDetail(tripId: string) {
 
 export async function changeAssignedTripStatus(
   tripId: string,
-  toStatus: "CONTACTED" | "IN_PROGRESS" | "COMPLETED",
+  toStatus: "ACCEPTED" | "CONTACTED" | "IN_PROGRESS" | "COMPLETED",
   note: string,
 ) {
   return adminRequest(`/api/trips/admin/trips/${tripId}/change-status`, {

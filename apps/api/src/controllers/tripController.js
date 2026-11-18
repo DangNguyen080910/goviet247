@@ -2488,7 +2488,7 @@ export async function adminChangeTripStatus(req, res) {
         .json({ success: false, message: "Thiếu toStatus" });
     }
 
-    const allowed = ["CONTACTED", "IN_PROGRESS", "COMPLETED"];
+    const allowed = ["ACCEPTED", "CONTACTED", "IN_PROGRESS", "COMPLETED"];
     if (!allowed.includes(toStatus)) {
       return res.status(400).json({
         success: false,
@@ -2514,7 +2514,22 @@ export async function adminChangeTripStatus(req, res) {
 
       const fromStatus = trip.status;
 
-      const ok =
+      const isRollback =
+        (fromStatus === "IN_PROGRESS" && ["CONTACTED", "ACCEPTED"].includes(toStatus)) ||
+        (fromStatus === "CONTACTED" && toStatus === "ACCEPTED");
+
+      if (isRollback && actor.role !== "ADMIN") {
+        const error = new Error("Chỉ Admin được đưa chuyến về trạng thái trước.");
+        error.statusCode = 403;
+        throw error;
+      }
+      if (isRollback && !String(note || "").trim()) {
+        const error = new Error("Vui lòng nhập lý do đưa chuyến về trạng thái trước.");
+        error.statusCode = 400;
+        throw error;
+      }
+
+      const ok = isRollback ||
         (fromStatus === "ACCEPTED" && toStatus === "CONTACTED") ||
         (fromStatus === "CONTACTED" && toStatus === "IN_PROGRESS") ||
         (fromStatus === "IN_PROGRESS" && toStatus === "COMPLETED");
@@ -2528,7 +2543,7 @@ export async function adminChangeTripStatus(req, res) {
       }
 
       const updated = await tx.trip.update({
-        where: { id, status: fromStatus, driverId: trip.driverId },
+        where: { id, status: fromStatus, driverId: trip.driverId, version: trip.version },
         data: { status: toStatus, version: { increment: 1 } },
       });
 
@@ -2554,6 +2569,11 @@ export async function adminChangeTripStatus(req, res) {
       if (updated.driverId) {
         let title = "Cập nhật chuyến";
         let message = "Chuyến của bạn vừa được cập nhật trạng thái mới.";
+
+        if (toStatus === "ACCEPTED") {
+          title = "Chuyến đã chuyển về Chưa liên hệ khách";
+          message = "Admin đã đưa chuyến về trạng thái Chưa liên hệ khách.";
+        }
 
         if (toStatus === "CONTACTED") {
           title = "📞 Chuyến đã chuyển sang Đã liên hệ khách";

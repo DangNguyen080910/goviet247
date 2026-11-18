@@ -1,3 +1,4 @@
+import { getAdminUser } from "../../utils/adminAuth";
 import TripMoney from "../../components/admin/TripMoney";
 // Path: goviet247/apps/web/src/pages/admin/AdminTripsAssigned.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -539,6 +540,25 @@ export default function AdminTripsAssigned() {
                                 Chuyển sang “Đã hoàn thành”
                               </Button>
                             )}
+
+                            {getAdminUser()?.role === "ADMIN" &&
+                              ["CONTACTED", "IN_PROGRESS"].includes(t.status) &&
+                              (t.status === "IN_PROGRESS"
+                                ? ["CONTACTED", "ACCEPTED"]
+                                : ["ACCEPTED"]).map((target) => (
+                                <Button
+                                  key={target}
+                                  variant="outlined"
+                                  onClick={(event) => {
+                                    event.stopPropagation();
+                                    openConfirm(t, target);
+                                  }}
+                                >
+                                  {target === "CONTACTED"
+                                    ? "Trở về “Chưa đón khách”"
+                                    : "Trở về “Chưa liên hệ khách”"}
+                                </Button>
+                              ))}
 
                             {t.status === "COMPLETED" && (
                               <Typography

@@ -1,3 +1,4 @@
+import { getAdminUser } from "../services/storage";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
@@ -296,6 +297,19 @@ export default function AssignedTripsScreen() {
   const [selectedTripDetail, setSelectedTripDetail] =
     useState<AssignedTripDetail | null>(null);
 
+  const [canRollback, setCanRollback] = useState(false);
+  const [rollbackTarget, setRollbackTarget] = useState<"ACCEPTED" | "CONTACTED" | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    getAdminUser().then((user) => {
+      if (active) setCanRollback(user?.role === "ADMIN");
+    }).catch(() => {
+      if (active) setCanRollback(false);
+    });
+    return () => { active = false; };
+  }, []);
+
   const [changeStatusSubmitting, setChangeStatusSubmitting] = useState(false);
   const [statusNote, setStatusNote] = useState("");
 
@@ -365,6 +379,8 @@ export default function AssignedTripsScreen() {
       setDetailOpen(true);
       setDetailLoading(true);
       setSelectedTripDetail(null);
+      setRollbackTarget(null);
+      setStatusNote("");
 
       const detail = await fetchAssignedTripDetail(tripId);
       setSelectedTripDetail(detail);
@@ -447,7 +463,7 @@ export default function AssignedTripsScreen() {
   }
 
   async function submitChangeStatus() {
-    const action = getNextActionConfig(tab);
+    const action = actionConfig;
     if (!action) return;
 
     const trimmedNote = statusNote.trim();
@@ -591,7 +607,21 @@ export default function AssignedTripsScreen() {
     }
   }
 
-  const actionConfig = useMemo(() => getNextActionConfig(tab), [tab]);
+  const detailStatus = (selectedTripDetail?.status || tab) as AssignedTripsTabStatus;
+  const actionConfig = useMemo(() => {
+    if (canRollback && rollbackTarget) {
+      return {
+        toStatus: rollbackTarget,
+        buttonLabel: rollbackTarget === "CONTACTED"
+          ? 'Trở về "Chưa đón khách"'
+          : 'Trở về "Chưa liên hệ khách"',
+        modalTitle: "Xác nhận đưa chuyến về trạng thái trước",
+        placeholder: "Nhập lý do, ví dụ: tài xế bấm nhầm trạng thái.",
+      };
+    }
+    return getNextActionConfig(detailStatus);
+  }, [canRollback, rollbackTarget, detailStatus]);
+  const listActionConfig = getNextActionConfig(tab);
 
   const filteredItems = useMemo(() => {
     const keyword = searchText.trim().toLowerCase();
@@ -875,7 +905,7 @@ export default function AssignedTripsScreen() {
                     <Text style={styles.detailButtonText}>Xem chi tiết</Text>
                   </Pressable>
 
-                  {actionConfig ? (
+                  {listActionConfig ? (
                     <Pressable
                       style={styles.primaryActionButton}
                       onPress={() => {
@@ -885,7 +915,7 @@ export default function AssignedTripsScreen() {
                       }}
                     >
                       <Text style={styles.primaryActionButtonText}>
-                        {actionConfig.buttonLabel}
+                        {listActionConfig.buttonLabel}
                       </Text>
                     </Pressable>
                   ) : null}
@@ -1200,6 +1230,41 @@ export default function AssignedTripsScreen() {
                     {selectedTripDetail?.note || "--"}
                   </Text>
                 </View>
+                {canRollback && ["CONTACTED", "IN_PROGRESS"].includes(detailStatus) ? (
+                  <View style={styles.actionInlineCard}>
+                    <Text style={styles.inlineCardTitle}>Sửa trạng thái do thao tác nhầm</Text>
+                    {(detailStatus === "IN_PROGRESS"
+                      ? ["CONTACTED", "ACCEPTED"] as const
+                      : ["ACCEPTED"] as const).map((target) => (
+                      <Pressable
+                        key={target}
+                        style={styles.detailButton}
+                        disabled={changeStatusSubmitting}
+                        onPress={() => {
+                          setRollbackTarget(target);
+                          setStatusNote("");
+                        }}
+                      >
+                        <Text style={styles.detailButtonText}>
+                          {target === "CONTACTED"
+                            ? 'Trở về "Chưa đón khách"'
+                            : 'Trở về "Chưa liên hệ khách"'}
+                        </Text>
+                      </Pressable>
+                    ))}
+                    {rollbackTarget ? (
+                      <Pressable
+                        disabled={changeStatusSubmitting}
+                        onPress={() => {
+                          setRollbackTarget(null);
+                          setStatusNote("");
+                        }}
+                      >
+                        <Text>Hủy sửa trạng thái</Text>
+                      </Pressable>
+                    ) : null}
+                  </View>
+                ) : null}
                 {actionConfig ? (
                   <View style={styles.actionInlineCard}>
                     <Text style={styles.inlineCardTitle}>
@@ -1223,7 +1288,7 @@ export default function AssignedTripsScreen() {
                         styles.submitButton,
                         changeStatusSubmitting && styles.submitButtonDisabled,
                       ]}
-                      onPress={submitChangeStatus}
+                      onPress={() => void submitChangeStatus()}
                       disabled={changeStatusSubmitting}
                     >
                       <Text style={styles.submitButtonText}>
