@@ -380,7 +380,7 @@ export default function DriverProfileCreateScreen() {
         throw new Error("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
       }
 
-      if (!operatingProvinceCode) throw new Error("Vui lòng chọn tỉnh/thành thường hoạt động.");
+      if (!operatingProvinceCode) throw new Error("Vui lòng chọn tỉnh/thành nhận chuyến.");
       await createDriverProfile(token, {
         operatingProvinceCode,
         fullName: fullName.trim(),

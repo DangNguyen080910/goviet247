@@ -77,7 +77,7 @@ export default function DriverProfileScreen() {
       if (!token) throw new Error("Vui lòng đăng nhập lại.");
       const updated = await updateOperatingProvince(token, operatingProvinceCode);
       setProfile((prev: any) => ({ ...prev, ...updated }));
-      Alert.alert("Đã lưu", "Đã cập nhật tỉnh/thành thường hoạt động.");
+      Alert.alert("Đã lưu", "Đã cập nhật tỉnh/thành nhận chuyến.");
     } catch (error: any) { Alert.alert("Chưa thể lưu", error.message || "Vui lòng thử lại."); }
     finally { setSavingProvince(false); }
   }
@@ -275,8 +275,8 @@ export default function DriverProfileScreen() {
 
           <View style={styles.card}>
             <OperatingProvincePicker value={operatingProvinceCode} onChange={setOperatingProvinceCode} disabled={savingProvince} />
-            {!profile.operatingProvinceConfirmedAt && <Text style={styles.label}>Khu vực mặc định chưa xác nhận. Anh/chị vui lòng kiểm tra và bấm lưu.</Text>}
-            <TouchableOpacity disabled={savingProvince} onPress={saveProvince} style={{ backgroundColor: "#1676D2", padding: 14, borderRadius: 12 }}><Text style={{ color: "white", textAlign: "center", fontWeight: "700" }}>{savingProvince ? "Đang lưu…" : "Lưu tỉnh/thành"}</Text></TouchableOpacity>
+            {!profile.operatingProvinceConfirmedAt && <Text style={styles.label}>Tỉnh/thành nhận chuyến chưa được xác nhận. Anh/chị vui lòng kiểm tra và bấm “Cập nhật khu vực nhận chuyến”.</Text>}
+            <TouchableOpacity disabled={savingProvince} onPress={saveProvince} style={{ backgroundColor: "#1676D2", padding: 14, borderRadius: 12 }}><Text style={{ color: "white", textAlign: "center", fontWeight: "700" }}>{savingProvince ? "Đang lưu…" : "Cập nhật khu vực nhận chuyến"}</Text></TouchableOpacity>
           </View>
           <View style={styles.card}>
             <Text style={styles.sectionTitle}>Thông tin xe</Text>

@@ -56,7 +56,7 @@ export default function DriverOperatingControls({ driver, onSaved }: { driver: a
     <Pressable disabled={busy} style={button} onPress={() => open('ACCEPT')}><Text>{driver.tripAcceptBlocked ? 'Mở khóa nhận chuyến' : 'Khóa nhận chuyến'}</Text></Pressable>
     <Text style={{ marginTop: 10 }}>Số CCCD: {driver.citizenId || "Chưa cập nhật"}</Text>
     <Text style={{ marginTop: 10 }}>Địa chỉ cư trú: {driver.residentialAddress || "Chưa cập nhật"}</Text>
-    <Text style={{ marginTop: 10, fontWeight: '700' }}>Tỉnh/thành thường hoạt động: {name}</Text>
+    <Text style={{ marginTop: 10, fontWeight: '700' }}>Tỉnh/thành nhận chuyến: {name}</Text>
     <Text>{driver.operatingProvinceConfirmedAt ? 'Đã xác nhận khu vực' : 'Chưa xác nhận khu vực'}</Text>
     <Pressable disabled={busy} style={button} onPress={() => open('PROVINCE')}><Text>Sửa thông tin tài xế</Text></Pressable>
     {mode && <View>
@@ -78,7 +78,8 @@ export default function DriverOperatingControls({ driver, onSaved }: { driver: a
         <Text style={{ fontWeight: '700', marginVertical: 8 }}>Loại xe</Text>
         {!['CAR_5','CAR_7','CAR_16'].includes(form.vehicleType) && <Text>Hiện tại: {form.vehicleType || 'Chưa chọn loại xe'}</Text>}
         {Object.entries({ CAR_5: 'Xe 5 chỗ', CAR_7: 'Xe 7 chỗ', CAR_16: 'Xe 16 chỗ' }).map(([value,label]) => <Pressable disabled={busy} key={value} style={button} onPress={() => setForm(current => ({ ...current, vehicleType: value }))}><Text>{form.vehicleType === value ? '● ' : '○ '}{label}</Text></Pressable>)}
-        <Text style={{ fontWeight: '700', marginVertical: 8 }}>Tỉnh/thành thường hoạt động</Text>
+        <Text style={{ fontWeight: '700', marginVertical: 8 }}>Tỉnh/thành nhận chuyến</Text>
+        <Text style={{ marginBottom: 8 }}>Chọn tỉnh/thành nơi tài xế đang sẵn sàng nhận chuyến; cập nhật khi tài xế sang miền khác.</Text>
         <ScrollView style={{ maxHeight: 200 }} nestedScrollEnabled>{provinces.map(p => <Pressable disabled={busy} key={p.code} style={{ padding: 12, backgroundColor: p.code === code ? '#bfdbfe' : '#fff' }} onPress={() => { setCode(p.code); setConfirmed(false); }}><Text>{p.code === code ? '● ' : '○ '}{p.name}</Text></Pressable>)}</ScrollView>
         <Text>Đã xác nhận khu vực này với tài xế</Text><Switch disabled={busy} value={confirmed} onValueChange={setConfirmed} />
       </>}

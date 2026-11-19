@@ -13,7 +13,7 @@ export function parseAudienceRegions(value) {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.length > AUDIENCE_REGIONS.length ||
       value.some(region => !AUDIENCE_REGIONS.some(option => option.value === region))) {
-    throw new Error('Miền hoạt động không hợp lệ. Vui lòng chọn lại.');
+    throw new Error('Miền nhận chuyến không hợp lệ. Vui lòng chọn lại.');
   }
   return [...new Set(value)];
 }

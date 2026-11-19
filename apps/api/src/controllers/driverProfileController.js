@@ -1382,6 +1382,6 @@ export async function updateMyOperatingProvince(req, res) {
   } catch (error) {
     if (error.code === "P2025") return res.status(404).json({ success: false, message: "Chưa có hồ sơ tài xế." });
     console.error("Update operating province error", error);
-    return res.status(500).json({ success: false, message: "Không thể lưu tỉnh/thành. Vui lòng thử lại." });
+    return res.status(500).json({ success: false, message: "Không thể cập nhật tỉnh/thành nhận chuyến. Vui lòng thử lại." });
   }
 }

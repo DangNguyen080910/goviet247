@@ -22,16 +22,16 @@ export const DRIVER_GUIDES = [
   },
   {
     "id": "operating-province",
-    "title": "Cập nhật tỉnh/thành thường hoạt động",
-    "summary": "Xác nhận khu vực để thuận tiện phối hợp và hỗ trợ nhận chuyến.",
+    "title": "Cập nhật tỉnh/thành nhận chuyến",
+    "summary": "Cập nhật khu vực khi di chuyển sang miền khác để Admin gửi chuyến phù hợp.",
     "sections": [
       {
         "title": "Cách cập nhật",
         "paragraphs": [
-          "Quý tài xế vui lòng cập nhật “Tỉnh/thành thường hoạt động” để GoViet247 nắm được khu vực anh/chị thường có mặt, thuận tiện phối hợp và hỗ trợ nhận chuyến.",
-          "Mở “Hồ sơ tài xế” → chọn “Tỉnh/thành thường hoạt động” → bấm “Lưu tỉnh/thành”.",
-          "Nếu tỉnh/thành đang hiển thị đã đúng, anh/chị vẫn cần bấm “Lưu tỉnh/thành” để xác nhận. Chỉ xem hoặc chọn tỉnh/thành mà chưa bấm lưu thì thông tin chưa được xác nhận.",
-          "Anh/chị vẫn có thể nhận chuyến ở các khu vực khác khi đã cập nhật “Tỉnh/thành thường hoạt động”."
+          "“Tỉnh/thành nhận chuyến” là tỉnh/thành nơi anh/chị đang hoạt động và sẵn sàng nhận chuyến. Khu vực này do anh/chị chủ động chọn và lưu trong hồ sơ.",
+          "Mở “Hồ sơ tài xế” → chọn “Tỉnh/thành nhận chuyến” → bấm “Cập nhật khu vực nhận chuyến”.",
+          "Nếu tỉnh/thành đang hiển thị đã đúng, anh/chị vẫn cần bấm “Cập nhật khu vực nhận chuyến” để xác nhận. Chỉ xem hoặc chọn tỉnh/thành mà chưa bấm lưu thì thông tin chưa được xác nhận.",
+          "Khi sang miền khác, anh/chị hãy cập nhật lại tỉnh/thành đang sẵn sàng nhận chuyến và bấm “Cập nhật khu vực nhận chuyến” để Admin gửi chuyến phù hợp."
         ]
       }
     ]

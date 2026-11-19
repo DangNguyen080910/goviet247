@@ -7,12 +7,12 @@ export default function OperatingProvincePicker({ value, onChange, disabled = fa
   const [search, setSearch] = useState("");
   const choices = useMemo(() => provinces.filter(p => normalize(p.name).includes(normalize(search.trim()))).sort((a,b) => a.name.localeCompare(b.name, "vi")), [search]);
   return <View>
-    <Text style={styles.label}>Tỉnh/thành thường hoạt động</Text>
+    <Text style={styles.label}>Tỉnh/thành nhận chuyến</Text>
     <Pressable disabled={disabled} onPress={() => { setSearch(""); setOpen(true); }} style={styles.input}><Text>{provinces.find(p => p.code === value)?.name || "Chọn tỉnh/thành"} ▾</Text></Pressable>
-    <Text style={styles.hint}>Chọn tỉnh/thành anh/chị thường có mặt để nhận chuyến. Anh/chị vẫn có thể nhận chuyến ở các khu vực khác.</Text>
+    <Text style={styles.hint}>Chọn tỉnh/thành nơi anh/chị đang hoạt động và sẵn sàng nhận chuyến. Khi sang miền khác, hãy cập nhật và lưu lại để Admin gửi chuyến phù hợp.</Text>
     <Modal visible={open} transparent animationType="slide" onRequestClose={() => setOpen(false)}>
       <View style={styles.backdrop}><View style={styles.panel}>
-        <Text style={styles.label}>Chọn tỉnh/thành thường hoạt động</Text>
+        <Text style={styles.label}>Chọn tỉnh/thành nhận chuyến</Text>
         <TextInput style={styles.input} value={search} onChangeText={setSearch} placeholder="Tìm tỉnh/thành" autoCorrect={false} />
         <FlatList data={choices} keyExtractor={p => p.code} keyboardShouldPersistTaps="handled" ListEmptyComponent={<Text>Không tìm thấy tỉnh/thành.</Text>} renderItem={({ item }) => <Pressable style={styles.row} onPress={() => { onChange(item.code); setOpen(false); }}><Text>{item.name}{item.code === value ? " ✓" : ""}</Text></Pressable>} />
         <Pressable style={styles.row} onPress={() => setOpen(false)}><Text style={styles.label}>Đóng</Text></Pressable>

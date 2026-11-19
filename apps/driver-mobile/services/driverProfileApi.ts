@@ -610,6 +610,6 @@ export async function createMyDriverWithdrawRequest(
 export async function updateOperatingProvince(token: string, operatingProvinceCode: string) {
   const res = await fetch(`${API_BASE_URL}/api/driver/profile/me/operating-province`, { method: "PATCH", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, body: JSON.stringify({ operatingProvinceCode }) });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok || !data.success) throw new Error(data.message || "Không thể lưu tỉnh/thành.");
+  if (!res.ok || !data.success) throw new Error(data.message || "Không thể cập nhật tỉnh/thành nhận chuyến.");
   return data.profile as Pick<DriverProfileData, "operatingProvinceCode" | "operatingProvinceConfirmedAt">;
 }

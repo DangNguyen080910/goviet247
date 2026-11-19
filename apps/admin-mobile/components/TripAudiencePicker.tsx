@@ -67,7 +67,7 @@ export default function TripAudiencePicker({tripId,onDone,disabled,onBusy}:{trip
               <Text>{info||'Đang tải tài xế…'}</Text>
               <Text>Chỉ tài xế được chọn thấy chuyến. Người nhận trước chạy chuyến.</Text>
               {!!error&&<Text style={styles.error}>{error}</Text>}
-              <Text style={styles.section}>1. Miền hoạt động — chọn được nhiều miền</Text>
+              <Text style={styles.section}>1. Miền nhận chuyến — chọn được nhiều miền</Text>
               <View style={styles.choices}>
                 {choice('Tất cả khu vực',regions.length===ALL_REGIONS.length,()=>selectFilters(carType,fuelType,ALL_REGIONS))}
                 {AUDIENCE_REGIONS.map((region:{value:string;label:string})=>{
@@ -75,7 +75,7 @@ export default function TripAudiencePicker({tripId,onDone,disabled,onBusy}:{trip
                   return <View key={region.value}>{choice(`${region.label} (${count})`,regions.includes(region.value),()=>toggleRegion(region.value))}</View>;
                 })}
               </View>
-              <Text>Dựa trên tỉnh/thành thường hoạt động đã xác nhận, không phải vị trí hiện tại. Hồ sơ chưa xác nhận không tự xếp vào miền Nam. “Tất cả khu vực” gồm cả nhóm chưa xác nhận.</Text>
+              <Text>Miền nhận chuyến được xác định từ tỉnh/thành tài xế đã cập nhật và xác nhận trong hồ sơ. Khi tài xế sang miền khác, cần cập nhật lại tỉnh/thành nhận chuyến. “Tất cả khu vực” gồm cả nhóm chưa xác nhận.</Text>
               <Pressable accessibilityRole="button" accessibilityState={{expanded:showProvinces}} onPress={()=>setShowProvinces(value=>!value)} style={styles.choice}><Text style={styles.link}>{showProvinces?'Ẩn':'Xem'} tỉnh/thành theo miền</Text></Pressable>
               {showProvinces&&<Text>Số trong ngoặc là tài xế đủ điều kiện theo số chỗ và nhiên liệu đang chọn.</Text>}
               {showProvinces&&AUDIENCE_REGIONS.filter((region:{provinceCodes:string[]})=>region.provinceCodes.length).map((region:{value:string;label:string;provinceCodes:string[]})=><Text key={region.value}>{region.label}: {region.provinceCodes.map(provinceText).join(', ')}.</Text>)}

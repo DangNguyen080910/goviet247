@@ -53,7 +53,7 @@ export default function TripAudienceDialog({tripId,onClose,onDone}) {
     <DialogContent dividers><Stack spacing={1.5}>
       <Alert severity="info">{info||'Đang tải tài xế…'} Chỉ tài xế được chọn thấy chuyến. Người nhận trước chạy chuyến.</Alert>
       {!!error&&<Alert severity="error">{error}</Alert>}
-      <Typography fontWeight={700}>1. Miền hoạt động — chọn được nhiều miền</Typography>
+      <Typography fontWeight={700}>1. Miền nhận chuyến — chọn được nhiều miền</Typography>
       <Stack direction="row" useFlexGap flexWrap="wrap" spacing={1}>
         <Button disabled={locked} variant={regions.length===ALL_REGIONS.length?'contained':'outlined'} onClick={()=>selectFilters(carType,fuelType,ALL_REGIONS)}>Tất cả khu vực</Button>
         {AUDIENCE_REGIONS.map(region=>{
@@ -61,7 +61,7 @@ export default function TripAudienceDialog({tripId,onClose,onDone}) {
           return <Button key={region.value} disabled={locked} aria-pressed={regions.includes(region.value)} variant={regions.includes(region.value)?'contained':'outlined'} onClick={()=>toggleRegion(region.value)}>{region.label} ({count})</Button>;
         })}
       </Stack>
-      <Typography variant="body2">Dựa trên tỉnh/thành thường hoạt động đã xác nhận, không phải vị trí hiện tại. Hồ sơ chưa xác nhận không tự xếp vào miền Nam. “Tất cả khu vực” gồm cả nhóm chưa xác nhận.</Typography>
+      <Typography variant="body2">Miền nhận chuyến được xác định từ tỉnh/thành tài xế đã cập nhật và xác nhận trong hồ sơ. Khi tài xế sang miền khác, cần cập nhật lại tỉnh/thành nhận chuyến. “Tất cả khu vực” gồm cả nhóm chưa xác nhận.</Typography>
       <Button onClick={()=>setShowProvinces(value=>!value)} aria-expanded={showProvinces}>{showProvinces?'Ẩn':'Xem'} tỉnh/thành theo miền</Button>
       {showProvinces&&<Typography variant="caption">Số trong ngoặc là tài xế đủ điều kiện theo số chỗ và nhiên liệu đang chọn.</Typography>}
       {showProvinces&&AUDIENCE_REGIONS.filter(region=>region.provinceCodes.length).map(region=><Typography variant="body2" key={region.value}><b>{region.label}:</b> {region.provinceCodes.map(provinceText).join(', ')}.</Typography>)}

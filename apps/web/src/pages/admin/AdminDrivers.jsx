@@ -596,8 +596,8 @@ export default function AdminDrivers() {
         </FormControl>
 
         <FormControl size="small" sx={{ minWidth: 230 }}>
-          <InputLabel>Tỉnh/thành thường hoạt động</InputLabel>
-          <Select label="Tỉnh/thành thường hoạt động" value={operatingProvinceCode} onChange={e => { setPage(1); setOperatingProvinceCode(e.target.value); }}>
+          <InputLabel>Tỉnh/thành nhận chuyến</InputLabel>
+          <Select label="Tỉnh/thành nhận chuyến" value={operatingProvinceCode} onChange={e => { setPage(1); setOperatingProvinceCode(e.target.value); }}>
             <MenuItem value="all">Tất cả tỉnh/thành</MenuItem>
             {[...provinces].sort((a,b) => a.name.localeCompare(b.name, "vi")).map(p => <MenuItem key={p.code} value={p.code}>{p.name}</MenuItem>)}
           </Select>
@@ -707,7 +707,7 @@ export default function AdminDrivers() {
               {sortableHeader("name")}
               {sortableHeader("phone")}
               {sortableHeader("balance", "right")}
-              <TableCell>Tỉnh/thành thường hoạt động</TableCell>
+              <TableCell>Tỉnh/thành nhận chuyến</TableCell>
               {sortableHeader("vehicleType")}
               {sortableHeader("vehicleBrand")}
               {sortableHeader("vehicleModel")}
@@ -921,7 +921,7 @@ export default function AdminDrivers() {
                     Xe: {detail.vehicleBrand || "-"} {detail.vehicleModel || ""}
                   </Typography>
                   <Typography>Đời xe: {detail.vehicleYear || "-"}</Typography>
-                  <Typography>Khu vực hoạt động: {provinces.find(province => province.code === detail.operatingProvinceCode)?.name || "Chưa có"} {detail.operatingProvinceConfirmedAt ? "(đã xác nhận)" : "(chưa xác nhận)"}</Typography>
+                  <Typography>Tỉnh/thành nhận chuyến: {provinces.find(province => province.code === detail.operatingProvinceCode)?.name || "Chưa có"} {detail.operatingProvinceConfirmedAt ? "(đã xác nhận)" : "(chưa xác nhận)"}</Typography>
                   <Divider sx={{ my: 2 }} />
                   <Typography fontWeight={700}>Tài khoản ngân hàng</Typography>
                   {bankNotice && <Alert severity="warning" sx={{ my: 1 }}>{bankNotice}</Alert>}

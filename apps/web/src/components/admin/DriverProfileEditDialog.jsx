@@ -57,7 +57,7 @@ export default function DriverProfileEditDialog({ driver, onClose, onSaved }) {
         <TextField label="Tên hiển thị tài khoản" value={form.displayName} onChange={update('displayName')} disabled={busy} inputProps={{ maxLength: 100 }} helperText="Tài khoản có thể được dùng cho cả app tài xế và khách hàng." />
         <TextField label="Số điện thoại" value={form.phone} onChange={update('phone')} disabled={busy} type="tel" inputProps={{ maxLength: 20 }} helperText="Nhập 0… hoặc +84…; SĐT phải chưa thuộc tài khoản khác." />
         {phoneChanged && <Alert severity="warning">Số mới cần xác thực OTP. Đây là thay đổi SĐT của tài khoản hiện tại, không phải tạo hoặc gộp tài khoản.</Alert>}
-        <TextField select label="Tỉnh/thành thường hoạt động" value={form.operatingProvinceCode} onChange={update('operatingProvinceCode')} disabled={busy}>
+        <TextField select label="Tỉnh/thành nhận chuyến" value={form.operatingProvinceCode} onChange={update('operatingProvinceCode')} disabled={busy} helperText="Chọn tỉnh/thành nơi tài xế đang sẵn sàng nhận chuyến; cập nhật khi tài xế sang miền khác.">
           {provinces.map(province => <MenuItem key={province.code} value={province.code}>{province.name}</MenuItem>)}
         </TextField>
         <FormControlLabel control={<Checkbox checked={form.provinceConfirmed} disabled={busy} onChange={(_, checked) => setForm(current => ({ ...current, provinceConfirmed: checked }))} />} label="Đã xác nhận khu vực này với tài xế" />
