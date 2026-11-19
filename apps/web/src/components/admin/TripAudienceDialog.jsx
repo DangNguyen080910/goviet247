@@ -27,6 +27,17 @@ export default function TripAudienceDialog({tripId,onClose,onDone}) {
   const hasFilters=!!(carType||fuelType||regions.length);
   const limit=hasFilters?10000:100;
   const label=[...AUDIENCE_REGIONS.filter(region=>regions.includes(region.value)).map(region=>region.label),CARS[carType],FUELS[fuelType]].filter(Boolean).join(' + ');
+  const provinceCounts = items.reduce((counts, driver) => {
+    const code = driver.operatingProvinceCode;
+    if (code && driver.operatingProvinceConfirmedAt && matchesAudienceFilters(driver, carType, fuelType)) {
+      counts[code] = (counts[code] || 0) + 1;
+    }
+    return counts;
+  }, {});
+  function provinceText(code) {
+    const name = provinces.find(province => province.code === code)?.name || code;
+    return `${name} (${provinceCounts[code] || 0})`;
+  }
   async function submit(){
     if(locked||!selected.length||selected.length>limit)return;
     setBusy(true);setError('');
@@ -52,7 +63,8 @@ export default function TripAudienceDialog({tripId,onClose,onDone}) {
       </Stack>
       <Typography variant="body2">Dựa trên tỉnh/thành thường hoạt động đã xác nhận, không phải vị trí hiện tại. Hồ sơ chưa xác nhận không tự xếp vào miền Nam. “Tất cả khu vực” gồm cả nhóm chưa xác nhận.</Typography>
       <Button onClick={()=>setShowProvinces(value=>!value)} aria-expanded={showProvinces}>{showProvinces?'Ẩn':'Xem'} tỉnh/thành theo miền</Button>
-      {showProvinces&&AUDIENCE_REGIONS.filter(region=>region.provinceCodes.length).map(region=><Typography variant="body2" key={region.value}><b>{region.label}:</b> {region.provinceCodes.map(code=>provinces.find(province=>province.code===code)?.name||code).join(', ')}.</Typography>)}
+      {showProvinces&&<Typography variant="caption">Số trong ngoặc là tài xế đủ điều kiện theo số chỗ và nhiên liệu đang chọn.</Typography>}
+      {showProvinces&&AUDIENCE_REGIONS.filter(region=>region.provinceCodes.length).map(region=><Typography variant="body2" key={region.value}><b>{region.label}:</b> {region.provinceCodes.map(provinceText).join(', ')}.</Typography>)}
       <Typography fontWeight={700}>2. Số chỗ</Typography>
       <Stack direction="row" useFlexGap flexWrap="wrap" spacing={1}>
         <Button disabled={locked} variant={!carType?'contained':'outlined'} onClick={()=>selectFilters('',fuelType)}>Tất cả số chỗ</Button>

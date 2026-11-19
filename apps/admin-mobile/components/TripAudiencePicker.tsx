@@ -28,6 +28,17 @@ export default function TripAudiencePicker({tripId,onDone,disabled,onBusy}:{trip
   const hasFilters=!!(carType||fuelType||regions.length);
   const limit=hasFilters?10000:100;
   const label=[...AUDIENCE_REGIONS.filter((region:{value:string})=>regions.includes(region.value)).map((region:{label:string})=>region.label),CARS[carType],FUELS[fuelType]].filter(Boolean).join(' + ');
+  const provinceCounts = items.reduce<Record<string, number>>((counts, driver) => {
+    const code = driver.operatingProvinceCode;
+    if (code && driver.operatingProvinceConfirmedAt && matchesAudienceFilters(driver, carType, fuelType)) {
+      counts[code] = (counts[code] || 0) + 1;
+    }
+    return counts;
+  }, {});
+  function provinceText(code: string) {
+    const name = provinces.find(province => province.code === code)?.name || code;
+    return `${name} (${provinceCounts[code] || 0})`;
+  }
   async function submit(){
     if(locked||!selected.length||selected.length>limit)return;setBusy(true);onBusy(true);setError('');
     try{
@@ -66,7 +77,8 @@ export default function TripAudiencePicker({tripId,onDone,disabled,onBusy}:{trip
               </View>
               <Text>Dựa trên tỉnh/thành thường hoạt động đã xác nhận, không phải vị trí hiện tại. Hồ sơ chưa xác nhận không tự xếp vào miền Nam. “Tất cả khu vực” gồm cả nhóm chưa xác nhận.</Text>
               <Pressable accessibilityRole="button" accessibilityState={{expanded:showProvinces}} onPress={()=>setShowProvinces(value=>!value)} style={styles.choice}><Text style={styles.link}>{showProvinces?'Ẩn':'Xem'} tỉnh/thành theo miền</Text></Pressable>
-              {showProvinces&&AUDIENCE_REGIONS.filter((region:{provinceCodes:string[]})=>region.provinceCodes.length).map((region:{value:string;label:string;provinceCodes:string[]})=><Text key={region.value}>{region.label}: {region.provinceCodes.map(code=>provinces.find(province=>province.code===code)?.name||code).join(', ')}.</Text>)}
+              {showProvinces&&<Text>Số trong ngoặc là tài xế đủ điều kiện theo số chỗ và nhiên liệu đang chọn.</Text>}
+              {showProvinces&&AUDIENCE_REGIONS.filter((region:{provinceCodes:string[]})=>region.provinceCodes.length).map((region:{value:string;label:string;provinceCodes:string[]})=><Text key={region.value}>{region.label}: {region.provinceCodes.map(provinceText).join(', ')}.</Text>)}
               <Text style={styles.section}>2. Số chỗ</Text>
               <View style={styles.choices}>
                 {choice('Tất cả số chỗ',!carType,()=>selectFilters('',fuelType))}
