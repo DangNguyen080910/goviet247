@@ -375,6 +375,10 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
 
   return {
     ...base,
+    partnerDispatcherName: hasActiveTripContact(trip.status) && partnerCompanyId &&
+      partnerAssignedTo?.isActive && partnerAssignedTo.companyId === partnerCompanyId
+      ? String(partnerAssignedTo.displayName || "").trim() || null
+      : null,
     riderPhone: hasActiveTripContact(trip.status)
       ? partnerCompanyId
         ? (partnerAssignedTo?.isActive && partnerAssignedTo.companyId === partnerCompanyId ? partnerAssignedTo.phone || "" : "")
@@ -773,7 +777,7 @@ export async function getTripById(req, res) {
     const { id } = req.params;
     const trip = await prisma.trip.findUnique({
       where: { id },
-      include: { partnerAssignedTo: { select: { phone: true, isActive: true, companyId: true } } },
+      include: { partnerAssignedTo: { select: { displayName: true, phone: true, isActive: true, companyId: true } } },
     });
     const userId = req.user?.id || req.user?.uid;
     const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, userId);
@@ -1666,7 +1670,7 @@ export async function listMyTrips(req, res) {
       orderBy: { updatedAt: "desc" },
       take: 100,
       include: {
-        partnerAssignedTo: { select: { phone: true, isActive: true, companyId: true } },
+        partnerAssignedTo: { select: { displayName: true, phone: true, isActive: true, companyId: true } },
         stops: {
           orderBy: { seq: "asc" },
           select: {

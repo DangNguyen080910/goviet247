@@ -76,6 +76,7 @@ export type MyTripItem = {
   isPartnerTrip?: boolean;
   partnerCompanyName?: string | null;
   partnerGreeting?: string | null;
+  partnerDispatcherName?: string | null;
   pickupAddress: string;
   pickupAddressMasked?: string;
   dropoffAddress: string;

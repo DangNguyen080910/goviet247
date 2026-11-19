@@ -1501,6 +1501,9 @@ export default function DashboardScreen() {
       const isExpandedIncome = expandedIncomeTripId === trip.id;
       const income = getTripIncomeBreakdown(trip);
       const routeDisplay = getTripRouteDisplay(trip, "full");
+      const contactName = trip.isPartnerTrip
+        ? trip.partnerDispatcherName?.trim() || "Chưa cập nhật"
+        : trip.riderName?.trim() || trip.riderPhone || "Chưa cập nhật";
 
       return (
         <View key={trip.id} style={styles.tripCard}>
@@ -1621,6 +1624,12 @@ export default function DashboardScreen() {
           ) : null}
 
 
+          <View style={styles.infoRow}>
+            <Text style={styles.infoIcon}>👤</Text>
+            <Text style={styles.infoText}>
+              {trip.isPartnerTrip ? "Tên điều phối viên" : "Tên khách hàng"}: {contactName}
+            </Text>
+          </View>
           {!!phoneCallUrl(trip.riderPhone) && <>
             {renderCopyableTripRow("☎", trip.isPartnerTrip ? "Số điều phối viên" : "Số điện thoại khách", trip.riderPhone)}
             <TouchableOpacity accessibilityRole="button" onPress={() => void callCustomer(trip.riderPhone)}>
