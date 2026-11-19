@@ -1,0 +1,1714 @@
+{
+  "goviet247:province:ha-noi": {
+    "fullAddress": "Hà Nội, Việt Nam",
+    "province": "Hà Nội"
+  },
+  "goviet247:province:tuyen-quang": {
+    "fullAddress": "Tuyên Quang, Việt Nam",
+    "province": "Tuyên Quang"
+  },
+  "goviet247:province:lao-cai": {
+    "fullAddress": "Lào Cai, Việt Nam",
+    "province": "Lào Cai"
+  },
+  "goviet247:province:thai-nguyen": {
+    "fullAddress": "Thái Nguyên, Việt Nam",
+    "province": "Thái Nguyên"
+  },
+  "goviet247:province:phu-tho": {
+    "fullAddress": "Phú Thọ, Việt Nam",
+    "province": "Phú Thọ"
+  },
+  "goviet247:province:bac-ninh": {
+    "fullAddress": "Bắc Ninh, Việt Nam",
+    "province": "Bắc Ninh"
+  },
+  "goviet247:province:hung-yen": {
+    "fullAddress": "Hưng Yên, Việt Nam",
+    "province": "Hưng Yên"
+  },
+  "goviet247:province:hai-phong": {
+    "fullAddress": "Hải Phòng, Việt Nam",
+    "province": "Hải Phòng"
+  },
+  "goviet247:province:ninh-binh": {
+    "fullAddress": "Ninh Bình, Việt Nam",
+    "province": "Ninh Bình"
+  },
+  "goviet247:province:quang-ninh": {
+    "fullAddress": "Quảng Ninh, Việt Nam",
+    "province": "Quảng Ninh"
+  },
+  "goviet247:province:cao-bang": {
+    "fullAddress": "Cao Bằng, Việt Nam",
+    "province": "Cao Bằng"
+  },
+  "goviet247:province:lang-son": {
+    "fullAddress": "Lạng Sơn, Việt Nam",
+    "province": "Lạng Sơn"
+  },
+  "goviet247:province:lai-chau": {
+    "fullAddress": "Lai Châu, Việt Nam",
+    "province": "Lai Châu"
+  },
+  "goviet247:province:dien-bien": {
+    "fullAddress": "Điện Biên, Việt Nam",
+    "province": "Điện Biên"
+  },
+  "goviet247:province:son-la": {
+    "fullAddress": "Sơn La, Việt Nam",
+    "province": "Sơn La"
+  },
+  "goviet247:province:thanh-hoa": {
+    "fullAddress": "Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:province:nghe-an": {
+    "fullAddress": "Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:province:ha-tinh": {
+    "fullAddress": "Hà Tĩnh, Việt Nam",
+    "province": "Hà Tĩnh"
+  },
+  "goviet247:province:quang-tri": {
+    "fullAddress": "Quảng Trị, Việt Nam",
+    "province": "Quảng Trị"
+  },
+  "goviet247:province:hue": {
+    "fullAddress": "Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:province:da-nang": {
+    "fullAddress": "Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:province:quang-ngai": {
+    "fullAddress": "Quảng Ngãi, Việt Nam",
+    "province": "Quảng Ngãi"
+  },
+  "goviet247:province:gia-lai": {
+    "fullAddress": "Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:province:dak-lak": {
+    "fullAddress": "Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:province:khanh-hoa": {
+    "fullAddress": "Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:province:lam-dong": {
+    "fullAddress": "Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:province:dak-nong": {
+    "fullAddress": "Đắk Nông, Việt Nam",
+    "province": "Đắk Nông"
+  },
+  "goviet247:province:quang-nam": {
+    "fullAddress": "Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:province:tp-hcm": {
+    "fullAddress": "TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:province:dong-nai": {
+    "fullAddress": "Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:province:binh-duong": {
+    "fullAddress": "Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:province:tay-ninh": {
+    "fullAddress": "Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:province:binh-phuoc": {
+    "fullAddress": "Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:province:ba-ria-vung-tau": {
+    "fullAddress": "Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:province:can-tho": {
+    "fullAddress": "Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:province:vinh-long": {
+    "fullAddress": "Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:province:dong-thap": {
+    "fullAddress": "Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:province:an-giang": {
+    "fullAddress": "An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:province:kien-giang": {
+    "fullAddress": "Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:province:ca-mau": {
+    "fullAddress": "Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:province:soc-trang": {
+    "fullAddress": "Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:province:bac-lieu": {
+    "fullAddress": "Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:province:hau-giang": {
+    "fullAddress": "Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:province:ben-tre": {
+    "fullAddress": "Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:province:tra-vinh": {
+    "fullAddress": "Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:province:tien-giang": {
+    "fullAddress": "Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:province:long-an": {
+    "fullAddress": "Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:south:tp-hcm:quan-1": {
+    "fullAddress": "Quận 1, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-3": {
+    "fullAddress": "Quận 3, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-4": {
+    "fullAddress": "Quận 4, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-5": {
+    "fullAddress": "Quận 5, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-6": {
+    "fullAddress": "Quận 6, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-7": {
+    "fullAddress": "Quận 7, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-8": {
+    "fullAddress": "Quận 8, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-10": {
+    "fullAddress": "Quận 10, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-11": {
+    "fullAddress": "Quận 11, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:quan-12": {
+    "fullAddress": "Quận 12, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:binh-thanh": {
+    "fullAddress": "Bình Thạnh, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:phu-nhuan": {
+    "fullAddress": "Phú Nhuận, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:tan-binh": {
+    "fullAddress": "Tân Bình, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:tan-phu": {
+    "fullAddress": "Tân Phú, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:go-vap": {
+    "fullAddress": "Gò Vấp, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:binh-tan": {
+    "fullAddress": "Bình Tân, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:thu-duc": {
+    "fullAddress": "Thủ Đức, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:cu-chi": {
+    "fullAddress": "Củ Chi, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:hoc-mon": {
+    "fullAddress": "Hóc Môn, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:binh-chanh": {
+    "fullAddress": "Bình Chánh, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:nha-be": {
+    "fullAddress": "Nhà Bè, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:can-gio": {
+    "fullAddress": "Cần Giờ, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:ben-xe-mien-dong": {
+    "fullAddress": "Bến xe Miền Đông, Bình Thạnh, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:ben-xe-mien-dong-moi": {
+    "fullAddress": "Bến xe Miền Đông mới, Thủ Đức, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:ben-xe-mien-tay": {
+    "fullAddress": "Bến xe Miền Tây, Bình Tân, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:tp-hcm:ga-sai-gon": {
+    "fullAddress": "Ga Sài Gòn, Quận 3, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:south:dong-nai:bien-hoa": {
+    "fullAddress": "Biên Hòa, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:long-thanh": {
+    "fullAddress": "Long Thành, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:nhon-trach": {
+    "fullAddress": "Nhơn Trạch, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:long-khanh": {
+    "fullAddress": "Long Khánh, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:trang-bom": {
+    "fullAddress": "Trảng Bom, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:vinh-cuu": {
+    "fullAddress": "Vĩnh Cửu, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:cam-my": {
+    "fullAddress": "Cẩm Mỹ, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:thong-nhat": {
+    "fullAddress": "Thống Nhất, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:xuan-loc": {
+    "fullAddress": "Xuân Lộc, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:dinh-quan": {
+    "fullAddress": "Định Quán, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:kcn-amata": {
+    "fullAddress": "KCN Amata, Biên Hòa, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:kcn-bien-hoa-1": {
+    "fullAddress": "KCN Biên Hòa 1, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:kcn-bien-hoa-2": {
+    "fullAddress": "KCN Biên Hòa 2, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:kcn-long-thanh": {
+    "fullAddress": "KCN Long Thành, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:kcn-nhon-trach-1": {
+    "fullAddress": "KCN Nhơn Trạch 1, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:kcn-nhon-trach-2": {
+    "fullAddress": "KCN Nhơn Trạch 2, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:dong-nai:san-bay-long-thanh": {
+    "fullAddress": "Sân bay quốc tế Long Thành, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:south:ba-ria-vung-tau:vung-tau": {
+    "fullAddress": "Vũng Tàu, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:ba-ria": {
+    "fullAddress": "Bà Rịa, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:phu-my": {
+    "fullAddress": "Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:long-dien": {
+    "fullAddress": "Long Điền, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:long-hai": {
+    "fullAddress": "Long Hải, Long Điền, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:dat-do": {
+    "fullAddress": "Đất Đỏ, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:xuyen-moc": {
+    "fullAddress": "Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:ho-tram": {
+    "fullAddress": "Hồ Tràm, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:binh-chau": {
+    "fullAddress": "Bình Châu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:ho-coc": {
+    "fullAddress": "Hồ Cốc, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:con-dao": {
+    "fullAddress": "Côn Đảo, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:cang-cai-mep": {
+    "fullAddress": "Cảng Cái Mép, Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:kcn-phu-my-1": {
+    "fullAddress": "KCN Phú Mỹ 1, Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:kcn-my-xuan": {
+    "fullAddress": "KCN Mỹ Xuân, Phú Mỹ, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:the-grand-ho-tram": {
+    "fullAddress": "The Grand Hồ Tràm, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:ba-ria-vung-tau:melia-ho-tram": {
+    "fullAddress": "Melia Hồ Tràm, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:south:binh-duong:thu-dau-mot": {
+    "fullAddress": "Thủ Dầu Một, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:di-an": {
+    "fullAddress": "Dĩ An, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:thuan-an": {
+    "fullAddress": "Thuận An, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:tan-uyen": {
+    "fullAddress": "Tân Uyên, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:ben-cat": {
+    "fullAddress": "Bến Cát, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:bau-bang": {
+    "fullAddress": "Bàu Bàng, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:phu-giao": {
+    "fullAddress": "Phú Giáo, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:dau-tieng": {
+    "fullAddress": "Dầu Tiếng, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:vsip-1": {
+    "fullAddress": "VSIP 1, Thuận An, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:vsip-2": {
+    "fullAddress": "VSIP 2, Thủ Dầu Một, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:vsip-2a": {
+    "fullAddress": "VSIP 2A, Tân Uyên, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-my-phuoc-1": {
+    "fullAddress": "KCN Mỹ Phước 1, Bến Cát, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-my-phuoc-2": {
+    "fullAddress": "KCN Mỹ Phước 2, Bến Cát, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-my-phuoc-3": {
+    "fullAddress": "KCN Mỹ Phước 3, Bến Cát, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-song-than-1": {
+    "fullAddress": "KCN Sóng Thần 1, Dĩ An, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-song-than-2": {
+    "fullAddress": "KCN Sóng Thần 2, Dĩ An, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-nam-tan-uyen": {
+    "fullAddress": "KCN Nam Tân Uyên, Tân Uyên, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:kcn-bau-bang": {
+    "fullAddress": "KCN Bàu Bàng, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:binh-duong:aeon-binh-duong": {
+    "fullAddress": "AEON Mall Bình Dương Canary, Thuận An, Bình Dương, Việt Nam",
+    "province": "Bình Dương"
+  },
+  "goviet247:south:tay-ninh:tay-ninh": {
+    "fullAddress": "Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:trang-bang": {
+    "fullAddress": "Trảng Bàng, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:go-dau": {
+    "fullAddress": "Gò Dầu, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:hoa-thanh": {
+    "fullAddress": "Hòa Thành, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:duong-minh-chau": {
+    "fullAddress": "Dương Minh Châu, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:tan-bien": {
+    "fullAddress": "Tân Biên, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:tan-chau": {
+    "fullAddress": "Tân Châu, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:chau-thanh": {
+    "fullAddress": "Châu Thành, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:moc-bai": {
+    "fullAddress": "Cửa khẩu quốc tế Mộc Bài, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:xa-mat": {
+    "fullAddress": "Cửa khẩu Xa Mát, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:nui-ba-den": {
+    "fullAddress": "Núi Bà Đen, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:toa-thanh-cao-dai": {
+    "fullAddress": "Tòa Thánh Cao Đài, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:kcn-phuoc-dong": {
+    "fullAddress": "KCN Phước Đông, Gò Dầu, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:tay-ninh:kcn-trang-bang": {
+    "fullAddress": "KCN Trảng Bàng, Tây Ninh, Việt Nam",
+    "province": "Tây Ninh"
+  },
+  "goviet247:south:binh-phuoc:dong-xoai": {
+    "fullAddress": "Đồng Xoài, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:chon-thanh": {
+    "fullAddress": "Chơn Thành, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:binh-long": {
+    "fullAddress": "Bình Long, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:phuoc-long": {
+    "fullAddress": "Phước Long, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:dong-phu": {
+    "fullAddress": "Đồng Phú, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:hon-quan": {
+    "fullAddress": "Hớn Quản, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:loc-ninh": {
+    "fullAddress": "Lộc Ninh, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:bu-dang": {
+    "fullAddress": "Bù Đăng, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:bu-dop": {
+    "fullAddress": "Bù Đốp, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:bu-gia-map": {
+    "fullAddress": "Bù Gia Mập, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-phuoc:kcn-becamex-binh-phuoc": {
+    "fullAddress": "KCN Becamex Bình Phước, Chơn Thành, Bình Phước, Việt Nam",
+    "province": "Bình Phước"
+  },
+  "goviet247:south:binh-thuan:phan-thiet": {
+    "fullAddress": "Phan Thiết, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:mui-ne": {
+    "fullAddress": "Mũi Né, Phan Thiết, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:la-gi": {
+    "fullAddress": "La Gi, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:ham-tan": {
+    "fullAddress": "Hàm Tân, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:ham-thuan-nam": {
+    "fullAddress": "Hàm Thuận Nam, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:ham-thuan-bac": {
+    "fullAddress": "Hàm Thuận Bắc, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:bac-binh": {
+    "fullAddress": "Bắc Bình, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:tuy-phong": {
+    "fullAddress": "Tuy Phong, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:ke-ga": {
+    "fullAddress": "Kê Gà, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:tien-thanh": {
+    "fullAddress": "Tiến Thành, Phan Thiết, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:novaworld-phan-thiet": {
+    "fullAddress": "NovaWorld Phan Thiết, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:bau-trang": {
+    "fullAddress": "Bàu Trắng, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:hon-rom": {
+    "fullAddress": "Hòn Rơm, Mũi Né, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:binh-thuan:suoi-tien": {
+    "fullAddress": "Suối Tiên, Mũi Né, Bình Thuận, Việt Nam",
+    "province": "Bình Thuận"
+  },
+  "goviet247:south:lam-dong:da-lat": {
+    "fullAddress": "Đà Lạt, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:bao-loc": {
+    "fullAddress": "Bảo Lộc, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:duc-trong": {
+    "fullAddress": "Đức Trọng, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:di-linh": {
+    "fullAddress": "Di Linh, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:don-duong": {
+    "fullAddress": "Đơn Dương, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:lac-duong": {
+    "fullAddress": "Lạc Dương, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:dam-rong": {
+    "fullAddress": "Đam Rông, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:cat-tien": {
+    "fullAddress": "Cát Tiên, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:ho-xuan-huong": {
+    "fullAddress": "Hồ Xuân Hương, Đà Lạt, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:cho-da-lat": {
+    "fullAddress": "Chợ Đà Lạt, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:langbiang": {
+    "fullAddress": "LangBiang, Lạc Dương, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:tuyen-lam": {
+    "fullAddress": "Hồ Tuyền Lâm, Đà Lạt, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:thung-lung-tinh-yeu": {
+    "fullAddress": "Thung Lũng Tình Yêu, Đà Lạt, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:san-bay-lien-khuong": {
+    "fullAddress": "Sân bay Liên Khương, Đức Trọng, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:south:lam-dong:ben-xe-da-lat": {
+    "fullAddress": "Bến xe Đà Lạt, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:central:khanh-hoa:nha-trang": {
+    "fullAddress": "Nha Trang, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:cam-ranh": {
+    "fullAddress": "Cam Ranh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:ninh-hoa": {
+    "fullAddress": "Ninh Hòa, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:van-ninh": {
+    "fullAddress": "Vạn Ninh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:dien-khanh": {
+    "fullAddress": "Diên Khánh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:khanh-vinh": {
+    "fullAddress": "Khánh Vĩnh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:khanh-son": {
+    "fullAddress": "Khánh Sơn, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:san-bay-cam-ranh": {
+    "fullAddress": "Sân bay quốc tế Cam Ranh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:vinpearl-nha-trang": {
+    "fullAddress": "Vinpearl Nha Trang, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:hon-tre": {
+    "fullAddress": "Hòn Tre, Nha Trang, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:bai-dai-cam-ranh": {
+    "fullAddress": "Bãi Dài, Cam Ranh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:doc-let": {
+    "fullAddress": "Dốc Lết, Ninh Hòa, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:van-phong": {
+    "fullAddress": "Vịnh Vân Phong, Vạn Ninh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:khanh-hoa:ben-xe-phia-nam-nha-trang": {
+    "fullAddress": "Bến xe phía Nam Nha Trang, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:central:da-nang:da-nang": {
+    "fullAddress": "Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:central:da-nang:san-bay-da-nang": {
+    "fullAddress": "Sân bay quốc tế Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:central:da-nang:my-khe": {
+    "fullAddress": "Biển Mỹ Khê, Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:central:da-nang:son-tra": {
+    "fullAddress": "Sơn Trà, Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:central:da-nang:ba-na-hills": {
+    "fullAddress": "Bà Nà Hills, Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:central:da-nang:cau-rong": {
+    "fullAddress": "Cầu Rồng, Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:central:quang-nam:hoi-an": {
+    "fullAddress": "Hội An, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:quang-nam:tam-ky": {
+    "fullAddress": "Tam Kỳ, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:quang-nam:chu-lai": {
+    "fullAddress": "Chu Lai, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:quang-nam:san-bay-chu-lai": {
+    "fullAddress": "Sân bay Chu Lai, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:quang-nam:cu-lao-cham": {
+    "fullAddress": "Cù Lao Chàm, Hội An, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:quang-nam:dien-ban": {
+    "fullAddress": "Điện Bàn, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:quang-nam:vinwonders-nam-hoi-an": {
+    "fullAddress": "VinWonders Nam Hội An, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:central:hue:hue": {
+    "fullAddress": "Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:central:hue:phu-bai": {
+    "fullAddress": "Sân bay Phú Bài, Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:central:hue:lang-co": {
+    "fullAddress": "Lăng Cô, Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:central:hue:dai-noi": {
+    "fullAddress": "Đại Nội Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:central:hue:thuan-an": {
+    "fullAddress": "Biển Thuận An, Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:central:quang-tri:dong-ha": {
+    "fullAddress": "Đông Hà, Quảng Trị, Việt Nam",
+    "province": "Quảng Trị"
+  },
+  "goviet247:central:quang-tri:lao-bao": {
+    "fullAddress": "Lao Bảo, Quảng Trị, Việt Nam",
+    "province": "Quảng Trị"
+  },
+  "goviet247:central:quang-tri:cua-viet": {
+    "fullAddress": "Cửa Việt, Quảng Trị, Việt Nam",
+    "province": "Quảng Trị"
+  },
+  "goviet247:central:quang-binh:dong-hoi": {
+    "fullAddress": "Đồng Hới, Quảng Bình, Việt Nam",
+    "province": "Quảng Bình"
+  },
+  "goviet247:central:quang-binh:san-bay-dong-hoi": {
+    "fullAddress": "Sân bay Đồng Hới, Quảng Bình, Việt Nam",
+    "province": "Quảng Bình"
+  },
+  "goviet247:central:quang-binh:phong-nha": {
+    "fullAddress": "Phong Nha, Quảng Bình, Việt Nam",
+    "province": "Quảng Bình"
+  },
+  "goviet247:central:quang-binh:dong-thien-duong": {
+    "fullAddress": "Động Thiên Đường, Quảng Bình, Việt Nam",
+    "province": "Quảng Bình"
+  },
+  "goviet247:central:quang-binh:son-doong": {
+    "fullAddress": "Hang Sơn Đoòng, Quảng Bình, Việt Nam",
+    "province": "Quảng Bình"
+  },
+  "goviet247:central:gia-lai:pleiku": {
+    "fullAddress": "Pleiku, Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:central:gia-lai:san-bay-pleiku": {
+    "fullAddress": "Sân bay Pleiku, Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:central:gia-lai:bien-ho": {
+    "fullAddress": "Biển Hồ, Pleiku, Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:central:gia-lai:chu-se": {
+    "fullAddress": "Chư Sê, Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:central:gia-lai:an-khe": {
+    "fullAddress": "An Khê, Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:central:dak-lak:buon-ma-thuot": {
+    "fullAddress": "Buôn Ma Thuột, Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:central:dak-lak:san-bay-buon-ma-thuot": {
+    "fullAddress": "Sân bay Buôn Ma Thuột, Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:central:dak-lak:ho-lak": {
+    "fullAddress": "Hồ Lắk, Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:central:dak-lak:buon-don": {
+    "fullAddress": "Buôn Đôn, Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:central:dak-lak:ea-kar": {
+    "fullAddress": "Ea Kar, Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:central:dak-nong:gia-nghia": {
+    "fullAddress": "Gia Nghĩa, Đắk Nông, Việt Nam",
+    "province": "Đắk Nông"
+  },
+  "goviet247:central:dak-nong:ta-dung": {
+    "fullAddress": "Tà Đùng, Đắk Nông, Việt Nam",
+    "province": "Đắk Nông"
+  },
+  "goviet247:central:dak-nong:dak-mil": {
+    "fullAddress": "Đắk Mil, Đắk Nông, Việt Nam",
+    "province": "Đắk Nông"
+  },
+  "goviet247:central:dak-nong:cu-jut": {
+    "fullAddress": "Cư Jút, Đắk Nông, Việt Nam",
+    "province": "Đắk Nông"
+  },
+  "goviet247:central:thanh-hoa:thanh-hoa": {
+    "fullAddress": "Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:central:thanh-hoa:sam-son": {
+    "fullAddress": "Sầm Sơn, Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:central:thanh-hoa:tho-xuan": {
+    "fullAddress": "Thọ Xuân, Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:central:thanh-hoa:san-bay-tho-xuan": {
+    "fullAddress": "Sân bay Thọ Xuân, Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:central:thanh-hoa:nghi-son": {
+    "fullAddress": "Nghi Sơn, Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:central:nghe-an:vinh": {
+    "fullAddress": "Vinh, Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:central:nghe-an:san-bay-vinh": {
+    "fullAddress": "Sân bay Vinh, Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:central:nghe-an:cua-lo": {
+    "fullAddress": "Cửa Lò, Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:central:nghe-an:nam-dan": {
+    "fullAddress": "Nam Đàn, Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:central:nghe-an:dien-chau": {
+    "fullAddress": "Diễn Châu, Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:central:ha-tinh:ha-tinh": {
+    "fullAddress": "Hà Tĩnh, Việt Nam",
+    "province": "Hà Tĩnh"
+  },
+  "goviet247:central:ha-tinh:ky-anh": {
+    "fullAddress": "Kỳ Anh, Hà Tĩnh, Việt Nam",
+    "province": "Hà Tĩnh"
+  },
+  "goviet247:central:ha-tinh:formosa-ha-tinh": {
+    "fullAddress": "Formosa Hà Tĩnh, Kỳ Anh, Hà Tĩnh, Việt Nam",
+    "province": "Hà Tĩnh"
+  },
+  "goviet247:central:ha-tinh:thien-cam": {
+    "fullAddress": "Thiên Cầm, Hà Tĩnh, Việt Nam",
+    "province": "Hà Tĩnh"
+  },
+  "goviet247:mekong:long-an:tan-an": {
+    "fullAddress": "Tân An, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:ben-luc": {
+    "fullAddress": "Bến Lức, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:duc-hoa": {
+    "fullAddress": "Đức Hòa, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:duc-hue": {
+    "fullAddress": "Đức Huệ, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:can-giuoc": {
+    "fullAddress": "Cần Giuộc, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:can-duoc": {
+    "fullAddress": "Cần Đước, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:thu-thua": {
+    "fullAddress": "Thủ Thừa, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:tan-tru": {
+    "fullAddress": "Tân Trụ, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:chau-thanh": {
+    "fullAddress": "Châu Thành, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:tan-hung": {
+    "fullAddress": "Tân Hưng, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:vinh-hung": {
+    "fullAddress": "Vĩnh Hưng, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:moc-hoa": {
+    "fullAddress": "Mộc Hóa, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:tan-thanh": {
+    "fullAddress": "Tân Thạnh, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:thanh-hoa": {
+    "fullAddress": "Thạnh Hóa, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:kien-tuong": {
+    "fullAddress": "Kiến Tường, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:tien-giang:my-tho": {
+    "fullAddress": "Mỹ Tho, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:go-cong": {
+    "fullAddress": "Gò Công, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:cai-lay": {
+    "fullAddress": "Cai Lậy, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:cai-be": {
+    "fullAddress": "Cái Bè, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:chau-thanh": {
+    "fullAddress": "Châu Thành, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:cho-gao": {
+    "fullAddress": "Chợ Gạo, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:tan-phuoc": {
+    "fullAddress": "Tân Phước, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:go-cong-dong": {
+    "fullAddress": "Gò Công Đông, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:go-cong-tay": {
+    "fullAddress": "Gò Công Tây, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:tan-phu-dong": {
+    "fullAddress": "Tân Phú Đông, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:ben-tre:ben-tre": {
+    "fullAddress": "Bến Tre, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:ba-tri": {
+    "fullAddress": "Ba Tri, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:binh-dai": {
+    "fullAddress": "Bình Đại, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:chau-thanh": {
+    "fullAddress": "Châu Thành, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:cho-lach": {
+    "fullAddress": "Chợ Lách, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:giong-trom": {
+    "fullAddress": "Giồng Trôm, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:mo-cay-bac": {
+    "fullAddress": "Mỏ Cày Bắc, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:mo-cay-nam": {
+    "fullAddress": "Mỏ Cày Nam, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:ben-tre:thanh-phu": {
+    "fullAddress": "Thạnh Phú, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:tra-vinh:tra-vinh": {
+    "fullAddress": "Trà Vinh, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:cang-long": {
+    "fullAddress": "Càng Long, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:cau-ke": {
+    "fullAddress": "Cầu Kè, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:cau-ngang": {
+    "fullAddress": "Cầu Ngang, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:chau-thanh": {
+    "fullAddress": "Châu Thành, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:duyen-hai": {
+    "fullAddress": "Duyên Hải, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:tieu-can": {
+    "fullAddress": "Tiểu Cần, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:tra-vinh:tra-cu": {
+    "fullAddress": "Trà Cú, Trà Vinh, Việt Nam",
+    "province": "Trà Vinh"
+  },
+  "goviet247:mekong:vinh-long:vinh-long": {
+    "fullAddress": "Vĩnh Long, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:binh-minh": {
+    "fullAddress": "Bình Minh, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:binh-tan": {
+    "fullAddress": "Bình Tân, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:long-ho": {
+    "fullAddress": "Long Hồ, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:mang-thit": {
+    "fullAddress": "Mang Thít, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:tam-binh": {
+    "fullAddress": "Tam Bình, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:tra-on": {
+    "fullAddress": "Trà Ôn, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:vinh-long:vung-liem": {
+    "fullAddress": "Vũng Liêm, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:dong-thap:cao-lanh": {
+    "fullAddress": "Cao Lãnh, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:sa-dec": {
+    "fullAddress": "Sa Đéc, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:hong-ngu": {
+    "fullAddress": "Hồng Ngự, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:lai-vung": {
+    "fullAddress": "Lai Vung, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:lap-vo": {
+    "fullAddress": "Lấp Vò, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:tam-nong": {
+    "fullAddress": "Tam Nông, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:thanh-binh": {
+    "fullAddress": "Thanh Bình, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:thap-muoi": {
+    "fullAddress": "Tháp Mười, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:chau-thanh": {
+    "fullAddress": "Châu Thành, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:an-giang:long-xuyen": {
+    "fullAddress": "Long Xuyên, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:chau-doc": {
+    "fullAddress": "Châu Đốc, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:tinh-bien": {
+    "fullAddress": "Tịnh Biên, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:tri-ton": {
+    "fullAddress": "Tri Tôn, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:chau-phu": {
+    "fullAddress": "Châu Phú, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:chau-thanh": {
+    "fullAddress": "Châu Thành, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:tan-chau": {
+    "fullAddress": "Tân Châu, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:an-phu": {
+    "fullAddress": "An Phú, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:kien-giang:rach-gia": {
+    "fullAddress": "Rạch Giá, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:ha-tien": {
+    "fullAddress": "Hà Tiên, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:phu-quoc": {
+    "fullAddress": "Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:kien-luong": {
+    "fullAddress": "Kiên Lương, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:hon-dat": {
+    "fullAddress": "Hòn Đất, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:giong-rieng": {
+    "fullAddress": "Giồng Riềng, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:tan-hiep": {
+    "fullAddress": "Tân Hiệp, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:an-bien": {
+    "fullAddress": "An Biên, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:an-minh": {
+    "fullAddress": "An Minh, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:hau-giang:vi-thanh": {
+    "fullAddress": "Vị Thanh, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:hau-giang:nga-bay": {
+    "fullAddress": "Ngã Bảy, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:hau-giang:chau-thanh-a": {
+    "fullAddress": "Châu Thành A, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:hau-giang:chau-thanh": {
+    "fullAddress": "Châu Thành, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:hau-giang:long-my": {
+    "fullAddress": "Long Mỹ, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:hau-giang:phung-hiep": {
+    "fullAddress": "Phụng Hiệp, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:hau-giang:vi-thuy": {
+    "fullAddress": "Vị Thủy, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:soc-trang:soc-trang": {
+    "fullAddress": "Sóc Trăng, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:my-xuyen": {
+    "fullAddress": "Mỹ Xuyên, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:my-tu": {
+    "fullAddress": "Mỹ Tú, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:ke-sach": {
+    "fullAddress": "Kế Sách, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:long-phu": {
+    "fullAddress": "Long Phú, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:tran-de": {
+    "fullAddress": "Trần Đề, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:vinh-chau": {
+    "fullAddress": "Vĩnh Châu, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:soc-trang:nga-nam": {
+    "fullAddress": "Ngã Năm, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:bac-lieu:bac-lieu": {
+    "fullAddress": "Bạc Liêu, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:bac-lieu:gia-rai": {
+    "fullAddress": "Giá Rai, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:bac-lieu:hoa-binh": {
+    "fullAddress": "Hòa Bình, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:bac-lieu:dong-hai": {
+    "fullAddress": "Đông Hải, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:bac-lieu:phuoc-long": {
+    "fullAddress": "Phước Long, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:bac-lieu:vinh-loi": {
+    "fullAddress": "Vĩnh Lợi, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:ca-mau:ca-mau": {
+    "fullAddress": "Cà Mau, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:ca-mau:dat-mui": {
+    "fullAddress": "Đất Mũi, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:ca-mau:nam-can": {
+    "fullAddress": "Năm Căn, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:ca-mau:ngoc-hien": {
+    "fullAddress": "Ngọc Hiển, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:ca-mau:cai-nuoc": {
+    "fullAddress": "Cái Nước, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:ca-mau:u-minh": {
+    "fullAddress": "U Minh, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:ca-mau:tran-van-thoi": {
+    "fullAddress": "Trần Văn Thời, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:can-tho:ninh-kieu": {
+    "fullAddress": "Ninh Kiều, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:binh-thuy": {
+    "fullAddress": "Bình Thủy, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:cai-rang": {
+    "fullAddress": "Cái Răng, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:o-mon": {
+    "fullAddress": "Ô Môn, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:thot-not": {
+    "fullAddress": "Thốt Nốt, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:phong-dien": {
+    "fullAddress": "Phong Điền, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:co-do": {
+    "fullAddress": "Cờ Đỏ, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:vinh-thanh": {
+    "fullAddress": "Vĩnh Thạnh, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:ca-mau:mui-ca-mau": {
+    "fullAddress": "Mũi Cà Mau, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:kien-giang:nam-du": {
+    "fullAddress": "Nam Du, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:hon-son": {
+    "fullAddress": "Hòn Sơn, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:an-giang:nui-sam": {
+    "fullAddress": "Núi Sam, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:mieu-ba-chua-xu": {
+    "fullAddress": "Miếu Bà Chúa Xứ, Châu Đốc, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:kien-giang:ben-tau-rach-gia": {
+    "fullAddress": "Bến tàu Rạch Giá, Rạch Giá, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:ben-tau-ha-tien": {
+    "fullAddress": "Bến tàu Hà Tiên, Hà Tiên, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:soc-trang:ben-tau-tran-de": {
+    "fullAddress": "Bến tàu Trần Đề, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:can-tho:cho-noi-cai-rang": {
+    "fullAddress": "Chợ nổi Cái Răng, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:tien-giang:cho-noi-cai-be": {
+    "fullAddress": "Chợ nổi Cái Bè, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:dong-thap:tram-chim": {
+    "fullAddress": "Vườn quốc gia Tràm Chim, Tam Nông, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:dong-thap:gao-giong": {
+    "fullAddress": "Khu du lịch Gáo Giồng, Cao Lãnh, Đồng Tháp, Việt Nam",
+    "province": "Đồng Tháp"
+  },
+  "goviet247:mekong:an-giang:nui-cam": {
+    "fullAddress": "Núi Cấm, Tịnh Biên, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:an-giang:ba-chuc": {
+    "fullAddress": "Ba Chúc, Tri Tôn, An Giang, Việt Nam",
+    "province": "An Giang"
+  },
+  "goviet247:mekong:kien-giang:mui-nai": {
+    "fullAddress": "Mũi Nai, Hà Tiên, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:long-an:kcn-long-hau": {
+    "fullAddress": "KCN Long Hậu, Cần Giuộc, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:kcn-tan-duc": {
+    "fullAddress": "KCN Tân Đức, Đức Hòa, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:long-an:kcn-thuan-dao": {
+    "fullAddress": "KCN Thuận Đạo, Bến Lức, Long An, Việt Nam",
+    "province": "Long An"
+  },
+  "goviet247:mekong:tien-giang:kcn-tan-huong": {
+    "fullAddress": "KCN Tân Hương, Châu Thành, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:tien-giang:kcn-long-giang": {
+    "fullAddress": "KCN Long Giang, Tân Phước, Tiền Giang, Việt Nam",
+    "province": "Tiền Giang"
+  },
+  "goviet247:mekong:vinh-long:kcn-hoa-phu": {
+    "fullAddress": "KCN Hòa Phú, Long Hồ, Vĩnh Long, Việt Nam",
+    "province": "Vĩnh Long"
+  },
+  "goviet247:mekong:can-tho:kcn-tra-noc": {
+    "fullAddress": "KCN Trà Nóc, Bình Thủy, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:hau-giang:kcn-song-hau": {
+    "fullAddress": "KCN Sông Hậu, Châu Thành, Hậu Giang, Việt Nam",
+    "province": "Hậu Giang"
+  },
+  "goviet247:mekong:soc-trang:kcn-an-nghiep": {
+    "fullAddress": "KCN An Nghiệp, Sóc Trăng, Việt Nam",
+    "province": "Sóc Trăng"
+  },
+  "goviet247:mekong:ben-tre:con-phung": {
+    "fullAddress": "Cồn Phụng, Châu Thành, Bến Tre, Việt Nam",
+    "province": "Bến Tre"
+  },
+  "goviet247:mekong:can-tho:con-son": {
+    "fullAddress": "Cồn Sơn, Bình Thủy, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:can-tho:ben-ninh-kieu": {
+    "fullAddress": "Bến Ninh Kiều, Ninh Kiều, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:ca-mau:cho-noi-ca-mau": {
+    "fullAddress": "Chợ nổi Cà Mau, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:mekong:bac-lieu:nha-cong-tu-bac-lieu": {
+    "fullAddress": "Nhà Công tử Bạc Liêu, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:bac-lieu:dien-gio-bac-lieu": {
+    "fullAddress": "Cánh đồng điện gió Bạc Liêu, Bạc Liêu, Việt Nam",
+    "province": "Bạc Liêu"
+  },
+  "goviet247:mekong:kien-giang:cang-hanh-khach-rach-gia": {
+    "fullAddress": "Cảng hành khách Rạch Giá, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:cang-hanh-khach-ha-tien": {
+    "fullAddress": "Cảng hành khách Hà Tiên, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:duong-dong": {
+    "fullAddress": "Dương Đông, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:an-thoi": {
+    "fullAddress": "An Thới, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:bai-sao": {
+    "fullAddress": "Bãi Sao, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:grand-world-phu-quoc": {
+    "fullAddress": "Grand World Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:vinwonders-phu-quoc": {
+    "fullAddress": "VinWonders Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:sunset-town": {
+    "fullAddress": "Sunset Town, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:hon-thom": {
+    "fullAddress": "Hòn Thơm, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:dao-nam-du": {
+    "fullAddress": "Nam Du, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:dao-hon-son": {
+    "fullAddress": "Hòn Sơn, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:lang-chai-ham-ninh": {
+    "fullAddress": "Hàm Ninh, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:can-tho:san-bay-can-tho": {
+    "fullAddress": "Sân bay quốc tế Cần Thơ, Bình Thủy, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:mekong:kien-giang:san-bay-phu-quoc": {
+    "fullAddress": "Sân bay quốc tế Phú Quốc, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:kien-giang:san-bay-rach-gia": {
+    "fullAddress": "Sân bay Rạch Giá, Rạch Giá, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:mekong:ca-mau:san-bay-ca-mau": {
+    "fullAddress": "Sân bay Cà Mau, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:airport:tan-son-nhat": {
+    "fullAddress": "Sân bay quốc tế Tân Sơn Nhất, TP.HCM, Việt Nam",
+    "province": "TP.HCM"
+  },
+  "goviet247:airport:long-thanh": {
+    "fullAddress": "Sân bay quốc tế Long Thành, Long Thành, Đồng Nai, Việt Nam",
+    "province": "Đồng Nai"
+  },
+  "goviet247:airport:can-tho": {
+    "fullAddress": "Sân bay quốc tế Cần Thơ, Bình Thủy, Cần Thơ, Việt Nam",
+    "province": "Cần Thơ"
+  },
+  "goviet247:airport:phu-quoc": {
+    "fullAddress": "Sân bay quốc tế Phú Quốc, Phú Quốc, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:airport:rach-gia": {
+    "fullAddress": "Sân bay Rạch Giá, Rạch Giá, Kiên Giang, Việt Nam",
+    "province": "Kiên Giang"
+  },
+  "goviet247:airport:ca-mau": {
+    "fullAddress": "Sân bay Cà Mau, Cà Mau, Việt Nam",
+    "province": "Cà Mau"
+  },
+  "goviet247:airport:con-dao": {
+    "fullAddress": "Sân bay Côn Đảo, Bà Rịa - Vũng Tàu, Việt Nam",
+    "province": "Bà Rịa - Vũng Tàu"
+  },
+  "goviet247:airport:da-nang": {
+    "fullAddress": "Sân bay quốc tế Đà Nẵng, Đà Nẵng, Việt Nam",
+    "province": "Đà Nẵng"
+  },
+  "goviet247:airport:cam-ranh": {
+    "fullAddress": "Sân bay quốc tế Cam Ranh, Khánh Hòa, Việt Nam",
+    "province": "Khánh Hòa"
+  },
+  "goviet247:airport:lien-khuong": {
+    "fullAddress": "Sân bay Liên Khương, Đức Trọng, Lâm Đồng, Việt Nam",
+    "province": "Lâm Đồng"
+  },
+  "goviet247:airport:phu-bai": {
+    "fullAddress": "Sân bay quốc tế Phú Bài, Huế, Việt Nam",
+    "province": "Huế"
+  },
+  "goviet247:airport:chu-lai": {
+    "fullAddress": "Sân bay Chu Lai, Quảng Nam, Việt Nam",
+    "province": "Quảng Nam"
+  },
+  "goviet247:airport:tuy-hoa": {
+    "fullAddress": "Sân bay Tuy Hòa, Phú Yên, Việt Nam",
+    "province": "Phú Yên"
+  },
+  "goviet247:airport:vinh": {
+    "fullAddress": "Sân bay quốc tế Vinh, Nghệ An, Việt Nam",
+    "province": "Nghệ An"
+  },
+  "goviet247:airport:dong-hoi": {
+    "fullAddress": "Sân bay Đồng Hới, Quảng Bình, Việt Nam",
+    "province": "Quảng Bình"
+  },
+  "goviet247:airport:pleiku": {
+    "fullAddress": "Sân bay Pleiku, Gia Lai, Việt Nam",
+    "province": "Gia Lai"
+  },
+  "goviet247:airport:buon-ma-thuot": {
+    "fullAddress": "Sân bay Buôn Ma Thuột, Đắk Lắk, Việt Nam",
+    "province": "Đắk Lắk"
+  },
+  "goviet247:airport:phu-cat": {
+    "fullAddress": "Sân bay Phù Cát, Bình Định, Việt Nam",
+    "province": "Bình Định"
+  },
+  "goviet247:airport:noi-bai": {
+    "fullAddress": "Sân bay quốc tế Nội Bài, Hà Nội, Việt Nam",
+    "province": "Hà Nội"
+  },
+  "goviet247:airport:cat-bi": {
+    "fullAddress": "Sân bay quốc tế Cát Bi, Hải Phòng, Việt Nam",
+    "province": "Hải Phòng"
+  },
+  "goviet247:airport:van-don": {
+    "fullAddress": "Sân bay quốc tế Vân Đồn, Quảng Ninh, Việt Nam",
+    "province": "Quảng Ninh"
+  },
+  "goviet247:airport:tho-xuan": {
+    "fullAddress": "Sân bay Thọ Xuân, Thanh Hóa, Việt Nam",
+    "province": "Thanh Hóa"
+  },
+  "goviet247:airport:dien-bien": {
+    "fullAddress": "Sân bay Điện Biên, Điện Biên, Việt Nam",
+    "province": "Điện Biên"
+  }
+}

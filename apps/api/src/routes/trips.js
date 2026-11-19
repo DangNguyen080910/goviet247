@@ -1,3 +1,4 @@
+import { assertRegionalQuote } from "../services/regionalPricing.js";
 import { riderBookingCompanies, resolveRiderCompanyBooking } from '../services/partnerRiderBooking.js';
 import { assertNoContactNumber } from '../shared/tripChat.js';
 import { getVerifiedRiderPhoneVariants } from "../services/riderTripAccess.js";
@@ -347,6 +348,7 @@ export async function createTripHandler(req, res) {
     }
 
     const pricing = await calculateTripPrice({
+      routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops,
       destinationServiceDates: req.body.destinationServiceDates,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
@@ -360,6 +362,7 @@ export async function createTripHandler(req, res) {
     });
 
     assertDestinationQuote(req.body, pricing.destinationService);
+    assertRegionalQuote(req.body, pricing.regionalSurcharge);
     const totalPrice = Number(pricing.totalPrice);
     if (req.body.fareEstimate != null && Number(req.body.fareEstimate) !== totalPrice) return res.status(409).json({success:false,message:"Giá chuyến đã thay đổi. Vui lòng tính giá lại."});
     const basePricePerKm = Number(pricing.basePricePerKm);
@@ -455,7 +458,7 @@ export async function createTripHandler(req, res) {
         "Đã ghi nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để tài xế liên hệ sau khi nhận chuyến.",
     });
   } catch (err) {
-    if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });
+    if ([400, 409, 503].includes(err.status)) return res.status(err.status).json({ success: false, message: err.message });
     console.error("[Trip] create error:", err);
 
     return res.status(500).json({

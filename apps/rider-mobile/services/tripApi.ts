@@ -13,6 +13,8 @@ type CreateTripPayload = {
   destinationServiceDates?: string[];
   destinationAnchorAddress?: string;
   destinationServiceSignature?: string;
+  routePricingPoints?: Array<{ placeId: string; address: string }>;
+  regionalPricingSignature?: string;
   carType: string;
   fuelPreference: "ANY" | "ELECTRIC" | "GASOLINE";
   distanceKm: number;

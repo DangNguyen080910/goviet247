@@ -8,6 +8,8 @@ type QuotePricePayload = {
   destinationServiceDates?: string[];
   destinationAnchorAddress?: string;
   destinationServiceSignature?: string;
+  routePricingPoints?: Array<{ placeId: string; address: string }>;
+  regionalPricingSignature?: string;
   carType: string;
   direction: "ONE_WAY" | "ROUND_TRIP";
   pickupTime: string;

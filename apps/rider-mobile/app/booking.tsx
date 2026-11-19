@@ -1,3 +1,4 @@
+import { regionalRoutePoints } from "../../api/src/shared/regionalPricing.js";
 import { showPermissionSettings } from '../../mobile-chat/permissionHelp';
 // Path: goviet247/apps/rider-mobile/app/booking.tsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -1497,6 +1498,8 @@ export default function RiderBookingScreen() {
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
       destinationServiceDates, destinationAnchorAddress:serviceAnchor,
+      routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
+      regionalPricingSignature: quote?.raw?.regionalPricingSignature,
       destinationServiceSignature:quote?.raw?.destinationServiceSignature,
       fareEstimate: quote?.totalPrice || 0,
       quoteHistoryToken: quote?.raw?.quoteHistoryToken,
@@ -1623,6 +1626,7 @@ export default function RiderBookingScreen() {
 
     try {
       const payload = {
+        routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
         destinationServiceDates, destinationAnchorAddress:serviceAnchor,
         carType,
         fuelPreference,

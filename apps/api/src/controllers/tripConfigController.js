@@ -1,5 +1,6 @@
 // Path: goviet247/apps/api/src/controllers/tripConfigController.js
 import { validateDestinationConfig, destinationConfig } from "../services/destinationService.js";
+import { validateRegionalPricingConfig } from "../services/regionalPricing.js";
 import pkg from "@prisma/client";
 
 const { PrismaClient } = pkg;
@@ -67,6 +68,12 @@ export async function updateTripConfig(req, res) {
     const current = await getOrCreateTripConfig();
 
     const updateData = {};
+    if (body.regionalPricingConfig !== undefined) {
+      const error = validateRegionalPricingConfig(body.regionalPricingConfig);
+      if (error) return res.status(400).json({ success: false, message: error });
+      if (typeof body.expectedUpdatedAt !== 'string' || body.expectedUpdatedAt !== current.updatedAt.toISOString()) return res.status(409).json({ success: false, message: 'Cấu hình đã thay đổi. Vui lòng tải lại trước khi lưu giá miền.' });
+      updateData.regionalPricingConfig = body.regionalPricingConfig;
+    }
     if (body.destinationServiceConfig !== undefined) {
       const error = validateDestinationConfig(body.destinationServiceConfig);
       if (error) return res.status(400).json({ success:false, message:error });
@@ -154,7 +161,7 @@ export async function updateTripConfig(req, res) {
     }
 
     const updated = await prisma.tripConfig.update({
-      where: { id: current.id },
+      where: { id: current.id, ...(body.regionalPricingConfig !== undefined ? { updatedAt: current.updatedAt } : {}) },
       data: updateData,
     });
 
@@ -164,6 +171,7 @@ export async function updateTripConfig(req, res) {
       item: updated,
     });
   } catch (err) {
+    if (err.code === 'P2025') return res.status(409).json({ success: false, message: 'Cấu hình vừa thay đổi. Vui lòng tải lại trước khi lưu.' });
     console.error("updateTripConfig error:", err);
     return res.status(500).json({
       success: false,

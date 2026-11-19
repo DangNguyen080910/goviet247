@@ -68,6 +68,7 @@ export async function quote(req, res) {
     }
 
     const result = await quotePrice({
+      routePricingPoints: req.body.routePricingPoints,
       destinationServiceDates: req.body.destinationServiceDates,
       destinationAnchorAddress: req.body.destinationAnchorAddress,
       carType,
@@ -81,7 +82,7 @@ export async function quote(req, res) {
     });
 
     if (!result.ok) {
-      return res.status(400).json({ success: false, message: result.message });
+      return res.status(result.status || 400).json({ success: false, message: result.message });
     }
 
     const history = await recordQuoteHistory(req, result.data);

@@ -118,9 +118,10 @@ async function autocompleteVietmap(input, options = {}) {
   });
 }
 
-async function getPlaceDetailVietmap(id) {
+async function getPlaceDetailVietmap(id, options = {}) {
   const { data } = await axios.get(`${VIETMAP_BASE_URL}/api/place/v4`, {
     params: { apikey: requireApiKey("vietmap"), refid: id },
+    timeout: options.timeoutMs,
   });
   if (!data || !Number.isFinite(Number(data?.lat)) || !Number.isFinite(Number(data?.lng))) {
     return null;
@@ -195,9 +196,10 @@ async function autocompleteGoong(input, options = {}) {
   });
 }
 
-async function getPlaceDetailGoong(id) {
+async function getPlaceDetailGoong(id, options = {}) {
   const { data } = await axios.get(`${GOONG_BASE_URL}/Place/Detail`, {
     params: { api_key: requireApiKey("goong"), place_id: id },
+    timeout: options.timeoutMs,
   });
   const result = data?.result;
   if (!result) return null;
@@ -259,11 +261,11 @@ export async function autocomplete(input, options = {}) {
   }
 }
 
-export async function getPlaceDetail(placeId) {
+export async function getPlaceDetail(placeId, options = {}) {
   const parsed = parsePlaceId(placeId);
   return parsed.provider === "vietmap"
-    ? getPlaceDetailVietmap(parsed.id)
-    : getPlaceDetailGoong(parsed.id);
+    ? getPlaceDetailVietmap(parsed.id, options)
+    : getPlaceDetailGoong(parsed.id, options);
 }
 
 export async function getRoute(points = []) {

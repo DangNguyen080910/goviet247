@@ -36,6 +36,8 @@ import uploadRoutes from "./routes/upload.js";
 import mapsRoutes from "./routes/maps.js";
 import seoPublicRoutes from "./routes/seoPublicRoutes.js";
 
+import { regionalPricingVisibility } from "./middleware/regionalPricingVisibility.js";
+
 const app = express();
 
 // ✅ Tắt ETag để tránh 304 (admin list cần luôn fresh)
@@ -108,6 +110,9 @@ app.get("/", (req, res) => {
     status: "OK",
   });
 });
+
+// Keep regional pricing details within authenticated admin routes.
+app.use(regionalPricingVisibility);
 
 // --- REST routes ---
 app.use("/api/partners", partnerRoutes);

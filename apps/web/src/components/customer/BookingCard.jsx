@@ -1,3 +1,4 @@
+import { regionalRoutePoints } from "../../../../api/src/shared/regionalPricing.js";
 // Path: goviet247/apps/web/src/components/customer/BookingCard.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -1438,6 +1439,7 @@ export default function BookingCard({ partner = null }) {
     setIsEstimating(true);
     try {
       const payload = {
+        routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
         destinationServiceDates, destinationAnchorAddress: serviceAnchor,
         carType,
         fuelPreference,
@@ -1613,6 +1615,8 @@ export default function BookingCard({ partner = null }) {
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
       destinationServiceDates, destinationAnchorAddress: serviceAnchor,
+      routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
+      regionalPricingSignature: quote.raw?.regionalPricingSignature,
       destinationServiceSignature: quote.raw?.destinationServiceSignature,
       fareEstimate: quote.totalPrice,
       quoteHistoryToken: quote.raw?.quoteHistoryToken,

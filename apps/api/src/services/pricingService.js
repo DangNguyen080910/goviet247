@@ -1,3 +1,4 @@
+import { buildRegionalSurcharge, regionalPricingSignature } from "./regionalPricing.js";
 import { buildDestinationSnapshot, destinationSignature } from "./destinationService.js";
 import { CAR_TYPE_UNAVAILABLE_MESSAGE } from "./carAvailability.js";
 // Path: goviet247/apps/api/src/services/pricingService.js
@@ -242,6 +243,9 @@ export async function quotePrice(input, db = prisma) {
   }
 
   const priceBeforeFuelSurcharge = rawTotal;
+  let regionalSurcharge;
+  try { regionalSurcharge = await buildRegionalSurcharge(input, serviceConfig?.regionalPricingConfig, priceBeforeFuelSurcharge); }
+  catch (error) { return { ok: false, status: error.status || 400, message: error.message }; }
   const fuelSurchargePercent =
     fuelPreference === "GASOLINE" ? gasolineSurchargePercent : 0;
   const fuelSurchargeAmount = Math.round(
@@ -251,7 +255,7 @@ export async function quotePrice(input, db = prisma) {
   const holidaySurcharge = calculateHolidaySurcharge(config, pickup, priceBeforeFuelSurcharge);
   const holidaySurchargePercent = holidaySurcharge?.percent || 0;
   const holidaySurchargeAmount = holidaySurcharge?.amount || 0;
-  rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount + holidaySurchargeAmount;
+  rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount + holidaySurchargeAmount + regionalSurcharge.amount;
 
   const roundedTotal = roundTo10k(rawTotal) + destinationService.fee;
   if (!Number.isSafeInteger(roundedTotal) || roundedTotal > 2147483647) return {ok:false,status:400,message:"Giá chuyến vượt giới hạn cho phép. Vui lòng liên hệ GoViet247."};
@@ -261,6 +265,7 @@ export async function quotePrice(input, db = prisma) {
   destinationService.tourDisplay = {
     waitCost, overnightCost, overnightCount,
     fuelSurchargePercent, fuelSurchargeAmount, holidaySurcharge,
+    regionalSurcharge,
     charterCost: destinationService.fee,
     total: waitCost + overnightCost + destinationService.fee,
     arrival: direction === "ROUND_TRIP"
@@ -302,6 +307,8 @@ export async function quotePrice(input, db = prisma) {
       waitCost,
       overnightCost,
       priceBeforeFuelSurcharge,
+      regionalSurcharge,
+      regionalPricingSignature: regionalPricingSignature(regionalSurcharge),
       gasolineSurchargePercent,
       fuelSurchargePercent,
       fuelSurchargeAmount,
@@ -339,6 +346,7 @@ export async function calculateTripPrice({
   outboundDriveMinutes,
   fuelPreference = "ANY",
   destinationServiceDates, destinationAnchorAddress,
+  routePricingPoints, pickupAddress, dropoffAddress, stops,
 }) {
   const pickupIso =
     pickupTime instanceof Date ? pickupTime.toISOString() : pickupTime;
@@ -348,6 +356,7 @@ export async function calculateTripPrice({
 
   const result = await quotePrice({
     destinationServiceDates, destinationAnchorAddress,
+    routePricingPoints, pickupAddress, dropoffAddress, stops,
     carType,
     direction,
     pickupTime: pickupIso,
@@ -365,6 +374,8 @@ export async function calculateTripPrice({
   const d = result.data;
 
   return {
+    regionalSurcharge: d.regionalSurcharge,
+    regionalPricingSignature: d.regionalPricingSignature,
     destinationService: d.destinationService,
     destinationServiceSignature: d.destinationServiceSignature,
     distanceKm: d.distanceKm,

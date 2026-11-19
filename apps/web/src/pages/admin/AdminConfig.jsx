@@ -2,6 +2,7 @@ import ContractConfig from '../../components/admin/ContractConfig';
 // Path: goviet247/apps/web/src/pages/admin/AdminConfig.jsx
 import DestinationServiceConfig from "../../components/admin/DestinationServiceConfig";
 import React from "react";
+import RegionalPricingConfig from "../../components/admin/RegionalPricingConfig";
 import {
   Box,
   Typography,
@@ -1915,6 +1916,7 @@ export default function AdminConfig() {
             <TabPanel value={tab} index={1}><DestinationServiceConfig /></TabPanel>
             {/* TAB 1: GIÁ CƯỚC */}
             <TabPanel value={tab} index={0}>
+              <Box sx={{ mb: 3 }}><RegionalPricingConfig /></Box>
               <Stack spacing={2.5}>
                 {loadingPricing ? (
                   <Paper

@@ -1,3 +1,4 @@
+import { assertRegionalQuote } from "../services/regionalPricing.js";
 import { destinationConfig, assertDestinationQuote } from "../services/destinationService.js";
 import { createBookableTrip } from "../services/carAvailability.js";
 import { linkQuoteToTrip } from "../services/quoteHistoryService.js";
@@ -203,6 +204,7 @@ export async function quoteTrip(req, res) {
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
+      routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops: req.body.stops,
       destinationServiceDates: req.body.destinationServiceDates,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
@@ -228,7 +230,7 @@ export async function quoteTrip(req, res) {
     });
   } catch (err) {
     console.error("quoteTrip error:", err);
-    if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });
+    if ([400, 409, 503].includes(err.status)) return res.status(err.status).json({ success: false, message: err.message });
     return res
       .status(500)
       .json({ success: false, message: "Tính giá thất bại." });
@@ -282,6 +284,7 @@ export async function requestTripOtp(req, res) {
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
+      routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops: req.body.stops,
       destinationServiceDates: req.body.destinationServiceDates,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
@@ -295,6 +298,7 @@ export async function requestTripOtp(req, res) {
     });
 
     assertDestinationQuote(req.body, pricing.destinationService);
+    assertRegionalQuote(req.body, pricing.regionalSurcharge);
 
     // Payload lưu tạm trong OTP session (không tạo Trip ngay)
     const tripDraft = {
@@ -341,7 +345,7 @@ export async function requestTripOtp(req, res) {
       });
     }
 
-    if (err.status === 400 || err.status === 409) return res.status(err.status).json({ success: false, message: err.message });
+    if ([400, 409, 503].includes(err.status)) return res.status(err.status).json({ success: false, message: err.message });
     console.error("requestTripOtp error:", err);
     return res.status(500).json({
       success: false,
