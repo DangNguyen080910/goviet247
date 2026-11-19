@@ -47,13 +47,14 @@ export async function fetchUnverifiedTrips() {
 }
 
 // ✅ Duyệt chuyến (set isVerified=true)
-export async function verifyTrip(tripId, note, driverIds, carType, fuelType) {
+export async function verifyTrip(tripId, note, driverIds, carType, fuelType, regions = []) {
   await flushDriverNoteDraft(tripId);
   const data = await request(`/api/trips/admin/trips/${tripId}/verify`, {
     method: "POST",
     body: JSON.stringify({
       note,
-      audienceMode: fuelType ? "VEHICLE_FILTER" : ["ELECTRIC", "GASOLINE"].includes(carType) ? "FUEL_TYPE" : carType ? (driverIds === undefined ? "QUICK_CAR_TYPE" : "CAR_TYPE") : driverIds !== undefined ? "SELECTED" : "ALL",
+      ...(regions.length ? { regions } : {}),
+      audienceMode: regions.length ? "AUDIENCE_FILTER" : fuelType ? "VEHICLE_FILTER" : ["ELECTRIC", "GASOLINE"].includes(carType) ? "FUEL_TYPE" : carType ? (driverIds === undefined ? "QUICK_CAR_TYPE" : "CAR_TYPE") : driverIds !== undefined ? "SELECTED" : "ALL",
       ...(["ELECTRIC", "GASOLINE"].includes(carType) ? { fuelType: carType } : carType ? { carType } : {}),
       ...(fuelType ? { fuelType } : {}),
       ...(driverIds !== undefined ? { driverIds } : {}),

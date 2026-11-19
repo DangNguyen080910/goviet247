@@ -1323,6 +1323,11 @@ export default function DashboardScreen() {
             </Text>
           </View>
 
+          {!!trip.audienceLabel && (
+            <View style={styles.audienceBadge}>
+              <Text style={styles.audienceBadgeText}>Mở nhận: {trip.audienceLabel}</Text>
+            </View>
+          )}
           <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Khách đối tác" : ""}</Text>
           <ServiceSummary snapshot={trip.destinationService} />
 
@@ -2374,6 +2379,23 @@ const styles = StyleSheet.create({
     color: "#111827",
     marginBottom: 14,
     lineHeight: 26,
+  },
+  audienceBadge: {
+    alignSelf: "flex-start",
+    maxWidth: "100%",
+    backgroundColor: "#EFF6FF",
+    borderColor: "#BFDBFE",
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    marginBottom: 12,
+  },
+  audienceBadgeText: {
+    color: "#1E40AF",
+    fontSize: 13,
+    fontWeight: "700",
+    lineHeight: 19,
   },
   fuelBadge: {
     alignSelf: "flex-start",

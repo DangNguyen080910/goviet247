@@ -1,3 +1,5 @@
+import { parseAudienceRegions, matchesAudienceFilters } from '../shared/audienceFilters.js';
+import { audienceRegionsForApproval, tripAudienceLabel } from '../shared/tripAudienceLabel.js';
 import {assertCurrentContractForNewTrip} from '../services/driverContract.js';
 import { dropoffIsRepresented } from '../shared/tripRoute.js';
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
@@ -850,6 +852,7 @@ export async function listAvailableTrips(req, res) {
         {
           id: t.id,
           partnerCompanyId: t.partnerCompanyId,
+          audienceLabel: tripAudienceLabel(t),
           pickupAddress: t.pickupAddress,
           dropoffAddress: t.dropoffAddress,
           stops: t.stops || [],
@@ -3004,17 +3007,24 @@ export async function adminVerifyTrip(req, res) {
         .json({ success: false, message: "Chỉ duyệt chuyến PENDING" });
     }
     const audienceMode = req.body?.audienceMode;
-    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "QUICK_CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode)) {
+    if (audienceMode !== undefined && !["ALL", "SELECTED", "CAR_TYPE", "QUICK_CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER", "AUDIENCE_FILTER"].includes(audienceMode)) {
       return res.status(400).json({ success: false, message: "Đối tượng nhận chuyến không hợp lệ." });
     }
     const selectedCarType = req.body?.carType;
     const selectedFuelType = req.body?.fuelType;
-    const combinedFilter = audienceMode === "VEHICLE_FILTER";
+    const regionFilter = audienceMode === "AUDIENCE_FILTER";
+    let selectedRegions = [];
+    try { if (regionFilter || req.body?.regions !== undefined) selectedRegions = parseAudienceRegions(req.body?.regions); }
+    catch (error) { return res.status(400).json({ success: false, message: error.message }); }
+    if (selectedRegions.length && !regionFilter) {
+      return res.status(400).json({ success: false, message: "Bộ lọc miền cần dùng chế độ duyệt theo bộ lọc." });
+    }
+    const combinedFilter = audienceMode === "VEHICLE_FILTER" || regionFilter;
     const quickCarType = audienceMode === "QUICK_CAR_TYPE";
-    if (combinedFilter && (!selectedCarType && !selectedFuelType ||
+    if (combinedFilter && (!selectedCarType && !selectedFuelType && !selectedRegions.length ||
         selectedCarType !== undefined && !["CAR_5", "CAR_7", "CAR_16"].includes(selectedCarType) ||
         selectedFuelType !== undefined && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType))) {
-      return res.status(400).json({success:false,message:"Chọn ít nhất một bộ lọc số chỗ hoặc nhiên liệu hợp lệ."});
+      return res.status(400).json({success:false,message:"Chọn ít nhất một bộ lọc miền, số chỗ hoặc nhiên liệu hợp lệ."});
     }
     if (audienceMode === "FUEL_TYPE" && !["ELECTRIC", "GASOLINE"].includes(selectedFuelType)) {
       return res.status(400).json({success:false,message:"Chọn nhóm xe điện hoặc xe xăng hợp lệ."});
@@ -3049,8 +3059,8 @@ export async function adminVerifyTrip(req, res) {
       if (!audienceDriverIds.length) {
         return res.status(409).json({ success: false, message: "Chưa có tài xế đủ điều kiện cho loại xe này." });
       }
-    } else if (["SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) || req.body?.driverIds !== undefined) {
-      try { audienceDriverIds = parseAudience(req.body?.driverIds, ["CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER"].includes(audienceMode) ? 10000 : 100); }
+    } else if (["SELECTED", "CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER", "AUDIENCE_FILTER"].includes(audienceMode) || req.body?.driverIds !== undefined) {
+      try { audienceDriverIds = parseAudience(req.body?.driverIds, ["CAR_TYPE", "FUEL_TYPE", "VEHICLE_FILTER", "AUDIENCE_FILTER"].includes(audienceMode) ? 10000 : 100); }
       catch (error) { return res.status(400).json({ success: false, message: error.message }); }
     }
     if (trip.isVerified) {
@@ -3074,7 +3084,7 @@ export async function adminVerifyTrip(req, res) {
     if (!quickCarType && audienceDriverIds.length > 0) {
       const drivers = await prisma.driverProfile.findMany({
         where: { userId: { in: audienceDriverIds }, status: 'VERIFIED', tripAcceptBlocked: false },
-        select: { userId: true, vehicleType: true, vehicleFuelType: true },
+        select: { userId: true, vehicleType: true, vehicleFuelType: true, operatingProvinceCode: true, operatingProvinceConfirmedAt: true },
       });
       if (drivers.length !== audienceDriverIds.length) return res.status(400).json({ success: false, message: 'Có tài xế chưa được duyệt hoặc bị chặn nhận chuyến. Vui lòng tải lại danh sách.' });
       if ((audienceMode === "FUEL_TYPE" || combinedFilter && selectedFuelType) && drivers.some(driver => driver.vehicleFuelType !== selectedFuelType)) {
@@ -3083,6 +3093,12 @@ export async function adminVerifyTrip(req, res) {
       if ((audienceMode === "CAR_TYPE" || combinedFilter && selectedCarType) && drivers.some(driver => audienceCarType(driver.vehicleType) !== selectedCarType)) {
         return res.status(409).json({ success: false, message: "Có tài xế không còn thuộc nhóm xe đã chọn. Vui lòng tải lại danh sách." });
       }
+      if (regionFilter && drivers.some(driver => !matchesAudienceFilters(
+        { ...driver, carType: audienceCarType(driver.vehicleType) },
+        selectedCarType, selectedFuelType, selectedRegions,
+      ))) {
+        return res.status(409).json({ success: false, message: "Có tài xế không còn thuộc khu vực đã chọn. Vui lòng tải lại danh sách." });
+      }
     }
     const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
 
@@ -3090,6 +3106,7 @@ export async function adminVerifyTrip(req, res) {
       where: { id, status: "PENDING", driverId: null, isVerified: false, cancelledAt: null },
       data: {
         audienceDriverIds,
+        audienceRegions: audienceRegionsForApproval(audienceMode, selectedRegions, req.body?.driverIds !== undefined),
         isVerified: true,
         verifiedAt: new Date(),
         verifiedById: actor.id,

@@ -353,6 +353,8 @@ model Trip {
   destinationService Json?
   // Empty means public; retained across cancellation, resend and reapproval.
   audienceDriverIds String[] @default([])
+  // Approval scope for display only; visibility continues to use audienceDriverIds.
+  audienceRegions String[] @default([])
   @@index([audienceDriverIds], type: Gin)
   id       String  @id @default(cuid())
   riderId  String?

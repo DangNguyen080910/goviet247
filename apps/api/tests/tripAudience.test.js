@@ -1,12 +1,15 @@
+import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
 import {getPartnerRiderContext} from '../src/services/partnerRiderAccess.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as policy from '../src/services/tripAudiencePolicy.js';
+import * as audienceFilters from '../src/shared/audienceFilters.js';
 import { activeDriverDevices } from '../src/services/driverPushAccess.js';
 import { pushSessionKey } from '../src/services/userSessions.js';
 import * as riderAccess from '../src/services/riderTripAccess.js';
 function load(path, names, deps) {
+ deps={...audienceLabel,...deps};
  const source = readFileSync(new URL(path, import.meta.url), 'utf8').replace(/^import[\s\S]*?;\n/gm, '').replace(/export /g, '').replace('const { PrismaClient } = pkg;', '').replace('const prisma = new PrismaClient();', '');
  return new Function(...Object.keys(deps), `${source}; return {${names}};`)(...Object.values(deps));
 }
@@ -30,6 +33,7 @@ test('approval persists audience in guarded write and refuses invalid driver', a
  const api=load('../src/controllers/tripController.js','adminVerifyTrip',Object.fromEntries(Object.entries(deps).filter(([k])=>k!=='buildDriverAcceptOpenAt' && k!=='createRiderTripNotification')));
  assert.equal((await call(api.adminVerifyTrip,{driverIds:['a','b']})).statusCode,200);
  assert.deepEqual(write.data.audienceDriverIds,['a','b']);
+ assert.deepEqual(write.data.audienceRegions,[]);
  assert.equal(write.where.isVerified,false);
  write=null;
  assert.equal((await call(api.adminVerifyTrip,{driverIds:['a']})).statusCode,400);
@@ -62,7 +66,7 @@ test('suggestions exclude reciprocal return and missing coordinates', async () =
  const outbound={id:'out',driverId:'a',status:'COMPLETED',direction:'ONE_WAY',pickupTime:yesterday,pickupLat:10,pickupLng:106,dropoffLat:11,dropoffLng:107};
  let history=[outbound];
  const prisma={trip:{findUnique:async()=>({pickupLat:11,pickupLng:107}),findMany:async()=>history},tripConfig:{findFirst:async()=>({returnSuggestionDays:2,returnSuggestionRadiusKm:20})},driverProfile:{findMany:async()=>[{userId:'a',fullName:'A',user:{phones:[]}}]}};
- const {listTripAudienceCandidates}=load('../src/controllers/tripAudienceController.js','listTripAudienceCandidates',{prisma,...policy,console});
+ const {listTripAudienceCandidates}=load('../src/controllers/tripAudienceController.js','listTripAudienceCandidates',{prisma,...policy,...audienceFilters,console});
  let result=await call(listTripAudienceCandidates,{}, {query:{}});assert.equal(result.body.items[0].suggestion.tripId,'out');
  history.push({...outbound,id:'back',status:'ACCEPTED',pickupTime:later,pickupLat:11,pickupLng:107,dropoffLat:10,dropoffLng:106});
  result=await call(listTripAudienceCandidates,{}, {query:{}});assert.equal(result.body.items[0].suggestion,null);

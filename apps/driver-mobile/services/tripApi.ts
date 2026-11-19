@@ -37,6 +37,7 @@ export type DriverTripStop = {
 
 export type AvailableTripItem = {
   id: string;
+  audienceLabel?: string;
   isPartnerTrip?: boolean;
   partnerCompanyName?: string | null;
   partnerGreeting?: string | null;
