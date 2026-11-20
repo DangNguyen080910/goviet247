@@ -28,7 +28,7 @@ import {
 import BookingTimePicker from "../components/BookingTimePicker";
 import { bookingTimeToIso, formatBookingTime, vietnamNow } from "../utils/bookingTime";
 import AppBrandHeader from "../components/AppBrandHeader";
-import { getMe, updateMe } from "../services/authApi";
+import { getMe } from "../services/authApi";
 import DestinationService, { ServiceSummary } from "../components/DestinationService";
 import { destinationWindows, destinationConfig } from "../../../packages/shared/destinationService.js";
 import { quotePrice } from "../services/pricingApi";
@@ -1723,35 +1723,7 @@ export default function RiderBookingScreen() {
     }
 
     try {
-      const token = await getRiderToken();
-      const normalizedName = String(riderName || "").trim();
-      const currentAccountName = getRiderDisplayName(accountUser);
-
-      if (
-        !isCompanyBooking && token &&
-        normalizedName.length >= 2 &&
-        normalizedName !== currentAccountName
-      ) {
-        try {
-          const updateRes = await updateMe(token, {
-            displayName: normalizedName,
-          });
-
-          const nextUser = updateRes?.user || null;
-          setAccountUser(nextUser);
-          setRiderName(getRiderDisplayName(nextUser) || normalizedName);
-          setRiderPhone((prev) => {
-            const nextPhone = formatPhoneFromAccount(nextUser?.phone);
-            return String(prev || "").trim() || nextPhone;
-          });
-        } catch (profileError) {
-          console.warn(
-            "update rider displayName before createTrip error:",
-            profileError,
-          );
-        }
-      }
-
+      // Passenger details belong to this trip; account names are edited in Profile.
       const res = await createTrip(payload);
       await triggerSuccessHaptic();
 
