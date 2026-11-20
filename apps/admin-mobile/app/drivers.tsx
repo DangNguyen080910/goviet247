@@ -269,6 +269,25 @@ function InfoRow({
   );
 }
 
+function DriverWalletBalance({ balance }: { balance: number | null | undefined }) {
+  const hasBalance = typeof balance === "number" && Number.isFinite(balance);
+
+  return (
+    <View style={styles.walletBalanceRow}>
+      <Text style={styles.walletBalanceLabel}>Số dư ví</Text>
+      <Text
+        style={[
+          styles.walletBalanceValue,
+          hasBalance && balance > 0 && styles.walletBalancePositive,
+          hasBalance && balance < 0 && styles.walletBalanceNegative,
+        ]}
+      >
+        {hasBalance ? `${balance.toLocaleString("vi-VN")} đ` : "--"}
+      </Text>
+    </View>
+  );
+}
+
 function DriverCard({
   item,
   onPress,
@@ -304,6 +323,8 @@ function DriverCard({
           </Text>
         </View>
       </View>
+
+      <DriverWalletBalance balance={item.balance} />
 
       <View style={styles.infoGrid}>
         <InfoRow
@@ -884,6 +905,8 @@ export default function DriversScreen() {
                   </View>
                 </View>
 
+                <DriverWalletBalance balance={driverDetail.balance} />
+
                 <Text style={styles.detailSummaryHint}>
                   SĐT xác thực:{" "}
                   {getPhoneVerifiedText(Boolean(driverDetail?.isPhoneVerified))}
@@ -1393,6 +1416,31 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontSize: 14,
     color: "#667085",
+  },
+  walletBalanceRow: {
+    marginTop: 12,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-between",
+    columnGap: 12,
+    rowGap: 4,
+  },
+  walletBalanceLabel: {
+    fontSize: 14,
+    color: "#667085",
+  },
+  walletBalanceValue: {
+    fontSize: 18,
+    fontWeight: "800",
+    color: "#667085",
+    fontVariant: ["tabular-nums"],
+  },
+  walletBalancePositive: {
+    color: "#1f7a35",
+  },
+  walletBalanceNegative: {
+    color: "#c62828",
   },
   statusBadge: {
     borderWidth: 1,

@@ -8,6 +8,7 @@ export type DriverListItem = {
   phone: string | null;
   isPhoneVerified: boolean;
   status: string | null;
+  balance: number | null;
   tripAcceptBlocked: boolean;
   vehicleType: string | null;
   brand: string | null;
@@ -90,6 +91,7 @@ function mapDriverItem(raw: any): DriverListItem {
     phone: pickPhone(raw),
     isPhoneVerified: Boolean(raw?.isPhoneVerified ?? raw?.user?.isVerified),
     status: typeof raw?.status === "string" ? raw.status : null,
+    balance: toNumberOrNull(raw?.balance),
     tripAcceptBlocked: Boolean(raw?.tripAcceptBlocked),
     vehicleType:
       typeof raw?.vehicleType === "string" ? raw.vehicleType : null,
@@ -148,6 +150,7 @@ export async function fetchDriverDetail(id: string) {
 
   return {
     id: String(raw?.id || ""),
+    balance: toNumberOrNull(raw?.balance),
     tripAcceptBlocked: Boolean(raw?.tripAcceptBlocked),
     operatingProvinceCode: raw?.operatingProvinceCode || null,
     operatingProvinceConfirmedAt: raw?.operatingProvinceConfirmedAt || null,
