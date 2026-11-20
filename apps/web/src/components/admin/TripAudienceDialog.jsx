@@ -1,5 +1,6 @@
+import ClearableSearchField from "../common/ClearableSearchField.jsx";
 import { useEffect, useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, Checkbox, FormControlLabel, Alert, Stack, Typography, Box } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Checkbox, FormControlLabel, Alert, Stack, Typography, Box } from '@mui/material';
 import { fetchAudienceCandidates, verifyTrip } from '../../api/adminTrips';
 import { AUDIENCE_REGIONS, matchesAudienceFilters, audienceFilterIds } from '../../../../api/src/shared/audienceFilters.js';
 import provinces from '../../../../api/src/data/vietnam-provinces.json';
@@ -93,7 +94,7 @@ export default function TripAudienceDialog({tripId,onClose,onDone}) {
       {!loading&&!filtered.length&&<Alert severity="warning">Không có tài xế đáp ứng đủ điều kiện.</Alert>}
       <Button disabled={loading} onClick={()=>setShowDrivers(value=>!value)} aria-expanded={showDrivers}>{showDrivers?'Ẩn':'Hiện'} danh sách tài xế ({filtered.length})</Button>
       {showDrivers&&<>
-        <TextField disabled={locked} label="Tìm tên, SĐT, biển số" value={q} onChange={e=>setQ(e.target.value)}/>
+        <ClearableSearchField onClear={() => setQ("")} disabled={locked} label="Tìm tên, SĐT, biển số" value={q} onChange={e=>setQ(e.target.value)}/>
         {!loading&&!visible.length&&!!filtered.length&&<Typography>Không tìm thấy tài xế.</Typography>}
         <Box sx={{maxHeight:320,overflowY:'auto'}}>
           {visible.map(d=><FormControlLabel key={d.userId} sx={{display:'flex'}} control={<Checkbox disabled={locked} checked={selected.includes(d.userId)} onChange={(_,checked)=>setSelected(s=>checked?[...new Set([...s,d.userId])]:s.filter(id=>id!==d.userId))}/>} label={`${d.name} • ${provinceLabel(d)} • ${CARS[d.carType]||d.vehicleType||'Chưa rõ số chỗ'} • ${FUELS[d.vehicleFuelType]||'Chưa cập nhật nhiên liệu'} • ${d.phone} • ${d.plateNumber||''}${d.suggestion?' — Gợi ý: cách '+d.suggestion.distanceKm+' km':''}`}/>)}

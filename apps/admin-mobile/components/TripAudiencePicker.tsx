@@ -1,5 +1,6 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useEffect, useState } from 'react';
-import { View, Text, TextInput, Pressable, Alert, Modal, FlatList, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
+import { View, Text, Pressable, Alert, Modal, FlatList, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { adminRequest } from '../services/adminRequest';
 import { AUDIENCE_REGIONS, matchesAudienceFilters, audienceFilterIds } from '../../api/src/shared/audienceFilters.js';
@@ -99,7 +100,7 @@ export default function TripAudiencePicker({tripId,onDone,disabled,onBusy}:{trip
               {!loading&&!filtered.length&&<Text>Không có tài xế đáp ứng đủ điều kiện.</Text>}
               <Pressable disabled={loading} accessibilityRole="button" accessibilityState={{expanded:showDrivers}} onPress={()=>setShowDrivers(value=>!value)} style={styles.choice}><Text style={styles.link}>{showDrivers?'Ẩn':'Hiện'} danh sách tài xế ({filtered.length})</Text></Pressable>
               {showDrivers&&<>
-                <TextInput editable={!locked} accessibilityLabel="Tìm tên, SĐT, biển số" placeholder="Tìm tên, SĐT, biển số" value={q} onChangeText={setQ} style={styles.search}/>
+                <ClearableSearchInput editable={!locked} accessibilityLabel="Tìm tên, SĐT, biển số" placeholder="Tìm tên, SĐT, biển số" value={q} onChangeText={setQ} style={styles.search}/>
                 {!loading&&!visible.length&&!!filtered.length&&<Text>Không tìm thấy tài xế.</Text>}
               </>}
             </View>}

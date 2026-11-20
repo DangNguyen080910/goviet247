@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import { getAdminUser } from "../../utils/adminAuth";
 import TripMoney from "../../components/admin/TripMoney";
 // Path: goviet247/apps/web/src/pages/admin/AdminTripsAssigned.jsx
@@ -22,8 +23,7 @@ import {
   CircularProgress,
   Alert,
   Snackbar,
-  TextField,
-} from "@mui/material";
+  } from "@mui/material";
 
 import {
   fetchAssignedTrips,
@@ -318,7 +318,7 @@ export default function AdminTripsAssigned() {
         <Divider />
 
         <Box sx={{ p: 2 }}>
-          <TextField
+          <ClearableSearchField onClear={() => setSearchText("")}
             fullWidth
             size="small"
             label="Tìm kiếm"

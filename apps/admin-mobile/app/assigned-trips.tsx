@@ -1,3 +1,4 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { getAdminUser } from "../services/storage";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
@@ -697,7 +698,7 @@ export default function AssignedTripsScreen() {
         </ScrollView>
 
         <View style={styles.searchWrap}>
-          <TextInput
+          <ClearableSearchInput
             value={searchText}
             onChangeText={setSearchText}
             placeholder="Tìm mã chuyến, khách hàng, tài xế..."

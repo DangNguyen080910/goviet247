@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminFeedback.jsx
 import React from "react";
 import { Navigate } from "react-router-dom";
@@ -642,7 +643,7 @@ export default function AdminFeedback() {
 
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
-              <TextField
+              <ClearableSearchField onClear={() => { setQInput(""); setQ(""); setPage(1); }}
                 fullWidth
                 label="Tìm kiếm"
                 placeholder="Tên, số điện thoại, nội dung..."

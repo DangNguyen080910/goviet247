@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import provinces from "../../../../api/src/data/vietnam-provinces.json";
 import AccountExitStatus from "../../components/admin/AccountExitStatus";
 import AdminTableScroll from "../../components/admin/AdminTableScroll";
@@ -22,7 +23,6 @@ import {
   Alert,
   Tabs,
   Tab,
-  TextField,
   FormControl,
   InputLabel,
   Select,
@@ -565,7 +565,7 @@ export default function AdminDrivers() {
           alignItems: "center",
         }}
       >
-        <TextField
+        <ClearableSearchField onClear={() => { setPage(1); setQ(""); }}
           size="small"
           label="Tìm kiếm"
           placeholder="Tên, SĐT, biển số..."

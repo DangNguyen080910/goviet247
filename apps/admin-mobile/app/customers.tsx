@@ -1,3 +1,4 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 // Path: goviet247/apps/admin-mobile/app/customers.tsx
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -571,7 +572,7 @@ export default function CustomersScreen() {
         >
           <View style={styles.searchBox}>
             <Text style={styles.inputLabel}>Tìm kiếm</Text>
-            <TextInput
+            <ClearableSearchInput
               value={q}
               onChangeText={handleChangeSearch}
               placeholder="Nhập tên hoặc số điện thoại"

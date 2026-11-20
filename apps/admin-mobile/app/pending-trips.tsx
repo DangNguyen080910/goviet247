@@ -1,3 +1,4 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
 import { TripChatButton } from "../services/tripChat";
@@ -745,7 +746,7 @@ export default function PendingTripsScreen() {
           </Pressable>
         </View>
 
-        <TextInput
+        <ClearableSearchInput
           value={searchText}
           onChangeText={setSearchText}
           placeholder="Tìm mã chuyến, tên khách, số điện thoại..."

@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import {
@@ -88,7 +89,7 @@ export default function AdminQuoteHistory() {
       <Stack direction="row" gap={2} flexWrap="wrap">
         <TextField type="date" size="small" label="Từ ngày" value={draft.from} onChange={update("from")} InputLabelProps={{ shrink: true }} />
         <TextField type="date" size="small" label="Đến ngày" value={draft.to} onChange={update("to")} InputLabelProps={{ shrink: true }} />
-        <TextField size="small" label="Tên, SĐT, điểm đón, mã chuyến" value={draft.q} onChange={update("q")} sx={{ minWidth: 260 }} />
+        <ClearableSearchField onClear={() => { setDraft(prev => ({ ...prev, q: "" })); setFilters(prev => ({ ...prev, q: "" })); setPage(0); }} size="small" label="Tên, SĐT, điểm đón, mã chuyến" value={draft.q} onChange={update("q")} sx={{ minWidth: 260 }} />
         <TextField select size="small" label="Loại xe" value={draft.carType} onChange={update("carType")} sx={{ minWidth: 130 }}>
           <MenuItem value="">Tất cả</MenuItem>{["CAR_5", "CAR_7", "CAR_16"].map(value => <MenuItem key={value} value={value}>{formatCarType(value)}</MenuItem>)}
         </TextField>

@@ -1,6 +1,7 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { router, useFocusEffect } from "expo-router";
-import { ActivityIndicator, Alert, Pressable, RefreshControl, ScrollView, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Alert, Pressable, RefreshControl, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AdminAlert, blockedAlertDriverId, fetchAdminAlerts, markAdminAlertRead } from "../services/adminAlertsApi";
 import { connectAdminSocket, offAdminRealtimeEvent, onAdminRealtimeEvent } from "../services/adminSocket";
@@ -37,9 +38,9 @@ export default function AlertsScreen() {
   }
   return <SafeAreaView style={{flex:1,backgroundColor:"#f1f5f9"}}>
     <View style={{padding:16,flexDirection:"row",alignItems:"center",gap:16}}><Pressable onPress={()=>router.replace("/home")} accessibilityRole="button"><Text style={{fontSize:28}}>‹</Text></Pressable><Text style={{fontSize:23,fontWeight:"800"}}>Cảnh Báo</Text></View>
-    <ScrollView contentContainerStyle={{padding:16,gap:12,paddingBottom:70}} refreshControl={<RefreshControl refreshing={loading} onRefresh={load}/>}>
+    <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{padding:16,gap:12,paddingBottom:70}} refreshControl={<RefreshControl refreshing={loading} onRefresh={load}/>}>
       <Text>Nhắc hóa đơn hoa hồng lúc 21:00, cảnh báo chuyến và hội thoại. Trạng thái đã xem dùng chung với Admin Web.</Text>
-      <TextInput accessibilityLabel="Tìm cảnh báo" placeholder="Tìm mã chuyến hoặc tài xế" value={q} onChangeText={setQ} style={{backgroundColor:"white",padding:12,borderRadius:10}}/>
+      <ClearableSearchInput accessibilityLabel="Tìm cảnh báo" placeholder="Tìm mã chuyến hoặc tài xế" value={q} onChangeText={setQ} style={{backgroundColor:"white",padding:12,borderRadius:10}}/>
       <View style={{flexDirection:"row",gap:8}}>{([['unread','Chưa xem'],['read','Đã xem'],['all','Tất cả']] as const).map(([value,label])=><Pressable accessibilityRole="button" key={value} onPress={()=>setRead(value)} style={{padding:10,borderRadius:8,backgroundColor:read===value?"#1976d2":"#e2e8f0"}}><Text style={{color:read===value?"white":"#334155"}}>{label}</Text></Pressable>)}</View>
       <Text style={{color:"#64748b"}}>Hiển thị tối đa 200 cảnh báo mới nhất theo bộ lọc. Số trên Trang chủ chỉ đếm cảnh báo chưa xem trong 24 giờ.</Text>
       {!!error&&<Text style={{color:"#b91c1c"}}>{error}</Text>}

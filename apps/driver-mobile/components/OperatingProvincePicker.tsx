@@ -1,5 +1,6 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useMemo, useState } from "react";
-import { View, Text, Modal, Pressable, TextInput, FlatList, StyleSheet } from "react-native";
+import { View, Text, Modal, Pressable, FlatList, StyleSheet } from "react-native";
 import provinces from "../../api/src/data/vietnam-provinces.json";
 const normalize = (text: string) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").toLowerCase();
 export default function OperatingProvincePicker({ value, onChange, disabled = false }: { value: string; onChange: (value: string) => void; disabled?: boolean }) {
@@ -13,7 +14,7 @@ export default function OperatingProvincePicker({ value, onChange, disabled = fa
     <Modal visible={open} transparent animationType="slide" onRequestClose={() => setOpen(false)}>
       <View style={styles.backdrop}><View style={styles.panel}>
         <Text style={styles.label}>Chọn tỉnh/thành nhận chuyến</Text>
-        <TextInput style={styles.input} value={search} onChangeText={setSearch} placeholder="Tìm tỉnh/thành" autoCorrect={false} />
+        <ClearableSearchInput style={styles.input} value={search} onChangeText={setSearch} placeholder="Tìm tỉnh/thành" autoCorrect={false} />
         <FlatList data={choices} keyExtractor={p => p.code} keyboardShouldPersistTaps="handled" ListEmptyComponent={<Text>Không tìm thấy tỉnh/thành.</Text>} renderItem={({ item }) => <Pressable style={styles.row} onPress={() => { onChange(item.code); setOpen(false); }}><Text>{item.name}{item.code === value ? " ✓" : ""}</Text></Pressable>} />
         <Pressable style={styles.row} onPress={() => setOpen(false)}><Text style={styles.label}>Đóng</Text></Pressable>
       </View></View>

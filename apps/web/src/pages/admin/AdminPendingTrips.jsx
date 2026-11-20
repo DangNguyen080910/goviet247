@@ -1,7 +1,8 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminPendingTrips.jsx
 
 import { useEffect, useState } from "react";
-import { Box, Tabs, Tab, Typography, TextField } from "@mui/material";
+import { Box, Tabs, Tab, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
 import PendingTripsTable from "../../components/admin/PendingTripsTable";
@@ -69,7 +70,7 @@ export default function AdminPendingTrips() {
         <Tab label="Đã huỷ" />
       </Tabs>
 
-      <TextField
+      <ClearableSearchField onClear={() => setSearchText("")}
         fullWidth
         size="small"
         label="Tìm kiếm"

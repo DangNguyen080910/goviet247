@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import TripMoney from "../../components/admin/TripMoney";
 import TripAudienceDialog from '../../components/admin/TripAudienceDialog';
 // Path: goviet247/apps/web/src/pages/admin/AdminTrips.jsx
@@ -17,8 +18,7 @@ import {
   Alert,
   Tabs,
   Tab,
-  TextField,
-} from "@mui/material";
+  } from "@mui/material";
 
 import TripDetailModal from "../../components/admin/TripDetailModal";
 import CancelTripDialog from "../../components/admin/CancelTripDialog";
@@ -214,7 +214,7 @@ export default function AdminTrips() {
         <Tab label="Đã huỷ" />
       </Tabs>
 
-      <TextField
+      <ClearableSearchField onClear={() => setSearchText("")}
         fullWidth
         size="small"
         label="Tìm kiếm"

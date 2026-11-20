@@ -1,3 +1,4 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import DriverOperatingControls from "../components/DriverOperatingControls";
 // Path: goviet247/apps/admin-mobile/app/drivers.tsx
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
@@ -651,6 +652,7 @@ export default function DriversScreen() {
       </View>
 
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         style={styles.scroll}
         contentContainerStyle={styles.content}
         refreshControl={
@@ -663,7 +665,7 @@ export default function DriversScreen() {
         <View style={styles.filterCard}>
           <SectionTitle>Tìm kiếm</SectionTitle>
 
-          <TextInput
+          <ClearableSearchInput onClear={handleClearSearch}
             value={keywordInput}
             onChangeText={setKeywordInput}
             placeholder="Tên, số điện thoại, biển số..."

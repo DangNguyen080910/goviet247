@@ -1,3 +1,4 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useWalletRecordSearch } from "../hooks/useWalletRecordSearch";
 import { readPendingWalletOperation, submitWalletOperation, PendingWalletOperation } from "../services/walletOperations";
 // Path: goviet247/apps/admin-mobile/app/
@@ -626,7 +627,7 @@ export default function WalletsScreen() {
   function renderWalletFilters() {
     return (
       <View style={styles.filtersBox}>
-        <TextInput
+        <ClearableSearchInput
           value={walletSearchText}
           onChangeText={setWalletSearchText}
           placeholder="Tìm theo tên / số điện thoại / biển số"
@@ -849,7 +850,7 @@ export default function WalletsScreen() {
   function renderRecordSearch(search: typeof withdrawSearch | typeof ledgerSearch) {
     return (
       <View style={styles.filtersBox}>
-        <TextInput
+        <ClearableSearchInput
           value={search.query}
           onChangeText={search.setQuery}
           placeholder="Tìm tên tài xế hoặc số điện thoại"

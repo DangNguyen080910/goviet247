@@ -1,3 +1,4 @@
+import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 // Path: goviet247/apps/admin-mobile/app/feedback.tsx
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -568,7 +569,7 @@ export default function FeedbackScreen() {
           </View>
 
           <View style={styles.filtersBox}>
-            <TextInput
+            <ClearableSearchInput
               value={q}
               onChangeText={setQ}
               placeholder="Tìm tên, số điện thoại, nội dung..."

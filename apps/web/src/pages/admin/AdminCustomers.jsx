@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminCustomers.jsx
 import { useEffect, useMemo, useState } from "react";
 import AccountExitStatus from "../../components/admin/AccountExitStatus";
@@ -21,7 +22,6 @@ import {
   Alert,
   Tabs,
   Tab,
-  TextField,
   FormControl,
   InputLabel,
   Select,
@@ -418,7 +418,7 @@ export default function AdminCustomers() {
           alignItems: "center",
         }}
       >
-        <TextField
+        <ClearableSearchField onClear={() => { setPage(1); setQ(""); }}
           size="small"
           label="Tìm kiếm"
           placeholder="Tên, SĐT..."

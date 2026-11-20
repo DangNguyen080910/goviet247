@@ -1,3 +1,4 @@
+import ClearableSearchField from "../common/ClearableSearchField.jsx";
 import {isRiderChatEnded,RIDER_CHAT_ENDED_NOTICE} from '../../../../api/src/shared/tripChat.js';
 import {partnerFetch} from './partnerSession';
 import {useEffect,useState} from 'react';
@@ -51,7 +52,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
     <Stack direction={{xs:'column',sm:'row'}} spacing={2}>
       <TextField label="Trạng thái" select value={status} onChange={e=>{setStatus(e.target.value);setPage(1);}} sx={{minWidth:180}}><MenuItem value="">Tất cả</MenuItem>{Object.entries(statuses).map(([k,v])=><MenuItem key={k} value={k}>{v}</MenuItem>)}</TextField>
       <TextField label="Ngày đón" type="date" value={date} onChange={e=>{setDate(e.target.value);setPage(1);}} slotProps={{inputLabel:{shrink:true}}}/>
-      <TextField label="Tìm mã chuyến" value={search} onChange={e=>{setSearch(e.target.value);setPage(1);}}/>
+      <ClearableSearchField onClear={() => { setSearch(""); setPage(1); }} label="Tìm mã chuyến" value={search} onChange={e=>{setSearch(e.target.value);setPage(1);}}/>
       <Button onClick={()=>setRevision(v=>v+1)}>Làm mới</Button>
     </Stack>
     <TableContainer component={Paper}><Table size="small"><TableHead><TableRow>{['Mã chuyến','Giờ đón','Lộ trình','Loại xe','Người tạo / Phụ trách','Thông tin xe','Trạng thái','Giá',''].map((v,i)=><TableCell key={i}>{v}</TableCell>)}</TableRow></TableHead>

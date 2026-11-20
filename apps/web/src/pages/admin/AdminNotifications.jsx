@@ -1,6 +1,7 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminNotifications.jsx
 import { useState } from "react";
-import { Box, Paper, Typography, TextField } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 import AlertsTable from "../../components/admin/AlertsTable";
 import TripDetailModal from "../../components/admin/TripDetailModal";
@@ -25,7 +26,7 @@ export default function AdminNotifications() {
           Lịch sử cảnh báo
         </Typography>
 
-        <TextField
+        <ClearableSearchField onClear={() => setSearchText("")}
           fullWidth
           size="small"
           label="Tìm kiếm"

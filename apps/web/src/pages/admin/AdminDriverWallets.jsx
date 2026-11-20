@@ -1,3 +1,4 @@
+import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminDriverWallets.jsx
 import React from "react";
 import { Navigate } from "react-router-dom";
@@ -1112,7 +1113,7 @@ export default function AdminDriverWallets() {
                 />
               </Stack>
 
-              <TextField
+              <ClearableSearchField onClear={() => setPendingWithdrawSearch("")}
                 label="Tìm theo tài xế / số điện thoại / ngân hàng / số tài khoản / chủ tài khoản / mã yêu cầu"
                 value={pendingWithdrawSearch}
                 onChange={(e) => setPendingWithdrawSearch(e.target.value)}
@@ -1250,7 +1251,7 @@ export default function AdminDriverWallets() {
                 />
               </Stack>
 
-              <TextField
+              <ClearableSearchField onClear={() => setApprovedWithdrawSearch("")}
                 label="Tìm theo tài xế / số điện thoại / ngân hàng / số tài khoản / chủ tài khoản / mã yêu cầu"
                 value={approvedWithdrawSearch}
                 onChange={(e) => setApprovedWithdrawSearch(e.target.value)}
@@ -1373,7 +1374,7 @@ export default function AdminDriverWallets() {
                 />
               </Stack>
 
-              <TextField
+              <ClearableSearchField onClear={() => setPaidWithdrawSearch("")}
                 label="Tìm theo tài xế / số điện thoại / ngân hàng / số tài khoản / chủ tài khoản / mã yêu cầu"
                 value={paidWithdrawSearch}
                 onChange={(e) => setPaidWithdrawSearch(e.target.value)}
@@ -1643,7 +1644,7 @@ export default function AdminDriverWallets() {
                   spacing={1.5}
                   alignItems={{ xs: "stretch", md: "center" }}
                 >
-                  <TextField
+                  <ClearableSearchField onClear={() => setFilters(prev => ({ ...prev, q: "" }))}
                     label="Tìm theo tên / số điện thoại / biển số"
                     value={filters.q}
                     onChange={handleFilterChange("q")}
@@ -1921,7 +1922,7 @@ export default function AdminDriverWallets() {
                   spacing={1.5}
                   alignItems={{ xs: "stretch", md: "center" }}
                 >
-                  <TextField
+                  <ClearableSearchField onClear={() => { setLedgerFilters(prev => ({ ...prev, q: "" })); setLedgerMeta(prev => ({ ...prev, page: 1 })); }}
                     label="Tìm theo tên / số điện thoại / ghi chú / mã chuyến / mã rút tiền"
                     value={ledgerFilters.q}
                     onChange={handleLedgerFilterChange("q")}
