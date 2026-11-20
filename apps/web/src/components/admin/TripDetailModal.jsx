@@ -1,3 +1,4 @@
+import MoneyTextField from '../common/MoneyTextField';
 import {flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
 import { TripChatButton } from "../TripChatHub";
 import TripDriverNoteEditor from "./TripDriverNoteEditor";
@@ -626,6 +627,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
 
                   <FormInput
                     label="Giá ước tính"
+                    money
                     type="number"
                     value={adjustForm.fareEstimate}
                     onChange={(v) => updateAdjustField("fareEstimate", v)}
@@ -633,6 +635,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
 
                   <FormInput
                     label="Giá cuối"
+                    money
                     type="number"
                     value={adjustForm.totalPrice}
                     onChange={(v) => updateAdjustField("totalPrice", v)}
@@ -892,7 +895,10 @@ function FormInput({
   onChange,
   type = "text",
   multiline = false,
+  money = false,
 }) {
+  if (money) return <MoneyTextField fullWidth label={label} type={type} value={value}
+    onChange={event => onChange(event.target.value)} />;
   return (
     <label style={{ display: "grid", gap: 6 }}>
       <span style={{ fontSize: 13, opacity: 0.82, fontWeight: 700 }}>

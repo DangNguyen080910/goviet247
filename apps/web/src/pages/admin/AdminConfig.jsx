@@ -1,3 +1,4 @@
+import MoneyTextField from '../../components/common/MoneyTextField';
 import ContractConfig from '../../components/admin/ContractConfig';
 // Path: goviet247/apps/web/src/pages/admin/AdminConfig.jsx
 import DestinationServiceConfig from "../../components/admin/DestinationServiceConfig";
@@ -537,7 +538,7 @@ function PricingCard({
   return (
     <SectionCard title={meta.title} description={meta.description}>
       <Stack spacing={2}>
-        <TextField
+        <MoneyTextField
           label="Giá mở cửa"
           value={item?.baseFare || ""}
           onChange={onFieldChange(carType, "baseFare")}
@@ -546,7 +547,7 @@ function PricingCard({
           inputProps={{ min: 0 }}
         />
 
-        <TextField
+        <MoneyTextField
           label="Giá mỗi km (fallback)"
           value={item?.pricePerKm || ""}
           onChange={onFieldChange(carType, "pricePerKm")}
@@ -556,7 +557,7 @@ function PricingCard({
           helperText="Chỉ dùng khi chưa cấu hình bậc km."
         />
 
-        <TextField
+        <MoneyTextField
           label="Giá chờ mỗi giờ dự phòng (khứ hồi)"
           value={item?.pricePerHour || ""}
           onChange={onFieldChange(carType, "pricePerHour")}
@@ -566,7 +567,7 @@ function PricingCard({
           inputProps={{ min: 0 }}
         />
 
-        <TextField
+        <MoneyTextField
           label="Giá tối thiểu"
           value={item?.minFare || ""}
           onChange={onFieldChange(carType, "minFare")}
@@ -575,7 +576,7 @@ function PricingCard({
           inputProps={{ min: 0 }}
         />
 
-        <TextField
+        <MoneyTextField
           label="Phụ phí mỗi đêm"
           value={item?.overnightFee || ""}
           onChange={onFieldChange(carType, "overnightFee")}
@@ -698,7 +699,7 @@ function PricingCard({
                     inputProps={{ min: 0 }}
                   />
 
-                  <TextField
+                  <MoneyTextField
                     label="Giá/km"
                     value={tier.pricePerKm}
                     onChange={onKmTierChange(carType, index, "pricePerKm")}
@@ -707,7 +708,7 @@ function PricingCard({
                     inputProps={{ min: 0 }}
                   />
 
-                  <TextField
+                  <MoneyTextField
                     label="Giá chờ/giờ (khứ hồi)"
                     value={tier.pricePerWaitHour ?? ""}
                     onChange={onKmTierChange(carType, index, "pricePerWaitHour")}
@@ -2309,7 +2310,7 @@ export default function AdminConfig() {
                           description="Số tiền ký quỹ tiêu chuẩn cho tài xế."
                         >
                           <Stack spacing={2}>
-                            <TextField
+                            <MoneyTextField
                               label="Tiền ký quỹ"
                               value={form.driverDepositAmount}
                               onChange={setField("driverDepositAmount")}

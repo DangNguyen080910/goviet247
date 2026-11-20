@@ -664,11 +664,11 @@ export default function TripChatScreen() {
    const data=await response.json();if(!response.ok)throw new Error(data.message || 'Chưa nghe được ghi âm.');
    await play(data.url,m.id,'audio/mp4');
  })}><Text style={{color:blue}}>{playbackLabel(m.id,true)}</Text></Pressable>}
- {!m.deletedAt && <Pressable accessibilityRole="button" accessibilityLabel={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} accessibilityState={{selected:Boolean(m.hearted),disabled:!canSend || busy}} disabled={!canSend || busy} style={{alignSelf:'flex-end',minWidth:44,minHeight:44,alignItems:'center',justifyContent:'center',borderRadius:22,backgroundColor:m.hearted ? '#fff1f2' : '#f8fafc',marginTop:6}} onPress={() => void run(async () => {
+ {!m.deletedAt && <Pressable accessibilityRole="button" accessibilityLabel={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} accessibilityState={{selected:Boolean(m.hearted),disabled:!canSend || busy}} disabled={!canSend || busy} style={{alignSelf:'flex-end',minWidth:44,minHeight:44,alignItems:'center',justifyContent:'center',borderRadius:22,backgroundColor:(m.heartCount || 0) > 0 ? '#fff1f2' : '#f8fafc',marginTop:6}} onPress={() => void run(async () => {
    const result = await api(`/${tripId}/messages/${m.id}/heart`, {method:'PUT',body:JSON.stringify({active:!m.hearted})});
    setItems(current => current.map(item => item.id === m.id ? {...item,hearted:result.hearted,heartCount:result.heartCount} : item));
    await load();
- })}><Text style={{fontSize:18,color:m.hearted ? '#e11d48' : '#64748b'}}>{m.hearted ? '♥' : '♡'}{m.heartCount ? ` ${m.heartCount}` : ''}</Text></Pressable>}
+ })}><Text style={{fontSize:18,color:(m.heartCount || 0) > 0 ? '#e11d48' : '#64748b'}}>{(m.heartCount || 0) > 0 ? '♥' : '♡'}{m.heartCount ? ` ${m.heartCount}` : ''}</Text></Pressable>}
  {actor.role === 'ADMIN' && !m.deletedAt && <Pressable disabled={busy} style={button} onPress={() => Alert.alert('Xoá tin nhắn', 'Xoá nội dung khỏi hội thoại? Thao tác được lưu nhật ký.', [{
             text: 'Giữ lại',
             style: 'cancel'

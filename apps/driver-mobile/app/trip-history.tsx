@@ -255,7 +255,7 @@ export default function TripHistoryScreen() {
             </View>
           </View>
 
-          <Text style={styles.time}>{formatDateTime(trip.pickupTime)}</Text>
+          <Text style={styles.time}>Đón: {formatDateTime(trip.pickupTime)}</Text>
         </View>
 
         <Text style={styles.title}>
@@ -525,8 +525,15 @@ const styles = StyleSheet.create({
   },
 
   time: {
-    fontSize: 12,
-    color: "#6B7280",
+    fontSize: 14,
+    fontWeight: "800",
+    color: "#1d4ed8",
+    backgroundColor: "#eff6ff",
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    overflow: "hidden",
+    lineHeight: 22,
   },
 
   title: {

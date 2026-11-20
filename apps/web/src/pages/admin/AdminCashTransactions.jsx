@@ -1,3 +1,4 @@
+import MoneyTextField from '../../components/common/MoneyTextField';
 // Path: goviet247/apps/web/src/pages/admin/AdminCashTransactions.jsx
 import { useEffect, useState, useCallback } from "react";
 import AdminTableScroll from "../../components/admin/AdminTableScroll";
@@ -275,7 +276,7 @@ export default function AdminCashTransactions() {
               ))}
             </TextField>
 
-            <TextField
+            <MoneyTextField
               label="Số tiền"
               type="number"
               value={form.amount}

@@ -1,3 +1,4 @@
+import MoneyTextField from '../../components/common/MoneyTextField';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminDriverWallets.jsx
 import React from "react";
@@ -253,7 +254,7 @@ function WalletActionDialog({
             </>
           ) : (
           <>
-          <TextField
+          <MoneyTextField
             label="Số tiền"
             type="text"
             value={formatVndInput(form.amount)}

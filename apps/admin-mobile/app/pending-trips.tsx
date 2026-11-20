@@ -1,3 +1,4 @@
+import MoneyInput from "../../mobile-chat/MoneyInput";
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
@@ -1100,7 +1101,7 @@ export default function PendingTripsScreen() {
                     />
 
                     <Text style={styles.inputLabel}>Giá ước tính</Text>
-                    <TextInput
+                    <MoneyInput
                       value={adjustForm.fareEstimate}
                       onChangeText={(text) =>
                         updateAdjustField("fareEstimate", text)
@@ -1112,7 +1113,7 @@ export default function PendingTripsScreen() {
                     />
 
                     <Text style={styles.inputLabel}>Giá cuối</Text>
-                    <TextInput
+                    <MoneyInput
                       value={adjustForm.totalPrice}
                       onChangeText={(text) =>
                         updateAdjustField("totalPrice", text)

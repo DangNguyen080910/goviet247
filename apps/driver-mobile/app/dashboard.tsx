@@ -1319,7 +1319,7 @@ export default function DashboardScreen() {
           <View style={styles.tripTopRow}>
             <Text style={styles.tripIdBadge}>#{trip.id.slice(-8)}</Text>
             <Text style={styles.tripTime}>
-              {formatDateTime(trip.pickupTime)}
+              Đón: {formatDateTime(trip.pickupTime)}
             </Text>
           </View>
 
@@ -1379,7 +1379,7 @@ export default function DashboardScreen() {
           ))}
 
           <View style={styles.metaGroup}>
-            <Text style={styles.metaText}>
+            <Text style={styles.pickupTimeNotice}>
               Ngày giờ đón khách: {formatDateTime(trip.pickupTime)}
             </Text>
 
@@ -1510,7 +1510,7 @@ export default function DashboardScreen() {
           <View style={styles.tripTopRow}>
             <Text style={styles.tripIdBadge}>#{trip.id.slice(-8)}</Text>
             <Text style={styles.tripTime}>
-              {formatDateTime(trip.pickupTime)}
+              Đón: {formatDateTime(trip.pickupTime)}
             </Text>
           </View>
 
@@ -1689,7 +1689,7 @@ export default function DashboardScreen() {
               </View>
             </View>
 
-            <Text style={styles.metaText}>
+            <Text style={styles.pickupTimeNotice}>
               Ngày giờ đón khách: {formatDateTime(trip.pickupTime)}
             </Text>
 
@@ -2378,8 +2378,25 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "right",
     fontSize: 15,
-    fontWeight: "700",
-    color: "#111827",
+    fontWeight: "800",
+    color: "#1d4ed8",
+    backgroundColor: "#eff6ff",
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    overflow: "hidden",
+    lineHeight: 22,
+  },
+  pickupTimeNotice: {
+    color: "#1d4ed8",
+    backgroundColor: "#eff6ff",
+    borderLeftWidth: 3,
+    borderLeftColor: "#2563eb",
+    borderRadius: 6,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 14,
+    fontWeight: "800",
     lineHeight: 22,
   },
   tripTitle: {

@@ -1,3 +1,4 @@
+import MoneyTextField from '../../components/common/MoneyTextField';
 // Path: goviet247/apps/web/src/pages/admin/AdminLedger.jsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -2518,7 +2519,7 @@ export default function AdminLedger() {
                         ))}
                       </TextField>
 
-                      <TextField
+                      <MoneyTextField
                         label="Số tiền"
                         value={formatVND(cashForm.amount)}
                         onChange={(e) => {

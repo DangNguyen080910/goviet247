@@ -1,3 +1,4 @@
+import MoneyInput from "../../mobile-chat/MoneyInput";
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useWalletRecordSearch } from "../hooks/useWalletRecordSearch";
 import { readPendingWalletOperation, submitWalletOperation, PendingWalletOperation } from "../services/walletOperations";
@@ -794,7 +795,7 @@ export default function WalletsScreen() {
                     </>
                   ) : (
                   <>
-                  <TextInput
+                  <MoneyInput
                     editable={!actionSubmitting}
                     value={formatInputMoney(actionAmount)}
                     onChangeText={(value) =>

@@ -1,3 +1,4 @@
+import MoneyTextField from "../common/MoneyTextField";
 import React from "react";
 import { Box, TextField, Button, Typography, Switch, FormControlLabel, Alert } from "@mui/material";
 import { fetchTripConfig, patchTripConfig } from "../../api/adminConfig";
@@ -14,7 +15,7 @@ export default function DestinationServiceConfig() {
  if(!c) return <Box>{error?<Alert severity="error">{error}<Button onClick={load}>Thử lại</Button></Alert>:"Đang tải cấu hình…"}</Box>;
  return <Box><Typography variant="h6">Phục vụ tại điểm đến</Typography><Typography>Dùng chung cho mọi loại xe. Phụ phí này tách riêng phí nghỉ đêm. Thay đổi chỉ áp dụng cho báo giá mới.</Typography>
  <FormControlLabel control={<Switch checked={c.enabled} onChange={e=>field("enabled",e.target.checked)}/>} label="Cho chọn gói tại điểm đến (chỉ hiển thị thông tin gói trên chuyến có áp dụng)"/>
- <Box sx={{display:"grid",gridTemplateColumns:{xs:"1fr",md:"1fr 1fr"},gap:2,my:2}}>{Object.entries(numbers).map(([key,label])=><TextField key={key} type="number" label={label} value={c[key]} onChange={e=>field(key,e.target.value === "" ? "" : Number(e.target.value))}/>)}</Box>
+ <Box sx={{display:"grid",gridTemplateColumns:{xs:"1fr",md:"1fr 1fr"},gap:2,my:2}}>{Object.entries(numbers).map(([key,label])=><MoneyTextField moneySuggestions={key === "charterDailyFee"} key={key} type="number" label={label} value={c[key]} onChange={e=>field(key,e.target.value === "" ? "" : Number(e.target.value))}/>)}</Box>
  {Object.entries(texts).map(([key,label])=><TextField fullWidth multiline key={key} sx={{mb:2}} label={label} value={c[key]} onChange={e=>field(key,e.target.value)}/>)}
  {error&&<Alert severity="error">{error}</Alert>}{saved&&<Alert severity="success">Đã lưu cấu hình.</Alert>}
  <Button variant="contained" disabled={busy} onClick={async()=>{setBusy(true);setError("");setSaved(false);try{const row=await patchTripConfig({destinationServiceConfig:c});setC(destinationConfig(row.destinationServiceConfig));setSaved(true);}catch(e){setError(e.message);}finally{setBusy(false);}}}>Lưu cấu hình phục vụ</Button>
