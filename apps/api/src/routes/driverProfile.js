@@ -1,3 +1,4 @@
+import { makeDriverRulesController } from '../controllers/driverRulesController.js';
 // Path: goviet247/apps/api/src/routes/driverProfile.js
 import { Router } from "express";
 import { verifyToken } from "../middleware/authMiddleware.js";
@@ -21,6 +22,11 @@ import { makeDriverContractController } from "../controllers/driverContractContr
 
 const router = Router();
 const contract = makeDriverContractController(prisma);
+const rules = makeDriverRulesController(prisma);
+router.get('/rules/status', verifyToken, rules.driverStatus);
+router.get('/rules', verifyToken, rules.driverCurrent);
+router.post('/rules/accept', verifyToken, rules.accept);
+
 router.get("/contract", verifyToken, contract.current);
 router.post("/contract/accept", verifyToken, contract.accept);
 

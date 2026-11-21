@@ -1,3 +1,4 @@
+import { useDriverRules } from '../context/DriverRulesContext';
 import ContractReminder from '../components/ContractReminder';
 import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
 import { enablePushNotifications } from "../services/pushRegister";
@@ -99,6 +100,7 @@ function getDriverDisplayName(profile: any) {
 }
 
 export default function DashboardScreen() {
+  const { status: rulesStatus, refresh: refreshRules } = useDriverRules();
   const [activeTab, setActiveTab] = useState<DashboardTab>("AVAILABLE");
 
   const [availableTrips, setAvailableTrips] = useState<AvailableTripItem[]>([]);
@@ -118,6 +120,7 @@ export default function DashboardScreen() {
     string | null
   >(null);
   const [menuVisible, setMenuVisible] = useState(false);
+  useEffect(() => { if (menuVisible) void refreshRules(); }, [menuVisible, refreshRules]);
   const [targetNotification,setTargetNotification] = useState<DriverNotificationItem | null>(null);
   const notificationParams = useLocalSearchParams<{notificationId?: string; openNotifications?: string; focusRequest?: string}>();
   const [notificationModalVisible, setNotificationModalVisible] =
@@ -1807,6 +1810,7 @@ export default function DashboardScreen() {
             onPress={handleOpenMenu}
           >
             <Text style={styles.headerIcon}>☰</Text>
+            {rulesStatus.needsAcceptance && <View accessibilityLabel="Có quy định mới cần xác nhận" style={{position:'absolute',top:6,right:4,width:8,height:8,borderRadius:4,backgroundColor:'#d32f2f'}} />}
           </TouchableOpacity>
 
           <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
@@ -2020,6 +2024,7 @@ export default function DashboardScreen() {
                   >
                     <Text style={styles.menuItemIcon}>📘</Text>
                     <Text style={styles.menuItemText}>Quy định & quy tắc</Text>
+                    {rulesStatus.needsAcceptance && <View accessibilityLabel="Có quy định mới cần xác nhận" style={{width:10,height:10,borderRadius:5,backgroundColor:'#d32f2f',marginLeft:8}} />}
                   </TouchableOpacity>
 
                   <TouchableOpacity

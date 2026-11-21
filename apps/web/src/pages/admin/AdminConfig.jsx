@@ -1,3 +1,5 @@
+import DriverRulesConfig from '../../components/admin/DriverRulesConfig';
+import RuleOutlinedIcon from '@mui/icons-material/RuleOutlined';
 import MoneyTextField from '../../components/common/MoneyTextField';
 import ContractConfig from '../../components/admin/ContractConfig';
 // Path: goviet247/apps/web/src/pages/admin/AdminConfig.jsx
@@ -1899,6 +1901,7 @@ export default function AdminConfig() {
               icon={<AccountBalanceWalletIcon />}
               iconPosition="start"
             />
+            <Tab label="Quy định quy tắc tài xế" icon={<RuleOutlinedIcon />} iconPosition="start" />
             <Tab
               label="Cảnh báo"
               icon={<WarningAmberIcon />}
@@ -1913,7 +1916,8 @@ export default function AdminConfig() {
           </Tabs>
 
           <Box sx={{ p: 3 }}>
-            <TabPanel value={tab} index={7}><ContractConfig /></TabPanel>
+            <TabPanel value={tab} index={8}><ContractConfig /></TabPanel>
+            <TabPanel value={tab} index={6} keepMounted><DriverRulesConfig /></TabPanel>
             <TabPanel value={tab} index={1}><DestinationServiceConfig /></TabPanel>
             {/* TAB 1: GIÁ CƯỚC */}
             <TabPanel value={tab} index={0}>
@@ -2569,7 +2573,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 5: CẢNH BÁO */}
-            <TabPanel value={tab} index={6}>
+            <TabPanel value={tab} index={7}>
               <Stack spacing={2.5}>
                 {loadingAlertConfig ? (
                   <Paper
@@ -2757,7 +2761,7 @@ export default function AdminConfig() {
             </TabPanel>
 
             {/* TAB 6: HỆ THỐNG */}
-            <TabPanel value={tab} index={8}>
+            <TabPanel value={tab} index={9}>
               <Stack spacing={2.5}>
                 {loadingSystemConfig ? (
                   <Paper

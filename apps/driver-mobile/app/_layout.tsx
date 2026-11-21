@@ -1,3 +1,4 @@
+import { DriverRulesProvider } from '../context/DriverRulesContext';
 import {chatNotificationRoute, claimNotificationResponse} from '../../api/src/shared/chatNotificationNavigation.js';
 import {TripCallOverlay} from '../../mobile-chat/TripCalls';
 import { ChatInboxBadge, isChatVisible, chatPushShouldPlaySound } from "../services/tripChat";
@@ -81,6 +82,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <NotificationProvider>
+      <DriverRulesProvider>
         <Stack
           screenOptions={{
             headerShown: false,
@@ -93,6 +95,7 @@ export default function RootLayout() {
         <ChatInboxBadge />
         <TripCallOverlay />
         <AppUpdatePrompt />
+      </DriverRulesProvider>
       </NotificationProvider>
     </SafeAreaProvider>
   );

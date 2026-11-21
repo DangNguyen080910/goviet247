@@ -796,6 +796,7 @@ model DriverProfile {
   bankAccounts        DriverBankAccount[]
   withdrawRequests    DriverWithdrawRequest[]
   contractAcceptances DriverContractAcceptance[]
+  rulesAcceptances    DriverRulesAcceptance[]
 }
 
 model DriverDocument {
@@ -1290,4 +1291,35 @@ model AccountExitRequest {
   requestCount Int @default(1)
   user User @relation(fields: [userId], references: [id], onDelete: Restrict)
   @@id([userId, appRole])
+}
+
+// Published rule content is immutable. Draft edits never change prior receipts.
+model DriverRulesVersion {
+  id             String   @id @default(cuid())
+  version        Int      @unique @default(autoincrement())
+  revision       Int      @default(1)
+  baseVersionId  String?
+  content        Json
+  contentHash    String
+  changeSummary  String
+  createdBy      String
+  publishedBy    String?
+  publishedAt    DateTime? @db.Timestamptz(6)
+  createdAt      DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt      DateTime  @updatedAt @db.Timestamptz(6)
+  acceptances    DriverRulesAcceptance[]
+  @@index([publishedAt])
+}
+
+model DriverRulesAcceptance {
+  id              String   @id @default(cuid())
+  driverProfileId String
+  versionId       String
+  contentHash     String
+  confirmation    String
+  acceptedAt      DateTime @default(now()) @db.Timestamptz(6)
+  driverProfile   DriverProfile @relation(fields: [driverProfileId], references: [id], onDelete: Cascade)
+  version         DriverRulesVersion @relation(fields: [versionId], references: [id], onDelete: Restrict)
+  @@unique([driverProfileId, versionId])
+  @@index([versionId, acceptedAt])
 }

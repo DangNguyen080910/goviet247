@@ -1,0 +1,508 @@
+{
+  "title": "Quy định & quy tắc tài xế",
+  "confirmation": "Tôi đã đọc và đồng ý tuân thủ toàn bộ quy định & quy tắc tài xế của phiên bản này.",
+  "groups": [
+    {
+      "id": "GUIDES",
+      "title": "Hướng dẫn nhận chuyến & lưu ý",
+      "description": "Lỗi nhận chuyến và cách xử lý, liên hệ trong 15 phút, ví tài xế và các lưu ý hoạt động.",
+      "sections": [
+        {
+          "id": "accept-troubleshooting",
+          "title": "Không nhận được chuyến: thông báo và cách xử lý",
+          "summary": "Tra cứu thông báo, tự xử lý và biết khi nào cần liên hệ Support.",
+          "paragraphs": [
+            "1. Khi nào được xem là nhận chuyến thành công?",
+            "Chuyến chỉ được giao khi hệ thống xác nhận nhận chuyến thành công. Nhìn thấy chuyến, nhận thông báo chuyến mới hoặc đã bấm “Nhận chuyến” không có nghĩa chuyến đã được giữ cho mình.",
+            "Nếu chưa rõ kết quả, kiểm tra Đơn của tôi và làm mới dữ liệu trước khi thử lại. Nếu chuyến đã nằm trong Đơn của tôi, hãy thực hiện quy trình liên hệ ngay sau khi nhận chuyến.",
+            "Anh/chị nên giữ trạng thái đăng nhập để thuận tiện theo dõi và nhận chuyến. Không tự đăng xuất rồi đăng nhập lại nhiều lần khi không nhận được chuyến; thao tác này không giúp nhận lại chuyến đã có tài xế khác nhận. Hãy kiểm tra mạng, làm mới danh sách và xem Đơn của tôi trước. Chỉ đăng nhập lại khi ứng dụng yêu cầu hoặc theo hướng dẫn của Support GoViet247.",
+            "2. Tài xế khác đã nhận, chuyến bị huỷ hoặc không còn mở nhận",
+            "“Chuyến này đã được tài xế khác nhận trước…”: yêu cầu hợp lệ của tài xế khác đã được hệ thống ghi nhận trước. Anh/chị chọn chuyến khác; không cần nhắn Support chỉ vì bấm nhận không kịp.",
+            "“Chuyến này đã bị huỷ…”, “Chuyến này không còn trong danh sách…” hoặc “Chuyến này hiện không còn mở nhận…”: làm mới danh sách và chọn chuyến khác. Chuyến không còn sẵn sàng để nhận.",
+            "“Chuyến này hiện không còn mở nhận cho tài khoản của anh/chị…”: phạm vi tài xế được nhận chuyến đã thay đổi. Tải lại danh sách hoặc chọn chuyến khác.",
+            "“Chuyến này chưa được Admin duyệt mở nhận…”: chờ danh sách cập nhật hoặc chọn chuyến khác. Không cần bấm liên tục hay nhắn Support yêu cầu mở lại chuyến.",
+            "Nếu chuyến tự biến mất, kiểm tra Đơn của tôi trước. Nếu không có, làm mới danh sách; chuyến có thể đã được nhận, bị huỷ hoặc ngừng mở nhận. Không cần nhắn Support để xin lại chuyến chỉ vì chuyến đã hết.",
+            "3. Chưa hết đếm ngược hoặc đang xử lý",
+            "“Nhận sau …s”, “Mở nhận chuyến sau …s” hoặc “Chuyến chưa mở nhận…”: chờ hết đếm ngược rồi mới bấm nhận. Nút chưa mở là trạng thái bình thường, không cần báo Support.",
+            "“Đang nhận…”: ứng dụng đang xử lý yêu cầu, vui lòng chờ và không bấm liên tục. Nếu chờ lâu hoặc mất mạng, kiểm tra Đơn của tôi trước khi thử lại.",
+            "4. Đã nhận chuyến hoặc đủ số chuyến đang nhận",
+            "“Anh/chị đã nhận chuyến này…”: vào Đơn của tôi để xem và liên hệ xác nhận; không cần bấm nhận lại.",
+            "“Anh/chị đang có đủ … chuyến chưa hoàn thành…”: đã đạt giới hạn số chuyến đang nhận. Chỉ cập nhật hoàn thành khi chuyến thực tế đã hoàn thành; không đánh dấu hoàn thành sớm để nhận thêm chuyến.",
+            "5. Số dư ví không đủ",
+            "“Ví còn …đ, chuyến này cần …đ. Anh/chị cần nạp thêm …đ…” hoặc “Số dư ví không đủ…”: nạp đủ số tiền còn thiếu theo hướng dẫn tại Ví tài xế, chờ tiền được cộng vào ví rồi kiểm tra chuyến còn mở nhận hay không.",
+            "Chuyển khoản chưa đồng nghĩa tiền đã được cộng vào ví, và nạp tiền không giữ chỗ cho chuyến. Nếu đã chuyển khoản nhưng ví chưa cập nhật, gửi biên lai cho Support để được kiểm tra.",
+            "6. Chuyến vừa thay đổi hoặc chưa xác nhận được kết quả",
+            "“Chuyến vừa thay đổi…”: kiểm tra Đơn của tôi và tải lại danh sách trước khi thử lại. Chỉ thử nhận lại khi chuyến vẫn mở nhận và chưa nằm trong Đơn của tôi.",
+            "“Chưa xác nhận được kết quả nhận chuyến…”: có thể kết nối mạng bị gián đoạn hoặc hết thời gian chờ. Kiểm tra mạng rồi làm mới Đơn của tôi trước khi bấm lại; thông báo này chưa khẳng định nhận chuyến thất bại.",
+            "Nếu ví đã bị trừ nhưng không thấy chuyến trong Đơn của tôi sau khi làm mới, liên hệ Support ngay để kiểm tra, không tiếp tục bấm nhận nhiều lần.",
+            "7. Khi nào cần liên hệ Support?",
+            "Nếu thấy “Bạn không thể nhận chuyến này. Vui lòng liên hệ Zalo team support GoViet247 để được hỗ trợ.”, hãy liên hệ Support để được kiểm tra; không cần tự đoán nguyên nhân hoặc bấm nhận liên tục.",
+            "Cũng cần báo Support khi ví đã bị trừ nhưng không có chuyến trong Đơn của tôi sau khi làm mới; đã chuyển khoản nạp ví nhưng chưa được cộng; hoặc lỗi lặp lại sau khi đã kiểm tra mạng, làm mới và thực hiện đúng hướng dẫn.",
+            "Nếu đang dùng app mà thấy thông báo “Chưa tìm thấy hồ sơ tài xế…” hoặc “Hồ sơ tài xế chưa ở trạng thái được phép nhận chuyến…”, kiểm tra Hồ sơ tài xế và liên hệ Support nếu thông tin không đúng với tình trạng tài khoản của mình.",
+            "Khi báo lỗi, gửi mã chuyến (nếu có), số điện thoại đăng ký, ảnh chụp thông báo và thời điểm xảy ra. Với vấn đề nạp ví, gửi thêm biên lai chuyển khoản. Có thể nhắn hỗ trợ trong app hoặc Zalo GoViet247: 0326 184 628.",
+            "Không cần nhắn Support chỉ vì tài xế khác đã nhận trước, chuyến đã bị huỷ, hết mở nhận hoặc còn đếm ngược. Nếu có dấu hiệu bất thường hay lỗi kéo dài thì vẫn nên báo để được kiểm tra."
+          ]
+        },
+        {
+          "id": "contact-within-15-minutes",
+          "title": "Nhận chuyến xong: liên hệ ngay, chậm nhất 15 phút",
+          "summary": "Chuyến đặt trước vẫn cần xác nhận ngay. Có sự cố phải báo Support ngay.",
+          "paragraphs": [
+            "Xác nhận sớm để khách yên tâm đã có xe",
+            "Liên hệ ngay sau khi nhận chuyến thành công, chậm nhất trong 15 phút kể từ thời điểm nhận chuyến. Đây là hạn chót, không phải thời gian để chờ rồi mới liên hệ. Chuyến đặt trước nhiều giờ hoặc nhiều ngày cũng phải xác nhận ngay, không chờ gần giờ đón.",
+            "Khách cần được xác nhận sớm để yên tâm đã có xe. Khi tài xế nhận chuyến nhưng không liên hệ, khách có thể nghĩ chưa có xe và đặt nơi khác. GoViet247 đã ghi nhận nhiều trường hợp mất khách vì việc này, ảnh hưởng đến khách, tài xế và uy tín chung.",
+            "Vào Đơn của tôi để xác nhận giờ đón, điểm đón, toàn bộ lộ trình và ghi chú. Với chuyến khách đặt trực tiếp, liên hệ khách qua chat, gọi trong app hoặc số khách hiển thị trên chuyến. Với chuyến đối tác, chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác; điều phối viên sẽ phối hợp với khách.",
+            "Nếu có sự cố ngoài ý muốn khiến không thể liên hệ khách hoặc điều phối viên trong 15 phút, hoặc đã liên hệ nhưng chưa kết nối được, phải báo Support GoViet247 ngay, gửi mã chuyến và tình trạng thực tế. Không chờ quá hạn mới báo hoặc để khách tiếp tục chờ mà không có thông tin.",
+            "Nếu quá 15 phút kể từ khi nhận chuyến mà tài xế chưa liên hệ khách (hoặc điều phối viên với chuyến đối tác), không báo Support, đồng thời Support cũng không liên lạc được với tài xế, Admin buộc phải huỷ chuyến và ghi nhận phạt theo quy định để kịp hỗ trợ tìm xe khác, không để khách tiếp tục chờ."
+          ]
+        },
+        {
+          "id": "accept-success",
+          "title": "Tăng khả năng nhận chuyến thành công",
+          "summary": "Thao tác nhận chuyến, kết nối mạng và điện thoại.",
+          "paragraphs": [
+            "Những điểm cần lưu ý",
+            "Thao tác nhanh: Khi có chuyến mới, anh/chị theo dõi thời gian đếm ngược và bấm nhận ngay khi nút nhận chuyến được mở, tránh để chậm vài giây vì các tài xế khác cũng đang chờ nhận.",
+            "Kết nối Internet: Ưu tiên sử dụng 4G/5G có sóng mạnh, ổn định. Tránh khu vực sóng yếu hoặc Wi-Fi chập chờn vì có thể khiến thao tác nhận chuyến gửi lên hệ thống chậm hơn.",
+            "Điện thoại: Nên sử dụng điện thoại hoạt động mượt, hạn chế mở quá nhiều ứng dụng cùng lúc. Nếu máy bị giật, lag hoặc phản hồi chậm thì khả năng nhận chuyến thành công cũng sẽ giảm.",
+            "Ứng dụng GoViet247: Luôn cập nhật phiên bản mới nhất, đảm bảo ứng dụng có kết nối mạng ổn định và hạn chế bật chế độ tiết kiệm pin khi đang chờ chuyến.",
+            "Chủ động chờ chuyến: Khi có thông báo chuyến mới, anh em mở sẵn ứng dụng và theo dõi thời gian để thao tác nhanh nhất có thể.",
+            "Hệ thống ưu tiên tài xế có yêu cầu nhận chuyến hợp lệ được ghi nhận thành công trước. Vì vậy, chỉ cần chậm hơn tài xế khác một chút là chuyến có thể đã được nhận rồi.",
+            "Nếu không nhận được chuyến, xem mục “Không nhận được chuyến: thông báo và cách xử lý” để biết cách xử lý và khi nào cần liên hệ Support. Tài xế khác nhận trước hoặc chuyến đã hết mở nhận là trạng thái bình thường."
+          ]
+        },
+        {
+          "id": "operating-province",
+          "title": "Cập nhật tỉnh/thành nhận chuyến",
+          "summary": "Cập nhật khu vực khi di chuyển sang miền khác để Admin gửi chuyến phù hợp.",
+          "paragraphs": [
+            "Cách cập nhật",
+            "“Tỉnh/thành nhận chuyến” là tỉnh/thành nơi anh/chị đang hoạt động và sẵn sàng nhận chuyến. Khu vực này do anh/chị chủ động chọn và lưu trong hồ sơ.",
+            "Mở “Hồ sơ tài xế” → chọn “Tỉnh/thành nhận chuyến” → bấm “Cập nhật khu vực nhận chuyến”.",
+            "Nếu tỉnh/thành đang hiển thị đã đúng, anh/chị vẫn cần bấm “Cập nhật khu vực nhận chuyến” để xác nhận. Chỉ xem hoặc chọn tỉnh/thành mà chưa bấm lưu thì thông tin chưa được xác nhận.",
+            "Khi sang miền khác, anh/chị hãy cập nhật lại tỉnh/thành đang sẵn sàng nhận chuyến và bấm “Cập nhật khu vực nhận chuyến” để Admin gửi chuyến phù hợp."
+          ]
+        },
+        {
+          "id": "zalo-after-accept",
+          "title": "Kết bạn Zalo sau khi nhận chuyến",
+          "summary": "Kênh phối hợp và hỗ trợ chuyến đi với GoViet247.",
+          "paragraphs": [
+            "Kết nối với GoViet247",
+            "Quý tài xế vui lòng chủ động kết bạn Zalo với GoViet247 ngay sau khi nhận chuyến thành công để thuận tiện trao đổi, cập nhật thông tin chuyến đi và nhận hỗ trợ kịp thời khi cần thiết.",
+            "Zalo GoViet247: 0326 184 628.",
+            "Việc kết nối Zalo giúp GoViet247 và tài xế phối hợp nhanh chóng, hạn chế bỏ lỡ các thông tin quan trọng liên quan đến chuyến đi."
+          ]
+        },
+        {
+          "id": "convenient-route",
+          "title": "Ưu tiên nhận chuyến thuận đường",
+          "summary": "Chọn chuyến gần vị trí hoặc phù hợp với cung đường của mình.",
+          "paragraphs": [
+            "Lựa chọn chuyến phù hợp",
+            "Quý tài xế vui lòng ưu tiên nhận chuyến gần vị trí hoặc thuận đường. Nếu ở quá xa, đặc biệt với chuyến một chiều, tài xế sẽ tốn thêm chi phí di chuyển và có thể phải chạy xe không chiều về, trong khi tài xế đang ở gần hoặc thuận tuyến lại không kịp nhận chuyến.",
+            "Mình cùng nhận chuyến hợp lý để chuyến đi hiệu quả hơn cho tất cả anh em nhé."
+          ]
+        },
+        {
+          "id": "check-before-accept",
+          "title": "Đọc kỹ thông tin trước khi nhận chuyến",
+          "summary": "Kiểm tra loại xe, nhiên liệu và ghi chú của khách.",
+          "paragraphs": [
+            "Loại xe và nhiên liệu",
+            "Đọc kỹ toàn bộ thông tin chuyến trước khi bấm “Nhận chuyến”. Kiểm tra khách đặt xe 5 chỗ, 7 chỗ hay 16 chỗ.",
+            "Khách đặt 5 chỗ → xe 5 chỗ hoặc 7 chỗ có thể nhận. Khách đặt 7 chỗ → chỉ xe 7 chỗ nhận. Khách đặt 16 chỗ → chỉ xe 16 chỗ nhận.",
+            "Nếu khách có yêu cầu xe điện hoặc xe xăng, tài xế chỉ nhận khi xe của mình đáp ứng đúng yêu cầu. Nếu hiển thị “Không yêu cầu” thì xe phù hợp đều có thể nhận.",
+            "Ghi chú và trách nhiệm khi nhận",
+            "Vui lòng đọc kỹ phần ghi chú vì khách có thể có thêm yêu cầu riêng cho chuyến đi.",
+            "Không nên bấm nhận trước rồi mới đọc thông tin. Nhận sai yêu cầu khiến khách phải chờ, mất thời gian liên hệ và tìm lại tài xế, đồng thời ảnh hưởng đến trải nghiệm khách hàng và uy tín GoViet247.",
+            "Trường hợp tài xế nhận sai yêu cầu và phải huỷ chuyến, phí đã trừ khi nhận chuyến sẽ không được hoàn lại.",
+            "ĐỌC KỸ → KIỂM TRA LOẠI XE → NHIÊN LIỆU → GHI CHÚ → PHÙ HỢP MỚI NHẬN."
+          ]
+        },
+        {
+          "id": "wallet-guide",
+          "title": "Hướng dẫn nhận chuyến và sử dụng ví tài xế",
+          "summary": "Nhận chuyến, nạp ví, khấu trừ và thanh toán.",
+          "paragraphs": [
+            "1. Làm sao để nhận chuyến?",
+            "Sau khi hồ sơ tài xế được duyệt, các chuyến mới sẽ tự động hiển thị tại mục “Chuyến đang chờ” trên ứng dụng khi có khách đặt chuyến phù hợp.",
+            "Trước khi bấm “Nhận chuyến”, vui lòng đọc kỹ: điểm đón và điểm trả; ngày giờ đón, giờ về nếu là chuyến khứ hồi; loại xe khách yêu cầu; giá chuyến; ghi chú và yêu cầu của khách; chuyến có phù hợp, thuận tiện với cung đường của mình hay không.",
+            "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Sau khi nhận thành công, vào Đơn của tôi để gọi hoặc chat trong app. Xem mục “Nhận chuyến xong: liên hệ ngay, chậm nhất 15 phút” để thực hiện đúng quy trình xác nhận và báo Support khi có sự cố.",
+            "Liên hệ ngay sau khi nhận chuyến thành công, chậm nhất trong 15 phút kể từ thời điểm nhận chuyến. Đây là hạn chót, không phải thời gian để chờ rồi mới liên hệ. Chuyến đặt trước nhiều giờ hoặc nhiều ngày cũng phải xác nhận ngay, không chờ gần giờ đón.",
+            "Vào Đơn của tôi để xác nhận giờ đón, điểm đón, toàn bộ lộ trình và ghi chú. Với chuyến khách đặt trực tiếp, liên hệ khách qua chat, gọi trong app hoặc số khách hiển thị trên chuyến. Với chuyến đối tác, chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác; điều phối viên sẽ phối hợp với khách.",
+            "GoViet247 là ứng dụng kết nối xe tiện chuyến. Số lượng chuyến phụ thuộc vào nhu cầu đặt xe của khách theo từng thời điểm và khu vực; hệ thống không thể cam kết tài xế sẽ nhận được số lượng chuyến cố định.",
+            "2. Vì sao cần nạp tiền vào ví?",
+            "Ví tài xế chỉ dùng để hệ thống khấu trừ phí và thuế khi tài xế nhận chuyến. Đây không phải tiền đặt cọc và hiện tại GoViet247 không yêu cầu tài xế ký quỹ.",
+            "Tài xế cần có đủ số dư ví trước khi nhận chuyến. Nếu số dư không đủ, ứng dụng sẽ thông báo số tiền còn thiếu.",
+            "3. Nạp tiền vào ví như thế nào?",
+            "Tại ứng dụng GoViet247 Driver: Mở Menu → chọn “Ví tài xế” → chọn “Nạp tiền” → quét mã QR hoặc chuyển khoản theo thông tin hiển thị → ghi chính xác nội dung chuyển khoản do ứng dụng cung cấp.",
+            "Nội dung thường có dạng: NAPVI + TÊN TÀI XẾ + SỐ ĐIỆN THOẠI.",
+            "Sau khi nhận được giao dịch, Admin sẽ kiểm tra và cộng tiền vào ví. Nếu đã chuyển khoản nhưng ví chưa cập nhật, tài xế vui lòng gửi biên lai để GoViet247 hỗ trợ kiểm tra.",
+            "4. Ví bị trừ khi nào và trừ bao nhiêu?",
+            "Tiền trong ví được khấu trừ ngay khi tài xế bấm “Nhận chuyến” thành công. Số tiền thực tế cần có trong ví và thu nhập còn lại được hiển thị trên ứng dụng theo cấu hình áp dụng cho chuyến.",
+            "Ví dụ minh hoạ trong thông báo: phí hệ thống 5%, VAT tài xế 3%, PIT tài xế 1,5%; tổng cộng 9,5% giá chuyến.",
+            "Với ví dụ chuyến 1.000.000đ: phí hệ thống 50.000đ, VAT 30.000đ, PIT 15.000đ; tổng tiền cần có trong ví 95.000đ; thu nhập còn lại 905.000đ.",
+            "Các con số trên là ví dụ từ thông báo được lưu lại, không phải mức phí cố định cho mọi chuyến. Vui lòng xem số khấu trừ và thu nhập thực tế trên chuyến trước khi nhận.",
+            "5. Khách thanh toán như thế nào?",
+            "Khách hàng thanh toán giá chuyến trực tiếp cho tài xế sau khi hoàn thành chuyến đi.",
+            "Giá hiển thị trên ứng dụng là giá trọn gói khách phải thanh toán và đã bao gồm chi phí cầu đường nếu có. Tài xế không được tự ý thu thêm tiền hoặc thương lượng lại giá sau khi đã nhận chuyến.",
+            "Nếu khách yêu cầu thay đổi điểm đón, điểm trả hoặc phát sinh hành trình ngoài nội dung ban đầu, tài xế vui lòng liên hệ GoViet247 trước khi thực hiện.",
+            "6. Lưu ý khi đã nhận chuyến",
+            "Việc bấm “Nhận chuyến” đồng nghĩa tài xế đã đọc kỹ thông tin và đồng ý với giá chuyến.",
+            "Tài xế vui lòng chỉ nhận những chuyến thật sự phù hợp. Trường hợp tài xế tự huỷ sau khi nhận, khoản tiền đã khấu trừ có thể được giữ lại theo quy định huỷ chuyến của hệ thống.",
+            "Mọi thắc mắc hoặc cần hỗ trợ, tài xế có thể liên hệ GoViet247 ngay trên ứng dụng."
+          ]
+        },
+        {
+          "id": "all-inclusive",
+          "title": "Giá trên app là giá trọn gói",
+          "summary": "Không tự thu thêm tiền hoặc thương lượng lại giá sau khi nhận.",
+          "paragraphs": [
+            "Kiểm tra trước khi nhận",
+            "GoViet247 là nền tảng kết nối các chuyến xe phù hợp với cung đường và kế hoạch di chuyển của tài xế. Trước khi bấm “Nhận chuyến”, vui lòng kiểm tra kỹ: điểm đón và điểm trả; thời gian đón, thời gian về nếu là chuyến khứ hồi; loại xe và chiều di chuyển; ghi chú, yêu cầu của khách; giá chuyến trên ứng dụng; chuyến đi có phù hợp và thuận tiện với hành trình của mình hay không.",
+            "Nếu cảm thấy chuyến không phù hợp, Quý Tài xế vui lòng không nhận chuyến.",
+            "Lưu ý quan trọng",
+            "Giá hiển thị trên ứng dụng là GIÁ TRỌN GÓI khách hàng phải thanh toán cho chuyến đi, đã bao gồm chi phí cầu đường nếu có. Tài xế tuyệt đối không được tự ý thu thêm tiền, yêu cầu khách hỗ trợ thêm chi phí hoặc thương lượng lại giá sau khi đã nhận chuyến.",
+            "Việc bấm “Nhận chuyến” đồng nghĩa với việc tài xế đã xem đầy đủ thông tin, đồng ý với giá chuyến và cam kết thực hiện đúng hành trình đã hiển thị trên ứng dụng.",
+            "Nếu khách hàng yêu cầu thay đổi điểm đón, điểm trả, lịch trình hoặc phát sinh yêu cầu ngoài nội dung chuyến ban đầu, tài xế vui lòng liên hệ GoViet247 để được hỗ trợ trước khi thực hiện; không tự thoả thuận khoản thu thêm với khách."
+          ]
+        },
+        {
+          "id": "multi-day",
+          "title": "Quy định đối với chuyến đi nhiều ngày",
+          "summary": "Chỗ nghỉ, ăn uống và phối hợp phục vụ trong thời gian khách lưu trú.",
+          "paragraphs": [
+            "Phục vụ chuyến nhiều ngày",
+            "Giá chuyến nhiều ngày đã được GoViet247 xây dựng phù hợp với đặc thù của loại chuyến này.",
+            "Tài xế chủ động sắp xếp chỗ nghỉ và chi phí ăn uống của mình trong thời gian thực hiện chuyến đi, trừ khi GoViet247 có thông báo hoặc thoả thuận khác trước chuyến.",
+            "Trong thời gian khách lưu trú, tài xế vui lòng hỗ trợ đưa đón khách theo lịch trình đã đặt. Trường hợp khách chỉ di chuyển quanh khu vực lưu trú để ăn uống, cà phê hoặc sinh hoạt gần đó thì chủ động hỗ trợ trong phạm vi hợp lý.",
+            "Nếu khách phát sinh nhu cầu đi xa hoặc thay đổi đáng kể lịch trình, vui lòng liên hệ GoViet247 trước khi thực hiện. Không tự thoả thuận hoặc thu thêm chi phí từ khách khi chưa có xác nhận của GoViet247."
+          ]
+        },
+        {
+          "id": "driver-operation",
+          "title": "Quy định hoạt động tài xế GoViet247",
+          "summary": "Tác phong, xác nhận chuyến, bảo mật và xử lý vi phạm.",
+          "paragraphs": [
+            "1. Thái độ và tác phong phục vụ khách hàng",
+            "Gọi điện và trao đổi lịch sự với khách hàng. Không sử dụng lời nói thô tục, khó chịu hoặc gây áp lực cho khách.",
+            "Chủ động hỗ trợ khách trong phạm vi hợp lý; hỗ trợ sắp xếp hành lý lên/xuống xe cho khách.",
+            "Giữ tác phong gọn gàng, lịch sự và hợp tác trong suốt chuyến đi. Không hút thuốc, gây ồn ào hoặc làm khách khó chịu trong quá trình di chuyển.",
+            "Chủ động thông báo cho khách nếu có tình huống phát sinh như kẹt xe hoặc đến trễ.",
+            "Không tự ý đổi xe hoặc đổi tài xế cho chuyến đi khi chưa được GoViet247 xác nhận hoặc hỗ trợ xử lý. Không tự ý chở thêm người lạ trong chuyến đi.",
+            "Vi phạm có thể dẫn đến cảnh cáo, tạm khoá hoặc khoá tài khoản tuỳ mức độ.",
+            "2. Quy trình xác nhận đón/trả khách",
+            "Tài xế cần thực hiện đầy đủ các bước xác nhận theo hướng dẫn trong mục “Đơn của tôi”.",
+            "Trong một số chuyến đi, hệ thống có thể yêu cầu: chụp hình xác nhận đón/trả khách; gửi định vị tại điểm đón hoặc điểm trả khách; xác nhận trạng thái chuyến đi đúng thực tế.",
+            "Các thông tin này giúp bảo vệ quyền lợi cho tài xế và khách hàng, hỗ trợ xử lý khiếu nại hoặc tranh chấp nếu phát sinh, đảm bảo minh bạch trong quá trình vận hành chuyến đi.",
+            "Không giả mạo hình ảnh, vị trí hoặc trạng thái chuyến đi. Vi phạm có thể dẫn đến hạn chế nhận chuyến, tạm khoá hoặc khoá tài khoản tuỳ mức độ.",
+            "3. Không kéo khách ra ngoài hệ thống",
+            "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, số điện thoại điều phối viên được ẩn; tài xế chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.",
+            "Khi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm.",
+            "4. Không nhận “cuốc ngoài” từ khách trong app",
+            "Không nhận chuyến riêng ngoài ứng dụng từ khách đã kết nối qua GoViet247.",
+            "Mọi chuyến phát sinh từ hệ thống cần được thực hiện trên ứng dụng để đảm bảo quyền lợi cho khách hàng và tài xế.",
+            "Hệ thống có thể hạn chế hoặc khoá tài khoản nếu phát hiện vi phạm.",
+            "5. Hạn chế huỷ chuyến",
+            "Không huỷ chuyến nhiều lần sau khi đã nhận. Nếu có sự cố bất khả kháng, cần báo sớm cho khách hoặc bộ phận hỗ trợ.",
+            "Không cố tình nhận chuyến nhưng không di chuyển tới điểm đón. Tỷ lệ huỷ cao sẽ ảnh hưởng quyền nhận chuyến hoặc bị tạm khoá tài khoản.",
+            "6. Không yêu cầu thêm phí ngoài ứng dụng",
+            "Không tự ý thu thêm phí ngoài giá đã báo trên hệ thống nếu không có xác nhận rõ ràng từ khách. Không gây áp lực để khách trả thêm tiền ngoài ứng dụng.",
+            "Vi phạm sẽ bị xử lý nghiêm theo chính sách vận hành.",
+            "7. Bảo mật thông tin khách hàng",
+            "Không chia sẻ thông tin khách hàng cho bên thứ ba. Không sử dụng số điện thoại khách cho mục đích cá nhân hoặc quảng cáo. Không lưu thông tin khách để tự liên hệ nhận cuốc ngoài hệ thống.",
+            "8. Đảm bảo an toàn và đúng hành trình",
+            "Chủ động đến điểm đón đúng giờ. Không tự ý thay đổi hành trình nếu chưa được khách đồng ý.",
+            "Không lái xe nguy hiểm, sử dụng điện thoại liên tục hoặc gây mất an toàn trong quá trình di chuyển. Tuân thủ quy định giao thông và đảm bảo an toàn cho khách hàng.",
+            "9. Chính sách xử lý vi phạm",
+            "GoViet247 có thể áp dụng các hình thức xử lý: nhắc nhở; hạn chế nhận chuyến; tạm khoá tài khoản; khoá tài khoản vĩnh viễn, tuỳ theo mức độ vi phạm.",
+            "GoViet247 ưu tiên môi trường hoạt động lâu dài, chuyên nghiệp và công bằng cho tất cả tài xế."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OPERATION",
+      "title": "Quy chế hoạt động",
+      "description": "Quy trình vận hành, thanh toán, huỷ chuyến, hỗ trợ và bảo mật.",
+      "sections": [
+        {
+          "id": "operation-overview",
+          "title": "1. Giới thiệu chung",
+          "summary": "",
+          "paragraphs": [
+            "GoViet247 là nền tảng kết nối khách hàng với tài xế để thực hiện các chuyến đi theo thông tin hiển thị trên ứng dụng.",
+            "Tài xế có trách nhiệm sử dụng tài khoản đúng mục đích, đúng thông tin và tuân thủ nội quy vận hành."
+          ]
+        },
+        {
+          "id": "operation-flow",
+          "title": "2. Quy trình hoạt động",
+          "summary": "",
+          "paragraphs": [
+            "Đăng nhập bằng tài khoản tài xế đã được xác thực và được hệ thống cho phép hoạt động.",
+            "Đảm bảo ví tài xế, giấy tờ và hồ sơ đang ở trạng thái hợp lệ trước khi nhận chuyến.",
+            "Khi có chuyến phù hợp, đọc kỹ nội dung và bấm nhận chuyến để bắt đầu phục vụ khách.",
+            "Thực hiện đầy đủ các bước xác nhận, đón khách, di chuyển và hoàn thành chuyến theo nội quy."
+          ]
+        },
+        {
+          "id": "operation-contact",
+          "title": "3. Liên hệ ngay sau khi nhận chuyến — chậm nhất 15 phút",
+          "summary": "",
+          "paragraphs": [
+            "Liên hệ ngay sau khi nhận chuyến thành công, chậm nhất trong 15 phút kể từ thời điểm nhận chuyến. Đây là hạn chót, không phải thời gian để chờ rồi mới liên hệ. Chuyến đặt trước nhiều giờ hoặc nhiều ngày cũng phải xác nhận ngay, không chờ gần giờ đón.",
+            "Khách cần được xác nhận sớm để yên tâm đã có xe. Khi tài xế nhận chuyến nhưng không liên hệ, khách có thể nghĩ chưa có xe và đặt nơi khác. GoViet247 đã ghi nhận nhiều trường hợp mất khách vì việc này, ảnh hưởng đến khách, tài xế và uy tín chung.",
+            "Vào Đơn của tôi để xác nhận giờ đón, điểm đón, toàn bộ lộ trình và ghi chú. Với chuyến khách đặt trực tiếp, liên hệ khách qua chat, gọi trong app hoặc số khách hiển thị trên chuyến. Với chuyến đối tác, chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác; điều phối viên sẽ phối hợp với khách.",
+            "Nếu có sự cố ngoài ý muốn khiến không thể liên hệ khách hoặc điều phối viên trong 15 phút, hoặc đã liên hệ nhưng chưa kết nối được, phải báo Support GoViet247 ngay, gửi mã chuyến và tình trạng thực tế. Không chờ quá hạn mới báo hoặc để khách tiếp tục chờ mà không có thông tin.",
+            "Nếu quá 15 phút kể từ khi nhận chuyến mà tài xế chưa liên hệ khách (hoặc điều phối viên với chuyến đối tác), không báo Support, đồng thời Support cũng không liên lạc được với tài xế, Admin buộc phải huỷ chuyến và ghi nhận phạt theo quy định để kịp hỗ trợ tìm xe khác, không để khách tiếp tục chờ."
+          ]
+        },
+        {
+          "id": "operation-wallet",
+          "title": "4. Ví tài xế, thanh toán và rút tiền",
+          "summary": "",
+          "paragraphs": [
+            "Tài xế cần duy trì số dư ví theo quy định để hệ thống cho phép nhận chuyến.",
+            "Thông tin nạp tiền, số tài khoản nhận tiền và hướng dẫn chuyển khoản sẽ được hiển thị trong mục Ví tài xế.",
+            "Việc rút tiền được xử lý theo chính sách hiện hành của GoViet247 và có thể thay đổi theo từng giai đoạn."
+          ]
+        },
+        {
+          "id": "operation-cancel",
+          "title": "5. Huỷ chuyến và hỗ trợ",
+          "summary": "",
+          "paragraphs": [
+            "Khi cần huỷ chuyến hoặc gặp tình huống bất khả kháng, tài xế phải báo admin sớm nhất có thể.",
+            "Không phải mọi trường hợp huỷ chuyến đều được hỗ trợ phí hoặc miễn trách nhiệm.",
+            "Nếu đang trên hành trình, tài xế không tự ý huỷ chuyến mà phải liên hệ admin để được hướng dẫn."
+          ]
+        },
+        {
+          "id": "operation-complaint",
+          "title": "6. Khiếu nại, tranh chấp và bảo mật",
+          "summary": "",
+          "paragraphs": [
+            "Mọi phản hồi, khiếu nại hoặc tranh chấp liên quan đến chuyến đi có thể được GoViet247 tiếp nhận và xử lý theo quy trình nội bộ.",
+            "GoViet247 có quyền lưu trữ các dữ liệu cần thiết phục vụ vận hành, an toàn hệ thống và xử lý tranh chấp.",
+            "Tài xế có trách nhiệm bảo mật thông tin khách hàng và thông tin tài khoản của mình."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BEHAVIOR",
+      "title": "Quy tắc ứng xử",
+      "description": "Các hành vi bị cấm, lỗi thường gặp và mức xử lý vi phạm.",
+      "sections": [
+        {
+          "id": "serious-violations-no-offline-deal",
+          "title": "Vi phạm nghiêm trọng — Không kéo khách ra ngoài ứng dụng",
+          "summary": "Những hành vi ảnh hưởng trực tiếp đến uy tín hệ thống, quyền lợi khách hàng và an toàn chuyến đi.",
+          "paragraphs": [
+            "Không được gợi ý khách huỷ đơn trên app để giao dịch riêng bên ngoài.",
+            "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, số điện thoại điều phối viên được ẩn; tài xế chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.\n\nKhi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm.",
+            "Không được thu thêm tiền trái với giá và phụ phí đã được GoViet247 quy định."
+          ]
+        },
+        {
+          "id": "serious-violations-no-fraud",
+          "title": "Vi phạm nghiêm trọng — Không gian lận và không giả mạo",
+          "summary": "Những hành vi ảnh hưởng trực tiếp đến uy tín hệ thống, quyền lợi khách hàng và an toàn chuyến đi.",
+          "paragraphs": [
+            "Không tạo đơn giả, không khai sai thông tin chuyến đi hoặc thông tin khách hàng.",
+            "Không dùng xe không đúng hồ sơ đã đăng ký với hệ thống.",
+            "Không cho người khác mượn hoặc sử dụng tài khoản tài xế của mình."
+          ]
+        },
+        {
+          "id": "serious-violations-no-harassment",
+          "title": "Vi phạm nghiêm trọng — Không xúc phạm, quấy rối hoặc bỏ rơi khách",
+          "summary": "Những hành vi ảnh hưởng trực tiếp đến uy tín hệ thống, quyền lợi khách hàng và an toàn chuyến đi.",
+          "paragraphs": [
+            "Không có lời nói, hành vi đe doạ, xúc phạm, gạ gẫm hoặc quấy rối khách hàng.",
+            "Không tự ý yêu cầu khách xuống xe giữa đường nếu không có lý do an toàn hoặc bất khả kháng.",
+            "Không tiết lộ thông tin cá nhân của khách cho bên thứ ba khi chưa được phép."
+          ]
+        },
+        {
+          "id": "trip-process-after-accept",
+          "title": "Quy trình nhận và thực hiện chuyến — Sau khi nhận chuyến",
+          "summary": "Các bước tài xế cần thực hiện để vận hành đúng chuẩn, tránh sai quy trình và tránh phát sinh tranh chấp.",
+          "paragraphs": [
+            "Đọc kỹ toàn bộ nội dung đơn hàng, đặc biệt phần ghi chú.",
+            "Liên hệ ngay sau khi nhận chuyến thành công, chậm nhất trong 15 phút kể từ thời điểm nhận chuyến. Đây là hạn chót, không phải thời gian để chờ rồi mới liên hệ. Chuyến đặt trước nhiều giờ hoặc nhiều ngày cũng phải xác nhận ngay, không chờ gần giờ đón.",
+            "Khách cần được xác nhận sớm để yên tâm đã có xe. Khi tài xế nhận chuyến nhưng không liên hệ, khách có thể nghĩ chưa có xe và đặt nơi khác. GoViet247 đã ghi nhận nhiều trường hợp mất khách vì việc này, ảnh hưởng đến khách, tài xế và uy tín chung.",
+            "Vào Đơn của tôi để xác nhận giờ đón, điểm đón, toàn bộ lộ trình và ghi chú. Với chuyến khách đặt trực tiếp, liên hệ khách qua chat, gọi trong app hoặc số khách hiển thị trên chuyến. Với chuyến đối tác, chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác; điều phối viên sẽ phối hợp với khách.",
+            "Nếu có sự cố ngoài ý muốn khiến không thể liên hệ khách hoặc điều phối viên trong 15 phút, hoặc đã liên hệ nhưng chưa kết nối được, phải báo Support GoViet247 ngay, gửi mã chuyến và tình trạng thực tế. Không chờ quá hạn mới báo hoặc để khách tiếp tục chờ mà không có thông tin.",
+            "Nếu quá 15 phút kể từ khi nhận chuyến mà tài xế chưa liên hệ khách (hoặc điều phối viên với chuyến đối tác), không báo Support, đồng thời Support cũng không liên lạc được với tài xế, Admin buộc phải huỷ chuyến và ghi nhận phạt theo quy định để kịp hỗ trợ tìm xe khác, không để khách tiếp tục chờ.",
+            "Nếu có điểm chưa rõ hoặc phát sinh thay đổi lớn, báo admin trước khi thực hiện."
+          ]
+        },
+        {
+          "id": "trip-process-pickup-process",
+          "title": "Quy trình nhận và thực hiện chuyến — Khi đón khách",
+          "summary": "Các bước tài xế cần thực hiện để vận hành đúng chuẩn, tránh sai quy trình và tránh phát sinh tranh chấp.",
+          "paragraphs": [
+            "Đến đúng điểm đón và cố gắng đúng giờ theo thông tin trên app.",
+            "Xác nhận đúng khách trước khi khởi hành.",
+            "Theo nội quy công ty, xin phép khách chụp hình hoặc gửi định vị cho admin khi cần xác nhận đón khách."
+          ]
+        },
+        {
+          "id": "trip-process-during-trip",
+          "title": "Quy trình nhận và thực hiện chuyến — Trong quá trình di chuyển",
+          "summary": "Các bước tài xế cần thực hiện để vận hành đúng chuẩn, tránh sai quy trình và tránh phát sinh tranh chấp.",
+          "paragraphs": [
+            "Giữ thái độ lịch sự, hỗ trợ khách lên xuống xe và sắp xếp hành lý khi phù hợp.",
+            "Không tự ý đổi lộ trình, đổi giá hoặc thay đổi nội dung dịch vụ khi chưa thống nhất đúng quy định.",
+            "Nếu có tình huống khẩn cấp, ưu tiên an toàn và liên hệ admin để được hỗ trợ."
+          ]
+        },
+        {
+          "id": "trip-process-dropoff-process",
+          "title": "Quy trình nhận và thực hiện chuyến — Khi trả khách và kết thúc chuyến",
+          "summary": "Các bước tài xế cần thực hiện để vận hành đúng chuẩn, tránh sai quy trình và tránh phát sinh tranh chấp.",
+          "paragraphs": [
+            "Đưa khách đến đúng điểm trả theo nội dung đơn hàng hoặc theo thoả thuận hợp lệ.",
+            "Theo nội quy công ty, xin phép khách chụp hình hoặc gửi định vị cho admin khi cần xác nhận trả khách.",
+            "Chỉ bấm hoàn thành khi chuyến đi đã thực sự kết thúc."
+          ]
+        },
+        {
+          "id": "safety-service-safety",
+          "title": "An toàn và thái độ phục vụ — An toàn giao thông",
+          "summary": "Chuẩn phục vụ giúp tăng uy tín tài xế, hạn chế khiếu nại và bảo vệ hình ảnh của GoViet247.",
+          "paragraphs": [
+            "Tuân thủ luật giao thông và lái xe trong trạng thái tỉnh táo, đủ điều kiện điều khiển phương tiện.",
+            "Không sử dụng chất kích thích, rượu bia hoặc các hành vi gây nguy hiểm khi làm việc.",
+            "Không dùng điện thoại theo cách làm mất tập trung khi đang lái xe."
+          ]
+        },
+        {
+          "id": "safety-service-service-attitude",
+          "title": "An toàn và thái độ phục vụ — Thái độ phục vụ",
+          "summary": "Chuẩn phục vụ giúp tăng uy tín tài xế, hạn chế khiếu nại và bảo vệ hình ảnh của GoViet247.",
+          "paragraphs": [
+            "Luôn nói chuyện nhẹ nhàng, tôn trọng và có tinh thần hỗ trợ khách.",
+            "Không tranh cãi, không thách thức, không hành xử thiếu văn hoá với khách.",
+            "Giữ vệ sinh xe và giữ hình ảnh chuyên nghiệp khi làm việc."
+          ]
+        },
+        {
+          "id": "safety-service-data-privacy",
+          "title": "An toàn và thái độ phục vụ — Bảo mật thông tin",
+          "summary": "Chuẩn phục vụ giúp tăng uy tín tài xế, hạn chế khiếu nại và bảo vệ hình ảnh của GoViet247.",
+          "paragraphs": [
+            "Thông tin khách hàng chỉ được dùng để phục vụ chuyến đi.",
+            "Không lưu, chia sẻ hoặc sử dụng thông tin khách cho mục đích cá nhân."
+          ]
+        },
+        {
+          "id": "common-mistakes-note-mistakes",
+          "title": "Lỗi thường gặp — Không đọc kỹ đơn hàng",
+          "summary": "Các lỗi hay gặp không phải lúc nào cũng nghiêm trọng ngay, nhưng lặp lại nhiều lần sẽ ảnh hưởng đến tài khoản.",
+          "paragraphs": [
+            "Không đọc ghi chú dẫn đến đón sai nơi, thiếu chuẩn bị hoặc thực hiện sai yêu cầu.",
+            "Không kiểm tra điểm đón, điểm trả, chiều đi hoặc chiều về của chuyến khứ hồi."
+          ]
+        },
+        {
+          "id": "common-mistakes-contact-mistakes",
+          "title": "Lỗi thường gặp — Không chủ động liên hệ khách",
+          "summary": "Các lỗi hay gặp không phải lúc nào cũng nghiêm trọng ngay, nhưng lặp lại nhiều lần sẽ ảnh hưởng đến tài khoản.",
+          "paragraphs": [
+            "Liên hệ ngay sau khi nhận chuyến thành công, chậm nhất trong 15 phút kể từ thời điểm nhận chuyến. Đây là hạn chót, không phải thời gian để chờ rồi mới liên hệ. Chuyến đặt trước nhiều giờ hoặc nhiều ngày cũng phải xác nhận ngay, không chờ gần giờ đón.",
+            "Nếu có sự cố ngoài ý muốn khiến không thể liên hệ khách hoặc điều phối viên trong 15 phút, hoặc đã liên hệ nhưng chưa kết nối được, phải báo Support GoViet247 ngay, gửi mã chuyến và tình trạng thực tế. Không chờ quá hạn mới báo hoặc để khách tiếp tục chờ mà không có thông tin.",
+            "Nếu quá 15 phút kể từ khi nhận chuyến mà tài xế chưa liên hệ khách (hoặc điều phối viên với chuyến đối tác), không báo Support, đồng thời Support cũng không liên lạc được với tài xế, Admin buộc phải huỷ chuyến và ghi nhận phạt theo quy định để kịp hỗ trợ tìm xe khác, không để khách tiếp tục chờ."
+          ]
+        },
+        {
+          "id": "common-mistakes-cancel-mistakes",
+          "title": "Lỗi thường gặp — Huỷ chuyến sai quy định",
+          "summary": "Các lỗi hay gặp không phải lúc nào cũng nghiêm trọng ngay, nhưng lặp lại nhiều lần sẽ ảnh hưởng đến tài khoản.",
+          "paragraphs": [
+            "Không tự ý huỷ chuyến vì lý do chủ quan khi chưa báo admin.",
+            "Một số trường hợp huỷ chuyến có thể bị mất tiền môi giới hoặc bị xử lý theo nội quy."
+          ]
+        },
+        {
+          "id": "penalties-penalty-levels",
+          "title": "Xử lý vi phạm — Các mức xử lý",
+          "summary": "GoViet247 có thể áp dụng nhắc nhở, phạt tiền, tạm ngưng hoặc khoá tài khoản tuỳ mức độ vi phạm.",
+          "paragraphs": [
+            "Nhắc nhở hoặc cảnh báo đối với lỗi nhẹ, lỗi lần đầu chưa gây hậu quả nghiêm trọng.",
+            "Phạt tiền hoặc khấu trừ theo chính sách công ty với các lỗi ảnh hưởng đến khách hoặc vận hành.",
+            "Tạm ngưng hoặc khoá tài khoản ngay với các hành vi gian lận, kéo khách ra ngoài, quấy rối hoặc gây mất an toàn."
+          ]
+        },
+        {
+          "id": "penalties-company-rights",
+          "title": "Xử lý vi phạm — Quyền của GoViet247",
+          "summary": "GoViet247 có thể áp dụng nhắc nhở, phạt tiền, tạm ngưng hoặc khoá tài khoản tuỳ mức độ vi phạm.",
+          "paragraphs": [
+            "GoViet247 có quyền xem xét lịch sử vi phạm, mức độ ảnh hưởng và tái phạm để quyết định hình thức xử lý.",
+            "Các trường hợp nghiêm trọng có thể bị khoá tài khoản mà không cần chờ đến lần vi phạm tiếp theo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TERMS",
+      "title": "Điều khoản sử dụng",
+      "description": "Quyền, nghĩa vụ và điều kiện sử dụng ứng dụng tài xế GoViet247.",
+      "sections": [
+        {
+          "id": "terms-account",
+          "title": "1. Tài khoản và điều kiện sử dụng",
+          "summary": "",
+          "paragraphs": [
+            "Tài xế phải sử dụng tài khoản chính chủ và chịu trách nhiệm với mọi hoạt động phát sinh từ tài khoản của mình.",
+            "Không chia sẻ tài khoản, không mạo danh và không sử dụng ứng dụng cho mục đích trái pháp luật.",
+            "GoViet247 có quyền tạm ngưng hoặc khoá tài khoản khi phát hiện dấu hiệu vi phạm hoặc gian lận."
+          ]
+        },
+        {
+          "id": "terms-driver-duty",
+          "title": "2. Nghĩa vụ của tài xế",
+          "summary": "",
+          "paragraphs": [
+            "Cung cấp thông tin đúng, đầy đủ và cập nhật khi đăng ký hoặc khi hệ thống yêu cầu.",
+            "Đảm bảo phương tiện, giấy tờ và điều kiện lái xe phù hợp quy định pháp luật.",
+            "Tuân thủ hướng dẫn vận hành, quy tắc ứng xử và các chính sách nội bộ do GoViet247 ban hành."
+          ]
+        },
+        {
+          "id": "terms-platform-rights",
+          "title": "3. Quyền của GoViet247",
+          "summary": "",
+          "paragraphs": [
+            "GoViet247 có quyền cập nhật giao diện, tính năng, chính sách và nội dung ứng dụng theo từng thời điểm.",
+            "GoViet247 có quyền điều tra, đối soát và xử lý các trường hợp bị nghi gian lận, lạm dụng hệ thống hoặc vi phạm nghiêm trọng.",
+            "GoViet247 không chịu trách nhiệm cho các thiệt hại phát sinh từ việc tài xế vi phạm pháp luật hoặc vi phạm điều khoản sử dụng."
+          ]
+        },
+        {
+          "id": "terms-privacy",
+          "title": "4. Bảo mật và dữ liệu",
+          "summary": "",
+          "paragraphs": [
+            "Tài xế đồng ý để GoViet247 xử lý các dữ liệu cần thiết phục vụ đăng nhập, vận hành, hỗ trợ, an toàn và xử lý khiếu nại.",
+            "Tài xế phải bảo mật mật khẩu, mã xác thực và các thông tin đăng nhập liên quan đến tài khoản.",
+            "Không được sao chép, phát tán hoặc sử dụng trái phép dữ liệu khách hàng và dữ liệu hệ thống."
+          ]
+        },
+        {
+          "id": "terms-contact",
+          "title": "5. Liên hệ và hiệu lực",
+          "summary": "",
+          "paragraphs": [
+            "Khi có thắc mắc hoặc cần hỗ trợ, tài xế liên hệ các kênh hỗ trợ chính thức của GoViet247.",
+            "Các điều khoản này có thể được cập nhật, và việc tiếp tục sử dụng ứng dụng được xem là tài xế đồng ý với phiên bản cập nhật."
+          ]
+        }
+      ]
+    }
+  ]
+}

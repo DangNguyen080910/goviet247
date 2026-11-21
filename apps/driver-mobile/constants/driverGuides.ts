@@ -12,7 +12,8 @@ export const DRIVER_GUIDES = [
         "title": "1. Khi nào được xem là nhận chuyến thành công?",
         "paragraphs": [
           "Chuyến chỉ được giao khi hệ thống xác nhận nhận chuyến thành công. Nhìn thấy chuyến, nhận thông báo chuyến mới hoặc đã bấm “Nhận chuyến” không có nghĩa chuyến đã được giữ cho mình.",
-          "Nếu chưa rõ kết quả, kiểm tra Đơn của tôi và làm mới dữ liệu trước khi thử lại. Nếu chuyến đã nằm trong Đơn của tôi, hãy thực hiện quy trình liên hệ ngay sau khi nhận chuyến."
+          "Nếu chưa rõ kết quả, kiểm tra Đơn của tôi và làm mới dữ liệu trước khi thử lại. Nếu chuyến đã nằm trong Đơn của tôi, hãy thực hiện quy trình liên hệ ngay sau khi nhận chuyến.",
+          "Anh/chị nên giữ trạng thái đăng nhập để thuận tiện theo dõi và nhận chuyến. Không tự đăng xuất rồi đăng nhập lại nhiều lần khi không nhận được chuyến; thao tác này không giúp nhận lại chuyến đã có tài xế khác nhận. Hãy kiểm tra mạng, làm mới danh sách và xem Đơn của tôi trước. Chỉ đăng nhập lại khi ứng dụng yêu cầu hoặc theo hướng dẫn của Support GoViet247."
         ]
       },
       {
@@ -55,14 +56,7 @@ export const DRIVER_GUIDES = [
         ]
       },
       {
-        "title": "7. Cần đăng nhập lại hoặc xác nhận hợp đồng",
-        "paragraphs": [
-          "“Phiên đăng nhập đã hết hạn…”: đăng nhập lại, kiểm tra Đơn của tôi rồi mới tiếp tục xem chuyến đang chờ.",
-          "Nếu ứng dụng chuyển tới “Hợp đồng tài xế”, vui lòng đọc và thực hiện bước xác nhận theo hướng dẫn trên màn hình trước khi tiếp tục nhận chuyến."
-        ]
-      },
-      {
-        "title": "8. Khi nào cần liên hệ Support?",
+        "title": "7. Khi nào cần liên hệ Support?",
         "paragraphs": [
           "Nếu thấy “Bạn không thể nhận chuyến này. Vui lòng liên hệ Zalo team support GoViet247 để được hỗ trợ.”, hãy liên hệ Support để được kiểm tra; không cần tự đoán nguyên nhân hoặc bấm nhận liên tục.",
           "Cũng cần báo Support khi ví đã bị trừ nhưng không có chuyến trong Đơn của tôi sau khi làm mới; đã chuyển khoản nạp ví nhưng chưa được cộng; hoặc lỗi lặp lại sau khi đã kiểm tra mạng, làm mới và thực hiện đúng hướng dẫn.",

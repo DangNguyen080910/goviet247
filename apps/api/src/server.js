@@ -84,6 +84,7 @@ const corsOptions = {
 
 // --- Middlewares ---
 app.use("/api/partners/company", express.json({limit:"3mb"}));
+app.use("/api/admin/driver-rules", express.json({ limit: "2mb" }));
 app.use(express.json());
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));

@@ -1,3 +1,4 @@
+import { makeDriverRulesController } from '../controllers/driverRulesController.js';
 import {makeAdminContractController} from '../controllers/adminContractController.js';
 import { makeDriverContractController } from "../controllers/driverContractController.js";
 import { makeCommissionInvoiceController } from "../controllers/commissionInvoiceController.js";
@@ -59,6 +60,13 @@ const router = Router();
 const ctrl = makeAdminController(prisma);
 const driverContract = makeDriverContractController(prisma);
 const managedContracts=makeAdminContractController(prisma);
+const managedRules = makeDriverRulesController(prisma);
+router.get('/driver-rules', requireAdmin, managedRules.adminList);
+router.post('/driver-rules/draft', requireAdmin, managedRules.save);
+router.delete('/driver-rules/draft/:id', requireAdmin, managedRules.discard);
+router.post('/driver-rules/:id/publish', requireAdmin, managedRules.publish);
+router.get('/driver-rules/:id/acknowledgements', requireAdmin, managedRules.evidence);
+
 router.get('/contracts/drivers',requireAdmin,managedContracts.list);
 router.post('/contracts/drivers',requireAdmin,managedContracts.save);
 router.patch('/contracts/drivers/:id',requireAdmin,managedContracts.save);
