@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import { getAdminUser } from "../../utils/adminAuth";
 import TripMoney from "../../components/admin/TripMoney";
@@ -77,24 +78,6 @@ function pickPhone(user) {
   return p || "";
 }
 
-function getStopsFromTrip(trip) {
-  const stops = Array.isArray(trip?.stops) ? trip.stops : [];
-
-  const list = stops
-    .slice()
-    .sort(
-      (a, b) =>
-        Number(a?.seq ?? a?.order ?? 0) - Number(b?.seq ?? b?.order ?? 0),
-    )
-    .map((s) => normalizeDisplayAddress(s?.address))
-    .filter((x) => typeof x === "string" && x.trim().length > 0);
-
-  if (list.length === 0 && trip?.dropoffAddress) {
-    return [normalizeDisplayAddress(trip.dropoffAddress)];
-  }
-
-  return list;
-}
 
 function normalizeText(value) {
   return String(value || "")
@@ -402,7 +385,7 @@ export default function AdminTripsAssigned() {
                   const driverName = getAssignedTripDriverName(t);
                   const driverPhone =
                     t?.driverPhone || pickPhone(t?.driver) || "";
-                  const stops = getStopsFromTrip(t);
+                  const stops = tripDestinationPoints(t);
 
                   return (
                     <TableRow
@@ -452,14 +435,14 @@ export default function AdminTripsAssigned() {
 
                         {stops.length ? (
                           <Box sx={{ mt: 0.5 }}>
-                            {stops.map((addr, idx) => (
+                            {stops.map((point, idx) => (
                               <Typography
                                 key={`${t.id}-stop-${idx}`}
                                 variant="body2"
                                 color="text.secondary"
                                 sx={{ lineHeight: 1.5 }}
                               >
-                                • {addr}
+                                {point.label}: {normalizeDisplayAddress(point.address)}
                               </Typography>
                             ))}
                           </Box>

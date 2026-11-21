@@ -20,6 +20,7 @@ export type FeedbackTripSummary = {
   riderPhone: string | null;
   carType: string | null;
   direction: string | null;
+  stops?: Array<{ seq?: number; address?: string | null }>;
 };
 
 export type FeedbackUserSummary = {
@@ -123,6 +124,7 @@ function mapFeedbackItem(raw: any): FeedbackItem {
             typeof raw.trip.dropoffAddress === "string"
               ? raw.trip.dropoffAddress
               : null,
+          stops: Array.isArray(raw.trip.stops) ? raw.trip.stops : [],
           pickupTime:
             typeof raw.trip.pickupTime === "string" ? raw.trip.pickupTime : null,
           status: typeof raw.trip.status === "string" ? raw.trip.status : null,

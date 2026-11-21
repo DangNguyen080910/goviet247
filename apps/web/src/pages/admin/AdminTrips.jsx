@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import TripMoney from "../../components/admin/TripMoney";
 import TripAudienceDialog from '../../components/admin/TripAudienceDialog';
@@ -53,30 +54,6 @@ function formatFuelPreference(value) {
   };
 
   return map[value] || value || "Không yêu cầu";
-}
-
-/**
- * Lấy stops đúng thứ tự order
- */
-function getStopsFromTrip(t) {
-  const stops = Array.isArray(t?.stops) ? t.stops : [];
-
-  const sorted = stops
-    .slice()
-    .sort(
-      (a, b) =>
-        Number(a?.order ?? a?.seq ?? 0) - Number(b?.order ?? b?.seq ?? 0),
-    );
-
-  const list = sorted
-    .map((s) => normalizeDisplayAddress(s?.address))
-    .filter((x) => typeof x === "string" && x.trim().length > 0);
-
-  if (list.length === 0 && t?.dropoffAddress) {
-    return [normalizeDisplayAddress(t.dropoffAddress)];
-  }
-
-  return list;
 }
 
 // GET /api/admin/trips/unverified-cancelled
@@ -278,7 +255,7 @@ export default function AdminTrips() {
                 const isDriverCancelled =
                   t?.verifiedNote === "Driver huỷ chuyến" ||
                   t?.cancelReason === "Driver huỷ chuyến";
-                const stops = getStopsFromTrip(t);
+                const stops = tripDestinationPoints(t);
 
                 return (
                   <TableRow
@@ -326,15 +303,15 @@ export default function AdminTrips() {
                     </TableCell>
 
                     <TableCell>
-                      {stops.length <= 1 ? (
-                        <div>{stops[0] || "-"}</div>
-                      ) : (
-                        <ul style={{ margin: 0, paddingLeft: 18 }}>
-                          {stops.map((addr, idx) => (
-                            <li key={`${t.id}-stop-${idx}`}>{addr}</li>
+                      {stops.length ? (
+                        <div style={{ display: "grid", gap: 4 }}>
+                          {stops.map((point, idx) => (
+                            <div key={`${t.id}-stop-${idx}`}>
+                              {point.label}: {normalizeDisplayAddress(point.address)}
+                            </div>
                           ))}
-                        </ul>
-                      )}
+                        </div>
+                      ) : "-"}
                     </TableCell>
 
                     <TableCell sx={{ whiteSpace: "nowrap" }}>{formatCarType(t.carType)}</TableCell>

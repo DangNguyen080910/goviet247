@@ -1,3 +1,4 @@
+import { tripDirection } from '../../api/src/shared/tripRoute.js';
 // Path: admin-mobile/services/unassignedTripsApi.ts
 import { adminRequest } from "./adminRequest";
 
@@ -9,6 +10,7 @@ export type UnassignedTripItem = {
   riderPhone: string | null;
   pickupAddress: string;
   dropoffAddress: string;
+  direction?: string;
   carType?: string | null;
   fuelPreference?: string | null;
 
@@ -23,6 +25,7 @@ export type UnassignedTripItem = {
   }>;
   createdAt: string | null;
   pickupTime: string | null;
+  returnTime?: string | null;
   driverReceive?: number | null;
   driverReceiveEstimated?: boolean;
   holidaySurcharge?: any;
@@ -55,6 +58,7 @@ export type UnassignedTripDetail = {
   riderPhone: string | null;
   pickupAddress: string;
   dropoffAddress: string;
+  direction?: string;
   carType?: string | null;
   fuelPreference?: string | null;
 
@@ -151,6 +155,7 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     riderPhone?: unknown;
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
+    direction?: unknown;
     carType?: unknown;
     fuelPreference?: unknown;
     distanceKm?: unknown;
@@ -159,6 +164,7 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     stops?: unknown;
     createdAt?: unknown;
     pickupTime?: unknown;
+    returnTime?: unknown;
     driverReceive?: unknown;
     driverReceiveEstimated?: unknown;
     holidaySurcharge?: any;
@@ -185,6 +191,7 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     riderPhone: typeof item?.riderPhone === "string" ? item.riderPhone : null,
     pickupAddress:
       typeof item?.pickupAddress === "string" ? item.pickupAddress : "",
+    direction: tripDirection(item),
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     carType: typeof item?.carType === "string" ? item.carType : null,
@@ -199,6 +206,7 @@ function mapTripItem(raw: unknown): UnassignedTripItem {
     stops: mapStops(item?.stops),
     createdAt: typeof item?.createdAt === "string" ? item.createdAt : null,
     pickupTime: typeof item?.pickupTime === "string" ? item.pickupTime : null,
+    returnTime: typeof item?.returnTime === "string" ? item.returnTime : null,
     driverReceive: item?.driverReceive == null ? null : Number(item.driverReceive),
     driverReceiveEstimated: Boolean(item?.driverReceiveEstimated),
     holidaySurcharge: item?.holidaySurcharge ?? null,
@@ -256,6 +264,7 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
     } | null;
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
+    direction?: unknown;
     carType?: unknown;
     fuelPreference?: unknown;
     distanceKm?: unknown;
@@ -320,6 +329,7 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
           : null,
     pickupAddress:
       typeof item?.pickupAddress === "string" ? item.pickupAddress : "",
+    direction: tripDirection(item),
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     carType: typeof item?.carType === "string" ? item.carType : null,
@@ -340,7 +350,7 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
     holidaySurcharge: item?.holidaySurcharge ?? null,
     destinationService: item?.destinationService ?? null,
     totalPrice: pickTripPrice(item as Record<string, unknown>),
-    tripType: typeof item?.tripType === "string" ? item.tripType : null,
+    tripType: tripDirection(item),
     status: typeof item?.status === "string" ? item.status : null,
     isVerified,
     verifiedAt: typeof item?.verifiedAt === "string" ? item.verifiedAt : null,

@@ -1837,6 +1837,7 @@ export async function getDriverCancelHistory(req, res) {
         dropoffAddress: trip?.dropoffAddress
           ? maskAddress(trip.dropoffAddress)
           : "",
+        dropoffAlreadyInRoute: dropoffIsRepresented(trip),
         pickupTime: trip?.pickupTime || null,
         carType: trip?.carType || null,
         direction: trip?.direction || null,
@@ -2405,6 +2406,7 @@ export async function getAssignedTrips(req, res) {
         id: true,
         status: true,
         carType: true,
+        direction: true,
         fuelPreference: true,
         distanceKm: true,
         totalDriveMinutes: true,

@@ -3233,7 +3233,8 @@ export function makeAdminController(prisma) {
 
             pickupTime: t.pickupTime,
             returnTime: t.returnTime,
-            tripType: t.tripType,
+            direction: t.direction,
+            tripType: t.direction,
 
             totalPrice: Number(t.totalPrice || 0),
 

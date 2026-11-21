@@ -1,3 +1,4 @@
+import { tripRoutePoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../common/ClearableSearchField.jsx";
 import {isRiderChatEnded,RIDER_CHAT_ENDED_NOTICE} from '../../../../api/src/shared/tripChat.js';
 import {partnerFetch} from './partnerSession';
@@ -58,7 +59,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
     <TableContainer component={Paper}><Table size="small"><TableHead><TableRow>{['Mã chuyến','Giờ đón','Lộ trình','Loại xe','Người tạo / Phụ trách','Thông tin xe','Trạng thái','Giá',''].map((v,i)=><TableCell key={i}>{v}</TableCell>)}</TableRow></TableHead>
       <TableBody>{items.map(t=><TableRow key={t.id} hover>
         <TableCell><Button onClick={()=>onSelect(t.id)}>{t.id.slice(-8).toUpperCase()}</Button></TableCell><TableCell sx={{minWidth:145}}>{time(t.pickupTime)}</TableCell>
-        <TableCell sx={{minWidth:230}}>{t.pickupAddress}<br/>→ {t.dropoffAddress}</TableCell><TableCell>{vehicles[t.carType]}</TableCell>
+        <TableCell sx={{minWidth:230}}>{tripRoutePoints(t).map((point,index)=><Typography key={index} variant="body2">{point.label}: {point.address}</Typography>)}</TableCell><TableCell>{vehicles[t.carType]}</TableCell>
         <TableCell>{t.createdBy?.displayName||'GoViet247'}<br/><strong>{t.assignedTo?.displayName||'—'}</strong></TableCell>
         <TableCell>{t.vehicle ? `${t.vehicle.brand||''} ${t.vehicle.model||''} · ${t.vehicle.plate||''}`:'—'}</TableCell>
         <TableCell><Chip size="small" label={tripStatusLabel(t)} color={t.status==='COMPLETED'?'success':'default'}/></TableCell><TableCell sx={{whiteSpace:'nowrap'}}>{money(t.totalPrice)}</TableCell>
@@ -67,7 +68,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
     <Stack direction="row" spacing={2} alignItems="center"><Typography>{total} chuyến</Typography><Pagination count={Math.max(1,Math.ceil(total/50))} page={page} onChange={(_,n)=>setPage(n)}/></Stack>
     <Dialog open={Boolean(selected&&tripId)} onClose={onClose} fullWidth maxWidth="sm"><DialogTitle>Chi tiết chuyến #{selected?.id.slice(-8).toUpperCase()}</DialogTitle><DialogContent>
       {selected&&<Stack spacing={2} sx={{pt:1}}><Chip label={tripStatusLabel(selected)}/><Typography>{time(selected.pickupTime)} · {vehicles[selected.carType]} · {money(selected.totalPrice)}</Typography>
-        <Typography>Đón: {selected.pickupAddress}</Typography>{selected.stops?.map(s=><Typography key={s.id}>Điểm {s.seq}: {s.address}</Typography>)}
+        {tripRoutePoints(selected).map((point,index)=><Typography key={index}>{point.label}: {point.address}</Typography>)}
         {selected.note&&<Typography>Ghi chú: {selected.note}</Typography>}
         <Typography>Người tạo: {selected.createdBy?.displayName||'GoViet247'}</Typography>
         <TextField select label="Điều phối phụ trách" disabled={busy||!selected.canReassign||['COMPLETED','CANCELLED'].includes(selected.status)} value={selected.assignedTo?.id||''} onChange={e=>assign(e.target.value)}>{members.map(m=><MenuItem key={m.id} value={m.id}>{m.displayName} ({m.username})</MenuItem>)}</TextField>

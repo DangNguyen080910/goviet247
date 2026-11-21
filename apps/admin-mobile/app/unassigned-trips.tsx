@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { useTripChatNavigation } from '../services/useTripChatNavigation';
@@ -82,25 +83,6 @@ function formatDateTime(value: string | null | undefined) {
   return date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
-function buildDestinationList(
-  dropoffAddress: string | null | undefined,
-  stops:
-    | Array<{ address?: string | null } | null | undefined>
-    | null
-    | undefined,
-) {
-  const stopAddresses = (stops || [])
-    .map((stop) => String(stop?.address || "").trim())
-    .filter(Boolean);
-
-  const finalDropoff = String(dropoffAddress || "").trim();
-
-  const destinations = [...stopAddresses, finalDropoff].filter(Boolean);
-
-  return destinations.filter((address, index, array) => {
-    return array.findIndex((item) => item === address) === index;
-  });
-}
 
 function buildSearchText(item: UnassignedTripItem) {
   return [
@@ -415,10 +397,7 @@ export default function UnassignedTripsScreen() {
 
   const renderItem = useCallback(
     ({ item }: { item: UnassignedTripItem }) => {
-      const destinations = buildDestinationList(
-        item.dropoffAddress,
-        item.stops,
-      );
+      const destinations = tripDestinationPoints(item);
 
       return (
         <Pressable
@@ -517,12 +496,12 @@ export default function UnassignedTripsScreen() {
             <Text style={styles.label}>Điểm đến</Text>
 
             {destinations.length > 0 ? (
-              destinations.map((address, index) => (
+              destinations.map((point, index) => (
                 <Text
-                  key={`${index}-${address}`}
+                  key={`${index}-${point.label}`}
                   style={styles.destinationItem}
                 >
-                  Điểm đến {index + 1}: {address}
+                  {point.label}: {point.address}
                 </Text>
               ))
             ) : (
@@ -804,17 +783,14 @@ export default function UnassignedTripsScreen() {
                   <View style={[styles.stopsBox, styles.highlightDetailRow]}>
                     <Text style={styles.stopsTitle}>Điểm đến</Text>
 
-                    {buildDestinationList(detail.dropoffAddress, detail.stops)
+                    {tripDestinationPoints(detail)
                       .length > 0 ? (
-                      buildDestinationList(
-                        detail.dropoffAddress,
-                        detail.stops,
-                      ).map((address, index) => (
+                      tripDestinationPoints(detail).map((point, index) => (
                         <Text
-                          key={`${index}-${address}`}
+                          key={`${index}-${point.label}`}
                           style={styles.stopItem}
                         >
-                          Điểm đến {index + 1}: {address}
+                          {point.label}: {point.address}
                         </Text>
                       ))
                     ) : (

@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import TripMoney from "./TripMoney";
 // Path: goviet247/apps/web/src/components/admin/PendingTripsTable.jsx
 import { useEffect, useMemo, useState } from "react";
@@ -81,26 +82,17 @@ function pickPhone(user) {
 }
 
 function renderStopsCell(trip) {
-  const stops = Array.isArray(trip?.stops) ? trip.stops : [];
-  if (stops.length > 0) {
-    return (
-      <div style={{ display: "grid", gap: 4 }}>
-        {stops
-          .slice()
-          .sort(
-            (a, b) =>
-              Number(a?.order ?? a?.seq ?? 0) - Number(b?.order ?? b?.seq ?? 0),
-          )
-          .map((s, idx) => (
-            <div key={s?.id || idx} style={{ lineHeight: 1.35 }}>
-              • {normalizeDisplayAddress(s?.address) || "-"}
-            </div>
-          ))}
-      </div>
-    );
-  }
-
-  return normalizeDisplayAddress(trip?.dropoffAddress) || "-";
+  const destinations = tripDestinationPoints(trip);
+  if (!destinations.length) return "-";
+  return (
+    <div style={{ display: "grid", gap: 4 }}>
+      {destinations.map((point, index) => (
+        <div key={index} style={{ lineHeight: 1.35 }}>
+          {point.label}: {normalizeDisplayAddress(point.address)}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function normalizeText(value) {

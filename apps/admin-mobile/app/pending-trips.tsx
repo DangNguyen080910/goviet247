@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import MoneyInput from "../../mobile-chat/MoneyInput";
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
@@ -69,25 +70,6 @@ function buildSearchText(item: PendingTripItem) {
     .toLowerCase();
 }
 
-function buildDestinationList(
-  dropoffAddress: string | null | undefined,
-  stops:
-    | Array<{ address?: string | null } | null | undefined>
-    | null
-    | undefined,
-) {
-  const stopAddresses = (stops || [])
-    .map((stop) => String(stop?.address || "").trim())
-    .filter(Boolean);
-
-  const finalDropoff = String(dropoffAddress || "").trim();
-
-  const destinations = [...stopAddresses, finalDropoff].filter(Boolean);
-
-  return destinations.filter((address, index, array) => {
-    return array.findIndex((item) => item === address) === index;
-  });
-}
 
 function getTripTypeLabel(
   tripType: string | null | undefined,
@@ -535,10 +517,7 @@ export default function PendingTripsScreen() {
 
   const renderItem = useCallback(
     ({ item }: { item: PendingTripItem }) => {
-      const destinations = buildDestinationList(
-        item.dropoffAddress,
-        item.stops,
-      );
+      const destinations = tripDestinationPoints(item);
 
       return (
         <Pressable
@@ -629,12 +608,12 @@ export default function PendingTripsScreen() {
             <Text style={styles.label}>Điểm đến</Text>
 
             {destinations.length > 0 ? (
-              destinations.map((address, index) => (
+              destinations.map((point, index) => (
                 <Text
-                  key={`${index}-${address}`}
+                  key={`${index}-${point.label}`}
                   style={styles.destinationItem}
                 >
-                  Điểm đến {index + 1}: {address}
+                  {point.label}: {point.address}
                 </Text>
               ))
             ) : (
@@ -918,17 +897,14 @@ export default function PendingTripsScreen() {
                   <View style={[styles.stopListWrap, styles.highlightDetailRow]}>
                     <Text style={styles.detailLabel}>Điểm đến</Text>
 
-                    {buildDestinationList(detail.dropoffAddress, detail.stops)
+                    {tripDestinationPoints(detail)
                       .length > 0 ? (
-                      buildDestinationList(
-                        detail.dropoffAddress,
-                        detail.stops,
-                      ).map((address, index) => (
+                      tripDestinationPoints(detail).map((point, index) => (
                         <Text
-                          key={`${index}-${address}`}
+                          key={`${index}-${point.label}`}
                           style={styles.stopItem}
                         >
-                          Điểm đến {index + 1}: {address}
+                          {point.label}: {point.address}
                         </Text>
                       ))
                     ) : (

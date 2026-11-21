@@ -1,3 +1,4 @@
+import { tripRoutePoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminFeedback.jsx
 import React from "react";
@@ -1088,23 +1089,12 @@ export default function AdminFeedback() {
                       />
                     </Grid>
 
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="Điểm đón"
-                        value={selectedFeedback.trip.pickupAddress || ""}
-                        InputProps={{ readOnly: true }}
-                      />
-                    </Grid>
-
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="Điểm trả"
-                        value={selectedFeedback.trip.dropoffAddress || ""}
-                        InputProps={{ readOnly: true }}
-                      />
-                    </Grid>
+                    {tripRoutePoints(selectedFeedback.trip).map((point, index) => (
+                      <Grid item xs={12} key={index}>
+                        <TextField fullWidth multiline label={point.label} value={point.address}
+                          InputProps={{ readOnly: true }} />
+                      </Grid>
+                    ))}
                   </Grid>
                 </Paper>
               ) : null}

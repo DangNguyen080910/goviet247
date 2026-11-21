@@ -1,3 +1,4 @@
+import { tripRoutePoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 // Path: goviet247/apps/admin-mobile/app/feedback.tsx
 import { router, useFocusEffect } from "expo-router";
@@ -879,16 +880,9 @@ export default function FeedbackScreen() {
                     />
                   </View>
 
-                  <DetailField
-                    label="Điểm đón"
-                    value={selectedFeedback.trip.pickupAddress || "--"}
-                    multiline
-                  />
-                  <DetailField
-                    label="Điểm trả"
-                    value={selectedFeedback.trip.dropoffAddress || "--"}
-                    multiline
-                  />
+                  {tripRoutePoints(selectedFeedback.trip).map((point: { label: string; address: string }, index: number) => (
+                    <DetailField key={index} label={point.label} value={point.address} multiline />
+                  ))}
                 </View>
               ) : null}
 

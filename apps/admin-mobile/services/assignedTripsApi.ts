@@ -1,3 +1,4 @@
+import { tripDirection } from '../../api/src/shared/tripRoute.js';
 // Path: goviet247/apps/admin-mobile/services/assignedTripsApi.ts
 import { adminRequest } from "./adminRequest";
 
@@ -20,6 +21,7 @@ export type AssignedTripItem = {
 
   pickupAddress: string;
   dropoffAddress: string;
+  direction?: string;
   pickupTime: string | null;
   updatedAt: string | null;
   returnTime: string | null;
@@ -56,6 +58,7 @@ export type AssignedTripDetail = {
 
   pickupAddress: string;
   dropoffAddress: string;
+  direction?: string;
   pickupTime: string | null;
   returnTime: string | null;
   createdAt: string | null;
@@ -134,6 +137,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
 
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
+    direction?: unknown;
     pickupTime?: unknown;
     driverReceive?: unknown;
     driverReceiveEstimated?: unknown;
@@ -185,6 +189,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
         : toNumber(item.estimatedDurationMinutes, 0),
     pickupAddress:
       typeof item?.pickupAddress === "string" ? item.pickupAddress : "",
+    direction: tripDirection(item),
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     pickupTime:
@@ -239,6 +244,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
 
     pickupAddress?: unknown;
     dropoffAddress?: unknown;
+    direction?: unknown;
     pickupTime?: unknown;
     returnTime?: unknown;
     createdAt?: unknown;
@@ -311,6 +317,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
         : toNumber(item.estimatedDurationMinutes, 0),
     pickupAddress:
       typeof item?.pickupAddress === "string" ? item.pickupAddress : "",
+    direction: tripDirection(item),
     dropoffAddress:
       typeof item?.dropoffAddress === "string" ? item.dropoffAddress : "",
     pickupTime: typeof item?.pickupTime === "string" ? item.pickupTime : null,
@@ -341,7 +348,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
     holidaySurcharge: item?.holidaySurcharge ?? null,
     destinationService: item?.destinationService ?? null,
     totalPrice: item?.totalPrice == null ? null : toNumber(item?.totalPrice, 0),
-    tripType: typeof item?.tripType === "string" ? item.tripType : null,
+    tripType: tripDirection(item),
     note:
       typeof item?.note === "string"
         ? item.note

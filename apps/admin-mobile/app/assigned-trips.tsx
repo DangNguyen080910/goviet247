@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { getAdminUser } from "../services/storage";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
@@ -203,25 +204,6 @@ function getAssignedTripOriginLabel(cancelReason?: string | null) {
   return "Mới";
 }
 
-function buildDestinationList(
-  dropoffAddress: string | null | undefined,
-  stops:
-    | Array<{ address?: string | null } | null | undefined>
-    | null
-    | undefined,
-) {
-  const stopAddresses = (stops || [])
-    .map((stop) => String(stop?.address || "").trim())
-    .filter(Boolean);
-
-  const finalDropoff = String(dropoffAddress || "").trim();
-
-  const destinations = [...stopAddresses, finalDropoff].filter(Boolean);
-
-  return destinations.filter((address, index, array) => {
-    return array.findIndex((item) => item === address) === index;
-  });
-}
 
 function getNextActionConfig(tab: AssignedTripsTabStatus) {
   switch (tab) {
@@ -795,15 +777,15 @@ export default function AssignedTripsScreen() {
                 <View style={styles.infoBlock}>
                   <Text style={styles.label}>Điểm đến</Text>
 
-                  {buildDestinationList(item.dropoffAddress, item.stops)
+                  {tripDestinationPoints(item)
                     .length > 0 ? (
-                    buildDestinationList(item.dropoffAddress, item.stops).map(
-                      (address, index) => (
+                    tripDestinationPoints(item).map(
+                      (point, index) => (
                         <Text
-                          key={`${index}-${address}`}
+                          key={`${index}-${point.label}`}
                           style={styles.destinationItem}
                         >
-                          Điểm đến {index + 1}: {address}
+                          {point.label}: {point.address}
                         </Text>
                       ),
                     )
@@ -1050,19 +1032,13 @@ export default function AssignedTripsScreen() {
                 <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
                   <Text style={styles.label}>Điểm đến</Text>
 
-                  {buildDestinationList(
-                    selectedTripDetail?.dropoffAddress,
-                    selectedTripDetail?.stops,
-                  ).length > 0 ? (
-                    buildDestinationList(
-                      selectedTripDetail?.dropoffAddress,
-                      selectedTripDetail?.stops,
-                    ).map((address, index) => (
+                  {tripDestinationPoints(selectedTripDetail).length > 0 ? (
+                    tripDestinationPoints(selectedTripDetail).map((point, index) => (
                       <Text
-                        key={`${index}-${address}`}
+                        key={`${index}-${point.label}`}
                         style={styles.destinationItem}
                       >
-                        Điểm đến {index + 1}: {address}
+                        {point.label}: {point.address}
                       </Text>
                     ))
                   ) : (

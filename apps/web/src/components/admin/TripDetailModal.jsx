@@ -1,3 +1,4 @@
+import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import MoneyTextField from '../common/MoneyTextField';
 import {flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
 import { TripChatButton } from "../TripChatHub";
@@ -226,6 +227,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
   if (!open || !tripId) return null;
 
   const stops = getStops(detail);
+  const destinations = tripDestinationPoints(detail);
   const driverPhone = getDriverPhone(detail);
   const driverProfile = detail?.driver?.driverProfile || null;
 
@@ -762,14 +764,14 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
             </Section>
 
             <Section title="Các điểm đến" highlight>
-              {stops?.length ? (
+              {destinations.length ? (
                 <div style={{ display: "grid", gap: 8 }}>
-                  {stops.map((addr, idx) => (
+                  {destinations.map((point, idx) => (
                     <div key={`stop-${idx}`} style={stopRow}>
                       <div style={{ width: 110, opacity: 0.75 }}>
-                        Điểm đến {idx + 1}
+                        {point.label}
                       </div>
-                      <div style={{ flex: 1 }}>{addr}</div>
+                      <div style={{ flex: 1 }}>{normalizeDisplayAddress(point.address)}</div>
                     </div>
                   ))}
                 </div>
