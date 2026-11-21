@@ -1,6 +1,89 @@
-// Archived from notifications visibly enabled in the screenshots supplied on 29/10/2026.
-// Duplicate province notice included once; disabled and unconfirmed notices excluded.
+// Driver guidance, including notices archived from the screenshots supplied on 29/10/2026.
+// Current acceptance and contact guidance is maintained here alongside those notices.
+import { CONTACT_AFTER_ACCEPT, CONTACT_AFTER_ACCEPT_PARAGRAPHS } from "./tripAcceptanceRules";
+
 export const DRIVER_GUIDES = [
+  {
+    "id": "accept-troubleshooting",
+    "title": "Không nhận được chuyến: thông báo và cách xử lý",
+    "summary": "Tra cứu thông báo, tự xử lý và biết khi nào cần liên hệ Support.",
+    "sections": [
+      {
+        "title": "1. Khi nào được xem là nhận chuyến thành công?",
+        "paragraphs": [
+          "Chuyến chỉ được giao khi hệ thống xác nhận nhận chuyến thành công. Nhìn thấy chuyến, nhận thông báo chuyến mới hoặc đã bấm “Nhận chuyến” không có nghĩa chuyến đã được giữ cho mình.",
+          "Nếu chưa rõ kết quả, kiểm tra Đơn của tôi và làm mới dữ liệu trước khi thử lại. Nếu chuyến đã nằm trong Đơn của tôi, hãy thực hiện quy trình liên hệ ngay sau khi nhận chuyến."
+        ]
+      },
+      {
+        "title": "2. Tài xế khác đã nhận, chuyến bị huỷ hoặc không còn mở nhận",
+        "paragraphs": [
+          "“Chuyến này đã được tài xế khác nhận trước…”: yêu cầu hợp lệ của tài xế khác đã được hệ thống ghi nhận trước. Anh/chị chọn chuyến khác; không cần nhắn Support chỉ vì bấm nhận không kịp.",
+          "“Chuyến này đã bị huỷ…”, “Chuyến này không còn trong danh sách…” hoặc “Chuyến này hiện không còn mở nhận…”: làm mới danh sách và chọn chuyến khác. Chuyến không còn sẵn sàng để nhận.",
+          "“Chuyến này hiện không còn mở nhận cho tài khoản của anh/chị…”: phạm vi tài xế được nhận chuyến đã thay đổi. Tải lại danh sách hoặc chọn chuyến khác.",
+          "“Chuyến này chưa được Admin duyệt mở nhận…”: chờ danh sách cập nhật hoặc chọn chuyến khác. Không cần bấm liên tục hay nhắn Support yêu cầu mở lại chuyến.",
+          "Nếu chuyến tự biến mất, kiểm tra Đơn của tôi trước. Nếu không có, làm mới danh sách; chuyến có thể đã được nhận, bị huỷ hoặc ngừng mở nhận. Không cần nhắn Support để xin lại chuyến chỉ vì chuyến đã hết."
+        ]
+      },
+      {
+        "title": "3. Chưa hết đếm ngược hoặc đang xử lý",
+        "paragraphs": [
+          "“Nhận sau …s”, “Mở nhận chuyến sau …s” hoặc “Chuyến chưa mở nhận…”: chờ hết đếm ngược rồi mới bấm nhận. Nút chưa mở là trạng thái bình thường, không cần báo Support.",
+          "“Đang nhận…”: ứng dụng đang xử lý yêu cầu, vui lòng chờ và không bấm liên tục. Nếu chờ lâu hoặc mất mạng, kiểm tra Đơn của tôi trước khi thử lại."
+        ]
+      },
+      {
+        "title": "4. Đã nhận chuyến hoặc đủ số chuyến đang nhận",
+        "paragraphs": [
+          "“Anh/chị đã nhận chuyến này…”: vào Đơn của tôi để xem và liên hệ xác nhận; không cần bấm nhận lại.",
+          "“Anh/chị đang có đủ … chuyến chưa hoàn thành…”: đã đạt giới hạn số chuyến đang nhận. Chỉ cập nhật hoàn thành khi chuyến thực tế đã hoàn thành; không đánh dấu hoàn thành sớm để nhận thêm chuyến."
+        ]
+      },
+      {
+        "title": "5. Số dư ví không đủ",
+        "paragraphs": [
+          "“Ví còn …đ, chuyến này cần …đ. Anh/chị cần nạp thêm …đ…” hoặc “Số dư ví không đủ…”: nạp đủ số tiền còn thiếu theo hướng dẫn tại Ví tài xế, chờ tiền được cộng vào ví rồi kiểm tra chuyến còn mở nhận hay không.",
+          "Chuyển khoản chưa đồng nghĩa tiền đã được cộng vào ví, và nạp tiền không giữ chỗ cho chuyến. Nếu đã chuyển khoản nhưng ví chưa cập nhật, gửi biên lai cho Support để được kiểm tra."
+        ]
+      },
+      {
+        "title": "6. Chuyến vừa thay đổi hoặc chưa xác nhận được kết quả",
+        "paragraphs": [
+          "“Chuyến vừa thay đổi…”: kiểm tra Đơn của tôi và tải lại danh sách trước khi thử lại. Chỉ thử nhận lại khi chuyến vẫn mở nhận và chưa nằm trong Đơn của tôi.",
+          "“Chưa xác nhận được kết quả nhận chuyến…”: có thể kết nối mạng bị gián đoạn hoặc hết thời gian chờ. Kiểm tra mạng rồi làm mới Đơn của tôi trước khi bấm lại; thông báo này chưa khẳng định nhận chuyến thất bại.",
+          "Nếu ví đã bị trừ nhưng không thấy chuyến trong Đơn của tôi sau khi làm mới, liên hệ Support ngay để kiểm tra, không tiếp tục bấm nhận nhiều lần."
+        ]
+      },
+      {
+        "title": "7. Cần đăng nhập lại hoặc xác nhận hợp đồng",
+        "paragraphs": [
+          "“Phiên đăng nhập đã hết hạn…”: đăng nhập lại, kiểm tra Đơn của tôi rồi mới tiếp tục xem chuyến đang chờ.",
+          "Nếu ứng dụng chuyển tới “Hợp đồng tài xế”, vui lòng đọc và thực hiện bước xác nhận theo hướng dẫn trên màn hình trước khi tiếp tục nhận chuyến."
+        ]
+      },
+      {
+        "title": "8. Khi nào cần liên hệ Support?",
+        "paragraphs": [
+          "Nếu thấy “Bạn không thể nhận chuyến này. Vui lòng liên hệ Zalo team support GoViet247 để được hỗ trợ.”, hãy liên hệ Support để được kiểm tra; không cần tự đoán nguyên nhân hoặc bấm nhận liên tục.",
+          "Cũng cần báo Support khi ví đã bị trừ nhưng không có chuyến trong Đơn của tôi sau khi làm mới; đã chuyển khoản nạp ví nhưng chưa được cộng; hoặc lỗi lặp lại sau khi đã kiểm tra mạng, làm mới và thực hiện đúng hướng dẫn.",
+          "Nếu đang dùng app mà thấy thông báo “Chưa tìm thấy hồ sơ tài xế…” hoặc “Hồ sơ tài xế chưa ở trạng thái được phép nhận chuyến…”, kiểm tra Hồ sơ tài xế và liên hệ Support nếu thông tin không đúng với tình trạng tài khoản của mình.",
+          "Khi báo lỗi, gửi mã chuyến (nếu có), số điện thoại đăng ký, ảnh chụp thông báo và thời điểm xảy ra. Với vấn đề nạp ví, gửi thêm biên lai chuyển khoản. Có thể nhắn hỗ trợ trong app hoặc Zalo GoViet247: 0326 184 628.",
+          "Không cần nhắn Support chỉ vì tài xế khác đã nhận trước, chuyến đã bị huỷ, hết mở nhận hoặc còn đếm ngược. Nếu có dấu hiệu bất thường hay lỗi kéo dài thì vẫn nên báo để được kiểm tra."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "contact-within-15-minutes",
+    "title": "Nhận chuyến xong: liên hệ ngay, chậm nhất 15 phút",
+    "summary": "Chuyến đặt trước vẫn cần xác nhận ngay. Có sự cố phải báo Support ngay.",
+    "sections": [
+      {
+        "title": "Xác nhận sớm để khách yên tâm đã có xe",
+        "paragraphs": CONTACT_AFTER_ACCEPT_PARAGRAPHS
+      }
+    ]
+  },
   {
     "id": "accept-success",
     "title": "Tăng khả năng nhận chuyến thành công",
@@ -15,7 +98,7 @@ export const DRIVER_GUIDES = [
           "Ứng dụng GoViet247: Luôn cập nhật phiên bản mới nhất, đảm bảo ứng dụng có kết nối mạng ổn định và hạn chế bật chế độ tiết kiệm pin khi đang chờ chuyến.",
           "Chủ động chờ chuyến: Khi có thông báo chuyến mới, anh em mở sẵn ứng dụng và theo dõi thời gian để thao tác nhanh nhất có thể.",
           "Hệ thống ưu tiên tài xế có yêu cầu nhận chuyến hợp lệ được ghi nhận thành công trước. Vì vậy, chỉ cần chậm hơn tài xế khác một chút là chuyến có thể đã được nhận rồi.",
-          "Nếu vẫn thường xuyên gặp tình trạng bấm nhận chuyến không thành công, anh/chị báo lại để GoViet247 hỗ trợ kiểm tra thêm."
+          "Nếu không nhận được chuyến, xem mục “Không nhận được chuyến: thông báo và cách xử lý” để biết cách xử lý và khi nào cần liên hệ Support. Tài xế khác nhận trước hoặc chuyến đã hết mở nhận là trạng thái bình thường."
         ]
       }
     ]
@@ -99,7 +182,9 @@ export const DRIVER_GUIDES = [
         "paragraphs": [
           "Sau khi hồ sơ tài xế được duyệt, các chuyến mới sẽ tự động hiển thị tại mục “Chuyến đang chờ” trên ứng dụng khi có khách đặt chuyến phù hợp.",
           "Trước khi bấm “Nhận chuyến”, vui lòng đọc kỹ: điểm đón và điểm trả; ngày giờ đón, giờ về nếu là chuyến khứ hồi; loại xe khách yêu cầu; giá chuyến; ghi chú và yêu cầu của khách; chuyến có phù hợp, thuận tiện với cung đường của mình hay không.",
-          "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Sau khi nhận thành công, vào Đơn của tôi để gọi hoặc chat trong app. Với chuyến khách đặt trực tiếp, tài xế còn có thể sao chép số và gọi trực tiếp. Với chuyến đối tác, số điện thoại điều phối viên được ẩn; vui lòng dùng “Chat / Gọi điều phối viên” trong app GoViet247 để bảo mật thông tin khách hàng của đối tác.",
+          "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Sau khi nhận thành công, vào Đơn của tôi để gọi hoặc chat trong app. Xem mục “Nhận chuyến xong: liên hệ ngay, chậm nhất 15 phút” để thực hiện đúng quy trình xác nhận và báo Support khi có sự cố.",
+          CONTACT_AFTER_ACCEPT.deadline,
+          CONTACT_AFTER_ACCEPT.channels,
           "GoViet247 là ứng dụng kết nối xe tiện chuyến. Số lượng chuyến phụ thuộc vào nhu cầu đặt xe của khách theo từng thời điểm và khu vực; hệ thống không thể cam kết tài xế sẽ nhận được số lượng chuyến cố định."
         ]
       },

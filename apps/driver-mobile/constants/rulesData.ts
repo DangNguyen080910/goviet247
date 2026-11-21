@@ -1,5 +1,7 @@
 // Path: goviet247/apps/driver-mobile/constants/rulesData.ts
 
+import { CONTACT_AFTER_ACCEPT, CONTACT_AFTER_ACCEPT_PARAGRAPHS } from "./tripAcceptanceRules";
+
 export type RuleSeverity = "INFO" | "WARNING" | "DANGER";
 
 export type RuleBullet = {
@@ -40,7 +42,7 @@ export const RULE_MENU_ITEMS: RuleMenuItem[] = [
   {
     key: "GUIDES",
     title: "Hướng dẫn nhận chuyến & lưu ý",
-    description: "Nhận chuyến, ví tài xế, giá trọn gói, chuyến nhiều ngày và các lưu ý hoạt động.",
+    description: "Lỗi nhận chuyến và cách xử lý, liên hệ trong 15 phút, ví tài xế và các lưu ý hoạt động.",
   },
   {
     key: "OPERATION",
@@ -138,9 +140,10 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
             text: "Đọc kỹ toàn bộ nội dung đơn hàng, đặc biệt phần ghi chú.",
             severity: "WARNING",
           },
-          {
-            text: "Sau khi nhận chuyến, liên hệ sớm để xác nhận giờ và điểm đón. Với chuyến đối tác, chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác. Với chuyến khách đặt trực tiếp, anh/chị có thể chat, gọi trên app hoặc gọi bằng số khách hiển thị trong Đơn của tôi.",
-          },
+          ...CONTACT_AFTER_ACCEPT_PARAGRAPHS.map((text) => ({
+            text,
+            severity: "WARNING" as const,
+          })),
           {
             text: "Nếu có điểm chưa rõ hoặc phát sinh thay đổi lớn, báo admin trước khi thực hiện.",
           },
@@ -278,11 +281,15 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
         title: "Không chủ động liên hệ khách",
         bullets: [
           {
-            text: "Chủ động liên hệ sau khi nhận chuyến bằng cách phù hợp. Nếu chưa liên hệ được với khách hoặc điều phối viên, vui lòng báo GoViet247 và gửi mã chuyến để được hỗ trợ.",
+            text: CONTACT_AFTER_ACCEPT.deadline,
             severity: "WARNING",
           },
           {
-            text: "Không báo admin khi không liên hệ được khách hoặc có thay đổi bất thường.",
+            text: CONTACT_AFTER_ACCEPT.incident,
+            severity: "WARNING",
+          },
+          {
+            text: CONTACT_AFTER_ACCEPT.escalation,
             severity: "WARNING",
           },
         ],
@@ -383,8 +390,16 @@ export const OPERATION_DOCUMENT: RuleDocument = {
       ],
     },
     {
+      id: "operation-contact",
+      title: "3. Liên hệ ngay sau khi nhận chuyến — chậm nhất 15 phút",
+      bullets: CONTACT_AFTER_ACCEPT_PARAGRAPHS.map((text) => ({
+        text,
+        severity: "WARNING" as const,
+      })),
+    },
+    {
       id: "operation-wallet",
-      title: "3. Ví tài xế, thanh toán và rút tiền",
+      title: "4. Ví tài xế, thanh toán và rút tiền",
       bullets: [
         {
           text: "Tài xế cần duy trì số dư ví theo quy định để hệ thống cho phép nhận chuyến.",
@@ -400,7 +415,7 @@ export const OPERATION_DOCUMENT: RuleDocument = {
     },
     {
       id: "operation-cancel",
-      title: "4. Huỷ chuyến và hỗ trợ",
+      title: "5. Huỷ chuyến và hỗ trợ",
       bullets: [
         {
           text: "Khi cần huỷ chuyến hoặc gặp tình huống bất khả kháng, tài xế phải báo admin sớm nhất có thể.",
@@ -418,7 +433,7 @@ export const OPERATION_DOCUMENT: RuleDocument = {
     },
     {
       id: "operation-complaint",
-      title: "5. Khiếu nại, tranh chấp và bảo mật",
+      title: "6. Khiếu nại, tranh chấp và bảo mật",
       bullets: [
         {
           text: "Mọi phản hồi, khiếu nại hoặc tranh chấp liên quan đến chuyến đi có thể được GoViet247 tiếp nhận và xử lý theo quy trình nội bộ.",
