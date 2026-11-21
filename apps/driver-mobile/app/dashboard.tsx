@@ -1328,7 +1328,11 @@ export default function DashboardScreen() {
               <Text style={styles.audienceBadgeText}>Mở nhận: {trip.audienceLabel}</Text>
             </View>
           )}
-          <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Khách đối tác" : ""}</Text>
+          <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Chuyến đối tác" : ""}</Text>
+          {trip.isPartnerTrip && <View style={{padding:12,backgroundColor:'#e6f4f1',borderRadius:8,marginBottom:8}}>
+            <Text style={{fontWeight:'700'}}>Chuyến của đối tác</Text>
+            <Text>Sau khi nhận chuyến, vui lòng chat hoặc gọi điều phối viên trong app GoViet247 để bảo mật thông tin khách hàng của đối tác.</Text>
+          </View>}
           <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>
@@ -1514,13 +1518,13 @@ export default function DashboardScreen() {
             </Text>
           </View>
 
-          <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Khách đối tác" : ""}</Text>
+          <Text style={styles.tripTitle}>{getTripTitle(trip)}{trip.isPartnerTrip ? " · Chuyến đối tác" : ""}</Text>
           {trip.isPartnerTrip && <View style={{padding:12,backgroundColor:'#e6f4f1',borderRadius:8,marginBottom:8}}>
-            <Text style={{fontWeight:'700'}}>Khách đối tác · {trip.partnerCompanyName}</Text>
+            <Text style={{fontWeight:'700'}}>Chuyến đối tác · {trip.partnerCompanyName}</Text>
             <Text>{trip.partnerGreeting}</Text>
-            <Text>Chỉ trao đổi với điều phối viên qua chat GoViet247. Điều phối viên liên hệ khách.</Text>
+            <Text>Đây là chuyến của đối tác. Vui lòng chat hoặc gọi trực tiếp với điều phối viên trong app GoViet247 để xác nhận chuyến và bảo mật thông tin khách hàng của đối tác. Điều phối viên sẽ liên hệ khách.</Text>
           </View>}
-          <TripChatButton tripId={trip.id} label={trip.isPartnerTrip ? "Chat điều phối viên / GoViet247" : "Liên hệ khách / GoViet247"} prominent />
+          <TripChatButton tripId={trip.id} label={trip.isPartnerTrip ? "Chat / Gọi điều phối viên" : "Liên hệ khách / GoViet247"} prominent />
           <ServiceSummary snapshot={trip.destinationService} />
 
           <View style={styles.fuelBadge}>
@@ -1630,10 +1634,10 @@ export default function DashboardScreen() {
               {trip.isPartnerTrip ? "Tên điều phối viên" : "Tên khách hàng"}: {contactName}
             </Text>
           </View>
-          {!!phoneCallUrl(trip.riderPhone) && <>
-            {renderCopyableTripRow("☎", trip.isPartnerTrip ? "Số điều phối viên" : "Số điện thoại khách", trip.riderPhone)}
+          {!trip.isPartnerTrip && !!phoneCallUrl(trip.riderPhone) && <>
+            {renderCopyableTripRow("☎", "Số điện thoại khách", trip.riderPhone)}
             <TouchableOpacity accessibilityRole="button" onPress={() => void callCustomer(trip.riderPhone)}>
-              <Text style={styles.incomeToggleButtonText}>{trip.isPartnerTrip ? "Gọi trực tiếp điều phối viên" : "Gọi trực tiếp khách"}</Text>
+              <Text style={styles.incomeToggleButtonText}>Gọi trực tiếp khách</Text>
             </TouchableOpacity>
           </>}
           {renderCopyableTripRow("📍", "Điểm đón", trip.pickupAddress)}

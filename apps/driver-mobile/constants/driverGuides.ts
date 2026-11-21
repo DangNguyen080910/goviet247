@@ -99,7 +99,7 @@ export const DRIVER_GUIDES = [
         "paragraphs": [
           "Sau khi hồ sơ tài xế được duyệt, các chuyến mới sẽ tự động hiển thị tại mục “Chuyến đang chờ” trên ứng dụng khi có khách đặt chuyến phù hợp.",
           "Trước khi bấm “Nhận chuyến”, vui lòng đọc kỹ: điểm đón và điểm trả; ngày giờ đón, giờ về nếu là chuyến khứ hồi; loại xe khách yêu cầu; giá chuyến; ghi chú và yêu cầu của khách; chuyến có phù hợp, thuận tiện với cung đường của mình hay không.",
-          "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Sau khi nhận thành công, vào Đơn của tôi để gọi hoặc chat trong app, hoặc sao chép số và gọi trực tiếp. Chuyến đối tác hiển thị số điều phối viên phụ trách.",
+          "Nếu thấy phù hợp, tài xế bấm “Nhận chuyến”. Sau khi nhận thành công, vào Đơn của tôi để gọi hoặc chat trong app. Với chuyến khách đặt trực tiếp, tài xế còn có thể sao chép số và gọi trực tiếp. Với chuyến đối tác, số điện thoại điều phối viên được ẩn; vui lòng dùng “Chat / Gọi điều phối viên” trong app GoViet247 để bảo mật thông tin khách hàng của đối tác.",
           "GoViet247 là ứng dụng kết nối xe tiện chuyến. Số lượng chuyến phụ thuộc vào nhu cầu đặt xe của khách theo từng thời điểm và khu vực; hệ thống không thể cam kết tài xế sẽ nhận được số lượng chuyến cố định."
         ]
       },
@@ -211,7 +211,7 @@ export const DRIVER_GUIDES = [
       {
         "title": "3. Không kéo khách ra ngoài hệ thống",
         "paragraphs": [
-          "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, tài xế liên hệ điều phối viên phụ trách. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.",
+          "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, số điện thoại điều phối viên được ẩn; tài xế chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.",
           "Khi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm."
         ]
       },

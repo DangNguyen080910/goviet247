@@ -8,7 +8,7 @@ export const ACCEPTANCE_CHAT_TEXT = {
   RIDER: 'Tài xế đã nhận chuyến. Mở Liên hệ chuyến để nhắn tin xác nhận lịch đón. Người trực tiếp đi có thể bấm Gọi tài xế để trao đổi qua Internet.',
   PARTNER: 'Chuyến của công ty đã có tài xế nhận. Mở Liên hệ chuyến để xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên phụ trách có thể nhắn tin hoặc bấm Gọi tài xế.',
   DRIVER_RIDER: 'Bạn đã nhận chuyến thành công. Mở Liên hệ chuyến để nhắn tin xác nhận lịch đón với khách; dùng nút Gọi khách khi cần trao đổi với người trực tiếp đi.',
-  DRIVER_PARTNER: 'Bạn đã nhận chuyến đối tác. Mở Liên hệ chuyến để nhắn tin hoặc bấm Gọi điều phối, xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên sẽ liên hệ khách.',
+  DRIVER_PARTNER: 'Bạn đã nhận chuyến của đối tác. Để bảo mật thông tin khách hàng của đối tác, vui lòng liên hệ trực tiếp với điều phối viên qua chat hoặc nút Gọi điều phối trong app GoViet247 để xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên sẽ liên hệ khách.',
 };
 
 // Called only inside the successful acceptance transaction, while the trip row is locked.

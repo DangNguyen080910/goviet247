@@ -76,7 +76,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
             severity: "DANGER",
           },
           {
-            text: "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, tài xế liên hệ điều phối viên phụ trách. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.\n\nKhi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm.",
+            text: "Để phục vụ chuyến đi, tài xế và khách có thể liên hệ qua ứng dụng GoViet247 hoặc gọi trực tiếp bằng số điện thoại hiển thị trên chuyến. Với chuyến đối tác, số điện thoại điều phối viên được ẩn; tài xế chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác. Chỉ sử dụng thông tin liên hệ cho chuyến đã nhận và không dùng để mời chào hoặc nhận chuyến ngoài hệ thống. Khi cần hỗ trợ, vui lòng liên hệ GoViet247.\n\nKhi có phản ánh vi phạm, GoViet247 sẽ kiểm tra thông tin và tiếp nhận giải trình của tài xế trước khi quyết định xử lý. Tùy tính chất, mức độ và số lần vi phạm, biện pháp xử lý có thể gồm nhắc nhở, tạm hạn chế nhận chuyến hoặc khóa tài khoản đối với trường hợp nghiêm trọng hay tái phạm.",
             severity: "DANGER",
           },
           {
@@ -139,7 +139,7 @@ export const BEHAVIOR_RULE_GROUPS: AccordionRuleGroup[] = [
             severity: "WARNING",
           },
           {
-            text: "Sau khi nhận chuyến, liên hệ sớm với khách hoặc điều phối viên phụ trách để xác nhận giờ và điểm đón. Anh/chị có thể gọi hoặc chat trên app, hoặc gọi trực tiếp bằng số hiển thị trong Đơn của tôi.",
+            text: "Sau khi nhận chuyến, liên hệ sớm để xác nhận giờ và điểm đón. Với chuyến đối tác, chỉ liên hệ điều phối viên phụ trách qua chat hoặc gọi trong app GoViet247 để bảo mật thông tin khách hàng của đối tác. Với chuyến khách đặt trực tiếp, anh/chị có thể chat, gọi trên app hoặc gọi bằng số khách hiển thị trong Đơn của tôi.",
           },
           {
             text: "Nếu có điểm chưa rõ hoặc phát sinh thay đổi lớn, báo admin trước khi thực hiện.",

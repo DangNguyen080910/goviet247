@@ -2,6 +2,7 @@ import { parseAudienceRegions, matchesAudienceFilters } from '../shared/audience
 import { audienceRegionsForApproval, tripAudienceLabel } from '../shared/tripAudienceLabel.js';
 import {assertCurrentContractForNewTrip} from '../services/driverContract.js';
 import { dropoffIsRepresented } from '../shared/tripRoute.js';
+import { containsContactNumber } from '../shared/tripChat.js';
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
 import { createAcceptanceChatNotices } from "../services/tripAcceptanceChat.js";
@@ -293,6 +294,8 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
   const {partnerCompanyId, partnerCreatedById, partnerAssignedToId, partnerCompany, partnerCreatedBy, partnerAssignedTo, partnerCompanyName, partnerGreeting, partnerManagerName, partnerManagerPhone, partnerBookerName, partnerBookerPhone, ...safeTrip} = trip;
   const base = {
     ...safeTrip, ...extra,
+    // Partner trips use in-app contact. Never use the booker as a passenger fallback.
+    ...(partnerCompanyId ? { riderName: "", riderPhone: "" } : {}),
     dropoffAlreadyInRoute: dropoffIsRepresented(trip),
     isPartnerTrip:Boolean(partnerCompanyId),
     partnerCompanyName:scope === "active" ? partnerCompanyName || null : null,
@@ -377,13 +380,9 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
     ...base,
     partnerDispatcherName: hasActiveTripContact(trip.status) && partnerCompanyId &&
       partnerAssignedTo?.isActive && partnerAssignedTo.companyId === partnerCompanyId
-      ? String(partnerAssignedTo.displayName || "").trim() || null
+      ? (containsContactNumber(partnerAssignedTo.displayName) ? null : String(partnerAssignedTo.displayName || "").trim() || null)
       : null,
-    riderPhone: hasActiveTripContact(trip.status)
-      ? partnerCompanyId
-        ? (partnerAssignedTo?.isActive && partnerAssignedTo.companyId === partnerCompanyId ? partnerAssignedTo.phone || "" : "")
-        : trip.riderPhone || ""
-      : "",
+    riderPhone: !partnerCompanyId && hasActiveTripContact(trip.status) ? trip.riderPhone || "" : "",
     pickupAddress: normalizeDisplayAddress(trip.pickupAddress),
     pickupAddressMasked: maskAddress(trip.pickupAddress),
     dropoffAddress: normalizeDisplayAddress(trip.dropoffAddress),
@@ -2166,7 +2165,7 @@ export async function changeTripStatus(req, res) {
       console.error("[changeTripStatus] push rider error:", pushError);
     }
 
-    res.json({ success: true, trip });
+    res.json({ success: true, trip: serializeDriverTrip(trip, newStatus === "COMPLETED" ? "history" : "active") });
   } catch (e) {
     console.error("[Trip] changeTripStatus error:", e);
     res.status(e.statusCode || 400).json({

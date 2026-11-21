@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { hasActiveTripContact, riderDriverContact, phoneCallUrl } from "../src/shared/tripContact.js";
 import { dropoffIsRepresented } from "../src/shared/tripRoute.js";
+import { containsContactNumber } from "../src/shared/tripChat.js";
 const driver = {displayName:"Tên tài khoản", phones:[{e164:"+84901234567"}],driverProfile:{fullName:"Nguyễn Văn A"}};
 test("active trips return verified driver contact", () => {
   for (const status of ["ACCEPTED","CONTACTED","IN_PROGRESS"]) assert.deepEqual(riderDriverContact({status,driverId:"a"},driver),{name:"Nguyễn Văn A",phone:"+84901234567"});
@@ -21,7 +22,7 @@ const controllerSource = readFileSync(new URL('../src/controllers/tripController
 function driverSerializer() {
   const start = controllerSource.indexOf('function serializeDriverTrip(');
   const end = controllerSource.indexOf('\n}', start) + 2;
-  const deps = { dropoffIsRepresented, hasActiveTripContact, normalizeDisplayAddress: v => v,
+  const deps = { dropoffIsRepresented, hasActiveTripContact, containsContactNumber, normalizeDisplayAddress: v => v,
     maskAddress: () => 'Địa chỉ đã ẩn', maskRiderName: () => 'Khách hàng', maskRiderPhone: () => '' };
   return new Function(...Object.keys(deps), controllerSource.slice(start, end) + '; return serializeDriverTrip;')(...Object.values(deps));
 }
@@ -54,12 +55,12 @@ test('driver history already strips customer name and phone', () => {
   assert.equal(result.riderName,''); assert.equal(result.riderPhone,'');
 });
 
-test('assigned drivers receive the passenger or active assigned coordinator number only during active trips', () => {
+test('assigned drivers keep direct passenger numbers while partner coordinator numbers remain private', () => {
   const serialize = driverSerializer();
   const trip = {status:'ACCEPTED',riderPhone:'0901234567',stops:[]};
   const partner = {...trip,partnerCompanyId:'p',partnerBookerPhone:'0907777777',partnerAssignedTo:{phone:'0909999999',isActive:true,companyId:'p'}};
   assert.equal(serialize(trip).riderPhone,'0901234567');
-  assert.equal(serialize(partner).riderPhone,'0909999999');
+  assert.equal(serialize(partner).riderPhone,'');
   assert.equal('partnerAssignedTo' in serialize(partner),false);
   assert.equal(serialize({...partner,partnerAssignedTo:null}).riderPhone,'');
   assert.equal(serialize({...partner,partnerAssignedTo:{...partner.partnerAssignedTo,companyId:'other'}}).riderPhone,'');
@@ -79,15 +80,15 @@ test('active passenger trips preserve names, including names that are phone numb
   }
 });
 
-test('coordinator name and phone follow the current assignee rather than the original booker', () => {
+test('coordinator name follows the current assignee without exposing any partner phone', () => {
   const serialize = driverSerializer();
   const trip = { status: 'ACCEPTED', partnerCompanyId: 'company',
     partnerBookerName: 'Người đặt cũ', partnerBookerPhone: '0901111111',
     partnerManagerName: 'Quản lý', partnerManagerPhone: '0902222222' };
   for (const displayName of ['Điều phối A', 'Điều phối B', '0903333333']) {
     const result = serialize({ ...trip, partnerAssignedTo: { companyId: 'company', isActive: true, displayName, phone: '0903333333' } });
-    assert.equal(result.partnerDispatcherName, displayName);
-    assert.equal(result.riderPhone, '0903333333');
+    assert.equal(result.partnerDispatcherName, containsContactNumber(displayName) ? null : displayName);
+    assert.equal(result.riderPhone, '');
     for (const field of ['partnerAssignedTo', 'partnerBookerName', 'partnerBookerPhone', 'partnerManagerName', 'partnerManagerPhone']) {
       assert.equal(result[field], undefined);
     }
@@ -115,7 +116,7 @@ test('coordinator contact is hidden for unavailable assignees, other companies, 
   }
 });
 
-test('both assigned-driver APIs load the current coordinator name with the displayed phone', async () => {
+test('both assigned-driver APIs return the current coordinator name without the coordinator phone', async () => {
   const trip = { id: 'trip', riderId: 'rider', driverId: 'driver', status: 'ACCEPTED', partnerCompanyId: 'company',
     partnerAssignedTo: { companyId: 'company', isActive: true, displayName: 'Điều phối mới', phone: '0903333333' } };
   for (const name of ['listMyTrips', 'getTripById']) {
@@ -136,6 +137,44 @@ test('both assigned-driver APIs load the current coordinator name with the displ
     if (name === 'listMyTrips') assert.equal(query.where.driverId, 'driver');
     const result = res.body.data || res.body.items[0];
     assert.equal(result.partnerDispatcherName, 'Điều phối mới');
-    assert.equal(result.riderPhone, '0903333333');
+    assert.equal(result.riderPhone, '');
+  }
+});
+
+test('partner contacts never leak via passenger-name fallback or nested partner records in any Driver scope', () => {
+  const serialize = driverSerializer();
+  const trip = { status: 'ACCEPTED', partnerCompanyId: 'company',
+    riderName: '0901111111', riderPhone: '0901111111',
+    partnerManagerPhone: '0902222222', partnerBookerPhone: '0901111111',
+    partnerCreatedBy: { phone: '0901111111' }, partnerCompany: { managementPhone: '0902222222' },
+    partnerAssignedTo: { companyId: 'company', isActive: true, displayName: 'Điều phối mới', phone: '0903333333' } };
+  for (const scope of ['active', 'available', 'history']) {
+    const result = serialize(trip, scope);
+    assert.equal(result.riderName, ''); assert.equal(result.riderPhone, '');
+    assert.doesNotMatch(JSON.stringify(result), /0901111111|0902222222|0903333333/);
+    assert.equal(result.partnerDispatcherName, scope === 'active' ? 'Điều phối mới' : undefined);
+  }
+});
+
+test('Driver status changes return the private trip projection instead of the raw database record', async () => {
+  const serializeDriverTrip = driverSerializer();
+  const start = controllerSource.indexOf('export async function changeTripStatus(');
+  const end = controllerSource.indexOf('\n}', start) + 2;
+  for (const [from, to] of [['ACCEPTED', 'CONTACTED'], ['CONTACTED', 'IN_PROGRESS'], ['IN_PROGRESS', 'COMPLETED']]) {
+    const trip = { id: 'trip', driverId: 'driver', status: from, partnerCompanyId: 'company',
+      riderName: '0901111111', riderPhone: '0901111111', partnerBookerPhone: '0901111111', partnerManagerPhone: '0902222222' };
+    const tx = { trip: { findUnique: async () => trip, update: async ({ data }) => ({ ...trip, status: data.status }) },
+      adminTripActionLog: { create: async () => ({}) } };
+    const noop = async () => null;
+    const deps = { prisma: { $transaction: fn => fn(tx) }, serializeDriverTrip,
+      lockTripMilestones: noop, recordTripMilestone: noop, notifyTripMilestone: noop,
+      createRiderTripNotification: noop, sendAdminPushNotification: noop,
+      buildAdminTripStatusPushContent: () => ({}), sendTripStatusChangedToRider: noop, console };
+    const action = new Function(...Object.keys(deps), controllerSource.slice(start, end).replace('export ', '') + ';return changeTripStatus;')(...Object.values(deps));
+    const res = { status: () => assert.fail('API error'), json(body) { this.body = body; } };
+    await action({ user: { id: 'driver' }, body: { tripId: 'trip', newStatus: to } }, res);
+    assert.equal(res.body.success, true); assert.equal(res.body.trip.status, to);
+    assert.equal(res.body.trip.isPartnerTrip, true);
+    assert.doesNotMatch(JSON.stringify(res.body.trip), /0901111111|0902222222/);
   }
 });
