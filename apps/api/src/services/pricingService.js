@@ -257,9 +257,10 @@ export async function quotePrice(input, db = prisma) {
   const holidaySurchargeAmount = holidaySurcharge?.amount || 0;
   rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount + holidaySurchargeAmount + regionalSurcharge.amount;
 
-  const roundedTotal = roundTo10k(rawTotal) + destinationService.fee;
-  if (!Number.isSafeInteger(roundedTotal) || roundedTotal > 2147483647) return {ok:false,status:400,message:"Giá chuyến vượt giới hạn cho phép. Vui lòng liên hệ GoViet247."};
+  // Round once after all charges, including prorated charter service fees.
   rawTotal += destinationService.fee;
+  const roundedTotal = roundTo10k(rawTotal);
+  if (!Number.isSafeInteger(roundedTotal) || roundedTotal > 2147483647) return {ok:false,status:400,message:"Giá chuyến vượt giới hạn cho phép. Vui lòng liên hệ GoViet247."};
 
   // Display-only snapshot: retain the quoted amounts; never reprice old trips.
   destinationService.tourDisplay = {

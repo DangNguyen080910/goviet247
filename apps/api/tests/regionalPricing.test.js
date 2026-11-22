@@ -103,7 +103,7 @@ test('regional, fuel and holiday adjustments share the base without compounding 
   assert.equal(regionalPricingLine(d.regionalSurcharge), 'Đã gồm điều chỉnh giá Miền Bắc 10%: 100.000 đ');
 });
 
-test('regional changes leave the destination service fee separate and round only the final vehicle fare', async () => {
+test('regional changes leave destination service fees outside surcharge bases and round the combined final fare', async () => {
   const input = { ...request, direction: 'ROUND_TRIP', pickupTime: '2027-01-01T07:00:00+07:00', returnTime: '2027-01-03T12:00:00+07:00', outboundDriveMinutes: 120, driveMinutes: 240, destinationServiceDates: ['2027-01-02'], destinationAnchorAddress: 'Khách sạn' };
   const normal = await quotePrice(input, db(null));
   const changed = await quotePrice(input, db());
@@ -111,7 +111,7 @@ test('regional changes leave the destination service fee separate and round only
   const a = normal.data, b = changed.data;
   assert.equal(a.destinationService.fee, b.destinationService.fee);
   assert.equal(b.rawTotal - a.rawTotal, Math.round(a.priceBeforeFuelSurcharge * 0.1));
-  assert.equal(b.finalPrice, Math.round((b.rawTotal - b.destinationService.fee) / 10000) * 10000 + b.destinationService.fee);
+  assert.equal(b.finalPrice, Math.round(b.rawTotal / 10000) * 10000);
 });
 
 test('minimum fares and disabled vehicles keep their existing checks', async () => {

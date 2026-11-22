@@ -43,7 +43,7 @@ test("fee is added to final fare once, no fuel uplift, with purchased waiting ho
  assert.equal(standard.ok,true);assert.equal(charter.ok,true);
  assert.equal(standard.data.waitCost-charter.data.waitCost,80000);
  assert.equal(charter.data.rawTotal,standard.data.rawTotal-96000+800000);
- assert.equal(charter.data.finalPrice,Math.round((charter.data.rawTotal-800000)/10000)*10000+800000);
+ assert.equal(charter.data.finalPrice,Math.round(charter.data.rawTotal/10000)*10000);
  assert.equal(charter.data.destinationService.fee,800000);
 });
 test("configuration changes update templates, old snapshots persist and old quotes require refresh",()=>{
