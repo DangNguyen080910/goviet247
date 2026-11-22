@@ -1,3 +1,4 @@
+import { formatChatTimestamp } from '../../../api/src/shared/chatTimestamp.js';
 import {splitChatLinks} from '../../../mobile-chat/chatLinks';
 import {chatTripDetailRows,chatConversationRoute} from '../../../api/src/shared/chatTripDetail.js';
 import {partnerFetch} from './partners/partnerSession';
@@ -580,10 +581,10 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
                   await load();
                 });
               }}>Xoá tin</Button>}<Typography sx={{
-                fontSize: 11,
+                fontSize: 12,
                 color: '#64748b',
                 mt: 0.5
-              }}>{new Date(m.createdAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</Typography></Box>)}<div ref={end} /></Stack>
+              }}>{formatChatTimestamp(m.createdAt)}</Typography></Box>)}<div ref={end} /></Stack>
  {!canSend ? <Alert severity="info">Hội thoại hiện chỉ đọc. Chuyến đã kết thúc hoặc tài khoản chưa có quyền gửi tin. Nhờ GoViet247 hỗ trợ nếu cần.</Alert> : <Stack spacing={1} sx={{
             p: 2
           }}>

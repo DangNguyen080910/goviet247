@@ -1,3 +1,4 @@
+import { formatChatTimestamp } from '../api/src/shared/chatTimestamp.js';
 import {showPermissionSettings} from './permissionHelp';
 import {chatSupportUrl} from '../api/src/shared/chatSupport.js';
 import {configureCalls, TripCallButton, useTripCallActive} from './TripCalls';
@@ -689,10 +690,11 @@ export default function TripChatScreen() {
               color: '#b91c1c'
             }}>Xoá tin</Text></Pressable>}
  <Text style={{
-            fontSize: 11,
+            fontSize: 12,
+            lineHeight: 18,
             color: '#64748b',
             marginTop: 7
-          }}>{new Date(m.createdAt).toLocaleString('vi-VN', { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</Text></View>)}
+          }}>{formatChatTimestamp(m.createdAt)}</Text></View>)}
  </ScrollView>
  {!canSend ? <Text style={{
         padding: 16,
