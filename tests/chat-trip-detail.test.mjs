@@ -18,3 +18,13 @@ test('pending display distinguishes awaiting approval from awaiting a driver',()
  const rows=verified=>chatTripDetailRows({...trip,status:'PENDING',isVerified:verified});
  assert.equal(rows(false)[1][1],'Chờ duyệt');assert.equal(rows(true)[1][1],'Chờ tài xế nhận');
 });
+
+test('chat strips distance at the API boundary and hides it even for an older server response',()=>{
+ const summary=chatTripSummary(trip,[]);
+ assert.equal(Object.hasOwn(summary,'distanceKm'),false);
+ for(const data of [summary,trip]) {
+  const rows=chatTripDetailRows(data);
+  assert.equal(rows.some(([label])=>label==='Quãng đường'),false);
+  assert.equal(JSON.stringify(rows).includes('123,4'),false);
+ }
+});

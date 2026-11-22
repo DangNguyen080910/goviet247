@@ -1,3 +1,4 @@
+import CopyTripIdButton from "./common/CopyTripIdButton.jsx";
 import {tripCallActionLabel} from '../../../api/src/shared/tripCallLabels.js';
 import {useEffect,useRef,useState} from 'react';
 import {Alert,Button,Dialog,DialogContent,DialogTitle,IconButton,Stack,Typography} from '@mui/material';
@@ -105,7 +106,7 @@ export default function WebTripChat({partner=false,tokenRevision=''}){
     {signed&&!ready&&!active&&capable()&&<Button onClick={()=>void run(async()=>{await unlock();if('Notification'in window&&Notification.permission==='default')await Notification.requestPermission();})} sx={{position:'fixed',bottom:16,left:16,zIndex:1400,bgcolor:'white',borderRadius:3,boxShadow:2}}>☎ Bật chuông cuộc gọi</Button>}
     {view.message&&!active&&<Alert severity="info" onClose={()=>setView(v=>({...v,message:''}))} sx={{position:'fixed',bottom:70,left:16,zIndex:10060,maxWidth:'90vw'}}>{view.message}</Alert>}
     <Dialog open={active} fullWidth maxWidth="xs" sx={{zIndex:10100}}><DialogTitle>{ring?'Tài xế đang gọi':view.call?.status==='CONNECTED'?'Đang gọi tài xế':'Đang kết nối cuộc gọi'}</DialogTitle><DialogContent><Stack spacing={2} sx={{py:2}}>
-      <Typography sx={{overflowWrap:'anywhere'}}>Chuyến #{view.call?.tripId}</Typography>
+      <Typography sx={{overflowWrap:'anywhere'}}>Chuyến #{view.call?.tripId}</Typography><CopyTripIdButton tripId={view.call?.tripId}/>
       <Typography>{view.call?.startedAt?`${Math.max(0,Math.floor((now-new Date(view.call.startedAt).getTime())/1000))} giây`:ring?'Cuộc gọi thoại qua Internet':view.call?.status==='RINGING'?'Đang đổ chuông…':'Đang kết nối…'}</Typography>
       {view.message&&<Alert severity="warning">{view.message}</Alert>}
       {ring && <Typography variant="body2">{recordingNotice}</Typography>}

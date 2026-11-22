@@ -12,7 +12,10 @@
       "bundleIdentifier": "com.goviet247.rider",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
-        "NSLocationWhenInUseUsageDescription": "GoViet247 uses your location to help you choose pickup and destination points more quickly and accurately when booking rides."
+        "NSLocationWhenInUseUsageDescription": "GoViet247 uses your location to help you choose pickup and destination points more quickly and accurately when booking rides.",
+        "LSApplicationQueriesSchemes": [
+          "comgooglemaps"
+        ]
       }
     },
     "android": {

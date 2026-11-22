@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import { canSelfCancelTrip } from "../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../services/tripChat";
 import { hasActiveTripContact, phoneCallUrl } from "../../api/src/shared/tripContact.js";
@@ -462,7 +463,7 @@ export default function RiderTripHistoryScreen() {
 
                     <Text style={styles.tripIdText}>
                       #{getShortTripId(item.id)}
-                    </Text>
+                    </Text><CopyTripIdButton tripId={item.id}/>
                   </View>
 
                   <TripRoute trip={item} />

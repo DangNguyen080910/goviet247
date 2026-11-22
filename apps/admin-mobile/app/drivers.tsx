@@ -1,3 +1,4 @@
+import {groupDriverProvinceSummary} from "../../api/src/shared/driverRegionSummary.js";
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import DriverOperatingControls from "../components/DriverOperatingControls";
 // Path: goviet247/apps/admin-mobile/app/drivers.tsx
@@ -369,6 +370,9 @@ export default function DriversScreen() {
   const [page, setPage] = useState(1);
   const listRequestRef = useRef(0);
 
+  const [provinceSummary,setProvinceSummary]=useState<{code:string;name:string;confirmed:number;unconfirmed:number}[]>([]);
+  const [showRegions,setShowRegions]=useState(false);
+  const [operatingProvinceCode,setOperatingProvinceCode]=useState("ALL");
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -391,6 +395,7 @@ export default function DriversScreen() {
 
   const queryParams = useMemo(() => {
     return {
+      operatingProvinceCode,
       q: keyword,
       status,
       phoneVerified,
@@ -399,7 +404,7 @@ export default function DriversScreen() {
       page,
       pageSize: PAGE_SIZE,
     };
-  }, [keyword, status, phoneVerified, tripAcceptBlocked, sort, page]);
+  }, [keyword, status, phoneVerified, tripAcceptBlocked, sort, page, operatingProvinceCode]);
 
   const loadDrivers = useCallback(
     async (isRefresh = false) => {
@@ -414,6 +419,7 @@ export default function DriversScreen() {
         const data = await fetchDrivers(queryParams);
         if (request !== listRequestRef.current) return;
         setItems(Array.isArray(data?.items) ? data.items : []);
+        setProvinceSummary(data?.meta?.provinceSummary || []);
         setTotal(Number(data?.meta?.total || 0));
         setTotalPages(Math.max(1, Number(data?.meta?.totalPages || 1)));
       } catch (error: any) {
@@ -421,6 +427,7 @@ export default function DriversScreen() {
         console.error("load drivers error:", error);
         setItems([]);
         setTotal(0);
+        setProvinceSummary([]);
         setTotalPages(1);
       } finally {
         if (request === listRequestRef.current) {
@@ -761,6 +768,24 @@ export default function DriversScreen() {
               ))}
             </View>
           </ScrollView>
+        </View>
+
+        <View style={styles.filterCard}>
+          <Pressable accessibilityRole="button" accessibilityState={{expanded:showRegions}} onPress={()=>setShowRegions(v=>!v)} style={{minHeight:44,justifyContent:'center'}}>
+            <Text style={{fontWeight:'800',color:'#1d4ed8'}}>{showRegions?'▼':'▶'} Số lượng tài xế theo khu vực</Text>
+          </Pressable>
+          <Text>Đã xác nhận: {provinceSummary.reduce((sum,p)=>sum+p.confirmed,0)} · Chưa xác nhận: {provinceSummary.reduce((sum,p)=>sum+p.unconfirmed,0)}</Text>
+          {showRegions && <><Text style={{color:'#64748b',marginVertical:8}}>Theo kết quả tìm kiếm và trạng thái, không giới hạn theo trang hay tỉnh/thành đang lọc. Hồ sơ chưa xác nhận được tính riêng.</Text>
+            <Pressable onPress={()=>{setOperatingProvinceCode('ALL');setPage(1);}} style={{paddingVertical:10}}><Text style={{color:'#1d4ed8'}}>Tất cả tỉnh/thành</Text></Pressable>
+            {groupDriverProvinceSummary(provinceSummary).map(region=><View key={region.value} style={{padding:12,borderRadius:12,backgroundColor:'#f8fafc',marginVertical:6,gap:8}}>
+              <Text style={{fontWeight:'800',color:'#1d4ed8'}}>{region.label} · {region.confirmed} đã xác nhận</Text>
+              {region.unconfirmed>0 && <Text>Chưa xác nhận tỉnh/thành: {region.unconfirmed} (tính riêng)</Text>}
+              <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{region.provinces.map(p=><Pressable key={p.code} accessibilityRole="button" accessibilityState={{selected:operatingProvinceCode===p.code}}
+                onPress={()=>{setOperatingProvinceCode(p.code);setPage(1);}} style={{padding:10,borderRadius:12,backgroundColor:operatingProvinceCode===p.code?'#dbeafe':'#e5e7eb'}}>
+                <Text>{p.name}: {p.confirmed}{p.unconfirmed?` · ${p.unconfirmed} chưa xác nhận`:''}</Text>
+              </Pressable>)}</View>
+            </View>)}
+          </>}
         </View>
 
         {loading ? (

@@ -1,3 +1,4 @@
+import {groupDriverProvinceSummary} from "../../../../api/src/shared/driverRegionSummary.js";
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import provinces from "../../../../api/src/data/vietnam-provinces.json";
 import AccountExitStatus from "../../components/admin/AccountExitStatus";
@@ -691,8 +692,14 @@ export default function AdminDrivers() {
           <Typography>Đã xác nhận: <b>{(meta?.provinceSummary || []).reduce((sum,p) => sum+p.confirmed,0)}</b></Typography>
           <Typography>Chưa xác nhận: <b>{(meta?.provinceSummary || []).reduce((sum,p) => sum+p.unconfirmed,0)}</b></Typography>
         </Stack>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-          {(meta?.provinceSummary || []).map(p => <Chip key={p.code} label={`${p.name}: ${p.confirmed} đã xác nhận${p.unconfirmed ? ` · ${p.unconfirmed} chưa xác nhận` : ""}`} onClick={() => { setPage(1); setOperatingProvinceCode(p.code); }} color={operatingProvinceCode === p.code ? "primary" : "default"} />)}
+        <Box sx={{display:'grid',gridTemplateColumns:{xs:'1fr',lg:'repeat(3,minmax(0,1fr))'},gap:2}}>
+          {groupDriverProvinceSummary(meta?.provinceSummary || []).map(region=><Box key={region.value} sx={{p:1.5,border:'1px solid #dbeafe',borderRadius:2,bgcolor:'#f8fafc'}}>
+            <Typography fontWeight={800} sx={{mb:1,color:'#1d4ed8'}}>{region.label} · {region.confirmed} đã xác nhận</Typography>
+            {region.unconfirmed>0 && <Typography variant="caption" display="block" sx={{mb:1}}>Chưa xác nhận tỉnh/thành: {region.unconfirmed} (tính riêng)</Typography>}
+            <Box sx={{display:'flex',flexWrap:'wrap',gap:1}}>{region.provinces.map(p=><Chip key={p.code}
+              label={`${p.name}: ${p.confirmed} đã xác nhận${p.unconfirmed ? ` · ${p.unconfirmed} chưa xác nhận` : ""}`}
+              onClick={()=>{setPage(1);setOperatingProvinceCode(p.code);}} color={operatingProvinceCode===p.code?'primary':'default'}/>)}</Box>
+          </Box>)}
         </Box>
       </Box>
       {loading ? (

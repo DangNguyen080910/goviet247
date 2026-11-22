@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 // Path: goviet247/apps/driver-mobile/app/wallet.tsx
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { router } from "expo-router";
@@ -782,7 +783,7 @@ export default function WalletScreen() {
         {!!item.note && <Text style={styles.listCardNote}>{item.note}</Text>}
 
         {!!item.tripId && (
-          <Text style={styles.metaText}>Mã chuyến: {item.tripId}</Text>
+          <View><Text style={styles.metaText}>Mã chuyến: {item.tripId}</Text><CopyTripIdButton tripId={item.tripId}/></View>
         )}
 
         <Text style={styles.metaText}>

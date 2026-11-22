@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 // Path: goviet247/apps/web/src/pages/admin/AdminHome.jsx
 import React, { useEffect, useMemo, useState } from "react";
@@ -182,7 +183,7 @@ function UrgentTripList({ items, onOpenPage, emptyText }) {
                   <Typography variant="caption" sx={{ color: "text.disabled" }}>
                     Tạo lúc: {formatDateTime(item.createdAt)}
                   </Typography>
-                  <div><TripHistoryButton tripId={item.id}/></div>
+                  <div><CopyTripIdButton tripId={item.id}/><TripHistoryButton tripId={item.id}/></div>
                 </Box>
               }
             />

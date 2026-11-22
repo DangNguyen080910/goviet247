@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../components/common/CopyTripIdButton";
 import TripMilestoneCelebration from "../../components/admin/TripMilestoneCelebration";
 // Path: goviet247/apps/web/src/pages/admin/AdminLayout.jsx
 import React from "react";
@@ -305,6 +306,7 @@ export default function AdminLayout() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [snackOpen, setSnackOpen] = React.useState(false);
   const [snackText, setSnackText] = React.useState("");
+  const [snackTripId,setSnackTripId] = React.useState("");
   const [snackTarget, setSnackTarget] = React.useState("/admin/trips");
   const [dashboard, setDashboard] = React.useState(null);
   const [soundEnabled, setSoundEnabled] = React.useState(false);
@@ -321,8 +323,9 @@ export default function AdminLayout() {
     nav("/admin/login", { replace: true });
   };
 
-  const showSnack = React.useCallback((text, target = "/admin") => {
+  const showSnack = React.useCallback((text, target = "/admin", tripId = "") => {
     setSnackText(text);
+    setSnackTripId(tripId);
     setSnackTarget(target);
     setSnackOpen(true);
   }, []);
@@ -483,7 +486,7 @@ export default function AdminLayout() {
         `🔔 Có chuyến mới cần duyệt${
           tripId ? ` • ${String(tripId).slice(0, 8)}…` : ""
         }`,
-        "/admin/trips",
+        "/admin/trips", tripId,
       );
 
       loadDashboard();
@@ -499,7 +502,7 @@ export default function AdminLayout() {
         `🚕 Có chuyến vừa được tài xế nhận${
           tripId ? ` • ${String(tripId).slice(0, 8)}…` : ""
         }`,
-        "/admin/trips/assigned",
+        "/admin/trips/assigned", tripId,
       );
 
       loadDashboard();
@@ -528,7 +531,7 @@ export default function AdminLayout() {
 
       showSnack(
         `🔄 Chuyến ${tripId ? `${String(tripId).slice(0, 8)}… ` : ""}${statusText}`,
-        "/admin/trips/assigned",
+        "/admin/trips/assigned", tripId,
       );
 
       loadDashboard();
@@ -544,7 +547,7 @@ export default function AdminLayout() {
         `⚠️ Có chuyến đã bị huỷ${
           tripId ? ` • ${String(tripId).slice(0, 8)}…` : ""
         }`,
-        "/admin/trips/assigned",
+        "/admin/trips/assigned", tripId,
       );
 
       loadDashboard();
@@ -580,7 +583,7 @@ export default function AdminLayout() {
       if (shouldSkipRealtimeEvent("admin:blocked_trip_accept_attempt", payload)) return;
       showSnack(
         `🔒 ${payload?.driverName || "Tài xế"} đang bị khoá, vừa bấm nhận chuyến #${String(payload?.tripId || "").slice(-8).toUpperCase()}.`,
-        `/admin/pending?tripId=${encodeURIComponent(payload?.tripId || "")}`,
+        `/admin/pending?tripId=${encodeURIComponent(payload?.tripId || "")}`, payload?.tripId || "",
       );
       window.dispatchEvent(new CustomEvent("admin:blocked_trip_accept_attempt", { detail: payload }));
       await playAdminUrgentSound();
@@ -857,7 +860,7 @@ export default function AdminLayout() {
           severity="info"
           variant="filled"
           action={
-            <Button
+            <><CopyTripIdButton tripId={snackTripId}/><Button
               color="inherit"
               size="small"
               onClick={() => {
@@ -866,7 +869,7 @@ export default function AdminLayout() {
               }}
             >
               Xem ngay
-            </Button>
+            </Button></>
           }
         >
           {snackText}

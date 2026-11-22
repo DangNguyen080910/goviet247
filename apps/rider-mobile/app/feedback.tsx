@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 // Path: goviet247/apps/rider-mobile/app/feedback.tsx
 import { useState } from "react";
 import { router, useLocalSearchParams } from "expo-router";
@@ -85,7 +86,7 @@ export default function RiderFeedbackScreen() {
           <View style={styles.tripBox}>
             <Text style={styles.tripText}>
               Bạn đang góp ý cho chuyến #{tripId.slice(-8).toUpperCase()}
-            </Text>
+            </Text><CopyTripIdButton tripId={tripId}/>
           </View>
         ) : null}
 

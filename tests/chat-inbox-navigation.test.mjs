@@ -1,3 +1,4 @@
+import {formatChatTimestamp} from '../apps/api/src/shared/chatTimestamp.js';
 import {CHAT_SERVICE_NOTICE} from '../apps/api/src/shared/chatServiceNotice.js';
 import {chatHeartsForClient} from '../apps/api/src/services/tripChatService.js';
 import test from 'node:test';
@@ -16,7 +17,7 @@ function native(params={}, overrides={}) {
  const ast=ts.createSourceFile('chat.tsx',snippet,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX),names=[];
  function visit(node){if(ts.isVariableDeclaration(node)&&ts.isArrayBindingPattern(node.name)&&node.initializer&&ts.isCallExpression(node.initializer)&&node.initializer.expression.getText(ast)==='useState')names.push(node.name.elements[0].name.getText(ast));ts.forEachChild(node,visit);}visit(ast);
  let index=0;const routes=[],requests=[],states=[];
- const deps={requestAnimationFrame:fn=>fn(),CHAT_SERVICE_NOTICE,chatActionButton:{},chatActionLabel:{},chatHeartsForClient,React,useTripCallActive:()=>false,TripCallButton:'TripCallButton',useIsFocused:()=>true,useLocalSearchParams:()=>params,useState:initial=>{const name=names[index++];return [Object.hasOwn(overrides,name)?overrides[name]:name==='inbox'?[conversation]:initial,value=>states.push({name,value})];},useEffect(){},useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:'ios'},router:{push:value=>routes.push(value),back(){}},Keyboard:{dismiss(){}},blue:'#1976d2',ink:'#000',button:{},config:{role:'RIDER'},chatConversationRoute,api:async path=>{requests.push(path);return {trip:{id:conversation.tripId}};}};
+ const deps={formatChatTimestamp,requestAnimationFrame:fn=>fn(),CHAT_SERVICE_NOTICE,chatActionButton:{},chatActionLabel:{},chatHeartsForClient,CopyTripIdButton:'CopyTripIdButton',React,useTripCallActive:()=>false,TripCallButton:'TripCallButton',useIsFocused:()=>true,useLocalSearchParams:()=>params,useState:initial=>{const name=names[index++];return [Object.hasOwn(overrides,name)?overrides[name]:name==='inbox'?[conversation]:initial,value=>states.push({name,value})];},useEffect(){},useCallback:fn=>fn,useRef:current=>({current}),Platform:{OS:'ios'},router:{push:value=>routes.push(value),back(){}},Keyboard:{dismiss(){}},blue:'#1976d2',ink:'#000',button:{},config:{role:'RIDER'},chatConversationRoute,api:async path=>{requests.push(path);return {trip:{id:conversation.tripId}};}};
  for(const name of ['SafeAreaView','KeyboardAvoidingView','View','Pressable','Text','TextInput','ScrollView','Modal','Image'])deps[name]=name;
  const screen=new Function(...Object.keys(deps),compile(snippet)+';return TripChatScreen;')(...Object.values(deps));
  return {tree:screen(),routes,requests,states};
@@ -24,6 +25,7 @@ function native(params={}, overrides={}) {
 test('mobile inbox row shows full code and route; card and message button both open chat, never trip details',()=>{
  const h=native(),all=nodes(h.tree);assert.ok(text(h.tree).includes(conversation.tripId));assert.ok(text(h.tree).includes(chatConversationRoute(conversation)));
  assert.ok(!all.some(node=>node.type==='Pressable'&&text(node)==='Xem chuyến'));
+ assert.equal(all.find(node=>node.type==='CopyTripIdButton')?.props.tripId,conversation.tripId);
  const card=all.find(node=>node.props.key===conversation.tripId);assert.ok(card);card.props.onPress();
  let stopped=false;const action=all.find(node=>node.type==='Pressable'&&text(node)==='Xem tin nhắn');assert.ok(action);action.props.onPress({stopPropagation(){stopped=true;}});
  assert.equal(stopped,true);assert.deepEqual(h.routes,[`/trip-chat?tripId=${conversation.tripId}`,`/trip-chat?tripId=${conversation.tripId}`]);assert.deepEqual(h.requests,[]);
@@ -35,9 +37,10 @@ test('inside the mobile conversation Xem chuyến still fetches that trip rather
 test('web inbox message button and preview open the conversation; route remains visible',()=>{
  const source=read('apps/web/src/components/TripChatHub.jsx'),ast=ts.createSourceFile('chat.jsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.JSX);let callback;
  function visit(node){if(ts.isCallExpression(node)&&node.expression.getText(ast)==='inbox.map')callback=node.arguments[0].getText(ast);ts.forEachChild(node,visit);}visit(ast);assert(callback);
- const opened=[],deps={React,Box:'Box',Button:'Button',Typography:'Typography',chatConversationRoute,setTripId:id=>opened.push(id),showTrip(){throw new Error('Inbox must not open trip details');}};
+ const opened=[],deps={React,CopyTripIdButton:'CopyTripIdButton',Box:'Box',Button:'Button',Typography:'Typography',chatConversationRoute,setTripId:id=>opened.push(id),showTrip(){throw new Error('Inbox must not open trip details');}};
  const render=new Function(...Object.keys(deps),compile('const render='+callback+';')+';return render;')(...Object.values(deps)),tree=render(conversation),all=nodes(tree);
  assert.ok(text(tree).includes(chatConversationRoute(conversation)));assert.ok(!all.some(node=>node.type==='Button'&&text(node)==='Xem chuyến'));
+ assert.equal(all.find(node=>node.type==='CopyTripIdButton')?.props.tripId,conversation.tripId);
  const buttons=all.filter(node=>node.type==='Button');assert.equal(buttons.length,2);for(const button of buttons)button.props.onClick();assert.deepEqual(opened,[conversation.tripId,conversation.tripId]);
 });
 test('old API responses without addresses still render a working inbox and no invented route',()=>{

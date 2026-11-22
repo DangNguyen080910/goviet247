@@ -35,7 +35,8 @@
     "socket.io-client": "^4.8.3",
     "@expo/vector-icons": "^15.0.3",
     "@react-navigation/native": "^7.1.8",
-    "@goviet247/trip-calling-native": "workspace:*"
+    "@goviet247/trip-calling-native": "workspace:*",
+    "expo-clipboard": "~8.0.8"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",

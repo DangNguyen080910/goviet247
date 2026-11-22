@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
 import TripHistoryButton from "./TripHistoryButton";
 import { openTripChat } from '../TripChatHub';
 // Path: goviet247/apps/web/src/components/admin/AlertsTable.jsx
@@ -164,7 +165,7 @@ export default function AlertsTable({ onSelectTrip, searchText = "" }) {
                 }}
                 title={tripId ? "Bấm để xem chi tiết chuyến" : ""}
               >
-                <td style={tdMono}>{tripId || "-"}<div><TripHistoryButton tripId={tripId}/></div></td>
+                <td style={tdMono}>{tripId || "-"}<div><CopyTripIdButton tripId={tripId}/><TripHistoryButton tripId={tripId}/></div></td>
                 <td style={td}>{a?.level || a?.alertLevel || "-"}</td>
                 <td style={td}>{a?.alertType === "COMMISSION_INVOICE_DAILY" ? "Nhắc hóa đơn hoa hồng" : a?.alertType === "CHAT_CONTACT_BLOCKED" ? "Chặn số điện thoại trong hội thoại" : a?.alertType === "BLOCKED_TRIP_ACCEPT_ATTEMPT" ? "Tài xế bị khoá bấm nhận chuyến" : a?.channel || a?.type || a?.alertType || "-"}</td>
                 <td style={td}>{formatNgayGio(a?.sentAt || a?.createdAt)}</td>

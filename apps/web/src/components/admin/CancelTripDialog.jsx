@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
 import {flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
 // Path: goviet247/apps/web/src/components/admin/CancelTripDialog.jsx
 import { useMemo, useState } from "react";
@@ -88,7 +89,7 @@ export default function CancelTripDialog({ open, trip, tripId, onClose, onSucces
       <DialogTitle>Huỷ chuyến</DialogTitle>
       <DialogContent>
         <Typography variant="body2" sx={{ mb: 1, color: "text.secondary" }}>
-          Mã chuyến: <b>{id ? String(id).slice(0, 8) + "..." : "-"}</b>
+          Mã chuyến: <b>{id ? String(id).slice(0, 8) + "..." : "-"}</b><CopyTripIdButton tripId={id}/>
         </Typography>
         {needsDriverSettlement ? (
           <FormControl sx={{ mt: 1 }}>

@@ -1,3 +1,4 @@
+import * as Clipboard from "expo-clipboard";
 import {claimNotificationResponse} from '../../api/src/shared/chatNotificationNavigation.js';
 import { ChatInboxBadge, isChatVisible, chatPushShouldPlaySound } from "../services/tripChat";
 import { Alert, AppState } from "react-native";
@@ -92,8 +93,9 @@ function RootLayoutContent() {
           if (AppState.currentState === "active") {
             Alert.alert("Tài xế bị khoá vừa bấm nhận chuyến",
               `${payload?.driverName || "Tài xế"} vừa bấm nhận chuyến #${String(payload?.tripId || "").slice(-8).toUpperCase()}. Chuyến chưa được giao cho tài xế này.`,
-              [{ text: "Để sau", style: "cancel" }, { text: "Xem cảnh báo", onPress: () => router.push("/alerts") },
-                ...(payload?.driverProfileId ? [{ text: "Mở tài xế", onPress: () => router.push({ pathname: "/drivers", params: { driverProfileId: payload.driverProfileId } }) }] : [])]);
+              [{ text: "Để sau", style: "cancel" },
+                ...(payload?.tripId ? [{text:"Copy mã chuyến",onPress:()=>{void Clipboard.setStringAsync(String(payload.tripId)).catch(()=>Alert.alert("Không thể sao chép","Vui lòng thử lại."));}}] : []),
+                { text: "Xem cảnh báo", onPress: () => router.push("/alerts") }]);
           }
         };
         onAdminRealtimeEvent("admin:blocked_trip_accept_attempt", handleBlockedAttempt);

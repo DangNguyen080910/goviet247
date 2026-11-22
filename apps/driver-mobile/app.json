@@ -11,7 +11,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.goviet247.driver",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "LSApplicationQueriesSchemes": [
+          "comgooglemaps"
+        ]
       }
     },
     "android": {

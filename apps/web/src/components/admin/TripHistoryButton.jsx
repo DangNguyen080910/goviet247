@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
 import {useEffect,useState} from 'react';
 import {Alert,Button,Chip,CircularProgress,Dialog,DialogActions,DialogContent,DialogTitle,Paper,Stack,Typography} from '@mui/material';
 import {getAdminToken} from '../../utils/adminAuth';
@@ -21,7 +22,7 @@ export default function TripHistoryButton({tripId}) {
     <Dialog open={open} onClose={()=>setOpen(false)} fullWidth maxWidth="sm" onClick={e=>e.stopPropagation()} sx={{zIndex:20000}}>
       <DialogTitle>Lịch sử chuyến</DialogTitle>
       <DialogContent dividers><Stack spacing={2}>
-        <Typography sx={{overflowWrap:'anywhere'}}>{tripId}</Typography>
+        <Typography sx={{overflowWrap:'anywhere'}}>{tripId}</Typography><CopyTripIdButton tripId={tripId}/>
         <Typography variant="body2">Thời gian Việt Nam · Mới nhất trước</Typography>
         {busy && <CircularProgress size={24}/>}{error && <Alert severity="error">{error}</Alert>}
         {data && <><Alert severity="info">{data.notice}</Alert>

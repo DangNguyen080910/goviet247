@@ -27,6 +27,7 @@ export type DriverListResponse = {
     pageSize: number;
     total: number;
     totalPages: number;
+    provinceSummary?: {code:string;name:string;confirmed:number;unconfirmed:number}[];
   } | null;
 };
 

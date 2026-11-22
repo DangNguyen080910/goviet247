@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
 import {tripNotificationContent} from '../../../../api/src/shared/tripNotificationContent.js';
 import { canSelfCancelTrip } from "../../../../api/src/shared/tripSelfService.js";
 import { TripChatButton } from "../../components/TripChatHub";
@@ -981,7 +982,7 @@ export default function CustomerProfile() {
                               }}
                             >
                               {trip.id}
-                            </Typography>
+                            </Typography><CopyTripIdButton tripId={trip.id}/>
 
                             <Typography
                               sx={{
@@ -1356,7 +1357,7 @@ export default function CustomerProfile() {
                   value={feedbackTrip?.id || ""}
                   fullWidth
                   InputProps={{ readOnly: true }}
-                />
+                /><CopyTripIdButton tripId={feedbackTrip?.id}/>
 
                 <TextField
                   label="Tuyến đường"
@@ -1427,7 +1428,7 @@ export default function CustomerProfile() {
               value={selectedTrip?.id || ""}
               fullWidth
               InputProps={{ readOnly: true }}
-            />
+            /><CopyTripIdButton tripId={selectedTrip?.id}/>
 
             <TextField
               label="Lý do huỷ"

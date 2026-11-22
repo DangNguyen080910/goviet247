@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
 import { tripRoutePoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../common/ClearableSearchField.jsx";
 import {isRiderChatEnded,RIDER_CHAT_ENDED_NOTICE} from '../../../../api/src/shared/tripChat.js';
@@ -58,7 +59,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose,renderTrip
     </Stack>
     <TableContainer component={Paper}><Table size="small"><TableHead><TableRow>{['Mã chuyến','Giờ đón','Lộ trình','Loại xe','Người tạo / Phụ trách','Thông tin xe','Trạng thái','Giá',''].map((v,i)=><TableCell key={i}>{v}</TableCell>)}</TableRow></TableHead>
       <TableBody>{items.map(t=><TableRow key={t.id} hover>
-        <TableCell><Button onClick={()=>onSelect(t.id)}>{t.id.slice(-8).toUpperCase()}</Button>{renderTripHistory?.(t.id)}</TableCell><TableCell sx={{minWidth:145}}>{time(t.pickupTime)}</TableCell>
+        <TableCell><Button onClick={()=>onSelect(t.id)}>{t.id.slice(-8).toUpperCase()}</Button><CopyTripIdButton tripId={t.id}/>{renderTripHistory?.(t.id)}</TableCell><TableCell sx={{minWidth:145}}>{time(t.pickupTime)}</TableCell>
         <TableCell sx={{minWidth:230}}>{tripRoutePoints(t).map((point,index)=><Typography key={index} variant="body2">{point.label}: {point.address}</Typography>)}</TableCell><TableCell>{vehicles[t.carType]}</TableCell>
         <TableCell>{t.createdBy?.displayName||'GoViet247'}<br/><strong>{t.assignedTo?.displayName||'—'}</strong></TableCell>
         <TableCell>{t.vehicle ? `${t.vehicle.brand||''} ${t.vehicle.model||''} · ${t.vehicle.plate||''}`:'—'}</TableCell>
@@ -66,7 +67,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose,renderTrip
         <TableCell>{t.canChat?<Button onClick={()=>openTripChat(t.id)}>Chat{t.unread?` (${t.unread})`:""}</Button>:isRiderChatEnded(t.status)?<Button sx={{color:"#64748b",bgcolor:"#f1f5f9"}} onClick={()=>window.alert(RIDER_CHAT_ENDED_NOTICE)}>Chat chuyến (đã kết thúc)</Button>:null}{t.canCancel&&<Button color="error" disabled={busy} onClick={()=>cancel(t)}>Hủy chuyến</Button>}</TableCell>
       </TableRow>)}{!items.length&&<TableRow><TableCell colSpan={9}>Chưa có chuyến phù hợp.</TableCell></TableRow>}</TableBody></Table></TableContainer>
     <Stack direction="row" spacing={2} alignItems="center"><Typography>{total} chuyến</Typography><Pagination count={Math.max(1,Math.ceil(total/50))} page={page} onChange={(_,n)=>setPage(n)}/></Stack>
-    <Dialog open={Boolean(selected&&tripId)} onClose={onClose} fullWidth maxWidth="sm"><DialogTitle>Chi tiết chuyến #{selected?.id.slice(-8).toUpperCase()}</DialogTitle><DialogContent>
+    <Dialog open={Boolean(selected&&tripId)} onClose={onClose} fullWidth maxWidth="sm"><DialogTitle>Chi tiết chuyến #{selected?.id.slice(-8).toUpperCase()} <CopyTripIdButton tripId={selected?.id}/></DialogTitle><DialogContent>
       {selected&&<Stack spacing={2} sx={{pt:1}}>{renderTripHistory?.(selected.id)}<Chip label={tripStatusLabel(selected)}/><Typography>{time(selected.pickupTime)} · {vehicles[selected.carType]} · {money(selected.totalPrice)}</Typography>
         {tripRoutePoints(selected).map((point,index)=><Typography key={index}>{point.label}: {point.address}</Typography>)}
         {selected.note&&<Typography>Ghi chú: {selected.note}</Typography>}
@@ -114,6 +115,6 @@ export function PartnerSettings({token,companyId,superAdmin=false,canManage=fals
         <Button color="warning" disabled={busy} onClick={()=>{if(window.confirm(`${company.isActive?'Khóa':'Mở khóa'} công ty này?`))save({isActive:!company.isActive});}}>{company.isActive?'Khóa công ty':'Mở khóa công ty'}</Button></>}
     </Stack></Paper>}
     {!superAdmin&&<Paper component="form" onSubmit={changePassword} sx={{p:3}}><Stack spacing={2}><Typography variant="h6">Đổi mật khẩu</Typography><TextField required type="password" autoComplete="current-password" label="Mật khẩu hiện tại" value={currentPassword} onChange={e=>setCurrentPassword(e.target.value)}/><TextField required type="password" autoComplete="new-password" label="Mật khẩu mới" value={newPassword} onChange={e=>setNewPassword(e.target.value)} helperText="Ít nhất 10 ký tự, tối đa 72 byte."/><Button type="submit" disabled={busy} variant="contained">Đổi mật khẩu</Button></Stack></Paper>}
-    {canManage&&<Paper sx={{p:3}}><Typography variant="h6">Lịch sử thao tác gần đây</Typography>{logs.map(l=><Typography key={l.id} sx={{py:1,borderBottom:'1px solid #eee'}}>{time(l.createdAt)} · {l.actorLabel} · {actions[l.action]||'Cập nhật'}{l.targetId?' · '+l.targetId.slice(-8):''}</Typography>)}</Paper>}
+    {canManage&&<Paper sx={{p:3}}><Typography variant="h6">Lịch sử thao tác gần đây</Typography>{logs.map(l=><Typography key={l.id} sx={{py:1,borderBottom:'1px solid #eee'}}>{time(l.createdAt)} · {l.actorLabel} · {actions[l.action]||'Cập nhật'}{l.targetId?' · '+l.targetId.slice(-8):''}{l.targetId && ['CREATE_TRIP','ASSIGN_TRIP','CANCEL_TRIP'].includes(l.action) && <CopyTripIdButton tripId={l.targetId}/>}</Typography>)}</Paper>}
   </Stack>;
 }

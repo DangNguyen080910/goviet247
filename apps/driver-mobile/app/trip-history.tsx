@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import { TripChatButton } from "../services/tripChat";
 import TripRoute from "../components/TripRoute";
 import TripSurcharges from "../components/TripSurcharges";
@@ -128,21 +129,6 @@ export default function TripHistoryScreen() {
     router.replace("/dashboard");
   };
 
-  const copyTripId = async (id: string) => {
-    try {
-      if (
-        typeof navigator !== "undefined" &&
-        navigator.clipboard &&
-        typeof navigator.clipboard.writeText === "function"
-      ) {
-        await navigator.clipboard.writeText(id);
-      }
-      showSuccess("Đã copy mã chuyến");
-    } catch (err) {
-      console.error("Copy error", err);
-      showError("Không thể copy");
-    }
-  };
 
   const renderCancelledTripCard = (trip: DriverCancelledTripItem) => {
     return (
@@ -156,13 +142,7 @@ export default function TripHistoryScreen() {
                 {trip.tripId}
               </Text>
 
-              <TouchableOpacity
-                style={styles.copyButton}
-                onPress={() => copyTripId(trip.tripId)}
-                activeOpacity={0.8}
-              >
-                <Text style={styles.copyText}>📑</Text>
-              </TouchableOpacity>
+              <CopyTripIdButton tripId={trip.tripId}/>
             </View>
           </View>
 
@@ -245,13 +225,7 @@ export default function TripHistoryScreen() {
                 {trip.id}
               </Text>
 
-              <TouchableOpacity
-                style={styles.copyButton}
-                onPress={() => copyTripId(trip.id)}
-                activeOpacity={0.8}
-              >
-                <Text style={styles.copyText}>📑</Text>
-              </TouchableOpacity>
+              <CopyTripIdButton tripId={trip.id}/>
             </View>
           </View>
 

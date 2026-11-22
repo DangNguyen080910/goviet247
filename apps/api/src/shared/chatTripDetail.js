@@ -4,7 +4,7 @@ export function chatTripSummary(trip,stops=[]) {
   return {id:trip.id,status:trip.status,isVerified:Boolean(trip.isVerified || trip.verifiedAt),
     pickupAddress:trip.pickupAddress,dropoffAddress:trip.dropoffAddress,stops:stops.map(stop=>({address:stop.address})),
     pickupTime:trip.pickupTime,returnTime:trip.returnTime,direction:trip.direction,carType:trip.carType,
-    distanceKm:trip.distanceKm,totalPrice:trip.totalPrice,partnerCompanyName:trip.partnerCompanyName || null};
+    totalPrice:trip.totalPrice,partnerCompanyName:trip.partnerCompanyName || null};
 }
 export function chatTripDetailRows(trip) {
   const statuses={PENDING:trip.isVerified?'Chờ tài xế nhận':'Chờ duyệt',ACCEPTED:'Tài xế đã nhận',CONTACTED:'Đã liên hệ',IN_PROGRESS:'Đang thực hiện',COMPLETED:'Hoàn thành',CANCELLED:'Đã hủy'};
@@ -13,7 +13,6 @@ export function chatTripDetailRows(trip) {
   if(trip.returnTime)rows.push(['Giờ về',time(trip.returnTime)]);
   if(trip.partnerCompanyName)rows.push(['Đối tác',trip.partnerCompanyName]);
   for(const point of tripRoutePoints(trip)) rows.push([point.label,point.address]);
-  if(trip.distanceKm!=null)rows.push(['Quãng đường',`${Number(trip.distanceKm).toLocaleString('vi-VN')} km`]);
   if(trip.totalPrice!=null)rows.push(['Giá chuyến',`${Number(trip.totalPrice).toLocaleString('vi-VN')} đ`]);
   return rows;
 }

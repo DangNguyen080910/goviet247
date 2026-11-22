@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
 import { enablePushNotifications } from "../services/pushRegister";
 import { getRiderToken } from "../services/storage";
@@ -174,6 +175,7 @@ export default function RiderNotificationsScreen() {
                     {bodyText || "Không có nội dung."}
                   </Text>
 
+                  <CopyTripIdButton tripId={tripId}/>
                   {tripId ? (
                     <Text style={styles.notificationHint}>
                       Chạm để xem chuyến liên quan

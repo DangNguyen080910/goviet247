@@ -1,3 +1,5 @@
+import CopyTripIdButton from './common/CopyTripIdButton';
+import {chatMapLinks} from '../../../api/src/shared/chatMap.js';
 import TripHistoryButton from "./admin/TripHistoryButton";
 import { formatChatTimestamp } from '../../../api/src/shared/chatTimestamp.js';
 import {splitChatLinks} from '../../../mobile-chat/chatLinks';
@@ -490,7 +492,8 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
     await post(`/${tripId}/messages`,{kind:'LOCATION',latitude:position.coords.latitude,longitude:position.coords.longitude,locationLabel:'Định vị hiện tại',clientId:makeId()});
     await load();
   }
-  const mapUrl = m => `https://www.google.com/maps/search/?api=1&query=${m.latitude},${m.longitude}`;
+  const mapUrl = m => chatMapLinks(m.latitude,m.longitude).google;
+  const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
   const docked = !isAdmin && Boolean(dockTarget);
   const launcher = signed && !open ? <Button variant="contained"
     ref={!docked && draggableInbox ? inboxDrag.ref : undefined}
@@ -515,7 +518,7 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
       textTransform: 'none'
     }}>💬 Tin nhắn {unread ? `(${unread})` : ''}</Button> : null;
   return <>{!isAdmin && dockTarget ? createPortal(launcher, dockTarget) : launcher}
- <Snackbar open={signed && (Boolean(incoming) || !soundReady || notificationPermission==='default')} autoHideDuration={incoming?6000:null} onClose={()=>setIncoming(null)} anchorOrigin={{vertical:'bottom',horizontal:'center'}} message={incoming?.label || 'Bật chuông và thông báo để không bỏ lỡ tin nhắn'} action={incoming ? <Button color="inherit" onClick={()=>{openTripChat(incoming.tripId);setIncoming(null);}}>Xem tin</Button> : <Button color="inherit" onClick={enableAlerts}>Bật chuông / thông báo</Button>} />
+ <Snackbar open={signed && (Boolean(incoming) || !soundReady || notificationPermission==='default')} autoHideDuration={incoming?6000:null} onClose={()=>setIncoming(null)} anchorOrigin={{vertical:'bottom',horizontal:'center'}} message={incoming?.label || 'Bật chuông và thông báo để không bỏ lỡ tin nhắn'} action={incoming ? <><CopyTripIdButton tripId={incoming.tripId}/><Button color="inherit" onClick={()=>{openTripChat(incoming.tripId);setIncoming(null);}}>Xem tin</Button></> : <Button color="inherit" onClick={enableAlerts}>Bật chuông / thông báo</Button>} />
  <Dialog open={open} onClose={close} fullWidth maxWidth="sm" sx={{zIndex:10020}}><DialogTitle sx={{
         display: 'flex',
         alignItems: 'center',
@@ -533,8 +536,8 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
             textAlign: 'left',
             justifyContent: 'flex-start',
             textTransform: 'none'
-          }}><Button onClick={()=>setTripId(c.tripId)} sx={{textAlign:'left',textTransform:'none',width:'100%',justifyContent:'flex-start'}}><Box sx={{minWidth:0,overflowWrap:'anywhere'}}><Typography fontWeight={800}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography>{chatConversationRoute(c)&&<Typography sx={{color:'text.secondary',my:0.5}}>{chatConversationRoute(c)}</Typography>}<Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button><Button onClick={()=>setTripId(c.tripId)}>Xem tin nhắn</Button></Box>)}</Stack> : <>
- <Box sx={{display:'flex',alignItems:'center',gap:1,px:2,py:1}}><Typography title={`Mã chuyến ${tripId}`} sx={{flex:1,minWidth:0,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',fontWeight:800}}>#{tripId}</Typography>{isAdmin && <TripHistoryButton tripId={tripId}/>}<Button onClick={()=>void showTrip(tripId)} sx={{flexShrink:0,minHeight:44}}>Xem chuyến</Button></Box>
+          }}><Button onClick={()=>setTripId(c.tripId)} sx={{textAlign:'left',textTransform:'none',width:'100%',justifyContent:'flex-start'}}><Box sx={{minWidth:0,overflowWrap:'anywhere'}}><Typography fontWeight={800}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Typography>{chatConversationRoute(c)&&<Typography sx={{color:'text.secondary',my:0.5}}>{chatConversationRoute(c)}</Typography>}<Typography>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Typography></Box></Button><CopyTripIdButton tripId={c.tripId}/><Button onClick={()=>setTripId(c.tripId)}>Xem tin nhắn</Button></Box>)}</Stack> : <>
+ <Box sx={{display:'flex',flexWrap:'wrap',alignItems:'center',gap:1,px:2,py:1}}><Typography title={`Mã chuyến ${tripId}`} sx={{flex:1,minWidth:0,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',fontWeight:800}}>#{tripId}</Typography><CopyTripIdButton tripId={tripId}/>{isAdmin && <TripHistoryButton tripId={tripId}/>}<Button onClick={()=>void showTrip(tripId)} sx={{flexShrink:0,minHeight:44}}>Xem chuyến</Button></Box>
  <Stack spacing={1.5} sx={{
             height: 'min(48vh,440px)',
             overflowY: 'auto',
@@ -565,10 +568,10 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
               }}>Tin nhắn đã được GoViet247 xoá.</Typography> : m.kind === 'TEXT' ? <Typography sx={{
                 whiteSpace: 'pre-wrap',
                 overflowWrap: 'anywhere'
-              }}>{splitChatLinks(m.text || '').map((part,index)=>part.url?<a key={index} href={part.url} target="_blank" rel="noopener noreferrer" style={{color:'#1976d2',textDecoration:'underline',overflowWrap:'anywhere'}}>{part.text}</a>:part.text)}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording || busy} onClick={() => run(() => listen(m))}>{playbackLabel(m)}</Button></Stack> : <Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
+              }}>{splitChatLinks(m.text || '').map((part,index)=>part.url?<a key={index} href={part.url} target="_blank" rel="noopener noreferrer" style={{color:'#1976d2',textDecoration:'underline',overflowWrap:'anywhere'}}>{part.text}</a>:part.text)}</Typography> : m.kind === 'IMAGE' ? <ChatImage tripId={tripId} messageId={m.id} loadImage={api} onOpen={() => run(() => viewImage(m.id))} /> : m.kind === 'AUDIO' ? <Stack direction="row"><Button disabled={recording || busy} onClick={() => run(() => listen(m))}>{playbackLabel(m)}</Button></Stack> : <Box><Button component="a" href={mapUrl(m)} target="_blank" rel="noopener noreferrer" sx={{
                 textAlign: 'left',
                 textTransform: 'none'
-              }}>📍 {m.locationLabel}<br />Vị trí tại thời điểm gửi · Mở bản đồ</Button>}{actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Button disabled={recording || busy} onClick={() => run(() => listen(m))}>{playbackLabel(m)}</Button>}{!m.deletedAt && <Button aria-label={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} aria-pressed={Boolean(m.hearted)} disabled={!canSend || busy} sx={{display:'flex',ml:'auto',minWidth:44,minHeight:44,borderRadius:6,color:(m.heartCount || 0) > 0 ? '#e11d48' : '#64748b',bgcolor:(m.heartCount || 0) > 0 ? '#fff1f2' : '#f8fafc',fontSize:18}} onClick={() => run(async () => {
+              }}>📍 {m.locationLabel}<br />Vị trí tại thời điểm gửi · Mở Google Maps</Button>{isIos && <Button component="a" href={chatMapLinks(m.latitude,m.longitude).apple} target="_blank" rel="noopener noreferrer" size="small">Mở bằng Apple Maps</Button>}</Box>}{actor.recordingAdmin === true && m.recordingCallId && !m.deletedAt && <Button disabled={recording || busy} onClick={() => run(() => listen(m))}>{playbackLabel(m)}</Button>}{!m.deletedAt && <Button aria-label={`${m.hearted ? 'Bỏ tim' : 'Thả tim'}, ${m.heartCount || 0} tim`} aria-pressed={Boolean(m.hearted)} disabled={!canSend || busy} sx={{display:'flex',ml:'auto',minWidth:44,minHeight:44,borderRadius:6,color:(m.heartCount || 0) > 0 ? '#e11d48' : '#64748b',bgcolor:(m.heartCount || 0) > 0 ? '#fff1f2' : '#f8fafc',fontSize:18}} onClick={() => run(async () => {
                 const result = await api(`/${tripId}/messages/${m.id}/heart`,{method:'PUT',body:JSON.stringify({active:!m.hearted})});
                 setItems(current => current.map(item => item.id === m.id ? {...item,hearted:result.hearted,heartCount:result.heartCount} : item));
                 await load();
@@ -622,10 +625,10 @@ export default function TripChatHub({ partnerTokenKey = null, adminMode = false,
  </DialogContent></Dialog>
  <Dialog open={cameraOpen} onClose={stopCamera} fullWidth maxWidth="sm" sx={{zIndex:10040}}><DialogTitle>Chụp ảnh gửi trong chuyến</DialogTitle><DialogContent><Box component="video" ref={video => {cameraVideo.current=video;if(video && cameraStream.current){video.srcObject=cameraStream.current;video.play().catch(() => {});}}} autoPlay muted playsInline sx={{width:'100%',borderRadius:2}} /><Stack direction="row"><Button disabled={busy} onClick={() => run(captureImage)}>Chụp ảnh</Button><Button onClick={stopCamera}>Đóng camera</Button></Stack></DialogContent></Dialog>
  <Dialog open={Boolean(tripView)} onClose={closeTripView} fullWidth maxWidth="sm" sx={{zIndex:10040}}><DialogTitle>Chi tiết chuyến<Button onClick={closeTripView} sx={{float:'right'}}>Quay lại tin nhắn</Button></DialogTitle><DialogContent dividers><Stack spacing={2}>
- <Typography sx={{overflowWrap:'anywhere',fontWeight:800}}>#{tripView?.id}</Typography>{isAdmin && <TripHistoryButton tripId={tripView?.id}/>}
+ <Typography sx={{overflowWrap:'anywhere',fontWeight:800}}>#{tripView?.id}</Typography><CopyTripIdButton tripId={tripView?.id}/>{isAdmin && <TripHistoryButton tripId={tripView?.id}/>}
  {tripView?.loading&&<Typography>Đang tải chuyến...</Typography>}
  {tripView?.error&&<Alert severity="error" action={<Button onClick={()=>void showTrip(tripView.id)}>Thử lại</Button>}>{tripView.error}</Alert>}
- {tripView?.trip&&chatTripDetailRows(tripView.trip).map(([label,value],index)=><Box key={index}><Typography color="text.secondary">{label}</Typography><Typography sx={{overflowWrap:'anywhere'}}>{value}</Typography></Box>)}
+ {tripView?.trip&&chatTripDetailRows(tripView.trip).map(([label,value],index)=><Box key={index}><Typography color="text.secondary">{label}</Typography><Typography sx={{overflowWrap:'anywhere'}}>{value}</Typography>{label==='Mã chuyến' && <CopyTripIdButton tripId={value}/>}</Box>)}
  </Stack></DialogContent></Dialog>
  <Dialog open={Boolean(imageView)} onClose={() => setImageView(null)} fullWidth maxWidth="lg" sx={{zIndex:10050}}><DialogTitle sx={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>Ảnh trong hội thoại<IconButton aria-label="Đóng ảnh" onClick={() => setImageView(null)}>×</IconButton></DialogTitle><DialogContent>{imageView && <Box component="img" src={imageView.url} alt="Ảnh trong chuyến" onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} sx={{display:'block',width:'100%',maxHeight:'75vh',objectFit:'contain'}} />}</DialogContent></Dialog></>;
 }

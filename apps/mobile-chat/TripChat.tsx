@@ -1,3 +1,5 @@
+import CopyTripIdButton from './CopyTripIdButton';
+import {openChatMap} from '../api/src/shared/chatMap.js';
 import { formatChatTimestamp } from '../api/src/shared/chatTimestamp.js';
 import {showPermissionSettings} from './permissionHelp';
 import {chatSupportUrl} from '../api/src/shared/chatSupport.js';
@@ -565,9 +567,8 @@ export default function TripChatScreen() {
     });
     await load();
   }
-  function openMap(lat: number, lon: number) {
-    const url = Platform.OS === 'ios' ? `https://maps.apple.com/?ll=${lat},${lon}&q=${lat},${lon}` : `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
-    return Linking.openURL(url);
+  function openMap(lat:number,lon:number) {
+    return openChatMap(lat,lon,{os:Platform.OS,canOpenURL:(url:string)=>Linking.canOpenURL(url),openURL:(url:string)=>Linking.openURL(url)});
   }
   return <SafeAreaView style={{
     flex: 1,
@@ -587,7 +588,7 @@ export default function TripChatScreen() {
         color: ink,
         flex: 1
       }}>{tripId ? 'Liên hệ chuyến' : 'Tin nhắn chuyến'}</Text>{tripId && <TripCallButton tripId={tripId}/>}</View>
- {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',alignItems:'center'}}>{config.role === 'ADMIN' && config.renderAdminTripHistory?.(tripId)}<Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:0,color:ink}}>#{tripId}</Text><Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
+ {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',flexWrap:'wrap',alignItems:'center'}}>{config.role === 'ADMIN' && config.renderAdminTripHistory?.(tripId)}<Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:100,color:ink}}>#{tripId}</Text><CopyTripIdButton tripId={tripId}/><Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
  {!!error && <Text accessibilityRole="alert" style={{
       color: '#b91c1c',
       padding: 12
@@ -600,7 +601,7 @@ export default function TripChatScreen() {
         marginBottom: 10
       }} onPress={() => router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any)}><Text style={{
           fontWeight: '800'
-        }}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text>{chatConversationRoute(c) ? <Text style={{color:'#64748b',marginVertical:6}}>{chatConversationRoute(c)}</Text> : null}<Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text><Pressable accessibilityRole="button" style={button} onPress={event=>{event.stopPropagation();router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any);}}><Text style={{color:blue}}>Xem tin nhắn</Text></Pressable></Pressable>)}</ScrollView> : <>
+        }}>#{c.tripId} {c.unread ? `· ${c.unread} chưa đọc` : ''}</Text><CopyTripIdButton tripId={c.tripId}/>{chatConversationRoute(c) ? <Text style={{color:'#64748b',marginVertical:6}}>{chatConversationRoute(c)}</Text> : null}<Text>{c.last.senderLabel} · {c.last.deletedAt ? 'Tin nhắn đã xoá' : c.last.kind === 'AUDIO' ? 'Tin nhắn thoại' : c.last.kind === 'IMAGE' ? 'Hình ảnh' : c.last.kind === 'LOCATION' ? 'Vị trí' : c.last.text}</Text><Pressable accessibilityRole="button" style={button} onPress={event=>{event.stopPropagation();router.push(`/trip-chat?tripId=${encodeURIComponent(c.tripId)}` as any);}}><Text style={{color:blue}}>Xem tin nhắn</Text></Pressable></Pressable>)}</ScrollView> : <>
  <ScrollView ref={scroll} scrollEventThrottle={100} onScroll={event => {
    const {layoutMeasurement,contentOffset,contentSize} = event.nativeEvent;
    atBottom.current = layoutMeasurement.height + contentOffset.y >= contentSize.height - 30;
@@ -753,10 +754,10 @@ export default function TripChatScreen() {
  </KeyboardAvoidingView>
  <Modal visible={Boolean(tripView)} animationType="slide" onRequestClose={closeTripView}>
  <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}><View style={{padding:16,gap:10}}><Text style={{fontSize:20,fontWeight:'800'}}>Chi tiết chuyến</Text><Pressable accessibilityRole="button" style={button} onPress={closeTripView}><Text style={{color:blue}}>← Quay lại tin nhắn</Text></Pressable></View>
- <ScrollView contentContainerStyle={{padding:16,gap:14}}>{config.role === 'ADMIN' && tripView?.id && config.renderAdminTripHistory?.(tripView.id)}<Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text>
+ <ScrollView contentContainerStyle={{padding:16,gap:14}}>{config.role === 'ADMIN' && tripView?.id && config.renderAdminTripHistory?.(tripView.id)}<Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text><CopyTripIdButton tripId={tripView?.id}/>
  {tripView?.loading ? <Text>Đang tải chuyến...</Text> : null}
  {tripView?.error ? <><Text accessibilityRole="alert" style={{color:'#b91c1c'}}>{tripView.error}</Text><Pressable style={button} onPress={()=>void showTrip(tripView.id)}><Text>Thử lại</Text></Pressable></> : null}
- {tripView?.trip ? chatTripDetailRows(tripView.trip).map(([label,value]:string[],index:number)=><View key={index} style={{gap:4}}><Text style={{color:'#64748b'}}>{label}</Text><Text selectable style={{color:ink,fontSize:16}}>{value}</Text></View>) : null}
+ {tripView?.trip ? chatTripDetailRows(tripView.trip).map(([label,value]:string[],index:number)=><View key={index} style={{gap:4}}><Text style={{color:'#64748b'}}>{label}</Text><Text selectable style={{color:ink,fontSize:16}}>{value}</Text>{label==='Mã chuyến' && <CopyTripIdButton tripId={value}/>}</View>) : null}
  </ScrollView></SafeAreaView></Modal>
  <Modal visible={Boolean(imageView)} transparent animationType="fade" onRequestClose={() => setImageView(null)}>
  <SafeAreaView style={{flex:1,backgroundColor:'rgba(0,0,0,0.96)'}}><Pressable accessibilityLabel="Đóng ảnh" onPress={() => setImageView(null)} style={{padding:18,alignSelf:'flex-end'}}><Text style={{color:'white',fontSize:18}}>Đóng ✕</Text></Pressable>{imageView && <Image source={{uri:imageView.uri}} resizeMode="contain" style={{flex:1,width:'100%'}} onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} />}</SafeAreaView>

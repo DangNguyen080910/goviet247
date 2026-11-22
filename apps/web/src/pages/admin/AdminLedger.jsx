@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import MoneyTextField from '../../components/common/MoneyTextField';
 // Path: goviet247/apps/web/src/pages/admin/AdminLedger.jsx
@@ -2716,7 +2717,7 @@ export default function AdminLedger() {
                               <TableCell>
                                 {formatNumber(item.balanceAfter)}
                               </TableCell>
-                              <TableCell>{item.relatedRef}</TableCell>
+                              <TableCell>{item.relatedRef}<CopyTripIdButton tripId={item.tripId}/></TableCell>
                               <TableCell>{item.note}</TableCell>
                             </TableRow>
                           ))
@@ -2792,7 +2793,7 @@ export default function AdminLedger() {
                         {tripItems.map((row, idx) => (
                           <TableRow key={`${row.rowType}-${row.tripId}-${idx}`}>
                             <TableCell>{row.rowTypeLabel}</TableCell>
-                            <TableCell>{row.tripId}<div><TripHistoryButton tripId={row.tripId}/></div></TableCell>
+                            <TableCell>{row.tripId}<div><CopyTripIdButton tripId={row.tripId}/><TripHistoryButton tripId={row.tripId}/></div></TableCell>
                             <TableCell>
                               {row.eventAt
                                 ? new Date(row.eventAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })

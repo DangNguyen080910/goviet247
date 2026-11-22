@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
 import {useNavigate} from "react-router-dom";
 import { useEffect, useMemo, useRef } from "react";
 import {
@@ -99,6 +100,7 @@ function NotificationCard({ title, message, createdAt, unread = false, tripId })
           >
             {message || "Không có nội dung"}
           </Typography>
+          {tripId && <CopyTripIdButton tripId={tripId}/>}
           {tripId && <Button onClick={()=>navigate(`/ho-so?focusTripId=${encodeURIComponent(tripId)}`)}>Xem chuyến</Button>}
 
           <Stack

@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import {useCallback,useEffect,useState} from 'react';
 import {router,useFocusEffect} from 'expo-router';
 import {ActivityIndicator,Pressable,RefreshControl,ScrollView,StyleSheet,Switch,Text,TextInput,View} from 'react-native';
@@ -79,7 +80,7 @@ export default function QuoteHistoryScreen(){
             <Text>Giờ đón: {historyTime(item.pickupTime)}{item.returnTime?` · Giờ về: ${historyTime(item.returnTime)}`:''}</Text>
             <Text>{Number(item.distanceKm).toLocaleString('vi-VN',{maximumFractionDigits:1})} km · Lái dự kiến: {item.driveMinutes??'—'} phút</Text>
             <Text selectable>Tài khoản: {item.userId || 'Khách vãng lai'}</Text>
-            {item.tripId&&<><Text selectable>Mã chuyến: {item.tripId}</Text><Text>Đặt lúc: {historyTime(item.bookedAt)}</Text>
+            {item.tripId&&<><Text selectable>Mã chuyến: {item.tripId}</Text><CopyTripIdButton tripId={item.tripId}/><Text>Đặt lúc: {historyTime(item.bookedAt)}</Text>
               <View style={styles.row}><Pressable style={styles.button} onPress={()=>router.push({pathname:'/assigned-trips',params:{tripId:item.tripId,focusRequest:String(Date.now())}})}><Text style={styles.link}>Xem chuyến</Text></Pressable><TripHistoryButton tripId={item.tripId}/></View></>}
           </>}
         </View>)}

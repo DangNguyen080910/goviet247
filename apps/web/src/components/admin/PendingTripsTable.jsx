@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
 import TripHistoryButton from "./TripHistoryButton";
 import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import TripMoney from "./TripMoney";
@@ -397,7 +398,7 @@ export default function PendingTripsTable({
                   }}
                   title="Bấm để xem chi tiết chuyến"
                 >
-                  <td style={tdMono}>{tripId || "-"}<div><TripHistoryButton tripId={tripId}/></div></td>
+                  <td style={tdMono}>{tripId || "-"}<div><CopyTripIdButton tripId={tripId}/><TripHistoryButton tripId={tripId}/></div></td>
 
                   {showCustomerCol && (
                     <>

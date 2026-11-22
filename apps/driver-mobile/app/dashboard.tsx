@@ -1,3 +1,4 @@
+import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import { useDriverRules } from '../context/DriverRulesContext';
 import ContractReminder from '../components/ContractReminder';
 import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
@@ -1320,7 +1321,7 @@ export default function DashboardScreen() {
       return (
         <View key={trip.id} style={styles.tripCard}>
           <View style={styles.tripTopRow}>
-            <Text style={styles.tripIdBadge}>#{trip.id.slice(-8)}</Text>
+            <View style={{flexDirection:"row",alignItems:"center",gap:6,flexWrap:"wrap",flexShrink:1}}><Text style={styles.tripIdBadge}>#{trip.id.slice(-8)}</Text><CopyTripIdButton tripId={trip.id}/></View>
             <Text style={styles.tripTime}>
               Đón: {formatDateTime(trip.pickupTime)}
             </Text>
@@ -1515,7 +1516,7 @@ export default function DashboardScreen() {
       return (
         <View key={trip.id} style={styles.tripCard}>
           <View style={styles.tripTopRow}>
-            <Text style={styles.tripIdBadge}>#{trip.id.slice(-8)}</Text>
+            <View style={{flexDirection:"row",alignItems:"center",gap:6,flexWrap:"wrap",flexShrink:1}}><Text style={styles.tripIdBadge}>#{trip.id.slice(-8)}</Text><CopyTripIdButton tripId={trip.id}/></View>
             <Text style={styles.tripTime}>
               Đón: {formatDateTime(trip.pickupTime)}
             </Text>
