@@ -11,6 +11,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NotificationProvider } from "../context/NotificationContext";
 import { getDriverToken } from "../services/storage";
 import AppUpdatePrompt from "../components/AppUpdatePrompt";
+import DriverContractGate from "../components/DriverContractGate";
 
 Notifications.setNotificationHandler({
   handleNotification: async notification => {
@@ -83,16 +84,18 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <NotificationProvider>
       <DriverRulesProvider>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-        />
+        <DriverContractGate>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+          />
+          <ChatInboxBadge />
+        </DriverContractGate>
         <Toast config={{ tripAcceptError: props => <ErrorToast {...props} text2NumberOfLines={4}
           style={{ height: "auto", minHeight: 78, maxWidth: "95%" }}
           contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 10 }}
           text1Style={{ fontSize: 14 }} text2Style={{ fontSize: 13, lineHeight: 18, color: "#374151" }} /> }} />
-        <ChatInboxBadge />
         <TripCallOverlay />
         <AppUpdatePrompt />
       </DriverRulesProvider>

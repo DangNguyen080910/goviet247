@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { tripAcceptFeedback } from "../src/shared/tripAcceptFeedback.js";
+import { assertCurrentContractForNewTrip } from '../src/services/driverContract.js';
 test("blocked acceptance and unknown errors direct drivers to support", () => {
   const expected = "Bạn không thể nhận chuyến này. Vui lòng liên hệ Zalo team support GoViet247 để được hỗ trợ.";
   assert.equal(tripAcceptFeedback({ code: "TRIP_ACCEPT_UNAVAILABLE", message: "blocked" }), expected);
@@ -26,7 +27,7 @@ const source = readFileSync(new URL('../src/controllers/tripController.js', impo
 const begin = source.indexOf('export async function acceptTrip(');
 const finish = source.indexOf('\n}', begin) + 2;
 const acceptBody = source.slice(begin, finish).replace('export ', '');
-test('backend distinguishes cancelled trips, another driver, own trip, opening time, limits and wallet balance', async () => {
+test('paused contract enforcement keeps KYC, trip availability, opening time, limits and wallet checks', async () => {
   const baseTrip = { id:'trip1', status:'PENDING', isVerified:true, verifiedAt:new Date(), totalPrice:1000000 };
   const cases = [
     [{ ...baseTrip, status:'CANCELLED' }, 0, 100000, 'TRIP_CANCELLED'],
@@ -35,10 +36,11 @@ test('backend distinguishes cancelled trips, another driver, own trip, opening t
     [{ ...baseTrip, driverAcceptOpenAt:new Date(Date.now()+60000) }, 0, 100000, 'TRIP_NOT_OPEN'],
     [baseTrip, 3, 100000, 'ACTIVE_TRIP_LIMIT'],
     [baseTrip, 0, 50000, 'INSUFFICIENT_BALANCE'],
+    [baseTrip, 0, 100000, 'DRIVER_NOT_VERIFIED', 'PENDING'],
   ];
-  for (const [trip, activeCount, balance, expectedCode] of cases) {
-    const tx = { driverProfile:{ findUnique:async () => ({ id:'profile1', status:'VERIFIED', balance }) }, trip:{ findUnique:async () => trip } };
-    const dependencies = { assertCurrentContractForNewTrip:async()=>{},
+  for (const [trip, activeCount, balance, expectedCode, status = 'VERIFIED'] of cases) {
+    const tx = { driverProfile:{ findUnique:async () => ({ id:'profile1', status, balance }) }, trip:{ findUnique:async () => trip } };
+    const dependencies = { assertCurrentContractForNewTrip:(db,profile)=>assertCurrentContractForNewTrip(db,profile,{}),
       prisma:{ $transaction:fn => fn(tx) },
       getDriverConfigSnapshot:async () => ({ maxActiveTrips:3 }),
       lockDriverProfile:async () => {}, lockTrip:async () => {}, assertTripAcceptanceAllowed:() => {},

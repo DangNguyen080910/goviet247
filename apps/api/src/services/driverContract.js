@@ -66,17 +66,29 @@ export async function currentDriverContract(db, env = process.env) {
   return {contract:{...row.content,contentHash:contractHash(row.content)},release:{id:row.id,version:row.version,publishedAt:row.publishedAt,changeSummary:row.changeSummary,graceDays:row.graceDays,requireForNewTrips:row.requireForNewTrips,deadline:new Date(row.publishedAt.getTime()+row.graceDays*86400000)}};
 }
 const OFFICIAL_VERSION = 'v2.3';
+// Temporary compatibility for released Driver apps without the reconsent entry screen.
+// This controls trip acceptance only; current-contract prompts and consent evidence stay intact.
+const rollout = JSON.parse(readFileSync(new URL('./driverContractRollout.json', import.meta.url), 'utf8'));
+export function driverContractTripEnforcementEnabled(env = process.env) {
+  const override = env.DRIVER_CONTRACT_ENFORCE_NEW_TRIPS;
+  if (override === undefined) return rollout.enforceForNewTrips !== false;
+  if (override !== 'true' && override !== 'false') {
+    throw Object.assign(new Error('Cấu hình kiểm tra hợp đồng nhận chuyến không hợp lệ. Vui lòng liên hệ hỗ trợ.'), {statusCode:503});
+  }
+  return override === 'true';
+}
 
 export const driverContractReconsentEnabled = (env = process.env, contract, release) =>
   contract?.version === OFFICIAL_VERSION
     ? release?.requireForNewTrips === true
     : env.DRIVER_CONTRACT_RECONSENT_ENABLED === 'true';
 export async function assertCurrentContractForNewTrip(db, profile, env = process.env) {
+  if (!driverContractTripEnforcementEnabled(env)) return;
   const {contract,release}=await currentDriverContract(db,env);
   if (!driverContractReconsentEnabled(env, contract, release)) return;
   if (!release?.requireForNewTrips || Date.now()<release.deadline.getTime()) return;
   const accepted=await db.driverContractAcceptance.findFirst({where:{driverProfileId:profile.id,contractVersion:contract.version,contractFileHash:contract.contentHash,isActive:true}});
-  if (!accepted) throw Object.assign(new Error('Vui lòng mở Hồ sơ → Hợp đồng để đọc và xác nhận hợp đồng mới trước khi nhận chuyến mới.'),{statusCode:409,code:'CONTRACT_ACCEPTANCE_REQUIRED'});
+  if (!accepted) throw Object.assign(new Error('Vui lòng đọc và xác nhận hợp đồng mới trước khi nhận chuyến. Nếu ứng dụng chưa mở màn hình hợp đồng, vui lòng cập nhật ứng dụng hoặc liên hệ hỗ trợ.'),{statusCode:409,code:'CONTRACT_ACCEPTANCE_REQUIRED'});
 }
 
 // Registration-only revision: do not rewrite published versions or old receipts.

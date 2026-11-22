@@ -2,11 +2,35 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {draftSchema,checkPublish,makeAdminContractController} from '../src/controllers/adminContractController.js';
-import {activeDriverContract,currentDriverContract,contractHash,buildContractAcceptance,assertCurrentContractForNewTrip,validateRegistrationSubmission,registrationDriverContract} from '../src/services/driverContract.js';
+import {activeDriverContract,currentDriverContract,contractHash,buildContractAcceptance,assertCurrentContractForNewTrip,validateRegistrationSubmission,registrationDriverContract,driverContractTripEnforcementEnabled} from '../src/services/driverContract.js';
 import {makeDriverContractController} from '../src/controllers/driverContractController.js';
 const c={...activeDriverContract({DRIVER_CONTRACT_VERSION:'v2.0-2026-11-09',DRIVER_CONTRACT_V2_APPROVED:'true'}),version:'v3-test'};delete c.contentHash;
 const row={id:'v3',content:c,version:c.version,publishedAt:new Date('2026-01-01'),updatedAt:new Date('2026-01-01'),graceDays:7,requireForNewTrips:true,changeSummary:'Bổ sung thông tin'};
 const res=()=>({statusCode:200,status(n){this.statusCode=n;return this;},json(b){this.body=b;return this;},setHeader(){}});
+test('trip-only rollout defaults to paused and supports an explicit restart-time override',async()=>{
+ assert.equal(driverContractTripEnforcementEnabled({}),false);
+ assert.equal(driverContractTripEnforcementEnabled({DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'false'}),false);
+ assert.equal(driverContractTripEnforcementEnabled({DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'true'}),true);
+ assert.throws(()=>driverContractTripEnforcementEnabled({DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'typo'}),{statusCode:503});
+ await assertCurrentContractForNewTrip({}, {id:'unsigned-driver'}, {});
+ await assertCurrentContractForNewTrip({}, {id:'unsigned-driver'}, {DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'false'});
+});
+test('paused trip enforcement preserves v2.3 entry prompt, registration validation and old evidence',async()=>{
+ const content=JSON.parse(readFileSync(new URL('../prisma/migrations/20261111161000_official_driver_contract/migration.sql',import.meta.url),'utf8').split('$contract$')[1]);
+ const official={...row,version:content.version,content,graceDays:0};
+ const receipt={id:'legacy',driverProfileId:'p',contractVersion:'v1.0',agreedAt:new Date('2026-08-24'),isActive:true,contractFileHash:null};
+ const before=structuredClone(receipt);
+ const db={driverContractVersion:{findFirst:async()=>official},driverProfile:{findUnique:async()=>({id:'p',user:{phones:[]}})},driverContractAcceptance:{findFirst:async({where})=>Object.entries(where).every(([key,value])=>receipt[key]===value)?receipt:null,findMany:async()=>[receipt]}};
+ await assertCurrentContractForNewTrip(db,{id:'p'},{});
+ const output=res();
+ await makeDriverContractController(db,{}).current({user:{uid:'u'}},output);
+ assert.equal(output.body.needsAcceptance,true);
+ assert.equal(output.body.reconsentEnabled,true);
+ assert.equal(output.body.contract.version,'v2.3');
+ assert.deepEqual(receipt,before);
+ await assert.rejects(()=>validateRegistrationSubmission(db,{contractAccepted:false,contractVersion:'v1.0'},{}));
+ await assert.rejects(()=>assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'true'}),{code:'CONTRACT_ACCEPTANCE_REQUIRED'});
+});
 test('draft validation requires company, sections, confirmation and bounded grace; strips injected hash',()=>{
  const input={content:c,changeSummary:'Cập nhật',graceDays:7,requireForNewTrips:false};
  assert.equal(draftSchema.parse({...input,content:{...c,contentHash:'forged'}}).content.contentHash,undefined);
@@ -32,12 +56,13 @@ test('old contracts remain fallback when there is no published version',async()=
  const current=await currentDriverContract({driverContractVersion:{findFirst:async()=>null}},{});assert.equal(current.contract.version,'v1.0');assert.equal(current.release,null);
 });
 test('new-trip restriction is opt-in, respects grace, and accepts only matching receipt',async()=>{
+ const env={DRIVER_CONTRACT_RECONSENT_ENABLED:'true',DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'true'};
  let acceptance=null;let release={...row,requireForNewTrips:false};
  const db={driverContractVersion:{findFirst:async()=>release},driverContractAcceptance:{findFirst:async({where})=>acceptance&&acceptance.contractFileHash===where.contractFileHash?acceptance:null}};
- await assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'});
- release={...row,publishedAt:new Date()};await assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'});
- release=row;await assert.rejects(()=>assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'}),e=>e.code==='CONTRACT_ACCEPTANCE_REQUIRED');
- acceptance={contractFileHash:contractHash(c)};await assertCurrentContractForNewTrip(db,{id:'p'},{DRIVER_CONTRACT_RECONSENT_ENABLED:'true'});
+ await assertCurrentContractForNewTrip(db,{id:'p'},env);
+ release={...row,publishedAt:new Date()};await assertCurrentContractForNewTrip(db,{id:'p'},env);
+ release=row;await assert.rejects(()=>assertCurrentContractForNewTrip(db,{id:'p'},env),e=>e.code==='CONTRACT_ACCEPTANCE_REQUIRED');
+ acceptance={contractFileHash:contractHash(c)};await assertCurrentContractForNewTrip(db,{id:'p'},env);
 });
 test('published row cannot be edited and failed save never writes',async()=>{
  let writes=0;const tx={$queryRaw:async()=>[],driverContractVersion:{findUnique:async()=>row,update:async()=>{writes++;}}};const db={$transaction:async fn=>fn(tx)};const output=res();
@@ -72,7 +97,7 @@ test('official v2.3 enforces signing after rollout and keeps legacy registration
  const migration = readFileSync(new URL('../prisma/migrations/20261111161000_official_driver_contract/migration.sql', import.meta.url), 'utf8');
  const content = JSON.parse(migration.split('$contract$')[1]);
  const official = {...row, version: content.version, content, graceDays: 0};
- const env = {DRIVER_CONTRACT_RECONSENT_ENABLED: 'false', DRIVER_REGISTRATION_ALLOW_LEGACY_V1: 'true'};
+ const env = {DRIVER_CONTRACT_RECONSENT_ENABLED: 'false', DRIVER_REGISTRATION_ALLOW_LEGACY_V1: 'true', DRIVER_CONTRACT_ENFORCE_NEW_TRIPS:'true'};
  const db = {
   driverContractVersion: {findFirst: async () => official},
   driverProfile: {findUnique: async () => ({id: 'p', user: {phones: []}})},

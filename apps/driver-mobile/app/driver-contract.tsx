@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, ActivityIndicator, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DRIVER_CONTRACT_RECONSENT_VISIBLE } from "../constants/contractFeatures";
-import { Redirect, router, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { getDriverToken, removeDriverToken } from "../services/storage";
 import { getDriverContract, acceptDriverContract, type DriverContractResponse } from "../services/driverProfileApi";
 export default function DriverContractScreen() {
-  return DRIVER_CONTRACT_RECONSENT_VISIBLE ? <ActiveContractScreen /> : <Redirect href="/dashboard" />;
+  return <ActiveContractScreen />;
 }
 function ActiveContractScreen() {
   const required = useLocalSearchParams<{ required?: string }>().required === "1";
@@ -29,11 +28,15 @@ function ActiveContractScreen() {
   const missingIdentity=!!data?.release && (!data.profile?.residentialAddress?.trim() || !/^\d{12}$/.test(data.profile?.citizenId||''));
   const p={fontSize:16,lineHeight:24,marginBottom:12,color:"#17202a"};
   return <SafeAreaView style={{flex:1,backgroundColor:"white"}}><ScrollView ref={scroll} contentContainerStyle={{padding:20}}>
-    {required ? (
+    {required ? <>
+      <Text style={p}>Vui lòng đọc và xác nhận hợp đồng đang áp dụng trước khi tiếp tục vào app. Bạn không cần đăng xuất.</Text>
+      <TouchableOpacity accessibilityRole="button" onPress={() => router.push("/support")}>
+        <Text style={[p,{color:"#1676D2"}]}>Liên hệ hỗ trợ</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={async () => { await removeDriverToken(); router.replace("/"); }}>
         <Text style={p}>Đăng xuất</Text>
       </TouchableOpacity>
-    ) : <TouchableOpacity onPress={()=>router.back()}><Text style={p}>‹ Quay lại</Text></TouchableOpacity>}
+    </> : <TouchableOpacity onPress={()=>router.back()}><Text style={p}>‹ Quay lại</Text></TouchableOpacity>}
     <Text style={[p,{fontSize:22,fontWeight:"700"}]}>Hợp đồng tài xế</Text>
     {busy && <ActivityIndicator/>}{!!error && <Text style={[p,{color:"#b42318"}]}>{error}</Text>}
     <TouchableOpacity disabled={busy} onPress={load}><Text style={[p,{color:"#1676D2"}]}>Tải lại</Text></TouchableOpacity>

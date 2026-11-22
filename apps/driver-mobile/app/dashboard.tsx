@@ -12,7 +12,7 @@ import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/dashboard.tsx
 import { ServiceSummary } from "../components/DestinationService";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { router, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams, type Href } from "expo-router";
 import { io, type Socket } from "socket.io-client";
 import * as Clipboard from "expo-clipboard";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -1049,7 +1049,7 @@ export default function DashboardScreen() {
           setAvailableTrips((items) => items.filter((item) => item.id !== tripId));
         }
         if (error?.code === "CONTRACT_ACCEPTANCE_REQUIRED") {
-          router.replace("/bootstrap");
+          router.replace("/driver-contract?required=1" as Href);
           return;
         }
         const message = tripAcceptFeedback(error);
