@@ -1,3 +1,4 @@
+import TripHistoryButton from "./TripHistoryButton";
 import { useEffect, useRef, useState } from "react";
 import { Alert, Button, MenuItem, Stack, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
 import AccountingPdfButton from "./AccountingPdfButton";
@@ -74,7 +75,7 @@ export default function CommissionDetails() {
       <AdminTableScroll><Table size="small"><TableHead><TableRow>{['Ngày ghi nhận (VN)','Mã chuyến','Tài xế','SĐT','MST / CCCD','Địa chỉ','Giá chuyến','% hoa hồng','Phí gồm VAT','Trước VAT','VAT','Hóa đơn / hành động'].map(h=><TableCell key={h}>{h}</TableCell>)}</TableRow></TableHead><TableBody>
         {!data.items.length?<TableRow><TableCell colSpan={12}>Không có chuyến phù hợp bộ lọc.</TableCell></TableRow>:data.items.map(i=><TableRow key={i.tripId}>
           <TableCell>{new Date(i.eventAt).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh', hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}{i.recognitionEstimated&&<Typography variant="caption" display="block">Mốc dữ liệu cũ, cần đối chiếu</Typography>}</TableCell>
-          <TableCell>{i.tripId}</TableCell><TableCell>{i.driverName}<br/>{i.driverId}</TableCell><TableCell>{i.driverPhone||'Chưa cập nhật'}</TableCell><TableCell>{i.citizenId||'Chưa cập nhật'}</TableCell><TableCell sx={{minWidth:220}}>{i.residentialAddress||'Chưa cập nhật'}</TableCell>
+          <TableCell>{i.tripId}<div><TripHistoryButton tripId={i.tripId}/></div></TableCell><TableCell>{i.driverName}<br/>{i.driverId}</TableCell><TableCell>{i.driverPhone||'Chưa cập nhật'}</TableCell><TableCell>{i.citizenId||'Chưa cập nhật'}</TableCell><TableCell sx={{minWidth:220}}>{i.residentialAddress||'Chưa cập nhật'}</TableCell>
           <TableCell>{money(i.totalPrice)}</TableCell><TableCell>{i.commissionPercent??'—'}</TableCell><TableCell>{money(i.commissionGross)}</TableCell><TableCell>{money(i.commissionNet)}</TableCell><TableCell>{money(i.commissionVat)}</TableCell>
           <TableCell sx={{minWidth:210}}>{i.invoice?<>Đã xác nhận: {i.invoice.invoiceNumber}<br/>{new Date(i.invoice.issuedAt).toLocaleDateString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh', day: "2-digit", month: "2-digit", year: "numeric" })}<br/><Button size="small" onClick={()=>{setSelected(i);setInvoiceNumber(i.invoice.invoiceNumber ?? '');setSaveError('');}}>Sửa ký hiệu / số hóa đơn</Button></>:i.commissionGross>0?<Button size="small" onClick={()=>{setSelected(i);setInvoiceNumber('');setIssuedDay(today());setSaveError('');}}>Xác nhận đã phát hành</Button>:i.note||'Không phát sinh phí'}</TableCell>
         </TableRow>)}

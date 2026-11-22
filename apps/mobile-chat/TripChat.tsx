@@ -23,6 +23,7 @@ type Config = {
   base: string;
   getToken: () => Promise<string | null>;
   role: 'RIDER' | 'DRIVER' | 'ADMIN';
+  renderAdminTripHistory?: (tripId:string) => React.ReactNode;
 };
 let config: Config;
 export let activeChatTrip = '';
@@ -586,7 +587,7 @@ export default function TripChatScreen() {
         color: ink,
         flex: 1
       }}>{tripId ? 'Liên hệ chuyến' : 'Tin nhắn chuyến'}</Text>{tripId && <TripCallButton tripId={tripId}/>}</View>
- {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',alignItems:'center'}}><Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:0,color:ink}}>#{tripId}</Text><Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
+ {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',alignItems:'center'}}>{config.role === 'ADMIN' && config.renderAdminTripHistory?.(tripId)}<Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:0,color:ink}}>#{tripId}</Text><Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
  {!!error && <Text accessibilityRole="alert" style={{
       color: '#b91c1c',
       padding: 12
@@ -752,7 +753,7 @@ export default function TripChatScreen() {
  </KeyboardAvoidingView>
  <Modal visible={Boolean(tripView)} animationType="slide" onRequestClose={closeTripView}>
  <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}><View style={{padding:16,gap:10}}><Text style={{fontSize:20,fontWeight:'800'}}>Chi tiết chuyến</Text><Pressable accessibilityRole="button" style={button} onPress={closeTripView}><Text style={{color:blue}}>← Quay lại tin nhắn</Text></Pressable></View>
- <ScrollView contentContainerStyle={{padding:16,gap:14}}><Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text>
+ <ScrollView contentContainerStyle={{padding:16,gap:14}}>{config.role === 'ADMIN' && tripView?.id && config.renderAdminTripHistory?.(tripView.id)}<Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text>
  {tripView?.loading ? <Text>Đang tải chuyến...</Text> : null}
  {tripView?.error ? <><Text accessibilityRole="alert" style={{color:'#b91c1c'}}>{tripView.error}</Text><Pressable style={button} onPress={()=>void showTrip(tripView.id)}><Text>Thử lại</Text></Pressable></> : null}
  {tripView?.trip ? chatTripDetailRows(tripView.trip).map(([label,value]:string[],index:number)=><View key={index} style={{gap:4}}><Text style={{color:'#64748b'}}>{label}</Text><Text selectable style={{color:ink,fontSize:16}}>{value}</Text></View>) : null}

@@ -1,3 +1,4 @@
+import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import TripMoney from "../../components/admin/TripMoney";
@@ -272,7 +273,7 @@ export default function AdminTrips() {
                       }}
                     >
                       {t.id || "-"}
-                    </TableCell>
+                    <div><TripHistoryButton tripId={t.id}/></div></TableCell>
 
                     <TableCell>
                       <div style={{ fontWeight: 700 }}>

@@ -1,3 +1,4 @@
+import {makeTripEvent,tripChanges} from "./tripHistory.js";
 import { resolveRiderCompanyBooking } from './partnerRiderBooking.js';
 import { normalizePartnerPhone } from './partnerRiderAccess.js';
 import { createBookingChatNotice } from './tripBookingChat.js';
@@ -44,7 +45,15 @@ export async function createBookableTrip(db, data) {
       if(context.assigned.id!==tripData.partnerAssignedToId || (context.member?.id || null)!==(tripData.partnerCreatedById || null)) throw Object.assign(new Error('Quyền điều phối đã thay đổi. Vui lòng chọn lại công ty.'),{status:409});
       tripData.partnerBookerName=context.bookerName;tripData.partnerBookerPhone=normalizePartnerPhone(context.bookerPhone);
     }
-    const trip = await tx.trip.create({data:tripData});
+    const initial = {...tripData, stops:partnerStops || bookingStops || []};
+    const actorId = partnerAuditData?.actorId || tripData.riderId || null;
+    const trip = await tx.trip.create({data:{...tripData,adminActionLogs:{create:{
+      fromStatus:tripData.status || "PENDING",toStatus:tripData.status || "PENDING",
+      actorRole:tripData.partnerCompanyId ? "PARTNER" : "RIDER",actorId:null,
+      actorUsername:partnerAuditData?.actorLabel || tripData.riderId || "Khách vãng lai",
+      note:"Tạo yêu cầu đặt chuyến.",eventData:makeTripEvent(initial,{kind:"CREATED",actorId,
+        changes:tripChanges({},initial,{pickupAddress:"Điểm đón",stops:"Các điểm đến",pickupTime:"Giờ đón",returnTime:"Giờ về",carType:"Loại xe",direction:"Loại chuyến",totalPrice:"Giá chuyến (đ)",riderName:"Tên khách hàng",riderPhone:"SĐT khách hàng",note:"Ghi chú khách"})}),
+    }}}});
     const stops = partnerStops || bookingStops;
     if (stops?.length) await tx.tripStop.createMany({data:stops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
     if (partnerAuditData) await tx.partnerAuditLog.create({data:{...partnerAuditData,targetId:trip.id}});

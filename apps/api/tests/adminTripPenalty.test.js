@@ -1,3 +1,4 @@
+import {makeTripEvent} from "../src/services/tripHistory.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -67,10 +68,10 @@ function fixture(status = "ACCEPTED", realtime = false) {
       return result;
     },
   };
-  const factory = new Function("prisma", "lockDriverProfile", "lockTrip", "sendAdminPushNotification",
+  const factory = new Function("makeTripEvent", "prisma", "lockDriverProfile", "lockTrip", "sendAdminPushNotification",
     "sendSystemNotificationToDriver", "sendTripStatusChangedToRider", "refundCustomerCancellationHold", "emitDriverTripEvent", "emitRiderTripUpdate",
     `${source}; return { adminDriverCancelToReview, adminHuyChuyen };`);
-  const actions = factory(prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold,
+  const actions = factory(makeTripEvent, prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold,
     async (_io, event, payload) => { assert.equal(trip.status, "CANCELLED"); events.push({ room:"audience", event, payload }); }, async () => {});
   const req = (body) => ({ params: { id: "trip-1" }, body,
     admin: { id: 1, username: "admin", role: "ADMIN" }, app: { get: () => realtime === "fail" ? { to() { throw Error("socket down"); } } : realtime ? io : null } });
@@ -86,6 +87,10 @@ test("return to review records one penalty from the held amount without a new de
   assert.equal(response.statusCode, 200);
   assert.equal(f.trip.status, "PENDING");
   assert.equal(f.trip.driverId, null);
+  assert.equal(f.actionLogs[0].eventData.driverId, "driver-A");
+  assert.equal(f.actionLogs[0].eventData.driverName, "Tài xế A");
+  assert.equal(f.actionLogs[0].eventData.kind, "DRIVER_CANCELLED");
+  assert.equal(f.actionLogs[0].actorRole, "ADMIN");
   assert.equal(f.trip.pickupTime.toISOString(), "2026-09-23T11:30:00.000Z");
   assert.equal(f.trip.returnTime.toISOString(), "2026-09-24T00:30:00.000Z");
   assert.equal(f.penalties.length, 1);
@@ -132,6 +137,8 @@ test("customer cancellation refunds the held amount once and creates no driver p
   assert.deepEqual(f.walletWrites.map((item) => item.type), ["COMMISSION_REFUND", "DRIVER_VAT_REFUND", "DRIVER_PIT_REFUND"]);
   assert.equal(response.body.refundAmount, 120);
   assert.match(f.actionLogs[0].note, /\[CUSTOMER\]/);
+  assert.equal(f.actionLogs[0].eventData.kind, "CUSTOMER_CANCELLED");
+  assert.equal(f.actionLogs[0].eventData.driverId, "driver-A");
 });
 
 for (const cancelOrigin of ["CUSTOMER", "DRIVER"]) {

@@ -1,3 +1,5 @@
+import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
+import {dropoffIsRepresented} from "../src/shared/tripRoute.js";
 import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -6,7 +8,9 @@ import * as audiencePolicy from '../src/services/tripAudiencePolicy.js';
 const quiet = { log(){}, error(){} };
 function controller(name,deps){
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8').replace(/^import[\s\S]*?;\n/gm,'').replace(/export /g,'');
-  deps={...audienceLabel,assertCurrentContractForNewTrip:async()=>{},...deps};
+  deps={dropoffIsRepresented,...audienceLabel,getDriverConfigSnapshot:async()=>({newTripAcceptDelaySeconds:0}),assertCurrentContractForNewTrip:async()=>{},...deps};
+ if(deps.prisma){deps.prisma.$transaction ||= fn=>fn(deps.prisma);deps.prisma.adminTripActionLog ||= {create:async({data})=>data};}
+ deps={recordTripEvent,makeTripEvent,...deps};
   return new Function(...Object.keys(deps),source+`; return ${name};`)(...Object.values(deps));
 }
 function response(){return {statusCode:200,status(code){this.statusCode=code;return this;},json(body){this.body=body;return this;}};}

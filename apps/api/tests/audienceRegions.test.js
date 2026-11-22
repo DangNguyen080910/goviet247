@@ -1,3 +1,4 @@
+import {recordTripEvent} from "../src/services/tripHistory.js";
 import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -43,7 +44,8 @@ test('approval rejects stale regions and forged/out-of-group IDs without writing
   let profiles=[{...drivers[0],vehicleType:'CAR_5'}];
   const prisma={trip:{findUnique:async()=>({id:'trip',status:'PENDING',audienceDriverIds:[]}),update:async({data})=>{writes++;return {id:'trip',...data};}},driverProfile:{findMany:async()=>profiles},driverConfig:{findFirst:async()=>({newTripAcceptDelaySeconds:0})}};
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8').replace(/^import[\s\S]*?;\n/gm,'').replace(/export /g,'');
-  const deps={prisma,...policy,...audienceLabel,parseAudienceRegions,matchesAudienceFilters,sendNewTripToDrivers:async()=>{pushes++;},sendTripStatusChangedToRider:async()=>{},console:{log(){},error(){}}};
+  prisma.$transaction=fn=>fn(prisma);prisma.adminTripActionLog={create:async({data})=>data};
+  const deps={prisma,recordTripEvent,...policy,...audienceLabel,parseAudienceRegions,matchesAudienceFilters,sendNewTripToDrivers:async()=>{pushes++;},sendTripStatusChangedToRider:async()=>{},console:{log(){},error(){}}};
   const verify=new Function(...Object.keys(deps),source+';return adminVerifyTrip;')(...Object.values(deps));
   async function run(body){const res=response();await verify({params:{id:'trip'},body,admin:{id:1},app:{get:()=>null}},res);return res;}
   const body={audienceMode:'AUDIENCE_FILTER',regions:['NORTH','CENTRAL'],driverIds:['north'],carType:'CAR_5',fuelType:'ELECTRIC'};
@@ -62,7 +64,8 @@ test('region audience can include over 100 drivers without becoming a public bro
   let written;
   const prisma={trip:{findUnique:async()=>({id:'trip',status:'PENDING',audienceDriverIds:[]}),update:async({data})=>{written=data;return {id:'trip',...data};}},driverProfile:{findMany:async()=>ids.map(userId=>({...drivers[0],userId}))},driverConfig:{findFirst:async()=>({newTripAcceptDelaySeconds:0})}};
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8').replace(/^import[\s\S]*?;\n/gm,'').replace(/export /g,'');
-  const deps={prisma,...policy,...audienceLabel,parseAudienceRegions,matchesAudienceFilters,sendNewTripToDrivers:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{log(){},error(){}}};
+  prisma.$transaction=fn=>fn(prisma);prisma.adminTripActionLog={create:async({data})=>data};
+  const deps={prisma,recordTripEvent,...policy,...audienceLabel,parseAudienceRegions,matchesAudienceFilters,sendNewTripToDrivers:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{log(){},error(){}}};
   const verify=new Function(...Object.keys(deps),source+';return adminVerifyTrip;')(...Object.values(deps));
   const res=response();await verify({params:{id:'trip'},body:{audienceMode:'AUDIENCE_FILTER',regions:['NORTH'],driverIds:ids},admin:{id:1},app:{get:()=>null}},res);
   assert.equal(res.statusCode,200);assert.deepEqual(written.audienceDriverIds,ids);assert.deepEqual(written.audienceRegions,['NORTH']);

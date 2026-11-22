@@ -9,6 +9,7 @@ import { validateHolidayConfig, validateHolidayPeriods } from "../src/services/h
 
 const response = () => ({ statusCode: 200, status(code) { this.statusCode = code; return this; }, json(body) { this.body = body; return this; } });
 function controller(file, name, dependencies) {
+  dependencies={respondToOtpLock:()=>false,...dependencies};
   const source = readFileSync(new URL(`../src/controllers/${file}`, import.meta.url), "utf8").replace(/^import[\s\S]*?;\n/gm, "").replaceAll("export async function", "async function");
   return new Function(...Object.keys(dependencies), `${source}; return ${name};`)(...Object.values(dependencies));
 }

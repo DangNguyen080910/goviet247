@@ -1,3 +1,4 @@
+import TripHistoryButton from "../components/TripHistoryButton";
 import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
@@ -411,6 +412,7 @@ export default function UnassignedTripsScreen() {
               {item.id}
             </Text>
             <CopyTripIdButton tripId={item.id} />
+                  <TripHistoryButton tripId={item.id} />
 
             <View
               style={
@@ -744,6 +746,7 @@ export default function UnassignedTripsScreen() {
                     value={detail.id || selectedTripId}
                   />
                   <CopyTripIdButton tripId={detail.id || selectedTripId} />
+                  <TripHistoryButton tripId={detail.id || selectedTripId} />
                   <DetailRow
                     label="👤 Người đặt"
                     value={detail.creatorName || "Chưa có người đặt"}

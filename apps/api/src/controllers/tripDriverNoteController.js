@@ -1,3 +1,4 @@
+import {makeTripEvent} from "../services/tripHistory.js";
 import { prisma } from "../utils/db.js";
 import { lockTrip } from "../services/tripAcceptancePolicy.js";
 import { emitDriverTripEvent } from "../services/tripAudience.js";
@@ -19,6 +20,7 @@ export async function updateTripDriverNote(req, res) {
       const updated = await tx.trip.update({where:{id},data:{dispatcherNote:text || null,version:{increment:1}}});
       await tx.adminTripActionLog.create({data:{tripId:id,fromStatus:trip.status,toStatus:trip.status,
         actorRole:req.admin?.role || "ADMIN",actorId:req.admin?.id ?? null,actorUsername:req.admin?.username || "ADMIN",
+        eventData:makeTripEvent(trip,{kind:"DISPATCHER_NOTE_UPDATED",actorId:req.admin?.id,changes:[{label:"Ghi chú gửi tài xế",before:trip.dispatcherNote || null,after:text || null}]}),
         note:`Cập nhật ghi chú điều hành gửi tài xế. Trước: ${String(trip.dispatcherNote || "").slice(0,180)}; Sau: ${text.slice(0,180)}`}});
       return {trip:updated,changed:true};
     });

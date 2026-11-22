@@ -1,3 +1,4 @@
+import {recordTripEvent,makeTripEvent} from "../services/tripHistory.js";
 import { parseAudienceRegions, matchesAudienceFilters } from '../shared/audienceFilters.js';
 import { audienceRegionsForApproval, tripAudienceLabel } from '../shared/tripAudienceLabel.js';
 import {assertCurrentContractForNewTrip} from '../services/driverContract.js';
@@ -947,6 +948,8 @@ export async function acceptTrip(req, res) {
           balance: true,
           tripAcceptBlocked: true,
           vehicleFuelType: true,
+          fullName: true,
+          user: { select: { displayName: true, phones: { orderBy: { createdAt: "desc" }, take: 1, select: { e164: true } } } },
         },
       });
 
@@ -1127,6 +1130,11 @@ export async function acceptTrip(req, res) {
         },
       });
 
+      await recordTripEvent(tx, updated, {
+        kind: "ACCEPTED", fromStatus: trip.status, toStatus: "ACCEPTED",
+        actorRole: "DRIVER", actorId: driverId,
+        driver: { ...driverProfile.user, driverProfile },
+      });
       await createAcceptanceChatNotices(tx, updated);
 
       const riderNotification = await createRiderTripNotification(tx, updated, {
@@ -1304,7 +1312,7 @@ export async function cancelDriverTrip(req, res) {
           driver: {
             include: {
               phones: {
-                orderBy: { createdAt: "asc" },
+                orderBy: { createdAt: "desc" },
                 take: 1,
               },
               driverProfile: {
@@ -1406,6 +1414,11 @@ export async function cancelDriverTrip(req, res) {
         });
       }
 
+      await recordTripEvent(tx, trip, {
+        kind: "DRIVER_CANCELLED", fromStatus: trip.status, toStatus: "PENDING",
+        actorRole: "DRIVER", actorId: driverUserId, reason: "Tài xế huỷ chuyến",
+        resolution: "PENALTY_AND_REVIEW",
+      });
       const updatedTrip = await tx.trip.update({
         where: { id: trip.id, driverId: driverUserId, status: trip.status },
         data: {
@@ -2008,7 +2021,7 @@ export async function changeTripStatus(req, res) {
     const result = await prisma.$transaction(async (tx) => {
       if (newStatus === "COMPLETED") await lockTripMilestones(tx);
       const currentTrip = await tx.trip.findUnique({
-        where: { id: tripId },
+        where: { id: tripId }, include:{driver:{include:{phones:{orderBy:{createdAt:"desc"},take:1},driverProfile:true}}},
       });
 
       if (!currentTrip) {
@@ -2061,6 +2074,7 @@ export async function changeTripStatus(req, res) {
           actorRole: "DRIVER",
           actorId: null,
           actorUsername: driverUserId,
+          eventData:makeTripEvent(currentTrip,{kind:"STATUS_CHANGED",actorId:driverUserId}),
           note: statusNotes[newStatus] || "Tài xế cập nhật trạng thái chuyến.",
         },
       });
@@ -2512,7 +2526,7 @@ export async function adminChangeTripStatus(req, res) {
 
     const result = await prisma.$transaction(async (tx) => {
       if (toStatus === "COMPLETED") await lockTripMilestones(tx);
-      const trip = await tx.trip.findUnique({ where: { id } });
+      const trip = await tx.trip.findUnique({ where: { id }, include:{driver:{include:{phones:{orderBy:{createdAt:"desc"},take:1},driverProfile:true}}} });
 
       if (!trip) {
         const err = new Error("Trip not found");
@@ -2563,6 +2577,7 @@ export async function adminChangeTripStatus(req, res) {
           actorRole: actor.role,
           actorId: actor.id ?? null,
           actorUsername: actor.username || "unknown",
+          eventData:makeTripEvent(trip,{kind:"STATUS_CHANGED",actorId:actor.id}),
           note: note ? String(note).slice(0, 500) : null,
         },
       });
@@ -2901,7 +2916,8 @@ export async function adminResendPendingTrip(req, res) {
     const now = new Date();
 
     // Claim only a still-available trip; do not resend a concurrently accepted trip.
-    const updated = await prisma.trip.update({
+    const updated = await prisma.$transaction(async tx => {
+      const changed = await tx.trip.update({
       where: { id: tripId, status: "PENDING", driverId: null, isVerified: true, cancelledAt: null },
       data: {
         verifiedAt: now,
@@ -2917,6 +2933,11 @@ export async function adminResendPendingTrip(req, res) {
           },
         },
       },
+    });
+      await recordTripEvent(tx, changed, {kind:"RESENT",fromStatus:currentTrip.status,toStatus:changed.status,
+        actorRole:req.admin?.role || "ADMIN",actorId:req.admin?.id,actorName:req.admin?.username || "Admin",
+        reason:"Phát lại thông báo chuyến cho tài xế.", changes:[{label:"Phạm vi tài xế (mã)",before:currentTrip.audienceDriverIds || [],after:changed.audienceDriverIds || []}]});
+      return changed;
     });
 
     const io = req.app?.get?.("io");
@@ -3107,7 +3128,8 @@ export async function adminVerifyTrip(req, res) {
     }
     const driverAcceptOpenAt = await buildDriverAcceptOpenAt();
 
-    const updated = await prisma.trip.update({
+    const updated = await prisma.$transaction(async tx => {
+      const changed = await tx.trip.update({
       where: { id, status: "PENDING", driverId: null, isVerified: false, cancelledAt: null },
       data: {
         audienceDriverIds,
@@ -3118,6 +3140,11 @@ export async function adminVerifyTrip(req, res) {
         verifiedNote: note ? String(note).slice(0, 500) : null,
         driverAcceptOpenAt,
       },
+    });
+      await recordTripEvent(tx, changed, {kind:"APPROVED",fromStatus:trip.status,toStatus:changed.status,
+        actorRole:req.admin?.role || "ADMIN",actorId:req.admin?.id,actorName:req.admin?.username || "Admin",
+        reason:note || "Duyệt và phát chuyến cho tài xế.", changes:[{label:"Phạm vi tài xế (mã)",before:trip.audienceDriverIds || [],after:changed.audienceDriverIds || []}]});
+      return changed;
     });
 
     let riderNotification = null;

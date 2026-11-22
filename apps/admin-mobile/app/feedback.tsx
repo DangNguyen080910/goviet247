@@ -1,3 +1,4 @@
+import TripHistoryButton from "../components/TripHistoryButton";
 import { tripRoutePoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 // Path: goviet247/apps/admin-mobile/app/feedback.tsx
@@ -254,6 +255,7 @@ function FeedbackCard({
         <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
           <Text style={styles.tripText}>Trip: {item.tripId}</Text>
           <CopyTripIdButton tripId={item.tripId} />
+                  <TripHistoryButton tripId={item.tripId} />
         </View>
       ) : null}
 
@@ -858,6 +860,7 @@ export default function FeedbackScreen() {
                       value={selectedFeedback.trip.id}
                     />
                     <CopyTripIdButton tripId={selectedFeedback.trip.id} />
+                  <TripHistoryButton tripId={selectedFeedback.trip.id} />
                     <InfoRow
                       label="Trạng thái chuyến"
                       value={selectedFeedback.trip.status || "--"}

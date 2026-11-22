@@ -1,3 +1,4 @@
+import {assertRegionalQuote} from "../src/services/regionalPricing.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -36,7 +37,7 @@ function fixture({ stopFailure = false, socketFailure = false } = {}) {
     },
   };
   const handler = loadCreate({
-    prisma: db, createBookableTrip, parseTripTime, validateTripDistance: async () => ({ ok: true }),
+    prisma: db, createBookableTrip, parseTripTime, assertRegionalQuote, validateTripDistance: async () => ({ ok: true }),
     getEffectiveTripConfig: async () => ({ maxStops: 10 }),
     calculateTripPrice: async () => ({ totalPrice: 500000, basePricePerKm: 10000 }),
     assertDestinationQuote() {}, linkQuoteToTrip: noop, emitRiderTripUpdate: noop,
@@ -54,6 +55,7 @@ test('ordinary booking commits the trip and ordered stops together', async () =>
   await f.handler(f.req, res);
   assert.equal(res.statusCode, 201, JSON.stringify(res.body));
   assert.equal(f.committedTrips.length, 1);
+  assert.equal(f.committedTrips[0].adminActionLogs.create.eventData.kind,'CREATED');
   assert.deepEqual(f.committedStops.map(stop => [stop.tripId, stop.seq, stop.address]), [['booking', 1, 'B'], ['booking', 2, 'C']]);
   assert.equal('bookingStops' in f.committedTrips[0], false, 'transport-only data must not reach Prisma');
 });

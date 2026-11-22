@@ -1,3 +1,4 @@
+import TripHistoryButton from "./TripHistoryButton";
 import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import TripMoney from "./TripMoney";
 // Path: goviet247/apps/web/src/components/admin/PendingTripsTable.jsx
@@ -396,7 +397,7 @@ export default function PendingTripsTable({
                   }}
                   title="Bấm để xem chi tiết chuyến"
                 >
-                  <td style={tdMono}>{tripId || "-"}</td>
+                  <td style={tdMono}>{tripId || "-"}<div><TripHistoryButton tripId={tripId}/></div></td>
 
                   {showCustomerCol && (
                     <>

@@ -154,6 +154,7 @@ export default function HomeScreen() {
         icon: "👤",
         iconBg: "#7c3aed",
       },
+      {key:"QUOTE_HISTORY",title:"Lịch Sử Tính Giá",badge:0,subtitle:"Khách tính giá hôm nay và các ngày trước",icon:"🧮",iconBg:"#0284c7"},
       {
         key: "WALLETS",
         title: "Ví Tài Xế",
@@ -195,7 +196,7 @@ export default function HomeScreen() {
         return false;
       }
 
-      if (item.key === "LEDGER" && !isAdmin) return false;
+      if (["LEDGER", "QUOTE_HISTORY"].includes(item.key) && !isAdmin) return false;
 
       return true;
     });
@@ -381,6 +382,8 @@ export default function HomeScreen() {
       router.push("/ledger" as any);
       return;
     }
+
+    if (item.key === "QUOTE_HISTORY") { router.push("/quote-history" as any); return; }
 
     if (item.key === "ALERTS") { router.push("/alerts"); return; }
 

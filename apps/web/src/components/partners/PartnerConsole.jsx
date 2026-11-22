@@ -24,7 +24,7 @@ const vehicles={CAR_5:'Xe 5 chỗ',CAR_7:'Xe 7 chỗ',CAR_16:'Xe 16 chỗ'};
 function usePartnerApi(token,companyId) {
   return (path,options={})=>partnerRequest(path,{token,companyId,...options});
 }
-export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
+export function PartnerTrips({token,companyId,tripId,onSelect,onClose,renderTripHistory}) {
   const api=usePartnerApi(token,companyId);
   const [items,setItems]=useState([]),[total,setTotal]=useState(0),[page,setPage]=useState(1),[status,setStatus]=useState(''),[date,setDate]=useState(''),[search,setSearch]=useState('');
   const [selected,setSelected]=useState(null),[members,setMembers]=useState([]),[error,setError]=useState(''),[busy,setBusy]=useState(false),[revision,setRevision]=useState(0);
@@ -58,7 +58,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
     </Stack>
     <TableContainer component={Paper}><Table size="small"><TableHead><TableRow>{['Mã chuyến','Giờ đón','Lộ trình','Loại xe','Người tạo / Phụ trách','Thông tin xe','Trạng thái','Giá',''].map((v,i)=><TableCell key={i}>{v}</TableCell>)}</TableRow></TableHead>
       <TableBody>{items.map(t=><TableRow key={t.id} hover>
-        <TableCell><Button onClick={()=>onSelect(t.id)}>{t.id.slice(-8).toUpperCase()}</Button></TableCell><TableCell sx={{minWidth:145}}>{time(t.pickupTime)}</TableCell>
+        <TableCell><Button onClick={()=>onSelect(t.id)}>{t.id.slice(-8).toUpperCase()}</Button>{renderTripHistory?.(t.id)}</TableCell><TableCell sx={{minWidth:145}}>{time(t.pickupTime)}</TableCell>
         <TableCell sx={{minWidth:230}}>{tripRoutePoints(t).map((point,index)=><Typography key={index} variant="body2">{point.label}: {point.address}</Typography>)}</TableCell><TableCell>{vehicles[t.carType]}</TableCell>
         <TableCell>{t.createdBy?.displayName||'GoViet247'}<br/><strong>{t.assignedTo?.displayName||'—'}</strong></TableCell>
         <TableCell>{t.vehicle ? `${t.vehicle.brand||''} ${t.vehicle.model||''} · ${t.vehicle.plate||''}`:'—'}</TableCell>
@@ -67,7 +67,7 @@ export function PartnerTrips({token,companyId,tripId,onSelect,onClose}) {
       </TableRow>)}{!items.length&&<TableRow><TableCell colSpan={9}>Chưa có chuyến phù hợp.</TableCell></TableRow>}</TableBody></Table></TableContainer>
     <Stack direction="row" spacing={2} alignItems="center"><Typography>{total} chuyến</Typography><Pagination count={Math.max(1,Math.ceil(total/50))} page={page} onChange={(_,n)=>setPage(n)}/></Stack>
     <Dialog open={Boolean(selected&&tripId)} onClose={onClose} fullWidth maxWidth="sm"><DialogTitle>Chi tiết chuyến #{selected?.id.slice(-8).toUpperCase()}</DialogTitle><DialogContent>
-      {selected&&<Stack spacing={2} sx={{pt:1}}><Chip label={tripStatusLabel(selected)}/><Typography>{time(selected.pickupTime)} · {vehicles[selected.carType]} · {money(selected.totalPrice)}</Typography>
+      {selected&&<Stack spacing={2} sx={{pt:1}}>{renderTripHistory?.(selected.id)}<Chip label={tripStatusLabel(selected)}/><Typography>{time(selected.pickupTime)} · {vehicles[selected.carType]} · {money(selected.totalPrice)}</Typography>
         {tripRoutePoints(selected).map((point,index)=><Typography key={index}>{point.label}: {point.address}</Typography>)}
         {selected.note&&<Typography>Ghi chú: {selected.note}</Typography>}
         <Typography>Người tạo: {selected.createdBy?.displayName||'GoViet247'}</Typography>

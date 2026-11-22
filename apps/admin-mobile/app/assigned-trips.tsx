@@ -1,3 +1,4 @@
+import TripHistoryButton from "../components/TripHistoryButton";
 import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { getAdminUser } from "../services/storage";
@@ -722,6 +723,7 @@ export default function AssignedTripsScreen() {
                 <View style={styles.cardHeader}>
                   <Text style={styles.tripId}>{item.id}</Text>
                   <CopyTripIdButton tripId={item.id} />
+                  <TripHistoryButton tripId={item.id} />
                   <View style={styles.statusChip}>
                     <Text style={styles.statusChipText}>
                       {getStatusLabel(item.status)}
@@ -966,6 +968,7 @@ export default function AssignedTripsScreen() {
                     {selectedTripDetail?.id || selectedTripId || "--"}
                   </Text>
                   <CopyTripIdButton tripId={selectedTripDetail?.id || selectedTripId} />
+                  <TripHistoryButton tripId={selectedTripDetail?.id || selectedTripId} />
                 </View>
 
                 <View style={styles.modalInfoBlock}>

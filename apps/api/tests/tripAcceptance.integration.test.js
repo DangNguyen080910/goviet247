@@ -1,3 +1,4 @@
+import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import { createBookableTrip } from '../src/services/carAvailability.js';
 import {isProvinceCode} from '../src/services/driverOperatingProvince.js';
 import {createAcceptanceChatNotices} from '../src/services/tripAcceptanceChat.js';
@@ -30,7 +31,7 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, assertCurrentContractForNewTrip:async()=>{}, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, recordTripEvent, makeTripEvent, assertCurrentContractForNewTrip:async()=>{}, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });

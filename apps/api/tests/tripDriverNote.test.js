@@ -1,3 +1,5 @@
+import {makeTripEvent} from "../src/services/tripHistory.js";
+import {dropoffIsRepresented} from "../src/shared/tripRoute.js";
 import {getPartnerRiderContext} from '../src/services/partnerRiderAccess.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -9,7 +11,7 @@ function fixture(status='PENDING') {
   const writes=[],logs=[],events=[];
   const tx={trip:{findUnique:async()=>trip,update:async({data})=>{writes.push(data);trip={...trip,...data,updatedAt:new Date('2026-10-31T00:01:00Z')};return trip;}},adminTripActionLog:{create:async({data})=>logs.push(data)}};
   const prisma={$transaction:fn=>fn(tx)};
-  const update=new Function('prisma','lockTrip','emitDriverTripEvent',source+'; return updateTripDriverNote;')(prisma,async()=>{},async(io,event,payload)=>events.push({room:'audience',event,payload}));
+  const update=new Function('makeTripEvent','prisma','lockTrip','emitDriverTripEvent',source+'; return updateTripDriverNote;')(makeTripEvent,prisma,async()=>{},async(io,event,payload)=>events.push({room:'audience',event,payload}));
   const io={to:room=>({emit:(event,payload)=>events.push({room,event,payload})})};
   async function call(text='Mới',expected=date.toISOString()) {
     const res={statusCode:200,status(code){this.statusCode=code;return this;},json(body){this.body=body;return this;}};
@@ -40,7 +42,7 @@ test('Rider detail hides dispatcher/internal notes while assigned Driver detail 
   const start=controller.indexOf('export async function getTripById('),end=controller.indexOf('\n}',start)+2;
   const trip={id:'t1',riderId:'r1',driverId:'d1',dispatcherNote:'Điều hành',verifiedNote:'Chỉ admin',riderPhone:'0901234567'};
   const serializerStart=controller.indexOf('function serializeDriverTrip('),serializerEnd=controller.indexOf('\n}',serializerStart)+2;
-  const serializeDriverTrip=new Function('hasActiveTripContact','maskAddress','normalizeDisplayAddress','maskRiderName','maskRiderPhone',controller.slice(serializerStart,serializerEnd)+';return serializeDriverTrip;')(()=>false,v=>v,v=>v,()=> 'Khách hàng',()=> '');
+  const serializeDriverTrip=new Function('dropoffIsRepresented','hasActiveTripContact','maskAddress','normalizeDisplayAddress','maskRiderName','maskRiderPhone',controller.slice(serializerStart,serializerEnd)+';return serializeDriverTrip;')(dropoffIsRepresented,()=>false,v=>v,v=>v,()=> 'Khách hàng',()=> '');
   const deps={getPartnerRiderContext,serializeDriverTrip,prisma:{trip:{findUnique:async()=>trip}},getVerifiedRiderPhoneVariants:async()=>[],phoneVariants:()=>[]};
   const get=new Function(...Object.keys(deps),controller.slice(start,end).replace('export ','')+'; return getTripById;')(...Object.values(deps));
   for(const id of ['r1','d1']){

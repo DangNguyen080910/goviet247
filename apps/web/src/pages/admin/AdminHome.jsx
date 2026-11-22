@@ -1,3 +1,4 @@
+import TripHistoryButton from "../../components/admin/TripHistoryButton";
 // Path: goviet247/apps/web/src/pages/admin/AdminHome.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -181,6 +182,7 @@ function UrgentTripList({ items, onOpenPage, emptyText }) {
                   <Typography variant="caption" sx={{ color: "text.disabled" }}>
                     Tạo lúc: {formatDateTime(item.createdAt)}
                   </Typography>
+                  <div><TripHistoryButton tripId={item.id}/></div>
                 </Box>
               }
             />

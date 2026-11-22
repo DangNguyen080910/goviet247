@@ -1,7 +1,9 @@
+import {createElement} from "react";
+import TripHistoryButton from "../components/TripHistoryButton";
 import { configureChat } from '../../mobile-chat/TripChat';
 import { API_BASE_URL } from '../constants/api';
 import { getAdminToken } from './storage';
-configureChat({base:API_BASE_URL,getToken:getAdminToken,role:'ADMIN'});
+configureChat({base:API_BASE_URL,getToken:getAdminToken,role:'ADMIN',renderAdminTripHistory:tripId=>createElement(TripHistoryButton,{tripId})});
 export { chatPushShouldPlaySound } from '../../mobile-chat/chatAlerts';
 export { default, ChatInboxBadge, TripChatButton, isChatVisible } from '../../mobile-chat/TripChat';
 

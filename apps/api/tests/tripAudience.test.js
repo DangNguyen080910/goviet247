@@ -1,3 +1,4 @@
+import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
 import {getPartnerRiderContext} from '../src/services/partnerRiderAccess.js';
 import test from 'node:test';
@@ -10,6 +11,8 @@ import { pushSessionKey } from '../src/services/userSessions.js';
 import * as riderAccess from '../src/services/riderTripAccess.js';
 function load(path, names, deps) {
  deps={...audienceLabel,...deps};
+ if(deps.prisma){deps.prisma.$transaction ||= fn=>fn(deps.prisma);deps.prisma.adminTripActionLog ||= {create:async({data})=>data};}
+ deps={recordTripEvent,makeTripEvent,...deps};
  const source = readFileSync(new URL(path, import.meta.url), 'utf8').replace(/^import[\s\S]*?;\n/gm, '').replace(/export /g, '').replace('const { PrismaClient } = pkg;', '').replace('const prisma = new PrismaClient();', '');
  return new Function(...Object.keys(deps), `${source}; return {${names}};`)(...Object.values(deps));
 }

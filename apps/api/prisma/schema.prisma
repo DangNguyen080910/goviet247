@@ -749,6 +749,7 @@ model AdminTripActionLog {
   toStatus   TripStatus
 
   note      String?
+  eventData Json? // Immutable trip event details; visible to Admin/Staff only.
   createdAt DateTime @default(now()) @db.Timestamptz(6)
 
   trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade)

@@ -1,3 +1,4 @@
+import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import MoneyTextField from '../../components/common/MoneyTextField';
 // Path: goviet247/apps/web/src/pages/admin/AdminLedger.jsx
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -2791,7 +2792,7 @@ export default function AdminLedger() {
                         {tripItems.map((row, idx) => (
                           <TableRow key={`${row.rowType}-${row.tripId}-${idx}`}>
                             <TableCell>{row.rowTypeLabel}</TableCell>
-                            <TableCell>{row.tripId}</TableCell>
+                            <TableCell>{row.tripId}<div><TripHistoryButton tripId={row.tripId}/></div></TableCell>
                             <TableCell>
                               {row.eventAt
                                 ? new Date(row.eventAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })

@@ -1,3 +1,4 @@
+import {recordTripEvent} from "../services/tripHistory.js";
 import { assertRegionalQuote } from "../services/regionalPricing.js";
 import { riderBookingCompanies, resolveRiderCompanyBooking } from '../services/partnerRiderBooking.js';
 import { assertNoContactNumber } from '../shared/tripChat.js';
@@ -551,6 +552,8 @@ router.post("/:id/cancel-by-rider", verifyToken, async (req, res) => {
           cancelReason: cancelReason || "Rider tự huỷ khi còn chờ duyệt",
         },
       });
+      await recordTripEvent(tx, changed, {kind:"CUSTOMER_CANCELLED",fromStatus:trip.status,toStatus:"CANCELLED",
+        actorRole:"RIDER",actorId:riderId,actorName:riderId,reason:changed.cancelReason});
       await createRiderTripNotification(tx, changed, { reason: "rider_cancel_trip" });
       return changed;
     });

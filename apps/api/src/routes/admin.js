@@ -1,3 +1,4 @@
+import {makeTripHistoryController} from "../services/tripHistory.js";
 import { makeDriverRulesController } from '../controllers/driverRulesController.js';
 import {makeAdminContractController} from '../controllers/adminContractController.js';
 import { makeDriverContractController } from "../controllers/driverContractController.js";
@@ -131,6 +132,7 @@ router.get(
   ctrl.listPendingCancelledTrips,
 );
 
+router.get("/trips/:id/history", requireAdminOrStaff, makeTripHistoryController(prisma));
 router.get("/trips/:id", requireAdminOrStaff, ctrl.getTripDetail);
 
 router.patch(

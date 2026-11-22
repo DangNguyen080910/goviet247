@@ -1,3 +1,4 @@
+import {makeTripEvent,tripChanges} from "../services/tripHistory.js";
 import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/controllers/adminTripController.js
 import { lockDriverProfile, lockTrip } from "../services/tripAcceptancePolicy.js";
@@ -61,7 +62,7 @@ export async function adminDriverCancelToReview(req, res) {
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         include: {
-          driver: { include: { phones: { orderBy: { createdAt: "asc" }, take: 1 }, driverProfile: true } },
+          driver: { include: { phones: { orderBy: { createdAt: "desc" }, take: 1 }, driverProfile: true } },
         },
       });
       if (!trip || trip.driverId !== snapshot.driverId ||
@@ -114,6 +115,8 @@ export async function adminDriverCancelToReview(req, res) {
           tripId, fromStatus: trip.status, toStatus: "PENDING",
           actorRole: actor?.role || "ADMIN", actorId: actor?.id ?? null,
           actorUsername: actor?.username || "admin",
+          eventData: makeTripEvent(trip, {kind:"DRIVER_CANCELLED", actorId:actor?.id, reason,
+            resolution:refundAndReview ? "REFUND_AND_REVIEW" : "PENALTY_AND_REVIEW"}),
           note: `Tài xế huỷ, admin đưa chuyến về Chờ duyệt. Lý do: ${reason.slice(0, 400)}. ${refundAndReview ? `Đã hoàn ${refund.amount}đ vào ví tài xế; không ghi phạt.` : `Ghi nhận phạt huỷ ${penaltyLog?.penaltyAmount || 0}đ từ khoản đã khấu trừ; không trừ ví thêm.`}`,
         },
       });
@@ -261,6 +264,7 @@ export async function adminChuyenVeChoDuyet(req, res) {
           actorRole: actor?.role || "ADMIN",
           actorId: actor?.id ?? null,
           actorUsername: actor?.username || "admin",
+          eventData: makeTripEvent(trip,{kind:"RETURNED_TO_REVIEW",actorId:actor?.id}),
           note: "Admin chuyển chuyến chưa có tài xế về Chờ duyệt để thương lượng và điều chỉnh giá.",
         },
       });
@@ -385,6 +389,7 @@ export async function adminCapNhatThoiGianChuyen(req, res) {
           actorRole: actor?.role || "ADMIN",
           actorId: actor?.id ?? null,
           actorUsername: actor?.username || "admin",
+          eventData: makeTripEvent(trip,{kind:"SCHEDULE_UPDATED",actorId:actor?.id,changes:tripChanges(trip,{pickupTime,returnTime:nextReturnTime},{pickupTime:"Giờ đón",returnTime:"Giờ về"})}),
           note: [
             "Admin cập nhật lịch đón/trả khách.",
             `Giờ đón: ${trip.pickupTime?.toISOString?.() || "-"} -> ${pickupTime.toISOString()}`,
@@ -501,7 +506,7 @@ export async function adminHuyChuyen(req, res) {
       const trip = await tx.trip.findUnique({
         where: { id: tripId },
         include: {
-          driver: { include: { phones: { orderBy: { createdAt: "asc" }, take: 1 }, driverProfile: true } },
+          driver: { include: { phones: { orderBy: { createdAt: "desc" }, take: 1 }, driverProfile: true } },
         },
       });
 
@@ -593,6 +598,10 @@ export async function adminHuyChuyen(req, res) {
           actorRole,
           actorId,
           actorUsername,
+          eventData: makeTripEvent(trip, {
+            kind:cancelOrigin === "DRIVER" ? "DRIVER_CANCELLED" : cancelOrigin === "CUSTOMER" ? "CUSTOMER_CANCELLED" : "ADMIN_CANCELLED",
+            actorId, reason:cancelReason, resolution:shouldRecordPenalty ? "PENALTY_AND_CANCEL" : cancelOrigin === "CUSTOMER" ? "CUSTOMER_CANCEL_AND_REFUND" : "CANCEL",
+          }),
           note: `[${cancelOrigin || "UNSPECIFIED"}${shouldRecordPenalty ? ":PENALTY_AND_CANCEL" : ""}] ${cancelReason.slice(0, 325)}${refund.amount ? `. Hoàn khoản giữ ${refund.amount}đ vào ví tài xế; TripID: ${tripId}.` : ""}${penaltyLog ? `. Ghi nhận phạt huỷ ${penaltyLog.penaltyAmount}đ từ khoản đã khấu trừ; không trừ ví thêm.` : ""}`,
         },
       });
@@ -634,14 +643,14 @@ export async function adminHuyChuyen(req, res) {
     const io = req.app?.get?.("io");
     try {
       if (io) {
-        const driverEvent = {
+        const eventData = {
           tripId: result.updated.id, fromStatus: result.fromStatus,
           toStatus: "CANCELLED", driverId: result.updated.driverId || null,
           updatedAt: result.updated.updatedAt, reason: "admin_cancel_trip", silent: true,
         };
-        await emitDriverTripEvent(io, "trip:changed", driverEvent);
+        await emitDriverTripEvent(io, "trip:changed", eventData);
         if (result.updated.driverId) {
-          io.to(`driver:${result.updated.driverId}`).emit("trip:changed", driverEvent);
+          io.to(`driver:${result.updated.driverId}`).emit("trip:changed", eventData);
         }
         io.to("admins").emit("admin:trip_cancelled", {
           tripId: result.updated.id,
@@ -879,6 +888,7 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           driverId: true,
           acceptedAt: true,
           cancelledAt: true,
+          verifiedNote: true,
           pickupAddress: true,
           dropoffAddress: true,
           note: true,
@@ -1033,6 +1043,10 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
           actorRole,
           actorId,
           actorUsername,
+          eventData: makeTripEvent(trip,{kind:"TRIP_UPDATED",actorId,reason:verifiedNote,changes:tripChanges(
+            {...trip,stops:trip.stops?.map(stop=>stop.address)},
+            {...updated,stops:finalStops.map(stop=>stop.address)},
+            {pickupTime:"Giờ đón",returnTime:"Giờ về",carType:"Loại xe",direction:"Loại chuyến",distanceKm:"Quãng đường (km)",fareEstimate:"Giá ước tính (đ)",estimatedDurationMinutes:"Tổng thời gian chuyến (phút)",outboundDriveMinutes:"Thời gian lái lượt đi (phút)",returnDriveMinutes:"Thời gian lái lượt về (phút)",totalDriveMinutes:"Tổng thời gian lái (phút)",totalPrice:"Giá chuyến (đ)",pickupAddress:"Điểm đón",stops:"Các điểm đến",note:"Ghi chú khách",verifiedNote:"Ghi chú xác nhận"})}),
           note: logNote,
         },
       });

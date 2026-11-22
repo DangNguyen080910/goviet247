@@ -1,3 +1,4 @@
+import {makeTripEvent,recordTripEvent} from "../src/services/tripHistory.js";
 import {activeDriverDevices} from "../src/services/driverPushAccess.js";
 import {tripNotificationContent} from '../src/shared/tripNotificationContent.js';
 import test from 'node:test';
@@ -11,6 +12,8 @@ import {
 const quiet = { log() {}, error() {}, warn() {} };
 const noop = async () => {};
 function load(relative, supplied, result) {
+  if(supplied.prisma){supplied.prisma.$transaction ||= fn=>fn(supplied.prisma);supplied.prisma.adminTripActionLog ||= {create:async({data})=>data};}
+  supplied={recordTripEvent,makeTripEvent,...supplied};
   const source = readFileSync(new URL(`../src/${relative}`, import.meta.url), 'utf8');
   const imports = {};
   for (const match of source.matchAll(/^import\s+([\s\S]*?)\s+from\s+['"][^'"]+['"];?\n/gm)) {
@@ -277,7 +280,7 @@ test('admin cancellation includes passenger phone in selected result, persists n
   f.db.adminTripActionLog = { create: async ({ data }) => data };
   const events = [], pushed = [];
   const io = { to: (room) => ({ emit: (name, data) => events.push({ room, name, data }) }) };
-  const handler = load('controllers/adminTripController.js', {
+  const handler = load('controllers/adminTripController.js', { makeTripEvent,
     prisma: f.db, emitRiderTripUpdate,
     sendTripStatusChangedToRider: async (trip) => pushed.push(trip.riderPhone),
   }, 'adminHuyChuyen');

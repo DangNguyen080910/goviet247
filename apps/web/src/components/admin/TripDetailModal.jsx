@@ -1,3 +1,4 @@
+import TripHistoryButton from "./TripHistoryButton";
 import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import MoneyTextField from '../common/MoneyTextField';
 import {flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
@@ -445,6 +446,7 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
             <TripChatButton tripId={tripId} />
+            <TripHistoryButton tripId={tripId} />
             {canManualAdjust && (
               <button style={btnPrimary} onClick={openAdjustForm}>
                 Cập nhật thông tin chuyến

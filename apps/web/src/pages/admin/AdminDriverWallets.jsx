@@ -1,3 +1,4 @@
+import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import MoneyTextField from '../../components/common/MoneyTextField';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 // Path: goviet247/apps/web/src/pages/admin/AdminDriverWallets.jsx
@@ -2097,7 +2098,7 @@ export default function AdminDriverWallets() {
                               </TableCell>
 
                               <TableCell>
-                                {item.tripId || item.trip?.id || "N/A"}
+                                {item.tripId || item.trip?.id || "N/A"}<div><TripHistoryButton tripId={item.tripId || item.trip?.id}/></div>
                               </TableCell>
 
                               <TableCell>

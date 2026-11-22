@@ -196,6 +196,7 @@ function RootLayoutContent() {
         <Stack.Screen name="wallets" />
         <Stack.Screen name="ledger" />
         <Stack.Screen name="commission" />
+        <Stack.Screen name="quote-history" />
         <Stack.Screen name="feedback" />
         <Stack.Screen name="alerts" />
       </Stack>
