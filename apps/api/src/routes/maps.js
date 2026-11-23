@@ -1,3 +1,4 @@
+import { createRequestRateLimit } from "../middleware/requestRateLimit.js";
 // Path: goviet247/apps/api/src/routes/maps.js
 import { Router } from "express";
 import {
@@ -7,6 +8,7 @@ import {
 } from "../services/mapService.js";
 
 const router = Router();
+router.use(createRequestRateLimit({max:300,windowMs:60000}));
 
 // GET /api/maps/autocomplete?q=
 router.get("/autocomplete", async (req, res) => {
@@ -107,6 +109,7 @@ router.post("/route", async (req, res) => {
 
     if (
       err?.message === "ROUTE_POINTS_INVALID" ||
+      err?.message === "ROUTE_POINTS_LIMIT" ||
       err?.message === "ROUTE_POINT_COORDINATES_INVALID"
     ) {
       return res.status(400).json({

@@ -1,3 +1,5 @@
+import { bookingInputHash } from "./bookingIdentity.js";
+import { phoneVariants } from "./riderTripAccess.js";
 import {makeTripEvent,tripChanges} from "./tripHistory.js";
 import { resolveRiderCompanyBooking } from './partnerRiderBooking.js';
 import { normalizePartnerPhone } from './partnerRiderAccess.js';
@@ -15,6 +17,23 @@ export async function assertCarTypeBookable(db, carType) {
 // The shared row lock is held through trip creation, so a completed toggle cannot be bypassed by an old quote.
 export async function createBookableTrip(db, data) {
   return db.$transaction(async tx => {
+    if (data.bookingRequestKey) {
+      await tx.$queryRawUnsafe('SELECT pg_advisory_xact_lock(hashtextextended($1, 0))::text',data.bookingRequestKey);
+      const previous = await tx.trip.findUnique({where:{bookingRequestKey:data.bookingRequestKey}});
+      if (previous) {
+        if (previous.bookingInputHash !== bookingInputHash(data)) throw Object.assign(new Error("Yêu cầu này đã dùng cho thông tin chuyến khác. Vui lòng tính giá lại."),{status:409});
+        Object.defineProperty(previous,'__bookingReplay',{value:true});
+        return previous;
+      }
+      data = {...data, bookingInputHash:bookingInputHash(data)};
+    }
+    const actor = data.riderId || data.partnerRiderBookingUserId;
+    if (actor) await tx.$queryRawUnsafe('SELECT "id" FROM "RiderProfile" WHERE "userId" = $1 FOR SHARE',actor);
+    const blocked = (actor || phoneVariants(data.riderPhone).length) && await tx.riderProfile.findFirst({where:{status:"SUSPENDED",OR:[
+      ...(actor ? [{userId:actor}] : []),
+      {user:{phones:{some:{e164:{in:phoneVariants(data.riderPhone)},isVerified:true}}}},
+    ]}});
+    if (blocked) throw Object.assign(new Error("Tài khoản khách hàng đang bị khoá đặt chuyến. Vui lòng liên hệ hỗ trợ."),{status:403});
     await tx.$queryRawUnsafe('SELECT "carType" FROM "PricingConfig" WHERE "carType"::text = $1 FOR SHARE', data.carType);
     await assertCarTypeBookable(tx, data.carType);
     const {bookingStops, partnerStops, partnerAuditData, partnerSessionVersion, partnerRiderBookingUserId, ...tripData} = data;

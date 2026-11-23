@@ -1,3 +1,5 @@
+import { recordTripEvent, makeTripEvent } from "../src/services/tripHistory.js";
+import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { hasActiveTripContact, riderDriverContact, phoneCallUrl } from "../src/shared/tripContact.js";
@@ -30,7 +32,7 @@ test('customer API omits raw driver data and removes contact from finished trips
   const start = controllerSource.indexOf('export async function listMyCustomerTrips(');
   const end = controllerSource.indexOf('\n}',start)+2;
   const body = controllerSource.slice(start,end).replace('export ','');
-  const dependencies = {
+  const dependencies = {tripPagination,tripPage,
     prisma:{trip:{findMany:async()=>[
       {id:'active',riderId:'rider',driverId:'driver',status:'ACCEPTED',driver},
       {id:'done',riderId:'rider',driverId:'driver',status:'COMPLETED',driver},
@@ -127,7 +129,7 @@ test('both assigned-driver APIs return the current coordinator name without the 
     } };
     const start = controllerSource.indexOf(`export async function ${name}(`);
     const end = controllerSource.indexOf('\n}', start) + 2;
-    const deps = { prisma, serializeDriverTrip: driverSerializer(), ACTIVE_DRIVER_TRIP_STATUSES: ['ACCEPTED', 'CONTACTED', 'IN_PROGRESS'],
+    const deps = { tripPagination,tripPage,prisma, serializeDriverTrip: driverSerializer(), ACTIVE_DRIVER_TRIP_STATUSES: ['ACCEPTED', 'CONTACTED', 'IN_PROGRESS'],
       getVerifiedRiderPhoneVariants: async () => [], phoneVariants: () => [], getPartnerRiderContext: async () => null };
     const action = new Function(...Object.keys(deps), controllerSource.slice(start, end).replace('export ', '') + `; return ${name};`)(...Object.values(deps));
     const res = { status: () => assert.fail('API error'), json(body) { this.body = body; } };
@@ -166,7 +168,7 @@ test('Driver status changes return the private trip projection instead of the ra
     const tx = { trip: { findUnique: async () => trip, update: async ({ data }) => ({ ...trip, status: data.status }) },
       adminTripActionLog: { create: async () => ({}) } };
     const noop = async () => null;
-    const deps = { prisma: { $transaction: fn => fn(tx) }, serializeDriverTrip,
+    const deps = { makeTripEvent,recordTripEvent,prisma: { $transaction: fn => fn(tx) }, serializeDriverTrip,
       lockTripMilestones: noop, recordTripMilestone: noop, notifyTripMilestone: noop,
       createRiderTripNotification: noop, sendAdminPushNotification: noop,
       buildAdminTripStatusPushContent: () => ({}), sendTripStatusChangedToRider: noop, console };

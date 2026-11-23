@@ -74,8 +74,8 @@ const apiJs = ts.transpileModule(fs.readFileSync(path.join(root, 'apps/driver-mo
 function api(fetchImpl) {
   let timeout, timeoutMs, cleared = 0;
   const exports = {};
-  vm.runInNewContext(apiJs, { exports, AbortController,
-    require: name => name === '../constants/api' ? { API_BASE_URL: 'https://test.invalid' } : { getDriverToken: async () => 'test-token' },
+  vm.runInNewContext(apiJs, { exports, AbortController, URLSearchParams,
+    require: name => name === '../../api/src/shared/tripPages.js' ? require('../apps/api/src/shared/tripPages.js') : name === '../constants/api' ? { API_BASE_URL: 'https://test.invalid' } : { getDriverToken: async () => 'test-token' },
     fetch: fetchImpl, setTimeout: (fn, ms) => { timeout = fn; timeoutMs = ms; return 1; }, clearTimeout: () => { ++cleared; },
   });
   return { get: () => exports.getAvailableTrips(), abort: () => timeout(), get timeoutMs() { return timeoutMs; }, get cleared() { return cleared; } };
@@ -110,7 +110,8 @@ test('malformed or failed list responses are not interpreted as a valid empty li
 test('API availability responses explicitly prevent HTTP caches', async () => {
   const source = fs.readFileSync(path.join(root, 'apps/api/src/controllers/tripController.js'), 'utf8');
   const a = source.indexOf('export async function listAvailableTrips('), b = source.indexOf('\n}', a) + 2;
-  const list = new Function('prisma', 'getDriverConfigSnapshot', 'audienceWhere', source.slice(a, b).replace('export ', '') + ';return listAvailableTrips;')(
+  const list = new Function('tripPagination','tripPage','prisma', 'getDriverConfigSnapshot', 'audienceWhere', source.slice(a, b).replace('export ', '') + ';return listAvailableTrips;')(
+    require('../apps/api/src/services/tripPagination.js').tripPagination,require('../apps/api/src/services/tripPagination.js').tripPage,
     { trip: { findMany: async ({ where }) => { assert.equal(where.status, 'PENDING'); assert.equal(where.driverId, null); return []; } } }, async () => ({}), () => ({}),
   );
   const headers = {};

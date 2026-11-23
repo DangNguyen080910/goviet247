@@ -1,3 +1,4 @@
+import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import {dropoffIsRepresented} from "../src/shared/tripRoute.js";
 import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
@@ -8,7 +9,7 @@ import * as audiencePolicy from '../src/services/tripAudiencePolicy.js';
 const quiet = { log(){}, error(){} };
 function controller(name,deps){
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8').replace(/^import[\s\S]*?;\n/gm,'').replace(/export /g,'');
-  deps={dropoffIsRepresented,...audienceLabel,getDriverConfigSnapshot:async()=>({newTripAcceptDelaySeconds:0}),assertCurrentContractForNewTrip:async()=>{},...deps};
+  deps={tripPagination,tripPage,dropoffIsRepresented,...audienceLabel,getDriverConfigSnapshot:async()=>({newTripAcceptDelaySeconds:0}),assertCurrentContractForNewTrip:async()=>{},...deps};
  if(deps.prisma){deps.prisma.$transaction ||= fn=>fn(deps.prisma);deps.prisma.adminTripActionLog ||= {create:async({data})=>data};}
  deps={recordTripEvent,makeTripEvent,...deps};
   return new Function(...Object.keys(deps),source+`; return ${name};`)(...Object.values(deps));

@@ -1,6 +1,6 @@
 import {formatVietnamDate} from "../../../../api/src/shared/vietnamDate.js";
 import { driverTourSummary } from "../../../../api/src/shared/driverTourSummary.js";
-import { Box, Typography, TextField, Checkbox, Radio, FormControlLabel, Alert } from "@mui/material";
+import { Box, Typography, Radio, FormControlLabel, Alert } from "@mui/material";
 import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, destinationQuoteSummary, vnTime } from "../../../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, admin = false, quote = false, config }) {
   // Only booked destination-service packages belong in this panel.
@@ -25,7 +25,6 @@ export default function DestinationService({ config, direction, pickup, returnTi
  if (!windows.length) return null;
  return <Box sx={{my:2,p:2,border:"1px solid #bfdbfe",borderRadius:2}}>
   <Typography fontWeight={800}>{c.title}</Typography><Typography variant="body2">{c.introduction}</Typography>
-  <TextField fullWidth sx={{my:2}} label="Nơi lưu trú làm mốc phục vụ" value={anchor} onChange={e=>onAnchor(e.target.value)} helperText="Xác nhận khách sạn/nơi lưu trú tại điểm đến. Thêm điểm tham quan không thay đổi mốc này." />
   <Typography fontWeight={700}>{c.standardName} — Đã bao gồm trong giá</Typography><Typography variant="body2">{destinationDescription(c)}</Typography>
   <Typography variant="body2">Giờ hỗ trợ: {c.standardStartHour}:00–{c.standardEndHour}:00</Typography>
   <Typography fontWeight={700} sx={{mt:2}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/khung ngày {c.charterStartHour}:00–{c.charterEndHour}:00</Typography><Typography variant="body2">{destinationDescription(c,true)}</Typography>

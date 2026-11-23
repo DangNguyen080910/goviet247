@@ -64,7 +64,7 @@ export function destinationSummary(snapshot) {
   const terms = snapshot || {};
   const rows = [];
   if (terms.eligible) {
-    rows.push(snapshot.title, "Mốc phục vụ: " + snapshot.anchorAddress, snapshot.standardName + " — Đã bao gồm trong giá", snapshot.standardDescription, `Giờ hỗ trợ Tiêu chuẩn: ${snapshot.standardWindow}`);
+    rows.push(snapshot.title, snapshot.standardName + " — Đã bao gồm trong giá", snapshot.standardDescription, `Giờ hỗ trợ Tiêu chuẩn: ${snapshot.standardWindow}`);
     if (snapshot.sessions.length) {
       rows.push(snapshot.charterName, snapshot.charterDescription);
       for (const s of snapshot.sessions) rows.push(`${formatVietnamDate(s.date)}: ${destinationSessionText(s)}${s.fee != null ? " · +" + s.fee.toLocaleString("vi-VN") + "đ" : ""}`);
@@ -75,7 +75,7 @@ export function destinationSummary(snapshot) {
       for (const day of snapshot.days) {
         if (!selected.has(day.date)) rows.push(`${formatVietnamDate(day.date)}: ${snapshot.standardName} — Đã bao gồm trong giá. ` + (day.standardStart ? `${vnTime(day.standardStart)}–${vnTime(day.standardEnd)}` : 'Không còn khung hỗ trợ đi ăn tại điểm đến.'));
       }
-      if (snapshot.days.length && snapshot.days.every(day => selected.has(day.date))) rows.splice(2,3);
+      if (snapshot.days.length && snapshot.days.every(day => selected.has(day.date))) rows.splice(1,3);
     }
     rows.push(snapshot.outsideNotice);
   }

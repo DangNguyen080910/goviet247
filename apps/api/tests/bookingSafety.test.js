@@ -1,3 +1,4 @@
+import { bookingRequestKey } from "../src/services/bookingIdentity.js";
 import {assertRegionalQuote} from "../src/services/regionalPricing.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -23,6 +24,7 @@ function fixture({ stopFailure = false, socketFailure = false } = {}) {
     $transaction: async fn => {
       const stagedTrips = [], stagedStops = [];
       const tx = {
+        riderProfile: {findFirst:async()=>null},
         pricingConfig: { findUnique: async () => ({ isActive: true }) }, $queryRawUnsafe: noop,
         trip: { create: async arg => { const trip = await tripModel.create(arg); stagedTrips.push(trip); return trip; } },
         tripStop: { createMany: async ({ data }) => { assert.equal(transactionActive, true); if (stopFailure) throw Error('stop write failed'); stagedStops.push(...data); } },
@@ -37,6 +39,7 @@ function fixture({ stopFailure = false, socketFailure = false } = {}) {
     },
   };
   const handler = loadCreate({
+    bookingRequestKey, bookingQuotes:{booking:async()=>({pricing:{totalPrice:500000,basePricePerKm:10000},route:{distanceKm:50,driveMinutes:60,outboundDriveMinutes:60,returnDriveMinutes:0,estimatedDurationMinutes:60}})},
     prisma: db, createBookableTrip, parseTripTime, assertRegionalQuote, validateTripDistance: async () => ({ ok: true }),
     getEffectiveTripConfig: async () => ({ maxStops: 10 }),
     calculateTripPrice: async () => ({ totalPrice: 500000, basePricePerKm: 10000 }),

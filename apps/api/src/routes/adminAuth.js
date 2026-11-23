@@ -1,3 +1,5 @@
+import { createRequestRateLimit } from "../middleware/requestRateLimit.js";
+import { adminTokenVersion } from "../services/adminSessions.js";
 // Path: goviet247/apps/api/src/routes/adminAuth.js
 import express from "express";
 import bcrypt from "bcrypt";
@@ -7,7 +9,7 @@ import { signAdminToken } from "../utils/jwt.js";
 const router = express.Router();
 
 // POST /api/admin/auth/login
-router.post("/login", async (req, res) => {
+router.post("/login", createRequestRateLimit({max:20,windowMs:60000}), async (req, res) => {
   try {
     const { username, password } = req.body || {};
 
@@ -46,6 +48,7 @@ router.post("/login", async (req, res) => {
 
     const token = signAdminToken({
       id: user.id,
+      av: adminTokenVersion(user),
       role: user.role,
       username: user.username,
     });

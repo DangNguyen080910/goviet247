@@ -47,7 +47,7 @@ function mobile(app, options = {}) {
     'react-native-safe-area-context': {},
     '../services/authApi': {ApiError, getMe:()=>value(opts.me)},
     '../services/storage': storage,
-    '../services/driverProfileApi': {getMyDriverProfile:()=>value(opts.profile)},
+    '../services/driverProfileApi': {getDriverContract:async()=>({needsAcceptance:false}),getMyDriverProfile:()=>value(opts.profile)},
     '../services/pushRegister': {refreshPushNotifications:async()=>{}},
     '../services/notify': {prepareNotificationUx:async()=>{},configureRiderAudioMode:async()=>{}},
   }).default;

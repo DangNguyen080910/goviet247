@@ -1,6 +1,6 @@
 // Path: goviet247/apps/api/src/middleware/authMiddleware.js
 import { userSessions } from "../services/userSessions.js";
-import { verifyAdminJwtToken } from "../utils/jwt.js";
+import { verifyAdminSession as verifyAdminJwtToken } from '../services/adminSessions.js';
 
 // Xác thực token (user / admin đều dùng)
 export async function verifyToken(req, res, next) {
@@ -24,7 +24,7 @@ export async function verifyToken(req, res, next) {
 }
 
 // ✅ Middleware chỉ cho ADMIN
-export function requireAdmin(req, res, next) {
+export async function requireAdmin(req, res, next) {
   try {
     const authHeader = req.headers.authorization || "";
     const queryToken = String(req.query?.token || "").trim();
@@ -44,7 +44,7 @@ export function requireAdmin(req, res, next) {
       });
     }
 
-    const payload = verifyAdminJwtToken(token);
+    const payload = await verifyAdminJwtToken(token);
 
     if (!payload || payload.role !== "ADMIN") {
       return res.status(403).json({
@@ -56,6 +56,7 @@ export function requireAdmin(req, res, next) {
     req.admin = payload;
     next();
   } catch (e) {
+    if (e.status !== 401) return res.status(503).json({success:false,message:"Chưa thể kiểm tra phiên Admin. Vui lòng thử lại."});
     return res.status(401).json({
       success: false,
       message: "Token admin không hợp lệ hoặc đã hết hạn",
@@ -64,7 +65,7 @@ export function requireAdmin(req, res, next) {
 }
 
 // ✅ Middleware cho ADMIN hoặc STAFF
-export function requireAdminOrStaff(req, res, next) {
+export async function requireAdminOrStaff(req, res, next) {
   try {
     const authHeader = req.headers.authorization || "";
     const queryToken = String(req.query?.token || "").trim();
@@ -84,7 +85,7 @@ export function requireAdminOrStaff(req, res, next) {
       });
     }
 
-    const payload = verifyAdminJwtToken(token);
+    const payload = await verifyAdminJwtToken(token);
 
     if (!payload || !["ADMIN", "STAFF"].includes(payload.role)) {
       return res.status(403).json({
@@ -96,6 +97,7 @@ export function requireAdminOrStaff(req, res, next) {
     req.admin = payload;
     next();
   } catch (e) {
+    if (e.status !== 401) return res.status(503).json({success:false,message:"Chưa thể kiểm tra phiên Admin. Vui lòng thử lại."});
     return res.status(401).json({
       success: false,
       message: "Token admin không hợp lệ hoặc đã hết hạn",

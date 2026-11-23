@@ -1,30 +1,31 @@
+import { lazy, Suspense } from "react";
 import { FloatingActionsProvider } from './components/FloatingActionsContext';
-import TripChatHub from "./components/TripChatHub";
-import WebTripChat from "./components/WebTripChat";
+const TripChatHub = lazy(() => import("./components/TripChatHub"));
+const WebTripChat = lazy(() => import("./components/WebTripChat"));
 import {useCustomerAuth} from "./context/CustomerAuthContext";
 // Path: goviet247/apps/web/src/App.jsx
 
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 // ADMIN
-import AdminLogin from "./pages/admin/AdminLogin";
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
 import RequireAdmin from "./pages/admin/RequireAdmin";
-import AdminLayout from "./pages/admin/AdminLayout";
-import AdminHome from "./pages/admin/AdminHome";
-import AdminPendingTrips from "./pages/admin/AdminPendingTrips";
-import AdminNotifications from "./pages/admin/AdminNotifications";
-import AdminSystemNotifications from "./pages/admin/AdminSystemNotifications";
-import AdminTripsAssigned from "./pages/admin/AdminTripsAssigned";
-import AdminDrivers from "./pages/admin/AdminDrivers";
-import AdminPartners from "./pages/admin/AdminPartners";
-import AdminCustomers from "./pages/admin/AdminCustomers";
-import AdminQuoteHistory from "./pages/admin/AdminQuoteHistory";
-import AdminTrips from "./pages/admin/AdminTrips";
-import AdminConfig from "./pages/admin/AdminConfig";
-import AdminDriverWallets from "./pages/admin/AdminDriverWallets";
-import AdminLedger from "./pages/admin/AdminLedger";
-import AdminFeedback from "./pages/admin/AdminFeedback";
-import AdminCashTransactions from "./pages/admin/AdminCashTransactions";
+const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
+const AdminHome = lazy(() => import("./pages/admin/AdminHome"));
+const AdminPendingTrips = lazy(() => import("./pages/admin/AdminPendingTrips"));
+const AdminNotifications = lazy(() => import("./pages/admin/AdminNotifications"));
+const AdminSystemNotifications = lazy(() => import("./pages/admin/AdminSystemNotifications"));
+const AdminTripsAssigned = lazy(() => import("./pages/admin/AdminTripsAssigned"));
+const AdminDrivers = lazy(() => import("./pages/admin/AdminDrivers"));
+const AdminPartners = lazy(() => import("./pages/admin/AdminPartners"));
+const AdminCustomers = lazy(() => import("./pages/admin/AdminCustomers"));
+const AdminQuoteHistory = lazy(() => import("./pages/admin/AdminQuoteHistory"));
+const AdminTrips = lazy(() => import("./pages/admin/AdminTrips"));
+const AdminConfig = lazy(() => import("./pages/admin/AdminConfig"));
+const AdminDriverWallets = lazy(() => import("./pages/admin/AdminDriverWallets"));
+const AdminLedger = lazy(() => import("./pages/admin/AdminLedger"));
+const AdminFeedback = lazy(() => import("./pages/admin/AdminFeedback"));
+const AdminCashTransactions = lazy(() => import("./pages/admin/AdminCashTransactions"));
 
 // CUSTOMER
 import CustomerLayout from "./components/customer/CustomerLayout";
@@ -41,11 +42,12 @@ import NotFoundPage from "./pages/customer/NotFoundPage";
 
 function ChatEntry(){
   const route=useLocation(),{token}=useCustomerAuth();
-  return route.pathname.startsWith('/admin')?<TripChatHub/>:<WebTripChat tokenRevision={token}/>;
+  return <Suspense fallback={null}>{route.pathname.startsWith('/admin')?<TripChatHub/>:<WebTripChat tokenRevision={token}/>}</Suspense>;
 }
 export default function App() {
   return (
     <FloatingActionsProvider>
+    <Suspense fallback={<div role="status">Đang tải…</div>}>
     <ChatEntry />
     <Routes>
       {/* ====================================================== */}
@@ -266,6 +268,7 @@ export default function App() {
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    </Suspense>
     </FloatingActionsProvider>
   );
 }

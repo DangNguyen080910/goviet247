@@ -1,3 +1,4 @@
+import { bookingQuotes } from "../services/bookingQuotes.js";
 // Path: goviet247/apps/api/src/controllers/pricingController.js
 
 import pkg from "@prisma/client";
@@ -67,6 +68,10 @@ export async function quote(req, res) {
       });
     }
 
+    const verified = await bookingQuotes.verifiedRoute(req.body);
+    const routeValidation = await validateTripDistance(verified.distanceKm);
+    if (!routeValidation.ok) return res.status(400).json({success:false,message:routeValidation.message});
+    req.body = {...req.body,...verified};
     const result = await quotePrice({
       routePricingPoints: req.body.routePricingPoints,
       destinationServiceDates: req.body.destinationServiceDates,
@@ -75,9 +80,7 @@ export async function quote(req, res) {
       direction,
       pickupTime,
       returnTime,
-      distanceKm,
-      driveMinutes,
-      outboundDriveMinutes,
+      ...verified,
       fuelPreference,
     });
 
@@ -86,12 +89,15 @@ export async function quote(req, res) {
     }
 
     const history = await recordQuoteHistory(req, result.data);
+    const setting = await prisma.tripConfig.findFirst({orderBy:{id:"asc"},select:{quoteExpireSeconds:true}});
+    const held = await bookingQuotes.issue(req.body,result.data,verified,history?.quoteHistoryToken,setting?.quoteExpireSeconds);
     return res.json({
       success: true,
       message: result.message,
-      data: { ...result.data, ...(history || {}) },
+      data: { ...result.data, ...verified, ...(history || {}), ...held },
     });
   } catch (e) {
+    if (e.status) return res.status(e.status).json({success:false,message:e.message});
     console.error("pricing quote error:", e);
     return res
       .status(500)

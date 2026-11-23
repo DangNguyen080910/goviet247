@@ -1,3 +1,4 @@
+import { bookingQuotes } from "../services/bookingQuotes.js";
 import { assertRegionalQuote } from "../services/regionalPricing.js";
 import { destinationConfig, assertDestinationQuote } from "../services/destinationService.js";
 import { createBookableTrip } from "../services/carAvailability.js";
@@ -165,6 +166,7 @@ export async function getPublicTripConfig(req, res) {
 // POST /api/public/trips/quote
 export async function quoteTrip(req, res) {
   try {
+    req.body = {...req.body,...await bookingQuotes.verifiedRoute(req.body)};
     const {
       pickupAddress,
       dropoffAddress,
@@ -240,6 +242,7 @@ export async function quoteTrip(req, res) {
 // POST /api/public/trips/request-otp
 export async function requestTripOtp(req, res) {
   try {
+    req.body = {...req.body,...await bookingQuotes.verifiedRoute(req.body)};
     const {
       riderName,
       riderPhone,
@@ -303,6 +306,8 @@ export async function requestTripOtp(req, res) {
     // Payload lưu tạm trong OTP session (không tạo Trip ngay)
     const tripDraft = {
       quoteHistoryToken: typeof req.body?.quoteHistoryToken === "string" ? req.body.quoteHistoryToken.slice(0, 64) : null,
+      stops: Array.isArray(req.body.stops) ? req.body.stops.map(s=>String(s).trim()).filter(Boolean) : [dropoffAddress],
+      outboundDriveMinutes: req.body.outboundDriveMinutes,
       riderName,
       riderPhone,
       pickupAddress,
@@ -402,6 +407,9 @@ export async function confirmTrip(req, res) {
     }
 
     const trip = await createBookableTrip(prisma, {
+      bookingRequestKey: `otp:${sessionId}`,
+      bookingStops: payload.stops?.length ? payload.stops : [dropoffAddress],
+      outboundDriveMinutes: payload.outboundDriveMinutes,
       riderName,
       riderPhone,
       pickupAddress,

@@ -1,6 +1,7 @@
 // Path: goviet247/apps/api/src/services/otpService.js
 
 import bcrypt from "bcryptjs";
+import { randomInt } from "node:crypto";
 import { prisma } from "../utils/db.js";
 import { sendSms } from "./smsService.js";
 
@@ -20,12 +21,12 @@ const OTP_FALLBACK_ON_SMS_FAIL =
     .toLowerCase() === "true";
 
 const APP_REVIEW_PHONE_E164 =
-  process.env.APP_REVIEW_PHONE_E164 || "+84901234567";
+  process.env.APP_REVIEW_PHONE_E164 || "";
 
-const APP_REVIEW_OTP = process.env.APP_REVIEW_OTP || "123456";
+const APP_REVIEW_OTP = process.env.APP_REVIEW_OTP || "";
 
 function isAppReviewPhone(e164) {
-  return String(e164 || "").trim() === APP_REVIEW_PHONE_E164;
+  return process.env.APP_REVIEW_LOGIN_ENABLED === "true" && /^\+84\d{9}$/.test(APP_REVIEW_PHONE_E164) && /^\d{6}$/.test(APP_REVIEW_OTP) && String(e164 || "").trim() === APP_REVIEW_PHONE_E164;
 }
 
 // =====================================================
@@ -33,7 +34,7 @@ function isAppReviewPhone(e164) {
 // =====================================================
 
 function randomCode() {
-  return String(Math.floor(100000 + Math.random() * 900000));
+  return String(randomInt(100000, 1000000));
 }
 
 function assertOtpAvailable(phone) {
@@ -45,7 +46,7 @@ function assertOtpAvailable(phone) {
 }
 
 export function respondToOtpLock(res, error) {
-  if (!["OTP_PHONE_LOCKED", "OTP_SEND_LIMIT"].includes(error?.code)) return false;
+  if (!["OTP_PHONE_LOCKED", "OTP_SEND_LIMIT", "OTP_RESEND_COOLDOWN"].includes(error?.code)) return false;
   const retryAfter = Math.max(1, Math.ceil((error.lockedUntil.getTime() - Date.now()) / 1000));
   res.set("Retry-After", String(retryAfter)).status(429).json({
     success: false,
@@ -63,7 +64,7 @@ async function lockOtpPhone(tx, phoneId) {
   return phone;
 }
 
-async function assertOtpSendAvailable(tx, phoneId) {
+export async function assertOtpSendAvailable(tx, phoneId) {
   const now = Date.now();
   const recentSince = new Date(now - OTP_LOCK_MS - OTP_SEND_WINDOW_MS);
   const lastVerified = await tx.otpSession.findFirst({
@@ -77,6 +78,13 @@ async function assertOtpSendAvailable(tx, phoneId) {
     take: OTP_SEND_LIMIT,
     select: { createdAt: true },
   });
+  const latest = await tx.otpSession.findFirst({
+    where: { phoneId, status: "pending", expiresAt: { gt: new Date(now) } },
+    orderBy: { createdAt: "desc" }, select: { resendAfter: true },
+  });
+  if (latest?.resendAfter && latest.resendAfter.getTime() > now) throw Object.assign(
+    new Error("Vui lòng chờ trước khi yêu cầu gửi lại mã OTP."),
+    {code:"OTP_RESEND_COOLDOWN", lockedUntil:latest.resendAfter});
   if (recentRequests.length < OTP_SEND_LIMIT) return;
 
   const newest = recentRequests[0].createdAt.getTime();

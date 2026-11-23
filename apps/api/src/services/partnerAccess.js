@@ -2,7 +2,7 @@ import { canSelfCancelTrip } from '../shared/tripSelfService.js';
 import { chatCanSend } from '../shared/tripChat.js';
 import jwt from 'jsonwebtoken';
 import { prisma } from '../utils/db.js';
-import { verifyAdminJwtToken } from '../utils/jwt.js';
+import { verifyAdminSession as verifyAdminJwtToken } from './adminSessions.js';
 export const partnerFail = (message, status = 400) => Object.assign(new Error(message), {status});
 const secret = () => {
   if (!process.env.JWT_SECRET) throw partnerFail('Chưa cấu hình xác thực.', 503);
@@ -66,7 +66,7 @@ export async function refreshPartnerSession(req,res,db=prisma) {
 }
 export async function resolvePartnerActor(token) {
   let claims;
-  try { claims = verifyAdminJwtToken(token); } catch {}
+  try { claims = await verifyAdminJwtToken(token); } catch (error) { if (error.status !== 401) throw error; }
   if (claims?.role === 'ADMIN') {
     const admin = await prisma.admin_users.findUnique({where:{id:Number(claims.id)}});
     if (!admin?.is_active || admin.role !== 'ADMIN') throw partnerFail('Không có quyền quản lý đối tác.', 403);

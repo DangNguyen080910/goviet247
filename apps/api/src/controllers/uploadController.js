@@ -9,7 +9,7 @@ function resolveFolderFromScope(scope, req) {
       return "public/avatars";
 
     case "driver_document": {
-      const driverUserId = req.user?.uid || req.user?.id || "unknown-driver";
+      const driverUserId = req.user?.uid || req.user?.id;
       return `driver-documents/${driverUserId}`;
     }
 
@@ -40,7 +40,12 @@ export async function uploadFile(req, res) {
       });
     }
 
-    const scope = String(req.body?.scope || "").trim();
+    const scope = req.uploadScope;
+    if ((scope === "accounting_document" && !req.admin) || (scope === "driver_document" && !req.user)) return res.status(403).json({success:false,message:"Không có quyền upload tài liệu."});
+    const allowed = scope === "accounting_document"
+      ? /^(image\/(jpeg|jpg|png|webp|gif|heic|heif)|application\/(pdf|zip|x-zip-compressed|vnd\.ms-excel|vnd\.openxmlformats-officedocument\.spreadsheetml\.sheet)|text\/(csv|plain))$/i
+      : /^image\/(jpeg|jpg|png|webp|gif|heic|heif)$/i;
+    if (!allowed.test(file.mimetype || "")) return res.status(400).json({success:false,message:"Định dạng tệp không được hỗ trợ."});
     const folder = resolveFolderFromScope(scope, req);
 
     if (!folder) {

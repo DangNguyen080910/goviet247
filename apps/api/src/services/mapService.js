@@ -49,10 +49,11 @@ function normalizePoints(points) {
   if (!Array.isArray(points) || points.length < 2) {
     throw new Error("ROUTE_POINTS_INVALID");
   }
+  if (points.length > 12) throw new Error("ROUTE_POINTS_LIMIT");
   return points.map((point) => {
     const lat = Number(point?.lat);
     const lng = Number(point?.lng);
-    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+    if (!Number.isFinite(lat) || !Number.isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) {
       throw new Error("ROUTE_POINT_COORDINATES_INVALID");
     }
     return { lat, lng };
@@ -97,7 +98,7 @@ async function autocompleteVietmap(input, options = {}) {
   if (Number.isFinite(lat) && Number.isFinite(lng)) {
     params.focus = `${lat},${lng}`;
   }
-  const { data } = await axios.get(`${VIETMAP_BASE_URL}/api/autocomplete/v4`, {
+  const { data } = await axios.get(`${VIETMAP_BASE_URL}/api/autocomplete/v4`, { timeout: 8000,
     params,
   });
   return (Array.isArray(data) ? data : []).map((item) => {
@@ -121,7 +122,7 @@ async function autocompleteVietmap(input, options = {}) {
 async function getPlaceDetailVietmap(id, options = {}) {
   const { data } = await axios.get(`${VIETMAP_BASE_URL}/api/place/v4`, {
     params: { apikey: requireApiKey("vietmap"), refid: id },
-    timeout: options.timeoutMs,
+    timeout: options.timeoutMs || 8000,
   });
   if (!data || !Number.isFinite(Number(data?.lat)) || !Number.isFinite(Number(data?.lng))) {
     return null;
@@ -150,11 +151,11 @@ async function getRouteVietmap(points) {
   params.set("vehicle", "car");
   params.set("points_encoded", "true");
   points.forEach((point) => params.append("point", `${point.lat},${point.lng}`));
-  const { data } = await axios.get(`${VIETMAP_BASE_URL}/api/route/v4`, { params });
+  const { data } = await axios.get(`${VIETMAP_BASE_URL}/api/route/v4`, { timeout: 8000, params });
   if (data?.code !== "OK") return null;
   const route = data?.paths?.[0];
   if (!route) return null;
-  return normalizeRoute({
+  const result = normalizeRoute({
     provider: "vietmap",
     points,
     distanceMeters: Number(route?.distance) || 0,
@@ -163,6 +164,13 @@ async function getRouteVietmap(points) {
     polyline: route?.points,
     debug: { pointCount: points.length, routeCode: data?.code },
   });
+  if (result.isRoundTripDetected) {
+    const tail = await getRouteVietmap(points.slice(-2));
+    if (!tail) throw new Error("RETURN_ROUTE_NOT_FOUND");
+    result.returnDurationMinutes = tail.durationMinutes;
+    result.outboundDurationMinutes = Math.max(1,result.durationMinutes-tail.durationMinutes);
+  }
+  return result;
 }
 
 async function autocompleteGoong(input, options = {}) {
@@ -177,7 +185,7 @@ async function autocompleteGoong(input, options = {}) {
   if (Number.isFinite(lat) && Number.isFinite(lng)) {
     params.location = `${lat},${lng}`;
   }
-  const { data } = await axios.get(`${GOONG_BASE_URL}/Place/AutoComplete`, { params });
+  const { data } = await axios.get(`${GOONG_BASE_URL}/Place/AutoComplete`, { timeout: 8000, params });
   return (data?.predictions || []).map((item) => {
     const compound = item?.compound || {};
     const ward = compound?.commune || "";
@@ -199,7 +207,7 @@ async function autocompleteGoong(input, options = {}) {
 async function getPlaceDetailGoong(id, options = {}) {
   const { data } = await axios.get(`${GOONG_BASE_URL}/Place/Detail`, {
     params: { api_key: requireApiKey("goong"), place_id: id },
-    timeout: options.timeoutMs,
+    timeout: options.timeoutMs || 8000,
   });
   const result = data?.result;
   if (!result) return null;
@@ -224,7 +232,7 @@ async function getPlaceDetailGoong(id, options = {}) {
 async function getRouteGoong(points) {
   const origin = `${points[0].lat},${points[0].lng}`;
   const destination = points.slice(1).map((point) => `${point.lat},${point.lng}`).join(";");
-  const { data } = await axios.get(`${GOONG_BASE_URL}/Direction`, {
+  const { data } = await axios.get(`${GOONG_BASE_URL}/Direction`, { timeout: 8000,
     params: { api_key: requireApiKey("goong"), origin, destination, vehicle: "car" },
   });
   const route = data?.routes?.[0];
@@ -268,7 +276,7 @@ export async function getPlaceDetail(placeId, options = {}) {
     : getPlaceDetailGoong(parsed.id, options);
 }
 
-export async function getRoute(points = []) {
+async function getRouteUncached(points = []) {
   const normalized = normalizePoints(points);
   if (MAP_PROVIDER === "goong") return getRouteGoong(normalized);
   try {
@@ -282,4 +290,20 @@ export async function getRoute(points = []) {
     console.warn("VietMap route failed; using Goong fallback.");
     return getRouteGoong(normalized);
   }
+}
+
+const routeCache = new Map();
+export async function getRoute(points = []) {
+  const normalized = normalizePoints(points);
+  const key = JSON.stringify(normalized), now = Date.now();
+  const hit = routeCache.get(key);
+  if (hit && hit.until > now) return structuredClone(await hit.value);
+  if (routeCache.size >= 500) routeCache.delete(routeCache.keys().next().value);
+  const value = getRouteUncached(normalized);
+  const entry = {until:now+15*60000,value}; routeCache.set(key,entry);
+  try {
+    const route = await value;
+    if (!route) routeCache.delete(key);
+    return structuredClone(route);
+  } catch(error) { if (routeCache.get(key) === entry) routeCache.delete(key); throw error; }
 }

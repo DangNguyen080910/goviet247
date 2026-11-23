@@ -1470,7 +1470,7 @@ export default function BookingCard({ partner = null }) {
         inputKey,
         quoteId: "qt_" + now,
         totalPrice: data.finalPrice,
-        expiresAt: new Date(now + quoteExpireSeconds * 1000).toISOString(),
+        expiresAt: data.quoteExpiresAt || new Date(now + quoteExpireSeconds * 1000).toISOString(),
         raw: data,
       };
 
@@ -1619,6 +1619,8 @@ export default function BookingCard({ partner = null }) {
       regionalPricingSignature: quote.raw?.regionalPricingSignature,
       destinationServiceSignature: quote.raw?.destinationServiceSignature,
       fareEstimate: quote.totalPrice,
+      quoteToken: quote?.raw?.quoteToken,
+      bookingRequestId: quote?.raw?.quoteToken || quote?.quoteId,
       quoteHistoryToken: quote.raw?.quoteHistoryToken,
       riderName,
       riderPhone,
@@ -2224,7 +2226,7 @@ export default function BookingCard({ partner = null }) {
                           textField: { fullWidth: true, size: "small" },
                         }}
                       />
-                    <BookingTimeSelect label="Giờ về"
+                    <BookingTimeSelect label="Giờ bắt đầu quay về"
                       value={returnTimeOnly} onChange={setReturnTimeOnly}
                       period={returnPeriod} onPeriodChange={setReturnPeriod} />
                     </Stack>
@@ -2247,7 +2249,7 @@ export default function BookingCard({ partner = null }) {
                   pickupDate &&
                   pickupTimeOnly &&
                   returnDate &&
-                  returnTimeOnly &&
+                  returnTimeOnly && pickupPeriod && returnPeriod &&
                   !isReturnTimeValid && (
                     <Typography
                       variant="body2"

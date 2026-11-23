@@ -57,11 +57,11 @@ test('registration supports explicit electric/gasoline fuel and legacy missing v
   for(const vehicleFuelType of ['ANY','',null,123,'DIESEL']) assert.equal(schema.safeParse({...payload,vehicleFuelType}).success,false);
 });
 
-test('address is required, trimmed and limited to 500 characters', () => {
+test('address schema retains legacy omission, trims and limits to 500 characters', () => {
   assert.equal(schema.parse({ ...payload, residentialAddress: '  12 Nguyễn Trãi, TP. Hồ Chí Minh  ' }).residentialAddress, '12 Nguyễn Trãi, TP. Hồ Chí Minh');
   const { residentialAddress, ...missing } = payload;
-  assert.equal(schema.safeParse(missing).success, false);
-  for (const residentialAddress of ['', '   ', 123, null, 'x'.repeat(501)]) assert.equal(schema.safeParse({ ...payload, residentialAddress }).success, false);
+  assert.equal(schema.safeParse(missing).success, true);
+  for (const residentialAddress of [123, null, 'x'.repeat(501)]) assert.equal(schema.safeParse({ ...payload, residentialAddress }).success, false);
 });
 test('admin can backfill and clear address with an audit entry', async () => {
   const date = new Date('2026-11-07T00:00:00Z');

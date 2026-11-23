@@ -122,7 +122,7 @@ export async function requestOtpHandler(req, res) {
     const result = await requestOtp(phone, appRole);
 
     // 🔥 TEST MODE
-    const isTestMode = process.env.OTP_TEST_MODE === "true";
+    const isTestMode = process.env.NODE_ENV !== "production" && process.env.OTP_TEST_MODE === "true";
 
     return res.json({
       success: true,

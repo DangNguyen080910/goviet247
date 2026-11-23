@@ -583,6 +583,13 @@ export default function RiderBookingScreen() {
     numericOutboundDriveMinutes,
   ]);
 
+  // A date picker carries a temporary clock before the rider chooses a time.
+  // Keep booking validation strict, but do not present that draft as an error.
+  const showPickupTimeError = pickupTimeConfirmed && !isPickupTimeValid;
+  const showReturnTimeError = direction === "ROUND_TRIP" &&
+    pickupTimeConfirmed && returnTimeConfirmed &&
+    Boolean(pickupTime && returnTime) && !isReturnTimeValid;
+
   const estimatedExtraMinutes = useMemo(() => {
     if (direction !== "ROUND_TRIP") return 0;
 
@@ -1353,6 +1360,7 @@ export default function RiderBookingScreen() {
 
     if (next === "ONE_WAY") {
       setReturnTime("");
+      setReturnTimeConfirmed(false);
     }
 
   }
@@ -1374,6 +1382,23 @@ export default function RiderBookingScreen() {
     setPickerTarget(null);
   }
 
+  function applyPickerDate(selectedValue: Date) {
+    if (!pickerTarget || pickerMode !== "date") return;
+
+    setPickerValue(selectedValue);
+    const currentRawValue = pickerTarget === "pickup" ? pickupTime : returnTime;
+    const nextValue = mergeDatePartIntoDatetimeLocal(currentRawValue, selectedValue);
+
+    if (pickerTarget === "pickup") setPickupTime(nextValue);
+    else setReturnTime(nextValue);
+  }
+
+  function confirmPickerDate() {
+    // iOS does not emit a change when the already selected day is confirmed.
+    applyPickerDate(pickerValue);
+    closeDateTimePicker();
+  }
+
   function handleDateTimeChange(
     event: DateTimePickerEvent,
     selectedValue?: Date,
@@ -1387,24 +1412,7 @@ export default function RiderBookingScreen() {
       return;
     }
 
-    setPickerValue(selectedValue);
-
-    let nextValue = "";
-
-    if (pickerMode === "date") {
-      const currentRawValue =
-        pickerTarget === "pickup" ? pickupTime : returnTime;
-      nextValue = mergeDatePartIntoDatetimeLocal(
-        currentRawValue,
-        selectedValue,
-      );
-    }
-
-    if (pickerTarget === "pickup") {
-      setPickupTime(nextValue);
-    } else {
-      setReturnTime(nextValue);
-    }
+    applyPickerDate(selectedValue);
 
     if (Platform.OS === "android") {
       setPickerTarget(null);
@@ -1502,6 +1510,8 @@ export default function RiderBookingScreen() {
       regionalPricingSignature: quote?.raw?.regionalPricingSignature,
       destinationServiceSignature:quote?.raw?.destinationServiceSignature,
       fareEstimate: quote?.totalPrice || 0,
+      quoteToken: quote?.raw?.quoteToken,
+      bookingRequestId: quote?.raw?.quoteToken || quote?.quoteId,
       quoteHistoryToken: quote?.raw?.quoteHistoryToken,
       bookingCompanyId: selectedCompany?.id,
       riderName: isCompanyBooking ? "" : riderName.trim(),
@@ -1656,7 +1666,7 @@ export default function RiderBookingScreen() {
         inputKey,
         quoteId: `qt_${now}`,
         totalPrice: Number(data?.finalPrice || 0),
-        expiresAt: new Date(now + quoteExpireSeconds * 1000).toISOString(),
+        expiresAt: data.quoteExpiresAt || new Date(now + quoteExpireSeconds * 1000).toISOString(),
         raw: data,
       };
 
@@ -2098,7 +2108,7 @@ export default function RiderBookingScreen() {
               style={styles.dateTimeField}
               onPress={() => openDateTimePicker("pickup", "time")}
             >
-              {pickupTime && !isPickupTimeValid ? (
+              {showPickupTimeError ? (
                 <Text style={styles.errorText}>
                   Giờ đón khách phải sau thời điểm hiện tại.
                 </Text>
@@ -2130,7 +2140,7 @@ export default function RiderBookingScreen() {
                   </Text>
                 </Pressable>
 
-                <Text style={styles.label}>Giờ quay về</Text>
+                <Text style={styles.label}>Giờ bắt đầu quay về</Text>
                 <Pressable
                   style={styles.dateTimeField}
                   onPress={() => openDateTimePicker("return", "time")}
@@ -2152,7 +2162,7 @@ export default function RiderBookingScreen() {
                   </Text>
                 ) : null}
 
-                {returnTime && !isReturnTimeValid ? (
+                {showReturnTimeError ? (
                   <Text style={styles.errorText}>
                     Giờ quay về phải sau thời điểm xe dự kiến đã tới điểm đến.
                   </Text>
@@ -2359,25 +2369,25 @@ export default function RiderBookingScreen() {
                   </Text>
                 ) : null}
 
-                {!pickupTime ? (
+                {!pickupTimeConfirmed ? (
                   <Text style={styles.validationText}>
-                    • Vui lòng chọn thời gian đón khách.
+                    • Vui lòng chọn giờ và buổi đón khách.
                   </Text>
                 ) : null}
 
-                {!isPickupTimeValid ? (
+                {showPickupTimeError ? (
                   <Text style={styles.validationText}>
                     • Giờ đón khách phải sau thời điểm hiện tại.
                   </Text>
                 ) : null}
 
-                {direction === "ROUND_TRIP" && !returnTime ? (
+                {direction === "ROUND_TRIP" && !returnTimeConfirmed ? (
                   <Text style={styles.validationText}>
-                    • Vui lòng chọn thời gian quay về.
+                    • Vui lòng chọn giờ và buổi quay về.
                   </Text>
                 ) : null}
 
-                {direction === "ROUND_TRIP" && !isReturnTimeValid ? (
+                {showReturnTimeError ? (
                   <Text style={styles.validationText}>
                     • Giờ quay về chưa hợp lệ.
                   </Text>
@@ -2526,7 +2536,7 @@ export default function RiderBookingScreen() {
               />
 
               <Pressable
-                onPress={closeDateTimePicker}
+                onPress={confirmPickerDate}
                 style={{
                   marginTop: 12,
                   backgroundColor: "#F97316",

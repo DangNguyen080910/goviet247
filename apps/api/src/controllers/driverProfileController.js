@@ -1,3 +1,4 @@
+import { driverDocumentKey } from "../services/s3Service.js";
 import { legacyDriverContract, buildContractAcceptance, validateRegistrationSubmission, lockContractPublication } from "../services/driverContract.js";
 import { isProvinceCode } from "../services/driverOperatingProvince.js";
 // Path: goviet247/apps/api/src/controllers/driverProfileController.js
@@ -20,10 +21,13 @@ const REQUIRED_DOCUMENT_TYPES = [
 
 const MIN_WITHDRAW_AMOUNT = 50000;
 
-async function mapDriverDocumentsWithSignedUrl(documents = []) {
+async function mapDriverDocumentsWithSignedUrl(documents = [], userId) {
   return Promise.all(
     (Array.isArray(documents) ? documents : []).map(async (doc) => {
-      const fileKey = extractS3KeyFromUrlOrKey(doc.fileUrl);
+      const ownKey = driverDocumentKey(doc.fileUrl, userId);
+      const legacyKey = extractS3KeyFromUrlOrKey(doc.fileUrl);
+      const legacy = legacyKey?.startsWith("driver-documents/unknown-driver/");
+      const fileKey = ownKey || (legacy ? legacyKey : null);
       const signedUrl = fileKey ? await getSignedViewUrl(fileKey, 300) : null;
 
       return {
@@ -454,7 +458,7 @@ export async function getMyDriverProfile(req, res) {
     const resolvedFullName =
       profile.fullName || user.displayName || user.phones?.[0]?.e164 || null;
 
-    const documents = await mapDriverDocumentsWithSignedUrl(profile.documents);
+    const documents = await mapDriverDocumentsWithSignedUrl(profile.documents, uid);
 
     return res.json({
       success: true,
@@ -1125,6 +1129,9 @@ export async function createDriverProfile(req, res) {
     }
 
     const body = createDriverProfileSchema.parse(req.body || {});
+    for (const value of Object.values(body.documents)) {
+      if (!driverDocumentKey(value, uid)) return res.status(400).json({success:false,message:"Giấy tờ không thuộc tài khoản này. Vui lòng tải lại ảnh giấy tờ."});
+    }
     await validateRegistrationSubmission(prisma, body);
     const normalizedPlateNumber = normalizePlateNumber(body.plateNumber);
 

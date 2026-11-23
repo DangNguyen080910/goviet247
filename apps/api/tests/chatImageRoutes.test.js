@@ -12,7 +12,7 @@ let trip, rows, objects, audit, revokeOnUpload=false, sequence=0;
 const matches=(m,w)=>m.tripId===w.tripId && (!w.id || m.id===w.id) && (!w.kind || m.kind===w.kind) && (w.deletedAt !== null || !m.deletedAt) && (!w.createdAt?.gte || m.createdAt>=w.createdAt.gte) && (!w.AND?.[1] || (m.historyAt ? m.historyAt>=w.AND[1].OR[0].historyAt.gte : m.createdAt>=w.AND[1].OR[1].createdAt.gte));
 const db={
  trip:{findUnique:async({where})=>where.id===trip.id?trip:null},
- driverProfile:{findUnique:async()=>({status:'VERIFIED'})},phone:{findMany:async()=>[]},session:{findUnique:async()=>null},admin_users:{findUnique:async()=>({id:1,is_active:true,role:'ADMIN',username:'test'})},
+ driverProfile:{findUnique:async()=>({status:'VERIFIED'})},phone:{findMany:async()=>[]},session:{findUnique:async()=>null},admin_users:{findUnique:async()=>({id:1,is_active:true,role:'ADMIN',username:'test',password_hash:'test-hash'})},
  $queryRaw:async()=>[], $transaction:async fn=>fn(db),
  tripChatMessage:{
   count:async()=>0,
@@ -39,7 +39,8 @@ const server=await new Promise(resolve=>{const s=app.listen(0,'127.0.0.1',()=>re
 const base=`http://127.0.0.1:${server.address().port}/api/trip-chat`;
 const photo=await sharp({create:{width:30,height:20,channels:3,background:'#aabbcc'}}).jpeg().toBuffer();
 function reset(){trip={id:'trip-test',riderId:'booker',riderPhone:'0901234567',driverId:'driver',status:'ACCEPTED',acceptedAt:new Date(Date.now()-60000)};rows=[];objects=new Map();audit=[];revokeOnUpload=false;}
-const token=id=>signToken({id});const admin=signAdminToken({id:1,role:'ADMIN'});
+const {adminTokenVersion}=await import('../src/services/adminSessions.js');
+const token=id=>signToken({id});const admin=signAdminToken({id:1,role:'ADMIN',av:adminTokenVersion(await db.admin_users.findUnique({where:{id:1}}))});
 async function upload(id,clientId='client_photo_123',bytes=photo){const form=new FormData();form.append('image',new Blob([bytes],{type:'image/jpeg'}),'photo.jpg');form.append('clientId',clientId);return fetch(`${base}/trip-test/image`,{method:'POST',headers:{Authorization:`Bearer ${token(id)}`},body:form});}
 async function read(id,authorization=token('booker')){return fetch(`${base}/trip-test/image/${id}`,{headers:{Authorization:`Bearer ${authorization}`}});}
 

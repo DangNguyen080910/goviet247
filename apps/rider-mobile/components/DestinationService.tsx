@@ -1,6 +1,6 @@
 import {formatVietnamDate} from "../../api/src/shared/vietnamDate.js";
 import React from "react";
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, destinationQuoteSummary, vnTime } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?: any; quote?: boolean; config?: any }) {
   // Only booked destination-service packages belong in this panel.
@@ -25,7 +25,6 @@ export default function DestinationService({config,direction,pickup,returnTime,o
  if(!windows.length) return null;
  return <View style={{padding:14,borderWidth:1,borderColor:"#bfdbfe",borderRadius:12,marginVertical:14,gap:10}}>
  <Text style={{fontWeight:"800",fontSize:17}}>{c.title}</Text><Text>{c.introduction}</Text>
- <Text>Nơi lưu trú làm mốc phục vụ</Text><TextInput accessibilityLabel="Nơi lưu trú làm mốc phục vụ" value={anchor} onChangeText={onAnchor} placeholder="Khách sạn/nơi lưu trú tại điểm đến" style={{borderWidth:1,borderColor:"#cbd5e1",padding:12,borderRadius:8}}/>
  <Text style={{fontWeight:"700"}}>{c.standardName} — Đã bao gồm trong giá</Text><Text>{destinationDescription(c)}</Text><Text>Giờ hỗ trợ: {c.standardStartHour}:00–{c.standardEndHour}:00</Text>
  <Text style={{fontWeight:"700"}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/khung ngày {c.charterStartHour}:00–{c.charterEndHour}:00</Text><Text>{destinationDescription(c,true)}</Text>
 

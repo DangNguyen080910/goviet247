@@ -1,10 +1,10 @@
 import {partnerTokenKey,enablePartnerSessionRefresh,storePartnerToken,clearPartnerToken,notifyPartnerStorageChange} from '../../web/src/components/partners/partnerSession';
-import {StrictMode,useEffect,useState} from 'react';
+import {StrictMode,Suspense,lazy,useEffect,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter,Link,Navigate,Route,Routes,useNavigate,useParams} from 'react-router-dom';
 import {Checkbox,FormControlLabel,Alert,AppBar,Box,Button,CircularProgress,Container,CssBaseline,MenuItem,Paper,Stack,TextField,ThemeProvider,Toolbar,Typography,createTheme} from '@mui/material';
-import BookingCard from '../../web/src/components/customer/BookingCard';
-import WebTripChat from '../../web/src/components/WebTripChat';
+const BookingCard=lazy(()=>import('../../web/src/components/customer/BookingCard'));
+const WebTripChat=lazy(()=>import('../../web/src/components/WebTripChat'));
 import {FloatingActionsProvider} from '../../web/src/components/FloatingActionsContext';
 import {PartnerMembers,PartnerSettings,PartnerTrips,partnerRequest} from '../../web/src/components/partners/PartnerConsole';
 enablePartnerSessionRefresh();
@@ -34,13 +34,13 @@ function App(){
   const api=(path,options={})=>partnerRequest(path,{token,...options});
   const booking={quote:async payload=>(await api('/quote',{method:'POST',body:payload})).data,createTrip:payload=>api('/trips',{method:'POST',body:payload})};
   return <FloatingActionsProvider>
-    {!mustChange&&<WebTripChat partner/>}
+    {!mustChange&&<Suspense fallback={null}><WebTripChat partner/></Suspense>}
     <AppBar position="sticky"><Toolbar sx={{gap:2,flexWrap:'wrap',py:1}}>{company?.logoUrl&&<Box component="img" src={company.logoUrl} alt="Logo công ty" sx={{width:70,height:42,objectFit:'contain',bgcolor:'#fff',borderRadius:1}}/>}<Typography sx={{flexGrow:1,fontWeight:700}}>{company?.name} · GoViet247</Typography><Typography variant="body2">{session.member?.displayName}</Typography><Button color="inherit" onClick={logout}>Đăng xuất</Button></Toolbar></AppBar>
     <Container maxWidth="xl" sx={{py:3}}><Stack spacing={3}>
       {error&&<Alert severity="error">{error}</Alert>}
       {!mustChange&&<Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">{[['/dat-xe','Đặt xe'],['/chuyen-xe','Chuyến xe'],...(canManage?[['/nhan-vien','Nhân viên']]:[]),['/cai-dat','Cài đặt']].map(([to,label])=><Button key={to} component={Link} to={to} variant="outlined">{label}</Button>)}</Stack>}
       {mustChange?<><Alert severity="info">Vui lòng đổi mật khẩu ban đầu trước khi sử dụng.</Alert><PartnerSettings token={token} passwordOnly onPasswordChanged={acceptToken}/></>:<Routes>
-        <Route path="/dat-xe" element={<><Alert severity="info">Tài xế nhắn tin và gọi điều phối viên phụ trách qua Liên hệ chuyến. Điều phối viên liên hệ khách; không cần nhập thông tin khách.</Alert><BookingCard partner={booking}/></>}/>
+        <Route path="/dat-xe" element={<><Alert severity="info">Tài xế nhắn tin và gọi điều phối viên phụ trách qua Liên hệ chuyến. Điều phối viên liên hệ khách; không cần nhập thông tin khách.</Alert><Suspense fallback={<Typography>Đang tải biểu mẫu đặt xe…</Typography>}><BookingCard partner={booking}/></Suspense></>}/>
         <Route path="/chuyen-xe" element={<TripPage token={token}/>}/><Route path="/chuyen-xe/:id" element={<TripPage token={token}/>}/>
         <Route path="/nhan-vien" element={canManage?<PartnerMembers token={token}/>:<Navigate to="/chuyen-xe" replace/>}/>
         <Route path="/cai-dat" element={<PartnerSettings token={token} canManage={canManage} onPasswordChanged={acceptToken}/>}/>

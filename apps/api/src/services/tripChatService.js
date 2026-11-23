@@ -12,7 +12,7 @@ import { S3Client, PutObjectCommand, GetObjectCommand, GetPublicAccessBlockComma
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { prisma } from '../utils/db.js';
 import { userSessions, pushSessionKey } from './userSessions.js';
-import { verifyAdminJwtToken } from '../utils/jwt.js';
+import { verifyAdminSession as verifyAdminJwtToken } from './adminSessions.js';
 import { getVerifiedRiderPhoneVariants, phoneVariants, riderTripAccessWhere } from './riderTripAccess.js';
 import { chatCanSend, isRiderChatEnded, RIDER_CHAT_ENDED_NOTICE, DRIVER_CHAT_ENDED_NOTICE } from '../shared/tripChat.js';
 import { activeDriverDevices } from './driverPushAccess.js';
@@ -33,8 +33,8 @@ export async function chatAuth(req, res, next) {
     }
     let admin;
     try {
-      admin = verifyAdminJwtToken(token);
-    } catch {}
+      admin = await verifyAdminJwtToken(token);
+    } catch (error) { if (error.status !== 401) throw error; }
     if (admin && ['ADMIN', 'STAFF'].includes(admin.role)) {
       const row = await prisma.admin_users.findUnique({
         where: {

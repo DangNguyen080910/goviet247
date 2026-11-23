@@ -332,6 +332,8 @@ model PartnerAuditLog {
 }
 
 model Trip {
+  bookingRequestKey String? @unique
+  bookingInputHash String?
   partnerCompanyId String?
   partnerCompany PartnerCompany? @relation(fields: [partnerCompanyId], references: [id], onDelete: Restrict)
   partnerCompanyName String?
@@ -691,6 +693,7 @@ model RiderAppUsage {
 }
 
 model Device {
+  adminAuthVersion String?
   id        String   @id @default(cuid())
   userId    String
   platform  String
@@ -723,6 +726,7 @@ model AdminAlertLog {
 }
 
 model admin_users {
+  authVersion Int @default(0)
   id                      Int                      @id @default(autoincrement())
   username                String                   @unique @db.VarChar(50)
   password_hash           String                   @db.VarChar(255)
@@ -1323,4 +1327,14 @@ model DriverRulesAcceptance {
   version         DriverRulesVersion @relation(fields: [versionId], references: [id], onDelete: Restrict)
   @@unique([driverProfileId, versionId])
   @@index([versionId, acceptedAt])
+}
+
+model BookingQuote {
+  tokenHash String @id
+  requestHash String
+  route Json
+  pricing Json
+  expiresAt DateTime @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  @@index([expiresAt])
 }

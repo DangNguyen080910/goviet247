@@ -1,3 +1,4 @@
+import { startBookingQuoteCleanup } from "./services/bookingQuotes.js";
 import { startCommissionInvoiceReminder } from "./services/commissionInvoiceTracking.js";
 import { sendAdminPushNotification as sendInvoiceAdminPush } from "./services/notificationService.js";
 import "dotenv/config";
@@ -6,7 +7,7 @@ import tripChatRoutes from "./routes/tripChat.js";
 import { deliverChatPush } from "./services/tripChatService.js";
 import { userSessions, pushSessionKey } from './services/userSessions.js';
 import { startQuoteHistoryCleanup } from "./services/quoteHistoryService.js";
-import { verifyAdminJwtToken } from './utils/jwt.js';
+import { verifyAdminSession as verifyAdminJwtToken } from './services/adminSessions.js';
 // Path: goviet247/apps/api/src/server.js
 import express from "express";
 import cors from "cors";
@@ -38,7 +39,10 @@ import seoPublicRoutes from "./routes/seoPublicRoutes.js";
 
 import { regionalPricingVisibility } from "./middleware/regionalPricingVisibility.js";
 
+startBookingQuoteCleanup();
 const app = express();
+const trustProxy = process.env.TRUST_PROXY;
+app.set("trust proxy", trustProxy === "false" ? false : trustProxy === "true" ? 1 : trustProxy || "loopback");
 
 // ✅ Tắt ETag để tránh 304 (admin list cần luôn fresh)
 app.set("etag", false);
@@ -172,8 +176,8 @@ io.use(async (socket, next) => {
   if (!token) return next(new Error('AUTH_REQUIRED'));
   try {
     try {
-      const admin = verifyAdminJwtToken(token);
-      if (['ADMIN', 'STAFF'].includes(admin.role)) { socket.data.admin = admin; return next(); }
+      const admin = await verifyAdminJwtToken(token);
+      if (['ADMIN', 'STAFF'].includes(admin.role)) { socket.data.admin = admin; socket.data.adminToken = token; return next(); }
     } catch { /* user token uses a different signing key */ }
     const user = await userSessions.verify(token);
     const userId = user.id || user.uid;
@@ -188,6 +192,19 @@ io.use(async (socket, next) => {
 
 // Lắng nghe kết nối Socket.IO
 io.on("connection", (socket) => {
+  if (socket.data.adminToken) {
+    let checking = false;
+    const check = setInterval(async () => {
+      if (checking) return;
+      checking = true;
+      try { await verifyAdminJwtToken(socket.data.adminToken); }
+      catch { socket.disconnect(true); }
+      finally { checking = false; }
+    }, 30000);
+    check.unref?.();
+    socket.once('disconnect', () => clearInterval(check));
+  }
+
   console.log("[Socket] Client connected:", socket.id);
 
   socket.on('registerAdmin', () => {

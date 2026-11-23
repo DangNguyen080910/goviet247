@@ -12,7 +12,7 @@ function chatModule(){return load('apps/api/src/services/tripChatService.js',{
  './chatPushTransport.js':{},'../shared/chatStoragePolicy.js':{},'../shared/tripChatVisibility.js':{},'./tripAcceptanceChat.js':{},
  './partnerRiderAccess.js':{getPartnerRiderContext:async()=>null},
  './partnerAccess.js':{},jsonwebtoken:{default:{}},'node:crypto':require('node:crypto'),
- '@aws-sdk/client-s3':{S3Client:class{}},'@aws-sdk/s3-request-presigner':{},'../utils/db.js':{prisma:{}},'./userSessions.js':{},'../utils/jwt.js':{},
+ '@aws-sdk/client-s3':{S3Client:class{}},'@aws-sdk/s3-request-presigner':{},'../utils/db.js':{prisma:{}},'./userSessions.js':{},'./adminSessions.js':{},
  './riderTripAccess.js':{getVerifiedRiderPhoneVariants:async()=>[],phoneVariants:()=>[],riderTripAccessWhere:()=>({})},
  '../shared/tripChat.js':{isRiderChatEnded:s=>['COMPLETED','CANCELLED'].includes(s),RIDER_CHAT_ENDED_NOTICE:'ended'},'./driverPushAccess.js':{}
 });}

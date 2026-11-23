@@ -1,3 +1,4 @@
+import { readTripPages } from "../../../api/src/shared/tripPages.js";
 // Path: goviet247/apps/web/src/api/trips.js
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 const CUSTOMER_TOKEN_KEY = "gv247_customer_token";
@@ -37,17 +38,11 @@ export async function createTrip(payload) {
  * Lấy lịch sử chuyến của customer đang đăng nhập
  */
 export async function getMyTrips(token) {
-  const res = await fetch(`${API_BASE}/api/trips/my`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+  return readTripPages(async cursor => {
+    const qs = new URLSearchParams({pageSize:"100",...(cursor ? {cursor} : {})});
+    const res = await fetch(`${API_BASE}/api/trips/my?${qs}`, {headers:{Authorization:`Bearer ${token}`}});
+    const data = await res.json().catch(()=>({}));
+    if (!res.ok) throw Object.assign(new Error(data.message || "Không tải được danh sách chuyến."),{status:res.status});
+    return data;
   });
-
-  const data = await res.json().catch(() => ({}));
-
-  if (!res.ok || !data?.success) {
-    throw new Error(data?.message || "Không lấy được lịch sử chuyến đi.");
-  }
-
-  return data.items || [];
 }

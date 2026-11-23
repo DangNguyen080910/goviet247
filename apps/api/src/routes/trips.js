@@ -1,3 +1,6 @@
+import { createRequestRateLimit } from "../middleware/requestRateLimit.js";
+import { bookingQuotes } from "../services/bookingQuotes.js";
+import { bookingRequestKey } from "../services/bookingIdentity.js";
 import {recordTripEvent} from "../services/tripHistory.js";
 import { assertRegionalQuote } from "../services/regionalPricing.js";
 import { riderBookingCompanies, resolveRiderCompanyBooking } from '../services/partnerRiderBooking.js';
@@ -152,6 +155,7 @@ export async function createTripHandler(req, res) {
 
     const pickupTime = parseTripTime(pickupTimeRaw);
     const returnTime = parseTripTime(returnTimeRaw);
+    if (!Number.isFinite(pickupTime?.getTime()) || pickupTime.getTime() <= Date.now()) return res.status(400).json({success:false,message:"Giờ đón khách phải sau thời điểm hiện tại."});
 
     if (!pickupTime || Number.isNaN(pickupTime.getTime())) {
       return res.status(400).json({
@@ -348,19 +352,16 @@ export async function createTripHandler(req, res) {
       estimatedDurationMinutes = driveMinutes;
     }
 
-    const pricing = await calculateTripPrice({
-      routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops,
-      destinationServiceDates: req.body.destinationServiceDates,
-      destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
-      carType,
-      direction,
-      distanceKm,
-      pickupTime,
-      returnTime: returnTimeRaw ? returnTime : undefined,
-      driveMinutes,
-      outboundDriveMinutes,
-      fuelPreference,
-    });
+    const trusted = await bookingQuotes.booking(req.body);
+    const pricing = trusted.pricing;
+    const trustedDistance = await validateTripDistance(trusted.route.distanceKm);
+    if (!trustedDistance.ok) return res.status(400).json({success:false,message:trustedDistance.message});
+    distanceKm = trusted.route.distanceKm;
+    driveMinutes = trusted.route.driveMinutes;
+    outboundDriveMinutes = trusted.route.outboundDriveMinutes;
+    returnDriveMinutes = trusted.route.returnDriveMinutes;
+    totalDriveMinutes = trusted.route.driveMinutes;
+    estimatedDurationMinutes = trusted.route.estimatedDurationMinutes;
 
     assertDestinationQuote(req.body, pricing.destinationService);
     assertRegionalQuote(req.body, pricing.regionalSurcharge);
@@ -371,15 +372,16 @@ export async function createTripHandler(req, res) {
     const directionFactor = Number(pricing.directionFactor || 1);
 
     const trip = await createBookableTrip(prisma, {
+      bookingRequestKey: bookingRequestKey(req),
       bookingStops: req.partnerTripData ? undefined : stops,
       riderId,
       ...(req.partnerTripData || {}),
       pickupAddress,
-      pickupLat: pickupLat != null ? Number(pickupLat) : null,
-      pickupLng: pickupLng != null ? Number(pickupLng) : null,
+      pickupLat: trusted.route.pickupLat ?? null,
+      pickupLng: trusted.route.pickupLng ?? null,
       dropoffAddress,
-      dropoffLat: dropoffLat != null ? Number(dropoffLat) : null,
-      dropoffLng: dropoffLng != null ? Number(dropoffLng) : null,
+      dropoffLat: trusted.route.dropoffLat ?? null,
+      dropoffLng: trusted.route.dropoffLng ?? null,
       distanceKm,
       totalDriveMinutes,
       outboundDriveMinutes,
@@ -407,6 +409,7 @@ export async function createTripHandler(req, res) {
       isVerified: false,
     });
 
+    if (trip.__bookingReplay) return res.status(200).json({success:true,trip,replayed:true});
     await linkQuoteToTrip(req.body?.quoteHistoryToken, trip);
     try {
       const io = req.app?.get?.("io");
@@ -459,7 +462,7 @@ export async function createTripHandler(req, res) {
         "Đã ghi nhận chuyến. Vui lòng bật thông báo và mở mục Liên hệ chuyến trên GoViet247 để tài xế liên hệ sau khi nhận chuyến.",
     });
   } catch (err) {
-    if ([400, 409, 503].includes(err.status)) return res.status(err.status).json({ success: false, message: err.message });
+    if ([400, 401, 403, 409, 503].includes(err.status)) return res.status(err.status).json({ success: false, message: err.message });
     console.error("[Trip] create error:", err);
 
     return res.status(500).json({
@@ -472,7 +475,7 @@ export async function createTripHandler(req, res) {
 router.get('/booking-companies',verifyToken,async(req,res,next)=>{
   try {res.json({success:true,companies:await riderBookingCompanies(prisma,req.user?.uid || req.user?.id)});} catch(error){next(error);}
 });
-router.post("/", optionalVerifyToken, createTripHandler);
+router.post("/", verifyToken, createRequestRateLimit({max:60,windowMs:60000,key:req=>req.user.uid || req.user.id}), createTripHandler);
 
 // Lịch sử chuyến của customer đang đăng nhập
 router.get("/my", verifyToken, listMyCustomerTrips);

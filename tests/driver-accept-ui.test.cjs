@@ -29,9 +29,9 @@ function acceptHandler(error) {
   const handler = vm.runInNewContext(js + '\nhandler;', context);
   return { handler, calls };
 }
-test('blocked acceptance silently clears loading and keeps available trips/tab', async () => {
+test('blocked acceptance explains the Support action and clears loading', async () => {
   const { handler, calls } = acceptHandler(Object.assign(new Error('unavailable'), { code: 'TRIP_ACCEPT_UNAVAILABLE' }));
-  await handler('trip'); assert.deepEqual(calls, [['loading','trip'], ['loading',null]]);
+  await handler('trip'); assert.deepEqual(calls, [['loading','trip'], ['error'], ['available'], ['mine'], ['loading',null]]);
 });
 test('ordinary acceptance errors remain visible', async () => {
   const { handler, calls } = acceptHandler(new Error('insufficient wallet'));

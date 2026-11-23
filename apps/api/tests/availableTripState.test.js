@@ -1,3 +1,4 @@
+import ts from "typescript";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -108,7 +109,7 @@ function acceptanceFixture(accept) {
   let cards = [trip];
   let calls = 0;
   const state = new AvailableTripState();
-  const handler = new Function('deps', `const {useCallback, availableTrips, availableTripStateRef, acceptingTripRef, getAcceptLockRemainingSeconds, setAcceptingTripId, acceptDriverTrip, setAvailableTrips, loadAvailableTrips, loadMyTrips, setActiveTab, showSuccess, confirmsTripUnavailable, tripAcceptFeedback, showTripAcceptError} = deps; ${acceptHandlerSource}; return handleAcceptTrip;`)({
+  const handler = new Function('deps', `const {useCallback, availableTrips, availableTripStateRef, acceptingTripRef, getAcceptLockRemainingSeconds, setAcceptingTripId, acceptDriverTrip, setAvailableTrips, loadAvailableTrips, loadMyTrips, setActiveTab, showSuccess, confirmsTripUnavailable, tripAcceptFeedback, showTripAcceptError} = deps; ${ts.transpileModule(acceptHandlerSource,{compilerOptions:{target:ts.ScriptTarget.ES2020}}).outputText}; return handleAcceptTrip;`)({
     useCallback: fn => fn, availableTrips: cards, availableTripStateRef: { current: state }, acceptingTripRef: { current: null },
     getAcceptLockRemainingSeconds: () => 0, setAcceptingTripId: () => {},
     acceptDriverTrip: async () => { ++calls; return accept(); },

@@ -4,7 +4,7 @@ import { verifyToken } from "../middleware/authMiddleware.js";
 import { Router } from "express";
 import pkg from "@prisma/client";
 import { userSessions, pushSessionKey } from "../services/userSessions.js";
-import { verifyAdminJwtToken } from "../utils/jwt.js";
+import { verifyAdminSession as verifyAdminJwtToken } from '../services/adminSessions.js';
 
 const { PrismaClient } = pkg;
 
@@ -41,7 +41,7 @@ async function resolveDeviceOwner(req) {
   } catch (error) { if (error.status !== 401) throw error; }
 
   try {
-    const payload = verifyAdminJwtToken(token);
+    const payload = await verifyAdminJwtToken(token);
     const adminId = payload?.id;
 
     if (!adminId || !["ADMIN", "STAFF"].includes(payload?.role)) {
@@ -50,6 +50,7 @@ async function resolveDeviceOwner(req) {
 
     return {
       ownerId: `admin-${adminId}`,
+      adminAuthVersion: payload.av,
       roleFallback: String(payload.role || "ADMIN").toLowerCase(),
       displayName: payload?.username || "Admin",
     };
@@ -74,7 +75,9 @@ router.post("/rider-app", verifyToken, async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const owner = await resolveDeviceOwner(req);
-    const { platform, pushToken, role } = req.body;
+    const { platform, pushToken } = req.body || {};
+    const requestedRole = String(req.body?.role || "").toUpperCase();
+    let role;
 
     if (!owner?.ownerId) {
       return res.status(401).json({
@@ -84,7 +87,7 @@ router.post("/", async (req, res) => {
       });
     }
 
-    if (!platform || !pushToken || !role) {
+    if (!platform || !pushToken || !requestedRole) {
       return res.status(400).json({
         success: false,
         error: "VALIDATION_ERROR",
@@ -92,6 +95,13 @@ router.post("/", async (req, res) => {
       });
     }
 
+    if (!owner.claims) {
+      if (!["ADMIN","STAFF"].includes(requestedRole)) return res.status(403).json({success:false,message:"Vai trò thiết bị không hợp lệ."});
+      role = owner.roleFallback;
+    } else {
+      if (!["RIDER","DRIVER"].includes(requestedRole) || (owner.claims.appRole && owner.claims.appRole !== requestedRole)) return res.status(403).json({success:false,message:"Vai trò thiết bị không hợp lệ."});
+      role = requestedRole.toLowerCase();
+    }
     if (String(role).toUpperCase() === "DRIVER") {
       if (!owner.claims || (owner.claims.appRole && owner.claims.appRole !== "DRIVER")) return res.status(403).json({ success: false, message: "Tài khoản không thuộc ứng dụng tài xế." });
       const user = await prisma.user.findUnique({ where: { id: owner.ownerId }, include: { roles: true } });
@@ -113,6 +123,7 @@ router.post("/", async (req, res) => {
         userId: owner.ownerId,
         platform,
         role,
+        adminAuthVersion: owner.adminAuthVersion || null,
         pushSessionId: owner.pushSessionId || null,
         pushExpiresAt: owner.pushExpiresAt || null,
         updatedAt: new Date(),
@@ -122,6 +133,7 @@ router.post("/", async (req, res) => {
         platform,
         pushToken,
         role,
+        adminAuthVersion: owner.adminAuthVersion || null,
         pushSessionId: owner.pushSessionId || null,
         pushExpiresAt: owner.pushExpiresAt || null,
       },

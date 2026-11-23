@@ -1,8 +1,11 @@
+import { readTripPages } from "../../api/src/shared/tripPages.js";
 // Path: goviet247/apps/rider-mobile/services/tripApi.ts
 import { API_BASE_URL } from "../constants/api";
 import { getRiderToken } from "./storage";
 
 type CreateTripPayload = {
+  bookingRequestId?: string;
+  quoteToken?: string;
   bookingCompanyId?: string;
   pickupAddress: string;
   dropoffAddress: string;
@@ -131,32 +134,16 @@ type ListMyTripsResponse = {
   message?: string;
 };
 
-export async function getMyTrips() {
+export async function getMyTrips(): Promise<RiderTripItem[]> {
   const token = await getRiderToken();
-
-  if (!token) {
-    throw new Error("Bạn cần đăng nhập để xem hoạt động.");
-  }
-
-  const res = await fetch(`${API_BASE_URL}/api/trips/my`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
+  if (!token) throw new Error("Bạn cần đăng nhập để xem hoạt động.");
+  return readTripPages(async (cursor: string | null) => {
+    const qs = new URLSearchParams({pageSize:"100",...(cursor ? {cursor} : {})});
+    const res = await fetch(`${API_BASE_URL}/api/trips/my?${qs}`, {headers:{Authorization:`Bearer ${token}`}});
+    const data = await res.json().catch(()=>({}));
+    if (!res.ok) throw Object.assign(new Error(data.message || "Không tải được danh sách chuyến."),{status:res.status});
+    return data;
   });
-
-  const data = (await res.json().catch(() => ({}))) as
-    | ListMyTripsResponse
-    | ErrorResponse;
-
-  if (!res.ok || !(data as ListMyTripsResponse)?.success) {
-    throw new Error(
-      (data as ErrorResponse)?.message || "Không tải được danh sách chuyến."
-    );
-  }
-
-  return (data as ListMyTripsResponse)?.items || [];
 }
 
 export async function cancelTripByRider(

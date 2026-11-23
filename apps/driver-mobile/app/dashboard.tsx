@@ -1434,7 +1434,7 @@ export default function DashboardScreen() {
       return (
         <View style={[styles.noticeBox, styles.noticeWarningBox]}>
           <Text style={[styles.noticeText, styles.noticeWarningText]}>
-            ⚠️ Vui lòng liên hệ khách trong 5 phút để xác nhận chuyến.
+            ⚠️ Liên hệ khách ngay sau khi nhận chuyến, chậm nhất trong 15 phút để xác nhận chuyến.
           </Text>
         </View>
       );

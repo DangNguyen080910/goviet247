@@ -1,3 +1,4 @@
+import { adminTokenVersion } from "./adminSessions.js";
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { activeDriverDevices } from "./driverPushAccess.js";
 // Path: goviet247/apps/api/src/services/notificationService.js
@@ -592,6 +593,7 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
         platform: true,
         pushToken: true,
         role: true,
+        adminAuthVersion: true,
       },
     });
 
@@ -600,9 +602,12 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
       return;
     }
 
-    const validDevices = devices.filter((device) =>
-      isExpoPushToken(device.pushToken),
-    );
+    const adminIds = devices.map(d => /^admin-(\d+)$/.exec(d.userId)?.[1]).filter(Boolean).map(Number);
+    const admins = adminIds.length ? await prisma.admin_users.findMany({where:{id:{in:adminIds},is_active:true}}) : [];
+    const validDevices = devices.filter(device => {
+      const id = Number(/^admin-(\d+)$/.exec(device.userId)?.[1]);
+      return isExpoPushToken(device.pushToken) && admins.some(a => a.id === id && a.role.toLowerCase() === device.role.toLowerCase() && device.adminAuthVersion === adminTokenVersion(a));
+    });
 
     if (!validDevices.length) {
       console.log("📲 [AdminPush] Không có Expo push token admin hợp lệ.");

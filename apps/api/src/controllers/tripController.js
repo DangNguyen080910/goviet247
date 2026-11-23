@@ -1,3 +1,4 @@
+import { tripPagination, tripPage } from "../services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../services/tripHistory.js";
 import { parseAudienceRegions, matchesAudienceFilters } from '../shared/audienceFilters.js';
 import { audienceRegionsForApproval, tripAudienceLabel } from '../shared/tripAudienceLabel.js';
@@ -708,13 +709,14 @@ export async function listMyCustomerTrips(req, res) {
     }
 
     const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, riderId);
-    const trips = await prisma.trip.findMany({
+    const pagination = tripPagination(req.query);
+    const rows = await prisma.trip.findMany({
       where: riderTripAccessWhere(riderId, phoneNumbers),
-      orderBy: { createdAt: "desc" },
+      orderBy: [{ createdAt: "desc" }, {id:"desc"}],
       include: {
         driver: {
           select: {
-            phones: { where: { isVerified: true }, orderBy: { createdAt: "asc" }, take: 1, select: { e164: true } },
+            phones: { where: { isVerified: true }, orderBy: { createdAt: "desc" }, take: 1, select: { e164: true } },
             driverProfile: {
               select: {
                 vehicleBrand: true,
@@ -735,11 +737,14 @@ export async function listMyCustomerTrips(req, res) {
           },
         },
       },
-      take: 100,
+      ...(pagination?.args || {}),
     });
+    const page = tripPage(rows, pagination);
+    const trips = page.items;
 
     return res.json({
       success: true,
+      nextCursor:page.nextCursor, hasMore:page.hasMore,
     items: trips.map(({ driver, dispatcherNote, verifiedNote, ...trip }) => ({
         ...trip,
         canManage: Boolean(trip.partnerCompanyId) || trip.riderId === riderId,
@@ -760,6 +765,7 @@ export async function listMyCustomerTrips(req, res) {
       })),
     });
   } catch (e) {
+    if (e.status === 400) return res.status(400).json({success:false,message:e.message});
     console.error("[Trip] listMyCustomerTrips error:", e);
     return res.status(500).json({
       success: false,
@@ -777,7 +783,7 @@ export async function getTripById(req, res) {
     const { id } = req.params;
     const trip = await prisma.trip.findUnique({
       where: { id },
-      include: { partnerAssignedTo: { select: { displayName: true, phone: true, isActive: true, companyId: true } } },
+      include: { stops: { orderBy: { seq: "asc" } }, partnerAssignedTo: { select: { displayName: true, phone: true, isActive: true, companyId: true } } },
     });
     const userId = req.user?.id || req.user?.uid;
     const phoneNumbers = await getVerifiedRiderPhoneVariants(prisma, userId);
@@ -810,7 +816,8 @@ export async function listAvailableTrips(req, res) {
     const config = await getDriverConfigSnapshot();
     const now = new Date();
 
-    const trips = await prisma.trip.findMany({
+    const pagination = tripPagination(req.query);
+    const rows = await prisma.trip.findMany({
       where: {
         status: "PENDING",
         isVerified: true,
@@ -819,8 +826,8 @@ export async function listAvailableTrips(req, res) {
         driverId: null,
         cancelledAt: null,
       },
-      orderBy: { verifiedAt: "desc" },
-      take: 50,
+      orderBy: [{ verifiedAt: "desc" }, {id:"desc"}],
+      ...(pagination?.args || {}),
       include: {
         stops: {
           orderBy: { seq: "asc" },
@@ -832,6 +839,8 @@ export async function listAvailableTrips(req, res) {
         },
       },
     });
+    const page = tripPage(rows, pagination);
+    const trips = page.items;
 
     const data = trips.map((t) => {
       const openAt = t.driverAcceptOpenAt
@@ -894,9 +903,11 @@ export async function listAvailableTrips(req, res) {
 
     return res.json({
       success: true,
+      nextCursor:page.nextCursor, hasMore:page.hasMore,
       items: data,
     });
   } catch (err) {
+    if (err.status === 400) return res.status(400).json({success:false,message:err.message});
     console.error("listAvailableTrips error:", err);
     return res.status(500).json({
       success: false,
@@ -1677,10 +1688,11 @@ export async function listMyTrips(req, res) {
           : { in: historyStatuses };
     }
 
-    const trips = await prisma.trip.findMany({
+    const pagination = tripPagination(req.query);
+    const rows = await prisma.trip.findMany({
       where,
-      orderBy: { updatedAt: "desc" },
-      take: 100,
+      orderBy: [{ updatedAt: "desc" }, {id:"desc"}],
+      ...(pagination?.args || {}),
       include: {
         partnerAssignedTo: { select: { displayName: true, phone: true, isActive: true, companyId: true } },
         stops: {
@@ -1696,7 +1708,8 @@ export async function listMyTrips(req, res) {
             id: true,
             displayName: true,
             phones: {
-              orderBy: { createdAt: "asc" },
+              where: { isVerified: true },
+              orderBy: { createdAt: "desc" },
               take: 1,
               select: {
                 e164: true,
@@ -1712,6 +1725,8 @@ export async function listMyTrips(req, res) {
         },
       },
     });
+    const page = tripPage(rows, pagination);
+    const trips = page.items;
 
     const items = trips.map((trip) =>
       serializeDriverTrip(trip, scope, {
@@ -1725,8 +1740,9 @@ export async function listMyTrips(req, res) {
       }),
     );
 
-    return res.json({ success: true, items });
+    return res.json({ success: true, items, nextCursor:page.nextCursor, hasMore:page.hasMore });
   } catch (e) {
+    if (e.status === 400) return res.status(400).json({success:false,message:e.message});
     console.error("[Trip] listMyTrips error:", e);
     return res.status(500).json({ message: "Failed to list my trips" });
   }

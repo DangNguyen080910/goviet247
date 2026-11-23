@@ -1,3 +1,4 @@
+import { bookingRequestKey } from "../src/services/bookingIdentity.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -35,12 +36,14 @@ function fixture() {
     if (!result.ok) throw Object.assign(new Error(result.message), { status: result.status });
     return { ...result.data, totalPrice: result.data.finalPrice, basePricePerKm: result.data.pricePerKm };
   };
-  const deps = { prisma: {}, calculateTripPrice, parseTripTime, validateTripDistance: async () => ({ ok: true }), getEffectiveTripConfig: async () => ({ maxStops: 10 }),
+  const routeOf = input => ({distanceKm:input.distanceKm,driveMinutes:input.driveMinutes,outboundDriveMinutes:input.driveMinutes,returnDriveMinutes:0,estimatedDurationMinutes:input.driveMinutes});
+  const bookingQuotes = {verifiedRoute:async input=>routeOf(input),issue:async()=>({}),booking:async input=>({pricing:await calculateTripPrice(input),route:routeOf(input)})};
+  const deps = { bookingQuotes,bookingRequestKey,prisma: {}, calculateTripPrice, parseTripTime, validateTripDistance: async () => ({ ok: true }), getEffectiveTripConfig: async () => ({ maxStops: 10 }),
     assertRegionalQuote, assertDestinationQuote, createBookableTrip: async (_, data) => { writes.push(data); return { id: 'booked', ...data }; },
     linkQuoteToTrip: async () => {}, sendAdminPushNotification: async () => {}, console: quiet };
   const create = handler('routes/trips.js', 'createTripHandler', deps);
   const quote = handler('controllers/pricingController.js', 'quote', {
-    validateTripDistance: deps.validateTripDistance, quotePrice: input => quotePrice(input, db), recordQuoteHistory: async () => null, console: quiet,
+    bookingQuotes,prisma:db,validateTripDistance: deps.validateTripDistance, quotePrice: input => quotePrice(input, db), recordQuoteHistory: async () => null, console: quiet,
   });
   return { create, quote, calculateTripPrice, writes, setConfig(value) { settings = value; } };
 }
@@ -86,6 +89,7 @@ test('public OTP draft keeps the regional quote snapshot through confirmation', 
     assertPickupTimeNotInPast: handler('controllers/tripPublicController.js', 'assertPickupTimeNotInPast', {}),
     respondToOtpLock: () => false, getOtpProviderUnavailablePayload: () => ({}) };
   const requestOtp = handler('controllers/tripPublicController.js', 'requestTripOtp', { ...common, calculateTripPrice: f.calculateTripPrice,
+    bookingQuotes:{verifiedRoute:async input=>({distanceKm:input.distanceKm,driveMinutes:input.driveMinutes})},
     requestTripOtpService: async (_, payload) => { draft = payload; return { sessionId: 'otp', resendAfter: 60 }; } });
   const requested = response();
   await requestOtp({ body: { ...body, regionalPricingSignature: q.regionalPricingSignature, destinationServiceSignature: q.destinationServiceSignature } }, requested);

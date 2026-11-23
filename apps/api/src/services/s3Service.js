@@ -1,4 +1,5 @@
 // Path: goviet247/apps/api/src/services/s3Service.js
+import { randomUUID } from "node:crypto";
 import {
   S3Client,
   PutObjectCommand,
@@ -45,7 +46,7 @@ export async function uploadToS3({ file, folder = "public" }) {
   const bucket = process.env.AWS_S3_BUCKET;
   const timestamp = Date.now();
   const safeName = sanitizeFileName(file.originalname);
-  const key = `${folder}/${timestamp}-${safeName}`;
+  const key = `${folder}/${timestamp}-${randomUUID()}-${safeName}`;
 
   const command = new PutObjectCommand({
     Bucket: bucket,
@@ -79,4 +80,15 @@ export async function getSignedViewUrl(key, expiresIn = 300) {
   });
 
   return getSignedUrl(s3, command, { expiresIn });
+}
+// New document submissions must point to the authenticated driver's own namespace.
+export function driverDocumentKey(value, userId) {
+  const key = extractS3KeyFromUrlOrKey(value);
+  if (!key || !userId || !key.startsWith(`driver-documents/${userId}/`) || key.split('/').some(p=>p==='..'||p==='.'||!p)) return null;
+  if (/^https?:/i.test(String(value))) {
+    const url = new URL(value);
+    const bucket = process.env.AWS_S3_BUCKET;
+    if (!bucket || ![`${bucket}.s3.amazonaws.com`,`${bucket}.s3.${process.env.AWS_REGION}.amazonaws.com`].includes(url.hostname)) return null;
+  }
+  return key;
 }

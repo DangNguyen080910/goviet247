@@ -1,3 +1,4 @@
+import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
 import {getPartnerRiderContext} from '../src/services/partnerRiderAccess.js';
@@ -12,7 +13,7 @@ import * as riderAccess from '../src/services/riderTripAccess.js';
 function load(path, names, deps) {
  deps={...audienceLabel,...deps};
  if(deps.prisma){deps.prisma.$transaction ||= fn=>fn(deps.prisma);deps.prisma.adminTripActionLog ||= {create:async({data})=>data};}
- deps={recordTripEvent,makeTripEvent,...deps};
+ deps={tripPagination,tripPage,recordTripEvent,makeTripEvent,...deps};
  const source = readFileSync(new URL(path, import.meta.url), 'utf8').replace(/^import[\s\S]*?;\n/gm, '').replace(/export /g, '').replace('const { PrismaClient } = pkg;', '').replace('const prisma = new PrismaClient();', '');
  return new Function(...Object.keys(deps), `${source}; return {${names}};`)(...Object.values(deps));
 }
@@ -85,7 +86,7 @@ test('socket rooms derive from verified token, never payload IDs or admin claims
    io, pushSessionKey, {verify:async token=>{if(token!=='driver-token')throw Error('bad');return {id:'a'};}},
    token=>{if(token!=='admin-token')throw Error('bad');return {role:'ADMIN'};},
    {driverProfile:{findUnique:async()=>({userId:'a',status:'VERIFIED'})}},new Map(),new Map(),{log(){}});
- const make=token=>({id:'socket', data:{},handshake:{auth:{token},headers:{}},joined:[],handlers:{},join(room){this.joined.push(room);},on(event,fn){this.handlers[event]=fn;}});
+ const make=token=>({id:'socket', data:{},handshake:{auth:{token},headers:{}},joined:[],handlers:{},once(){},disconnect(){},join(room){this.joined.push(room);},on(event,fn){this.handlers[event]=fn;}});
  const missing=make(''); let error;await authenticate(missing,e=>{error=e;});assert.equal(error.message,'AUTH_REQUIRED');
  const driver=make('driver-token');await authenticate(driver,e=>{assert.equal(e,undefined);});connect(driver);
  driver.handlers.registerDriver({userId:'b'});driver.handlers.registerAdmin({role:'ADMIN'});driver.handlers.registerRider({userId:'victim'});

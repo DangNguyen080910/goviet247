@@ -1,3 +1,4 @@
+import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import {makeTripEvent,recordTripEvent} from "../src/services/tripHistory.js";
 import {activeDriverDevices} from "../src/services/driverPushAccess.js";
 import {tripNotificationContent} from '../src/shared/tripNotificationContent.js';
@@ -13,7 +14,7 @@ const quiet = { log() {}, error() {}, warn() {} };
 const noop = async () => {};
 function load(relative, supplied, result) {
   if(supplied.prisma){supplied.prisma.$transaction ||= fn=>fn(supplied.prisma);supplied.prisma.adminTripActionLog ||= {create:async({data})=>data};}
-  supplied={recordTripEvent,makeTripEvent,...supplied};
+  supplied={tripPagination,tripPage,recordTripEvent,makeTripEvent,...supplied};
   const source = readFileSync(new URL(`../src/${relative}`, import.meta.url), 'utf8');
   const imports = {};
   for (const match of source.matchAll(/^import\s+([\s\S]*?)\s+from\s+['"][^'"]+['"];?\n/gm)) {

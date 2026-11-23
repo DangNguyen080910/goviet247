@@ -24,9 +24,9 @@ export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}
         ? `${formatVietnamDate(date)}: ${snapshot.charterName} · ${destinationSessionText(session)}`
         : `${formatVietnamDate(date)}: ${snapshot.standardName}${dayInfo ? dayInfo.standardStart ? " · " + vnTime(dayInfo.standardStart) + "–" + vnTime(dayInfo.standardEnd) : " · Không còn khung hỗ trợ đi ăn tại điểm đến" : ""}`);
     }
-    // destinationSummary puts the standard heading, description and hours after the anchor.
+    // destinationSummary puts the standard heading, description and hours after the title.
     // Hide that block only when every itinerary date has a booked charter session.
-    if (!snapshot.days && schedule.length > 0 && standardDays === 0) result.splice(2, 3);
+    if (!snapshot.days && schedule.length > 0 && standardDays === 0) result.splice(1, 3);
     result.splice(1, 0, `Lịch phục vụ: ${schedule.length} ngày · ${sessions.size} ngày Bao xe`, ...schedule);
   }
   if (display && Number.isFinite(display.total) && display.total > 0) {

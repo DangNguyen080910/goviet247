@@ -1,3 +1,4 @@
+import { readTripPages } from "../../api/src/shared/tripPages.js";
 // Path: goviet247/apps/driver-mobile/services/tripApi.ts
 import { API_BASE_URL } from "../constants/api";
 import { getDriverToken } from "./storage";
@@ -197,35 +198,16 @@ function getErrorMessage(payload: ApiError | null, fallback: string) {
 export async function getAvailableTrips(): Promise<AvailableTripItem[]> {
   const headers = await buildAuthHeaders();
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
+  const timeout = setTimeout(()=>controller.abort(),10000);
   try {
-    const response = await fetch(`${API_BASE_URL}/api/trips/driver/available`, {
-      method: "GET",
-      headers,
-      cache: "no-store",
-      signal: controller.signal,
+    return await readTripPages(async (cursor: string | null) => {
+      const qs = new URLSearchParams({pageSize:"100",...(cursor ? {cursor} : {})});
+      const response = await fetch(`${API_BASE_URL}/api/trips/driver/available?${qs}`,{headers,cache:"no-store",signal:controller.signal});
+      const payload = await parseJsonSafe(response);
+      if (!response.ok) throw new Error(getErrorMessage(payload as ApiError,"Không thể tải danh sách chuyến."));
+      return payload;
     });
-
-    const payload = (await parseJsonSafe(response)) as
-      | ApiListSuccess<AvailableTripItem>
-      | ApiError
-      | null;
-
-    if (!response.ok) {
-      throw new Error(
-        getErrorMessage(payload as ApiError, "Không thể tải danh sách chuyến.")
-      );
-    }
-
-    const successPayload = payload as ApiListSuccess<AvailableTripItem> | null;
-    if (successPayload?.success !== true || !Array.isArray(successPayload.items)) {
-      throw new Error("Chưa thể tải danh sách chuyến. Vui lòng thử lại.");
-    }
-    return successPayload.items;
-  } finally {
-    // A stalled fetch/body must not hold the foreground reconciliation loop forever.
-    clearTimeout(timeout);
-  }
+  } finally { clearTimeout(timeout); }
 }
 
 export async function acceptDriverTrip(tripId: string) {
@@ -281,27 +263,15 @@ export async function getMyTrips(options?: {
     params.set("status", options.status);
   }
 
-  const query = params.toString();
-  const url = `${API_BASE_URL}/api/trips/driver/my${query ? `?${query}` : ""}`;
-
-  const response = await fetch(url, {
-    method: "GET",
-    headers,
+  return readTripPages(async (cursor: string | null) => {
+    const qs = new URLSearchParams(params);
+    qs.set("pageSize","100");
+    if (cursor) qs.set("cursor",cursor);
+    const response = await fetch(`${API_BASE_URL}/api/trips/driver/my?${qs}`,{headers});
+    const payload = await parseJsonSafe(response);
+    if (!response.ok) throw new Error(getErrorMessage(payload as ApiError,"Không thể tải đơn của tôi."));
+    return payload;
   });
-
-  const payload = (await parseJsonSafe(response)) as
-    | ApiListSuccess<MyTripItem>
-    | ApiError
-    | null;
-
-  if (!response.ok) {
-    throw new Error(
-      getErrorMessage(payload as ApiError, "Không thể tải đơn của tôi.")
-    );
-  }
-
-  const successPayload = payload as ApiListSuccess<MyTripItem> | null;
-  return Array.isArray(successPayload?.items) ? successPayload.items : [];
 }
 
 export async function getDriverTripHistory(
