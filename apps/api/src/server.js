@@ -1,7 +1,7 @@
+import "dotenv/config";
 import { startBookingQuoteCleanup } from "./services/bookingQuotes.js";
 import { startCommissionInvoiceReminder } from "./services/commissionInvoiceTracking.js";
 import { sendAdminPushNotification as sendInvoiceAdminPush } from "./services/notificationService.js";
-import "dotenv/config";
 import tripCallRoutes, {sweepTripCalls,deliverTripCallInvites} from './routes/tripCalls.js';
 import tripChatRoutes from "./routes/tripChat.js";
 import { deliverChatPush } from "./services/tripChatService.js";
