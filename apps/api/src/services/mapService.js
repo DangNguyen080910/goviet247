@@ -254,7 +254,7 @@ async function getRouteGoong(points) {
   return result;
 }
 
-export async function autocomplete(input, options = {}) {
+async function autocompleteUncached(input, options = {}) {
   if (MAP_PROVIDER === "goong") return autocompleteGoong(input, options);
   try {
     const items = await autocompleteVietmap(input, options);
@@ -269,11 +269,41 @@ export async function autocomplete(input, options = {}) {
   }
 }
 
+// Only provider responses populate this index; client coordinates never enter it.
+const selectedPlaces = new Map(), suggestionAliases = new Map();
+const addressKey = value => String(value || '').normalize('NFC').trim().toLocaleLowerCase('vi-VN')
+  .replace(/\s+/g,' ').replace(/,?\s*(việt nam|viet nam|vietnam)$/u,'').replace(/\s*,\s*/g,',');
+const idKey = value => { const id=String(value || ''); return /^(goong|vietmap)\|/.test(id) ? id : /^(auto|geocode|vm):/i.test(id) ? 'vietmap|'+id : 'goong|'+id; };
+const validCoords = place => place?.lat != null && place?.lng != null && Number.isFinite(Number(place.lat)) && Number.isFinite(Number(place.lng)) && Math.abs(Number(place.lat))<=90 && Math.abs(Number(place.lng))<=180;
+export function getKnownMapPlace(address, placeId) {
+  const entry=selectedPlaces.get(addressKey(address));
+  if(!entry)return null;
+  if(entry.until<=Date.now()){selectedPlaces.delete(addressKey(address));return null;}
+  if(placeId && idKey(placeId)!==idKey(entry.value.placeId))return null;
+  return {...entry.value};
+}
+export async function autocomplete(input, options = {}) {
+  const items=await autocompleteUncached(input,options);
+  for(const item of items || [])if(item?.placeId){
+    if(suggestionAliases.size>=1000)suggestionAliases.delete(suggestionAliases.keys().next().value);
+    suggestionAliases.set(idKey(item.placeId),{until:Date.now()+30*60000,addresses:[item.fullAddress,item.oldAddress,item.newAddress].filter(Boolean)});
+  }
+  return items;
+}
 export async function getPlaceDetail(placeId, options = {}) {
   const parsed = parsePlaceId(placeId);
-  return parsed.provider === "vietmap"
+  const result = await (parsed.provider === "vietmap"
     ? getPlaceDetailVietmap(parsed.id, options)
-    : getPlaceDetailGoong(parsed.id, options);
+    : getPlaceDetailGoong(parsed.id, options));
+  if(result?.fullAddress && validCoords(result)){
+    const aliases=suggestionAliases.get(idKey(placeId));
+    const addresses=[result.fullAddress,...(aliases?.until>Date.now()?aliases.addresses:[])];
+    for(const address of addresses){
+      if(selectedPlaces.size>=4000)selectedPlaces.delete(selectedPlaces.keys().next().value);
+      selectedPlaces.set(addressKey(address),{until:Date.now()+30*60000,value:{...result}});
+    }
+  }
+  return result;
 }
 
 async function getRouteUncached(points = []) {

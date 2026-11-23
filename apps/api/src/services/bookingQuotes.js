@@ -1,12 +1,12 @@
 import { readFileSync } from "node:fs";
 import { parseTripTime } from "../utils/tripTime.js";
 import { createHash, randomBytes } from 'node:crypto';
-import { autocomplete, getPlaceDetail, getRoute } from './mapService.js';
+import { autocomplete, getPlaceDetail, getRoute, getKnownMapPlace } from './mapService.js';
 import { quotePrice } from './pricingService.js';
 import { prisma } from '../utils/db.js';
 const hash = value => createHash('sha256').update(value).digest('hex');
 const clean = value => String(value || '').normalize('NFC').trim().replace(/\s+/g,' ');
-const comparable = value => clean(value).toLocaleLowerCase('vi-VN').replace(/,?\s*(việt nam|vietnam)$/u,'').replace(/\s*,\s*/g,',');
+const comparable = value => clean(value).toLocaleLowerCase('vi-VN').replace(/,?\s*(việt nam|viet nam|vietnam)$/u,'').replace(/\s*,\s*/g,',');
 const localPlaces = JSON.parse(readFileSync(new URL('../data/booking-trusted-places.json',import.meta.url),'utf8'));
 const normalizeInput = (input = {}) => ({...input,direction:input.direction || 'ONE_WAY',carType:input.carType || 'CAR_5'});
 const fail = message => Object.assign(new Error(message),{status:409,code:'QUOTE_CHANGED'});
@@ -33,7 +33,7 @@ export function quoteRequestHash(input) {
     iso(input.pickupTime),iso(input.returnTime),input.fuelPreference || 'ANY',
     [...(input.destinationServiceDates || [])].sort(),comparable(input.destinationAnchorAddress || input.dropoffAddress || stops.at(-1))]));
 }
-export function createBookingQuoteService({db = prisma, search = autocomplete, detail = getPlaceDetail, route = getRoute, price = quotePrice} = {}) {
+export function createBookingQuoteService({db = prisma, search = autocomplete, detail = getPlaceDetail, route = getRoute, price = quotePrice, knownPlace = getKnownMapPlace} = {}) {
   const placeCache = new Map();
   async function place(point, address) {
     if (address.length > 2000 || (point?.placeId != null && (typeof point.placeId !== 'string' || point.placeId.length > 1000))) throw fail('Địa chỉ không hợp lệ. Vui lòng chọn lại từ danh sách gợi ý.');
@@ -41,13 +41,29 @@ export function createBookingQuoteService({db = prisma, search = autocomplete, d
     const cached = placeCache.get(key);
     if (cached && cached.until > Date.now()) return cached.value;
     let result;
-    const local = point?.placeId ? localPlaces[point.placeId] : Object.values(localPlaces).find(p=>comparable(p.fullAddress)===comparable(address));
-    if (local && comparable(local.fullAddress) === comparable(address)) result = local;
-    else if (point?.placeId && !point.placeId.startsWith('goviet247:')) result = await detail(point.placeId);
-    if (!result || comparable(result.fullAddress) !== comparable(address)) {
+    const canonicalId = value => { const id=String(value || ''); return /^(goong|vietmap)\|/.test(id) ? id : /^(auto|geocode|vm):/i.test(id) ? 'vietmap|'+id : 'goong|'+id; };
+    const sameId = (a,b) => canonicalId(a)===canonicalId(b);
+    const matchesAddress = place => [place?.fullAddress,place?.oldAddress,place?.newAddress].some(value=>value && comparable(value)===comparable(address));
+    const local = point?.placeId ? localPlaces[point.placeId] : Object.values(localPlaces).find(matchesAddress);
+    if (local && matchesAddress(local)) result = local;
+    if (!result) result = knownPlace(address,point?.placeId);
+    if (!result && point?.placeId && !point.placeId.startsWith('goviet247:')) {
+      const found=await detail(point.placeId);
+      if(matchesAddress(found))result=found;
+    }
+    if (!result) {
       const matches = await search(address);
-      const match = matches.find(p => comparable(p.fullAddress) === comparable(address) && (!point?.placeId || p.placeId === point.placeId));
-      result = match?.placeId ? await detail(match.placeId) : null;
+      const match = matches.find(p => matchesAddress(p) && (!point?.placeId || sameId(p.placeId,point.placeId)));
+      if(match?.placeId)result=await detail(match.placeId);
+      // Store apps send a canonical address from Place Detail, without its place ID.
+      // That text need not be identical to the autocomplete description.
+      if(!result && !point?.placeId){
+        for(const candidate of matches.slice(0,5)){
+          if(!candidate?.placeId)continue;
+          const found=await detail(candidate.placeId);
+          if(matchesAddress(found)){result=found;break;}
+        }
+      }
     }
     if (!result || result.lat == null || result.lng == null || !Number.isFinite(Number(result.lat)) || !Number.isFinite(Number(result.lng)) || Math.abs(Number(result.lat)) > 90 || Math.abs(Number(result.lng)) > 180) throw fail('Chưa xác minh được địa chỉ. Vui lòng chọn lại địa chỉ từ danh sách gợi ý.');
     const value = {lat:Number(result.lat),lng:Number(result.lng)};

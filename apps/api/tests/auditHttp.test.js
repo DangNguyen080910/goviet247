@@ -97,3 +97,21 @@ test('Vietmap uses the final leg for return time and deduplicates repeated route
  first.distanceKm=1;assert.equal(second.distanceKm,200);assert.equal((await exports.getRoute(points)).distanceKm,200);assert.equal(calls.length,2);
  await assert.rejects(exports.getRoute([{lat:100,lng:0},{lat:0,lng:0}]),/COORDINATES_INVALID/);
 });
+
+test('map selection registry contains only provider-confirmed coordinates and supports suggestion/detail aliases',async()=>{
+ const source=readFileSync(new URL('../src/services/mapService.js',import.meta.url),'utf8');
+ const suggestion='248 Ngô Gia Tự, Phường Phan Rang, Khánh Hòa';
+ const canonical='248 Ngô Gia Tự, Phường Phan Rang, Tỉnh Khánh Hòa';
+ const axios={get:async url=>({data:url.includes('autocomplete')?[{ref_id:'auto:offline',display:suggestion,name:'248 Ngô Gia Tự'}]:{display:canonical,lat:11.57,lng:108.98}})};
+ const exports={};vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,
+  {exports,require:id=>{assert.equal(id,'axios');return{__esModule:true,default:axios};},process:{env:{MAP_PROVIDER:'vietmap',VIETMAP_API_KEY:'offline-placeholder'}},URLSearchParams,structuredClone,console,Date,Map,Promise});
+ assert.equal(exports.getKnownMapPlace(canonical),null);
+ await exports.autocomplete('248 Ngô Gia Tự');
+ assert.equal(exports.getKnownMapPlace(suggestion),null); // A suggestion alone has no verified coordinates.
+ await exports.getPlaceDetail('vietmap|auto:offline');
+ assert.equal(exports.getKnownMapPlace(canonical).lat,11.57);
+ assert.equal(exports.getKnownMapPlace(suggestion).lat,11.57);
+ assert.equal(exports.getKnownMapPlace(suggestion,'auto:offline').lat,11.57);
+ assert.equal(exports.getKnownMapPlace(canonical,'vietmap|other'),null);
+ assert.equal(exports.getKnownMapPlace('unverified address'),null);
+});
