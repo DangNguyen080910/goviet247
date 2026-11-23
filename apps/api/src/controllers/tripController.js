@@ -3226,21 +3226,18 @@ export async function adminVerifyTrip(req, res) {
       console.error("[adminVerifyTrip] saved; realtime delivery failed:", socketError);
     }
 
-    try {
-      await sendNewTripToDrivers(updated);
-    } catch (pushError) {
+    // Approval and its history are committed; realtime has been published.
+    // Expo delivery/receipt polling must not keep the Admin request pending.
+    res.json({ success: true, trip: updated });
+    void Promise.resolve().then(() => sendNewTripToDrivers(updated)).catch(pushError => {
       console.error("[adminVerifyTrip] push driver error:", pushError);
-    }
-
-    try {
-      await sendTripStatusChangedToRider(updated, {
-        reason: "admin_verify_trip",
-      });
-    } catch (pushError) {
+    });
+    void Promise.resolve().then(() => sendTripStatusChangedToRider(updated, {
+      reason: "admin_verify_trip",
+    })).catch(pushError => {
       console.error("[adminVerifyTrip] push rider error:", pushError);
-    }
-
-    return res.json({ success: true, trip: updated });
+    });
+    return;
   } catch (e) {
     if (e.code === 'P2025') return res.status(409).json({ success: false, message: 'Chuyến đã thay đổi. Vui lòng tải lại.' });
     console.error("[adminVerifyTrip] error:", e);
