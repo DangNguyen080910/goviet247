@@ -51,6 +51,7 @@ async function resolveDeviceOwner(req) {
     return {
       ownerId: `admin-${adminId}`,
       adminAuthVersion: payload.av,
+      pushExpiresAt: payload.exp ? new Date(payload.exp * 1000) : null,
       roleFallback: String(payload.role || "ADMIN").toLowerCase(),
       displayName: payload?.username || "Admin",
     };
