@@ -363,8 +363,8 @@ export async function createTripHandler(req, res) {
     totalDriveMinutes = trusted.route.driveMinutes;
     estimatedDurationMinutes = trusted.route.estimatedDurationMinutes;
 
-    assertDestinationQuote(req.body, pricing.destinationService);
-    assertRegionalQuote(req.body, pricing.regionalSurcharge);
+    assertDestinationQuote(req.body, pricing.destinationService, pricing.destinationServiceSignature);
+    assertRegionalQuote(req.body, pricing.regionalSurcharge, pricing.regionalPricingSignature);
     const totalPrice = Number(pricing.totalPrice);
     if (req.body.fareEstimate != null && Number(req.body.fareEstimate) !== totalPrice) return res.status(409).json({success:false,message:"Giá chuyến đã thay đổi. Vui lòng tính giá lại."});
     const basePricePerKm = Number(pricing.basePricePerKm);

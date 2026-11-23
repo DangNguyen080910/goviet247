@@ -34,7 +34,11 @@ export const destinationSignature = snapshot => {
   const { tourDisplay, ...terms } = snapshot;
   return createHash("sha256").update(JSON.stringify(terms)).digest("hex");
 };
-export function assertDestinationQuote(input, snapshot) {
-  if (input.destinationServiceSignature && input.destinationServiceSignature !== destinationSignature(snapshot)) throw Object.assign(new Error("Điều kiện phục vụ đã thay đổi. Vui lòng tính giá lại trước khi đặt."), { status:409 });
+export function assertDestinationQuote(input, snapshot, issuedSignature) {
+  // Held quotes retain the server-issued signature. JSONB may reorder snapshot keys;
+  // hashing the deserialized object would reject unchanged quotes. Never use a client
+  // value for issuedSignature. Freshly calculated quotes retain the legacy hash.
+  const expected = issuedSignature ?? destinationSignature(snapshot);
+  if (input.destinationServiceSignature && input.destinationServiceSignature !== expected) throw Object.assign(new Error("Điều kiện phục vụ đã thay đổi. Vui lòng tính giá lại trước khi đặt."), { status:409 });
   if (snapshot.sessions.length && !input.destinationServiceSignature) throw Object.assign(new Error("Vui lòng tính giá Bao xe trước khi đặt."), {status:409});
 }

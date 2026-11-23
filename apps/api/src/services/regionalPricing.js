@@ -96,6 +96,7 @@ export async function buildRegionalSurcharge(input, rawConfig, baseAmount, resol
 }
 
 export const regionalPricingSignature = snapshot => createHash('sha256').update(JSON.stringify(snapshot)).digest('hex');
-export function assertRegionalQuote(input, snapshot) {
-  if ((snapshot?.percent > 0 || input.regionalPricingSignature) && input.regionalPricingSignature !== regionalPricingSignature(snapshot)) throw fail('Giá chuyến đã thay đổi. Vui lòng tính giá lại trước khi đặt.', 409);
+export function assertRegionalQuote(input, snapshot, issuedSignature) {
+  // Use only the signature stored/calculated by the server, independent of JSONB key order.
+  if ((snapshot?.percent > 0 || input.regionalPricingSignature) && input.regionalPricingSignature !== (issuedSignature ?? regionalPricingSignature(snapshot))) throw fail('Giá chuyến đã thay đổi. Vui lòng tính giá lại trước khi đặt.', 409);
 }
