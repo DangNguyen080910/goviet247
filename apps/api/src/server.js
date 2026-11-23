@@ -1,4 +1,6 @@
 import "dotenv/config";
+import {startNotificationOutboxWorker} from "./services/notificationOutbox.js";
+import {deliverNotificationJob} from "./services/notificationService.js";
 import { startBookingQuoteCleanup } from "./services/bookingQuotes.js";
 import { startCommissionInvoiceReminder } from "./services/commissionInvoiceTracking.js";
 import { sendAdminPushNotification as sendInvoiceAdminPush } from "./services/notificationService.js";
@@ -40,6 +42,7 @@ import seoPublicRoutes from "./routes/seoPublicRoutes.js";
 import { regionalPricingVisibility } from "./middleware/regionalPricingVisibility.js";
 
 startBookingQuoteCleanup();
+startNotificationOutboxWorker(deliverNotificationJob);
 const app = express();
 const trustProxy = process.env.TRUST_PROXY;
 app.set("trust proxy", trustProxy === "false" ? false : trustProxy === "true" ? 1 : trustProxy || "loopback");

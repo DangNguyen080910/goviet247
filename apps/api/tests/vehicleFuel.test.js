@@ -65,8 +65,8 @@ test('new-trip push uses persisted admin audience without a customer-fuel filter
   const start=raw.indexOf('export async function sendNewTripToDrivers('),end=raw.indexOf('\n}',start)+2;
   const source=raw.slice(start,end).replace('export ','');
   for(const audience of [[],['electric']]){
-    const prisma={trip:{findUnique:async()=>({audienceDriverIds:audience,fuelPreference:'GASOLINE'})},device:{findMany:async args=>{where=args.where;return [{userId:'electric',pushToken:'token'}];}}};
-    const deps={prisma,activeDriverDevices:async(db,devices)=>devices,console:quiet,isExpoPushToken:()=>true,maskAddress:()=>'',shortText:s=>s,formatVnd:()=>'',chunkArray:a=>[a],sendExpoPushMessages:async messages=>{sent.push(messages);return [];}};
+    const prisma={trip:{findUnique:async()=>({audienceDriverIds:audience,fuelPreference:'GASOLINE',status:'PENDING',isVerified:true})},device:{findMany:async args=>{where=args.where;return [{userId:'electric',pushToken:'token'}];}}};
+    const deps={prisma,isDeliveringNotification:()=>true,activeDriverDevices:async(db,devices)=>devices,console:quiet,isExpoPushToken:()=>true,maskAddress:()=>'',shortText:s=>s,formatVnd:()=>'',chunkArray:a=>[a],sendExpoPushMessages:async messages=>{sent.push(messages);return [];}};
     const send=new Function(...Object.keys(deps),source+';return sendNewTripToDrivers;')(...Object.values(deps));
     await send({id:'t'});
     assert.deepEqual(where.userId,audience.length?{in:audience}:undefined);

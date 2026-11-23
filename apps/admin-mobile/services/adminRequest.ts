@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../mobile-chat/fetchWithTimeout.js";
 import {flushDriverNoteDraft} from "../../mobile-chat/driverNoteDrafts.js";
 import { Alert } from "react-native";
 import { router } from "expo-router";
@@ -53,7 +54,7 @@ async function performRequest(path: string, options: RequestInit, token: string)
 
   let res: Response;
   try {
-    res = await fetch(`${API_BASE_URL}${path}`, {
+    res = await fetchWithTimeout(`${API_BASE_URL}${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +62,8 @@ async function performRequest(path: string, options: RequestInit, token: string)
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     });
-  } catch {
+  } catch (error: any) {
+    if(error?.code === "REQUEST_UNCONFIRMED")throw error;
     const mutation = !["GET", "HEAD"].includes(String(options.method || "GET").toUpperCase());
     throw new Error(mutation
       ? "Chưa nhận được phản hồi từ máy chủ. Thao tác có thể đã được lưu; hãy kiểm tra trạng thái trước khi thực hiện lại."

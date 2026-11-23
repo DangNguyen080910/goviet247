@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../../../mobile-chat/fetchWithTimeout.js";
 import {registerDriverNoteDraft,flushDriverNoteDraft} from "../../../../mobile-chat/driverNoteDrafts.js";
 import { useEffect, useRef, useState } from "react";
 import { Alert, Button, Stack, TextField, Typography } from "@mui/material";
@@ -8,7 +9,7 @@ export default function TripDriverNoteEditor({tripId}) {
   const [text,setText]=useState("");const [version,setVersion]=useState("");const [status,setStatus]=useState("");
   const [busy,setBusy]=useState(false);const [error,setError]=useState("");const [saved,setSaved]=useState(false);
   async function request(method="GET",body) {
-    const response=await fetch(`${BASE}/api/admin/trips/${encodeURIComponent(tripId)}${method==="PATCH"?"/driver-note":""}`,{method,headers:{Authorization:`Bearer ${getAdminToken()}`,"Content-Type":"application/json"},...(body?{body:JSON.stringify(body)}:{})});
+    const response=await fetchWithTimeout(`${BASE}/api/admin/trips/${encodeURIComponent(tripId)}${method==="PATCH"?"/driver-note":""}`,{method,headers:{Authorization:`Bearer ${getAdminToken()}`,"Content-Type":"application/json"},...(body?{body:JSON.stringify(body)}:{})});
     const data=await response.json();if(!response.ok||!data.success)throw new Error(data.message||"Không tải/lưu được ghi chú.");return data;
   }
   async function load(){setBusy(true);setError("");setSaved(false);try{const data=await request();baseline.current=data.trip.dispatcherNote||"";setText(baseline.current);setVersion(data.trip.updatedAt);setStatus(data.trip.status);}catch(e){setError(e.message);}finally{setBusy(false);}}

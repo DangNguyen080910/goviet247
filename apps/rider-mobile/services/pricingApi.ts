@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../mobile-chat/fetchWithTimeout.js";
 // Path: goviet247/apps/rider-mobile/services/pricingApi.ts
 import { API_BASE_URL } from "../constants/api";
 import * as SecureStore from "expo-secure-store";
@@ -47,7 +48,7 @@ export async function quotePrice(payload: QuotePricePayload) {
       else await SecureStore.setItemAsync(key, visitorId);
     }
   } catch { /* Tracking must not prevent a quote. */ }
-  const res = await fetch(`${API_BASE_URL}/api/pricing/quote`, {
+  const res = await fetchWithTimeout(`${API_BASE_URL}/api/pricing/quote`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

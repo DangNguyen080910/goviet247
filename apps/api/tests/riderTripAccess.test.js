@@ -189,7 +189,9 @@ test('new notification endpoint denies missing identity and does not share throu
 function push(db, messages) {
   return load('services/notificationService.js', {
     pkg: { PrismaClient: class { constructor() { return db; } } },
-    getTripRiderRecipientUserIds, activeDriverDevices,
+    getTripRiderRecipientUserIds, activeDriverDevices, isDeliveringNotification:()=>true,
+    notificationAlreadyAccepted:()=>false,recordNotificationAccepted:noop,
+    sendChatPushBatch:async batch=>{messages.push(...batch);},
     fetch: async (_url, options) => { messages.push(...JSON.parse(options.body)); return { ok: true, json: async () => ({ data: [] }) }; },
   }, 'sendTripStatusChangedToRider');
 }
@@ -205,7 +207,8 @@ test('status push targets both accounts with recipient-specific navigation data'
   const devices = ['booker', 'passenger', 'other'].map((userId) => ({ userId, role: 'rider', pushSessionId: `session_${userId}`, pushToken: `ExponentPushToken[${userId}]` }));
   f.db.device.findMany = async ({ where }) => devices.filter((d) => matches(d, where));
   f.db.session={findMany:async()=>devices.map(d=>({id:d.pushSessionId,userId:d.userId,expiresAt:null}))};
-  await push(f.db, messages)({ ...f.trips[0], status: 'CONTACTED' });
+  f.trips[0].status='CONTACTED';
+  await push(f.db, messages)({ ...f.trips[0] });
   assert.deepEqual(messages.map((m) => m.data.riderId), ['booker', 'passenger']);
   assert.ok(messages.every((m) => m.data.tripId === 'shared-trip' && m.data.status === 'CONTACTED'));
 });
@@ -315,6 +318,7 @@ test('rider status push excludes revoked sessions after logout', async()=>{
  const f=fixture(), messages=[];
  f.db.device.findMany=async()=>[{userId:'booker',role:'rider',pushSessionId:'revoked',pushToken:'ExponentPushToken[booker]'}];
  f.db.session={findMany:async()=>[{id:'revoked',userId:'booker',expiresAt:new Date(0)}]};
- await push(f.db,messages)({...f.trips[0],status:'CONTACTED'});
+ f.trips[0].status='CONTACTED';
+ await push(f.db,messages)({...f.trips[0]});
  assert.deepEqual(messages,[]);
 });

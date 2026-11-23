@@ -7,6 +7,7 @@ function load(file,mocks){
  const exports={};vm.runInNewContext(code,{exports,require:id=>{assert.ok(id in mocks,'missing mock '+id);return mocks[id];},console,Buffer,Date,Map,setInterval,clearInterval,process},{filename:file});return exports;
 }
 function chatModule(){return load('apps/api/src/services/tripChatService.js',{
+ './adminPushAccess.js':{activeAdminDevices:async()=>[]},
  './chatMediaDeletionQueue.js':load('apps/api/src/services/chatMediaDeletionQueue.js',{}),
  '../shared/chatAssignmentHistory.js':load('apps/api/src/shared/chatAssignmentHistory.js',{}),
  './chatPushTransport.js':{},'../shared/chatStoragePolicy.js':{},'../shared/tripChatVisibility.js':{},'./tripAcceptanceChat.js':{},

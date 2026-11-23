@@ -1,3 +1,5 @@
+import {activeAdminDevices} from '../apps/api/src/services/adminPushAccess.js';
+import {adminTokenVersion} from '../apps/api/src/services/adminSessions.js';
 import {createChatMediaDeletionQueue} from "../apps/api/src/services/chatMediaDeletionQueue.js";
 import {createHash} from 'node:crypto';
 import test from 'node:test';
@@ -17,9 +19,11 @@ function fixture(ids, { readIds = [], expired = false, adminExpired = false, fai
   const sent = [];
   const message = { id: 'm1', tripId: 'trip1', senderId: 'sender', senderRole: 'DRIVER',
     senderLabel: 'Tài xế', kind: 'TEXT', createdAt: new Date(), pushAttempts: 0 };
-  const devices = ids.map(id => ({ userId: id, pushToken: `ExpoPushToken[${id}]`, pushSessionId: `session-${id}`, pushExpiresAt: id.startsWith('admin-') && adminExpired ? new Date(0) : future }));
+  const admins=ids.filter(id=>id.startsWith('admin-')).map(id=>({id:Number(id.slice(6)),role:'ADMIN',is_active:true,password_hash:'offline',authVersion:0}));
+  const devices = ids.map(id => ({ userId: id, role:id.startsWith('admin-')?'admin':'driver',adminAuthVersion:admins.some(a=>a.id===Number(id.slice(6)))?adminTokenVersion(admins.find(a=>a.id===Number(id.slice(6)))):null, pushToken: `ExpoPushToken[${id}]`, pushSessionId: `session-${id}`, pushExpiresAt: id.startsWith('admin-') && adminExpired ? new Date(0) : future }));
   if (duplicate) devices.push({...devices[0]});
   const prisma = {
+    admin_users:{findMany:async()=>admins},
     tripChatMessage: {
       findMany: async args => args.select ? [] : done ? [] : [message],
       updateMany: async () => ({ count: 1 }),
@@ -33,7 +37,7 @@ function fixture(ids, { readIds = [], expired = false, adminExpired = false, fai
     },
     session: { findMany: async () => devices.filter(d => !d.userId.startsWith('admin-')).map(d => ({ id: d.pushSessionId, userId: d.userId, expiresAt: expired ? new Date(0) : null })) },
   };
-  const deps = { createHash, prisma, delivering: false, drainMediaDeletions: createChatMediaDeletionQueue(), chatPushRecipientIds: async () => ids, activeDriverDevices,
+  const deps = { createHash, prisma, delivering: false, drainMediaDeletions: createChatMediaDeletionQueue(), chatPushRecipientIds: async () => ids, activeDriverDevices, activeAdminDevices,
     sendChatPushBatch: async (batch,{onAccepted}) => {
       sends++;
       for (let i=0;i<batch.length;i++) {

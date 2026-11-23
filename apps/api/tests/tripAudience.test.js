@@ -54,8 +54,8 @@ test('every trip event uses persisted private rooms; failures do not broadcast',
  fail=false;audience=[];await emitDriverTripEvent(io,'trip:new',{id:'trip'});assert.deepEqual(sent[1].rooms,['drivers']);
 });
 test('push recipient query filters by stored user IDs, not caller trip data', async () => {
- let where; const prisma={trip:{findUnique:async()=>({audienceDriverIds:['a']})},device:{findMany:async(args)=>{where=args.where;return [];}}};
- const {sendNewTripToDrivers}=load('../src/services/notificationService.js','sendNewTripToDrivers',{prisma,activeDriverDevices,console:{error(){},log(){}}});
+ let where; const prisma={trip:{findUnique:async()=>({audienceDriverIds:['a'],status:'PENDING',isVerified:true})},device:{findMany:async(args)=>{where=args.where;return [];}}};
+ const {sendNewTripToDrivers}=load('../src/services/notificationService.js','sendNewTripToDrivers',{prisma,activeDriverDevices,isDeliveringNotification:()=>true,console:{error(){},log(){}}});
  await sendNewTripToDrivers({id:'trip',audienceDriverIds:[]});assert.deepEqual(where.userId,{in:['a']});
 });
 test('driver list restricts at DB query before limiting results; detail rejects unrelated drivers', async () => {

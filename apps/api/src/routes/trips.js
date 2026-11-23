@@ -1,5 +1,6 @@
 import { createRequestRateLimit } from "../middleware/requestRateLimit.js";
 import { bookingQuotes } from "../services/bookingQuotes.js";
+import {getBookingResult} from '../controllers/bookingResultController.js';
 import { bookingRequestKey } from "../services/bookingIdentity.js";
 import {recordTripEvent} from "../services/tripHistory.js";
 import { assertRegionalQuote } from "../services/regionalPricing.js";
@@ -478,6 +479,7 @@ router.get('/booking-companies',verifyToken,async(req,res,next)=>{
 router.post("/", verifyToken, createRequestRateLimit({max:60,windowMs:60000,key:req=>req.user.uid || req.user.id}), createTripHandler);
 
 // Lịch sử chuyến của customer đang đăng nhập
+router.get('/booking-result',verifyToken,getBookingResult);
 router.get("/my", verifyToken, listMyCustomerTrips);
 
 // Rider tự huỷ chuyến chỉ khi PENDING và chưa được Admin duyệt.

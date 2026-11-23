@@ -1628,7 +1628,12 @@ export default function BookingCard({ partner = null }) {
     };
   };
 
+  const guestVerifiedTokenRef = useRef("");
+  const guestVerifiedUserRef = useRef(null);
+  const guestOtpVerified=Boolean(guestVerifiedTokenRef.current);
   const resetOtpDialogState = () => {
+    guestVerifiedTokenRef.current="";
+    guestVerifiedUserRef.current=null;
     setOtpDialogOpen(false);
     setOtpSessionId("");
     setOtpCode("");
@@ -1677,41 +1682,35 @@ export default function BookingCard({ partner = null }) {
   };
 
   const handleVerifyGuestOtpAndCreateTrip = async () => {
+    let authenticated=false;
     try {
       setOtpLoading(true);
       setOtpErrorMsg("");
 
-      if (!otpSessionId) {
-        setOtpErrorMsg("Thiếu session OTP. Vui lòng gửi lại mã.");
-        return;
+      if (!pendingTripPayload)throw new Error("Thiếu dữ liệu chuyến đi. Vui lòng thao tác lại.");
+      if(!guestVerifiedTokenRef.current){
+        if(!otpSessionId)throw new Error("Thiếu phiên OTP. Vui lòng yêu cầu mã mới.");
+        if(isOtpExpired)throw new Error("Mã OTP đã hết hạn. Vui lòng yêu cầu mã mới.");
+        if(!otpCode.trim())throw new Error("Vui lòng nhập mã OTP.");
+        const verifyRes=await verifyOtp(otpSessionId,otpCode.trim());
+        if(!verifyRes?.access_token)throw new Error("Không nhận được phiên đăng nhập.");
+        // Save before getMe/createTrip: this OTP is consumed even if either request fails.
+        guestVerifiedTokenRef.current=verifyRes.access_token;
+        guestVerifiedUserRef.current=verifyRes.user?.id ? verifyRes.user : null;
       }
-
-      if (isOtpExpired) {
-        setOtpErrorMsg("Mã OTP đã hết hạn. Vui lòng gửi lại mã mới.");
-        return;
-      }
-
-      if (!otpCode.trim()) {
-        setOtpErrorMsg("Vui lòng nhập mã OTP.");
-        return;
-      }
-
-      if (!pendingTripPayload) {
-        setOtpErrorMsg("Thiếu dữ liệu chuyến đi. Vui lòng thao tác lại.");
-        return;
-      }
-
-      const verifyRes = await verifyOtp(otpSessionId, otpCode.trim());
-      const token = verifyRes?.access_token;
-
-      if (!token) {
-        throw new Error("Không nhận được token đăng nhập.");
-      }
-
-      const me = await getMe(token);
+      const token=guestVerifiedTokenRef.current;
+      const me = guestVerifiedUserRef.current || await getMe(token);
       login(token, me);
-
-      const res = await createTrip(pendingTripPayload);
+      authenticated=true;
+      const payload=pendingTripPayload;
+      resetOtpDialogState();
+      if(!quote || Date.now()>=new Date(quote.expiresAt).getTime() || quoteInputKeyRef.current!==quote.inputKey){
+        setQuote(null);
+        setToast({open:true,severity:"warning",message:"Đã xác thực số điện thoại. Vui lòng tính lại giá và xác nhận đặt chuyến; không cần nhập OTP lại."});
+        return;
+      }
+      setIsCreating(true);
+      const res = await createTrip(payload);
 
       const tripId =
         res?.trip?.id ||
@@ -1733,9 +1732,12 @@ export default function BookingCard({ partner = null }) {
 
       resetOtpDialogState();
     } catch (e) {
-      setOtpErrorMsg(e?.message || "Xác minh OTP thất bại.");
+      if(authenticated){
+        setToast({open:true,severity:"error",message:e?.message || "Chưa tạo được chuyến. Vui lòng kiểm tra lại."});
+      }else setOtpErrorMsg(e?.message || "Chưa tải được tài khoản. Bấm xác nhận để thử lại; không cần OTP mới.");
     } finally {
       setOtpLoading(false);
+      setIsCreating(false);
     }
   };
 
@@ -2773,7 +2775,7 @@ export default function BookingCard({ partner = null }) {
               </Alert>
             )}
 
-            {!isOtpExpired ? (
+            {guestOtpVerified ? (<Alert severity="success">Số điện thoại đã xác thực. Bấm Tiếp tục đặt chuyến, không cần OTP mới.</Alert>) : !isOtpExpired ? (
               <Alert severity="success">
                 OTP đã được gửi. Nhập mã trong {otpCountdownLabel}.
               </Alert>
@@ -2791,7 +2793,7 @@ export default function BookingCard({ partner = null }) {
               size="small"
               placeholder="6 chữ số"
               inputProps={{ inputMode: "numeric" }}
-              disabled={otpLoading || isOtpExpired}
+              disabled={otpLoading || isOtpExpired || guestOtpVerified}
             />
           </Stack>
         </DialogContent>
@@ -2807,7 +2809,7 @@ export default function BookingCard({ partner = null }) {
             Huỷ
           </Button>
 
-          {isOtpExpired && (
+          {isOtpExpired && !guestOtpVerified && (
             <Button
               variant="outlined"
               onClick={() => handleOpenGuestOtpDialog(pendingTripPayload)}
@@ -2821,10 +2823,10 @@ export default function BookingCard({ partner = null }) {
           <Button
             variant="contained"
             onClick={handleVerifyGuestOtpAndCreateTrip}
-            disabled={otpLoading || isOtpExpired}
+            disabled={otpLoading || (isOtpExpired && !guestOtpVerified)}
             sx={{ textTransform: "none", fontWeight: 900 }}
           >
-            {otpLoading ? "Đang xác nhận..." : "Xác nhận OTP"}
+            {otpLoading ? "Đang xác nhận..." : guestOtpVerified ? "Tiếp tục đặt chuyến" : "Xác nhận OTP"}
           </Button>
         </DialogActions>
       </Dialog>

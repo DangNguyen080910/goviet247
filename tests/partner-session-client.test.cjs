@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript');
 const source=fs.readFileSync(require('node:path').join(__dirname,'../apps/web/src/components/partners/partnerSession.js'),'utf8');
-function client(fetch){const values=new Map(),events=[],exports={};vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports,fetch,Date,JSON,Promise,Error,atob,Event:class{constructor(type){this.type=type;}},localStorage:{getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)},window:{dispatchEvent:event=>events.push(event.type)}});return {...exports,values,events};}
+function client(fetch){const values=new Map(),events=[],exports={};vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports,require:id=>({fetchWithTimeout:fetch}),fetch,Date,JSON,Promise,Error,atob,Event:class{constructor(type){this.type=type;}},localStorage:{getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)},window:{dispatchEvent:event=>events.push(event.type)}});return {...exports,values,events};}
 const token=(extra={})=>'x.'+Buffer.from(JSON.stringify({exp:Math.floor(Date.now()/1000)+3600,...extra})).toString('base64url')+'.x';
 const reply=(status,data)=>({status,ok:status<400,json:async()=>data});
 test('admin clients remain untouched and regular sessions do not refresh',async()=>{

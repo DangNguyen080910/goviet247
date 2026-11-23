@@ -1,4 +1,6 @@
-import { adminTokenVersion } from "./adminSessions.js";
+import {notificationOutbox,isDeliveringNotification,notificationAlreadyAccepted,recordNotificationAccepted} from './notificationOutbox.js';
+import {sendChatPushBatch} from './chatPushTransport.js';
+import {activeAdminDevices} from './adminPushAccess.js';
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { activeDriverDevices } from "./driverPushAccess.js";
 // Path: goviet247/apps/api/src/services/notificationService.js
@@ -13,7 +15,6 @@ const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
 
-const EXPO_PUSH_URL = "https://exp.host/--/api/v2/push/send";
 
 /**
  * Format tiền VND
@@ -190,124 +191,29 @@ function chunkArray(items, size = 100) {
  * Gửi request tới Expo Push API
  */
 async function sendExpoPushMessages(messages) {
-  const EXPO_PUSH_RECEIPTS_URL = "https://exp.host/--/api/v2/push/getReceipts";
-
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-  async function fetchExpoPushReceipts(ids = []) {
-    if (!Array.isArray(ids) || ids.length === 0) {
-      return null;
-    }
-
-    const response = await fetch(EXPO_PUSH_RECEIPTS_URL, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Accept-Encoding": "gzip, deflate",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ids }),
-    });
-
-    let data = null;
-
-    try {
-      data = await response.json();
-    } catch {
-      data = null;
-    }
-
-    if (!response.ok) {
-      const message =
-        data?.errors?.[0]?.message ||
-        data?.message ||
-        `Expo receipts request failed with status ${response.status}`;
-
-      throw new Error(message);
-    }
-
-    return data;
-  }
-
-  const response = await fetch(EXPO_PUSH_URL, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Accept-Encoding": "gzip, deflate",
-      "Content-Type": "application/json",
+  const pending=[...new Map(messages.map(m=>[m.to,m])).values()].filter(m=>!notificationAlreadyAccepted(m.to));
+  let accepted=0,removed=0;
+  await sendChatPushBatch(pending,{
+    removeDevice:async token=>{
+      await prisma.device.deleteMany({where:{pushToken:token}});
+      await recordNotificationAccepted(token);
+      removed++;
     },
-    body: JSON.stringify(messages),
+    onAccepted:async token=>{await recordNotificationAccepted(token);accepted++;},
   });
-
-  let data = null;
-
-  try {
-    data = await response.json();
-  } catch {
-    data = null;
-  }
-
-  if (!response.ok) {
-    const message =
-      data?.errors?.[0]?.message ||
-      data?.message ||
-      `Expo push request failed with status ${response.status}`;
-
-    throw new Error(message);
-  }
-
-  try {
-    const tickets = Array.isArray(data?.data)
-      ? data.data
-      : data?.data
-        ? [data.data]
-        : [];
-
-    const receiptIds = tickets
-      .map((ticket) => String(ticket?.id || "").trim())
-      .filter(Boolean);
-
-    console.log(
-      "[Push] Expo tickets:",
-      JSON.stringify(
-        {
-          totalMessages: Array.isArray(messages) ? messages.length : 1,
-          totalTickets: tickets.length,
-          receiptIds,
-          tickets,
-        },
-        null,
-        2,
-      ),
-    );
-
-    if (receiptIds.length > 0) {
-      // Debug nhanh cho staging/dev:
-      // receipts có thể chưa sẵn ngay, nên mình đợi ngắn rồi hỏi thử.
-      await sleep(4000);
-
-      const receipts = await fetchExpoPushReceipts(receiptIds);
-
-      console.log("[Push] Expo receipts:", JSON.stringify(receipts, null, 2));
-    } else {
-      console.log("[Push] Expo tickets không có receipt id để kiểm tra.");
-    }
-  } catch (receiptError) {
-    console.error("[Push] fetch receipts error:", receiptError);
-  }
-
-  return data;
+  return {accepted,removed,skipped:messages.length-pending.length};
 }
 
 /**
  * Gửi thông báo cuốc mới tới tất cả tài xế (role = "driver")
  */
 export async function sendNewTripToDrivers(trip) {
+  if(!isDeliveringNotification())return notificationOutbox.enqueue('sendNewTripToDrivers',[trip],()=>sendNewTripToDrivers(...[trip]));
   try {
-    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true, partnerCompanyId: true } });
+    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true, partnerCompanyId: true, status:true, isVerified:true, driverId:true, cancelledAt:true, verifiedAt:true } });
     if (!audience || !Array.isArray(audience.audienceDriverIds)) return;
+    if(audience.status!=='PENDING' || !audience.isVerified || audience.driverId || audience.cancelledAt)return;
+    if(trip.verifiedAt && audience.verifiedAt && new Date(trip.verifiedAt).getTime()!==new Date(audience.verifiedAt).getTime())return;
     let devices = await prisma.device.findMany({
       where: {
         ...(audience.audienceDriverIds.length ? { userId: { in: audience.audienceDriverIds } } : {}),
@@ -391,7 +297,7 @@ export async function sendNewTripToDrivers(trip) {
     }
 
     console.log(
-      `📲 [Push] Đã gửi push cuốc mới cho ${validDevices.length} thiết bị.`,
+      `📲 [Push] Đã xử lý yêu cầu push cuốc mới cho ${validDevices.length} thiết bị.`,
     );
   } catch (err) {
     console.error("[Push] sendNewTripToDrivers error:", err);
@@ -416,6 +322,7 @@ export async function sendSms(phone, text) {
  * Gửi push thông báo hệ thống tới tất cả tài xế
  */
 export async function sendSystemNotificationToDrivers(notification) {
+  if(!isDeliveringNotification())return notificationOutbox.enqueue('sendSystemNotificationToDrivers',[notification],()=>sendSystemNotificationToDrivers(...[notification]));
   try {
     const audience = String(notification?.audience || "").toUpperCase();
 
@@ -499,7 +406,7 @@ export async function sendSystemNotificationToDrivers(notification) {
     }
 
     console.log(
-      `📲 [Push] Đã gửi push thông báo hệ thống cho ${validDevices.length} thiết bị.`,
+      `📲 [Push] Đã xử lý yêu cầu push thông báo hệ thống cho ${validDevices.length} thiết bị.`,
     );
   } catch (err) {
     console.error("[Push] sendSystemNotificationToDrivers error:", err);
@@ -511,6 +418,7 @@ export async function sendSystemNotificationToDrivers(notification) {
  * Gửi push thông báo hệ thống cho 1 tài xế cụ thể
  */
 export async function sendSystemNotificationToDriver(userId, notification) {
+  if(!isDeliveringNotification())return notificationOutbox.enqueue('sendSystemNotificationToDriver',[userId,notification],()=>sendSystemNotificationToDriver(...[userId,notification]));
   try {
     if (!userId) {
       console.log("[Push] Missing userId for single driver notification.");
@@ -574,13 +482,15 @@ export async function sendSystemNotificationToDriver(userId, notification) {
       );
     }
 
-    console.log(`[Push] Đã gửi notification cho driver userId=${userId}`);
+    console.log(`[Push] Đã xử lý notification cho driver userId=${userId}`);
   } catch (err) {
     console.error("[Push] sendSystemNotificationToDriver error:", err);
+    throw err;
   }
 }
 
 export async function sendAdminPushNotification({ title, body, data = {}, roles = ["admin", "staff", "ADMIN", "STAFF"] }) {
+  if(!isDeliveringNotification())return notificationOutbox.enqueue('sendAdminPushNotification',[{title,body,data,roles}],()=>sendAdminPushNotification(...[{title,body,data,roles}]));
   try {
     const devices = await prisma.device.findMany({
       where: {
@@ -594,6 +504,7 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
         pushToken: true,
         role: true,
         adminAuthVersion: true,
+        pushExpiresAt: true,
       },
     });
 
@@ -602,12 +513,7 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
       return;
     }
 
-    const adminIds = devices.map(d => /^admin-(\d+)$/.exec(d.userId)?.[1]).filter(Boolean).map(Number);
-    const admins = adminIds.length ? await prisma.admin_users.findMany({where:{id:{in:adminIds},is_active:true}}) : [];
-    const validDevices = devices.filter(device => {
-      const id = Number(/^admin-(\d+)$/.exec(device.userId)?.[1]);
-      return isExpoPushToken(device.pushToken) && admins.some(a => a.id === id && a.role.toLowerCase() === device.role.toLowerCase() && device.adminAuthVersion === adminTokenVersion(a));
-    });
+    const validDevices = (await activeAdminDevices(prisma,devices)).filter(d=>isExpoPushToken(d.pushToken));
 
     if (!validDevices.length) {
       console.log("📲 [AdminPush] Không có Expo push token admin hợp lệ.");
@@ -649,7 +555,7 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
     }
 
     console.log(
-      `📲 [AdminPush] Đã gửi push cho ${validDevices.length} thiết bị admin/staff.`,
+      `📲 [AdminPush] Đã xử lý yêu cầu push cho ${validDevices.length} thiết bị admin/staff.`,
     );
   } catch (err) {
     console.error("[AdminPush] sendAdminPushNotification error:", err);
@@ -658,6 +564,7 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
 }
 
 export async function sendSystemNotificationToRiders(notification) {
+  if(!isDeliveringNotification())return notificationOutbox.enqueue('sendSystemNotificationToRiders',[notification],()=>sendSystemNotificationToRiders(...[notification]));
   try {
     const audience = String(notification?.audience || "").toUpperCase();
 
@@ -744,7 +651,7 @@ export async function sendSystemNotificationToRiders(notification) {
     }
 
     console.log(
-      `📲 [Push] Đã gửi push thông báo hệ thống cho ${validDevices.length} thiết bị rider.`,
+      `📲 [Push] Đã xử lý yêu cầu push thông báo hệ thống cho ${validDevices.length} thiết bị rider.`,
     );
   } catch (err) {
     console.error("[Push] sendSystemNotificationToRiders error:", err);
@@ -758,7 +665,10 @@ function buildRiderTripStatusPushContent(trip, options = {}) {
 }
 
 export async function sendTripStatusChangedToRider(trip, options = {}) {
+  if(!isDeliveringNotification())return notificationOutbox.enqueue('sendTripStatusChangedToRider',[trip,options],()=>sendTripStatusChangedToRider(...[trip,options]));
   try {
+    const current=await prisma.trip.findUnique({where:{id:trip.id},select:{status:true,isVerified:true,driverId:true}});
+    if(!current || current.status!==trip.status || Boolean(current.isVerified)!==Boolean(trip.isVerified) || (current.driverId || null)!==(trip.driverId || null))return;
     const recipientIds = await getTripRiderRecipientUserIds(prisma, trip);
     if (!recipientIds.length) return;
 
@@ -829,10 +739,17 @@ export async function sendTripStatusChangedToRider(trip, options = {}) {
     }
 
     console.log(
-      `[Push] Đã gửi push cập nhật chuyến cho ${recipientIds.length} rider account(s), tripId=${trip?.id}`,
+      `[Push] Đã xử lý yêu cầu push cập nhật chuyến cho ${recipientIds.length} rider account(s), tripId=${trip?.id}`,
     );
   } catch (err) {
     console.error("[Push] sendTripStatusChangedToRider error:", err);
     throw err;
   }
+}
+
+const notificationHandlers={sendNewTripToDrivers,sendSystemNotificationToDrivers,sendSystemNotificationToDriver,sendAdminPushNotification,sendSystemNotificationToRiders,sendTripStatusChangedToRider};
+export async function deliverNotificationJob(kind,args){
+  const handler=notificationHandlers[kind];
+  if(!Object.hasOwn(notificationHandlers,kind) || !Array.isArray(args))throw new Error('INVALID_NOTIFICATION_JOB');
+  return handler(...args);
 }

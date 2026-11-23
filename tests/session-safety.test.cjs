@@ -10,6 +10,7 @@ const root = path.resolve(__dirname, '..');
 const flush = () => new Promise(resolve => setImmediate(resolve));
 class ApiError extends Error { constructor(status) { super('API failure'); this.status = status; } }
 function load(file, mocks, globals = {}) {
+  mocks={...mocks,'../../../mobile-chat/fetchWithTimeout.js':{fetchWithTimeout:(...args)=>globals.fetch(...args)}};
   const source = fs.readFileSync(path.join(root, file), 'utf8')
     .replace(/import\.meta\.env\.VITE_API_BASE/g, '"https://test.invalid"');
   const js = ts.transpileModule(source, { compilerOptions: {

@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../../mobile-chat/fetchWithTimeout.js";
 // Path: goviet247/apps/web/src/api/adminTrips.js
 import {flushDriverNoteDraft} from "../../../mobile-chat/driverNoteDrafts.js";
 import { getAdminToken } from "../utils/adminAuth";
@@ -9,7 +10,7 @@ async function request(path, options = {}) {
   if(tripMutation && !["GET","HEAD"].includes(String(options.method||"GET").toUpperCase()))await flushDriverNoteDraft(decodeURIComponent(tripMutation[1]));
   const token = getAdminToken();
 
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetchWithTimeout(`${API_BASE}${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",

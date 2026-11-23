@@ -1,10 +1,11 @@
+import {fetchWithTimeout} from "../../../mobile-chat/fetchWithTimeout.js";
 // Path: goviet247/apps/web/src/api/auth.js
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 const API = `${API_BASE}/api/auth`;
 
 // Gửi OTP
 export async function requestOtp(phone) {
-  const res = await fetch(`${API}/request-otp`, {
+  const res = await fetchWithTimeout(`${API}/request-otp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +27,7 @@ export async function requestOtp(phone) {
 
 // Xác minh OTP
 export async function verifyOtp(sessionId, code) {
-  const res = await fetch(`${API}/verify-otp`, {
+  const res = await fetchWithTimeout(`${API}/verify-otp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +51,7 @@ export async function verifyOtp(sessionId, code) {
 
 // Lấy thông tin user
 export async function getMe(token, onReplacement) {
-  const res = await fetch(`${API}/me`, {
+  const res = await fetchWithTimeout(`${API}/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
       "X-Session-Mode": "persistent-v1",
@@ -71,7 +72,7 @@ export async function getMe(token, onReplacement) {
 
 // Cập nhật hồ sơ khách hàng
 export async function updateMe(token, payload) {
-  const res = await fetch(`${API}/me`, {
+  const res = await fetchWithTimeout(`${API}/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -90,7 +91,7 @@ export async function updateMe(token, payload) {
 }
 export async function logoutSession(token) {
   if (!token) return;
-  const res = await fetch(`${API}/logout`, {
+  const res = await fetchWithTimeout(`${API}/logout`, {
     method: "POST", headers: { Authorization: `Bearer ${token}` },
   });
   const data = await res.json().catch(() => null);

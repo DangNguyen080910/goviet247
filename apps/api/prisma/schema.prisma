@@ -1338,3 +1338,20 @@ model BookingQuote {
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   @@index([expiresAt])
 }
+
+model NotificationJob {
+  id String @id
+  kind String
+  payload Json
+  attempts Int @default(0)
+  acceptedTokens String[] @default([])
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  runAt DateTime @default(now()) @db.Timestamptz(6)
+  expiresAt DateTime @db.Timestamptz(6)
+  completedAt DateTime? @db.Timestamptz(6)
+  lockedUntil DateTime? @db.Timestamptz(6)
+  lockToken String?
+  lastError String?
+  @@index([completedAt,runAt])
+  @@index([createdAt])
+}

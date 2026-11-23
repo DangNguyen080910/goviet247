@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../mobile-chat/fetchWithTimeout.js";
 import { readTripPages } from "../../api/src/shared/tripPages.js";
 // Path: goviet247/apps/driver-mobile/services/tripApi.ts
 import { API_BASE_URL } from "../constants/api";
@@ -202,7 +203,7 @@ export async function getAvailableTrips(): Promise<AvailableTripItem[]> {
   try {
     return await readTripPages(async (cursor: string | null) => {
       const qs = new URLSearchParams({pageSize:"100",...(cursor ? {cursor} : {})});
-      const response = await fetch(`${API_BASE_URL}/api/trips/driver/available?${qs}`,{headers,cache:"no-store",signal:controller.signal});
+      const response = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/available?${qs}`,{headers,cache:"no-store",signal:controller.signal});
       const payload = await parseJsonSafe(response);
       if (!response.ok) throw new Error(getErrorMessage(payload as ApiError,"Không thể tải danh sách chuyến."));
       return payload;
@@ -218,7 +219,7 @@ export async function acceptDriverTrip(tripId: string) {
   let response: Response;
   let payload: ApiTripSuccess<MyTripItem> | ApiError | null;
   try {
-    response = await fetch(`${API_BASE_URL}/api/trips/driver/accept`, {
+    response = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/accept`, {
       method: "POST", headers, body: JSON.stringify({ tripId }), signal: controller.signal,
     });
     payload = await parseJsonSafe(response);
@@ -267,7 +268,7 @@ export async function getMyTrips(options?: {
     const qs = new URLSearchParams(params);
     qs.set("pageSize","100");
     if (cursor) qs.set("cursor",cursor);
-    const response = await fetch(`${API_BASE_URL}/api/trips/driver/my?${qs}`,{headers});
+    const response = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/my?${qs}`,{headers});
     const payload = await parseJsonSafe(response);
     if (!response.ok) throw new Error(getErrorMessage(payload as ApiError,"Không thể tải đơn của tôi."));
     return payload;
@@ -288,7 +289,7 @@ export async function getDriverCancelHistory(): Promise<
 > {
   const headers = await buildAuthHeaders();
 
-  const response = await fetch(`${API_BASE_URL}/api/trips/driver/cancel-history`, {
+  const response = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/cancel-history`, {
     method: "GET",
     headers,
   });
@@ -317,7 +318,7 @@ export async function changeDriverTripStatus(
 ) {
   const headers = await buildAuthHeaders();
 
-  const response = await fetch(`${API_BASE_URL}/api/trips/driver/change-status`, {
+  const response = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/change-status`, {
     method: "POST",
     headers,
     body: JSON.stringify({ tripId, newStatus }),
@@ -343,7 +344,7 @@ export async function changeDriverTripStatus(
 export async function cancelDriverTrip(tripId: string) {
   const token = await getDriverToken();
 
-  const res = await fetch(`${API_BASE_URL}/api/trips/driver/cancel`, {
+  const res = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/cancel`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -362,7 +363,7 @@ export async function cancelDriverTrip(tripId: string) {
 }
 
 export async function getDriverSupportConfig(): Promise<DriverSupportConfig | null> {
-  const response = await fetch(`${API_BASE_URL}/api/public/system-config`, {
+  const response = await fetchWithTimeout(`${API_BASE_URL}/api/public/system-config`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

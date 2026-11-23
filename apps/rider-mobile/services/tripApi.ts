@@ -1,3 +1,5 @@
+import {reconcileBooking} from "../../mobile-chat/reconcileBooking.js";
+import {fetchWithTimeout} from "../../mobile-chat/fetchWithTimeout.js";
 import { readTripPages } from "../../api/src/shared/tripPages.js";
 // Path: goviet247/apps/rider-mobile/services/tripApi.ts
 import { API_BASE_URL } from "../constants/api";
@@ -53,7 +55,7 @@ export type RiderPublicTripConfig = {
 };
 
 export async function getRiderPublicTripConfig(): Promise<RiderPublicTripConfig> {
-  const res = await fetch(`${API_BASE_URL}/api/public/trips/config`, {
+  const res = await fetchWithTimeout(`${API_BASE_URL}/api/public/trips/config`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -67,7 +69,7 @@ export async function getRiderPublicTripConfig(): Promise<RiderPublicTripConfig>
   return { ...data.data.tripConfig, carTypes: data.data.carTypes.filter((item: any) => ["CAR_5", "CAR_7", "CAR_16"].includes(item?.value) && typeof item?.label === "string") } as RiderPublicTripConfig;
 }
 
-export async function createTrip(payload: CreateTripPayload) {
+export async function createTrip(payload: CreateTripPayload): Promise<CreateTripResponse> {
   const token = await getRiderToken();
 
   const headers: Record<string, string> = {
@@ -78,7 +80,8 @@ export async function createTrip(payload: CreateTripPayload) {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const res = await fetch(`${API_BASE_URL}/api/trips`, {
+  try {
+  const res = await fetchWithTimeout(`${API_BASE_URL}/api/trips`, {
     method: "POST",
     headers,
     body: JSON.stringify(payload),
@@ -93,6 +96,13 @@ export async function createTrip(payload: CreateTripPayload) {
   }
 
   return data as CreateTripResponse;
+  } catch (error: any) {
+    if(error?.code==='REQUEST_UNCONFIRMED'){
+      const confirmed=await reconcileBooking(API_BASE_URL,headers,payload.bookingRequestId || payload.quoteHistoryToken);
+      if(confirmed)return confirmed;
+    }
+    throw error;
+  }
 }
 
 type RiderTripItem = {
@@ -139,7 +149,7 @@ export async function getMyTrips(): Promise<RiderTripItem[]> {
   if (!token) throw new Error("Bạn cần đăng nhập để xem hoạt động.");
   return readTripPages(async (cursor: string | null) => {
     const qs = new URLSearchParams({pageSize:"100",...(cursor ? {cursor} : {})});
-    const res = await fetch(`${API_BASE_URL}/api/trips/my?${qs}`, {headers:{Authorization:`Bearer ${token}`}});
+    const res = await fetchWithTimeout(`${API_BASE_URL}/api/trips/my?${qs}`, {headers:{Authorization:`Bearer ${token}`}});
     const data = await res.json().catch(()=>({}));
     if (!res.ok) throw Object.assign(new Error(data.message || "Không tải được danh sách chuyến."),{status:res.status});
     return data;
@@ -156,7 +166,7 @@ export async function cancelTripByRider(
     throw new Error("Bạn cần đăng nhập để huỷ chuyến.");
   }
 
-  const res = await fetch(`${API_BASE_URL}/api/trips/${tripId}/cancel-by-rider`, {
+  const res = await fetchWithTimeout(`${API_BASE_URL}/api/trips/${tripId}/cancel-by-rider`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -192,7 +202,7 @@ export type RiderPublicSystemConfig = {
 };
 
 export async function getRiderPublicSystemConfig(): Promise<RiderPublicSystemConfig> {
-  const res = await fetch(`${API_BASE_URL}/api/public/system-config`, {
+  const res = await fetchWithTimeout(`${API_BASE_URL}/api/public/system-config`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -234,7 +244,7 @@ export type BookingCompany = {id:string;name:string};
 export async function getBookingCompanies(): Promise<BookingCompany[]> {
   const token=await getRiderToken();
   if(!token) return [];
-  const res=await fetch(`${API_BASE_URL}/api/trips/booking-companies`,{headers:{Authorization:`Bearer ${token}`}});
+  const res=await fetchWithTimeout(`${API_BASE_URL}/api/trips/booking-companies`,{headers:{Authorization:`Bearer ${token}`}});
   const data=await res.json();
   if(!res.ok || !data.success || !Array.isArray(data.companies)) throw new Error(data.message || 'Không tải được quyền đặt chuyến.');
   return data.companies;

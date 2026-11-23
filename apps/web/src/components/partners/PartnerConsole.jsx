@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../../../mobile-chat/fetchWithTimeout.js";
 import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
 import { tripRoutePoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../common/ClearableSearchField.jsx";
@@ -10,7 +11,7 @@ export const partnerBase=import.meta.env.VITE_API_BASE || 'http://localhost:5050
 export async function partnerRequest(path,{token,companyId,method='GET',body,signal}={}) {
   const url=new URL(`${partnerBase}/api/partners${path}`);
   if(companyId) url.searchParams.set('companyId',companyId);
-  const request=token ? (url,options)=>partnerFetch(partnerBase,url,options) : fetch;
+  const request=token ? (url,options)=>partnerFetch(partnerBase,url,options) : fetchWithTimeout;
   const res=await request(url,{method,signal,credentials:'include',headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});
   const data=await res.json();
   if(!res.ok || !data.success) {const e=new Error(data.message || 'Chưa xử lý được yêu cầu.');e.status=res.status;throw e;}

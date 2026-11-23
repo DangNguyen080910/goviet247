@@ -1,3 +1,4 @@
+import {activeAdminDevices} from './adminPushAccess.js';
 import {createChatMediaDeletionQueue} from "./chatMediaDeletionQueue.js";
 import { chatVisibleFrom, chatMessageInCurrentHistory } from '../shared/chatAssignmentHistory.js';
 import { sendChatPushBatch } from './chatPushTransport.js';
@@ -306,7 +307,8 @@ export async function deliverChatPush() {
           }
         });
         const userDevices = await activeDriverDevices(prisma, devices.filter(d => !d.userId.startsWith('admin-')));
-        const eligible = [...userDevices, ...devices.filter(d => d.userId.startsWith('admin-') && (!d.pushExpiresAt || d.pushExpiresAt > new Date()))];
+        const adminDevices=await activeAdminDevices(prisma,devices.filter(d=>d.userId.startsWith('admin-')));
+        const eligible = [...userDevices, ...adminDevices];
         const call = m.senderId === 'system-call' && m.clientId?.startsWith('call_') ? await prisma.tripCall.findUnique({where:{id:m.clientId.slice(5)}}) : null;
         const uniqueDevices = [...new Map(eligible.map(d => [d.pushToken, d])).values()];
         const acknowledged = new Set(m.pushDeliveredTokens || []);

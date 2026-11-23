@@ -1,3 +1,4 @@
+import {fetchWithTimeout} from "../../../mobile-chat/fetchWithTimeout.js";
 // Path: goviet247/apps/web/src/api/pricing.js
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
@@ -9,7 +10,7 @@ export async function quotePrice(payload) {
     visitorId = localStorage.getItem("gv247_quote_visitor") || globalThis.crypto.randomUUID();
     localStorage.setItem("gv247_quote_visitor", visitorId);
   } catch { /* Quotes work even if browser storage is disabled. */ }
-  const res = await fetch(`${API_BASE}/api/pricing/quote`, {
+  const res = await fetchWithTimeout(`${API_BASE}/api/pricing/quote`, {
     method: "POST",
     headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     body: JSON.stringify({ ...payload, historyContext: { ...payload.historyContext, visitorId, source: "WEB" } }),
