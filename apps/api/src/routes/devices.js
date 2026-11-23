@@ -5,6 +5,7 @@ import { Router } from "express";
 import pkg from "@prisma/client";
 import { userSessions, pushSessionKey } from "../services/userSessions.js";
 import { verifyAdminSession as verifyAdminJwtToken } from '../services/adminSessions.js';
+import {wakeUnsentAdminTripPush} from '../services/adminPushRecovery.js';
 
 const { PrismaClient } = pkg;
 
@@ -139,6 +140,11 @@ router.post("/", async (req, res) => {
         pushExpiresAt: owner.pushExpiresAt || null,
       },
     });
+
+    if (!owner.claims && owner.adminAuthVersion && owner.pushExpiresAt) {
+      try {await wakeUnsentAdminTripPush(prisma);}
+      catch(error){console.error('[AdminPush] wake pending alerts failed',error.code || error.name);}
+    }
 
     if (String(role).toUpperCase() === "RIDER" && !owner.ownerId.startsWith("admin-")) {
       await recordRiderAppUsage(prisma, owner.ownerId, platform);

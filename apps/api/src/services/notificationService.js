@@ -492,6 +492,11 @@ export async function sendSystemNotificationToDriver(userId, notification) {
 export async function sendAdminPushNotification({ title, body, data = {}, roles = ["admin", "staff", "ADMIN", "STAFF"] }) {
   if(!isDeliveringNotification())return notificationOutbox.enqueue('sendAdminPushNotification',[{title,body,data,roles}],()=>sendAdminPushNotification(...[{title,body,data,roles}]));
   try {
+    const isNewTrip = data?.type === "ADMIN_NEW_TRIP" || data?.source === "create_trip";
+    if(isNewTrip && data.tripId){
+      const current=await prisma.trip.findUnique({where:{id:data.tripId},select:{status:true,isVerified:true,cancelledAt:true}});
+      if(!current || current.status!=='PENDING' || current.isVerified || current.cancelledAt)return;
+    }
     const devices = await prisma.device.findMany({
       where: {
         role: {
@@ -510,17 +515,16 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
 
     if (!devices.length) {
       console.log("📲 [AdminPush] Không có device admin/staff nào.");
-      return;
+      throw Object.assign(new Error('Chưa có thiết bị Admin để gửi push.'),{code:'ADMIN_PUSH_NO_ACTIVE_DEVICE'});
     }
 
     const validDevices = (await activeAdminDevices(prisma,devices)).filter(d=>isExpoPushToken(d.pushToken));
 
     if (!validDevices.length) {
       console.log("📲 [AdminPush] Không có Expo push token admin hợp lệ.");
-      return;
+      throw Object.assign(new Error('Thiết bị Admin cần đăng ký lại phiên push.'),{code:'ADMIN_PUSH_NO_ACTIVE_DEVICE'});
     }
 
-    const isNewTrip = data?.type === "ADMIN_NEW_TRIP" || data?.source === "create_trip";
     const messages = validDevices.map((device) => ({
       to: device.pushToken,
       sound: isNewTrip ? "duyetchuyen_notification.wav" : "default",
