@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
+import TripCode from "./TripCode";
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useEffect, useState } from 'react';
 import { View, Text, Pressable, Alert, Modal, FlatList, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
@@ -107,7 +107,7 @@ export default function TripAudiencePicker({tripId,onDone,disabled,onBusy}:{trip
             </View>}
             renderItem={({item:d})=><Pressable disabled={locked} accessibilityRole="checkbox" accessibilityState={{checked:selected.includes(d.userId)}} onPress={()=>setSelected(s=>s.includes(d.userId)?s.filter(id=>id!==d.userId):[...s,d.userId])} style={styles.driver}>
               <Text>{selected.includes(d.userId)?'☑':'☐'} {d.name} • {provinceLabel(d)} • {CARS[d.carType||'']||d.vehicleType||'Chưa rõ số chỗ'} • {FUELS[d.vehicleFuelType||'']||'Chưa cập nhật nhiên liệu'} • {d.phone} • {d.plateNumber}</Text>
-              {!!d.suggestion&&<View><Text style={{color:'#147348'}}>Gợi ý: cách {d.suggestion.distanceKm} km • {d.suggestion.tripId}</Text><CopyTripIdButton tripId={d.suggestion.tripId}/></View>}
+              {!!d.suggestion&&<View><Text style={{color:'#147348'}}>Gợi ý: cách {d.suggestion.distanceKm} km</Text><TripCode tripId={d.suggestion.tripId}/></View>}
             </Pressable>}
             ListFooterComponent={<Text style={styles.caption}>Danh sách được chốt khi duyệt; tài xế đăng ký sau không tự được thêm.</Text>}
           />

@@ -1,5 +1,5 @@
 import TripVehicleButton from "./TripVehicleButton";
-import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
+import TripCode from "./TripCode";
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -25,7 +25,7 @@ export default function TripHistoryButton({tripId}: {tripId?: string | null}) {
       <SafeAreaView style={styles.screen}>
         <View style={styles.header}><Text style={styles.title}>Lịch sử chuyến</Text><Pressable accessibilityRole="button" onPress={()=>setOpen(false)} style={styles.button}><Text style={styles.link}>Đóng</Text></Pressable></View>
         <ScrollView contentContainerStyle={styles.content}>
-          <Text selectable style={styles.code}>{tripId}</Text><CopyTripIdButton tripId={tripId}/><TripVehicleButton tripId={tripId}/>
+          <TripCode tripId={tripId}/><TripVehicleButton tripId={tripId}/>
           <Text>Thời gian Việt Nam · Mới nhất trước</Text>
           <Pressable accessibilityRole="button" disabled={busy} onPress={()=>setRefresh(n=>n+1)} style={styles.button}><Text style={styles.link}>Tải lại</Text></Pressable>
           {busy && <ActivityIndicator color="#1976d2"/>}

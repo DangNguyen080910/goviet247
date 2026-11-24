@@ -1,5 +1,5 @@
 import TripVehicleButton from "../components/TripVehicleButton";
-import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
+import TripCode from "../components/TripCode";
 import TripHistoryButton from "../components/TripHistoryButton";
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
 import { useCallback, useMemo, useRef, useState } from "react";
@@ -53,7 +53,7 @@ export default function AlertsScreen() {
         const driverId=blockedAlertDriverId(item);
         return <View key={item.id} style={{backgroundColor:"white",padding:16,borderRadius:12,gap:10,borderLeftWidth:4,borderLeftColor:item.readAt?"#16a34a":"#f97316"}}>
           <Text style={{fontWeight:"800",fontSize:16}}>{item.alertType==="COMMISSION_INVOICE_DAILY"?"Nhắc hóa đơn hoa hồng":item.alertType==="CHAT_CONTACT_BLOCKED"?"Đã chặn gửi số điện thoại trong hội thoại":driverId?"Tài xế bị khoá bấm nhận chuyến":item.alertType==="TRIP_MILESTONE"?"Mốc chuyến GoViet247":"Cảnh báo chuyến"}</Text>
-          <Text selectable>Mã chuyến: {item.tripId}</Text><CopyTripIdButton tripId={item.tripId}/><TripHistoryButton tripId={item.tripId}/><TripVehicleButton tripId={item.tripId}/><Text>{new Date(item.sentAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</Text>
+          <TripCode tripId={item.tripId}/><TripHistoryButton tripId={item.tripId}/><TripVehicleButton tripId={item.tripId}/><Text>{new Date(item.sentAt).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" })}</Text>
           <Text style={{fontSize:15,lineHeight:23}}>{item.message}</Text>
           {item.alertType==="COMMISSION_INVOICE_DAILY"&&<Pressable onPress={()=>router.push(`/commission?day=${encodeURIComponent(item.message.match(/INVOICE_DAY:(\d{4}-\d{2}-\d{2})/)?.[1]||'')}` as any)} style={{padding:12,backgroundColor:'#1976d2',borderRadius:8}}><Text style={{color:'white'}}>Mở Hoa Hồng theo ngày</Text></Pressable>}
           {item.alertType==="CHAT_CONTACT_BLOCKED"&&<Pressable accessibilityRole="button" onPress={()=>router.push(`/trip-chat?tripId=${encodeURIComponent(item.tripId)}` as any)} style={{padding:12,borderRadius:8,backgroundColor:"#1976d2"}}><Text style={{color:"white",fontWeight:"700"}}>Mở hội thoại chuyến</Text></Pressable>}

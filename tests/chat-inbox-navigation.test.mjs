@@ -37,11 +37,13 @@ test('inside the mobile conversation Xem chuyến still fetches that trip rather
 test('web inbox message button and preview open the conversation; route remains visible',()=>{
  const source=read('apps/web/src/components/TripChatHub.jsx'),ast=ts.createSourceFile('chat.jsx',source,ts.ScriptTarget.Latest,true,ts.ScriptKind.JSX);let callback;
  function visit(node){if(ts.isCallExpression(node)&&node.expression.getText(ast)==='inbox.map')callback=node.arguments[0].getText(ast);ts.forEachChild(node,visit);}visit(ast);assert(callback);
- const opened=[],deps={React,CopyTripIdButton:'CopyTripIdButton',Box:'Box',Button:'Button',Typography:'Typography',chatConversationRoute,setTripId:id=>opened.push(id),showTrip(){throw new Error('Inbox must not open trip details');}};
+ for(const isAdmin of [false,true]) {
+ const opened=[],deps={React,isAdmin,TripCode:'TripCode',CopyTripIdButton:'CopyTripIdButton',Box:'Box',Button:'Button',Typography:'Typography',chatConversationRoute,setTripId:id=>opened.push(id),showTrip(){throw new Error('Inbox must not open trip details');}};
  const render=new Function(...Object.keys(deps),compile('const render='+callback+';')+';return render;')(...Object.values(deps)),tree=render(conversation),all=nodes(tree);
  assert.ok(text(tree).includes(chatConversationRoute(conversation)));assert.ok(!all.some(node=>node.type==='Button'&&text(node)==='Xem chuyến'));
- assert.equal(all.find(node=>node.type==='CopyTripIdButton')?.props.tripId,conversation.tripId);
- const buttons=all.filter(node=>node.type==='Button');assert.equal(buttons.length,2);for(const button of buttons)button.props.onClick();assert.deepEqual(opened,[conversation.tripId,conversation.tripId]);
+ assert.equal(all.find(node=>node.type===(isAdmin?'TripCode':'CopyTripIdButton'))?.props.tripId,conversation.tripId);
+ const buttons=all.filter(node=>node.type==='Button');assert.ok(buttons.length>=2);for(const button of buttons)button.props.onClick();assert.deepEqual(opened,buttons.map(()=>conversation.tripId));
+ }
 });
 test('old API responses without addresses still render a working inbox and no invented route',()=>{
  assert.equal(chatConversationRoute({tripId:'old-client'}),'');assert.equal(chatConversationRoute({pickupAddress:' A ',dropoffAddress:' B '}),'A → B');

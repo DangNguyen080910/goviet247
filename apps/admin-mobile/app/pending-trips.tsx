@@ -31,7 +31,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
-import CopyTripIdButton from "../components/CopyTripIdButton";
+import TripCode from "../components/TripCode";
 import { formatScheduleInput, scheduleInputToIso } from "../utils/tripTime";
 import {
   cancelPendingTrip,
@@ -528,10 +528,8 @@ export default function PendingTripsScreen() {
           onPress={() => openTripDetail(item.id)}
         >
           <View style={styles.tripCardHeader}>
-            <Text style={styles.tripId} numberOfLines={1}>
-              {item.id}
-            </Text>
-            <CopyTripIdButton tripId={item.id} />
+
+            <TripCode tripId={item.id} />
                   <TripHistoryButton tripId={item.id} /><TripVehicleButton tripId={item.id}/>
 
             {tab === "PENDING" ? (
@@ -812,8 +810,8 @@ export default function PendingTripsScreen() {
                   <Text style={styles.detailCardTitle}>Thông tin chuyến</Text>
                   <TourServiceSummary snapshot={detail.destinationService} />
 
-                  <DetailRow label="Mã chuyến" value={detail.id || "-"} />
-                  <CopyTripIdButton tripId={detail.id} />
+                  <Text style={styles.detailLabel}>Mã chuyến</Text>
+                  <TripCode tripId={detail.id} />
                   <TripHistoryButton tripId={detail.id} /><TripVehicleButton tripId={detail.id}/>
                   <DetailRow
                     label="👤 Người đặt"

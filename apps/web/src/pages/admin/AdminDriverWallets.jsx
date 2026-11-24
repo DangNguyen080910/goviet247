@@ -1,4 +1,5 @@
 import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
+import TripCode from "../../components/common/TripCode.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import MoneyTextField from '../../components/common/MoneyTextField';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
@@ -244,8 +245,9 @@ function WalletActionDialog({
 
           {isRefund ? (
             <>
-              <TextField label="TripID" value={form.tripId || ""}
-                onChange={onChange("tripId")} fullWidth placeholder={placeholder} /><CopyTripIdButton tripId={form.tripId}/>
+              <TextField label="Mã chuyến" value={form.tripId || ""}
+                onChange={onChange("tripId")} fullWidth placeholder={placeholder}
+                InputProps={{endAdornment:<CopyTripIdButton tripId={form.tripId}/>}} />
               {refundQuoteLoading ? <Typography variant="body2">Đang kiểm tra khoản phạt...</Typography> : null}
               {refundQuoteError ? <Alert severity="warning">{refundQuoteError}</Alert> : null}
               {refundQuote ? (
@@ -2099,7 +2101,7 @@ export default function AdminDriverWallets() {
                               </TableCell>
 
                               <TableCell>
-                                {item.tripId || item.trip?.id || "N/A"}<div><CopyTripIdButton tripId={item.tripId || item.trip?.id}/><TripHistoryButton tripId={item.tripId || item.trip?.id}/></div>
+                                <TripCode tripId={item.tripId || item.trip?.id}/><div><TripHistoryButton tripId={item.tripId || item.trip?.id}/></div>
                               </TableCell>
 
                               <TableCell>

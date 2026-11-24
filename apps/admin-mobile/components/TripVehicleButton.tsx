@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CopyTripIdButton from "./CopyTripIdButton";
+import TripCode from "./TripCode";
 import TripVehicleInfo from "./TripVehicleInfo";
 import { fetchAssignedTripDetail, type AssignedTripDetail } from "../services/assignedTripsApi";
 
@@ -27,7 +27,7 @@ export default function TripVehicleButton({tripId}: {tripId?: string | null}) {
       <SafeAreaView style={styles.screen}>
         <View style={styles.header}><Text style={styles.title}>Thông tin xe</Text><Pressable accessibilityRole="button" onPress={()=>setOpen(false)} style={styles.button}><Text style={styles.link}>Đóng</Text></Pressable></View>
         <ScrollView contentContainerStyle={styles.content}>
-          <Text selectable style={styles.code}>{tripId}</Text><CopyTripIdButton tripId={tripId}/>
+          <TripCode tripId={tripId}/>
           {busy && <ActivityIndicator color="#1976d2"/>}
           {!!error && <Text accessibilityRole="alert" style={styles.error}>{error}</Text>}
           {result?.id === tripId && !busy && !error && <>

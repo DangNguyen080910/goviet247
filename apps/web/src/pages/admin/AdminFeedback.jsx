@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
+import TripCode from "../../components/common/TripCode.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import { tripRoutePoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
@@ -1074,13 +1074,8 @@ export default function AdminFeedback() {
 
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
-                      <TextField
-                        fullWidth
-                        label="Mã chuyến"
-                        value={selectedFeedback.trip.id || ""}
-                        InputProps={{ readOnly: true }}
-                      />
-                    <CopyTripIdButton tripId={selectedFeedback.trip.id}/><TripHistoryButton tripId={selectedFeedback.trip.id}/>
+                      <Typography variant="body2" color="text.secondary">Mã chuyến</Typography>
+                      <TripCode tripId={selectedFeedback.trip.id}/><TripHistoryButton tripId={selectedFeedback.trip.id}/>
                     </Grid>
 
                     <Grid item xs={12} md={6}>

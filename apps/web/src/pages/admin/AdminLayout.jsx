@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../../components/common/CopyTripIdButton";
+import TripCode from "../../components/common/TripCode";
 import TripMilestoneCelebration from "../../components/admin/TripMilestoneCelebration";
 // Path: goviet247/apps/web/src/pages/admin/AdminLayout.jsx
 import React from "react";
@@ -860,7 +860,7 @@ export default function AdminLayout() {
           severity="info"
           variant="filled"
           action={
-            <><CopyTripIdButton tripId={snackTripId}/><Button
+            <><TripCode tripId={snackTripId}/><Button
               color="inherit"
               size="small"
               onClick={() => {

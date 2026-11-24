@@ -29,7 +29,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
-import CopyTripIdButton from "../components/CopyTripIdButton";
+import TripCode from "../components/TripCode";
 import {
   cancelUnassignedTrip,
   fetchUnassignedCancelledTrips,
@@ -410,10 +410,8 @@ export default function UnassignedTripsScreen() {
           }}
         >
           <View style={styles.tripHeader}>
-            <Text style={styles.tripId} numberOfLines={1}>
-              {item.id}
-            </Text>
-            <CopyTripIdButton tripId={item.id} />
+
+            <TripCode tripId={item.id} />
                   <TripHistoryButton tripId={item.id} /><TripVehicleButton tripId={item.id}/>
 
             <View
@@ -743,11 +741,8 @@ export default function UnassignedTripsScreen() {
                   <Text style={styles.detailCardTitle}>Thông tin chuyến</Text>
                   <TourServiceSummary snapshot={detail.destinationService} />
 
-                  <DetailRow
-                    label="Mã chuyến"
-                    value={detail.id || selectedTripId}
-                  />
-                  <CopyTripIdButton tripId={detail.id || selectedTripId} />
+
+                  <TripCode tripId={detail.id || selectedTripId} />
                   <TripHistoryButton tripId={detail.id || selectedTripId} /><TripVehicleButton tripId={detail.id || selectedTripId}/>
                   <DetailRow
                     label="👤 Người đặt"

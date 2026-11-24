@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
+import TripCode from "../../components/common/TripCode.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
@@ -404,8 +404,7 @@ export default function AdminTripsAssigned() {
                           fontWeight: 700,
                         }}
                       >
-                        {t.id || "-"}
-                      <div><CopyTripIdButton tripId={t.id}/><TripHistoryButton tripId={t.id}/></div></TableCell>
+                        <TripCode tripId={t.id}/><div><TripHistoryButton tripId={t.id}/></div></TableCell>
 
                       <TableCell>
                         <Typography sx={{ fontWeight: 600 }}>

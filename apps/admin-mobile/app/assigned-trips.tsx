@@ -29,7 +29,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Clipboard from "expo-clipboard";
-import CopyTripIdButton from "../components/CopyTripIdButton";
+import TripCode from "../components/TripCode";
 import { formatScheduleInput, scheduleInputToIso } from "../utils/tripTime";
 import {
   AssignedTripDetail,
@@ -723,8 +723,8 @@ export default function AssignedTripsScreen() {
             {filteredItems.map((item) => (
               <View key={item.id} style={styles.card}>
                 <View style={styles.cardHeader}>
-                  <Text style={styles.tripId}>{item.id}</Text>
-                  <CopyTripIdButton tripId={item.id} />
+
+                  <TripCode tripId={item.id} />
                   <TripHistoryButton tripId={item.id} /><TripVehicleButton tripId={item.id}/>
                   <View style={styles.statusChip}>
                     <Text style={styles.statusChipText}>
@@ -967,10 +967,8 @@ export default function AssignedTripsScreen() {
                 <TourServiceSummary snapshot={selectedTripDetail?.destinationService} />
                 <View style={styles.modalInfoBlock}>
                   <Text style={styles.label}>Mã chuyến</Text>
-                  <Text style={styles.value}>
-                    {selectedTripDetail?.id || selectedTripId || "--"}
-                  </Text>
-                  <CopyTripIdButton tripId={selectedTripDetail?.id || selectedTripId} />
+
+                  <TripCode tripId={selectedTripDetail?.id || selectedTripId} />
                   <TripHistoryButton tripId={selectedTripDetail?.id || selectedTripId} /><TripVehicleButton tripId={selectedTripDetail?.id || selectedTripId}/>
                 </View>
 

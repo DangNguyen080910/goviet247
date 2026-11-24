@@ -1,10 +1,11 @@
+import TripCode from "../components/TripCode";
 import TripVehicleButton from "../components/TripVehicleButton";
 import {createElement, Fragment} from "react";
 import TripHistoryButton from "../components/TripHistoryButton";
 import { configureChat } from '../../mobile-chat/TripChat';
 import { API_BASE_URL } from '../constants/api';
 import { getAdminToken } from './storage';
-configureChat({base:API_BASE_URL,getToken:getAdminToken,role:'ADMIN',renderAdminTripHistory:tripId=>createElement(Fragment,null,createElement(TripHistoryButton,{tripId}),createElement(TripVehicleButton,{tripId}))});
+configureChat({base:API_BASE_URL,getToken:getAdminToken,role:'ADMIN',renderAdminTripCode:tripId=>createElement(TripCode,{tripId,label:'#'}),renderAdminTripHistory:tripId=>createElement(Fragment,null,createElement(TripHistoryButton,{tripId}),createElement(TripVehicleButton,{tripId}))});
 export { chatPushShouldPlaySound } from '../../mobile-chat/chatAlerts';
 export { default, ChatInboxBadge, TripChatButton, isChatVisible } from '../../mobile-chat/TripChat';
 

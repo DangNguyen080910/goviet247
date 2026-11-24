@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
+import TripCode from "../../components/common/TripCode.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
 import { useEffect, useState } from "react";
@@ -124,7 +124,7 @@ export default function AdminQuoteHistory() {
               <TableCell>{formatCarType(row.carType)}</TableCell><TableCell>{row.direction === "ROUND_TRIP" ? "Khứ hồi" : "Một chiều"}</TableCell><TableCell>{fuels[row.fuelPreference]}</TableCell>
               <TableCell align="right">{Number(row.distanceKm).toLocaleString("vi-VN", { maximumFractionDigits: 1 })}</TableCell>
               <TableCell align="right" sx={{ whiteSpace: "nowrap", fontWeight: 700 }}>{money(row.finalPrice)}</TableCell>
-              <TableCell>{row.tripId && <><CopyTripIdButton tripId={row.tripId}/><TripHistoryButton tripId={row.tripId}/></>} {row.tripId ? <Button onClick={() => setTripId(row.tripId)}>#{row.tripId.slice(-8).toUpperCase()}</Button> : "Chưa ghi nhận"}</TableCell>
+              <TableCell>{row.tripId ? <><TripCode tripId={row.tripId}><Button onClick={() => setTripId(row.tripId)}>#{row.tripId.slice(-8).toUpperCase()}</Button></TripCode><div><TripHistoryButton tripId={row.tripId}/></div></> : "Chưa ghi nhận"}</TableCell>
               <TableCell><Button onClick={() => setDetail(row)}>Xem</Button></TableCell>
             </TableRow>)}
           </TableBody>
@@ -145,7 +145,7 @@ export default function AdminQuoteHistory() {
         <Typography>{formatCarType(detail.carType)} · {detail.direction === "ROUND_TRIP" ? "Khứ hồi" : "Một chiều"} · {fuels[detail.fuelPreference]}</Typography>
         <Typography>{detail.distanceKm} km · Thời gian lái dự kiến: {detail.driveMinutes ?? "—"} phút</Typography>
         <Typography sx={{ fontWeight: 700 }}>Giá đã báo: {money(detail.finalPrice)} đ</Typography>
-        <Typography>Đặt chuyến: {detail.tripId || "Chưa ghi nhận"} · {formatTime(detail.bookedAt)}</Typography><CopyTripIdButton tripId={detail.tripId}/>
+        <Typography component="div">Đặt chuyến: {detail.tripId ? <TripCode tripId={detail.tripId}/> : "Chưa ghi nhận"} · {formatTime(detail.bookedAt)}</Typography>
       </Stack>}</DialogContent>
       <DialogActions><Button onClick={() => setDetail(null)}>Đóng</Button></DialogActions>
     </Dialog>

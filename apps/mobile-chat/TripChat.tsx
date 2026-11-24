@@ -25,6 +25,7 @@ type Config = {
   base: string;
   getToken: () => Promise<string | null>;
   role: 'RIDER' | 'DRIVER' | 'ADMIN';
+  renderAdminTripCode?: (tripId:string) => React.ReactNode;
   renderAdminTripHistory?: (tripId:string) => React.ReactNode;
 };
 let config: Config;
@@ -588,7 +589,7 @@ export default function TripChatScreen() {
         color: ink,
         flex: 1
       }}>{tripId ? 'Liên hệ chuyến' : 'Tin nhắn chuyến'}</Text>{tripId && <TripCallButton tripId={tripId}/>}</View>
- {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',flexWrap:'wrap',alignItems:'center'}}>{config.role === 'ADMIN' && config.renderAdminTripHistory?.(tripId)}<Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:100,color:ink}}>#{tripId}</Text><CopyTripIdButton tripId={tripId}/><Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
+ {tripId ? <View style={{paddingHorizontal:12,paddingVertical:6,gap:8,flexDirection:'row',flexWrap:'wrap',alignItems:'center'}}>{config.role === 'ADMIN' && config.renderAdminTripHistory?.(tripId)}{config.role === 'ADMIN' && config.renderAdminTripCode ? config.renderAdminTripCode(tripId) : <><Text selectable numberOfLines={1} ellipsizeMode="middle" accessibilityLabel={`Mã chuyến ${tripId}`} style={{fontWeight:'800',flex:1,minWidth:100,color:ink}}>#{tripId}</Text><CopyTripIdButton tripId={tripId}/></>}<Pressable accessibilityRole="button" style={[button,{flexShrink:0,margin:0}]} onPress={()=>void showTrip(tripId)}><Text style={{color:blue}}>Xem chuyến</Text></Pressable></View> : null}
  {!!error && <Text accessibilityRole="alert" style={{
       color: '#b91c1c',
       padding: 12
@@ -754,10 +755,10 @@ export default function TripChatScreen() {
  </KeyboardAvoidingView>
  <Modal visible={Boolean(tripView)} animationType="slide" onRequestClose={closeTripView}>
  <SafeAreaView style={{flex:1,backgroundColor:'#fff'}}><View style={{padding:16,gap:10}}><Text style={{fontSize:20,fontWeight:'800'}}>Chi tiết chuyến</Text><Pressable accessibilityRole="button" style={button} onPress={closeTripView}><Text style={{color:blue}}>← Quay lại tin nhắn</Text></Pressable></View>
- <ScrollView contentContainerStyle={{padding:16,gap:14}}>{config.role === 'ADMIN' && tripView?.id && config.renderAdminTripHistory?.(tripView.id)}<Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text><CopyTripIdButton tripId={tripView?.id}/>
+ <ScrollView contentContainerStyle={{padding:16,gap:14}}>{config.role === 'ADMIN' && tripView?.id && config.renderAdminTripHistory?.(tripView.id)}{config.role === 'ADMIN' && config.renderAdminTripCode && tripView?.id ? config.renderAdminTripCode(tripView.id) : <><Text selectable style={{fontWeight:'800'}}>#{tripView?.id}</Text><CopyTripIdButton tripId={tripView?.id}/></>}
  {tripView?.loading ? <Text>Đang tải chuyến...</Text> : null}
  {tripView?.error ? <><Text accessibilityRole="alert" style={{color:'#b91c1c'}}>{tripView.error}</Text><Pressable style={button} onPress={()=>void showTrip(tripView.id)}><Text>Thử lại</Text></Pressable></> : null}
- {tripView?.trip ? chatTripDetailRows(tripView.trip).map(([label,value]:string[],index:number)=><View key={index} style={{gap:4}}><Text style={{color:'#64748b'}}>{label}</Text><Text selectable style={{color:ink,fontSize:16}}>{value}</Text>{label==='Mã chuyến' && <CopyTripIdButton tripId={value}/>}</View>) : null}
+ {tripView?.trip ? chatTripDetailRows(tripView.trip).map(([label,value]:string[],index:number)=><View key={index} style={{gap:4}}><Text style={{color:'#64748b'}}>{label}</Text>{label==='Mã chuyến' && config.role==='ADMIN' && config.renderAdminTripCode ? config.renderAdminTripCode(value) : <><Text selectable style={{color:ink,fontSize:16}}>{value}</Text>{label==='Mã chuyến' && <CopyTripIdButton tripId={value}/>}</>}</View>) : null}
  </ScrollView></SafeAreaView></Modal>
  <Modal visible={Boolean(imageView)} transparent animationType="fade" onRequestClose={() => setImageView(null)}>
  <SafeAreaView style={{flex:1,backgroundColor:'rgba(0,0,0,0.96)'}}><Pressable accessibilityLabel="Đóng ảnh" onPress={() => setImageView(null)} style={{padding:18,alignSelf:'flex-end'}}><Text style={{color:'white',fontSize:18}}>Đóng ✕</Text></Pressable>{imageView && <Image source={{uri:imageView.uri}} resizeMode="contain" style={{flex:1,width:'100%'}} onError={() => {setImageView(null);setError('Không tải được ảnh. Bấm vào ảnh để thử lại.');}} />}</SafeAreaView>

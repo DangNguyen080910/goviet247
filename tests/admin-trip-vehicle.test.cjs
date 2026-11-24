@@ -72,7 +72,7 @@ function buttonHarness(fetch){
     useEffect(fn,deps){const id=effectIndex++;const previous=effects[id];if(!previous||deps.some((d,i)=>d!==previous.deps[i]))pending.push(()=>{previous?.cleanup?.();effects[id]={deps,cleanup:fn()};});}};
   const Button=load('apps/admin-mobile/components/TripVehicleButton.tsx',{
     react,'react/jsx-runtime':jsx,'react-native':hosts,'react-native-safe-area-context':{SafeAreaView:'SafeArea'},
-    './CopyTripIdButton':{default:'CopyTrip'},'./TripVehicleInfo':{default:'VehicleInfo'},
+    './TripCode':{default:'TripCode'},'./TripVehicleInfo':{default:'VehicleInfo'},
     '../services/assignedTripsApi':{fetchAssignedTripDetail:fetch},
   }).default;
   return {render(tripId='trip-1'){cursor=0;effectIndex=0;pending=[];const tree=Button({tripId});for(const fn of pending)fn();return tree;},

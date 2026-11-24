@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
+import TripCode from "../common/TripCode.jsx";
 import TripHistoryButton from "./TripHistoryButton";
 import { tripDestinationPoints } from '../../../../api/src/shared/tripRoute.js';
 import MoneyTextField from '../common/MoneyTextField';
@@ -442,12 +442,12 @@ export default function TripDetailModal({ open, tripId, onClose, onAdjusted }) {
         <div style={header}>
           <div>
             <div style={{ fontSize: 16, fontWeight: 700 }}>Chi tiết chuyến</div>
-            <div style={{ fontSize: 12, opacity: 0.8, overflowWrap: "anywhere" }}>{tripId}</div>
+            <div style={{ fontSize: 12, opacity: 0.8 }}><TripCode tripId={tripId}/></div>
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
             <TripChatButton tripId={tripId} />
-            <CopyTripIdButton tripId={tripId}/><TripHistoryButton tripId={tripId}/>
+            <TripHistoryButton tripId={tripId}/>
             {canManualAdjust && (
               <button style={btnPrimary} onClick={openAdjustForm}>
                 Cập nhật thông tin chuyến

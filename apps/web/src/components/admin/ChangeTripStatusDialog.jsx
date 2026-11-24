@@ -1,4 +1,4 @@
-import CopyTripIdButton from "../common/CopyTripIdButton.jsx";
+import TripCode from "../common/TripCode.jsx";
 // Path: goviet247/apps/web/src/components/admin/ChangeTripStatusDialog.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import {
@@ -56,9 +56,7 @@ export default function ChangeTripStatusDialog({
             <Typography variant="body2" color="text.secondary">
               Mã chuyến
             </Typography>
-            <Typography sx={{ fontWeight: 700 }}>
-              {trip?.id || ""}
-            </Typography><CopyTripIdButton tripId={trip?.id}/>
+            <TripCode tripId={trip?.id}/>
           </Stack>
 
           <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
