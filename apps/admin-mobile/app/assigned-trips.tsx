@@ -1,3 +1,4 @@
+import { driverVehicleSummary } from "../../api/src/shared/driverVehicleSummary.js";
 import TripVehicleInfo from "../components/TripVehicleInfo";
 import TripVehicleButton from "../components/TripVehicleButton";
 import TripHistoryButton from "../components/TripHistoryButton";
@@ -770,6 +771,7 @@ export default function AssignedTripsScreen() {
                       </Pressable>
                     ) : null}
                   </View>
+                  <Text style={styles.vehicleSummary}>{driverVehicleSummary(item)}</Text>
                 </View>
 
                 <TripVehicleInfo trip={item} />
@@ -1023,6 +1025,7 @@ export default function AssignedTripsScreen() {
                       </Pressable>
                     ) : null}
                   </View>
+                  <Text style={styles.vehicleSummary}>{driverVehicleSummary(selectedTripDetail)}</Text>
                 </View>
 
                 <TripVehicleInfo trip={selectedTripDetail} />
@@ -1381,6 +1384,7 @@ export default function AssignedTripsScreen() {
 }
 
 const styles = StyleSheet.create({
+  vehicleSummary: { fontSize: 13, lineHeight: 20, color: "#475569", marginTop: 4 },
   safeArea: {
     flex: 1,
     backgroundColor: "#f8fafc",
