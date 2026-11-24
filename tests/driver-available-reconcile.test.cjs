@@ -75,7 +75,7 @@ function api(fetchImpl) {
   let timeout, timeoutMs, cleared = 0;
   const exports = {};
   vm.runInNewContext(apiJs, { exports, AbortController, URLSearchParams,
-    require: name => name === '../../mobile-chat/fetchWithTimeout.js' ? {fetchWithTimeout:fetchImpl} : name === '../../mobile-chat/reconcileBooking.js' ? {reconcileBooking:async()=>null} : name === '../../api/src/shared/tripPages.js' ? require('../apps/api/src/shared/tripPages.js') : name === '../constants/api' ? { API_BASE_URL: 'https://test.invalid' } : { getDriverToken: async () => 'test-token' },
+    require: name => name === './serverClock' ? {driverServerClock:{monotonicNow:()=>0,sync:()=>false}} : name === '../../mobile-chat/fetchWithTimeout.js' ? {fetchWithTimeout:fetchImpl} : name === '../../mobile-chat/reconcileBooking.js' ? {reconcileBooking:async()=>null} : name === '../../api/src/shared/tripPages.js' ? require('../apps/api/src/shared/tripPages.js') : name === '../constants/api' ? { API_BASE_URL: 'https://test.invalid' } : { getDriverToken: async () => 'test-token' },
     fetch: fetchImpl, setTimeout: (fn, ms) => { timeout = fn; timeoutMs = ms; return 1; }, clearTimeout: () => { ++cleared; },
   });
   return { get: () => exports.getAvailableTrips(), abort: () => timeout(), get timeoutMs() { return timeoutMs; }, get cleared() { return cleared; } };

@@ -1,3 +1,4 @@
+import { driverServerClock } from "./serverClock";
 import {fetchWithTimeout} from "../../mobile-chat/fetchWithTimeout.js";
 import { readTripPages } from "../../api/src/shared/tripPages.js";
 // Path: goviet247/apps/driver-mobile/services/tripApi.ts
@@ -203,9 +204,11 @@ export async function getAvailableTrips(): Promise<AvailableTripItem[]> {
   try {
     return await readTripPages(async (cursor: string | null) => {
       const qs = new URLSearchParams({pageSize:"100",...(cursor ? {cursor} : {})});
+      const requestStartedAt = driverServerClock.monotonicNow();
       const response = await fetchWithTimeout(`${API_BASE_URL}/api/trips/driver/available?${qs}`,{headers,cache:"no-store",signal:controller.signal});
       const payload = await parseJsonSafe(response);
       if (!response.ok) throw new Error(getErrorMessage(payload as ApiError,"Không thể tải danh sách chuyến."));
+      if (payload?.success === true) driverServerClock.sync(payload, requestStartedAt);
       return payload;
     });
   } finally { clearTimeout(timeout); }

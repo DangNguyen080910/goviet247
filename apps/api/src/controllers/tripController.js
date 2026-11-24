@@ -810,6 +810,7 @@ export async function getTripById(req, res) {
  * -> Driver xem danh sách các chuyến đang chờ nhận
  */
 export async function listAvailableTrips(req, res) {
+  const serverReceivedAt = new Date().toISOString();
   // Availability must never be served from an old HTTP cache.
   res.set?.("Cache-Control", "no-store");
   try {
@@ -904,6 +905,8 @@ export async function listAvailableTrips(req, res) {
     return res.json({
       success: true,
       nextCursor:page.nextCursor, hasMore:page.hasMore,
+      serverReceivedAt,
+      serverTime: new Date().toISOString(),
       items: data,
     });
   } catch (err) {

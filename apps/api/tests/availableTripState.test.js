@@ -84,7 +84,7 @@ test('dashboard removes the card before reload finishes, and rejects a late pre-
   let finishOldRequest;
   const oldResponse = new Promise(resolve => { finishOldRequest = resolve; });
   const setCards = next => { cards = typeof next === 'function' ? next(cards) : next; };
-  const loader = new Function('useCallback', 'availableTripStateRef', 'getAvailableTrips', 'setAvailableTrips', 'setAvailableError', 'setLoadingAvailable', `${availableLoader}; return loadAvailableTrips;`)(fn => fn, stateRef, () => oldResponse, setCards, () => {}, () => {});
+  const loader = new Function('useCallback', 'availableTripStateRef', 'getAvailableTrips', 'setAvailableTrips', 'setAvailableError', 'setLoadingAvailable', 'setCurrentTimeMs', 'driverServerClock', `${availableLoader}; return loadAvailableTrips;`)(fn => fn, stateRef, () => oldResponse, setCards, () => {}, () => {}, () => {}, {now:()=>0});
   let listener;
   let finishRefresh;
   const refresh = new Promise(resolve => { finishRefresh = resolve; });

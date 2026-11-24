@@ -1,3 +1,5 @@
+import { driverServerClock } from "../services/serverClock";
+import { acceptCountdownSeconds } from "../../mobile-chat/serverClock.js";
 import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import { useDriverRules } from '../context/DriverRulesContext';
 import ContractReminder from '../components/ContractReminder';
@@ -139,7 +141,7 @@ export default function DashboardScreen() {
   );
   const [driverMenuAvatar, setDriverMenuAvatar] = useState<string | null>(null);
 
-  const [currentTimeMs, setCurrentTimeMs] = useState(Date.now());
+  const [currentTimeMs, setCurrentTimeMs] = useState(() => driverServerClock.now());
   const [expandedIncomeTripId, setExpandedIncomeTripId] = useState<
     string | null
   >(null);
@@ -328,20 +330,11 @@ export default function DashboardScreen() {
   }, []);
 
   const getAcceptLockRemainingSeconds = useCallback(
-    (trip: AvailableTripItem) => {
-      if (!trip.driverAcceptOpenAt) {
-        return 0;
-      }
-
-      const openAt = new Date(trip.driverAcceptOpenAt).getTime();
-      const remainingMs = openAt - currentTimeMs;
-
-      if (remainingMs <= 0) {
-        return 0;
-      }
-
-      return Math.ceil(remainingMs / 1000);
-    },
+    (trip: AvailableTripItem, live = false) =>
+      acceptCountdownSeconds(
+        trip.driverAcceptOpenAt,
+        live ? driverServerClock.now() : currentTimeMs,
+      ),
     [currentTimeMs],
   );
 
@@ -536,6 +529,7 @@ export default function DashboardScreen() {
     try {
       setAvailableError("");
       const items = await getAvailableTrips();
+      setCurrentTimeMs(driverServerClock.now());
       const snapshot = availableTripStateRef.current.applySnapshot(request, items);
       if (snapshot) setAvailableTrips(snapshot);
     } catch (error) {
@@ -631,12 +625,25 @@ export default function DashboardScreen() {
   }, [loadAvailableTrips]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTimeMs(Date.now());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
+    const refreshClock = (force = false) => {
+      if (AppState.currentState !== "active") return;
+      const now = driverServerClock.now();
+      // Check frequently, but render only when a displayed second actually changes.
+      setCurrentTimeMs((previous) => force || availableTrips.some((trip) =>
+        acceptCountdownSeconds(trip.driverAcceptOpenAt, previous) !==
+        acceptCountdownSeconds(trip.driverAcceptOpenAt, now),
+      ) ? now : previous);
+    };
+    // Recompute from elapsed time; never decrement a counter that can drift in the background.
+    const timer = setInterval(() => refreshClock(), 250);
+    const subscription = AppState.addEventListener("change", (state) => {
+      if (state === "active") refreshClock(true);
+    });
+    return () => {
+      clearInterval(timer);
+      subscription.remove();
+    };
+  }, [availableTrips]);
 
   useEffect(() => {
     const subscription = AppState.addEventListener(
@@ -1027,7 +1034,7 @@ export default function DashboardScreen() {
       if (acceptingTripRef.current || !availableTripStateRef.current.canAccept(tripId)) return;
       const trip = availableTrips.find((t) => t.id === tripId);
       if (!trip) return;
-      const remainingSeconds = trip ? getAcceptLockRemainingSeconds(trip) : 0;
+      const remainingSeconds = getAcceptLockRemainingSeconds(trip, true);
 
       if (remainingSeconds > 0) {
         return;
