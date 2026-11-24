@@ -365,11 +365,11 @@ export default function AdminTripsAssigned() {
                   <TableCell sx={{ fontWeight: 700 }}>Mã chuyến</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Khách hàng</TableCell>
                   <TableCell sx={{ fontWeight: 700 }}>Tài xế</TableCell>
-                  <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 260 }}>
                     Điểm đón → Điểm đến
                   </TableCell>
                   <TableCell sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Loại xe</TableCell>
+                  <TableCell sx={{ fontWeight: 700 }}>Nhiên liệu</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ đón</TableCell>
                   <TableCell sx={{ fontWeight: 700, minWidth: 150 }}>Giờ về</TableCell>
                   <TableCell align="right" sx={{ fontWeight: 700, whiteSpace: "nowrap" }}>Giá chuyến / Tài xế thực nhận (đ)</TableCell>
@@ -426,10 +426,6 @@ export default function AdminTripsAssigned() {
                         </Typography>
                       </TableCell>
 
-                      <TableCell sx={{ fontWeight: 700 }}>
-                        {formatFuelPreference(t.fuelPreference)}
-                      </TableCell>
-
                       <TableCell>
                         <Typography sx={{ fontWeight: 600 }}>
                           {normalizeDisplayAddress(t.pickupAddress) || "-"}
@@ -456,6 +452,9 @@ export default function AdminTripsAssigned() {
                       </TableCell>
 
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatCarType(t.carType)}</TableCell>
+                      <TableCell sx={{ fontWeight: 700 }}>
+                        {formatFuelPreference(t.fuelPreference)}
+                      </TableCell>
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.pickupTime)}</TableCell>
                       <TableCell sx={{ whiteSpace: "nowrap" }}>{formatNgayGio(t.returnTime)}</TableCell>
                       <TableCell align="right" sx={{ whiteSpace: "nowrap" }}><TripMoney trip={t} /></TableCell>
