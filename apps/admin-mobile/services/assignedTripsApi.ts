@@ -1,3 +1,4 @@
+import { mapTripVehicle, type TripVehicleBinding } from "../utils/tripVehicle";
 import { tripDirection } from '../../api/src/shared/tripRoute.js';
 // Path: goviet247/apps/admin-mobile/services/assignedTripsApi.ts
 import { adminRequest } from "./adminRequest";
@@ -9,7 +10,7 @@ export type AssignedTripsTabStatus =
   | "COMPLETED"
   | "CANCELLED";
 
-export type AssignedTripItem = {
+export type AssignedTripItem = TripVehicleBinding & {
   id: string;
   status: AssignedTripsTabStatus | string;
 
@@ -45,7 +46,7 @@ export type AssignedTripItem = {
   }>;
 };
 
-export type AssignedTripDetail = {
+export type AssignedTripDetail = TripVehicleBinding & {
   destinationService?: any;
   id: string;
   status: string | null;
@@ -170,6 +171,7 @@ function mapAssignedTripItem(raw: unknown): AssignedTripItem {
   };
 
   return {
+    ...mapTripVehicle(raw),
     id: typeof item?.id === "string" ? item.id : "",
     status: typeof item?.status === "string" ? item.status : "",
     carType: typeof item?.carType === "string" ? item.carType : null,
@@ -298,6 +300,7 @@ function mapAssignedTripDetail(raw: unknown): AssignedTripDetail {
         : pickPhone(item?.driver);
 
   return {
+    ...mapTripVehicle(raw),
     id: typeof item?.id === "string" ? item.id : "",
     status: typeof item?.status === "string" ? item.status : null,
     carType: typeof item?.carType === "string" ? item.carType : null,
@@ -379,8 +382,9 @@ export async function fetchAssignedTrips(status: AssignedTripsTabStatus) {
 }
 
 export async function fetchAssignedTripDetail(tripId: string) {
-  const data = (await adminRequest(`/api/admin/trips/${tripId}`, {
+  const data = (await adminRequest(`/api/admin/trips/${encodeURIComponent(tripId)}`, {
     method: "GET",
+    cache: "no-store",
   })) as {
     item?: unknown;
     trip?: unknown;

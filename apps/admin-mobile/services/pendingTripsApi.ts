@@ -1,3 +1,4 @@
+import { mapTripVehicle, type TripVehicleBinding } from "../utils/tripVehicle";
 // Path: goviet247/apps/admin-mobile/services/pendingTripsApi.ts
 import { adminRequest } from "./adminRequest";
 
@@ -108,7 +109,7 @@ export async function fetchPendingVerifyCancelledTrips() {
   return items.map(mapTripItem);
 }
 
-export type PendingTripDetail = {
+export type PendingTripDetail = TripVehicleBinding & {
   id: string;
 
   creatorName?: string | null;
@@ -205,6 +206,7 @@ function mapTripDetail(raw: any): PendingTripDetail {
   const driver = raw?.driver || raw?.driverUser || raw?.assignedDriver || null;
 
   return {
+    ...mapTripVehicle(raw),
     destinationService: raw?.destinationService ?? null,
     id: String(raw?.id || raw?.tripId || ""),
     creatorName: raw?.creatorName || rider?.displayName || null,

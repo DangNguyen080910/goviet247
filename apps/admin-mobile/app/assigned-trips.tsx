@@ -1,3 +1,5 @@
+import TripVehicleInfo from "../components/TripVehicleInfo";
+import TripVehicleButton from "../components/TripVehicleButton";
 import TripHistoryButton from "../components/TripHistoryButton";
 import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
@@ -723,7 +725,7 @@ export default function AssignedTripsScreen() {
                 <View style={styles.cardHeader}>
                   <Text style={styles.tripId}>{item.id}</Text>
                   <CopyTripIdButton tripId={item.id} />
-                  <TripHistoryButton tripId={item.id} />
+                  <TripHistoryButton tripId={item.id} /><TripVehicleButton tripId={item.id}/>
                   <View style={styles.statusChip}>
                     <Text style={styles.statusChipText}>
                       {getStatusLabel(item.status)}
@@ -756,7 +758,6 @@ export default function AssignedTripsScreen() {
                   <View style={styles.phoneValueRow}>
                     <Text style={[styles.value, styles.phoneValueText]}>
                       {item.driverName || "--"}
-                      {` • Màu xe: ${item.vehicleColor || "Chưa cập nhật"}`}
                       {item.driverPhone ? ` • ${item.driverPhone}` : ""}
                     </Text>
 
@@ -770,6 +771,8 @@ export default function AssignedTripsScreen() {
                     ) : null}
                   </View>
                 </View>
+
+                <TripVehicleInfo trip={item} />
 
                 <View style={styles.infoBlock}>
                   <Text style={styles.label}>Điểm đón</Text>
@@ -968,7 +971,7 @@ export default function AssignedTripsScreen() {
                     {selectedTripDetail?.id || selectedTripId || "--"}
                   </Text>
                   <CopyTripIdButton tripId={selectedTripDetail?.id || selectedTripId} />
-                  <TripHistoryButton tripId={selectedTripDetail?.id || selectedTripId} />
+                  <TripHistoryButton tripId={selectedTripDetail?.id || selectedTripId} /><TripVehicleButton tripId={selectedTripDetail?.id || selectedTripId}/>
                 </View>
 
                 <View style={styles.modalInfoBlock}>
@@ -1006,7 +1009,6 @@ export default function AssignedTripsScreen() {
                   <View style={styles.phoneValueRow}>
                     <Text style={[styles.value, styles.phoneValueText]}>
                       {selectedTripDetail?.driverName || "--"}
-                      {` • Màu xe: ${selectedTripDetail?.vehicleColor || "Chưa cập nhật"}`}
                       {selectedTripDetail?.driverPhone
                         ? ` • ${selectedTripDetail.driverPhone}`
                         : ""}
@@ -1024,6 +1026,8 @@ export default function AssignedTripsScreen() {
                     ) : null}
                   </View>
                 </View>
+
+                <TripVehicleInfo trip={selectedTripDetail} />
 
                 <View style={[styles.modalInfoBlock, styles.highlightInfoBlock]}>
                   <Text style={styles.label}>Điểm đón</Text>
@@ -1512,12 +1516,14 @@ const styles = StyleSheet.create({
   },
   cardHeader: {
     flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "flex-start",
     justifyContent: "space-between",
     gap: 10,
   },
   tripId: {
     flex: 1,
+    minWidth: 120,
     fontSize: 15,
     fontWeight: "800",
     color: "#0f172a",

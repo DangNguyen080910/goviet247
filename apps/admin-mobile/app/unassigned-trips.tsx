@@ -1,3 +1,5 @@
+import TripVehicleInfo from "../components/TripVehicleInfo";
+import TripVehicleButton from "../components/TripVehicleButton";
 import TripHistoryButton from "../components/TripHistoryButton";
 import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
@@ -412,7 +414,7 @@ export default function UnassignedTripsScreen() {
               {item.id}
             </Text>
             <CopyTripIdButton tripId={item.id} />
-                  <TripHistoryButton tripId={item.id} />
+                  <TripHistoryButton tripId={item.id} /><TripVehicleButton tripId={item.id}/>
 
             <View
               style={
@@ -746,7 +748,7 @@ export default function UnassignedTripsScreen() {
                     value={detail.id || selectedTripId}
                   />
                   <CopyTripIdButton tripId={detail.id || selectedTripId} />
-                  <TripHistoryButton tripId={detail.id || selectedTripId} />
+                  <TripHistoryButton tripId={detail.id || selectedTripId} /><TripVehicleButton tripId={detail.id || selectedTripId}/>
                   <DetailRow
                     label="👤 Người đặt"
                     value={detail.creatorName || "Chưa có người đặt"}
@@ -816,6 +818,7 @@ export default function UnassignedTripsScreen() {
                     value={formatDateTime(detail.createdAt)}
                   />
                   <TripMoney trip={detail} />
+                  <TripVehicleInfo trip={detail} />
                   <DetailRow
                     label="Loại xe"
                     value={formatCarType(detail.carType)}
@@ -1064,11 +1067,13 @@ const styles = StyleSheet.create({
   },
   tripHeader: {
     flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     gap: 10,
   },
   tripId: {
     flex: 1,
+    minWidth: 120,
     fontSize: 13,
     fontWeight: "700",
     color: "#334155",

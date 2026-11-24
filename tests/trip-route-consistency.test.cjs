@@ -45,6 +45,7 @@ for (const [file, listFunctions, detailFunction] of [
     for (const raw of [fixture, { ...fixture, direction: undefined, returnTime: '2026-11-21T12:00:00Z' }]) {
       const api = load(`apps/admin-mobile/services/${file}.ts`, {
         '../../api/src/shared/tripRoute.js': route,
+        '../utils/tripVehicle': load('apps/admin-mobile/utils/tripVehicle.ts', {}),
         './adminRequest': { adminRequest: async () => ({ trips: [raw], items: [raw], trip: raw }) },
         '../../mobile-chat/driverNoteDrafts.js': { flushDriverNoteDraft: async () => {} },
       });

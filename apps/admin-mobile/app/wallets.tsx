@@ -1,3 +1,4 @@
+import TripVehicleButton from "../components/TripVehicleButton";
 import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import TripHistoryButton from "../components/TripHistoryButton";
 import MoneyInput from "../../mobile-chat/MoneyInput";
@@ -770,7 +771,7 @@ export default function WalletsScreen() {
                       <Text style={styles.historyTitle}>{getTxnTypeLabel(txn.type, txn.note || "")}: {formatMoney(txn.amount)} đ</Text>
                       <Text style={styles.noteText}>{formatDateTimeVN(txn.createdAt)} — Số dư sau: {formatMoney(txn.balanceAfter)} đ</Text>
                       <Text style={styles.noteText}>{txn.note || ""}</Text>
-                      <CopyTripIdButton tripId={txn.tripId}/><TripHistoryButton tripId={txn.tripId}/>
+                      <CopyTripIdButton tripId={txn.tripId}/><TripHistoryButton tripId={txn.tripId}/><TripVehicleButton tripId={txn.tripId}/>
                     </View>
                   )) : <Text style={styles.noteText}>Chưa có giao dịch.</Text>}
                 </View>
@@ -1053,7 +1054,7 @@ export default function WalletsScreen() {
                 </Text>
               </View>
 
-              <CopyTripIdButton tripId={item.tripId}/><TripHistoryButton tripId={item.tripId}/>
+              <CopyTripIdButton tripId={item.tripId}/><TripHistoryButton tripId={item.tripId}/><TripVehicleButton tripId={item.tripId}/>
               <View style={styles.infoRow}>
                 <Text style={styles.infoLabel}>Số dư trước:</Text>
                 <Text style={styles.infoValue}>

@@ -1,3 +1,4 @@
+import TripVehicleButton from "../components/TripVehicleButton";
 import TripHistoryButton from "../components/TripHistoryButton";
 import { tripRoutePoints } from '../../api/src/shared/tripRoute.js';
 import ClearableSearchInput from "../../mobile-chat/ClearableSearchInput";
@@ -255,7 +256,7 @@ function FeedbackCard({
         <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
           <Text style={styles.tripText}>Trip: {item.tripId}</Text>
           <CopyTripIdButton tripId={item.tripId} />
-                  <TripHistoryButton tripId={item.tripId} />
+                  <TripHistoryButton tripId={item.tripId} /><TripVehicleButton tripId={item.tripId}/>
         </View>
       ) : null}
 
@@ -860,7 +861,7 @@ export default function FeedbackScreen() {
                       value={selectedFeedback.trip.id}
                     />
                     <CopyTripIdButton tripId={selectedFeedback.trip.id} />
-                  <TripHistoryButton tripId={selectedFeedback.trip.id} />
+                  <TripHistoryButton tripId={selectedFeedback.trip.id} /><TripVehicleButton tripId={selectedFeedback.trip.id}/>
                     <InfoRow
                       label="Trạng thái chuyến"
                       value={selectedFeedback.trip.status || "--"}

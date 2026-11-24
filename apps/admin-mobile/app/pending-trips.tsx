@@ -1,3 +1,5 @@
+import TripVehicleInfo from "../components/TripVehicleInfo";
+import TripVehicleButton from "../components/TripVehicleButton";
 import TripHistoryButton from "../components/TripHistoryButton";
 import { tripDestinationPoints } from '../../api/src/shared/tripRoute.js';
 import MoneyInput from "../../mobile-chat/MoneyInput";
@@ -530,7 +532,7 @@ export default function PendingTripsScreen() {
               {item.id}
             </Text>
             <CopyTripIdButton tripId={item.id} />
-                  <TripHistoryButton tripId={item.id} />
+                  <TripHistoryButton tripId={item.id} /><TripVehicleButton tripId={item.id}/>
 
             {tab === "PENDING" ? (
               <View style={styles.pendingBadge}>
@@ -812,7 +814,7 @@ export default function PendingTripsScreen() {
 
                   <DetailRow label="Mã chuyến" value={detail.id || "-"} />
                   <CopyTripIdButton tripId={detail.id} />
-                  <TripHistoryButton tripId={detail.id} />
+                  <TripHistoryButton tripId={detail.id} /><TripVehicleButton tripId={detail.id}/>
                   <DetailRow
                     label="👤 Người đặt"
                     value={detail.creatorName || "Chưa có người đặt"}
@@ -858,6 +860,7 @@ export default function PendingTripsScreen() {
                     value={formatDateTime(detail.createdAt)}
                   />
                   <TripMoney trip={detail} />
+                  <TripVehicleInfo trip={detail} />
                   <DetailRow
                     label="Loại xe"
                     value={formatCarType(detail.carType)}
@@ -1357,6 +1360,7 @@ const styles = StyleSheet.create({
   },
   tripCardHeader: {
     flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "space-between",
     gap: 12,
@@ -1364,6 +1368,7 @@ const styles = StyleSheet.create({
   },
   tripId: {
     flex: 1,
+    minWidth: 120,
     fontSize: 13,
     fontWeight: "800",
     color: "#344054",

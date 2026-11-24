@@ -2480,7 +2480,13 @@ export async function getAssignedTrips(req, res) {
             driverProfile: {
               select: {
                 fullName: true,
+                vehicleType: true,
+                vehicleBrand: true,
+                vehicleModel: true,
                 vehicleColor: true,
+                vehicleFuelType: true,
+                vehicleYear: true,
+                plateNumber: true,
               },
             },
           },

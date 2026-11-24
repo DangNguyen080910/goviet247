@@ -1,3 +1,4 @@
+import TripVehicleButton from "../components/TripVehicleButton";
 import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import {useCallback,useEffect,useState} from 'react';
 import {router,useFocusEffect} from 'expo-router';
@@ -81,7 +82,7 @@ export default function QuoteHistoryScreen(){
             <Text>{Number(item.distanceKm).toLocaleString('vi-VN',{maximumFractionDigits:1})} km · Lái dự kiến: {item.driveMinutes??'—'} phút</Text>
             <Text selectable>Tài khoản: {item.userId || 'Khách vãng lai'}</Text>
             {item.tripId&&<><Text selectable>Mã chuyến: {item.tripId}</Text><CopyTripIdButton tripId={item.tripId}/><Text>Đặt lúc: {historyTime(item.bookedAt)}</Text>
-              <View style={styles.row}><Pressable style={styles.button} onPress={()=>router.push({pathname:'/assigned-trips',params:{tripId:item.tripId,focusRequest:String(Date.now())}})}><Text style={styles.link}>Xem chuyến</Text></Pressable><TripHistoryButton tripId={item.tripId}/></View></>}
+              <View style={styles.row}><Pressable style={styles.button} onPress={()=>router.push({pathname:'/assigned-trips',params:{tripId:item.tripId,focusRequest:String(Date.now())}})}><Text style={styles.link}>Xem chuyến</Text></Pressable><TripHistoryButton tripId={item.tripId}/><TripVehicleButton tripId={item.tripId}/></View></>}
           </>}
         </View>)}
         <View style={styles.row}><Pressable accessibilityRole="button" disabled={busy||page<=1} style={styles.button} onPress={()=>{setPage(p=>p-1);setExpanded('');}}><Text style={[styles.link,page<=1&&styles.disabled]}>Trước</Text></Pressable><Text>Trang {page}/{Math.max(1,data.totalPages || 0)} · {money(stats.total)} lượt</Text><Pressable accessibilityRole="button" disabled={busy||page>=data.totalPages} style={styles.button} onPress={()=>{setPage(p=>p+1);setExpanded('');}}><Text style={[styles.link,page>=data.totalPages&&styles.disabled]}>Sau</Text></Pressable></View>

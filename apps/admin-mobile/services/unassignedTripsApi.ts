@@ -1,3 +1,4 @@
+import { mapTripVehicle, type TripVehicleBinding } from "../utils/tripVehicle";
 import { tripDirection } from '../../api/src/shared/tripRoute.js';
 // Path: admin-mobile/services/unassignedTripsApi.ts
 import { adminRequest } from "./adminRequest";
@@ -49,7 +50,7 @@ export type UnassignedTripAlertLog = {
   note: string | null;
 };
 
-export type UnassignedTripDetail = {
+export type UnassignedTripDetail = TripVehicleBinding & {
   destinationService?: any;
   id: string;
   creatorName?: string | null;
@@ -310,6 +311,7 @@ function mapTripDetail(raw: unknown): UnassignedTripDetail {
   const createdAt = typeof item?.createdAt === "string" ? item.createdAt : null;
 
   return {
+    ...mapTripVehicle(raw),
     id: String(item?.id || item?.tripId || ""),
     creatorName:
       typeof item?.creatorName === "string" ? item.creatorName : null,
