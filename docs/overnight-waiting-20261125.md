@@ -1,5 +1,7 @@
 # Giá chờ riêng cho chuyến lưu trú qua đêm — 25/11/2026
 
+> Bản sửa tiếp theo cho Bao xe: [giữ cước Tiêu chuẩn làm gốc](charter-waiting-credit-20261125.md), áp dụng cho cả 5/7/16 chỗ. Khi chọn Bao xe, chỉ trừ tiền giờ theo phút được gói thay thế; không tính lại khoản giữ giá chuyển tiếp theo lựa chọn gói. Các hướng dẫn mức tiền bên dưới ghi lại cấu hình tại lần triển khai đầu, không tự thay cấu hình đang lưu.
+
 ## Vấn đề và lựa chọn
 
 Mức chờ 60.000đ/giờ ở mốc 50 km trước đây kéo giá chuyến 174,6 km lên theo cơ chế giữ tổng giá chạy và chờ, dù bậc của tuyến này chỉ là 20.000đ/giờ. Nếu chỉ bỏ mức giữ giá, cùng thời gian chờ hai đêm, 50 km có thể giá 3.330.000đ nhưng 50,1 km còn 2.570.000đ.
@@ -12,7 +14,7 @@ Mức chờ 60.000đ/giờ ở mốc 50 km trước đây kéo giá chuyến 174
 - Thiếu trường hoặc `null`: dùng cách tính cũ. `0`: tiền giờ bằng 0; mức giữ giá tại lần chuyển sang lưu trú (nếu có) vẫn áp dụng. Số tiền phải là số nguyên không âm, tối đa 2.147.483.647.
 - Chỉ áp dụng cho khứ hồi, có ít nhất một khoảng chờ đủ ngưỡng nghỉ đêm. Chỉ qua 0h hoặc lái xe qua đêm chưa đủ điều kiện. Mức giờ chỉ lấy từ cấu hình server, không lấy từ payload khách.
 - Tiền chạy theo km vẫn lũy tiến. Thời gian chờ tính từ lúc xe dự kiến đến điểm cuối tới lúc bắt đầu quay về. Trừ đúng giờ nghỉ đêm đủ điều kiện, giờ Bao xe đã mua và một lần miễn phí mỗi chuyến; làm tròn tổng giờ tính phí lên như trước.
-- Khi áp dụng giá riêng: `hourlyWaitCost = billableWaitHours × overnightPricePerHour`, `waitingTierAdjustment = 0`, `waitingPricingMode = OVERNIGHT_FLAT`.
+- Khi áp dụng giá riêng và không chọn Bao xe: `hourlyWaitCost = billableWaitHours × overnightPricePerHour`, `waitingTierAdjustment = 0`, `waitingPricingMode = OVERNIGHT_FLAT`. Khi chọn Bao xe, phần tiền giờ được tính từ cước Tiêu chuẩn rồi trừ `charterWaitingCredit` theo [quy tắc mới](charter-waiting-credit-20261125.md); khoản giữ giá không được dùng để cấp giảm tiền chờ.
 - Có một mức giữ giá chuyển tiếp để tránh kéo dài giờ về vài phút tới ngưỡng đủ một đêm lại làm tổng tiền giảm: tổng tiền chạy + chờ + nghỉ đêm không thấp hơn tổng tiền chạy + chờ ngay trước lần đầu đủ điều kiện nghỉ đêm. Khoản bù chuyển tiếp nằm riêng ở `nightTransitionAdjustment`, cộng vào `waitCost`. Mốc tiền này cố định theo lần chuyển đầu, không tăng theo số ngày chờ; khoản bù giảm về 0 khi tiền theo giá lưu trú đã đủ cao. Tuyến 174,6 km trong ví dụ không phát sinh khoản bù này.
 - Để các đêm tiếp theo cũng không làm giảm giá, cấu hình phải thỏa `overnightFee >= ceil(nightMinWaitHours) × overnightPricePerHour`. API và Web cùng kiểm tra khi sửa mức chờ, ngưỡng đêm hoặc phụ phí đêm. Với 20.000đ/giờ và ngưỡng 5 giờ, mức đêm tối thiểu là 100.000đ; mức hiện tại 300.000đ phù hợp.
 - Chuyến một chiều và khứ hồi chưa đủ điều kiện nghỉ đêm giữ công thức cũ. Không sửa mức giá km, giá chờ theo bậc, phụ phí đêm hay cấu hình loại xe khác.

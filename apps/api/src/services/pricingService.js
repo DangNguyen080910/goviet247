@@ -6,6 +6,7 @@ import pkg from "@prisma/client";
 import { parseTripTime } from "../utils/tripTime.js";
 import { calculateHolidaySurcharge } from "./holidaySurcharge.js";
 import { calculateWaitingTime, calculateTieredWaitingCost, validateOvernightWaitingPrice } from "./waitingPricing.js";
+import { calculateCharterWaitingCredit } from "./charterWaitingCredit.js";
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
@@ -167,6 +168,7 @@ export async function quotePrice(input, db = prisma) {
   let billableWaitMinutes = 0;
   let waitCost = 0;
   let waitingDetails = {};
+  let charterWaitingBase = null;
 
   if (direction === "ROUND_TRIP") {
     const rt = parseTripTime(returnTime);
@@ -211,16 +213,20 @@ export async function quotePrice(input, db = prisma) {
     const waitingTime = calculateWaitingTime(
       new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig, destinationService.sessions,
     );
+    const useStandardCharterBase = ["CAR_5", "CAR_7", "CAR_16"].includes(carType) && destinationService.sessions.length > 0;
+    const pricingWaitingTime = useStandardCharterBase
+      ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig)
+      : waitingTime;
     const overnightPriceError = validateOvernightWaitingPrice(waitingTime.waitingRules, overnightFee);
     if (overnightPriceError) return { ok: false, status: 409, message: overnightPriceError };
     const overnightPricePerHour = waitingTime.waitingRules.overnightPricePerHour;
-    const beforeNightHours = waitingTime.firstOvernightAt && overnightPricePerHour != null
+    const beforeNightHours = pricingWaitingTime.firstOvernightAt && overnightPricePerHour != null
       ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs),
-          new Date(new Date(waitingTime.firstOvernightAt).getTime() - 1),
-          config.roundTripWaitingConfig, destinationService.sessions).billableWaitHours
+          new Date(new Date(pricingWaitingTime.firstOvernightAt).getTime() - 1),
+          config.roundTripWaitingConfig, useStandardCharterBase ? [] : destinationService.sessions).billableWaitHours
       : 0;
     const waitingPrice = calculateTieredWaitingCost(
-      km, waitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
+      km, pricingWaitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
       distance => {
         const result = calculateTieredDistanceCost(distance, config.kmTiers);
         return result.usedTierPricing ? result.distanceCost : Math.round(distance * pricePerKm);
@@ -231,6 +237,15 @@ export async function quotePrice(input, db = prisma) {
     ({ waitCost, pricePerHour } = waitingPrice);
     overnightCost = overnightCount * overnightFee;
     waitingDetails = { ...waitingTime, ...waitingPrice };
+    if (useStandardCharterBase) {
+      charterWaitingBase = {
+        hourlyWaitCost: waitingPrice.hourlyWaitCost,
+        waitCost: waitingPrice.waitCost,
+        sessions: destinationService.sessions.map(session => ({ date: session.date, fee: session.fee,
+          coveredMinutes: calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt,
+            config.roundTripWaitingConfig, [session]).serviceCoveredMinutes })),
+      };
+    }
   } else if (direction === "ONE_WAY") {
     const dm = driveMinutes == null ? null : Number(driveMinutes);
     const driveHours = dm != null && Number.isFinite(dm) ? dm / 60 : 0;
@@ -252,18 +267,33 @@ export async function quotePrice(input, db = prisma) {
     minApplied = true;
   }
 
-  const priceBeforeFuelSurcharge = rawTotal;
+  let priceBeforeFuelSurcharge = rawTotal;
   let regionalSurcharge;
   try { regionalSurcharge = await buildRegionalSurcharge(input, serviceConfig?.regionalPricingConfig, priceBeforeFuelSurcharge); }
   catch (error) { return { ok: false, status: error.status || 400, message: error.message }; }
   const fuelSurchargePercent =
     fuelPreference === "GASOLINE" ? gasolineSurchargePercent : 0;
-  const fuelSurchargeAmount = Math.round(
-    priceBeforeFuelSurcharge * (fuelSurchargePercent / 100),
-  );
   // Both surcharges use the same fare base; never compound one surcharge on another.
-  const holidaySurcharge = calculateHolidaySurcharge(config, pickup, priceBeforeFuelSurcharge);
+  let holidaySurcharge = calculateHolidaySurcharge(config, pickup, priceBeforeFuelSurcharge);
   const holidaySurchargePercent = holidaySurcharge?.percent || 0;
+  if (charterWaitingBase) {
+    const credit = calculateCharterWaitingCredit(charterWaitingBase.hourlyWaitCost, pricePerHour,
+      charterWaitingBase.sessions, [fuelSurchargePercent, holidaySurchargePercent, regionalSurcharge.percent]);
+    waitCost = charterWaitingBase.waitCost - credit.credit;
+    waitingDetails = { ...waitingDetails, waitCost,
+      hourlyWaitCost: charterWaitingBase.hourlyWaitCost - credit.credit,
+      standardHourlyWaitCost: charterWaitingBase.hourlyWaitCost,
+      standardWaitCost: charterWaitingBase.waitCost,
+      charterWaitingCredit: credit.credit, charterWaitingCredits: credit.days,
+      charterPricingVersion: 1 };
+    const discountedFare = baseFare + finalDistanceCost + waitCost + overnightCost;
+    minApplied = discountedFare < minFare;
+    priceBeforeFuelSurcharge = Math.max(minFare, discountedFare);
+    holidaySurcharge = calculateHolidaySurcharge(config, pickup, priceBeforeFuelSurcharge);
+    regionalSurcharge = { ...regionalSurcharge, baseAmount: priceBeforeFuelSurcharge,
+      amount: Math.round(priceBeforeFuelSurcharge * regionalSurcharge.percent / 100) };
+  }
+  const fuelSurchargeAmount = Math.round(priceBeforeFuelSurcharge * (fuelSurchargePercent / 100));
   const holidaySurchargeAmount = holidaySurcharge?.amount || 0;
   rawTotal = priceBeforeFuelSurcharge + fuelSurchargeAmount + holidaySurchargeAmount + regionalSurcharge.amount;
 
@@ -280,6 +310,13 @@ export async function quotePrice(input, db = prisma) {
       pricePerHour, hourlyWaitCost: waitingDetails.hourlyWaitCost,
       waitingTierAdjustment: waitingDetails.waitingTierAdjustment,
       nightTransitionAdjustment: waitingDetails.nightTransitionAdjustment,
+      ...(charterWaitingBase ? {
+        charterPricingVersion: waitingDetails.charterPricingVersion,
+        standardHourlyWaitCost: waitingDetails.standardHourlyWaitCost,
+        standardWaitCost: waitingDetails.standardWaitCost,
+        charterWaitingCredit: waitingDetails.charterWaitingCredit,
+        charterWaitingCredits: waitingDetails.charterWaitingCredits,
+      } : {}),
     } : {}),
     fuelSurchargePercent, fuelSurchargeAmount, holidaySurcharge,
     regionalSurcharge,

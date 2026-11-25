@@ -79,6 +79,23 @@ for (const legacy of [false,true]) test(`HTTP overnight flat quote → create wi
   assert.equal(f.saved,1);
   assert.equal(f.priceCalls,0,'held quote booking must not reprice');
 }, {overnightFlat:true}));
+for (const carType of ['CAR_5','CAR_7','CAR_16'])for (const legacy of [false,true])for (const regional of [false,true]) {
+  test(`HTTP corrected charter → JSONB → create: ${carType}, releasedMobile=${legacy}, regional=${regional}`, async()=>fixture(async f=>{
+    const input={...request,carType,direction:'ROUND_TRIP',fuelPreference:'GASOLINE',returnTime:'2099-01-03T15:00:00+07:00',destinationServiceDates:['2099-01-02']};
+    const quoted=await f.post('/quote',input,false);
+    assert.equal(quoted.status,200,JSON.stringify(quoted.body));
+    const data=quoted.body.data;
+    assert.equal(data.charterPricingVersion,1);
+    assert.ok(data.charterWaitingCredit>0);
+    const created=await f.post('/trips',booking(input,data,legacy));
+    assert.equal(created.status,201,JSON.stringify(created.body));
+    assert.equal(created.body.trip.totalPrice,data.finalPrice);
+    assert.equal(created.body.trip.destinationService.tourDisplay.charterWaitingCredit,data.charterWaitingCredit);
+    assert.equal(created.body.trip.destinationService.tourDisplay.nightTransitionAdjustment,data.nightTransitionAdjustment);
+    assert.equal(f.saved,1);
+    assert.equal(f.priceCalls,0);
+  }, {overnightFlat:true,regional}));
+}
 for(const regional of [false,true])for(const kind of ['ONE_WAY','ROUND_TRIP','CHARTER'])for(const legacy of [false,true]){
   test(`HTTP quote → JSONB → create: ${kind}, regional=${regional}, releasedMobile=${legacy}`,async()=>fixture(async f=>{
     const input={...request,...(kind==='ONE_WAY'?{}:{direction:'ROUND_TRIP',returnTime:'2099-01-03T15:00:00+07:00'}),...(kind==='CHARTER'?{destinationServiceDates:['2099-01-02']}:{} )};
