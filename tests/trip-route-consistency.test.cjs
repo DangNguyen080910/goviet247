@@ -140,7 +140,8 @@ test('Driver dashboard keeps the third destination and return in both waiting an
   }
   visit(tree); assert.ok(callback);
   const route = await shared;
-  const render = new Function('tripRoutePoints', compile(`const render = ${callback.getText(tree)};`) + ';return render;')(route.tripRoutePoints);
+  const presentation = load('apps/driver-mobile/utils/tripPresentation.ts', { '../../api/src/shared/tripRoute.js': route });
+  const render = new Function('driverTripRoutePoints', compile(`const render = ${callback.getText(tree)};`) + ';return render;')(presentation.driverTripRoutePoints);
   for (const mode of ['masked', 'full']) {
     const { destinations } = render(fixture, mode);
     assert.deepEqual(destinations.map(p => p.address), expected.slice(1));

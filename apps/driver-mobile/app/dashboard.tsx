@@ -8,8 +8,8 @@ import { enablePushNotifications } from "../services/pushRegister";
 import {fetchDriverNotifications, type DriverNotificationItem} from "../services/notificationApi";
 import { AvailableTripState, confirmsTripUnavailable } from "../../api/src/shared/availableTripState.js";
 import { TripChatButton } from "../services/tripChat";
-import { tripRoutePoints } from "../../api/src/shared/tripRoute.js";
-import TripDispatcherNote from "../components/TripDispatcherNote";
+import { driverTripRoutePoints } from "../utils/tripPresentation";
+import TripNotes from "../components/TripNotes";
 import { phoneCallUrl } from "../../api/src/shared/tripContact.js";
 import TripSurcharges from "../components/TripSurcharges";
 // Path: goviet247/apps/driver-mobile/app/dashboard.tsx
@@ -1274,7 +1274,7 @@ export default function DashboardScreen() {
       trip: AvailableTripItem | MyTripItem,
       mode: "masked" | "full" = "full",
     ) => {
-      return { destinations: tripRoutePoints(trip, { masked: mode === "masked" }).filter(point => point.label !== "Điểm đón").map((point, index) => ({ ...point, key: `${trip.id}-route-${index}` })) };
+      return { destinations: driverTripRoutePoints(trip, { masked: mode === "masked" }).filter(point => point.label !== "Điểm đón").map((point, index) => ({ ...point, key: `${trip.id}-route-${index}` })) };
     },
     [],
   );
@@ -1375,7 +1375,6 @@ export default function DashboardScreen() {
           </View>
 
           <TripSurcharges trip={trip} />
-          <TripDispatcherNote note={trip.dispatcherNote} />
 
           <View style={styles.infoRow}>
             <Text style={styles.infoIcon}>📍</Text>
@@ -1392,6 +1391,8 @@ export default function DashboardScreen() {
               </Text>
             </View>
           ))}
+
+          <TripNotes trip={trip} />
 
           <View style={styles.metaGroup}>
             <Text style={styles.pickupTimeNotice}>
@@ -1564,7 +1565,6 @@ export default function DashboardScreen() {
           </View>
 
           <TripSurcharges trip={trip} />
-          <TripDispatcherNote note={trip.dispatcherNote} />
 
           <TouchableOpacity
             style={styles.incomeToggleButton}
@@ -1659,12 +1659,7 @@ export default function DashboardScreen() {
             </View>
           ))}
 
-          {!!trip.note && (
-            <View style={styles.infoRow}>
-              <Text style={styles.infoIcon}>📝</Text>
-              <Text style={styles.infoText}>{trip.note}</Text>
-            </View>
-          )}
+          <TripNotes trip={trip} />
 
           <View style={styles.metaGroup}>
             <View style={styles.tripStatusRow}>
