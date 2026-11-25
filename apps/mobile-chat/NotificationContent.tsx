@@ -22,11 +22,11 @@ export default function NotificationContent({ item, message, onChange }: {
   }
   return <View>
     <Text numberOfLines={collapsed ? 3 : undefined} style={{ color: "#374151", fontSize: 15, lineHeight: 23 }}>{message || "Không có nội dung."}</Text>
-    <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 12, marginTop: 8 }}>
-      <Pressable accessibilityRole="button" accessibilityState={{ expanded: !collapsed, disabled: busy }} disabled={busy} onPress={() => void save({ isCollapsed: !collapsed })} style={{ minHeight: 44, justifyContent: "center" }}>
+    <View style={{ gap: 4, marginTop: 8 }}>
+      <Pressable accessibilityRole="button" accessibilityState={{ expanded: !collapsed, disabled: busy }} disabled={busy} onPress={() => void save({ isCollapsed: !collapsed })} style={{ alignSelf: "flex-start", minHeight: 44, justifyContent: "center" }}>
         <Text style={{ color: "#2563eb", fontWeight: "700" }}>{collapsed ? "Xem thêm" : "Thu gọn"}</Text>
       </Pressable>
-      <Pressable accessibilityRole="button" accessibilityState={{ selected: Boolean(item.isPinned), disabled: busy }} disabled={busy} onPress={() => void save({ isPinned: !item.isPinned })} style={{ minHeight: 44, justifyContent: "center" }}>
+      <Pressable accessibilityRole="button" accessibilityState={{ selected: Boolean(item.isPinned), disabled: busy }} disabled={busy} onPress={() => void save({ isPinned: !item.isPinned })} style={{ alignSelf: "flex-end", minHeight: 44, justifyContent: "center", paddingHorizontal: 12, borderWidth: 1, borderColor: "#bfdbfe", borderRadius: 8 }}>
         <Text style={{ color: "#2563eb", fontWeight: "700" }}>{item.isPinned ? "📌 Bỏ ghim" : "Ghim"}</Text>
       </Pressable>
     </View>

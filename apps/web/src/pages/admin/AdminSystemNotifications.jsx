@@ -231,20 +231,26 @@ export default function AdminSystemNotifications() {
                   {item.message}
                 </Typography>
 
-                <Button aria-expanded={Boolean(expanded[item.id])} onClick={() => setExpanded(current => ({ ...current, [item.id]: !current[item.id] }))}>{expanded[item.id] ? "Thu gọn" : "Xem thêm"}</Button>
-                <FormControlLabel control={<Switch disabled={saving} checked={Boolean(item.isPinnedByDefault)} onChange={() => handlePin(item)} />} label="Ghim mặc định" />
+                <Box sx={{ mt: 0.5 }}>
+                  <Button aria-expanded={Boolean(expanded[item.id])} onClick={() => setExpanded(current => ({ ...current, [item.id]: !current[item.id] }))}>{expanded[item.id] ? "Thu gọn" : "Xem thêm"}</Button>
+                </Box>
+                <Box sx={{ mt: 1, display: "flex", justifyContent: { xs: "flex-start", sm: "flex-end" } }}>
+                  <FormControlLabel sx={{ m: 0 }} control={<Switch disabled={saving} checked={Boolean(item.isPinnedByDefault)} onChange={() => handlePin(item)} />} label="Ghim mặc định" />
+                </Box>
                 <Divider sx={{ my: 1 }} />
 
                 <Stack
-                  direction="row"
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={1}
                   justifyContent="space-between"
-                  alignItems="center"
+                  alignItems={{ xs: "flex-start", sm: "center" }}
                 >
                   <Typography variant="caption">
                     {item.isActive ? "Đang hoạt động" : "Đã tắt"}
                   </Typography>
 
                   <FormControlLabel
+                    sx={{ m: 0 }}
                     control={
                       <Switch
                         disabled={saving}

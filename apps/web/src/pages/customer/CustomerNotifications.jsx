@@ -116,9 +116,9 @@ function NotificationCard({ id, title, message, createdAt, unread = false, tripI
           >
             {message || "Không có nội dung"}
           </Typography>
-          <Stack direction="row" spacing={1} flexWrap="wrap">
-            <Button disabled={busy} aria-expanded={!collapsed} onClick={() => change({ isCollapsed: !collapsed })}>{collapsed ? "Xem thêm" : "Thu gọn"}</Button>
-            <Button disabled={busy} aria-pressed={Boolean(isPinned)} onClick={() => change({ isPinned: !isPinned })}>{isPinned ? "📌 Bỏ ghim" : "Ghim"}</Button>
+          <Stack spacing={0.5} sx={{ mt: 0.5 }}>
+            <Button sx={{ alignSelf: "flex-start" }} disabled={busy} aria-expanded={!collapsed} onClick={() => change({ isCollapsed: !collapsed })}>{collapsed ? "Xem thêm" : "Thu gọn"}</Button>
+            <Button variant="outlined" size="small" sx={{ alignSelf: "flex-end" }} disabled={busy} aria-pressed={Boolean(isPinned)} onClick={() => change({ isPinned: !isPinned })}>{isPinned ? "📌 Bỏ ghim" : "Ghim"}</Button>
           </Stack>
           {error && <Alert severity="error">{error}</Alert>}
           {tripId && <CopyTripIdButton tripId={tripId}/>}
