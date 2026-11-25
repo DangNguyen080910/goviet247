@@ -37,6 +37,7 @@ import {
 type DocumentItem = {
   type: DriverDocumentType;
   label: string;
+  hint: string;
 };
 
 type UploadedDocState = {
@@ -51,14 +52,15 @@ const VEHICLE_TYPES = [
 ] as const;
 
 const DOCUMENT_ITEMS: DocumentItem[] = [
-  { type: "CCCD_FRONT", label: "CCCD mặt trước" },
-  { type: "CCCD_BACK", label: "CCCD mặt sau" },
-  { type: "PORTRAIT", label: "Ảnh chân dung" },
-  { type: "DRIVER_LICENSE", label: "Bằng lái xe" },
+  { type: "CCCD_FRONT", label: "CCCD mặt trước", hint: "Chụp mặt có ảnh và thông tin cá nhân trên CCCD." },
+  { type: "CCCD_BACK", label: "CCCD mặt sau", hint: "Chụp mặt sau của CCCD." },
   {
     type: "VEHICLE_REGISTRATION",
-    label: "Cavet xe / giấy tờ tương đương",
+    label: "Cà vẹt xe (mặt có biển số) hoặc giấy tờ tương đương",
+    hint: "Chụp rõ biển số và thông tin xe trên giấy đăng ký xe (cà vẹt) hoặc giấy tờ tương đương.",
   },
+  { type: "PORTRAIT", label: "Ảnh chân dung", hint: "Chụp rõ khuôn mặt của tài xế." },
+  { type: "DRIVER_LICENSE", label: "Bằng lái xe — mặt trước", hint: "Chỉ chụp mặt trước bằng lái, rõ ảnh và thông tin tài xế." },
 ];
 
 export default function DriverProfileCreateScreen() {
@@ -170,7 +172,8 @@ export default function DriverProfileCreateScreen() {
       return;
     }
 
-    Alert.alert("Chọn ảnh", "Bạn muốn lấy ảnh theo cách nào?", [
+    const document = DOCUMENT_ITEMS.find(item => item.type === docType);
+    Alert.alert(document?.label || "Chọn ảnh", `${document?.hint || ""}\n\nBạn muốn lấy ảnh theo cách nào?`.trim(), [
       {
         text: "Chụp ảnh",
         onPress: () => pickFromCamera(docType),
@@ -594,16 +597,18 @@ export default function DriverProfileCreateScreen() {
                 Hỗ trợ ảnh JPG, JPEG, PNG, WEBP. Dung lượng tối đa 5MB/ảnh.
               </Text>
 
-              {DOCUMENT_ITEMS.map((item) => {
+              {DOCUMENT_ITEMS.map((item, index) => {
                 const uploaded = uploadedDocs[item.type];
                 const isUploading = uploadingType === item.type;
 
                 return (
                   <View key={item.type} style={styles.docItem}>
-                    <Text style={styles.docLabel}>{item.label}</Text>
+                    <Text style={styles.docLabel}>{index + 1}. {item.label}</Text>
+                    <Text style={styles.docHint}>{item.hint}</Text>
 
                     {uploaded?.localUri ? (
                       <Image
+                        accessibilityLabel={`Ảnh đã chọn: ${item.label}`}
                         source={{ uri: uploaded.localUri }}
                         style={styles.previewImage}
                       />
@@ -941,6 +946,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "700",
     color: "#111827",
+    marginBottom: 4,
+  },
+  docHint: {
+    fontSize: 13,
+    lineHeight: 20,
+    color: "#4B5563",
     marginBottom: 10,
   },
   previewImage: {
