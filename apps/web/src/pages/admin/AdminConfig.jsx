@@ -369,7 +369,8 @@ function buildPayloadFromForm(item) {
     baseFare: Number(item.baseFare || 0),
     pricePerKm: Number(item.pricePerKm || 0),
     pricePerHour: Number(item.pricePerHour || 0),
-    roundTripWaitingConfig: Object.fromEntries(Object.entries(item.roundTripWaitingConfig || { freeWaitingMinutes: 60, nightStartHour: 22, nightEndHour: 6, nightMinWaitHours: 4 }).map(([key, value]) => [key, Number(value)])),
+    roundTripWaitingConfig: Object.fromEntries(Object.entries(item.roundTripWaitingConfig || { freeWaitingMinutes: 60, nightStartHour: 22, nightEndHour: 6, nightMinWaitHours: 4 }).map(([key, value]) => [key,
+      key === "overnightPricePerHour" && (value === "" || value == null) ? null : Number(value)])),
     minFare: Number(item.minFare || 0),
     overnightFee: Number(item.overnightFee || 0),
     gasolineSurchargePercent: Number(item.gasolineSurchargePercent || 0),
@@ -633,6 +634,17 @@ function PricingCard({
               value={item?.roundTripWaitingConfig?.[key] ?? fallback}
               onChange={onFieldChange(carType, `roundTripWaitingConfig.${key}`)}
               fullWidth type="number" inputProps={{ min: key === "nightMinWaitHours" ? 0.5 : 0, max, step: key === "nightMinWaitHours" ? 0.5 : 1 }} />)}
+            <MoneyTextField
+              label="Giá chờ/giờ khi lưu trú qua đêm"
+              value={item?.roundTripWaitingConfig?.overnightPricePerHour ?? ""}
+              onChange={onFieldChange(carType, "roundTripWaitingConfig.overnightPricePerHour")}
+              fullWidth type="number" inputProps={{ min: 0, step: 1 }}
+              helperText="Chỉ dùng khi có ít nhất một đêm đủ điều kiện: cùng một giá giờ cho loại xe này, không phụ thuộc bậc km. Để trống giữ cách tính cũ; nhập 0 để không thu chờ theo giờ. Giờ nghỉ đêm và giờ Bao xe đã bao gồm không tính chờ trùng."
+            />
+            <Typography variant="caption" color="text.secondary">
+              Khi bắt đầu áp dụng giá lưu trú, tổng tiền không thấp hơn ngay trước lúc đủ điều kiện nghỉ đêm.
+              Mức giữ giá tại thời điểm chuyển này không tăng theo số ngày chờ thêm.
+            </Typography>
           </Stack>
         </Box>
 
@@ -661,6 +673,7 @@ function PricingCard({
                 <Typography variant="caption" color="text.secondary" display="block">
                   Giá chạy/km tính lũy tiến. Giá chờ chọn theo bậc tổng km, chỉ áp dụng khứ hồi.
                   Khi giá chờ giảm ở bậc xa hơn, tổng tiền chạy và chờ được giữ không thấp hơn mức tại ranh giới trước đó.
+                  Nếu đã cấu hình giá chờ lưu trú riêng và chuyến đủ điều kiện nghỉ đêm, dùng giá lưu trú ở trên thay cho giá chờ theo bậc.
                 </Typography>
               </Box>
 
@@ -1201,6 +1214,13 @@ export default function AdminConfig() {
       }
       const duration = (24 + Number(rules.nightEndHour) - Number(rules.nightStartHour)) % 24;
       if (!duration || !Number.isFinite(Number(rules.nightMinWaitHours)) || Number(rules.nightMinWaitHours) <= 0 || Number(rules.nightMinWaitHours) > duration) return "Số giờ chờ tối thiểu qua đêm phải lớn hơn 0 và không vượt độ dài khung nghỉ đêm.";
+      const overnightRate = rules.overnightPricePerHour;
+      if (overnightRate !== "" && overnightRate != null) {
+        const rate = Number(overnightRate);
+        if (!Number.isSafeInteger(rate) || rate < 0 || rate > 2147483647) return "Giá chờ lưu trú qua đêm phải là số nguyên không âm hoặc để trống.";
+        const minimum = Math.ceil(Number(rules.nightMinWaitHours)) * rate;
+        if (Number(item.overnightFee) < minimum) return `Phụ phí mỗi đêm phải từ ${minimum.toLocaleString("vi-VN")}đ khi dùng giá chờ lưu trú này để giá không giảm lúc đủ điều kiện nghỉ đêm.`;
+      }
     }
 
     return "";

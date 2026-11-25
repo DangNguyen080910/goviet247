@@ -1,5 +1,7 @@
 # Giá chờ theo bậc km và nghỉ đêm khứ hồi
 
+> Cập nhật 25/11/2026: có thể cấu hình giá chờ riêng cho chuyến lưu trú đủ điều kiện nghỉ đêm. Xem [hướng dẫn mới](overnight-waiting-20261125.md). Đợt cập nhật này không thêm migration; hướng dẫn migration bên dưới thuộc lần triển khai tháng 10.
+
 ## Cấu hình
 
 - Mỗi bậc `kmTiers` có thêm `pricePerWaitHour`. `null` dùng giá chờ dự phòng `pricePerHour`; `0` là miễn phí.
@@ -8,7 +10,7 @@
 - `roundTripWaitingConfig` lưu số phút miễn phí và quy tắc nghỉ đêm. Giá trị mặc định: 60 phút miễn phí; khung 22h–6h, ít nhất 4 giờ chờ trong mỗi khung đêm.
 - Chỉ khoảng từ lúc dự kiến đến điểm cuối tới giờ bắt đầu quay về được tính là chờ. Thời gian lái xe không được tính để đạt ngưỡng nghỉ đêm.
 - Mỗi khung đêm đạt ngưỡng tính một phụ phí. Chỉ phần chờ thực sự nằm trong khung đêm đủ điều kiện được loại khỏi tiền chờ giờ. Phần còn lại trừ thời gian miễn phí một lần mỗi chuyến, sau đó làm tròn lên giờ.
-- Nếu bậc xa có giá chờ thấp hơn, giữ tổng tiền chạy và chờ không thấp hơn giá ở các ranh giới đã vượt. Chênh lệch nằm trong `waitingTierAdjustment`, cộng vào `waitCost`; `hourlyWaitCost` là phần giá giờ thuần.
+- Nếu bậc xa có giá chờ thấp hơn, giữ tổng tiền chạy và chờ không thấp hơn giá ở các ranh giới đã vượt. Chênh lệch nằm trong `waitingTierAdjustment`, cộng vào `waitCost`; `hourlyWaitCost` là phần giá giờ thuần. Quy tắc theo bậc này chỉ áp dụng khi chuyến chưa đủ điều kiện nghỉ đêm hoặc loại xe chưa có giá chờ lưu trú riêng.
 - Báo giá trả thêm `overnightCoveredMinutes`, `hourlyWaitMinutes`, `billableWaitHours`, `waitingRules`, `hourlyWaitCost`, `waitingTierAdjustment`.
 - Một chiều vẫn dùng ngưỡng km hoặc giờ lái hiện tại cho phụ phí; giao diện đã ghi rõ các ô này chỉ dành cho một chiều.
 - Bậc km cũ chưa có giá chờ riêng tiếp tục dùng giá dự phòng. Chưa tự tăng giá chờ của bất kỳ loại xe nào. Quy tắc nghỉ đêm mới áp dụng cho báo giá khứ hồi sau khi API mới chạy, kể cả khi cấu hình JSON còn null.

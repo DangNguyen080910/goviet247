@@ -30,9 +30,10 @@ function load(relative,bindings){
     {exports,require:id=>{assert.ok(id in modules,id);return modules[id];},console:{log(){},error(){}},Date,URL,process:{env:{}},setInterval,clearInterval});
   return exports;
 }
-async function fixture(run,{regional=false}={}){
+async function fixture(run,{regional=false,overnightFlat=false}={}){
   const held=new Map(), trips=new Map();let saved=0, mapCalls=0, priceCalls=0;
   const config={baseFare:0,pricePerKm:5000,pricePerHour:10000,minFare:100000,overnightFee:300000,overnightTriggerKm:600,overnightTriggerHours:12,gasolineSurchargePercent:10};
+  if (overnightFlat) config.roundTripWaitingConfig={freeWaitingMinutes:60,nightStartHour:22,nightEndHour:6,nightMinWaitHours:5,overnightPricePerHour:20000};
   const db={pricingConfig:{findFirst:async()=>config,findUnique:async()=>({isActive:true})},
     tripConfig:{findFirst:async()=>({quoteExpireSeconds:120,regionalPricingConfig:{NORTH:0,CENTRAL:regional?10:0,SOUTH:0}})},
     bookingQuote:{create:async({data})=>held.set(data.tokenHash,{...data,pricing:jsonb(data.pricing),route:jsonb(data.route)}),findUnique:async({where})=>held.get(where.tokenHash)},
@@ -65,6 +66,19 @@ function booking(input,data,legacy=false){
   if(legacy)delete result.routePricingPoints;
   return result;
 }
+for (const legacy of [false,true]) test(`HTTP overnight flat quote → create with releasedMobile=${legacy}`, async()=>fixture(async f=>{
+  const input={...request,direction:'ROUND_TRIP',returnTime:'2099-01-03T15:00:00+07:00'};
+  const quoted=await f.post('/quote',input,false);
+  assert.equal(quoted.status,200,JSON.stringify(quoted.body));
+  assert.equal(quoted.body.data.waitingPricingMode,'OVERNIGHT_FLAT');
+  assert.equal(quoted.body.data.waitingTierAdjustment,0);
+  const created=await f.post('/trips',booking(input,quoted.body.data,legacy));
+  assert.equal(created.status,201,JSON.stringify(created.body));
+  assert.equal(created.body.trip.totalPrice,quoted.body.data.finalPrice);
+  assert.equal(created.body.trip.destinationService.tourDisplay.waitingPricingMode,'OVERNIGHT_FLAT');
+  assert.equal(f.saved,1);
+  assert.equal(f.priceCalls,0,'held quote booking must not reprice');
+}, {overnightFlat:true}));
 for(const regional of [false,true])for(const kind of ['ONE_WAY','ROUND_TRIP','CHARTER'])for(const legacy of [false,true]){
   test(`HTTP quote → JSONB → create: ${kind}, regional=${regional}, releasedMobile=${legacy}`,async()=>fixture(async f=>{
     const input={...request,...(kind==='ONE_WAY'?{}:{direction:'ROUND_TRIP',returnTime:'2099-01-03T15:00:00+07:00'}),...(kind==='CHARTER'?{destinationServiceDates:['2099-01-02']}:{} )};

@@ -16,7 +16,19 @@ export function validateWaitingRules(value) {
   }
   const hours = (24 + value.nightEndHour - value.nightStartHour) % 24;
   if (!hours || typeof value.nightMinWaitHours !== "number" || !Number.isFinite(value.nightMinWaitHours) || value.nightMinWaitHours <= 0 || value.nightMinWaitHours > hours) return "Số giờ chờ tối thiểu qua đêm phải lớn hơn 0 và không vượt độ dài khung nghỉ đêm.";
+  const rate = value.overnightPricePerHour;
+  if (rate != null && (typeof rate !== "number" || !Number.isSafeInteger(rate) || rate < 0 || rate > 2147483647)) return "Giá chờ lưu trú qua đêm phải là số nguyên không âm hoặc để trống.";
   return "";
+}
+
+export function validateOvernightWaitingPrice(rules, overnightFee) {
+  if (rules?.overnightPricePerHour == null) return "";
+  // A newly qualifying night removes up to ceil(threshold) hourly charges.
+  // Its fee must cover those hours, otherwise later nights could lower the fare.
+  const minimum = Math.ceil(rules.nightMinWaitHours) * rules.overnightPricePerHour;
+  return Number(overnightFee) < minimum
+    ? `Phụ phí mỗi đêm phải từ ${minimum.toLocaleString("vi-VN")}đ khi dùng giá chờ lưu trú này để giá không giảm lúc đủ điều kiện nghỉ đêm.`
+    : "";
 }
 
 // Only waiting at the destination qualifies. Driving across midnight does not.
@@ -34,12 +46,14 @@ export function calculateWaitingTime(arrival, returnTime, configuredRules, exclu
   const lastDay = Math.floor((end + VN_OFFSET) / DAY);
   let overnightCount = 0;
   let coveredMs = 0;
+  let firstOvernightAt = null;
   const nightIntervals = [];
   for (let day = firstDay; day <= lastDay; day++) {
     const windowStart = day * DAY - VN_OFFSET + rules.nightStartHour * 60 * MINUTE;
     const windowEnd = windowStart + windowHours * 60 * MINUTE;
     const overlap = Math.max(0, Math.min(end, windowEnd) - Math.max(start, windowStart));
     if (overlap > 0 && overlap >= threshold) {
+      firstOvernightAt ??= new Date(Math.max(start, windowStart) + threshold).toISOString();
       overnightCount++;
       coveredMs += overlap;
       nightIntervals.push([Math.max(start, windowStart), Math.min(end, windowEnd)]);
@@ -63,7 +77,7 @@ export function calculateWaitingTime(arrival, returnTime, configuredRules, exclu
   const serviceCoveredMinutes = Math.max(0, Math.round((unionMs-coveredMs)/MINUTE));
   const hourlyWaitMinutes = Math.max(0, waitMinutes - overnightCoveredMinutes - serviceCoveredMinutes);
   const billableWaitMinutes = Math.max(0, hourlyWaitMinutes - rules.freeWaitingMinutes);
-  return { serviceCoveredMinutes, waitMinutes, overnightCount, overnightCoveredMinutes, hourlyWaitMinutes,
+  return { serviceCoveredMinutes, waitMinutes, overnightCount, firstOvernightAt, overnightCoveredMinutes, hourlyWaitMinutes,
     freeWaitingMinutes: rules.freeWaitingMinutes, billableWaitMinutes,
     billableWaitHours: Math.ceil(billableWaitMinutes / 60), waitingRules: rules };
 }
@@ -74,7 +88,17 @@ export function waitingRateForDistance(km, tiers, fallback) {
   return Number(tier?.pricePerWaitHour ?? fallback);
 }
 
-export function calculateTieredWaitingCost(km, hours, tiers, fallback, distanceCostAt) {
+export function calculateTieredWaitingCost(km, hours, tiers, fallback, distanceCostAt, overnight = {}) {
+  if (overnight.count > 0 && overnight.pricePerHour != null) {
+    const pricePerHour = overnight.pricePerHour;
+    const hourlyWaitCost = hours * pricePerHour;
+    // A fixed first-night transition floor prevents a few extra minutes from
+    // making the trip cheaper. It never grows with additional waiting days.
+    const beforeNight = calculateTieredWaitingCost(km, overnight.beforeNightHours ?? 0, tiers, fallback, distanceCostAt);
+    const nightTransitionAdjustment = Math.max(0, beforeNight.waitCost - hourlyWaitCost - overnight.count * overnight.fee);
+    return { pricePerHour, hourlyWaitCost, waitingTierAdjustment: 0, nightTransitionAdjustment,
+      waitingPricingMode: "OVERNIGHT_FLAT", waitCost: hourlyWaitCost + nightTransitionAdjustment };
+  }
   const pricePerHour = waitingRateForDistance(km, tiers, fallback);
   const hourlyWaitCost = hours * pricePerHour;
   let combinedCost = distanceCostAt(km) + hourlyWaitCost;
@@ -86,6 +110,6 @@ export function calculateTieredWaitingCost(km, hours, tiers, fallback, distanceC
     combinedCost = Math.max(combinedCost, boundaryCost);
   }
   const waitingTierAdjustment = Math.max(0, Math.round(combinedCost - distanceCostAt(km) - hourlyWaitCost));
-  return { pricePerHour, hourlyWaitCost, waitingTierAdjustment,
+  return { pricePerHour, hourlyWaitCost, waitingTierAdjustment, nightTransitionAdjustment: 0, waitingPricingMode: "DISTANCE_TIER",
     waitCost: hourlyWaitCost + waitingTierAdjustment };
 }

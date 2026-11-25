@@ -5,7 +5,7 @@ import pkg from "@prisma/client";
 import { validateHolidayConfig, validateHolidayPeriods } from "../services/holidaySurcharge.js";
 import { quotePrice } from "../services/pricingService.js";
 import { validateTripDistance } from "../services/tripConfigService.js";
-import { validateWaitingRules } from "../services/waitingPricing.js";
+import { validateWaitingRules, validateOvernightWaitingPrice } from "../services/waitingPricing.js";
 import { recordQuoteHistory } from "../services/quoteHistoryService.js";
 
 const { PrismaClient } = pkg;
@@ -171,6 +171,9 @@ export async function updatePricingConfig(req, res) {
       if (error) return res.status(400).json({ success: false, message: error });
       const { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours } = body.roundTripWaitingConfig;
       updateData.roundTripWaitingConfig = { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours };
+      if (Object.prototype.hasOwnProperty.call(body.roundTripWaitingConfig, "overnightPricePerHour")) {
+        updateData.roundTripWaitingConfig.overnightPricePerHour = body.roundTripWaitingConfig.overnightPricePerHour;
+      }
     }
 
     const numberFields = [
@@ -292,6 +295,15 @@ export async function updatePricingConfig(req, res) {
         success: false,
         message: "Không tìm thấy cấu hình cho loại xe này.",
       });
+    }
+    // Old admin clients send only the original four waiting fields. Preserve
+    // the new rate unless the request explicitly sets or clears it.
+    if (updateData.roundTripWaitingConfig && !Object.prototype.hasOwnProperty.call(updateData.roundTripWaitingConfig, "overnightPricePerHour") && existing.roundTripWaitingConfig?.overnightPricePerHour != null) {
+      updateData.roundTripWaitingConfig.overnightPricePerHour = existing.roundTripWaitingConfig.overnightPricePerHour;
+    }
+    if (updateData.roundTripWaitingConfig || Object.prototype.hasOwnProperty.call(updateData, "overnightFee")) {
+      const priceError = validateOvernightWaitingPrice(updateData.roundTripWaitingConfig ?? existing.roundTripWaitingConfig, updateData.overnightFee ?? existing.overnightFee);
+      if (priceError) return res.status(400).json({ success: false, message: priceError });
     }
     // Keep hourly rates when an older admin client edits only kilometre prices.
     if (updateData.kmTiers) {

@@ -5,7 +5,7 @@ import { CAR_TYPE_UNAVAILABLE_MESSAGE } from "./carAvailability.js";
 import pkg from "@prisma/client";
 import { parseTripTime } from "../utils/tripTime.js";
 import { calculateHolidaySurcharge } from "./holidaySurcharge.js";
-import { calculateWaitingTime, calculateTieredWaitingCost } from "./waitingPricing.js";
+import { calculateWaitingTime, calculateTieredWaitingCost, validateOvernightWaitingPrice } from "./waitingPricing.js";
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
@@ -98,7 +98,8 @@ function calculateTieredDistanceCost(distanceKm, rawKmTiers) {
  * Quote giá theo PricingConfig (DB là nguồn sự thật)
  * - ONE_WAY: base + km*perKm + overnight (nếu vượt trigger)
  * - ROUND_TRIP:
- *   - Hourly waiting uses the total trip distance tier.
+ *   - Hourly waiting uses the total trip distance tier unless an overnight
+ *     rate is explicitly configured and the destination stay qualifies.
  *   - Qualifying night waiting is covered by the overnight fee, not hourly fees.
  */
 export async function quotePrice(input, db = prisma) {
@@ -210,12 +211,21 @@ export async function quotePrice(input, db = prisma) {
     const waitingTime = calculateWaitingTime(
       new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig, destinationService.sessions,
     );
+    const overnightPriceError = validateOvernightWaitingPrice(waitingTime.waitingRules, overnightFee);
+    if (overnightPriceError) return { ok: false, status: 409, message: overnightPriceError };
+    const overnightPricePerHour = waitingTime.waitingRules.overnightPricePerHour;
+    const beforeNightHours = waitingTime.firstOvernightAt && overnightPricePerHour != null
+      ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs),
+          new Date(new Date(waitingTime.firstOvernightAt).getTime() - 1),
+          config.roundTripWaitingConfig, destinationService.sessions).billableWaitHours
+      : 0;
     const waitingPrice = calculateTieredWaitingCost(
       km, waitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
       distance => {
         const result = calculateTieredDistanceCost(distance, config.kmTiers);
         return result.usedTierPricing ? result.distanceCost : Math.round(distance * pricePerKm);
       },
+      { count: waitingTime.overnightCount, pricePerHour: overnightPricePerHour, fee: overnightFee, beforeNightHours },
     );
     ({ waitMinutes, freeWaitingMinutes, billableWaitMinutes, overnightCount } = waitingTime);
     ({ waitCost, pricePerHour } = waitingPrice);
@@ -265,6 +275,12 @@ export async function quotePrice(input, db = prisma) {
   // Display-only snapshot: retain the quoted amounts; never reprice old trips.
   destinationService.tourDisplay = {
     waitCost, overnightCost, overnightCount,
+    ...(direction === "ROUND_TRIP" ? {
+      waitingPricingMode: waitingDetails.waitingPricingMode,
+      pricePerHour, hourlyWaitCost: waitingDetails.hourlyWaitCost,
+      waitingTierAdjustment: waitingDetails.waitingTierAdjustment,
+      nightTransitionAdjustment: waitingDetails.nightTransitionAdjustment,
+    } : {}),
     fuelSurchargePercent, fuelSurchargeAmount, holidaySurcharge,
     regionalSurcharge,
     charterCost: destinationService.fee,
