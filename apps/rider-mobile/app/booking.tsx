@@ -466,7 +466,7 @@ export default function RiderBookingScreen() {
   const [submitTouched, setSubmitTouched] = useState(false);
   const [isEstimating, setIsEstimating] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
-  const [destinationServiceDates,setDestinationServiceDates]=useState<string[]>([]);
+  const [destinationServiceMode,setDestinationServiceMode]=useState<"STANDARD" | "CHARTER">("STANDARD");
   const [destinationAnchorAddress,setDestinationAnchorAddress]=useState("");
   const [quote, setQuote] = useState<QuoteState>(null);
   const [quoteNowTs, setQuoteNowTs] = useState(Date.now());
@@ -694,10 +694,9 @@ export default function RiderBookingScreen() {
   const servicePickup = pickupTime ? toIsoFromDatetimeLocal(pickupTime) : "";
   const serviceReturn = returnTime ? toIsoFromDatetimeLocal(returnTime) : "";
   const serviceWindows=destinationWindows(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
-  const serviceWindowKey=JSON.stringify(serviceWindows);
-  useEffect(()=>{setDestinationServiceDates(old=>old.filter(date=>JSON.parse(serviceWindowKey).some((w:any)=>w.date===date)));},[serviceWindowKey]);
+  useEffect(()=>{if(!serviceWindows.length)setDestinationServiceMode("STANDARD");},[serviceWindows.length]);
   const serviceAnchor=destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
-  const quoteInputKey = JSON.stringify([bookingMode,destinationServiceDates,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKey = JSON.stringify([bookingMode,destinationServiceMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
@@ -1013,7 +1012,7 @@ export default function RiderBookingScreen() {
   useEffect(() => {
     setQuote(null);
   }, [
-    destinationServiceDates,
+    destinationServiceMode,
     destinationAnchorAddress,
     tripConfig.destinationServiceConfig,
     pickupAddress,
@@ -1505,7 +1504,7 @@ export default function RiderBookingScreen() {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
-      destinationServiceDates, destinationAnchorAddress:serviceAnchor,
+      destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress:serviceAnchor,
       routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
       regionalPricingSignature: quote?.raw?.regionalPricingSignature,
       destinationServiceSignature:quote?.raw?.destinationServiceSignature,
@@ -1637,7 +1636,7 @@ export default function RiderBookingScreen() {
     try {
       const payload = {
         routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
-        destinationServiceDates, destinationAnchorAddress:serviceAnchor,
+        destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress:serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -1660,6 +1659,7 @@ export default function RiderBookingScreen() {
         customerName: selectedCompany?.name || riderName.trim(), customerPhone: isCompanyBooking ? "" : riderPhone.trim(),
       } });
       if (quoteInputKeyRef.current !== inputKey) return;
+      if (payload.destinationServiceMode === "CHARTER" && data?.destinationService?.selectionMode !== "CHARTER") throw new Error("Gói Bao xe đang được cập nhật. Vui lòng tải lại và tính giá lại.");
 
       const now = Date.now();
       const nextQuote = {
@@ -2172,7 +2172,7 @@ export default function RiderBookingScreen() {
 
             <View style={styles.divider} />
 
-            <DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} dates={destinationServiceDates} onDates={setDestinationServiceDates} />
+            <DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={destinationServiceMode} onMode={setDestinationServiceMode} />
             <Text style={styles.sectionTitle}>3. Loại xe</Text>
             {configLoading ? <Text>Đang tải loại xe nhận đặt…</Text> : configError ? <Text style={styles.errorText}>{configError} Vui lòng mở lại màn hình đặt xe để thử lại.</Text> : !carTypeOptions.length ? <Text>Hiện chưa có loại xe nhận đặt. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.</Text> : null}
 

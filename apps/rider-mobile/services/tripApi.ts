@@ -16,6 +16,7 @@ type CreateTripPayload = {
   returnTime: string | null;
   direction: "ONE_WAY" | "ROUND_TRIP";
   destinationServiceDates?: string[];
+  destinationServiceMode?: "STANDARD" | "CHARTER";
   destinationAnchorAddress?: string;
   destinationServiceSignature?: string;
   routePricingPoints?: Array<{ placeId: string; address: string }>;

@@ -399,7 +399,7 @@ export async function calculateTripPrice({
   driveMinutes,
   outboundDriveMinutes,
   fuelPreference = "ANY",
-  destinationServiceDates, destinationAnchorAddress,
+  destinationServiceDates, destinationServiceMode, destinationAnchorAddress,
   routePricingPoints, pickupAddress, dropoffAddress, stops,
 }) {
   const pickupIso =
@@ -409,7 +409,7 @@ export async function calculateTripPrice({
     returnTime instanceof Date ? returnTime.toISOString() : returnTime;
 
   const result = await quotePrice({
-    destinationServiceDates, destinationAnchorAddress,
+    destinationServiceDates, destinationServiceMode, destinationAnchorAddress,
     routePricingPoints, pickupAddress, dropoffAddress, stops,
     carType,
     direction,

@@ -1,39 +1,14 @@
-import {formatVietnamDate} from './vietnamDate.js';
-import { destinationSummary, destinationSessionText, vnDay, vnTime } from './destinationService.js';
-
+import { destinationSummary } from './destinationService.js';
 export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}) {
   const summary = destinationSummary(snapshot);
-  // The final two entries are payment and scope notices, including legacy fallbacks.
-  const rows = hidePaymentAndScope ? summary.slice(0, -2) : summary;
-  // Replace only the old itemized charter-fee line; retain all service terms.
+  const result = hidePaymentAndScope ? summary.slice(0, -2) : [...summary];
   const display = snapshot?.tourDisplay;
-  const result = rows.filter(line => !String(line).startsWith('Phụ phí: ')
-    && !(display?.arrival && display?.returnTime && /^(?:\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4}):/.test(String(line))));
-  if (snapshot?.eligible && display?.arrival && display?.returnTime) {
-    const sessions = new Map((snapshot.sessions || []).map(session => [session.date, session]));
-    const first = Date.parse(vnDay(display.arrival) + 'T00:00:00+07:00');
-    const last = Date.parse(vnDay(display.returnTime) + 'T00:00:00+07:00');
-    const schedule = [];
-    let standardDays = 0;
-    for (let day = first, count = 0; day <= last && count < 367; day += 86400000, count++) {
-      const date = vnDay(day);
-      const session = sessions.get(date);
-      const dayInfo = snapshot.days?.find(day => day.date === date);
-      if (!session) standardDays++;
-      schedule.push(session
-        ? `${formatVietnamDate(date)}: ${snapshot.charterName} · ${destinationSessionText(session)}`
-        : `${formatVietnamDate(date)}: ${snapshot.standardName}${dayInfo ? dayInfo.standardStart ? " · " + vnTime(dayInfo.standardStart) + "–" + vnTime(dayInfo.standardEnd) : " · Không còn khung hỗ trợ đi ăn tại điểm đến" : ""}`);
-    }
-    // destinationSummary puts the standard heading, description and hours after the title.
-    // Hide that block only when every itinerary date has a booked charter session.
-    if (!snapshot.days && schedule.length > 0 && standardDays === 0) result.splice(1, 3);
-    result.splice(1, 0, `Lịch phục vụ: ${schedule.length} ngày · ${sessions.size} ngày Bao xe`, ...schedule);
-  }
   if (display && Number.isFinite(display.total) && display.total > 0) {
-    result.push(`Phụ phí phục vụ tour: ${display.total.toLocaleString('vi-VN')}đ — Đã bao gồm trong giá chuyến.`);
+    result.push(`Phụ phí phục vụ tour: ${display.total.toLocaleString('vi-VN')}đ`);
   } else if (!display && Number(snapshot?.fee) > 0) {
-    // Legacy trips do not contain a full fee snapshot. Do not label charter-only money as total tour fees.
-    result.push('Phí Bao xe tại điểm đến đã bao gồm trong giá chuyến.');
+    // Only the charter amount is known on legacy snapshots, never invent a
+    // combined waiting/overnight/service amount for those trips.
+    result.push(`Phí Bao xe đã xác nhận: ${Number(snapshot.fee).toLocaleString('vi-VN')}đ`);
   }
   return result;
 }

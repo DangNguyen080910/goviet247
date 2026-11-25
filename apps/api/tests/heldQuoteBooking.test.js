@@ -31,7 +31,7 @@ function load(relative,bindings){
   return exports;
 }
 async function fixture(run,{regional=false,overnightFlat=false}={}){
-  const held=new Map(), trips=new Map();let saved=0, mapCalls=0, priceCalls=0;
+  const held=new Map(), trips=new Map();let saved=0, mapCalls=0, priceCalls=0, otpDraft=null;
   const config={baseFare:0,pricePerKm:5000,pricePerHour:10000,minFare:100000,overnightFee:300000,overnightTriggerKm:600,overnightTriggerHours:12,gasolineSurchargePercent:10};
   if (overnightFlat) config.roundTripWaitingConfig={freeWaitingMinutes:60,nightStartHour:22,nightEndHour:6,nightMinWaitHours:5,overnightPricePerHour:20000};
   const db={pricingConfig:{findFirst:async()=>config,findUnique:async()=>({isActive:true})},
@@ -45,15 +45,21 @@ async function fixture(run,{regional=false,overnightFlat=false}={}){
     price:async input=>{priceCalls++;return quotePrice(input,db);}});
   const pricing=load('controllers/pricingController.js',{pkg:{PrismaClient:class{constructor(){return db;}}},bookingQuotes:service,
     quotePrice:input=>quotePrice(input,db),validateTripDistance:async()=>({ok:true}),recordQuoteHistory:async()=>({quoteHistoryToken:'a'.repeat(64)})});
+  const pricingSource=readFileSync(new URL('../src/services/pricingService.js',import.meta.url),'utf8');
+  const wrapper=pricingSource.slice(pricingSource.indexOf('export async function calculateTripPrice(')).replace('export async function','async function');
+  const calculateTripPrice=new Function('quotePrice',wrapper+';return calculateTripPrice;')(value=>quotePrice(value,db));
+  const publicController=load('controllers/tripPublicController.js',{prisma:db,bookingQuotes:service,parseTripTime,calculateTripPrice,
+    validateTripDistance:async()=>({ok:true}),assertDestinationQuote,assertRegionalQuote,respondToOtpLock:()=>false,
+    requestTripOtpService:async(phone,draft)=>{otpDraft=draft;return{sessionId:'offline-otp',resendAfter:60};}});
   const router=load('routes/trips.js',{Router:express.Router,pkg:{PrismaClient:class{constructor(){return db;}}},
     verifyToken:(req,res,next)=>{if(!req.headers.authorization)return res.status(401).json({success:false});req.user={uid:'offline-rider'};next();},
     createRequestRateLimit,parseTripTime,bookingQuotes:service,bookingRequestKey,assertDestinationQuote,assertRegionalQuote,createBookableTrip,
     validateTripDistance:async()=>({ok:true}),getEffectiveTripConfig:async()=>({maxStops:10}),sendAdminPushNotification:noop}).default;
-  const app=express();app.use(express.json());app.post('/quote',pricing.quote);app.use('/trips',router);
+  const app=express();app.use(express.json());app.post('/quote',pricing.quote);app.post('/public/quote',publicController.quoteTrip);app.post('/public/otp',publicController.requestTripOtp);app.use('/trips',router);
   const server=await new Promise(resolve=>{const s=app.listen(0,'127.0.0.1',()=>resolve(s));});
   const base='http://127.0.0.1:'+server.address().port;
   const post=async(path,input,authenticated=true)=>{const response=await fetch(base+path,{method:'POST',headers:{'Content-Type':'application/json',...(authenticated?{Authorization:'Bearer offline-session'}:{})},body:JSON.stringify(input)});return{status:response.status,body:await response.json()};};
-  try{await run({post,held,get saved(){return saved;},get mapCalls(){return mapCalls;},get priceCalls(){return priceCalls;}});}finally{await new Promise(resolve=>server.close(resolve));}
+  try{await run({post,held,get otpDraft(){return otpDraft;},get saved(){return saved;},get mapCalls(){return mapCalls;},get priceCalls(){return priceCalls;}});}finally{await new Promise(resolve=>server.close(resolve));}
 }
 const points=JSON.parse(readFileSync(new URL('../src/data/booking-trusted-places.json',import.meta.url)));
 const pickup=points['goviet247:province:tp-hcm'].fullAddress, dropoff=points['goviet247:province:khanh-hoa'].fullAddress;
@@ -66,6 +72,29 @@ function booking(input,data,legacy=false){
   if(legacy)delete result.routePricingPoints;
   return result;
 }
+for(const carType of ['CAR_5','CAR_7','CAR_16'])for(const destinationServiceMode of ['STANDARD','CHARTER'])test(`HTTP whole-trip package: ${carType} ${destinationServiceMode}`,async()=>fixture(async f=>{
+  const input={...request,carType,direction:'ROUND_TRIP',returnTime:'2099-01-03T15:00:00+07:00',destinationServiceMode};
+  const quoted=await f.post('/quote',input,false);assert.equal(quoted.status,200,JSON.stringify(quoted.body));
+  const data=quoted.body.data;
+  assert.equal(data.destinationService.selectionMode,destinationServiceMode);
+  assert.equal(data.destinationService.sessions.length,destinationServiceMode==='CHARTER'?3:0);
+  const changed=await f.post('/trips',{...booking(input,data),destinationServiceMode:destinationServiceMode==='CHARTER'?'STANDARD':'CHARTER'});
+  assert.equal(changed.status,409);
+  const created=await f.post('/trips',booking(input,data));assert.equal(created.status,201,JSON.stringify(created.body));
+  assert.equal(created.body.trip.totalPrice,data.finalPrice);
+  assert.equal(created.body.trip.destinationService.selectionMode,destinationServiceMode);
+  assert.equal(f.saved,1);
+},{overnightFlat:true}));
+for(const destinationServiceMode of ['STANDARD','CHARTER'])test(`guest quote and OTP draft retain whole-trip ${destinationServiceMode}`,async()=>fixture(async f=>{
+  const input={...request,direction:'ROUND_TRIP',returnTime:'2099-01-03T15:00:00+07:00',destinationServiceMode,riderName:'Offline rider',riderPhone:'0900000000'};
+  const quoted=await f.post('/public/quote',input,false);assert.equal(quoted.status,200,JSON.stringify(quoted.body));
+  assert.equal(quoted.body.destinationService.selectionMode,destinationServiceMode);
+  const otp=await f.post('/public/otp',{...input,destinationServiceSignature:quoted.body.destinationServiceSignature,regionalPricingSignature:quoted.body.regionalPricingSignature},false);
+  assert.equal(otp.status,200,JSON.stringify(otp.body));assert.equal(otp.body.sessionId,'offline-otp');
+  assert.equal(f.otpDraft.totalPrice,quoted.body.totalPrice);
+  assert.equal(f.otpDraft.destinationService.selectionMode,destinationServiceMode);
+  assert.equal(f.otpDraft.destinationService.sessions.length,destinationServiceMode==='CHARTER'?3:0);
+},{overnightFlat:true}));
 for (const legacy of [false,true]) test(`HTTP overnight flat quote → create with releasedMobile=${legacy}`, async()=>fixture(async f=>{
   const input={...request,direction:'ROUND_TRIP',returnTime:'2099-01-03T15:00:00+07:00'};
   const quoted=await f.post('/quote',input,false);

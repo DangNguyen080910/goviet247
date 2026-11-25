@@ -208,6 +208,7 @@ export async function quoteTrip(req, res) {
     const pricing = await calculateTripPrice({
       routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops: req.body.stops,
       destinationServiceDates: req.body.destinationServiceDates,
+      destinationServiceMode: req.body.destinationServiceMode,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
       direction,
@@ -289,6 +290,7 @@ export async function requestTripOtp(req, res) {
     const pricing = await calculateTripPrice({
       routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops: req.body.stops,
       destinationServiceDates: req.body.destinationServiceDates,
+      destinationServiceMode: req.body.destinationServiceMode,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
       carType,
       direction,

@@ -1,7 +1,6 @@
-import {formatVietnamDate} from "../../api/src/shared/vietnamDate.js";
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationDayText, destinationSelectedFee, destinationSummary, destinationQuoteSummary, vnTime } from "../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationDays, destinationSummary, destinationQuoteSummary } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?: any; quote?: boolean; config?: any }) {
   // Only booked destination-service packages belong in this panel.
   if (snapshot?.eligible !== true && !quote) return null;
@@ -20,21 +19,24 @@ export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?:
     </View>
   );
 }
-export default function DestinationService({config,direction,pickup,returnTime,outboundMinutes,anchor,onAnchor,dates,onDates}:any) {
- const c=destinationConfig(config), windows=destinationDays(c,direction,pickup,returnTime,outboundMinutes);
- if(!windows.length) return null;
+export default function DestinationService({config,direction,pickup,returnTime,outboundMinutes,mode="STANDARD",onMode}:any) {
+ const c=destinationConfig(config), days=destinationDays(c,direction,pickup,returnTime,outboundMinutes);
+ if(!days.length) return null;
+ const charterAvailable=days.some(day=>day.charter);
  return <View style={{padding:14,borderWidth:1,borderColor:"#bfdbfe",borderRadius:12,marginVertical:14,gap:10}}>
- <Text style={{fontWeight:"800",fontSize:17}}>{c.title}</Text><Text>{c.introduction}</Text>
- <Text style={{fontWeight:"700"}}>{c.standardName} — Đã bao gồm trong giá</Text><Text>{destinationDescription(c)}</Text><Text>Giờ hỗ trợ: {c.standardStartHour}:00–{c.standardEndHour}:00</Text>
- <Text style={{fontWeight:"700"}}>{c.charterName} — +{c.charterDailyFee.toLocaleString("vi-VN")}đ/khung ngày {c.charterStartHour}:00–{c.charterEndHour}:00</Text><Text>{destinationDescription(c,true)}</Text>
-
- {windows.map(w=><View key={w.date} style={{padding:12,backgroundColor:'#f1f5f9',borderRadius:8,gap:8}}>
-   <Text style={{fontWeight:'700'}}>{formatVietnamDate(w.date)}</Text>
-   <Pressable accessibilityRole="radio" accessibilityState={{checked:!dates.includes(w.date)}} onPress={()=>onDates(dates.filter((d:string)=>d!==w.date))}><Text>{!dates.includes(w.date)?'◉':'○'} {c.standardName} — Đã bao gồm trong giá</Text></Pressable>
-   <Pressable disabled={!w.charter} accessibilityRole="radio" accessibilityState={{checked:dates.includes(w.date),disabled:!w.charter}} onPress={()=>onDates([...dates.filter((d:string)=>d!==w.date),w.date])}><Text>{dates.includes(w.date)?'◉':'○'} {c.charterName} — +{(w.charter?.fee || 0).toLocaleString('vi-VN')}đ</Text></Pressable>
-   <Text>{destinationDayText(w,dates.includes(w.date),c)}</Text>
-   {!w.charter && <Text>Không còn khung giờ Bao xe phù hợp trong ngày này.</Text>}
- </View>)}
- <Text style={{fontWeight:"700"}}>Phụ phí Bao xe: {destinationSelectedFee(windows,dates).toLocaleString("vi-VN")}đ ({dates.length} ngày)</Text><Text>{c.outsideNotice}</Text>
+  <Text style={{fontWeight:"800",fontSize:17}}>{c.title}</Text>
+  <Text>Chọn một gói cho toàn bộ thời gian lưu trú tại điểm đến.</Text>
+  {(["STANDARD","CHARTER"] as const).map(value=>{
+   const charter=value === "CHARTER", disabled=charter && !charterAvailable, name=charter ? c.charterName : c.standardName;
+   return <Pressable key={value} disabled={disabled} accessibilityRole="radio" accessibilityLabel={name}
+    accessibilityState={{checked:mode===value,disabled}} onPress={()=>onMode(value)}
+    style={{padding:12,borderWidth:1,borderColor:mode===value?"#1976d2":"#cbd5e1",borderRadius:10,gap:6,opacity:disabled?0.6:1}}>
+     <Text style={{fontWeight:"700"}}>{mode===value?'◉':'○'} {name}</Text>
+     <Text>{destinationDescription(c,charter)}</Text>
+     {!charter && <Text>Giờ hỗ trợ: {String(c.standardStartHour).padStart(2,"0")}:00–{String(c.standardEndHour).padStart(2,"0")}:00</Text>}
+     {disabled && <Text>Chưa có khung phục vụ Bao xe phù hợp với lịch này.</Text>}
+   </Pressable>;
+  })}
+  <Text>{c.outsideNotice}</Text>
  </View>;
 }

@@ -5,10 +5,10 @@ import { driverSurchargeLines } from '../src/shared/driverSurcharges.js';
 test('ordinary and legacy trips never invent a package', () => {
  for (const value of [null, {}, { eligible:false, standardName:'A' }]) assert.deepEqual(riderPackageLines(value),[]);
 });
-test('mixed trip uses booked custom names and times for each day', () => {
+test('legacy mixed trip retains its booked custom name without listing days or claiming full charter', () => {
  const s={eligible:true,standardName:'Gói ăn uống A',charterName:'Gói khám phá B',days:[{date:'2026-11-01',standardStart:'2026-11-01T04:42:00Z',standardEnd:'2026-11-01T14:00:00Z'},{date:'2026-11-02'},{date:'2026-11-03',standardStart:'2026-11-03T00:00:00Z',standardEnd:'2026-11-03T05:00:00Z'}],sessions:[{date:'2026-11-02',start:'2026-11-02T00:00:00Z',end:'2026-11-02T14:00:00Z',hours:8,flexible:true}]};
  const lines=riderPackageLines(s);
- assert.deepEqual(lines,['2026-11-01: Gói ăn uống A · 11:42–21:00','2026-11-02: Gói khám phá B · 07:00–21:00 · Tối đa 8 giờ','2026-11-03: Gói ăn uống A · 07:00–12:00']);
+ assert.deepEqual(lines,['Gói khám phá B theo lịch đã xác nhận']);
  assert.equal(lines.some(line=>line.includes('Tiêu chuẩn')),false);
 });
 test('surcharges can appear on an ordinary trip with no service package', () => {

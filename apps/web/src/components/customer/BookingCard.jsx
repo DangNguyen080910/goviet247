@@ -273,7 +273,7 @@ export default function BookingCard({ partner = null }) {
   const [returnDriveMinutes, setReturnDriveMinutes] = useState("");
   const [isRouteLoading, setIsRouteLoading] = useState(false);
 
-  const [destinationServiceDates, setDestinationServiceDates] = useState([]);
+  const [destinationServiceMode, setDestinationServiceMode] = useState("STANDARD");
   const [destinationAnchorAddress, setDestinationAnchorAddress] = useState("");
   const [quote, setQuote] = useState(null);
   const [isEstimating, setIsEstimating] = useState(false);
@@ -944,7 +944,7 @@ export default function BookingCard({ partner = null }) {
   useEffect(() => {
     setQuote(null);
   }, [
-    destinationServiceDates,
+    destinationServiceMode,
     destinationAnchorAddress,
     tripConfig.destinationServiceConfig,
     pickupAddress,
@@ -975,19 +975,6 @@ export default function BookingCard({ partner = null }) {
   }, [quoteRemainingMs]);
 
   const quoteRaw = quote?.raw || null;
-  const quoteDirection = quoteRaw?.direction || "";
-  const quoteWaitMinutes = Number(quoteRaw?.waitMinutes || 0);
-  const quoteFreeWaitingMinutes = Number(quoteRaw?.freeWaitingMinutes || 0);
-  const quoteBillableWaitMinutes = Number(quoteRaw?.billableWaitMinutes || 0);
-  const quoteWaitCost = Number(quoteRaw?.waitCost || 0);
-
-  const shouldShowWaitingBreakdown =
-    quoteDirection === "ROUND_TRIP" &&
-    (quoteWaitMinutes > 0 ||
-      quoteFreeWaitingMinutes > 0 ||
-      quoteBillableWaitMinutes > 0 ||
-      quoteWaitCost > 0);
-
   const otpRemainingMs = useMemo(() => {
     if (!otpDialogOpen || !otpSessionId || !otpExpiresAt) return 0;
 
@@ -1042,10 +1029,9 @@ export default function BookingCard({ partner = null }) {
   const servicePickup = pickupPeriod ? combineDateTime(pickupDate,pickupTimeOnly) : "";
   const serviceReturn = returnPeriod ? combineDateTime(returnDate,returnTimeOnly) : "";
   const serviceWindows = destinationWindows(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
-  const serviceWindowKey = JSON.stringify(serviceWindows);
-  useEffect(()=>{setDestinationServiceDates(old=>old.filter(date=>JSON.parse(serviceWindowKey).some(w=>w.date===date)));},[serviceWindowKey]);
+  useEffect(()=>{if(!serviceWindows.length)setDestinationServiceMode("STANDARD");},[serviceWindows.length]);
   const serviceAnchor = destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
-  const quoteInputKey = JSON.stringify([destinationServiceDates,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKey = JSON.stringify([destinationServiceMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
@@ -1440,7 +1426,7 @@ export default function BookingCard({ partner = null }) {
     try {
       const payload = {
         routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
-        destinationServiceDates, destinationAnchorAddress: serviceAnchor,
+        destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -1464,6 +1450,7 @@ export default function BookingCard({ partner = null }) {
       };
       const data = await quotePrice(payload);
       if (quoteInputKeyRef.current !== inputKey) return;
+      if (payload.destinationServiceMode === "CHARTER" && data?.destinationService?.selectionMode !== "CHARTER") throw new Error("Gói Bao xe đang được cập nhật. Vui lòng tải lại và tính giá lại.");
 
       const now = Date.now();
       const nextQuote = {
@@ -1614,7 +1601,7 @@ export default function BookingCard({ partner = null }) {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
-      destinationServiceDates, destinationAnchorAddress: serviceAnchor,
+      destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
       routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
       regionalPricingSignature: quote.raw?.regionalPricingSignature,
       destinationServiceSignature: quote.raw?.destinationServiceSignature,
@@ -2421,7 +2408,7 @@ export default function BookingCard({ partner = null }) {
 
               <Divider />
 
-<DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} dates={destinationServiceDates} onDates={setDestinationServiceDates} />
+<DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={destinationServiceMode} onMode={setDestinationServiceMode} />
               {/* Actions */}
               <Stack
                 direction={{ xs: "column", sm: "row" }}
@@ -2536,42 +2523,6 @@ export default function BookingCard({ partner = null }) {
                   💡 Đi càng xa, giá mỗi km càng rẻ
                 </Typography>
               </Box>
-              {shouldShowWaitingBreakdown && (
-                <Box
-                  sx={{
-                    mt: 0.5,
-                    p: 1.25,
-                    borderRadius: 2,
-                    bgcolor: "rgba(0,0,0,0.03)",
-                    border: "1px solid rgba(0,0,0,0.06)",
-                  }}
-                >
-                  {/* <Stack spacing={0.5}>
-                    <Typography sx={{ fontWeight: 800, fontSize: 14 }}>
-                      Chi tiết thời gian chờ
-                    </Typography>
-
-                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                      Thời gian chờ:{" "}
-                      <b>{formatDurationMinutes(quoteWaitMinutes)}</b>
-                    </Typography>
-
-                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                      Miễn phí:{" "}
-                      <b>{formatDurationMinutes(quoteFreeWaitingMinutes)}</b>
-                    </Typography>
-
-                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                      Tính phí:{" "}
-                      <b>{formatDurationMinutes(quoteBillableWaitMinutes)}</b>
-                    </Typography>
-
-                    <Typography variant="body2" sx={{ opacity: 0.8 }}>
-                      Phí chờ: <b>{formatVND(quoteWaitCost)}</b>
-                    </Typography>
-                  </Stack> */}
-                </Box>
-              )}
 
               <Button
                 variant="contained"

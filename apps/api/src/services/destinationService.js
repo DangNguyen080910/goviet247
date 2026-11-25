@@ -15,14 +15,21 @@ export function buildDestinationSnapshot(raw, input) {
   const c = destinationConfig(raw);
   const windows = destinationWindows(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes);
   if (input.returnTime && new Date(input.returnTime)-new Date(input.pickupTime)>366*86400000) throw Object.assign(new Error("Thời gian chuyến không được vượt quá 366 ngày."),{status:400});
-  const dates = input.destinationServiceDates ?? [];
+  const selectionMode = input.destinationServiceMode;
+  if (selectionMode !== undefined && !["STANDARD", "CHARTER"].includes(selectionMode)) throw Object.assign(new Error("Vui lòng chọn Tiêu chuẩn hoặc Bao xe."), {status:400});
+  if (selectionMode === "CHARTER" && !windows.length) throw Object.assign(new Error("Chuyến này chưa có khung phục vụ Bao xe phù hợp."), {status:400});
+  // New clients select one package for the entire stay. Derive every eligible
+  // service date on the server; client dates cannot shorten a charter package.
+  // Omitted mode retains released clients' and held quotes' legacy semantics.
+  const dates = selectionMode === "CHARTER" ? windows.map(window => window.date)
+    : selectionMode === "STANDARD" ? [] : input.destinationServiceDates ?? [];
   if (!Array.isArray(dates) || dates.some(d => typeof d !== "string") || new Set(dates).size !== dates.length || dates.length > 366) throw Object.assign(new Error("Ngày Bao xe không hợp lệ."), { status: 400 });
   const sessions = dates.map(date => windows.find(w => w.date === date));
   if (sessions.some(s => !s)) throw Object.assign(new Error("Ngày Bao xe phải nằm trong thời gian lưu trú và khung giờ phục vụ."), { status: 400 });
   sessions.sort((a,b) => a.start.localeCompare(b.start));
   const anchorAddress = String(input.destinationAnchorAddress || input.dropoffAddress || "Điểm đến cuối cùng trong lịch trình").trim();
   if (windows.length && !anchorAddress) throw Object.assign(new Error("Vui lòng xác nhận nơi lưu trú tại điểm đến."), {status:400});
-  return { version: 3, days: destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes), eligible: windows.length>0, title:c.title, anchorAddress,
+  return { version: selectionMode === undefined ? 3 : 4, ...(selectionMode === undefined ? {} : {selectionMode}), days: destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes), eligible: windows.length>0, title:c.title, anchorAddress,
     standardRadiusKm:c.standardRadiusKm, standardName:c.standardName, standardDescription:destinationDescription(c),
     standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
     charterName:c.charterName, charterDescription:destinationDescription(c,true),

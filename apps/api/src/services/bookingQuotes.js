@@ -31,7 +31,8 @@ export function quoteRequestHash(input) {
   };
   return hash(JSON.stringify([comparable(pickup),stops.map(comparable),input.carType,input.direction,
     iso(input.pickupTime),iso(input.returnTime),input.fuelPreference || 'ANY',
-    [...(input.destinationServiceDates || [])].sort(),comparable(input.destinationAnchorAddress || input.dropoffAddress || stops.at(-1))]));
+    input.destinationServiceMode === undefined ? [...(input.destinationServiceDates || [])].sort() : {mode:input.destinationServiceMode},
+    comparable(input.destinationAnchorAddress || input.dropoffAddress || stops.at(-1))]));
 }
 export function createBookingQuoteService({db = prisma, search = autocomplete, detail = getPlaceDetail, route = getRoute, price = quotePrice, knownPlace = getKnownMapPlace} = {}) {
   const placeCache = new Map();

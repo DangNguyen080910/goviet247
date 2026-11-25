@@ -1,4 +1,3 @@
-import {formatVietnamDate} from './vietnamDate.js';
 export const DEFAULT_DESTINATION_CONFIG = {
   enabled: true,
   title: "Nhu cầu sử dụng xe tại điểm đến",
@@ -60,31 +59,36 @@ export function destinationSelectedFee(days, dates) {
 export function destinationSessionText(session) {
   return session.flexible ? `${vnTime(session.start)}–${vnTime(session.end)} · Tối đa ${session.hours} giờ` : `${vnTime(session.start)}–${vnTime(session.end)} (${session.hours} giờ)`;
 }
+// Old trips can contain a partial charter schedule. Keep its scope honest
+// without showing prices or a day-by-day list in customer/driver summaries.
+export function destinationSelection(snapshot) {
+  if (["STANDARD", "CHARTER"].includes(snapshot?.selectionMode)) return snapshot.selectionMode;
+  const sessions = Array.isArray(snapshot?.sessions) ? snapshot.sessions : [];
+  if (!sessions.length) return "STANDARD";
+  const days = Array.isArray(snapshot?.days) ? snapshot.days : [];
+  const eligibleDays = days.filter(day => Object.hasOwn(day, "charter") ? Boolean(day.charter) : true);
+  const selected = new Set(sessions.map(session => session.date));
+  return eligibleDays.length && eligibleDays.every(day => selected.has(day.date)) ? "CHARTER" : "LEGACY_MIXED";
+}
+export function destinationPackageLabel(snapshot) {
+  const selection = destinationSelection(snapshot);
+  const standard = snapshot?.standardName || DEFAULT_DESTINATION_CONFIG.standardName;
+  const charter = snapshot?.charterName || DEFAULT_DESTINATION_CONFIG.charterName;
+  return selection === "STANDARD" ? standard : selection === "CHARTER" ? charter : `${charter} theo lịch đã xác nhận`;
+}
 export function destinationSummary(snapshot) {
-  const terms = snapshot || {};
-  const rows = [];
+  const terms = snapshot || {}, rows = [];
   if (terms.eligible) {
-    rows.push(snapshot.title, snapshot.standardName + " — Đã bao gồm trong giá", snapshot.standardDescription, `Giờ hỗ trợ Tiêu chuẩn: ${snapshot.standardWindow}`);
-    if (snapshot.sessions.length) {
-      rows.push(snapshot.charterName, snapshot.charterDescription);
-      for (const s of snapshot.sessions) rows.push(`${formatVietnamDate(s.date)}: ${destinationSessionText(s)}${s.fee != null ? " · +" + s.fee.toLocaleString("vi-VN") + "đ" : ""}`);
-      rows.push(snapshot.version >= 3 ? `Phụ phí: ${snapshot.fee.toLocaleString("vi-VN")}đ (${snapshot.sessions.length} ngày chọn Bao xe)` : `Phụ phí: ${snapshot.sessions.length} ngày × ${snapshot.dailyFee.toLocaleString("vi-VN")}đ = ${snapshot.fee.toLocaleString("vi-VN")}đ. Ngày không chọn Bao xe áp dụng Tiêu chuẩn.`);
-    }
-    if (Array.isArray(snapshot.days)) {
-      const selected = new Map(snapshot.sessions.map(s => [s.date,s]));
-      for (const day of snapshot.days) {
-        if (!selected.has(day.date)) rows.push(`${formatVietnamDate(day.date)}: ${snapshot.standardName} — Đã bao gồm trong giá. ` + (day.standardStart ? `${vnTime(day.standardStart)}–${vnTime(day.standardEnd)}` : 'Không còn khung hỗ trợ đi ăn tại điểm đến.'));
-      }
-      if (snapshot.days.length && snapshot.days.every(day => selected.has(day.date))) rows.splice(1,3);
-    }
-    rows.push(snapshot.outsideNotice);
+    const selection = destinationSelection(terms);
+    rows.push(terms.title, destinationPackageLabel(terms));
+    if (selection !== "CHARTER") rows.push(terms.standardDescription, `Giờ hỗ trợ ${terms.standardName}: ${terms.standardWindow}`);
+    if (selection !== "STANDARD") rows.push(terms.charterDescription);
+    rows.push(terms.outsideNotice);
   }
-  return [
-    ...rows,
+  return [...rows.filter(Boolean),
     terms.allInclusiveNotice || DEFAULT_DESTINATION_CONFIG.allInclusiveNotice,
     terms.paymentNotice || DEFAULT_DESTINATION_CONFIG.paymentNotice,
-    terms.scopeNotice || DEFAULT_DESTINATION_CONFIG.scopeNotice,
-  ];
+    terms.scopeNotice || DEFAULT_DESTINATION_CONFIG.scopeNotice];
 }
 
 // Quote notices apply to every trip, independently of destination package eligibility.

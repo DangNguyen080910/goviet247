@@ -31,7 +31,7 @@ test('Partner keeps remembered personal choice and still has the company list',a
  const companies=[{id:'ot',name:'OT Travel'}],h=effectHarness({token:'partner',companies,saved:'personal'});h.start();await settle();assert.equal(h.state.BookingMode,'personal');assert.deepEqual(h.state.BookingCompanies,companies);
 });
 function payload(overrides={}){
- const deps={regionalRoutePoints:require('../apps/api/src/shared/regionalPricing.js').regionalRoutePoints,pickupPlace:{placeId:'a',fullAddress:'A'},stopPlaces:[{placeId:'b',fullAddress:'B'}],stops:['B'],pickupFullAddress:'A',dropoffAddress:'B',cleanedStops:['B'],pickupTime:'future',returnTime:'',direction:'ONE_WAY',carType:'CAR_5',fuelPreference:'ANY',distanceKm:100,safeTotalDriveMinutes:120,safeOutboundDriveMinutes:120,safeReturnDriveMinutes:0,safeEstimatedDurationMinutes:120,destinationServiceDates:[],serviceAnchor:'B',quote:{totalPrice:500000,raw:{}},selectedCompany:undefined,isCompanyBooking:false,riderName:' Normal customer ',riderPhone:' 0901234567 ',finalNote:null,toIsoFromDatetimeLocal:()=> '2099-01-01T00:00:00Z',...overrides};
+ const deps={regionalRoutePoints:require('../apps/api/src/shared/regionalPricing.js').regionalRoutePoints,pickupPlace:{placeId:'a',fullAddress:'A'},stopPlaces:[{placeId:'b',fullAddress:'B'}],stops:['B'],pickupFullAddress:'A',dropoffAddress:'B',cleanedStops:['B'],pickupTime:'future',returnTime:'',direction:'ONE_WAY',carType:'CAR_5',fuelPreference:'ANY',distanceKm:100,safeTotalDriveMinutes:120,safeOutboundDriveMinutes:120,safeReturnDriveMinutes:0,safeEstimatedDurationMinutes:120,destinationServiceMode:'STANDARD',serviceWindows:[],serviceAnchor:'B',quote:{totalPrice:500000,raw:{}},selectedCompany:undefined,isCompanyBooking:false,riderName:' Normal customer ',riderPhone:' 0901234567 ',finalNote:null,toIsoFromDatetimeLocal:()=> '2099-01-01T00:00:00Z',...overrides};
  return JSON.parse(JSON.stringify(new Function(...Object.keys(deps),`return (${payloadExpression});`)(...Object.values(deps))));
 }
 test('ordinary and guest payloads omit company id and preserve entered passenger details',()=>{
@@ -45,4 +45,10 @@ test('company is submitted only when selected; selecting personal retains the or
 test('personal-booking confirmation is skipped for guests and ordinary users',()=>{
  const condition=new Function('bookingMode','bookingCompanies',`return Boolean(${confirmation});`);
  assert.equal(condition('personal',[]),false);assert.equal(condition('personal',[{id:'ot'}]),true);assert.equal(condition('ot',[{id:'ot'}]),false);
+});
+
+test('whole-trip service mode is submitted without date selections; unavailable service stays Standard',()=>{
+ const selected=payload({serviceWindows:[{}],destinationServiceMode:'CHARTER',direction:'ROUND_TRIP'});
+ assert.equal(selected.destinationServiceMode,'CHARTER');assert.equal(Object.hasOwn(selected,'destinationServiceDates'),false);
+ assert.equal(payload({serviceWindows:[],destinationServiceMode:'CHARTER'}).destinationServiceMode,'STANDARD');
 });

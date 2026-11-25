@@ -13,3 +13,6 @@ export function destinationSelectedFee(days: DestinationDay[], dates: string[]):
 export function destinationSessionText(session: any): string;
 
 export function destinationQuoteSummary(snapshot: any, config?: any): string[];
+
+export function destinationSelection(snapshot: any): "STANDARD" | "CHARTER" | "LEGACY_MIXED";
+export function destinationPackageLabel(snapshot: any): string;

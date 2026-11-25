@@ -7,6 +7,7 @@ import { getRiderToken } from "./storage";
 
 type QuotePricePayload = {
   destinationServiceDates?: string[];
+  destinationServiceMode?: "STANDARD" | "CHARTER";
   destinationAnchorAddress?: string;
   destinationServiceSignature?: string;
   routePricingPoints?: Array<{ placeId: string; address: string }>;
