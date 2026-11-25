@@ -1,3 +1,5 @@
+import { sortNotifications } from "../../api/src/shared/notificationPresentation.js";
+import { updateNotificationPreference } from "../services/notificationApi";
 // Path: goviet247/apps/driver-mobile/context/NotificationContext.tsx
 import { AppState, Platform } from "react-native";
 import * as Notifications from "expo-notifications";
@@ -24,6 +26,7 @@ type NotificationContextValue = {
   loading: boolean;
   refresh: () => Promise<void>;
   markAllAsRead: () => Promise<void>;
+  updatePreference: (id: string, changes: { isPinned?: boolean; isCollapsed?: boolean }) => Promise<void>;
 };
 
 const NotificationContext = createContext<NotificationContextValue | null>(
@@ -124,6 +127,11 @@ export function NotificationProvider({ children }: NotificationProviderProps) {
     }
   }, []);
 
+  const updatePreference = useCallback(async (id: string, changes: { isPinned?: boolean; isCollapsed?: boolean }) => {
+    const preference = await updateNotificationPreference(id, changes);
+    setItems(current => sortNotifications(current.map(item => item.id === id ? { ...item, ...preference } : item)));
+  }, []);
+
   const value = useMemo(
     () => ({
       items,
@@ -131,8 +139,9 @@ export function NotificationProvider({ children }: NotificationProviderProps) {
       loading,
       refresh: load,
       markAllAsRead,
+      updatePreference,
     }),
-    [items, unreadCount, loading, load, markAllAsRead],
+    [items, unreadCount, loading, load, markAllAsRead, updatePreference],
   );
 
   return (

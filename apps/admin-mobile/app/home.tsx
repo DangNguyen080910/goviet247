@@ -154,6 +154,7 @@ export default function HomeScreen() {
         icon: "👤",
         iconBg: "#7c3aed",
       },
+      {key:"SYSTEM_NOTIFICATIONS",title:"Thông Báo Hệ Thống",badge:0,subtitle:"Tạo thông báo và ghim cho tài xế, khách hàng",icon:"📣",iconBg:"#2563eb"},
       {key:"QUOTE_HISTORY",title:"Lịch Sử Tính Giá",badge:0,subtitle:"Khách tính giá hôm nay và các ngày trước",icon:"🧮",iconBg:"#0284c7"},
       {
         key: "WALLETS",
@@ -196,7 +197,7 @@ export default function HomeScreen() {
         return false;
       }
 
-      if (["LEDGER", "QUOTE_HISTORY"].includes(item.key) && !isAdmin) return false;
+      if (["LEDGER", "QUOTE_HISTORY", "SYSTEM_NOTIFICATIONS"].includes(item.key) && !isAdmin) return false;
 
       return true;
     });
@@ -382,6 +383,8 @@ export default function HomeScreen() {
       router.push("/ledger" as any);
       return;
     }
+
+    if (item.key === "SYSTEM_NOTIFICATIONS") { router.push("/system-notifications" as any); return; }
 
     if (item.key === "QUOTE_HISTORY") { router.push("/quote-history" as any); return; }
 

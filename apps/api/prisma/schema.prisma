@@ -207,6 +207,7 @@ model User {
   riderProfile          RiderProfile?
   feedbacks             Feedback[]
   notificationReads     SystemNotificationRead[]
+  notificationPreferences SystemNotificationPreference[]
   targetedNotifications SystemNotification[]     @relation("SystemNotificationTargetUser")
 }
 
@@ -653,6 +654,7 @@ model SystemNotification {
   title            String
   message          String
   isActive         Boolean                      @default(true)
+  isPinnedByDefault Boolean                     @default(false)
   createdByAdminId Int?
   createdAt        DateTime                     @default(now()) @db.Timestamptz(6)
   updatedAt        DateTime                     @updatedAt @db.Timestamptz(6)
@@ -660,12 +662,26 @@ model SystemNotification {
   createdBy  admin_users?             @relation("SystemNotificationCreatedBy", fields: [createdByAdminId], references: [id], onDelete: SetNull)
   targetUser User?                    @relation("SystemNotificationTargetUser", fields: [targetUserId], references: [id], onDelete: Cascade)
   reads      SystemNotificationRead[]
+  preferences SystemNotificationPreference[]
 
   @@index([audience, createdAt])
   @@index([audience, isActive, createdAt])
   @@index([audience, targetType, isActive, createdAt])
   @@index([targetUserId, isActive, createdAt])
   @@index([createdByAdminId])
+}
+
+model SystemNotificationPreference {
+  notificationId String
+  userId String
+  isPinned Boolean?
+  isCollapsed Boolean @default(true)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+  notification SystemNotification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([notificationId, userId])
+  @@index([userId, isPinned])
 }
 
 model SystemNotificationRead {

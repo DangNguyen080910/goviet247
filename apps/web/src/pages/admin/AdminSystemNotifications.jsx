@@ -33,6 +33,8 @@ export default function AdminSystemNotifications() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [active, setActive] = useState(true);
+  const [pinned, setPinned] = useState(false);
+  const [expanded, setExpanded] = useState({});
 
   const [snack, setSnack] = useState({
     open: false,
@@ -77,6 +79,7 @@ export default function AdminSystemNotifications() {
         message: content.trim(),
         audience: tab,
         isActive: active,
+        isPinnedByDefault: pinned,
       });
 
       showSnack(active ? "Đã gửi thông báo." : "Đã lưu thông báo ở trạng thái tắt, chưa gửi cho người nhận.");
@@ -84,6 +87,7 @@ export default function AdminSystemNotifications() {
       setTitle("");
       setContent("");
       setActive(true);
+      setPinned(false);
 
       loadData();
     } catch (err) {
@@ -110,6 +114,17 @@ export default function AdminSystemNotifications() {
     } finally {
       setSaving(false);
     }
+  };
+
+  const handlePin = async item => {
+    if (saving) return;
+    setSaving(true);
+    try {
+      await updateSystemNotification(item.id, { isPinnedByDefault: !item.isPinnedByDefault });
+      showSnack("Đã đổi ghim mặc định; giữ nguyên lựa chọn riêng của người nhận.");
+      await loadData();
+    } catch (error) { showSnack(error.message, "error"); }
+    finally { setSaving(false); }
   };
 
   const handleDelete = async (item) => {
@@ -176,6 +191,8 @@ export default function AdminSystemNotifications() {
             label="Kích hoạt ngay"
           />
 
+          <FormControlLabel control={<Switch checked={pinned} onChange={e => setPinned(e.target.checked)} />} label="Ghim mặc định cho người nhận" />
+          <Typography variant="caption">Người nhận vẫn có thể tự bỏ ghim.</Typography>
           <Button variant="contained" disabled={saving} onClick={handleCreate}>
             {active ? "GỬI THÔNG BÁO" : "LƯU THÔNG BÁO"}
           </Button>
@@ -209,11 +226,13 @@ export default function AdminSystemNotifications() {
 
                 <Typography
                   variant="body2"
-                  sx={{ mt: 0.5, whiteSpace: "pre-line" }}
+                  sx={{ mt: 0.5, whiteSpace: "pre-line", ...(!expanded[item.id] ? { display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" } : {}) }}
                 >
                   {item.message}
                 </Typography>
 
+                <Button aria-expanded={Boolean(expanded[item.id])} onClick={() => setExpanded(current => ({ ...current, [item.id]: !current[item.id] }))}>{expanded[item.id] ? "Thu gọn" : "Xem thêm"}</Button>
+                <FormControlLabel control={<Switch disabled={saving} checked={Boolean(item.isPinnedByDefault)} onChange={() => handlePin(item)} />} label="Ghim mặc định" />
                 <Divider sx={{ my: 1 }} />
 
                 <Stack

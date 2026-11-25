@@ -1,3 +1,4 @@
+import { notificationFeed, driverNotificationScope } from "../apps/api/src/services/notificationPreferences.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -24,10 +25,19 @@ test('two deliberate taps on the same trip carry different focus requests',()=>{
  const pending=new URL(exports.getAdminNotificationRoute({...data,status:'PENDING'}),'https://local.test');assert.equal(pending.pathname,'/pending-trips');
 });
 const driverSource=read('apps/api/src/controllers/driverNotificationController.js').replace(/^import.*;$/gm,'').replace(/export (?=(?:async )?function)/g,'');
+function matchNotice(value, where) {
+ return Object.entries(where).every(([key, cond]) => {
+   if (key === 'AND') return cond.every(child => matchNotice(value, child));
+   if (key === 'OR') return cond.some(child => matchNotice(value, child));
+   if (cond?.some) return (value[key] || []).some(child => matchNotice(child, cond.some));
+   if (cond?.none) return !(value[key] || []).some(child => matchNotice(child, cond.none));
+   return value[key] === cond;
+ });
+}
 async function targetNotification(id,user='u'){
  const data=Array.from({length:70},(_,i)=>({id:String(i),audience:'DRIVER',isActive:true,targetType:'USER',targetUserId:i===0?'other':'u',reads:[]}));
- const prisma={systemNotification:{findMany:async({where,take})=>data.filter(n=>(!where.id||n.id===where.id)&&where.audience===n.audience&&where.OR.some(c=>c.targetType===n.targetType&&(!c.targetUserId||c.targetUserId===n.targetUserId))).slice(0,take)}};
- const handler=new Function('prisma',driverSource+';return getMyDriverNotifications;')(prisma);let result;
+ const prisma={systemNotification:{findMany:async({where,take})=>data.filter(n=>matchNotice(n,where)).slice(0,take ?? data.length)}};
+ const handler=new Function('prisma','notificationFeed','driverNotificationScope',driverSource+';return getMyDriverNotifications;')(prisma,notificationFeed,driverNotificationScope);let result;
  await handler({user:{id:user},query:{notificationId:id}},{json:x=>result=x});return result.items;
 }
 test('an old notification opens by exact ID beyond the newest fifty',async()=>{assert.deepEqual((await targetNotification('69')).map(n=>n.id),['69']);});

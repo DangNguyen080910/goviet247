@@ -1,3 +1,4 @@
+import NotificationContent from "../../mobile-chat/NotificationContent";
 import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
 import { NotificationPermissionActions } from "../../mobile-chat/NotificationPermissionActions";
 import { enablePushNotifications } from "../services/pushRegister";
@@ -42,7 +43,7 @@ function formatDateTime(value: string | null | undefined) {
 
 export default function RiderNotificationsScreen() {
   const insets = useSafeAreaInsets();
-  const { items, loading, refreshing, refresh, markAllAsRead } =
+  const { items, loading, refreshing, refresh, markAllAsRead, updatePreference } =
     useNotifications();
   const [errorText, setErrorText] = useState("");
 
@@ -150,19 +151,13 @@ export default function RiderNotificationsScreen() {
               const isNewest = index === 0;
 
               return (
-                <Pressable
+                <View
                   key={item.id}
                   style={[
                     styles.notificationCard,
                     isNewest ? styles.notificationCardNewest : null,
                   ]}
-                  onPress={() => {
-                    if (!tripId) return;
 
-                    router.push(
-                      `/trip-history?focusTripId=${encodeURIComponent(tripId)}`,
-                    );
-                  }}
                 >
                   <View style={styles.notificationHeader}>
                     <Text style={styles.notificationTitle}>{item.title}</Text>
@@ -171,17 +166,15 @@ export default function RiderNotificationsScreen() {
                     </Text>
                   </View>
 
-                  <Text style={styles.notificationBody}>
-                    {bodyText || "Không có nội dung."}
-                  </Text>
+                  <NotificationContent item={item} message={bodyText} onChange={updatePreference} />
 
                   <CopyTripIdButton tripId={tripId}/>
                   {tripId ? (
-                    <Text style={styles.notificationHint}>
-                      Chạm để xem chuyến liên quan
-                    </Text>
+                    <Pressable accessibilityRole="button" onPress={() => router.push(`/trip-history?focusTripId=${encodeURIComponent(tripId)}`)} style={{ minHeight: 44, justifyContent: "center" }}>
+                      <Text style={styles.notificationHint}>Xem chuyến liên quan</Text>
+                    </Pressable>
                   ) : null}
-                </Pressable>
+                </View>
               );
             })}
           </View>

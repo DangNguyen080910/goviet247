@@ -1,3 +1,4 @@
+import { notificationFeed, riderNotificationScope, createNotificationPreferenceHandler } from "../src/services/notificationPreferences.js";
 import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import {makeTripEvent,recordTripEvent} from "../src/services/tripHistory.js";
 import {activeDriverDevices} from "../src/services/driverPushAccess.js";
@@ -33,6 +34,8 @@ function matches(value, where = {}) {
   return Object.entries(where).every(([key, condition]) => {
     if (key === 'OR') return condition.some((child) => matches(value, child));
     if (key === 'AND') return condition.every((child) => matches(value, child));
+    if (condition?.some) return (value[key] || []).some(child => matches(child, condition.some));
+    if (condition?.none) return !(value[key] || []).some(child => matches(child, condition.none));
     if (condition && typeof condition === 'object') {
       if ('in' in condition) return condition.in.includes(value[key]);
       if ('not' in condition) return value[key] !== condition.not;
@@ -89,8 +92,8 @@ function notifications(db) {
   const routes = new Map();
   const verifyToken = () => {};
   load('routes/systemPublicRoutes.js', {
-    Router: () => ({ get: (path, ...handlers) => routes.set(path, handlers) }),
-    pkg: { PrismaClient: class { constructor() { return db; } } }, verifyToken, getVerifiedRiderPhoneVariants,
+    Router: () => ({ get: (path, ...handlers) => routes.set(path, handlers), patch: (path, ...handlers) => routes.set(path, handlers) }),
+    pkg: { PrismaClient: class { constructor() { return db; } } }, verifyToken, getVerifiedRiderPhoneVariants, notificationFeed, riderNotificationScope, createNotificationPreferenceHandler,
   }, 'router');
   return { routes, verifyToken };
 }
@@ -166,6 +169,7 @@ test('authenticated passenger sees historical trip notices, no unrelated/private
   const { routes, verifyToken } = notifications(f.db);
   const route = routes.get('/rider-notifications');
   assert.equal(route[0], verifyToken);
+  assert.equal(routes.get('/system-notifications/:id/preferences')[0], verifyToken);
   const res = response();
   await route.at(-1)({ query: { userId: 'booker', audience: 'DRIVER' }, user: { id: 'passenger' } }, res);
   assert.deepEqual(res.body.items.map((n) => n.id), ['approved', 'accepted', 'public']);

@@ -1,7 +1,9 @@
+import { sortNotifications } from "../../../../api/src/shared/notificationPresentation.js";
 import CopyTripIdButton from "../../components/common/CopyTripIdButton.jsx";
 import {useNavigate} from "react-router-dom";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  Alert,
   Button,
   Box,
   CircularProgress,
@@ -26,7 +28,20 @@ function formatDateTime(value) {
   return date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" });
 }
 
-function NotificationCard({ title, message, createdAt, unread = false, tripId }) {
+function NotificationCard({ id, title, message, createdAt, unread = false, tripId, isPinned, isCollapsed = true, onChange }) {
+  const [collapsed, setCollapsed] = useState(isCollapsed);
+  useEffect(() => setCollapsed(isCollapsed), [id, isCollapsed]);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const saving = useRef(false);
+  const change = async values => {
+    if (saving.current) return;
+    if (values.isCollapsed !== undefined) setCollapsed(values.isCollapsed);
+    saving.current = true; setBusy(true); setError("");
+    try { await onChange(id, values); }
+    catch (err) { setError(err.message || "Chưa lưu được lựa chọn thông báo."); }
+    finally { saving.current = false; setBusy(false); }
+  };
   const navigate=useNavigate();
   return (
     <Paper
@@ -96,10 +111,16 @@ function NotificationCard({ title, message, createdAt, unread = false, tripId })
               color: "#374151",
               whiteSpace: "pre-line",
               lineHeight: 1.6,
+              ...(collapsed ? { display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" } : {}),
             }}
           >
             {message || "Không có nội dung"}
           </Typography>
+          <Stack direction="row" spacing={1} flexWrap="wrap">
+            <Button disabled={busy} aria-expanded={!collapsed} onClick={() => change({ isCollapsed: !collapsed })}>{collapsed ? "Xem thêm" : "Thu gọn"}</Button>
+            <Button disabled={busy} aria-pressed={Boolean(isPinned)} onClick={() => change({ isPinned: !isPinned })}>{isPinned ? "📌 Bỏ ghim" : "Ghim"}</Button>
+          </Stack>
+          {error && <Alert severity="error">{error}</Alert>}
           {tripId && <CopyTripIdButton tripId={tripId}/>}
           {tripId && <Button onClick={()=>navigate(`/ho-so?focusTripId=${encodeURIComponent(tripId)}`)}>Xem chuyến</Button>}
 
@@ -119,7 +140,7 @@ function NotificationCard({ title, message, createdAt, unread = false, tripId })
 }
 
 export default function CustomerNotifications() {
-  const { notifications, notificationsLoading, markAllNotificationsRead } =
+  const { notifications, notificationsLoading, markAllNotificationsRead, updateNotificationPreferences } =
     useCustomerAuth();
 
   const daDanhDauDaDocRef = useRef(false);
@@ -134,11 +155,7 @@ export default function CustomerNotifications() {
   const visibleItems = useMemo(() => {
     const list = Array.isArray(notifications) ? notifications : [];
 
-    return [...list].sort((a, b) => {
-      const timeA = new Date(a?.createdAt || 0).getTime();
-      const timeB = new Date(b?.createdAt || 0).getTime();
-      return timeB - timeA;
-    });
+    return sortNotifications(list);
   }, [notifications]);
 
   return (
@@ -215,6 +232,7 @@ export default function CustomerNotifications() {
               {visibleItems.map((item) => (
                 <NotificationCard
                   key={item.id}
+                  id={item.id} isPinned={item.isPinned} isCollapsed={item.isCollapsed} onChange={updateNotificationPreferences}
                   tripId={item.tripId || item.data?.tripId || item.meta?.tripId || String(item.message||'').match(/\[tripId:([^\]]+)\]/)?.[1]}
                   title={item.title || "Thông báo hệ thống"}
                   message={String(item.message || "").replace(/\s*\[tripId:[^\]]+\]/g, "").trim()}

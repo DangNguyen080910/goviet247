@@ -1,3 +1,4 @@
+import { sortNotifications } from "../../../api/src/shared/notificationPresentation.js";
 // Path: goviet247/apps/web/src/context/CustomerAuthContext.jsx
 import {
   createContext,
@@ -8,7 +9,7 @@ import {
   useState,
 } from "react";
 import { getMe, logoutSession } from "../api/auth";
-import { getPublicSystemNotifications } from "../api/systemNotificationsPublic";
+import { getPublicSystemNotifications, updateNotificationPreference } from "../api/systemNotificationsPublic";
 
 const CustomerAuthContext = createContext(null);
 
@@ -255,6 +256,11 @@ export function CustomerAuthProvider({ children }) {
     localStorage.removeItem(USER_KEY);
   }, []);
 
+  const updateNotificationPreferences = useCallback(async (id, changes) => {
+    const preference = await updateNotificationPreference(id, changes);
+    setNotifications(current => sortNotifications(current.map(item => item.id === id ? { ...item, ...preference } : item)));
+  }, []);
+
   return (
     <CustomerAuthContext.Provider
       value={{
@@ -266,6 +272,7 @@ export function CustomerAuthProvider({ children }) {
         notifications,
         notificationsLoading,
         markAllNotificationsRead,
+        updateNotificationPreferences,
       }}
     >
       {children}

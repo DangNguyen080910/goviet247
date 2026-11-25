@@ -22,6 +22,23 @@ for(const audience of ['DRIVER','RIDER'])test(`deactivation refreshes ${audience
  await update({params:{id:'notice'},body:{isActive:false}},res,db,()=>events.push('DRIVER'),()=>events.push('RIDER'),()=>assert.fail('No push'),()=>assert.fail('No push'),v=>v);
  assert.deepEqual(events,[audience]);assert.equal(res.data.success,true);
 });
+for(const audience of ['DRIVER','RIDER'])test(`pin-only update for ${audience} preserves activation and never sends push or resets user preferences`,async()=>{
+ const events=[];const res=response();const db={systemNotification:{findUnique:async()=>({id:'notice'}),update:async({data})=>{
+   assert.deepEqual(data,{isPinnedByDefault:true});return {id:'notice',audience,isActive:true,isPinnedByDefault:true};
+ }}};
+ await update({params:{id:'notice'},body:{isPinnedByDefault:true}},res,db,()=>events.push('DRIVER'),()=>events.push('RIDER'),()=>assert.fail('No push'),()=>assert.fail('No push'),v=>v);
+ assert.equal(res.data.success,true);assert.deepEqual(events,[audience]);
+});
+test('old create requests default to unpinned while an explicit default pin is stored',async()=>{
+ for(const flag of [undefined,true,false]) {
+  const res=response();const db={systemNotification:{create:async({data})=>{assert.equal(data.isPinnedByDefault,flag??false);return {...data,id:'notice'};}}};
+  await create({body:{title:'Title',message:'Body',audience:'RIDER',isActive:false,...(flag===undefined?{}:{isPinnedByDefault:flag})}},res,db,()=>assert.fail('Inactive'),()=>assert.fail('Inactive'));
+  assert.equal(res.data.success,true);
+ }
+});
+test('default pin rejects a string boolean before writing',async()=>{
+ const res=response();await create({body:{title:'Title',message:'Body',audience:'DRIVER',isPinnedByDefault:'true'}},res,{});assert.equal(res.statusCode,400);
+});
 test('reject string false instead of turning it on',async()=>{
  const res=response();await update({params:{id:'notice'},body:{isActive:'false'}},res,{},()=>{},()=>{});assert.equal(res.statusCode,400);
 });

@@ -264,6 +264,7 @@ export function makeAdminController(prisma) {
       title: item.title,
       message: item.message,
       isActive: Boolean(item.isActive),
+      isPinnedByDefault: Boolean(item.isPinnedByDefault),
       createdByAdminId: item.createdByAdminId ?? null,
       createdAt: item.createdAt,
       updatedAt: item.updatedAt,
@@ -2936,7 +2937,7 @@ export function makeAdminController(prisma) {
 
         const items = await prisma.systemNotification.findMany({
           where,
-          orderBy: { createdAt: "desc" },
+          orderBy: [{ isPinnedByDefault: "desc" }, { createdAt: "desc" }],
           take: limit,
           include: {
             createdBy: {
@@ -2994,6 +2995,9 @@ export function makeAdminController(prisma) {
         if (req.body?.isActive !== undefined && typeof req.body.isActive !== "boolean") {
           return res.status(400).json({ success: false, message: "isActive phải là true hoặc false." });
         }
+        if (req.body?.isPinnedByDefault !== undefined && typeof req.body.isPinnedByDefault !== "boolean") {
+          return res.status(400).json({ success: false, message: "Trạng thái ghim mặc định phải là true hoặc false." });
+        }
         const notification = await prisma.systemNotification.create({
           data: {
             title,
@@ -3001,6 +3005,7 @@ export function makeAdminController(prisma) {
             audience,
             targetType: "ALL",
             isActive: req.body?.isActive ?? true,
+            isPinnedByDefault: req.body?.isPinnedByDefault ?? false,
             createdByAdminId: req.admin?.id ?? null,
           },
         });
@@ -3058,22 +3063,13 @@ export function makeAdminController(prisma) {
     async updateSystemNotification(req, res) {
       try {
         const { id } = req.params;
-        const hasIsActiveField = Object.prototype.hasOwnProperty.call(
-          req.body || {},
-          "isActive",
-        );
-
-        if (!hasIsActiveField) {
-          return res.status(400).json({
-            success: false,
-            message: "Thiếu trường isActive để cập nhật trạng thái.",
-          });
+        const changes = {};
+        for (const key of ["isActive", "isPinnedByDefault"]) {
+          if (!Object.prototype.hasOwnProperty.call(req.body || {}, key)) continue;
+          if (typeof req.body[key] !== "boolean") return res.status(400).json({ success: false, message: "Trạng thái thông báo phải là true hoặc false." });
+          changes[key] = req.body[key];
         }
-
-        if (typeof req.body.isActive !== "boolean") {
-          return res.status(400).json({ success: false, message: "isActive phải là true hoặc false." });
-        }
-        const isActive = req.body.isActive;
+        if (!Object.keys(changes).length) return res.status(400).json({ success: false, message: "Chưa có thay đổi cần lưu." });
 
         const existed = await prisma.systemNotification.findUnique({
           where: { id },
@@ -3089,7 +3085,7 @@ export function makeAdminController(prisma) {
 
         const item = await prisma.systemNotification.update({
           where: { id },
-          data: { isActive },
+          data: changes,
           include: {
             createdBy: {
               select: {

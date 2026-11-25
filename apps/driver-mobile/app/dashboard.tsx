@@ -1,3 +1,5 @@
+import NotificationContent from "../../mobile-chat/NotificationContent";
+import { sortNotifications } from "../../api/src/shared/notificationPresentation.js";
 import { driverServerClock } from "../services/serverClock";
 import { acceptCountdownSeconds } from "../../mobile-chat/serverClock.js";
 import CopyTripIdButton from "../../mobile-chat/CopyTripIdButton";
@@ -163,6 +165,7 @@ export default function DashboardScreen() {
     loading: loadingNotifications,
     refresh: refreshNotifications,
     markAllAsRead,
+    updatePreference,
   } = useNotifications();
 
   const insets = useSafeAreaInsets();
@@ -1777,7 +1780,8 @@ export default function DashboardScreen() {
       );
     }
 
-    return [...(targetNotification ? [targetNotification] : []),...notifications.filter(item=>item.id!==targetNotification?.id)].sort((a,b)=>Number(b.id===notificationParams.notificationId)-Number(a.id===notificationParams.notificationId)).map((item) => (
+    const focusedNotification = notifications.find(item => item.id === targetNotification?.id) || targetNotification;
+    return sortNotifications([...(focusedNotification ? [focusedNotification] : []),...notifications.filter(item=>item.id!==focusedNotification?.id)]).map((item) => (
       <View key={item.id} style={[styles.notificationCard,item.id===notificationParams.notificationId ? {borderColor:"#F97316",borderWidth:2} : undefined]}>
         <View style={styles.notificationCardTop}>
           <Text style={styles.notificationBadge}>
@@ -1789,7 +1793,10 @@ export default function DashboardScreen() {
         </View>
 
         <Text style={styles.notificationTitle}>{item.title}</Text>
-        <Text style={styles.notificationMessage}>{item.message}</Text>
+        <NotificationContent item={item} message={item.message} onChange={async (id, changes) => {
+          await updatePreference(id, changes);
+          setTargetNotification(current => current?.id === id ? { ...current, ...changes } : current);
+        }} />
       </View>
     ));
   };

@@ -1,3 +1,5 @@
+import { sortNotifications } from "../../api/src/shared/notificationPresentation.js";
+import { updateNotificationPreference } from "../services/notificationApi";
 // Path: oviet247/apps/rider-mobile/context/NotificationContext.tsx
 import { AppState } from "react-native";
 import {
@@ -28,6 +30,7 @@ type NotificationContextValue = {
   refreshing: boolean;
   refresh: (options?: { silent?: boolean }) => Promise<void>;
   markAllAsRead: () => Promise<void>;
+  updatePreference: (id: string, changes: { isPinned?: boolean; isCollapsed?: boolean }) => Promise<void>;
 };
 
 const NotificationContext = createContext<NotificationContextValue | null>(
@@ -149,6 +152,11 @@ export function NotificationProvider({
     }, 0);
   }, [items, readIds]);
 
+  const updatePreference = useCallback(async (id: string, changes: { isPinned?: boolean; isCollapsed?: boolean }) => {
+    const preference = await updateNotificationPreference(id, changes);
+    setItems(current => sortNotifications(current.map(item => item.id === id ? { ...item, ...preference } : item)));
+  }, []);
+
   const value = useMemo(
     () => ({
       items,
@@ -157,8 +165,9 @@ export function NotificationProvider({
       refreshing,
       refresh,
       markAllAsRead,
+      updatePreference,
     }),
-    [items, unreadCount, loading, refreshing, refresh, markAllAsRead],
+    [items, unreadCount, loading, refreshing, refresh, markAllAsRead, updatePreference],
   );
 
   return (

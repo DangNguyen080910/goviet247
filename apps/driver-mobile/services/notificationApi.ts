@@ -1,9 +1,13 @@
+import { fetchWithTimeout } from "../../mobile-chat/fetchWithTimeout.js";
 // Path: goviet247/apps/driver-mobile/services/notificationApi.ts
 import { API_BASE_URL } from "../constants/api";
 import { getDriverToken } from "./storage";
 
 export type DriverNotificationItem = {
   id: string;
+  isPinnedByDefault?: boolean;
+  isPinned?: boolean;
+  isCollapsed?: boolean;
   title: string;
   message: string;
   createdAt: string;
@@ -39,6 +43,9 @@ function normalizeItem(item: any): DriverNotificationItem {
     isActive: Boolean(item?.isActive),
     audience: item?.audience === "RIDER" ? "RIDER" : "DRIVER",
     isRead: Boolean(item?.isRead),
+    isPinnedByDefault: Boolean(item?.isPinnedByDefault),
+    isPinned: Boolean(item?.isPinned),
+    isCollapsed: item?.isCollapsed ?? true,
     readAt: item?.readAt ? String(item.readAt) : null,
   };
 }
@@ -100,4 +107,15 @@ export async function markAllDriverNotificationsAsRead(): Promise<{
   return {
     unreadCount: Number(data?.unreadCount || 0),
   };
+}
+export async function updateNotificationPreference(id: string, changes: { isPinned?: boolean; isCollapsed?: boolean }) {
+  const token = await getDriverToken();
+  if (!token) throw new Error("Bạn cần đăng nhập.");
+  const response = await fetchWithTimeout(`${API_BASE_URL.replace(/\/+$/, "").replace(/\/api$/, "")}/api/public/system-notifications/${encodeURIComponent(id)}/preferences`, {
+    method: "PATCH", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ ...changes, audience: "DRIVER" }),
+  });
+  const data = await response.json();
+  if (!response.ok || !data?.success) throw new Error(data?.message || "Chưa lưu được lựa chọn thông báo.");
+  return data.item as { id: string; isPinned: boolean; isCollapsed: boolean; isPinnedByDefault: boolean };
 }

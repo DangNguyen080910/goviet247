@@ -87,6 +87,7 @@ function web(response) {
     react:h.react,'react/jsx-runtime':jsx,
     '../api/auth':{logoutSession:async()=>{},getMe:async()=>{if(opts.response instanceof Error)throw opts.response;return opts.response;}},
     '../api/systemNotificationsPublic':{},
+    '../../../api/src/shared/notificationPresentation.js':load('apps/api/src/shared/notificationPresentation.js',{}),
   },{localStorage:{getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)},
     window:{addEventListener:(n,f)=>listeners[n]=f,removeEventListener:n=>delete listeners[n]}});
   const tree=mod.CustomerAuthProvider({children:null});const cleanup=h.effects[0]();

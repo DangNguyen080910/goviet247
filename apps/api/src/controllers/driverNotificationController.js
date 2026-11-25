@@ -1,3 +1,4 @@
+import { notificationFeed, driverNotificationScope } from "../services/notificationPreferences.js";
 // Path: goviet247/apps/api/src/controllers/driverNotificationController.js
 import { prisma } from "../utils/db.js";
 
@@ -18,11 +19,15 @@ function mapNotificationItem(item) {
     isActive: Boolean(item.isActive),
     audience: item.audience,
     isRead: Boolean(read),
+    isPinnedByDefault: Boolean(item.isPinnedByDefault),
+    isPinned: Boolean(item.isPinned),
+    isCollapsed: item.isCollapsed ?? true,
     readAt: read?.readAt || null,
   };
 }
 
 export async function getMyDriverNotifications(req, res) {
+  res.set?.("Cache-Control", "no-store");
   try {
     const userId = getUserIdFromRequest(req);
 
@@ -34,39 +39,7 @@ export async function getMyDriverNotifications(req, res) {
     }
 
     const notificationId = String(req.query?.notificationId || "").trim();
-    const items = await prisma.systemNotification.findMany({
-      where: {
-        ...(notificationId ? {id: notificationId} : {}),
-        audience: "DRIVER",
-        isActive: true,
-        OR: [
-          {
-            targetType: "ALL",
-          },
-          {
-            targetType: "USER",
-            targetUserId: userId,
-          },
-        ],
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-      take: 50,
-      include: {
-        reads: {
-          where: { userId },
-          select: {
-            id: true,
-            readAt: true,
-          },
-          orderBy: {
-            readAt: "desc",
-          },
-          take: 1,
-        },
-      },
-    });
+    const items = await notificationFeed(prisma, driverNotificationScope(userId), userId, notificationId);
 
     const mappedItems = items.map(mapNotificationItem);
     const unreadCount = mappedItems.filter((item) => !item.isRead).length;
