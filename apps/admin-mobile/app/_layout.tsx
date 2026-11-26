@@ -190,6 +190,7 @@ function RootLayoutContent() {
         <Stack.Screen name="index" />
         <Stack.Screen name="login" />
         <Stack.Screen name="home" />
+        <Stack.Screen name="config" />
         <Stack.Screen name="pending-trips" />
         <Stack.Screen name="unassigned-trips" />
         <Stack.Screen name="assigned-trips" />

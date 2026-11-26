@@ -1,3 +1,4 @@
+import {enqueueTripAutoApproval} from '../src/services/tripAutoApproval.js';
 import {makeTripEvent} from "../src/services/tripHistory.js";
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -8,7 +9,8 @@ const source = readFileSync(new URL("../src/controllers/adminTripController.js",
   .replace(/^import[\s\S]*?;\n/gm, "")
   .replaceAll("export async function", "async function");
 
-function fixture(status = "ACCEPTED", realtime = false) {
+function fixture(status = "ACCEPTED", realtime = false, autoRequeue = false) {
+  const autoJobs=[];
   const events = [];
   const io = { to: room => ({ emit: (event, payload) => events.push({room, event, payload}) }) };
   let trip = {
@@ -31,7 +33,7 @@ function fixture(status = "ACCEPTED", realtime = false) {
     trip: { findUnique: async () => structuredClone(trip) },
     async $transaction(callback) {
       const draft = structuredClone(trip);
-      const tx = {
+      const tx = {tripConfig:{findFirst:async()=>({autoApproveRequeuedTrips:autoRequeue})},notificationJob:{create:async({data})=>{autoJobs.push(data);return data;}},
         trip: {
           findUnique: async () => structuredClone(draft),
           updateMany: async ({ data }) => {
@@ -68,16 +70,16 @@ function fixture(status = "ACCEPTED", realtime = false) {
       return result;
     },
   };
-  const factory = new Function("makeTripEvent", "prisma", "lockDriverProfile", "lockTrip", "sendAdminPushNotification",
+  const factory = new Function("enqueueTripAutoApproval", "makeTripEvent", "prisma", "lockDriverProfile", "lockTrip", "sendAdminPushNotification",
     "sendSystemNotificationToDriver", "sendTripStatusChangedToRider", "refundCustomerCancellationHold", "emitDriverTripEvent", "emitRiderTripUpdate",
     `${source}; return { adminDriverCancelToReview, adminHuyChuyen };`);
-  const actions = factory(makeTripEvent, prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold,
+  const actions = factory(enqueueTripAutoApproval, makeTripEvent, prisma, async () => {}, async () => {}, async () => {}, async () => {}, async () => {}, refundCustomerCancellationHold,
     async (_io, event, payload) => { assert.equal(trip.status, "CANCELLED"); events.push({ room:"audience", event, payload }); }, async () => {});
   const req = (body) => ({ params: { id: "trip-1" }, body,
     admin: { id: 1, username: "admin", role: "ADMIN" }, app: { get: () => realtime === "fail" ? { to() { throw Error("socket down"); } } : realtime ? io : null } });
   const res = () => ({ statusCode: 200, status(code) { this.statusCode = code; return this; },
     json(body) { this.body = body; return this; } });
-  return { actions, req, res, get trip() { return trip; }, penalties, walletWrites, actionLogs, events };
+  return { actions, req, res, autoJobs, get trip() { return trip; }, penalties, walletWrites, actionLogs, events };
 }
 
 test("return to review records one penalty from the held amount without a new debit", async () => {
@@ -256,4 +258,13 @@ test('refund and review rejects wrong origin and trips already in progress', asy
   await f.actions.adminHuyChuyen(f.req({cancel_reason:'Sự cố',cancel_origin:origin,cancel_resolution:'REFUND_AND_REVIEW'}),response);
   assert.equal(response.statusCode,expected);assert.equal(f.walletWrites.length,0);assert.equal(f.penalties.length,0);assert.equal(f.trip.status,status);
  }
+});
+
+for(const refund of [false,true])test(`auto requeue preserves cancellation accounting, refund=${refund}`,async()=>{
+ const f=fixture('CONTACTED',false,true),response=f.res();
+ await f.actions.adminDriverCancelToReview(f.req({reason:'Tài xế không chạy được',cancel_resolution:refund?'REFUND_AND_REVIEW':'PENALTY_AND_REVIEW'}),response);
+ assert.equal(response.statusCode,200,JSON.stringify(response.body));assert.equal(f.trip.status,'PENDING');assert.equal(f.trip.driverId,null);
+ assert.equal(f.trip.driver.driverProfile.balance,refund?1000:880);assert.equal(f.penalties.length,refund?0:1);
+ assert.equal(f.autoJobs.length,1);assert.equal(f.autoJobs[0].kind,'tripAutoApprove');assert.equal(f.autoJobs[0].payload[0].source,'REQUEUE');
+ assert.equal(f.walletWrites.reduce((total,row)=>total+row.amount,0),refund?120:0);
 });

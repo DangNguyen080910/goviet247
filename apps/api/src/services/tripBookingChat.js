@@ -5,5 +5,5 @@ export const BOOKING_CHAT_TEXT = {
 export async function createBookingChatNotice(tx, trip) {
   const audience = trip.partnerCompanyId ? 'PARTNER' : 'RIDER';
   return tx.tripChatMessage.createMany({data:[{tripId:trip.id,senderId:'goviet247-system',senderRole:'SYSTEM',
-    senderLabel:'Hệ thống GoViet247',kind:'TEXT',audience,clientId:'booking_created',text:BOOKING_CHAT_TEXT[audience],createdAt:trip.createdAt}],skipDuplicates:true});
+    senderLabel:'Hệ thống GoViet247',kind:'TEXT',audience,clientId:'booking_created',text:trip.__autoApprovalQueued ? "Đã nhận yêu cầu đặt chuyến. Hệ thống đang kiểm tra để duyệt và tìm tài xế. Mở Liên hệ chuyến để nhắn GoViet247 khi cần hỗ trợ." : BOOKING_CHAT_TEXT[audience],createdAt:trip.createdAt}],skipDuplicates:true});
 }

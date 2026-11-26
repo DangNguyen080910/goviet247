@@ -75,7 +75,7 @@ test('unversioned old Admin tokens are invalid, while DB outages are not classif
 function bookingDb(){
  const records=new Map(),locks=new Map();let count=0,chats=0,blocked=false;
  return {records,get count(){return count;},get chats(){return chats;},set blocked(value){blocked=value;},
-  async $transaction(fn){const held=[];const tx={
+  async $transaction(fn){const held=[];const tx={tripConfig:{findFirst:async()=>({})},
    async $queryRawUnsafe(sql,key){
     if(!sql.includes('pg_advisory'))return [];
     assert.match(sql,/hashtextextended\(\$1, 0\)/);
@@ -105,7 +105,7 @@ test('a suspended rider cannot create a new booking',async()=>{
 });
 
 test('OTP cooldown rejects a resend before creating or sending anything',async()=>{
- const until=new Date(Date.now()+30000);const tx={otpSession:{findFirst:async args=>args.where.status?{resendAfter:until}:null,findMany:async()=>[]}};
+ const until=new Date(Date.now()+30000);const tx={tripConfig:{findFirst:async()=>({})},otpSession:{findFirst:async args=>args.where.status?{resendAfter:until}:null,findMany:async()=>[]}};
  const error=await assertOtpSendAvailable(tx,'phone').catch(e=>e);assert.equal(error.code,'OTP_RESEND_COOLDOWN');
  const res={set(){return this;},status(code){this.code=code;return this;},json(value){this.value=value;return this;}};
  assert.equal(respondToOtpLock(res,error),true);assert.equal(res.code,429);

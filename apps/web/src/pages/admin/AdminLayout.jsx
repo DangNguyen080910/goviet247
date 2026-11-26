@@ -518,7 +518,8 @@ export default function AdminLayout() {
         .trim()
         .toUpperCase();
 
-      const statusText =
+      const autoApproved=payload?.source === "auto_verify_trip";
+      const statusText = autoApproved ? (payload?.autoApprovalSource === "REQUEUE" ? "đã TỰ DUYỆT LẠI để tìm tài xế mới" : "đã TỰ DUYỆT và đang tìm tài xế") :
         status === "CONTACTED"
           ? "đã chuyển sang CHƯA ĐÓN KHÁCH"
           : status === "IN_PROGRESS"
@@ -531,7 +532,7 @@ export default function AdminLayout() {
 
       showSnack(
         `🔄 Chuyến ${tripId ? `${String(tripId).slice(0, 8)}… ` : ""}${statusText}`,
-        "/admin/trips/assigned", tripId,
+        autoApproved ? "/admin/pending" : "/admin/trips/assigned", tripId,
       );
 
       loadDashboard();

@@ -154,6 +154,7 @@ export default function HomeScreen() {
         icon: "👤",
         iconBg: "#7c3aed",
       },
+      {key:"CONFIG",title:"Cấu Hình",badge:0,subtitle:"Tự duyệt chuyến mới và chuyến tài xế huỷ",icon:"⚙️",iconBg:"#64748b"},
       {key:"SYSTEM_NOTIFICATIONS",title:"Thông Báo Hệ Thống",badge:0,subtitle:"Tạo thông báo và ghim cho tài xế, khách hàng",icon:"📣",iconBg:"#2563eb"},
       {key:"QUOTE_HISTORY",title:"Lịch Sử Tính Giá",badge:0,subtitle:"Khách tính giá hôm nay và các ngày trước",icon:"🧮",iconBg:"#0284c7"},
       {
@@ -197,7 +198,7 @@ export default function HomeScreen() {
         return false;
       }
 
-      if (["LEDGER", "QUOTE_HISTORY", "SYSTEM_NOTIFICATIONS"].includes(item.key) && !isAdmin) return false;
+      if (["CONFIG", "LEDGER", "QUOTE_HISTORY", "SYSTEM_NOTIFICATIONS"].includes(item.key) && !isAdmin) return false;
 
       return true;
     });
@@ -344,6 +345,7 @@ export default function HomeScreen() {
   }
 
   function handlePressMenu(item: MenuCardItem) {
+    if(item.key === "CONFIG" && isAdmin){router.push("/config");return;}
     if (item.key === "PENDING_VERIFY") {
       router.push("/pending-trips");
       return;

@@ -3,6 +3,7 @@ import { mapTripVehicle, type TripVehicleBinding } from "../utils/tripVehicle";
 import { adminRequest } from "./adminRequest";
 
 export type PendingTripItem = {
+  autoApprovalReviewReason?: string|null;
   id: string;
   creatorName?: string | null;
   creatorPhone?: string | null;
@@ -48,6 +49,7 @@ export type PendingTripItem = {
 function mapTripItem(raw: any): PendingTripItem {
   return {
     id: String(raw?.id || raw?.tripId || ""),
+    autoApprovalReviewReason:raw?.autoApprovalReviewReason || null,
     creatorName: raw?.creatorName || null,
     creatorPhone: raw?.creatorPhone || null,
     riderName: raw?.riderName || null,
@@ -110,6 +112,7 @@ export async function fetchPendingVerifyCancelledTrips() {
 }
 
 export type PendingTripDetail = TripVehicleBinding & {
+  autoApprovalReviewReason?: string|null;
   id: string;
 
   creatorName?: string | null;
@@ -209,6 +212,7 @@ function mapTripDetail(raw: any): PendingTripDetail {
     ...mapTripVehicle(raw),
     destinationService: raw?.destinationService ?? null,
     id: String(raw?.id || raw?.tripId || ""),
+    autoApprovalReviewReason:raw?.autoApprovalReviewReason || null,
     creatorName: raw?.creatorName || rider?.displayName || null,
     creatorPhone: raw?.creatorPhone || rider?.phone || null,
     riderName: raw?.riderName || rider?.displayName || rider?.name || null,

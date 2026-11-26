@@ -432,11 +432,12 @@ export async function confirmTrip(req, res) {
       status: "PENDING",
     });
 
+    if (trip.__bookingReplay) return res.json({success:true,message:"Tạo chuyến thành công.",tripId:trip.id,totalPrice:trip.totalPrice});
     await linkQuoteToTrip(payload.quoteHistoryToken, trip);
     // ✅ Emit realtime cho admin
     try {
       const io = req.app.get("io");
-      if (io) {
+      if (io && !trip.__autoApprovalQueued) {
         io.to("admins").emit("admin:new_trip", {
           tripId: trip.id,
           status: trip.status,
@@ -450,7 +451,7 @@ export async function confirmTrip(req, res) {
       console.error("[Trip] OTP booking saved; realtime delivery failed:", socketError);
     }
 
-    sendAdminPushNotification({
+    if (!trip.__autoApprovalQueued) sendAdminPushNotification({
       title: "Có chuyến mới cần duyệt",
       body: `${riderName} vừa đặt chuyến ${trip.id}.`,
       data: {

@@ -4,6 +4,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import { autocomplete, getPlaceDetail, getRoute, getKnownMapPlace } from './mapService.js';
 import { quotePrice } from './pricingService.js';
 import { prisma } from '../utils/db.js';
+import { provinceFromPlace } from './regionalPricing.js';
 const hash = value => createHash('sha256').update(value).digest('hex');
 const clean = value => String(value || '').normalize('NFC').trim().replace(/\s+/g,' ');
 const comparable = value => clean(value).toLocaleLowerCase('vi-VN').replace(/,?\s*(việt nam|viet nam|vietnam)$/u,'').replace(/\s*,\s*/g,',');
@@ -67,9 +68,13 @@ export function createBookingQuoteService({db = prisma, search = autocomplete, d
       }
     }
     if (!result || result.lat == null || result.lng == null || !Number.isFinite(Number(result.lat)) || !Number.isFinite(Number(result.lng)) || Math.abs(Number(result.lat)) > 90 || Math.abs(Number(result.lng)) > 180) throw fail('Chưa xác minh được địa chỉ. Vui lòng chọn lại địa chỉ từ danh sách gợi ý.');
-    const value = {lat:Number(result.lat),lng:Number(result.lng)};
-    if (placeCache.size >= 1000) placeCache.delete(placeCache.keys().next().value);
-    placeCache.set(key,{until:Date.now()+15*60000,value});
+    const value = {lat:Number(result.lat),lng:Number(result.lng),address,provinceCode:provinceFromPlace(result),name:String(result.name || "")};
+    // The same verified canonical address is also reusable without a place ID
+    // by legacy clients and the post-booking auto-approval worker.
+    for (const cacheKey of new Set([key,JSON.stringify(['',address])])) {
+      if (placeCache.size >= 1000 && !placeCache.has(cacheKey)) placeCache.delete(placeCache.keys().next().value);
+      placeCache.set(cacheKey,{until:Date.now()+15*60000,value});
+    }
     return value;
   }
   async function verifiedRoute(input) {
@@ -83,7 +88,7 @@ export function createBookingQuoteService({db = prisma, search = autocomplete, d
     if (!['ONE_WAY','ROUND_TRIP'].includes(input.direction)) throw fail('Loại chuyến không hợp lệ.');
     const back = parseTripTime(input.returnTime);
     if (input.direction === 'ROUND_TRIP' && (!Number.isFinite(back?.getTime()) || back <= pickupTime)) throw fail('Giờ bắt đầu quay về phải sau giờ đón khách.');
-    const coords = await Promise.all(addresses.map((address,i)=>place(points[i],address)));
+    const coords = (await Promise.all(addresses.map((address,i)=>place(points[i],address)))).map(({lat,lng})=>({lat,lng}));
     if (input.direction === 'ROUND_TRIP') coords.push(coords[0]);
     const found = await route(coords);
     if (!found || !Number.isFinite(found.distanceKm) || found.distanceKm <= 0 || !Number.isFinite(found.durationMinutes)) throw fail('Chưa xác minh được quãng đường. Vui lòng thử tính giá lại.');
@@ -122,7 +127,7 @@ export function createBookingQuoteService({db = prisma, search = autocomplete, d
     if (!result.ok) throw Object.assign(new Error(result.message),{status:result.status || 400});
     return {pricing:pricingSnapshot(result.data),route:verified};
   }
-  return {verifiedRoute,issue,booking};
+  return {verifiedRoute,issue,booking,verifiedAddresses: addresses => Promise.all(addresses.map(address => place(null,clean(address))))};
 }
 export const bookingQuotes = createBookingQuoteService();
 export function startBookingQuoteCleanup() {

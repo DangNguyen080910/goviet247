@@ -42,3 +42,10 @@ async function targetNotification(id,user='u'){
 }
 test('an old notification opens by exact ID beyond the newest fifty',async()=>{assert.deepEqual((await targetNotification('69')).map(n=>n.id),['69']);});
 test('notification target cannot bypass account scope',async()=>{assert.deepEqual(await targetNotification('0'),[]);});
+
+test('auto-approved notification opens the unassigned trip, and follows a later accepted status',()=>{
+ const data={type:'ADMIN_TRIP_STATUS_CHANGED',source:'auto_verify_trip',tripId:'auto/trip',status:'PENDING',isVerified:true};
+ const pending=new URL(exports.getAdminNotificationRoute(data),'https://local.test');assert.equal(pending.pathname,'/unassigned-trips');assert.equal(pending.searchParams.get('tripId'),'auto/trip');
+ const accepted=new URL(exports.getAdminNotificationRoute({...data,status:'ACCEPTED'}),'https://local.test');assert.equal(accepted.pathname,'/assigned-trips');assert.equal(accepted.searchParams.get('tripId'),'auto/trip');
+ const review=new URL(exports.getAdminNotificationRoute({type:'ADMIN_NEW_TRIP',source:'create_trip',tripId:'auto/trip',status:'PENDING'}),'https://local.test');assert.equal(review.pathname,'/pending-trips');
+});

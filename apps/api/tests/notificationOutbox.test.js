@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createNotificationOutbox,notificationAlreadyAccepted,recordNotificationAccepted,isDeliveringNotification} from '../src/services/notificationOutbox.js';
+import {AUTO_APPROVAL_JOB_KINDS,createNotificationOutbox,notificationAlreadyAccepted,recordNotificationAccepted,isDeliveringNotification} from '../src/services/notificationOutbox.js';
 import {activeAdminDevices} from '../src/services/adminPushAccess.js';
 import {adminTokenVersion} from '../src/services/adminSessions.js';
 import {sendChatPushBatch} from '../src/services/chatPushTransport.js';
@@ -45,4 +45,14 @@ test('push tickets preserve successful devices and remove invalid ones; temporar
   const fetchImpl=async(_,options)=>{assert.ok(options.signal);return{ok:true,status:200,json:async()=>({data:[{status:'ok',id:'receipt'},{status:'error',details:{error:'DeviceNotRegistered'}},{status:'error',details:{error:'MessageRateExceeded'}}]})};};
   await assert.rejects(sendChatPushBatch([{to:'ok'},{to:'invalid'},{to:'retry'}],{fetchImpl,onAccepted:async token=>accepted.push(token),removeDevice:async token=>removed.push(token)}));
   assert.deepEqual(accepted,['ok']);assert.deepEqual(removed,['invalid']);
+});
+
+test('auto approval and Expo workers claim disjoint job kinds with bound SQL parameters',async()=>{
+  const queries=[];const db={$queryRawUnsafe:async(...args)=>{queries.push(args);return[];}};
+  await createNotificationOutbox({db,logger,kinds:AUTO_APPROVAL_JOB_KINDS}).drain(()=>assert.fail('no jobs'));
+  await createNotificationOutbox({db,logger,excludeKinds:AUTO_APPROVAL_JOB_KINDS}).drain(()=>assert.fail('no jobs'));
+  assert.match(queries[0][0],/kind = ANY\(\$2::text\[\]\)/);
+  assert.match(queries[1][0],/kind <> ALL\(\$2::text\[\]\)/);
+  assert.deepEqual(queries[0][2],AUTO_APPROVAL_JOB_KINDS);assert.deepEqual(queries[1][2],AUTO_APPROVAL_JOB_KINDS);
+  assert.match(queries[0][0],/FOR UPDATE SKIP LOCKED/);
 });

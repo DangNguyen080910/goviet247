@@ -1,3 +1,4 @@
+import {enqueueTripAutoApproval} from './tripAutoApproval.js';
 import { bookingInputHash } from "./bookingIdentity.js";
 import { phoneVariants } from "./riderTripAccess.js";
 import {makeTripEvent,tripChanges} from "./tripHistory.js";
@@ -76,6 +77,7 @@ export async function createBookableTrip(db, data) {
     const stops = partnerStops || bookingStops;
     if (stops?.length) await tx.tripStop.createMany({data:stops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
     if (partnerAuditData) await tx.partnerAuditLog.create({data:{...partnerAuditData,targetId:trip.id}});
+    await enqueueTripAutoApproval(tx, trip, 'NEW');
     await createBookingChatNotice(tx, trip);
     return trip;
   });

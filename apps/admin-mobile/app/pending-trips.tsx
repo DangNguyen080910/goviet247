@@ -843,6 +843,7 @@ export default function PendingTripsScreen() {
                     value={getPendingTripOriginLabel(detail.cancelReason)}
                   />
                   <DetailRow label="Trạng thái" value={detail.status || "-"} />
+                  {detail.autoApprovalReviewReason ? <DetailRow label="Cần duyệt tay" value={detail.autoApprovalReviewReason} highlight /> : null}
                   <DetailRow
                     label="Giờ đón"
                     value={formatDateTime(detail.pickupTime)}

@@ -428,7 +428,7 @@ export async function createTripHandler(req, res) {
         };
 
         await emitRiderTripUpdate(io, prisma, trip, { reason: "create_trip" });
-        io.to("admins").emit("admin:new_trip", adminPayload);
+        if (!trip.__autoApprovalQueued) io.to("admins").emit("admin:new_trip", adminPayload);
         io.to("admins").emit("admin:dashboard_changed", adminPayload);
 
         console.log(
@@ -443,7 +443,7 @@ export async function createTripHandler(req, res) {
     }
 
     try {
-      await sendAdminPushNotification({
+      if (!trip.__autoApprovalQueued) await sendAdminPushNotification({
         title: "🚨 Có chuyến mới chờ duyệt",
         body: `${req.partnerTripData?.partnerCompanyName ? "Đối tác " + req.partnerTripData.partnerCompanyName : riderName || "Khách hàng"} vừa đặt chuyến mới.`,
         data: {

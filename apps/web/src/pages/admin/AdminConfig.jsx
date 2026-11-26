@@ -1,3 +1,4 @@
+import TripAutoApprovalConfig from '../../components/admin/TripAutoApprovalConfig';
 import DriverRulesConfig from '../../components/admin/DriverRulesConfig';
 import RuleOutlinedIcon from '@mui/icons-material/RuleOutlined';
 import MoneyTextField from '../../components/common/MoneyTextField';
@@ -2019,6 +2020,7 @@ export default function AdminConfig() {
             {/* TAB 2: CHUYẾN ĐI */}
             <TabPanel value={tab} index={3}>
               <Stack spacing={2.5}>
+                <TripAutoApprovalConfig />
                 <Paper variant="outlined" sx={{ p: 3, borderRadius: 3 }}>
                   <Stack spacing={2}>
                     <Typography variant="h6">Loại xe nhận đặt</Typography>

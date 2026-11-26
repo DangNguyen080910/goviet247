@@ -35,6 +35,8 @@ function notificationRoute(data: NotificationData) {
     return "/pending-trips?tab=PENDING";
   }
 
+  if(source === "AUTO_VERIFY_TRIP" && status === "PENDING")return "/unassigned-trips";
+
   if (source === "DRIVER_CANCEL_TRIP") {
     return "/pending-trips?tab=PENDING";
   }
@@ -72,7 +74,7 @@ export function getAdminNotificationRoute(data: NotificationData) {
   let route=notificationRoute(data);
   const tripId=String(data?.tripId||'').trim();
   if(tripId && route.startsWith('/assigned-trips') && normalize(data?.status||data?.toStatus)==='PENDING')route='/pending-trips?tab=PENDING';
-  return tripId && /^\/(pending-trips|assigned-trips)(\?|$)/.test(route) ? `${route}${route.includes('?')?'&':'?'}tripId=${encodeURIComponent(tripId)}&focusRequest=${Date.now()}_${++focusSequence}` : route;
+  return tripId && /^\/(pending-trips|assigned-trips|unassigned-trips)(\?|$)/.test(route) ? `${route}${route.includes('?')?'&':'?'}tripId=${encodeURIComponent(tripId)}&focusRequest=${Date.now()}_${++focusSequence}` : route;
 }
 
 export function getAdminNotificationResponseRoute(

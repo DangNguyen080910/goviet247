@@ -1,3 +1,4 @@
+import {startTripAutoApprovalWorker} from './services/tripAutoApproval.js';
 import "dotenv/config";
 import {startNotificationOutboxWorker} from "./services/notificationOutbox.js";
 import {deliverNotificationJob} from "./services/notificationService.js";
@@ -168,6 +169,7 @@ const io = new SocketIOServer(server, {
 
 // Lưu `io` vào app để controllers/routes dùng lại
 app.set("io", io);
+startTripAutoApprovalWorker(io);
 
 // Map để lưu thông tin socket của tài xế / rider
 const driverSockets = new Map(); // socket.id -> { userId }

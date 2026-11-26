@@ -37,7 +37,7 @@ async function fixture(run,{regional=false,overnightFlat=false}={}){
   const db={pricingConfig:{findFirst:async()=>config,findUnique:async()=>({isActive:true})},
     tripConfig:{findFirst:async()=>({quoteExpireSeconds:120,regionalPricingConfig:{NORTH:0,CENTRAL:regional?10:0,SOUTH:0}})},
     bookingQuote:{create:async({data})=>held.set(data.tokenHash,{...data,pricing:jsonb(data.pricing),route:jsonb(data.route)}),findUnique:async({where})=>held.get(where.tokenHash)},
-    $transaction:async fn=>fn({$queryRawUnsafe:noop,riderProfile:{findFirst:async()=>null},pricingConfig:{findUnique:async()=>({isActive:true})},
+    $transaction:async fn=>fn({tripConfig:{findFirst:async()=>({})},$queryRawUnsafe:noop,riderProfile:{findFirst:async()=>null},pricingConfig:{findUnique:async()=>({isActive:true})},
       trip:{findUnique:async({where})=>trips.get(where.bookingRequestKey),create:async({data})=>{const trip={...data,id:'offline-'+(++saved),createdAt:new Date()};trips.set(data.bookingRequestKey,trip);return trip;}},
       tripStop:{createMany:noop},tripChatMessage:{createMany:noop}})};
   const service=createBookingQuoteService({db,knownPlace:()=>null,

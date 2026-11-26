@@ -497,6 +497,11 @@ export async function sendAdminPushNotification({ title, body, data = {}, roles 
       const current=await prisma.trip.findUnique({where:{id:data.tripId},select:{status:true,isVerified:true,cancelledAt:true}});
       if(!current || current.status!=='PENDING' || current.isVerified || current.cancelledAt)return;
     }
+    if(data?.source === 'auto_verify_trip' && data.tripId){
+      const current=await prisma.trip.findUnique({where:{id:data.tripId},select:{verifiedAt:true,cancelledAt:true,status:true}});
+      if(!current || current.cancelledAt || new Date(current.verifiedAt).getTime()!==new Date(data.verifiedAt).getTime())return;
+      data={...data,status:current.status};
+    }
     const devices = await prisma.device.findMany({
       where: {
         role: {

@@ -10,8 +10,8 @@ import TripDriverNoteEditor from "../components/TripDriverNoteEditor";
 import TripMoney from "../components/TripMoney";
 import TourServiceSummary from "../components/TourServiceSummary";
 // Path: admin-mobile/app/unassigned-trips.tsx
-import { router, useFocusEffect } from "expo-router";
-import { useCallback, useMemo, useState } from "react";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { useCallback, useMemo, useState, useEffect, useRef } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -237,6 +237,8 @@ function DetailRow({
 }
 
 export default function UnassignedTripsScreen() {
+  const focusParams=useLocalSearchParams<{tripId?:string;focusRequest?:string}>();
+  const lastFocus=useRef('');
   const [tab, setTab] = useState<TabKey>("ACTIVE");
   const [searchText, setSearchText] = useState("");
   const [items, setItems] = useState<UnassignedTripItem[]>([]);
@@ -330,6 +332,12 @@ export default function UnassignedTripsScreen() {
       setDetailLoading(false);
     }
   }, []);
+  useEffect(()=>{
+    if(!focusParams.tripId)return;
+    const key=focusParams.tripId+':'+(focusParams.focusRequest || '');
+    if(lastFocus.current===key)return;lastFocus.current=key;
+    setTab('ACTIVE');void openTripDetail(focusParams.tripId);
+  },[focusParams.tripId,focusParams.focusRequest,openTripDetail]);
 
   const handleCancelTrip = useCallback(async () => {
     if (!selectedTripId) return;

@@ -1,3 +1,4 @@
+import {enqueueTripAutoApproval} from '../services/tripAutoApproval.js';
 import {makeTripEvent,tripChanges} from "../services/tripHistory.js";
 import { emitDriverTripEvent } from '../services/tripAudience.js';
 // Path: goviet247/apps/api/src/controllers/adminTripController.js
@@ -92,7 +93,7 @@ export async function adminDriverCancelToReview(req, res) {
           version: { increment: 1 }, status: "PENDING", driverId: null,
           chatVisibleFrom: new Date(),
           acceptedAt: null, walletHoldId: null, isVerified: false, verifiedAt: null,
-          verifiedById: null, verifiedNote: `Tài xế huỷ, admin đưa về chờ duyệt: ${reason.slice(0, 300)}`,
+          autoApprovalReviewReason: null, verifiedById: null, verifiedNote: `Tài xế huỷ, admin đưa về chờ duyệt: ${reason.slice(0, 300)}`,
           driverAcceptOpenAt: null, cancelledAt: null,
           cancelReason: `Tài xế huỷ chuyến do admin xử lý: ${reason.slice(0, 300)}`,
           commissionPercentSnapshot: null, commissionAmountSnapshot: null,
@@ -110,6 +111,7 @@ export async function adminDriverCancelToReview(req, res) {
       }
       await tx.tripChatMessage.create({data:{tripId:tripId,senderId:'system-assignment',senderRole:'SYSTEM',senderLabel:'Lịch sử phân công',clientId:`release_${tripId}_${trip.version}`,kind:'TEXT',audience:'ADMIN',pushDoneAt:new Date(),text:`Kết thúc lượt tài xế ${trip.driverId}. Hội thoại phía trên được lưu riêng cho Admin. Lý do: ${reason}`}});
       const updated = await tx.trip.findUnique({ where: { id: tripId } });
+      await enqueueTripAutoApproval(tx, updated, 'REQUEUE');
       const actionLog = await tx.adminTripActionLog.create({
         data: {
           tripId, fromStatus: trip.status, toStatus: "PENDING",

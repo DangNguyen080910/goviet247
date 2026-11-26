@@ -387,6 +387,7 @@ model Trip {
   verifiedAt   DateTime? @db.Timestamptz(6)
   verifiedById Int?
   verifiedNote String?
+  autoApprovalReviewReason String?
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
@@ -558,6 +559,8 @@ model QuoteHistory {
 }
 
 model TripConfig {
+  autoApproveNewTrips Boolean @default(false)
+  autoApproveRequeuedTrips Boolean @default(false)
   regionalPricingConfig Json?
   destinationServiceConfig Json?
   returnSuggestionRadiusKm Int @default(20)

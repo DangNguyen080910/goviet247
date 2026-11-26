@@ -15,15 +15,16 @@ function loadCreate(deps) {
   const end = source.indexOf("\nrouter.get('/booking-companies'", start);
   return new Function(...Object.keys(deps), source.slice(start, end).replace('export ', '') + ';return createTripHandler;')(...Object.values(deps));
 }
-function fixture({ stopFailure = false, socketFailure = false } = {}) {
+function fixture({ stopFailure = false, socketFailure = false, autoApproveNewTrips = false } = {}) {
+  const autoJobs=[];let adminPushes=0;
   const committedTrips = [], committedStops = [];
   let transactionActive = false;
-  const tripModel = { create: async ({ data }) => ({ id: 'booking', createdAt: new Date(), ...data }) };
+  const tripModel = { create: async ({ data }) => ({ id: 'booking',version:0,updatedAt:new Date(), createdAt: new Date(), ...data }) };
   const db = {
     tripStop: { createMany: async ({ data }) => { if (stopFailure) throw Error('stop write failed'); committedStops.push(...data); } },
     $transaction: async fn => {
       const stagedTrips = [], stagedStops = [];
-      const tx = {
+      const tx = {tripConfig:{findFirst:async()=>({autoApproveNewTrips})},notificationJob:{create:async({data})=>{autoJobs.push(data);return data;}},
         riderProfile: {findFirst:async()=>null},
         pricingConfig: { findUnique: async () => ({ isActive: true }) }, $queryRawUnsafe: noop,
         trip: { create: async arg => { const trip = await tripModel.create(arg); stagedTrips.push(trip); return trip; } },
@@ -44,13 +45,13 @@ function fixture({ stopFailure = false, socketFailure = false } = {}) {
     getEffectiveTripConfig: async () => ({ maxStops: 10 }),
     calculateTripPrice: async () => ({ totalPrice: 500000, basePricePerKm: 10000 }),
     assertDestinationQuote() {}, linkQuoteToTrip: noop, emitRiderTripUpdate: noop,
-    sendAdminPushNotification: noop, console: quiet,
+    sendAdminPushNotification: async()=>{adminPushes++;}, console: quiet,
   });
   const req = { user: { id: 'rider' }, body: {
     pickupAddress: 'A', dropoffAddress: 'C', stops: ['B', 'C'], distanceKm: 50,
     pickupTime: '2099-01-01T08:00:00+07:00', carType: 'CAR_5',
   }, app: { get: () => socketFailure ? { to() { throw Error('socket down'); } } : null } };
-  return { handler, req, committedTrips, committedStops };
+  return { handler, req, committedTrips, committedStops, autoJobs, get adminPushes(){return adminPushes;} };
 }
 
 test('ordinary booking commits the trip and ordered stops together', async () => {
@@ -94,4 +95,10 @@ test('OTP-confirmed booking succeeds even if realtime delivery fails after commi
   assert.equal(saved, true);
   assert.equal(res.body.success, true, JSON.stringify(res.body));
   assert.equal(res.body.tripId, 'otp-trip');
+});
+
+test('new automatic booking acknowledges creation and durably queues screening without a premature manual-review push',async()=>{
+ const f=fixture({autoApproveNewTrips:true}),res=response();await f.handler(f.req,res);
+ assert.equal(res.statusCode,201,JSON.stringify(res.body));assert.equal(res.body.success,true);assert.equal(f.committedTrips.length,1);
+ assert.equal(f.autoJobs.length,1);assert.equal(f.autoJobs[0].kind,'tripAutoApprove');assert.equal(f.autoJobs[0].payload[0].source,'NEW');assert.equal(f.adminPushes,0);
 });

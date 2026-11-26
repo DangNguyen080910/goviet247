@@ -1,3 +1,4 @@
+import {enqueueTripAutoApproval} from '../services/tripAutoApproval.js';
 import { tripPagination, tripPage } from "../services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../services/tripHistory.js";
 import { parseAudienceRegions, matchesAudienceFilters } from '../shared/audienceFilters.js';
@@ -745,7 +746,7 @@ export async function listMyCustomerTrips(req, res) {
     return res.json({
       success: true,
       nextCursor:page.nextCursor, hasMore:page.hasMore,
-    items: trips.map(({ driver, dispatcherNote, verifiedNote, ...trip }) => ({
+    items: trips.map(({ driver, dispatcherNote, verifiedNote, autoApprovalReviewReason, ...trip }) => ({
         ...trip,
         canManage: Boolean(trip.partnerCompanyId) || trip.riderId === riderId,
         creatorName:trip.partnerCompanyId ? trip.partnerManagerName : undefined,
@@ -792,7 +793,7 @@ export async function getTripById(req, res) {
 
     const partnerContext=await getPartnerRiderContext(prisma,trip,phoneNumbers);
     if (!trip || (trip.riderId !== userId && !canViewAsPassenger && !partnerContext && trip.driverId !== userId)) return res.status(404).json({ error: "Trip not found" });
-    const { dispatcherNote, verifiedNote, partnerAssignedTo, ...publicTrip } = trip;
+    const { dispatcherNote, verifiedNote, autoApprovalReviewReason, partnerAssignedTo, ...publicTrip } = trip;
     const data = trip.driverId === userId ? serializeDriverTrip({ ...publicTrip, dispatcherNote, partnerAssignedTo }, ["COMPLETED", "CANCELLED"].includes(trip.status) ? "history" : "active") : {...publicTrip,...(partnerContext ? {riderName:trip.partnerBookerName,riderPhone:trip.partnerBookerPhone,creatorName:trip.partnerManagerName,creatorPhone:trip.partnerManagerPhone,canManage:true}: {})};
     return res.json({ success: true, data });
   } catch (err) {
@@ -1446,6 +1447,7 @@ export async function cancelDriverTrip(req, res) {
           verifiedAt: null,
           verifiedById: null,
           verifiedNote: "Driver huỷ chuyến",
+          autoApprovalReviewReason: null,
 
           driverAcceptOpenAt: null,
 
@@ -1466,6 +1468,8 @@ export async function cancelDriverTrip(req, res) {
           driverReceiveSnapshot: null,
         },
       });
+
+      await enqueueTripAutoApproval(tx, updatedTrip, 'REQUEUE');
 
       await tx.tripChatMessage.create({data:{tripId:trip.id,senderId:'system-assignment',senderRole:'SYSTEM',senderLabel:'Lịch sử phân công',clientId:`release_${trip.id}_${trip.version}`,kind:'TEXT',audience:'ADMIN',pushDoneAt:new Date(),text:`Kết thúc lượt tài xế ${driverUserId}. Hội thoại phía trên được lưu riêng cho Admin. Lý do: ${"Tài xế huỷ chuyến"}`}});
       const riderNotification = await createRiderTripNotification(
@@ -1596,7 +1600,7 @@ export async function cancelDriverTrip(req, res) {
         title: "⚠️ Tài xế vừa huỷ chuyến",
         body: `Chuyến #${String(result.trip?.id || "")
           .slice(-8)
-          .toUpperCase()} đã được đưa về chờ duyệt.`,
+          .toUpperCase()} ${result.trip?.__autoApprovalQueued ? "đang được kiểm tra để tự duyệt lại tìm tài xế mới" : "đã được đưa về chờ duyệt"}.`,
         data: {
           source: "driver_cancel_trip",
           tripId: result.trip?.id || null,
@@ -3162,6 +3166,7 @@ export async function adminVerifyTrip(req, res) {
         isVerified: true,
         verifiedAt: new Date(),
         verifiedById: actor.id,
+        autoApprovalReviewReason: null,
         verifiedNote: note ? String(note).slice(0, 500) : null,
         driverAcceptOpenAt,
       },

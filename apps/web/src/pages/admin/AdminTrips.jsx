@@ -301,6 +301,7 @@ export default function AdminTrips() {
 
                     <TableCell>
                       {normalizeDisplayAddress(t.pickupAddress) || "-"}
+                      {t.autoApprovalReviewReason && <div style={{marginTop:6,color:"#b45309",fontSize:12}}>Cần duyệt tay: {t.autoApprovalReviewReason}</div>}
                     </TableCell>
 
                     <TableCell>

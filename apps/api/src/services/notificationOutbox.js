@@ -15,7 +15,8 @@ export async function recordNotificationAccepted(token){
   }
   job.accepted.add(hash);
 }
-export function createNotificationOutbox({db=prisma,logger=console}={}){
+export const AUTO_APPROVAL_JOB_KINDS=['tripAutoApprove','tripAutoApprovalRealtime'];
+export function createNotificationOutbox({db=prisma,logger=console,kinds=null,excludeKinds=[]}={}){
   let running=false,workerRetryAt=0;
   const run=(job,fn)=>delivery.run({...job,db,accepted:new Set(job.acceptedTokens || [])},fn);
   async function enqueue(kind,args,fallback){
@@ -35,9 +36,11 @@ export function createNotificationOutbox({db=prisma,logger=console}={}){
     if(running || Date.now()<workerRetryAt)return;running=true;
     try{
       const token=randomUUID();
+      const filteredKinds=kinds || excludeKinds;
+      const kindFilter=filteredKinds.length ? ` AND kind ${kinds ? '= ANY' : '<> ALL'}($2::text[])` : '';
       const jobs=await db.$queryRawUnsafe(`UPDATE "NotificationJob" SET attempts=attempts+1,"lockToken"=$1,"lockedUntil"=now()+interval '2 minutes'
         WHERE id IN (SELECT id FROM "NotificationJob" WHERE "completedAt" IS NULL AND attempts<8 AND "expiresAt">now() AND "runAt"<=now()
-          AND ("lockedUntil" IS NULL OR "lockedUntil"<now()) ORDER BY "createdAt" FOR UPDATE SKIP LOCKED LIMIT 4) RETURNING *`,token);
+          AND ("lockedUntil" IS NULL OR "lockedUntil"<now()) ${kindFilter} ORDER BY "createdAt" FOR UPDATE SKIP LOCKED LIMIT 4) RETURNING *`,token,...(filteredKinds.length ? [filteredKinds] : []));
       workerRetryAt=0;
       await Promise.all(jobs.map(async job=>{
         const heartbeat=setInterval(()=>{void db.$executeRawUnsafe('UPDATE "NotificationJob" SET "lockedUntil"=now()+interval \'2 minutes\' WHERE id=$1 AND "lockToken"=$2',job.id,job.lockToken).catch(e=>logger.error('[NotificationOutbox] heartbeat',e.code || e.name));},30000);
@@ -55,7 +58,7 @@ export function createNotificationOutbox({db=prisma,logger=console}={}){
   }
   return {enqueue,drain,run};
 }
-export const notificationOutbox=createNotificationOutbox();
+export const notificationOutbox=createNotificationOutbox({excludeKinds:AUTO_APPROVAL_JOB_KINDS});
 export function startNotificationOutboxWorker(deliver){
   const timer=setInterval(()=>{void notificationOutbox.drain(deliver);},1000);timer.unref();
   const cleanup=setInterval(()=>{void prisma.$executeRawUnsafe('DELETE FROM "NotificationJob" WHERE "createdAt"<now()-interval \'7 days\'').catch(e=>console.error('[NotificationOutbox] cleanup',e.code || e.name));},3600000);cleanup.unref();

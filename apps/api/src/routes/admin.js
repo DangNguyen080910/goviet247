@@ -1,3 +1,4 @@
+import {tripAutoApprovalConfig} from '../controllers/tripAutoApprovalConfigController.js';
 import {makeTripHistoryController} from "../services/tripHistory.js";
 import { makeDriverRulesController } from '../controllers/driverRulesController.js';
 import {makeAdminContractController} from '../controllers/adminContractController.js';
@@ -319,6 +320,8 @@ router.patch("/pricing-configs/:carType", requireAdmin, updatePricingConfig);
 // TRIP CONFIG
 // =====================================================
 
+router.get("/trip-config/auto-approval", requireAdmin, tripAutoApprovalConfig.get);
+router.patch("/trip-config/auto-approval", requireAdmin, tripAutoApprovalConfig.patch);
 router.get("/trip-config", requireAdminOrStaff, getTripConfig);
 router.patch("/trip-config", requireAdmin, updateTripConfig);
 
