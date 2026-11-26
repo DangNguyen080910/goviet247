@@ -1,3 +1,4 @@
+import * as vehiclePolicy from '../src/services/tripVehiclePolicy.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -93,8 +94,8 @@ test('Vietnam dates, full timestamps and date validation do not depend on the ph
  assert.match(historyTime('2026-11-21T17:10:00Z'),/00:10/);assert.match(historyTime('2026-11-21T17:10:00Z'),/22\/11\/2026/);
 });
 
-function acceptanceFixture(failHistory=false,hold=100){
- let state={trip:{id:'trip',status:'PENDING',isVerified:true,verifiedAt:at(0),version:0,totalPrice:1000},profile:{id:'profile-a',status:'VERIFIED',balance:500,fullName:'Tài xế A',user:{displayName:'A',phones:[{e164:'+84900000001'}]}},logs:[],wallets:[]};
+function acceptanceFixture(failHistory=false,hold=100,vehicleType='CAR_5'){
+ let state={trip:{carType:'CAR_5',fuelPreference:'ANY',id:'trip',status:'PENDING',isVerified:true,verifiedAt:at(0),version:0,totalPrice:1000},profile:{vehicleType,id:'profile-a',status:'VERIFIED',balance:500,fullName:'Tài xế A',user:{displayName:'A',phones:[{e164:'+84900000001'}]}},logs:[],wallets:[]};
  const prisma={$transaction:async callback=>{
   const draft=structuredClone(state);
   const tx={trip:{findUnique:async()=>draft.trip,update:async({data})=>{draft.trip={...draft.trip,...data,version:1};return draft.trip;}},
@@ -106,18 +107,18 @@ function acceptanceFixture(failHistory=false,hold=100){
  }};
  const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8');
  const begin=source.indexOf('export async function acceptTrip('),end=source.indexOf('\n}',begin)+2;
- const deps={prisma,recordTripEvent,availableTripWhere,assertCurrentContractForNewTrip:async()=>{},getDriverConfigSnapshot:async()=>({maxActiveTrips:3}),
+ const deps={...vehiclePolicy,prisma,recordTripEvent,availableTripWhere,assertCurrentContractForNewTrip:async()=>{},getDriverConfigSnapshot:async()=>({maxActiveTrips:3}),
   lockDriverProfile:async()=>{},lockTrip:async()=>{},assertTripAcceptanceAllowed:()=>{},canDriverSeeTrip:()=>true,countDriverActiveTrips:async()=>0,
   calculateDriverFinanceSnapshot:()=>({requiredWalletAmount:hold,commissionAmount:hold,driverVatAmount:0,driverPitAmount:0}),createAcceptanceChatNotices:async()=>{},createRiderTripNotification:async()=>null,
   serializeDriverTrip:trip=>trip,sendAdminPushNotification:async()=>{},sendTripStatusChangedToRider:async()=>{},console:{log(){},error(){}}};
  const accept=new Function(...Object.keys(deps),source.slice(begin,end).replace('export ','')+';return acceptTrip;')(...Object.values(deps));
  return {get state(){return state;},accept};
 }
-for(const hold of [0,100])test(`actual acceptance records driver once in its transaction, including ${hold} fee`,async()=>{
- const f=acceptanceFixture(false,hold),res=response();await f.accept({body:{tripId:'trip'},user:{id:'a'}},res);
+for(const vehicleType of ['CAR_5','CAR_7','CAR_16'])for(const hold of [0,100])test(`actual acceptance of CAR_5 by ${vehicleType} records driver once, including ${hold} fee`,async()=>{
+ const f=acceptanceFixture(false,hold,vehicleType),res=response();await f.accept({body:{tripId:'trip'},user:{id:'a'}},res);
  assert.equal(res.statusCode,200,JSON.stringify(res.body));assert.equal(f.state.logs.length,1);
  assert.equal(f.state.logs[0].eventData.driverName,'Tài xế A');assert.equal(f.state.logs[0].eventData.assignmentId,'trip:1');
- assert.equal(f.state.profile.balance,500-hold);
+ assert.equal(f.state.profile.balance,500-hold);assert.equal(f.state.trip.totalPrice,1000);assert.equal(f.state.trip.carType,'CAR_5');
 });
 test('audit write failure rolls back the acceptance and wallet debit together',async()=>{
  const f=acceptanceFixture(true),res=response();await f.accept({body:{tripId:'trip'},user:{id:'a'}},res);

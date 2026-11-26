@@ -1,3 +1,4 @@
+import {canVehicleServeTrip} from './tripVehiclePolicy.js';
 import {createNotificationOutbox,AUTO_APPROVAL_JOB_KINDS} from './notificationOutbox.js';
 import {randomUUID} from 'node:crypto';
 import {prisma} from '../utils/db.js';
@@ -54,11 +55,11 @@ export function createTripAutoApprovalProcessor({db=prisma,resolveAddresses=addr
       if (decision.ok) {
         const region = approvalRegion(decision.provinceCode);
         const drivers = await tx.driverProfile.findMany({where:{status:'VERIFIED',tripAcceptBlocked:false,
-          operatingProvinceConfirmedAt:{not:null},operatingProvinceCode:{in:region.provinceCodes}},select:{userId:true}});
-        driverIds = [...new Set(drivers.map(driver=>driver.userId))];
+          operatingProvinceConfirmedAt:{not:null},operatingProvinceCode:{in:region.provinceCodes}},select:{userId:true,vehicleType:true,vehicleFuelType:true}});
+        driverIds = [...new Set(drivers.filter(driver=>canVehicleServeTrip(current,driver)).map(driver=>driver.userId))];
         // [] means PUBLIC in the existing visibility policy. Never approve an
         // empty region, or an address lookup failure, to the public room.
-        if (!driverIds.length) decision = {ok:false,reason:'Chưa có tài xế đã xác nhận khu vực trong miền điểm đón. Cần duyệt tay.'};
+        if (!driverIds.length) decision = {ok:false,reason:'Chưa có tài xế đã xác nhận khu vực trong miền điểm đón đáp ứng số chỗ và nhiên liệu khách yêu cầu. Cần duyệt tay.'};
       }
       if (!decision.ok) {
         // Re-delivery of a finished review must not spam notifications/history.
@@ -75,7 +76,7 @@ export function createTripAutoApprovalProcessor({db=prisma,resolveAddresses=addr
       const configuredDelay = Number(driverConfig?.newTripAcceptDelaySeconds ?? 10);
       const delay = Number.isFinite(configuredDelay) && configuredDelay >= 0 ? configuredDelay : 10;
       const verifiedAt = clock();
-      const reason = `${job.source === 'NEW' ? 'Tự duyệt chuyến mới' : 'Tự duyệt lại sau tài xế huỷ'}: phát cho tài xế ${approvalRegion(decision.provinceCode).label} theo điểm đón.`;
+      const reason = `${job.source === 'NEW' ? 'Tự duyệt chuyến mới' : 'Tự duyệt lại sau tài xế huỷ'}: phát cho tài xế ${approvalRegion(decision.provinceCode).label} theo điểm đón, đúng số chỗ và nhiên liệu khách yêu cầu.`;
       const changed = await tx.trip.update({where:{id:current.id,status:'PENDING',driverId:null,isVerified:false,cancelledAt:null},data:{
         audienceDriverIds:driverIds,audienceRegions:[decision.region],isVerified:true,verifiedAt,verifiedById:null,verifiedNote:reason,
         autoApprovalReviewReason:null,driverAcceptOpenAt:new Date(verifiedAt.getTime()+delay*1000),

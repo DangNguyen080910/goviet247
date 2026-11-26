@@ -1,3 +1,4 @@
+import * as vehiclePolicy from '../src/services/tripVehiclePolicy.js';
 import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import {dropoffIsRepresented} from "../src/shared/tripRoute.js";
@@ -9,34 +10,34 @@ import * as audiencePolicy from '../src/services/tripAudiencePolicy.js';
 const quiet = { log(){}, error(){} };
 function controller(name,deps){
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8').replace(/^import[\s\S]*?;\n/gm,'').replace(/export /g,'');
-  deps={tripPagination,tripPage,dropoffIsRepresented,...audienceLabel,getDriverConfigSnapshot:async()=>({newTripAcceptDelaySeconds:0}),assertCurrentContractForNewTrip:async()=>{},...deps};
+  deps={...vehiclePolicy,tripPagination,tripPage,dropoffIsRepresented,...audienceLabel,getDriverConfigSnapshot:async()=>({newTripAcceptDelaySeconds:0}),assertCurrentContractForNewTrip:async()=>{},...deps};
  if(deps.prisma){deps.prisma.$transaction ||= fn=>fn(deps.prisma);deps.prisma.adminTripActionLog ||= {create:async({data})=>data};}
  deps={recordTripEvent,makeTripEvent,...deps};
   return new Function(...Object.keys(deps),source+`; return ${name};`)(...Object.values(deps));
 }
 function response(){return {statusCode:200,status(code){this.statusCode=code;return this;},json(body){this.body=body;return this;}};}
 
-test('public list includes both fuel preferences without requiring a driver fuel profile',async()=>{
+test('public list filters customer fuel and capacity in SQL while retaining the admin audience',async()=>{
   let where;
-  const rows=['GASOLINE','ELECTRIC','ANY'].map(fuelPreference=>({id:fuelPreference,fuelPreference,verifiedAt:new Date(0),totalPrice:100000}));
-  const prisma={driverConfig:{findFirst:async()=>({newTripAcceptDelaySeconds:0})},trip:{findMany:async args=>{where=args.where;return rows;}}};
+  const rows=['ELECTRIC','ANY'].map(fuelPreference=>({id:fuelPreference,fuelPreference,verifiedAt:new Date(0),totalPrice:100000}));
+  const prisma={driverProfile:{findUnique:async()=>({vehicleType:'CAR_7',vehicleFuelType:'ELECTRIC'})},driverConfig:{findFirst:async()=>({newTripAcceptDelaySeconds:0})},trip:{findMany:async args=>{where=args.where;return rows;}}};
   const list=controller('listAvailableTrips',{prisma,...audiencePolicy,calculateDriverFinanceSnapshot:()=>({}),serializeDriverTrip:t=>t,console:quiet});
   const res=response();await list({user:{id:'d'}},res);
-  assert.equal(res.statusCode,200);assert.equal(where.fuelPreference,undefined);
+  assert.equal(res.statusCode,200);assert.deepEqual(where.fuelPreference,{in:['ANY','ELECTRIC']});assert.deepEqual(where.carType,{in:['CAR_5','CAR_7']});
   assert.deepEqual(where.OR,audiencePolicy.audienceWhere('d').OR);
-  assert.deepEqual(res.body.items.map(t=>t.fuelPreference),['GASOLINE','ELECTRIC','ANY']);
+  assert.deepEqual(res.body.items.map(t=>t.fuelPreference),['ELECTRIC','ANY']);
 });
 
-test('acceptance uses admin audience, not customer fuel, for electric, gasoline and unknown profiles',async()=>{
+test('acceptance enforces customer fuel for public and selected drivers and rejects outsiders first',async()=>{
   const raw=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8');
   const a=raw.indexOf('export async function acceptTrip('),b=raw.indexOf('\n}',a)+2;
-  for(const preference of ['GASOLINE','ELECTRIC']) for(const fuel of ['ELECTRIC','GASOLINE',null]) for(const audience of [[],['other']]){
-    const tx={driverProfile:{findUnique:async()=>({status:'VERIFIED',balance:0,vehicleFuelType:fuel})},trip:{findUnique:async()=>({id:'t',status:'PENDING',isVerified:true,verifiedAt:new Date(),fuelPreference:preference,audienceDriverIds:audience})}};
-    const deps={...audienceLabel,assertCurrentContractForNewTrip:async()=>{},prisma:{$transaction:fn=>fn(tx)},...audiencePolicy,getDriverConfigSnapshot:async()=>({maxActiveTrips:3}),lockDriverProfile:async()=>{},lockTrip:async()=>{},assertTripAcceptanceAllowed:()=>{},countDriverActiveTrips:async()=>0,calculateDriverFinanceSnapshot:()=>({requiredWalletAmount:95000}),console:quiet};
+  for(const preference of ['ANY','GASOLINE','ELECTRIC']) for(const fuel of ['ELECTRIC','GASOLINE',null]) for(const audience of [[],['d'],['other']]){
+    const tx={driverProfile:{findUnique:async()=>({status:'VERIFIED',balance:0,vehicleType:'CAR_5',vehicleFuelType:fuel})},trip:{findUnique:async()=>({id:'t',status:'PENDING',isVerified:true,verifiedAt:new Date(),carType:'CAR_5',fuelPreference:preference,audienceDriverIds:audience})}};
+    const deps={...vehiclePolicy,...audienceLabel,assertCurrentContractForNewTrip:async()=>{},prisma:{$transaction:fn=>fn(tx)},...audiencePolicy,getDriverConfigSnapshot:async()=>({maxActiveTrips:3}),lockDriverProfile:async()=>{},lockTrip:async()=>{},assertTripAcceptanceAllowed:()=>{},countDriverActiveTrips:async()=>0,calculateDriverFinanceSnapshot:()=>({requiredWalletAmount:95000}),console:quiet};
     const handler=new Function(...Object.keys(deps),raw.slice(a,b).replace('export ','')+';return acceptTrip;')(...Object.values(deps));
     const res=response();await handler({body:{tripId:'t'},user:{id:'d'}},res);
-    // A public trip reaches the wallet check regardless of fuel; a private trip still rejects outsiders first.
-    assert.equal(res.body.code,audience.length?'TRIP_NOT_AVAILABLE':'INSUFFICIENT_BALANCE');
+    // Matching vehicles reach the unchanged wallet check; private outsiders are rejected first.
+    assert.equal(res.body.code,audience.includes('other')?'TRIP_NOT_AVAILABLE':preference==='ANY'||preference===fuel?'INSUFFICIENT_BALANCE':'VEHICLE_FUEL_MISMATCH');
   }
 });
 
@@ -59,19 +60,25 @@ test('approval only checks fuel when admin explicitly chooses a fuel group',asyn
   }
 });
 
-test('new-trip push uses persisted admin audience without a customer-fuel filter',async()=>{
-  let where;const sent=[];
+test('new-trip push uses current persisted requirements and current vehicles within the admin audience',async()=>{
   const raw=readFileSync(new URL('../src/services/notificationService.js',import.meta.url),'utf8');
   const start=raw.indexOf('export async function sendNewTripToDrivers('),end=raw.indexOf('\n}',start)+2;
-  const source=raw.slice(start,end).replace('export ','');
-  for(const audience of [[],['electric']]){
-    const prisma={trip:{findUnique:async()=>({audienceDriverIds:audience,fuelPreference:'GASOLINE',status:'PENDING',isVerified:true})},device:{findMany:async args=>{where=args.where;return [{userId:'electric',pushToken:'token'}];}}};
-    const deps={prisma,isDeliveringNotification:()=>true,activeDriverDevices:async(db,devices)=>devices,console:quiet,isExpoPushToken:()=>true,maskAddress:()=>'',shortText:s=>s,formatVnd:()=>'',chunkArray:a=>[a],sendExpoPushMessages:async messages=>{sent.push(messages);return [];}};
-    const send=new Function(...Object.keys(deps),source+';return sendNewTripToDrivers;')(...Object.values(deps));
-    await send({id:'t'});
-    assert.deepEqual(where.userId,audience.length?{in:audience}:undefined);
+  const profiles=[{userId:'small',vehicleType:'CAR_5',vehicleFuelType:'GASOLINE'},
+    {userId:'gas',vehicleType:'CAR_7',vehicleFuelType:'GASOLINE'},
+    {userId:'electric',vehicleType:'CAR_16',vehicleFuelType:'ELECTRIC'},
+    {userId:'large',vehicleType:'CAR_16',vehicleFuelType:'GASOLINE'},
+    {userId:'unknown',vehicleType:'CAR_7',vehicleFuelType:null}];
+  for(const audience of [[],['small','gas','electric','unknown'],['electric']]){
+    const sent=[];
+    const prisma={trip:{findUnique:async()=>({audienceDriverIds:audience,carType:'CAR_7',fuelPreference:'GASOLINE',status:'PENDING',isVerified:true})},
+      device:{findMany:async({where})=>{assert.deepEqual(where.userId,audience.length?{in:audience}:undefined);return profiles.filter(p=>!audience.length||audience.includes(p.userId)).map(p=>({userId:p.userId,pushToken:p.userId}));}},
+      driverProfile:{findMany:async({where})=>profiles.filter(p=>where.userId.in.includes(p.userId))}};
+    const deps={...vehiclePolicy,prisma,isDeliveringNotification:()=>true,activeDriverDevices:async(db,devices)=>devices,console:quiet,isExpoPushToken:()=>true,maskAddress:()=>'',shortText:s=>s,formatVnd:()=>'',chunkArray:a=>[a],sendExpoPushMessages:async messages=>{sent.push(...messages);return [];}};
+    const send=new Function(...Object.keys(deps),raw.slice(start,end).replace('export ','')+';return sendNewTripToDrivers;')(...Object.values(deps));
+    // Stale job disagrees with the current trip; the database remains authoritative.
+    await send({id:'t',carType:'CAR_5',fuelPreference:'ELECTRIC'});
+    assert.deepEqual(sent.map(m=>m.to),audience.length?audience.includes('gas')?['gas']:[]:['gas','large']);
   }
-  assert.equal(sent.length,2);assert.equal(sent[0][0].to,'token');
 });
 
 test('candidate lookup includes all fuels so admin can choose any group',async()=>{

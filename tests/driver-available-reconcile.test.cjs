@@ -110,9 +110,9 @@ test('malformed or failed list responses are not interpreted as a valid empty li
 test('API availability responses explicitly prevent HTTP caches', async () => {
   const source = fs.readFileSync(path.join(root, 'apps/api/src/controllers/tripController.js'), 'utf8');
   const a = source.indexOf('export async function listAvailableTrips('), b = source.indexOf('\n}', a) + 2;
-  const list = new Function('tripPagination','tripPage','prisma', 'getDriverConfigSnapshot', 'audienceWhere', source.slice(a, b).replace('export ', '') + ';return listAvailableTrips;')(
+  const list = new Function('tripPagination','tripPage','prisma', 'getDriverConfigSnapshot', 'audienceWhere','driverTripVehicleWhere', source.slice(a, b).replace('export ', '') + ';return listAvailableTrips;')(
     require('../apps/api/src/services/tripPagination.js').tripPagination,require('../apps/api/src/services/tripPagination.js').tripPage,
-    { trip: { findMany: async ({ where }) => { assert.equal(where.status, 'PENDING'); assert.equal(where.driverId, null); return []; } } }, async () => ({}), () => ({}),
+    { driverProfile:{findUnique:async()=>({vehicleType:'CAR_5'})}, trip: { findMany: async ({ where }) => { assert.equal(where.status, 'PENDING'); assert.equal(where.driverId, null); return []; } } }, async () => ({}), () => ({}), require('../apps/api/src/services/tripVehiclePolicy.js').driverTripVehicleWhere,
   );
   const headers = {};
   const res = { set(k, v) { headers[k] = v; }, json(data) { assert.equal(data.success, true); }, status() { assert.fail('list request failed'); } };

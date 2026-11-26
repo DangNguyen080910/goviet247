@@ -1,3 +1,4 @@
+import {driverTripVehicleWhere} from '../apps/api/src/services/tripVehiclePolicy.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -98,8 +99,8 @@ test('actual available-trips controller supplies millisecond timestamps bracketi
   const a=source.indexOf('export async function listAvailableTrips('),b=source.indexOf('\n}',a)+2;
   let now=base;
   class FakeDate extends Date { constructor(...args) { super(...(args.length?args:[now])); } }
-  const deps={Date:FakeDate,tripPagination:()=>null,tripPage:rows=>({items:rows}),audienceWhere:()=>({}),
-    prisma:{trip:{findMany:async()=>{now+=900;return[];}}},getDriverConfigSnapshot:async()=>{now+=100;return{};},console};
+  const deps={driverTripVehicleWhere,Date:FakeDate,tripPagination:()=>null,tripPage:rows=>({items:rows}),audienceWhere:()=>({}),
+    prisma:{driverProfile:{findUnique:async()=>({vehicleType:'CAR_5'})},trip:{findMany:async()=>{now+=900;return[];}}},getDriverConfigSnapshot:async()=>{now+=100;return{};},console};
   const list=new Function(...Object.keys(deps),source.slice(a,b).replace('export ','')+';return listAvailableTrips;')(...Object.values(deps));
   let payload;
   await list({user:{id:'offline'}},{set(){},json:body=>{payload=body;},status:()=>assert.fail('controller error')});

@@ -1,3 +1,4 @@
+import * as vehiclePolicy from '../src/services/tripVehiclePolicy.js';
 import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import * as audienceLabel from '../src/shared/tripAudienceLabel.js';
@@ -13,7 +14,7 @@ import * as riderAccess from '../src/services/riderTripAccess.js';
 function load(path, names, deps) {
  deps={...audienceLabel,...deps};
  if(deps.prisma){deps.prisma.$transaction ||= fn=>fn(deps.prisma);deps.prisma.adminTripActionLog ||= {create:async({data})=>data};}
- deps={tripPagination,tripPage,recordTripEvent,makeTripEvent,...deps};
+ deps={...vehiclePolicy,tripPagination,tripPage,recordTripEvent,makeTripEvent,...deps};
  const source = readFileSync(new URL(path, import.meta.url), 'utf8').replace(/^import[\s\S]*?;\n/gm, '').replace(/export /g, '').replace('const { PrismaClient } = pkg;', '').replace('const prisma = new PrismaClient();', '');
  return new Function(...Object.keys(deps), `${source}; return {${names}};`)(...Object.values(deps));
 }
@@ -59,7 +60,7 @@ test('push recipient query filters by stored user IDs, not caller trip data', as
  await sendNewTripToDrivers({id:'trip',audienceDriverIds:[]});assert.deepEqual(where.userId,{in:['a']});
 });
 test('driver list restricts at DB query before limiting results; detail rejects unrelated drivers', async () => {
- let where;const prisma={phone:{findMany:async()=>[]},driverProfile:{findUnique:async()=>({vehicleFuelType:null})},driverConfig:{findFirst:async()=>null},trip:{findMany:async(args)=>{where=args.where;return [];},findUnique:async()=>({riderId:'rider',driverId:null,audienceDriverIds:['a']})}};
+ let where;const prisma={phone:{findMany:async()=>[]},driverProfile:{findUnique:async()=>({vehicleType:'CAR_5',vehicleFuelType:null})},driverConfig:{findFirst:async()=>null},trip:{findMany:async(args)=>{where=args.where;return [];},findUnique:async()=>({riderId:'rider',driverId:null,audienceDriverIds:['a']})}};
  const api=load('../src/controllers/tripController.js','listAvailableTrips,getTripById',{prisma,getPartnerRiderContext,...policy,...riderAccess,console:{error(){},log(){}}});
  await call(api.listAvailableTrips,{}, {user:{id:'b'}});assert.deepEqual(where.OR,policy.audienceWhere('b').OR);
  assert.equal((await call(api.getTripById,{}, {user:{id:'b'}})).statusCode,404);

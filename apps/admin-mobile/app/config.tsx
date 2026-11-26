@@ -36,7 +36,7 @@ export default function ConfigScreen() {
     <Text style={{fontSize:24,fontWeight:'800'}}>Cấu Hình · Chuyến Đi</Text>
     {busy && <ActivityIndicator/>}
     {!busy && !allowed ? <Text>Chỉ Admin được xem và thay đổi cấu hình này.</Text> : allowed ? <>
-      <Text>Phát cho tài xế đã xác nhận khu vực thuộc miền của điểm đón. Hai công tắc lưu ngay, hoạt động độc lập và mặc định tắt. Không tự xử lý chuyến cũ đang chờ.</Text>
+      <Text>Phát cho tài xế đã xác nhận khu vực thuộc miền của điểm đón, đúng nhiên liệu khách chọn và có số chỗ bằng hoặc lớn hơn yêu cầu. Hai công tắc lưu ngay, hoạt động độc lập và mặc định tắt. Không tự xử lý chuyến cũ đang chờ.</Text>
       {!!error && <Text accessibilityRole="alert" style={{padding:12,color:'#b91c1c',backgroundColor:'#fef2f2',borderRadius:10}}>{error}</Text>}
       {!!saved && <Text style={{padding:12,color:'#166534',backgroundColor:'#f0fdf4',borderRadius:10}}>{saved}</Text>}
       {controls.map(([field,label,description])=><View key={field} style={{padding:16,backgroundColor:'#fff',borderRadius:14,borderWidth:1,borderColor:'#e2e8f0',gap:10}}>

@@ -1,3 +1,4 @@
+import * as vehiclePolicy from '../src/services/tripVehiclePolicy.js';
 import { tripPagination, tripPage } from "../src/services/tripPagination.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -37,8 +38,8 @@ test('available-trips API returns the label without exposing recipient IDs and k
   let where;
   const source=readFileSync(new URL('../src/controllers/tripController.js',import.meta.url),'utf8');
   const start=source.indexOf('export async function listAvailableTrips('),end=source.indexOf('\n}',start)+2;
-  const deps={tripPagination,tripPage,
-    prisma:{trip:{findMany:async args=>{where=args.where;return rows;}}},
+  const deps={...vehiclePolicy,tripPagination,tripPage,
+    prisma:{driverProfile:{findUnique:async()=>({vehicleType:'CAR_16',vehicleFuelType:'ELECTRIC'})},trip:{findMany:async args=>{where=args.where;return rows;}}},
     getDriverConfigSnapshot:async()=>({newTripAcceptDelaySeconds:0}),
     calculateDriverFinanceSnapshot:()=>({}),serializeDriverTrip:t=>t,
     audienceWhere,tripAudienceLabel,console,

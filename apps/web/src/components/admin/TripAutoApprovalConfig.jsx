@@ -28,7 +28,7 @@ export default function TripAutoApprovalConfig() {
   }
   return <Paper variant="outlined" sx={{p:{xs:2,sm:3},borderRadius:3}}><Stack spacing={2}>
     <Typography variant="h6">Duyệt chuyến tự động</Typography>
-    <Typography variant="body2" color="text.secondary">Phát cho tài xế đã xác nhận khu vực thuộc miền của điểm đón. Hai công tắc lưu ngay và hoạt động độc lập; mặc định tắt. Không tự xử lý các chuyến cũ đang chờ.</Typography>
+    <Typography variant="body2" color="text.secondary">Phát cho tài xế đã xác nhận khu vực thuộc miền của điểm đón, đúng nhiên liệu khách chọn và có số chỗ bằng hoặc lớn hơn yêu cầu. Hai công tắc lưu ngay và hoạt động độc lập; mặc định tắt. Không tự xử lý các chuyến cũ đang chờ.</Typography>
     {error && <Alert severity="error">{error}</Alert>}{saved && <Alert severity="success">{saved}</Alert>}
     {switches.map(([field,label,description])=><Box key={field} sx={{pb:1,borderBottom:'1px solid',borderColor:'divider'}}>
       <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>

@@ -1,3 +1,4 @@
+import {canVehicleServeTrip} from './tripVehiclePolicy.js';
 import {notificationOutbox,isDeliveringNotification,notificationAlreadyAccepted,recordNotificationAccepted} from './notificationOutbox.js';
 import {sendChatPushBatch} from './chatPushTransport.js';
 import {activeAdminDevices} from './adminPushAccess.js';
@@ -210,7 +211,7 @@ async function sendExpoPushMessages(messages) {
 export async function sendNewTripToDrivers(trip) {
   if(!isDeliveringNotification())return notificationOutbox.enqueue('sendNewTripToDrivers',[trip],()=>sendNewTripToDrivers(...[trip]));
   try {
-    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true, partnerCompanyId: true, status:true, isVerified:true, driverId:true, cancelledAt:true, verifiedAt:true } });
+    const audience = await prisma.trip.findUnique({ where: { id: trip.id }, select: { audienceDriverIds: true, partnerCompanyId: true, status:true, isVerified:true, driverId:true, cancelledAt:true, verifiedAt:true,carType:true,fuelPreference:true } });
     if (!audience || !Array.isArray(audience.audienceDriverIds)) return;
     if(audience.status!=='PENDING' || !audience.isVerified || audience.driverId || audience.cancelledAt)return;
     if(trip.verifiedAt && audience.verifiedAt && new Date(trip.verifiedAt).getTime()!==new Date(audience.verifiedAt).getTime())return;
@@ -232,7 +233,10 @@ export async function sendNewTripToDrivers(trip) {
     });
 
     devices = await activeDriverDevices(prisma, devices, { requireVerified: true });
-
+    if(!devices.length)return;
+    const vehicles=await prisma.driverProfile.findMany({where:{userId:{in:[...new Set(devices.map(device=>device.userId))]}},select:{userId:true,vehicleType:true,vehicleFuelType:true}});
+    const compatible=new Set(vehicles.filter(profile=>canVehicleServeTrip(audience,profile)).map(profile=>profile.userId));
+    devices=devices.filter(device=>compatible.has(device.userId));
 
     if (!devices.length) {
       console.log("📲 [Push] Không có device tài xế nào để gửi thông báo.");

@@ -1,3 +1,4 @@
+import * as vehiclePolicy from '../src/services/tripVehiclePolicy.js';
 import {recordTripEvent,makeTripEvent} from "../src/services/tripHistory.js";
 import { createBookableTrip } from '../src/services/carAvailability.js';
 import {isProvinceCode} from '../src/services/driverOperatingProvince.js';
@@ -31,7 +32,7 @@ function controller(file, names, dependencies) {
 }
 function trips(prisma = db, overrides = {}) {
   return controller('tripController.js', ['acceptTrip', 'cancelDriverTrip', 'changeTripStatus', 'createWithdrawRequest'], {
-    prisma, recordTripEvent, makeTripEvent, assertCurrentContractForNewTrip:async()=>{}, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
+    prisma, ...vehiclePolicy, recordTripEvent, makeTripEvent, assertCurrentContractForNewTrip:async()=>{}, ...policy, ...tripContact, createAcceptanceChatNotices, notifyBlockedTripAttempt:noop, ...audiencePolicy, ...riderAccess, calculateDriverFinanceSnapshot, sendAdminPushNotification: noop,
     sendTripStatusChangedToRider: noop, sendSystemNotificationToDriver: noop,
     createMyDriverWithdrawRequest: withdrawals(prisma), ...overrides,
   });
@@ -60,7 +61,7 @@ async function seed() {
   await db.driverConfig.create({ data: { commissionPercent: 10, driverVatPercent: 0, driverPitPercent: 0, maxActiveTrips: 1 } });
   await db.user.create({ data: { id: 'rider', displayName: 'Khách', roles: { create: { role: 'RIDER' } } } });
   for (const id of ['a', 'b']) await db.user.create({ data: { id, primaryRole: 'DRIVER', roles: { create: { role: 'DRIVER' } },
-    driverProfile: { create: { id: `profile-${id}`, status: 'VERIFIED', balance: 100000,
+    driverProfile: { create: { id: `profile-${id}`, status: 'VERIFIED', balance: 100000, vehicleType:'CAR_5', vehicleFuelType:'ELECTRIC',
       bankAccounts: { create: { bankName: 'Test', accountNumber: '123', accountHolderName: 'TEST', isDefault: true } } } } } });
 }
 beforeEach(async () => { if (db) await seed(); });

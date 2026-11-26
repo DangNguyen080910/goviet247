@@ -1,3 +1,4 @@
+import {assertVehicleServesTrip,driverTripVehicleWhere} from '../services/tripVehiclePolicy.js';
 import {enqueueTripAutoApproval} from '../services/tripAutoApproval.js';
 import { tripPagination, tripPage } from "../services/tripPagination.js";
 import {recordTripEvent,makeTripEvent} from "../services/tripHistory.js";
@@ -818,13 +819,16 @@ export async function listAvailableTrips(req, res) {
     const config = await getDriverConfigSnapshot();
     const now = new Date();
 
+    const driverId=req.user.id || req.user.uid;
+    const vehicle=await prisma.driverProfile.findUnique({where:{userId:driverId},select:{vehicleType:true,vehicleFuelType:true}});
     const pagination = tripPagination(req.query);
     const rows = await prisma.trip.findMany({
       where: {
         status: "PENDING",
         isVerified: true,
         verifiedAt: { not: null },
-        ...audienceWhere(req.user.id || req.user.uid),
+        ...audienceWhere(driverId),
+        ...driverTripVehicleWhere(vehicle),
         driverId: null,
         cancelledAt: null,
       },
@@ -963,6 +967,7 @@ export async function acceptTrip(req, res) {
           balance: true,
           tripAcceptBlocked: true,
           vehicleFuelType: true,
+          vehicleType: true,
           fullName: true,
           user: { select: { displayName: true, phones: { orderBy: { createdAt: "desc" }, take: 1, select: { e164: true } } } },
         },
@@ -1013,6 +1018,8 @@ export async function acceptTrip(req, res) {
           throw Object.assign(new Error("Chuyến chưa mở nhận. Anh/chị vui lòng chờ hết thời gian đếm ngược rồi bấm nhận."), { code: "TRIP_NOT_OPEN", statusCode: 409 });
         }
       }
+
+      assertVehicleServesTrip(trip,driverProfile);
 
       const activeTripCount = await countDriverActiveTrips(driverId, tx);
       if (activeTripCount >= config.maxActiveTrips) {

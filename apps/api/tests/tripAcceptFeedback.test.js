@@ -1,3 +1,4 @@
+import * as vehiclePolicy from '../src/services/tripVehiclePolicy.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { tripAcceptFeedback } from "../src/shared/tripAcceptFeedback.js";
@@ -8,7 +9,7 @@ test("blocked acceptance and unknown errors direct drivers to support", () => {
   assert.equal(tripAcceptFeedback({ code: "UNKNOWN", message: "internal detail" }), expected);
 });
 test("preserves confirmed reasons and variable wallet amounts", () => {
-  for (const code of ["INSUFFICIENT_BALANCE", "ACTIVE_TRIP_LIMIT", "TRIP_CANCELLED", "TRIP_ALREADY_ACCEPTED", "TRIP_ALREADY_YOURS", "TRIP_NOT_OPEN"]) {
+  for (const code of ["VEHICLE_CAPACITY_MISMATCH", "VEHICLE_FUEL_MISMATCH", "DRIVER_VEHICLE_INFO_REQUIRED", "TRIP_VEHICLE_INVALID", "TRIP_FUEL_INVALID", "INSUFFICIENT_BALANCE", "ACTIVE_TRIP_LIMIT", "TRIP_CANCELLED", "TRIP_ALREADY_ACCEPTED", "TRIP_ALREADY_YOURS", "TRIP_NOT_OPEN"]) {
     assert.equal(tripAcceptFeedback({ code, message: "Confirmed reason 95.000đ" }), "Confirmed reason 95.000đ");
   }
 });
@@ -28,7 +29,7 @@ const begin = source.indexOf('export async function acceptTrip(');
 const finish = source.indexOf('\n}', begin) + 2;
 const acceptBody = source.slice(begin, finish).replace('export ', '');
 test('paused contract enforcement keeps KYC, trip availability, opening time, limits and wallet checks', async () => {
-  const baseTrip = { id:'trip1', status:'PENDING', isVerified:true, verifiedAt:new Date(), totalPrice:1000000 };
+  const baseTrip = { carType:'CAR_5', fuelPreference:'ANY', id:'trip1', status:'PENDING', isVerified:true, verifiedAt:new Date(), totalPrice:1000000 };
   const cases = [
     [{ ...baseTrip, status:'CANCELLED' }, 0, 100000, 'TRIP_CANCELLED'],
     [{ ...baseTrip, status:'ACCEPTED', driverId:'other' }, 0, 100000, 'TRIP_ALREADY_ACCEPTED'],
@@ -39,8 +40,8 @@ test('paused contract enforcement keeps KYC, trip availability, opening time, li
     [baseTrip, 0, 100000, 'DRIVER_NOT_VERIFIED', 'PENDING'],
   ];
   for (const [trip, activeCount, balance, expectedCode, status = 'VERIFIED'] of cases) {
-    const tx = { driverProfile:{ findUnique:async () => ({ id:'profile1', status, balance }) }, trip:{ findUnique:async () => trip } };
-    const dependencies = { assertCurrentContractForNewTrip:(db,profile)=>assertCurrentContractForNewTrip(db,profile,{}),
+    const tx = { driverProfile:{ findUnique:async () => ({ id:'profile1', status, balance, vehicleType:'CAR_5' }) }, trip:{ findUnique:async () => trip } };
+    const dependencies = {...vehiclePolicy, assertCurrentContractForNewTrip:(db,profile)=>assertCurrentContractForNewTrip(db,profile,{}),
       prisma:{ $transaction:fn => fn(tx) },
       getDriverConfigSnapshot:async () => ({ maxActiveTrips:3 }),
       lockDriverProfile:async () => {}, lockTrip:async () => {}, assertTripAcceptanceAllowed:() => {},

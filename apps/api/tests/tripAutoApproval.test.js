@@ -31,11 +31,12 @@ test('every stop must be specific and region always follows pickup, not destinat
 function fixture(options={}) {
  let state=structuredClone({...base,...options.trip}),jobs=[],logs=[],notices=[],serial=Promise.resolve();
  const flags={id:1,autoApproveNewTrips:true,autoApproveRequeuedTrips:true,...options.flags};
- const profiles=[{userId:'south-5',operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
-  {userId:'south-7',operatingProvinceCode:'86',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
-  {userId:'north',operatingProvinceCode:'01',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
-  {userId:'unconfirmed',operatingProvinceCode:'79',operatingProvinceConfirmedAt:null,status:'VERIFIED',tripAcceptBlocked:false},
-  {userId:'blocked',operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:true}];
+ const profiles=[{userId:'south-5',vehicleType:'CAR_5',vehicleFuelType:'ELECTRIC',operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
+  {userId:'south-7',vehicleType:'CAR_7',vehicleFuelType:'GASOLINE',operatingProvinceCode:'86',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
+  {userId:'south-16',vehicleType:'CAR_16',vehicleFuelType:'ELECTRIC',operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
+  {userId:'north',vehicleType:'CAR_16',vehicleFuelType:'ELECTRIC',operatingProvinceCode:'01',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false},
+  {userId:'unconfirmed',vehicleType:'CAR_16',vehicleFuelType:'ELECTRIC',operatingProvinceCode:'79',operatingProvinceConfirmedAt:null,status:'VERIFIED',tripAcceptBlocked:false},
+  {userId:'blocked',vehicleType:'CAR_16',vehicleFuelType:'ELECTRIC',operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:true}];
  const db={trip:{findUnique:async()=>structuredClone(state)},tripConfig:{findFirst:async()=>({...flags})},
   async $transaction(fn){let release;const previous=serial;serial=new Promise(r=>release=r);await previous;
    const draft=structuredClone(state),out=[],history=[],notifications=[];
@@ -63,10 +64,10 @@ for(const source of ['NEW','REQUEUE'])test(source+': independent toggle queues o
  assert.equal(jobs[0].kind,'tripAutoApprove');assert.equal(jobs[0].payload[0].source,source);
  assert.equal(trip.__autoApprovalQueued,true);assert.equal(Object.keys(trip).includes('__autoApprovalQueued'),false);
 });
-for(const carType of ['CAR_5','CAR_7','CAR_16'])test(carType+': auto approval broadcasts the entire confirmed pickup region and preserves price',async()=>{
+for(const carType of ['CAR_5','CAR_7','CAR_16'])test(carType+': auto approval broadcasts compatible vehicles in the confirmed pickup region and preserves price',async()=>{
  const f=fixture({trip:{carType}});const result=await f.processor(f.job);
  assert.equal(result.approved,true);assert.equal(f.trip.totalPrice,500000);assert.equal(f.trip.carType,carType);
- assert.deepEqual(f.trip.audienceDriverIds,['south-5','south-7']);assert.deepEqual(f.trip.audienceRegions,['SOUTH']);
+ assert.deepEqual(f.trip.audienceDriverIds,carType==='CAR_5'?['south-5','south-7','south-16']:carType==='CAR_7'?['south-7','south-16']:['south-16']);assert.deepEqual(f.trip.audienceRegions,['SOUTH']);
  assert.equal(new Date(f.trip.driverAcceptOpenAt)-now,10000);assert.equal(f.trip.verifiedById,null);
  assert.equal(f.logs[0].eventData.kind,'APPROVED');assert.equal(f.logs[0].actorRole,'SYSTEM');
  const admin=f.jobs.filter(job=>job.kind==='sendAdminPushNotification');assert.equal(admin.length,1);
@@ -108,7 +109,7 @@ test('requeued approval is identified in the admin notification and a fresh shar
 test('committed audience is used for realtime and no public room or full address leaks',async()=>{
  const f=fixture();await f.processor(f.job);const events=[];const io={to:room=>({emit:(event,payload)=>events.push({room,event,payload})})};
  await publishTripAutoApproval(io,{id:f.trip.id,verifiedAt:f.trip.verifiedAt,autoApprovalSource:'NEW'},f.db);
- const driver=events.find(event=>event.event==='trip:new');assert.deepEqual(driver.room,['driver:south-5','driver:south-7']);
+ const driver=events.find(event=>event.event==='trip:new');assert.deepEqual(driver.room,['driver:south-5','driver:south-7','driver:south-16']);
  assert.ok(!driver.payload.pickupAddressMasked.includes('123'));assert.equal(driver.payload.driverAcceptOpenAt.getTime(),f.trip.driverAcceptOpenAt.getTime());
  assert.equal(events.find(event=>event.event==='admin:trip_status_changed').payload.source,'auto_verify_trip');
  f.mutate(trip=>{trip.isVerified=false;trip.verifiedAt=null;});events.length=0;await publishTripAutoApproval(io,{id:f.trip.id,verifiedAt:now},f.db);assert.equal(events.length,0);
@@ -129,4 +130,25 @@ test('auto approval reuses server-verified canonical addresses and province meta
  const service=createBookingQuoteService({knownPlace:()=>null,detail:async id=>{lookups++;return places[Number(id.split('|').at(-1))];},search:async()=>assert.fail('verified canonical alias must be cached'),route:async()=>({distanceKm:50,durationMinutes:60,outboundDurationMinutes:60,returnDurationMinutes:0})});
  await service.verifiedRoute({pickupAddress:pickup,dropoffAddress:dropoff,stops:[dropoff],pickupTime:'2099-01-02T08:00:00+07:00',direction:'ONE_WAY',routePricingPoints:addresses.map((address,i)=>({address,placeId:'goong|'+i}))});
  assert.equal(lookups,2);const proof=await service.verifiedAddresses(addresses);assert.equal(lookups,2);assert.deepEqual(proof.map(p=>p.provinceCode),['79','86']);assert.deepEqual(proof.map(p=>p.address),addresses);
+});
+
+for(const source of ['NEW','REQUEUE'])for(const carType of ['CAR_5','CAR_7','CAR_16'])for(const fuelPreference of ['ANY','ELECTRIC','GASOLINE'])test(`${source} ${carType} ${fuelPreference}: regional capacity and fuel intersection`,async()=>{
+ const f=fixture({trip:{carType,fuelPreference}});
+ // Include unknown vehicle/fuel profiles; unknown fuel is only eligible for ANY.
+ f.profiles.push({userId:'unknown-fuel',vehicleType:'CAR_16',vehicleFuelType:null,operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false});
+ f.profiles.push({userId:'unknown-car',vehicleType:null,vehicleFuelType:'ELECTRIC',operatingProvinceCode:'79',operatingProvinceConfirmedAt:now,status:'VERIFIED',tripAcceptBlocked:false});
+ const expected={CAR_5:{ANY:['south-5','south-7','south-16','unknown-fuel'],ELECTRIC:['south-5','south-16'],GASOLINE:['south-7']},
+ CAR_7:{ANY:['south-7','south-16','unknown-fuel'],ELECTRIC:['south-16'],GASOLINE:['south-7']},
+ CAR_16:{ANY:['south-16','unknown-fuel'],ELECTRIC:['south-16'],GASOLINE:[]}}[carType][fuelPreference];
+ const result=await f.processor({...f.job,source});
+ assert.equal(result.approved,expected.length>0);assert.equal(f.trip.totalPrice,500000);
+ assert.equal(f.jobs.filter(j=>j.kind==='sendAdminPushNotification').length,1);
+ if(expected.length){assert.deepEqual(f.trip.audienceDriverIds,expected);assert.ok(f.jobs.some(j=>j.kind==='sendNewTripToDrivers'));}
+ else {assert.equal(f.trip.isVerified,false);assert.match(f.trip.autoApprovalReviewReason,/số chỗ và nhiên liệu/);assert.equal(f.jobs.some(j=>j.kind==='sendNewTripToDrivers'),false);}
+});
+test('auto approval reads the vehicle after the address check, not from a stale pre-check snapshot',async()=>{
+ let entered,release;const ready=new Promise(r=>entered=r),wait=new Promise(r=>release=r);
+ const f=fixture({trip:{carType:'CAR_7',fuelPreference:'GASOLINE'},resolve:async()=>{entered();await wait;return evidence;}});
+ const work=f.processor(f.job);await ready;f.profiles.find(p=>p.userId==='south-7').vehicleFuelType='ELECTRIC';release();
+ assert.equal((await work).approved,false);assert.equal(f.trip.isVerified,false);assert.match(f.trip.autoApprovalReviewReason,/nhiên liệu/);
 });
