@@ -1,4 +1,4 @@
-import { BOOKING_ADDRESS_HINT, MAX_OUTBOUND_POINTS, MAX_PICKUP_POINTS, returnPickupNotice } from "../../../../api/src/shared/tripRoute.js";
+import { ADDRESS_SELECTION_WARNING, uniquePlaceSuggestions, BOOKING_ADDRESS_HINT, MAX_OUTBOUND_POINTS, MAX_PICKUP_POINTS, returnPickupNotice } from "../../../../api/src/shared/tripRoute.js";
 import { regionalRoutePoints } from "../../../../api/src/shared/regionalPricing.js";
 // Path: goviet247/apps/web/src/components/customer/BookingCard.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -72,9 +72,51 @@ const hasPlaceCoords = (place) => {
   );
 };
 
+const normalizeAutocompleteOption = (item) => {
+  if (!item) return null;
+
+  return {
+    ...item,
+    placeId: item.placeId || item.place_id,
+    name:
+      item.name ||
+      item.shortAddress ||
+      item.structured_formatting?.main_text ||
+      item.description ||
+      "",
+    fullAddress:
+      item.fullAddress ||
+      item.description ||
+      item.formatted_address ||
+      item.maskedAddress ||
+      "",
+    shortAddress:
+      item.shortAddress ||
+      item.structured_formatting?.main_text ||
+      item.name ||
+      "",
+    maskedAddress:
+      item.maskedAddress ||
+      item.structured_formatting?.secondary_text ||
+      item.description ||
+      "",
+  };
+};
+
+const mergeVietnamLocationOptions = (keyword, googleItems = []) => {
+  const vietnamItems = searchVietnamLocations(keyword, 8);
+
+  const normalizedGoogleItems = Array.isArray(googleItems)
+    ? googleItems.map(normalizeAutocompleteOption).filter(Boolean)
+    : [];
+
+  return uniquePlaceSuggestions([...vietnamItems, ...normalizedGoogleItems]).slice(0, 15);
+};
+
 function AdditionalPickupField({ row, number, gps, normalizePlace, onChange, onRemove }) {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selecting, setSelecting] = useState(false);
   const [selectionError, setSelectionError] = useState(false);
   const request = useRef(0);
   const lat = gps?.lat;
@@ -83,10 +125,8 @@ function AdditionalPickupField({ row, number, gps, normalizePlace, onChange, onR
   useEffect(() => {
     const keyword = row.address.trim();
     setOptions([]);
-    if (row.place || keyword.length < 3) {
-      setLoading(false);
-      return;
-    }
+    setLoading(false);
+    if (row.place || selecting || keyword.length < 3) return;
     let active = true;
     const timer = setTimeout(async () => {
       setLoading(true);
@@ -100,14 +140,15 @@ function AdditionalPickupField({ row, number, gps, normalizePlace, onChange, onR
       }
     }, 400);
     return () => { active = false; clearTimeout(timer); };
-  }, [row.address, row.place, lat, lng]);
+  }, [row.address, row.place, selecting, lat, lng]);
+
+  useEffect(() => () => { request.current += 1; }, []);
 
   async function select(option) {
     const current = ++request.current;
     if (!option?.placeId) return;
     setSelectionError(false);
-    setLoading(true);
-    onChange({ address: option.fullAddress || option.description || option.name || "", place: null });
+    setSelecting(true);
     try {
       const raw = hasPlaceCoords(option) ? option : await getPlaceDetail(option.placeId);
       if (request.current !== current) return;
@@ -117,26 +158,29 @@ function AdditionalPickupField({ row, number, gps, normalizePlace, onChange, onR
     } catch {
       if (request.current === current) setSelectionError(true);
     } finally {
-      if (request.current === current) setLoading(false);
+      if (request.current === current) setSelecting(false);
     }
   }
 
-  return <Stack direction="row" spacing={1} alignItems="center">
+  const needsSelection = Boolean(row.address.trim()) && !row.place && !selecting;
+
+  return <Stack direction="row" spacing={1} alignItems="flex-start">
     <Autocomplete
-      freeSolo fullWidth size="small" options={options} loading={loading}
+      freeSolo fullWidth size="small" options={options} loading={loading || selecting} getOptionKey={option => option?.placeId || option}
       value={row.place} inputValue={row.address} filterOptions={items => items}
       getOptionLabel={option => typeof option === "string" ? option : option.fullAddress || option.description || option.name || ""}
       isOptionEqualToValue={(option, value) => option?.placeId === value?.placeId}
       onInputChange={(_, address, reason) => {
         if (reason !== "input" && reason !== "clear") return;
         request.current += 1;
+        setSelecting(false);
         setSelectionError(false);
         onChange({ address, place: null });
       }}
-      onChange={(_, option) => { void select(option); }}
+      onChange={(_, option, reason) => { if (reason === "selectOption") void select(option); }}
       renderInput={params => <TextField {...params} label={`Điểm đón ${number}`}
-        placeholder="Nhập địa chỉ và chọn từ gợi ý" error={selectionError}
-        helperText={selectionError ? "Chưa xác minh được địa chỉ. Vui lòng chọn lại." : undefined} />}
+        placeholder="Nhập địa chỉ và chọn từ gợi ý" error={selectionError || needsSelection}
+        helperText={selectionError ? "Chưa xác minh được địa chỉ. Vui lòng chọn lại." : needsSelection ? ADDRESS_SELECTION_WARNING : undefined} />}
     />
     <IconButton aria-label={`Xóa điểm đón ${number}`} onClick={onRemove}><DeleteOutlineIcon /></IconButton>
   </Stack>;
@@ -392,10 +436,9 @@ export default function BookingCard({ partner = null }) {
   const quoteSummaryRef = useRef(null);
   const createTripButtonRef = useRef(null);
   const latestRouteRequestRef = useRef(0);
-  const pickupAutocompleteTimerRef = useRef(null);
+  const pickupSelectionRequestRef = useRef(0);
   const stopAutocompleteTimersRef = useRef({});
   const autocompleteCacheRef = useRef(new Map());
-  const lastAutocompleteKeyRef = useRef(null);
 
   const [submitTouched, setSubmitTouched] = useState(false);
 
@@ -465,58 +508,6 @@ export default function BookingCard({ partner = null }) {
   const getCachedAutocompleteItems = (keyword, lat, lng) => {
     const key = buildAutocompleteCacheKey(keyword, lat, lng);
     return autocompleteCacheRef.current.get(key) || null;
-  };
-
-  const normalizeAutocompleteOption = (item) => {
-    if (!item) return null;
-
-    return {
-      ...item,
-      placeId: item.placeId || item.place_id,
-      name:
-        item.name ||
-        item.shortAddress ||
-        item.structured_formatting?.main_text ||
-        item.description ||
-        "",
-      fullAddress:
-        item.fullAddress ||
-        item.description ||
-        item.formatted_address ||
-        item.maskedAddress ||
-        "",
-      shortAddress:
-        item.shortAddress ||
-        item.structured_formatting?.main_text ||
-        item.name ||
-        "",
-      maskedAddress:
-        item.maskedAddress ||
-        item.structured_formatting?.secondary_text ||
-        item.description ||
-        "",
-    };
-  };
-
-  const mergeVietnamLocationOptions = (keyword, googleItems = []) => {
-    const vietnamItems = searchVietnamLocations(keyword, 8);
-
-    const normalizedGoogleItems = Array.isArray(googleItems)
-      ? googleItems.map(normalizeAutocompleteOption).filter(Boolean)
-      : [];
-
-    const seenPlaceIds = new Set();
-
-    return [...vietnamItems, ...normalizedGoogleItems]
-      .filter((item) => {
-        if (!item?.placeId) return false;
-
-        if (seenPlaceIds.has(item.placeId)) return false;
-
-        seenPlaceIds.add(item.placeId);
-        return true;
-      })
-      .slice(0, 15);
   };
 
   const normalizeSelectedPlace = (option, detail) => {
@@ -806,17 +797,8 @@ export default function BookingCard({ partner = null }) {
     });
   }, [stops, stopPlaces]);
 
-  const showAddressSelectionWarning = useMemo(() => {
-    const hasTypedPickup = !!pickupAddress.trim();
-    const hasTypedStops = stops.some((value) => String(value || "").trim());
-
-    if (!hasTypedPickup && !hasTypedStops) return false;
-
-    if (hasTypedPickup && !hasValidPickupSelection) return true;
-    if (!hasValidStopSelections) return true;
-
-    return false;
-  }, [pickupAddress, stops, hasValidPickupSelection, hasValidStopSelections]);
+  const showAddressSelectionWarning = !hasValidStopSelections;
+  const hasUnselectedPickup = additionalPickupRows.some(row => !row.place?.placeId || !hasPlaceCoords(row.place));
 
   useEffect(() => {
     if (direction === "ONE_WAY") {
@@ -831,51 +813,37 @@ export default function BookingCard({ partner = null }) {
     const lat = gpsLocation?.lat;
     const lng = gpsLocation?.lng;
 
-    const currentKey = buildAutocompleteCacheKey(keyword, lat, lng);
-
-    if (lastAutocompleteKeyRef.current === currentKey) {
-      return;
-    }
-
-    lastAutocompleteKeyRef.current = currentKey;
-
-    clearTimeout(pickupAutocompleteTimerRef.current);
-
-    if (!keyword || keyword.length < 3) {
-      setPickupOptions([]);
-      setPickupLoading(false);
-      return;
-    }
+    setPickupOptions([]);
+    setPickupLoading(false);
+    if (pickupPlace || keyword.length < 3) return;
 
     const cachedItems = getCachedAutocompleteItems(keyword, lat, lng);
     if (cachedItems) {
       setPickupOptions(cachedItems);
-      setPickupLoading(false);
       return;
     }
 
-    pickupAutocompleteTimerRef.current = setTimeout(async () => {
+    let active = true;
+    const timer = setTimeout(async () => {
+      setPickupLoading(true);
       try {
-        setPickupLoading(true);
-
         const googleItems = await searchPlaces(keyword, { lat, lng });
+        if (!active) return;
         const mergedItems = mergeVietnamLocationOptions(keyword, googleItems);
-
         setPickupOptions(mergedItems);
         setCachedAutocompleteItems(keyword, lat, lng, mergedItems);
       } catch {
-        setPickupOptions([]);
+        if (active) setPickupOptions(mergeVietnamLocationOptions(keyword));
       } finally {
-        setPickupLoading(false);
+        if (active) setPickupLoading(false);
       }
     }, 400);
 
-    return () => {
-      clearTimeout(pickupAutocompleteTimerRef.current);
-    };
-  }, [pickupAddress, gpsLocation?.lat, gpsLocation?.lng]);
+    return () => { active = false; clearTimeout(timer); };
+  }, [pickupAddress, pickupPlace, gpsLocation?.lat, gpsLocation?.lng]);
 
   useEffect(() => {
+    let active = true;
     stops.forEach((value, idx) => {
       const keyword = String(value || "").trim();
       const lat = gpsLocation?.lat;
@@ -885,7 +853,7 @@ export default function BookingCard({ partner = null }) {
         clearTimeout(stopAutocompleteTimersRef.current[idx]);
       }
 
-      if (!keyword || keyword.length < 3) {
+      if (stopPlaces[idx] || keyword.length < 3) {
         setStopOptions((prev) =>
           prev.map((items, i) => (i === idx ? [] : items)),
         );
@@ -907,6 +875,7 @@ export default function BookingCard({ partner = null }) {
           setStopLoadingMap((prev) => ({ ...prev, [idx]: true }));
 
           const googleItems = await searchPlaces(keyword, { lat, lng });
+          if (!active) return;
           const mergedItems = mergeVietnamLocationOptions(keyword, googleItems);
 
           setStopOptions((prev) =>
@@ -914,21 +883,22 @@ export default function BookingCard({ partner = null }) {
           );
           setCachedAutocompleteItems(keyword, lat, lng, mergedItems);
         } catch {
-          setStopOptions((prev) =>
-            prev.map((oldItems, i) => (i === idx ? [] : oldItems)),
+          if (active) setStopOptions((prev) =>
+            prev.map((oldItems, i) => (i === idx ? mergeVietnamLocationOptions(keyword) : oldItems)),
           );
         } finally {
-          setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
+          if (active) setStopLoadingMap((prev) => ({ ...prev, [idx]: false }));
         }
       }, 400);
     });
 
     return () => {
+      active = false;
       Object.values(stopAutocompleteTimersRef.current).forEach((timerId) => {
         clearTimeout(timerId);
       });
     };
-  }, [stops, gpsLocation?.lat, gpsLocation?.lng]);
+  }, [stops, stopPlaces, gpsLocation?.lat, gpsLocation?.lng]);
 
   const pickupMs = useMemo(() => {
     const iso = pickupPeriod ? combineDateTime(pickupDate, pickupTimeOnly) : "";
@@ -1114,7 +1084,8 @@ export default function BookingCard({ partner = null }) {
   const serviceReturn = returnPeriod ? combineDateTime(returnDate,returnTimeOnly) : "";
   const serviceAvailable = destinationPackageAvailable(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
   useEffect(()=>{if(!serviceAvailable)setDestinationServiceMode("STANDARD");},[serviceAvailable]);
-  const serviceAnchor = destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
+  const lastFilledStopIndex = stops.findLastIndex(address => address.trim());
+  const serviceAnchor = destinationAnchorAddress || stopPlaces[lastFilledStopIndex]?.fullAddress || stops[lastFilledStopIndex] || "";
   const quoteInputKey = JSON.stringify([destinationServiceMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
@@ -1124,7 +1095,6 @@ export default function BookingCard({ partner = null }) {
     return () => { latestRouteRequestRef.current += 1; };
   }, [pickupPlace, additionalPickupRows, stopPlaces, stops, direction]);
 
-  const hasUnselectedPickup = additionalPickupRows.some(row => !row.place);
   const canEstimate =
     routeReadyKey === routeInputKey && !isRouteLoading &&
     !isLoadingConfig &&
@@ -1202,14 +1172,11 @@ export default function BookingCard({ partner = null }) {
       Number.isFinite(Number(nextPickupPlace.lat)) &&
       Number.isFinite(Number(nextPickupPlace.lng));
 
-    const hasAllStopsValid =
-      (nextStopPlaces || []).length > 0 &&
-      (nextStopPlaces || []).every(
-        (item) =>
-          item &&
-          Number.isFinite(Number(item.lat)) &&
-          Number.isFinite(Number(item.lng)),
-      );
+    const filledStops = nextStops.map((address, index) => ({ address, place: nextStopPlaces[index] }))
+      .filter(({ address }) => address.trim());
+    const hasAllStopsValid = filledStops.length > 0 && filledStops.every(({ place }) =>
+      place && place.lat != null && place.lng != null &&
+      Number.isFinite(Number(place.lat)) && Number.isFinite(Number(place.lng)));
 
     if (!hasPickupCoords || !hasAllStopsValid || pickupRows.some(row => !row.place || !hasPlaceCoords(row.place))) {
       if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
@@ -1221,49 +1188,9 @@ export default function BookingCard({ partner = null }) {
       return;
     }
 
-    const resolvedStopPlaces = nextStopPlaces;
-
-    if (!hasPickupCoords || resolvedStopPlaces.length === 0) {
-      if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
-        setDistanceKm("");
-        setDriveMinutes("");
-        setOutboundDriveMinutes("");
-        setIsRouteLoading(false);
-      }
-      return;
-    }
-
     try {
       setIsRouteLoading(true);
-
-      const validStops = [];
-
-      for (let i = 0; i < nextStops.length; i++) {
-        const text = nextStops[i];
-        const place = nextStopPlaces[i];
-
-        if (
-          text &&
-          place &&
-          Number.isFinite(Number(place.lat)) &&
-          Number.isFinite(Number(place.lng))
-        ) {
-          validStops.push({
-            lat: Number(place.lat),
-            lng: Number(place.lng),
-          });
-        }
-      }
-
-      if (validStops.length !== nextStops.filter((s) => s.trim()).length) {
-        if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
-          setDistanceKm("");
-          setDriveMinutes("");
-          setOutboundDriveMinutes("");
-          setIsRouteLoading(false);
-        }
-        return;
-      }
+      const validStops = filledStops.map(({ place }) => ({ lat: Number(place.lat), lng: Number(place.lng) }));
 
       let points = [
         {
@@ -1391,13 +1318,12 @@ export default function BookingCard({ partner = null }) {
   };
 
   const handleSelectPickupPlace = async (_, option) => {
+    const requestId = ++pickupSelectionRequestRef.current;
     if (!option?.placeId) {
       setPickupPlace(null);
       setDistanceKm("");
       setDriveMinutes("");
       setOutboundDriveMinutes("");
-      setStopPlaces([null]);
-      setStops([""]);
       return;
     }
 
@@ -1408,24 +1334,23 @@ export default function BookingCard({ partner = null }) {
         ? option
         : await getPlaceDetail(option.placeId);
 
+      if (pickupSelectionRequestRef.current !== requestId) return;
       const detail = normalizeSelectedPlace(option, rawDetail);
-
-      console.log("PICKUP OPTION", option);
-      console.log("PICKUP RAW DETAIL", rawDetail);
-      console.log("PICKUP NORMALIZED", detail);
+      if (!detail.fullAddress || !hasPlaceCoords(detail)) throw new Error("Chưa xác minh được địa chỉ. Vui lòng chọn lại.");
 
       setPickupPlace(detail);
       setPickupAddress(detail.fullAddress || "");
       setPickupOptions([]);
 
     } catch (e) {
+      if (pickupSelectionRequestRef.current !== requestId) return;
       setToast({
         open: true,
         severity: "error",
         message: e?.message || "Không lấy được chi tiết điểm đón.",
       });
     } finally {
-      setPickupLoading(false);
+      if (pickupSelectionRequestRef.current === requestId) setPickupLoading(false);
     }
   };
 
@@ -1481,11 +1406,11 @@ export default function BookingCard({ partner = null }) {
       setToast({ open: true, severity: "warning", message: "Vui lòng chọn buổi sáng hoặc chiều/tối cho giờ đón và giờ về." });
       return;
     }
-    if (!hasValidPickupSelection) {
+    if (!hasValidPickupSelection || hasUnselectedPickup) {
       setToast({
         open: true,
         severity: "warning",
-        message: "Vui lòng chọn điểm đón từ danh sách gợi ý.",
+        message: ADDRESS_SELECTION_WARNING,
       });
       return;
     }
@@ -1607,8 +1532,8 @@ export default function BookingCard({ partner = null }) {
     if (!pickupPeriod || (direction === "ROUND_TRIP" && !returnPeriod)) {
       throw new Error("Vui lòng chọn buổi sáng hoặc chiều/tối cho giờ đón và giờ về.");
     }
-    if (!hasValidPickupSelection) {
-      throw new Error("Vui lòng chọn điểm đón từ danh sách gợi ý.");
+    if (!hasValidPickupSelection || hasUnselectedPickup) {
+      throw new Error(ADDRESS_SELECTION_WARNING);
     }
 
     const selectedStops = stops
@@ -2001,11 +1926,13 @@ export default function BookingCard({ partner = null }) {
                 <Autocomplete
                   freeSolo
                   options={pickupOptions}
+                  getOptionKey={option => option?.placeId || option}
                   loading={pickupLoading}
                   value={pickupPlace}
                   inputValue={pickupAddress}
                   onInputChange={(_, value, reason) => {
                     if (reason === "input") {
+                      pickupSelectionRequestRef.current += 1;
                       setPickupAddress(value);
                       setPickupPlace(null);
                       setDistanceKm("");
@@ -2014,6 +1941,7 @@ export default function BookingCard({ partner = null }) {
                     }
 
                     if (reason === "clear") {
+                      pickupSelectionRequestRef.current += 1;
                       setPickupAddress("");
                       setPickupPlace(null);
                       setPickupOptions([]);
@@ -2066,6 +1994,8 @@ export default function BookingCard({ partner = null }) {
                       size="small"
                       inputRef={pickupInputRef}
                       placeholder="Nhập địa chỉ đón chính xác"
+                      error={Boolean(pickupAddress.trim()) && !hasValidPickupSelection}
+                      helperText={pickupAddress.trim() && !hasValidPickupSelection ? ADDRESS_SELECTION_WARNING : undefined}
                     />
                   )}
                 />
@@ -2148,6 +2078,7 @@ export default function BookingCard({ partner = null }) {
                               : "Không có gợi ý phù hợp"
                           }
                           loadingText="Đang tìm địa chỉ..."
+                          getOptionKey={option => option?.placeId || option}
                           isOptionEqualToValue={(option, value) =>
                             option?.placeId === value?.placeId
                           }
@@ -2239,7 +2170,7 @@ export default function BookingCard({ partner = null }) {
                       variant="body2"
                       sx={{ color: "warning.main", fontWeight: 800 }}
                     >
-                      Vui lòng chọn một địa điểm trong danh sách gợi ý để xem giá.
+                      {ADDRESS_SELECTION_WARNING}
                     </Typography>
                   )}
                 </Stack>

@@ -1,4 +1,4 @@
-import { BOOKING_ADDRESS_HINT, MAX_OUTBOUND_POINTS, MAX_PICKUP_POINTS, returnPickupNotice } from "../../api/src/shared/tripRoute.js";
+import { ADDRESS_SELECTION_WARNING, uniquePlaceSuggestions, BOOKING_ADDRESS_HINT, MAX_OUTBOUND_POINTS, MAX_PICKUP_POINTS, returnPickupNotice } from "../../api/src/shared/tripRoute.js";
 import { regionalRoutePoints } from "../../api/src/shared/regionalPricing.js";
 import { showPermissionSettings } from '../../mobile-chat/permissionHelp';
 // Path: goviet247/apps/rider-mobile/app/booking.tsx
@@ -274,7 +274,9 @@ function AdditionalPickupField({
       }}
     />
     {(searching || selecting) && <Text style={styles.helperText}>Đang tìm địa chỉ…</Text>}
-    {Boolean(selectionError) && <Text style={styles.errorText}>{selectionError}</Text>}
+    {(selectionError || (pickup.address.trim() && !pickup.place && !selecting)) ? (
+      <Text style={styles.errorText}>{selectionError || ADDRESS_SELECTION_WARNING}</Text>
+    ) : null}
     {!selecting && !pickup.place && options.length > 0 && (
       <View style={styles.autocompleteList}>
         {options.map(option => (
@@ -427,17 +429,7 @@ function mergeVietnamLocationOptions(
     ? googleItems.map(normalizeAutocompleteOption).filter(Boolean)
     : [];
 
-  const seenPlaceIds = new Set<string>();
-
-  return [...vietnamItems, ...(normalizedGoogleItems as PlaceSuggestion[])]
-    .filter((item): item is PlaceSuggestion => {
-      if (!item?.placeId) return false;
-      if (seenPlaceIds.has(item.placeId)) return false;
-
-      seenPlaceIds.add(item.placeId);
-      return true;
-    })
-    .slice(0, 15);
+  return uniquePlaceSuggestions([...vietnamItems, ...normalizedGoogleItems]).slice(0, 15);
 }
 
 export default function RiderBookingScreen() {
@@ -824,11 +816,12 @@ export default function RiderBookingScreen() {
     return () => { latestRouteRequestRef.current += 1; };
   }, [pickupPlace, additionalPickupRows, stopPlaces, stops, direction]);
 
+  const hasUnselectedPickup = additionalPickupRows.some(row => !row.place?.placeId || !hasPlaceCoords(row.place));
   const canEstimate = modeReady &&
     routeReadyKey === routeInputKey && !isRouteLoading &&
     !configLoading && carTypeOptions.some(item => item.value === carType) &&
     !isRouteLoading &&
-    hasValidPickupSelection &&
+    hasValidPickupSelection && !hasUnselectedPickup &&
     hasAtLeastOneSelectedStop &&
     hasValidStopSelections &&
     pickupTime &&
@@ -1551,8 +1544,8 @@ export default function RiderBookingScreen() {
       })
       .filter(Boolean);
 
-    if (!pickupPlace?.placeId) {
-      throw new Error("Vui lòng chọn điểm đón từ danh sách gợi ý.");
+    if (!hasValidPickupSelection || hasUnselectedPickup) {
+      throw new Error(ADDRESS_SELECTION_WARNING);
     }
 
     if (cleanedStops.length === 0) {
@@ -1684,10 +1677,10 @@ export default function RiderBookingScreen() {
   async function handleEstimate() {
     setSubmitTouched(false);
 
-    if (!hasValidPickupSelection) {
+    if (!hasValidPickupSelection || hasUnselectedPickup) {
       Alert.alert(
         "Thiếu dữ liệu",
-        "Vui lòng chọn điểm đón từ danh sách gợi ý.",
+        ADDRESS_SELECTION_WARNING,
       );
       return;
     }
@@ -2025,7 +2018,7 @@ export default function RiderBookingScreen() {
 
             {!!pickupAddress.trim() && !pickupPlace?.placeId ? (
               <Text style={styles.errorText}>
-                Vui lòng chọn điểm đón từ danh sách gợi ý.
+                {ADDRESS_SELECTION_WARNING}
               </Text>
             ) : null}
 
@@ -2509,9 +2502,9 @@ export default function RiderBookingScreen() {
             </Pressable>
             {!canEstimate ? (
               <View style={styles.validationBox}>
-                {!hasValidPickupSelection ? (
+                {!hasValidPickupSelection || hasUnselectedPickup ? (
                   <Text style={styles.validationText}>
-                    • Vui lòng chọn điểm đón từ danh sách gợi ý.
+                    • {ADDRESS_SELECTION_WARNING}
                   </Text>
                 ) : null}
 

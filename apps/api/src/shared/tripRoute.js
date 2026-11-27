@@ -72,3 +72,27 @@ export function returnPickupNotice(pickupCount) {
 
 
 export const BOOKING_ADDRESS_HINT = 'Để tài xế dễ tìm, vui lòng chọn địa chỉ từ danh sách gợi ý. Nếu không có số nhà, bạn có thể chọn tên tòa nhà, cổng hoặc địa điểm gần đó và ghi thêm mốc đón trong Ghi chú.';
+
+
+export const ADDRESS_SELECTION_WARNING = 'Vui lòng chọn một địa điểm trong danh sách gợi ý để xem giá.';
+
+/**
+ * Keep distinct places at the same address while hiding repeated results for the same place.
+ * @template {{placeId?: string, name?: string, fullAddress?: string, description?: string, maskedAddress?: string}} T
+ * @param {Array<T | null>} items
+ * @returns {T[]}
+ */
+export function uniquePlaceSuggestions(items) {
+  const seenIds = new Set();
+  const seenLabels = new Set();
+  const labelPart = value => addressKey(value).replace(/\s*,\s*/g, ',');
+  return items.filter(item => {
+    if (!item?.placeId || seenIds.has(item.placeId)) return false;
+    const address = labelPart(item.fullAddress || item.description || item.maskedAddress);
+    const label = address && JSON.stringify([labelPart(item.name), address]);
+    if (label && seenLabels.has(label)) return false;
+    seenIds.add(item.placeId);
+    if (label) seenLabels.add(label);
+    return true;
+  });
+}

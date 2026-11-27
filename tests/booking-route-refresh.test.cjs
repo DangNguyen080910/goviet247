@@ -57,9 +57,23 @@ for (const mobile of [false, true]) {
    const text=source(mobile), start=text.indexOf(mobile ? '  async function handleEstimate()' : '  const handleEstimate =');
    const end=text.indexOf(mobile ? '  async function handleCreateTrip()' : '  const buildTripPayload',start);
    const pending=deferred(); let quoted=false, requested=false;
-   const deps={regionalRoutePoints:require('../apps/api/src/shared/regionalPricing.js').regionalRoutePoints,selectedCompany:null,isCompanyBooking:false,destinationServiceMode:'STANDARD',serviceAvailable:false,quoteRoutePoints:[],additionalPickups:[],packageSelection:{destinationServiceMode:'STANDARD'},serviceAnchor:'B',pickupPlace:{fullAddress:'A'},pickupAddress:'A',stops:['B'],stopPlaces:[{fullAddress:'B'}],riderName:'Test',riderPhone:'0900000000',canEstimate:true,isEstimating:false,hasValidPickupSelection:true,hasAtLeastOneSelectedStop:true,hasValidStopSelections:true,isPickupTimeValid:true,isReturnTimeValid:true,isDistanceValid:true,isPickupTimeInPast:false,pickupTime:'2099-01-01T08:00',pickupTimeConfirmed:true,pickupPeriod:'AM',returnPeriod:'AM',direction:'ONE_WAY',carType:'CAR_5',fuelPreference:'ANY',distanceKm:'100',driveMinutes:'120',outboundDriveMinutes:'120',pickupDate:new Date(),pickupTimeOnly:'08:00',combineDateTime:()=>'',toIsoFromDatetimeLocal:()=>'',setIsEstimating(){},setSubmitTouched(){},setToast(){},Alert:{alert(){}},quotePrice:()=>{ requested=true; return pending.promise; },quoteInputKeyRef:{current:'old'},setQuote(){quoted=true;}};
+   const deps={regionalRoutePoints:require('../apps/api/src/shared/regionalPricing.js').regionalRoutePoints,selectedCompany:null,isCompanyBooking:false,destinationServiceMode:'STANDARD',serviceAvailable:false,quoteRoutePoints:[],additionalPickups:[],packageSelection:{destinationServiceMode:'STANDARD'},serviceAnchor:'B',pickupPlace:{fullAddress:'A'},pickupAddress:'A',stops:['B'],stopPlaces:[{fullAddress:'B'}],riderName:'Test',riderPhone:'0900000000',canEstimate:true,isEstimating:false,hasValidPickupSelection:true,hasUnselectedPickup:false,hasAtLeastOneSelectedStop:true,hasValidStopSelections:true,isPickupTimeValid:true,isReturnTimeValid:true,isDistanceValid:true,isPickupTimeInPast:false,pickupTime:'2099-01-01T08:00',pickupTimeConfirmed:true,pickupPeriod:'AM',returnPeriod:'AM',direction:'ONE_WAY',carType:'CAR_5',fuelPreference:'ANY',distanceKm:'100',driveMinutes:'120',outboundDriveMinutes:'120',pickupDate:new Date(),pickupTimeOnly:'08:00',combineDateTime:()=>'',toIsoFromDatetimeLocal:()=>'',setIsEstimating(){},setSubmitTouched(){},setToast(){},Alert:{alert(){}},quotePrice:()=>{ requested=true; return pending.promise; },quoteInputKeyRef:{current:'old'},setQuote(){quoted=true;}};
    const js=ts.transpileModule(text.slice(start,end),{compilerOptions:{target:ts.ScriptTarget.ES2020}}).outputText;
    const estimate=new Function(...Object.keys(deps),js+';return handleEstimate;')(...Object.values(deps));
    const work=estimate(); assert.equal(requested,true); deps.quoteInputKeyRef.current='edited';pending.resolve({finalPrice:790000});await work;assert.equal(quoted,false);
  });
 }
+
+
+test('Web: a blank destination row does not block a selected route', async () => {
+  const calls = [];
+  const h = routeHarness(false, async points => {
+    calls.push(points);
+    return { distanceKm: 20, durationMinutes: 40 };
+  });
+  await h.refresh(pickup, [null, a], ['', 'A'], 'ONE_WAY');
+  assert.deepEqual(calls, [[{ lat: 10, lng: 106 }, { lat: 11, lng: 107 }]]);
+  await h.refresh(pickup, [null, a], ['Unselected', 'A'], 'ONE_WAY');
+  assert.equal(calls.length, 1);
+  assert.equal(h.state.RouteReadyKey, '');
+});
