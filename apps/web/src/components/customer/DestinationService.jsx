@@ -33,7 +33,6 @@ export default function DestinationService({ config, direction, pickup, returnTi
    <Box sx={{p:1.5,border:"1px solid",borderColor:mode === "CHARTER" ? "primary.main" : "divider",borderRadius:2}}>
     <FormControlLabel value="CHARTER" control={<Radio />} label={c.charterName} />
     <Typography variant="body2" sx={{ whiteSpace: "pre-wrap" }}>{destinationDescription(c,true)}</Typography>
-    <Typography variant="body2">Phí Bao xe tính theo toàn bộ thời gian chuyến (mỗi ngày tính theo 24 giờ).</Typography>
    </Box>
   </RadioGroup>
   <Alert severity="info" sx={{mt:1}}>{c.outsideNotice}</Alert>

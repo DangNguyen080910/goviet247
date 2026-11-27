@@ -34,9 +34,7 @@ export default function DestinationService({config,direction,pickup,returnTime,o
     style={{padding:12,borderWidth:1,borderColor:mode===value?"#1976d2":"#cbd5e1",borderRadius:10,gap:6}}>
      <Text style={{fontWeight:"700"}}>{mode===value?'◉':'○'} {name}</Text>
      <Text>{destinationDescription(c,charter)}</Text>
-     {charter && <Text>{wholeTrip
-       ? "Phí Bao xe tính theo toàn bộ thời gian chuyến (mỗi ngày tính theo 24 giờ)."
-       : "Gói Bao xe áp dụng theo lịch trình và khung phục vụ của chuyến."}</Text>}
+     {charter && !wholeTrip && <Text>Gói Bao xe áp dụng theo lịch trình và khung phục vụ của chuyến.</Text>}
    </Pressable>;
   })}
   <Text>{c.outsideNotice}</Text>

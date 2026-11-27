@@ -14,7 +14,7 @@ test("Vietnam arrival/return windows clip partial days and only selected days ar
  assert.equal(windows[0].start,"2026-11-01T04:00:00.000Z");
  const s=buildDestinationSnapshot(c,{...input,destinationServiceDates:["2026-11-02"]});
  assert.equal(s.fee,800000);assert.equal(s.sessions.length,1);assert.equal(s.anchorAddress,input.destinationAnchorAddress);
- assert.match(s.standardDescription,/5 km/);assert.match(s.charterDescription,/30 km/);
+ assert.match(s.standardDescription,/quay lại đón theo giờ đã đặt/);assert.match(s.charterDescription,/30 km/);
  assert.ok(destinationSummary(s).includes(c.allInclusiveNotice));
 });
 test("one-way and same-day return trips always retain inclusive notice and cannot buy charter",async()=>{
@@ -48,8 +48,9 @@ test("fee is added to final fare once, no fuel uplift, with purchased waiting ho
 });
 test("configuration changes update templates, old snapshots persist and old quotes require refresh",()=>{
  const selected={...input,destinationServiceDates:["2026-11-02"]};
- const old=buildDestinationSnapshot(c,selected);const signature=destinationSignature(old);
- const edited={...c,standardRadiusKm:7,charterDailyFee:900000,title:"Phục vụ xe"};
+ const historicalConfig={...c,standardDescription:"Phục vụ trong bán kính {radius} km."};
+ const old=buildDestinationSnapshot(historicalConfig,selected);const signature=destinationSignature(old);
+ const edited={...historicalConfig,standardRadiusKm:7,charterDailyFee:900000,title:"Phục vụ xe"};
  assert.match(destinationDescription(edited),/7 km/);
  assert.equal(old.fee,800000);assert.equal(old.standardDescription.includes("5 km"),true);
  assertDestinationQuote({destinationServiceSignature:signature},old);

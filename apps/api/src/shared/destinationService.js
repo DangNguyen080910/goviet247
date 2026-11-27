@@ -3,7 +3,7 @@ export const DEFAULT_DESTINATION_CONFIG = {
   title: "Nhu cầu sử dụng xe tại điểm đến",
   introduction: "Áp dụng cho chuyến khứ hồi.",
   standardName: "Không bao xe",
-  standardDescription: "Hỗ trợ đi ăn sáng, trưa, tối; tối đa {trips} lượt khứ hồi/ngày trong phạm vi {radius} km theo đường ô tô tính từ nơi lưu trú đã xác nhận. Mỗi lượt đến một địa điểm ăn uống rồi quay về. Không cộng dồn lượt; không bao gồm tham quan, mua sắm. Ngày đến/về chỉ hỗ trợ các bữa trong thời gian lưu trú thực tế. Thống nhất giờ đón đi và đón về trước mỗi lượt.",
+  standardDescription: "Tài xế đưa bạn đến điểm đến và quay lại đón theo giờ đã đặt. Gói này không bao gồm đưa đón đi ăn, tham quan hoặc di chuyển tại điểm đến.",
   standardRadiusKm: 5, standardTripsPerDay: 3, standardStartHour: 7, standardEndHour: 21,
   charterName: "Bao xe tại điểm đến",
   charterDescription: "Bao gồm đi ăn uống, tham quan, mua sắm trong phạm vi {radius} km theo đường ô tô tính từ nơi lưu trú đã xác nhận; tối đa {hours} giờ/ngày, trong khung {start}–{end}. Thời gian phục vụ gồm di chuyển và chờ. Khách và tài xế thống nhất các điểm chính và khoảng nghỉ trước mỗi ngày; tài xế phục vụ đúng lịch đã xác nhận. Vé tham quan và chi tiêu cá nhân của khách không bao gồm trong giá.",
