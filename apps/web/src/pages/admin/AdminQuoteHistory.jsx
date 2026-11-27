@@ -1,3 +1,4 @@
+import { quoteHistoryPickupAddresses, QUOTE_HISTORY_SOURCES as sources } from "../../../../api/src/shared/quoteHistoryRoute.js";
 import TripCode from "../../components/common/TripCode.jsx";
 import TripHistoryButton from "../../components/admin/TripHistoryButton";
 import ClearableSearchField from "../../components/common/ClearableSearchField.jsx";
@@ -16,7 +17,6 @@ import TripDetailModal from "../../components/admin/TripDetailModal";
 const day = (date) => date.toLocaleDateString("en-CA", { timeZone: "Asia/Ho_Chi_Minh" });
 const formatTime = (value) => value ? new Date(value).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour12: false, hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit", year: "numeric" }) : "—";
 const money = (value) => Number(value || 0).toLocaleString("vi-VN");
-const sources = { WEB: "Web", ANDROID: "Android", IOS: "iOS", UNKNOWN: "Chưa xác định" };
 const fuels = { ANY: "Không yêu cầu", ELECTRIC: "Xe điện", GASOLINE: "Xe xăng" };
 async function request(path, options = {}) {
   const res = await fetch(`/api/admin/quote-history${path}`, {
@@ -117,8 +117,10 @@ export default function AdminQuoteHistory() {
               <TableCell sx={{ whiteSpace: "nowrap" }}>{formatTime(row.createdAt)}</TableCell>
               <TableCell>{row.customerName || "Khách chưa xác định"}<br /><Chip size="small" label={row.identityVerified ? "Đã đăng nhập" : "Khách vãng lai"} /></TableCell>
               <TableCell sx={{ whiteSpace: "nowrap" }}>{row.customerPhone || "—"}</TableCell>
-              <TableCell>{sources[row.source]}</TableCell>
-              <TableCell sx={{ minWidth: 240 }}>{row.pickupAddress || "Chưa được cung cấp"}</TableCell>
+              <TableCell>{sources[row.source] || sources.UNKNOWN}</TableCell>
+              <TableCell sx={{ minWidth: 240 }}>{row.pickupAddress ? quoteHistoryPickupAddresses(row).map((address, index) =>
+                <div key={index}>{row.additionalPickups?.length > 0 ? `${index + 1}. ` : ""}{address}</div>)
+                : "Chưa được cung cấp"}</TableCell>
               <TableCell sx={{ minWidth: 260 }}>{Array.isArray(row.stops) && row.stops.length ? row.stops.map((stop, index) => <div key={index}>{index + 1}. {stop}</div>) : "Chưa được cung cấp"}</TableCell>
               <TableCell sx={{ whiteSpace: "nowrap" }}>{formatTime(row.pickupTime)}</TableCell><TableCell sx={{ whiteSpace: "nowrap" }}>{formatTime(row.returnTime)}</TableCell>
               <TableCell>{formatCarType(row.carType)}</TableCell><TableCell>{row.direction === "ROUND_TRIP" ? "Khứ hồi" : "Một chiều"}</TableCell><TableCell>{fuels[row.fuelPreference]}</TableCell>
@@ -138,8 +140,10 @@ export default function AdminQuoteHistory() {
         <Typography>Tính giá lúc: {formatTime(detail.createdAt)}</Typography>
         <Typography>Khách: {detail.customerName || "Chưa xác định"} · {detail.customerPhone || "Chưa có SĐT"}</Typography>
         <Typography>Tài khoản: {detail.userId || "Khách vãng lai"}</Typography>
-        <Typography>Nguồn: {sources[detail.source]}</Typography>
-        <Typography>Điểm đón: {detail.pickupAddress || "Chưa được cung cấp"}</Typography>
+        <Typography>Nguồn: {sources[detail.source] || sources.UNKNOWN}</Typography>
+        {detail.pickupAddress ? quoteHistoryPickupAddresses(detail).map((address, index) =>
+          <Typography key={index}>Điểm đón{detail.additionalPickups?.length > 0 ? ` ${index + 1}` : ""}: {address}</Typography>)
+          : <Typography>Điểm đón: Chưa được cung cấp</Typography>}
         {Array.isArray(detail.stops) && detail.stops.map((stop, index) => <Typography key={index}>Điểm đến {index + 1}: {stop}</Typography>)}
         <Typography>Giờ đón: {formatTime(detail.pickupTime)} · Giờ về: {formatTime(detail.returnTime)}</Typography>
         <Typography>{formatCarType(detail.carType)} · {detail.direction === "ROUND_TRIP" ? "Khứ hồi" : "Một chiều"} · {fuels[detail.fuelPreference]}</Typography>

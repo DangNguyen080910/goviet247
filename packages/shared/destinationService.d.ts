@@ -5,7 +5,7 @@ export function destinationWindows(config: any, direction: string, pickup: any, 
 export function destinationSummary(snapshot: any): string[];
 export function vnDay(value: any): string;
 export function vnTime(value: any): string;
-export type DestinationDay = { date: string; standardStart: string | null; standardEnd: string | null; charter: { date: string; start: string; end: string; hours: number; flexible: boolean; fee: number } | null };
+export type DestinationDay = { date: string; standardStart: string | null; standardEnd: string | null; charter: { date: string; start: string; end: string; hours: number; flexible: boolean; fee?: number } | null };
 export function destinationDays(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): DestinationDay[];
 export function destinationDayText(day: DestinationDay, selected: boolean, config: any): string;
 
@@ -16,3 +16,7 @@ export function destinationQuoteSummary(snapshot: any, config?: any): string[];
 
 export function destinationSelection(snapshot: any): "STANDARD" | "CHARTER" | "LEGACY_MIXED";
 export function destinationPackageLabel(snapshot: any): string;
+
+export function destinationPackageAvailable(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): boolean;
+export function charterTripFee(dailyFee: number, pickup: any, returnTime: any, returnMinutes: number): number;
+export function destinationChargeLines(snapshot: any): string[];

@@ -1,3 +1,4 @@
+import { decodeQuoteHistoryRoute, QUOTE_HISTORY_SOURCES } from "../shared/quoteHistoryRoute.js";
 import pkg from "@prisma/client";
 import { prisma } from "../utils/db.js";
 import { historyCutoff } from "../services/quoteHistoryService.js";
@@ -39,39 +40,46 @@ export async function listQuoteHistory(req, res) {
   const carType = String(req.query.carType || "");
   const source = String(req.query.source || "");
   if ((carType && !["CAR_5", "CAR_7", "CAR_16"].includes(carType)) ||
-      (source && !["WEB", "ANDROID", "IOS", "UNKNOWN"].includes(source))) {
+      (source && !Object.hasOwn(QUOTE_HISTORY_SOURCES, source))) {
     return res.status(400).json({ success: false, message: "Bộ lọc không hợp lệ." });
   }
   const page = Math.max(1, Math.min(10000, Number.parseInt(req.query.page, 10) || 1));
   const pageSize = 25;
-  const where = {
-    createdAt: { gte: from, lt: to },
-    ...(carType ? { carType } : {}), ...(source ? { source } : {}),
-    ...(q ? { OR: ["customerName", "customerPhone", "pickupAddress", "tripId"].map(field => ({ [field]: { contains: escapedQ, mode: "insensitive" } })) } : {}),
-  };
   const conditions = [Prisma.sql`"createdAt" >= ${from}`, Prisma.sql`"createdAt" < ${to}`];
   if (carType) conditions.push(Prisma.sql`"carType" = ${carType}`);
   if (source) conditions.push(Prisma.sql`"source" = ${source}`);
   if (q) {
     const pattern = `%${escapedQ}%`;
-    conditions.push(Prisma.sql`("customerName" ILIKE ${pattern} OR "customerPhone" ILIKE ${pattern} OR "pickupAddress" ILIKE ${pattern} OR "tripId" ILIKE ${pattern})`);
+    conditions.push(Prisma.sql`(
+      "customerName" ILIKE ${pattern} OR "customerPhone" ILIKE ${pattern}
+      OR "pickupAddress" ILIKE ${pattern} OR "tripId" ILIKE ${pattern}
+      OR EXISTS (
+        SELECT 1 FROM jsonb_array_elements_text(
+          CASE WHEN jsonb_typeof("stops"->'additionalPickups') = 'array'
+            THEN "stops"->'additionalPickups' ELSE '[]'::jsonb END
+        ) AS pickup(address)
+        WHERE pickup.address ILIKE ${pattern}
+      )
+    )`);
   }
+  const filter = Prisma.join(conditions, " AND ");
   const vnToday = new Date(Date.now() + 7 * 3600000).toISOString().slice(0, 10);
   try {
     const [items, aggregate] = await Promise.all([
-      prisma.quoteHistory.findMany({ where, orderBy: [{ createdAt: "desc" }, { id: "desc" }], skip: (page - 1) * pageSize, take: pageSize,
-        select: { id: true, createdAt: true, userId: true, customerName: true, customerPhone: true, identityVerified: true,
-          source: true, pickupAddress: true, stops: true, pickupTime: true, returnTime: true, carType: true, direction: true,
-          fuelPreference: true, distanceKm: true, driveMinutes: true, finalPrice: true, tripId: true, bookedAt: true } }),
+      prisma.$queryRaw(Prisma.sql`SELECT "id", "createdAt", "userId", "customerName", "customerPhone", "identityVerified",
+        "source", "pickupAddress", "stops", "pickupTime", "returnTime", "carType", "direction", "fuelPreference",
+        "distanceKm", "driveMinutes", "finalPrice", "tripId", "bookedAt"
+        FROM "QuoteHistory" WHERE ${filter}
+        ORDER BY "createdAt" DESC, "id" DESC LIMIT ${pageSize} OFFSET ${(page - 1) * pageSize}`),
       prisma.$queryRaw(Prisma.sql`SELECT COUNT(*)::int AS "total", COUNT(DISTINCT "customerKey")::int AS "uniqueCustomers",
         COUNT(DISTINCT "userId")::int AS "loggedInCustomers",
         COUNT(*) FILTER (WHERE "customerKey" IS NULL)::int AS "unidentifiedQuotes",
         COUNT(*) FILTER (WHERE "tripId" IS NOT NULL)::int AS "bookedQuotes",
         COUNT(*) FILTER (WHERE "createdAt" >= ${localDay(vnToday)})::int AS "todayQuotes"
-        FROM "QuoteHistory" WHERE ${Prisma.join(conditions, " AND ")}`),
+        FROM "QuoteHistory" WHERE ${filter}`),
     ]);
     const stats = aggregate[0];
-    return res.json({ success: true, items, stats, page, pageSize, totalPages: Math.ceil(stats.total / pageSize) });
+    return res.json({ success: true, items: items.map(item => ({ ...item, ...decodeQuoteHistoryRoute(item.stops) })), stats, page, pageSize, totalPages: Math.ceil(stats.total / pageSize) });
   } catch (error) {
     console.error("[QuoteHistory] Admin list unavailable:", error?.code || "ERROR");
     return res.status(503).json({ success: false, message: "Chưa tải được lịch sử tính giá. Kiểm tra migration và thử lại." });

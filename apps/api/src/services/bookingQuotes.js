@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { parseTripTime } from "../utils/tripTime.js";
 import { createHash, randomBytes } from 'node:crypto';
-import { autocomplete, getPlaceDetail, getRoute, getKnownMapPlace } from './mapService.js';
+import { autocomplete, getPlaceDetail, getRoute, getRouteWithReturnPickups, getKnownMapPlace } from './mapService.js';
 import { quotePrice } from './pricingService.js';
 import { prisma } from '../utils/db.js';
 import { provinceFromPlace } from './regionalPricing.js';
@@ -14,16 +14,22 @@ const fail = message => Object.assign(new Error(message),{status:409,code:'QUOTE
 function itinerary(input) {
   const points = Array.isArray(input.routePricingPoints) ? input.routePricingPoints : [];
   const pickup = clean(input.pickupAddress || input.historyContext?.pickupAddress || points[0]?.address);
-  const rawStops = input.stops || input.historyContext?.stops || points.slice(1).map(p=>p.address);
+  const suppliedPickups = input.additionalPickups ?? [];
+  if (!Array.isArray(suppliedPickups) || suppliedPickups.length > 4 ||
+      suppliedPickups.some(address => typeof address !== 'string' || !clean(address))) {
+    throw fail('Vui lòng chọn đầy đủ địa chỉ. Có thể thêm tối đa 4 điểm đón.');
+  }
+  const additionalPickups = suppliedPickups.map(clean);
+  const rawStops = input.stops || input.historyContext?.stops || points.slice(1 + additionalPickups.length).map(p=>p.address);
   if (!Array.isArray(rawStops)) throw fail('Danh sách điểm đến không hợp lệ.');
   const stops = rawStops.map(clean).filter(Boolean);
   if (!stops.length && input.dropoffAddress) stops.push(clean(input.dropoffAddress));
   if (input.dropoffAddress && stops.length && comparable(input.dropoffAddress) !== comparable(stops.at(-1))) throw fail('Điểm đến cuối không khớp lộ trình. Vui lòng tính giá lại.');
-  return {pickup,stops,points};
+  return {pickup,additionalPickups,stops,points};
 }
 export function quoteRequestHash(input) {
   input = normalizeInput(input);
-  const {pickup,stops} = itinerary(input);
+  const {pickup,additionalPickups,stops} = itinerary(input);
   const iso = value => {
     if (!value) return null;
     const date = parseTripTime(value);
@@ -33,7 +39,8 @@ export function quoteRequestHash(input) {
   return hash(JSON.stringify([comparable(pickup),stops.map(comparable),input.carType,input.direction,
     iso(input.pickupTime),iso(input.returnTime),input.fuelPreference || 'ANY',
     input.destinationServiceMode === undefined ? [...(input.destinationServiceDates || [])].sort() : {mode:input.destinationServiceMode},
-    comparable(input.destinationAnchorAddress || input.dropoffAddress || stops.at(-1))]));
+    comparable(input.destinationAnchorAddress || input.dropoffAddress || stops.at(-1)),
+    ...(additionalPickups.length ? [additionalPickups.map(comparable)] : [])]));
 }
 export function createBookingQuoteService({db = prisma, search = autocomplete, detail = getPlaceDetail, route = getRoute, price = quotePrice, knownPlace = getKnownMapPlace} = {}) {
   const placeCache = new Map();
@@ -81,19 +88,26 @@ export function createBookingQuoteService({db = prisma, search = autocomplete, d
     input = normalizeInput(input);
     const pickupTime = parseTripTime(input.pickupTime);
     if (!Number.isFinite(pickupTime?.getTime())) throw fail('Ngày giờ đón không hợp lệ.');
-    const {pickup,stops,points} = itinerary(input);
-    if (!pickup || !stops.length || stops.length > 10) throw fail('Vui lòng chọn đầy đủ điểm đón và các điểm đến.');
-    const addresses = [pickup,...stops];
+    const {pickup,additionalPickups,stops,points} = itinerary(input);
+    if (!pickup || !stops.length || stops.length > 10 || additionalPickups.length + stops.length > 11) throw fail('Vui lòng chọn đầy đủ điểm đón và các điểm đến.');
+    const addresses = [pickup, ...additionalPickups, ...stops];
     if (points.length && (points.length !== addresses.length || points.some((p,i)=>comparable(p.address)!==comparable(addresses[i])))) throw fail('Lộ trình đã thay đổi. Vui lòng tính giá lại.');
     if (!['ONE_WAY','ROUND_TRIP'].includes(input.direction)) throw fail('Loại chuyến không hợp lệ.');
     const back = parseTripTime(input.returnTime);
     if (input.direction === 'ROUND_TRIP' && (!Number.isFinite(back?.getTime()) || back <= pickupTime)) throw fail('Giờ bắt đầu quay về phải sau giờ đón khách.');
     const coords = (await Promise.all(addresses.map((address,i)=>place(points[i],address)))).map(({lat,lng})=>({lat,lng}));
-    if (input.direction === 'ROUND_TRIP') coords.push(coords[0]);
-    const found = await route(coords);
+    const destination = coords.at(-1);
+    const returns = input.direction === 'ROUND_TRIP';
+    let found;
+    if (returns && additionalPickups.length) {
+      found = await getRouteWithReturnPickups(coords, additionalPickups.length + 1, route);
+    } else {
+      if (returns) coords.push(coords[0]);
+      found = await route(coords);
+    }
     if (!found || !Number.isFinite(found.distanceKm) || found.distanceKm <= 0 || !Number.isFinite(found.durationMinutes)) throw fail('Chưa xác minh được quãng đường. Vui lòng thử tính giá lại.');
     if (input.direction === 'ROUND_TRIP' && parseTripTime(input.returnTime)?.getTime() < pickupTime.getTime()+found.outboundDurationMinutes*60000) throw fail('Giờ quay về phải từ thời điểm xe dự kiến đã tới điểm đến trở đi.');
-    return {pickupLat:coords[0].lat,pickupLng:coords[0].lng,dropoffLat:coords[stops.length].lat,dropoffLng:coords[stops.length].lng,distanceKm:found.distanceKm,driveMinutes:found.durationMinutes,
+    return {additionalPickups,pickupLat:coords[0].lat,pickupLng:coords[0].lng,dropoffLat:destination.lat,dropoffLng:destination.lng,distanceKm:found.distanceKm,driveMinutes:found.durationMinutes,
       totalDriveMinutes:found.durationMinutes,outboundDriveMinutes:found.outboundDurationMinutes,
       returnDriveMinutes:found.returnDurationMinutes,estimatedDurationMinutes:input.direction === 'ROUND_TRIP' ? Math.round((back-pickupTime)/60000)+found.returnDurationMinutes : found.durationMinutes};
   }

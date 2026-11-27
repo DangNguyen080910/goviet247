@@ -243,13 +243,16 @@ function webFormFunctions() {
   vm.runInNewContext(fragments.join('\n')+'\nthis.build=buildPayloadFromForm;this.validate=validatePricingItem;',ctx);
   return ctx;
 }
-test('admin form: clearing the field sends null, while explicit zero stays zero', () => {
+test('new admin form keeps the night settings and leaves legacy hourly pricing untouched', () => {
   const web = webFormFunctions();
   const formConfig = {...config,kmTiers:tiers.map(tier=>({...tier,to:tier.to??''}))};
-  for (const [raw,expected] of [['',null],[null,null],['0',0],['20000',20000]]) {
+  for (const raw of ['', null, '0', '20000']) {
     const item = {...formConfig,roundTripWaitingConfig:{...rules,overnightPricePerHour:raw}};
     assert.equal(web.validate(item),'');
-    assert.equal(web.build(item).roundTripWaitingConfig.overnightPricePerHour,expected);
+    const payload = web.build(item);
+    assert.equal(Object.hasOwn(payload.roundTripWaitingConfig, 'overnightPricePerHour'), false);
+    assert.equal(payload.roundTripWaitingConfig.nightMinWaitHours, rules.nightMinWaitHours);
+    assert.equal(payload.roundTripWaitingConfig.freeWaitingMinutes, rules.freeWaitingMinutes);
+    assert.ok(payload.kmTiers.every(tier => !Object.hasOwn(tier, 'pricePerWaitHour')));
   }
-  assert.match(web.validate({...formConfig,overnightFee:99999}),/Phụ phí mỗi đêm/);
 });

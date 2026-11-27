@@ -168,9 +168,13 @@ export async function updatePricingConfig(req, res) {
     }
     const updateData = {};
     if (Object.prototype.hasOwnProperty.call(body, "roundTripWaitingConfig")) {
-      const error = validateWaitingRules(body.roundTripWaitingConfig);
+      const rules = {
+        ...body.roundTripWaitingConfig,
+        freeWaitingMinutes: body.roundTripWaitingConfig?.freeWaitingMinutes ?? 0,
+      };
+      const error = validateWaitingRules(rules);
       if (error) return res.status(400).json({ success: false, message: error });
-      const { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours } = body.roundTripWaitingConfig;
+      const { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours } = rules;
       updateData.roundTripWaitingConfig = { freeWaitingMinutes, nightStartHour, nightEndHour, nightMinWaitHours };
       if (Object.prototype.hasOwnProperty.call(body.roundTripWaitingConfig, "overnightPricePerHour")) {
         updateData.roundTripWaitingConfig.overnightPricePerHour = body.roundTripWaitingConfig.overnightPricePerHour;

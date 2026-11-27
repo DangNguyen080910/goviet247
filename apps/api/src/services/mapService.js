@@ -337,3 +337,25 @@ export async function getRoute(points = []) {
     return structuredClone(route);
   } catch(error) { if (routeCache.get(key) === entry) routeCache.delete(key); throw error; }
 }
+
+// Return from the final destination through the pickup points in reverse order.
+export async function getRouteWithReturnPickups(points, pickupCount, route = getRoute) {
+  if (!Number.isInteger(pickupCount) || pickupCount < 2 || pickupCount > 5 || pickupCount >= points.length) {
+    throw new Error("ROUTE_POINTS_INVALID");
+  }
+  const returnPoints = [points.at(-1), ...points.slice(0, pickupCount).reverse()];
+  const [outbound, returning] = await Promise.all([route(points), route(returnPoints)]);
+  if (!outbound || !returning || !Number.isFinite(outbound.durationMinutes) ||
+      !Number.isFinite(returning.durationMinutes)) return null;
+  const distanceMeters = (outbound.distanceMeters ?? outbound.distanceKm * 1000)
+    + (returning.distanceMeters ?? returning.distanceKm * 1000);
+  return {
+    distanceMeters,
+    distanceKm: Math.round(distanceMeters / 100) / 10,
+    durationMinutes: outbound.durationMinutes + returning.durationMinutes,
+    outboundDurationMinutes: outbound.durationMinutes,
+    returnDurationMinutes: returning.durationMinutes,
+    isRoundTripDetected: true,
+    points: [...points, ...returnPoints.slice(1)],
+  };
+}

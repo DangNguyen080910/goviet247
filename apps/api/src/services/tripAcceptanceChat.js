@@ -4,11 +4,22 @@ import { CHAT_ACTIVE_STATUSES, isRiderChatEnded } from '../shared/tripChat.js';
 import { chatAudienceVisible } from '../shared/tripChatVisibility.js';
 import { getTripRiderRecipientUserIds } from './riderTripAccess.js';
 
+function driverAcceptanceText(contact) {
+  return [
+    "Bạn đã nhận chuyến. Vui lòng đọc kỹ ghi chú khách hàng và thực hiện các bước sau.",
+    `1. ${contact}`,
+    "2. Tại điểm đón, điểm đến và điểm trả khách, mỗi lần gửi định vị GPS và 1 ảnh xe tại chỗ ngay trong cuộc trò chuyện này. Ảnh và định vị chỉ dùng để xác nhận chuyến và hỗ trợ xử lý tranh chấp.",
+    "3. Giá trọn gói đã gồm phí cầu đường, cao tốc và ăn nghỉ của tài xế. Không thu thêm. Đi đúng lộ trình đã thống nhất, gồm cao tốc nếu khách yêu cầu. Không tự đổi xe, đổi tài xế hoặc nhận khách ngoài GoViet247.",
+    "4. Khách muốn đi tiếp hoặc đặt chuyến về, báo GoViet247 để tạo chuyến qua hệ thống.",
+    "Vi phạm có thể bị hạn chế nhận chuyến hoặc khóa tài khoản.",
+  ].join("\n\n");
+}
+
 export const ACCEPTANCE_CHAT_TEXT = {
-  RIDER: 'Tài xế đã nhận chuyến. Mở Liên hệ chuyến để nhắn tin xác nhận lịch đón. Người trực tiếp đi có thể bấm Gọi tài xế để trao đổi qua Internet.',
-  PARTNER: 'Chuyến của công ty đã có tài xế nhận. Mở Liên hệ chuyến để xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên phụ trách có thể nhắn tin hoặc bấm Gọi tài xế.',
-  DRIVER_RIDER: 'Bạn đã nhận chuyến thành công. Mở Liên hệ chuyến để nhắn tin xác nhận lịch đón với khách; dùng nút Gọi khách khi cần trao đổi với người trực tiếp đi.',
-  DRIVER_PARTNER: 'Bạn đã nhận chuyến của đối tác. Để bảo mật thông tin khách hàng của đối tác, vui lòng liên hệ trực tiếp với điều phối viên qua chat hoặc nút Gọi điều phối trong app GoViet247 để xác nhận lịch đón và yêu cầu phục vụ. Điều phối viên sẽ liên hệ khách.',
+  RIDER: 'Tài xế đã nhận chuyến và sẽ sớm liên hệ với bạn. Bạn cũng có thể liên hệ tài xế tại đây.',
+  PARTNER: 'Tài xế đã nhận chuyến của công ty và sẽ sớm liên hệ điều phối viên phụ trách. Điều phối viên cũng có thể liên hệ tài xế tại đây.',
+  DRIVER_RIDER: driverAcceptanceText('Gọi khách ngay sau khi nhận chuyến, chậm nhất trong 15 phút. Giới thiệu là tài xế GoViet247, xác nhận giờ và điểm đón, trao đổi lịch sự.'),
+  DRIVER_PARTNER: driverAcceptanceText('Liên hệ điều phối viên ngay tại đây, chậm nhất trong 15 phút, để xác nhận giờ đón, điểm đón và yêu cầu phục vụ. Điều phối viên sẽ liên hệ khách.'),
 };
 
 // Called only inside the successful acceptance transaction, while the trip row is locked.

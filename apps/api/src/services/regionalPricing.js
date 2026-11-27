@@ -71,7 +71,7 @@ export async function buildRegionalSurcharge(input, rawConfig, baseAmount, resol
     const dropoff = normalize(input.dropoffAddress);
     const returningToPickup = input.direction === 'ROUND_TRIP' && dropoff === normalize(input.pickupAddress);
     if (dropoff && dropoff !== normalize(stops.at(-1)) && !returningToPickup) throw fail('Điểm đến cuối không khớp lộ trình. Vui lòng chọn lại địa điểm và tính giá lại.', 409);
-    const addresses = [input.pickupAddress, ...stops].map(normalize);
+    const addresses = [input.pickupAddress, ...(input.additionalPickups || []), ...stops].map(normalize);
     if (addresses.length !== points.length || addresses.some((address, index) => address !== normalize(points[index].address))) throw fail('Lộ trình đã thay đổi. Vui lòng chọn lại địa điểm và tính giá lại.', 409);
   }
   const codes = [];

@@ -1,3 +1,4 @@
+import { getRouteWithReturnPickups } from "../services/mapService.js";
 import { createRequestRateLimit } from "../middleware/requestRateLimit.js";
 // Path: goviet247/apps/api/src/routes/maps.js
 import { Router } from "express";
@@ -91,7 +92,9 @@ router.post("/route", async (req, res) => {
       });
     }
 
-    const item = await getRoute(points);
+    const pickupCount = req.body?.returnPickupCount;
+    const item = pickupCount === undefined ? await getRoute(points)
+      : await getRouteWithReturnPickups(points, pickupCount);
 
     if (!item) {
       return res.status(404).json({

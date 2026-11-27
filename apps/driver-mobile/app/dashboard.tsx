@@ -1277,7 +1277,10 @@ export default function DashboardScreen() {
       trip: AvailableTripItem | MyTripItem,
       mode: "masked" | "full" = "full",
     ) => {
-      return { destinations: driverTripRoutePoints(trip, { masked: mode === "masked" }).filter(point => point.label !== "Điểm đón").map((point, index) => ({ ...point, key: `${trip.id}-route-${index}` })) };
+      const destinations = driverTripRoutePoints(trip, { masked: mode === "masked" })
+        .filter(point => point.label !== "Điểm đón" && point.label !== "Điểm đón 1")
+        .map((point, index) => ({ ...point, key: `${trip.id}-route-${index}` }));
+      return { destinations };
     },
     [],
   );

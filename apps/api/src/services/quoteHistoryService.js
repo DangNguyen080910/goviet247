@@ -1,3 +1,4 @@
+import { encodeQuoteHistoryRoute, QUOTE_HISTORY_SOURCES } from "../shared/quoteHistoryRoute.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { prisma } from "../utils/db.js";
 import { userSessions } from "./userSessions.js";
@@ -30,6 +31,9 @@ export async function recordQuoteHistory(req, quote) {
     const visitorId = text(context.visitorId, 120);
     const bookingToken = randomBytes(32).toString("hex");
     const stops = Array.isArray(context.stops) ? context.stops.slice(0, 20).map(value => text(value, 800)).filter(Boolean) : [];
+    const additionalPickups = Array.isArray(input.additionalPickups)
+      ? input.additionalPickups.slice(0, 4).map(address => text(address, 800)).filter(Boolean)
+      : [];
     // Account identity is verified separately from the contact entered in the form.
     const row = await prisma.quoteHistory.create({ data: {
       id: randomUUID(),
@@ -38,8 +42,8 @@ export async function recordQuoteHistory(req, quote) {
       customerName: text(context.customerName, 150) || user?.displayName || null,
       customerPhone: text(context.customerPhone, 40) || user?.phones?.[0]?.e164 || null,
       identityVerified: Boolean(user),
-      source: ["WEB", "ANDROID", "IOS", "PARTNER"].includes(context.source) ? context.source : "UNKNOWN",
-      pickupAddress: text(context.pickupAddress, 800), stops,
+      source: Object.hasOwn(QUOTE_HISTORY_SOURCES, context.source) ? context.source : "UNKNOWN",
+      pickupAddress: text(context.pickupAddress, 800), stops: encodeQuoteHistoryRoute(stops, additionalPickups),
       pickupTime: new Date(input.pickupTime),
       returnTime: input.returnTime ? new Date(input.returnTime) : null,
       carType: input.carType, direction: input.direction, fuelPreference: input.fuelPreference || "ANY",

@@ -31,7 +31,7 @@ function load(relative,bindings){
   return exports;
 }
 async function fixture(run,{regional=false,overnightFlat=false}={}){
-  const held=new Map(), trips=new Map();let saved=0, mapCalls=0, priceCalls=0, otpDraft=null;
+  const held=new Map(), trips=new Map(), savedStops=[], routedPoints=[];let saved=0, mapCalls=0, priceCalls=0, otpDraft=null;
   const config={baseFare:0,pricePerKm:5000,pricePerHour:10000,minFare:100000,overnightFee:300000,overnightTriggerKm:600,overnightTriggerHours:12,gasolineSurchargePercent:10};
   if (overnightFlat) config.roundTripWaitingConfig={freeWaitingMinutes:60,nightStartHour:22,nightEndHour:6,nightMinWaitHours:5,overnightPricePerHour:20000};
   const db={pricingConfig:{findFirst:async()=>config,findUnique:async()=>({isActive:true})},
@@ -39,9 +39,9 @@ async function fixture(run,{regional=false,overnightFlat=false}={}){
     bookingQuote:{create:async({data})=>held.set(data.tokenHash,{...data,pricing:jsonb(data.pricing),route:jsonb(data.route)}),findUnique:async({where})=>held.get(where.tokenHash)},
     $transaction:async fn=>fn({tripConfig:{findFirst:async()=>({})},$queryRawUnsafe:noop,riderProfile:{findFirst:async()=>null},pricingConfig:{findUnique:async()=>({isActive:true})},
       trip:{findUnique:async({where})=>trips.get(where.bookingRequestKey),create:async({data})=>{const trip={...data,id:'offline-'+(++saved),createdAt:new Date()};trips.set(data.bookingRequestKey,trip);return trip;}},
-      tripStop:{createMany:noop},tripChatMessage:{createMany:noop}})};
+      tripStop:{createMany:async({data})=>savedStops.push(...data)},tripChatMessage:{createMany:noop}})};
   const service=createBookingQuoteService({db,knownPlace:()=>null,
-    route:async coords=>{mapCalls++;return{distanceKm:200,durationMinutes:coords.length>2?240:120,outboundDurationMinutes:120,returnDurationMinutes:coords.length>2?120:0};},
+    route:async coords=>{mapCalls++;routedPoints.push(coords);return{distanceKm:200,durationMinutes:coords.length>2?240:120,outboundDurationMinutes:120,returnDurationMinutes:coords.length>2?120:0};},
     price:async input=>{priceCalls++;return quotePrice(input,db);}});
   const pricing=load('controllers/pricingController.js',{pkg:{PrismaClient:class{constructor(){return db;}}},bookingQuotes:service,
     quotePrice:input=>quotePrice(input,db),validateTripDistance:async()=>({ok:true}),recordQuoteHistory:async()=>({quoteHistoryToken:'a'.repeat(64)})});
@@ -59,7 +59,7 @@ async function fixture(run,{regional=false,overnightFlat=false}={}){
   const server=await new Promise(resolve=>{const s=app.listen(0,'127.0.0.1',()=>resolve(s));});
   const base='http://127.0.0.1:'+server.address().port;
   const post=async(path,input,authenticated=true)=>{const response=await fetch(base+path,{method:'POST',headers:{'Content-Type':'application/json',...(authenticated?{Authorization:'Bearer offline-session'}:{})},body:JSON.stringify(input)});return{status:response.status,body:await response.json()};};
-  try{await run({post,held,get otpDraft(){return otpDraft;},get saved(){return saved;},get mapCalls(){return mapCalls;},get priceCalls(){return priceCalls;}});}finally{await new Promise(resolve=>server.close(resolve));}
+  try{await run({post,held,savedStops,routedPoints,get otpDraft(){return otpDraft;},get saved(){return saved;},get mapCalls(){return mapCalls;},get priceCalls(){return priceCalls;}});}finally{await new Promise(resolve=>server.close(resolve));}
 }
 const points=JSON.parse(readFileSync(new URL('../src/data/booking-trusted-places.json',import.meta.url)));
 const pickup=points['goviet247:province:tp-hcm'].fullAddress, dropoff=points['goviet247:province:khanh-hoa'].fullAddress;
@@ -163,3 +163,26 @@ test('charter cannot omit its signature and a regional surcharge cannot omit its
     assert.equal((await f.post('/trips',changed)).status,409);assert.equal(f.saved,0);
   }
 },{regional:true}));
+
+test('multiple pickups are priced both ways and persisted in forward order', async () => fixture(async f => {
+ const additional = points['goviet247:province:khanh-hoa'].fullAddress;
+ const finalPlace = Object.entries(points).find(([id,place]) =>
+   id !== 'goviet247:province:tp-hcm' && id !== 'goviet247:province:khanh-hoa' &&
+   place.fullAddress && Number.isFinite(place.lat) && Number.isFinite(place.lng));
+ assert.ok(finalPlace);
+ const [finalId, destination] = finalPlace;
+ const input = {...request, direction:'ROUND_TRIP', returnTime:'2099-01-01T18:00:00+07:00',
+   destinationServiceMode:'CHARTER', additionalPickups:[additional], stops:[destination.fullAddress],
+   dropoffAddress:destination.fullAddress, destinationAnchorAddress:destination.fullAddress,
+   routePricingPoints:[...request.routePricingPoints,{placeId:finalId,address:destination.fullAddress}]};
+ const quoted=await f.post('/quote',input,false);
+ assert.equal(quoted.status,200,JSON.stringify(quoted.body));
+ assert.equal(f.routedPoints.length,2);
+ assert.deepEqual(f.routedPoints[1],[...f.routedPoints[0]].reverse());
+ const rejected=await f.post('/trips',{...booking(input,quoted.body.data),additionalPickups:[]});
+ assert.equal(rejected.status,409);
+ const created=await f.post('/trips',booking(input,quoted.body.data));
+ assert.equal(created.status,201,JSON.stringify(created.body));
+ assert.deepEqual(f.savedStops.map(({seq,address})=>[seq,address]),[[-1,additional],[1,destination.fullAddress]]);
+ assert.equal(created.body.trip.totalPrice,quoted.body.data.finalPrice);
+}));

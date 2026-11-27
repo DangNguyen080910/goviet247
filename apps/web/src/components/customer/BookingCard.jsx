@@ -1,3 +1,4 @@
+import { BOOKING_ADDRESS_HINT, MAX_OUTBOUND_POINTS, MAX_PICKUP_POINTS, returnPickupNotice } from "../../../../api/src/shared/tripRoute.js";
 import { regionalRoutePoints } from "../../../../api/src/shared/regionalPricing.js";
 // Path: goviet247/apps/web/src/components/customer/BookingCard.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -55,7 +56,7 @@ dayjs.locale("vi");
 import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
 import { useLocation, useNavigate } from "react-router-dom";
 import DestinationService, { ServiceSummary } from "./DestinationService";
-import { destinationWindows, destinationConfig } from "../../../../../packages/shared/destinationService.js";
+import { destinationPackageAvailable, destinationConfig } from "../../../../../packages/shared/destinationService.js";
 import { quotePrice as customerQuotePrice } from "../../api/pricing";
 import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
@@ -66,9 +67,80 @@ import { searchVietnamLocations } from "../../data/vietnamLocations";
 
 const hasPlaceCoords = (place) => {
   return (
-    Number.isFinite(Number(place?.lat)) && Number.isFinite(Number(place?.lng))
+    place?.lat != null && place?.lng != null &&
+    Number.isFinite(Number(place.lat)) && Number.isFinite(Number(place.lng))
   );
 };
+
+function AdditionalPickupField({ row, number, gps, normalizePlace, onChange, onRemove }) {
+  const [options, setOptions] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectionError, setSelectionError] = useState(false);
+  const request = useRef(0);
+  const lat = gps?.lat;
+  const lng = gps?.lng;
+
+  useEffect(() => {
+    const keyword = row.address.trim();
+    setOptions([]);
+    if (row.place || keyword.length < 3) {
+      setLoading(false);
+      return;
+    }
+    let active = true;
+    const timer = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const matches = await searchPlaces(keyword, { lat, lng });
+        if (active) setOptions(mergeVietnamLocationOptions(keyword, matches));
+      } catch {
+        if (active) setOptions(mergeVietnamLocationOptions(keyword, []));
+      } finally {
+        if (active) setLoading(false);
+      }
+    }, 400);
+    return () => { active = false; clearTimeout(timer); };
+  }, [row.address, row.place, lat, lng]);
+
+  async function select(option) {
+    const current = ++request.current;
+    if (!option?.placeId) return;
+    setSelectionError(false);
+    setLoading(true);
+    onChange({ address: option.fullAddress || option.description || option.name || "", place: null });
+    try {
+      const raw = hasPlaceCoords(option) ? option : await getPlaceDetail(option.placeId);
+      if (request.current !== current) return;
+      const place = normalizePlace(option, raw);
+      if (!place.fullAddress || !hasPlaceCoords(place)) throw new Error("Địa chỉ chưa có tọa độ.");
+      onChange({ address: place.fullAddress, place });
+    } catch {
+      if (request.current === current) setSelectionError(true);
+    } finally {
+      if (request.current === current) setLoading(false);
+    }
+  }
+
+  return <Stack direction="row" spacing={1} alignItems="center">
+    <Autocomplete
+      freeSolo fullWidth size="small" options={options} loading={loading}
+      value={row.place} inputValue={row.address} filterOptions={items => items}
+      getOptionLabel={option => typeof option === "string" ? option : option.fullAddress || option.description || option.name || ""}
+      isOptionEqualToValue={(option, value) => option?.placeId === value?.placeId}
+      onInputChange={(_, address, reason) => {
+        if (reason !== "input" && reason !== "clear") return;
+        request.current += 1;
+        setSelectionError(false);
+        onChange({ address, place: null });
+      }}
+      onChange={(_, option) => { void select(option); }}
+      renderInput={params => <TextField {...params} label={`Điểm đón ${number}`}
+        placeholder="Nhập địa chỉ và chọn từ gợi ý" error={selectionError}
+        helperText={selectionError ? "Chưa xác minh được địa chỉ. Vui lòng chọn lại." : undefined} />}
+    />
+    <IconButton aria-label={`Xóa điểm đón ${number}`} onClick={onRemove}><DeleteOutlineIcon /></IconButton>
+  </Stack>;
+}
 
 const DEFAULT_PUBLIC_CONFIG = {
   tripConfig: {
@@ -244,11 +316,19 @@ export default function BookingCard({ partner = null }) {
 
   const [pickupAddress, setPickupAddress] = useState(suggestedFrom);
   const [pickupPlace, setPickupPlace] = useState(null);
+  const [additionalPickupRows, setAdditionalPickupRows] = useState([]);
+  const nextPickupId = useRef(1);
+  const pickupCount = additionalPickupRows.length + 1;
+
   const [pickupOptions, setPickupOptions] = useState([]);
   const [pickupLoading, setPickupLoading] = useState(false);
   const [gpsLocation, setGpsLocation] = useState(null);
 
   const [stops, setStops] = useState([suggestedTo]);
+  const canAddPickup = pickupCount < MAX_PICKUP_POINTS && pickupCount + stops.length < MAX_OUTBOUND_POINTS;
+  const additionalPickups = additionalPickupRows.map(row => row.place?.fullAddress || row.address.trim());
+
+
   const [stopPlaces, setStopPlaces] = useState([null]);
   const [stopOptions, setStopOptions] = useState([[]]);
   const [stopLoadingMap, setStopLoadingMap] = useState({});
@@ -616,7 +696,7 @@ export default function BookingCard({ partner = null }) {
   }, [carType, carTypeOptions]);
 
   const handleAddStop = () => {
-    if (stops.length >= maxStops) {
+    if (stops.length >= maxStops || pickupCount + stops.length >= MAX_OUTBOUND_POINTS) {
       setToast({
         open: true,
         severity: "warning",
@@ -1022,29 +1102,34 @@ export default function BookingCard({ partner = null }) {
 
   const currentStopsRef = useRef(stops);
   currentStopsRef.current = stops;
-  const routeInputKey = JSON.stringify([pickupPlace, stopPlaces, stops, direction]);
+  const quoteRoutePoints = regionalRoutePoints(pickupPlace, [
+    ...additionalPickupRows.map(row => row.place),
+    ...stopPlaces.filter((_, index) => String(stops[index] || "").trim()),
+  ]);
+  const routeInputKey = JSON.stringify([pickupPlace, additionalPickupRows, stopPlaces, stops, direction]);
   const routeInputKeyRef = useRef(routeInputKey);
   routeInputKeyRef.current = routeInputKey;
   const [routeReadyKey, setRouteReadyKey] = useState("");
   const servicePickup = pickupPeriod ? combineDateTime(pickupDate,pickupTimeOnly) : "";
   const serviceReturn = returnPeriod ? combineDateTime(returnDate,returnTimeOnly) : "";
-  const serviceWindows = destinationWindows(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
-  useEffect(()=>{if(!serviceWindows.length)setDestinationServiceMode("STANDARD");},[serviceWindows.length]);
+  const serviceAvailable = destinationPackageAvailable(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
+  useEffect(()=>{if(!serviceAvailable)setDestinationServiceMode("STANDARD");},[serviceAvailable]);
   const serviceAnchor = destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
   const quoteInputKey = JSON.stringify([destinationServiceMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
   useEffect(() => {
-    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, direction, { silent: false });
+    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, direction, { silent: false, additionalPickupRows });
     return () => { latestRouteRequestRef.current += 1; };
-  }, [pickupPlace, stopPlaces, stops, direction]);
+  }, [pickupPlace, additionalPickupRows, stopPlaces, stops, direction]);
 
+  const hasUnselectedPickup = additionalPickupRows.some(row => !row.place);
   const canEstimate =
     routeReadyKey === routeInputKey && !isRouteLoading &&
     !isLoadingConfig &&
     carTypeOptions.some(item => item.value === carType) &&
-    hasValidPickupSelection &&
+    hasValidPickupSelection && !hasUnselectedPickup &&
     hasAtLeastOneSelectedStop &&
     hasValidStopSelections &&
     pickupDate &&
@@ -1101,7 +1186,7 @@ export default function BookingCard({ partner = null }) {
     nextDirection,
     options = {},
   ) => {
-    const { silent = false } = options;
+    const { silent = false, additionalPickupRows: pickupRows = [] } = options;
 
     const requestId = Date.now() + Math.random();
     latestRouteRequestRef.current = requestId;
@@ -1126,7 +1211,7 @@ export default function BookingCard({ partner = null }) {
           Number.isFinite(Number(item.lng)),
       );
 
-    if (!hasPickupCoords || !hasAllStopsValid) {
+    if (!hasPickupCoords || !hasAllStopsValid || pickupRows.some(row => !row.place || !hasPlaceCoords(row.place))) {
       if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setDistanceKm("");
         setDriveMinutes("");
@@ -1185,17 +1270,19 @@ export default function BookingCard({ partner = null }) {
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
         },
+        ...pickupRows.map(({ place }) => ({ lat: Number(place.lat), lng: Number(place.lng) })),
         ...validStops,
       ];
 
-      if (nextDirection === "ROUND_TRIP") {
+      const returnPickupCount = nextDirection === "ROUND_TRIP" && pickupRows.length ? pickupRows.length + 1 : undefined;
+      if (nextDirection === "ROUND_TRIP" && returnPickupCount === undefined) {
         points.push({
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
         });
       }
 
-      const route = await getRoute(points);
+      const route = await getRoute(points, returnPickupCount);
 
       // ✅ Chỉ request mới nhất mới được quyền update UI
       if (latestRouteRequestRef.current !== requestId || routeInputKeyRef.current !== inputKey) {
@@ -1272,6 +1359,7 @@ export default function BookingCard({ partner = null }) {
     setPickupAddress("");
     setPickupPlace(null);
     setPickupOptions([]);
+    setAdditionalPickupRows([]);
     setStops([""]);
     setStopPlaces([null]);
     setStopOptions([[]]);
@@ -1425,8 +1513,9 @@ export default function BookingCard({ partner = null }) {
     setIsEstimating(true);
     try {
       const payload = {
-        routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
-        destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
+        routePricingPoints: quoteRoutePoints,
+        ...(additionalPickups.length ? { additionalPickups } : {}),
+        destinationServiceMode: serviceAvailable ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -1450,6 +1539,9 @@ export default function BookingCard({ partner = null }) {
       };
       const data = await quotePrice(payload);
       if (quoteInputKeyRef.current !== inputKey) return;
+      if (additionalPickups.length && data?.additionalPickups?.length !== additionalPickups.length) {
+        throw new Error("Tính giá nhiều điểm đón chưa khả dụng. Vui lòng thử lại sau.");
+      }
       if (payload.destinationServiceMode === "CHARTER" && data?.destinationService?.selectionMode !== "CHARTER") throw new Error("Gói Bao xe đang được cập nhật. Vui lòng tải lại và tính giá lại.");
 
       const now = Date.now();
@@ -1601,8 +1693,9 @@ export default function BookingCard({ partner = null }) {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
-      destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
-      routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
+      destinationServiceMode: serviceAvailable ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
+      routePricingPoints: quoteRoutePoints,
+      ...(additionalPickups.length ? { additionalPickups } : {}),
       regionalPricingSignature: quote.raw?.regionalPricingSignature,
       destinationServiceSignature: quote.raw?.destinationServiceSignature,
       fareEstimate: quote.totalPrice,
@@ -1889,6 +1982,22 @@ export default function BookingCard({ partner = null }) {
                   Lộ trình
                 </Typography>
 
+                <Stack direction="row" alignItems="center" justifyContent="space-between">
+                  <Typography sx={{ fontWeight: 800, fontSize: 13 }}>Điểm đón</Typography>
+                  <Button
+                    startIcon={<AddIcon />}
+                    size="small"
+                    disabled={!canAddPickup}
+                    sx={{ textTransform: "none", fontWeight: 900 }}
+                    onClick={() => {
+                      const id = nextPickupId.current++;
+                      setAdditionalPickupRows(rows => [...rows, { id, address: "", place: null }]);
+                    }}
+                  >
+                    Thêm điểm đón
+                  </Button>
+                </Stack>
+
                 <Autocomplete
                   freeSolo
                   options={pickupOptions}
@@ -1952,7 +2061,7 @@ export default function BookingCard({ partner = null }) {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Điểm đón"
+                      label={pickupCount > 1 ? "Điểm đón 1" : "Điểm đón"}
                       fullWidth
                       size="small"
                       inputRef={pickupInputRef}
@@ -1960,6 +2069,19 @@ export default function BookingCard({ partner = null }) {
                     />
                   )}
                 />
+
+                {additionalPickupRows.map((row, index) => (
+                  <AdditionalPickupField
+                    key={row.id}
+                    row={row}
+                    number={index + 2}
+                    gps={gpsLocation}
+                    normalizePlace={normalizeSelectedPlace}
+                    onChange={value => setAdditionalPickupRows(rows =>
+                      rows.map(item => item.id === row.id ? { ...item, ...value } : item))}
+                    onRemove={() => setAdditionalPickupRows(rows => rows.filter(item => item.id !== row.id))}
+                  />
+                ))}
 
                 <Stack
                   direction="row"
@@ -1974,7 +2096,7 @@ export default function BookingCard({ partner = null }) {
                     onClick={handleAddStop}
                     startIcon={<AddIcon />}
                     size="small"
-                    disabled={stops.length >= maxStops}
+                    disabled={stops.length >= maxStops || pickupCount + stops.length >= MAX_OUTBOUND_POINTS}
                     sx={{
                       textTransform: "none",
                       fontWeight: 900,
@@ -2109,12 +2231,7 @@ export default function BookingCard({ partner = null }) {
 
                 <Stack spacing={0.6}>
                   <Typography variant="body2" sx={{ opacity: 0.78 }}>
-                    Chọn địa chỉ từ danh sách gợi ý để hệ thống tính giá chính
-                    xác.
-                  </Typography>
-
-                  <Typography variant="body2" sx={{ opacity: 0.68 }}>
-                    Có thể nhập số nhà, tên đường, tòa nhà hoặc tên địa điểm.
+                    {BOOKING_ADDRESS_HINT}
                   </Typography>
 
                   {showAddressSelectionWarning && (
@@ -2122,17 +2239,17 @@ export default function BookingCard({ partner = null }) {
                       variant="body2"
                       sx={{ color: "warning.main", fontWeight: 800 }}
                     >
-                      Bạn đang nhập địa chỉ dạng text. Hãy bấm chọn đúng địa chỉ
-                      trong danh sách gợi ý trước khi tính giá.
+                      Vui lòng chọn một địa điểm trong danh sách gợi ý để xem giá.
                     </Typography>
                   )}
                 </Stack>
 
                 {direction === "ROUND_TRIP" && (
                   <Chip
-                    label="Khứ hồi: hệ thống sẽ quay về điểm đón ban đầu"
+                    label={returnPickupNotice(pickupCount)}
                     size="small"
-                    sx={{ fontWeight: 800, alignSelf: "flex-start" }}
+                    sx={{ fontWeight: 800, alignSelf: "flex-start", maxWidth: "100%", height: "auto",
+                      "& .MuiChip-label": { whiteSpace: "normal", py: 0.5 } }}
                   />
                 )}
               </Stack>
@@ -2432,6 +2549,7 @@ export default function BookingCard({ partner = null }) {
                 {!canEstimate && (
                   <Stack spacing={0.4}>
                     {[
+                      hasUnselectedPickup && "Vui lòng chọn địa chỉ cho từng điểm đón, hoặc xóa ô chưa dùng.",
                       showAddressSelectionWarning &&
                         "Vui lòng chọn địa chỉ từ danh sách gợi ý.",
                       (!pickupDate || !pickupTimeOnly || !pickupPeriod) &&

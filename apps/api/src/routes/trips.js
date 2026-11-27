@@ -375,6 +375,7 @@ export async function createTripHandler(req, res) {
     const trip = await createBookableTrip(prisma, {
       bookingRequestKey: bookingRequestKey(req),
       bookingStops: req.partnerTripData ? undefined : stops,
+      bookingPickups: trusted.route.additionalPickups,
       riderId,
       ...(req.partnerTripData || {}),
       pickupAddress,

@@ -27,11 +27,21 @@ export function addressSpecificity(address, evidence) {
 
 export function assessAutoApproval(trip, evidence, now = new Date()) {
   if (!Number.isFinite(new Date(trip.pickupTime).getTime()) || new Date(trip.pickupTime) <= now) return {ok:false,reason:'Giờ đón đã tới hoặc không hợp lệ; cần điều hành kiểm tra.'};
-  const addresses = [trip.pickupAddress, ...(trip.stops?.length ? trip.stops.map(stop => typeof stop === 'string' ? stop : stop.address) : [trip.dropoffAddress])];
-  if (!Array.isArray(evidence) || evidence.length !== addresses.length) return {ok:false,reason:'Chưa xác minh đầy đủ điểm đón và các điểm đến.'};
-  for (let i = 0; i < addresses.length; i++) {
-    const result = addressSpecificity(addresses[i], evidence[i]);
-    if (!result.ok) return {ok:false,reason:`${i === 0 ? 'Điểm đón' : 'Điểm đến ' + i}: ${result.reason}`};
+  const stops = trip.stops?.length ? trip.stops : [trip.dropoffAddress];
+  const hasExtraPickups = stops.some(stop => Number(stop?.seq) < 0);
+  let pickupNumber = 1;
+  let destinationNumber = 0;
+  const points = [
+    { address: trip.pickupAddress, label: hasExtraPickups ? 'Điểm đón 1' : 'Điểm đón' },
+    ...stops.map(stop => ({
+      address: typeof stop === 'string' ? stop : stop?.address,
+      label: Number(stop?.seq) < 0 ? `Điểm đón ${++pickupNumber}` : `Điểm đến ${++destinationNumber}`,
+    })),
+  ];
+  if (!Array.isArray(evidence) || evidence.length !== points.length) return {ok:false,reason:'Chưa xác minh đầy đủ điểm đón và các điểm đến.'};
+  for (const [index, point] of points.entries()) {
+    const result = addressSpecificity(point.address, evidence[index]);
+    if (!result.ok) return {ok:false,reason:`${point.label}: ${result.reason}`};
   }
   const region = approvalRegion(evidence[0].provinceCode);
   return {ok:true,region:region.value,provinceCode:evidence[0].provinceCode};

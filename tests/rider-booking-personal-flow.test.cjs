@@ -31,7 +31,7 @@ test('Partner keeps remembered personal choice and still has the company list',a
  const companies=[{id:'ot',name:'OT Travel'}],h=effectHarness({token:'partner',companies,saved:'personal'});h.start();await settle();assert.equal(h.state.BookingMode,'personal');assert.deepEqual(h.state.BookingCompanies,companies);
 });
 function payload(overrides={}){
- const deps={regionalRoutePoints:require('../apps/api/src/shared/regionalPricing.js').regionalRoutePoints,pickupPlace:{placeId:'a',fullAddress:'A'},stopPlaces:[{placeId:'b',fullAddress:'B'}],stops:['B'],pickupFullAddress:'A',dropoffAddress:'B',cleanedStops:['B'],pickupTime:'future',returnTime:'',direction:'ONE_WAY',carType:'CAR_5',fuelPreference:'ANY',distanceKm:100,safeTotalDriveMinutes:120,safeOutboundDriveMinutes:120,safeReturnDriveMinutes:0,safeEstimatedDurationMinutes:120,destinationServiceMode:'STANDARD',serviceWindows:[],serviceAnchor:'B',quote:{totalPrice:500000,raw:{}},selectedCompany:undefined,isCompanyBooking:false,riderName:' Normal customer ',riderPhone:' 0901234567 ',finalNote:null,toIsoFromDatetimeLocal:()=> '2099-01-01T00:00:00Z',...overrides};
+ const deps={regionalRoutePoints:require('../apps/api/src/shared/regionalPricing.js').regionalRoutePoints,pickupPlace:{placeId:'a',fullAddress:'A'},stopPlaces:[{placeId:'b',fullAddress:'B'}],stops:['B'],pickupFullAddress:'A',dropoffAddress:'B',cleanedStops:['B'],pickupTime:'future',returnTime:'',direction:'ONE_WAY',carType:'CAR_5',fuelPreference:'ANY',distanceKm:100,safeTotalDriveMinutes:120,safeOutboundDriveMinutes:120,safeReturnDriveMinutes:0,safeEstimatedDurationMinutes:120,quoteRoutePoints:[],additionalPickups:[],packageSelection:{destinationServiceMode:'STANDARD'},serviceAnchor:'B',quote:{totalPrice:500000,raw:{}},selectedCompany:undefined,isCompanyBooking:false,riderName:' Normal customer ',riderPhone:' 0901234567 ',finalNote:null,toIsoFromDatetimeLocal:()=> '2099-01-01T00:00:00Z',...overrides};
  return JSON.parse(JSON.stringify(new Function(...Object.keys(deps),`return (${payloadExpression});`)(...Object.values(deps))));
 }
 test('ordinary and guest payloads omit company id and preserve entered passenger details',()=>{
@@ -48,7 +48,16 @@ test('personal-booking confirmation is skipped for guests and ordinary users',()
 });
 
 test('whole-trip service mode is submitted without date selections; unavailable service stays Standard',()=>{
- const selected=payload({serviceWindows:[{}],destinationServiceMode:'CHARTER',direction:'ROUND_TRIP'});
+ const selected=payload({packageSelection:{destinationServiceMode:'CHARTER'},direction:'ROUND_TRIP'});
  assert.equal(selected.destinationServiceMode,'CHARTER');assert.equal(Object.hasOwn(selected,'destinationServiceDates'),false);
- assert.equal(payload({serviceWindows:[],destinationServiceMode:'CHARTER'}).destinationServiceMode,'STANDARD');
+ assert.equal(payload().destinationServiceMode,'STANDARD');
+});
+
+test('the app sends the whole-package mode and only includes extra pickup addresses when present',()=>{
+ const priorApi=payload({packageSelection:{destinationServiceMode:'CHARTER'}});
+ assert.equal(priorApi.destinationServiceMode,'CHARTER');
+ assert.equal(Object.hasOwn(priorApi,'destinationServiceDates'),false);
+ assert.equal(Object.hasOwn(priorApi,'additionalPickups'),false);
+ const modern=payload({additionalPickups:['Điểm B','Điểm C']});
+ assert.deepEqual(modern.additionalPickups,['Điểm B','Điểm C']);
 });

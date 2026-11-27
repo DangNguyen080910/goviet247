@@ -43,7 +43,7 @@ const fields = {
 };
 router.get('/:id/trip',wrap(async(req,res)=>{
   const trip=await chatAccess(prisma,req.params.id,req.chatActor,{allowEnded:true});
-  const stops=await prisma.tripStop.findMany({where:{tripId:trip.id},orderBy:{seq:'asc'},select:{address:true}});
+  const stops=await prisma.tripStop.findMany({where:{tripId:trip.id},orderBy:{seq:'asc'},select:{address:true,seq:true}});
   res.json({success:true,trip:chatTripSummary(trip,stops)});
 }));
 router.get('/conversations', wrap(async (req, res) => {

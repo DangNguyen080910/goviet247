@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import { destinationConfig, destinationDescription, destinationDays, destinationSummary, destinationQuoteSummary } from "../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, destinationSummary, destinationQuoteSummary } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?: any; quote?: boolean; config?: any }) {
   // Only booked destination-service packages belong in this panel.
   if (snapshot?.eligible !== true && !quote) return null;
@@ -19,22 +19,24 @@ export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?:
     </View>
   );
 }
-export default function DestinationService({config,direction,pickup,returnTime,outboundMinutes,mode="STANDARD",onMode}:any) {
- const c=destinationConfig(config), days=destinationDays(c,direction,pickup,returnTime,outboundMinutes);
- if(!days.length) return null;
- const charterAvailable=days.some(day=>day.charter);
+export default function DestinationService({config,direction,pickup,returnTime,outboundMinutes,mode="STANDARD",wholeTrip=false,onMode}:any) {
+ const c = destinationConfig(config);
+ const available = wholeTrip ? destinationPackageAvailable(c, direction, pickup, returnTime, outboundMinutes)
+   : destinationWindows(c, direction, pickup, returnTime, outboundMinutes).length > 0;
+ if (!available) return null;
  return <View style={{padding:14,borderWidth:1,borderColor:"#bfdbfe",borderRadius:12,marginVertical:14,gap:10}}>
   <Text style={{fontWeight:"800",fontSize:17}}>{c.title}</Text>
-  <Text>Chọn một gói cho toàn bộ thời gian lưu trú tại điểm đến.</Text>
+  <Text>{c.introduction}</Text>
   {(["STANDARD","CHARTER"] as const).map(value=>{
-   const charter=value === "CHARTER", disabled=charter && !charterAvailable, name=charter ? c.charterName : c.standardName;
-   return <Pressable key={value} disabled={disabled} accessibilityRole="radio" accessibilityLabel={name}
-    accessibilityState={{checked:mode===value,disabled}} onPress={()=>onMode(value)}
-    style={{padding:12,borderWidth:1,borderColor:mode===value?"#1976d2":"#cbd5e1",borderRadius:10,gap:6,opacity:disabled?0.6:1}}>
+   const charter=value === "CHARTER", name=charter ? c.charterName : c.standardName;
+   return <Pressable key={value} accessibilityRole="radio" accessibilityLabel={name}
+    accessibilityState={{checked:mode===value}} onPress={()=>onMode(value)}
+    style={{padding:12,borderWidth:1,borderColor:mode===value?"#1976d2":"#cbd5e1",borderRadius:10,gap:6}}>
      <Text style={{fontWeight:"700"}}>{mode===value?'◉':'○'} {name}</Text>
      <Text>{destinationDescription(c,charter)}</Text>
-     {!charter && <Text>Giờ hỗ trợ: {String(c.standardStartHour).padStart(2,"0")}:00–{String(c.standardEndHour).padStart(2,"0")}:00</Text>}
-     {disabled && <Text>Chưa có khung phục vụ Bao xe phù hợp với lịch này.</Text>}
+     {charter && <Text>{wholeTrip
+       ? "Phí Bao xe tính theo toàn bộ thời gian chuyến (mỗi ngày tính theo 24 giờ)."
+       : "Gói Bao xe áp dụng theo lịch trình và khung phục vụ của chuyến."}</Text>}
    </Pressable>;
   })}
   <Text>{c.outsideNotice}</Text>

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays } from "../shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterTripFee, destinationSelection } from "../shared/destinationService.js";
 export { destinationConfig };
 export function validateDestinationConfig(raw) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return "Cấu hình phục vụ không hợp lệ.";
@@ -11,7 +11,7 @@ export function validateDestinationConfig(raw) {
   if (Object.keys(raw).some(key => !(key in c) || !Object.hasOwn(destinationConfig(), key))) return "Có trường cấu hình không hợp lệ.";
   return "";
 }
-export function buildDestinationSnapshot(raw, input) {
+function buildLegacyDestinationSnapshot(raw, input) {
   const c = destinationConfig(raw);
   const windows = destinationWindows(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes);
   if (input.returnTime && new Date(input.returnTime)-new Date(input.pickupTime)>366*86400000) throw Object.assign(new Error("Thời gian chuyến không được vượt quá 366 ngày."),{status:400});
@@ -36,6 +36,33 @@ export function buildDestinationSnapshot(raw, input) {
     sessions, dailyFee:c.charterDailyFee, fee:sessions.reduce((sum, session) => sum + session.fee, 0),
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
 }
+export function buildDestinationSnapshot(raw, input) {
+  if (input.destinationServiceMode === undefined) return buildLegacyDestinationSnapshot(raw, input);
+  const c = destinationConfig(raw);
+  const windows = destinationWindows(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true);
+  if (input.returnTime && new Date(input.returnTime)-new Date(input.pickupTime)>366*86400000) throw Object.assign(new Error("Thời gian chuyến không được vượt quá 366 ngày."),{status:400});
+  const requestedMode = input.destinationServiceMode;
+  if (!["STANDARD", "CHARTER"].includes(requestedMode)) {
+    throw Object.assign(new Error("Vui lòng chọn Không bao xe hoặc Bao xe."), { status: 400 });
+  }
+  const selectionMode = requestedMode;
+  const eligible = destinationPackageAvailable(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes);
+  const charter = selectionMode === "CHARTER";
+  if (charter && !eligible) throw Object.assign(new Error("Chuyến này chưa đủ lịch trình để tính Bao xe."), { status: 400 });
+  const returnMinutes = Number(input.returnDriveMinutes ?? (Number(input.driveMinutes) - Number(input.outboundDriveMinutes)));
+  if (charter && (!Number.isFinite(returnMinutes) || returnMinutes < 0)) {
+    throw Object.assign(new Error("Thiếu thời gian chạy chặng về để tính Bao xe."), { status: 400 });
+  }
+  const anchorAddress = String(input.destinationAnchorAddress || input.dropoffAddress || "Điểm đến cuối cùng trong lịch trình").trim();
+  if (eligible && !anchorAddress) throw Object.assign(new Error("Vui lòng xác nhận điểm đến."), { status: 400 });
+  return { version: 5, selectionMode, days: destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true), eligible, title:c.title, anchorAddress,
+    standardRadiusKm:c.standardRadiusKm, standardName:c.standardName, standardDescription:destinationDescription(c),
+    standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
+    charterName:c.charterName, charterDescription:destinationDescription(c,true),
+    sessions: charter ? windows : [], dailyFee:c.charterDailyFee,
+    fee: charter ? charterTripFee(c.charterDailyFee, input.pickupTime, input.returnTime, returnMinutes) : 0,
+    outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
+}
 export const destinationSignature = snapshot => {
   // Display metadata does not change the customer's quoted service selection.
   const { tourDisplay, ...terms } = snapshot;
@@ -47,5 +74,5 @@ export function assertDestinationQuote(input, snapshot, issuedSignature) {
   // value for issuedSignature. Freshly calculated quotes retain the legacy hash.
   const expected = issuedSignature ?? destinationSignature(snapshot);
   if (input.destinationServiceSignature && input.destinationServiceSignature !== expected) throw Object.assign(new Error("Điều kiện phục vụ đã thay đổi. Vui lòng tính giá lại trước khi đặt."), { status:409 });
-  if (snapshot.sessions.length && !input.destinationServiceSignature) throw Object.assign(new Error("Vui lòng tính giá Bao xe trước khi đặt."), {status:409});
+  if (!input.destinationServiceSignature && (destinationSelection(snapshot) === "CHARTER" || snapshot.sessions?.length)) throw Object.assign(new Error("Vui lòng tính giá Bao xe trước khi đặt."), {status:409});
 }

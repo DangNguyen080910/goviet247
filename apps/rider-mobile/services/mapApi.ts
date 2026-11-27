@@ -79,13 +79,14 @@ export async function getPlaceDetail(placeId: string) {
 
 export async function getRoute(
   points: Array<{ lat: number; lng: number }>,
+  returnPickupCount?: number,
 ) {
   const res = await fetch(`${API_BASE_URL}/api/maps/route`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ points }),
+    body: JSON.stringify({ points, returnPickupCount }),
   });
 
   const data = await res.json().catch(() => ({}));

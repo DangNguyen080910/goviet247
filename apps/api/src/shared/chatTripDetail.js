@@ -2,7 +2,7 @@ import {tripRoutePoints} from './tripRoute.js';
 // Deliberately allowlisted: no rider/Partner phone, internal notes, driver contact or payment secrets.
 export function chatTripSummary(trip,stops=[]) {
   return {id:trip.id,status:trip.status,isVerified:Boolean(trip.isVerified || trip.verifiedAt),
-    pickupAddress:trip.pickupAddress,dropoffAddress:trip.dropoffAddress,stops:stops.map(stop=>({address:stop.address})),
+    pickupAddress:trip.pickupAddress,dropoffAddress:trip.dropoffAddress,stops:stops.map(stop=>({address:stop.address,seq:stop.seq})),
     pickupTime:trip.pickupTime,returnTime:trip.returnTime,direction:trip.direction,carType:trip.carType,
     totalPrice:trip.totalPrice,partnerCompanyName:trip.partnerCompanyName || null};
 }

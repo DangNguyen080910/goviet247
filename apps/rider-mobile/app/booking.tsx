@@ -1,3 +1,4 @@
+import { BOOKING_ADDRESS_HINT, MAX_OUTBOUND_POINTS, MAX_PICKUP_POINTS, returnPickupNotice } from "../../api/src/shared/tripRoute.js";
 import { regionalRoutePoints } from "../../api/src/shared/regionalPricing.js";
 import { showPermissionSettings } from '../../mobile-chat/permissionHelp';
 // Path: goviet247/apps/rider-mobile/app/booking.tsx
@@ -30,7 +31,7 @@ import { bookingTimeToIso, formatBookingTime, vietnamNow } from "../utils/bookin
 import AppBrandHeader from "../components/AppBrandHeader";
 import { getMe } from "../services/authApi";
 import DestinationService, { ServiceSummary } from "../components/DestinationService";
-import { destinationWindows, destinationConfig } from "../../../packages/shared/destinationService.js";
+import { destinationPackageAvailable, destinationConfig, destinationWindows } from "../../../packages/shared/destinationService.js";
 import { quotePrice } from "../services/pricingApi";
 import {
   createTrip, getBookingCompanies, BookingCompany,
@@ -43,6 +44,7 @@ import {
 } from "../constants/vietnamLocations";
 
 const DEFAULT_TRIP_CONFIG = {
+  wholeTripBooking: false,
   maxStops: 10,
   minDistanceKm: 10,
   maxDistanceKm: 2000,
@@ -187,6 +189,105 @@ type PlaceDetail = {
   isVietnamLocation?: boolean;
 };
 
+type AdditionalPickup = { id: number; address: string; place: PlaceDetail | null };
+
+function AdditionalPickupField({
+  pickup, number, gps, onChange, onRemove,
+}: {
+  pickup: AdditionalPickup;
+  number: number;
+  gps: { lat: number; lng: number } | null;
+  onChange: (value: Omit<AdditionalPickup, "id">) => void;
+  onRemove: () => void;
+}) {
+  const [options, setOptions] = useState<PlaceSuggestion[]>([]);
+  const [searching, setSearching] = useState(false);
+  const [selecting, setSelecting] = useState(false);
+  const [selectionError, setSelectionError] = useState("");
+  const request = useRef(0);
+  const lat = gps?.lat;
+  const lng = gps?.lng;
+
+  useEffect(() => {
+    const keyword = pickup.address.trim();
+    setOptions([]);
+    setSearching(false);
+    if (pickup.place || selecting || keyword.length < 3) return;
+
+    let active = true;
+    const timer = setTimeout(async () => {
+      setSearching(true);
+      try {
+        const items = await searchPlaces(keyword, { lat, lng });
+        if (active) setOptions(mergeVietnamLocationOptions(keyword, Array.isArray(items) ? items : []));
+      } catch {
+        if (active) setOptions(mergeVietnamLocationOptions(keyword, []));
+      } finally {
+        if (active) setSearching(false);
+      }
+    }, 350);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [pickup.address, pickup.place, selecting, lat, lng]);
+
+  useEffect(() => () => { request.current += 1; }, []);
+
+  async function selectPlace(option: PlaceSuggestion) {
+    const current = ++request.current;
+    setSelectionError("");
+    setSelecting(true);
+    try {
+      const raw = hasPlaceCoords(option) ? option : await getPlaceDetail(option.placeId);
+      if (request.current !== current) return;
+      const place = normalizeSelectedPlace(option, raw);
+      const address = place.fullAddress?.trim();
+      if (!address || !place.placeId || !hasPlaceCoords(place)) throw new Error("Thiếu thông tin địa chỉ.");
+      onChange({ address, place });
+    } catch {
+      if (request.current === current) setSelectionError("Chưa xác minh được địa chỉ. Vui lòng chọn lại.");
+    } finally {
+      if (request.current === current) setSelecting(false);
+    }
+  }
+
+  return <View>
+    <View style={styles.rowBetween}>
+      <Text style={styles.labelNoMargin}>Điểm đón {number}</Text>
+      <Pressable accessibilityRole="button" accessibilityLabel={`Xóa điểm đón ${number}`}
+        style={styles.smallButton} onPress={onRemove}>
+        <Text style={styles.smallButtonText}>Xóa</Text>
+      </Pressable>
+    </View>
+    <TextInput
+      accessibilityLabel={`Điểm đón ${number}`}
+      value={pickup.address}
+      placeholder="Nhập địa chỉ và chọn từ gợi ý"
+      placeholderTextColor="#9CA3AF"
+      style={styles.input}
+      onChangeText={address => {
+        request.current += 1;
+        setSelecting(false);
+        setSelectionError("");
+        onChange({ address, place: null });
+      }}
+    />
+    {(searching || selecting) && <Text style={styles.helperText}>Đang tìm địa chỉ…</Text>}
+    {Boolean(selectionError) && <Text style={styles.errorText}>{selectionError}</Text>}
+    {!selecting && !pickup.place && options.length > 0 && (
+      <View style={styles.autocompleteList}>
+        {options.map(option => (
+          <Pressable key={option.placeId} style={styles.autocompleteItem} onPress={() => void selectPlace(option)}>
+            <Text style={styles.autocompleteTitle}>{option.name || option.shortAddress || option.fullAddress}</Text>
+            {Boolean(option.maskedAddress) && <Text style={styles.autocompleteSubtitle}>{option.maskedAddress}</Text>}
+          </Pressable>
+        ))}
+      </View>
+    )}
+  </View>;
+}
+
 function buildAutocompleteCacheKey(
   keyword: string,
   lat?: number | null,
@@ -211,7 +312,8 @@ function normalizeComparableAddress(value: string | null | undefined) {
 
 function hasPlaceCoords(place: any) {
   return (
-    Number.isFinite(Number(place?.lat)) && Number.isFinite(Number(place?.lng))
+    place?.lat != null && place?.lng != null &&
+    Number.isFinite(Number(place.lat)) && Number.isFinite(Number(place.lng))
   );
 }
 
@@ -374,6 +476,8 @@ export default function RiderBookingScreen() {
 
   const [pickupAddress, setPickupAddress] = useState("");
   const [pickupPlace, setPickupPlace] = useState<PlaceDetail | null>(null);
+  const [additionalPickupRows, setAdditionalPickupRows] = useState<AdditionalPickup[]>([]);
+  const nextPickupId = useRef(1);
   const [pickupOptions, setPickupOptions] = useState<PlaceSuggestion[]>([]);
   const [pickupLoading, setPickupLoading] = useState(false);
   const [showPickupOptions, setShowPickupOptions] = useState(false);
@@ -383,6 +487,9 @@ export default function RiderBookingScreen() {
   } | null>(null);
 
   const [stops, setStops] = useState([""]);
+  const pickupCount = additionalPickupRows.length + 1;
+  const canAddPickup = tripConfig.wholeTripBooking && pickupCount < MAX_PICKUP_POINTS && pickupCount + stops.length < MAX_OUTBOUND_POINTS;
+  const additionalPickups = additionalPickupRows.map(row => row.place?.fullAddress || row.address.trim());
   const [stopPlaces, setStopPlaces] = useState<Array<PlaceDetail | null>>([
     null,
   ]);
@@ -687,23 +794,35 @@ export default function RiderBookingScreen() {
 
   const currentStopsRef = useRef(stops);
   currentStopsRef.current = stops;
-  const routeInputKey = JSON.stringify([pickupPlace, stopPlaces, stops, direction]);
+  const quoteRoutePoints = regionalRoutePoints(pickupPlace, [
+    ...additionalPickupRows.map(row => row.place),
+    ...stopPlaces.filter((_, index) => stops[index]?.trim()),
+  ]);
+  const routeInputKey = JSON.stringify([pickupPlace, additionalPickupRows, stopPlaces, stops, direction]);
   const routeInputKeyRef = useRef(routeInputKey);
   routeInputKeyRef.current = routeInputKey;
   const [routeReadyKey, setRouteReadyKey] = useState("");
   const servicePickup = pickupTime ? toIsoFromDatetimeLocal(pickupTime) : "";
   const serviceReturn = returnTime ? toIsoFromDatetimeLocal(returnTime) : "";
-  const serviceWindows=destinationWindows(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
-  useEffect(()=>{if(!serviceWindows.length)setDestinationServiceMode("STANDARD");},[serviceWindows.length]);
+  const serviceConfig = destinationConfig(tripConfig.destinationServiceConfig);
+  const legacyServiceDays = tripConfig.wholeTripBooking ? []
+    : destinationWindows(serviceConfig, direction, servicePickup, serviceReturn, outboundDriveMinutes);
+  const serviceAvailable = tripConfig.wholeTripBooking
+    ? destinationPackageAvailable(serviceConfig, direction, servicePickup, serviceReturn, outboundDriveMinutes)
+    : legacyServiceDays.length > 0;
+  // The current server already accepts a single package for the itinerary.
+  // The capability flag enables only the new pricing semantics and extra pickups.
+  const packageSelection = { destinationServiceMode: serviceAvailable ? destinationServiceMode : "STANDARD" as const };
+  useEffect(()=>{if(!serviceAvailable)setDestinationServiceMode("STANDARD");},[serviceAvailable]);
   const serviceAnchor=destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
-  const quoteInputKey = JSON.stringify([bookingMode,destinationServiceMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKey = JSON.stringify([bookingMode,tripConfig.wholeTripBooking,packageSelection,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
   useEffect(() => {
-    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, direction, { silent: false });
+    void refreshRouteFromPlaces(pickupPlace, stopPlaces, stops, direction, { silent: false, pickupRows: additionalPickupRows });
     return () => { latestRouteRequestRef.current += 1; };
-  }, [pickupPlace, stopPlaces, stops, direction]);
+  }, [pickupPlace, additionalPickupRows, stopPlaces, stops, direction]);
 
   const canEstimate = modeReady &&
     routeReadyKey === routeInputKey && !isRouteLoading &&
@@ -1046,9 +1165,10 @@ export default function RiderBookingScreen() {
     nextStopPlaces: Array<PlaceDetail | null>,
     nextStops: string[],
     nextDirection: "ONE_WAY" | "ROUND_TRIP",
-    options?: { silent?: boolean },
+    options?: { silent?: boolean; pickupRows?: AdditionalPickup[] },
   ) {
     const silent = !!options?.silent;
+    const pickupRows = options?.pickupRows ?? [];
     const requestId = Date.now() + Math.random();
 
     latestRouteRequestRef.current = requestId;
@@ -1061,7 +1181,7 @@ export default function RiderBookingScreen() {
       Number.isFinite(Number(nextPickupPlace?.lat)) &&
       Number.isFinite(Number(nextPickupPlace?.lng));
 
-    if (!hasPickupCoords) {
+    if (!hasPickupCoords || pickupRows.some(row => !row.place?.placeId || !hasPlaceCoords(row.place))) {
       if (latestRouteRequestRef.current === requestId && routeInputKeyRef.current === inputKey) {
         setDistanceKm("");
         setDriveMinutes("");
@@ -1116,17 +1236,19 @@ export default function RiderBookingScreen() {
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
         },
+        ...pickupRows.map(({ place }) => ({ lat: Number(place?.lat), lng: Number(place?.lng) })),
         ...(validStops as Array<{ lat: number; lng: number }>),
       ];
 
-      if (nextDirection === "ROUND_TRIP") {
+      const returnPickupCount = nextDirection === "ROUND_TRIP" && pickupRows.length ? pickupRows.length + 1 : undefined;
+      if (nextDirection === "ROUND_TRIP" && returnPickupCount === undefined) {
         points.push({
           lat: Number(nextPickupPlace.lat),
           lng: Number(nextPickupPlace.lng),
         });
       }
 
-      const route = await getRoute(points);
+      const route = await getRoute(points, returnPickupCount);
 
       if (latestRouteRequestRef.current !== requestId || routeInputKeyRef.current !== inputKey) {
         return;
@@ -1231,7 +1353,7 @@ export default function RiderBookingScreen() {
   }
 
   function handleAddStop() {
-    if (stops.length >= maxStops) {
+    if (stops.length >= maxStops || pickupCount + stops.length >= MAX_OUTBOUND_POINTS) {
       Alert.alert("Giới hạn", `Tối đa ${maxStops} điểm đến.`);
       return;
     }
@@ -1504,8 +1626,9 @@ export default function RiderBookingScreen() {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
-      destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress:serviceAnchor,
-      routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
+      ...packageSelection, destinationAnchorAddress:serviceAnchor,
+      routePricingPoints: quoteRoutePoints,
+      ...(additionalPickups.length ? { additionalPickups } : {}),
       regionalPricingSignature: quote?.raw?.regionalPricingSignature,
       destinationServiceSignature:quote?.raw?.destinationServiceSignature,
       fareEstimate: quote?.totalPrice || 0,
@@ -1534,6 +1657,7 @@ export default function RiderBookingScreen() {
     setPickupLoading(false);
     setShowPickupOptions(false);
 
+    setAdditionalPickupRows([]);
     setStops([""]);
     setStopPlaces([null]);
     setStopOptions([[]]);
@@ -1635,8 +1759,9 @@ export default function RiderBookingScreen() {
 
     try {
       const payload = {
-        routePricingPoints: regionalRoutePoints(pickupPlace, stopPlaces.filter((_, index) => String(stops[index] || "").trim())),
-        destinationServiceMode: serviceWindows.length ? destinationServiceMode : "STANDARD", destinationAnchorAddress:serviceAnchor,
+        routePricingPoints: quoteRoutePoints,
+        ...(additionalPickups.length ? { additionalPickups } : {}),
+        ...packageSelection, destinationAnchorAddress:serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -1659,7 +1784,14 @@ export default function RiderBookingScreen() {
         customerName: selectedCompany?.name || riderName.trim(), customerPhone: isCompanyBooking ? "" : riderPhone.trim(),
       } });
       if (quoteInputKeyRef.current !== inputKey) return;
-      if (payload.destinationServiceMode === "CHARTER" && data?.destinationService?.selectionMode !== "CHARTER") throw new Error("Gói Bao xe đang được cập nhật. Vui lòng tải lại và tính giá lại.");
+      if (additionalPickups.length && data?.additionalPickups?.length !== additionalPickups.length) {
+        throw new Error("Tính giá nhiều điểm đón chưa khả dụng. Vui lòng thử lại sau.");
+      }
+      if (tripConfig.wholeTripBooking && data?.destinationService?.version !== 5) {
+        throw new Error("Hệ thống đang cập nhật biểu giá. Vui lòng mở lại màn hình đặt xe và tính giá lại.");
+      }
+      if (packageSelection.destinationServiceMode === "CHARTER" &&
+          data?.destinationService?.selectionMode !== "CHARTER") throw new Error("Gói Bao xe đang được cập nhật. Vui lòng mở lại màn hình đặt xe và tính giá lại.");
 
       const now = Date.now();
       const nextQuote = {
@@ -1806,7 +1938,17 @@ export default function RiderBookingScreen() {
             {!modeLoading && !modeError && bookingCompanies.length===0 && bookingMode==='' ? <View><Text style={styles.helperText}>Vui lòng xác nhận tiếp tục đặt xe bằng tài khoản hiện tại.</Text><Pressable onPress={()=>chooseBookingMode('personal')} style={styles.input}><Text>Tiếp tục đặt xe</Text></Pressable></View> : null}
             <Text style={styles.sectionTitle}>1. Lộ trình</Text>
 
-            <Text style={styles.label}>Điểm đón</Text>
+            <View style={styles.rowBetween}>
+              <Text style={styles.labelNoMargin}>{pickupCount > 1 ? "Điểm đón 1" : "Điểm đón"}</Text>
+              {tripConfig.wholeTripBooking && <Pressable accessibilityRole="button" disabled={!canAddPickup}
+                style={[styles.smallButton, !canAddPickup && { opacity: 0.5 }]}
+                onPress={() => {
+                  const id = nextPickupId.current++;
+                  setAdditionalPickupRows(rows => [...rows, { id, address: "", place: null }]);
+                }}>
+                <Text style={styles.smallButtonText}>+ Thêm điểm đón</Text>
+              </Pressable>}
+            </View>
             <Pressable accessibilityRole="button" disabled={locating} onPress={() => void useNearbyLocation()} style={{ paddingVertical: 8 }}>
               <Text style={{ color: "#2563eb" }}>
                 {locating ? "Đang lấy vị trí…" : gpsLocation ? "Đang ưu tiên địa chỉ gần bạn · Cập nhật vị trí" : "Ưu tiên địa chỉ gần tôi"}
@@ -1887,11 +2029,26 @@ export default function RiderBookingScreen() {
               </Text>
             ) : null}
 
+            {additionalPickupRows.map((pickup, index) => (
+              <AdditionalPickupField
+                key={pickup.id}
+                pickup={pickup}
+                number={index + 2}
+                gps={gpsLocation}
+                onChange={value => setAdditionalPickupRows(rows =>
+                  rows.map(row => row.id === pickup.id ? { ...row, ...value } : row))}
+                onRemove={() => setAdditionalPickupRows(rows => rows.filter(row => row.id !== pickup.id))}
+              />
+            ))}
+            {additionalPickupRows.some(row => !row.place) && (
+              <Text style={styles.helperText}>Chọn địa chỉ cho từng điểm đón hoặc xóa ô chưa dùng.</Text>
+            )}
+
             <View style={styles.rowBetween}>
               <Text style={styles.labelNoMargin}>Điểm đến</Text>
 
               <Pressable style={styles.smallButton} onPress={handleAddStop}>
-                <Text style={styles.smallButtonText}>+ Thêm điểm</Text>
+                <Text style={styles.smallButtonText}>+ Thêm điểm đến</Text>
               </Pressable>
             </View>
 
@@ -2039,13 +2196,14 @@ export default function RiderBookingScreen() {
             ))}
 
             <Text style={styles.helperText}>
-              Chọn địa chỉ từ danh sách gợi ý để hệ thống tính giá chính xác.
-            </Text>
-            <Text style={styles.helperText}>
-              Có thể nhập số nhà, tên đường, tòa nhà hoặc tên địa điểm.
+              {BOOKING_ADDRESS_HINT}
             </Text>
 
             <View style={styles.divider} />
+
+            {direction === "ROUND_TRIP" && (
+              <Text style={styles.helperText}>{returnPickupNotice(pickupCount)}</Text>
+            )}
 
             <Text style={styles.sectionTitle}>2. Thời gian & Loại chuyến</Text>
 
@@ -2172,7 +2330,7 @@ export default function RiderBookingScreen() {
 
             <View style={styles.divider} />
 
-            <DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={destinationServiceMode} onMode={setDestinationServiceMode} />
+            <DestinationService config={tripConfig.destinationServiceConfig} wholeTrip={tripConfig.wholeTripBooking} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={destinationServiceMode} onMode={setDestinationServiceMode} />
             <Text style={styles.sectionTitle}>3. Loại xe</Text>
             {configLoading ? <Text>Đang tải loại xe nhận đặt…</Text> : configError ? <Text style={styles.errorText}>{configError} Vui lòng mở lại màn hình đặt xe để thử lại.</Text> : !carTypeOptions.length ? <Text>Hiện chưa có loại xe nhận đặt. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.</Text> : null}
 

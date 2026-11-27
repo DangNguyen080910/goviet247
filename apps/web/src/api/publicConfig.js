@@ -2,7 +2,7 @@
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5050";
 
 export async function getPublicTripConfig() {
-  const res = await fetch(`${API_BASE}/api/public/trips/config`);
+  const res = await fetch(`${API_BASE}/api/public/trips/config`, { cache: "no-store" });
 
   const data = await res.json();
 

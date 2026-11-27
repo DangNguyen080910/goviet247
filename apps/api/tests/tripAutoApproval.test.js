@@ -28,6 +28,18 @@ test('every stop must be specific and region always follows pickup, not destinat
  assert.equal(approvalRegion(provinceCodeForPricing('Bình Dương')).value,'SOUTH');
 });
 
+
+test('auto-approval review reasons independently number pickups and destinations', () => {
+ const imprecise = 'W9CH+R35, Xã Hậu Nghĩa, Tỉnh Tây Ninh';
+ const extra = '15 Nguyễn Huệ, Phường Sài Gòn, TP.HCM';
+ const trip = {...base, stops:[{seq:-1,address:imprecise},{seq:1,address:dropoff}]};
+ assert.match(assessAutoApproval(trip,[proof(pickup),proof(imprecise),proof(dropoff)],now).reason,/^Điểm đón 2:/);
+ const badDestination = {...trip, stops:[{seq:-1,address:extra},{seq:1,address:imprecise}]};
+ assert.match(assessAutoApproval(badDestination,[proof(pickup),proof(extra),proof(imprecise)],now).reason,/^Điểm đến 1:/);
+ assert.equal(assessAutoApproval({...trip,stops:[{seq:-1,address:extra},{seq:1,address:dropoff}]},
+   [proof(pickup),proof(extra),proof(dropoff)],now).ok,true);
+});
+
 function fixture(options={}) {
  let state=structuredClone({...base,...options.trip}),jobs=[],logs=[],notices=[],serial=Promise.resolve();
  const flags={id:1,autoApproveNewTrips:true,autoApproveRequeuedTrips:true,...options.flags};

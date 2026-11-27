@@ -1,3 +1,4 @@
+import {quoteHistoryPickupAddresses, QUOTE_HISTORY_SOURCES as sources} from "../../api/src/shared/quoteHistoryRoute.js";
 import TripVehicleButton from "../components/TripVehicleButton";
 import TripCode from "../components/TripCode";
 import {useCallback,useEffect,useState} from 'react';
@@ -10,7 +11,6 @@ import {getAdminUser} from '../services/storage';
 import {fetchQuoteHistory,fetchQuoteHistorySettings,setQuoteHistoryEnabled,type QuoteFilters} from '../services/quoteHistoryApi';
 import {historyTime,vietnamDay,historyDateInput,parseHistoryDateInput} from '../../api/src/shared/adminHistory.js';
 
-const sources:Record<string,string>={WEB:'Web',ANDROID:'Android',IOS:'iOS',UNKNOWN:'Chưa xác định'};
 const cars:Record<string,string>={CAR_5:'Xe 5 chỗ',CAR_7:'Xe 7 chỗ',CAR_16:'Xe 16 chỗ'};
 const fuels:Record<string,string>={ANY:'Không yêu cầu',ELECTRIC:'Xe điện',GASOLINE:'Xe xăng'};
 const money=(value:any)=>Number(value||0).toLocaleString('vi-VN');
@@ -68,16 +68,18 @@ export default function QuoteHistoryScreen(){
         <Text style={styles.notice}>Đây là lượt tính giá thành công, không phải số người mở app. Một khách có thể tính nhiều lần. Khách/thiết bị là ước tính; không tính thêm {stats.unidentifiedQuotes||0} lượt chưa nhận diện. Tên/SĐT trong form do khách nhập. “Đã đặt” chỉ tính chuyến liên kết trực tiếp với lần tính giá.</Text>
         {!data.items?.length&&<Text>Chưa có lịch sử phù hợp.</Text>}
         {data.items?.map((item:any)=><View key={item.id} style={styles.card}>
-          <Text style={styles.time}>{historyTime(item.createdAt)} · {sources[item.source] || 'Chưa xác định'}</Text>
+          <Text style={styles.time}>{historyTime(item.createdAt)} · {sources[item.source as keyof typeof sources] || 'Chưa xác định'}</Text>
           <Text selectable style={styles.bold}>{item.customerName || 'Khách chưa xác định'}{item.customerPhone?` · ${item.customerPhone}`:''}</Text>
           <Text>{item.identityVerified?'Đã đăng nhập':'Khách vãng lai'}</Text>
-          <Text>Đón: {item.pickupAddress || 'Chưa được cung cấp'}</Text>
+          {item.pickupAddress ? quoteHistoryPickupAddresses(item).map((address,index)=>
+            <Text key={index}>Điểm đón{item.additionalPickups?.length > 0 ? ` ${index+1}` : ''}: {address}</Text>)
+            : <Text>Điểm đón: Chưa được cung cấp</Text>}
           <Text style={styles.price}>{money(item.finalPrice)} đ · {cars[item.carType] || item.carType}</Text>
           <Text>{item.tripId?'Đã liên kết chuyến đặt':'Chưa ghi nhận đặt chuyến'}</Text>
           <Pressable accessibilityRole="button" onPress={()=>setExpanded(expanded===item.id?'':item.id)} style={styles.button}><Text style={styles.link}>{expanded===item.id?'Thu gọn':'Xem chi tiết lần tính giá'}</Text></Pressable>
           {expanded===item.id&&<>
             {item.stops?.length?item.stops.map((stop:string,index:number)=><Text key={index}>Điểm đến {index+1}: {stop}</Text>):<Text>Điểm đến: Chưa được cung cấp</Text>}
-            <Text>{item.direction==='ROUND_TRIP'?'Khứ hồi · Quay về điểm đón':'Một chiều'} · {fuels[item.fuelPreference] || item.fuelPreference}</Text>
+            <Text>{item.direction==='ROUND_TRIP'?'Khứ hồi':'Một chiều'} · {fuels[item.fuelPreference] || item.fuelPreference}</Text>
             <Text>Giờ đón: {historyTime(item.pickupTime)}{item.returnTime?` · Giờ về: ${historyTime(item.returnTime)}`:''}</Text>
             <Text>{Number(item.distanceKm).toLocaleString('vi-VN',{maximumFractionDigits:1})} km · Lái dự kiến: {item.driveMinutes??'—'} phút</Text>
             <Text selectable>Tài khoản: {item.userId || 'Khách vãng lai'}</Text>

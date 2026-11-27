@@ -37,7 +37,7 @@ export async function createBookableTrip(db, data) {
     if (blocked) throw Object.assign(new Error("Tài khoản khách hàng đang bị khoá đặt chuyến. Vui lòng liên hệ hỗ trợ."),{status:403});
     await tx.$queryRawUnsafe('SELECT "carType" FROM "PricingConfig" WHERE "carType"::text = $1 FOR SHARE', data.carType);
     await assertCarTypeBookable(tx, data.carType);
-    const {bookingStops, partnerStops, partnerAuditData, partnerSessionVersion, partnerRiderBookingUserId, ...tripData} = data;
+    const {bookingStops, bookingPickups = [], partnerStops, partnerAuditData, partnerSessionVersion, partnerRiderBookingUserId, ...tripData} = data;
     if (tripData.partnerCompanyId) {
       await tx.$queryRawUnsafe('SELECT "id" FROM "PartnerCompany" WHERE "id" = $1 FOR SHARE', tripData.partnerCompanyId);
       const company = await tx.partnerCompany.findUnique({where:{id:tripData.partnerCompanyId}});
@@ -65,17 +65,22 @@ export async function createBookableTrip(db, data) {
       if(context.assigned.id!==tripData.partnerAssignedToId || (context.member?.id || null)!==(tripData.partnerCreatedById || null)) throw Object.assign(new Error('Quyền điều phối đã thay đổi. Vui lòng chọn lại công ty.'),{status:409});
       tripData.partnerBookerName=context.bookerName;tripData.partnerBookerPhone=normalizePartnerPhone(context.bookerPhone);
     }
-    const initial = {...tripData, stops:partnerStops || bookingStops || []};
+    const initial = {...tripData, stops:partnerStops || bookingStops || [], additionalPickups:bookingPickups};
     const actorId = partnerAuditData?.actorId || tripData.riderId || null;
     const trip = await tx.trip.create({data:{...tripData,adminActionLogs:{create:{
       fromStatus:tripData.status || "PENDING",toStatus:tripData.status || "PENDING",
       actorRole:tripData.partnerCompanyId ? "PARTNER" : "RIDER",actorId:null,
       actorUsername:partnerAuditData?.actorLabel || tripData.riderId || "Khách vãng lai",
       note:"Tạo yêu cầu đặt chuyến.",eventData:makeTripEvent(initial,{kind:"CREATED",actorId,
-        changes:tripChanges({},initial,{pickupAddress:"Điểm đón",stops:"Các điểm đến",pickupTime:"Giờ đón",returnTime:"Giờ về",carType:"Loại xe",direction:"Loại chuyến",totalPrice:"Giá chuyến (đ)",riderName:"Tên khách hàng",riderPhone:"SĐT khách hàng",note:"Ghi chú khách"})}),
+        changes:tripChanges({},initial,{pickupAddress:"Điểm đón",additionalPickups:"Các điểm đón thêm",stops:"Các điểm đến",pickupTime:"Giờ đón",returnTime:"Giờ về",carType:"Loại xe",direction:"Loại chuyến",totalPrice:"Giá chuyến (đ)",riderName:"Tên khách hàng",riderPhone:"SĐT khách hàng",note:"Ghi chú khách"})}),
     }}}});
     const stops = partnerStops || bookingStops;
-    if (stops?.length) await tx.tripStop.createMany({data:stops.map((address,i)=>({tripId:trip.id,seq:i+1,address}))});
+    const waypoints = [
+      // Pickups precede destination stops and keep the existing response shape.
+      ...bookingPickups.map((address, index) => ({ tripId: trip.id, seq: index - bookingPickups.length, address })),
+      ...(stops || []).map((address, index) => ({ tripId: trip.id, seq: index + 1, address })),
+    ];
+    if (waypoints.length) await tx.tripStop.createMany({ data: waypoints });
     if (partnerAuditData) await tx.partnerAuditLog.create({data:{...partnerAuditData,targetId:trip.id}});
     await enqueueTripAutoApproval(tx, trip, 'NEW');
     await createBookingChatNotice(tx, trip);

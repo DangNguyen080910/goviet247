@@ -25,3 +25,16 @@ test('empty filters are omitted, and recording settings use the existing shared 
  await methods.fetchQuoteHistorySettings();assert.equal(calls[1][0],'/api/admin/quote-history/settings');
  await methods.setQuoteHistoryEnabled(false);assert.equal(calls[2][1].method,'PATCH');assert.deepEqual(JSON.parse(calls[2][1].body),{enabled:false});
 });
+
+test('quote history stores extra pickups separately while retaining the destination array in the API', async () => {
+ const {encodeQuoteHistoryRoute,decodeQuoteHistoryRoute,quoteHistoryPickupAddresses}
+   = await import('../apps/api/src/shared/quoteHistoryRoute.js');
+ const old = encodeQuoteHistoryRoute(['Điểm đến'], []);
+ const pickupAddress = 'Điểm đón A';
+ assert.deepEqual(old, ['Điểm đến']);
+ assert.deepEqual(decodeQuoteHistoryRoute(old), {stops:['Điểm đến'],additionalPickups:[]});
+ const stored = encodeQuoteHistoryRoute(['Điểm đến'], ['Điểm đón B','Điểm đón C']);
+ const api = decodeQuoteHistoryRoute(JSON.parse(JSON.stringify(stored)));
+ assert.deepEqual(api.stops, ['Điểm đến']);
+ assert.deepEqual(quoteHistoryPickupAddresses({pickupAddress,...api}), ['Điểm đón A','Điểm đón B','Điểm đón C']);
+});

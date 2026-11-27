@@ -5,7 +5,7 @@ import { CAR_TYPE_UNAVAILABLE_MESSAGE } from "./carAvailability.js";
 import pkg from "@prisma/client";
 import { parseTripTime } from "../utils/tripTime.js";
 import { calculateHolidaySurcharge } from "./holidaySurcharge.js";
-import { calculateWaitingTime, calculateTieredWaitingCost, validateOvernightWaitingPrice } from "./waitingPricing.js";
+import { calculateWaitingTime, DEFAULT_WAITING_RULES, calculateTieredWaitingCost, validateOvernightWaitingPrice } from "./waitingPricing.js";
 import { calculateCharterWaitingCredit } from "./charterWaitingCredit.js";
 const { PrismaClient } = pkg;
 
@@ -23,18 +23,16 @@ function normalizeKmTiers(rawKmTiers) {
       const from = Number(item?.from);
       const to = item?.to == null || item?.to === "" ? null : Number(item?.to);
       const tierPricePerKm = Number(item?.pricePerKm);
-      const pricePerWaitHour = item?.pricePerWaitHour == null ? null : Number(item.pricePerWaitHour);
 
       if (!Number.isFinite(from) || from < 0) return null;
       if (to !== null && (!Number.isFinite(to) || to <= from)) return null;
       if (!Number.isFinite(tierPricePerKm) || tierPricePerKm < 0) return null;
-      if (pricePerWaitHour !== null && (!Number.isFinite(pricePerWaitHour) || pricePerWaitHour < 0)) return null;
 
       return {
         from,
         to,
         pricePerKm: tierPricePerKm,
-        pricePerWaitHour,
+        pricePerWaitHour: item?.pricePerWaitHour ?? null,
       };
     })
     .filter(Boolean)
@@ -98,10 +96,7 @@ function calculateTieredDistanceCost(distanceKm, rawKmTiers) {
 /**
  * Quote giá theo PricingConfig (DB là nguồn sự thật)
  * - ONE_WAY: base + km*perKm + overnight (nếu vượt trigger)
- * - ROUND_TRIP:
- *   - Hourly waiting uses the total trip distance tier unless an overnight
- *     rate is explicitly configured and the destination stay qualifies.
- *   - Qualifying night waiting is covered by the overnight fee, not hourly fees.
+ * - ROUND_TRIP: mileage, qualifying nights and optional charter for the whole trip.
  */
 export async function quotePrice(input, db = prisma) {
   const {
@@ -139,7 +134,8 @@ export async function quotePrice(input, db = prisma) {
 
   const baseFare = Number(config.baseFare);
   const pricePerKm = Number(config.pricePerKm);
-  let pricePerHour = Number(config.pricePerHour);
+  const legacyPricing = input.destinationServiceMode === undefined;
+  let pricePerHour = legacyPricing ? Number(config.pricePerHour) : 0;
   const minFare = Number(config.minFare);
   const overnightFee = Number(config.overnightFee);
   const gasolineSurchargePercent = Number(
@@ -156,22 +152,28 @@ export async function quotePrice(input, db = prisma) {
     : Math.round(km * pricePerKm);
 
   const serviceConfig = db.tripConfig ? await db.tripConfig.findFirst({ orderBy:{id:"asc"} }) : null;
+  const returnStart = parseTripTime(returnTime);
   let destinationService;
-  try { destinationService = buildDestinationSnapshot(serviceConfig?.destinationServiceConfig, input); }
+  try {
+    destinationService = buildDestinationSnapshot(serviceConfig?.destinationServiceConfig, {
+      ...input, pickupTime: pickup, returnTime: returnStart,
+    });
+  }
   catch (error) { return {ok:false, message:error.message, status:error.status || 400}; }
   let overnightCount = 0;
   let overnightCost = 0;
 
   let totalMinutes = 0;
   let waitMinutes = 0;
+  let waitCost = 0;
   let freeWaitingMinutes = 0;
   let billableWaitMinutes = 0;
-  let waitCost = 0;
   let waitingDetails = {};
   let charterWaitingBase = null;
+  let overnightCoveredMinutes = 0;
 
   if (direction === "ROUND_TRIP") {
-    const rt = parseTripTime(returnTime);
+    const rt = returnStart;
     if (!rt || Number.isNaN(rt.getTime())) {
       return {
         ok: false,
@@ -210,41 +212,52 @@ export async function quotePrice(input, db = prisma) {
     }
 
     totalMinutes = Math.round((rt.getTime() - pickup.getTime()) / 60000);
-    const waitingTime = calculateWaitingTime(
-      new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig, destinationService.sessions,
-    );
-    const useStandardCharterBase = ["CAR_5", "CAR_7", "CAR_16"].includes(carType) && destinationService.sessions.length > 0;
-    const pricingWaitingTime = useStandardCharterBase
-      ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig)
-      : waitingTime;
-    const overnightPriceError = validateOvernightWaitingPrice(waitingTime.waitingRules, overnightFee);
-    if (overnightPriceError) return { ok: false, status: 409, message: overnightPriceError };
-    const overnightPricePerHour = waitingTime.waitingRules.overnightPricePerHour;
-    const beforeNightHours = pricingWaitingTime.firstOvernightAt && overnightPricePerHour != null
-      ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs),
-          new Date(new Date(pricingWaitingTime.firstOvernightAt).getTime() - 1),
-          config.roundTripWaitingConfig, useStandardCharterBase ? [] : destinationService.sessions).billableWaitHours
-      : 0;
-    const waitingPrice = calculateTieredWaitingCost(
-      km, pricingWaitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
-      distance => {
-        const result = calculateTieredDistanceCost(distance, config.kmTiers);
-        return result.usedTierPricing ? result.distanceCost : Math.round(distance * pricePerKm);
-      },
-      { count: waitingTime.overnightCount, pricePerHour: overnightPricePerHour, fee: overnightFee, beforeNightHours },
-    );
-    ({ waitMinutes, freeWaitingMinutes, billableWaitMinutes, overnightCount } = waitingTime);
-    ({ waitCost, pricePerHour } = waitingPrice);
-    overnightCost = overnightCount * overnightFee;
-    waitingDetails = { ...waitingTime, ...waitingPrice };
-    if (useStandardCharterBase) {
-      charterWaitingBase = {
-        hourlyWaitCost: waitingPrice.hourlyWaitCost,
-        waitCost: waitingPrice.waitCost,
-        sessions: destinationService.sessions.map(session => ({ date: session.date, fee: session.fee,
-          coveredMinutes: calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt,
-            config.roundTripWaitingConfig, [session]).serviceCoveredMinutes })),
-      };
+    if (legacyPricing) {
+      const waitingTime = calculateWaitingTime(
+        new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig, destinationService.sessions,
+      );
+      const useStandardCharterBase = ["CAR_5", "CAR_7", "CAR_16"].includes(carType) && destinationService.sessions.length > 0;
+      const pricingWaitingTime = useStandardCharterBase
+        ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt, config.roundTripWaitingConfig)
+        : waitingTime;
+      const overnightPriceError = validateOvernightWaitingPrice(waitingTime.waitingRules, overnightFee);
+      if (overnightPriceError) return { ok: false, status: 409, message: overnightPriceError };
+      const overnightPricePerHour = waitingTime.waitingRules.overnightPricePerHour;
+      const beforeNightHours = pricingWaitingTime.firstOvernightAt && overnightPricePerHour != null
+        ? calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs),
+            new Date(new Date(pricingWaitingTime.firstOvernightAt).getTime() - 1),
+            config.roundTripWaitingConfig, useStandardCharterBase ? [] : destinationService.sessions).billableWaitHours
+        : 0;
+      const waitingPrice = calculateTieredWaitingCost(
+        km, pricingWaitingTime.billableWaitHours, normalizeKmTiers(config.kmTiers), pricePerHour,
+        distance => {
+          const result = calculateTieredDistanceCost(distance, config.kmTiers);
+          return result.usedTierPricing ? result.distanceCost : Math.round(distance * pricePerKm);
+        },
+        { count: waitingTime.overnightCount, pricePerHour: overnightPricePerHour, fee: overnightFee, beforeNightHours },
+      );
+      ({ waitMinutes, freeWaitingMinutes, billableWaitMinutes, overnightCount } = waitingTime);
+      ({ waitCost, pricePerHour } = waitingPrice);
+      overnightCost = overnightCount * overnightFee;
+      waitingDetails = { ...waitingTime, ...waitingPrice };
+      if (useStandardCharterBase) {
+        charterWaitingBase = {
+          hourlyWaitCost: waitingPrice.hourlyWaitCost,
+          waitCost: waitingPrice.waitCost,
+          sessions: destinationService.sessions.map(session => ({ date: session.date, fee: session.fee,
+            coveredMinutes: calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt,
+              config.roundTripWaitingConfig, [session]).serviceCoveredMinutes })),
+        };
+      }
+      overnightCoveredMinutes = waitingTime.overnightCoveredMinutes;
+    } else {
+      const overnight = calculateWaitingTime(new Date(estimatedArrivalAtDestinationMs), rt, {
+        ...(config.roundTripWaitingConfig || DEFAULT_WAITING_RULES),
+        freeWaitingMinutes: 0,
+        overnightPricePerHour: null,
+      });
+      ({ waitMinutes, overnightCount, overnightCoveredMinutes } = overnight);
+      overnightCost = overnightCount * overnightFee;
     }
   } else if (direction === "ONE_WAY") {
     const dm = driveMinutes == null ? null : Number(driveMinutes);
@@ -259,7 +272,7 @@ export async function quotePrice(input, db = prisma) {
     return { ok: false, message: "direction không hợp lệ." };
   }
 
-  let rawTotal = baseFare + finalDistanceCost + waitCost + overnightCost;
+  let rawTotal = baseFare + finalDistanceCost + waitCost + (direction === "ONE_WAY" || legacyPricing ? overnightCost : 0);
 
   let minApplied = false;
   if (rawTotal < minFare) {
@@ -267,6 +280,7 @@ export async function quotePrice(input, db = prisma) {
     minApplied = true;
   }
 
+  if (direction === "ROUND_TRIP" && !legacyPricing) rawTotal += overnightCost;
   let priceBeforeFuelSurcharge = rawTotal;
   let regionalSurcharge;
   try { regionalSurcharge = await buildRegionalSurcharge(input, serviceConfig?.regionalPricingConfig, priceBeforeFuelSurcharge); }
@@ -305,7 +319,7 @@ export async function quotePrice(input, db = prisma) {
   // Display-only snapshot: retain the quoted amounts; never reprice old trips.
   destinationService.tourDisplay = {
     waitCost, overnightCost, overnightCount,
-    ...(direction === "ROUND_TRIP" ? {
+    ...(legacyPricing && direction === "ROUND_TRIP" ? {
       waitingPricingMode: waitingDetails.waitingPricingMode,
       pricePerHour, hourlyWaitCost: waitingDetails.hourlyWaitCost,
       waitingTierAdjustment: waitingDetails.waitingTierAdjustment,
@@ -324,7 +338,7 @@ export async function quotePrice(input, db = prisma) {
     total: waitCost + overnightCost + destinationService.fee,
     arrival: direction === "ROUND_TRIP"
       ? new Date(pickup.getTime() + Number(outboundDriveMinutes) * 60000).toISOString() : null,
-    returnTime: direction === "ROUND_TRIP" ? parseTripTime(returnTime).toISOString() : null,
+    returnTime: direction === "ROUND_TRIP" ? returnStart.toISOString() : null,
   };
 
 
@@ -342,6 +356,7 @@ export async function quotePrice(input, db = prisma) {
       totalMinutes,
       ...waitingDetails,
       waitMinutes,
+      overnightCoveredMinutes,
       freeWaitingMinutes,
       billableWaitMinutes,
 
@@ -398,9 +413,10 @@ export async function calculateTripPrice({
   returnTime,
   driveMinutes,
   outboundDriveMinutes,
+  returnDriveMinutes,
   fuelPreference = "ANY",
   destinationServiceDates, destinationServiceMode, destinationAnchorAddress,
-  routePricingPoints, pickupAddress, dropoffAddress, stops,
+  routePricingPoints, pickupAddress, additionalPickups, dropoffAddress, stops,
 }) {
   const pickupIso =
     pickupTime instanceof Date ? pickupTime.toISOString() : pickupTime;
@@ -410,7 +426,7 @@ export async function calculateTripPrice({
 
   const result = await quotePrice({
     destinationServiceDates, destinationServiceMode, destinationAnchorAddress,
-    routePricingPoints, pickupAddress, dropoffAddress, stops,
+    routePricingPoints, pickupAddress, additionalPickups, dropoffAddress, stops,
     carType,
     direction,
     pickupTime: pickupIso,
@@ -418,6 +434,7 @@ export async function calculateTripPrice({
     distanceKm,
     driveMinutes,
     outboundDriveMinutes,
+    returnDriveMinutes,
     fuelPreference,
   });
 

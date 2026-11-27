@@ -25,7 +25,7 @@ export default function DestinationService({config,direction,pickup,returnTime,o
  const charterAvailable=days.some(day=>day.charter);
  return <View style={{padding:14,borderWidth:1,borderColor:"#bfdbfe",borderRadius:12,marginVertical:14,gap:10}}>
   <Text style={{fontWeight:"800",fontSize:17}}>{c.title}</Text>
-  <Text>Chọn một gói cho toàn bộ thời gian lưu trú tại điểm đến.</Text>
+  <Text>{c.introduction}</Text>
   {(["STANDARD","CHARTER"] as const).map(value=>{
    const charter=value === "CHARTER", disabled=charter && !charterAvailable, name=charter ? c.charterName : c.standardName;
    return <Pressable key={value} disabled={disabled} accessibilityRole="radio" accessibilityLabel={name}
@@ -33,7 +33,6 @@ export default function DestinationService({config,direction,pickup,returnTime,o
     style={{padding:12,borderWidth:1,borderColor:mode===value?"#1976d2":"#cbd5e1",borderRadius:10,gap:6,opacity:disabled?0.6:1}}>
      <Text style={{fontWeight:"700"}}>{mode===value?'◉':'○'} {name}</Text>
      <Text>{destinationDescription(c,charter)}</Text>
-     {!charter && <Text>Giờ hỗ trợ: {String(c.standardStartHour).padStart(2,"0")}:00–{String(c.standardEndHour).padStart(2,"0")}:00</Text>}
      {disabled && <Text>Chưa có khung phục vụ Bao xe phù hợp với lịch này.</Text>}
    </Pressable>;
   })}

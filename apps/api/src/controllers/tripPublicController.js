@@ -114,6 +114,7 @@ async function getOrCreateSystemConfig() {
  * ============================================================
  */
 export async function getPublicTripConfig(req, res) {
+  res.setHeader?.("Cache-Control", "no-store");
   try {
     const [tripConfig, systemConfig, pricingConfigs] = await Promise.all([
       getOrCreateTripConfig(),
@@ -139,6 +140,7 @@ export async function getPublicTripConfig(req, res) {
       data: {
         tripConfig: {
           destinationServiceConfig: destinationConfig(tripConfig.destinationServiceConfig),
+          wholeTripBooking: true,
           maxStops: tripConfig.maxStops,
           minDistanceKm: tripConfig.minDistanceKm,
           maxDistanceKm: tripConfig.maxDistanceKm,
@@ -206,7 +208,8 @@ export async function quoteTrip(req, res) {
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
-      routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops: req.body.stops,
+      routePricingPoints: req.body.routePricingPoints, pickupAddress, additionalPickups: req.body.additionalPickups,
+      dropoffAddress, stops: req.body.stops,
       destinationServiceDates: req.body.destinationServiceDates,
       destinationServiceMode: req.body.destinationServiceMode,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
@@ -217,6 +220,7 @@ export async function quoteTrip(req, res) {
       returnTime: returnDate,
       outboundDriveMinutes: req.body.outboundDriveMinutes,
       driveMinutes: driveMinutes == null ? undefined : Number(driveMinutes),
+      returnDriveMinutes: req.body.returnDriveMinutes,
       fuelPreference,
     });
 
@@ -288,7 +292,8 @@ export async function requestTripOtp(req, res) {
     const returnDate = returnTime ? toDate(returnTime) : undefined;
 
     const pricing = await calculateTripPrice({
-      routePricingPoints: req.body.routePricingPoints, pickupAddress, dropoffAddress, stops: req.body.stops,
+      routePricingPoints: req.body.routePricingPoints, pickupAddress, additionalPickups: req.body.additionalPickups,
+      dropoffAddress, stops: req.body.stops,
       destinationServiceDates: req.body.destinationServiceDates,
       destinationServiceMode: req.body.destinationServiceMode,
       destinationAnchorAddress: req.body.destinationAnchorAddress || req.body.dropoffAddress,
@@ -299,6 +304,7 @@ export async function requestTripOtp(req, res) {
       returnTime: returnDate,
       outboundDriveMinutes: req.body.outboundDriveMinutes,
       driveMinutes: driveMinutes == null ? undefined : Number(driveMinutes),
+      returnDriveMinutes: req.body.returnDriveMinutes,
       fuelPreference,
     });
 
@@ -308,6 +314,7 @@ export async function requestTripOtp(req, res) {
     // Payload lưu tạm trong OTP session (không tạo Trip ngay)
     const tripDraft = {
       quoteHistoryToken: typeof req.body?.quoteHistoryToken === "string" ? req.body.quoteHistoryToken.slice(0, 64) : null,
+      additionalPickups: req.body.additionalPickups,
       stops: Array.isArray(req.body.stops) ? req.body.stops.map(s=>String(s).trim()).filter(Boolean) : [dropoffAddress],
       outboundDriveMinutes: req.body.outboundDriveMinutes,
       riderName,
@@ -411,6 +418,7 @@ export async function confirmTrip(req, res) {
     const trip = await createBookableTrip(prisma, {
       bookingRequestKey: `otp:${sessionId}`,
       bookingStops: payload.stops?.length ? payload.stops : [dropoffAddress],
+      bookingPickups: payload.additionalPickups,
       outboundDriveMinutes: payload.outboundDriveMinutes,
       riderName,
       riderPhone,

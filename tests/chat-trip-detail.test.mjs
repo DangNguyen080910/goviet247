@@ -28,3 +28,20 @@ test('chat strips distance at the API boundary and hides it even for an older se
   assert.equal(JSON.stringify(rows).includes('123,4'),false);
  }
 });
+
+test('chat trip preserves pickup order and shows return drop-offs in reverse', () => {
+ const stops = [
+  {seq:-2,address:'Pickup B',internalNote:'private'},
+  {seq:-1,address:'Pickup C'},
+  {seq:1,address:'Last stop'},
+ ];
+ const summary = chatTripSummary(trip,stops);
+ assert.deepEqual(summary.stops.map(stop=>stop.seq),[-2,-1,1]);
+ assert.equal(Object.hasOwn(summary.stops[0],'internalNote'),false);
+ const rows=chatTripDetailRows(summary);
+ assert.deepEqual(rows.filter(([label])=>label.startsWith('Điểm') || label.startsWith('Trả tại')),[
+  ['Điểm đón 1','Start'],['Điểm đón 2','Pickup B'],['Điểm đón 3','Pickup C'],
+  ['Điểm đến 1','Last stop'],
+  ['Trả tại điểm đón 3','Pickup C'],['Trả tại điểm đón 2','Pickup B'],['Trả tại điểm đón 1','Start'],
+ ]);
+});

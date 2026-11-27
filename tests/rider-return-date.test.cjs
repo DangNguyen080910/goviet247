@@ -17,7 +17,7 @@ function visit(node) {
   }
   ts.forEachChild(node, visit);
 }
-visit(ast);
+visit(ast.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === "RiderBookingScreen"));
 const now = new Date('2026-11-23T07:22:00+07:00').getTime();
 class Clock extends Date {
   constructor(...args) { super(...(args.length ? args : [now])); }
@@ -75,8 +75,9 @@ function screen(platform, initial = {}) {
     '../components/BookingTimePicker': component('BookingTimePicker'),
     '../components/AppBrandHeader': component('AppBrandHeader'),
     '../components/DestinationService': { ...component('DestinationService'), ServiceSummary: 'ServiceSummary' },
-    '../../../packages/shared/destinationService.js': { destinationWindows: () => [], destinationConfig: () => ({}) },
-    '../../api/src/shared/regionalPricing.js': {}, '../../mobile-chat/permissionHelp': {},
+    '../../../packages/shared/destinationService.js': { destinationWindows: () => [], destinationPackageAvailable: () => false, destinationConfig: () => ({}) },
+    '../../api/src/shared/regionalPricing.js': require('../apps/api/src/shared/regionalPricing.js'),
+    '../../api/src/shared/tripRoute.js': require('../apps/api/src/shared/tripRoute.js'), '../../mobile-chat/permissionHelp': {},
     '../services/authApi': {}, '../services/pricingApi': {}, '../services/tripApi': {},
     '../services/storage': {}, '../services/mapApi': {}, '../constants/vietnamLocations': {},
   };
@@ -184,4 +185,16 @@ test('Android: dismissing the native date dialog does not save a return date', (
   assert.equal(s.state.get('returnTime'), '');
   assert.equal(s.state.get('returnTimeConfirmed'), false);
   assert.equal(s.state.get('pickerTarget'), null);
+});
+
+test('new Rider enables additional pickups only when the API supports the new booking flow', () => {
+  const legacy = screen('ios');
+  assert.doesNotMatch(legacy.text(), /Thêm điểm đón/);
+  const modern = screen('ios', { tripConfig: {
+    wholeTripBooking: true, maxStops: 10, minDistanceKm: 10, maxDistanceKm: 2000, quoteExpireSeconds: 120,
+  } });
+  assert.match(modern.text(), /\+ Thêm điểm đón/);
+  modern.press('+ Thêm điểm đón');
+  modern.press('+ Thêm điểm đón');
+  assert.match(modern.text(), /điểm đón 3 → điểm đón 2 → điểm đón 1/);
 });

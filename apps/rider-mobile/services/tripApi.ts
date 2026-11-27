@@ -10,6 +10,7 @@ type CreateTripPayload = {
   quoteToken?: string;
   bookingCompanyId?: string;
   pickupAddress: string;
+  additionalPickups?: string[];
   dropoffAddress: string;
   stops: string[];
   pickupTime: string;
@@ -52,12 +53,14 @@ export type RiderPublicTripConfig = {
   minDistanceKm: number;
   maxDistanceKm: number;
   quoteExpireSeconds: number;
+  wholeTripBooking?: boolean;
   riderBookingNotePlaceholder?: string | null;
 };
 
 export async function getRiderPublicTripConfig(): Promise<RiderPublicTripConfig> {
   const res = await fetchWithTimeout(`${API_BASE_URL}/api/public/trips/config`, {
     method: "GET",
+    cache: "no-store",
     headers: { "Content-Type": "application/json" },
   });
   const data = (await res.json().catch(() => ({}))) as any;

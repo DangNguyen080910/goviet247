@@ -4,7 +4,7 @@ import { destinationConfig, destinationWindows, destinationDescription, destinat
 import { buildDestinationSnapshot, destinationSignature, assertDestinationQuote, validateDestinationConfig } from "../src/services/destinationService.js";
 import { quotePrice } from "../src/services/pricingService.js";
 import { calculateWaitingTime } from "../src/services/waitingPricing.js";
-const c = destinationConfig();
+const c = destinationConfig({ charterDailyFee: 800000 });
 const input = {carType:"CAR_7", direction:"ROUND_TRIP",pickupTime:"2026-11-01T07:00:00+07:00",returnTime:"2026-11-03T12:00:00+07:00",outboundDriveMinutes:240,driveMinutes:480,distanceKm:600,destinationAnchorAddress:"Khách sạn Đà Lạt"};
 const pricing={baseFare:0,pricePerKm:5000,pricePerHour:10000,minFare:100000,overnightFee:350000,overnightTriggerKm:600,overnightTriggerHours:12,gasolineSurchargePercent:20};
 const db=(settings=c)=>({pricingConfig:{findFirst:async()=>pricing},tripConfig:{findFirst:async()=>({destinationServiceConfig:settings})}});

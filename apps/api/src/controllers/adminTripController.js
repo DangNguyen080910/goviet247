@@ -940,19 +940,26 @@ export async function adminDieuChinhThongTinChuyen(req, res) {
         throw err;
       }
 
-      await tx.tripStop.deleteMany({
-        where: { tripId },
-      });
-
-      await tx.tripStop.createMany({
-        data: finalStops.map((stop, index) => ({
-          tripId,
-          seq: index + 1,
-          address: stop.address,
-          lat: null,
-          lng: null,
-        })),
-      });
+      const hasMultiplePickups = trip.stops.some(stop => Number(stop.seq) < 0);
+      if (hasMultiplePickups) {
+        const unchangedStops = [trip.stops, trip.stops.filter(stop => Number(stop.seq) >= 0)].some(stops =>
+          stops.length === finalStops.length &&
+          stops.every((stop, index) => stop.address === finalStops[index].address));
+        if (!unchangedStops || pickupAddress !== trip.pickupAddress || direction !== trip.direction) {
+          throw Object.assign(new Error("Chuyến có nhiều điểm đón. Cần đặt lại chuyến để thay đổi lộ trình."), { statusCode: 409 });
+        }
+      } else {
+        await tx.tripStop.deleteMany({ where: { tripId } });
+        await tx.tripStop.createMany({
+          data: finalStops.map((stop, index) => ({
+            tripId,
+            seq: index + 1,
+            address: stop.address,
+            lat: null,
+            lng: null,
+          })),
+        });
+      }
 
       const updated = await tx.trip.update({
         where: { id: tripId },

@@ -5,7 +5,7 @@ import {recordTripEvent,makeTripEvent} from "../services/tripHistory.js";
 import { parseAudienceRegions, matchesAudienceFilters } from '../shared/audienceFilters.js';
 import { audienceRegionsForApproval, tripAudienceLabel } from '../shared/tripAudienceLabel.js';
 import {assertCurrentContractForNewTrip} from '../services/driverContract.js';
-import { dropoffIsRepresented } from '../shared/tripRoute.js';
+import { dropoffIsRepresented, tripRoutePoints } from '../shared/tripRoute.js';
 import { containsContactNumber } from '../shared/tripChat.js';
 import {tripNotificationContent} from '../shared/tripNotificationContent.js';
 import { getPartnerRiderContext, partnerRiderAccessWhere } from "../services/partnerRiderAccess.js";
@@ -382,6 +382,9 @@ function serializeDriverTrip(trip, scope = "active", extra = {}) {
 
   return {
     ...base,
+    ...(stops.some(stop => Number(stop.seq) < 0) ? {
+      dispatcherNote: [trip.dispatcherNote, tripRoutePoints(trip).map(point => `${point.label}: ${point.address}`).join("\n")].filter(Boolean).join("\n\n"),
+    } : {}),
     partnerDispatcherName: hasActiveTripContact(trip.status) && partnerCompanyId &&
       partnerAssignedTo?.isActive && partnerAssignedTo.companyId === partnerCompanyId
       ? (containsContactNumber(partnerAssignedTo.displayName) ? null : String(partnerAssignedTo.displayName || "").trim() || null)

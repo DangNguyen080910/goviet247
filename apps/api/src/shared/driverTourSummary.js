@@ -1,7 +1,8 @@
-import { destinationSummary } from './destinationService.js';
+import { destinationChargeLines, destinationSummary } from './destinationService.js';
 export function driverTourSummary(snapshot, { hidePaymentAndScope = false } = {}) {
   const summary = destinationSummary(snapshot);
   const result = hidePaymentAndScope ? summary.slice(0, -2) : [...summary];
+  if (snapshot?.version === 5) return [...result, ...destinationChargeLines(snapshot)];
   const display = snapshot?.tourDisplay;
   if (display && Number.isFinite(display.total) && display.total > 0) {
     result.push(`Phụ phí phục vụ tour: ${display.total.toLocaleString('vi-VN')}đ`);
