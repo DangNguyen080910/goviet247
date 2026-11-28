@@ -8,7 +8,7 @@ export function validateDestinationConfig(raw) {
   for (const key of ["title", "introduction", "standardName", "standardDescription", "charterName", "charterDescription", "outsideNotice", "allInclusiveNotice", "paymentNotice", "scopeNotice"]) if (typeof c[key] !== "string" || !c[key].trim() || c[key].length > 3000) return `${key}: cần nội dung từ 1 đến 3000 ký tự.`;
   for (const [key, min, max] of [["standardRadiusKm",1,500],["standardTripsPerDay",1,10],["charterRadiusKm",1,500],["charterHoursPerDay",1,24],["charterDailyFee",0,100000000],["standardStartHour",0,23],["standardEndHour",1,24],["charterStartHour",0,23],["charterEndHour",1,24]]) if (!Number.isInteger(c[key]) || c[key]<min || c[key]>max) return `${key}: phải là số nguyên từ ${min} đến ${max}.`;
   if (c.standardEndHour <= c.standardStartHour) return "Khung giờ gói Không bao xe không hợp lệ.";
-  if (charterPricingHours(c) === null) return "Mốc giờ cuối quy đổi giá Bao xe phải sau mốc giờ đầu.";
+  if (charterPricingHours(c) === null) return "Giờ kết thúc Bao xe phải sau giờ bắt đầu.";
   if (Object.keys(raw).some(key => !(key in c) || !Object.hasOwn(destinationConfig(), key))) return "Có trường cấu hình không hợp lệ.";
   return "";
 }
@@ -40,7 +40,6 @@ function buildLegacyDestinationSnapshot(raw, input) {
 export function buildDestinationSnapshot(raw, input) {
   if (input.destinationServiceMode === undefined) return buildLegacyDestinationSnapshot(raw, input);
   const c = destinationConfig(raw);
-  const windows = destinationWindows(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true);
   if (input.returnTime && new Date(input.returnTime)-new Date(input.pickupTime)>366*86400000) throw Object.assign(new Error("Thời gian chuyến không được vượt quá 366 ngày."),{status:400});
   const requestedMode = input.destinationServiceMode;
   if (!["STANDARD", "CHARTER"].includes(requestedMode)) {
@@ -50,18 +49,16 @@ export function buildDestinationSnapshot(raw, input) {
   const eligible = destinationPackageAvailable(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes);
   const charter = selectionMode === "CHARTER";
   if (charter && !eligible) throw Object.assign(new Error("Chuyến này chưa đủ lịch trình để tính Bao xe."), { status: 400 });
-  const returnMinutes = Number(input.returnDriveMinutes ?? (Number(input.driveMinutes) - Number(input.outboundDriveMinutes)));
-  if (charter && (!Number.isFinite(returnMinutes) || returnMinutes < 0)) {
-    throw Object.assign(new Error("Thiếu thời gian chạy chặng về để tính Bao xe."), { status: 400 });
-  }
   const anchorAddress = String(input.destinationAnchorAddress || input.dropoffAddress || "Điểm đến cuối cùng trong lịch trình").trim();
   if (eligible && !anchorAddress) throw Object.assign(new Error("Vui lòng xác nhận điểm đến."), { status: 400 });
-  return { version: 5, selectionMode, days: destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true), eligible, title:c.title, anchorAddress,
+  const days = destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true);
+  const sessions = charter ? days.map(day => day.charter).filter(Boolean) : [];
+  return { version: 5, selectionMode, days, eligible, title:c.title, anchorAddress,
     standardRadiusKm:c.standardRadiusKm, standardName:c.standardName, standardDescription:destinationDescription(c),
     standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
     charterName:c.charterName, charterDescription:destinationDescription(c,true),
-    sessions: charter ? windows : [], dailyFee:c.charterDailyFee,
-    fee: charter ? charterTripFee(c, input.pickupTime, input.returnTime, returnMinutes) : 0,
+    sessions, dailyFee:c.charterDailyFee,
+    fee: charter ? charterTripFee(c, sessions) : 0,
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
 }
 export const destinationSignature = snapshot => {

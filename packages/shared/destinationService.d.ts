@@ -1,7 +1,7 @@
 export const DEFAULT_DESTINATION_CONFIG: any;
 export function destinationConfig(raw?: any): any;
 export function destinationDescription(config: any, charter?: boolean): string;
-export function destinationWindows(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): {date:string;start:string;end:string;hours:number}[];
+export function destinationWindows(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any, wholeTrip?: boolean): {date:string;start:string;end:string;hours:number}[];
 export function destinationSummary(snapshot: any): string[];
 export function vnDay(value: any): string;
 export function vnTime(value: any): string;
@@ -20,5 +20,5 @@ export function destinationPackageLabel(snapshot: any): string;
 
 export function destinationPackageAvailable(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): boolean;
 export function charterPricingHours(config: {charterStartHour: number; charterEndHour: number}): number | null;
-export function charterTripFee(config: {charterStartHour: number; charterEndHour: number; charterDailyFee: number}, pickup: any, returnTime: any, returnMinutes: number): number;
+export function charterTripFee(config: {charterStartHour: number; charterEndHour: number; charterDailyFee: number}, windows: {start: string; end: string}[]): number;
 export function destinationChargeLines(snapshot: any): string[];

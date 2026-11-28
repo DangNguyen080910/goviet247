@@ -21,15 +21,16 @@ test('whole-trip charter derives every service date and ignores stale/partial cl
  const snapshot=buildDestinationSnapshot(c,{...request,destinationServiceMode:'CHARTER',destinationServiceDates:['2099-01-02']});
  assert.equal(snapshot.version,5);assert.equal(snapshot.selectionMode,'CHARTER');
  assert.deepEqual(snapshot.sessions.map(s=>s.date),['2099-01-01','2099-01-02','2099-01-03']);
- assert.equal(snapshot.fee, 2471429);
+ assert.equal(snapshot.fee, 1472143);
  const longer=buildDestinationSnapshot(c,{...request,returnTime:'2099-01-04T15:00:00+07:00',destinationServiceMode:'CHARTER'});
  assert.equal(longer.sessions.length,4);
  assert.equal(longer.sessions.at(-1).date,'2099-01-04');
+ assert.equal(longer.fee - snapshot.fee, 600000);
  const standard=buildDestinationSnapshot(c,{...request,destinationServiceMode:'STANDARD',destinationServiceDates:['2099-01-02']});
  assert.equal(standard.sessions.length,0);assert.equal(standard.fee,0);
 });
 
-test('new Bao xe charges for all elapsed minutes and keeps overnight costs separate', async () => {
+test('Bao xe charges only destination hours in the configured window and keeps overnight costs separate', async () => {
  const input = { ...request, pickupTime: '2099-01-01T14:00:00+07:00',
    returnTime: '2099-01-02T19:00:00+07:00', outboundDriveMinutes: 60,
    returnDriveMinutes: 60, driveMinutes: 120 };
@@ -42,30 +43,45 @@ test('new Bao xe charges for all elapsed minutes and keeps overnight costs separ
    assert.equal(result.data.overnightCost,200000);
  }
  assert.equal(standard.data.destinationService.fee,0);
- assert.equal(charter.data.destinationService.fee,1285714);
- assert.equal(charter.data.rawTotal-standard.data.rawTotal,1285714);
+ assert.equal(charter.data.destinationService.fee,771429);
+ assert.equal(charter.data.rawTotal-standard.data.rawTotal,771429);
 });
 
 for(const mode of [null,'all','',true,{},['CHARTER']])test(`reject invalid mode ${JSON.stringify(mode)}`,()=>{
  assert.throws(()=>buildDestinationSnapshot(c,{...request,destinationServiceMode:mode}),{status:400});
 });
-test('same-day Bao xe includes the drive home after 21:00; one-way and disabled service reject it',()=>{
+test('same-day Bao xe stops charging at 21:00; one-way and disabled service reject the package',()=>{
  const sameDay = {...request, pickupTime:'2099-01-01T14:00:00+07:00',returnTime:'2099-01-01T22:00:00+07:00',
    outboundDriveMinutes:60,returnDriveMinutes:60,driveMinutes:120,destinationServiceMode:'CHARTER'};
- assert.equal(buildDestinationSnapshot(c,sameDay).fee,385714);
+ assert.equal(buildDestinationSnapshot(c,sameDay).fee,257143);
  assert.throws(()=>buildDestinationSnapshot(c,{...sameDay,direction:'ONE_WAY',returnTime:null}),{status:400});
  assert.throws(()=>buildDestinationSnapshot({...c,enabled:false},sameDay),{status:400});
 });
 
-test('charter pricing uses the configured span and charges an itinerary entirely outside those hours', () => {
- const input = {...request, pickupTime:'2099-01-01T01:00:00+07:00', returnTime:'2099-01-01T04:00:00+07:00',
-   outboundDriveMinutes:60, returnDriveMinutes:60, driveMinutes:120, destinationServiceMode:'CHARTER'};
+test('charter pricing uses the configured window and excludes the outbound and return legs', () => {
+ const input = {...request, pickupTime:'2099-01-01T06:00:00+07:00', returnTime:'2099-01-01T12:00:00+07:00',
+   outboundDriveMinutes:60, destinationServiceMode:'CHARTER'};
  const snapshot = buildDestinationSnapshot(c, input);
  assert.equal(snapshot.eligible, true);
- assert.equal(snapshot.fee, 171429);
+ assert.equal(snapshot.fee, 214286);
  assert.equal(buildDestinationSnapshot({...c, charterStartHour:8, charterEndHour:20}, input).fee, 200000);
  assert.equal(buildDestinationSnapshot({...c, charterHoursPerDay:2}, input).fee, snapshot.fee);
- assert.throws(() => buildDestinationSnapshot({...c, charterStartHour:21, charterEndHour:21}, input), /Mốc giờ quy đổi/);
+ assert.equal(buildDestinationSnapshot(c, {...input, returnDriveMinutes:180}).fee, snapshot.fee);
+ assert.throws(() => buildDestinationSnapshot({...c, charterStartHour:21, charterEndHour:21}, input), /Khung giờ Bao xe/);
+
+ const outside = {...input, pickupTime:'2099-01-01T01:00:00+07:00', returnTime:'2099-01-01T04:00:00+07:00'};
+ assert.equal(buildDestinationSnapshot(c, outside).fee, 0);
+});
+
+test('30/11 at 05:00 to 01/12 at 16:00 bills 23 destination hours plus the separate overnight fee', async () => {
+ const result = await quotePrice({...request,
+   pickupTime:'2026-11-30T05:00:00+07:00', returnTime:'2026-12-01T16:00:00+07:00',
+   outboundDriveMinutes:75, returnDriveMinutes:47, driveMinutes:122, distanceKm:73.4, carType:'CAR_7',
+   destinationServiceMode:'CHARTER'}, db);
+ assert.equal(result.ok, true);
+ assert.equal(result.data.destinationService.fee, 985714);
+ assert.equal(result.data.overnightCount, 1);
+ assert.equal(result.data.overnightCost, 200000);
 });
 
 test('days outside the configured service window do not become invented charter sessions',()=>{
@@ -94,7 +110,7 @@ test('new held quotes bind to package mode and schedule; ignored client dates ca
  }
 });
 
-test('an unexpired whole-trip quote issued with the 24-hour divisor preserves its price', async () => {
+for (const previousFee of [1441667, 2471429]) test(`unexpired whole-trip quote preserves its previous fee of ${previousFee}`, async () => {
  const records = new Map();
  const fake = {...db, bookingQuote:{
   create: async ({data}) => records.set(data.tokenHash, data),
@@ -103,13 +119,12 @@ test('an unexpired whole-trip quote issued with the 24-hour divisor preserves it
  const service = createBookingQuoteService({db:fake, price:() => {throw Error('held quote must not reprice');}});
  const input = {...request, destinationServiceMode:'CHARTER'};
  const fresh = (await quotePrice(input, db)).data;
- const previousFee = 1441667;
  const previousSnapshot = {...fresh.destinationService, fee:previousFee};
  const previousPrice = Math.round((fresh.rawTotal - fresh.destinationService.fee + previousFee) / 10000) * 10000;
  const token = await service.issue(input, {...fresh, finalPrice:previousPrice,
   destinationService:previousSnapshot, destinationServiceSignature:destinationSignature(previousSnapshot)}, {distanceKm:174.6});
  const booked = await service.booking({...input, ...token});
- assert.ok(previousPrice < fresh.finalPrice);
+ assert.notEqual(previousPrice, fresh.finalPrice);
  assert.equal(booked.pricing.totalPrice, previousPrice);
  assert.equal(booked.pricing.destinationService.fee, previousFee);
 });
