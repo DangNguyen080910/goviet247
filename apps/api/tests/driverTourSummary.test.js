@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { driverTourSummary } from '../src/shared/driverTourSummary.js';
 import { quotePrice } from '../src/services/pricingService.js';
-import { destinationConfig } from '../src/shared/destinationService.js';
+import { destinationConfig, destinationQuoteSummary } from '../src/shared/destinationService.js';
 import { assertDestinationQuote, buildDestinationSnapshot } from '../src/services/destinationService.js';
 const config = destinationConfig({ charterDailyFee: 600000 });
 const input = { carType: 'CAR_5', direction: 'ROUND_TRIP', pickupTime: '2026-11-01T07:00:00+07:00', returnTime: '2026-11-05T18:00:00+07:00', outboundDriveMinutes: 240, driveMinutes: 480, distanceKm: 600, destinationAnchorAddress: 'Khách sạn A' };
@@ -60,4 +60,26 @@ test('standard-only and mixed schedules retain only applicable descriptions', as
   assert.ok(lines.includes(snapshot.standardDescription));
   assert.equal(lines.includes(snapshot.charterDescription), dates.length > 0);
  }
+});
+
+test('two-day Bao xe shows only saved service dates and combines the two amounts for the driver', () => {
+ const snapshot = {
+  version: 5, eligible: true, selectionMode: 'CHARTER', fee: 985714,
+  sessions: [
+   { date: '2026-11-30', start: '2026-11-30T00:00:00Z', end: '2026-11-30T14:00:00Z' },
+   { date: '2026-12-01', start: '2026-12-01T00:00:00Z', end: '2026-12-01T09:00:00Z' },
+  ],
+  tourDisplay: { overnightCount: 1, overnightCost: 300000, returnTime: '2026-12-01T09:00:00Z', total: 1285714 },
+ };
+ assert.deepEqual(destinationQuoteSummary(snapshot).slice(-3), [
+  'Giá trên đã bao gồm',
+  'Phí Bao xe từ 30/11/2026 đến 01/12/2026: 985.714đ',
+  'Phí Ăn nghỉ tài xế · 1 đêm: 300.000đ',
+ ]);
+ assert.deepEqual(driverTourSummary(snapshot).filter(line => line.startsWith('Phí ')),
+  ['Phí Bao xe và Ăn nghỉ tài xế từ 30/11/2026 đến 01/12/2026: 1.285.714đ']);
+ assert.equal(driverTourSummary({...snapshot, sessions: [snapshot.sessions[0]], tourDisplay: null}).at(-1),
+  'Phí Bao xe ngày 30/11/2026: 985.714đ');
+ assert.equal(driverTourSummary({...snapshot, selectionMode: 'STANDARD', sessions: []}).at(-1),
+  'Phí Ăn nghỉ tài xế · 1 đêm: 300.000đ');
 });

@@ -21,6 +21,9 @@ export default function DestinationServiceConfig() {
  if(!c) return <Box>{error?<Alert severity="error">{error}<Button onClick={load}>Thử lại</Button></Alert>:"Đang tải cấu hình…"}</Box>;
  const pricingHours = charterPricingHours(c);
  const canPreviewFee = pricingHours !== null && Number.isInteger(c.charterDailyFee) && c.charterDailyFee >= 0;
+ const previewSessions = previewMode === "CHARTER" && canPreviewFee
+   ? destinationWindows(c, previewTrip.direction, previewTrip.pickup, previewTrip.returnTime, previewTrip.outboundMinutes, true)
+   : [];
  return <Box><Typography variant="h6">Phục vụ tại điểm đến</Typography><Typography>Phí Bao xe tính theo thời gian giữ xe từ lúc dự kiến đến điểm cuối đến lúc bắt đầu quay về, trong khung giờ đã cấu hình mỗi ngày. Giờ khách sử dụng xe tối đa mỗi ngày ghi trong mô tả gói. Cước hai chặng và phí ăn nghỉ tài xế được tính riêng. Thay đổi áp dụng cho báo giá mới.</Typography>
  <FormControlLabel control={<Switch checked={c.enabled} onChange={e=>field("enabled",e.target.checked)}/>} label="Cho chọn gói tại điểm đến (chỉ hiển thị thông tin gói trên chuyến có áp dụng)"/>
  <Box sx={{display:"grid",gridTemplateColumns:{xs:"1fr",md:"1fr 1fr"},gap:2,my:2}}>{Object.entries(numbers).map(([key,label])=><MoneyTextField moneySuggestions={key === "charterDailyFee"} key={key} type="number" label={label} value={c[key]} onChange={e=>field(key,e.target.value === "" ? "" : Number(e.target.value))}/>)}</Box>
@@ -42,8 +45,9 @@ export default function DestinationServiceConfig() {
    standardDescription: destinationDescription(c),
    charterName: c.charterName,
    charterDescription: destinationDescription(c, true),
+   sessions: previewSessions,
    fee: previewMode === "CHARTER" && canPreviewFee
-     ? charterTripFee(c, destinationWindows(c, previewTrip.direction, previewTrip.pickup, previewTrip.returnTime, previewTrip.outboundMinutes, true))
+     ? charterTripFee(c, previewSessions)
      : undefined,
    outsideNotice: c.outsideNotice,
    allInclusiveNotice: c.allInclusiveNotice,

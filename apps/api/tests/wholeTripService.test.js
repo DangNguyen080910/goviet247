@@ -140,18 +140,19 @@ test('old held partial-day quotes still book without silently expanding their co
  assert.equal(saved.pricing.destinationService.selectionMode,undefined);
 });
 
-for(const destinationServiceMode of ['STANDARD','CHARTER'])test(`${destinationServiceMode}: customer and driver show only the selected package and itemized fees`,async()=>{
+for(const destinationServiceMode of ['STANDARD','CHARTER'])test(`${destinationServiceMode}: customer and driver show the selected package with the appropriate fee display`,async()=>{
  const result=await quotePrice({...request,destinationServiceMode},db);assert.equal(result.ok,true);
  const snapshot=result.data.destinationService,before=JSON.stringify(snapshot);
  const customer=destinationQuoteSummary(snapshot,c),driver=driverTourSummary(snapshot,{hidePaymentAndScope:true});
  const label=destinationServiceMode==='CHARTER'?c.charterName:c.standardName;
  assert.deepEqual(riderPackageLines(snapshot),[label]);assert.ok(customer.includes(label));assert.ok(driver.includes(label));
- assert.doesNotMatch(customer.join('\n'),/Phụ phí|600[.,]000|\+\d|Đã bao gồm trong giá|2099-|\d{2}\/\d{2}\/2099|ngày chọn Bao xe/);
- assert.doesNotMatch(driver.join('\n'),/Lịch phục vụ:|2099-|\d{2}\/\d{2}\/2099|Đã bao gồm trong giá/);
- for (const lines of [customer,driver]) {
-   assert.equal(lines.filter(line=>line.startsWith('Ăn nghỉ tài xế')).length,1);
-   assert.equal(lines.filter(line=>line.startsWith('Phí Bao xe')).length,destinationServiceMode==='CHARTER'?1:0);
- }
+ assert.doesNotMatch(customer.join('\n'),/Phụ phí|600[.,]000|\+\d|Đã bao gồm trong giá|2099-|ngày chọn Bao xe/);
+ assert.doesNotMatch(driver.join('\n'),/Lịch phục vụ:|2099-|Đã bao gồm trong giá/);
+ assert.equal(customer.filter(line=>line.startsWith('Phí Ăn nghỉ tài xế')).length,1);
+ const charter = destinationServiceMode === 'CHARTER';
+ assert.equal(customer.filter(line=>line.startsWith('Phí Bao xe')).length,charter?1:0);
+ assert.equal(driver.filter(line=>line.startsWith('Phí Ăn nghỉ tài xế')).length,charter?0:1);
+ assert.equal(driver.filter(line=>line.startsWith('Phí Bao xe và Ăn nghỉ tài xế')).length,charter?1:0);
  assert.ok(customer.includes(destinationServiceMode==='CHARTER'?snapshot.charterDescription:snapshot.standardDescription));
  assert.equal(JSON.stringify(snapshot),before);
  const edited=structuredClone(snapshot);edited.tourDisplay.total+=1;

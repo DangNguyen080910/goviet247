@@ -13,6 +13,7 @@ export function destinationSelectedFee(days: DestinationDay[], dates: string[]):
 export function destinationSessionText(session: any): string;
 
 export const INCLUDED_CHARGES_LABEL: string;
+export const TWO_ONE_WAY_TRIPS_NOTICE: string;
 export function destinationQuoteSummary(snapshot: any, config?: any): string[];
 
 export function destinationSelection(snapshot: any): "STANDARD" | "CHARTER" | "LEGACY_MIXED";
@@ -21,4 +22,4 @@ export function destinationPackageLabel(snapshot: any): string;
 export function destinationPackageAvailable(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): boolean;
 export function charterPricingHours(config: {charterStartHour: number; charterEndHour: number}): number | null;
 export function charterTripFee(config: {charterStartHour: number; charterEndHour: number; charterDailyFee: number}, windows: {start: string; end: string}[]): number;
-export function destinationChargeLines(snapshot: any): string[];
+export function destinationChargeLines(snapshot: any, options?: { combineCharterAndOvernight?: boolean }): string[];

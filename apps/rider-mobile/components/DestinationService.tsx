@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, destinationSummary, destinationQuoteSummary, INCLUDED_CHARGES_LABEL } from "../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, destinationSummary, destinationQuoteSummary, INCLUDED_CHARGES_LABEL, TWO_ONE_WAY_TRIPS_NOTICE } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?: any; quote?: boolean; config?: any }) {
   // Only booked destination-service packages belong in this panel.
   if (snapshot?.eligible !== true && !quote) return null;
@@ -11,7 +11,11 @@ export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?:
   ];
   return (
     <View style={{ padding: 12, marginVertical: 10, backgroundColor: "#eff6ff", borderRadius: 10 }}>
-      {(quote ? destinationQuoteSummary(snapshot, config) : destinationSummary(snapshot)).map((line: string, index: number) => (
+      {(quote ? destinationQuoteSummary(snapshot, config) : destinationSummary(snapshot)).map((line: string, index: number) => quote && line === TWO_ONE_WAY_TRIPS_NOTICE ? (
+        <Text key={index} style={{ backgroundColor: "#fff4e5", color: "#854d0e", padding: 8, marginTop: 8, borderRadius: 6, lineHeight: 21 }}>
+          {line}
+        </Text>
+      ) : (
         <Text key={index} style={{ color: "#1e3a5f", marginBottom: 6, marginTop: line === INCLUDED_CHARGES_LABEL ? 8 : 0, lineHeight: 21, fontWeight: line === INCLUDED_CHARGES_LABEL || notices.includes(line) ? "700" : "400" }}>
           {line}
         </Text>

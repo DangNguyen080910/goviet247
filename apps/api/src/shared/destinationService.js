@@ -121,6 +121,7 @@ export function destinationSummary(snapshot) {
 }
 
 export const INCLUDED_CHARGES_LABEL = "Giá trên đã bao gồm";
+export const TWO_ONE_WAY_TRIPS_NOTICE = "Nếu bạn chỉ cần xe đưa đi và đón về, hãy thử so giá với hai chuyến một chiều. Bạn không cần giữ xe qua đêm và mỗi lượt có thể do một tài xế khác phục vụ.";
 
 // Quote notices apply to every trip, independently of destination package eligibility.
 export function destinationQuoteSummary(snapshot, config) {
@@ -133,20 +134,35 @@ export function destinationQuoteSummary(snapshot, config) {
   const tour = snapshot?.tourDisplay;
   if (tour?.returnTime && tour.overnightCount > 0 && tour.overnightCost > 0 &&
       destinationSelection(snapshot) === "STANDARD") {
-    lines.push("Nếu bạn chỉ cần xe đưa đi và đón về, hãy thử so giá với hai chuyến một chiều. Bạn không cần giữ xe qua đêm và mỗi lượt có thể do một tài xế khác phục vụ.");
+    lines.push(TWO_ONE_WAY_TRIPS_NOTICE);
   }
   return lines;
 }
 
-export function destinationChargeLines(snapshot) {
+function charterDateLabel(sessions) {
+  if (!Array.isArray(sessions)) return "";
+  const dates = sessions.map(session => session?.date)
+    .filter(date => typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date))
+    .sort();
+  if (!dates.length) return "";
+  const format = date => date.split("-").reverse().join("/");
+  const first = dates[0];
+  const last = dates.at(-1);
+  return first === last ? ` ngày ${format(first)}` : ` từ ${format(first)} đến ${format(last)}`;
+}
+
+export function destinationChargeLines(snapshot, { combineCharterAndOvernight = false } = {}) {
   if (snapshot?.version !== 5) return [];
-  const lines = [];
-  if (snapshot.selectionMode === "CHARTER" && Number.isFinite(snapshot.fee)) {
-    lines.push(`Phí Bao xe: ${snapshot.fee.toLocaleString("vi-VN")}đ`);
-  }
+  const charter = snapshot.selectionMode === "CHARTER" && Number.isFinite(snapshot.fee);
   const { overnightCount, overnightCost } = snapshot.tourDisplay || {};
-  if (overnightCount > 0 && Number.isFinite(overnightCost)) {
-    lines.push(`Ăn nghỉ tài xế · ${overnightCount} đêm: ${overnightCost.toLocaleString("vi-VN")}đ`);
+  const overnight = overnightCount > 0 && Number.isFinite(overnightCost) && overnightCost > 0;
+  const dateLabel = charter ? charterDateLabel(snapshot.sessions) : "";
+  const money = amount => `${amount.toLocaleString("vi-VN")}đ`;
+  if (combineCharterAndOvernight && charter && overnight) {
+    return [`Phí Bao xe và Ăn nghỉ tài xế${dateLabel}: ${money(snapshot.fee + overnightCost)}`];
   }
+  const lines = [];
+  if (charter) lines.push(`Phí Bao xe${dateLabel}: ${money(snapshot.fee)}`);
+  if (overnight) lines.push(`Phí Ăn nghỉ tài xế · ${overnightCount} đêm: ${money(overnightCost)}`);
   return lines;
 }
