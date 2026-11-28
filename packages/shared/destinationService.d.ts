@@ -1,6 +1,6 @@
 export const DEFAULT_DESTINATION_CONFIG: any;
 export function destinationConfig(raw?: any): any;
-export function destinationDescription(config: any, charter?: boolean): string;
+export function destinationDescription(config: any, charter?: boolean, wholeTrip?: boolean): string;
 export function destinationWindows(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any, wholeTrip?: boolean): {date:string;start:string;end:string;hours:number}[];
 export function destinationSummary(snapshot: any): string[];
 export function vnDay(value: any): string;
@@ -20,7 +20,8 @@ export function destinationSelection(snapshot: any): "STANDARD" | "CHARTER" | "L
 export function destinationPackageLabel(snapshot: any): string;
 
 export function destinationPackageAvailable(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): boolean;
-export function charterUnavailableMessage(config: {charterStartHour: number; charterEndHour: number}): string;
+export const CHARTER_UNAVAILABLE_MESSAGE: string;
+export function wholeTripCharterTemplate(template: string): string;
 export function charterPricingHours(config: {charterStartHour: number; charterEndHour: number}): number | null;
 export function charterTripFee(config: {charterStartHour: number; charterEndHour: number; charterDailyFee: number}, windows: {start: string; end: string}[]): number;
 export function destinationChargeLines(snapshot: any, options?: { combineCharterAndOvernight?: boolean }): string[];

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterPricingHours, charterTripFee, charterUnavailableMessage, destinationSelection } from "../shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterPricingHours, charterTripFee, CHARTER_UNAVAILABLE_MESSAGE, destinationSelection } from "../shared/destinationService.js";
 export { destinationConfig };
 export function validateDestinationConfig(raw) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return "Cấu hình phục vụ không hợp lệ.";
@@ -8,7 +8,7 @@ export function validateDestinationConfig(raw) {
   for (const key of ["title", "introduction", "standardName", "standardDescription", "charterName", "charterDescription", "outsideNotice", "allInclusiveNotice", "paymentNotice", "scopeNotice"]) if (typeof c[key] !== "string" || !c[key].trim() || c[key].length > 3000) return `${key}: cần nội dung từ 1 đến 3000 ký tự.`;
   for (const [key, min, max] of [["standardRadiusKm",1,500],["standardTripsPerDay",1,10],["charterRadiusKm",1,500],["charterHoursPerDay",1,24],["charterDailyFee",0,100000000],["standardStartHour",0,23],["standardEndHour",1,24],["charterStartHour",0,23],["charterEndHour",1,24]]) if (!Number.isInteger(c[key]) || c[key]<min || c[key]>max) return `${key}: phải là số nguyên từ ${min} đến ${max}.`;
   if (c.standardEndHour <= c.standardStartHour) return "Khung giờ gói Không bao xe không hợp lệ.";
-  if (charterPricingHours(c) === null) return "Giờ kết thúc Bao xe phải sau giờ bắt đầu.";
+  if (charterPricingHours(c) === null) return "Mốc cuối để quy đổi giá Bao xe phải sau mốc đầu.";
   if (Object.keys(raw).some(key => !(key in c) || !Object.hasOwn(destinationConfig(), key))) return "Có trường cấu hình không hợp lệ.";
   return "";
 }
@@ -54,11 +54,11 @@ export function buildDestinationSnapshot(raw, input) {
   const days = destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true);
   const sessions = charter ? days.map(day => day.charter).filter(Boolean) : [];
   const fee = charter ? charterTripFee(c, sessions) : 0;
-  if (charter && !sessions.length) throw Object.assign(new Error(charterUnavailableMessage(c)), { status: 400 });
+  if (charter && !sessions.length) throw Object.assign(new Error(CHARTER_UNAVAILABLE_MESSAGE), { status: 400 });
   return { version: 5, selectionMode, days, eligible, title:c.title, anchorAddress,
     standardRadiusKm:c.standardRadiusKm, standardName:c.standardName, standardDescription:destinationDescription(c),
     standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
-    charterName:c.charterName, charterDescription:destinationDescription(c,true),
+    charterName:c.charterName, charterDescription:destinationDescription(c, true, true),
     sessions, dailyFee:c.charterDailyFee,
     fee,
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };

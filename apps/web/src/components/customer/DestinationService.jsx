@@ -1,6 +1,6 @@
 import { driverTourSummary } from "../../../../api/src/shared/driverTourSummary.js";
 import { Box, Typography, Radio, FormControlLabel, RadioGroup, Alert } from "@mui/material";
-import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, charterUnavailableMessage, destinationSummary, destinationQuoteSummary, INCLUDED_CHARGES_LABEL, TWO_ONE_WAY_TRIPS_NOTICE } from "../../../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, CHARTER_UNAVAILABLE_MESSAGE, destinationSummary, destinationQuoteSummary, INCLUDED_CHARGES_LABEL, TWO_ONE_WAY_TRIPS_NOTICE } from "../../../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, admin = false, quote = false, config }) {
   // Only booked destination-service packages belong in this panel.
   if (snapshot?.eligible !== true && !quote) return null;
@@ -35,8 +35,8 @@ export default function DestinationService({ config, direction, pickup, returnTi
    </Box>
    <Box sx={{p:1.5,border:"1px solid",borderColor:mode === "CHARTER" ? "primary.main" : "divider",borderRadius:2}}>
     <FormControlLabel disabled={!charterAvailable} value="CHARTER" control={<Radio />} label={c.charterName} />
-    <Typography variant="body2" color={charterAvailable ? "text.primary" : "text.secondary"} sx={{ whiteSpace: "pre-wrap" }}>{destinationDescription(c,true)}</Typography>
-    {!charterAvailable && <Alert severity="warning" icon={false} sx={{mt:1}}>{charterUnavailableMessage(c)}</Alert>}
+    <Typography variant="body2" color={charterAvailable ? "text.primary" : "text.secondary"} sx={{ whiteSpace: "pre-wrap" }}>{destinationDescription(c, true, true)}</Typography>
+    {!charterAvailable && <Alert severity="warning" icon={false} sx={{mt:1}}>{CHARTER_UNAVAILABLE_MESSAGE}</Alert>}
    </Box>
   </RadioGroup>
   <Alert severity="info" sx={{mt:1}}>{c.outsideNotice}</Alert>

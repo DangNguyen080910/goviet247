@@ -25,12 +25,7 @@ export function destinationPackageAvailable(c, direction, pickup, returnTime, ou
   return Number.isFinite(arrival) && Number.isFinite(departure) && outbound >= 0 && departure >= arrival;
 }
 
-export function charterUnavailableMessage(config) {
-  const { charterStartHour: start, charterEndHour: end } = config;
-  const reason = "Chuyến này không có thời gian phục vụ Bao xe tại điểm đến.";
-  if (start === 0 && end === 24) return reason;
-  return `${reason} Tài xế nghỉ từ ${hour(end % 24)} đến ${hour(start)}.`;
-}
+export const CHARTER_UNAVAILABLE_MESSAGE = "Cần có thời gian tại điểm đến trước giờ bắt đầu quay về để chọn Bao xe.";
 
 export function charterPricingHours(config) {
   const { charterStartHour: start, charterEndHour: end } = config;
@@ -42,15 +37,31 @@ export function charterPricingHours(config) {
 export function charterTripFee(config, windows) {
   const pricingHours = charterPricingHours(config);
   if (pricingHours === null) throw new RangeError("Khung giờ Bao xe không hợp lệ.");
-  // The duration cap on each window describes service. Price uses the full reservation within the window.
   const reservedMs = windows.reduce((total, window) => total + Date.parse(window.end) - Date.parse(window.start), 0);
-  return Math.round(config.charterDailyFee * reservedMs / (pricingHours * 3600000));
+  const coveredDayMs = pricingHours * 3600000;
+  // Each 24-hour cycle starts at the estimated arrival or its anniversary, not at midnight.
+  const fullDays = Math.floor(reservedMs / 86400000);
+  const partialDayMs = Math.min(reservedMs % 86400000, coveredDayMs);
+  return fullDays * config.charterDailyFee + Math.round(config.charterDailyFee * partialDayMs / coveredDayMs);
 }
-export function destinationDescription(c, charter = false) {
+
+export function wholeTripCharterTemplate(template) {
+  // Reuse existing configured copy while removing the previous service-hours restriction.
+  return template
+    .replace(/\s+trong khung(?: giờ)?\s+(?:\{start\}|\d{1,2}:\d{2})\s*(?:[–—-]|đến)\s*(?:\{end\}|\d{1,2}:\d{2})(?=[.;,\s]|$)/gi, '')
+    .replace(/\s*Vui lòng thống nhất trước lịch sử dụng xe với tài xế\./gi, '')
+    .replace(/Khách và tài xế thống nhất các điểm chính và khoảng nghỉ trước mỗi ngày; tài xế phục vụ đúng lịch đã xác nhận\./gi, 'Tài xế phục vụ theo lịch đã đặt.')
+    .trim();
+}
+
+export function destinationDescription(c, charter = false, wholeTrip = false) {
   const values = charter
     ? { radius: c.charterRadiusKm, hours: c.charterHoursPerDay, start: hour(c.charterStartHour), end: hour(c.charterEndHour) }
     : { radius: c.standardRadiusKm, trips: c.standardTripsPerDay, start: hour(c.standardStartHour), end: hour(c.standardEndHour) };
-  return (charter ? c.charterDescription : c.standardDescription).replace(/\{(\w+)\}/g, (all, key) => values[key] ?? all);
+  const template = charter
+    ? (wholeTrip ? wholeTripCharterTemplate(c.charterDescription) : c.charterDescription)
+    : c.standardDescription;
+  return template.replace(/\{(\w+)\}/g, (all, key) => values[key] ?? all);
 }
 const hour = h => String(h).padStart(2, "0") + ":00";
 export const vnDay = value => new Date(new Date(value).getTime() + 7 * 3600000).toISOString().slice(0, 10);
@@ -62,9 +73,12 @@ export function destinationWindows(c, direction, pickup, returnTime, outboundMin
   const end = new Date(returnTime).getTime();
   if (!wholeTrip && vnDay(arrival) === vnDay(end)) return [];
   const result = [];
-  for (let day = Date.parse(vnDay(arrival) + "T00:00:00+07:00"), n = 0; day < end && n < 366; day += 86400000, n++) {
-    const start = Math.max(arrival, day + c.charterStartHour * 3600000);
-    const finish = Math.min(end, day + c.charterEndHour * 3600000);
+  const startHour = wholeTrip ? 0 : c.charterStartHour;
+  const endHour = wholeTrip ? 24 : c.charterEndHour;
+  const maxDates = wholeTrip ? 367 : 366;
+  for (let day = Date.parse(vnDay(arrival) + "T00:00:00+07:00"), n = 0; day < end && n < maxDates; day += 86400000, n++) {
+    const start = Math.max(arrival, day + startHour * 3600000);
+    const finish = Math.min(end, day + endHour * 3600000);
     if (finish > start) result.push({ date: vnDay(start), start: new Date(start).toISOString(), end: new Date(finish).toISOString(), hours: Math.min(c.charterHoursPerDay, Math.round((finish-start)/36000)/100), flexible: true,
       ...(!wholeTrip ? { fee: Math.round(c.charterDailyFee * (finish-start) / ((c.charterEndHour - c.charterStartHour) * 3600000)) } : {}),
     });

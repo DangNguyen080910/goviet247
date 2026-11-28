@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, charterUnavailableMessage, destinationSummary, destinationQuoteSummary, INCLUDED_CHARGES_LABEL, TWO_ONE_WAY_TRIPS_NOTICE } from "../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationPackageAvailable, destinationWindows, CHARTER_UNAVAILABLE_MESSAGE, destinationSummary, destinationQuoteSummary, INCLUDED_CHARGES_LABEL, TWO_ONE_WAY_TRIPS_NOTICE } from "../../../packages/shared/destinationService.js";
 export function ServiceSummary({ snapshot, quote = false, config }: { snapshot?: any; quote?: boolean; config?: any }) {
   // Only booked destination-service packages belong in this panel.
   if (snapshot?.eligible !== true && !quote) return null;
@@ -38,11 +38,11 @@ export default function DestinationService({config,direction,pickup,returnTime,o
     <Pressable accessibilityRole="radio" accessibilityLabel={name} disabled={disabled}
      accessibilityState={{checked:mode===value, disabled}} onPress={()=>onMode(value)} style={{gap:6}}>
       <Text style={{fontWeight:"700", color:disabled ? "#64748b" : undefined}}>{mode===value?'◉':'○'} {name}</Text>
-      <Text style={{color:disabled ? "#64748b" : undefined}}>{destinationDescription(c,charter)}</Text>
+      <Text style={{color:disabled ? "#64748b" : undefined}}>{destinationDescription(c, charter, wholeTrip)}</Text>
       {charter && !wholeTrip && <Text>Gói Bao xe áp dụng theo lịch trình và khung phục vụ của chuyến.</Text>}
     </Pressable>
     {disabled && <Text style={{backgroundColor:"#fff4e5", color:"#854d0e", padding:8, borderRadius:6}}>
-      {charterUnavailableMessage(c)}
+      {CHARTER_UNAVAILABLE_MESSAGE}
     </Text>}
    </View>;
   })}

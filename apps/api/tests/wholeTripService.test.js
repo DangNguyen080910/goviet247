@@ -30,7 +30,7 @@ test('whole-trip charter derives every service date and ignores stale/partial cl
  assert.equal(standard.sessions.length,0);assert.equal(standard.fee,0);
 });
 
-test('Bao xe charges only destination hours in the configured window and keeps overnight costs separate', async () => {
+test('Bao xe caps the first 24 hours and keeps overnight costs separate', async () => {
  const input = { ...request, pickupTime: '2099-01-01T14:00:00+07:00',
    returnTime: '2099-01-02T19:00:00+07:00', outboundDriveMinutes: 60,
    returnDriveMinutes: 60, driveMinutes: 120 };
@@ -50,44 +50,45 @@ test('Bao xe charges only destination hours in the configured window and keeps o
 for(const mode of [null,'all','',true,{},['CHARTER']])test(`reject invalid mode ${JSON.stringify(mode)}`,()=>{
  assert.throws(()=>buildDestinationSnapshot(c,{...request,destinationServiceMode:mode}),{status:400});
 });
-test('same-day Bao xe stops charging at 21:00; one-way and disabled service reject the package',()=>{
+test('same-day Bao xe can extend past 21:00; one-way and disabled service reject the package',()=>{
  const sameDay = {...request, pickupTime:'2099-01-01T14:00:00+07:00',returnTime:'2099-01-01T22:00:00+07:00',
    outboundDriveMinutes:60,returnDriveMinutes:60,driveMinutes:120,destinationServiceMode:'CHARTER'};
- assert.equal(buildDestinationSnapshot(c,sameDay).fee,257143);
+ assert.equal(buildDestinationSnapshot(c,sameDay).fee,300000);
  assert.throws(()=>buildDestinationSnapshot(c,{...sameDay,direction:'ONE_WAY',returnTime:null}),{status:400});
  assert.throws(()=>buildDestinationSnapshot({...c,enabled:false},sameDay),{status:400});
 });
 
-test('charter pricing uses the configured window and excludes the outbound and return legs', () => {
+test('charter uses the configured divisor and excludes the outbound and return legs', () => {
  const input = {...request, pickupTime:'2099-01-01T06:00:00+07:00', returnTime:'2099-01-01T12:00:00+07:00',
    outboundDriveMinutes:60, destinationServiceMode:'CHARTER'};
  const snapshot = buildDestinationSnapshot(c, input);
  assert.equal(snapshot.eligible, true);
  assert.equal(snapshot.fee, 214286);
- assert.equal(buildDestinationSnapshot({...c, charterStartHour:8, charterEndHour:20}, input).fee, 200000);
+ assert.equal(buildDestinationSnapshot({...c, charterStartHour:8, charterEndHour:20}, input).fee, 250000);
  assert.equal(buildDestinationSnapshot({...c, charterHoursPerDay:2}, input).fee, snapshot.fee);
  assert.equal(buildDestinationSnapshot(c, {...input, returnDriveMinutes:180}).fee, snapshot.fee);
  assert.throws(() => buildDestinationSnapshot({...c, charterStartHour:21, charterEndHour:21}, input), /Khung giờ Bao xe/);
 
  const outside = {...input, pickupTime:'2099-01-01T01:00:00+07:00', returnTime:'2099-01-01T04:00:00+07:00'};
- assert.throws(() => buildDestinationSnapshot(c, outside), /không có thời gian phục vụ Bao xe/);
+ assert.equal(buildDestinationSnapshot(c, outside).fee, 85714);
 });
 
-test('30/11 at 05:00 to 01/12 at 16:00 bills 23 destination hours plus the separate overnight fee', async () => {
+test('30/11 at 05:00 to 01/12 at 16:00 bills one capped day and 9 hours 45 minutes', async () => {
  const result = await quotePrice({...request,
    pickupTime:'2026-11-30T05:00:00+07:00', returnTime:'2026-12-01T16:00:00+07:00',
    outboundDriveMinutes:75, returnDriveMinutes:47, driveMinutes:122, distanceKm:73.4, carType:'CAR_7',
    destinationServiceMode:'CHARTER'}, db);
  assert.equal(result.ok, true);
- assert.equal(result.data.destinationService.fee, 985714);
+ assert.equal(result.data.destinationService.fee, 1017857);
  assert.equal(result.data.overnightCount, 1);
  assert.equal(result.data.overnightCost, 200000);
 });
 
-test('days outside the configured service window do not become invented charter sessions',()=>{
+test('nighttime arrival and early return still have charter service dates',()=>{
  const snapshot=buildDestinationSnapshot(c,{...request,pickupTime:'2099-01-01T22:00:00+07:00',outboundDriveMinutes:60,returnTime:'2099-01-03T06:00:00+07:00',destinationServiceMode:'CHARTER'});
  assert.deepEqual(snapshot.days.map(d=>d.date),['2099-01-01','2099-01-02','2099-01-03']);
- assert.deepEqual(snapshot.sessions.map(s=>s.date),['2099-01-02']);
+ assert.deepEqual(snapshot.sessions.map(s=>s.date),['2099-01-01','2099-01-02','2099-01-03']);
+ assert.equal(snapshot.fee,900000);
  assert.equal(destinationPackageLabel(snapshot),'Bao xe');
 });
 
@@ -186,5 +187,43 @@ test('Web package control has exactly two radio choices and no per-day/price UI'
   group.props.onChange({target:{value:mode==='STANDARD'?'CHARTER':'STANDARD'}});
   assert.equal(changed,mode==='STANDARD'?'CHARTER':'STANDARD');
   assert.doesNotMatch(texts.join(' '),/Phụ phí Bao xe|600[.,]000|Đã bao gồm trong giá|Chọn ngày|01\/01\/2099/);
+ }
+});
+
+test('the whole-trip fee accrues up to 14 hours in each 24-hour cycle from arrival', () => {
+ const pickupTime = '2026-11-30T14:51:00+07:00';
+ const arrival = Date.parse('2026-11-30T15:51:00+07:00');
+ for (const [minutes, fee] of [
+   [1, 714], [429, 306429], [840, 600000], [1439, 600000], [1440, 600000],
+   [1441, 600714], [2280, 1200000], [2880, 1200000], [2910, 1221429],
+ ]) {
+   const returnTime = new Date(arrival + minutes * 60000).toISOString();
+   const snapshot = buildDestinationSnapshot(c, {
+     ...request, pickupTime, returnTime, outboundDriveMinutes: 60, destinationServiceMode: 'CHARTER',
+   });
+   assert.equal(snapshot.fee, fee, `${minutes} minutes`);
+ }
+});
+
+test('23:00 return quote charges 306,429 for Bao xe and does not add an hourly waiting fee', async () => {
+ const input = { ...request, pickupTime: '2026-11-30T15:00:00+07:00',
+   returnTime: '2026-11-30T23:00:00+07:00', outboundDriveMinutes: 51,
+   returnDriveMinutes: 46, driveMinutes: 97, distanceKm: 76, carType: 'CAR_7',
+   destinationServiceMode: 'CHARTER' };
+ const result = await quotePrice(input, db);
+ assert.equal(result.ok, true, result.message);
+ assert.equal(result.data.waitCost, 0);
+ assert.equal(result.data.overnightCost, 0);
+ assert.equal(result.data.destinationService.fee, 306429);
+ assert.ok(driverTourSummary(result.data.destinationService).some(line => line.endsWith('306.429đ')));
+});
+
+test('whole-trip quote copy preserves configured terms without promising a clock restriction', () => {
+ for (const range of ['{start}–{end}', '07:00–21:00', '07:00 đến 21:00']) {
+   const config = { ...c, charterDescription: `Xe phục vụ bán kính {radius} km, tối đa {hours} giờ mỗi ngày trong khung ${range}. Vui lòng thống nhất trước lịch sử dụng xe với tài xế.` };
+   const snapshot = buildDestinationSnapshot(config, { ...request, destinationServiceMode: 'CHARTER' });
+   assert.equal(snapshot.charterDescription, 'Xe phục vụ bán kính 30 km, tối đa 8 giờ mỗi ngày.');
+   const legacy = buildDestinationSnapshot(config, { ...request, destinationServiceDates: ['2099-01-02'] });
+   assert.match(legacy.charterDescription, /trong khung/);
  }
 });
