@@ -15,6 +15,17 @@ export function historyValue(value){
   const labels={CAR_5:'Xe 5 chỗ',CAR_7:'Xe 7 chỗ',CAR_16:'Xe 16 chỗ',ONE_WAY:'Một chiều',ROUND_TRIP:'Khứ hồi',ANY:'Không yêu cầu',ELECTRIC:'Xe điện',GASOLINE:'Xe xăng'};
   return labels[value] || String(value);
 }
+export function historyDriverScope(change) {
+  if (change.label !== 'Phạm vi tài xế (mã)') return null;
+  const { before, after } = change;
+  if (![before, after].every(value => value == null || Array.isArray(value))) return null;
+  const count = value => Array.isArray(value) ? `${value.length.toLocaleString('vi-VN')} tài xế` : '—';
+  return {
+    summary: `Trước: ${count(before)} · Sau: ${count(after)}`,
+    hasCodes: Boolean(before?.length || after?.length),
+  };
+}
+
 export const historyResolutions = {PENALTY_AND_REVIEW:'Ghi phạt · Chuyển về chờ duyệt',REFUND_AND_REVIEW:'Hoàn ví · Chuyển về chờ duyệt',PENALTY_AND_CANCEL:'Ghi phạt · Huỷ chuyến',CUSTOMER_CANCEL_AND_REFUND:'Khách huỷ · Xử lý hoàn ví',CANCEL:'Huỷ chuyến'};
 export function historyTime(value) {
   if (!value || !Number.isFinite(new Date(value).getTime())) return '—';

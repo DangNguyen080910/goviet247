@@ -4,7 +4,30 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { adminRequest } from '../services/adminRequest';
-import { tripEventTitles, historyResolutions, historySources, historyTime, historyActor, historyStatus, historyValue, historyEventColor } from '../../api/src/shared/adminHistory.js';
+import { tripEventTitles, historyResolutions, historySources, historyTime, historyActor, historyStatus, historyValue, historyDriverScope, historyEventColor } from '../../api/src/shared/adminHistory.js';
+
+type HistoryChange = { label: string; before?: unknown; after?: unknown };
+
+function TripHistoryChange({ change }: { change: HistoryChange }) {
+  const [expanded, setExpanded] = useState(false);
+  const scope = historyDriverScope(change);
+  const values = <>
+    <Text selectable>Trước: {historyValue(change.before)}</Text>
+    <Text selectable>Sau: {historyValue(change.after)}</Text>
+  </>;
+
+  return <View style={styles.change}>
+    <Text style={styles.name}>{change.label}</Text>
+    {scope ? <>
+      <Text>{scope.summary}</Text>
+      {scope.hasCodes && <Pressable accessibilityRole="button" accessibilityState={{ expanded }}
+        onPress={() => setExpanded(value => !value)} style={styles.button}>
+        <Text style={styles.link}>{expanded ? 'Thu gọn' : 'Xem mã tài xế'}</Text>
+      </Pressable>}
+      {expanded && <ScrollView nestedScrollEnabled style={styles.scopeList}>{values}</ScrollView>}
+    </> : values}
+  </View>;
+}
 
 export default function TripHistoryButton({tripId}: {tripId?: string | null}) {
   const [open,setOpen] = useState(false), [refresh,setRefresh] = useState(0);
@@ -42,7 +65,7 @@ export default function TripHistoryButton({tripId}: {tripId?: string | null}) {
               <Text>Thực hiện: {historyActor(item)}</Text>
               {item.fromStatus && item.toStatus && item.fromStatus !== item.toStatus && <Text>{historyStatus(item.fromStatus)} → {historyStatus(item.toStatus)}</Text>}
               {item.amount != null && <Text style={styles.name}>Số tiền: {Number(item.amount).toLocaleString('vi-VN')} đ</Text>}
-              {item.changes?.map((change:any,index:number)=><View key={index} style={{backgroundColor:'#f8fafc',padding:10,gap:6}}><Text style={styles.name}>{change.label}</Text><Text selectable>Trước: {historyValue(change.before)}</Text><Text selectable>Sau: {historyValue(change.after)}</Text></View>)}
+              {item.changes?.map((change: HistoryChange, index: number) => <TripHistoryChange key={index} change={change}/>)}
               {item.reason && <Text>Lý do/Ghi chú: {item.reason}</Text>}
               {item.resolution && <Text>{historyResolutions[item.resolution as keyof typeof historyResolutions] || item.resolution}</Text>}
               <Text style={styles.source}>{historySources[item.source as keyof typeof historySources] || item.source}</Text>
@@ -59,5 +82,6 @@ const styles = StyleSheet.create({
   button:{paddingVertical:8,paddingHorizontal:10,alignSelf:'flex-start',borderWidth:1,borderColor:'#bfdbfe',backgroundColor:'#eff6ff',borderRadius:8},
   link:{color:'#1d4ed8',fontSize:12,fontWeight:'700'},code:{fontSize:12,color:'#64748b'},error:{color:'#b91c1c'},
   notice:{backgroundColor:'#eff6ff',padding:12,color:'#334155',lineHeight:21},card:{padding:14,gap:8,backgroundColor:'white',borderRadius:10,borderLeftWidth:4},
+  change:{backgroundColor:'#f8fafc',padding:10,gap:6},scopeList:{maxHeight:240},
   event:{fontSize:17,fontWeight:'800',color:'#0f172a'},time:{color:'#1d4ed8',fontWeight:'700'},name:{fontSize:16,fontWeight:'700'},source:{fontSize:12,color:'#64748b'},
 });

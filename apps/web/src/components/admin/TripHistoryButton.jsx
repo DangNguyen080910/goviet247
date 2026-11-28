@@ -1,9 +1,32 @@
 import TripCode from "../common/TripCode.jsx";
 import {useEffect,useState} from 'react';
-import {Alert,Button,Chip,CircularProgress,Dialog,DialogActions,DialogContent,DialogTitle,Paper,Stack,Typography} from '@mui/material';
+import {Alert,Box,Button,Chip,CircularProgress,Dialog,DialogActions,DialogContent,DialogTitle,Paper,Stack,Typography} from '@mui/material';
 import {getAdminToken} from '../../utils/adminAuth';
-import {tripEventTitles,historyResolutions,historySources,historyTime,historyActor,historyStatus,historyValue,historyEventColor} from '../../../../api/src/shared/adminHistory.js';
+import {tripEventTitles,historyResolutions,historySources,historyTime,historyActor,historyStatus,historyValue,historyDriverScope,historyEventColor} from '../../../../api/src/shared/adminHistory.js';
 const base = import.meta.env.VITE_API_BASE || 'http://localhost:5050';
+function TripHistoryChange({ change }) {
+  const scope = historyDriverScope(change);
+  const values = <>
+    <Typography sx={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>Trước: {historyValue(change.before)}</Typography>
+    <Typography sx={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>Sau: {historyValue(change.after)}</Typography>
+  </>;
+
+  return <Paper variant="outlined" sx={{ p: 1, bgcolor: 'grey.50' }}>
+    <Typography fontWeight={700}>{change.label}</Typography>
+    {scope ? <>
+      <Typography>{scope.summary}</Typography>
+      {scope.hasCodes && <Box component="details" sx={{ mt: 0.5 }}>
+        <Box component="summary" sx={{ cursor: 'pointer', color: 'primary.main', width: 'fit-content' }}>
+          Mã tài xế
+        </Box>
+        <Box tabIndex={0} role="region" aria-label="Danh sách mã tài xế trước và sau" sx={{ maxHeight: 240, overflowY: 'auto', mt: 1 }}>
+          {values}
+        </Box>
+      </Box>}
+    </> : values}
+  </Paper>;
+}
+
 export default function TripHistoryButton({tripId}) {
   const [open,setOpen]=useState(false),[refresh,setRefresh]=useState(0),[data,setData]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState('');
   useEffect(()=>{
@@ -36,7 +59,7 @@ export default function TripHistoryButton({tripId}) {
             <Typography variant="body2">Thực hiện: {historyActor(item)}</Typography>
             {item.fromStatus && item.toStatus && item.fromStatus !== item.toStatus && <Typography>{historyStatus(item.fromStatus)} → {historyStatus(item.toStatus)}</Typography>}
             {item.amount != null && <Typography fontWeight={700}>Số tiền: {Number(item.amount).toLocaleString('vi-VN')} đ</Typography>}
-            {item.changes?.map((change,index)=><Paper key={index} variant="outlined" sx={{p:1,bgcolor:'grey.50'}}><Typography fontWeight={700}>{change.label}</Typography><Typography sx={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>Trước: {historyValue(change.before)}</Typography><Typography sx={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>Sau: {historyValue(change.after)}</Typography></Paper>)}
+            {item.changes?.map((change, index) => <TripHistoryChange key={index} change={change}/>)}
             {item.reason && <Typography sx={{whiteSpace:'pre-wrap'}}>Lý do/Ghi chú: {item.reason}</Typography>}
             {item.resolution && <Typography>{historyResolutions[item.resolution] || item.resolution}</Typography>}
             <Chip size="small" label={historySources[item.source] || item.source} sx={{alignSelf:'flex-start'}}/>
