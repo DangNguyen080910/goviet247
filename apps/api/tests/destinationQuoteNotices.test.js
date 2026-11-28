@@ -19,3 +19,22 @@ test("destination package quotes keep descriptions and include each notice only 
   assert.equal(lines.filter(line => line === config.allInclusiveNotice).length,1);
   assert.equal(lines.filter(line => line === config.paymentNotice).length,1);
 });
+
+test("customer quote introduces only applicable charges as included in the total", () => {
+  const charter = "Phí Bao xe: 1.533.571đ";
+  const overnight = "Ăn nghỉ tài xế · 1 đêm: 200.000đ";
+  const label = "Giá trên đã bao gồm";
+  for (const [mode, nights, expected] of [
+    ["CHARTER", 1, [charter, overnight]],
+    ["CHARTER", 0, [charter]],
+    ["STANDARD", 1, [overnight]],
+    ["STANDARD", 0, []],
+  ]) {
+    const lines = destinationQuoteSummary({
+      version: 5, eligible: true, selectionMode: mode, fee: 1533571,
+      tourDisplay: { overnightCount: nights, overnightCost: nights * 200000 },
+    });
+    if (expected.length) assert.deepEqual(lines.slice(-(expected.length + 1)), [label, ...expected]);
+    else assert.ok(!lines.includes(label));
+  }
+});

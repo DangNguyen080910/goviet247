@@ -12,6 +12,7 @@ export function destinationDayText(day: DestinationDay, selected: boolean, confi
 export function destinationSelectedFee(days: DestinationDay[], dates: string[]): number;
 export function destinationSessionText(session: any): string;
 
+export const INCLUDED_CHARGES_LABEL: string;
 export function destinationQuoteSummary(snapshot: any, config?: any): string[];
 
 export function destinationSelection(snapshot: any): "STANDARD" | "CHARTER" | "LEGACY_MIXED";

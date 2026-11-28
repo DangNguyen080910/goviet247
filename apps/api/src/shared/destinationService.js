@@ -119,12 +119,16 @@ export function destinationSummary(snapshot) {
     terms.scopeNotice || DEFAULT_DESTINATION_CONFIG.scopeNotice];
 }
 
+export const INCLUDED_CHARGES_LABEL = "Giá trên đã bao gồm";
+
 // Quote notices apply to every trip, independently of destination package eligibility.
 export function destinationQuoteSummary(snapshot, config) {
   const c = destinationConfig(config);
   const summary = snapshot?.eligible === true ? destinationSummary(snapshot)
     : [snapshot?.allInclusiveNotice || c.allInclusiveNotice, snapshot?.paymentNotice || c.paymentNotice];
-  const lines = [...summary, ...destinationChargeLines(snapshot)];
+  const charges = destinationChargeLines(snapshot);
+  const lines = [...summary];
+  if (charges.length) lines.push(INCLUDED_CHARGES_LABEL, ...charges);
   const tour = snapshot?.tourDisplay;
   if (tour?.returnTime && tour.overnightCount > 0 && tour.overnightCost > 0 &&
       destinationSelection(snapshot) === "STANDARD") {
