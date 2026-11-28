@@ -25,6 +25,13 @@ export function destinationPackageAvailable(c, direction, pickup, returnTime, ou
   return Number.isFinite(arrival) && Number.isFinite(departure) && outbound >= 0 && departure >= arrival;
 }
 
+export function charterUnavailableMessage(config) {
+  const { charterStartHour: start, charterEndHour: end } = config;
+  const reason = "Chuyến này không có thời gian phục vụ Bao xe tại điểm đến.";
+  if (start === 0 && end === 24) return reason;
+  return `${reason} Tài xế nghỉ từ ${hour(end % 24)} đến ${hour(start)}.`;
+}
+
 export function charterPricingHours(config) {
   const { charterStartHour: start, charterEndHour: end } = config;
   return Number.isInteger(start) && Number.isInteger(end) && start >= 0 && end <= 24 && end > start

@@ -31,7 +31,7 @@ import { bookingTimeToIso, formatBookingTime, vietnamNow } from "../utils/bookin
 import AppBrandHeader from "../components/AppBrandHeader";
 import { getMe } from "../services/authApi";
 import DestinationService, { ServiceSummary } from "../components/DestinationService";
-import { destinationPackageAvailable, destinationConfig, destinationWindows } from "../../../packages/shared/destinationService.js";
+import { destinationConfig, destinationWindows } from "../../../packages/shared/destinationService.js";
 import { quotePrice } from "../services/pricingApi";
 import {
   createTrip, getBookingCompanies, BookingCompany,
@@ -797,15 +797,11 @@ export default function RiderBookingScreen() {
   const servicePickup = pickupTime ? toIsoFromDatetimeLocal(pickupTime) : "";
   const serviceReturn = returnTime ? toIsoFromDatetimeLocal(returnTime) : "";
   const serviceConfig = destinationConfig(tripConfig.destinationServiceConfig);
-  const legacyServiceDays = tripConfig.wholeTripBooking ? []
-    : destinationWindows(serviceConfig, direction, servicePickup, serviceReturn, outboundDriveMinutes);
-  const serviceAvailable = tripConfig.wholeTripBooking
-    ? destinationPackageAvailable(serviceConfig, direction, servicePickup, serviceReturn, outboundDriveMinutes)
-    : legacyServiceDays.length > 0;
+  const charterAvailable = destinationWindows(serviceConfig, direction, servicePickup, serviceReturn, outboundDriveMinutes, tripConfig.wholeTripBooking).length > 0;
   // The current server already accepts a single package for the itinerary.
   // The capability flag enables only the new pricing semantics and extra pickups.
-  const packageSelection = { destinationServiceMode: serviceAvailable ? destinationServiceMode : "STANDARD" as const };
-  useEffect(()=>{if(!serviceAvailable)setDestinationServiceMode("STANDARD");},[serviceAvailable]);
+  const packageSelection = { destinationServiceMode: charterAvailable ? destinationServiceMode : "STANDARD" as const };
+  useEffect(() => { if (!charterAvailable) setDestinationServiceMode("STANDARD"); }, [charterAvailable]);
   const serviceAnchor=destinationAnchorAddress || stopPlaces[stops.length-1]?.fullAddress || stops[stops.length-1] || "";
   const quoteInputKey = JSON.stringify([bookingMode,tripConfig.wholeTripBooking,packageSelection,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupTime, returnTime, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
@@ -2323,7 +2319,7 @@ export default function RiderBookingScreen() {
 
             <View style={styles.divider} />
 
-            <DestinationService config={tripConfig.destinationServiceConfig} wholeTrip={tripConfig.wholeTripBooking} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={destinationServiceMode} onMode={setDestinationServiceMode} />
+            <DestinationService config={tripConfig.destinationServiceConfig} wholeTrip={tripConfig.wholeTripBooking} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={packageSelection.destinationServiceMode} onMode={setDestinationServiceMode} />
             <Text style={styles.sectionTitle}>3. Loại xe</Text>
             {configLoading ? <Text>Đang tải loại xe nhận đặt…</Text> : configError ? <Text style={styles.errorText}>{configError} Vui lòng mở lại màn hình đặt xe để thử lại.</Text> : !carTypeOptions.length ? <Text>Hiện chưa có loại xe nhận đặt. Vui lòng thử lại sau hoặc liên hệ hỗ trợ.</Text> : null}
 

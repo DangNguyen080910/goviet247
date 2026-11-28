@@ -22,6 +22,7 @@ import { emitDriverTripEvent } from '../services/tripAudience.js';
 
 import { lockDriverProfile, lockTrip, assertTripAcceptanceAllowed, availableTripWhere } from "../services/tripAcceptancePolicy.js";
 import { notifyBlockedTripAttempt } from "../services/blockedTripAttemptNotification.js";
+import { loadDriverWalletHistory } from "../services/driverWalletHistory.js";
 import { createMyDriverWithdrawRequest } from "./driverProfileController.js";
 import { prisma } from "../utils/db.js";
 import { estimateFareFromCoordinates } from "../services/fareService.js";
@@ -1495,10 +1496,10 @@ export async function cancelDriverTrip(req, res) {
           audience: "DRIVER",
           targetType: "USER",
           targetUserId: driverUserId,
-          title: "Bạn đã huỷ chuyến",
-          message: `Bạn đã huỷ chuyến ${trip.id.slice(-8)} thành công. Hệ thống đã giữ lại ${penaltyAmount.toLocaleString(
-            "vi-VN",
-          )}đ phí huỷ chuyến.`,
+          title: "Đã hủy chuyến",
+          message: penaltyAmount > 0
+            ? `Chuyến #${trip.id.slice(-8).toUpperCase()}. Phạt hủy chuyến: ${penaltyAmount.toLocaleString("vi-VN")}đ, giữ từ phí nhận chuyến.`
+            : `Chuyến #${trip.id.slice(-8).toUpperCase()} đã hủy.`,
           isActive: true,
           createdByAdminId: null,
         },
@@ -1928,10 +1929,7 @@ export async function getMyDriverWalletTransactions(req, res) {
       });
     }
 
-    const limit = Math.min(
-      200,
-      Math.max(1, parseInt(req.query.limit || "50", 10)),
-    );
+    const limit = Math.min(200, Math.max(1, parseInt(req.query.limit, 10) || 50));
 
     const profile = await prisma.driverProfile.findUnique({
       where: { userId: driverUserId },
@@ -1945,29 +1943,24 @@ export async function getMyDriverWalletTransactions(req, res) {
       });
     }
 
-    const items = await prisma.driverWalletTransaction.findMany({
-      where: { driverProfileId: profile.id },
-      orderBy: { createdAt: "desc" },
-      take: limit,
-      include: {
-        trip: {
-          select: {
-            id: true,
-            pickupAddress: true,
-            dropoffAddress: true,
-            destinationService: true,
-            holidaySurcharge: true,
-            totalPrice: true,
-          },
+    const items = await loadDriverWalletHistory(prisma, profile.id, limit, {
+      trip: {
+        select: {
+          id: true,
+          pickupAddress: true,
+          dropoffAddress: true,
+          destinationService: true,
+          holidaySurcharge: true,
+          totalPrice: true,
         },
-        withdrawRequest: {
-          select: {
-            id: true,
-            amount: true,
-            status: true,
-            createdAt: true,
-            paidAt: true,
-          },
+      },
+      withdrawRequest: {
+        select: {
+          id: true,
+          amount: true,
+          status: true,
+          createdAt: true,
+          paidAt: true,
         },
       },
     });

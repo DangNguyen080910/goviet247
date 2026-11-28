@@ -56,7 +56,7 @@ dayjs.locale("vi");
 import { CUSTOMER_SCROLL_ID, HEADER_H } from "./CustomerLayout";
 import { useLocation, useNavigate } from "react-router-dom";
 import DestinationService, { ServiceSummary } from "./DestinationService";
-import { destinationPackageAvailable, destinationConfig } from "../../../../../packages/shared/destinationService.js";
+import { destinationWindows, destinationConfig } from "../../../../../packages/shared/destinationService.js";
 import { quotePrice as customerQuotePrice } from "../../api/pricing";
 import { createTrip } from "../../api/trips";
 import { getPublicTripConfig } from "../../api/publicConfig";
@@ -1082,11 +1082,12 @@ export default function BookingCard({ partner = null }) {
   const [routeReadyKey, setRouteReadyKey] = useState("");
   const servicePickup = pickupPeriod ? combineDateTime(pickupDate,pickupTimeOnly) : "";
   const serviceReturn = returnPeriod ? combineDateTime(returnDate,returnTimeOnly) : "";
-  const serviceAvailable = destinationPackageAvailable(destinationConfig(tripConfig.destinationServiceConfig),direction,servicePickup,serviceReturn,outboundDriveMinutes);
-  useEffect(()=>{if(!serviceAvailable)setDestinationServiceMode("STANDARD");},[serviceAvailable]);
+  const charterAvailable = destinationWindows(destinationConfig(tripConfig.destinationServiceConfig), direction, servicePickup, serviceReturn, outboundDriveMinutes, true).length > 0;
+  const packageMode = charterAvailable ? destinationServiceMode : "STANDARD";
+  useEffect(() => { if (!charterAvailable) setDestinationServiceMode("STANDARD"); }, [charterAvailable]);
   const lastFilledStopIndex = stops.findLastIndex(address => address.trim());
   const serviceAnchor = destinationAnchorAddress || stopPlaces[lastFilledStopIndex]?.fullAddress || stops[lastFilledStopIndex] || "";
-  const quoteInputKey = JSON.stringify([destinationServiceMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
+  const quoteInputKey = JSON.stringify([packageMode,serviceAnchor,tripConfig.destinationServiceConfig,routeInputKey, pickupDate, pickupTimeOnly, pickupPeriod, returnDate, returnTimeOnly, returnPeriod, carType, fuelPreference, distanceKm, driveMinutes, outboundDriveMinutes]);
   const quoteInputKeyRef = useRef(quoteInputKey);
   quoteInputKeyRef.current = quoteInputKey;
 
@@ -1440,7 +1441,7 @@ export default function BookingCard({ partner = null }) {
       const payload = {
         routePricingPoints: quoteRoutePoints,
         ...(additionalPickups.length ? { additionalPickups } : {}),
-        destinationServiceMode: serviceAvailable ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
+        destinationServiceMode: packageMode, destinationAnchorAddress: serviceAnchor,
         carType,
         fuelPreference,
         direction,
@@ -1618,7 +1619,7 @@ export default function BookingCard({ partner = null }) {
 
       estimatedDurationMinutes: safeEstimatedDurationMinutes,
 
-      destinationServiceMode: serviceAvailable ? destinationServiceMode : "STANDARD", destinationAnchorAddress: serviceAnchor,
+      destinationServiceMode: packageMode, destinationAnchorAddress: serviceAnchor,
       routePricingPoints: quoteRoutePoints,
       ...(additionalPickups.length ? { additionalPickups } : {}),
       regionalPricingSignature: quote.raw?.regionalPricingSignature,
@@ -2456,7 +2457,7 @@ export default function BookingCard({ partner = null }) {
 
               <Divider />
 
-<DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={destinationServiceMode} onMode={setDestinationServiceMode} />
+<DestinationService config={tripConfig.destinationServiceConfig} direction={direction} pickup={servicePickup} returnTime={serviceReturn} outboundMinutes={outboundDriveMinutes} anchor={serviceAnchor} onAnchor={setDestinationAnchorAddress} mode={packageMode} onMode={setDestinationServiceMode} />
               {/* Actions */}
               <Stack
                 direction={{ xs: "column", sm: "row" }}

@@ -92,6 +92,7 @@ export type DriverWalletTransactionItem = {
   amount: number;
   balanceBefore: number;
   balanceAfter: number;
+  balanceUnchanged?: boolean;
   note?: string | null;
   tripId?: string | null;
   withdrawRequestId?: string | null;

@@ -1,3 +1,4 @@
+import { loadDriverWalletHistory } from "../services/driverWalletHistory.js";
 import { driverDocumentKey } from "../services/s3Service.js";
 import { legacyDriverContract, buildContractAcceptance, validateRegistrationSubmission, lockContractPublication } from "../services/driverContract.js";
 import { isProvinceCode } from "../services/driverOperatingProvince.js";
@@ -156,10 +157,13 @@ function toWithdrawBankAccountSummary(item) {
 }
 
 async function buildWalletSummaryData(profile, db = prisma) {
-  const activeRequest = await db.driverWithdrawRequest.findFirst({
-    where: { driverProfileId: profile.id, status: { in: ["PENDING", "APPROVED"] } },
-    select: { id: true },
-  });
+  const [activeRequest, history] = await Promise.all([
+    db.driverWithdrawRequest.findFirst({
+      where: { driverProfileId: profile.id, status: { in: ["PENDING", "APPROVED"] } },
+      select: { id: true },
+    }),
+    loadDriverWalletHistory(db, profile.id, 10),
+  ]);
   const defaultBankAccount =
     profile.bankAccounts.find((item) => item.isDefault) ||
     profile.bankAccounts[0] ||
@@ -172,12 +176,13 @@ async function buildWalletSummaryData(profile, db = prisma) {
       ? toBankAccountSummary(defaultBankAccount)
       : null,
     bankAccounts: profile.bankAccounts.map(toBankAccountSummary),
-    recentTransactions: profile.walletTransactions.map((item) => ({
+    recentTransactions: history.map((item) => ({
       id: item.id,
       type: item.type,
       amount: item.amount,
       balanceBefore: item.balanceBefore,
       balanceAfter: item.balanceAfter,
+      balanceUnchanged: item.balanceUnchanged,
       note: item.note,
       tripId: item.tripId,
       withdrawRequestId: item.withdrawRequestId,
@@ -523,10 +528,6 @@ export async function getMyDriverWalletSummary(req, res) {
             bankAccounts: {
               where: { archivedAt: null },
               orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
-            },
-            walletTransactions: {
-              orderBy: { createdAt: "desc" },
-              take: 10,
             },
             withdrawRequests: {
               orderBy: { createdAt: "desc" },
@@ -997,10 +998,6 @@ export async function createMyDriverWithdrawRequest(req, res) {
           bankAccounts: {
             where: { archivedAt: null },
             orderBy: [{ isDefault: "desc" }, { createdAt: "desc" }],
-          },
-          walletTransactions: {
-            orderBy: { createdAt: "desc" },
-            take: 10,
           },
           withdrawRequests: {
             orderBy: { createdAt: "desc" },

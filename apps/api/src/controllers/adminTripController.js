@@ -126,7 +126,7 @@ export async function adminDriverCancelToReview(req, res) {
         data: {
           audience: "DRIVER", targetType: "USER", targetUserId: trip.driverId,
           title: "Chuyến đã được chuyển về chờ duyệt",
-          message: `Admin đã chuyển chuyến #${tripId.slice(-8).toUpperCase()} về chờ duyệt vì bạn huỷ chuyến. ${refundAndReview ? `Đã hoàn ${refund.amount}đ vào ví của bạn, không ghi phạt.` : "Khoản đã khấu trừ khi nhận chuyến được ghi nhận là phạt và không tự hoàn."} Lý do: ${reason.slice(0, 200)}. [tripId:${tripId}]`,
+          message: `Admin đã chuyển chuyến #${tripId.slice(-8).toUpperCase()} về chờ duyệt vì bạn huỷ chuyến. ${refundAndReview ? `Đã hoàn ${refund.amount}đ vào ví của bạn, không ghi phạt.` : penaltyLog ? `Phạt hủy chuyến: ${penaltyLog.penaltyAmount.toLocaleString("vi-VN")}đ, giữ từ phí nhận chuyến.` : "Chuyến này không có phí phạt."} Lý do: ${reason.slice(0, 200)}. [tripId:${tripId}]`,
           isActive: true, createdByAdminId: actor?.id ?? null,
         },
       });

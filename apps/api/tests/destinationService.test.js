@@ -138,3 +138,21 @@ test('frontend selected total equals backend snapshot and descriptions come from
  assert.equal(destinationDayText(days[2],true,cfg),'07:00–12:00 · Tối đa 5 giờ');
  assert.ok(!destinationSummary(s).some(line => line.includes('1 ngày ×')));
 });
+
+test("whole-trip charter requires time within the service window", () => {
+ const itinerary = {
+   ...input,
+   pickupTime: "2026-11-30T21:30:00+07:00",
+   returnTime: "2026-12-01T07:00:00+07:00",
+   outboundDriveMinutes: 60,
+ };
+ assert.throws(() => buildDestinationSnapshot(c, { ...itinerary, destinationServiceMode: "CHARTER" }),
+   /không có thời gian phục vụ Bao xe.*21:00 đến 07:00/);
+ assert.equal(buildDestinationSnapshot(c, { ...itinerary, destinationServiceMode: "STANDARD" }).fee, 0);
+ const morningCharter = buildDestinationSnapshot(c, {
+   ...itinerary, destinationServiceMode: "CHARTER", returnTime: "2026-12-01T08:00:00+07:00",
+ });
+ assert.equal(morningCharter.sessions.length, 1);
+ assert.equal(morningCharter.sessions[0].date, "2026-12-01");
+ assert.ok(morningCharter.fee > 0);
+});

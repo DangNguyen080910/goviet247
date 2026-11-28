@@ -196,7 +196,10 @@ export default function DashboardScreen() {
     if (!cancelTrip) {
       return 0;
     }
-    return Number(cancelTrip.requiredWalletAmountSnapshot || 0);
+    return Number(cancelTrip.requiredWalletAmountSnapshot || 0) ||
+      Number(cancelTrip.commissionAmountSnapshot || 0) +
+      Number(cancelTrip.driverVatAmountSnapshot || 0) +
+      Number(cancelTrip.driverPitAmountSnapshot || 0);
   }, [cancelTrip]);
 
   const formatMoney = useCallback((value?: number | null) => {
@@ -1046,14 +1049,17 @@ export default function DashboardScreen() {
       try {
         acceptingTripRef.current = tripId;
         setAcceptingTripId(tripId);
-        await acceptDriverTrip(tripId);
+        const result = await acceptDriverTrip(tripId);
         availableTripStateRef.current.markUnavailable(tripId);
         setAvailableTrips((items) => items.filter((item) => item.id !== tripId));
 
         await Promise.allSettled([loadAvailableTrips(), loadMyTrips()]);
         setActiveTab("MY_TRIPS");
 
-        showSuccess("Nhận chuyến thành công.");
+        const fee = result?.wallet?.requiredWalletAmount;
+        showSuccess(typeof fee === "number"
+          ? `Nhận chuyến thành công. Phí nhận chuyến: ${formatMoney(fee)}.`
+          : "Nhận chuyến thành công.");
       } catch (error: any) {
         if (confirmsTripUnavailable(error)) {
           availableTripStateRef.current.markUnavailable(tripId);
@@ -1181,13 +1187,16 @@ export default function DashboardScreen() {
 
     try {
       setCancelingTripId(cancelTripId);
-      await cancelDriverTrip(cancelTripId);
+      const result = await cancelDriverTrip(cancelTripId);
 
       setCancelTripId(null);
 
       await Promise.all([loadAvailableTrips(), loadMyTrips()]);
 
-      showSuccess("Đã huỷ chuyến");
+      const penalty = Number(result?.penalty?.amount || 0);
+      showSuccess(penalty > 0
+        ? `Đã hủy chuyến. Phạt hủy chuyến: ${formatMoney(penalty)}.`
+        : "Đã hủy chuyến.");
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Không thể huỷ chuyến.";
@@ -2195,9 +2204,9 @@ export default function DashboardScreen() {
               <Text style={styles.modalTitle}>Cảnh báo huỷ chuyến</Text>
 
               <Text style={styles.modalText}>
-                Bạn không nên huỷ chuyến vì nếu huỷ, hệ thống sẽ giữ lại{" "}
-                {formatMoney(cancelPenaltyPreview)} đã trừ trước đó và tính là
-                phí huỷ chuyến cho đơn này.
+                {cancelPenaltyPreview > 0
+                  ? `Phạt hủy chuyến: ${formatMoney(cancelPenaltyPreview)}. Hệ thống giữ lại khoản đã trừ khi nhận chuyến.`
+                  : "Chuyến này không có phí phạt."}
               </Text>
 
               <Text style={styles.modalTextBold}>

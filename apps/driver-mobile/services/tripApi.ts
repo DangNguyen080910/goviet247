@@ -149,8 +149,7 @@ type ApiTripSuccess<T> = {
   wallet?: {
     balanceBefore: number;
     balanceAfter: number;
-    commissionPercent: number;
-    commissionRequired: number;
+    requiredWalletAmount?: number;
     driverReceive: number;
   };
 };

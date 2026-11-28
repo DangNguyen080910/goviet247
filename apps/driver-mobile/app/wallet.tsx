@@ -121,25 +121,17 @@ export default function WalletScreen() {
         return "Nạp tiền";
 
       case "COMMISSION_HOLD":
-        return "Phí môi giới";
+      case "DRIVER_VAT_HOLD":
+      case "DRIVER_PIT_HOLD":
+        return "Phí nhận chuyến";
 
       case "COMMISSION_REFUND":
-        return "Hoàn phí môi giới";
+      case "DRIVER_VAT_REFUND":
+      case "DRIVER_PIT_REFUND":
+        return "Hoàn phí nhận chuyến";
 
       case "TRIP_CANCEL_PENALTY":
-        return "Phạt huỷ chuyến";
-
-      case "DRIVER_VAT_HOLD":
-        return "Thuế VAT tài xế";
-
-      case "DRIVER_VAT_REFUND":
-        return "Hoàn VAT";
-
-      case "DRIVER_PIT_HOLD":
-        return "Thuế TNCN tài xế";
-
-      case "DRIVER_PIT_REFUND":
-        return "Hoàn PIT";
+        return "Phạt hủy chuyến";
 
       case "WITHDRAW_REQUEST":
         return "Yêu cầu rút tiền";
@@ -759,7 +751,8 @@ export default function WalletScreen() {
 
     const neutralTypes = new Set(["WITHDRAW_PAID"]);
 
-    const isMinus = minusTypes.has(normalizedType);
+    const isPenalty = normalizedType === "TRIP_CANCEL_PENALTY";
+    const isMinus = minusTypes.has(normalizedType) || (isPenalty && !item.balanceUnchanged);
     const isPlus = plusTypes.has(normalizedType);
     const isNeutral = neutralTypes.has(normalizedType);
 
@@ -776,20 +769,21 @@ export default function WalletScreen() {
           <Text style={styles.listCardTitle}>{getTxnTypeLabel(item.type)}</Text>
           <Text style={[styles.amountText, amountStyle]}>
             {amountPrefix}
-            {formatMoney(amount)}
+            {formatMoney(isMinus || isPlus || isPenalty ? Math.abs(amount) : amount)}
           </Text>
         </View>
 
-        {!!item.note && <Text style={styles.listCardNote}>{item.note}</Text>}
+        {!!item.note && !["DRIVER_VAT_HOLD", "DRIVER_PIT_HOLD", "DRIVER_VAT_REFUND", "DRIVER_PIT_REFUND"].includes(normalizedType) &&
+          <Text style={styles.listCardNote}>{item.note}</Text>}
 
         {!!item.tripId && (
           <View><Text style={styles.metaText}>Mã chuyến: {item.tripId}</Text><CopyTripIdButton tripId={item.tripId}/></View>
         )}
 
-        <Text style={styles.metaText}>
+        {!item.balanceUnchanged && <Text style={styles.metaText}>
           Số dư: {formatMoney(item.balanceBefore)} →{" "}
           {formatMoney(item.balanceAfter)}
-        </Text>
+        </Text>}
 
         {isNeutral && normalizedType === "WITHDRAW_PAID" ? (
           <Text style={styles.metaText}>

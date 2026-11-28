@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const ts = require('typescript');
 const root = path.resolve(__dirname, '..');
-function acceptHandler(error) {
+function acceptHandler(error, result) {
   const source = fs.readFileSync(path.join(root, 'apps/driver-mobile/app/dashboard.tsx'), 'utf8');
   const start = source.indexOf('    async (tripId: string) => {', source.indexOf('const handleAcceptTrip'));
   const end = source.indexOf('\n    },\n    [', start) + 6;
@@ -17,9 +17,10 @@ function acceptHandler(error) {
     availableTripStateRef: { current: new AvailableTripState() }, acceptingTripRef: { current: null },
     confirmsTripUnavailable, setAvailableTrips: () => {},
     setAcceptingTripId: id => calls.push(['loading', id]),
-    acceptDriverTrip: async () => { if (error) throw error; },
+    acceptDriverTrip: async () => { if (error) throw error; return result; },
     loadAvailableTrips: async () => calls.push(['available']), loadMyTrips: async () => calls.push(['mine']),
-    setActiveTab: tab => calls.push(['tab', tab]), showSuccess: () => calls.push(['success']),
+    setActiveTab: tab => calls.push(['tab', tab]), showSuccess: message => calls.push(['success', message]),
+    formatMoney: amount => `${amount.toLocaleString('vi-VN')}đ`,
     showTripAcceptError: () => calls.push(['error']), showError: () => calls.push(['error']), tripAcceptFeedback: error=> {
       const source=fs.readFileSync(path.join(root,'apps/api/src/shared/tripAcceptFeedback.js'),'utf8').replace('export function','function');
       return new Function(source+';return tripAcceptFeedback;')()(error);
@@ -39,7 +40,15 @@ test('ordinary acceptance errors remain visible', async () => {
 });
 test('successful acceptance refreshes trips and opens my trips', async () => {
   const { handler, calls } = acceptHandler(); await handler('trip');
-  assert.deepEqual(calls, [['loading','trip'], ['available'], ['mine'], ['tab','MY_TRIPS'], ['success'], ['loading',null]]);
+  assert.deepEqual(calls, [['loading','trip'], ['available'], ['mine'], ['tab','MY_TRIPS'], ['success','Nhận chuyến thành công.'], ['loading',null]]);
+});
+test('successful acceptance displays only the total wallet fee', async () => {
+  const { handler, calls } = acceptHandler(null, {
+    wallet: { requiredWalletAmount: 95000, driverVatAmount: 5000, driverPitAmount: 3000 },
+  });
+  await handler('trip');
+  assert.deepEqual(calls.find(([event]) => event === 'success'),
+    ['success', 'Nhận chuyến thành công. Phí nhận chuyến: 95.000đ.']);
 });
 for (const platform of ['android','ios','web']) test(`Rider usage telemetry on ${platform} is independent of push permissions`, async () => {
   const source = fs.readFileSync(path.join(root, 'apps/rider-mobile/services/authApi.ts'), 'utf8');

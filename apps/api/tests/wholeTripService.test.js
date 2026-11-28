@@ -70,7 +70,7 @@ test('charter pricing uses the configured window and excludes the outbound and r
  assert.throws(() => buildDestinationSnapshot({...c, charterStartHour:21, charterEndHour:21}, input), /Khung giờ Bao xe/);
 
  const outside = {...input, pickupTime:'2099-01-01T01:00:00+07:00', returnTime:'2099-01-01T04:00:00+07:00'};
- assert.equal(buildDestinationSnapshot(c, outside).fee, 0);
+ assert.throws(() => buildDestinationSnapshot(c, outside), /không có thời gian phục vụ Bao xe/);
 });
 
 test('30/11 at 05:00 to 01/12 at 16:00 bills 23 destination hours plus the separate overnight fee', async () => {

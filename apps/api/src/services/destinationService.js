@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterPricingHours, charterTripFee, destinationSelection } from "../shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterPricingHours, charterTripFee, charterUnavailableMessage, destinationSelection } from "../shared/destinationService.js";
 export { destinationConfig };
 export function validateDestinationConfig(raw) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return "Cấu hình phục vụ không hợp lệ.";
@@ -53,12 +53,14 @@ export function buildDestinationSnapshot(raw, input) {
   if (eligible && !anchorAddress) throw Object.assign(new Error("Vui lòng xác nhận điểm đến."), { status: 400 });
   const days = destinationDays(c, input.direction, input.pickupTime, input.returnTime, input.outboundDriveMinutes, true);
   const sessions = charter ? days.map(day => day.charter).filter(Boolean) : [];
+  const fee = charter ? charterTripFee(c, sessions) : 0;
+  if (charter && !sessions.length) throw Object.assign(new Error(charterUnavailableMessage(c)), { status: 400 });
   return { version: 5, selectionMode, days, eligible, title:c.title, anchorAddress,
     standardRadiusKm:c.standardRadiusKm, standardName:c.standardName, standardDescription:destinationDescription(c),
     standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
     charterName:c.charterName, charterDescription:destinationDescription(c,true),
     sessions, dailyFee:c.charterDailyFee,
-    fee: charter ? charterTripFee(c, sessions) : 0,
+    fee,
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
 }
 export const destinationSignature = snapshot => {
