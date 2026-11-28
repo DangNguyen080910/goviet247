@@ -18,5 +18,6 @@ export function destinationSelection(snapshot: any): "STANDARD" | "CHARTER" | "L
 export function destinationPackageLabel(snapshot: any): string;
 
 export function destinationPackageAvailable(config: any, direction: string, pickup: any, returnTime: any, outboundMinutes: any): boolean;
-export function charterTripFee(dailyFee: number, pickup: any, returnTime: any, returnMinutes: number): number;
+export function charterPricingHours(config: {charterStartHour: number; charterEndHour: number}): number | null;
+export function charterTripFee(config: {charterStartHour: number; charterEndHour: number; charterDailyFee: number}, pickup: any, returnTime: any, returnMinutes: number): number;
 export function destinationChargeLines(snapshot: any): string[];

@@ -6,7 +6,7 @@ export const DEFAULT_DESTINATION_CONFIG = {
   standardDescription: "Tài xế đưa bạn đến điểm đến và quay lại đón theo giờ đã đặt. Gói này không bao gồm đưa đón đi ăn, tham quan hoặc di chuyển tại điểm đến.",
   standardRadiusKm: 5, standardTripsPerDay: 3, standardStartHour: 7, standardEndHour: 21,
   charterName: "Bao xe tại điểm đến",
-  charterDescription: "Bao gồm đi ăn uống, tham quan, mua sắm trong phạm vi {radius} km theo đường ô tô tính từ nơi lưu trú đã xác nhận; tối đa {hours} giờ/ngày, trong khung {start}–{end}. Thời gian phục vụ gồm di chuyển và chờ. Khách và tài xế thống nhất các điểm chính và khoảng nghỉ trước mỗi ngày; tài xế phục vụ đúng lịch đã xác nhận. Vé tham quan và chi tiêu cá nhân của khách không bao gồm trong giá.",
+  charterDescription: "Bao gồm đi ăn uống, tham quan, mua sắm trong phạm vi {radius} km theo đường ô tô tính từ nơi lưu trú đã xác nhận; tối đa {hours} giờ/ngày. Vui lòng ưu tiên khung {start}–{end} để tài xế có thời gian nghỉ. Thời gian phục vụ gồm di chuyển và chờ. Khách và tài xế thống nhất các điểm chính và khoảng nghỉ trước mỗi ngày; tài xế phục vụ đúng lịch đã xác nhận. Vé tham quan và chi tiêu cá nhân của khách không bao gồm trong giá.",
   charterRadiusKm: 30, charterHoursPerDay: 8, charterStartHour: 7, charterEndHour: 21, charterDailyFee: 600000,
   outsideNotice: "Muốn đi ngoài phạm vi, cần liên hệ GoViet247 xác nhận lịch trình và giá cập nhật trước khi thực hiện.",
   allInclusiveNotice: "Đây là giá trọn gói, đã bao gồm phí cầu đường, cao tốc và chi phí ăn nghỉ của tài xế trong toàn hành trình. Không phát sinh thêm.",
@@ -25,9 +25,18 @@ export function destinationPackageAvailable(c, direction, pickup, returnTime, ou
   return Number.isFinite(arrival) && Number.isFinite(departure) && outbound >= 0 && departure >= arrival;
 }
 
-export function charterTripFee(dailyFee, pickup, returnTime, returnMinutes) {
+export function charterPricingHours(config) {
+  const { charterStartHour: start, charterEndHour: end } = config;
+  return Number.isInteger(start) && Number.isInteger(end) && start >= 0 && end <= 24 && end > start
+    ? end - start
+    : null;
+}
+
+export function charterTripFee(config, pickup, returnTime, returnMinutes) {
+  const pricingHours = charterPricingHours(config);
+  if (pricingHours === null) throw new RangeError("Mốc giờ quy đổi giá Bao xe không hợp lệ.");
   const tripMinutes = (new Date(returnTime).getTime() - new Date(pickup).getTime()) / 60000 + returnMinutes;
-  return Math.round(dailyFee * tripMinutes / (24 * 60));
+  return Math.round(config.charterDailyFee * tripMinutes / (pricingHours * 60));
 }
 export function destinationDescription(c, charter = false) {
   const values = charter

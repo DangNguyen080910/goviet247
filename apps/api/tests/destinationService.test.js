@@ -59,7 +59,8 @@ test("configuration changes update templates, old snapshots persist and old quot
 });
 test("admin validates ranges, money, required content and unsupported fields",()=>{
  assert.equal(validateDestinationConfig(c),"");
- for(const change of [{charterDailyFee:-1},{charterDailyFee:1.5},{standardRadiusKm:0},{charterStartHour:22,charterEndHour:7},{charterHoursPerDay:20},{allInclusiveNotice:""},{enabled:"yes"},{unknownField:1}]) assert.ok(validateDestinationConfig({...c,...change}));
+ assert.equal(validateDestinationConfig({...c,charterStartHour:7,charterEndHour:9,charterHoursPerDay:8}),"");
+ for(const change of [{charterDailyFee:-1},{charterDailyFee:1.5},{standardRadiusKm:0},{charterStartHour:22,charterEndHour:7},{charterHoursPerDay:25},{allInclusiveNotice:""},{enabled:"yes"},{unknownField:1}]) assert.ok(validateDestinationConfig({...c,...change}));
 });
 
 

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterTripFee, destinationSelection } from "../shared/destinationService.js";
+import { destinationConfig, destinationDescription, destinationWindows, destinationDays, destinationPackageAvailable, charterPricingHours, charterTripFee, destinationSelection } from "../shared/destinationService.js";
 export { destinationConfig };
 export function validateDestinationConfig(raw) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return "Cấu hình phục vụ không hợp lệ.";
@@ -7,7 +7,8 @@ export function validateDestinationConfig(raw) {
   if (typeof c.enabled !== "boolean") return "Trạng thái không hợp lệ.";
   for (const key of ["title", "introduction", "standardName", "standardDescription", "charterName", "charterDescription", "outsideNotice", "allInclusiveNotice", "paymentNotice", "scopeNotice"]) if (typeof c[key] !== "string" || !c[key].trim() || c[key].length > 3000) return `${key}: cần nội dung từ 1 đến 3000 ký tự.`;
   for (const [key, min, max] of [["standardRadiusKm",1,500],["standardTripsPerDay",1,10],["charterRadiusKm",1,500],["charterHoursPerDay",1,24],["charterDailyFee",0,100000000],["standardStartHour",0,23],["standardEndHour",1,24],["charterStartHour",0,23],["charterEndHour",1,24]]) if (!Number.isInteger(c[key]) || c[key]<min || c[key]>max) return `${key}: phải là số nguyên từ ${min} đến ${max}.`;
-  if (c.standardEndHour <= c.standardStartHour || c.charterEndHour <= c.charterStartHour || c.charterHoursPerDay > c.charterEndHour-c.charterStartHour) return "Khung giờ phục vụ không hợp lệ hoặc số giờ vượt khung phục vụ.";
+  if (c.standardEndHour <= c.standardStartHour) return "Khung giờ gói Không bao xe không hợp lệ.";
+  if (charterPricingHours(c) === null) return "Mốc giờ cuối quy đổi giá Bao xe phải sau mốc giờ đầu.";
   if (Object.keys(raw).some(key => !(key in c) || !Object.hasOwn(destinationConfig(), key))) return "Có trường cấu hình không hợp lệ.";
   return "";
 }
@@ -60,7 +61,7 @@ export function buildDestinationSnapshot(raw, input) {
     standardWindow:`${String(c.standardStartHour).padStart(2,"0")}:00–${String(c.standardEndHour).padStart(2,"0")}:00`,
     charterName:c.charterName, charterDescription:destinationDescription(c,true),
     sessions: charter ? windows : [], dailyFee:c.charterDailyFee,
-    fee: charter ? charterTripFee(c.charterDailyFee, input.pickupTime, input.returnTime, returnMinutes) : 0,
+    fee: charter ? charterTripFee(c, input.pickupTime, input.returnTime, returnMinutes) : 0,
     outsideNotice:c.outsideNotice, allInclusiveNotice:c.allInclusiveNotice, paymentNotice:c.paymentNotice, scopeNotice:c.scopeNotice };
 }
 export const destinationSignature = snapshot => {
